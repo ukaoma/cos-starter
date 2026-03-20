@@ -11,6 +11,8 @@ Same model. Same prompt. Give it your context — your people, your priorities, 
 
 COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code). Not a chatbot. Not a wrapper. A persistent, context-aware system that compounds in value every time you use it.
 
+**[See the philosophy](https://milesukaoma.com/cos)** | **[Interactive demo](philosophy/cos-philosophy-diagram.html)** | **[For teams](https://hermitcrabs.io)**
+
 ---
 
 ## The Problem
