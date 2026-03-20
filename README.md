@@ -13,7 +13,7 @@ COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code
 
 **Model-agnostic by design.** When the next frontier model drops — Claude, Gemini, GPT — your COS gets smarter immediately. No migration. No rebuild. The context is yours. The model is interchangeable.
 
-**[See the philosophy](https://milesukaoma.com/cos)** | **[Interactive demo](philosophy/cos-philosophy-diagram.html)** | **[For teams](https://hermitcrabs.io)**
+**[See the philosophy](https://milesukaoma.com/cos)** | **[For teams](https://milesukaoma.com/schedule-a-call)**
 
 ---
 
@@ -178,7 +178,7 @@ Running COS for yourself is powerful. Running it across a leadership team is tra
 - Consistent correction propagation across the team
 
 **Need help deploying COS at your organization?**
-Contact [hermitcrabs.io](https://hermitcrabs.io) for architecture consulting and implementation.
+**[Schedule a call](https://milesukaoma.com/schedule-a-call)** to discuss architecture consulting and implementation.
 
 ---
 
