@@ -1,7 +1,20 @@
-<a href="https://milesukaoma.com/cos"><img src="assets/banner.svg" alt="COS — Context is King — The AI Chief of Staff" width="100%"></a>
+<p align="center">
+  <a href="https://milesukaoma.com/cos">
+    <img src="https://milesukaoma.com/hubfs/raw_assets/public/Miles-Theme-sr/images/mu-logo.png" alt="MU" width="120">
+  </a>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-7C3AED)](https://claude.ai/claude-code)
+<h3 align="center"><em>Context</em> is King</h3>
+<p align="center"><strong>THE AI CHIEF OF STAFF</strong></p>
+<p align="center">
+  <a href="https://milesukaoma.com/cos">See the philosophy</a> · <a href="https://milesukaoma.com/schedule-a-call">For teams</a>
+</p>
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT"></a>
+  <a href="https://claude.ai/claude-code"><img src="https://img.shields.io/badge/Claude%20Code-compatible-7C3AED" alt="Claude Code"></a>
+</p>
+
+---
 
 # COS Starter
 
