@@ -1,11 +1,11 @@
+<a href="https://milesukaoma.com/cos"><img src="assets/banner.svg" alt="COS — Context is King — The AI Chief of Staff" width="100%"></a>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-7C3AED)](https://claude.ai/claude-code)
 
 # COS Starter
 
 **Build an AI Chief of Staff that actually knows your job.**
-
-> "The prompt was never the problem. The model isn't the bottleneck. Your context is."
 
 Same model. Same prompt. Give it your context — your people, your priorities, your patterns — and it becomes something fundamentally different. It becomes useful.
 
