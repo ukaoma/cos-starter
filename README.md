@@ -232,7 +232,7 @@ Created by [Miles Ukaoma](https://milesukaoma.com/cos).
 
 COS was born from running an AI Chief of Staff across three businesses simultaneously — learning what works when the stakes are real and the calendar is full.
 
-Learn more at [gotcos.com](https://gotcos.com).
+Learn more at [milesukaoma.com/cos](https://milesukaoma.com/cos).
 
 ---
 
