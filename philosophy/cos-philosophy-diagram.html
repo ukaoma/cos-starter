@@ -1,0 +1,3532 @@
+<!-- COS Philosophy Diagram — gotcos.com | Created by Miles Ukaoma -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>AI Chief of Staff — Philosophy Map</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0e17;
+    color: #e0e6ed;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* ── Header ── */
+  .header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 12px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,14,23,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .header-brand {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .header-logo {
+    height: 26px; width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+    transition: opacity 0.3s, filter 0.3s;
+  }
+  .header-logo:hover { opacity: 1; }
+  .header-divider {
+    width: 1px; height: 20px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+  .header h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.3px;
+  }
+  .header h1 span {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: rgba(210,185,150,0.6); font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── Philosophy Overlay ── */
+  .philosophy-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0a0e17;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    transition: opacity 0.8s ease, visibility 0.8s;
+    cursor: pointer;
+  }
+  .philosophy-overlay::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 55%, rgba(20,30,50,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .philosophy-overlay.dismissed {
+    opacity: 0; visibility: hidden; pointer-events: none;
+  }
+  .philosophy-overlay-logo {
+    height: 48px; width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    animation: philFadeUp 1s ease 0.2s both;
+  }
+  .philosophy-tagline {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 46px);
+    color: #fff;
+    line-height: 1.25;
+    max-width: 680px;
+    padding: 0 24px;
+    animation: philFadeUp 1s ease 0.5s both;
+  }
+  .philosophy-tagline em {
+    font-style: normal;
+    background: linear-gradient(135deg, #e88040 0%, #d4a050 50%, #ab47bc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .philosophy-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: rgba(210,185,150,0.45);
+    margin-top: 20px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    animation: philFadeUp 1s ease 0.8s both;
+  }
+  .philosophy-enter {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(210,185,150,0.25);
+    margin-top: 48px;
+    letter-spacing: 1px;
+    animation: philFadeUp 1s ease 1.2s both, philPulse 2.5s ease-in-out 2.2s infinite;
+  }
+  @keyframes philFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes philPulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.5; }
+  }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .legend { display: flex; gap: 14px; align-items: center; }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 10px; color: #8899aa; cursor: pointer; user-select: none;
+    padding: 3px 8px; border-radius: 16px;
+    border: 1px solid transparent; transition: all 0.3s;
+  }
+  .legend-item:hover { border-color: rgba(255,255,255,0.1); }
+  .legend-item.active { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); }
+  .legend-item.dimmed { opacity: 0.25; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .header-btn {
+    font-size: 10px; padding: 5px 10px; border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04);
+    color: #8899aa; cursor: pointer; transition: all 0.2s;
+  }
+  .header-btn:hover { background: rgba(255,255,255,0.08); color: #ccc; }
+
+  /* ── Main Layout ── */
+  .main {
+    display: flex;
+    height: calc(100vh - 44px);
+    padding-top: 44px;
+    transition: height 0.4s ease;
+  }
+  /* height controlled by --panel-content-height in builder section */
+
+  /* ── Diagram Area ── */
+  .diagram-area {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .diagram-area svg.diagram {
+    transform-origin: center center;
+    transition: transform 80ms linear;
+    cursor: grab;
+  }
+  .diagram-area svg.diagram.dragging { cursor: grabbing; transition: none; }
+
+  /* ── Zoom Controls ── */
+  .zoom-controls {
+    position: absolute; bottom: 16px; right: 16px; z-index: 50;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .zoom-btn {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(10,14,23,0.85);
+    backdrop-filter: blur(10px);
+    color: #8899aa; font-size: 16px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .zoom-btn:hover { background: rgba(255,255,255,0.08); color: #ccc; }
+  .zoom-btn:active { transform: scale(0.92); }
+  .zoom-level {
+    font-size: 9px; color: #556677; text-align: center;
+    padding: 2px 0; user-select: none;
+  }
+  body.theme-frost .zoom-btn {
+    background: rgba(20,26,40,0.7);
+    border-color: rgba(255,255,255,0.06);
+  }
+  svg.diagram { width: 100%; height: 100%; max-width: 1020px; max-height: 940px; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 300px; padding: 14px 16px 14px 0;
+    overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
+  }
+  .principle-group {
+    transition: opacity 0.3s;
+    background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px 14px;
+  }
+  .principle-group.dimmed { opacity: 0.15; }
+  .principle-group h3 {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 10px; padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; user-select: none;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 4px;
+  }
+  .tier-badge {
+    font-size: 8px; padding: 2px 6px; border-radius: 10px;
+    font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .tier-badge.tier-basic { background: rgba(79,195,247,0.12); color: #4fc3f7; }
+  .tier-badge.tier-intermediate { background: rgba(171,71,188,0.12); color: #ab47bc; }
+  .tier-badge.tier-advanced { background: rgba(255,112,67,0.12); color: #ff7043; }
+  .tier-badge.tier-agentic { background: rgba(102,187,106,0.12); color: #66bb6a; }
+  .tier-value {
+    width: 100%; font-size: 9px; color: #556677;
+    font-weight: 400; letter-spacing: 0.5px; margin-top: 2px;
+    text-transform: none;
+  }
+  .principle-group h3 .chevron {
+    font-size: 10px; transition: transform 0.3s; color: #556;
+  }
+  .principle-group h3 .chevron.collapsed { transform: rotate(180deg); }
+  .principle-group .pg-content {
+    max-height: 500px; overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+  .principle-group .pg-content.collapsed {
+    max-height: 0; opacity: 0;
+  }
+  .principle-group.basic h3 { color: #4fc3f7; }
+  .principle-group.intermediate h3 { color: #ab47bc; }
+  .principle-group.advanced h3 { color: #ff7043; }
+  .principle-group.agentic h3 { color: #66bb6a; }
+  .principle {
+    font-size: 11px; line-height: 1.6; color: #778899;
+    margin-bottom: 12px; padding-left: 10px;
+    border-left: 2px solid rgba(255,255,255,0.05);
+  }
+  .principle strong { color: #b0bec5; font-weight: 600; }
+  .principle em { color: #90a4ae; font-style: normal; }
+  .quote-block {
+    font-size: 11px; font-style: italic; color: #8899aa;
+    margin-top: 2px; padding: 6px 8px 6px 11px;
+    background: rgba(255,255,255,0.012); border-radius: 5px; line-height: 1.45;
+    border-left: 3px solid rgba(212,160,80,0.3);
+  }
+  .copy-principles-btn {
+    margin-top: 6px; padding: 6px 12px;
+    font-size: 10px; color: #667788; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06); border-radius: 5px;
+    cursor: pointer; transition: all 0.2s; width: 100%; text-align: center;
+  }
+  .copy-principles-btn:hover { background: rgba(255,255,255,0.06); color: #aab; }
+  .copy-principles-btn.copied { color: #66bb6a; border-color: rgba(102,187,106,0.3); }
+
+  /* ── Rings ── */
+  .ring { fill: none; transition: all 0.5s; }
+  .ring-basic { stroke: #4fc3f7; stroke-opacity: 0.10; }
+  .ring-intermediate { stroke: #ab47bc; stroke-opacity: 0.08; }
+  .ring-advanced { stroke: #ff7043; stroke-opacity: 0.06; }
+  .ring-agentic { stroke: #66bb6a; stroke-opacity: 0.05; }
+  .ring-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    text-anchor: middle; transition: all 0.5s; font-weight: 600;
+  }
+  .ring-label-basic { fill: #4fc3f7; opacity: 0.65; }
+  .ring-label-intermediate { fill: #ab47bc; opacity: 0.6; }
+  .ring-label-advanced { fill: #ff7043; opacity: 0.55; }
+  .ring-label-agentic { fill: #66bb6a; opacity: 0.5; }
+
+  /* ── Ring label frost overrides ── */
+  body.theme-frost .ring-label-basic { opacity: 0.8; }
+  body.theme-frost .ring-label-intermediate { opacity: 0.75; }
+  body.theme-frost .ring-label-advanced { opacity: 0.7; }
+  body.theme-frost .ring-label-agentic { opacity: 0.6; }
+
+  /* ── Hub ── */
+  .hub-glow { fill: url(#hubGlow); animation: pulse 5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:0.5} 50%{opacity:0.9} }
+  .hub-ring { fill: #0d1320; stroke: #4fc3f7; stroke-width: 3; transition: all 0.4s; filter: drop-shadow(0 0 20px rgba(79,195,247,0.3)); }
+  .hub-title { fill: #fff; font-size: 15px; font-weight: 700; text-anchor: middle; }
+  .hub-subtitle { fill: rgba(210,185,150,0.5); font-size: 9.5px; text-anchor: middle; font-style: italic; }
+
+  /* ── Spokes ── */
+  .spoke { stroke-width: 1; stroke-dasharray: 3 5; transition: all 0.5s; }
+  .spoke-basic { stroke: #4fc3f7; stroke-opacity: 0.15; }
+  .spoke-intermediate { stroke: #ab47bc; stroke-opacity: 0.12; }
+  .spoke-advanced { stroke: #ff7043; stroke-opacity: 0.10; }
+  .spoke-agentic { stroke: #66bb6a; stroke-opacity: 0.08; }
+
+  /* ── Nodes ── */
+  .node { cursor: pointer; transition: opacity 0.4s; }
+  .node:hover .node-bg { filter: brightness(1.4); }
+  .node:hover .node-name { fill: #fff; }
+  .node-bg { transition: all 0.5s; }
+  .node-bg-basic { fill: #0f2a42; stroke: #4fc3f7; stroke-width: 1.5; }
+  .node-bg-intermediate { fill: #2a1040; stroke: #ab47bc; stroke-width: 1.5; }
+  .node-bg-advanced { fill: #2a1508; stroke: #ff7043; stroke-width: 1.5; }
+  .node-bg-agentic { fill: #0a2a12; stroke: #66bb6a; stroke-width: 1.5; }
+  .node-icon-emoji { font-size: 16px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+  .node-icon-svg { pointer-events: none; }
+  .node-name { font-size: 10px; font-weight: 600; text-anchor: middle; fill: #b0bec5; transition: all 0.3s; pointer-events: none; }
+  .node-sub { font-size: 8px; text-anchor: middle; fill: #556677; pointer-events: none; }
+  .flow-label { font-size: 8px; text-transform: uppercase; letter-spacing: 3px; fill: #2a3545; }
+
+  /* ── Node Active States (Demo) ── */
+  @keyframes nodeActivate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+  }
+  .node-active .node-bg {
+    filter: brightness(2.2) drop-shadow(0 0 12px rgba(255,255,255,0.3)); stroke-width: 2.5;
+    transform-box: fill-box; transform-origin: center;
+    animation: nodeActivate 0.5s ease;
+  }
+  .node-active .node-name { fill: #fff; }
+  .node-visited .node-bg { filter: brightness(1.5); stroke-width: 2; }
+  .node-visited .node-name { fill: #ccc; }
+  .spoke-active { stroke-opacity: 0.5 !important; stroke-width: 2 !important; stroke-dasharray: none !important; }
+  .spoke-visited { stroke-opacity: 0.3 !important; stroke-width: 1.5 !important; }
+  .ring-active { stroke-opacity: 0.25 !important; }
+  .ring-visited { stroke-opacity: 0.15 !important; }
+  .demo-mode .node:not(.node-active):not(.node-visited) { opacity: 0.2; }
+  .demo-mode .spoke:not(.spoke-active):not(.spoke-visited) { opacity: 0.08; }
+  .demo-mode .ring:not(.ring-active):not(.ring-visited) { stroke-opacity: 0.03 !important; }
+
+  /* ── Tooltip ── */
+  .tip {
+    position: fixed; background: #151d2e;
+    border-radius: 8px; padding: 14px 16px; font-size: 11px; line-height: 1.5;
+    max-width: 360px; pointer-events: none; opacity: 0; transition: opacity 0.15s;
+    z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border-left: 3px solid #253040; border-top: 1px solid #253040;
+    border-right: 1px solid #253040; border-bottom: 1px solid #253040;
+    max-height: calc(100vh - 16px); overflow-y: auto;
+  }
+  .tip.show { opacity: 1; }
+  .tip.pinned {
+    pointer-events: auto; opacity: 1;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .tip .tip-close {
+    position: absolute; top: 14px; right: 16px;
+    width: 20px; height: 20px; border-radius: 4px;
+    display: none; align-items: center; justify-content: center;
+    font-size: 13px; line-height: 1; color: #556; cursor: pointer;
+    background: transparent; border: none;
+    transition: all 0.15s;
+  }
+  .tip .tip-close:hover { color: #aab; background: rgba(255,255,255,0.06); }
+  .tip.pinned .tip-close { display: flex; }
+  .tip .tip-pin-hint {
+    font-size: 9px; color: #334455; text-align: center; margin-top: 6px;
+  }
+  .tip.pinned .tip-pin-hint { display: none; }
+  .tip.tip-basic { border-left-color: #4fc3f7; }
+  .tip.tip-intermediate { border-left-color: #ab47bc; }
+  .tip.tip-advanced { border-left-color: #ff7043; }
+  .tip.tip-agentic { border-left-color: #66bb6a; }
+  .tip h4 { font-size: 12px; color: #fff; margin-bottom: 4px; padding-right: 28px; }
+  .tip .badge { display: inline-block; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; padding: 2px 5px; border-radius: 3px; margin-bottom: 8px; }
+  .tip .badge-basic { background: rgba(79,195,247,0.15); color: #4fc3f7; }
+  .tip .badge-intermediate { background: rgba(171,71,188,0.15); color: #ab47bc; }
+  .tip .badge-advanced { background: rgba(255,112,67,0.15); color: #ff7043; }
+  .tip .badge-agentic { background: rgba(102,187,106,0.15); color: #66bb6a; }
+  .tip p { color: #8899aa; margin-bottom: 6px; }
+  .tip .tip-howto { color: #90a4ae; font-size: 10.5px; line-height: 1.55; margin-bottom: 6px; }
+  .tip .tip-howto strong { color: #b0bec5; }
+  .tip .tip-howto code { background: rgba(255,255,255,0.06); padding: 1px 4px; border-radius: 3px; font-size: 10px; font-family: 'SF Mono', 'Fira Code', monospace; color: #ccd; }
+  .tip .tip-example { color: #556677; font-size: 10px; font-style: italic; padding: 6px 8px; background: rgba(255,255,255,0.02); border-radius: 4px; margin-bottom: 6px; }
+  .tip .tip-tier-label { font-size: 9px; color: #445566; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .dim { opacity: 0.08 !important; }
+
+  /* ── Ring Hover Highlighting ── */
+  .ring { cursor: pointer; pointer-events: stroke; }
+  .ring-hover-dim { opacity: 0.12 !important; transition: opacity 0.3s; }
+  .ring-hover .node-bg { filter: brightness(1.8) drop-shadow(0 0 8px rgba(255,255,255,0.2)); transition: filter 0.3s; }
+
+  /* ── Dot Labels ── */
+  .demo-stage-dot-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    flex-shrink: 0;
+  }
+  .dot-label {
+    font-size: 7px; color: #445566; text-transform: uppercase; letter-spacing: 0.3px;
+    transition: color 0.3s; white-space: nowrap;
+  }
+  .dot-label.active { color: #ccc; }
+
+  /* ── Keyboard Hint ── */
+  .demo-keyboard-hint {
+    font-size: 9px; color: #445566; text-align: center; margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ══════════════════════════════════════════════
+     DEMO PANEL
+     ══════════════════════════════════════════════ */
+  .demo-panel {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 150;
+    transform: translateY(calc(100% - 38px));
+    transition: transform 0.4s ease;
+  }
+  .demo-panel.open { transform: translateY(0); }
+
+  .demo-toggle {
+    height: 38px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(20,28,40,0.95);
+    border-top: 1px solid rgba(212,160,80,0.15);
+    cursor: pointer; user-select: none;
+    font-size: 11px; color: #d4a050; letter-spacing: 0.5px;
+  }
+  .demo-toggle:hover { background: rgba(25,35,50,0.95); }
+  .demo-arrow { transition: transform 0.3s; font-size: 10px; }
+  .demo-panel.open .demo-arrow { transform: rotate(180deg); }
+
+  .demo-content {
+    height: 360px;
+    background: rgba(12,18,28,0.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Scenario selector */
+  .demo-scenarios {
+    grid-column: 1 / -1;
+    display: flex; gap: 6px;
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .demo-scenario-btn {
+    flex: 1; padding: 10px 10px 8px;
+    font-size: 10px; color: #8899aa; text-align: center;
+    cursor: pointer; border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.015);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    position: relative; overflow: hidden;
+  }
+  .demo-scenario-btn .scen-icon {
+    font-size: 16px; margin-bottom: 1px;
+    filter: grayscale(0.5); transition: filter 0.3s;
+  }
+  .demo-scenario-btn .scen-label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 10px; letter-spacing: -0.2px;
+  }
+  .demo-scenario-btn .scen-hint {
+    font-size: 8px; color: #556677; line-height: 1.3;
+    opacity: 0.7; transition: opacity 0.3s;
+  }
+  .demo-scenario-btn::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(212,160,80,0.06) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .demo-scenario-btn:hover {
+    color: #ccdde8; border-color: rgba(212,160,80,0.15);
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .demo-scenario-btn:hover::after { opacity: 1; }
+  .demo-scenario-btn:hover .scen-icon { filter: grayscale(0); }
+  .demo-scenario-btn:hover .scen-hint { opacity: 1; }
+  .demo-scenario-btn.active {
+    color: #fff; border-color: rgba(212,160,80,0.3);
+    background: rgba(212,160,80,0.08);
+    box-shadow: 0 0 16px rgba(212,160,80,0.08);
+  }
+  .demo-scenario-btn.active::after { opacity: 1; }
+  .demo-scenario-btn.active .scen-icon { filter: grayscale(0); }
+  .demo-scenario-btn.active .scen-hint { opacity: 1; color: #7799aa; }
+  /* Staggered entry animation */
+  @keyframes scenCardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .demo-panel.open .demo-scenario-btn {
+    animation: scenCardIn 0.4s ease both;
+  }
+  .demo-panel.open .demo-scenario-btn:nth-child(1) { animation-delay: 0.05s; }
+  .demo-panel.open .demo-scenario-btn:nth-child(2) { animation-delay: 0.1s; }
+  .demo-panel.open .demo-scenario-btn:nth-child(3) { animation-delay: 0.15s; }
+  .demo-panel.open .demo-scenario-btn:nth-child(4) { animation-delay: 0.2s; }
+
+  /* Left: prompt + controls */
+  .demo-left {
+    padding: 14px 16px;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    display: flex; flex-direction: column; gap: 10px;
+    overflow-y: auto;
+  }
+  .demo-prompt-display {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px; color: #ccd; line-height: 1.5;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .demo-prompt-display .prompt-prefix {
+    color: #d4a050; font-weight: 600;
+  }
+  .demo-custom-input {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 10px 12px;
+    font-size: 12px; color: #ccd; line-height: 1.5;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    resize: none; outline: none; width: 100%;
+  }
+  .demo-custom-input::placeholder { color: #445566; }
+  .demo-custom-input:focus { border-color: rgba(212,160,80,0.3); }
+
+  .demo-stages-ctrl {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .demo-stage-bar {
+    display: flex; gap: 0; align-items: center;
+  }
+  .demo-stage-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer; transition: all 0.3s;
+    border: 2px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    color: #556;
+    flex-shrink: 0;
+  }
+  .demo-stage-dot.reached { border-color: rgba(212,160,80,0.3); color: #8899aa; background: rgba(212,160,80,0.05); }
+  .demo-stage-dot.current { border-color: #d4a050; color: #fff; background: rgba(212,160,80,0.15); box-shadow: 0 0 12px rgba(212,160,80,0.2); font-size: 14px; }
+  .demo-stage-dot.s-basic.current { border-color: #4fc3f7; }
+  .demo-stage-dot.s-intermediate.current { border-color: #ab47bc; box-shadow: 0 0 12px rgba(171,71,188,0.2); }
+  .demo-stage-dot.s-advanced.current { border-color: #ff7043; box-shadow: 0 0 12px rgba(255,112,67,0.2); }
+  .demo-stage-dot.s-agentic.current { border-color: #66bb6a; box-shadow: 0 0 12px rgba(102,187,106,0.2); }
+  .demo-stage-connector {
+    width: 10px; height: 2px; position: relative;
+    background: rgba(255,255,255,0.06); flex-shrink: 0;
+  }
+  .demo-stage-connector.reached { background: rgba(212,160,80,0.2); }
+  .demo-stage-connector::after {
+    content: ''; position: absolute; right: -1px; top: -2px;
+    border: 3px solid transparent; border-left: 4px solid rgba(255,255,255,0.08);
+  }
+  .demo-stage-connector.reached::after { border-left-color: rgba(212,160,80,0.3); }
+
+  .demo-stage-label {
+    font-size: 10px; color: #667788; margin-top: 2px;
+    transition: color 0.3s;
+  }
+  .demo-stage-label.active { color: #ccc; }
+
+  .demo-nav {
+    display: flex; gap: 8px;
+  }
+  .demo-nav button {
+    flex: 1; padding: 7px 10px;
+    font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; cursor: pointer;
+    background: rgba(255,255,255,0.03);
+    color: #8899aa; transition: all 0.2s;
+  }
+  .demo-nav button:hover:not(:disabled) { background: rgba(255,255,255,0.06); color: #ccc; }
+  .demo-nav button:disabled { opacity: 0.3; cursor: default; }
+  .demo-nav button.primary { background: rgba(212,160,80,0.12); border-color: rgba(212,160,80,0.2); color: #d4a050; }
+  .demo-nav button.primary:hover:not(:disabled) { background: rgba(212,160,80,0.2); }
+  .demo-play-btn {
+    width: 36px; height: 36px; flex-shrink: 0; flex-grow: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; border-radius: 50%;
+    border: 1px solid rgba(212,160,80,0.2); background: rgba(212,160,80,0.08);
+    color: #d4a050; cursor: pointer; transition: all 0.2s;
+  }
+  .demo-play-btn:hover { background: rgba(212,160,80,0.15); }
+  .demo-play-btn.playing { border-color: rgba(255,152,0,0.3); background: rgba(255,152,0,0.1); color: #ffb74d; }
+
+  /* Active Components Checklist */
+  .active-components {
+    margin-top: 4px; padding: 8px 10px;
+    background: rgba(255,255,255,0.02); border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.04);
+    max-height: 120px; overflow-y: auto;
+  }
+  .active-components-title {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: #556677; margin-bottom: 6px;
+  }
+  .ac-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 10px; color: #556677; padding: 2px 0;
+    transition: color 0.3s;
+  }
+  .ac-item.ac-active { color: #b0bec5; }
+  .ac-check {
+    width: 14px; height: 14px; border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; transition: all 0.3s;
+    transform: scale(0);
+  }
+  .ac-item.ac-active .ac-check { border-color: currentColor; transform: scale(1); }
+  .ac-item.ac-active.ac-basic .ac-check { color: #4fc3f7; border-color: #4fc3f7; }
+  .ac-item.ac-active.ac-intermediate .ac-check { color: #ab47bc; border-color: #ab47bc; }
+  .ac-item.ac-active.ac-advanced .ac-check { color: #ff7043; border-color: #ff7043; }
+  .ac-item.ac-active.ac-agentic .ac-check { color: #66bb6a; border-color: #66bb6a; }
+
+  /* Right: response */
+  .demo-response-area {
+    padding: 16px 20px;
+    overflow-y: auto;
+  }
+  .demo-response-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 10px;
+  }
+  .demo-response-badge {
+    font-size: 8px; text-transform: uppercase; letter-spacing: 1px;
+    padding: 3px 8px; border-radius: 3px; font-weight: 600;
+  }
+  .demo-response-badge.none { background: rgba(255,255,255,0.05); color: #556; }
+  .demo-response-badge.basic { background: rgba(79,195,247,0.12); color: #4fc3f7; }
+  .demo-response-badge.intermediate { background: rgba(171,71,188,0.12); color: #ab47bc; }
+  .demo-response-badge.advanced { background: rgba(255,112,67,0.12); color: #ff7043; }
+  .demo-response-badge.agentic { background: rgba(102,187,106,0.12); color: #66bb6a; }
+  .demo-response-title { font-size: 11px; color: #667; }
+
+  .demo-components-trace {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-bottom: 12px;
+  }
+  .demo-trace-tag {
+    font-size: 9px; padding: 2px 7px;
+    border-radius: 10px; font-weight: 500;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+  .demo-trace-tag.basic { background: rgba(79,195,247,0.1); color: #4fc3f7; border: 1px solid rgba(79,195,247,0.15); }
+  .demo-trace-tag.intermediate { background: rgba(171,71,188,0.1); color: #ab47bc; border: 1px solid rgba(171,71,188,0.15); }
+  .demo-trace-tag.advanced { background: rgba(255,112,67,0.1); color: #ff7043; border: 1px solid rgba(255,112,67,0.15); }
+  .demo-trace-tag.agentic { background: rgba(102,187,106,0.1); color: #66bb6a; border: 1px solid rgba(102,187,106,0.15); }
+
+  .demo-response-text {
+    font-size: 12px; line-height: 1.65; color: #b0bec5;
+    animation: fadeIn 0.4s ease;
+  }
+  .demo-response-text .highlight { background: rgba(212,160,80,0.1); padding: 1px 4px; border-radius: 3px; }
+  .demo-response-text .highlight-int { background: rgba(171,71,188,0.1); }
+  .demo-response-text .highlight-adv { background: rgba(255,112,67,0.1); }
+  .demo-response-text .highlight-agt { background: rgba(102,187,106,0.1); }
+  .demo-response-text .generic { color: #556677; }
+  .demo-response-text ul { padding-left: 18px; margin: 6px 0; }
+  .demo-response-text li { margin-bottom: 4px; }
+
+  /* ══════════════════════════════════════════════
+     FROST THEME — Sharp, Executive, Glass-Frost
+     ══════════════════════════════════════════════ */
+  body { transition: background 0.6s ease, color 0.4s ease; }
+  body.theme-frost {
+    background: #060a11;
+  }
+  /* Vignette — draws eye to center */
+  body.theme-frost .diagram-area {
+    box-shadow: inset 0 0 150px 60px rgba(0,0,0,0.4), inset 0 0 300px 120px rgba(0,0,0,0.15);
+  }
+  /* Ambient gradient orbs behind diagram */
+  body.theme-frost .diagram-area::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 180px 180px at 50% 48%, rgba(79,195,247,0.08) 0%, transparent 100%),
+      radial-gradient(ellipse 400px 400px at 30% 40%, rgba(79,195,247,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 350px 350px at 70% 60%, rgba(171,71,188,0.045) 0%, transparent 70%),
+      radial-gradient(ellipse 300px 300px at 50% 75%, rgba(255,112,67,0.035) 0%, transparent 70%),
+      radial-gradient(ellipse 250px 250px at 55% 30%, rgba(102,187,106,0.03) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  /* Blueprint grid overlay — subtle engineering aesthetic */
+  body.theme-frost .diagram-area::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(79,195,247,0.03) 0px, rgba(79,195,247,0.03) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(90deg, rgba(79,195,247,0.03) 0px, rgba(79,195,247,0.03) 1px, transparent 1px, transparent 80px);
+    -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 50%, transparent 100%);
+    pointer-events: none; z-index: 0;
+    animation: gridDrift 60s linear infinite;
+  }
+  @keyframes gridDrift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(80px, 80px); }
+  }
+  /* Film grain overlay for photographic depth */
+  body.theme-frost .diagram-area .grain-overlay {
+    position: absolute; inset: 0;
+    opacity: 0.035;
+    pointer-events: none; z-index: 2;
+    mix-blend-mode: overlay;
+  }
+  body.theme-frost svg.diagram { position: relative; z-index: 1; }
+
+  /* Frost header */
+  body.theme-frost .header {
+    background: rgba(8,12,20,0.75);
+    backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  body.theme-frost .header h1 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; letter-spacing: -0.5px; }
+  body.theme-frost .header h1 span { color: rgba(210,185,150,0.7); }
+
+  /* Frost sidebar */
+  body.theme-frost .sidebar {
+    background: rgba(12,16,24,0.5);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(255,255,255,0.03);
+    padding-left: 16px;
+  }
+  body.theme-frost .principle-group {
+    background: rgba(255,255,255,0.015);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  body.theme-frost .principle-group h3 {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; letter-spacing: 2px;
+    border-bottom-color: rgba(255,255,255,0.03);
+  }
+  body.theme-frost .principle {
+    border-left: 1px solid rgba(255,255,255,0.06);
+  }
+  body.theme-frost .quote-block {
+    background: rgba(255,255,255,0.015);
+    border: 1px solid rgba(255,255,255,0.03);
+    border-left: 3px solid rgba(212,160,80,0.2);
+    border-radius: 6px;
+  }
+
+  /* Frost rings — wide frosted bands with depth layering */
+  body.theme-frost .ring {
+    stroke-opacity: 0.08;
+    filter: url(#frostRingBlur);
+  }
+  body.theme-frost .ring-basic {
+    stroke-width: 38; stroke-opacity: 0.18;
+    stroke: #4fc3f7;
+    filter: url(#frostRingInner);
+  }
+  body.theme-frost .ring-intermediate {
+    stroke-width: 42; stroke-opacity: 0.13;
+    stroke: #ab47bc;
+    filter: url(#frostRingMid);
+  }
+  body.theme-frost .ring-advanced {
+    stroke-width: 46; stroke-opacity: 0.09;
+    stroke: #ff7043;
+    filter: url(#frostRingOuter);
+  }
+  body.theme-frost .ring-agentic {
+    stroke-width: 52; stroke-opacity: 0.065;
+    stroke: #66bb6a;
+    filter: url(#frostRingEdge);
+  }
+  body.theme-frost .ring-label { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 10px; }
+
+  /* Frost nodes — frosted glass circles */
+  body.theme-frost .node-bg {
+    stroke-width: 1;
+  }
+  body.theme-frost .node-bg-basic {
+    fill: rgba(15,42,66,0.45); stroke: rgba(79,195,247,0.35);
+    filter: url(#frostBlur);
+  }
+  body.theme-frost .node-bg-intermediate {
+    fill: rgba(42,16,64,0.45); stroke: rgba(171,71,188,0.35);
+    filter: url(#frostBlur);
+  }
+  body.theme-frost .node-bg-advanced {
+    fill: rgba(42,21,8,0.45); stroke: rgba(255,112,67,0.35);
+    filter: url(#frostBlur);
+  }
+  body.theme-frost .node-bg-agentic {
+    fill: rgba(10,42,18,0.45); stroke: rgba(102,187,106,0.35);
+    filter: url(#frostBlur);
+  }
+  body.theme-frost .node-name { fill: rgba(200,215,230,0.8); font-weight: 500; }
+  body.theme-frost .node-sub { fill: rgba(150,175,200,0.6); font-size: 8.5px; }
+
+  /* Frost spokes — single thin lines */
+  body.theme-frost .spoke {
+    stroke-width: 0.5; stroke-dasharray: none;
+    stroke-opacity: 0.08;
+  }
+
+  /* Frost hub — glow + title consolidated in section 4 below */
+  body.theme-frost .hub-glow { opacity: 0.35; }
+  body.theme-frost .hub-title { fill: rgba(255,255,255,0.95); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: -0.3px; }
+  body.theme-frost .hub-subtitle { fill: rgba(210,185,150,0.5); font-size: 8.5px; }
+
+  /* Frost flow labels */
+  body.theme-frost .flow-label { fill: rgba(60,85,110,0.5); letter-spacing: 5px; font-size: 7.5px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; }
+
+  /* Frost tooltip */
+  body.theme-frost .tip {
+    background: rgba(12,18,28,0.85);
+    backdrop-filter: blur(20px) saturate(1.1);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left-width: 2px;
+  }
+
+  /* Frost demo panel */
+  body.theme-frost .demo-toggle {
+    background: rgba(10,16,26,0.8);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    color: rgba(210,185,150,0.6);
+  }
+  body.theme-frost .demo-content {
+    background: rgba(8,14,24,0.85);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+  body.theme-frost .demo-prompt-display {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  body.theme-frost .demo-stage-dot {
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.01);
+  }
+  body.theme-frost .demo-stage-dot.current {
+    border-width: 1.5px;
+    background: rgba(255,255,255,0.03);
+  }
+  body.theme-frost .active-components {
+    background: rgba(255,255,255,0.015);
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+
+  /* ══════════════════════════════════════════════
+     LIQUID GLASS — Layered on Frost Theme
+     ══════════════════════════════════════════════ */
+
+  /* ── 1. Sidebar principle groups — directional gradient glass ── */
+  body.theme-frost .principle-group {
+    background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.008) 50%, rgba(255,255,255,0.018) 100%);
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      inset 0 -1px 0 rgba(0,0,0,0.15),
+      0 2px 8px rgba(0,0,0,0.2);
+    backdrop-filter: blur(8px);
+  }
+  body.theme-frost .principle-group::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 10px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, transparent 50%, rgba(255,255,255,0.06) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  /* Per-tier tinting on sidebar groups */
+  body.theme-frost .principle-group.basic {
+    background: linear-gradient(135deg, rgba(79,195,247,0.03) 0%, rgba(255,255,255,0.008) 50%, rgba(79,195,247,0.015) 100%);
+  }
+  body.theme-frost .principle-group.basic::before {
+    background: linear-gradient(135deg, rgba(79,195,247,0.14) 0%, transparent 50%, rgba(79,195,247,0.06) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  body.theme-frost .principle-group.intermediate {
+    background: linear-gradient(135deg, rgba(171,71,188,0.03) 0%, rgba(255,255,255,0.008) 50%, rgba(171,71,188,0.015) 100%);
+  }
+  body.theme-frost .principle-group.intermediate::before {
+    background: linear-gradient(135deg, rgba(171,71,188,0.14) 0%, transparent 50%, rgba(171,71,188,0.06) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  body.theme-frost .principle-group.advanced {
+    background: linear-gradient(135deg, rgba(255,112,67,0.03) 0%, rgba(255,255,255,0.008) 50%, rgba(255,112,67,0.015) 100%);
+  }
+  body.theme-frost .principle-group.advanced::before {
+    background: linear-gradient(135deg, rgba(255,112,67,0.14) 0%, transparent 50%, rgba(255,112,67,0.06) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  body.theme-frost .principle-group.agentic {
+    background: linear-gradient(135deg, rgba(102,187,106,0.03) 0%, rgba(255,255,255,0.008) 50%, rgba(102,187,106,0.015) 100%);
+  }
+  body.theme-frost .principle-group.agentic::before {
+    background: linear-gradient(135deg, rgba(102,187,106,0.14) 0%, transparent 50%, rgba(102,187,106,0.06) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+
+  /* ── 2. Tooltip — liquid glass upgrade ── */
+  body.theme-frost .tip {
+    background: linear-gradient(160deg, rgba(18,26,42,0.88) 0%, rgba(10,16,28,0.92) 100%);
+    backdrop-filter: blur(24px) saturate(1.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left-width: 2px;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  body.theme-frost .tip::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent 100%);
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+  }
+  /* Per-tier glow on tooltip */
+  body.theme-frost .tip.tip-basic {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 20px rgba(79,195,247,0.06);
+  }
+  body.theme-frost .tip.tip-intermediate {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 20px rgba(171,71,188,0.06);
+  }
+  body.theme-frost .tip.tip-advanced {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 20px rgba(255,112,67,0.06);
+  }
+  body.theme-frost .tip.tip-agentic {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 20px rgba(102,187,106,0.06);
+  }
+
+  /* ── 3. Demo panel — liquid glass upgrade ── */
+  @keyframes demoGlow {
+    0%, 100% { border-top-color: rgba(212,160,80,0.08); box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    50% { border-top-color: rgba(212,160,80,0.28); box-shadow: inset 0 1px 0 rgba(212,160,80,0.08), 0 -4px 20px rgba(212,160,80,0.06); }
+  }
+  body.theme-frost .demo-toggle {
+    background: linear-gradient(180deg, rgba(14,20,32,0.85) 0%, rgba(10,16,26,0.9) 100%);
+    backdrop-filter: blur(20px) saturate(1.3);
+    border-top: 1px solid rgba(212,160,80,0.08);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    animation: demoGlow 3s ease-in-out infinite;
+  }
+  body.theme-frost .demo-panel.open .demo-toggle { animation: none; }
+  body.theme-frost .demo-content {
+    background: linear-gradient(180deg, rgba(10,16,28,0.9) 0%, rgba(6,12,22,0.95) 100%);
+    backdrop-filter: blur(24px) saturate(1.3);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+
+  /* ── 4. Hub — glass refraction filter + glow layers ── */
+  body.theme-frost .hub-ring {
+    fill: rgba(10,16,28,0.55);
+    stroke: rgba(79,195,247,0.28);
+    stroke-width: 2;
+    filter: url(#glassHub) drop-shadow(0 0 20px rgba(79,195,247,0.3)) drop-shadow(0 0 60px rgba(79,195,247,0.12)) drop-shadow(0 0 120px rgba(79,195,247,0.06));
+  }
+  @keyframes glassGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.75; }
+  }
+  body.theme-frost .hub-glow {
+    animation: glassGlow 6s ease-in-out infinite;
+    opacity: 0.35;
+  }
+
+  /* ── 5. Ring rim highlights ── */
+  body.theme-frost .ring-rim { fill: none; pointer-events: none; opacity: 0.15; transition: opacity 0.4s; }
+  body.theme-frost .ring-rim-basic { stroke: #4fc3f7; }
+  body.theme-frost .ring-rim-intermediate { stroke: #ab47bc; }
+  body.theme-frost .ring-rim-advanced { stroke: #ff7043; }
+  body.theme-frost .ring-rim-agentic { stroke: #66bb6a; }
+  body.theme-frost .ring:hover + .ring-rim,
+  body.theme-frost .ring-active + .ring-rim { opacity: 0.3; }
+  body:not(.theme-frost) .ring-rim { display: none; }
+
+  /* ── 6. Node glow rings ── */
+  .node-glow { opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+  body.theme-frost .node:hover .node-glow { opacity: 0.5; }
+  body.theme-frost .node-active .node-glow { opacity: 0.6; }
+  body:not(.theme-frost) .node-glow { display: none; }
+
+  /* Frost line-icon styles */
+  body.theme-frost .node-icon-svg {
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    fill: none;
+  }
+  body.theme-frost .node-icon-svg.tier-basic { stroke: #4fc3f7; }
+  body.theme-frost .node-icon-svg.tier-intermediate { stroke: #ab47bc; }
+  body.theme-frost .node-icon-svg.tier-advanced { stroke: #ff7043; }
+  body.theme-frost .node-icon-svg.tier-agentic { stroke: #66bb6a; }
+
+  /* ── Custom Prompt Generate ── */
+  .custom-prompt-wrap {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .custom-generate-btn {
+    padding: 8px 14px; font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(212,160,80,0.25); border-radius: 6px;
+    background: rgba(212,160,80,0.1); color: #d4a050;
+    cursor: pointer; transition: all 0.2s; width: 100%;
+  }
+  .custom-generate-btn:hover:not(:disabled) { background: rgba(212,160,80,0.18); }
+  .custom-generate-btn:disabled { opacity: 0.4; cursor: default; }
+  .custom-generate-btn.loading {
+    color: #8899aa; border-color: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gen-spinner {
+    display: inline-block; width: 12px; height: 12px;
+    border: 2px solid rgba(212,160,80,0.2);
+    border-top-color: #d4a050;
+    border-radius: 50%; animation: spin 0.7s linear infinite;
+    vertical-align: middle; margin-right: 6px;
+  }
+
+  .api-key-status {
+    font-size: 10px; color: #556677; margin-top: 8px;
+  }
+  .api-key-status.has-key { color: #66bb6a; }
+
+  /* Lead Capture Modal (question set + builder downloads) */
+  .lead-capture-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lead-capture-overlay.hidden { display: none; }
+  .lead-capture-modal {
+    background: #151d2e; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 28px; width: 420px; max-width: 90vw;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  }
+  .lead-capture-modal h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px; color: #fff; margin-bottom: 4px;
+  }
+  .lead-capture-modal .lead-subtitle {
+    font-size: 11px; color: #778899; margin-bottom: 18px; line-height: 1.5;
+  }
+  .lead-capture-modal .lead-field { margin-bottom: 12px; }
+  .lead-capture-modal .lead-field label {
+    display: block; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: #667788; margin-bottom: 4px;
+  }
+  .lead-capture-modal .lead-field label .req { color: #ff7043; }
+  .lead-capture-modal input {
+    width: 100%; padding: 10px 12px; font-size: 12px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; color: #ccd; outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .lead-capture-modal input:focus { border-color: rgba(212,160,80,0.3); }
+  .lead-capture-modal .lead-actions { display: flex; gap: 8px; margin-top: 16px; }
+  .lead-capture-modal .lead-cancel {
+    flex: 1; padding: 10px; font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;
+    background: none; color: #778899; cursor: pointer; transition: all 0.2s;
+  }
+  .lead-capture-modal .lead-cancel:hover { color: #aab; }
+  .lead-capture-modal .lead-submit {
+    flex: 2; padding: 10px; font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(102,187,106,0.3); border-radius: 6px;
+    background: rgba(102,187,106,0.12); color: #66bb6a;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .lead-capture-modal .lead-submit:hover:not(:disabled) { background: rgba(102,187,106,0.2); }
+  .lead-capture-modal .lead-submit:disabled { opacity: 0.35; cursor: default; }
+  .lead-capture-modal .lead-privacy {
+    font-size: 9px; color: #445566; margin-top: 12px; text-align: center;
+  }
+
+  /* ── Background Generation Notification ── */
+  .gen-ready-badge {
+    position: fixed; bottom: 80px; right: 24px; z-index: 200;
+    background: linear-gradient(135deg, rgba(102,187,106,0.15), rgba(212,160,80,0.12));
+    border: 1px solid rgba(102,187,106,0.3);
+    border-radius: 10px; padding: 12px 18px;
+    cursor: pointer; transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    animation: genBadgeIn 0.5s ease both;
+    max-width: 280px;
+  }
+  .gen-ready-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(102,187,106,0.2);
+    border-color: rgba(102,187,106,0.5);
+  }
+  .gen-ready-badge .gen-badge-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 11px; font-weight: 700; color: #66bb6a;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .gen-ready-badge .gen-badge-title::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: #66bb6a; animation: genPulse 2s ease infinite;
+  }
+  .gen-ready-badge .gen-badge-desc {
+    font-size: 10px; color: #8899aa; margin-top: 4px; line-height: 1.4;
+  }
+  .gen-ready-badge .gen-badge-dismiss {
+    position: absolute; top: 6px; right: 8px;
+    background: none; border: none; color: #556677; font-size: 14px;
+    cursor: pointer; padding: 2px 4px; line-height: 1;
+  }
+  @keyframes genBadgeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes genPulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  /* Hide emoji icons in frost theme, show SVG icons */
+  body.theme-frost .node-icon-emoji { display: none; }
+  body:not(.theme-frost) .node-icon-svg { display: none; }
+
+  /* Demo panel icon swap — frost hides emoji, shows line-style indicators */
+  .demo-line-icon { display: none; width: 18px; height: 18px; vertical-align: -2px; }
+  .demo-line-icon path { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  body.theme-frost .demo-emoji { display: none; }
+  body.theme-frost .demo-line-icon { display: inline-block; }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    font-size: 10px; padding: 5px 10px; border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04);
+    color: #8899aa; cursor: pointer; transition: all 0.2s;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.08); color: #ccc; }
+  .theme-toggle .theme-label-classic { display: inline; }
+  .theme-toggle .theme-label-frost { display: none; }
+  body.theme-frost .theme-toggle .theme-label-classic { display: none; }
+  body.theme-frost .theme-toggle .theme-label-frost { display: inline; }
+  body.theme-frost .theme-toggle {
+    border-color: rgba(210,185,150,0.15);
+    color: rgba(210,185,150,0.6);
+  }
+
+  /* ══════════════════════════════════════════════
+     COS BUILDER WIZARD
+     ══════════════════════════════════════════════ */
+
+  /* ── Panel Infrastructure ── */
+  :root { --panel-content-height: 360px; }
+  .main.demo-open { height: calc(100vh - 44px - var(--panel-content-height)); }
+
+  .builder-mode-switch {
+    display: flex; gap: 0; margin-right: auto; margin-left: 12px;
+  }
+  .builder-mode-btn {
+    padding: 6px 14px; font-size: 10px; font-weight: 600;
+    color: #556677; background: none; border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+  }
+  .builder-mode-btn:first-child { border-radius: 4px 0 0 4px; }
+  .builder-mode-btn:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+  .builder-mode-btn.active {
+    color: #d4a050; background: rgba(212,160,80,0.08);
+    border-color: rgba(212,160,80,0.2);
+  }
+  .builder-mode-btn:hover:not(.active) { color: #8899aa; background: rgba(255,255,255,0.02); }
+  body.theme-frost .builder-mode-btn.active {
+    color: rgba(210,185,150,0.85); background: rgba(212,160,80,0.06);
+    border-color: rgba(212,160,80,0.12);
+  }
+
+  .builder-content {
+    display: none;
+    height: var(--panel-content-height);
+    background: rgba(12,18,28,0.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .builder-content.active { display: flex; }
+  body.theme-frost .builder-content {
+    background: linear-gradient(180deg, rgba(10,16,28,0.9) 0%, rgba(6,12,22,0.95) 100%);
+    backdrop-filter: blur(24px) saturate(1.3);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+
+  /* ── Quick Download button in toggle bar ── */
+  .builder-quick-download {
+    padding: 5px 12px; font-size: 9px; font-weight: 600;
+    color: #66bb6a; background: rgba(102,187,106,0.08);
+    border: 1px solid rgba(102,187,106,0.15); border-radius: 4px;
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+    text-transform: uppercase; margin-left: 8px;
+  }
+  .builder-quick-download:hover { background: rgba(102,187,106,0.15); color: #81c784; }
+
+  /* ── Progress Bar ── */
+  .builder-progress {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 14px 24px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .builder-step-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02); color: #445566;
+    transition: all 0.3s; flex-shrink: 0;
+  }
+  .builder-step-dot.reached { border-color: rgba(102,187,106,0.3); color: #66bb6a; background: rgba(102,187,106,0.05); }
+  .builder-step-dot.current { border-color: #d4a050; color: #fff; background: rgba(212,160,80,0.12); box-shadow: 0 0 10px rgba(212,160,80,0.15); }
+  .builder-step-connector {
+    width: 24px; height: 1.5px; background: rgba(255,255,255,0.06);
+    flex-shrink: 0; transition: background 0.3s;
+  }
+  .builder-step-connector.reached { background: rgba(102,187,106,0.25); }
+
+  /* ── Form Area ── */
+  .builder-form-area {
+    flex: 1; overflow-y: auto; padding: 20px 32px;
+    max-width: 640px; margin: 0 auto; width: 100%;
+  }
+  .builder-form-area h3 {
+    font-size: 14px; color: #fff; margin-bottom: 4px;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+  }
+  .builder-form-area .builder-step-desc {
+    font-size: 11px; color: #667788; margin-bottom: 16px; line-height: 1.5;
+  }
+
+  /* ── Fields ── */
+  .builder-field { margin-bottom: 12px; }
+  .builder-field label {
+    display: block; font-size: 10px; color: #8899aa;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .builder-field label .req { color: #ff7043; margin-left: 2px; }
+  .builder-field input, .builder-field textarea, .builder-field select {
+    width: 100%; padding: 8px 10px; font-size: 12px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; color: #ccd; outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: border-color 0.2s;
+  }
+  .builder-field input:focus, .builder-field textarea:focus, .builder-field select:focus {
+    border-color: rgba(212,160,80,0.3);
+  }
+  .builder-field input::placeholder, .builder-field textarea::placeholder { color: #334455; }
+  .builder-field textarea { resize: vertical; min-height: 60px; }
+  .builder-field select { cursor: pointer; }
+  .builder-field select option { background: #151d2e; color: #ccd; }
+  .builder-field .field-error {
+    font-size: 10px; color: #ff7043; margin-top: 3px; display: none;
+  }
+  .builder-field.has-error input, .builder-field.has-error textarea, .builder-field.has-error select {
+    border-color: rgba(255,112,67,0.4);
+  }
+  .builder-field.has-error .field-error { display: block; }
+
+  /* ── Repeater ── */
+  .builder-repeater { margin-bottom: 8px; }
+  .builder-repeater-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 8px; align-items: start; margin-bottom: 8px;
+    padding: 10px; background: rgba(255,255,255,0.015);
+    border: 1px solid rgba(255,255,255,0.04); border-radius: 6px;
+    animation: fadeIn 0.2s ease;
+  }
+  .builder-repeater-row.two-col { grid-template-columns: 1fr 1fr auto; }
+  .builder-repeater-row input, .builder-repeater-row textarea {
+    width: 100%; padding: 6px 8px; font-size: 11px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px; color: #ccd; outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .builder-repeater-row input:focus, .builder-repeater-row textarea:focus {
+    border-color: rgba(212,160,80,0.25);
+  }
+  .builder-repeater-row input::placeholder, .builder-repeater-row textarea::placeholder { color: #334455; }
+  .builder-repeater-remove {
+    width: 24px; height: 24px; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.06); background: none;
+    color: #556677; font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; align-self: center;
+  }
+  .builder-repeater-remove:hover { color: #ff7043; border-color: rgba(255,112,67,0.3); background: rgba(255,112,67,0.05); }
+  .builder-repeater-add {
+    padding: 6px 12px; font-size: 10px; font-weight: 600;
+    color: #66bb6a; background: rgba(102,187,106,0.06);
+    border: 1px dashed rgba(102,187,106,0.2); border-radius: 5px;
+    cursor: pointer; transition: all 0.2s; width: 100%;
+    text-align: center;
+  }
+  .builder-repeater-add:hover { background: rgba(102,187,106,0.12); border-style: solid; }
+  .builder-domain-sum {
+    font-size: 10px; color: #8899aa; text-align: right; margin-top: 4px;
+  }
+  .builder-domain-sum.over { color: #ff7043; }
+
+  /* ── Checkboxes ── */
+  .builder-checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .builder-checkbox {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 10px; border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer; transition: all 0.2s;
+    font-size: 11px; color: #8899aa;
+  }
+  .builder-checkbox:hover { border-color: rgba(255,255,255,0.1); color: #aab; }
+  .builder-checkbox.checked {
+    border-color: rgba(212,160,80,0.25); background: rgba(212,160,80,0.06); color: #e0cba8;
+  }
+  .builder-checkbox .cb-box {
+    width: 14px; height: 14px; border-radius: 3px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; transition: all 0.2s;
+  }
+  .builder-checkbox.checked .cb-box {
+    border-color: #d4a050; background: rgba(212,160,80,0.15); color: #d4a050;
+  }
+
+  /* ── Preview ── */
+  .builder-preview {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 16px; max-height: 320px; overflow-y: auto;
+    font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px;
+    line-height: 1.55; color: #b0bec5; white-space: pre-wrap; word-wrap: break-word;
+  }
+  .builder-preview-actions {
+    display: flex; gap: 8px; margin-top: 10px;
+  }
+  .builder-preview-actions button {
+    padding: 7px 14px; font-size: 11px; font-weight: 600;
+    border-radius: 5px; cursor: pointer; transition: all 0.2s;
+  }
+
+  /* ── Lead Capture ── */
+  .builder-lead-form {
+    max-width: 360px; margin: 0 auto;
+    padding: 20px; text-align: center;
+  }
+  .builder-lead-form h3 { text-align: center; margin-bottom: 8px; }
+  .builder-lead-form .lead-privacy {
+    font-size: 9px; color: #445566; margin-top: 12px; line-height: 1.4;
+  }
+  .builder-download-btn {
+    width: 100%; padding: 10px 16px; font-size: 12px; font-weight: 700;
+    color: #fff; background: linear-gradient(135deg, rgba(212,160,80,0.25), rgba(102,187,106,0.2));
+    border: 1px solid rgba(212,160,80,0.3); border-radius: 8px;
+    cursor: pointer; transition: all 0.3s; margin-top: 14px;
+    letter-spacing: 0.3px;
+  }
+  .builder-download-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(212,160,80,0.35), rgba(102,187,106,0.3));
+    box-shadow: 0 0 20px rgba(212,160,80,0.15);
+  }
+  .builder-download-btn:disabled { opacity: 0.35; cursor: default; }
+
+  /* ── Navigation ── */
+  .builder-nav {
+    display: flex; gap: 8px; padding: 10px 32px 14px;
+    max-width: 640px; margin: 0 auto; width: 100%;
+    flex-shrink: 0;
+  }
+  .builder-nav button {
+    flex: 1; padding: 8px 12px; font-size: 11px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;
+    cursor: pointer; background: rgba(255,255,255,0.03);
+    color: #8899aa; transition: all 0.2s;
+  }
+  .builder-nav button:hover:not(:disabled) { background: rgba(255,255,255,0.06); color: #ccc; }
+  .builder-nav button:disabled { opacity: 0.3; cursor: default; }
+  .builder-nav button.primary {
+    background: rgba(212,160,80,0.12); border-color: rgba(212,160,80,0.2); color: #d4a050;
+  }
+  .builder-nav button.primary:hover:not(:disabled) { background: rgba(212,160,80,0.2); }
+
+  /* ── Step Transition ── */
+  .builder-form-area.step-enter {
+    animation: builderStepIn 0.25s ease;
+  }
+  @keyframes builderStepIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Mobile: hide builder ── */
+  @media (max-width: 768px) {
+    .builder-mode-switch { display: none; }
+    .builder-content { display: none !important; }
+    .builder-quick-download { display: none; }
+  }
+
+  /* ── Print Stylesheet ── */
+  @media print {
+    body { background: #fff; color: #222; overflow: visible; height: auto; }
+    .header { position: static; background: #fff; border-bottom: 2px solid #ccc; backdrop-filter: none; }
+    .header h1 { color: #222; }
+    .header h1 span { color: #1565c0; }
+    .legend-dot { border: 1px solid #999; }
+    .main { height: auto; padding-top: 0; display: flex; }
+    .main.demo-open { height: auto; }
+    .demo-panel { display: none; }
+    .tip { display: none; }
+    .sidebar { width: 300px; }
+    .principle-group h3 { color: #333 !important; }
+    .principle { color: #444; border-left-color: #ccc; }
+    .principle strong { color: #111; }
+    .quote-block { background: #f5f5f5; color: #555; }
+    .header-btn { display: none; }
+    .copy-principles-btn { display: none; }
+    svg.diagram { max-width: 600px; }
+    .ring { stroke-opacity: 0.3 !important; }
+    .node-bg { stroke-width: 2 !important; }
+    .node-name { fill: #333 !important; }
+  }
+</style>
+</head>
+<body class="theme-frost">
+
+<!-- Philosophy Splash -->
+<div class="philosophy-overlay" id="philosophyOverlay" onclick="dismissPhilosophy()">
+  <div class="philosophy-tagline"><em>Context</em> is King</div>
+  <div class="philosophy-subtitle">The AI Chief of Staff Philosophy</div>
+  <div class="philosophy-enter">Click anywhere to explore</div>
+</div>
+
+<div class="header">
+  <div class="header-brand">
+    <div class="header-divider"></div>
+    <h1>Building Your AI Chief of Staff <span>— Philosophy Map</span></h1>
+  </div>
+  <div class="header-right">
+    <div class="legend" id="legend"></div>
+    <button class="header-btn" onclick="exportPDF()" title="Export as PDF">Export PDF</button>
+  </div>
+</div>
+
+<div class="main" id="mainArea">
+  <div class="diagram-area" id="diagramArea">
+    <!-- Film grain noise texture -->
+    <svg class="grain-overlay" width="100%" height="100%">
+      <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter>
+      <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+    </svg>
+    <svg class="diagram" viewBox="-50 -60 1020 940" id="svg"></svg>
+    <div class="zoom-controls">
+      <button class="zoom-btn" onclick="zoomDiagram(1)" title="Zoom in">+</button>
+      <div class="zoom-level" id="zoomLevel">100%</div>
+      <button class="zoom-btn" onclick="zoomDiagram(-1)" title="Zoom out">&minus;</button>
+      <button class="zoom-btn" onclick="resetZoom()" title="Reset view" style="font-size:12px;margin-top:4px;">&#8962;</button>
+    </div>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <div class="principle-group" style="border-left:2px solid #d4a050;padding-left:12px;margin-bottom:14px;">
+      <h3 style="color:#d4a050;font-size:11px;margin-bottom:6px;">THE CORE THESIS</h3>
+      <div class="pg-content">
+        <div class="quote-block" style="font-size:12px;line-height:1.5;color:#c8d8e8;margin:0;padding:0;border:0;font-style:normal;"><strong style="color:#fff;">The prompt was never the problem.</strong></div>
+        <div class="principle" style="margin-top:6px;font-size:9.5px;color:#667;border-left-color:#445;"><strong>The model isn't the bottleneck.</strong> Your context is. Build systems that carry context so your prompts can be simple.</div>
+        <div class="principle" style="margin-top:4px;font-size:9.5px;color:#667;border-left-color:#445;"><strong>Not a system of record — a system of context.</strong> It doesn't log what happened. It informs what should happen next.</div>
+      </div>
+    </div>
+    <div class="principle-group basic" data-tier="basic">
+      <h3><span class="tier-badge tier-basic">WEEK 1</span> Foundation Principles <span class="chevron">&#8743;</span><div class="tier-value">Immediate Value</div></h3>
+      <div class="pg-content">
+        <div class="principle"><strong>CLAUDE.md is non-negotiable.</strong> The system's brain — loaded every session.</div>
+        <div class="principle"><strong>Context is everything.</strong> The model isn't the problem — the context is.</div>
+        <div class="principle"><strong>Context > Prompts.</strong> Reduce the friction of thoughtfulness needed in every prompt. Build the system, not the prompt.</div>
+        <div class="principle"><strong>Keep files small.</strong> Modular knowledge. The directory IS the system.</div>
+        <div class="principle"><strong>Model-agnostic by design. Intelligence-maximizing by default.</strong> Context is portable — but always route through the strongest model available. A centralized LLM client means every script gets the best intelligence for free.</div>
+        <div class="quote-block">"Every model upgrade is a free system upgrade — if you have a system. So use the strongest model you can."</div>
+      </div>
+    </div>
+    <div class="principle-group intermediate" data-tier="intermediate">
+      <h3><span class="tier-badge tier-intermediate">WEEK 2</span> Operational Principles <span class="chevron">&#8743;</span><div class="tier-value">Repeatable Value</div></h3>
+      <div class="pg-content">
+        <div class="principle"><strong>Skills over prompts.</strong> Markdown recipes. Build once, use forever.</div>
+        <div class="principle"><strong>Plan mode first.</strong> Think before building.</div>
+        <div class="principle"><strong>Structure drives performance.</strong> Routines create accountability.</div>
+        <div class="quote-block">"The best prompt is the one you don't have to think about."</div>
+      </div>
+    </div>
+    <div class="principle-group advanced" data-tier="advanced">
+      <h3><span class="tier-badge tier-advanced">WEEK 3-4</span> Compounding Principles <span class="chevron">&#8743;</span><div class="tier-value">Compounding Value</div></h3>
+      <div class="pg-content">
+        <div class="principle"><strong>Cross-source intelligence.</strong> Connect dots you don't have time to connect.</div>
+        <div class="principle"><strong>Corrections compound.</strong> Every mistake makes the system smarter.</div>
+        <div class="principle"><strong>Every operation reflects on its execution.</strong> Three layers: fix what broke, refine the approach, log for continuity. The system proposes — you approve. One improvement queue, one gate.</div>
+        <div class="principle"><strong>Capture the why, not just the what.</strong> Decisions without rationale are undebatable six months later.</div>
+        <div class="principle"><strong>Scripts gather, Opus decides. Zero API cost.</strong> Every LLM call routes through <code>claude -p</code> CLI on the Max subscription — free, unlimited, strongest model. No direct Anthropic API calls. No API keys in code. Changes to this require your explicit approval.</div>
+        <div class="principle"><strong>Fragmentation is the enemy of intelligence.</strong> Every disconnected tool is a blind spot. Consolidate or connect.</div>
+        <div class="principle"><strong>Data expires — that's a feature.</strong> Cache tiering and TTLs prevent stale context from poisoning decisions.</div>
+        <div class="principle"><strong>Know when to restart.</strong> Fresh context > degraded context.</div>
+        <div class="quote-block">"Six months from now, your system knows more than a new hire could learn in a year."</div>
+      </div>
+    </div>
+    <div class="principle-group agentic" data-tier="agentic">
+      <h3><span class="tier-badge tier-agentic">WEEK 5+</span> Agentic Principles <span class="chevron">&#8743;</span><div class="tier-value">Autonomous Value</div></h3>
+      <div class="pg-content">
+        <div class="principle"><strong>Act, don't ask.</strong> The system takes action when confidence is high.</div>
+        <div class="principle"><strong>Graduated autonomy with audit trail.</strong> Read, draft, send, create — each tier explicit. Every action logged.</div>
+        <div class="principle"><strong>Measure what you automate.</strong> If you can't see whether an autonomous action helped, you can't trust it.</div>
+        <div class="principle"><strong>Delegation is intelligence.</strong> Assign, track, and follow up autonomously.</div>
+        <div class="principle"><strong>Calendar is sacred.</strong> Protect time by proactively scheduling deep work.</div>
+        <div class="quote-block">"The best chief of staff doesn't wait to be asked."</div>
+      </div>
+    </div>
+    <div class="principle-group" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.03);">
+      <h3 style="color:#81c784;font-size:10px;margin-bottom:4px;">FROM CLAUDE.MD</h3>
+      <div class="pg-content">
+        <div class="principle" style="border-left-color:#81c784;font-size:9.5px;"><strong>Cross-source intelligence.</strong> New email — related meetings, open tasks, Slack threads. The value is connecting dots you don't have time to connect.</div>
+        <div class="principle" style="border-left-color:#81c784;font-size:9.5px;"><strong>Output style:</strong> Concise summaries. Surface actionable insights, not data. Flag blockers proactively.</div>
+        <div class="principle" style="border-left-color:#81c784;font-size:9.5px;"><strong>Cache tiering:</strong> Not all data is equal. Ephemeral caches expire fast. Accumulated state persists. Stale context is worse than no context.</div>
+      </div>
+    </div>
+    <div class="principle-group" style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,0.03);">
+      <div class="principle" style="border-left-color:#d4a050;">
+        <strong>Specialized Software Evolution</strong><br>
+        <em>Era 1:</em> Enterprise — millions<br>
+        <em>Era 2:</em> SaaS — affordable<br>
+        <em>Era 3:</em> AI COS — <strong>personalized to YOU</strong>
+      </div>
+    </div>
+    <button class="copy-principles-btn" id="copyPrinciplesBtn" onclick="copyPrinciples()">Copy All Principles</button>
+  </div>
+</div>
+
+<!-- ── Demo Panel ── -->
+<div class="demo-panel" id="demoPanel">
+  <div class="demo-toggle" onclick="togglePanel()">
+    <div class="builder-mode-switch">
+      <button class="builder-mode-btn active" data-mode="demo" onclick="event.stopPropagation();setPanelMode('demo')">Interactive Demo</button>
+      <button class="builder-mode-btn" data-mode="builder" onclick="event.stopPropagation();setPanelMode('builder')">Build Your COS</button>
+    </div>
+    <span id="panelToggleLabel">Interactive Demo — See the Transformation</span>
+    <span class="demo-arrow">&#9650;</span>
+    <button class="builder-quick-download" onclick="event.stopPropagation();downloadQuestionSet()" title="Download all questions as markdown — no sign-up required">Download Question Set</button>
+  </div>
+  <div class="demo-content">
+    <div class="demo-scenarios" id="demoScenarios"></div>
+    <div class="demo-left">
+      <div class="demo-prompt-display" id="demoPrompt"></div>
+      <div class="demo-stages-ctrl">
+        <div class="demo-stage-bar" id="demoStageBar"></div>
+        <div class="demo-stage-label" id="demoStageLabel">Click a scenario above to start</div>
+      </div>
+      <div class="demo-nav">
+        <button id="btnPrev" onclick="demoStep(-1)" disabled>Back</button>
+        <button id="btnNext" class="primary" onclick="demoStep(1)" disabled>Next Stage</button>
+        <button class="demo-play-btn" id="btnPlay" onclick="toggleAutoPlay()" title="Auto-advance stages">&#9654;</button>
+      </div>
+      <div class="demo-keyboard-hint">&larr; &rarr; navigate &middot; Space play/pause &middot; Esc exit</div>
+      <div class="active-components" id="activeComponents">
+        <div class="active-components-title">Active Components</div>
+        <div id="acList"></div>
+      </div>
+    </div>
+    <div class="demo-response-area" id="demoResponse">
+      <div style="color:#445566;font-size:12px;padding-top:40px;text-align:center;">
+        Select a scenario to see how context transforms AI output
+      </div>
+    </div>
+  </div>
+  <div class="builder-content" id="builderContent">
+    <div class="builder-progress" id="builderProgress"></div>
+    <div class="builder-form-area" id="builderFormArea"></div>
+    <div class="builder-nav" id="builderNav">
+      <button id="builderBtnPrev" onclick="builderPrev()" disabled>Back</button>
+      <button id="builderBtnNext" class="primary" onclick="builderNext()">Next</button>
+    </div>
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<!-- Lead Capture Modal -->
+<div class="lead-capture-overlay hidden" id="leadCaptureOverlay" onclick="if(event.target===this)closeLeadCapture()">
+  <div class="lead-capture-modal">
+    <h3>Get Your Question Set</h3>
+    <div class="lead-subtitle">Enter your details to download the COS Question Set — all the questions you need to build your CLAUDE.md.</div>
+    <div class="lead-field"><label>First Name <span class="req">*</span></label><input id="lc-first" placeholder="Jordan" oninput="updateLeadSubmit()"></div>
+    <div class="lead-field"><label>Last Name <span class="req">*</span></label><input id="lc-last" placeholder="Park" oninput="updateLeadSubmit()"></div>
+    <div class="lead-field"><label>Email <span class="req">*</span></label><input id="lc-email" type="email" placeholder="you@company.com" oninput="updateLeadSubmit()"></div>
+    <div class="lead-actions">
+      <button class="lead-cancel" onclick="closeLeadCapture()">Cancel</button>
+      <button class="lead-submit" id="leadSubmitBtn" onclick="submitLeadCapture()" disabled>Download Question Set</button>
+    </div>
+    <div class="lead-privacy">Your info stays in your browser. No data is sent to any server.</div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// GATE MODE — ?gate=1 enables lead capture + validation
+// Default (no param) = ungated, free preview
+// ═══════════════════════════════════════
+const GATE_MODE = new URLSearchParams(window.location.search).get('gate') === '1';
+
+// ═══════════════════════════════════════
+// DIAGRAM DATA
+// ═══════════════════════════════════════
+const CX = 420, CY = 400;
+const RADII = { basic: 120, intermediate: 210, advanced: 295, agentic: 385 };
+const STROKE_W = { basic: 40, intermediate: 45, advanced: 50, agentic: 55 };
+const COLORS = {
+  basic:        { main: '#4fc3f7', bg: '#0f2a42' },
+  intermediate: { main: '#ab47bc', bg: '#2a1040' },
+  advanced:     { main: '#ff7043', bg: '#2a1508' },
+  agentic:      { main: '#66bb6a', bg: '#0a2a12' }
+};
+const TIER_LABELS = {
+  basic: 'BASIC — IMMEDIATE VALUE',
+  intermediate: 'INTERMEDIATE — REPEATABLE VALUE',
+  advanced: 'ADVANCED — COMPOUNDING VALUE',
+  agentic: 'AGENTIC — AUTONOMOUS VALUE'
+};
+const TIER_WEEK = {
+  basic: 'Week 1',
+  intermediate: 'Week 2',
+  advanced: 'Week 3-4',
+  agentic: 'Week 5+'
+};
+
+const NODES = [
+  { id:'identity',    tier:'basic',        angle:155, side:'in',  icon:'📋', name:'Identity',          sub:'CLAUDE.md',
+    desc:'The system\'s brain. Loaded every session, every conversation.',
+    howto:'<strong>What goes in CLAUDE.md:</strong> Your role, who you report to, your direct reports and how to engage each one, your domain split (e.g. 70% day job, 20% side business), communication preferences ("short sentences, bullets, no pleasantries"), and working principles.<br><br><strong>Structure it as tables</strong> — the model parses them faster than prose. Include a <code>Key Commands</code> section mapping slash commands to scripts. Keep it under 400 lines; link to deeper files.',
+    example:'## Who You\'re Serving\\nRole: VP Operations\\nReports to: Jordan (President)\\nDirect Reports: Sarah, David, Chris...' },
+  { id:'knowledge',   tier:'basic',        angle:205, side:'in',  icon:'👥', name:'Knowledge',         sub:'Context Files',
+    desc:'People profiles, client status, priorities — loaded on demand.',
+    howto:'<strong>Create separate files</strong> for each knowledge type: <code>people_context</code> (name, role, communication style, last interaction), <code>priorities.md</code> (quarterly goals by domain), <code>clients.md</code> (status, key contacts, open items).<br><br><strong>Key pattern:</strong> Store personality clusters and engagement tips — "Give intent, she improves the plan" vs "Give freedom, he\'ll deliver." This turns generic AI into someone who knows your org.',
+    example:'## Sarah — Dir. Content Marketing\\nStyle: Give intent, she improves the plan\\nLast 1:1: Jan 28 — content calendar review' },
+  { id:'responses',   tier:'basic',        angle:345, side:'out', icon:'💬', name:'Contextual Answers', sub:'6 words vs 40',
+    desc:'Same prompt, completely different output. Context is the multiplier.',
+    howto:'<strong>The transformation:</strong> "Prep for my call tomorrow" goes from "I need more info..." to a full briefing with talking points, open items, and relationship context. The quality gap between 0 context and 2 files is massive.<br><br><strong>Test it:</strong> Ask the same question with and without CLAUDE.md loaded. The delta is the value of your context system.',
+    example:'"Help me prepare" — Without: 5 clarifying questions. With: Full briefing, action items, suggested approach.' },
+  { id:'skills',      tier:'intermediate', angle:148, side:'in',  icon:'⚡', name:'Skills',            sub:'Slash Commands',
+    desc:'Markdown recipes that encode your workflows as reusable commands.',
+    howto:'<strong>Create <code>.claude/commands/</code> directory.</strong> Each <code>.md</code> file becomes a slash command. Write them in plain English — describe the steps, what files to read, what output format to use.<br><br><strong>Key skills to build first:</strong> <code>/prep [person]</code> (pre-meeting briefing), <code>/morning</code> (daily dashboard), <code>/sync</code> (ingest new meetings), <code>/commit-msg</code> (git commit from conversation). Each skill should reference your context files by path.',
+    example:'/prep — Read people_context for [name], find recent meetings, surface open tasks, draft talking points' },
+  { id:'ingestion',   tier:'intermediate', angle:212, side:'in',  icon:'📥', name:'Data Ingestion',    sub:'Meetings & Transcripts',
+    desc:'Transcripts flow in, get classified by domain, action items extracted.',
+    howto:'<strong>Build a sync pipeline:</strong> Pull transcripts from your meeting tool (Granola, Fireflies, Fathom). Classify each meeting by domain. Extract action items with owner + deadline. Store as structured markdown files: <code>meetings/{domain}/{date}_{title}.md</code>.<br><br><strong>Key pattern:</strong> Use a consistent format — metadata table at top (source, attendees, domain), then summary, topics discussed, action items, transcript. This structure enables downstream search and extraction.',
+    example:'meetings/2026-01-28_jordan-1on1.md\\n| Domain | Acme Corp | Attendees | Alex, Jordan |' },
+  { id:'automation',  tier:'intermediate', angle:335, side:'out', icon:'🔁', name:'Automated Actions',  sub:'Tasks & Follow-ups',
+    desc:'Action items routed by domain, deduplicated, tracked to completion.',
+    howto:'<strong>Create domain-specific task files:</strong> <code>operations/{domain}/tasks.md</code>. When meetings are ingested, extracted tasks flow to the right domain file automatically.<br><br><strong>Build a staging system:</strong> Don\'t commit tasks directly — stage them first. Validate: Is this your action or someone else\'s? Does it already exist? Was it already completed? This prevents your task list from becoming a graveyard of stale items.',
+    example:'## Acme Corp Tasks\\n- [ ] Send revised timeline to Dr. Rivera (due: Feb 3)\\n- [ ] Review David\'s demand gen report' },
+  { id:'structure',   tier:'intermediate', angle:25,  side:'out', icon:'📐', name:'Daily Structure',    sub:'Routines',
+    desc:'Repeatable routines that turn "what should I do?" into a dashboard.',
+    howto:'<strong>Build time-aware routines.</strong> A <code>/morning</code> skill that pulls today\'s calendar, overdue tasks, pending responses, and surfaces priorities. A <code>/evening</code> skill that reconciles completed work and previews tomorrow.<br><br><strong>Add time rules to CLAUDE.md:</strong> Weekends = don\'t suggest work. After hours = protected family time. The system should respect your boundaries, not just your tasks.',
+    example:'/morning — 3 meetings today, 5 urgent tasks, 2 pending responses. Priority: Jordan 1:1 prep (budget question overdue).' },
+  { id:'connections', tier:'advanced',     angle:138, side:'in',  icon:'🔌', name:'Live Connections',   sub:'MCP',
+    desc:'Two-way tool connections. The AI reads and writes to your actual tools. Fragmentation is the enemy — every disconnected tool is a blind spot.',
+    howto:'<strong>MCP (Model Context Protocol) servers</strong> give AI direct access to external tools: project management (Monday.com, Linear), CRM (HubSpot), calendars (EventKit), design tools (Figma), communication (Slack).<br><br><strong>Fragmentation is the enemy of intelligence.</strong> Every tool that lives outside the system is a blind spot. If your CRM, project board, and calendar can\'t be cross-referenced, you\'re manually stitching context that the system should stitch for you.<br><br><strong>Start with read-only:</strong> Pull sprint boards, CRM contact data, calendar events. Graduate to write: create tasks, update records, send messages. Each connection multiplies the system\'s ability to cross-reference.',
+    example:'MCP: Monday.com — "Show my sprint" pulls live board data. HubSpot — CRM contact details and deal stages.' },
+  { id:'memory',      tier:'advanced',     angle:180, side:'in',  icon:'🧠', name:'Semantic Memory',    sub:'Vector Search',
+    desc:'Every meeting indexed by meaning, not keywords. Search by concept.',
+    howto:'<strong>Use embeddings + vector DB</strong> (OpenAI text-embedding-3-large + Qdrant/local). Index every meeting transcript. This lets you search "budget concerns" and find meetings about "financial constraints" or "cost reduction" — meaning, not exact words.<br><br><strong>Key insight:</strong> Also store a <code>bot_memory</code> collection — corrections, decisions, session summaries. This becomes the system\'s long-term brain. Back up the vector DB; it\'s irreplaceable.<br><br><strong>Data freshness is a feature:</strong> Use cache tiering with TTLs. Ephemeral data (API fetches, email caches) expires fast. Accumulated data (session logs, corrections) persists. Stale context poisons decisions — expiration prevents that.',
+    example:'"pricing discussions" — finds meetings about "rate negotiations", "contract renewals", "budget reallocation"' },
+  { id:'learning',    tier:'advanced',     angle:222, side:'in',  icon:'🔄', name:'Learning System',    sub:'Corrections + Reflection',
+    desc:'Correct the system once, it remembers permanently. Capture not just decisions, but WHY they were made. And every repeated operation evaluates itself — proposing fixes, prompt refinements, and logging for continuity.',
+    howto:'<strong>Build a corrections pipeline:</strong> When you correct the AI, store it in a <code>gotchas.md</code> file that gets loaded every session. Track the pattern, not just the instance: "Local Sports Team = side business domain, not primary."<br><br><strong>Capture decision rationale:</strong> Don\'t just log WHAT was decided — log WHY. "We chose vendor X because Y was 3x the cost and Z lacked SSO." Six months later, the system can explain past decisions to new stakeholders.<br><br><strong>Use a <code>/learn</code> skill</strong> that reviews recent corrections and promotes repeating patterns to permanent rules. Over time, your system builds a knowledge base that no new hire could match.<br><br><strong>Self-reflection — the proactive counterpart:</strong> Every operation that runs repeatedly should evaluate its own execution using three layers: (1) <strong>Fix what broke</strong> — diagnose errors, propose script fixes. (2) <strong>Refine the approach</strong> — flat metrics, empty sections, unused paths suggest the prompt or pipeline needs adjustment. (3) <strong>Log for continuity</strong> — each run writes a "baton" (<code>.cos_*_last_run.md</code>) and appends to a structured log (<code>.cos_*_log.jsonl</code>) so the next run inherits context. All proposals queue to <code>.self_improvement_queue.md</code> — the single gate between "observed problem" and "applied fix." The system proposes, you approve. This applies to scheduled tasks, skills, sync pipelines, and cache refresh.',
+    example:'gotchas.md: "Chris disambiguation: Chris D. (primary/side) vs Chris W. (external)" — auto-loaded every session.<br><br>Self-reflection: Scheduled task runs — detects flat metric for 5 days — proposes "remove staging count, add per-domain delta" — queued for review.' },
+  { id:'intelligence',tier:'advanced',     angle:320, side:'out', icon:'🔍', name:'Cross-Source Intel',  sub:'Signals',
+    desc:'Cross-reference meetings, email, tasks, Slack — surface what you\'d miss.',
+    howto:'<strong>Build signal detection scripts:</strong> Scan for relationship gaps (no 1:1 with direct report in 14+ days), domain drift (time allocation vs targets), stale threads (topics discussed in 3+ meetings with no resolution), escalation patterns.<br><br><strong>Key principle:</strong> Scripts gather raw data algorithmically. All LLM calls route through a centralized client (<code>llm_client.py</code>) to Opus — the strongest available intelligence. The AI interprets in-session with full context. Never let a script make judgment calls — it lacks the cross-source context.<br><br><strong>Maximize intelligence by default:</strong> On a flat-rate plan (Max), there\'s no cost reason to use a weaker model. Route everything through the best model available. Intelligence compounds — better classification, better extraction, better decisions at every layer.',
+    example:'Signal: "Relationship gap: Sarah — no 1:1 in 16 days. She\'s blocked on content calendar."' },
+  { id:'compounding', tier:'advanced',     angle:40,  side:'out', icon:'📈', name:'Institutional Memory',sub:'Compounding',
+    desc:'Six months of context makes the system smarter than any new hire.',
+    howto:'<strong>The compounding effect:</strong> Month 1 = basic briefings. Month 3 = pattern detection across dozens of meetings. Month 6 = institutional knowledge spanning hundreds of interactions, learned preferences, corrected mistakes, relationship history.<br><br><strong>Key investment:</strong> Keep feeding it. Every meeting synced, every correction stored, every decision logged makes the next interaction better. The gap between you and someone starting from scratch grows exponentially.',
+    example:'Month 1: "Who is Dr. Rivera?" — Month 6: "Rivera prefers directness, renewal in 6 weeks, 2 emails unanswered."' },
+  { id:'proactive',   tier:'agentic',      angle:130, side:'in',  icon:'🎯', name:'Proactive Actions',  sub:'Sends Before Asked',
+    desc:'The system anticipates needs and acts before you have to ask.',
+    howto:'<strong>Pattern:</strong> When confidence is high (known meeting + known prep pattern + known recipient), take action autonomously. Send meeting agendas before calls. Flag overdue items before standup. Remind team members about approaching deadlines.<br><br><strong>Build with hooks:</strong> Use event-driven triggers — calendar event approaching — fire prep pipeline — send agenda if recipient is known. The system should front-load your day, not wait for your first prompt.',
+    example:'10am call with Dr. Rivera — Agenda auto-sent at 8am with 3 discussion items from last meeting\'s action items.' },
+  { id:'delegation',  tier:'agentic',      angle:195, side:'in',  icon:'📋', name:'Delegation Loop',    sub:'Assign, Track, Follow Up',
+    desc:'Full delegation lifecycle — assign, track, nudge, close.',
+    howto:'<strong>Track ownership + deadlines</strong> in your task system. When a delegated task passes its deadline, auto-generate a follow-up nudge. When meetings mention a delegated item, update status automatically.<br><br><strong>The loop:</strong> Extract task from meeting — assign owner + deadline — track in tasks.md — detect mentions in future meetings — nudge if overdue — mark complete when confirmed. The system manages the accountability you don\'t have time to manually track.',
+    example:'Task assigned to dev team (Jan 28) — No update by Feb 3 — Auto-nudge: "Portal fix deadline passed, status?"' },
+  { id:'calendar_agent',tier:'agentic',    angle:320, side:'out', icon:'📅', name:'Calendar Agent',     sub:'Blocks, Holds, Scheduling',
+    desc:'Protects deep work time. Fills gaps with high-priority work blocks.',
+    howto:'<strong>Scan calendar for gaps,</strong> cross-reference with overdue/high-priority tasks, and place calendar holds with task context in the description. "Deep Work: Budget Review" is better than an empty 2-hour block.<br><br><strong>Key rules to encode:</strong> Prep blocks before important meetings (15-30 min). No meetings before 9am. Protect Friday afternoons. The calendar should reflect priorities, not just availability.',
+    example:'Found 2-hour gap at 1-3pm + budget review overdue 3 days — Placed "Deep Work: Budget Review" with task link.' },
+  { id:'autonomous',  tier:'agentic',      angle:25,  side:'out', icon:'🚀', name:'Autonomous Execution',sub:'Acts on Your Behalf',
+    desc:'Sends emails, creates tickets, schedules follow-ups — with graduated permissions and full audit trail.',
+    howto:'<strong>Graduated autonomy:</strong> Define explicit permission tiers — <code>read</code> (observe), <code>draft</code> (propose), <code>send</code> (execute reversible), <code>create</code> (execute irreversible). Each action type gets a tier. Follow-up emails = send. Contract approvals = draft only.<br><br><strong>Full audit trail:</strong> Every autonomous action is logged with timestamp, confidence score, and outcome. This isn\'t optional — it\'s the trust foundation.<br><br><strong>Measure what you automate:</strong> Track whether autonomous actions achieved their intended outcome. Did the auto-sent follow-up get a response? Did the auto-created ticket get resolved faster? If you can\'t measure it, you can\'t trust it to keep running.<br><br><strong>Safety pattern:</strong> Confidence threshold + reversibility + audit. Auto-send a follow-up email (reversible, known pattern, logged). Never auto-approve a contract (irreversible, high stakes).',
+    example:'Meeting ended at 2pm — Follow-up email auto-sent at 4pm — Jira ticket created — Tuesday check-in scheduled.' },
+  { id:'decision_memory', tier:'advanced', angle:255, side:'in', icon:'⚖️', name:'Decision Rationale', sub:'The Why Archive',
+    desc:'Capture not just what was decided, but why. Debatable context for future-you and your team.',
+    howto:'<strong>Log the reasoning, not just the outcome.</strong> When a decision is made in a meeting, extract: the decision, the alternatives considered, the reasoning, and who made the call.<br><br><strong>Pattern:</strong> "Chose Vendor X over Y. Y was 3x cost. Z lacked SSO. Decision by Alex + Jordan, Jan 28." Six months later, when someone asks "why did we go with X?" — the system answers instantly.<br><br><strong>Key difference from corrections:</strong> Corrections capture mistakes. Decision rationale captures <em>intentional choices</em> — even correct ones need documented reasoning.',
+    example:'"Going with Acme for portal." — Stored: "Acme chosen over Beta (cost: $X vs $3X) and Gamma (no SSO). Approved by Jordan."' },
+  { id:'governance', tier:'agentic', angle:265, side:'in', icon:'🛡️', name:'Agent Governance', sub:'Permission Tiers',
+    desc:'Explicit permission model: read, draft, send, create. Every autonomous action logged with audit trail.',
+    howto:'<strong>Define four permission tiers:</strong><br>• <code>Read</code> — observe and report (calendar, CRM, email)<br>• <code>Draft</code> — propose actions for human review<br>• <code>Send</code> — execute reversible actions (follow-up emails, reminders)<br>• <code>Create</code> — execute irreversible actions (tickets, calendar events, contract edits)<br><br><strong>Each action type maps to a tier.</strong> Start everything at <code>draft</code>. Graduate to <code>send</code> after the system proves reliability for that action type. The audit log is non-negotiable — every autonomous action is timestamped with confidence score and result.<br><br><strong>The trust equation:</strong> Autonomy = proven reliability + reversibility + audit trail. Missing any one and the system can\'t be trusted to act.',
+    example:'Follow-up emails: graduated from draft — send after 20 successful drafts reviewed. Ticket creation: still at draft tier.' },
+];
+
+// ═══════════════════════════════════════
+// SVG RENDER
+// ═══════════════════════════════════════
+const svg = document.getElementById('svg');
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k,v] of Object.entries(attrs||{})) e.setAttribute(k,v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function polar(a, r) {
+  const rad = a * Math.PI / 180;
+  return { x: CX + r*Math.cos(rad), y: CY - r*Math.sin(rad) };
+}
+
+// ═══════════════════════════════════════
+// ZOOM & PAN
+// ═══════════════════════════════════════
+let zoomScale = 1, panX = 0, panY = 0;
+const ZOOM_MIN = 0.5, ZOOM_MAX = 3.5, ZOOM_STEP = 0.03;
+
+function applyTransform(smooth) {
+  svg.style.transition = smooth ? 'transform 80ms linear' : 'none';
+  svg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
+  document.getElementById('zoomLevel').textContent = Math.round(zoomScale * 100) + '%';
+}
+
+function zoomDiagram(dir, cx, cy) {
+  const prev = zoomScale;
+  const step = ZOOM_STEP * zoomScale;
+  zoomScale = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoomScale + dir * step));
+  if (cx !== undefined && cy !== undefined) {
+    const ratio = zoomScale / prev;
+    panX = cx - ratio * (cx - panX);
+    panY = cy - ratio * (cy - panY);
+  }
+  applyTransform(true);
+}
+
+function resetZoom() {
+  zoomScale = 1; panX = 0; panY = 0;
+  applyTransform(true);
+}
+
+// Mouse wheel zoom — heavily debounced for smooth feel
+let wheelAccum = 0, wheelTimer = null;
+document.getElementById('diagramArea').addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const delta = Math.abs(e.deltaY) > 15 ? Math.sign(e.deltaY) * 15 : e.deltaY;
+  wheelAccum += delta;
+  if (wheelTimer) return;
+  wheelTimer = setTimeout(() => {
+    const rect = svg.getBoundingClientRect();
+    const cx = e.clientX - rect.left - rect.width / 2;
+    const cy = e.clientY - rect.top - rect.height / 2;
+    const dir = wheelAccum < 0 ? 1 : -1;
+    zoomDiagram(dir, cx, cy);
+    wheelAccum = 0;
+    wheelTimer = null;
+  }, 60);
+}, { passive: false });
+
+// Pan via click-drag
+let isPanning = false, panStartX, panStartY;
+svg.addEventListener('mousedown', (e) => {
+  if (e.button !== 0) return;
+  // Don't pan if clicking on interactive nodes
+  if (e.target.closest('.node')) return;
+  isPanning = true;
+  panStartX = e.clientX - panX;
+  panStartY = e.clientY - panY;
+  svg.classList.add('dragging');
+});
+window.addEventListener('mousemove', (e) => {
+  if (!isPanning) return;
+  panX = e.clientX - panStartX;
+  panY = e.clientY - panStartY;
+  applyTransform(false);
+});
+window.addEventListener('mouseup', () => {
+  if (isPanning) {
+    isPanning = false;
+    svg.classList.remove('dragging');
+  }
+});
+
+// Double-click to zoom in on a point
+svg.addEventListener('dblclick', (e) => {
+  if (e.target.closest('.node')) return;
+  const rect = svg.getBoundingClientRect();
+  const cx = e.clientX - rect.left - rect.width / 2;
+  const cy = e.clientY - rect.top - rect.height / 2;
+  zoomDiagram(1, cx, cy);
+});
+
+// ═══════════════════════════════════════
+// SVG LINE ICONS (sharp, single-stroke)
+// ═══════════════════════════════════════
+// Each is a 24x24 viewBox path — rendered as <use> inside node groups
+const LINE_ICONS = {
+  identity:      'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 012-2h2a2 2 0 012 2v0a2 2 0 01-2 2h-2a2 2 0 01-2-2z M9 12h6 M9 16h6',
+  knowledge:     'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M9 11a4 4 0 100-8 4 4 0 000 8z M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75',
+  responses:     'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z',
+  skills:        'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
+  ingestion:     'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4 M7 10l5 5 5-5 M12 15V3',
+  automation:    'M17 1l4 4-4 4 M3 11V9a4 4 0 014-4h14 M7 23l-4-4 4-4 M21 13v2a4 4 0 01-4 4H3',
+  structure:     'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',
+  connections:   'M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6 M15 3h6v6 M10 14L21 3',
+  memory:        'M10 3L4 10h5v4H4l6 7 M14 3l6 7h-5v4h5l-6 7',
+  learning:      'M1 4v6h6 M23 20v-6h-6 M20.49 9A9 9 0 005.64 5.64L1 10 M3.51 15A9 9 0 0018.36 18.36L23 14',
+  intelligence:  'M12 2L2 12l10 10 10-10L12 2z M12 6v12 M6 12h12 M8.5 8.5l7 7 M15.5 8.5l-7 7',
+  compounding:   'M23 6l-9.5 9.5-5-5L1 18 M17 6h6v6',
+  proactive:     'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 8v4l3 3',
+  delegation:    'M16 3h5v5 M21 3l-7 7 M8 21H3v-5 M3 21l7-7 M12 8v8 M8 12h8',
+  calendar_agent:'M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z M16 2v4 M8 2v4 M3 10h18 M8 14h.01 M12 14h.01 M16 14h.01 M8 18h.01 M12 18h.01',
+  autonomous:    'M5 12h14 M12 5l7 7-7 7',
+  decision_memory:'M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5',
+  governance:    'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+};
+
+// Defs
+const defs = el('defs',{},svg);
+const gr = el('radialGradient',{id:'hubGlow',cx:'50%',cy:'50%',r:'50%'},defs);
+el('stop',{offset:'0%','stop-color':'#4fc3f7','stop-opacity':'0.18'},gr);
+el('stop',{offset:'100%','stop-color':'#4fc3f7','stop-opacity':'0'},gr);
+
+// Frost blur filter for node backgrounds
+const frostFilter = el('filter',{id:'frostBlur',x:'-20%',y:'-20%',width:'140%',height:'140%'},defs);
+el('feGaussianBlur',{in:'SourceGraphic',stdDeviation:'1.5'},frostFilter);
+
+// Frost ring filters — layered blur for depth (inner=sharp, outer=diffused)
+[
+  {id:'frostRingInner', blur:3, flood:'79,195,247', floodOpacity:0.06},
+  {id:'frostRingMid',   blur:5, flood:'171,71,188', floodOpacity:0.04},
+  {id:'frostRingOuter', blur:8, flood:'255,112,67', floodOpacity:0.035},
+  {id:'frostRingEdge',  blur:12,flood:'102,187,106',floodOpacity:0.025},
+].forEach(cfg => {
+  const f = el('filter',{id:cfg.id,x:'-30%',y:'-30%',width:'160%',height:'160%'},defs);
+  // Base blur of the stroke
+  el('feGaussianBlur',{in:'SourceGraphic',stdDeviation:cfg.blur,result:'blur1'},f);
+  // Soft colored glow underneath
+  el('feFlood',{'flood-color':`rgb(${cfg.flood})`,'flood-opacity':cfg.floodOpacity,result:'glow'},f);
+  el('feComposite',{in:'glow',in2:'blur1',operator:'in',result:'colorGlow'},f);
+  // Wider diffusion halo
+  el('feGaussianBlur',{in:'colorGlow',stdDeviation:cfg.blur*1.5,result:'halo'},f);
+  // Merge: halo behind, then blurred stroke, then original
+  const merge = el('feMerge',{},f);
+  el('feMergeNode',{in:'halo'},merge);
+  el('feMergeNode',{in:'blur1'},merge);
+  el('feMergeNode',{in:'SourceGraphic'},merge);
+});
+// Default ring filter fallback
+const frostRingDefault = el('filter',{id:'frostRingBlur',x:'-20%',y:'-20%',width:'140%',height:'140%'},defs);
+el('feGaussianBlur',{in:'SourceGraphic',stdDeviation:'4'},frostRingDefault);
+
+// Glass hub filter — inner glow + refraction layers
+const glassHubFilter = el('filter',{id:'glassHub',x:'-30%',y:'-30%',width:'160%',height:'160%'},defs);
+el('feGaussianBlur',{in:'SourceGraphic',stdDeviation:'2',result:'hubBlur'},glassHubFilter);
+el('feFlood',{'flood-color':'rgb(79,195,247)','flood-opacity':'0.08',result:'hubGlowColor'},glassHubFilter);
+el('feComposite',{in:'hubGlowColor',in2:'hubBlur',operator:'in',result:'hubInnerGlow'},glassHubFilter);
+el('feGaussianBlur',{in:'hubInnerGlow',stdDeviation:'6',result:'hubHalo'},glassHubFilter);
+const hubMerge = el('feMerge',{},glassHubFilter);
+el('feMergeNode',{in:'hubHalo'},hubMerge);
+el('feMergeNode',{in:'SourceGraphic'},hubMerge);
+
+// Define reusable line icon symbols
+Object.entries(LINE_ICONS).forEach(([id, d]) => {
+  const sym = el('symbol',{id:`icon-${id}`,viewBox:'0 0 24 24'},defs);
+  el('path',{d:d,fill:'none','stroke-width':'1.5','stroke-linecap':'round','stroke-linejoin':'round'},sym);
+});
+
+// Rings (render outer first)
+const ringG = el('g',{},svg);
+['agentic','advanced','intermediate','basic'].forEach(t => {
+  el('circle',{class:`ring ring-${t}`,cx:CX,cy:CY,r:RADII[t],'stroke-width':STROKE_W[t],'data-tier':t,'data-ring':t},ringG);
+});
+// Ring rim highlights (thin bright inner-edge circles)
+['basic','intermediate','advanced','agentic'].forEach(t => {
+  const innerR = RADII[t] - STROKE_W[t]/2 + 1;
+  el('circle',{class:`ring-rim ring-rim-${t}`,cx:CX,cy:CY,r:innerR,'stroke-width':'0.5','data-tier':t},ringG);
+});
+['basic','intermediate','advanced','agentic'].forEach(t => {
+  el('text',{class:`ring-label ring-label-${t}`,x:CX,y:CY-RADII[t]-2,'data-tier':t},ringG).textContent = TIER_LABELS[t];
+});
+
+// Flow labels
+el('text',{class:'flow-label',x:60,y:CY,'text-anchor':'middle',transform:`rotate(-90,60,${CY})`},svg).textContent='CONTEXT IN';
+el('text',{class:'flow-label',x:860,y:CY,'text-anchor':'middle',transform:`rotate(90,860,${CY})`},svg).textContent='VALUE OUT';
+
+// Spokes
+const spokeG = el('g',{},svg);
+const spokeEls = {};
+NODES.forEach(n => {
+  const p = polar(n.angle, RADII[n.tier]);
+  spokeEls[n.id] = el('line',{class:`spoke spoke-${n.tier}`,x1:CX,y1:CY,x2:p.x,y2:p.y,'data-tier':n.tier,'data-spoke':n.id},spokeG);
+});
+
+// Hub
+const hubG = el('g',{class:'hub'},svg);
+el('circle',{class:'hub-glow',cx:CX,cy:CY,r:70},hubG);
+el('circle',{class:'hub-ring',cx:CX,cy:CY,r:45},hubG);
+el('text',{class:'hub-title',x:CX,y:CY-8},hubG).textContent='Your AI';
+el('text',{class:'hub-title',x:CX,y:CY+9},hubG).textContent='Chief of Staff';
+el('text',{class:'hub-subtitle',x:CX,y:CY+25},hubG).textContent='Context is King';
+const hubSubline = el('text',{x:CX,y:CY+41,'text-anchor':'middle','font-size':'7.5px',fill:'#8899aa','font-style':'italic'},hubG);
+hubSubline.textContent='Your Personal System of Context';
+
+// Nodes
+const nodeEls = {};
+const nodeG = el('g',{},svg);
+NODES.forEach(n => {
+  const p = polar(n.angle, RADII[n.tier]);
+  const g = el('g',{class:'node','data-tier':n.tier,'data-id':n.id},nodeG);
+  // Glow ring (hidden by default, fades in on hover)
+  el('circle',{class:`node-glow`,cx:p.x,cy:p.y,r:34,fill:'none',stroke:COLORS[n.tier].main,'stroke-width':'1','stroke-opacity':'0.4',filter:'url(#frostBlur)'},g);
+  el('circle',{class:`node-bg node-bg-${n.tier}`,cx:p.x,cy:p.y,r:26},g);
+  // Emoji icon (classic theme)
+  const emojiEl = el('text',{class:'node-icon node-icon-emoji',x:p.x,y:p.y},g);
+  emojiEl.textContent = n.icon;
+  // SVG line icon (frost theme)
+  if (LINE_ICONS[n.id]) {
+    el('use',{class:`node-icon-svg tier-${n.tier}`,href:`#icon-${n.id}`,x:p.x-11,y:p.y-11,width:22,height:22},g);
+  }
+  el('text',{class:'node-name',x:p.x,y:p.y+40},g).textContent = n.name;
+  el('text',{class:'node-sub',x:p.x,y:p.y+51},g).textContent = n.sub;
+  g.addEventListener('mouseenter', e => showTip(e,n));
+  g.addEventListener('mousemove', e => moveTip(e));
+  g.addEventListener('mouseleave', hoverHideTip);
+  g.addEventListener('click', e => pinTip(e,n));
+  nodeEls[n.id] = g;
+});
+
+// ═══════════════════════════════════════
+// TOOLTIP (hover + click-to-pin)
+// ═══════════════════════════════════════
+const tip = document.getElementById('tip');
+let tipPinned = false;
+let tipPinnedNode = null;
+
+function buildTipHTML(n) {
+  const exampleHTML = n.example ? `<div class="tip-example">${n.example}</div>` : '';
+  return `<div class="tip-close" onclick="unpinTip(event)">&times;</div><h4>${n.name}</h4><div class="badge badge-${n.tier}">${n.tier} — ${TIER_WEEK[n.tier]}</div><p>${n.desc}</p><div class="tip-howto">${n.howto}</div>${exampleHTML}<div class="tip-tier-label">${TIER_LABELS[n.tier]}</div><div class="tip-pin-hint">click to pin</div>`;
+}
+
+function showTip(e,n) {
+  if (tipPinned) return; // don't override pinned tooltip on hover
+  tip.className = `tip show tip-${n.tier}`;
+  tip.innerHTML = buildTipHTML(n);
+  moveTip(e);
+}
+
+function moveTip(e) {
+  if (tipPinned) return; // pinned tooltip stays put
+  let x=e.clientX+14, y=e.clientY-8;
+  if(x+380>innerWidth) x=e.clientX-390;
+  // After rendering, clamp to viewport
+  tip.style.left=x+'px'; tip.style.top='0px';
+  const h = tip.offsetHeight;
+  y = Math.min(y, innerHeight - h - 8);
+  y = Math.max(8, y);
+  tip.style.top=y+'px';
+}
+
+function hoverHideTip() {
+  if (tipPinned) return; // don't dismiss pinned tooltip on mouseleave
+  tip.className = 'tip';
+}
+
+function pinTip(e,n) {
+  e.stopPropagation();
+  if (tipPinned && tipPinnedNode === n.id) {
+    // clicking same node unpins
+    unpinTip(e);
+    return;
+  }
+  tipPinned = true;
+  tipPinnedNode = n.id;
+  tip.className = `tip show pinned tip-${n.tier}`;
+  tip.innerHTML = buildTipHTML(n);
+  // Position near the click, clamped to viewport
+  let x = e.clientX + 14, y = e.clientY - 8;
+  if(x+380>innerWidth) x=e.clientX-390;
+  tip.style.left=x+'px'; tip.style.top='0px';
+  const h = tip.offsetHeight;
+  y = Math.min(y, innerHeight - h - 8);
+  y = Math.max(8, y);
+  tip.style.top=y+'px';
+}
+
+function unpinTip(e) {
+  if (e) e.stopPropagation();
+  tipPinned = false;
+  tipPinnedNode = null;
+  tip.className = 'tip';
+}
+
+// Click outside tooltip or on background dismisses pinned tooltip
+document.addEventListener('click', (e) => {
+  if (!tipPinned) return;
+  if (tip.contains(e.target)) return; // clicking inside tooltip
+  // Check if clicking a node (handled by pinTip)
+  const nodeG = e.target.closest('.node');
+  if (nodeG) return;
+  unpinTip();
+});
+
+// Keyboard navigation (Escape, arrows, space)
+document.addEventListener('keydown', (e) => {
+  if (tipPinned && e.key === 'Escape') { unpinTip(); return; }
+  // Builder mode keyboard — only when not focused on input
+  if (panelMode === 'builder' && builderInitialized) {
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+      if (e.key === 'ArrowRight') { builderNext(); return; }
+      if (e.key === 'ArrowLeft') { builderPrev(); return; }
+    }
+    return;
+  }
+  if (!demoActive) return;
+  // Don't capture keys when typing in inputs
+  const activeTag = document.activeElement && document.activeElement.tagName;
+  if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT') return;
+  if (e.key === 'ArrowRight') { stopAutoPlay(); demoStep(1); }
+  if (e.key === 'ArrowLeft') { stopAutoPlay(); demoStep(-1); }
+  if (e.key === ' ') { e.preventDefault(); toggleAutoPlay(); }
+  if (e.key === 'Escape') exitDemo();
+});
+
+// Ring hover highlighting
+document.querySelectorAll('.ring').forEach(ringEl => {
+  ringEl.addEventListener('mouseenter', () => {
+    if (demoActive) return;
+    const tier = ringEl.dataset.tier || ringEl.dataset.ring;
+    if (!tier) return;
+    document.querySelectorAll('.node').forEach(n => {
+      if (n.dataset.tier === tier) n.classList.add('ring-hover');
+      else n.classList.add('ring-hover-dim');
+    });
+  });
+  ringEl.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.node').forEach(n => {
+      n.classList.remove('ring-hover', 'ring-hover-dim');
+    });
+  });
+});
+
+// ═══════════════════════════════════════
+// COLLAPSIBLE SIDEBAR SECTIONS
+// ═══════════════════════════════════════
+document.querySelectorAll('.principle-group h3').forEach(h3 => {
+  const chevron = h3.querySelector('.chevron');
+  if (!chevron) return;
+  h3.addEventListener('click', () => {
+    const content = h3.nextElementSibling;
+    if (!content || !content.classList.contains('pg-content')) return;
+    const isCollapsed = content.classList.toggle('collapsed');
+    chevron.classList.toggle('collapsed', isCollapsed);
+  });
+});
+
+// ═══════════════════════════════════════
+// COPY ALL PRINCIPLES
+// ═══════════════════════════════════════
+function copyPrinciples() {
+  const groups = [
+    { title: 'FOUNDATION PRINCIPLES (Week 1)', principles: [
+      'CLAUDE.md is non-negotiable. The system\'s brain — loaded every session.',
+      'Context is everything. The model isn\'t the problem — the context is.',
+      'Context > Prompts. Build the system, not the prompt.',
+      'Keep files small. Modular knowledge. The directory IS the system.',
+      'Model-agnostic by design. Intelligence-maximizing by default. Context is portable — but always route through the strongest model available.',
+    ], quote: 'Every model upgrade is a free system upgrade — if you have a system. So use the strongest model you can.' },
+    { title: 'OPERATIONAL PRINCIPLES (Week 2)', principles: [
+      'Skills over prompts. Markdown recipes. Build once, use forever.',
+      'Plan mode first. Think before building.',
+      'Structure drives performance. Routines create accountability.',
+    ], quote: 'The best prompt is the one you don\'t have to think about.' },
+    { title: 'COMPOUNDING PRINCIPLES (Week 3-4)', principles: [
+      'Cross-source intelligence. Connect dots you don\'t have time to connect.',
+      'Corrections compound. Every mistake makes the system smarter.',
+      'Capture the why, not just the what. Decisions without rationale are undebatable six months later.',
+      'Fragmentation is the enemy of intelligence. Every disconnected tool is a blind spot.',
+      'Scripts gather, Opus decides. Zero API cost. Every LLM call routes through claude -p CLI on the Max subscription — free, unlimited, strongest model. No direct API calls. No API keys in code. Changes require your explicit approval.',
+      'Data expires — that\'s a feature. Cache tiering and TTLs prevent stale context from poisoning decisions.',
+      'Know when to restart. Fresh context > degraded context.',
+    ], quote: 'Six months from now, your system knows more than a new hire could learn in a year.' },
+    { title: 'AGENTIC PRINCIPLES (Week 5+)', principles: [
+      'Act, don\'t ask. The system takes action when confidence is high.',
+      'Graduated autonomy with audit trail. Read, draft, send, create — each tier explicit. Every action logged.',
+      'Measure what you automate. If you can\'t see whether an autonomous action helped, you can\'t trust it.',
+      'Delegation is intelligence. Assign, track, and follow up autonomously.',
+      'Calendar is sacred. Protect time by proactively scheduling deep work.',
+    ], quote: 'The best chief of staff doesn\'t wait to be asked.' },
+  ];
+  let text = 'AI CHIEF OF STAFF — PHILOSOPHY MAP\n';
+  text += 'Core Thesis: Context is King. Reduce the friction of thoughtfulness needed inside of your prompt.\n';
+  text += 'Your Personal System of Context — not a system of record, but a system that informs what should happen next.\n\n';
+  groups.forEach(g => {
+    text += `${g.title}\n${'─'.repeat(g.title.length)}\n`;
+    g.principles.forEach(p => text += `• ${p}\n`);
+    text += `"${g.quote}"\n\n`;
+  });
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyPrinciplesBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy All Principles'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ═══════════════════════════════════════
+// EXPORT PDF
+// ═══════════════════════════════════════
+function exportPDF() { window.print(); }
+
+// Theme is always frost (classic theme removed)
+
+// ═══════════════════════════════════════
+// TIER FILTER (legend)
+// ═══════════════════════════════════════
+const activeTiers = new Set(['basic','intermediate','advanced','agentic']);
+const legendEl = document.getElementById('legend');
+[['basic','Basic (Week 1)'],['intermediate','Intermediate (Week 2)'],['advanced','Advanced (Week 3-4)'],['agentic','Agentic (Week 5+)']].forEach(([t,l])=>{
+  const d = document.createElement('div');
+  d.className='legend-item active'; d.dataset.tier=t;
+  d.innerHTML=`<div class="legend-dot" style="background:${COLORS[t].main}"></div>${l}`;
+  d.onclick=()=>{ if(demoActive) return; if(activeTiers.has(t)){if(activeTiers.size===1)return;activeTiers.delete(t);}else activeTiers.add(t);applyFilter(); };
+  legendEl.appendChild(d);
+});
+function applyFilter(){
+  document.querySelectorAll('.legend-item').forEach(e=>{const on=activeTiers.has(e.dataset.tier);e.classList.toggle('active',on);e.classList.toggle('dimmed',!on);});
+  document.querySelectorAll('[data-tier]').forEach(e=>e.classList.toggle('dim',!activeTiers.has(e.dataset.tier)));
+  document.querySelectorAll('.principle-group[data-tier]').forEach(e=>e.classList.toggle('dimmed',!activeTiers.has(e.dataset.tier)));
+}
+
+// ═══════════════════════════════════════
+// DEMO SCENARIOS
+// ═══════════════════════════════════════
+const SCENARIOS = [
+  {
+    id: 'prep',
+    label: 'Meeting Prep',
+    icon: '📅',
+    prompt: 'Help me prepare for my client call tomorrow',
+    stages: [
+      { tier: 'none', label: 'No System',
+        nodes: [], outputNodes: [],
+        badge: 'none', badgeText: 'Raw LLM',
+        trace: [],
+        response: '<span class="generic">I\'d be happy to help you prepare for your client call! However, I\'ll need some more information:<br><br><strong>I don\'t have access to your calendar</strong> — which client is this with?<br><strong>I can\'t see any previous meetings</strong> — what have you discussed before?<br><strong>I don\'t know your role or company</strong> — what\'s the project about?<br><strong>I have no context on open items</strong> — are there pending deliverables?<br><br>Could you paste in some background so I can help?</span><br><br><em style="color:#445566">You\'re now the context engine. Every detail has to come from you, every time.</em>' },
+      { tier: 'basic', label: 'Basic',
+        nodes: ['identity','knowledge'], outputNodes: ['responses'],
+        badge: 'basic', badgeText: 'Identity + Knowledge',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md → Alex, VP Operations'},{id:'knowledge',tier:'basic',text:'people.md → Dr. Rivera, Riverside Dental'}],
+        response: 'Your call with <span class="highlight">Dr. Rivera at Riverside Dental</span> tomorrow — they\'re in <span class="highlight">month 3 of their HubSpot migration</span>.<br><br>Dr. Rivera is the primary stakeholder. The project scope includes portal integration and custom module development.<br><br><em style="color:#667">The system knows WHO you\'re meeting and WHAT you\'re working on — from 2 files.</em>' },
+      { tier: 'intermediate', label: 'Intermediate',
+        nodes: ['identity','knowledge','skills','ingestion'], outputNodes: ['responses','automation'],
+        badge: 'intermediate', badgeText: '+ Skills + Transcripts',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'/prep skill fires'},{id:'ingestion',tier:'intermediate',text:'Last meeting transcript loaded'}],
+        response: '<strong>/prep Riverside</strong> triggered:<br><br><span class="highlight">Dr. Rivera at Riverside Dental</span> — HubSpot migration, month 3.<br><br><strong>From last Tuesday\'s meeting:</strong><ul><li><span class="highlight highlight-int">Portal integration stalled</span> — custom module QA still open</li><li>Dr. Rivera asked about timeline for patient portal launch</li><li>Action item: Send updated project timeline (still pending)</li></ul><strong>Suggested talking points:</strong><ul><li>Lead with the integration fix — show progress</li><li>Address the timeline question with updated dates</li></ul><em style="color:#667">The skill pulled the transcript and extracted what matters. One command.</em>' },
+      { tier: 'advanced', label: 'Advanced',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections'], outputNodes: ['responses','automation','intelligence'],
+        badge: 'advanced', badgeText: '+ Memory + Learning + Intel',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'/prep skill'},{id:'ingestion',tier:'intermediate',text:'Transcript'},{id:'memory',tier:'advanced',text:'5 related meetings found'},{id:'learning',tier:'advanced',text:'Dr. Rivera prefers directness'},{id:'connections',tier:'advanced',text:'CRM: renewal in 6 weeks'}],
+        response: '<strong>Full intelligence briefing:</strong><br><br><span class="highlight">Dr. Rivera, Riverside Dental</span> — HubSpot migration, month 3.<br><br><strong>Semantic memory</strong> (5 meetings indexed):<ul><li>Portal stall first raised Oct 15 — <span class="highlight highlight-adv">3 weeks unresolved</span></li><li>Dr. Rivera mentioned budget concerns in Nov 2 meeting</li><li>Positive sentiment on custom module demo (Nov 18)</li></ul><strong>Cross-source intelligence:</strong><ul><li><span class="highlight highlight-adv">2 emails unanswered</span> from Dr. Rivera (Nov 20, Nov 27)</li><li><span class="highlight highlight-adv">Contract renewal in 6 weeks</span> — CRM flag</li><li>Learning system: Dr. Rivera <span class="highlight highlight-adv">prefers direct communication</span> — skip pleasantries</li></ul><strong>Recommended approach:</strong><ol><li>Open with portal fix status (show, don\'t tell)</li><li>Acknowledge the 2 unanswered emails directly</li><li>Plant the renewal conversation — offer expanded scope</li></ol><em style="color:#667">Same 6-word prompt. The system connected meetings, emails, CRM, and learned preferences.</em>' },
+      { tier: 'agentic', label: 'Agentic',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','proactive','delegation','calendar_agent'], outputNodes: ['responses','automation','intelligence','autonomous'],
+        badge: 'agentic', badgeText: '+ Proactive + Delegation + Calendar',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'/prep skill'},{id:'ingestion',tier:'intermediate',text:'Transcript'},{id:'memory',tier:'advanced',text:'5 meetings indexed'},{id:'learning',tier:'advanced',text:'Directness preference'},{id:'connections',tier:'advanced',text:'CRM flag'},{id:'proactive',tier:'agentic',text:'Agenda sent to Dr. Rivera'},{id:'calendar_agent',tier:'agentic',text:'9:45am prep block placed'}],
+        response: '<strong>Full intelligence briefing</strong> (same as Advanced)<br><br>...plus <span class="highlight highlight-agt">actions already taken:</span><br><br><ul><li><span class="highlight highlight-agt">Sent Dr. Rivera a meeting agenda</span> with the 3 discussion items (portal fix, timeline, custom module demo). Sent 2 hours ago.</li><li><span class="highlight highlight-agt">Placed a 15-min prep block</span> on your calendar at 9:45am before the 10am call — with the briefing linked in the description.</li><li>Flagged the 2 unanswered emails in your pending responses with <span class="highlight highlight-agt">priority: respond before call</span>.</li></ul><em style="color:#667">You didn\'t ask for any of this. The system anticipated the need and acted. The meeting is already set up for success.</em>' }
+    ]
+  },
+  {
+    id: 'followup',
+    label: 'Follow-up',
+    icon: '📋',
+    prompt: 'Follow up with Riverside from Tuesday',
+    stages: [
+      { tier: 'none', label: 'No System', nodes: [], outputNodes: [],
+        badge: 'none', badgeText: 'Raw LLM', trace: [],
+        response: '<span class="generic">I can help you write a follow-up, but I need more details:<br><br><strong>Who is "Riverside"?</strong> — I don\'t have a contact list<br><strong>What happened Tuesday?</strong> — I wasn\'t in that meeting<br><strong>What was discussed?</strong> — I have no transcript or notes<br><strong>What are the next steps?</strong> — You\'ll need to tell me<br><br>Can you share the meeting notes or key points you want to address?</span><br><br><em style="color:#445566">Same pattern: you do the remembering, the searching, the context-building. The LLM just formats.</em>' },
+      { tier: 'basic', label: 'Basic',
+        nodes: ['identity','knowledge'], outputNodes: ['responses'],
+        badge: 'basic', badgeText: 'Identity + Knowledge',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md → Alex, VP Operations'},{id:'knowledge',tier:'basic',text:'people.md → Dr. Rivera, Riverside Dental, HubSpot'}],
+        response: 'Hi Dr. Rivera,<br><br>Following up from our meeting Tuesday on the <span class="highlight">Riverside Dental HubSpot migration</span>.<br><br>Wanted to touch base on the items we discussed and confirm next steps.<br><br>Best,<br>Alex<br><br><em style="color:#667">Knows the person and project, but not what was actually discussed.</em>' },
+      { tier: 'intermediate', label: 'Intermediate',
+        nodes: ['identity','knowledge','skills','ingestion'], outputNodes: ['responses','automation'],
+        badge: 'intermediate', badgeText: '+ Skills + Transcripts',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'Follow-up skill'},{id:'ingestion',tier:'intermediate',text:'Tuesday transcript parsed'}],
+        response: 'Dr. Rivera,<br><br>Following up from Tuesday. Three items:<br><br><ol><li><span class="highlight highlight-int">Portal integration</span> — our team identified the API conflict. Fix deployed Thursday. QA link attached.</li><li><span class="highlight highlight-int">Patient portal timeline</span> — revised schedule has soft launch Feb 28.</li><li><span class="highlight highlight-int">Custom module</span> — demo environment ready for your review.</li></ol>Let me know if you want to walk through any of these before our next call.<br><br>Alex<br><br><em style="color:#667">Extracted the specific action items from Tuesday\'s transcript. Precise, not generic.</em>' },
+      { tier: 'advanced', label: 'Advanced',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections'], outputNodes: ['responses','automation','intelligence'],
+        badge: 'advanced', badgeText: '+ Memory + Learning + Intel',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'Follow-up skill'},{id:'ingestion',tier:'intermediate',text:'Transcript'},{id:'memory',tier:'advanced',text:'Email history: 2 unanswered'},{id:'learning',tier:'advanced',text:'Prefers directness, short emails'},{id:'connections',tier:'advanced',text:'CRM: renewal Feb 15'}],
+        response: 'Dr. Rivera,<br><br>Quick update on the three items from Tuesday:<br><br><ol><li><strong>Portal integration:</strong> Fixed. QA link: [link]. <span class="highlight highlight-adv">This resolves the issue you flagged on Oct 15.</span></li><li><strong>Timeline:</strong> Soft launch Feb 28. Full doc attached.</li><li><strong>Custom module:</strong> Demo ready — same link as before.</li></ol><span class="highlight highlight-adv">Also wanted to flag: your contract renewal is coming up mid-February.</span> Happy to discuss expanded scope if the portal launch goes well.<br><br>Alex<br><br><em style="color:#667">Short and direct (learned preference). Cross-referenced email gaps, CRM renewal, and 3-month history. 6 words in, full intelligence out.</em>' },
+      { tier: 'agentic', label: 'Agentic',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','proactive','delegation','calendar_agent'], outputNodes: ['responses','automation','intelligence','autonomous'],
+        badge: 'agentic', badgeText: '+ Proactive + Delegation + Calendar',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'people.md'},{id:'skills',tier:'intermediate',text:'Follow-up skill'},{id:'ingestion',tier:'intermediate',text:'Transcript'},{id:'memory',tier:'advanced',text:'Email history'},{id:'learning',tier:'advanced',text:'Directness preference'},{id:'connections',tier:'advanced',text:'CRM renewal'},{id:'proactive',tier:'agentic',text:'Email auto-sent'},{id:'delegation',tier:'agentic',text:'Jira ticket created'},{id:'calendar_agent',tier:'agentic',text:'Check-in scheduled'}],
+        response: '<span class="highlight highlight-agt">Email sent to Dr. Rivera</span> 2 hours after the meeting (within the follow-up window).<br><br>Same content as Advanced — short, direct, 3 items with renewal flag.<br><br><strong>Additional actions taken:</strong><ul><li><span class="highlight highlight-agt">Created a Jira ticket</span> for the portal fix — assigned to dev team with QA link and Feb 28 deadline.</li><li><span class="highlight highlight-agt">Scheduled a check-in</span> for next Tuesday at the same time slot — calendar invite sent to both parties.</li><li>Added "Renewal conversation" to your <span class="highlight highlight-agt">prep notes for the next Riverside call</span>.</li></ul><em style="color:#667">The follow-up didn\'t just get written — it got sent, tracked, and the next steps were already scheduled. Zero manual overhead.</em>' }
+    ]
+  },
+  {
+    id: 'morning',
+    label: 'Morning',
+    icon: '☀️',
+    prompt: 'What should I focus on today?',
+    stages: [
+      { tier: 'none', label: 'No System', nodes: [], outputNodes: [],
+        badge: 'none', badgeText: 'Raw LLM', trace: [],
+        response: '<span class="generic">I\'d love to help you plan your day! But I need to know:<br><br><strong>I can\'t see your calendar</strong> — what meetings do you have?<br><strong>I don\'t know your priorities</strong> — what projects are you working on?<br><strong>I have no task list</strong> — what\'s overdue or urgent?<br><strong>I don\'t know your role</strong> — what does your typical day look like?<br><br>Share your schedule and I can help you prioritize.</span><br><br><em style="color:#445566">Without context, you ARE the system. Every morning, starting from scratch.</em>' },
+      { tier: 'basic', label: 'Basic',
+        nodes: ['identity','knowledge'], outputNodes: ['responses'],
+        badge: 'basic', badgeText: 'Identity + Knowledge',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md → 70% Primary Corp, 20% Side Business, 10% Personal'},{id:'knowledge',tier:'basic',text:'priorities.md → Q1 goals, team context'}],
+        response: 'Based on your domains:<br><br><strong>Acme Corp (70%):</strong> Operations plan execution is your Q1 priority. Board meeting prep coming up.<br><br><strong>Side Business (20%):</strong> Marketplace submission is the target.<br><br><strong>Personal (10%):</strong> Relationship maintenance and invoicing.<br><br><em style="color:#667">Knows your world, but not your specific calendar or task state.</em>' },
+      { tier: 'intermediate', label: 'Intermediate',
+        nodes: ['identity','knowledge','skills','ingestion'], outputNodes: ['responses','structure','automation'],
+        badge: 'intermediate', badgeText: '+ Skills + Routines',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'priorities.md'},{id:'skills',tier:'intermediate',text:'/morning skill fires'},{id:'ingestion',tier:'intermediate',text:'Calendar + tasks loaded'}],
+        response: '<strong>/morning dashboard:</strong><br><br><span class="highlight highlight-int">3 meetings today</span> — Jordan 1:1 (10am), Team standup (2pm), Riverside call (4pm)<br><br><strong>Urgent tasks (5):</strong><ul><li>Send revised timeline to Dr. Rivera (overdue)</li><li>Review David\'s demand gen report (due today)</li><li>Approve Sarah\'s content calendar (blocking her)</li></ul><strong>Pending responses (2):</strong><ul><li>Jordan — budget reallocation question</li><li>Dr. Rivera — 2 unanswered emails</li></ul><em style="color:#667">Your actual day. Calendar, tasks, pending responses — one command.</em>' },
+      { tier: 'advanced', label: 'Advanced',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','intelligence'], outputNodes: ['responses','structure','automation','intelligence','compounding'],
+        badge: 'advanced', badgeText: '+ Memory + Signals + Intel',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'priorities.md'},{id:'skills',tier:'intermediate',text:'/morning'},{id:'ingestion',tier:'intermediate',text:'Calendar + tasks'},{id:'memory',tier:'advanced',text:'Meeting patterns analyzed'},{id:'learning',tier:'advanced',text:'Domain allocation tracked'},{id:'intelligence',tier:'advanced',text:'Signals detected'}],
+        response: '<strong>Full intelligence briefing:</strong><br><br>3 meetings, 5 urgent tasks, 2 pending responses.<br><br><strong>Signals detected:</strong><ul><li><span class="highlight highlight-adv">Relationship gap: Sarah</span> — no 1:1 in 16 days. She\'s blocked on content calendar. Schedule this week.</li><li><span class="highlight highlight-adv">Domain drift:</span> Primary Corp at 52% this week (target: 70%). Side business consuming more time than allocated.</li><li><span class="highlight highlight-adv">Stale thread:</span> "Budget reallocation" discussed in 4 meetings, no resolution. Jordan expects an answer today.</li></ul><strong>Recommended priority order:</strong><ol><li>Prep for Jordan 1:1 — budget question is overdue and escalating</li><li>Approve Sarah\'s calendar — unblocks her team</li><li>Riverside call prep — renewal conversation opportunity</li></ol><em style="color:#667">Relationship gaps, domain drift, escalation patterns. Dots connected across 6 months of meetings, tasks, and signals.</em>' },
+      { tier: 'agentic', label: 'Agentic',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','intelligence','proactive','delegation','calendar_agent','autonomous'], outputNodes: ['responses','structure','automation','intelligence','compounding','autonomous'],
+        badge: 'agentic', badgeText: '+ Proactive + Calendar + Autonomous',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'priorities.md'},{id:'skills',tier:'intermediate',text:'/morning'},{id:'ingestion',tier:'intermediate',text:'Calendar + tasks'},{id:'memory',tier:'advanced',text:'Patterns analyzed'},{id:'intelligence',tier:'advanced',text:'Signals detected'},{id:'calendar_agent',tier:'agentic',text:'Deep work block placed'},{id:'proactive',tier:'agentic',text:'Sarah reminder sent'},{id:'delegation',tier:'agentic',text:'Follow-ups tracked'}],
+        response: '<strong>Full intelligence briefing</strong> (same as Advanced)<br><br>...plus <span class="highlight highlight-agt">actions already taken this morning:</span><br><br><ul><li>Scanned your calendar — found a <span class="highlight highlight-agt">2-hour gap at 1-3pm</span>. Based on the budget review being overdue (flagged 3 days ago), placed a calendar hold: <span class="highlight highlight-agt">"Deep Work: Budget Review"</span> with the task context in the description.</li><li><span class="highlight highlight-agt">Sent Sarah a reminder</span> about the content draft due Thursday — framed as "Alex will review your calendar today, wanted to give you a heads up."</li><li>Queued the Riverside prep briefing to <span class="highlight highlight-agt">auto-deliver at 3:30pm</span> (30 min before the 4pm call).</li></ul><em style="color:#667">Your morning didn\'t start with "What should I focus on?" — it started with everything already in motion. The system is working while you sleep.</em>' }
+    ]
+  },
+  {
+    id: 'custom',
+    label: 'Custom Prompt',
+    icon: '✏️',
+    prompt: '',
+    isCustom: true,
+    stages: [
+      { tier: 'none', label: 'No System', nodes: [], outputNodes: [],
+        badge: 'none', badgeText: 'Raw LLM', trace: [],
+        response: '<span class="generic">Without any context, the AI asks you to provide everything: who you are, what you\'re working on, who\'s involved, what happened before.<br><br><strong>You become the database.</strong> Every interaction starts from zero.</span>' },
+      { tier: 'basic', label: 'Basic',
+        nodes: ['identity','knowledge'], outputNodes: ['responses'],
+        badge: 'basic', badgeText: 'Identity + Knowledge',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md → Identity loaded'},{id:'knowledge',tier:'basic',text:'Context files → People & priorities'}],
+        response: 'With <span class="highlight">identity and knowledge files</span>, the system knows who you are, your role, your team, and your priorities.<br><br>Your prompt gets matched to the right context automatically. No pasting, no explaining.<br><br><em style="color:#667">Two files. Immediate transformation.</em>' },
+      { tier: 'intermediate', label: 'Intermediate',
+        nodes: ['identity','knowledge','skills','ingestion'], outputNodes: ['responses','automation','structure'],
+        badge: 'intermediate', badgeText: '+ Skills + Ingestion',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'Context files'},{id:'skills',tier:'intermediate',text:'Skill recipes triggered'},{id:'ingestion',tier:'intermediate',text:'Meeting data loaded'}],
+        response: 'Skills transform your prompt into a <span class="highlight highlight-int">repeatable workflow</span>. Meeting transcripts and data ingestion provide the raw material.<br><br>The system doesn\'t just answer — it <span class="highlight highlight-int">pulls from your actual meetings, tasks, and routines</span> to build a complete response.<br><br><em style="color:#667">From "help me" to automated intelligence.</em>' },
+      { tier: 'advanced', label: 'Advanced',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','intelligence'], outputNodes: ['responses','automation','structure','intelligence','compounding'],
+        badge: 'advanced', badgeText: '+ Memory + Learning + Intel',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'Context files'},{id:'skills',tier:'intermediate',text:'Skills'},{id:'ingestion',tier:'intermediate',text:'Data ingestion'},{id:'memory',tier:'advanced',text:'Semantic search across all meetings'},{id:'learning',tier:'advanced',text:'Learned preferences applied'},{id:'intelligence',tier:'advanced',text:'Cross-source signals detected'}],
+        response: 'The full system cross-references <span class="highlight highlight-adv">semantic memory, learned preferences, and live connections</span> to build a complete intelligence picture.<br><br>Patterns detected across months of data. Relationships tracked. Escalations flagged before they become problems.<br><br><em style="color:#667">The system compounds. Every day it knows more than the day before.</em>' },
+      { tier: 'agentic', label: 'Agentic',
+        nodes: ['identity','knowledge','skills','ingestion','memory','learning','connections','intelligence','proactive','delegation','calendar_agent','autonomous'], outputNodes: ['responses','automation','structure','intelligence','compounding','autonomous'],
+        badge: 'agentic', badgeText: '+ Proactive + Autonomous',
+        trace: [{id:'identity',tier:'basic',text:'CLAUDE.md'},{id:'knowledge',tier:'basic',text:'Context files'},{id:'skills',tier:'intermediate',text:'Skills'},{id:'ingestion',tier:'intermediate',text:'Data ingestion'},{id:'memory',tier:'advanced',text:'Semantic memory'},{id:'intelligence',tier:'advanced',text:'Cross-source intel'},{id:'proactive',tier:'agentic',text:'Actions taken proactively'},{id:'delegation',tier:'agentic',text:'Tasks delegated & tracked'},{id:'calendar_agent',tier:'agentic',text:'Calendar optimized'}],
+        response: 'The agentic layer doesn\'t wait for your prompt. It <span class="highlight highlight-agt">anticipates, acts, and follows through</span> autonomously.<br><br>Calendar blocks placed. Emails sent. Tickets created. Follow-ups scheduled. All based on <span class="highlight highlight-agt">high-confidence decisions</span> from the full context stack.<br><br><em style="color:#667">The best chief of staff doesn\'t wait to be asked.</em>' }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════
+// DEMO CONTROLLER
+// ═══════════════════════════════════════
+let demoActive = false;
+let currentScenario = null;
+let currentStage = -1;
+let autoPlayTimer = null;
+
+let panelMode = 'demo'; // 'demo' or 'builder'
+
+function setPanelMode(mode) {
+  panelMode = mode;
+  document.querySelectorAll('.builder-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  const demoContent = document.querySelector('.demo-content');
+  const builderContent = document.getElementById('builderContent');
+  const label = document.getElementById('panelToggleLabel');
+  if (mode === 'demo') {
+    demoContent.style.display = '';
+    builderContent.classList.remove('active');
+    document.documentElement.style.setProperty('--panel-content-height', '360px');
+    label.textContent = 'Interactive Demo \u2014 See the Transformation';
+  } else {
+    demoContent.style.display = 'none';
+    builderContent.classList.add('active');
+    document.documentElement.style.setProperty('--panel-content-height', '480px');
+    label.textContent = 'Build Your COS \u2014 Generate Your CLAUDE.md';
+    if (!builderInitialized) initBuilder();
+  }
+  // Open panel if not already open
+  const panel = document.getElementById('demoPanel');
+  if (!panel.classList.contains('open')) {
+    panel.classList.add('open');
+    document.getElementById('mainArea').classList.add('demo-open');
+  }
+}
+
+function togglePanel() {
+  const panel = document.getElementById('demoPanel');
+  const main = document.getElementById('mainArea');
+  panel.classList.toggle('open');
+  main.classList.toggle('demo-open');
+  if (panel.classList.contains('open')) {
+    // Panel opening — if there's a pending result, auto-apply it
+    if (pendingGenerationResult && panelMode === 'demo') {
+      openPendingGeneration();
+    }
+  } else {
+    // Panel closing — don't exit demo if generation is in-flight
+    if (panelMode === 'demo' && !generationInFlight) exitDemo();
+  }
+}
+
+// Legacy compatibility
+function toggleDemo() { togglePanel(); }
+
+// Scenario line icons for frost theme (24x24 viewBox paths)
+const SCENARIO_LINE_ICONS = {
+  prep: 'M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z M16 2v4 M8 2v4 M3 10h18',
+  followup: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 012-2h2a2 2 0 012 2v0a2 2 0 01-2 2h-2a2 2 0 01-2-2z M9 12h6 M9 16h6',
+  morning: 'M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M6.34 17.66l-1.41 1.41 M19.07 4.93l-1.41 1.41 M12 6a6 6 0 100 12 6 6 0 000-12z',
+  custom: 'M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z',
+};
+
+// Build scenario cards
+const SCENARIO_HINTS = {
+  prep: 'See how context transforms a meeting brief',
+  followup: 'Watch a follow-up email get smarter',
+  morning: 'From blank slate to full intelligence',
+  custom: 'Try your own prompt across all 5 tiers'
+};
+const scenDiv = document.getElementById('demoScenarios');
+SCENARIOS.forEach(s => {
+  const btn = document.createElement('button');
+  btn.className = 'demo-scenario-btn';
+  const lineIconPath = SCENARIO_LINE_ICONS[s.id] || '';
+  const lineIconSVG = lineIconPath ? `<svg class="demo-line-icon" viewBox="0 0 24 24"><path d="${lineIconPath}"/></svg>` : '';
+  btn.innerHTML = `<span class="scen-icon"><span class="demo-emoji">${s.icon}</span>${lineIconSVG}</span><span class="scen-label">${s.label}</span><span class="scen-hint">${SCENARIO_HINTS[s.id] || ''}</span>`;
+  btn.dataset.scenario = s.id;
+  btn.onclick = () => startScenario(s.id);
+  scenDiv.appendChild(btn);
+});
+
+function startScenario(id) {
+  stopAutoPlay();
+  currentScenario = SCENARIOS.find(s => s.id === id);
+  currentStage = -1;
+  demoActive = true;
+
+  // Update tabs
+  document.querySelectorAll('.demo-scenario-btn').forEach(b => b.classList.toggle('active', b.dataset.scenario === id));
+
+  // Show prompt or custom input
+  const promptEl = document.getElementById('demoPrompt');
+  if (currentScenario.isCustom) {
+    promptEl.innerHTML = `<div class="custom-prompt-wrap">
+      <textarea class="demo-custom-input" id="customPromptInput" rows="2" placeholder="Type any prompt... e.g. &quot;Draft a performance review for my direct report&quot;" disabled>${currentScenario.prompt}</textarea>
+      <button class="custom-generate-btn" id="customGenerateBtn" disabled style="opacity:0.5;cursor:not-allowed">
+        Custom Generation Disabled
+      </button>
+      <div class="api-key-status" style="font-size:11px;color:#778899;margin-top:6px;">
+        Direct API calls removed — use a Claude Code session for custom prompts
+      </div>
+    </div>`;
+  } else {
+    promptEl.innerHTML = `<span class="prompt-prefix">&gt;</span> ${currentScenario.prompt}`;
+  }
+
+  // Build stage dots
+  buildStageDots();
+  buildActiveComponents();
+
+  // Enable nav
+  document.getElementById('btnNext').disabled = false;
+  document.getElementById('btnPrev').disabled = true;
+
+  // Enter demo mode on diagram
+  svg.classList.add('demo-mode');
+
+  // Start at stage 0
+  demoStep(1);
+}
+
+const DOT_LABELS = ['No System', 'Basic', 'Intermediate', 'Advanced', 'Agentic'];
+function buildStageDots() {
+  const bar = document.getElementById('demoStageBar');
+  bar.innerHTML = '';
+  currentScenario.stages.forEach((s, i) => {
+    if (i > 0) {
+      const conn = document.createElement('div');
+      conn.className = 'demo-stage-connector';
+      conn.dataset.idx = i;
+      bar.appendChild(conn);
+    }
+    const wrap = document.createElement('div');
+    wrap.className = 'demo-stage-dot-wrap';
+    const dot = document.createElement('div');
+    dot.className = `demo-stage-dot s-${s.tier}`;
+    dot.textContent = i;
+    dot.dataset.idx = i;
+    dot.onclick = () => { stopAutoPlay(); goToStage(i); };
+    wrap.appendChild(dot);
+    const label = document.createElement('div');
+    label.className = 'dot-label';
+    label.dataset.idx = i;
+    label.textContent = DOT_LABELS[i] || s.label;
+    wrap.appendChild(label);
+    bar.appendChild(wrap);
+  });
+}
+
+function buildActiveComponents() {
+  const list = document.getElementById('acList');
+  list.innerHTML = '';
+  // Get unique nodes from all stages in this scenario
+  const allNodeIds = new Set();
+  currentScenario.stages.forEach(s => {
+    [...s.nodes, ...s.outputNodes].forEach(nid => allNodeIds.add(nid));
+  });
+  allNodeIds.forEach(nid => {
+    const n = NODES.find(nd => nd.id === nid);
+    if (!n) return;
+    const item = document.createElement('div');
+    item.className = `ac-item ac-${n.tier}`;
+    item.dataset.nodeId = nid;
+    const lineIcon = LINE_ICONS[nid] ? `<svg class="demo-line-icon" viewBox="0 0 24 24"><path d="${LINE_ICONS[nid]}"/></svg>` : '';
+    item.innerHTML = `<div class="ac-check">✓</div><span><span class="demo-emoji">${n.icon}</span>${lineIcon} ${n.name}</span>`;
+    list.appendChild(item);
+  });
+}
+
+function updateActiveComponents(stage) {
+  const activeNodes = new Set([...stage.nodes, ...stage.outputNodes]);
+  document.querySelectorAll('.ac-item').forEach(item => {
+    const nid = item.dataset.nodeId;
+    const isActive = activeNodes.has(nid);
+    item.classList.toggle('ac-active', isActive);
+  });
+}
+
+function goToStage(idx) {
+  if (!currentScenario) return;
+  currentStage = idx;
+  renderStage();
+}
+
+function demoStep(dir) {
+  if (!currentScenario) return;
+  const next = currentStage + dir;
+  if (next < 0 || next >= currentScenario.stages.length) return;
+  currentStage = next;
+  renderStage();
+}
+
+function renderStage() {
+  const stage = currentScenario.stages[currentStage];
+
+  // Nav buttons
+  document.getElementById('btnPrev').disabled = currentStage <= 0;
+  document.getElementById('btnNext').disabled = currentStage >= currentScenario.stages.length - 1;
+
+  // Stage dots
+  document.querySelectorAll('.demo-stage-dot').forEach(d => {
+    const i = parseInt(d.dataset.idx);
+    d.classList.toggle('current', i === currentStage);
+    d.classList.toggle('reached', i < currentStage);
+  });
+  document.querySelectorAll('.demo-stage-connector').forEach(c => {
+    c.classList.toggle('reached', parseInt(c.dataset.idx) <= currentStage);
+  });
+  document.querySelectorAll('.dot-label').forEach(l => {
+    l.classList.toggle('active', parseInt(l.dataset.idx) === currentStage);
+  });
+
+  // Stage label
+  const labelEl = document.getElementById('demoStageLabel');
+  labelEl.textContent = `Stage ${currentStage}: ${stage.label}`;
+  labelEl.classList.toggle('active', currentStage > 0);
+
+  // Highlight nodes on diagram
+  highlightNodes(stage);
+
+  // Update active components checklist
+  updateActiveComponents(stage);
+
+  // Render response
+  renderResponse(stage);
+}
+
+function highlightNodes(stage) {
+  // Clear all
+  document.querySelectorAll('.node').forEach(n => { n.classList.remove('node-active','node-visited'); });
+  document.querySelectorAll('.spoke').forEach(s => { s.classList.remove('spoke-active','spoke-visited'); });
+  document.querySelectorAll('.ring').forEach(r => { r.classList.remove('ring-active','ring-visited'); });
+
+  if (stage.tier === 'none') return;
+
+  // Determine which tiers are active vs visited
+  const tierOrder = ['basic','intermediate','advanced','agentic'];
+  const currentTierIdx = tierOrder.indexOf(stage.tier);
+
+  // Mark rings
+  tierOrder.forEach((t, i) => {
+    const ringEl = document.querySelector(`.ring-${t}`);
+    if (i === currentTierIdx) ringEl.classList.add('ring-active');
+    else if (i < currentTierIdx) ringEl.classList.add('ring-visited');
+  });
+
+  // Mark nodes
+  const allNodes = [...stage.nodes, ...stage.outputNodes];
+  allNodes.forEach(nid => {
+    const nEl = nodeEls[nid];
+    if (!nEl) return;
+    const nData = NODES.find(n => n.id === nid);
+    const nTier = nData ? nData.tier : '';
+    const nTierIdx = tierOrder.indexOf(nTier);
+
+    if (nTierIdx === currentTierIdx) {
+      nEl.classList.add('node-active');
+    } else if (nTierIdx < currentTierIdx) {
+      nEl.classList.add('node-visited');
+    }
+
+    // Spokes
+    const sEl = spokeEls[nid];
+    if (sEl) {
+      if (nTierIdx === currentTierIdx) sEl.classList.add('spoke-active');
+      else if (nTierIdx < currentTierIdx) sEl.classList.add('spoke-visited');
+    }
+  });
+}
+
+function renderResponse(stage) {
+  const area = document.getElementById('demoResponse');
+  // Build trace tags
+  let traceHTML = '';
+  if (stage.trace.length) {
+    traceHTML = '<div class="demo-components-trace">';
+    stage.trace.forEach(t => {
+      traceHTML += `<span class="demo-trace-tag ${t.tier}">${t.text}</span>`;
+    });
+    traceHTML += '</div>';
+  }
+
+  area.innerHTML = `
+    <div class="demo-response-header">
+      <div class="demo-response-badge ${stage.badge}">${stage.badgeText}</div>
+      <div class="demo-response-title">AI Response</div>
+    </div>
+    ${traceHTML}
+    <div class="demo-response-text">${stage.response}</div>
+  `;
+}
+
+// ═══════════════════════════════════════
+// AUTO-PLAY
+// ═══════════════════════════════════════
+function toggleAutoPlay() {
+  if (autoPlayTimer) {
+    stopAutoPlay();
+  } else {
+    startAutoPlay();
+  }
+}
+
+function startAutoPlay() {
+  if (!currentScenario) return;
+  const btn = document.getElementById('btnPlay');
+  btn.innerHTML = '&#9646;&#9646;'; // pause icon
+  btn.classList.add('playing');
+
+  autoPlayTimer = setInterval(() => {
+    if (currentStage >= currentScenario.stages.length - 1) {
+      stopAutoPlay();
+      return;
+    }
+    demoStep(1);
+  }, 3000);
+}
+
+function stopAutoPlay() {
+  if (autoPlayTimer) {
+    clearInterval(autoPlayTimer);
+    autoPlayTimer = null;
+  }
+  const btn = document.getElementById('btnPlay');
+  btn.innerHTML = '&#9654;'; // play icon
+  btn.classList.remove('playing');
+}
+
+function exitDemo() {
+  stopAutoPlay();
+  demoActive = false;
+  currentScenario = null;
+  currentStage = -1;
+  svg.classList.remove('demo-mode');
+  document.querySelectorAll('.node').forEach(n => { n.classList.remove('node-active','node-visited'); });
+  document.querySelectorAll('.spoke').forEach(s => { s.classList.remove('spoke-active','spoke-visited'); });
+  document.querySelectorAll('.ring').forEach(r => { r.classList.remove('ring-active','ring-visited'); });
+  document.querySelectorAll('.demo-scenario-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('demoResponse').innerHTML = '<div style="color:#445566;font-size:12px;padding-top:40px;text-align:center;">Select a scenario to see how context transforms AI output</div>';
+  document.getElementById('demoStageLabel').textContent = 'Click a scenario above to start';
+  document.getElementById('btnNext').disabled = true;
+  document.getElementById('btnPrev').disabled = true;
+  document.getElementById('acList').innerHTML = '';
+}
+
+// ═══════════════════════════════════════
+// API KEY MANAGEMENT — DISABLED
+// ═══════════════════════════════════════
+
+function resolveApiKey() { return null; }
+function openApiKeyModal() { /* removed */ }
+function closeApiKeyModal() { /* removed */ }
+}
+
+function saveApiKey() { /* removed */ }
+
+// ═══════════════════════════════════════
+// CUSTOM PROMPT — LLM GENERATION (DISABLED)
+// ═══════════════════════════════════════
+
+let generationInFlight = false;
+let pendingGenerationResult = null;
+
+function generateCustomScenario() {
+  const respArea = document.getElementById('demoResponse');
+  if (respArea) {
+    respArea.innerHTML = `<div style="color:#d4a050;font-size:12px;padding:20px;">
+      <strong>Custom generation disabled</strong><br><br>
+      <span style="color:#778899">Direct API calls have been removed to prevent unnecessary charges.<br>
+      To generate custom scenario content, use a Claude Code session with the philosophy diagram context.</span>
+    </div>`;
+  }
+}
+
+function showGenReadyBadge(prompt) {
+  // Remove any existing badge
+  const existing = document.getElementById('genReadyBadge');
+  if (existing) existing.remove();
+
+  const badge = document.createElement('div');
+  badge.className = 'gen-ready-badge';
+  badge.id = 'genReadyBadge';
+  const truncPrompt = prompt.length > 50 ? prompt.slice(0, 47) + '...' : prompt;
+  badge.innerHTML = `
+    <button class="gen-badge-dismiss" onclick="event.stopPropagation();dismissGenBadge()">&times;</button>
+    <div class="gen-badge-title">Scenario Ready</div>
+    <div class="gen-badge-desc">"${escHtml(truncPrompt)}" — click to view all 5 stages</div>
+  `;
+  badge.onclick = () => openPendingGeneration();
+  document.body.appendChild(badge);
+}
+
+function dismissGenBadge() {
+  const badge = document.getElementById('genReadyBadge');
+  if (badge) badge.remove();
+}
+
+function openPendingGeneration() {
+  dismissGenBadge();
+  if (!pendingGenerationResult) return;
+
+  // Inject stored results into the custom scenario
+  const customScen = SCENARIOS.find(s => s.id === 'custom');
+  pendingGenerationResult.stages.forEach((s, i) => {
+    if (customScen.stages[i]) {
+      customScen.stages[i].response = s.response;
+    }
+  });
+  customScen.prompt = pendingGenerationResult.prompt;
+  pendingGenerationResult = null;
+
+  // Open panel in demo mode and show the custom scenario
+  setPanelMode('demo');
+  startScenario('custom');
+  // Switch generate button to "Regenerate"
+  const btn = document.getElementById('customGenerateBtn');
+  if (btn) {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    btn.innerHTML = 'Regenerate';
+  }
+  currentStage = 0;
+  renderStage();
+}
+
+// ── Cursor ambient light — refined spotlight ──
+(function() {
+  const area = document.getElementById('diagramArea');
+  if (!area) return;
+  const orb = document.createElement('div');
+  orb.style.cssText = 'position:absolute;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:0;' +
+    'background:radial-gradient(circle,rgba(79,195,247,0.04) 0%,rgba(79,195,247,0.02) 30%,rgba(79,195,247,0.005) 60%,transparent 80%);' +
+    'transform:translate(-50%,-50%);opacity:0;will-change:left,top,opacity;';
+  area.appendChild(orb);
+  let tx = 0, ty = 0, cx = 0, cy = 0, active = false, raf;
+  function lerp() {
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    orb.style.left = cx + 'px';
+    orb.style.top = cy + 'px';
+    if (active && (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5)) {
+      raf = requestAnimationFrame(lerp);
+    }
+  }
+  area.addEventListener('mousemove', e => {
+    const r = area.getBoundingClientRect();
+    tx = e.clientX - r.left;
+    ty = e.clientY - r.top;
+    if (!active) { cx = tx; cy = ty; active = true; orb.style.opacity = '1'; }
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(lerp);
+  });
+  area.addEventListener('mouseleave', () => { active = false; orb.style.opacity = '0'; });
+})();
+
+// ══════════════════════════════════════════════
+// PHILOSOPHY OVERLAY
+// ══════════════════════════════════════════════
+
+function dismissPhilosophy() {
+  const overlay = document.getElementById('philosophyOverlay');
+  if (overlay && !overlay.classList.contains('dismissed')) {
+    overlay.classList.add('dismissed');
+    // Also trigger the diagram's entry animation
+    document.querySelectorAll('.node').forEach((n, i) => {
+      n.style.transition = 'opacity 0.5s ease ' + (i * 0.04) + 's';
+      n.style.opacity = '1';
+    });
+  }
+}
+// Auto-dismiss after 6 seconds if user hasn't clicked
+setTimeout(() => dismissPhilosophy(), 8000);
+// Keyboard dismiss
+document.addEventListener('keydown', function philKey(e) {
+  dismissPhilosophy();
+  document.removeEventListener('keydown', philKey);
+});
+
+// ══════════════════════════════════════════════
+// COS BUILDER WIZARD
+// ══════════════════════════════════════════════
+
+let builderInitialized = false;
+const builderState = {
+  step: 0,
+  data: {
+    name: '', title: '', company: '', reportsTo: '', commStyle: '',
+    domains: [{ name: '', weight: '', focus: '' }],
+    tone: '', formats: [], doNot: '',
+    people: [],
+    primary: '', secondary: '', personal: '',
+    rules: ['weekend-protect', 'after-hours-protect', 'no-emojis'],
+    customRules: '',
+    leadName: '', leadLast: '', leadEmail: ''
+  }
+};
+const BUILDER_STEPS = 8;
+
+function initBuilder() {
+  builderInitialized = true;
+  buildBuilderProgress();
+  renderBuilderStep(0);
+  updateBuilderNav();
+}
+
+// ── Progress Bar ──
+function buildBuilderProgress() {
+  const bar = document.getElementById('builderProgress');
+  bar.innerHTML = '';
+  const labels = ['Role', 'Domains', 'Comms', 'People', 'Priorities', 'Rules', 'Preview', 'Download'];
+  for (let i = 0; i < BUILDER_STEPS; i++) {
+    if (i > 0) {
+      const conn = document.createElement('div');
+      conn.className = 'builder-step-connector';
+      conn.dataset.idx = i;
+      bar.appendChild(conn);
+    }
+    const dot = document.createElement('div');
+    dot.className = 'builder-step-dot' + (i === 0 ? ' current' : '');
+    dot.dataset.idx = i;
+    dot.textContent = i + 1;
+    dot.title = labels[i];
+    dot.onclick = () => {
+      if (i <= builderState.step || i <= getMaxReachedStep()) goToBuilderStep(i);
+    };
+    bar.appendChild(dot);
+  }
+}
+
+function getMaxReachedStep() {
+  // Allow clicking to any previously visited step
+  return builderState.step;
+}
+
+function updateBuilderProgress() {
+  document.querySelectorAll('.builder-step-dot').forEach(d => {
+    const i = parseInt(d.dataset.idx);
+    d.classList.toggle('current', i === builderState.step);
+    d.classList.toggle('reached', i < builderState.step);
+  });
+  document.querySelectorAll('.builder-step-connector').forEach(c => {
+    c.classList.toggle('reached', parseInt(c.dataset.idx) <= builderState.step);
+  });
+}
+
+function updateBuilderNav() {
+  const prev = document.getElementById('builderBtnPrev');
+  const next = document.getElementById('builderBtnNext');
+  prev.disabled = builderState.step <= 0;
+  if (builderState.step === BUILDER_STEPS - 1) {
+    next.style.display = 'none'; // Download step has its own button
+  } else if (builderState.step === BUILDER_STEPS - 2) {
+    next.style.display = '';
+    next.textContent = 'Continue to Download';
+    next.className = 'primary';
+  } else {
+    next.style.display = '';
+    next.textContent = 'Next';
+    next.className = 'primary';
+  }
+}
+
+// ── Navigation ──
+function collectStepData() {
+  const s = builderState.step;
+  const d = builderState.data;
+  if (s === 0) {
+    d.name = gv('b-name');
+    d.title = gv('b-title');
+    d.company = gv('b-company');
+    d.reportsTo = gv('b-reports-to');
+    d.commStyle = gv('b-comm-style');
+  } else if (s === 1) {
+    d.domains = [];
+    document.querySelectorAll('.builder-domain-row').forEach(row => {
+      d.domains.push({
+        name: row.querySelector('.bd-name')?.value || '',
+        weight: row.querySelector('.bd-weight')?.value || '',
+        focus: row.querySelector('.bd-focus')?.value || ''
+      });
+    });
+    if (d.domains.length === 0) d.domains = [{ name: '', weight: '', focus: '' }];
+  } else if (s === 2) {
+    d.tone = gv('b-tone');
+    d.formats = [];
+    document.querySelectorAll('.builder-checkbox.fmt-cb.checked').forEach(cb => {
+      d.formats.push(cb.dataset.value);
+    });
+    d.doNot = gv('b-do-not');
+  } else if (s === 3) {
+    d.people = [];
+    document.querySelectorAll('.builder-person-row').forEach(row => {
+      d.people.push({
+        name: row.querySelector('.bp-name')?.value || '',
+        role: row.querySelector('.bp-role')?.value || '',
+        engage: row.querySelector('.bp-engage')?.value || ''
+      });
+    });
+  } else if (s === 4) {
+    d.primary = gv('b-primary');
+    d.secondary = gv('b-secondary');
+    d.personal = gv('b-personal');
+  } else if (s === 5) {
+    d.rules = [];
+    document.querySelectorAll('.builder-checkbox.rule-cb.checked').forEach(cb => {
+      d.rules.push(cb.dataset.value);
+    });
+    d.customRules = gv('b-custom-rules');
+  } else if (s === 7) {
+    d.leadName = gv('b-lead-name');
+    d.leadLast = gv('b-lead-last');
+    d.leadEmail = gv('b-lead-email');
+  }
+}
+
+function gv(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+function validateStep(s) {
+  const d = builderState.data;
+  const errors = [];
+  if (s === 0) {
+    if (!d.name) errors.push('name');
+    if (!d.title) errors.push('title');
+    if (!d.company) errors.push('company');
+  } else if (s === 1) {
+    const hasOne = d.domains.some(dm => dm.name);
+    if (!hasOne) errors.push('domain');
+  } else if (s === 2) {
+    if (!d.tone) errors.push('tone');
+  } else if (s === 4) {
+    if (!d.primary) errors.push('primary');
+  } else if (s === 7) {
+    if (!d.leadName) errors.push('lead-name');
+    if (!d.leadLast) errors.push('lead-last');
+    if (!d.leadEmail || !d.leadEmail.includes('@')) errors.push('lead-email');
+  }
+  return errors;
+}
+
+function showValidationErrors(errors) {
+  // Clear all
+  document.querySelectorAll('.builder-field').forEach(f => f.classList.remove('has-error'));
+  errors.forEach(id => {
+    const field = document.querySelector(`[data-field="${id}"]`);
+    if (field) field.classList.add('has-error');
+  });
+}
+
+function builderNext() {
+  collectStepData();
+  if (GATE_MODE) {
+    const errors = validateStep(builderState.step);
+    if (errors.length) { showValidationErrors(errors); return; }
+  }
+  if (builderState.step < BUILDER_STEPS - 1) {
+    builderState.step++;
+    renderBuilderStep(builderState.step);
+    updateBuilderProgress();
+    updateBuilderNav();
+  }
+}
+
+function builderPrev() {
+  collectStepData();
+  if (builderState.step > 0) {
+    builderState.step--;
+    renderBuilderStep(builderState.step);
+    updateBuilderProgress();
+    updateBuilderNav();
+  }
+}
+
+function goToBuilderStep(idx) {
+  collectStepData();
+  builderState.step = idx;
+  renderBuilderStep(idx);
+  updateBuilderProgress();
+  updateBuilderNav();
+}
+
+// ── Step Renderers ──
+function renderBuilderStep(n) {
+  const area = document.getElementById('builderFormArea');
+  area.classList.remove('step-enter');
+  void area.offsetWidth; // force reflow
+  area.classList.add('step-enter');
+  const renderers = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5, renderStep6, renderStepPreview, renderStepLeadCapture];
+  area.innerHTML = renderers[n]();
+  // Restore checkbox states
+  if (n === 2) restoreFormatCheckboxes();
+  if (n === 5) restoreRuleCheckboxes();
+}
+
+function renderStep1() {
+  const d = builderState.data;
+  return `
+    <h3>Role & Identity</h3>
+    <p class="builder-step-desc">Who are you? This becomes the foundation of your CLAUDE.md — loaded every session.</p>
+    <div class="builder-field" data-field="name"><label>Your Name <span class="req">*</span></label><input id="b-name" value="${esc(d.name)}" placeholder="e.g. Jordan Park"><div class="field-error">Name is required</div></div>
+    <div class="builder-field" data-field="title"><label>Title / Role <span class="req">*</span></label><input id="b-title" value="${esc(d.title)}" placeholder="e.g. VP Marketing"><div class="field-error">Title is required</div></div>
+    <div class="builder-field" data-field="company"><label>Company <span class="req">*</span></label><input id="b-company" value="${esc(d.company)}" placeholder="e.g. Acme Corp"><div class="field-error">Company is required</div></div>
+    <div class="builder-field"><label>Reports To</label><input id="b-reports-to" value="${esc(d.reportsTo)}" placeholder="e.g. Sarah Chen (CEO)"></div>
+    <div class="builder-field"><label>Communication Style</label><textarea id="b-comm-style" rows="2" placeholder="e.g. Direct, concise. Bullets over paragraphs. No pleasantries.">${esc(d.commStyle)}</textarea></div>
+  `;
+}
+
+function renderStep2() {
+  const d = builderState.data;
+  let rows = '';
+  d.domains.forEach((dm, i) => {
+    rows += `<div class="builder-repeater-row builder-domain-row">
+      <input class="bd-name" value="${esc(dm.name)}" placeholder="Domain name">
+      <input class="bd-weight" value="${esc(dm.weight)}" placeholder="Weight (e.g. 65%)">
+      <input class="bd-focus" value="${esc(dm.focus)}" placeholder="Focus area">
+      <button class="builder-repeater-remove" onclick="removeDomain(${i})" title="Remove">&times;</button>
+    </div>`;
+  });
+  return `
+    <h3>Domain Split</h3>
+    <p class="builder-step-desc">How do you split your time? Most professionals juggle 1-4 domains. Use "Protected" as a weight for personal time.</p>
+    <div class="builder-repeater" id="domainRepeater" data-field="domain">${rows}</div>
+    <div class="builder-domain-sum" id="domainSum"></div>
+    ${d.domains.length < 4 ? '<button class="builder-repeater-add" onclick="addDomain()">+ Add Domain</button>' : ''}
+    <div class="field-error" style="display:${d.domains.some(dm=>dm.name)?'none':''}">At least one domain is required</div>
+  `;
+}
+
+function addDomain() {
+  collectStepData();
+  if (builderState.data.domains.length < 4) {
+    builderState.data.domains.push({ name: '', weight: '', focus: '' });
+    renderBuilderStep(1);
+  }
+}
+
+function removeDomain(i) {
+  collectStepData();
+  if (builderState.data.domains.length > 1) {
+    builderState.data.domains.splice(i, 1);
+    renderBuilderStep(1);
+  }
+}
+
+function renderStep3() {
+  const d = builderState.data;
+  const tones = ['Direct & concise', 'Warm & collaborative', 'Analytical & precise', 'Casual & conversational', 'Formal & executive'];
+  const opts = tones.map(t => `<option value="${t}" ${d.tone===t?'selected':''}>${t}</option>`).join('');
+  const fmts = [
+    { value: 'bullets', label: 'Bullet points' },
+    { value: 'tables', label: 'Tables' },
+    { value: 'headers', label: 'Bold headers' },
+    { value: 'short', label: 'Short sentences' },
+    { value: 'summaries', label: 'Executive summaries' },
+    { value: 'actionable', label: 'Action items first' }
+  ];
+  const fmtHTML = fmts.map(f => `<div class="builder-checkbox fmt-cb" data-value="${f.value}" onclick="toggleCB(this)">${cbBox()} ${f.label}</div>`).join('');
+  return `
+    <h3>Communication DNA</h3>
+    <p class="builder-step-desc">How should your AI Chief of Staff communicate with you?</p>
+    <div class="builder-field" data-field="tone"><label>Tone <span class="req">*</span></label><select id="b-tone"><option value="">Select a tone...</option>${opts}</select><div class="field-error">Tone is required</div></div>
+    <div class="builder-field"><label>Output Format Preferences</label></div>
+    <div class="builder-checkbox-group">${fmtHTML}</div>
+    <div class="builder-field"><label>Things to Avoid ("Do NOT...")</label><textarea id="b-do-not" rows="2" placeholder="e.g. No emojis, no long paragraphs, no formal sign-offs">${esc(d.doNot)}</textarea></div>
+  `;
+}
+
+function restoreFormatCheckboxes() {
+  builderState.data.formats.forEach(v => {
+    const cb = document.querySelector(`.fmt-cb[data-value="${v}"]`);
+    if (cb) cb.classList.add('checked');
+  });
+}
+
+function renderStep4() {
+  const d = builderState.data;
+  let rows = '';
+  d.people.forEach((p, i) => {
+    rows += `<div class="builder-repeater-row two-col builder-person-row">
+      <input class="bp-name" value="${esc(p.name)}" placeholder="Name">
+      <input class="bp-role" value="${esc(p.role)}" placeholder="Role / Relationship">
+      <button class="builder-repeater-remove" onclick="removePerson(${i})" title="Remove">&times;</button>
+      <textarea class="bp-engage" rows="1" placeholder="How to engage (e.g. Give freedom, they'll deliver)" style="grid-column:1/-1">${esc(p.engage)}</textarea>
+    </div>`;
+  });
+  return `
+    <h3>Key People</h3>
+    <p class="builder-step-desc">Who do you work with most? Direct reports, key stakeholders, regular collaborators. This is optional but powerful.</p>
+    <div class="builder-repeater" id="peopleRepeater">${rows}</div>
+    ${d.people.length < 8 ? '<button class="builder-repeater-add" onclick="addPerson()">+ Add Person</button>' : ''}
+  `;
+}
+
+function addPerson() {
+  collectStepData();
+  if (builderState.data.people.length < 8) {
+    builderState.data.people.push({ name: '', role: '', engage: '' });
+    renderBuilderStep(3);
+  }
+}
+
+function removePerson(i) {
+  collectStepData();
+  builderState.data.people.splice(i, 1);
+  renderBuilderStep(3);
+}
+
+function renderStep5() {
+  const d = builderState.data;
+  return `
+    <h3>Priorities</h3>
+    <p class="builder-step-desc">What matters most right now? This anchors every recommendation your COS makes.</p>
+    <div class="builder-field" data-field="primary"><label>Primary Priority <span class="req">*</span></label><textarea id="b-primary" rows="2" placeholder="e.g. Launch new product line by Q2, hit $2M pipeline target">${esc(d.primary)}</textarea><div class="field-error">Primary priority is required</div></div>
+    <div class="builder-field"><label>Secondary Priority</label><textarea id="b-secondary" rows="2" placeholder="e.g. Build out team, improve cross-functional collaboration">${esc(d.secondary)}</textarea></div>
+    <div class="builder-field"><label>Personal / Protected</label><textarea id="b-personal" rows="2" placeholder="e.g. Family time after 6pm, partner's graduation in December">${esc(d.personal)}</textarea></div>
+  `;
+}
+
+function renderStep6() {
+  const d = builderState.data;
+  const rules = [
+    { value: 'weekend-protect', label: 'Protect weekends from work tasks', checked: true },
+    { value: 'after-hours-protect', label: 'After-hours = personal time', checked: true },
+    { value: 'no-emojis', label: 'No emojis unless asked', checked: true },
+    { value: 'plan-first', label: 'Plan mode before building', checked: false },
+    { value: 'no-over-engineer', label: 'Avoid over-engineering', checked: false },
+    { value: 'cross-reference', label: 'Cross-reference new info', checked: false }
+  ];
+  const rulesHTML = rules.map(r => `<div class="builder-checkbox rule-cb" data-value="${r.value}" onclick="toggleCB(this)">${cbBox()} ${r.label}</div>`).join('');
+  return `
+    <h3>Boundaries & Rules</h3>
+    <p class="builder-step-desc">Set guardrails for your COS. Check the defaults that apply, add your own.</p>
+    <div class="builder-checkbox-group">${rulesHTML}</div>
+    <div class="builder-field"><label>Custom Rules</label><textarea id="b-custom-rules" rows="3" placeholder="e.g. Always check people_context before emailing. Never commit without asking.">${esc(d.customRules)}</textarea></div>
+  `;
+}
+
+function restoreRuleCheckboxes() {
+  builderState.data.rules.forEach(v => {
+    const cb = document.querySelector(`.rule-cb[data-value="${v}"]`);
+    if (cb) cb.classList.add('checked');
+  });
+}
+
+function cbBox() { return '<div class="cb-box">\u2713</div>'; }
+
+function toggleCB(el) {
+  el.classList.toggle('checked');
+}
+
+function renderStepPreview() {
+  const md = generateClaudeMd();
+  return `
+    <h3>Preview Your CLAUDE.md</h3>
+    <p class="builder-step-desc">This is your generated file. Review it, then proceed to download.</p>
+    <div class="builder-preview" id="builderPreviewContent">${escHtml(md)}</div>
+    <div class="builder-preview-actions">
+      <button style="border:1px solid rgba(212,160,80,0.2);background:rgba(212,160,80,0.08);color:#d4a050;" onclick="copyPreview()">Copy to Clipboard</button>
+    </div>
+  `;
+}
+
+function copyPreview() {
+  const md = generateClaudeMd();
+  navigator.clipboard.writeText(md).then(() => {
+    const btns = document.querySelectorAll('.builder-preview-actions button');
+    if (btns[0]) { btns[0].textContent = 'Copied!'; setTimeout(() => btns[0].textContent = 'Copy to Clipboard', 2000); }
+  });
+}
+
+function renderStepLeadCapture() {
+  const d = builderState.data;
+  return `
+    <div class="builder-lead-form">
+      <h3>Download Your CLAUDE.md</h3>
+      <p class="builder-step-desc" style="text-align:center;">Enter your details to download your personalized file.</p>
+      <div class="builder-field" data-field="lead-name"><label>First Name <span class="req">*</span></label><input id="b-lead-name" value="${esc(d.leadName)}" placeholder="Jordan" oninput="updateDownloadBtn()"><div class="field-error">First name is required</div></div>
+      <div class="builder-field" data-field="lead-last"><label>Last Name <span class="req">*</span></label><input id="b-lead-last" value="${esc(d.leadLast || '')}" placeholder="Park" oninput="updateDownloadBtn()"><div class="field-error">Last name is required</div></div>
+      <div class="builder-field" data-field="lead-email"><label>Email <span class="req">*</span></label><input id="b-lead-email" type="email" value="${esc(d.leadEmail)}" placeholder="you@company.com" oninput="updateDownloadBtn()"><div class="field-error">Valid email is required</div></div>
+      <button class="builder-download-btn" id="builderDownloadBtn" onclick="downloadBuilderClaudeMd()" disabled>Download CLAUDE.md</button>
+      <div id="builderHubspotEmbed"></div>
+      <div class="lead-privacy">Your info stays in your browser. No data is sent to any server.</div>
+    </div>
+  `;
+}
+
+function updateDownloadBtn() {
+  const name = gv('b-lead-name');
+  const last = gv('b-lead-last');
+  const email = gv('b-lead-email');
+  const btn = document.getElementById('builderDownloadBtn');
+  if (btn) btn.disabled = !(name && last && email && email.includes('@') && email.includes('.'));
+}
+
+// Also listen for name/last/email field changes
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'b-lead-name' || e.target.id === 'b-lead-last' || e.target.id === 'b-lead-email') updateDownloadBtn();
+});
+
+// ── Generation Engine ──
+function generateClaudeMd() {
+  const d = builderState.data;
+  let md = '';
+
+  // Header
+  md += `# ${d.company || 'My'} Chief of Staff (COS) Configuration\n\n`;
+  md += `## Session Start\n\n`;
+  md += `Acknowledge today's date/time before proceeding.\n\n`;
+
+  // Time rules from checked rules
+  const hasWeekend = d.rules.includes('weekend-protect');
+  const hasAfterHours = d.rules.includes('after-hours-protect');
+  if (hasWeekend || hasAfterHours) {
+    md += `**Time Rules:**\n\n`;
+    if (hasWeekend) md += `- Weekend: Don't suggest work tasks unless asked\n`;
+    if (hasAfterHours) md += `- After hours: Protected personal time\n`;
+    md += `\n`;
+  }
+
+  md += `---\n\n`;
+
+  // Identity
+  md += `## Who You're Serving\n\n`;
+  md += `### ${d.name}\n\n`;
+  md += `| Key | Value |\n| --- | --- |\n`;
+  md += `| **Role** | ${d.title} @ ${d.company} |\n`;
+  if (d.reportsTo) md += `| **Reports To** | ${d.reportsTo} |\n`;
+  md += `\n`;
+
+  if (d.commStyle) {
+    md += `**Communication Style:** ${d.commStyle}\n\n`;
+  }
+
+  // Domains
+  if (d.domains.some(dm => dm.name)) {
+    md += `---\n\n## Business Domains\n\n`;
+    md += `| Domain | Weight | Focus |\n| --- | --- | --- |\n`;
+    d.domains.forEach(dm => {
+      if (dm.name) md += `| **${dm.name}** | ${dm.weight || 'TBD'} | ${dm.focus || ''} |\n`;
+    });
+    md += `\n`;
+  }
+
+  // People
+  if (d.people.some(p => p.name)) {
+    md += `---\n\n## Key People\n\n`;
+    md += `| Person | Role | How to Engage |\n| --- | --- | --- |\n`;
+    d.people.forEach(p => {
+      if (p.name) md += `| **${p.name}** | ${p.role || ''} | ${p.engage || ''} |\n`;
+    });
+    md += `\n`;
+  }
+
+  // Priorities
+  md += `---\n\n## Priorities\n\n`;
+  md += `**Primary:** ${d.primary}\n\n`;
+  if (d.secondary) md += `**Secondary:** ${d.secondary}\n\n`;
+  if (d.personal) md += `**Personal/Protected:** ${d.personal}\n\n`;
+
+  // Output Style
+  md += `---\n\n## Output Style\n\n`;
+  if (d.tone) md += `**Tone:** ${d.tone}\n\n`;
+  if (d.formats.length) {
+    const fmtLabels = { bullets: 'Bullet points', tables: 'Tables', headers: 'Bold headers', short: 'Short sentences', summaries: 'Executive summaries', actionable: 'Action items first' };
+    md += `**Preferred formats:** ${d.formats.map(f => fmtLabels[f] || f).join(', ')}\n\n`;
+  }
+  if (d.doNot) md += `**Do NOT:** ${d.doNot}\n\n`;
+
+  // Rules
+  const ruleLabels = {
+    'weekend-protect': "Weekend: Don't suggest work tasks unless asked",
+    'after-hours-protect': 'After hours: Protected personal time',
+    'no-emojis': 'No emojis unless explicitly requested',
+    'plan-first': 'Use plan mode before building anything significant',
+    'no-over-engineer': "Avoid over-engineering \u2014 only make changes that are directly requested",
+    'cross-reference': 'Cross-reference new information against existing context'
+  };
+  const nonTimeRules = d.rules.filter(r => r !== 'weekend-protect' && r !== 'after-hours-protect');
+  if (nonTimeRules.length || d.customRules) {
+    md += `---\n\n## Working Principles\n\n`;
+    nonTimeRules.forEach(r => { md += `- ${ruleLabels[r] || r}\n`; });
+    if (d.customRules) {
+      d.customRules.split('\n').filter(l => l.trim()).forEach(line => {
+        md += `- ${line.trim()}\n`;
+      });
+    }
+    md += `\n`;
+  }
+
+  // Growth guide
+  md += `---\n\n`;
+  md += `<!-- NEXT STEPS — Your COS Growth Path\n\n`;
+  md += `Week 1 (Foundation):\n`;
+  md += `  - Create context files: people_context.md, priorities.md\n`;
+  md += `  - Add your calendar integration\n`;
+  md += `  - Start capturing meeting notes\n\n`;
+  md += `Week 2 (Operations):\n`;
+  md += `  - Build your first skill: /prep [person] for meeting briefs\n`;
+  md += `  - Add a /morning routine for daily dashboards\n`;
+  md += `  - Set up task tracking by domain\n\n`;
+  md += `Week 3-4 (Compounding):\n`;
+  md += `  - Add semantic search across meetings\n`;
+  md += `  - Build a corrections/learning pipeline\n`;
+  md += `  - Connect live tools via MCP\n\n`;
+  md += `Week 5+ (Agentic):\n`;
+  md += `  - Enable proactive actions with confidence thresholds\n`;
+  md += `  - Build delegation loops (assign, track, follow up)\n`;
+  md += `  - Add calendar agent for deep work protection\n\n`;
+  md += `Learn more: https://gotcos.com/philosophy\n`;
+  md += `-->\n`;
+
+  return md;
+}
+
+function generateQuestionSet() {
+  return `# AI Chief of Staff — Build Your CLAUDE.md
+# Complete Question Set
+
+Answer these questions to create your personalized CLAUDE.md file.
+Paste your answers into Claude Code and ask it to generate your CLAUDE.md.
+
+---
+
+## 1. Role & Identity
+
+**Your Name:**
+[Your full name]
+
+**Title / Role:**
+[e.g. VP Marketing, Head of Engineering, Founder & CEO]
+
+**Company:**
+[Your company name]
+
+**Reports To (optional):**
+[Name and title of your direct supervisor]
+
+**Communication Style:**
+[How do you prefer AI to communicate with you?
+e.g. "Direct, concise. Bullets over paragraphs. No pleasantries or emojis."]
+
+---
+
+## 2. Business Domains
+
+List 1-4 domains you split your time across.
+Use "Protected" as a weight for personal/family time.
+
+**Domain 1:**
+- Name: [e.g. Day Job]
+- Weight: [e.g. 65%]
+- Focus: [e.g. Execute marketing plan, hit pipeline targets]
+
+**Domain 2 (optional):**
+- Name:
+- Weight:
+- Focus:
+
+**Domain 3 (optional):**
+- Name:
+- Weight:
+- Focus:
+
+**Domain 4 (optional):**
+- Name:
+- Weight:
+- Focus:
+
+---
+
+## 3. Communication Preferences
+
+**Tone:** [Choose one]
+- Direct & concise
+- Warm & collaborative
+- Analytical & precise
+- Casual & conversational
+- Formal & executive
+
+**Preferred Output Formats:** [Check all that apply]
+- [ ] Bullet points
+- [ ] Tables
+- [ ] Bold headers
+- [ ] Short sentences
+- [ ] Executive summaries
+- [ ] Action items first
+
+**Things to AVOID ("Do NOT..."):**
+[e.g. No emojis, no long paragraphs, no formal sign-offs, no hedging language]
+
+---
+
+## 4. Key People (Optional)
+
+List the people you work with most. For each:
+
+**Person 1:**
+- Name:
+- Role/Relationship:
+- How to engage: [e.g. "Give intent, she improves the plan"]
+
+**Person 2:**
+- Name:
+- Role/Relationship:
+- How to engage:
+
+[Add up to 8 people]
+
+---
+
+## 5. Priorities
+
+**Primary Priority (required):**
+[What must happen this quarter? e.g. "Launch new product line by Q2, hit $2M pipeline target"]
+
+**Secondary Priority (optional):**
+[e.g. "Build out marketing team, improve cross-functional collaboration"]
+
+**Personal / Protected (optional):**
+[e.g. "Family time after 6pm, partner's graduation in December"]
+
+---
+
+## 6. Boundaries & Rules
+
+**Check the rules that apply:**
+- [x] Don't suggest work tasks on weekends unless asked
+- [x] After hours = protected personal time
+- [x] No emojis unless I ask for them
+- [ ] Always use plan mode before building anything significant
+- [ ] Avoid over-engineering — only make requested changes
+- [ ] Cross-reference new information against existing context
+
+**Custom Rules (optional):**
+[Any additional rules for your AI Chief of Staff]
+
+---
+
+## How to Use This
+
+1. Fill in your answers above
+2. Open Claude Code (or any Claude interface)
+3. Paste this completed questionnaire
+4. Ask: "Generate my CLAUDE.md from these answers"
+5. Save the output as CLAUDE.md in your project root
+
+Learn more about the AI Chief of Staff philosophy:
+https://gotcos.com/philosophy
+`;
+}
+
+// ── Downloads ──
+function triggerDownload(content, filename) {
+  const blob = new Blob([content], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function downloadQuestionSet() {
+  if (GATE_MODE) { openLeadCapture('questionSet'); return; }
+  triggerDownload(generateQuestionSet(), 'COS-Question-Set.md');
+}
+
+// ── Lead Capture Modal ──
+let leadCaptureMode = ''; // 'questionSet' or 'builderClaudeMd'
+
+function openLeadCapture(mode) {
+  leadCaptureMode = mode || 'questionSet';
+  const overlay = document.getElementById('leadCaptureOverlay');
+  const btn = document.getElementById('leadSubmitBtn');
+  const h3 = overlay.querySelector('h3');
+  // Update modal title/button based on mode
+  if (mode === 'builderClaudeMd') {
+    h3.textContent = 'Download Your CLAUDE.md';
+    btn.textContent = 'Download CLAUDE.md';
+  } else {
+    h3.textContent = 'Get Your Question Set';
+    btn.textContent = 'Download Question Set';
+  }
+  overlay.classList.remove('hidden');
+  document.getElementById('lc-first').focus();
+  updateLeadSubmit();
+}
+
+function closeLeadCapture() {
+  document.getElementById('leadCaptureOverlay').classList.add('hidden');
+}
+
+function updateLeadSubmit() {
+  const first = document.getElementById('lc-first').value.trim();
+  const last = document.getElementById('lc-last').value.trim();
+  const email = document.getElementById('lc-email').value.trim();
+  const btn = document.getElementById('leadSubmitBtn');
+  btn.disabled = !(first && last && email && email.includes('@') && email.includes('.'));
+}
+
+function submitLeadCapture() {
+  const first = document.getElementById('lc-first').value.trim();
+  const last = document.getElementById('lc-last').value.trim();
+  const email = document.getElementById('lc-email').value.trim();
+  if (!first || !last || !email) return;
+
+  // Store lead info in localStorage
+  localStorage.setItem('cos_lead', JSON.stringify({ first, last, email, ts: Date.now() }));
+
+  // Trigger download based on mode
+  if (leadCaptureMode === 'builderClaudeMd') {
+    collectStepData();
+    triggerDownload(generateClaudeMd(), 'CLAUDE.md');
+  } else {
+    triggerDownload(generateQuestionSet(), 'COS-Question-Set.md');
+  }
+
+  closeLeadCapture();
+}
+
+function downloadBuilderClaudeMd() {
+  collectStepData();
+  if (!GATE_MODE) { triggerDownload(generateClaudeMd(), 'CLAUDE.md'); return; }
+  const errors = validateStep(7);
+  if (errors.length) { showValidationErrors(errors); return; }
+  // Store lead info from builder step 8
+  const first = gv('b-lead-name');
+  const last = gv('b-lead-last');
+  const email = gv('b-lead-email');
+  if (first && last && email) {
+    localStorage.setItem('cos_lead', JSON.stringify({ first, last, email, ts: Date.now() }));
+  }
+  triggerDownload(generateClaudeMd(), 'CLAUDE.md');
+  // Show success
+  const btn = document.getElementById('builderDownloadBtn');
+  if (btn) { btn.textContent = 'Downloaded!'; setTimeout(() => btn.textContent = 'Download CLAUDE.md', 2500); }
+}
+
+// ── Utilities ──
+function esc(s) { return (s || '').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function escHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+</script>
+</body>
+</html>

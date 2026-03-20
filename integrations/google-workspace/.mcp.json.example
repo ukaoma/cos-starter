@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "google-workspace": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-google-workspace"],
+      "env": {
+        "GOOGLE_CREDENTIALS_PATH": "/path/to/your/google-credentials.json"
+      }
+    }
+  }
+}
