@@ -9,7 +9,9 @@
 
 Same model. Same prompt. Give it your context — your people, your priorities, your patterns — and it becomes something fundamentally different. It becomes useful.
 
-COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code). Not a chatbot. Not a wrapper. A persistent, context-aware system that compounds in value every time you use it.
+COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code) — and compatible with [Codex](https://openai.com/index/introducing-codex/) and other agentic coding environments. Not a chatbot. Not a wrapper. A persistent, context-aware system that compounds in value every time you use it.
+
+**Model-agnostic by design.** When the next frontier model drops — Claude, Gemini, GPT — your COS gets smarter immediately. No migration. No rebuild. The context is yours. The model is interchangeable.
 
 **[See the philosophy](https://milesukaoma.com/cos)** | **[Interactive demo](philosophy/cos-philosophy-diagram.html)** | **[For teams](https://hermitcrabs.io)**
 
