@@ -235,7 +235,7 @@ COS is opinionated by design. If you've built something that made your COS meani
 
 ## Credits
 
-Created by [Miles Ukaoma](https://milesukaoma.com/cos).
+Created by [Miles Ukaoma](https://milesukaoma.com).
 
 COS was born from running an AI Chief of Staff across three businesses simultaneously — learning what works when the stakes are real and the calendar is full.
 
