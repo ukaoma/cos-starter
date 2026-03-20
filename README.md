@@ -1,11 +1,5 @@
-<p align="center">
-  <a href="https://milesukaoma.com/cos">
-    <img src="https://milesukaoma.com/hubfs/raw_assets/public/Miles-Theme-sr/images/mu-logo.png" alt="MU" width="120">
-  </a>
-</p>
+<a href="https://milesukaoma.com/cos"><img src="assets/banner.png" alt="COS — Context is King — The AI Chief of Staff" width="100%"></a>
 
-<h3 align="center"><em>Context</em> is King</h3>
-<p align="center"><strong>THE AI CHIEF OF STAFF</strong></p>
 <p align="center">
   <a href="https://milesukaoma.com/cos">See the philosophy</a> · <a href="https://milesukaoma.com/schedule-a-call">For teams</a>
 </p>
