@@ -1197,9 +1197,37 @@
         </div>
         <div class="teams-form-wrapper" id="teams-form-wrapper">
           <hr class="form-divider">
-          <div class="gate-heading">Deploy COS across your <em>leadership team.</em></div>
-          <div class="gate-sub">Tell us about your org. We'll send a scoping guide and architecture proposal.</div>
-          <div id="hs-teams-form"></div>
+          <!-- Slim form (shown when gate data exists) -->
+          <div id="teams-slim" style="display:none;">
+            <div class="gate-heading" id="teams-greeting"></div>
+            <div class="gate-sub">You're already in — just tell us your team size and we'll send an architecture proposal.</div>
+            <form id="teams-slim-form" novalidate>
+              <div class="form-group">
+                <label for="ts-employees">Number of Employees</label>
+                <select id="ts-employees" name="numemployees" required>
+                  <option value="" disabled selected>Select size</option>
+                  <option value="1-5">1 &ndash; 5</option>
+                  <option value="5-25">5 &ndash; 25</option>
+                  <option value="25-50">25 &ndash; 50</option>
+                  <option value="50-100">50 &ndash; 100</option>
+                  <option value="100-500">100 &ndash; 500</option>
+                  <option value="500-1000">500 &ndash; 1,000</option>
+                  <option value="1000+">1,000+</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-submit">Request Team Architecture Guide</button>
+              <div class="gate-fine-print">We'll send a scoping guide within 24 hours. No spam.</div>
+            </form>
+            <div id="teams-slim-success" style="display:none; text-align:center; padding:1.5rem;">
+              <p style="color:var(--accent-gold); font-size:1rem;"><strong>Request received.</strong> Check your inbox for the architecture guide.</p>
+            </div>
+          </div>
+          <!-- Full HubSpot form (fallback when no gate data) -->
+          <div id="teams-full">
+            <div class="gate-heading">Deploy COS across your <em>leadership team.</em></div>
+            <div class="gate-sub">Tell us about your org. We'll send a scoping guide and architecture proposal.</div>
+            <div id="hs-teams-form"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1359,6 +1387,10 @@
         })
         .then(function() {
           localStorage.setItem(STORAGE_KEY, Date.now());
+          localStorage.setItem('cos_gate_data', JSON.stringify({
+            firstname: firstname, lastname: lastname, email: email,
+            jobtitle: jobtitle, company: company, industry: industry
+          }));
           gate.classList.add('dismissed');
           setTimeout(function() {
             gate.style.display = 'none';
@@ -1369,6 +1401,10 @@
         .catch(function() {
           // Even if HubSpot fails, let them through (graceful degradation)
           localStorage.setItem(STORAGE_KEY, Date.now());
+          localStorage.setItem('cos_gate_data', JSON.stringify({
+            firstname: firstname, lastname: lastname, email: email,
+            jobtitle: jobtitle, company: company, industry: industry
+          }));
           gate.classList.add('dismissed');
           setTimeout(function() {
             gate.style.display = 'none';
@@ -1380,28 +1416,75 @@
     })();
 
     // ── Teams Form ──
-    var teamsFormLoaded = false;
+    var teamsFormInitialized = false;
     function toggleTeamsForm() {
       var wrapper = document.getElementById('teams-form-wrapper');
       wrapper.classList.toggle('expanded');
 
-      // Lazy-load HubSpot form on first expand
-      if (!teamsFormLoaded && wrapper.classList.contains('expanded')) {
-        teamsFormLoaded = true;
-        var script = document.createElement('script');
-        script.src = 'https://js.hsforms.net/forms/embed/v2.js';
-        script.charset = 'utf-8';
-        script.onload = function() {
-          hbspt.forms.create({
-            portalId: '2474026',
-            formId: 'c5439911-36e3-4063-ae21-0e0ab792f7a3',
-            target: '#hs-teams-form',
-            css: '',
-            cssClass: '',
-            submitButtonClass: 'hs-button'
+      if (!teamsFormInitialized && wrapper.classList.contains('expanded')) {
+        teamsFormInitialized = true;
+        var gateData = null;
+        try { gateData = JSON.parse(localStorage.getItem('cos_gate_data')); } catch(e) {}
+
+        if (gateData && gateData.email) {
+          // Show slim form — we already have their info
+          document.getElementById('teams-full').style.display = 'none';
+          document.getElementById('teams-slim').style.display = 'block';
+          document.getElementById('teams-greeting').innerHTML =
+            'Hey <em>' + gateData.firstname + '</em> — interested in a team deployment?';
+
+          // Handle slim form submission
+          document.getElementById('teams-slim-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var employees = document.getElementById('ts-employees').value;
+            if (!employees) {
+              document.getElementById('ts-employees').closest('.form-group').classList.add('invalid');
+              return;
+            }
+            var btn = this.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            var fields = [
+              { name: 'firstname', value: gateData.firstname },
+              { name: 'lastname', value: gateData.lastname },
+              { name: 'email', value: gateData.email },
+              { name: 'numemployees', value: employees }
+            ];
+            if (gateData.jobtitle) fields.push({ name: 'jobtitle', value: gateData.jobtitle });
+            if (gateData.company) fields.push({ name: 'company', value: gateData.company });
+            if (gateData.industry) fields.push({ name: 'industry', value: gateData.industry });
+
+            fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fields: fields, context: { pageUri: window.location.href, pageName: 'COS Starter — Teams Inquiry' } })
+            })
+            .then(function() {
+              document.getElementById('teams-slim-form').style.display = 'none';
+              document.getElementById('teams-slim-success').style.display = 'block';
+            })
+            .catch(function() {
+              document.getElementById('teams-slim-form').style.display = 'none';
+              document.getElementById('teams-slim-success').style.display = 'block';
+            });
           });
-        };
-        document.head.appendChild(script);
+        } else {
+          // No gate data — show full HubSpot form
+          document.getElementById('teams-slim').style.display = 'none';
+          var script = document.createElement('script');
+          script.src = 'https://js.hsforms.net/forms/embed/v2.js';
+          script.charset = 'utf-8';
+          script.onload = function() {
+            hbspt.forms.create({
+              portalId: '2474026',
+              formId: 'c5439911-36e3-4063-ae21-0e0ab792f7a3',
+              target: '#hs-teams-form',
+              css: '', cssClass: '', submitButtonClass: 'hs-button'
+            });
+          };
+          document.head.appendChild(script);
+        }
       }
     }
   </script>
