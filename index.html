@@ -1023,7 +1023,7 @@
       <p class="tagline">Build an AI Chief of Staff that actually knows your job. Same model. Same prompt. Give it your context &mdash; and it becomes something fundamentally different.</p>
       <div class="hero-actions">
         <a href="https://milesukaoma.com/cos" class="primary">See the Philosophy</a>
-        <a href="https://milesukaoma.com/schedule-a-call" class="secondary">For Teams</a>
+        <a href="#teams" class="secondary" onclick="event.preventDefault(); document.getElementById('teams').scrollIntoView({behavior:'smooth'}); setTimeout(function(){ var w=document.getElementById('teams-form-wrapper'); if(!w.classList.contains('expanded')) toggleTeamsForm(); }, 600);">For Teams</a>
       </div>
       <div class="badges">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT">
@@ -1186,7 +1186,7 @@
 
     <!-- For Teams -->
     <div class="section">
-      <div class="teams-cta">
+      <div class="teams-cta" id="teams">
         <h3>For Teams</h3>
         <p>Running COS for yourself is powerful. Running it across a leadership team is transformative. Multi-role deployments with shared knowledge architecture, cross-role intelligence, and consistent correction propagation.</p>
         <div style="text-align: center;">
