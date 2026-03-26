@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COS Glasses — Privacy Policy</title>
+  <link rel="icon" href="assets/favicon-32.png" type="image/png">
+  <style>
+    :root {
+      --bg: #0c0a07;
+      --surface: #161310;
+      --text: #f0ebe3;
+      --dim: #8a7f72;
+      --muted: #5c5347;
+      --border: #28221a;
+      --accent: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+    .back-link:hover { color: var(--text); }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .updated {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    p, li {
+      color: var(--dim);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--text); font-weight: 600; }
+    .highlight {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .highlight p { margin-bottom: 0; }
+    a { color: var(--text); }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+    .footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">&larr; gotcos.com</a>
+
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 25, 2026</p>
+
+    <div class="highlight">
+      <p><strong>The short version:</strong> COS Glasses processes everything locally on your machine. We don't collect, store, or transmit your data. Your queries, files, and voice recordings never leave your local network.</p>
+    </div>
+
+    <h2>What COS Glasses Does</h2>
+    <p>COS Glasses is an AI heads-up display application for Even G2 smart glasses. It connects your glasses to a server running on your own computer, enabling voice and text queries routed to Claude (Anthropic's AI) through your own account.</p>
+
+    <h2>Data We Collect</h2>
+    <p><strong>None.</strong> COS Glasses has no backend servers, no analytics, no telemetry, and no user accounts. The application runs entirely on your local machine.</p>
+
+    <h2>How Your Data Flows</h2>
+    <ul>
+      <li><strong>Voice queries:</strong> Audio is recorded on your glasses, sent to your local server over your local network, and transcribed using your own OpenAI API key (if configured). Audio is never stored.</li>
+      <li><strong>Text queries:</strong> Sent from the companion app to your local server. Routed to Claude using your own Claude CLI session or Anthropic API key.</li>
+      <li><strong>File browsing:</strong> The companion app reads directories on your machine via the local server. Files are sandboxed to the project directory you specify.</li>
+      <li><strong>Conversation history:</strong> Stored in a JSON file on your local machine. Not transmitted anywhere.</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>COS Glasses connects to third-party services <strong>only through your own accounts and API keys</strong>:</p>
+    <ul>
+      <li><strong>Anthropic (Claude):</strong> AI queries are processed through your Claude CLI subscription or your own Anthropic API key. Subject to <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic's privacy policy</a>.</li>
+      <li><strong>OpenAI (Whisper):</strong> Voice transcription, if enabled, uses your own OpenAI API key. Subject to <a href="https://openai.com/privacy" target="_blank">OpenAI's privacy policy</a>.</li>
+    </ul>
+    <p>We have no access to your accounts or API keys. These are stored in a local <code>.env</code> file on your machine.</p>
+
+    <h2>Network Permissions</h2>
+    <p>The Even Hub app requests network permissions to connect to:</p>
+    <ul>
+      <li><code>localhost</code> / <code>127.0.0.1</code> — your local server</li>
+      <li>Your local network IP — for glasses-to-server communication</li>
+      <li><code>evenhub.evenrealities.com</code> — Even Hub platform (required by Even SDK)</li>
+    </ul>
+
+    <h2>Children's Privacy</h2>
+    <p>COS Glasses is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>Updates will be posted on this page. Since we collect no data, changes are unlikely.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy: <strong>miles@milesukaoma.com</strong></p>
+
+    <div class="footer">
+      &copy; 2026 Miles Ukaoma. COS Glasses is a product of <a href="https://milesukaoma.com">milesukaoma.com</a>.
+    </div>
+  </div>
+</body>
+</html>
