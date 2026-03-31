@@ -2,11 +2,13 @@
   "miles": {
     "url": "http://100.112.156.116:3141",
     "token": "_Hlrh6VFc2TBvhkzwaFPZb20Wjtx9MZL76XYFAGnDLE",
-    "name": "Miles Ukaoma"
+    "name": "Miles Ukaoma",
+    "domain": "api.gotcos.com"
   },
   "queen": {
     "url": "http://100.81.38.7:3141",
     "token": "queen_glasses_2026",
-    "name": "Queen Ukaoma"
+    "name": "Queen Ukaoma",
+    "domain": "queen.gotcos.com"
   }
 }
