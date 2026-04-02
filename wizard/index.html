@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COS Glasses Setup — Even G2 Smart Glasses</title>
+  <meta name="description" content="Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code.">
+  <meta property="og:title" content="COS Glasses Setup">
+  <meta property="og:description" content="Get your Even G2 smart glasses running with COS in under 5 minutes.">
+  <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+  <link rel="icon" href="../assets/favicon-32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #080c14;
+      --bg-card: rgba(14, 19, 30, 0.85);
+      --bg-surface: rgba(255, 255, 255, 0.03);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-form: rgba(255, 255, 255, 0.1);
+      --text-primary: #e8e4df;
+      --text-muted: rgba(255, 255, 255, 0.4);
+      --text-label: rgba(255, 255, 255, 0.55);
+      --accent-rose: #c4736e;
+      --accent-gold: #c9a96e;
+      --accent-warm: #d4a07a;
+      --accent-green: #4BB956;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 3.5rem; }
+    .header img { width: 48px; height: auto; opacity: 0.7; margin-bottom: 1rem; }
+    .header h1 {
+      font-family: var(--font-body);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+    .header h1 .accent { color: var(--accent-gold); font-family: var(--font-display); font-style: italic; }
+    .header p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; max-width: 440px; margin: 0 auto; }
+
+    /* ── Steps ── */
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(20px);
+      position: relative;
+    }
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -11px;
+      left: 20px;
+      background: var(--accent-rose);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .step h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+    .step p, .step li {
+      color: var(--text-label);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .step ul { list-style: none; padding: 0; }
+    .step li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; }
+    .step li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    /* ── Code blocks ── */
+    .cmd {
+      display: block;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-form);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--accent-green);
+      overflow-x: auto;
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .cmd:hover { border-color: var(--accent-gold); }
+    .cmd .prompt { color: var(--text-muted); user-select: none; }
+    .cmd .copy-hint {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .cmd:hover .copy-hint { color: var(--accent-gold); }
+
+    /* ── Output preview ── */
+    .output {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      white-space: pre-wrap;
+    }
+    .output .highlight { color: var(--accent-green); }
+    .output .gold { color: var(--accent-gold); }
+    .output .dim { color: rgba(255,255,255,0.2); }
+
+    /* ── Notes / callouts ── */
+    .note {
+      background: rgba(201, 169, 110, 0.06);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+      color: var(--text-label);
+      line-height: 1.5;
+    }
+    .note strong { color: var(--accent-gold); font-weight: 500; }
+
+    /* ── Requirements checklist ── */
+    .checklist { list-style: none; padding: 0; margin: 1rem 0; }
+    .checklist li {
+      padding: 0.5rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--text-label);
+      font-size: 0.88rem;
+    }
+    .checklist li::before {
+      position: absolute;
+      left: 0;
+      font-size: 0.9rem;
+    }
+    .checklist li.required::before { content: '○'; color: var(--accent-rose); }
+    .checklist li.optional::before { content: '◇'; color: var(--text-muted); }
+
+    /* ── Links ── */
+    a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201, 169, 110, 0.2); transition: border-color 0.2s; }
+    a:hover { border-color: var(--accent-gold); }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 3rem;
+      line-height: 1.8;
+    }
+    .footer .brand {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page { padding: 2rem 1rem 4rem; }
+      .step { padding: 1.5rem; }
+      .cmd { font-size: 0.75rem; }
+    }
+
+    /* ── Animations ── */
+    .step { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s ease-out forwards; }
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.25s; }
+    .step:nth-child(3) { animation-delay: 0.4s; }
+    .step:nth-child(4) { animation-delay: 0.55s; }
+    .step:nth-child(5) { animation-delay: 0.7s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <!-- Header -->
+  <div class="header">
+    <img src="../assets/mu-logo-white.png" alt="COS">
+    <h1>COS Glasses <span class="accent">Setup</span></h1>
+    <p>Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code. Under 5 minutes.</p>
+  </div>
+
+  <!-- Prerequisites -->
+  <div class="step" data-step="Requirements">
+    <h2>What you need</h2>
+    <ul class="checklist">
+      <li class="required"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
+      <li class="required"><strong>Claude Code</strong> installed on your Mac — <a href="https://claude.ai/download">Download here</a></li>
+      <li class="required"><strong>Node.js 18+</strong> — <a href="https://nodejs.org">nodejs.org</a></li>
+      <li class="optional"><strong>Tailscale</strong> (recommended) — connects your Mac and iPhone over a secure mesh network. <a href="https://tailscale.com/download">Download</a></li>
+    </ul>
+    <div class="note">
+      <strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both devices a stable IP address that works from anywhere — no port forwarding, no firewall hassle.
+    </div>
+  </div>
+
+  <!-- Step 1: Install Server -->
+  <div class="step" data-step="Step 1">
+    <h2>Start the COS Glasses server</h2>
+    <p>Open Terminal on your Mac and run:</p>
+    <div class="cmd" onclick="copyCmd(this)">
+      <span class="prompt">$ </span>npx @gotcos/glasses-server
+      <span class="copy-hint">click to copy</span>
+    </div>
+    <p>The server will start and print your connection details:</p>
+    <div class="output"><span class="highlight">  COS Glasses Server v1.0.0</span>
+
+  Server running at:
+    Local:   <span class="gold">http://localhost:3141</span>
+    Network: <span class="gold">http://100.112.x.x:3141</span>
+
+  API Token: <span class="gold">_AbCd3F...</span>
+
+  <span class="dim">Requirements:</span>
+    <span class="highlight">✓</span> Claude Code CLI detected
+    <span class="dim">✗ OPENAI_API_KEY not set (voice disabled)</span></div>
+
+    <div class="note">
+      <strong>Voice commands</strong> are optional. To enable them, set your OpenAI API key:<br>
+      <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">OPENAI_API_KEY=sk-... npx @gotcos/glasses-server</code>
+    </div>
+  </div>
+
+  <!-- Step 2: Install Tailscale -->
+  <div class="step" data-step="Step 2">
+    <h2>Connect your devices</h2>
+    <ul>
+      <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your Mac and iPhone</li>
+      <li>Sign in with the same Google account on both</li>
+      <li>Open Tailscale on your Mac — find your device's IP (starts with <code style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent-green);">100.</code>)</li>
+    </ul>
+    <div class="note">
+      <strong>Already on the same WiFi?</strong> You can use your Mac's local IP instead (shown in the server output as "Network"). Tailscale is better for reliability — it works across networks and survives WiFi changes.
+    </div>
+  </div>
+
+  <!-- Step 3: Install the Glasses App -->
+  <div class="step" data-step="Step 3">
+    <h2>Install COS Glasses on Even Hub</h2>
+    <ul>
+      <li>Open the <strong>Even Realities</strong> app on your iPhone</li>
+      <li>Go to <strong>Even Hub</strong> → search for <strong>"COS Glasses"</strong></li>
+      <li>Install and open the app</li>
+    </ul>
+    <p style="margin-top:0.8rem;">The setup wizard will appear asking for your server IP and API token.</p>
+  </div>
+
+  <!-- Step 4: Connect -->
+  <div class="step" data-step="Step 4">
+    <h2>Connect and go</h2>
+    <ul>
+      <li>Enter your Mac's Tailscale IP (from Step 2)</li>
+      <li>Paste the API token (from the server terminal output)</li>
+      <li>Tap <strong>Connect</strong></li>
+    </ul>
+    <p style="margin-top:0.8rem;">That's it. Ask anything — your query goes to Claude via your local server, and the response streams to your glasses in real time.</p>
+    <div class="note">
+      <strong>Have a COS username?</strong> Tap "I have a COS username" in the wizard and enter it. Your server details will be looked up automatically — no IP or token needed.
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="step" data-step="Help">
+    <h2>Troubleshooting</h2>
+    <ul>
+      <li><strong>"Cannot reach server"</strong> — Make sure both devices are on Tailscale (or same WiFi). Check that the server terminal is still running.</li>
+      <li><strong>"Claude not found"</strong> — Install Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
+      <li><strong>Voice not working</strong> — Set <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code> when starting the server.</li>
+      <li><strong>Server disconnects</strong> — The server auto-reconnects. If persistent, restart with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">npx @gotcos/glasses-server</code>.</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="brand">gotcos.com</div>
+    <div style="margin-top:0.4rem;">COS — The best chief of staff doesn't wait to be asked.</div>
+    <div style="margin-top:0.3rem;">
+      <a href="https://www.gotcos.com" style="border:none;opacity:0.4;">Home</a> ·
+      <a href="https://www.gotcos.com/privacy.html" style="border:none;opacity:0.4;">Privacy</a> ·
+      <a href="https://www.gotcos.com/terms.html" style="border:none;opacity:0.4;">Terms</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyCmd(el) {
+  var text = el.textContent.replace('click to copy', '').replace('$ ', '').trim();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var hint = el.querySelector('.copy-hint');
+      hint.textContent = 'COPIED';
+      hint.style.color = '#4BB956';
+      setTimeout(function() { hint.textContent = 'click to copy'; hint.style.color = ''; }, 1500);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
