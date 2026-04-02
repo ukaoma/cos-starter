@@ -273,17 +273,20 @@
       <span class="copy-hint">click to copy</span>
     </div>
     <p>The server will start and print your connection details:</p>
-    <div class="output"><span class="highlight">  COS Glasses Server v1.0.0</span>
+    <div class="output"><span class="highlight">  COS Glasses Server</span>
+  <span class="dim">AI heads-up display for Even G2 smart glasses</span>
 
-  Server running at:
-    Local:   <span class="gold">http://localhost:3141</span>
-    Network: <span class="gold">http://100.112.x.x:3141</span>
+  <span class="highlight">✓</span> Node.js 22.1.0
+  <span class="highlight">✓</span> Claude Code 2.1.90
+  <span class="gold">↓</span> Downloading COS Glasses Server...
+  <span class="highlight">✓</span> Downloaded
+  <span class="gold">⟳</span> Installing dependencies...
+  <span class="highlight">✓</span> Dependencies installed
 
-  API Token: <span class="gold">_AbCd3F...</span>
-
-  <span class="dim">Requirements:</span>
-    <span class="highlight">✓</span> Claude Code CLI detected
-    <span class="dim">✗ OPENAI_API_KEY not set (voice disabled)</span></div>
+  <span class="highlight">[COS API]</span> HTTP server running on <span class="gold">http://127.0.0.1:3141</span>
+  <span class="highlight">[COS API]</span> Mode: <span class="gold">Standalone</span> (glasses + Claude)
+  <span class="highlight">[COS API]</span> 🔑 API Token: <span class="gold">_AbCd3F...</span> <span class="dim">(auto-generated)</span>
+  <span class="highlight">[COS API]</span> Claude Code CLI detected</div>
 
     <div class="note">
       <strong>Voice commands</strong> are optional. To enable them, set your OpenAI API key:<br>
@@ -338,6 +341,21 @@
       <li><strong>Voice not working</strong> — Set <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code> when starting the server.</li>
       <li><strong>Server disconnects</strong> — The server auto-reconnects. If persistent, restart with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">npx @gotcos/glasses-server</code>.</li>
     </ul>
+  </div>
+
+  <!-- Developer Setup -->
+  <div class="step" data-step="Developer">
+    <h2>Build from source</h2>
+    <p>Want to customize the server or contribute? Clone the repo directly:</p>
+    <div class="cmd" onclick="copyCmd(this)">
+      <span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git
+      <span class="copy-hint">click to copy</span>
+    </div>
+    <div class="cmd" onclick="copyCmd(this)">
+      <span class="prompt">$ </span>cd cos-glasses-app && cp .env.example .env && npm install && npm run start:server
+      <span class="copy-hint">click to copy</span>
+    </div>
+    <p style="margin-top:0.8rem;">See the <a href="https://github.com/ukaoma/cos-glasses-app">GitHub repo</a> for full documentation, configuration options, and LLM provider setup.</p>
   </div>
 
   <div class="divider"></div>
