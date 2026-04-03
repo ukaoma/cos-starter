@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company 119 — AI Chief of Staff Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #080c14;
+    --bg-card: rgba(14, 19, 30, 0.85);
+    --bg-inner: rgba(10, 14, 22, 0.9);
+    --text-primary: #e8e4df;
+    --text-muted: rgba(255, 255, 255, 0.4);
+    --text-label: rgba(255, 255, 255, 0.55);
+    --accent-rose: #c4736e;
+    --accent-gold: #c9a96e;
+    --accent-warm: #d4a07a;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shine: rgba(255, 255, 255, 0.04);
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle background texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse 600px 400px at 25% 20%, rgba(196, 115, 110, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 400px at 70% 60%, rgba(201, 169, 110, 0.035) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 50% 90%, rgba(212, 160, 122, 0.025) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    text-align: center;
+    padding: 48px 24px 12px;
+  }
+  .header h1 {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-label);
+    margin-bottom: 8px;
+  }
+  .header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+  .header h2 em {
+    font-style: italic;
+    color: var(--accent-gold);
+    opacity: 0.7;
+  }
+  .header .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  /* ─── Phase Toggle ─── */
+  .phase-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 28px auto 40px;
+  }
+  .phase-btn {
+    padding: 10px 28px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-family: var(--font-body);
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .phase-btn.active {
+    background: linear-gradient(135deg, rgba(196, 115, 110, 0.12), rgba(201, 169, 110, 0.12));
+    border-color: rgba(201, 169, 110, 0.25);
+    color: var(--accent-gold);
+    font-weight: 500;
+  }
+  .phase-btn:hover:not(.active) {
+    border-color: var(--border-hover);
+    color: var(--text-label);
+  }
+
+  /* ─── Canvas ─── */
+  .canvas {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+  }
+
+  /* ─── Section Labels ─── */
+  .section-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* ─── Individual COS Instances ─── */
+  .individuals {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 0;
+  }
+
+  .cos-instance {
+    width: 280px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px 20px 20px;
+    position: relative;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+      inset 0 1px 0 var(--glass-shine),
+      0 4px 24px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+  }
+
+  .cos-instance .role-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .cos-instance.marketing .role-badge {
+    background: rgba(196, 115, 110, 0.15);
+    color: var(--accent-rose);
+    border: 1px solid rgba(196, 115, 110, 0.25);
+  }
+  .cos-instance.strategy .role-badge {
+    background: rgba(201, 169, 110, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .cos-instance.operations .role-badge {
+    background: rgba(212, 160, 122, 0.15);
+    color: var(--accent-warm);
+    border: 1px solid rgba(212, 160, 122, 0.25);
+  }
+
+  .cos-instance .user-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-top: 6px;
+    text-align: center;
+  }
+  .cos-instance .user-role {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  /* Notebook inside COS */
+  .notebook {
+    margin-top: 16px;
+    background: var(--bg-inner);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .notebook .nb-title {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .notebook .nb-item {
+    font-size: 0.78rem;
+    color: var(--text-label);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: 1.4;
+  }
+  .notebook .nb-item:last-child { border-bottom: none; }
+  .notebook .nb-cmd {
+    display: inline-block;
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--accent-gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-right: 4px;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  /* ─── Connection Lines (Top: Individuals → Routing) ─── */
+  .connections-top {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 48px;
+    position: relative;
+    max-width: 800px;
+  }
+  .conn-line {
+    position: absolute;
+    width: 1px;
+    height: 48px;
+    transition: opacity 0.4s;
+  }
+  .conn-line.gold { background: linear-gradient(180deg, rgba(201, 169, 110, 0.5) 0%, rgba(201, 169, 110, 0.15) 100%); }
+  .conn-line.rose { background: linear-gradient(180deg, rgba(196, 115, 110, 0.5) 0%, rgba(196, 115, 110, 0.15) 100%); }
+  .conn-line.warm { background: linear-gradient(180deg, rgba(212, 160, 122, 0.5) 0%, rgba(212, 160, 122, 0.15) 100%); }
+  .conn-line.l1 { left: 18%; }
+  .conn-line.l2 { left: 50%; }
+  .conn-line.l3 { left: 82%; }
+
+  /* Animated dots */
+  @keyframes flowDown {
+    0% { top: -4px; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 44px; opacity: 0; }
+  }
+  .conn-dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: flowDown 2.5s infinite;
+  }
+  .conn-dot.gold { background: var(--accent-gold); box-shadow: 0 0 6px rgba(201, 169, 110, 0.4); }
+  .conn-dot.rose { background: var(--accent-rose); box-shadow: 0 0 6px rgba(196, 115, 110, 0.4); }
+  .conn-dot.warm { background: var(--accent-warm); box-shadow: 0 0 6px rgba(212, 160, 122, 0.4); }
+  .conn-line.l1 .conn-dot { animation-delay: 0s; }
+  .conn-line.l2 .conn-dot { animation-delay: 0.8s; }
+  .conn-line.l3 .conn-dot { animation-delay: 1.6s; }
+
+  /* ─── Role Routing Engine (NEW MIDDLE LAYER) ─── */
+  .role-routing {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .routing-card {
+    background: linear-gradient(135deg, rgba(14, 19, 30, 0.9) 0%, rgba(18, 24, 36, 0.85) 100%);
+    border: 1px solid rgba(201, 169, 110, 0.12);
+    border-radius: 16px;
+    padding: 24px 28px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 4px 24px rgba(0,0,0,0.25);
+    position: relative;
+  }
+  .routing-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.15) 0%, transparent 50%, rgba(196, 115, 110, 0.1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .routing-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .routing-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.15), rgba(196, 115, 110, 0.1));
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+  .routing-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  .routing-subtitle {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  /* Routing Flow Steps */
+  .routing-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .rf-step {
+    text-align: center;
+    padding: 10px 16px;
+    min-width: 130px;
+  }
+  .rf-step .rf-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .rf-step .rf-value {
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .rf-step .rf-value code {
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--accent-gold);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', monospace;
+    font-size: 0.75rem;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+  .rf-arrow {
+    color: rgba(201, 169, 110, 0.3);
+    font-size: 1.1rem;
+    padding: 0 4px;
+    margin-top: 10px;
+  }
+
+  /* Routing Outputs — 3 role lanes */
+  .routing-outputs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .route-lane {
+    flex: 1;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+  }
+  .route-lane .lane-role {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .route-lane .lane-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+  .route-lane.marketing .lane-role { color: var(--accent-rose); }
+  .route-lane.strategy .lane-role { color: var(--accent-gold); }
+  .route-lane.operations .lane-role { color: var(--accent-warm); }
+
+  /* Bidirectional indicator */
+  .routing-direction {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 14px;
+  }
+  .dir-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+  }
+  .dir-arrow {
+    font-size: 0.8rem;
+    color: rgba(201, 169, 110, 0.4);
+  }
+
+  /* ─── Connection Lines (Bottom: Routing → Brain) ─── */
+  .connections-bottom {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 48px;
+    position: relative;
+    max-width: 800px;
+  }
+
+  /* ─── Shared GitHub Brain ─── */
+  .shared-brain {
+    max-width: 780px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(14, 19, 30, 0.9) 0%, rgba(10, 14, 22, 0.95) 100%);
+    border: 1px solid rgba(201, 169, 110, 0.1);
+    border-radius: 20px;
+    padding: 28px 32px;
+    position: relative;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 8px 32px rgba(0,0,0,0.35);
+    transition: all 0.4s ease;
+  }
+  .shared-brain::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.12) 0%, transparent 40%, rgba(196, 115, 110, 0.08) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .brain-header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .brain-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  .brain-header .brain-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .brain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .brain-cell {
+    background: var(--bg-inner);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.3s;
+  }
+  .brain-cell:hover { border-color: var(--border-hover); }
+  .brain-cell .cell-icon {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .brain-cell .cell-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-gold);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .brain-cell .cell-desc {
+    font-size: 0.78rem;
+    color: var(--text-label);
+    line-height: 1.5;
+  }
+  .brain-cell code {
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--accent-gold);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: 'SF Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  /* ─── /share Flow (Phase 2 only) ─── */
+  .flow-section {
+    max-width: 780px;
+    margin: 40px auto 0;
+  }
+  .flow-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 400;
+  }
+  .flow-section h3 em {
+    color: var(--accent-gold);
+    opacity: 0.7;
+  }
+  .flow-steps {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .flow-step {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    flex: 1;
+    max-width: 185px;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 var(--glass-shine);
+    transition: border-color 0.3s;
+  }
+  .flow-step:hover { border-color: var(--border-hover); }
+  .flow-step .step-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--accent-gold);
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .flow-step .step-title {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .flow-step .step-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  /* ─── Design Principles ─── */
+  .principles {
+    max-width: 780px;
+    margin: 40px auto 0;
+    padding: 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(40px);
+    box-shadow: inset 0 1px 0 var(--glass-shine);
+  }
+  .principles h3 {
+    font-size: 0.6rem;
+    color: var(--accent-gold);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-align: center;
+    font-weight: 600;
+  }
+  .principle-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .principle {
+    text-align: center;
+    padding: 8px 4px;
+  }
+  .principle .p-icon {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+  .principle .p-title {
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .principle .p-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── Stakeholder Value ─── */
+  .stakeholder-grid {
+    max-width: 780px;
+    margin: 24px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .stake-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 var(--glass-shine);
+    transition: border-color 0.3s;
+  }
+  .stake-card:hover { border-color: var(--border-hover); }
+  .stake-card .stake-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+  .stake-card .stake-role {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2px 0 10px;
+    font-weight: 500;
+  }
+  .stake-card .stake-value {
+    font-size: 0.78rem;
+    color: var(--accent-gold);
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+
+  /* ─── Phase States ─── */
+  /* Phase 1: Individual only — routing + brain blurred */
+  .phase1 .connections-top,
+  .phase1 .role-routing,
+  .phase1 .connections-bottom,
+  .phase1 .shared-brain {
+    opacity: 0.1;
+    filter: blur(3px);
+    pointer-events: none;
+  }
+  .phase1 .phase1-only { display: block; }
+  .phase1 .phase2-only { display: none; }
+  .phase1 .cos-instance { border-color: var(--glass-border); }
+
+  /* Phase 1 message */
+  .phase1-msg {
+    text-align: center;
+    padding: 32px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .phase1-msg p {
+    font-size: 0.88rem;
+    color: var(--text-label);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .phase1-msg .phase-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-rose);
+    background: rgba(196, 115, 110, 0.1);
+    border: 1px solid rgba(196, 115, 110, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* Phase 2: Full connections */
+  .phase2 .connections-top,
+  .phase2 .role-routing,
+  .phase2 .connections-bottom,
+  .phase2 .shared-brain {
+    opacity: 1;
+    filter: none;
+  }
+  .phase2 .phase1-only { display: none; }
+  .phase2 .phase2-only { display: block; }
+  .phase2 .cos-instance {
+    border-color: rgba(201, 169, 110, 0.12);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 840px) {
+    .individuals { flex-direction: column; align-items: center; gap: 28px; }
+    .cos-instance { width: 90%; max-width: 320px; }
+    .connections-top, .connections-bottom { display: none; }
+    .brain-grid { grid-template-columns: 1fr; }
+    .stakeholder-grid { grid-template-columns: 1fr; }
+    .flow-steps { flex-direction: column; align-items: center; }
+    .flow-step { max-width: 100%; width: 90%; }
+    .principle-row { grid-template-columns: 1fr 1fr; }
+    .routing-flow { flex-direction: column; gap: 4px; }
+    .rf-arrow { transform: rotate(90deg); }
+    .routing-outputs { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Company 119</h1>
+  <h2>AI Chief of Staff <em>Architecture</em></h2>
+  <div class="subtitle">Individual intelligence. Organizational memory. Two commands.</div>
+</div>
+
+<!-- Phase Toggle -->
+<div class="phase-toggle">
+  <button class="phase-btn active" onclick="setPhase(1)">Phase 1 &mdash; Individual COS</button>
+  <button class="phase-btn" onclick="setPhase(2)">Phase 2 &mdash; Connected Organization</button>
+</div>
+
+<div class="canvas phase1" id="canvas">
+
+  <!-- Section: Individuals -->
+  <div class="section-label">Individual COS Instances</div>
+
+  <div class="individuals">
+    <div class="cos-instance marketing">
+      <div class="role-badge">Marketing Manager</div>
+      <div class="user-name">User A</div>
+      <div class="user-role">Marketing Manager</div>
+      <div class="notebook">
+        <div class="nb-title">Personal Notebook</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> Filter internal IP in GA4 before pulling reports</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> Always verify UTM params before campaign launch</div>
+      </div>
+    </div>
+
+    <div class="cos-instance strategy">
+      <div class="role-badge">Strategic Advisor</div>
+      <div class="user-name">User B</div>
+      <div class="user-role">Strategic Advisor</div>
+      <div class="notebook">
+        <div class="nb-title">Personal Notebook</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> Client X prefers email over Slack for updates</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> Q2 budget review moved to May 15</div>
+      </div>
+    </div>
+
+    <div class="cos-instance operations">
+      <div class="role-badge">VP Operations</div>
+      <div class="user-name">User C</div>
+      <div class="user-role">VP Operations</div>
+      <div class="notebook">
+        <div class="nb-title">Personal Notebook</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> ClickUp deploys need 2hr maintenance window</div>
+        <div class="nb-item"><span class="nb-cmd">/learn</span> Always tag SOW number in Freshbooks invoices</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 1 Message (shown only in Phase 1) -->
+  <div class="phase1-only">
+    <div class="phase1-msg">
+      <div class="phase-tag">Weeks 1 &ndash; 2</div>
+      <p>Three independent notebooks. Each person learns their own COS. Personal intelligence builds first, organizational connection comes next.</p>
+    </div>
+  </div>
+
+  <!-- Connection Lines: Individuals → Role Routing -->
+  <div class="connections-top phase2-only">
+    <div class="conn-line rose l1"><div class="conn-dot rose"></div></div>
+    <div class="conn-line gold l2"><div class="conn-dot gold"></div></div>
+    <div class="conn-line warm l3"><div class="conn-dot warm"></div></div>
+  </div>
+
+  <!-- ★ ROLE ROUTING ENGINE (New Middle Layer) ★ -->
+  <div class="role-routing phase2-only">
+    <div class="routing-card">
+      <div class="routing-header">
+        <div class="routing-icon">&#x2B50;</div>
+        <div class="routing-title">Role Routing Engine</div>
+      </div>
+      <div class="routing-subtitle">
+        The invisible sifting layer. Reads the user's identity, classifies content by role, and routes it to the right place.
+      </div>
+
+      <!-- Flow: How routing works -->
+      <div class="routing-flow">
+        <div class="rf-step">
+          <div class="rf-label">Step 1</div>
+          <div class="rf-value">Read <code>CLAUDE.md</code></div>
+        </div>
+        <div class="rf-arrow">&rarr;</div>
+        <div class="rf-step">
+          <div class="rf-label">Step 2</div>
+          <div class="rf-value">Identify Role</div>
+        </div>
+        <div class="rf-arrow">&rarr;</div>
+        <div class="rf-step">
+          <div class="rf-label">Step 3</div>
+          <div class="rf-value">Tag PR by Role</div>
+        </div>
+        <div class="rf-arrow">&rarr;</div>
+        <div class="rf-step">
+          <div class="rf-label">Step 4</div>
+          <div class="rf-value">Route to Repo</div>
+        </div>
+      </div>
+
+      <!-- Role-specific output lanes -->
+      <div class="routing-outputs">
+        <div class="route-lane marketing">
+          <div class="lane-role">Marketing</div>
+          <div class="lane-desc">GA4, campaigns, UTMs, content strategy</div>
+        </div>
+        <div class="route-lane strategy">
+          <div class="lane-role">Strategy</div>
+          <div class="lane-desc">Client intel, pricing, competitive landscape</div>
+        </div>
+        <div class="route-lane operations">
+          <div class="lane-role">Operations</div>
+          <div class="lane-desc">Deployments, tooling, process SOPs</div>
+        </div>
+      </div>
+
+      <!-- Bidirectional indicator -->
+      <div class="routing-direction">
+        <div class="dir-item">
+          <span class="dir-arrow">&darr;</span>
+          <span><code>/share</code> routes learnings down to the repo</span>
+        </div>
+        <div class="dir-item">
+          <span class="dir-arrow">&uarr;</span>
+          <span>Session start loads role context back up</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connection Lines: Routing → Brain -->
+  <div class="connections-bottom phase2-only">
+    <div class="conn-line rose l1"><div class="conn-dot rose" style="animation-delay: 0.3s"></div></div>
+    <div class="conn-line gold l2"><div class="conn-dot gold" style="animation-delay: 1.1s"></div></div>
+    <div class="conn-line warm l3"><div class="conn-dot warm" style="animation-delay: 1.9s"></div></div>
+  </div>
+
+  <!-- Shared GitHub Brain -->
+  <div class="shared-brain">
+    <div class="brain-header">
+      <h3>Shared GitHub Repository</h3>
+      <div class="brain-sub">The team brain &mdash; every session makes the organization smarter</div>
+    </div>
+
+    <div class="brain-grid">
+      <div class="brain-cell">
+        <div class="cell-icon">&#x1F4CB;</div>
+        <div class="cell-title">Team Whiteboard</div>
+        <div class="cell-desc"><code>/share</code> posts learnings here. Reviewed via PR before going live to the team.</div>
+      </div>
+      <div class="brain-cell">
+        <div class="cell-icon">&#x1F3AF;</div>
+        <div class="cell-title">Role Context</div>
+        <div class="cell-desc">Auto-loaded per user's role. Marketing gets marketing context. Ops gets ops context. Invisible.</div>
+      </div>
+      <div class="brain-cell">
+        <div class="cell-icon">&#x26A1;</div>
+        <div class="cell-title">Shared Skills</div>
+        <div class="cell-desc">One person builds a skill. After PR review, everyone can use it next session.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How /share Works (Phase 2 only) -->
+  <div class="flow-section phase2-only">
+    <h3>How Knowledge Flows: <em>/share</em></h3>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Discover</div>
+        <div class="step-desc">User finds a pattern that would help the team.</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-title">/share</div>
+        <div class="step-desc">One command. COS creates a branch + PR, tagged by role.</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Review</div>
+        <div class="step-desc">Reviewer approves. Full audit trail in GitHub.</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Propagate</div>
+        <div class="step-desc">Merged. All users get it automatically on their next session.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Principles -->
+  <div class="principles">
+    <h3>Design Principles</h3>
+    <div class="principle-row">
+      <div class="principle">
+        <div class="p-icon">&#x1F4D3;</div>
+        <div class="p-title">Two Commands</div>
+        <div class="p-desc">/learn for yourself. /share for the team. Everything else is invisible.</div>
+      </div>
+      <div class="principle">
+        <div class="p-icon">&#x1F50D;</div>
+        <div class="p-title">Roles Are Lenses</div>
+        <div class="p-desc">The system routes context by role. Users never configure tiers.</div>
+      </div>
+      <div class="principle">
+        <div class="p-icon">&#x1F512;</div>
+        <div class="p-title">Review Gates</div>
+        <div class="p-desc">Nothing reaches the team without PR approval. Full audit trail.</div>
+      </div>
+      <div class="principle">
+        <div class="p-icon">&#x1F4C8;</div>
+        <div class="p-title">Compounding</div>
+        <div class="p-desc">Every session makes the org smarter. New hires inherit everything.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stakeholder Value -->
+  <div class="stakeholder-grid">
+    <div class="stake-card">
+      <div class="stake-name">Christian</div>
+      <div class="stake-role">CEO / Managing Partner</div>
+      <div class="stake-value">51% &rarr; 70&ndash;80% utilization. Less searching, more delivering.</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-name">Nate</div>
+      <div class="stake-role">COO</div>
+      <div class="stake-value">Two commands = adoption. Session logs = engagement tracking.</div>
+    </div>
+    <div class="stake-card">
+      <div class="stake-name">Nick</div>
+      <div class="stake-role">VP Technology</div>
+      <div class="stake-value">GitHub = audit trail. PR gates = security. Full visibility.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setPhase(n) {
+  const canvas = document.getElementById('canvas');
+  const btns = document.querySelectorAll('.phase-btn');
+  canvas.className = 'canvas phase' + n;
+  btns.forEach((b, i) => b.classList.toggle('active', i === n - 1));
+}
+</script>
+
+</body>
+</html>
