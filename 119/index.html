@@ -3,997 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Company 119 — AI Chief of Staff Architecture</title>
+<title>Company 119 — AI Chief of Staff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-deep: #080c14;
-    --bg-card: rgba(14, 19, 30, 0.85);
-    --bg-inner: rgba(10, 14, 22, 0.9);
-    --text-primary: #e8e4df;
-    --text-muted: rgba(255, 255, 255, 0.4);
-    --text-label: rgba(255, 255, 255, 0.55);
-    --accent-rose: #c4736e;
-    --accent-gold: #c9a96e;
-    --accent-warm: #d4a07a;
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.06);
-    --glass-shine: rgba(255, 255, 255, 0.04);
-    --font-body: 'DM Sans', -apple-system, sans-serif;
-    --font-display: 'Playfair Display', Georgia, serif;
-  }
+:root{--bg:#080c14;--bg-card:rgba(14,19,30,.85);--bg-inner:rgba(10,14,22,.9);--text:#e8e4df;--text-muted:rgba(255,255,255,.4);--text-label:rgba(255,255,255,.55);--accent-rose:#c4736e;--accent-gold:#c9a96e;--accent-warm:#d4a07a;--vector:#6b8fd4;--graph:#50c878;--border:rgba(255,255,255,.06);--border-hover:rgba(255,255,255,.12);--glass:rgba(255,255,255,.03);--font-body:'DM Sans',sans-serif;--font-display:'Playfair Display',Georgia,serif;--font-mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 600px 400px at 25% 20%,rgba(196,115,110,.04) 0%,transparent 70%),radial-gradient(ellipse 500px 400px at 70% 60%,rgba(201,169,110,.035) 0%,transparent 70%);pointer-events:none}
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+.header{text-align:center;padding:48px 24px 12px}
+.header h1{font-family:var(--font-body);font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--text-label);margin-bottom:8px}
+.header h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;color:var(--text);letter-spacing:-.3px;line-height:1.2}
+.header h2 em{font-style:italic;color:var(--accent-gold);opacity:.7}
+.header .subtitle{font-size:.95rem;color:var(--text-muted);margin-top:8px;font-weight:300;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
 
-  body {
-    font-family: var(--font-body);
-    background: var(--bg-deep);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* Nav tabs */
+.nav{display:flex;justify-content:center;gap:6px;margin:28px auto 40px;flex-wrap:wrap;padding:0 16px}
+.nav-btn{padding:9px 20px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--text-muted);font-size:.8rem;font-family:var(--font-body);font-weight:400;cursor:pointer;transition:all .3s}
+.nav-btn.active{background:linear-gradient(135deg,rgba(196,115,110,.12),rgba(201,169,110,.12));border-color:rgba(201,169,110,.25);color:var(--accent-gold);font-weight:500}
+.nav-btn:hover:not(.active){border-color:var(--border-hover);color:var(--text-label)}
 
-  /* Subtle background texture */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: -1;
-    background:
-      radial-gradient(ellipse 600px 400px at 25% 20%, rgba(196, 115, 110, 0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 400px at 70% 60%, rgba(201, 169, 110, 0.035) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 300px at 50% 90%, rgba(212, 160, 122, 0.025) 0%, transparent 70%);
-    pointer-events: none;
-  }
+.canvas{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.section{display:none}.section.active{display:block}
 
-  /* ─── Header ─── */
-  .header {
-    text-align: center;
-    padding: 48px 24px 12px;
-  }
-  .header h1 {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-label);
-    margin-bottom: 8px;
-  }
-  .header h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 400;
-    color: var(--text-primary);
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-  }
-  .header h2 em {
-    font-style: italic;
-    color: var(--accent-gold);
-    opacity: 0.7;
-  }
-  .header .subtitle {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-top: 8px;
-    font-weight: 300;
-  }
+/* ── SHARED STYLES ── */
+.sec-label{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--text-muted);text-align:center;margin-bottom:16px}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;backdrop-filter:blur(40px);box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 4px 24px rgba(0,0,0,.3)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px}
+.card h4{font-family:var(--font-body);font-weight:600;font-size:.85rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card p{font-size:.82rem;color:var(--text-label);line-height:1.6}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+code{font-family:var(--font-mono);font-size:.75rem;background:rgba(201,169,110,.1);color:var(--accent-gold);padding:2px 6px;border-radius:4px;border:1px solid rgba(201,169,110,.12)}
+.sec-title{font-family:var(--font-display);font-size:clamp(1.3rem,3vw,1.8rem);font-weight:400;text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--text-muted);font-size:.9rem;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
 
-  /* ─── Phase Toggle ─── */
-  .phase-toggle {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin: 28px auto 40px;
-  }
-  .phase-btn {
-    padding: 10px 28px;
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    background: transparent;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    font-family: var(--font-body);
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .phase-btn.active {
-    background: linear-gradient(135deg, rgba(196, 115, 110, 0.12), rgba(201, 169, 110, 0.12));
-    border-color: rgba(201, 169, 110, 0.25);
-    color: var(--accent-gold);
-    font-weight: 500;
-  }
-  .phase-btn:hover:not(.active) {
-    border-color: var(--border-hover);
-    color: var(--text-label);
-  }
+/* ── OVERVIEW SECTION ── */
+.arch-diagram{max-width:800px;margin:0 auto 40px;position:relative}
+.arch-layer{border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;position:relative;transition:all .3s}
+.arch-layer:hover{border-color:var(--border-hover)}
+.arch-layer .layer-label{position:absolute;top:-9px;left:20px;background:var(--bg);padding:0 8px;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.arch-layer .layer-content{font-size:.82rem;color:var(--text-label);line-height:1.6}
+.arch-arrow{text-align:center;color:var(--text-muted);font-size:1.2rem;margin:4px 0}
+.layer-items{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.layer-chip{font-size:.72rem;padding:4px 10px;border-radius:6px;border:1px solid var(--border);color:var(--text-label);background:var(--glass)}
 
-  /* ─── Canvas ─── */
-  .canvas {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-    position: relative;
-  }
+/* ── INGESTION SECTION ── */
+.pipeline-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:24px auto;flex-wrap:wrap}
+.pipe-step{display:flex;flex-direction:column;align-items:center;padding:12px 16px}
+.pipe-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:6px;border:1px solid var(--border)}
+.pipe-icon.a{background:rgba(201,169,110,.08);border-color:rgba(201,169,110,.15)}
+.pipe-icon.b{background:rgba(107,143,212,.08);border-color:rgba(107,143,212,.15)}
+.pipe-icon.c{background:rgba(80,200,120,.08);border-color:rgba(80,200,120,.15)}
+.pipe-name{font-weight:500;font-size:.75rem}
+.pipe-detail{font-size:.65rem;color:var(--text-muted);margin-top:2px;max-width:90px;text-align:center;line-height:1.3}
+.pipe-arr{color:var(--text-muted);font-size:1rem;margin:0 2px}
 
-  /* ─── Section Labels ─── */
-  .section-label {
-    font-size: 0.6rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    text-align: center;
-    margin-bottom: 16px;
-  }
+.source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:20px 0}
+.source-chip{font-size:.72rem;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--glass);display:flex;align-items:center;gap:6px}
+.source-chip .sdot{width:6px;height:6px;border-radius:50%}
 
-  /* ─── Individual COS Instances ─── */
-  .individuals {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 0;
-  }
+/* ── INTELLIGENCE SECTION ── */
+.intel-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:700px){.intel-compare{grid-template-columns:1fr}}
+.intel-panel{border-radius:14px;border:1px solid var(--border);background:var(--glass);overflow:hidden}
+.intel-panel-head{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;font-size:.7rem;font-weight:500}
+.intel-panel-head .tag{margin-left:auto;font-size:.6rem;color:var(--text-muted);font-family:var(--font-mono)}
+.intel-panel-body{padding:14px;font-size:.78rem;line-height:1.7;color:var(--text-label)}
 
-  .cos-instance {
-    width: 280px;
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 24px 20px 20px;
-    position: relative;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    box-shadow:
-      inset 0 1px 0 var(--glass-shine),
-      0 4px 24px rgba(0,0,0,0.3);
-    transition: all 0.4s ease;
-  }
+.v-result{padding:6px 8px;border-radius:6px;background:rgba(107,143,212,.04);border:1px solid rgba(107,143,212,.06);margin-bottom:5px;display:flex;justify-content:space-between;font-size:.72rem}
+.v-result .score{font-family:var(--font-mono);color:var(--vector);opacity:.7;font-size:.68rem}
+.v-note{color:var(--text-muted);font-size:.65rem;margin-top:6px;text-align:center;font-style:italic}
 
-  .cos-instance .role-badge {
-    position: absolute;
-    top: -11px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-  }
-  .cos-instance.marketing .role-badge {
-    background: rgba(196, 115, 110, 0.15);
-    color: var(--accent-rose);
-    border: 1px solid rgba(196, 115, 110, 0.25);
-  }
-  .cos-instance.strategy .role-badge {
-    background: rgba(201, 169, 110, 0.15);
-    color: var(--accent-gold);
-    border: 1px solid rgba(201, 169, 110, 0.25);
-  }
-  .cos-instance.operations .role-badge {
-    background: rgba(212, 160, 122, 0.15);
-    color: var(--accent-warm);
-    border: 1px solid rgba(212, 160, 122, 0.25);
-  }
+.g-nar h5{font-weight:500;font-size:.78rem;color:var(--text);margin:.8rem 0 .3rem;display:flex;align-items:center;gap:4px}
+.g-nar h5::before{content:'';width:3px;height:10px;background:var(--graph);border-radius:2px;flex-shrink:0}
+.g-ent{color:var(--graph);font-weight:500}
+.g-ref{font-size:.6rem;color:var(--text-muted);margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--border)}
+.g-ref span{background:rgba(80,200,120,.08);color:var(--graph);padding:1px 4px;border-radius:3px;font-family:var(--font-mono);margin-right:2px}
 
-  .cos-instance .user-name {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-top: 6px;
-    text-align: center;
-  }
-  .cos-instance .user-role {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 2px;
-  }
+.step-flow-bar{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:16px}
+.step-badge{font-size:.65rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+.step-badge.sv{color:var(--vector);background:rgba(107,143,212,.1);border:1px solid rgba(107,143,212,.12)}
+.step-badge.sg{color:var(--graph);background:rgba(80,200,120,.1);border:1px solid rgba(80,200,120,.12)}
+.step-conn{color:var(--text-muted);font-size:.65rem}
 
-  /* Notebook inside COS */
-  .notebook {
-    margin-top: 16px;
-    background: var(--bg-inner);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    padding: 14px;
-  }
-  .notebook .nb-title {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-  .notebook .nb-item {
-    font-size: 0.78rem;
-    color: var(--text-label);
-    padding: 5px 0;
-    border-bottom: 1px solid var(--border-subtle);
-    line-height: 1.4;
-  }
-  .notebook .nb-item:last-child { border-bottom: none; }
-  .notebook .nb-cmd {
-    display: inline-block;
-    background: rgba(201, 169, 110, 0.1);
-    color: var(--accent-gold);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.68rem;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    margin-right: 4px;
-    border: 1px solid rgba(201, 169, 110, 0.15);
-  }
+/* Graph canvas */
+.graph-box{width:100%;height:420px;border-radius:14px;border:1px solid var(--border);background:rgba(8,12,20,.9);overflow:hidden;position:relative;margin:20px 0}
+.graph-box canvas{width:100%;height:100%}
+.graph-tt{position:absolute;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:.68rem;pointer-events:none;opacity:0;transition:opacity .15s;z-index:10}
+.graph-tt .ttn{font-weight:600;font-size:.72rem;margin-bottom:2px}
+.graph-tt .ttt{font-size:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.graph-tt .ttc{font-size:.6rem;color:var(--accent-gold);margin-top:3px}
+.graph-legend{display:flex;justify-content:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+.graph-legend-item{display:flex;align-items:center;gap:4px;font-size:.65rem;color:var(--text-muted)}
 
-  /* ─── Connection Lines (Top: Individuals → Routing) ─── */
-  .connections-top {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    height: 48px;
-    position: relative;
-    max-width: 800px;
-  }
-  .conn-line {
-    position: absolute;
-    width: 1px;
-    height: 48px;
-    transition: opacity 0.4s;
-  }
-  .conn-line.gold { background: linear-gradient(180deg, rgba(201, 169, 110, 0.5) 0%, rgba(201, 169, 110, 0.15) 100%); }
-  .conn-line.rose { background: linear-gradient(180deg, rgba(196, 115, 110, 0.5) 0%, rgba(196, 115, 110, 0.15) 100%); }
-  .conn-line.warm { background: linear-gradient(180deg, rgba(212, 160, 122, 0.5) 0%, rgba(212, 160, 122, 0.15) 100%); }
-  .conn-line.l1 { left: 18%; }
-  .conn-line.l2 { left: 50%; }
-  .conn-line.l3 { left: 82%; }
+/* ── COS INSTANCES ── */
+.individuals{display:flex;justify-content:center;gap:20px;margin:20px 0;flex-wrap:wrap}
+.cos-inst{width:260px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px 16px 16px;position:relative;backdrop-filter:blur(40px);box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 4px 24px rgba(0,0,0,.3)}
+.cos-inst .rbadge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:3px 12px;border-radius:16px;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.cos-inst.mk .rbadge{background:rgba(196,115,110,.15);color:var(--accent-rose);border:1px solid rgba(196,115,110,.25)}
+.cos-inst.st .rbadge{background:rgba(201,169,110,.15);color:var(--accent-gold);border:1px solid rgba(201,169,110,.25)}
+.cos-inst.op .rbadge{background:rgba(212,160,122,.15);color:var(--accent-warm);border:1px solid rgba(212,160,122,.25)}
+.cos-inst .uname{font-family:var(--font-display);font-size:1.05rem;text-align:center;margin-top:4px}
+.cos-inst .urole{font-size:.72rem;color:var(--text-muted);text-align:center;margin-top:2px}
+.nb{margin-top:12px;background:var(--bg-inner);border:1px solid var(--border);border-radius:8px;padding:10px}
+.nb .nbt{font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:6px;font-weight:500}
+.nb .nbi{font-size:.72rem;color:var(--text-label);padding:4px 0;border-bottom:1px solid var(--border);line-height:1.4}
+.nb .nbi:last-child{border-bottom:none}
 
-  /* Animated dots */
-  @keyframes flowDown {
-    0% { top: -4px; opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { top: 44px; opacity: 0; }
-  }
-  .conn-dot {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    animation: flowDown 2.5s infinite;
-  }
-  .conn-dot.gold { background: var(--accent-gold); box-shadow: 0 0 6px rgba(201, 169, 110, 0.4); }
-  .conn-dot.rose { background: var(--accent-rose); box-shadow: 0 0 6px rgba(196, 115, 110, 0.4); }
-  .conn-dot.warm { background: var(--accent-warm); box-shadow: 0 0 6px rgba(212, 160, 122, 0.4); }
-  .conn-line.l1 .conn-dot { animation-delay: 0s; }
-  .conn-line.l2 .conn-dot { animation-delay: 0.8s; }
-  .conn-line.l3 .conn-dot { animation-delay: 1.6s; }
+/* ── TIMELINE ── */
+.timeline{max-width:700px;margin:0 auto}
+.tl-item{display:flex;gap:16px;margin-bottom:20px;position:relative}
+.tl-week{flex-shrink:0;width:60px;text-align:right}
+.tl-week .wk{font-weight:600;font-size:.85rem;color:var(--accent-gold)}
+.tl-week .wksub{font-size:.6rem;color:var(--text-muted)}
+.tl-line{width:2px;background:linear-gradient(var(--border),var(--border));position:relative;flex-shrink:0}
+.tl-line::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent-gold);position:absolute;top:4px;left:-3px}
+.tl-content{flex:1;padding-bottom:4px}
+.tl-content h4{font-size:.85rem;font-weight:500;margin-bottom:3px}
+.tl-content p{font-size:.75rem;color:var(--text-label);line-height:1.5}
 
-  /* ─── Role Routing Engine (NEW MIDDLE LAYER) ─── */
-  .role-routing {
-    max-width: 780px;
-    margin: 0 auto;
-    position: relative;
-    transition: all 0.4s ease;
-  }
-  .routing-card {
-    background: linear-gradient(135deg, rgba(14, 19, 30, 0.9) 0%, rgba(18, 24, 36, 0.85) 100%);
-    border: 1px solid rgba(201, 169, 110, 0.12);
-    border-radius: 16px;
-    padding: 24px 28px;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.03),
-      0 4px 24px rgba(0,0,0,0.25);
-    position: relative;
-  }
-  .routing-card::before {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 16px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(201, 169, 110, 0.15) 0%, transparent 50%, rgba(196, 115, 110, 0.1) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
+/* ── STAKEHOLDERS ── */
+.stake-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+@media(max-width:700px){.stake-grid{grid-template-columns:1fr}}
+.stake-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stake-name{font-family:var(--font-display);font-size:1rem;margin-bottom:2px}
+.stake-role{font-size:.68rem;color:var(--text-muted);margin-bottom:8px}
+.stake-val{font-size:.78rem;color:var(--text-label);line-height:1.5}
 
-  .routing-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .routing-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(201, 169, 110, 0.15), rgba(196, 115, 110, 0.1));
-    border: 1px solid rgba(201, 169, 110, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-  }
-  .routing-title {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    font-weight: 400;
-  }
-  .routing-subtitle {
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
+/* Cost */
+.cost-bar{background:linear-gradient(135deg,rgba(200,160,80,.06),rgba(200,160,80,.02));border:1px solid rgba(200,160,80,.15);border-radius:14px;padding:20px;text-align:center;margin:24px 0}
+.cost-bar h4{font-weight:500;color:var(--accent-gold);margin-bottom:4px}
+.cost-bar p{font-size:.82rem;color:var(--text-label);line-height:1.6}
 
-  /* Routing Flow Steps */
-  .routing-flow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-  }
-  .rf-step {
-    text-align: center;
-    padding: 10px 16px;
-    min-width: 130px;
-  }
-  .rf-step .rf-label {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .rf-step .rf-value {
-    font-size: 0.82rem;
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-  .rf-step .rf-value code {
-    background: rgba(201, 169, 110, 0.1);
-    color: var(--accent-gold);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-family: 'SF Mono', monospace;
-    font-size: 0.75rem;
-    border: 1px solid rgba(201, 169, 110, 0.15);
-  }
-  .rf-arrow {
-    color: rgba(201, 169, 110, 0.3);
-    font-size: 1.1rem;
-    padding: 0 4px;
-    margin-top: 10px;
-  }
+.footer{padding:24px;text-align:center;border-top:1px solid var(--border);color:var(--text-muted);font-size:.68rem;margin-top:40px}
+.footer a{color:var(--accent-gold);opacity:.6;text-decoration:none}
 
-  /* Routing Outputs — 3 role lanes */
-  .routing-outputs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-subtle);
-  }
-  .route-lane {
-    flex: 1;
-    text-align: center;
-    padding: 10px 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-subtle);
-  }
-  .route-lane .lane-role {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .route-lane .lane-desc {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.3;
-  }
-  .route-lane.marketing .lane-role { color: var(--accent-rose); }
-  .route-lane.strategy .lane-role { color: var(--accent-gold); }
-  .route-lane.operations .lane-role { color: var(--accent-warm); }
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-  /* Bidirectional indicator */
-  .routing-direction {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 14px;
-  }
-  .dir-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.68rem;
-    color: var(--text-muted);
-  }
-  .dir-arrow {
-    font-size: 0.8rem;
-    color: rgba(201, 169, 110, 0.4);
-  }
-
-  /* ─── Connection Lines (Bottom: Routing → Brain) ─── */
-  .connections-bottom {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    height: 48px;
-    position: relative;
-    max-width: 800px;
-  }
-
-  /* ─── Shared GitHub Brain ─── */
-  .shared-brain {
-    max-width: 780px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, rgba(14, 19, 30, 0.9) 0%, rgba(10, 14, 22, 0.95) 100%);
-    border: 1px solid rgba(201, 169, 110, 0.1);
-    border-radius: 20px;
-    padding: 28px 32px;
-    position: relative;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.03),
-      0 8px 32px rgba(0,0,0,0.35);
-    transition: all 0.4s ease;
-  }
-  .shared-brain::before {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 20px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(201, 169, 110, 0.12) 0%, transparent 40%, rgba(196, 115, 110, 0.08) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .brain-header {
-    text-align: center;
-    margin-bottom: 18px;
-  }
-  .brain-header h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    font-weight: 400;
-  }
-  .brain-header .brain-sub {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-    font-weight: 300;
-  }
-
-  .brain-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-  .brain-cell {
-    background: var(--bg-inner);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    padding: 16px;
-    transition: border-color 0.3s;
-  }
-  .brain-cell:hover { border-color: var(--border-hover); }
-  .brain-cell .cell-icon {
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-  .brain-cell .cell-title {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent-gold);
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-  .brain-cell .cell-desc {
-    font-size: 0.78rem;
-    color: var(--text-label);
-    line-height: 1.5;
-  }
-  .brain-cell code {
-    background: rgba(201, 169, 110, 0.1);
-    color: var(--accent-gold);
-    padding: 1px 6px;
-    border-radius: 3px;
-    font-family: 'SF Mono', monospace;
-    font-size: 0.72rem;
-  }
-
-  /* ─── /share Flow (Phase 2 only) ─── */
-  .flow-section {
-    max-width: 780px;
-    margin: 40px auto 0;
-  }
-  .flow-section h3 {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: 18px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .flow-section h3 em {
-    color: var(--accent-gold);
-    opacity: 0.7;
-  }
-  .flow-steps {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
-  .flow-step {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 18px 16px;
-    flex: 1;
-    max-width: 185px;
-    backdrop-filter: blur(20px);
-    box-shadow: inset 0 1px 0 var(--glass-shine);
-    transition: border-color 0.3s;
-  }
-  .flow-step:hover { border-color: var(--border-hover); }
-  .flow-step .step-num {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    text-align: center;
-    background: rgba(201, 169, 110, 0.1);
-    color: var(--accent-gold);
-    border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    border: 1px solid rgba(201, 169, 110, 0.2);
-  }
-  .flow-step .step-title {
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .flow-step .step-desc {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.45;
-  }
-
-  /* ─── Design Principles ─── */
-  .principles {
-    max-width: 780px;
-    margin: 40px auto 0;
-    padding: 24px 28px;
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    backdrop-filter: blur(40px);
-    box-shadow: inset 0 1px 0 var(--glass-shine);
-  }
-  .principles h3 {
-    font-size: 0.6rem;
-    color: var(--accent-gold);
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    text-align: center;
-    font-weight: 600;
-  }
-  .principle-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .principle {
-    text-align: center;
-    padding: 8px 4px;
-  }
-  .principle .p-icon {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    opacity: 0.85;
-  }
-  .principle .p-title {
-    font-size: 0.82rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .principle .p-desc {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-
-  /* ─── Stakeholder Value ─── */
-  .stakeholder-grid {
-    max-width: 780px;
-    margin: 24px auto 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-  }
-  .stake-card {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 18px 16px;
-    text-align: center;
-    backdrop-filter: blur(20px);
-    box-shadow: inset 0 1px 0 var(--glass-shine);
-    transition: border-color 0.3s;
-  }
-  .stake-card:hover { border-color: var(--border-hover); }
-  .stake-card .stake-name {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    color: var(--text-primary);
-  }
-  .stake-card .stake-role {
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 2px 0 10px;
-    font-weight: 500;
-  }
-  .stake-card .stake-value {
-    font-size: 0.78rem;
-    color: var(--accent-gold);
-    line-height: 1.4;
-    opacity: 0.85;
-  }
-
-  /* ─── Phase States ─── */
-  /* Phase 1: Individual only — routing + brain blurred */
-  .phase1 .connections-top,
-  .phase1 .role-routing,
-  .phase1 .connections-bottom,
-  .phase1 .shared-brain {
-    opacity: 0.1;
-    filter: blur(3px);
-    pointer-events: none;
-  }
-  .phase1 .phase1-only { display: block; }
-  .phase1 .phase2-only { display: none; }
-  .phase1 .cos-instance { border-color: var(--glass-border); }
-
-  /* Phase 1 message */
-  .phase1-msg {
-    text-align: center;
-    padding: 32px 20px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .phase1-msg p {
-    font-size: 0.88rem;
-    color: var(--text-label);
-    line-height: 1.6;
-    font-style: italic;
-  }
-  .phase1-msg .phase-tag {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent-rose);
-    background: rgba(196, 115, 110, 0.1);
-    border: 1px solid rgba(196, 115, 110, 0.2);
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-  }
-
-  /* Phase 2: Full connections */
-  .phase2 .connections-top,
-  .phase2 .role-routing,
-  .phase2 .connections-bottom,
-  .phase2 .shared-brain {
-    opacity: 1;
-    filter: none;
-  }
-  .phase2 .phase1-only { display: none; }
-  .phase2 .phase2-only { display: block; }
-  .phase2 .cos-instance {
-    border-color: rgba(201, 169, 110, 0.12);
-  }
-
-  /* ─── Responsive ─── */
-  @media (max-width: 840px) {
-    .individuals { flex-direction: column; align-items: center; gap: 28px; }
-    .cos-instance { width: 90%; max-width: 320px; }
-    .connections-top, .connections-bottom { display: none; }
-    .brain-grid { grid-template-columns: 1fr; }
-    .stakeholder-grid { grid-template-columns: 1fr; }
-    .flow-steps { flex-direction: column; align-items: center; }
-    .flow-step { max-width: 100%; width: 90%; }
-    .principle-row { grid-template-columns: 1fr 1fr; }
-    .routing-flow { flex-direction: column; gap: 4px; }
-    .rf-arrow { transform: rotate(90deg); }
-    .routing-outputs { flex-direction: column; }
-  }
+@media(max-width:700px){.individuals{flex-direction:column;align-items:center}.cos-inst{width:90%;max-width:300px}.pipeline-flow{gap:4px}}
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
   <h1>Company 119</h1>
   <h2>AI Chief of Staff <em>Architecture</em></h2>
-  <div class="subtitle">Individual intelligence. Organizational memory. Two commands.</div>
+  <div class="subtitle">A unified intelligence layer that pulls from your 68 tools in real time, makes knowledge accessible across roles, and compounds with every session.</div>
 </div>
 
-<!-- Phase Toggle -->
-<div class="phase-toggle">
-  <button class="phase-btn active" onclick="setPhase(1)">Phase 1 &mdash; Individual COS</button>
-  <button class="phase-btn" onclick="setPhase(2)">Phase 2 &mdash; Connected Organization</button>
+<div class="nav">
+  <button class="nav-btn active" onclick="show('overview')">Overview</button>
+  <button class="nav-btn" onclick="show('ingestion')">Ingestion Engine</button>
+  <button class="nav-btn" onclick="show('intel')">Intelligence Layer</button>
+  <button class="nav-btn" onclick="show('roles')">Individual COS</button>
+  <button class="nav-btn" onclick="show('timeline')">Timeline &amp; Cost</button>
 </div>
 
-<div class="canvas phase1" id="canvas">
+<div class="canvas">
 
-  <!-- Section: Individuals -->
-  <div class="section-label">Individual COS Instances</div>
+<!-- ═══ OVERVIEW ═══ -->
+<div class="section active" id="sec-overview">
+  <div class="sec-title">Full Architecture</div>
+  <div class="sec-sub">Four layers working together. Data flows in from your tools, gets indexed by two complementary retrieval systems, and surfaces through role-based COS instances.</div>
 
-  <div class="individuals">
-    <div class="cos-instance marketing">
-      <div class="role-badge">Marketing Manager</div>
-      <div class="user-name">User A</div>
-      <div class="user-role">Marketing Manager</div>
-      <div class="notebook">
-        <div class="nb-title">Personal Notebook</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> Filter internal IP in GA4 before pulling reports</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> Always verify UTM params before campaign launch</div>
+  <div class="arch-diagram reveal">
+    <div class="arch-layer">
+      <div class="layer-label" style="color:var(--accent-rose)">Layer 1 &mdash; Individual COS</div>
+      <div class="layer-content">Each team member gets their own COS with role-appropriate context, skills, and corrections. <code>/learn</code> for personal intelligence. <code>/share</code> to promote to the team.</div>
+      <div class="layer-items">
+        <div class="layer-chip">Marketing Manager</div>
+        <div class="layer-chip">Strategic Advisor</div>
+        <div class="layer-chip">VP Operations</div>
       </div>
     </div>
-
-    <div class="cos-instance strategy">
-      <div class="role-badge">Strategic Advisor</div>
-      <div class="user-name">User B</div>
-      <div class="user-role">Strategic Advisor</div>
-      <div class="notebook">
-        <div class="nb-title">Personal Notebook</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> Client X prefers email over Slack for updates</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> Q2 budget review moved to May 15</div>
+    <div class="arch-arrow">&darr; queries &uarr;</div>
+    <div class="arch-layer">
+      <div class="layer-label" style="color:var(--accent-gold)">Layer 2 &mdash; Intelligence Layer</div>
+      <div class="layer-content">Two retrieval systems in concert. <strong style="color:var(--vector)">Vector search</strong> does fast semantic matching (&lt;1s). <strong style="color:var(--graph)">Knowledge graph</strong> traverses entity relationships for deep synthesis (~45s). Skills like <code>/prep</code> and <code>/intel</code> query both automatically.</div>
+      <div class="layer-items">
+        <div class="layer-chip" style="border-color:rgba(107,143,212,.2);color:var(--vector)">Vector Search (Qdrant)</div>
+        <div class="layer-chip" style="border-color:rgba(80,200,120,.2);color:var(--graph)">Knowledge Graph (LightRAG)</div>
+        <div class="layer-chip">Structured Cache (.jsonl)</div>
       </div>
     </div>
+    <div class="arch-arrow">&darr; populated by &uarr;</div>
+    <div class="arch-layer">
+      <div class="layer-label" style="color:var(--graph)">Layer 3 &mdash; Ingestion Engine</div>
+      <div class="layer-content">Automated 5-phase pipeline: <strong>Reconcile &rarr; Gather &rarr; Evaluate &rarr; Commit &rarr; Report.</strong> Pulls from your tools on a schedule. Text content &rarr; knowledge graph. Tabular data &rarr; structured cache. Zero manual work.</div>
+      <div class="layer-items">
+        <div class="layer-chip">Fireflies</div><div class="layer-chip">Gmail</div><div class="layer-chip">Slack</div>
+        <div class="layer-chip">ClickUp</div><div class="layer-chip">HubSpot</div><div class="layer-chip">+9 more</div>
+      </div>
+    </div>
+    <div class="arch-arrow">&darr; session knowledge &uarr;</div>
+    <div class="arch-layer">
+      <div class="layer-label" style="color:var(--text-label)">Layer 4 &mdash; Shared Repository</div>
+      <div class="layer-content">The team brain. Organizational knowledge, role contexts, shared skills, client profiles. All markdown + Git. Model-agnostic. Full audit trail.</div>
+      <div class="layer-items">
+        <div class="layer-chip">Team Whiteboard</div><div class="layer-chip">Role Contexts</div>
+        <div class="layer-chip">Client Profiles</div><div class="layer-chip">Shared Skills</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="cos-instance operations">
-      <div class="role-badge">VP Operations</div>
-      <div class="user-name">User C</div>
-      <div class="user-role">VP Operations</div>
-      <div class="notebook">
-        <div class="nb-title">Personal Notebook</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> ClickUp deploys need 2hr maintenance window</div>
-        <div class="nb-item"><span class="nb-cmd">/learn</span> Always tag SOW number in Freshbooks invoices</div>
+<!-- ═══ INGESTION ENGINE ═══ -->
+<div class="section" id="sec-ingestion">
+  <div class="sec-title">The Ingestion Engine</div>
+  <div class="sec-sub">Automated pipeline that pulls from your 68 tools, evaluates data quality, and populates both the vector store and knowledge graph. No manual movement of information.</div>
+
+  <div class="pipeline-flow reveal">
+    <div class="pipe-step"><div class="pipe-icon a">&#128196;</div><div class="pipe-name">Reconcile</div><div class="pipe-detail">Sync live roster &amp; clients</div></div>
+    <div class="pipe-arr">&rarr;</div>
+    <div class="pipe-step"><div class="pipe-icon b">&#9889;</div><div class="pipe-name">Gather</div><div class="pipe-detail">Fetch all sources</div></div>
+    <div class="pipe-arr">&rarr;</div>
+    <div class="pipe-step"><div class="pipe-icon a">&#9881;</div><div class="pipe-name">Evaluate</div><div class="pipe-detail">Dedup, classify, extract</div></div>
+    <div class="pipe-arr">&rarr;</div>
+    <div class="pipe-step"><div class="pipe-icon c">&#128376;</div><div class="pipe-name">Commit</div><div class="pipe-detail">Dual-write to stores</div></div>
+    <div class="pipe-arr">&rarr;</div>
+    <div class="pipe-step"><div class="pipe-icon a">&#128161;</div><div class="pipe-name">Report</div><div class="pipe-detail">Summary + notify</div></div>
+  </div>
+
+  <div class="sec-label" style="margin-top:32px">Data Sources (Tier 1 Priority)</div>
+  <div class="source-grid reveal">
+    <div class="source-chip"><div class="sdot" style="background:var(--graph)"></div>Fireflies</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--graph)"></div>Gmail</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--graph)"></div>Slack</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--vector)"></div>ClickUp</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--vector)"></div>HubSpot</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--vector)"></div>Google Sheets</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>Google Calendar</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>GA4</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>GSC</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>SEMRush</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>Freshbooks</div>
+    <div class="source-chip"><div class="sdot" style="background:var(--accent-gold)"></div>Git / GitHub</div>
+  </div>
+  <div style="text-align:center;font-size:.68rem;color:var(--text-muted);margin-top:4px"><span style="color:var(--graph)">&#9679;</span> Text &rarr; Knowledge Graph &nbsp;&nbsp;<span style="color:var(--vector)">&#9679;</span> Structured &rarr; Cache &nbsp;&nbsp;<span style="color:var(--accent-gold)">&#9679;</span> Both</div>
+
+  <div class="card-grid reveal" style="margin-top:32px">
+    <div class="card">
+      <h4><div class="dot" style="background:var(--graph)"></div>Queue-Based Architecture</h4>
+      <p>Meeting sync enqueues instantly (~0ms). Graph processing runs separately on a schedule. Zero impact on sync pipeline speed.</p>
+    </div>
+    <div class="card">
+      <h4><div class="dot" style="background:var(--accent-gold)"></div>Budget Controlled</h4>
+      <p>Hard daily call cap with audit logging. Budget exhaustion defers items to next day, never corrupts data. All calls logged.</p>
+    </div>
+    <div class="card">
+      <h4><div class="dot" style="background:var(--vector)"></div>Entity Resolution</h4>
+      <p>Entities and relationships extracted automatically during ingestion. Names, companies, and decisions merge across sources without manual mapping.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INTELLIGENCE LAYER ═══ -->
+<div class="section" id="sec-intel">
+  <div class="sec-title">Two Systems, One Intelligence</div>
+  <div class="sec-sub">Vector search scans fast. Knowledge graph synthesizes deep. Together, they give you both speed and understanding.</div>
+
+  <div class="step-flow-bar reveal">
+    <span class="step-badge sv">Step 1 &mdash; Fast Scan</span>
+    <span class="step-conn">feeds into</span>
+    <span class="step-badge sg">Step 2 &mdash; Deep Synthesis</span>
+  </div>
+
+  <div class="sec-label">Example: "How does our organic lead decline connect to competitor activity?"</div>
+
+  <div class="intel-compare reveal">
+    <div class="intel-panel">
+      <div class="intel-panel-head"><div class="dot" style="background:var(--vector)"></div><span style="color:var(--vector)">Vector Search</span><span class="tag">&lt;1s</span></div>
+      <div class="intel-panel-body">
+        <div class="v-result"><span>Q1 Marketing Review</span><span class="score">0.52</span></div>
+        <div class="v-result"><span>Organic Search Sync</span><span class="score">0.47</span></div>
+        <div class="v-result"><span>Competitive Analysis Call</span><span class="score">0.44</span></div>
+        <div class="v-result"><span>Weekly Marketing Standup</span><span class="score">0.41</span></div>
+        <p class="v-note">4 meetings found. Start here, then go deeper.</p>
+      </div>
+    </div>
+    <div class="intel-panel">
+      <div class="intel-panel-head"><div class="dot" style="background:var(--graph)"></div><span style="color:var(--graph)">Knowledge Graph</span><span class="tag">~45s</span></div>
+      <div class="intel-panel-body">
+        <div class="g-nar">
+          <h5>The Organic Decline</h5>
+          <p>Organic leads dropped <strong>18% quarter-over-quarter</strong>. The decline coincided with algorithm changes, a <span class="g-ent">new competitor</span> launching aggressive branded campaigns, and AI Overviews displacing organic listings.</p>
+          <h5>Competitor Connection</h5>
+          <p>The competitor is siphoning an estimated <strong>15-20% of branded impressions</strong>. The marketing team shifted budget toward defensive campaigns to recapture share.</p>
+          <h5>Cross-Team Impact</h5>
+          <p>The <span class="g-ent">demand gen team</span> reports conversion contraction tracing back to content gaps identified by the <span class="g-ent">content team</span>&mdash;now coordinating on page rewrites.</p>
+          <div class="g-ref"><span>1</span> Q1 Review <span>2</span> Organic Sync <span>3</span> Competitor Analysis <span>4</span> Leadership 1:1 <span>5</span> Weekly Standup</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Phase 1 Message (shown only in Phase 1) -->
-  <div class="phase1-only">
-    <div class="phase1-msg">
-      <div class="phase-tag">Weeks 1 &ndash; 2</div>
-      <p>Three independent notebooks. Each person learns their own COS. Personal intelligence builds first, organizational connection comes next.</p>
+  <div class="sec-label" style="margin-top:32px">The Entity Relationship Graph</div>
+  <div style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-bottom:8px">Entities extracted and connected automatically from meeting transcripts</div>
+  <div class="graph-legend">
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#4a90d9"></div> People</div>
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#c9a96e"></div> Companies</div>
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#50c878"></div> Initiatives</div>
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#d478c8"></div> Decisions</div>
+  </div>
+  <div class="graph-box reveal">
+    <canvas id="graphCanvas"></canvas>
+    <div class="graph-tt" id="gtt"><div class="ttn"></div><div class="ttt"></div><div class="ttc"></div></div>
+  </div>
+
+  <div class="card-grid reveal" style="margin-top:20px">
+    <div class="card"><h4><div class="dot" style="background:var(--vector)"></div>Vector Search</h4><p>Finds semantically similar content in under a second. "Budget concerns" matches "financial constraints." Returns meeting titles + scores.</p></div>
+    <div class="card"><h4><div class="dot" style="background:var(--graph)"></div>Knowledge Graph</h4><p>Traverses entity relationships across meetings. "How does X connect to Y?" returns a synthesized narrative with quotes and cross-meeting reasoning.</p></div>
+    <div class="card"><h4><div class="dot" style="background:var(--accent-gold)"></div>Working Together</h4><p>Skills like /prep and /intel automatically query both. You get relevant meetings AND a synthesized answer in one operation.</p></div>
+  </div>
+</div>
+
+<!-- ═══ INDIVIDUAL COS ═══ -->
+<div class="section" id="sec-roles">
+  <div class="sec-title">Role-Based COS Instances</div>
+  <div class="sec-sub">Each team member gets their own COS pre-configured with role-appropriate connectors, skills, and context. Reads from the shared intelligence layer.</div>
+
+  <div class="individuals reveal">
+    <div class="cos-inst mk">
+      <div class="rbadge">Marketing Manager</div>
+      <div class="uname">Marketing Team</div>
+      <div class="urole">Execution, PM, daily delivery</div>
+      <div class="nb">
+        <div class="nbt">Skills &amp; Connectors</div>
+        <div class="nbi">GA4, SEMRush, MailChimp, StackAdapt</div>
+        <div class="nbi">Content calendar, campaign tracking</div>
+        <div class="nbi">Client deliverable status</div>
+      </div>
     </div>
-  </div>
-
-  <!-- Connection Lines: Individuals → Role Routing -->
-  <div class="connections-top phase2-only">
-    <div class="conn-line rose l1"><div class="conn-dot rose"></div></div>
-    <div class="conn-line gold l2"><div class="conn-dot gold"></div></div>
-    <div class="conn-line warm l3"><div class="conn-dot warm"></div></div>
-  </div>
-
-  <!-- ★ ROLE ROUTING ENGINE (New Middle Layer) ★ -->
-  <div class="role-routing phase2-only">
-    <div class="routing-card">
-      <div class="routing-header">
-        <div class="routing-icon">&#x2B50;</div>
-        <div class="routing-title">Role Routing Engine</div>
+    <div class="cos-inst st">
+      <div class="rbadge">Strategic Advisor</div>
+      <div class="uname">Strategy Team</div>
+      <div class="urole">Client relationship, retention</div>
+      <div class="nb">
+        <div class="nbt">Skills &amp; Connectors</div>
+        <div class="nbi">HubSpot, Slack, Gmail, Calendly</div>
+        <div class="nbi">Client health monitoring</div>
+        <div class="nbi">Revenue forecasting</div>
       </div>
-      <div class="routing-subtitle">
-        The invisible sifting layer. Reads the user's identity, classifies content by role, and routes it to the right place.
-      </div>
-
-      <!-- Flow: How routing works -->
-      <div class="routing-flow">
-        <div class="rf-step">
-          <div class="rf-label">Step 1</div>
-          <div class="rf-value">Read <code>CLAUDE.md</code></div>
-        </div>
-        <div class="rf-arrow">&rarr;</div>
-        <div class="rf-step">
-          <div class="rf-label">Step 2</div>
-          <div class="rf-value">Identify Role</div>
-        </div>
-        <div class="rf-arrow">&rarr;</div>
-        <div class="rf-step">
-          <div class="rf-label">Step 3</div>
-          <div class="rf-value">Tag PR by Role</div>
-        </div>
-        <div class="rf-arrow">&rarr;</div>
-        <div class="rf-step">
-          <div class="rf-label">Step 4</div>
-          <div class="rf-value">Route to Repo</div>
-        </div>
-      </div>
-
-      <!-- Role-specific output lanes -->
-      <div class="routing-outputs">
-        <div class="route-lane marketing">
-          <div class="lane-role">Marketing</div>
-          <div class="lane-desc">GA4, campaigns, UTMs, content strategy</div>
-        </div>
-        <div class="route-lane strategy">
-          <div class="lane-role">Strategy</div>
-          <div class="lane-desc">Client intel, pricing, competitive landscape</div>
-        </div>
-        <div class="route-lane operations">
-          <div class="lane-role">Operations</div>
-          <div class="lane-desc">Deployments, tooling, process SOPs</div>
-        </div>
-      </div>
-
-      <!-- Bidirectional indicator -->
-      <div class="routing-direction">
-        <div class="dir-item">
-          <span class="dir-arrow">&darr;</span>
-          <span><code>/share</code> routes learnings down to the repo</span>
-        </div>
-        <div class="dir-item">
-          <span class="dir-arrow">&uarr;</span>
-          <span>Session start loads role context back up</span>
-        </div>
+    </div>
+    <div class="cos-inst op">
+      <div class="rbadge">VP Operations</div>
+      <div class="uname">Operations Team</div>
+      <div class="urole">Capacity, margin, process</div>
+      <div class="nb">
+        <div class="nbt">Skills &amp; Connectors</div>
+        <div class="nbi">ClickUp, Freshbooks, BambooHR</div>
+        <div class="nbi">Utilization tracking (GAM)</div>
+        <div class="nbi">Signal detection &amp; alerts</div>
       </div>
     </div>
   </div>
 
-  <!-- Connection Lines: Routing → Brain -->
-  <div class="connections-bottom phase2-only">
-    <div class="conn-line rose l1"><div class="conn-dot rose" style="animation-delay: 0.3s"></div></div>
-    <div class="conn-line gold l2"><div class="conn-dot gold" style="animation-delay: 1.1s"></div></div>
-    <div class="conn-line warm l3"><div class="conn-dot warm" style="animation-delay: 1.9s"></div></div>
+  <div class="card-grid reveal" style="margin-top:24px">
+    <div class="card"><h4>&#128209; Two Commands</h4><p><code>/learn</code> for personal intelligence. <code>/share</code> to promote to the team. Everything else is invisible.</p></div>
+    <div class="card"><h4>&#128270; Roles Are Lenses</h4><p>The system routes context by role. Users never configure tiers. Marketing gets marketing context. Ops gets ops context.</p></div>
+    <div class="card"><h4>&#128274; Review Gates</h4><p>Nothing reaches the team without PR approval. Full audit trail in GitHub. Incognito mode for sensitive work.</p></div>
   </div>
+</div>
 
-  <!-- Shared GitHub Brain -->
-  <div class="shared-brain">
-    <div class="brain-header">
-      <h3>Shared GitHub Repository</h3>
-      <div class="brain-sub">The team brain &mdash; every session makes the organization smarter</div>
+<!-- ═══ TIMELINE ═══ -->
+<div class="section" id="sec-timeline">
+  <div class="sec-title">Engagement Timeline</div>
+  <div class="sec-sub">Six weeks. Ingestion engine first, individual COS instances on top.</div>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-week"><div class="wk">Wk 1</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-content"><h4>Ingestion Engine + Knowledge Graph Setup</h4><p>Automated pipeline pulling from Tier 1 sources. LightRAG running locally. Dual-write architecture. First meetings ingested into graph.</p></div>
     </div>
-
-    <div class="brain-grid">
-      <div class="brain-cell">
-        <div class="cell-icon">&#x1F4CB;</div>
-        <div class="cell-title">Team Whiteboard</div>
-        <div class="cell-desc"><code>/share</code> posts learnings here. Reviewed via PR before going live to the team.</div>
-      </div>
-      <div class="brain-cell">
-        <div class="cell-icon">&#x1F3AF;</div>
-        <div class="cell-title">Role Context</div>
-        <div class="cell-desc">Auto-loaded per user's role. Marketing gets marketing context. Ops gets ops context. Invisible.</div>
-      </div>
-      <div class="brain-cell">
-        <div class="cell-icon">&#x26A1;</div>
-        <div class="cell-title">Shared Skills</div>
-        <div class="cell-desc">One person builds a skill. After PR review, everyone can use it next session.</div>
-      </div>
+    <div class="tl-item">
+      <div class="tl-week"><div class="wk">Wk 2</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-content"><h4>Graph Populated + Query Skills</h4><p>Entity resolution working. /morning reads from graph + cache. "What happened with [client]?" returns synthesized answers.</p></div>
     </div>
-  </div>
-
-  <!-- How /share Works (Phase 2 only) -->
-  <div class="flow-section phase2-only">
-    <h3>How Knowledge Flows: <em>/share</em></h3>
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="step-num">1</div>
-        <div class="step-title">Discover</div>
-        <div class="step-desc">User finds a pattern that would help the team.</div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">2</div>
-        <div class="step-title">/share</div>
-        <div class="step-desc">One command. COS creates a branch + PR, tagged by role.</div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">3</div>
-        <div class="step-title">Review</div>
-        <div class="step-desc">Reviewer approves. Full audit trail in GitHub.</div>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">4</div>
-        <div class="step-title">Propagate</div>
-        <div class="step-desc">Merged. All users get it automatically on their next session.</div>
-      </div>
+    <div class="tl-item">
+      <div class="tl-week"><div class="wk">Wk 3</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-content"><h4>Role Routing + Org Structure</h4><p>Three role configurations. Identity mapping. Role-based query scoping. Client subdirectory structure.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-week"><div class="wk">Wk 4</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-content"><h4>Individual COS Starters</h4><p>Three working instances. Pre-seeded with graph access, role skills, personal identity.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-week"><div class="wk">Wk 5-6</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-content"><h4>Knowledge Share + Training</h4><p>/share with approval UI. /learn compounding per-role. Training sessions. Handoff documentation. 90-day warranty begins.</p></div>
     </div>
   </div>
 
-  <!-- Design Principles -->
-  <div class="principles">
-    <h3>Design Principles</h3>
-    <div class="principle-row">
-      <div class="principle">
-        <div class="p-icon">&#x1F4D3;</div>
-        <div class="p-title">Two Commands</div>
-        <div class="p-desc">/learn for yourself. /share for the team. Everything else is invisible.</div>
-      </div>
-      <div class="principle">
-        <div class="p-icon">&#x1F50D;</div>
-        <div class="p-title">Roles Are Lenses</div>
-        <div class="p-desc">The system routes context by role. Users never configure tiers.</div>
-      </div>
-      <div class="principle">
-        <div class="p-icon">&#x1F512;</div>
-        <div class="p-title">Review Gates</div>
-        <div class="p-desc">Nothing reaches the team without PR approval. Full audit trail.</div>
-      </div>
-      <div class="principle">
-        <div class="p-icon">&#x1F4C8;</div>
-        <div class="p-title">Compounding</div>
-        <div class="p-desc">Every session makes the org smarter. New hires inherit everything.</div>
-      </div>
-    </div>
+  <div class="cost-bar reveal">
+    <h4>Zero Incremental LLM Cost</h4>
+    <p>Graph construction via <code>claude -p</code> on Max subscription. Embeddings $5-15/mo (or $0 with local model). Self-hosted on a Mac. No cloud dependency.</p>
   </div>
 
-  <!-- Stakeholder Value -->
-  <div class="stakeholder-grid">
+  <div class="sec-label" style="margin-top:32px">Stakeholder Value</div>
+  <div class="stake-grid reveal">
     <div class="stake-card">
       <div class="stake-name">Christian</div>
       <div class="stake-role">CEO / Managing Partner</div>
-      <div class="stake-value">51% &rarr; 70&ndash;80% utilization. Less searching, more delivering.</div>
+      <div class="stake-val">51% &rarr; 70&ndash;80% utilization. Less searching, more delivering. Knowledge doesn't leave when people do.</div>
     </div>
     <div class="stake-card">
       <div class="stake-name">Nate</div>
       <div class="stake-role">COO</div>
-      <div class="stake-value">Two commands = adoption. Session logs = engagement tracking.</div>
+      <div class="stake-val">Unified data layer across 68 tools. Real-time. No manual movement. Builds on your existing COS pipeline.</div>
     </div>
     <div class="stake-card">
       <div class="stake-name">Nick</div>
       <div class="stake-role">VP Technology</div>
-      <div class="stake-value">GitHub = audit trail. PR gates = security. Full visibility.</div>
+      <div class="stake-val">Self-hosted. GitHub audit trail. Zero cloud dependency. Local graph + vector on a Mac.</div>
     </div>
   </div>
-
 </div>
 
-<script>
-function setPhase(n) {
-  const canvas = document.getElementById('canvas');
-  const btns = document.querySelectorAll('.phase-btn');
-  canvas.className = 'canvas phase' + n;
-  btns.forEach((b, i) => b.classList.toggle('active', i === n - 1));
-}
-</script>
+</div><!-- /canvas -->
 
+<footer class="footer"><a href="https://gotcos.com">gotcos.com</a> &mdash; COS Intelligence Layer &mdash; Hermit Crabs, Inc.</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach((b,i)=>{
+    const ids=['overview','ingestion','intel','roles','timeline'];
+    b.classList.toggle('active',ids[i]===id);
+  });
+  // Re-trigger reveals
+  setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight)el.classList.add('visible');
+  })},50);
+}
+
+// Scroll reveal
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ── FORCE-DIRECTED GRAPH ──
+(function(){
+  const c=document.getElementById('graphCanvas'),ctx=c.getContext('2d');
+  const tt=document.getElementById('gtt');
+  let w,h;
+  function rs(){w=c.width=c.parentElement.offsetWidth;h=c.height=c.parentElement.offsetHeight}
+  rs();window.addEventListener('resize',rs);
+
+  const types={people:'#4a90d9',companies:'#c9a96e',initiatives:'#50c878',decisions:'#d478c8'};
+  const raw=[
+    {n:'VP Marketing',t:'people',cx:-.22,cy:-.08},{n:'Dir. Content',t:'people',cx:-.12,cy:-.22},
+    {n:'Dir. Demand Gen',t:'people',cx:-.32,cy:-.18},{n:'VP Customer Mkt',t:'people',cx:-.18,cy:.12},
+    {n:'VP Mkt Ops',t:'people',cx:-.28,cy:.03},{n:'Creative Dir.',t:'people',cx:-.08,cy:-.03},
+    {n:'President',t:'people',cx:-.22,cy:.22},{n:'BDR Lead',t:'people',cx:-.38,cy:.12},
+    {n:'Primary Brand',t:'companies',cx:.18,cy:-.12},{n:'Brand B',t:'companies',cx:.28,cy:-.03},
+    {n:'Brand C',t:'companies',cx:.13,cy:.08},{n:'Brand D',t:'companies',cx:.33,cy:.08},
+    {n:'Competitor A',t:'companies',cx:.23,cy:.22},{n:'Competitor B',t:'companies',cx:.38,cy:.18},
+    {n:'Partner Agency',t:'companies',cx:.13,cy:-.28},
+    {n:'Q2 Calendar',t:'initiatives',cx:-.02,cy:-.32},{n:'Brand Defense',t:'initiatives',cx:.03,cy:-.18},
+    {n:'Customer Summit',t:'initiatives',cx:-.03,cy:-.42},{n:'Product Launch',t:'initiatives',cx:.08,cy:-.38},
+    {n:'Lead Nurture',t:'initiatives',cx:-.12,cy:-.38},{n:'SEO Audit',t:'initiatives',cx:.12,cy:-.22},
+    {n:'Budget Increase',t:'decisions',cx:-.03,cy:.32},{n:'Hire Freeze',t:'decisions',cx:.08,cy:.28},
+    {n:'Campaign Pivot',t:'decisions',cx:-.08,cy:.38},{n:'Price Match',t:'decisions',cx:.03,cy:.42},
+    {n:'Trademark Filing',t:'decisions',cx:.18,cy:.32},{n:'Summit Budget 2x',t:'decisions',cx:-.18,cy:.32},
+  ];
+  const nodes=raw.map(r=>({...r,x:r.cx*w*.38,y:r.cy*h*.38,vx:0,vy:0,r:5,color:types[r.t],edges:[]}));
+  const eds=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,15],[1,20],[2,16],[2,8],[3,17],[3,19],[4,9],[4,10],[6,21],[6,22],[6,23],[7,11],[7,12],[8,12],[8,16],[8,24],[9,20],[10,19],[11,13],[12,24],[14,0],[14,5],[15,1],[16,2],[17,25],[18,3],[18,6],[21,6],[22,0],[23,2],[24,8],[25,3],[0,8],[0,12],[3,10],[5,14],[6,8],[13,11],[19,4],[20,8],[17,10],[16,12]];
+  eds.forEach(([a,b])=>{if(a<nodes.length&&b<nodes.length){nodes[a].edges.push(b);nodes[b].edges.push(a)}});
+
+  function sim(){
+    const k=.0003,rep=700,damp=.91,cen=.0008;
+    nodes.forEach((a,i)=>{a.vx-=a.x*cen;a.vy-=a.y*cen;nodes.forEach((b,j)=>{if(i===j)return;const dx=a.x-b.x,dy=a.y-b.y;let d=Math.sqrt(dx*dx+dy*dy)||1;if(d<rep){const f=(rep-d)/d*k*40;a.vx+=dx*f;a.vy+=dy*f}})});
+    eds.forEach(([ai,bi])=>{if(ai>=nodes.length||bi>=nodes.length)return;const a=nodes[ai],b=nodes[bi],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1,f=(d-70)*k;a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f});
+    const mx=w/2.4,my=h/2.4;
+    nodes.forEach((n,i)=>{n.vx*=damp;n.vy*=damp;n.x+=n.vx+Math.sin(Date.now()/4000+i)*.05;n.y+=n.vy+Math.cos(Date.now()/3500+i)*.05;if(n.x>mx)n.x=mx;if(n.x<-mx)n.x=-mx;if(n.y>my)n.y=my;if(n.y<-my)n.y=-my});
+  }
+
+  let hov=null;
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),mx=e.clientX-r.left-w/2,my=e.clientY-r.top-h/2;hov=null;nodes.forEach((n,i)=>{if(Math.sqrt((n.x-mx)**2+(n.y-my)**2)<14)hov=i});c.style.cursor=hov!==null?'pointer':'default';if(hov!==null){const n=nodes[hov];tt.querySelector('.ttn').textContent=n.n;tt.querySelector('.ttt').textContent=n.t;tt.querySelector('.ttc').textContent=n.edges.length+' connections';tt.style.opacity='1';tt.style.left=(n.x+w/2+12)+'px';tt.style.top=(n.y+h/2-18)+'px'}else{tt.style.opacity='0'}});
+  c.addEventListener('mouseleave',()=>{hov=null;tt.style.opacity='0'});
+
+  function draw(){
+    sim();ctx.clearRect(0,0,w,h);ctx.save();ctx.translate(w/2,h/2);
+    eds.forEach(([ai,bi])=>{if(ai>=nodes.length||bi>=nodes.length)return;const a=nodes[ai],b=nodes[bi],isH=hov===ai||hov===bi;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=isH?'rgba(255,255,255,.22)':hov!==null?'rgba(255,255,255,.02)':'rgba(255,255,255,.06)';ctx.lineWidth=isH?1.2:.4;ctx.stroke()});
+    nodes.forEach((n,i)=>{const isH=hov===i,connH=hov!==null&&nodes[hov].edges.includes(i),dim=hov!==null&&!isH&&!connH;
+      if(isH){const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,22);g.addColorStop(0,n.color+'30');g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(n.x,n.y,22,0,Math.PI*2);ctx.fillStyle=g;ctx.fill()}
+      ctx.beginPath();ctx.arc(n.x,n.y,isH?7:connH?5.5:n.r,0,Math.PI*2);ctx.fillStyle=dim?n.color+'18':n.color+(isH?'':'bb');ctx.fill();
+      if(isH||connH){ctx.fillStyle=dim?'rgba(232,232,240,.12)':'rgba(232,232,240,.85)';ctx.font=isH?"600 10px 'DM Sans'":"300 8px 'DM Sans'";ctx.textAlign='center';ctx.fillText(n.n,n.x,n.y-(isH?13:10))}
+    });
+    ctx.restore();requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body>
 </html>
