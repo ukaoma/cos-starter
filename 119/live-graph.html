@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Company 119 — AI Chief of Staff</title>
+<title>COS Live Graph — AI Chief of Staff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -302,12 +302,12 @@ code{font-family:var(--font-mono);font-size:.75rem;background:rgba(201,169,110,.
   </div>
 
   <div class="sec-label" style="margin-top:32px">The Entity Relationship Graph</div>
-  <div style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-bottom:8px">Entities extracted and connected automatically from meeting transcripts</div>
+  <div style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-bottom:8px">Live graph &mdash; 7,621 entities and 14,793 relationships extracted from 772 meetings</div>
   <div class="graph-legend">
     <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#4a90d9"></div> People</div>
     <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#c9a96e"></div> Companies</div>
-    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#50c878"></div> Initiatives</div>
-    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#d478c8"></div> Decisions</div>
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#50c878"></div> Platforms</div>
+    <div class="graph-legend-item"><div class="ldot" style="width:8px;height:8px;border-radius:50%;background:#d478c8"></div> Verticals</div>
   </div>
   <div class="graph-box reveal">
     <canvas id="graphCanvas"></canvas>
@@ -466,23 +466,36 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
   const types={people:'#4a90d9',companies:'#c9a96e',initiatives:'#50c878',decisions:'#d478c8'};
   const raw=[
-    {n:'VP Marketing',t:'people',cx:-.22,cy:-.08},{n:'Dir. Content',t:'people',cx:-.12,cy:-.22},
-    {n:'Dir. Demand Gen',t:'people',cx:-.32,cy:-.18},{n:'VP Customer Mkt',t:'people',cx:-.18,cy:.12},
-    {n:'VP Mkt Ops',t:'people',cx:-.28,cy:.03},{n:'Creative Dir.',t:'people',cx:-.08,cy:-.03},
-    {n:'President',t:'people',cx:-.22,cy:.22},{n:'BDR Lead',t:'people',cx:-.38,cy:.12},
-    {n:'Primary Brand',t:'companies',cx:.18,cy:-.12},{n:'Brand B',t:'companies',cx:.28,cy:-.03},
-    {n:'Brand C',t:'companies',cx:.13,cy:.08},{n:'Brand D',t:'companies',cx:.33,cy:.08},
-    {n:'Competitor A',t:'companies',cx:.23,cy:.22},{n:'Competitor B',t:'companies',cx:.38,cy:.18},
-    {n:'Partner Agency',t:'companies',cx:.13,cy:-.28},
-    {n:'Q2 Calendar',t:'initiatives',cx:-.02,cy:-.32},{n:'Brand Defense',t:'initiatives',cx:.03,cy:-.18},
-    {n:'Customer Summit',t:'initiatives',cx:-.03,cy:-.42},{n:'Product Launch',t:'initiatives',cx:.08,cy:-.38},
-    {n:'Lead Nurture',t:'initiatives',cx:-.12,cy:-.38},{n:'SEO Audit',t:'initiatives',cx:.12,cy:-.22},
-    {n:'Budget Increase',t:'decisions',cx:-.03,cy:.32},{n:'Hire Freeze',t:'decisions',cx:.08,cy:.28},
-    {n:'Campaign Pivot',t:'decisions',cx:-.08,cy:.38},{n:'Price Match',t:'decisions',cx:.03,cy:.42},
-    {n:'Trademark Filing',t:'decisions',cx:.18,cy:.32},{n:'Summit Budget 2x',t:'decisions',cx:-.18,cy:.32},
+    {n:'Miles Ukaoma',t:'people',cx:-0.23,cy:-0.04},
+    {n:'Jeremy Sokolic',t:'people',cx:-0.21,cy:0.08},
+    {n:'Gina Obert',t:'people',cx:-0.21,cy:-0.14},
+    {n:'Graham Hoffman',t:'people',cx:-0.15,cy:-0.04},
+    {n:'Niala Samnarine',t:'people',cx:-0.25,cy:0.03},
+    {n:'Ryan Hopkins',t:'people',cx:-0.18,cy:0.11},
+    {n:'Silas Larson',t:'people',cx:-0.13,cy:0.01},
+    {n:'Daniel Bird',t:'people',cx:-0.27,cy:-0.1},
+    {n:'Peter Markland',t:'people',cx:-0.18,cy:0.12},
+    {n:'Manoj Bisht',t:'people',cx:-0.18,cy:-0.05},
+    {n:'Niranjan Reddy',t:'people',cx:-0.15,cy:-0.13},
+    {n:'Kyle Payton',t:'people',cx:-0.24,cy:0.06},
+    {n:'Quilt Software',t:'companies',cx:0.29,cy:-0.17},
+    {n:'Sprocket Rocket',t:'companies',cx:0.25,cy:-0.12},
+    {n:'Hermit Crabs',t:'companies',cx:0.27,cy:-0.26},
+    {n:'Bottle POS',t:'companies',cx:0.25,cy:-0.29},
+    {n:'ThriftCart',t:'companies',cx:0.03,cy:-0.19},
+    {n:'MarktPOS',t:'companies',cx:0.11,cy:-0.07},
+    {n:'IT Retail',t:'initiatives',cx:0.21,cy:0.09},
+    {n:'HubSpot',t:'initiatives',cx:0.23,cy:0.1},
+    {n:'Salesforce',t:'initiatives',cx:0.13,cy:0.15},
+    {n:'COS',t:'initiatives',cx:0.16,cy:0.29},
+    {n:'JCK',t:'initiatives',cx:0.07,cy:-0.31},
+    {n:'SBU',t:'decisions',cx:-0.03,cy:0.35},
+    {n:'XBU',t:'decisions',cx:-0.16,cy:0.23},
+    {n:'Jewelry',t:'decisions',cx:-0.15,cy:0.36},
   ];
+  const typeLabels={people:'PERSON',companies:'COMPANY',initiatives:'PLATFORM',decisions:'VERTICAL'};
   const nodes=raw.map(r=>({...r,x:0,y:0,vx:0,vy:0,r:5,color:types[r.t],edges:[]}));
-  const eds=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,15],[1,20],[2,16],[2,8],[3,17],[3,19],[4,9],[4,10],[6,21],[6,22],[6,23],[7,11],[7,12],[8,12],[8,16],[8,24],[9,20],[10,19],[11,13],[12,24],[14,0],[14,5],[15,1],[16,2],[17,25],[18,3],[18,6],[21,6],[22,0],[23,2],[24,8],[25,3],[0,8],[0,12],[3,10],[5,14],[6,8],[13,11],[19,4],[20,8],[17,10],[16,12]];
+  const eds=[[4,5],[0,4],[4,12],[2,4],[4,18],[4,16],[4,22],[4,14],[4,15],[3,4],[12,16],[12,17],[0,12],[5,12],[12,23],[12,24],[12,14],[2,12],[6,12],[12,19],[12,15],[3,12],[8,12],[1,12],[12,18],[12,25],[12,20],[0,14],[0,5],[0,3],[0,17],[0,9],[0,10],[0,19],[0,21],[0,13],[0,11],[0,6],[0,8],[0,7],[0,1],[0,2],[0,15],[0,23],[0,18],[0,24],[0,22],[0,25],[10,14],[9,10],[7,10],[10,13],[10,19],[10,21],[9,14],[9,13],[9,21],[13,14],[5,14],[7,14]];
   eds.forEach(([a,b])=>{if(a<nodes.length&&b<nodes.length){nodes[a].edges.push(b);nodes[b].edges.push(a)}});
 
   function sim(){
@@ -494,7 +507,7 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
   }
 
   let hov=null;
-  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),mx=e.clientX-r.left-w/2,my=e.clientY-r.top-h/2;hov=null;nodes.forEach((n,i)=>{if(Math.sqrt((n.x-mx)**2+(n.y-my)**2)<14)hov=i});c.style.cursor=hov!==null?'pointer':'default';if(hov!==null){const n=nodes[hov];tt.querySelector('.ttn').textContent=n.n;tt.querySelector('.ttt').textContent=n.t.toUpperCase();tt.querySelector('.ttc').textContent=n.edges.length+' connections';tt.style.opacity='1';tt.style.left=(n.x+w/2+12)+'px';tt.style.top=(n.y+h/2-18)+'px'}else{tt.style.opacity='0'}});
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),mx=e.clientX-r.left-w/2,my=e.clientY-r.top-h/2;hov=null;nodes.forEach((n,i)=>{if(Math.sqrt((n.x-mx)**2+(n.y-my)**2)<14)hov=i});c.style.cursor=hov!==null?'pointer':'default';if(hov!==null){const n=nodes[hov];tt.querySelector('.ttn').textContent=n.n;tt.querySelector('.ttt').textContent=(typeLabels[n.t]||n.t).toUpperCase();tt.querySelector('.ttc').textContent=n.edges.length+' connections';tt.style.opacity='1';tt.style.left=(n.x+w/2+12)+'px';tt.style.top=(n.y+h/2-18)+'px'}else{tt.style.opacity='0'}});
   c.addEventListener('mouseleave',()=>{hov=null;tt.style.opacity='0'});
 
   function draw(){
