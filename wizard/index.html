@@ -289,8 +289,10 @@
   <span class="highlight">[COS API]</span> Claude Code CLI detected</div>
 
     <div class="note">
-      <strong>Voice commands</strong> are optional. To enable them, set your OpenAI API key:<br>
-      <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">OPENAI_API_KEY=sk-... npx @gotcos/glasses-server</code>
+      <strong>Voice commands run locally on your Mac</strong> via <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> &mdash; zero per-minute cost. Install once:<br>
+      <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">brew install whisper-cpp</code><br>
+      <span style="color:var(--text-muted);font-size:0.8rem;">The launcher auto-downloads the ~3.1 GB Whisper model on first run.</span><br><br>
+      <strong>Prefer cloud?</strong> Skip the brew install and set <code style="font-family:var(--font-mono);font-size:0.8rem;">OPENAI_API_KEY</code> &mdash; the server falls back to OpenAI API ($0.006/min) automatically.
     </div>
   </div>
 
@@ -336,10 +338,12 @@
   <div class="step" data-step="Help">
     <h2>Troubleshooting</h2>
     <ul>
-      <li><strong>"Cannot reach server"</strong> — Make sure both devices are on Tailscale (or same WiFi). Check that the server terminal is still running.</li>
-      <li><strong>"Claude not found"</strong> — Install Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
-      <li><strong>Voice not working</strong> — Set <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code> when starting the server.</li>
-      <li><strong>Server disconnects</strong> — The server auto-reconnects. If persistent, restart with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">npx @gotcos/glasses-server</code>.</li>
+      <li><strong>"Cannot reach server"</strong> &mdash; Make sure both devices are on Tailscale (or same WiFi). Check that the server terminal is still running. As of v5.3.1 the wizard auto-detects unreachable URLs at boot and re-shows the setup screen automatically.</li>
+      <li><strong>"Claude not found"</strong> &mdash; Install Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
+      <li><strong>Voice silent or expensive</strong> &mdash; Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">brew install whisper-cpp</code> for free local transcription. Without it, voice falls back to OpenAI API and requires <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code>. The launcher prints which mode is active on every start.</li>
+      <li><strong>Wrong server URL stuck after Disconnect</strong> &mdash; Update to v5.3.1 or later. Older builds had a disconnect-loop bug where the URL re-injected from bridge SDK storage on every reload. v5.3.1 stores the logout flag in SDK storage so it survives the WebView wipe.</li>
+      <li><strong>Recover an interrupted meeting</strong> &mdash; If iOS killed the WebView mid-recording (e.g., long lock-screen background), the transcript chunks are still on the server. Find the orphaned session in <code style="font-family:var(--font-mono);font-size:0.78rem;">~/.cos-glasses/app/server/data/active-sessions/</code> and POST the session ID to <code style="font-family:var(--font-mono);font-size:0.78rem;">/api/meeting/save</code> to finalize. The active-meeting handle is also persisted client-side as of v5.3.0 so the next launch surfaces the orphan automatically.</li>
+      <li><strong>Server disconnects</strong> &mdash; The server auto-reconnects. If persistent, restart with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">npx @gotcos/glasses-server</code>.</li>
     </ul>
   </div>
 
