@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COS Glasses Setup — Even G2 Smart Glasses</title>
-  <meta name="description" content="Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code.">
+  <meta name="description" content="Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code or Codex CLI.">
   <meta property="og:title" content="COS Glasses Setup">
   <meta property="og:description" content="Get your Even G2 smart glasses running with COS in under 5 minutes.">
   <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
@@ -247,7 +247,7 @@
   <div class="header">
     <img src="../assets/mu-logo-white.png" alt="COS">
     <h1>COS Glasses <span class="accent">Setup</span></h1>
-    <p>Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code. Under 5 minutes.</p>
+    <p>Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code or Codex CLI. Under 5 minutes.</p>
   </div>
 
   <!-- Prerequisites -->
@@ -255,12 +255,15 @@
     <h2>What you need</h2>
     <ul class="checklist">
       <li class="required"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-      <li class="required"><strong>Claude Code</strong> installed on your Mac — <a href="https://claude.ai/download">Download here</a></li>
+      <li class="required"><strong>Claude Code or Codex CLI</strong> installed on your Mac — Opus/Sonnet use <a href="https://claude.ai/download">Claude Code</a>; Codex High uses <a href="https://developers.openai.com/codex/">Codex</a></li>
       <li class="required"><strong>Node.js 18+</strong> — <a href="https://nodejs.org">nodejs.org</a></li>
       <li class="optional"><strong>Tailscale</strong> (recommended) — connects your Mac and iPhone over a secure mesh network. <a href="https://tailscale.com/download">Download</a></li>
     </ul>
     <div class="note">
       <strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both devices a stable IP address that works from anywhere — no port forwarding, no firewall hassle.
+    </div>
+    <div class="note">
+      <strong>Testing Codex High?</strong> Install and sign in to the Codex CLI on the same Mac that runs the COS server: <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">codex login</code>, then verify with <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">codex --version</code>. COS Glasses uses local CLI auth; you do not paste an OpenAI key into the phone for chat.
     </div>
   </div>
 
@@ -278,15 +281,17 @@
 
   <span class="highlight">✓</span> Node.js 22.1.0
   <span class="highlight">✓</span> Claude Code 2.1.90
+  <span class="highlight">✓</span> Codex CLI 0.128.0-alpha.1 <span class="dim">(Codex High ready)</span>
   <span class="gold">↓</span> Downloading COS Glasses Server...
   <span class="highlight">✓</span> Downloaded
   <span class="gold">⟳</span> Installing dependencies...
   <span class="highlight">✓</span> Dependencies installed
 
   <span class="highlight">[COS API]</span> HTTP server running on <span class="gold">http://127.0.0.1:3141</span>
-  <span class="highlight">[COS API]</span> Mode: <span class="gold">Standalone</span> (glasses + Claude)
+  <span class="highlight">[COS API]</span> Mode: <span class="gold">Standalone</span> (glasses + Claude/Codex)
   <span class="highlight">[COS API]</span> 🔑 API Token: <span class="gold">_AbCd3F...</span> <span class="dim">(auto-generated)</span>
-  <span class="highlight">[COS API]</span> Claude Code CLI detected</div>
+  <span class="highlight">[COS API]</span> Claude Code CLI detected
+  <span class="highlight">[COS API]</span> Codex CLI detected</div>
 
     <div class="note">
       <strong>Voice commands run locally on your Mac</strong> via <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> &mdash; zero per-minute cost. Install once:<br>
@@ -328,9 +333,12 @@
       <li>Paste the API token (from the server terminal output)</li>
       <li>Tap <strong>Connect</strong></li>
     </ul>
-    <p style="margin-top:0.8rem;">That's it. Ask anything — your query goes to Claude via your local server, and the response streams to your glasses in real time.</p>
+    <p style="margin-top:0.8rem;">That's it. Ask anything — Opus/Sonnet route through Claude Code, Codex High routes through the local Codex CLI, and the response streams to your glasses in real time.</p>
     <div class="note">
       <strong>Have a COS username?</strong> Tap "I have a COS username" in the wizard and enter it. Your server details will be looked up automatically — no IP or token needed.
+    </div>
+    <div class="note">
+      <strong>Switch models from the phone:</strong> open Settings → Default chat model → Codex High, tap the toolbar model button until it says CODEX H, or say "switch to codex high."
     </div>
   </div>
 
@@ -339,7 +347,8 @@
     <h2>Troubleshooting</h2>
     <ul>
       <li><strong>"Cannot reach server"</strong> &mdash; Make sure both devices are on Tailscale (or same WiFi). Check that the server terminal is still running. As of v5.3.1 the wizard auto-detects unreachable URLs at boot and re-shows the setup screen automatically.</li>
-      <li><strong>"Claude not found"</strong> &mdash; Install Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
+      <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet require Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
+      <li><strong>"Codex not available"</strong> &mdash; Codex High requires the local Codex CLI on the Mac running the server. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">codex --version</code>; if it is missing, install Codex and run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">codex login</code>. The server health check should show Codex available before Codex High works.</li>
       <li><strong>Voice silent or expensive</strong> &mdash; Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">brew install whisper-cpp</code> for free local transcription. Without it, voice falls back to OpenAI API and requires <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code>. The launcher prints which mode is active on every start.</li>
       <li><strong>Wrong server URL stuck after Disconnect</strong> &mdash; Update to v5.3.1 or later. Older builds had a disconnect-loop bug where the URL re-injected from bridge SDK storage on every reload. v5.3.1 stores the logout flag in SDK storage so it survives the WebView wipe.</li>
       <li><strong>Recover an interrupted meeting</strong> &mdash; If iOS killed the WebView mid-recording (e.g., long lock-screen background), the transcript chunks are still on the server. Find the orphaned session in <code style="font-family:var(--font-mono);font-size:0.78rem;">~/.cos-glasses/app/server/data/active-sessions/</code> and POST the session ID to <code style="font-family:var(--font-mono);font-size:0.78rem;">/api/meeting/save</code> to finalize. The active-meeting handle is also persisted client-side as of v5.3.0 so the next launch surfaces the orphan automatically.</li>
@@ -359,7 +368,7 @@
       <span class="prompt">$ </span>cd cos-glasses-app && cp .env.example .env && npm install && npm run start:server
       <span class="copy-hint">click to copy</span>
     </div>
-    <p style="margin-top:0.8rem;">See the <a href="https://github.com/ukaoma/cos-glasses-app">GitHub repo</a> for full documentation, configuration options, and LLM provider setup.</p>
+    <p style="margin-top:0.8rem;">See the <a href="https://github.com/ukaoma/cos-glasses-app">GitHub repo</a> for full documentation, configuration options, and Claude/Codex provider setup.</p>
   </div>
 
   <div class="divider"></div>
