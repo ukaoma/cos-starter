@@ -270,7 +270,8 @@
   <!-- Step 1: Install Server -->
   <div class="step" data-step="Step 1">
     <h2>Start the COS Glasses server</h2>
-    <p>Open Terminal on your Mac and run:</p>
+    <p>The COS Glasses server runs on your own Mac or computer. Keep this Terminal window open while you use the glasses app.</p>
+    <p>Open Terminal on that computer and run:</p>
     <div class="cmd" onclick="copyCmd(this)">
       <span class="prompt">$ </span>npx @gotcos/glasses-server
       <span class="copy-hint">click to copy</span>
@@ -294,6 +295,7 @@
   <span class="highlight">[COS API]</span> Codex CLI detected</div>
 
     <div class="note">
+      <strong>What stays running?</strong> This terminal process is the local API that your iPhone and glasses connect to. If you close it, COS Glasses will open but chat, transcription, and meeting features cannot reach your local AI server.<br><br>
       <strong>Voice commands run locally on your Mac</strong> via <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> &mdash; zero per-minute cost. Install once:<br>
       <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">brew install whisper-cpp</code><br>
       <span style="color:var(--text-muted);font-size:0.8rem;">The launcher auto-downloads the ~1.5 GB Whisper model on first run. No Homebrew? Install from <a href="https://brew.sh" style="color:var(--text-muted);">brew.sh</a> first.</span><br><br>
@@ -331,6 +333,7 @@
     <ul>
       <li>Enter your Mac's Tailscale IP (from Step 2)</li>
       <li>Paste the API token (from the server terminal output)</li>
+      <li>Leave the server terminal running on your Mac while you use COS Glasses</li>
       <li>Tap <strong>Connect</strong></li>
     </ul>
     <p style="margin-top:0.8rem;">That's it. Ask anything — Opus/Sonnet route through Claude Code, Codex High routes through the local Codex CLI, and the response streams to your glasses in real time.</p>
