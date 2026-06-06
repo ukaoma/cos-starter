@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COS Readiness Score — How ready is your team for an AI Chief of Staff?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#07090f;--ink-2:#0b0e16;--panel:rgba(255,255,255,.025);--panel-2:rgba(255,255,255,.045);
+    --fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.34);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);
+    --gold:#c9a96e;--rose:#c4736e;--warm:#d4a07a;--green:#7fa98a;
+    --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
+    --maxw:880px;--gut:clamp(22px,5vw,56px);
+  }
+  html{font-size:16px;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh}
+  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 28s ease-in-out infinite alternate}
+  .atmos .a1{width:60vw;height:60vw;top:-20vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
+  .atmos .a2{width:52vw;height:52vw;bottom:-18vw;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.24),transparent 60%);animation-duration:34s}
+  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
+  .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(40px,8vh,90px) var(--gut) 80px}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:13px;margin-bottom:24px}
+  .eyebrow::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.025em;max-width:16ch}
+  h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .lead{color:var(--muted);font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.6;max-width:54ch;margin-top:24px}
+  .meta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--faint)}
+  .meta b{color:var(--gold);font-weight:500}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.98rem;padding:15px 30px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .25s,border-color .2s,background .2s;text-decoration:none}
+  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 40px -14px rgba(201,169,110,.6)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.72)}
+  .btn.ghost{border-color:var(--line-2);color:var(--fg);background:transparent}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+  .hero-cta{margin-top:42px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .trustline{margin-top:28px;font-family:var(--mono);font-size:.72rem;color:var(--faint);display:flex;align-items:center;gap:10px}
+  .trustline::before{content:'';width:20px;height:1px;background:var(--line-2)}
+
+  /* steps */
+  #quiz{display:none}
+  .progress{height:2px;background:var(--line-2);border-radius:2px;overflow:hidden;margin-bottom:8px}
+  .progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--warm),var(--gold));transition:width .4s cubic-bezier(.2,.7,.2,1)}
+  .qmeta{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:22px;display:flex;justify-content:space-between}
+  .qmeta .cl{color:var(--gold)}
+  .qtext{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.18;letter-spacing:-.01em;max-width:24ch;margin-bottom:30px}
+  .opts{display:flex;flex-direction:column;gap:12px}
+  .opt{text-align:left;width:100%;font-family:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 20px;font-size:1rem;line-height:1.45;cursor:pointer;transition:border-color .18s,background .18s,transform .12s}
+  .opt:hover{border-color:var(--line-2);background:var(--panel-2)}
+  .opt.sel{border-color:var(--gold);background:rgba(201,169,110,.09)}
+  .qnav{margin-top:28px;display:flex;justify-content:space-between;align-items:center}
+  .qnav .back{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.78rem;cursor:pointer;letter-spacing:.04em}
+  .qnav .back:hover{color:var(--fg)}
+
+  /* gate */
+  #gate{display:none}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;font-family:var(--mono)}
+  .field input{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;transition:.2s}
+  .field input:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.row2{grid-template-columns:1fr}}
+
+  /* results */
+  #results{display:none}
+  .gauge-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:10px}
+  .gauge{position:relative;width:230px;height:230px}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .gauge .num b{font-family:var(--display);font-style:italic;font-weight:500;font-size:3.6rem;line-height:1;background:linear-gradient(120deg,var(--warm),var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .gauge .num span{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+  .band{font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--fg);margin-top:14px}
+  .band-sub{color:var(--muted);max-width:46ch;margin:10px auto 0}
+  .bars{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+  .bar{border-top:1px solid var(--line-2);padding-top:14px}
+  .bar .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .bar .top b{font-weight:600;font-size:.98rem}
+  .bar .top .v{font-family:var(--mono);font-size:.8rem;color:var(--gold)}
+  .bar .track{height:5px;background:var(--line-2);border-radius:4px;overflow:hidden}
+  .bar .track i{display:block;height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:4px;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+  .bar .rd{font-size:.84rem;color:var(--muted);margin-top:7px}
+  .lev{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.lev{grid-template-columns:1fr}}
+  .lev .card{border:1px solid var(--line);border-radius:16px;padding:24px 22px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .lev .card .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .lev .card h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem;margin:8px 0 10px}
+  .lev .card p{font-size:.88rem;line-height:1.5;color:var(--muted)}
+  .trust{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:640px){.trust{grid-template-columns:1fr}}
+  .trust .t{border:1px solid var(--line-2);border-radius:13px;padding:18px;background:var(--panel)}
+  .trust .t b{display:block;color:var(--gold);font-size:.92rem;margin-bottom:5px}
+  .trust .t span{font-size:.82rem;color:var(--muted);line-height:1.45}
+  .cta{margin-top:44px;border:1px solid rgba(201,169,110,.28);border-radius:20px;padding:clamp(30px,5vw,52px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(201,169,110,.12),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent)}
+  .cta h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);max-width:22ch;margin:0 auto 14px}
+  .cta p{max-width:50ch;margin:0 auto 26px;color:var(--muted)}
+  .share{margin-top:20px;font-family:var(--mono);font-size:.74rem;color:var(--faint)}
+  .share a{color:var(--gold);cursor:pointer}
+  footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64px;border-top:1px solid var(--line-2);margin-top:60px}
+  footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:14px}
+  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted)}
+  @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div></div>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="eyebrow">COS Readiness Score</div>
+    <h1>How ready is your team for an <span class="g">AI chief of staff?</span></h1>
+    <p class="lead">Most teams buy AI and watch 80% of the seats go cold. This scores where an AI Chief of Staff would pay for itself first across 14 operating domains. Answer for how your team <em>actually</em> works today. The gaps are the point.</p>
+    <div class="meta"><div><b>12</b> questions</div><div><b>~3</b> minutes</div><div><b>No</b> black box</div></div>
+    <div class="hero-cta"><button class="btn primary" onclick="start()">Get your score</button></div>
+    <p class="trustline">No wrong answers. See exactly how the number is built. Your data is yours.</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="progress"><i id="pbar"></i></div>
+    <div class="qmeta"><span id="qcount">Question 1 of 14</span><span class="cl" id="qcluster"></span></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div class="qnav"><button class="back" id="backbtn" onclick="back()">&larr; back</button><span></span></div>
+  </section>
+
+  <!-- GATE -->
+  <section id="gate">
+    <div class="eyebrow">Your score is ready</div>
+    <h1 style="font-size:clamp(2rem,4.4vw,3rem)">Where should we send your <span class="g">readiness report?</span></h1>
+    <p class="lead">A one-page breakdown of your score, your biggest leverage areas, and what closing each gap looks like.</p>
+    <div style="max-width:480px;margin-top:30px">
+      <div class="row2"><div class="field"><label>First name</label><input id="g-first" type="text" autocomplete="given-name"></div><div class="field"><label>Last name</label><input id="g-last" type="text" autocomplete="family-name"></div></div>
+      <div class="field"><label>Work email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+      <div class="field"><label>Company</label><input id="g-co" type="text" autocomplete="organization"></div>
+      <button class="btn primary" style="width:100%;justify-content:center;margin-top:8px" onclick="reveal()">See my Readiness Score</button>
+      <p class="trustline" style="margin-top:16px">One report. No spam. <!-- TODO: wire HubSpot Forms API (portal 2474026) + custom props: cos_readiness_score, band, team_size, ai_stage, 5 cluster scores --></p>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="gauge-wrap">
+      <div class="eyebrow" style="justify-content:center">Your COS Readiness</div>
+      <div class="gauge">
+        <svg width="230" height="230" viewBox="0 0 230 230">
+          <circle cx="115" cy="115" r="100" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="14"/>
+          <circle id="arc" cx="115" cy="115" r="100" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" stroke-dasharray="628" stroke-dashoffset="628"/>
+          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4a07a"/><stop offset="0.55" stop-color="#c9a96e"/><stop offset="1" stop-color="#c4736e"/></linearGradient></defs>
+        </svg>
+        <div class="num"><b id="scoreNum">0</b><span>Leverage available</span></div>
+      </div>
+      <div class="band" id="bandName"></div>
+      <p class="band-sub" id="bandSub"></p>
+    </div>
+
+    <div style="margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:center" id="leverLine"></div>
+
+    <div class="bars" id="bars"></div>
+
+    <p class="eyebrow" style="margin-top:48px">Where a chief of staff pays for itself first</p>
+    <div class="lev" id="lev"></div>
+
+    <div class="trust">
+      <div class="t"><b>No black box</b><span>See exactly how every point was scored. Same transparency in the product: your knowledge lives in plain files you can read.</span></div>
+      <div class="t"><b>You own it, you don't rent it</b><span>MIT-licensed, self-hosted. Your keys, your server, your context. Model-agnostic.</span></div>
+      <div class="t"><b>Built for adoption</b><span>Teams go from a handful of power users to 70-80% daily use in 6 weeks. The AI does the work, not you.</span></div>
+    </div>
+
+    <div class="cta">
+      <h3 id="ctaHead">You have the most to gain. Let's map your first three workstreams.</h3>
+      <p id="ctaSub">Book 30 minutes. We'll walk your top gaps and show you exactly what closing them looks like. No pitch deck, no black box, a plan first.</p>
+      <a class="btn primary" id="ctaBtn" href="#">Book a working session</a>
+      <div id="ctaAlt" style="margin-top:16px"></div>
+    </div>
+
+    <p class="share">Want to keep it? <a onclick="copyLink()">Copy a shareable link to your results</a> &middot; <a onclick="window.print()">Download as PDF</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a></div>
+</footer>
+
+<script>
+(function(){
+  var BOOK = "https://meetings.hubspot.com/ukaoma"; // HubSpot meetings (ukaoma = Miles); accepts harmless ?score/band params
+
+  var Q = [
+    {c:"Meetings & Memory", t:"After a meeting ends, what happens to what was decided?", o:[["It lives in someone's head or scattered notes. We re-litigate later.",3],["One person takes notes and shares them when they remember.",2],["We have a notetaker tool, but nobody mines it for actions.",1],["Transcripts captured, searchable; decisions and actions pulled automatically.",0]]},
+    {c:"Meetings & Memory", t:"“What did we decide about X three months ago?” — how fast can you answer?", o:[["We usually can't, or it's a 30-minute archaeology dig.",3],["One or two people might remember; no system of record.",2],["It's somewhere in our docs/Slack if you know where to look.",1],["We surface it in seconds. Nothing gets lost.",0]]},
+    {c:"Meetings & Memory", t:"How does knowledge survive when someone leaves or is out?", o:[["It walks out the door. Onboarding is “shadow Dave.”",3],["Some docs exist but they're stale and nobody trusts them.",2],["We have a wiki/drive that's decent but manually maintained.",1],["Knowledge is structured, current, and self-maintaining.",0]]},
+    {c:"Tasks & Follow-through", t:"How do action items from meetings actually get tracked?", o:[["They mostly don't. Things fall through the cracks weekly.",3],["Personal lists; no shared view; lots of duplication.",2],["We use a PM tool, but keeping it updated is its own job.",1],["Tasks extracted, deduped, and tracked with little upkeep.",0]]},
+    {c:"Tasks & Follow-through", t:"When you delegate something, how do you know it's getting done?", o:[["I have to remember to chase people, or it stalls.",3],["I follow up in our next 1:1, whenever that is.",2],["We have status updates but I connect the dots.",1],["I get proactively flagged when something I'm owed slips.",0]]},
+    {c:"Inbox & Calendar", t:"How much of leadership's day goes to inbox and message triage?", o:[["Hours. The job before the job. Important things get buried.",3],["A lot. Whoever shouts loudest gets answered.",2],["Manageable, but no help prioritizing or drafting.",1],["Triaged and pre-drafted for us. We approve, not author.",0]]},
+    {c:"Inbox & Calendar", t:"How prepared is your team walking into meetings?", o:[["We wing it. Prep happens in the first 10 minutes.",3],["Whoever organized it preps; everyone else shows up cold.",2],["We prep the important ones manually; the rest we don't.",1],["Every meeting comes with auto-assembled context.",0]]},
+    {c:"People & Synthesis", t:"How well does your team retain context on the people you work with?", o:[["It's all tribal. New managers re-learn everyone from scratch.",3],["A CRM has basics but nothing on how people operate.",2],["Senior folks know everyone; it's not written down.",1],["Profiles capture style, history, and relationship health.",0]]},
+    {c:"People & Synthesis", t:"Your info is in 60+ tools. Who connects the dots across them?", o:[["Nobody. The dots stay un-connected and we miss things.",3],["Me, manually, by mentally stitching tabs together.",2],["We export and reconcile occasionally when it matters.",1],["A system surfaces the connections across all sources.",0]]},
+    {c:"People & Synthesis", t:"When you need market or background research, how does it happen?", o:[["Ad hoc, when there's time, which is never.",3],["One person Googles it under deadline.",2],["We do it well for big moments, nothing ongoing.",1],["Research is systematized and surfaced before we ask.",0]]},
+    {c:"Visibility & Foresight", t:"How clear is leadership visibility into what's happening week to week?", o:[["Foggy. Status comes from whoever I happen to ask.",3],["We have meetings about status, but no living picture.",2],["We build reports manually; they're stale on arrival.",1],["A live, always-current view, no manual reporting.",0]]},
+    {c:"Visibility & Foresight", t:"How often do problems reach you early, before they're on fire?", o:[["Almost never. I find out when it's already a crisis.",3],["Sometimes, if someone thinks to escalate.",2],["We catch some via check-ins, but it's reactive.",1],["I get proactive early-warning signals across the business.",0]]},
+    {qual:"team", t:"How big is the team you'd deploy this across?", o:[["Just me",0],["2-5 leaders",0],["6-15",0],["15-40",0],["40+",0]]},
+    {qual:"ai", t:"Where is your team with AI today?", o:[["Barely started. Curious but skeptical.",0],["A few use ChatGPT/Claude solo; nothing shared.",0],["We've tried tools but adoption never stuck.",0],["We have AI workflows running and want to go deeper.",0]]}
+  ];
+  var CLUSTERS=["Meetings & Memory","Tasks & Follow-through","Inbox & Calendar","People & Synthesis","Visibility & Foresight"];
+  var LEV={
+    "Meetings & Memory":"Every meeting captured, searchable, and turned into action. Knowledge that compounds instead of evaporating.",
+    "Tasks & Follow-through":"Nothing falls through. The AI tracks who owes what and flags slippage before you chase.",
+    "Inbox & Calendar":"The inbox gets triaged and pre-drafted. You approve, you don't author.",
+    "People & Synthesis":"The dots across your 60 tools get connected for you. No more stitching tabs in your head.",
+    "Visibility & Foresight":"A live picture of the business, and early warnings before things catch fire."
+  };
+  var BARREAD={
+    "Meetings & Memory":"Decisions and knowledge are leaking out after every meeting.",
+    "Tasks & Follow-through":"Follow-through depends on memory and chasing.",
+    "Inbox & Calendar":"Reactive triage is eating leadership hours.",
+    "People & Synthesis":"Context is trapped in silos and in people's heads.",
+    "Visibility & Foresight":"Leadership is flying on fog and finding out late."
+  };
+  var ans=new Array(Q.length).fill(null), cur=0;
+  var $=function(id){return document.getElementById(id)};
+
+  window.start=function(){$('intro').style.display='none';$('quiz').style.display='block';cur=0;render();window.scrollTo(0,0)};
+  window.back=function(){if(cur>0){cur--;render()}else{$('quiz').style.display='none';$('intro').style.display='block'}};
+
+  function render(){
+    var q=Q[cur];
+    $('pbar').style.width=((cur)/Q.length*100)+'%';
+    $('qcount').textContent='Question '+(cur+1)+' of '+Q.length;
+    $('qcluster').textContent=q.qual?'A couple last things':q.c;
+    $('qtext').textContent=q.t;
+    var h='';
+    q.o.forEach(function(o,i){h+='<button class="opt'+(ans[cur]===i?' sel':'')+'" onclick="pick('+i+')">'+o[0]+'</button>'});
+    $('opts').innerHTML=h;
+    $('backbtn').style.visibility = cur===0 ? 'hidden':'visible';
+  }
+  window.pick=function(i){
+    ans[cur]=i;
+    setTimeout(function(){
+      if(cur<Q.length-1){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}
+      else{$('pbar').style.width='100%';$('quiz').style.display='none';$('gate').style.display='block';window.scrollTo(0,0)}
+    },180);
+  };
+
+  window.reveal=function(){
+    // (gate is non-blocking in this prototype; real build posts to HubSpot then proceeds)
+    $('gate').style.display='none';$('results').style.display='block';window.scrollTo(0,0);compute();
+  };
+
+  function compute(){
+    var raw=0, cl={}; CLUSTERS.forEach(function(c){cl[c]={s:0,m:0}});
+    for(var i=0;i<12;i++){var q=Q[i],v=q.o[ans[i]!=null?ans[i]:0][1];raw+=v;cl[q.c].s+=v;cl[q.c].m+=3;}
+    var score=Math.round(raw/36*100);
+    var team=Q[12].o[ans[12]!=null?ans[12]:0][0], ai=Q[13].o[ans[13]!=null?ans[13]:0][0];
+
+    // gauge
+    var off=628-(628*score/100), arc=$('arc');
+    var n=0,target=score,t0=null;
+    function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1100,1);$('scoreNum').textContent=Math.round(target*p);arc.style.strokeDashoffset=628-(628*target/100*p);if(p<1)requestAnimationFrame(tick)}
+    requestAnimationFrame(tick);
+
+    // band
+    var band,sub,head,hsub,alt='';
+    if(score>=75){band="Prime for Leverage";sub="Your team is running almost entirely on manual effort. The upside is enormous and the payback is fast. You're exactly who a COS is built for.";head="You have the most to gain. Let's map your first three workstreams.";hsub="Book 30 minutes. We'll walk your top gaps and show you what closing them looks like. No pitch deck, no black box, a plan first.";}
+    else if(score>=50){band="Ready to Compound";sub="You've got pockets that work, but the dots aren't connected and knowledge isn't compounding. A COS turns scattered effort into a system.";head="Let's find where it compounds first.";hsub="Book 30 minutes to map the highest-leverage place to start.";}
+    else if(score>=25){band="Tuning, Not Transforming";sub="You're more organized than most. But you're maintaining tools manually instead of having them work for you. The gap is: the AI should work for you.";head="Let's tighten the system.";hsub="Book a call to find the optimizations, or start free with COS Starter.";alt='<a class="btn ghost" href="https://www.gotcos.com/#start">Or start free with COS Starter</a>';}
+    else{band="Already Operating";sub="You're running real AI workflows. You don't need convincing. You need depth, multi-role architecture, and the things that don't come out of the box.";head="Let's go deeper.";hsub="Book a call about team architecture, or go deeper with COS Starter + Glasses.";alt='<a class="btn ghost" href="https://www.gotcos.com/#start">Go deeper with COS Starter</a>';}
+    $('bandName').textContent=band;$('bandSub').textContent=sub;
+    $('ctaHead').textContent=head;$('ctaSub').textContent=hsub;$('ctaAlt').innerHTML=alt;
+    $('leverLine').textContent=score+"% of your team's operating load is manual work an AI could carry.";
+
+    // book link with context
+    var hot=(/15-40|40\+/.test(team))&&score>=50;
+    $('ctaBtn').href=BOOK+"?score="+score+"&band="+encodeURIComponent(band)+"&team="+encodeURIComponent(team)+"&source=readiness"+(hot?"&hot=1":"");
+
+    // bars sorted high-pain first
+    var arr=CLUSTERS.map(function(c){return {c:c,v:Math.round(cl[c].s/cl[c].m*100)}}).sort(function(a,b){return b.v-a.v});
+    var bh='';arr.forEach(function(b){bh+='<div class="bar"><div class="top"><b>'+b.c+'</b><span class="v">'+b.v+'</span></div><div class="track"><i style="width:0" data-w="'+b.v+'%"></i></div><div class="rd">'+BARREAD[b.c]+'</div></div>'});
+    $('bars').innerHTML=bh;
+    setTimeout(function(){document.querySelectorAll('#bars .track i').forEach(function(i){i.style.width=i.getAttribute('data-w')})},120);
+
+    // top-2 leverage cards
+    var lh='';arr.slice(0,2).forEach(function(b){lh+='<div class="card"><div class="k">Highest leverage</div><h4>'+b.c+'</h4><p>'+LEV[b.c]+'</p></div>'});
+    $('lev').innerHTML=lh;
+  }
+
+  window.copyLink=function(){
+    var url=location.origin+location.pathname+'#r='+ans.join('');
+    if(navigator.clipboard)navigator.clipboard.writeText(url);
+  };
+  // restore from shared link
+  if(location.hash.indexOf('#r=')===0){var s=location.hash.slice(3);if(s.length>=14){ans=s.split('').map(Number);$('intro').style.display='none';$('results').style.display='block';compute()}}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a working session — COS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#07090f;--panel:rgba(255,255,255,.025);--panel-2:rgba(255,255,255,.045);--fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.34);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);--gold:#c9a96e;--rose:#c4736e;--warm:#d4a07a;--display:'Fraunces',Georgia,serif;--body:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;--gut:clamp(22px,5vw,64px)}
+  html{font-size:16px;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh}
+  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 30s ease-in-out infinite alternate}
+  .atmos .a1{width:58vw;height:58vw;top:-20vw;right:-14vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
+  .atmos .a2{width:50vw;height:50vw;bottom:-18vw;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.24),transparent 60%);animation-duration:36s}
+  @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
+  .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px)}
+  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.1rem}.nav .brand b{font-style:normal;font-weight:600}
+  .nav a{color:var(--muted);font-size:.82rem;text-decoration:none}
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:clamp(110px,16vh,170px) var(--gut) 80px}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:13px;margin-bottom:22px}
+  .eyebrow::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.03em}
+  h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .lead{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;max-width:52ch;margin-top:24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);margin-top:clamp(44px,7vw,76px);align-items:start}
+  @media(max-width:880px){.grid{grid-template-columns:1fr;gap:40px}}
+  .sect{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
+  .gets{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .gets li{position:relative;padding-left:30px}
+  .gets li::before{content:'';position:absolute;left:0;top:.45em;width:11px;height:11px;border:1px solid var(--gold);border-radius:50%}
+  .gets li::after{content:'';position:absolute;left:4px;top:calc(.45em + 4px);width:3px;height:3px;border-radius:50%;background:var(--gold)}
+  .gets li b{display:block;color:var(--fg);font-weight:600;margin-bottom:3px}
+  .gets li span{color:var(--muted);font-size:.92rem;line-height:1.5}
+  .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:30px 0}
+  .trust{display:flex;flex-direction:column;gap:12px}
+  .trust .t{font-size:.88rem;color:var(--muted)}.trust .t b{color:var(--gold);font-weight:500}
+  /* booking panel */
+  .book{border:1px solid rgba(201,169,110,.28);border-radius:20px;padding:8px;background:radial-gradient(120% 120% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);position:sticky;top:90px}
+  .book-head{padding:22px 22px 6px}
+  .book-head .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .book-head h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.5rem;margin-top:8px}
+  .book-head p{font-size:.88rem;color:var(--muted);margin-top:6px}
+  /* HubSpot meetings embed mounts here. Placeholder shown until Chris's link is wired. */
+  .meetings-iframe-container{min-height:520px;border-radius:14px;overflow:hidden}
+  .cal-placeholder{min-height:520px;margin:14px;border:1px dashed var(--line-2);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:30px;background:rgba(0,0,0,.25)}
+  .cal-placeholder .ring{width:70px;height:70px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--gold);border-right-color:var(--rose)}
+  .cal-placeholder .pm{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--faint);max-width:34ch;line-height:1.6}
+  .cal-placeholder .pm b{color:var(--gold)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:13px 26px;border-radius:999px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;text-decoration:none;box-shadow:0 12px 34px -14px rgba(201,169,110,.6)}
+  footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 60px;border-top:1px solid var(--line-2);margin-top:50px}
+  footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:12px}
+  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted)}
+  @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}}
+</style>
+</head>
+<body>
+<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div></div>
+<nav class="nav"><div class="brand"><b>COS</b> <span style="font-style:italic">Starter</span></div><a href="https://www.gotcos.com">gotcos.com</a></nav>
+
+<div class="wrap">
+  <div class="eyebrow">Book a working session</div>
+  <h1>A plan. <span class="g">Not a pitch.</span></h1>
+  <p class="lead">Thirty minutes. We walk how your team actually operates, map where an AI Chief of Staff pays for itself first, and show you exactly what it looks like. No slide deck. No black box. You leave with a plan whether or not we work together.</p>
+
+  <div class="grid">
+    <div>
+      <p class="sect">What you'll walk away with</p>
+      <ul class="gets">
+        <li><b>Your three highest-leverage workstreams</b><span>Where the manual work is heaviest, and what the AI carrying it actually looks like for your team.</span></li>
+        <li><b>An adoption plan, not an experiment</b><span>How teams go from a handful of power users to 70-80% daily use in six weeks, and why most AI rollouts don't.</span></li>
+        <li><b>A look under the hood</b><span>Your knowledge in plain files you can read, an inspectable graph, coverage scoring. You see exactly what it knows.</span></li>
+        <li><b>The ownership math</b><span>MIT-licensed, self-hosted, model-agnostic. You own the system. We show you the cost picture, honestly.</span></li>
+      </ul>
+
+      <div class="rule"></div>
+      <p class="sect">Why this call is different</p>
+      <div class="trust">
+        <div class="t"><b>Plan first.</b> We map it before anyone builds anything. That strips the ambiguity out of the room.</div>
+        <div class="t"><b>Show, don't tell.</b> Live system, real answers, the access controls working in front of you.</div>
+        <div class="t"><b>Built to be used.</b> The whole game is adoption. If your team won't use it, nothing else matters, so that's where we start.</div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="book-head">
+        <div class="k">30 minutes · pick a time</div>
+        <h3>Pick a time</h3>
+        <p>Bring whoever owns the decision and whoever owns the rollout.</p>
+      </div>
+      <!-- HubSpot Meetings embed (live) -->
+      <div class="meetings-iframe-container" data-src="https://meetings.hubspot.com/ukaoma?embed=true" style="min-height:640px"></div>
+      <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a></div>
+</footer>
+</body>
+</html>
