@@ -6,6 +6,20 @@ You are helping someone build their AI Chief of Staff system from scratch. This 
 
 ---
 
+## Phase 0: Check for an existing COS (do this first)
+
+Before building anything, check whether this person already runs a COS in this directory:
+
+1. Look for an existing **`.cos/`** marker, a root **`CLAUDE.md`**, or a **`context/`** + **`operations/`** structure.
+2. **If a COS already exists -- do NOT overwrite it:**
+   - Read the existing `CLAUDE.md` and `context/people.md` to learn what's there.
+   - Tell them what you found ("You already run a COS for [name] -- [N] people, domains: [list]").
+   - Offer: **(a) extend it** (add a skill, person, domain, or connection), **(b) refresh it** (re-interview to update priorities and people), or **(c) add COS Glasses** (point their Even G2 glasses at this COS so they inherit all of it -- see gotcos.com/wizard).
+   - Act on their choice. Skip the interview unless they pick refresh.
+3. **If no COS exists -- continue below to build one.**
+
+---
+
 ## Skip Ahead
 
 Check if the user wants to skip:
@@ -74,7 +88,26 @@ If they provide file paths or URLs, read them and extract relevant professional 
 
 ### After All 6 Answers: Generate the System
 
-Create two files:
+**First, scaffold the directory** the COS will live in -- driven by their Q5 domains:
+
+```
+CLAUDE.md                          # system brain (root, loaded every session)
+context/
+  people.md                        # who they work with
+  # + durable reference docs (profiles, system notes) as they add them
+operations/
+  <domain>/                        # one folder per Q5 domain (e.g. acme/, consulting/, personal/)
+    tasks.md                       # rolling open tasks
+    intelligence/                  # PERMANENT reference (baselines, source data, frameworks)
+    wk<NN>_<year>/                 # WEEKLY work products -- ISO week of 52, created on demand
+```
+
+The split that keeps it findable later:
+- **Session work products** (analyses, drafts, reports) -> `operations/<domain>/wk<NN>_<year>/` (the current ISO week, e.g. `wk23_2026`).
+- **Permanent reference** (baselines, frameworks, source data) -> `operations/<domain>/intelligence/`.
+- **People + system docs** -> `context/`.
+
+Create the domain folders, each with `tasks.md` and `intelligence/`, plus **only the current week's** `wk<NN>_<year>/` folder (don't pre-create all 52 -- add each week on demand). Then create two files:
 
 **1. CLAUDE.md** (in project root)
 
@@ -133,7 +166,18 @@ Use this structure -- fill in from their answers:
 | Need | File |
 |------|------|
 | People profiles | `context/people.md` |
-| Open tasks | `operations/tasks.md` |
+| Open tasks | `operations/<domain>/tasks.md` |
+
+## Where Things Live
+
+| Content | Location |
+|---------|----------|
+| Session work products (analyses, drafts, reports) | `operations/<domain>/wk<NN>_<year>/` -- current ISO week |
+| Permanent reference (baselines, source data, frameworks) | `operations/<domain>/intelligence/` |
+| People + system docs | `context/` |
+| Open tasks | `operations/<domain>/tasks.md` |
+
+Work products route to the current week's folder -- that is how you find them again. Reference data stays in `intelligence/`.
 ```
 
 **2. context/people.md**
