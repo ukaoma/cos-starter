@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COS Starter — AI Chief of Staff</title>
+<title>COS Starter · AI Chief of Staff</title>
 <meta name="description" content="Build an AI Chief of Staff that actually knows your job. Context-driven AI systems that compound in value.">
-<meta property="og:title" content="COS Starter — AI Chief of Staff">
+<meta property="og:title" content="COS Starter · AI Chief of Staff">
 <meta property="og:description" content="Build an AI Chief of Staff that actually knows your job.">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
@@ -163,6 +163,13 @@
   footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   footer .links a{color:var(--muted)}
 
+  /* inline CTA bands (woven mid-page) */
+  .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(201,169,110,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
+  .inline-cta .ic-text b{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.25rem;color:var(--fg);display:block;line-height:1.15}
+  .inline-cta .ic-text span{font-size:.9rem;color:var(--muted);display:block;margin-top:5px;max-width:54ch}
+  .inline-cta .ic-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+  .inline-cta .btn{font-size:.9rem;padding:12px 22px}
+  @media(max-width:680px){.inline-cta{flex-direction:column;align-items:flex-start;padding:22px}}
   /* quick start kit */
   .kit-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px}
   .kit-hint{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
@@ -273,7 +280,12 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="wrap reveal">
+  <div class="inline-cta">
+    <div class="ic-text"><b>Rather have it done with you?</b><span>Skip the DIY. We stand up your COS in a working session, then your team runs it.</span></div>
+    <div class="ic-actions"><a class="btn primary" href="/connect/">Book a working session</a></div>
+  </div>
+</div>
 
 <!-- ── 03 WHAT YOU GET ── -->
 <section class="wrap reveal" id="get">
@@ -287,9 +299,9 @@
 ├── context/
 │   └── people.md             <span class="cm"># your team profiles</span>
 ├── .claude/commands/
-│   ├── start.md              <span class="cm"># /start — daily briefing</span>
-│   ├── learn.md              <span class="cm"># /learn — capture corrections</span>
-│   └── prep.md               <span class="cm"># /prep — meeting preparation</span>
+│   ├── start.md              <span class="cm"># /start: daily briefing</span>
+│   ├── learn.md              <span class="cm"># /learn: capture corrections</span>
+│   └── prep.md               <span class="cm"># /prep: meeting preparation</span>
 ├── operations/
 │   └── &lt;domain&gt;/             <span class="cm"># tasks.md · intelligence/ · wk&lt;NN&gt;_&lt;year&gt;/</span>
 └── corrections.md            <span class="cm"># patterns (auto-populated)</span></pre>
@@ -335,17 +347,22 @@
     <div class="dm"><b>Content &amp; Research</b><span>Market intel, competitor tracking, documents</span></div>
     <div class="dm"><b>Reporting &amp; Dashboards</b><span>Status updates, briefings, visual dashboards</span></div>
     <div class="dm"><b>Knowledge Management</b><span>File organization, templates, SOPs</span></div>
-    <div class="dm"><b>Ambient I/O</b><span>Multi-surface delivery — terminal, mobile, voice</span></div>
+    <div class="dm"><b>Ambient I/O</b><span>Multi-surface delivery: terminal, mobile, voice</span></div>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="wrap reveal">
+  <div class="inline-cta">
+    <div class="ic-text"><b>See exactly where you stand.</b><span>See your team's biggest gaps and what to fix first. 12 questions, about 3 minutes, right in your browser.</span></div>
+    <div class="ic-actions"><a class="btn primary" href="/readiness/">Get your Readiness Score</a></div>
+  </div>
+</div>
 
 <!-- ── 06 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
   <div class="sec-head"><div class="eyebrow"><span class="num">06</span> Integrations</div>
     <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
-    <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a> — bring your own.</p>
+    <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
   <div class="ints">
     <div class="int"><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
@@ -355,13 +372,18 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="wrap reveal">
+  <div class="inline-cta">
+    <div class="ic-text"><b>Rolling this out to a team?</b><span>We'll help you get the whole team using it, not just the power users.</span></div>
+    <div class="ic-actions"><a class="btn primary" href="#teams" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="event.preventDefault();document.getElementById('teams').scrollIntoView({behavior:'smooth'});setTimeout(function(){var w=document.getElementById('teams-form-wrapper');if(w&&!w.classList.contains('expanded'))toggleTeamsForm();},600);">Tell us about your team</a><a class="btn ghost" href="/connect/">Book a working session</a></div>
+  </div>
+</div>
 
 <!-- ── 07 GLASSES ── -->
 <section class="wrap reveal" id="glasses">
   <div class="sec-head"><div class="eyebrow"><span class="num">07</span> COS Glasses</div>
     <h2>The frame, <span class="it g">on your face.</span></h2>
-    <p class="lead">Running on Even G2 smart glasses — a chief of staff on the lens. Same context you build here; now it follows you off the screen.</p>
+    <p class="lead">Running on Even G2 smart glasses. A chief of staff on the lens. Same context you build here; now it follows you off the screen.</p>
   </div>
   <div class="glass-grid">
     <div class="gc"><div class="tl">On the lens</div><h4>Talk &amp; listen</h4><p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with send / edit / re-record, answers read to your earbuds.</p></div>
@@ -387,7 +409,7 @@
       <a href="/readiness/" class="btn primary">Get your Readiness Score</a>
       <a href="/connect/" class="btn ghost">Book a working session</a>
     </div>
-    <div class="teams-toggle"><button type="button" onclick="toggleTeamsForm()">Or tell us about your team and we'll reach out</button></div>
+    <div class="teams-toggle"><button type="button" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="toggleTeamsForm()">Or tell us about your team and we'll reach out</button></div>
     <div class="teams-form-wrapper" id="teams-form-wrapper"><div class="tf-inner"><div id="hs-teams-form"></div></div></div>
   </div>
 </section>
@@ -403,10 +425,10 @@
     <div>
       <p>The <a href="https://milesukaoma.com/cos">interactive philosophy map</a> traces the four tiers:</p>
       <ul class="ck" style="margin-top:18px">
-        <li><strong>Foundation</strong> — identity is the starting point</li>
-        <li><strong>Operational</strong> — routines create rhythm</li>
-        <li><strong>Compounding</strong> — corrections accumulate into intelligence</li>
-        <li><strong>Agentic</strong> — the system acts without being asked</li>
+        <li><strong>Foundation</strong>: identity is the starting point</li>
+        <li><strong>Operational</strong>: routines create rhythm</li>
+        <li><strong>Compounding</strong>: corrections accumulate into intelligence</li>
+        <li><strong>Agentic</strong>: the system acts without being asked</li>
       </ul>
       <div class="hero-cta" style="margin-top:30px">
         <a href="#start" class="btn ghost">Start building</a>
@@ -432,21 +454,23 @@
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('in');}); }
 })();
-// Teams HubSpot form — lazy-load on expand (ungated; full form)
+// Teams HubSpot form: lazy-load on expand (ungated; full form)
 var teamsFormInitialized=false;
 function toggleTeamsForm(){
   var w=document.getElementById('teams-form-wrapper');w.classList.toggle('expanded');
-  if(!teamsFormInitialized&&w.classList.contains('expanded')){
+  var exp=w.classList.contains('expanded');
+  document.querySelectorAll('[aria-controls="teams-form-wrapper"]').forEach(function(t){t.setAttribute('aria-expanded',exp?'true':'false');});
+  if(!teamsFormInitialized&&exp){
     teamsFormInitialized=true;
     var s=document.createElement('script');s.src='https://js.hsforms.net/forms/embed/v2.js';s.charset='utf-8';
     s.onload=function(){hbspt.forms.create({portalId:'2474026',formId:'c5439911-36e3-4063-ae21-0e0ab792f7a3',target:'#hs-teams-form'});};
     document.head.appendChild(s);
   }
 }
-// Copy the Starter Kit prompt — fetch the live canonical, fall back to a pointer
+// Copy the Starter Kit prompt: fetch the live canonical, fall back to a pointer
 function copyKit(){
   var btn=document.getElementById('copyKit');
-  function done(text,full){if(navigator.clipboard)navigator.clipboard.writeText(text);btn.textContent=full?'Copied — paste into Claude Code or Codex':'Copied a link — open it';setTimeout(function(){btn.textContent='Copy the Starter Kit';},2800);}
+  function done(text,full){if(navigator.clipboard)navigator.clipboard.writeText(text);btn.textContent=full?'Copied. Paste into Claude Code or Codex':'Copied a link. Open it';setTimeout(function(){btn.textContent='Copy the Starter Kit';},2800);}
   fetch('https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md',{cache:'no-store'})
     .then(function(r){return r.ok?r.text():Promise.reject();})
     .then(function(md){var ok=md&&md.trim().length>200;done(ok?md:'Open https://gotcos.com/cos-starter.md and run the interactive setup.',ok);})
