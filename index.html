@@ -163,6 +163,17 @@
   footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   footer .links a{color:var(--muted)}
 
+  /* quick start kit */
+  .kit-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .kit-hint{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
+  .kit-does{margin-top:52px}
+  .does-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.does-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.does-grid{grid-template-columns:1fr}}
+  .does{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .does .n{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--gold);line-height:1}
+  .does b{display:block;font-weight:600;font-size:1rem;margin:10px 0 8px;color:var(--fg)}
+  .does p{font-size:.85rem;line-height:1.5;color:var(--muted)}
   /* teams form */
   .teams-toggle{margin-top:20px}
   .teams-toggle button{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
@@ -245,16 +256,21 @@
 <section class="wrap reveal" id="start">
   <div class="sec-head"><div class="eyebrow"><span class="num">02</span> Quick Start</div>
     <h2>Five minutes to a <span class="it g">working COS.</span></h2>
-    <p class="lead">Prerequisites: the <a href="https://claude.ai/claude-code">Claude Code CLI</a> and a Claude Max or Team subscription.</p>
+    <p class="lead">No setup gymnastics. Open <a href="https://claude.ai/claude-code">Claude Code</a> or <a href="https://developers.openai.com/codex/">Codex</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the whole system for you.</p>
   </div>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><h3>Create your COS directory</h3><code class="code">mkdir my-cos &amp;&amp; cd my-cos
-git init</code></div>
-    <div class="step"><div class="n">2</div><h3>Copy the setup prompt</h3><code class="code"><span class="c"># pull the kit</span>
-curl -O https://raw.\
-githubusercontent.com/ukaoma/\
-cos-starter/main/cos-starter.md</code></div>
-    <div class="step"><div class="n">3</div><h3>Run the interactive setup</h3><code class="code">claude</code><p style="font-size:.84rem;margin-top:12px">Then: <em style="color:var(--fg)">"Read cos-starter.md and run the interactive setup."</em></p></div>
+  <div class="kit-cta">
+    <button class="btn primary" id="copyKit" onclick="copyKit()">Copy the Starter Kit</button>
+    <a class="btn ghost" href="/cos-starter.md" target="_blank" rel="noopener">View the kit</a>
+    <span class="kit-hint">Then paste it into Claude Code or Codex and hit enter.</span>
+  </div>
+  <div class="kit-does">
+    <p class="eyebrow" style="margin:0 0 18px">What it does for you</p>
+    <div class="does-grid">
+      <div class="does"><span class="n">01</span><b>Interviews you</b><p>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</p></div>
+      <div class="does"><span class="n">02</span><b>Builds your structure</b><p>Profiles your people and scaffolds your directory: operations, intelligence, weekly work.</p></div>
+      <div class="does"><span class="n">03</span><b>Installs your skills</b><p>/start, /learn, /prep. A daily briefing, correction memory, and meeting prep.</p></div>
+      <div class="does"><span class="n">04</span><b>Wires a connection</b><p>Slack, meetings, or any MCP. Optional, then the before/after that makes it click.</p></div>
+    </div>
   </div>
 </section>
 
@@ -427,6 +443,15 @@ function toggleTeamsForm(){
     s.onload=function(){hbspt.forms.create({portalId:'2474026',formId:'c5439911-36e3-4063-ae21-0e0ab792f7a3',target:'#hs-teams-form'});};
     document.head.appendChild(s);
   }
+}
+// Copy the Starter Kit prompt — fetch the live canonical, fall back to a pointer
+function copyKit(){
+  var btn=document.getElementById('copyKit');
+  function done(text,full){if(navigator.clipboard)navigator.clipboard.writeText(text);btn.textContent=full?'Copied — paste into Claude Code or Codex':'Copied a link — open it';setTimeout(function(){btn.textContent='Copy the Starter Kit';},2800);}
+  fetch('https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md',{cache:'no-store'})
+    .then(function(r){return r.ok?r.text():Promise.reject();})
+    .then(function(md){var ok=md&&md.trim().length>200;done(ok?md:'Open https://gotcos.com/cos-starter.md and run the interactive setup.',ok);})
+    .catch(function(){done('Open https://gotcos.com/cos-starter.md and run the interactive setup.',false);});
 }
 </script>
 </body>
