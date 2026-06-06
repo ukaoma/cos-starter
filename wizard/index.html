@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COS Glasses Setup — Even G2 Smart Glasses</title>
-  <meta name="description" content="Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code or Codex CLI.">
-  <meta property="og:title" content="COS Glasses Setup">
-  <meta property="og:description" content="Get your Even G2 smart glasses running with COS in under 5 minutes.">
-  <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
-  <link rel="icon" href="../assets/favicon-32.png" type="image/png">
+  <title>Personalize your COS Glasses — Setup Wizard</title>
+  <meta name="description" content="Tell us how you'll use Even G2. We'll tune the model, your context, and what shows on the lens — then hand you the exact setup.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,373 +30,521 @@
     }
 
     html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-deep);
-      color: var(--text-primary);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Noise texture */
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       background-size: 256px 256px;
-      pointer-events: none;
-      z-index: 0;
     }
 
-    .page { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+    .page { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
 
     /* ── Header ── */
-    .header { text-align: center; margin-bottom: 3.5rem; }
-    .header img { width: 48px; height: auto; opacity: 0.7; margin-bottom: 1rem; }
-    .header h1 {
-      font-family: var(--font-body);
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-      margin-bottom: 0.6rem;
-    }
+    .header { text-align: center; margin-bottom: 3rem; }
+    .header .eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-gold); opacity: 0.85; margin-bottom: 1rem; }
+    .header h1 { font-family: var(--font-body); font-size: clamp(1.7rem, 4.4vw, 2.5rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.7rem; }
     .header h1 .accent { color: var(--accent-gold); font-family: var(--font-display); font-style: italic; }
-    .header p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; max-width: 440px; margin: 0 auto; }
+    .header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 480px; margin: 0 auto; }
 
-    /* ── Steps ── */
-    .step {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(20px);
-      position: relative;
-    }
+    /* ── Step cards ── */
+    .step { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.9rem; margin-bottom: 1.4rem; backdrop-filter: blur(20px); position: relative; }
     .step::before {
-      content: attr(data-step);
-      position: absolute;
-      top: -11px;
-      left: 20px;
-      background: var(--accent-rose);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 4px;
+      content: attr(data-step); position: absolute; top: -11px; left: 20px;
+      background: var(--accent-rose); color: #fff; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
     }
+    .step h2 { font-size: 1.12rem; font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+    .step .sub { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.2rem; }
 
-    .step h2 {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.01em;
+    /* ── Option grid (multi + single select share styling) ── */
+    .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .opt-grid.three { grid-template-columns: 1fr 1fr; }
+    .opt {
+      position: relative; text-align: left; cursor: pointer; padding: 1rem 1.1rem 1rem;
+      background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 10px;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+      display: block; width: 100%; font-family: inherit; color: inherit;
     }
-    .step p, .step li {
-      color: var(--text-label);
-      font-size: 0.88rem;
-      line-height: 1.65;
-    }
-    .step ul { list-style: none; padding: 0; }
-    .step li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; }
-    .step li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent-gold);
-      font-weight: 500;
-    }
+    .opt:hover { border-color: var(--border-form); }
+    .opt.selected { border-color: var(--accent-gold); background: rgba(201, 169, 110, 0.07); }
+    .opt .opt-k { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+    .opt.selected .opt-k { color: var(--accent-gold); }
+    .opt h3 { font-size: 0.95rem; font-weight: 600; margin: 0.35rem 0 0.25rem; letter-spacing: -0.01em; }
+    .opt p { font-size: 0.78rem; line-height: 1.45; color: var(--text-muted); }
+    .opt .check { position: absolute; top: 0.9rem; right: 0.9rem; width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--border-form); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .opt.selected .check { background: var(--accent-gold); border-color: var(--accent-gold); }
+    .opt .check svg { width: 9px; height: 9px; stroke: #0b0f17; stroke-width: 3; fill: none; opacity: 0; transition: opacity 0.2s; }
+    .opt.selected .check svg { opacity: 1; }
+    .opt .rec-badge { display: none; position: absolute; top: -8px; right: 12px; background: var(--accent-green); color: #06210b; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+    .opt.recommended .rec-badge { display: inline-block; }
 
-    /* ── Code blocks ── */
-    .cmd {
-      display: block;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--border-form);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 1rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: var(--accent-green);
-      overflow-x: auto;
-      position: relative;
-      cursor: pointer;
-      transition: border-color 0.2s;
+    /* ── Text fields ── */
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .field { margin-bottom: 0.8rem; }
+    .field label { display: block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-label); margin-bottom: 0.35rem; }
+    .field input {
+      width: 100%; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form);
+      border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: all 0.2s;
     }
-    .cmd:hover { border-color: var(--accent-gold); }
-    .cmd .prompt { color: var(--text-muted); user-select: none; }
-    .cmd .copy-hint {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .cmd:hover .copy-hint { color: var(--accent-gold); }
+    .field input::placeholder { color: rgba(255,255,255,0.2); }
+    .field input:focus { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); }
 
-    /* ── Output preview ── */
-    .output {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 1rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      white-space: pre-wrap;
-    }
-    .output .highlight { color: var(--accent-green); }
-    .output .gold { color: var(--accent-gold); }
-    .output .dim { color: rgba(255,255,255,0.2); }
-
-    /* ── Notes / callouts ── */
-    .note {
-      background: rgba(201, 169, 110, 0.06);
-      border-left: 3px solid var(--accent-gold);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin: 1rem 0;
-      font-size: 0.82rem;
-      color: var(--text-label);
-      line-height: 1.5;
-    }
+    /* ── Notes ── */
+    .note { background: rgba(201, 169, 110, 0.06); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 11px 15px; margin: 1rem 0 0; font-size: 0.8rem; color: var(--text-label); line-height: 1.5; }
     .note strong { color: var(--accent-gold); font-weight: 500; }
 
-    /* ── Requirements checklist ── */
-    .checklist { list-style: none; padding: 0; margin: 1rem 0; }
-    .checklist li {
-      padding: 0.5rem 0;
-      padding-left: 2rem;
-      position: relative;
-      color: var(--text-label);
-      font-size: 0.88rem;
-    }
-    .checklist li::before {
-      position: absolute;
-      left: 0;
-      font-size: 0.9rem;
-    }
-    .checklist li.required::before { content: '○'; color: var(--accent-rose); }
-    .checklist li.optional::before { content: '◇'; color: var(--text-muted); }
+    /* ── Result card ── */
+    .result { background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(14,19,30,0.85)); border: 1px solid rgba(201,169,110,0.28); border-radius: 14px; padding: 2rem 1.9rem; margin-top: 2.4rem; position: relative; }
+    .result::before { content: 'Your build'; position: absolute; top: -11px; left: 20px; background: var(--accent-gold); color: #0b0f17; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
+    .result h2 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .result h2 em { font-family: var(--font-display); font-style: italic; color: var(--accent-gold); font-weight: 400; }
+    .result .config-line { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.3rem; min-height: 1.2em; }
+    .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.4rem; margin-bottom: 1.4rem; }
+    .summary .row { display: flex; flex-direction: column; gap: 2px; padding: 0.6rem 0; border-top: 1px solid var(--border-subtle); }
+    .summary .row .k { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .summary .row .v { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }
+    .summary .row .v small { color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
 
-    /* ── Links ── */
-    a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201, 169, 110, 0.2); transition: border-color 0.2s; }
-    a:hover { border-color: var(--accent-gold); }
+    .res-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-label); margin: 1.3rem 0 0.5rem; }
 
-    /* ── Divider ── */
-    .divider {
-      height: 1px;
-      background: var(--border-subtle);
-      margin: 2.5rem 0;
-    }
+    /* ── Code blocks ── */
+    .cmd { display: block; background: rgba(0,0,0,0.4); border: 1px solid var(--border-form); border-radius: 8px; padding: 13px 15px; margin: 0.6rem 0; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.5; color: var(--accent-green); overflow-x: auto; position: relative; cursor: pointer; transition: border-color 0.2s; }
+    .cmd:hover { border-color: var(--accent-gold); }
+    .cmd .prompt { color: var(--text-muted); user-select: none; }
+    .cmd .copy-hint { position: absolute; top: 8px; right: 10px; font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .cmd:hover .copy-hint { color: var(--accent-gold); }
+    .gen { white-space: pre-wrap; color: var(--text-label); }
+    .gen .c { color: var(--text-muted); }
+    .gen .g { color: var(--accent-gold); }
 
-    /* ── Footer ── */
-    .footer {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      margin-top: 3rem;
-      line-height: 1.8;
-    }
-    .footer .brand {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
+    /* ── Settings checklist ── */
+    .enable { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+    .enable li { padding: 0.35rem 0 0.35rem 1.5rem; position: relative; font-size: 0.85rem; color: var(--text-label); line-height: 1.5; }
+    .enable li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-rose); }
+    .enable li b { color: var(--text-primary); font-weight: 600; }
 
-    /* ── Responsive ── */
+    /* ── CTAs ── */
+    .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .actions a { padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: all 0.2s; }
+    .actions a.primary { background: linear-gradient(135deg, rgba(196,115,110,0.18), rgba(201,169,110,0.18)); border-color: rgba(201,169,110,0.3); color: var(--accent-gold); }
+    .actions a.primary:hover { background: linear-gradient(135deg, rgba(196,115,110,0.3), rgba(201,169,110,0.3)); }
+    .actions a.secondary { border-color: var(--border-form); color: var(--text-label); }
+    .actions a.secondary:hover { border-color: rgba(255,255,255,0.25); color: var(--text-primary); }
+    .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
+    .hosted a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); }
+
+    a { color: var(--accent-gold); }
+    .divider { height: 1px; background: var(--border-subtle); margin: 2.5rem 0; }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.75rem; margin-top: 2.5rem; line-height: 1.8; }
+    .footer .brand { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; }
+    .footer a { text-decoration: none; }
+
+    /* ── Detailed setup (folded-in install guide) ── */
+    .detailed-setup { margin-top: 2rem; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
+    .detailed-setup > summary { cursor: pointer; padding: 1.1rem 1.5rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-gold); list-style: none; }
+    .detailed-setup > summary::-webkit-details-marker { display: none; }
+    .detailed-setup > summary::after { content: '+'; float: right; font-size: 0.95rem; }
+    .detailed-setup[open] > summary::after { content: '\2212'; }
+    .detailed-setup .ds-body { padding: 0 1.5rem 1.5rem; }
+    .detailed-setup .step { margin: 0.6rem 0 1.2rem; }
+    .checklist { list-style: none; padding: 0; margin: 0.6rem 0; }
+    .checklist li { padding: 0.35rem 0 0.35rem 1.6rem; position: relative; font-size: 0.85rem; line-height: 1.5; color: var(--text-label); }
+    .checklist li::before { position: absolute; left: 0; }
+    .checklist li.req::before { content: '\25CB'; color: var(--accent-rose); }
+    .checklist li.opt::before { content: '\25C7'; color: var(--text-muted); }
+    .detailed-setup code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-green); }
+
     @media (max-width: 600px) {
       .page { padding: 2rem 1rem 4rem; }
-      .step { padding: 1.5rem; }
-      .cmd { font-size: 0.75rem; }
-    }
-
-    /* ── Animations ── */
-    .step { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s ease-out forwards; }
-    .step:nth-child(1) { animation-delay: 0.1s; }
-    .step:nth-child(2) { animation-delay: 0.25s; }
-    .step:nth-child(3) { animation-delay: 0.4s; }
-    .step:nth-child(4) { animation-delay: 0.55s; }
-    .step:nth-child(5) { animation-delay: 0.7s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
+      .step, .result { padding: 1.5rem; }
+      .opt-grid, .opt-grid.three, .summary, .field-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
 <div class="page">
-  <!-- Header -->
+
   <div class="header">
-    <img src="../assets/mu-logo-white.png" alt="COS">
-    <h1>COS Glasses <span class="accent">Setup</span></h1>
-    <p>Get your Even G2 smart glasses running with COS — AI heads-up display powered by Claude Code or Codex CLI. Under 5 minutes.</p>
+    <div class="eyebrow">COS Glasses · Personalize</div>
+    <h1>Build <span class="accent">your</span> COS Glasses.</h1>
+    <p>Tell us how you'll use Even G2. We'll tune the model, wire your context, and pick what shows on the lens — then hand you the exact setup. The frame is the same for everyone; this is your layer.</p>
   </div>
 
-  <!-- Prerequisites -->
-  <div class="step" data-step="Requirements">
-    <h2>What you need</h2>
-    <ul class="checklist">
-      <li class="required"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-      <li class="required"><strong>Claude Code or Codex CLI</strong> installed on your Mac — Opus/Sonnet use <a href="https://claude.ai/download">Claude Code</a>; Codex High uses <a href="https://developers.openai.com/codex/">Codex</a></li>
-      <li class="required"><strong>Node.js 18+</strong> — <a href="https://nodejs.org">nodejs.org</a></li>
-      <li class="optional"><strong>Tailscale</strong> (recommended) — connects your Mac and iPhone over a secure mesh network. <a href="https://tailscale.com/download">Download</a></li>
-    </ul>
-    <div class="note">
-      <strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both devices a stable IP address that works from anywhere — no port forwarding, no firewall hassle.
-    </div>
-    <div class="note">
-      <strong>Testing Codex High?</strong> Install and sign in to the Codex CLI on the same Mac that runs the COS server: <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">codex login</code>, then verify with <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">codex --version</code>. COS Glasses uses local CLI auth; you do not paste an OpenAI key into the phone for chat.
+  <!-- Start: do you already run COS? -->
+  <div class="step" data-step="Start here">
+    <h2>Do you already run COS?</h2>
+    <p class="sub">COS Glasses is the lens for your Chief of Staff. Already run one? Your glasses inherit its context and skills — skip the setup and just connect.</p>
+    <div class="opt-grid" id="mode">
+      <button type="button" class="opt selected" data-mode="new"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Start fresh</span><h3>New to COS</h3><p>Set it up and personalize from scratch.</p></button>
+      <button type="button" class="opt" data-mode="existing"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Already running</span><h3>I run COS already</h3><p>Just point my glasses at it.</p></button>
     </div>
   </div>
 
-  <!-- Step 1: Install Server -->
+  <div id="path-new">
+
+  <!-- Step 1 — Use cases (the driver) -->
   <div class="step" data-step="Step 1">
-    <h2>Start the COS Glasses server</h2>
-    <p>The COS Glasses server runs on your own Mac or computer. Keep this Terminal window open while you use the glasses app.</p>
-    <p>Open Terminal on that computer and run:</p>
-    <div class="cmd" onclick="copyCmd(this)">
-      <span class="prompt">$ </span>npx @gotcos/glasses-server
-      <span class="copy-hint">click to copy</span>
-    </div>
-    <p>The server will start and print your connection details:</p>
-    <div class="output"><span class="highlight">  COS Glasses Server</span>
-  <span class="dim">AI heads-up display for Even G2 smart glasses</span>
-
-  <span class="highlight">✓</span> Node.js 22.1.0
-  <span class="highlight">✓</span> Claude Code 2.1.90
-  <span class="highlight">✓</span> Codex CLI 0.128.0-alpha.1 <span class="dim">(Codex High ready)</span>
-  <span class="gold">↓</span> Downloading COS Glasses Server...
-  <span class="highlight">✓</span> Downloaded
-  <span class="gold">⟳</span> Installing dependencies...
-  <span class="highlight">✓</span> Dependencies installed
-
-  <span class="highlight">[COS API]</span> HTTP server running on <span class="gold">http://127.0.0.1:3141</span>
-  <span class="highlight">[COS API]</span> Mode: <span class="gold">Standalone</span> (glasses + Claude/Codex)
-  <span class="highlight">[COS API]</span> 🔑 API Token: <span class="gold">_AbCd3F...</span> <span class="dim">(auto-generated)</span>
-  <span class="highlight">[COS API]</span> Claude Code CLI detected
-  <span class="highlight">[COS API]</span> Codex CLI detected</div>
-
-    <div class="note">
-      <strong>What stays running?</strong> This terminal process is the local API that your iPhone and glasses connect to. If you close it, COS Glasses will open but chat, transcription, and meeting features cannot reach your local AI server.<br><br>
-      <strong>Voice commands run locally on your Mac</strong> via <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> &mdash; zero per-minute cost. Install once:<br>
-      <code style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-green);">brew install whisper-cpp</code><br>
-      <span style="color:var(--text-muted);font-size:0.8rem;">The launcher auto-downloads the ~1.5 GB Whisper model on first run. No Homebrew? Install from <a href="https://brew.sh" style="color:var(--text-muted);">brew.sh</a> first.</span><br><br>
-      <strong>Prefer cloud?</strong> Skip the brew install and set <code style="font-family:var(--font-mono);font-size:0.8rem;">OPENAI_API_KEY</code> &mdash; the server falls back to OpenAI API ($0.006/min) automatically.
+    <h2>How will you use them?</h2>
+    <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
+    <div class="opt-grid" id="usecases">
+      <button type="button" class="opt" data-uc="meetings"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Capture</span><h3>Meetings &amp; calls</h3><p>Live transcription, speaker labels, action items.</p></button>
+      <button type="button" class="opt" data-uc="capture"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">On the go</span><h3>Quick capture</h3><p>Voice to tasks and notes, hands-free.</p></button>
+      <button type="button" class="opt" data-uc="assistant"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Always on</span><h3>Ask-anything assistant</h3><p>Glance-able answers on the lens, any moment.</p></button>
+      <button type="button" class="opt" data-uc="comms"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Write</span><h3>Comms &amp; replies</h3><p>Dictate, review, send without your phone.</p></button>
+      <button type="button" class="opt" data-uc="dev"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Technical</span><h3>Dev &amp; debugging</h3><p>Codex on the lens for code and commands.</p></button>
+      <button type="button" class="opt" data-uc="field"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Hands-free</span><h3>Field / moving</h3><p>A minimal HUD you can read at a glance.</p></button>
     </div>
   </div>
 
-  <!-- Step 2: Install Tailscale -->
-  <div class="step" data-step="Step 2">
-    <h2>Connect your devices</h2>
-    <ul>
-      <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your Mac and iPhone</li>
-      <li>Sign in with the same Google account on both</li>
-      <li>Open Tailscale on your Mac — find your device's IP (starts with <code style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent-green);">100.</code>)</li>
+  <!-- Step 2 — Brain -->
+  <div class="step" data-step="Step 2 · Brain">
+    <h2>Which model runs it?</h2>
+    <p class="sub">We recommend one based on your use cases. Switch anytime from the phone or by voice.</p>
+    <div class="opt-grid three" id="models">
+      <button type="button" class="opt" data-model="opus"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Depth</span><h3>Opus</h3><p>Hardest reasoning, richest answers.</p></button>
+      <button type="button" class="opt" data-model="sonnet"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Balance</span><h3>Sonnet</h3><p>Fast and sharp. The everyday default.</p></button>
+      <button type="button" class="opt" data-model="haiku"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Speed</span><h3>Haiku</h3><p>Snappiest, lightest, lowest cost.</p></button>
+      <button type="button" class="opt" data-model="codex"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Code</span><h3>Codex High</h3><p>Technical depth via the local Codex CLI.</p></button>
+    </div>
+    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on your own Claude Code or Codex CLI plan. Voice is separate — see Compute below.</div>
+  </div>
+
+  <!-- Step 3 — Identity -->
+  <div class="step" data-step="Step 3 · Identity">
+    <h2>Who is it working for?</h2>
+    <p class="sub">This grounds the COS so it knows your job. Lives in your config, never in the code.</p>
+    <div class="field-row">
+      <div class="field"><label>Name</label><input id="f-name" type="text" placeholder="Miles Ukaoma" autocomplete="off"></div>
+      <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
+    </div>
+    <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
+  </div>
+
+  <!-- Step 4 — Context -->
+  <div class="step" data-step="Step 4 · Functionality">
+    <h2>What context should it see?</h2>
+    <p class="sub">Wire the sources you live in. We pre-select what fits your use cases — adjust freely.</p>
+    <div class="opt-grid" id="context">
+      <button type="button" class="opt" data-ctx="calendar"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Time</span><h3>Calendar</h3><p>Today, next up, who you're meeting.</p></button>
+      <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
+      <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
+      <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
+      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Memory</span><h3>Semantic memory</h3><p>Search everything you've captured by meaning.</p></button>
+      <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
+    </div>
+  </div>
+
+  <!-- Step 5 — Compute / voice -->
+  <div class="step" data-step="Step 5 · Compute">
+    <h2>Where does it run, and how does voice work?</h2>
+    <p class="sub">The server runs on your Mac — your keys, your machine. Pick how voice is transcribed.</p>
+    <div class="opt-grid" id="voice">
+      <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
+      <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
+    </div>
+    <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
+  </div>
+
+  <!-- Step 6 — HUD -->
+  <div class="step" data-step="Step 6 · On the lens">
+    <h2>What shows on the lens?</h2>
+    <p class="sub">Your default layout. Adaptive switches it by context.</p>
+    <div class="opt-grid" id="hud">
+      <button type="button" class="opt" data-hud="minimal"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Clean</span><h3>Minimal</h3><p>Just the answer. Nothing else.</p></button>
+      <button type="button" class="opt" data-hud="meeting"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">In the room</span><h3>Meeting mode</h3><p>Live transcript plus surfaced actions.</p></button>
+      <button type="button" class="opt" data-hud="glance"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">At a glance</span><h3>Glance</h3><p>Time, next event, top tasks.</p></button>
+      <button type="button" class="opt" data-hud="adaptive"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Smart</span><h3>Adaptive</h3><p>Switches by context: meeting, free, moving.</p></button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result" id="result">
+    <h2>Your COS Glasses, <em id="r-for">ready to set up</em></h2>
+    <p class="config-line" id="r-config">Make your picks above and your personalized setup appears here.</p>
+
+    <div class="summary">
+      <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
+      <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
+      <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">—</span></div>
+      <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
+    </div>
+
+    <div class="res-label">1 · Start your server (self-host)</div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
+
+    <div class="res-label">2 · Drop in your identity</div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/identity.md
+Name: Your Name
+Role: Your Role</span></div>
+
+    <div class="res-label">3 · Turn these on in the app</div>
+    <ul class="enable" id="r-enable">
+      <li>Set <b>Default chat model</b> to your pick.</li>
+      <li>Connect the context sources you selected.</li>
+      <li>Choose your <b>HUD layout</b>.</li>
     </ul>
-    <div class="note">
-      <strong>Already on the same WiFi?</strong> You can use your Mac's local IP instead (shown in the server output as "Network"). Tailscale is better for reliability — it works across networks and survives WiFi changes.
+
+    <div class="actions">
+      <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
+      <a class="secondary" href="https://github.com/ukaoma/cos-glasses-app">View on GitHub</a>
+    </div>
+    <p class="hosted">Want it done for you? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
+  </div>
+  </div><!-- /path-new -->
+
+  <!-- Existing COS path -->
+  <div id="path-existing" hidden>
+    <div class="step" data-step="Connect" style="margin-top:1.5rem;">
+      <h2>Point your glasses at your COS</h2>
+      <p class="sub">Your COS already holds your identity, model, context, and skills. Your glasses inherit all of it — nothing to re-personalize.</p>
+      <ul class="enable">
+        <li>Make sure your <b>COS Glasses server</b> is running on the Mac that runs your COS.</li>
+        <li>Install <b>COS Glasses</b> from the Even Hub on your iPhone (or open it if it's already there).</li>
+        <li>In the app, tap <b>"I have a COS username"</b> and enter it — your server details resolve automatically.</li>
+        <li>No username yet? Enter your Mac's <b>server URL</b> and <b>API token</b> from the server terminal instead.</li>
+        <li>Tap <b>Connect</b>. Your glasses now run on your COS's model, context, and skills.</li>
+      </ul>
+      <div class="note"><strong>Want the lens to behave differently than your desktop?</strong> Override the model or HUD per-device in Settings — the glasses are a surface on your COS, not a separate brain.</div>
+      <div class="actions">
+        <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
+        <a class="secondary" href="https://github.com/ukaoma/cos-glasses-app">View on GitHub</a>
+      </div>
+      <p class="hosted">Don't run COS yet? <a href="#path-new" onclick="document.querySelector('[data-mode=new]').click();return false;">Start fresh instead.</a></p>
     </div>
   </div>
 
-  <!-- Step 3: Install the Glasses App -->
-  <div class="step" data-step="Step 3">
-    <h2>Install COS Glasses on Even Hub</h2>
-    <ul>
-      <li>Open the <strong>Even Realities</strong> app on your iPhone</li>
-      <li>Go to <strong>Even Hub</strong> → search for <strong>"COS Glasses"</strong></li>
-      <li>Install and open the app</li>
-    </ul>
-    <p style="margin-top:0.8rem;">The setup wizard will appear asking for your server IP and API token.</p>
-  </div>
+  <!-- Detailed setup & troubleshooting (folded in from the install guide) -->
+  <details class="detailed-setup">
+    <summary>Detailed setup &amp; troubleshooting</summary>
+    <div class="ds-body">
 
-  <!-- Step 4: Connect -->
-  <div class="step" data-step="Step 4">
-    <h2>Connect and go</h2>
-    <ul>
-      <li>Enter your Mac's Tailscale IP (from Step 2)</li>
-      <li>Paste the API token (from the server terminal output)</li>
-      <li>Leave the server terminal running on your Mac while you use COS Glasses</li>
-      <li>Tap <strong>Connect</strong></li>
-    </ul>
-    <p style="margin-top:0.8rem;">That's it. Ask anything — Opus/Sonnet route through Claude Code, Codex High routes through the local Codex CLI, and the response streams to your glasses in real time.</p>
-    <div class="note">
-      <strong>Have a COS username?</strong> Tap "I have a COS username" in the wizard and enter it. Your server details will be looked up automatically — no IP or token needed.
-    </div>
-    <div class="note">
-      <strong>Switch models from the phone:</strong> open Settings → Default chat model → Codex High, tap the toolbar model button until it says CODEX H, or say "switch to codex high."
-    </div>
-  </div>
+      <div class="step" data-step="Requirements"><h2>What you need</h2>
+        <ul class="checklist">
+          <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
+          <li class="req"><strong>Claude Code or Codex CLI</strong> on your Mac &mdash; Opus/Sonnet use <a href="https://claude.ai/download">Claude Code</a>; Codex High uses <a href="https://developers.openai.com/codex/">Codex</a></li>
+          <li class="req"><strong>Node.js 18+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
+        </ul>
+        <div class="note"><strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both a stable IP that works from anywhere &mdash; no port forwarding, no firewall hassle.</div>
+      </div>
 
-  <!-- Troubleshooting -->
-  <div class="step" data-step="Help">
-    <h2>Troubleshooting</h2>
-    <ul>
-      <li><strong>"Cannot reach server"</strong> &mdash; Make sure both devices are on Tailscale (or same WiFi). Check that the server terminal is still running. As of v5.3.1 the wizard auto-detects unreachable URLs at boot and re-shows the setup screen automatically.</li>
-      <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet require Claude Code: <a href="https://claude.ai/download">claude.ai/download</a>. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">claude --version</code> to verify.</li>
-      <li><strong>"Codex not available"</strong> &mdash; Codex High requires the local Codex CLI on the Mac running the server. Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">codex --version</code>; if it is missing, install Codex and run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">codex login</code>. The server health check should show Codex available before Codex High works.</li>
-      <li><strong>Voice silent or expensive</strong> &mdash; Run <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">brew install whisper-cpp</code> for free local transcription. Without it, voice falls back to OpenAI API and requires <code style="font-family:var(--font-mono);font-size:0.82rem;">OPENAI_API_KEY</code>. The launcher prints which mode is active on every start.</li>
-      <li><strong>Wrong server URL stuck after Disconnect</strong> &mdash; Update to v5.3.1 or later. Older builds had a disconnect-loop bug where the URL re-injected from bridge SDK storage on every reload. v5.3.1 stores the logout flag in SDK storage so it survives the WebView wipe.</li>
-      <li><strong>Recover an interrupted meeting</strong> &mdash; If iOS killed the WebView mid-recording (e.g., long lock-screen background), the transcript chunks are still on the server. Find the orphaned session in <code style="font-family:var(--font-mono);font-size:0.78rem;">~/.cos-glasses/app/server/data/active-sessions/</code> and POST the session ID to <code style="font-family:var(--font-mono);font-size:0.78rem;">/api/meeting/save</code> to finalize. The active-meeting handle is also persisted client-side as of v5.3.0 so the next launch surfaces the orphan automatically.</li>
-      <li><strong>Server disconnects</strong> &mdash; The server auto-reconnects. If persistent, restart with <code style="font-family:var(--font-mono);font-size:0.82rem;color:var(--accent-green);">npx @gotcos/glasses-server</code>.</li>
-    </ul>
-  </div>
+      <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
+        <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
+        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
+        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
+      </div>
 
-  <!-- Developer Setup -->
-  <div class="step" data-step="Developer">
-    <h2>Build from source</h2>
-    <p>Want to customize the server or contribute? Clone the repo directly:</p>
-    <div class="cmd" onclick="copyCmd(this)">
-      <span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git
-      <span class="copy-hint">click to copy</span>
+      <div class="step" data-step="2 · Devices"><h2>Connect your devices</h2>
+        <ul class="enable">
+          <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your Mac and iPhone; sign in with the same account on both.</li>
+          <li>Open Tailscale on your Mac and note its IP (starts with <code>100.</code>).</li>
+        </ul>
+        <div class="note"><strong>Same WiFi?</strong> You can use your Mac's local IP instead &mdash; Tailscale is just more reliable across networks.</div>
+      </div>
+
+      <div class="step" data-step="3 · Install"><h2>Install COS Glasses on the Even Hub</h2>
+        <ul class="enable">
+          <li>Open the <strong>Even Realities</strong> app on your iPhone.</li>
+          <li>Go to <strong>Even Hub</strong>, search <strong>"COS Glasses"</strong>, install, and open it.</li>
+        </ul>
+      </div>
+
+      <div class="step" data-step="4 · Connect"><h2>Connect and go</h2>
+        <ul class="enable">
+          <li>Enter your Mac's Tailscale IP and paste the API token from the server terminal.</li>
+          <li>Leave the server terminal running, then tap <strong>Connect</strong>.</li>
+        </ul>
+        <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
+        <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to Codex High."</div>
+      </div>
+
+      <div class="step" data-step="Help"><h2>Troubleshooting</h2>
+        <ul class="enable">
+          <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
+          <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
+          <li><strong>"Codex not available"</strong> &mdash; Codex High needs the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
+          <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
+          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npm run start:server</code> in the cloned repo.</li>
+        </ul>
+      </div>
+
     </div>
-    <div class="cmd" onclick="copyCmd(this)">
-      <span class="prompt">$ </span>cd cos-glasses-app && cp .env.example .env && npm install && npm run start:server
-      <span class="copy-hint">click to copy</span>
-    </div>
-    <p style="margin-top:0.8rem;">See the <a href="https://github.com/ukaoma/cos-glasses-app">GitHub repo</a> for full documentation, configuration options, and Claude/Codex provider setup.</p>
-  </div>
+  </details>
 
   <div class="divider"></div>
-
-  <!-- Footer -->
   <div class="footer">
     <div class="brand">gotcos.com</div>
-    <div style="margin-top:0.4rem;">COS — The best chief of staff doesn't wait to be asked.</div>
+    <div style="margin-top:0.4rem;">COS — the best chief of staff doesn't wait to be asked.</div>
     <div style="margin-top:0.3rem;">
-      <a href="https://www.gotcos.com" style="border:none;opacity:0.4;">Home</a> ·
-      <a href="https://www.gotcos.com/privacy.html" style="border:none;opacity:0.4;">Privacy</a> ·
-      <a href="https://www.gotcos.com/terms.html" style="border:none;opacity:0.4;">Terms</a>
+      <a href="https://www.gotcos.com" style="opacity:0.5;">Home</a> ·
+      <a href="https://milesukaoma.com/cos" style="opacity:0.5;">The philosophy</a>
     </div>
   </div>
 </div>
 
 <script>
-function copyCmd(el) {
-  var text = el.textContent.replace('click to copy', '').replace('$ ', '').trim();
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function() {
-      var hint = el.querySelector('.copy-hint');
-      hint.textContent = 'COPIED';
-      hint.style.color = '#4BB956';
-      setTimeout(function() { hint.textContent = 'click to copy'; hint.style.color = ''; }, 1500);
+(function () {
+  var state = {
+    useCases: new Set(),
+    model: null,            // null = use recommendation
+    ctxTouched: false,
+    context: new Set(),
+    voice: 'local',
+    hud: null               // null = use recommendation
+  };
+
+  var UC_LABEL = { meetings:'meetings', capture:'quick capture', assistant:'always-on', comms:'comms', dev:'dev', field:'field' };
+  var MODEL_LABEL = { opus:'Opus', sonnet:'Sonnet', haiku:'Haiku', codex:'Codex High' };
+  var CTX_LABEL = { calendar:'Calendar', email:'Email', slack:'Slack', meetingtools:'Meeting tools', vector:'Semantic memory', mcp:'Custom MCPs' };
+  var HUD_LABEL = { minimal:'Minimal', meeting:'Meeting mode', glance:'Glance', adaptive:'Adaptive' };
+
+  function recModel() { return state.useCases.has('dev') ? 'codex' : 'sonnet'; }
+  function recHud() {
+    if (state.useCases.has('meetings')) return 'meeting';
+    if (state.useCases.has('field')) return 'glance';
+    if (state.useCases.has('assistant')) return 'adaptive';
+    return 'minimal';
+  }
+  function recContext() {
+    var s = new Set();
+    if (state.useCases.has('meetings')) { s.add('calendar'); s.add('meetingtools'); s.add('vector'); }
+    if (state.useCases.has('capture')) { s.add('vector'); }
+    if (state.useCases.has('assistant')) { s.add('calendar'); s.add('email'); s.add('vector'); }
+    if (state.useCases.has('comms')) { s.add('email'); s.add('slack'); }
+    if (state.useCases.has('dev')) { s.add('mcp'); s.add('vector'); }
+    return s;
+  }
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $all(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  // multi-select group
+  function bindMulti(id, attr, set, after) {
+    $all('#' + id + ' .opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var k = btn.getAttribute('data-' + attr);
+        if (set.has(k)) { set.delete(k); btn.classList.remove('selected'); }
+        else { set.add(k); btn.classList.add('selected'); }
+        if (after) after(k);
+        render();
+      });
     });
   }
-}
-</script>
+  // single-select group → sets state[key]
+  function bindSingle(id, attr, key, after) {
+    $all('#' + id + ' .opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        $all('#' + id + ' .opt').forEach(function (b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        state[key] = btn.getAttribute('data-' + attr);
+        if (after) after();
+        render();
+      });
+    });
+  }
 
+  bindMulti('usecases', 'uc', state.useCases, function () {
+    // auto-suggest context (additive; respect manual edits once user has touched it)
+    if (!state.ctxTouched) {
+      state.context = recContext();
+      syncContextUI();
+    }
+  });
+  bindMulti('context', 'ctx', state.context, function () { state.ctxTouched = true; });
+  bindSingle('models', 'model', 'model');
+  bindSingle('voice', 'voice', 'voice');
+  bindSingle('hud', 'hud', 'hud');
+
+  ['f-name', 'f-role', 'f-company'].forEach(function (id) {
+    $('#' + id).addEventListener('input', render);
+  });
+
+  function syncContextUI() {
+    $all('#context .opt').forEach(function (b) {
+      b.classList.toggle('selected', state.context.has(b.getAttribute('data-ctx')));
+    });
+  }
+
+  function markRecommended() {
+    // model
+    var rm = recModel();
+    $all('#models .opt').forEach(function (b) { b.classList.toggle('recommended', !state.model && b.getAttribute('data-model') === rm); });
+    // hud
+    var rh = recHud();
+    $all('#hud .opt').forEach(function (b) { b.classList.toggle('recommended', !state.hud && b.getAttribute('data-hud') === rh); });
+  }
+
+  function esc(s) { return (s || '').replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }); }
+
+  function render() {
+    markRecommended();
+    var model = state.model || recModel();
+    var hud = state.hud || recHud();
+    var ucs = Array.from(state.useCases);
+
+    // headline + config line
+    $('#r-for').textContent = ucs.length ? 'tuned for ' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', ') : 'ready to set up';
+    $('#r-config').textContent = ucs.length
+      ? 'Here is your personalized setup. Copy what you need and you are running in minutes.'
+      : 'Make your picks above and your personalized setup appears here.';
+
+    // summary
+    $('#r-model').innerHTML = MODEL_LABEL[model] + (state.model ? '' : ' <small>(recommended)</small>');
+    $('#r-voice').innerHTML = state.voice === 'openai' ? 'OpenAI voice <small>(your key)</small>' : 'Local whisper <small>(free)</small>';
+    var ctx = Array.from(state.context);
+    $('#r-context').innerHTML = ctx.length ? ctx.map(function (c) { return CTX_LABEL[c]; }).join(', ') : '<small>none yet</small>';
+    $('#r-hud').innerHTML = HUD_LABEL[hud] + (state.hud ? '' : ' <small>(recommended)</small>');
+
+    // identity.md
+    var name = $('#f-name').value.trim(), role = $('#f-role').value.trim(), company = $('#f-company').value.trim();
+    var idLines = ['<span class="c"># ~/.cos-glasses/identity.md</span>'];
+    idLines.push('Name: ' + (name ? '<span class="g">' + esc(name) + '</span>' : 'Your Name'));
+    idLines.push('Role: ' + (role ? '<span class="g">' + esc(role) + '</span>' : 'Your Role'));
+    if (company) idLines.push('Company: <span class="g">' + esc(company) + '</span>');
+    if (ucs.length) idLines.push('Focus: <span class="g">' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', ') + '</span>');
+    $('#r-identity').innerHTML = idLines.join('\n');
+
+    // enable checklist
+    var li = [];
+    li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model === 'codex' ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
+    if (state.voice === 'openai') li.push('Add your <b>OPENAI_API_KEY</b> for cloud voice.');
+    else li.push('Run <code>brew install whisper-cpp</code> once for free local voice.');
+    if (ctx.length) li.push('Connect: <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> via MCP.');
+    else li.push('Add context sources anytime via MCP.');
+    li.push('Set your <b>HUD layout</b> to <b>' + HUD_LABEL[hud] + '</b>' + (hud === 'adaptive' ? ' so it switches by context.' : '.'));
+    $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+  }
+
+  window.copyCmd = function (el) {
+    var clone = el.cloneNode(true);
+    var hintEl = clone.querySelector('.copy-hint'); if (hintEl) hintEl.remove();
+    var text = clone.textContent.replace(/^\s*\$\s/, '').trim();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function () {
+        var hint = el.querySelector('.copy-hint'); if (!hint) return;
+        var prev = hint.textContent; hint.textContent = 'COPIED'; hint.style.color = '#4BB956';
+        setTimeout(function () { hint.textContent = prev; hint.style.color = ''; }, 1500);
+      });
+    }
+  };
+
+  // mode: new (full personalize) vs existing (connect only)
+  $all('#mode .opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      $all('#mode .opt').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      var m = btn.getAttribute('data-mode');
+      document.getElementById('path-new').hidden = (m !== 'new');
+      document.getElementById('path-existing').hidden = (m !== 'existing');
+    });
+  });
+
+  render();
+})();
+</script>
 </body>
 </html>
