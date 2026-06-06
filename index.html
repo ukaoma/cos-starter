@@ -1,1530 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COS Starter — AI Chief of Staff</title>
-  <meta name="description" content="Build an AI Chief of Staff that actually knows your job. Context-driven AI systems that compound in value.">
-  <meta property="og:title" content="COS Starter — AI Chief of Staff">
-  <meta property="og:description" content="Build an AI Chief of Staff that actually knows your job.">
-  <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg-deep: #080c14;
-      --bg-card: rgba(14, 19, 30, 0.85);
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --border-form: rgba(255, 255, 255, 0.1);
-      --text-primary: #e8e4df;
-      --text-muted: rgba(255, 255, 255, 0.4);
-      --text-label: rgba(255, 255, 255, 0.55);
-      --accent-rose: #c4736e;
-      --accent-gold: #c9a96e;
-      --accent-warm: #d4a07a;
-      --input-bg: rgba(255, 255, 255, 0.04);
-      --input-focus: rgba(255, 255, 255, 0.08);
-      --font-body: 'DM Sans', -apple-system, sans-serif;
-      --font-display: 'Playfair Display', Georgia, serif;
-    }
-
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-deep);
-      color: var(--text-primary);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ═══════════════════════════════════════
-       SPLASH SCREEN
-       ═══════════════════════════════════════ */
-    #splash {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-deep);
-      cursor: pointer;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    #splash.dismissed {
-      opacity: 0;
-      transform: scale(1.05);
-      pointer-events: none;
-    }
-
-    .splash-logo {
-      width: 120px;
-      height: auto;
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.3s ease-out forwards;
-    }
-
-    .splash-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      text-align: center;
-      opacity: 0;
-      animation: fadeUp 1s 0.6s ease-out forwards;
-    }
-
-    .splash-title .context {
-      color: var(--accent-rose);
-      font-family: var(--font-body);
-      font-weight: 400;
-    }
-
-    .splash-title .king {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent-gold);
-    }
-
-    .splash-subtitle {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.9s ease-out forwards;
-    }
-
-    .splash-cta {
-      position: absolute;
-      bottom: 12vh;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.2);
-      letter-spacing: 0.04em;
-      opacity: 0;
-      animation: fadeUp 1s 1.4s ease-out forwards, pulse 3s 2.4s ease-in-out infinite;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.6; }
-    }
-
-    /* Background texture — subtle noise */
-    #splash::before,
-    #gate::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #splash > * { position: relative; z-index: 1; }
-
-    /* ═══════════════════════════════════════
-       GATE FORM
-       ═══════════════════════════════════════ */
-    #gate {
-      position: fixed;
-      inset: 0;
-      z-index: 90;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-deep);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.6s ease;
-    }
-
-    #gate.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #gate.dismissed {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* ── Concentric Rings ── */
-    .rings-container {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      border-style: solid;
-      border-color: transparent;
-      opacity: 0;
-      animation: ringAppear 1.2s ease-out forwards;
-    }
-
-    @keyframes ringAppear {
-      from { opacity: 0; transform: scale(0.85) rotate(0deg); }
-      to { opacity: 1; transform: scale(1) rotate(0deg); }
-    }
-
-    .ring-1 {
-      width: 900px; height: 900px;
-      border-width: 2px;
-      border-top-color: #6b4c9a;
-      border-right-color: #8b5fbf;
-      animation-delay: 0.1s;
-      animation-name: ringAppear, ringRotate1;
-      animation-duration: 1.2s, 45s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.1s, 1.3s;
-    }
-
-    .ring-2 {
-      width: 760px; height: 760px;
-      border-width: 2.5px;
-      border-top-color: #9b4dca;
-      border-left-color: #b06dd8;
-      animation-delay: 0.2s;
-      animation-name: ringAppear, ringRotate2;
-      animation-duration: 1.2s, 38s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.2s, 1.4s;
-    }
-
-    .ring-3 {
-      width: 620px; height: 620px;
-      border-width: 2px;
-      border-bottom-color: #c4536e;
-      border-right-color: #d46b7a;
-      animation-delay: 0.3s;
-      animation-name: ringAppear, ringRotate1;
-      animation-duration: 1.2s, 32s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.3s, 1.5s;
-    }
-
-    .ring-4 {
-      width: 500px; height: 500px;
-      border-width: 3px;
-      border-top-color: #d4845a;
-      border-left-color: #e09a6a;
-      animation-delay: 0.4s;
-      animation-name: ringAppear, ringRotate2;
-      animation-duration: 1.2s, 28s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.4s, 1.6s;
-    }
-
-    .ring-5 {
-      width: 400px; height: 400px;
-      border-width: 2px;
-      border-bottom-color: #c9a96e;
-      border-right-color: #d4b87a;
-      animation-delay: 0.5s;
-      animation-name: ringAppear, ringRotate1;
-      animation-duration: 1.2s, 24s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.5s, 1.7s;
-    }
-
-    .ring-6 {
-      width: 310px; height: 310px;
-      border-width: 2.5px;
-      border-top-color: #5a9a7a;
-      border-left-color: #6ab08a;
-      animation-delay: 0.6s;
-      animation-name: ringAppear, ringRotate2;
-      animation-duration: 1.2s, 20s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.6s, 1.8s;
-    }
-
-    .ring-7 {
-      width: 230px; height: 230px;
-      border-width: 2px;
-      border-bottom-color: #4a8ab0;
-      border-right-color: #5a9ac0;
-      animation-delay: 0.7s;
-      animation-name: ringAppear, ringRotate1;
-      animation-duration: 1.2s, 16s;
-      animation-timing-function: ease-out, linear;
-      animation-fill-mode: forwards, none;
-      animation-iteration-count: 1, infinite;
-      animation-delay: 0.7s, 1.9s;
-    }
-
-    @keyframes ringRotate1 { to { transform: rotate(360deg); } }
-    @keyframes ringRotate2 { to { transform: rotate(-360deg); } }
-
-    /* ── Form Card ── */
-    .gate-card {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 520px;
-      padding: 3rem 2.5rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: cardAppear 0.8s 0.5s ease-out forwards;
-    }
-
-    @keyframes cardAppear {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .gate-heading {
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-
-    .gate-heading em {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      background: linear-gradient(135deg, var(--accent-rose), var(--accent-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .gate-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-label);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-form);
-      border-radius: 8px;
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    .form-group select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
-      cursor: pointer;
-    }
-
-    .form-group select option {
-      background: #1a1f2e;
-      color: var(--text-primary);
-    }
-
-    .form-group input::placeholder {
-      color: rgba(255, 255, 255, 0.2);
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      background: var(--input-focus);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .form-group.invalid input,
-    .form-group.invalid select {
-      border-color: var(--accent-rose);
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 0.85rem;
-      margin-top: 0.5rem;
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.15), rgba(201, 169, 110, 0.15));
-      border: 1px solid rgba(201, 169, 110, 0.25);
-      border-radius: 8px;
-      color: var(--accent-gold);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-submit:hover {
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.25), rgba(201, 169, 110, 0.25));
-      border-color: rgba(201, 169, 110, 0.4);
-      transform: translateY(-1px);
-    }
-
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .gate-fine-print {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .gate-error {
-      font-size: 0.78rem;
-      color: var(--accent-rose);
-      text-align: center;
-      margin-top: 0.8rem;
-      display: none;
-    }
-
-    /* ═══════════════════════════════════════
-       MAIN CONTENT
-       ═══════════════════════════════════════ */
-    #content {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.8s ease;
-      min-height: 100vh;
-    }
-
-    #content.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-    }
-
-    .hero-logo {
-      width: 80px;
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 em {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      color: var(--accent-gold);
-    }
-
-    .hero .tagline {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-actions a {
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .hero-actions .primary {
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.15), rgba(201, 169, 110, 0.15));
-      border: 1px solid rgba(201, 169, 110, 0.25);
-      color: var(--accent-gold);
-    }
-
-    .hero-actions .primary:hover {
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.25), rgba(201, 169, 110, 0.25));
-    }
-
-    .hero-actions .secondary {
-      border: 1px solid var(--border-form);
-      color: var(--text-label);
-    }
-
-    .hero-actions .secondary:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--text-primary);
-    }
-
-    .badges {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 1.5rem;
-    }
-
-    .badges img { height: 22px; }
-
-    /* ── Sections ── */
-    .section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    .section h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      color: var(--text-primary);
-    }
-
-    .section h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin: 1.8rem 0 0.6rem;
-      color: var(--text-primary);
-    }
-
-    .section p {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1rem;
-    }
-
-    .section strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    .section em {
-      font-style: italic;
-      color: var(--accent-gold);
-    }
-
-    .section ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1rem;
-    }
-
-    .section ul li {
-      position: relative;
-      padding-left: 1.2rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .section ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.55em;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent-rose);
-    }
-
-    .section a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.3);
-      transition: border-color 0.2s;
-    }
-
-    .section a:hover {
-      border-color: var(--accent-gold);
-    }
-
-    .divider {
-      max-width: 720px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    /* ── Code Blocks ── */
-    .code-block {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 1.2rem 1.5rem;
-      margin: 1rem 0;
-      overflow-x: auto;
-    }
-
-    .code-block code {
-      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.75);
-      white-space: pre;
-    }
-
-    /* ── Tables ── */
-    .section table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.85rem;
-    }
-
-    .section th {
-      text-align: left;
-      padding: 0.7rem 1rem;
-      font-weight: 600;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-label);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .section td {
-      padding: 0.65rem 1rem;
-      color: rgba(255, 255, 255, 0.7);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      vertical-align: top;
-    }
-
-    .section td strong {
-      color: var(--text-primary);
-    }
-
-    /* ── Tier Cards ── */
-    .tier-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .tier-card {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      transition: border-color 0.3s ease;
-    }
-
-    .tier-card:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .tier-card .tier-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .tier-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .tier-card p {
-      font-size: 0.82rem;
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* ── Quick Start Steps ── */
-    .step {
-      margin-bottom: 1.5rem;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: rgba(201, 169, 110, 0.1);
-      border: 1px solid rgba(201, 169, 110, 0.2);
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--accent-gold);
-      margin-right: 0.6rem;
-      vertical-align: middle;
-    }
-
-    .step h3 {
-      display: inline;
-      vertical-align: middle;
-      margin: 0;
-    }
-
-    /* ── Teams CTA ── */
-    .teams-cta {
-      padding: 3rem 2rem;
-      margin: 2rem 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-      border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .teams-cta h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-      text-align: center;
-    }
-
-    .teams-cta > p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .teams-cta a.schedule-link {
-      display: inline-block;
-      padding: 0.7rem 1.8rem;
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.15), rgba(201, 169, 110, 0.15));
-      border: 1px solid rgba(201, 169, 110, 0.25);
-      border-radius: 8px;
-      color: var(--accent-gold);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .teams-form-toggle {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-
-    .teams-form-toggle button {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s;
-    }
-
-    .teams-form-toggle button:hover {
-      color: var(--text-primary);
-    }
-
-    .teams-form-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
-      margin-top: 0;
-    }
-
-    .teams-form-wrapper.expanded {
-      max-height: 900px;
-      opacity: 1;
-      margin-top: 2rem;
-    }
-
-    .teams-form-wrapper .form-divider {
-      border: none;
-      border-top: 1px solid var(--border-subtle);
-      margin-bottom: 1.5rem;
-    }
-
-    .teams-form-wrapper .gate-heading {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .teams-form-wrapper .gate-sub {
-      font-size: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ── HubSpot Embedded Form Overrides ── */
-    #hs-teams-form .hs-form { font-family: var(--font-body) !important; }
-    #hs-teams-form .hs-form-field label {
-      font-size: 0.65rem !important;
-      font-weight: 500 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase !important;
-      color: var(--text-label) !important;
-      margin-bottom: 0.4rem !important;
-    }
-    #hs-teams-form .hs-input {
-      width: 100% !important;
-      padding: 0.75rem 1rem !important;
-      background: var(--input-bg) !important;
-      border: 1px solid var(--border-form) !important;
-      border-radius: 8px !important;
-      color: var(--text-primary) !important;
-      font-family: var(--font-body) !important;
-      font-size: 0.9rem !important;
-      outline: none !important;
-      -webkit-appearance: none !important;
-      transition: all 0.2s ease !important;
-    }
-    #hs-teams-form .hs-input:focus {
-      background: var(--input-focus) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-    #hs-teams-form .hs-input::placeholder { color: rgba(255, 255, 255, 0.2) !important; }
-    #hs-teams-form select.hs-input {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-      background-repeat: no-repeat !important;
-      background-position: right 1rem center !important;
-      padding-right: 2.5rem !important;
-      cursor: pointer !important;
-    }
-    #hs-teams-form select.hs-input option {
-      background: #1a1f2e !important;
-      color: var(--text-primary) !important;
-    }
-    #hs-teams-form .hs-submit .hs-button {
-      width: 100% !important;
-      padding: 0.85rem !important;
-      margin-top: 0.5rem !important;
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.15), rgba(201, 169, 110, 0.15)) !important;
-      border: 1px solid rgba(201, 169, 110, 0.25) !important;
-      border-radius: 8px !important;
-      color: var(--accent-gold) !important;
-      font-family: var(--font-body) !important;
-      font-size: 0.9rem !important;
-      font-weight: 500 !important;
-      cursor: pointer !important;
-      transition: all 0.3s ease !important;
-    }
-    #hs-teams-form .hs-submit .hs-button:hover {
-      background: linear-gradient(135deg, rgba(196, 115, 110, 0.25), rgba(201, 169, 110, 0.25)) !important;
-      border-color: rgba(201, 169, 110, 0.4) !important;
-    }
-    #hs-teams-form .hs-form-field { margin-bottom: 1rem !important; }
-    #hs-teams-form .hs-error-msgs { color: var(--accent-rose) !important; font-size: 0.78rem !important; margin-top: 0.3rem !important; }
-    #hs-teams-form .hs-error-msgs li label { color: var(--accent-rose) !important; font-size: 0.78rem !important; text-transform: none !important; letter-spacing: 0 !important; }
-    #hs-teams-form .submitted-message { color: var(--accent-gold) !important; text-align: center !important; padding: 1.5rem !important; font-size: 1rem !important; }
-
-    /* ── Footer ── */
-    .footer {
-      text-align: center;
-      padding: 3rem 2rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .footer a {
-      color: var(--accent-gold);
-      text-decoration: none;
-    }
-
-    .footer .quote {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.3);
-      margin-top: 1.5rem;
-    }
-
-    /* ═══════════════════════════════════════
-       RESPONSIVE
-       ═══════════════════════════════════════ */
-    @media (max-width: 640px) {
-      .gate-card { padding: 2rem 1.5rem; margin: 1rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .tier-grid { grid-template-columns: 1fr; }
-      .ring-1 { width: 600px; height: 600px; }
-      .ring-2 { width: 500px; height: 500px; }
-      .ring-3 { width: 400px; height: 400px; }
-      .ring-4 { width: 320px; height: 320px; }
-      .ring-5 { width: 260px; height: 260px; }
-      .ring-6 { width: 200px; height: 200px; }
-      .ring-7 { width: 150px; height: 150px; }
-      .section { padding: 2rem 1.25rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COS Starter — AI Chief of Staff</title>
+<meta name="description" content="Build an AI Chief of Staff that actually knows your job. Context-driven AI systems that compound in value.">
+<meta property="og:title" content="COS Starter — AI Chief of Staff">
+<meta property="og:description" content="Build an AI Chief of Staff that actually knows your job.">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --ink:#07090f; --ink-2:#0b0e16; --panel:rgba(255,255,255,.025); --panel-2:rgba(255,255,255,.04);
+    --fg:#ece6da; --muted:rgba(236,230,218,.56); --faint:rgba(236,230,218,.34); --line:rgba(201,169,110,.16); --line-2:rgba(255,255,255,.07);
+    --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+    --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
+    --maxw:1140px; --gut:clamp(22px,5vw,72px);
+  }
+
+  html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden}
+
+  /* ── Atmosphere: aurora mesh + grain + vignette ── */
+  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
+  .atmos .a1{width:60vw;height:60vw;top:-18vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
+  .atmos .a2{width:52vw;height:52vw;top:34vh;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.26),transparent 60%);animation-duration:32s}
+  .atmos .a3{width:46vw;height:46vw;bottom:-16vw;right:6vw;background:radial-gradient(circle,rgba(127,169,138,.16),transparent 60%);animation-duration:38s}
+  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
+  .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+  .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%,transparent 55%,rgba(0,0,0,.5) 100%)}
+
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+  /* ── Shared editorial bits ── */
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px}
+  .eyebrow .num{color:var(--faint)}
+  .eyebrow::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .g{background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .it{font-style:italic}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent);margin:0}
+  section{position:relative;z-index:2;padding-block:clamp(60px,9vw,128px)}
+  .sec-head{display:flex;flex-direction:column;gap:18px;max-width:42ch}
+  h2{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em}
+  .lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
+  p{color:var(--muted)} p strong{color:var(--fg);font-weight:600}
+  a{color:var(--gold);text-decoration:none}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ── Nav ── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px)}
+  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--fg)}
+  .nav .brand b{font-style:normal;font-weight:600}
+  .nav .links{display:flex;gap:26px;align-items:center;font-size:.82rem;color:var(--muted)}
+  .nav .links a{color:var(--muted);transition:color .2s}.nav .links a:hover{color:var(--fg)}
+  .nav .links .cta{font-family:var(--body);font-weight:500;color:var(--gold);border:1px solid var(--line);padding:8px 16px;border-radius:999px;transition:all .2s}
+  .nav .links .cta:hover{border-color:var(--gold);background:rgba(201,169,110,.08)}
+  @media(max-width:680px){.nav .links a:not(.cta){display:none}}
+
+  /* ── Hero ── */
+  .hero{padding-top:clamp(120px,18vh,200px);padding-bottom:clamp(50px,7vw,90px)}
+  .hero .kick{margin-bottom:34px}
+  .hero h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;letter-spacing:-.03em;max-width:16ch}
+  .hero h1 .l2{display:block;font-style:italic;font-weight:500}
+  .hero .sub{margin-top:30px;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.6;max-width:54ch}
+  .hero .sub b{color:var(--fg);font-weight:500}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:42px}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;transition:transform .2s,box-shadow .25s,border-color .2s,background .2s;border:1px solid transparent}
+  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 40px -14px rgba(201,169,110,.6)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.7)}
+  .btn.ghost{border-color:var(--line-2);color:var(--fg)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .badges{display:flex;gap:10px;margin-top:34px;align-items:center}
+  .badges img{height:21px;opacity:.85}
+  .hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--faint)}
+  .hero-meta b{color:var(--gold);font-weight:500}
+
+  /* ── Problem (editorial two-col) ── */
+  .split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,72px);align-items:start}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:28px}}
+  .pull{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.25;color:var(--fg);margin:6px 0 26px;text-wrap:balance}
+  .pull .g{font-style:italic}
+  .ck{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .ck li{position:relative;padding-left:30px;color:var(--muted);font-size:1rem;line-height:1.5}
+  .ck li::before{content:'';position:absolute;left:0;top:.5em;width:11px;height:11px;border:1px solid var(--gold);border-radius:50%}
+  .ck li::after{content:'';position:absolute;left:4px;top:calc(.5em + 4px);width:3px;height:3px;border-radius:50%;background:var(--gold)}
+
+  /* ── Quick start (numbered steps) ── */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .step .n{font-family:var(--display);font-style:italic;font-size:2.4rem;color:var(--gold);line-height:1;opacity:.85}
+  .step h3{font-family:var(--body);font-weight:600;font-size:1.05rem;margin:14px 0 12px;color:var(--fg)}
+  .code{font-family:var(--mono);font-size:.78rem;line-height:1.6;color:var(--green);background:rgba(0,0,0,.4);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre;display:block}
+  .code .c{color:var(--faint)}
+  . qs-foot{margin-top:26px}
+
+  /* ── What you get (terminal) ── */
+  .term{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:rgba(0,0,0,.42);margin-top:36px}
+  .term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.02)}
+  .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .term .bar .d1{background:#e0635b}.term .bar .d2{background:#e3b04b}.term .bar .d3{background:#5bb869}
+  .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+  .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto}
+  .term pre b{color:var(--gold);font-weight:500}.term pre .cm{color:var(--faint)}
+
+  /* ── Tiers (stepped) ── */
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;counter-reset:t}
+  @media(max-width:900px){.tiers{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.tiers{grid-template-columns:1fr}}
+  .tier{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 24px;background:linear-gradient(160deg,var(--panel),transparent);transition:transform .35s,border-color .35s}
+  .tier:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.4)}
+  .tier .tl{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .tier h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.45rem;margin:8px 0 12px;color:var(--fg)}
+  .tier p{font-size:.86rem;line-height:1.55}
+  .tier .bar-fill{height:2px;background:var(--line-2);margin-top:18px;border-radius:2px;overflow:hidden}
+  .tier .bar-fill i{display:block;height:100%;background:linear-gradient(90deg,var(--warm),var(--gold))}
+
+  /* ── Domains (editorial 2-col list) ── */
+  .domains{columns:2;column-gap:48px;margin-top:40px}
+  @media(max-width:760px){.domains{columns:1}}
+  .domains .dm{break-inside:avoid;padding:13px 0;border-top:1px solid var(--line-2)}
+  .domains .dm b{display:block;font-family:var(--body);font-weight:600;color:var(--fg);font-size:.95rem;margin-bottom:3px}
+  .domains .dm span{font-size:.82rem;color:var(--muted);line-height:1.45}
+
+  /* ── Integrations ── */
+  .ints{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+  @media(max-width:640px){.ints{grid-template-columns:1fr}}
+  .int{display:flex;align-items:baseline;justify-content:space-between;gap:14px;border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .int b{font-weight:600;color:var(--fg)}.int .what{color:var(--muted);font-size:.85rem;flex:1;margin-left:14px}
+  .int .t{font-family:var(--mono);font-size:.68rem;color:var(--gold);white-space:nowrap}
+
+  /* ── Glasses ── */
+  .glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+  @media(max-width:820px){.glass-grid{grid-template-columns:1fr}}
+  .gc{border:1px solid var(--line);border-radius:16px;padding:24px 22px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .gc .tl{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .gc h4{font-weight:600;font-size:1.05rem;margin:10px 0 10px;color:var(--fg)}
+  .gc p{font-size:.85rem;line-height:1.55}
+
+  /* ── Teams CTA ── */
+  .teams{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(38px,6vw,72px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);overflow:hidden}
+  .teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px}
+  .teams p{max-width:54ch;margin:0 auto 30px}
+
+  /* ── Philosophy quote ── */
+  .creed{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.28;letter-spacing:-.01em;color:var(--fg);max-width:24ch;text-wrap:balance}
+  .creed .it{color:var(--muted)}
+
+  /* ── Footer ── */
+  footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2)}
+  footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:18px}
+  footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  footer .links a{color:var(--muted)}
+
+  /* teams form */
+  .teams-toggle{margin-top:20px}
+  .teams-toggle button{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+  .teams-toggle button:hover{color:var(--fg)}
+  .teams-form-wrapper{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .4s ease,margin .4s ease;margin-top:0}
+  .teams-form-wrapper.expanded{max-height:1400px;opacity:1;margin-top:26px}
+  .tf-inner{max-width:520px;margin:0 auto;text-align:left}
+  #hs-teams-form .hs-form{font-family:var(--body)!important}
+  #hs-teams-form .hs-form-field{margin-bottom:14px!important}
+  #hs-teams-form .hs-form-field label{display:block;font-family:var(--mono)!important;font-size:.62rem!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--faint)!important;margin-bottom:6px!important}
+  #hs-teams-form .hs-input{width:100%!important;padding:13px 16px!important;background:rgba(255,255,255,.04)!important;border:1px solid var(--line-2)!important;border-radius:10px!important;color:var(--fg)!important;font-family:var(--body)!important;font-size:.95rem!important;outline:none!important;-webkit-appearance:none!important}
+  #hs-teams-form .hs-input:focus{border-color:var(--gold)!important;background:rgba(255,255,255,.07)!important}
+  #hs-teams-form select.hs-input option{background:#13151a!important;color:var(--fg)!important}
+  #hs-teams-form .hs-button{width:100%!important;padding:14px!important;margin-top:8px!important;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose))!important;color:#1a1206!important;border:none!important;border-radius:999px!important;font-family:var(--body)!important;font-weight:600!important;font-size:.95rem!important;cursor:pointer!important}
+  #hs-teams-form .hs-error-msgs label{color:var(--rose)!important;font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important}
+  #hs-teams-form .submitted-message{color:var(--gold)!important;text-align:center!important;padding:1.4rem!important}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}}
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       SPLASH SCREEN
-       ═══════════════════════════════════════ -->
-  <div id="splash">
-    <img src="assets/mu-logo-white.png" alt="MU" class="splash-logo">
-    <div class="splash-title">
-      <span class="context">Context</span> <span class="king">is King</span>
-    </div>
-    <div class="splash-subtitle">The AI Chief of Staff Starter Kit</div>
-    <div class="splash-cta">Click anywhere to begin</div>
+<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div></div>
+<div class="vignette"></div>
+
+<nav class="nav">
+  <div class="brand"><b>COS</b> <span class="it">Starter</span></div>
+  <div class="links">
+    <a href="#start">Quick Start</a>
+    <a href="#tiers">The 4 Tiers</a>
+    <a href="#glasses">Glasses</a>
+    <a href="wizard/" class="cta">Get Started</a>
   </div>
+</nav>
 
-  <!-- ═══════════════════════════════════════
-       GATE FORM
-       ═══════════════════════════════════════ -->
-  <div id="gate">
-    <div class="rings-container">
-      <div class="ring ring-1"></div>
-      <div class="ring ring-2"></div>
-      <div class="ring ring-3"></div>
-      <div class="ring ring-4"></div>
-      <div class="ring ring-5"></div>
-      <div class="ring ring-6"></div>
-      <div class="ring ring-7"></div>
-    </div>
-
-    <div class="gate-card">
-      <div class="gate-heading">Get access to <em>COS Starter.</em></div>
-      <div class="gate-sub">Build an AI Chief of Staff that compounds in value.<br>We'll send architecture guides matched to your progress.</div>
-
-      <form id="gate-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" id="firstname" name="firstname" placeholder="First name" required>
-          </div>
-          <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@company.com" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="jobtitle">Title</label>
-            <input type="text" id="jobtitle" name="jobtitle" placeholder="VP of Engineering">
-          </div>
-          <div class="form-group">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Acme Corp">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="industry">Industry</label>
-          <select id="industry" name="industry">
-            <option value="" disabled selected>Select your industry</option>
-            <option value="Consulting / Professional Services">Consulting / Professional Services</option>
-            <option value="SaaS / Technology">SaaS / Technology</option>
-            <option value="Agency / Marketing">Agency / Marketing</option>
-            <option value="Financial Services">Financial Services</option>
-            <option value="Healthcare">Healthcare</option>
-            <option value="Retail / E-commerce">Retail / E-commerce</option>
-            <option value="Manufacturing">Manufacturing</option>
-            <option value="Education">Education</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn-submit">Get Access</button>
-        <div class="gate-error" id="gate-error"></div>
-        <div class="gate-fine-print">One architecture email per week. Unsubscribe anytime.</div>
-      </form>
-    </div>
+<!-- ── HERO ── -->
+<header class="hero wrap">
+  <div class="kick eyebrow"><span>COS Starter</span> <span class="num">· open-source AI chief of staff</span></div>
+  <h1>The prompt was never <span class="l2 g">the problem.</span></h1>
+  <p class="sub">Build an AI Chief of Staff that actually knows your job. <b>Same model. Same prompt.</b> Give it your context, and it becomes something fundamentally different.</p>
+  <div class="hero-cta">
+    <a href="#start" class="btn primary">Get Started</a>
+    <a href="https://milesukaoma.com/cos" class="btn ghost">See the Philosophy</a>
   </div>
+  <div class="badges">
+    <img src="https://img.shields.io/badge/License-MIT-c9a96e.svg" alt="MIT">
+    <img src="https://img.shields.io/badge/Claude%20Code-compatible-c4736e" alt="Claude Code compatible">
+  </div>
+  <div class="hero-meta">
+    <div><b>5 min</b> to a working COS</div>
+    <div><b>14</b> capability domains</div>
+    <div><b>MIT</b> · fork the whole stack</div>
+  </div>
+</header>
 
-  <!-- ═══════════════════════════════════════
-       MAIN CONTENT
-       ═══════════════════════════════════════ -->
-  <div id="content">
+<div class="wrap"><div class="rule"></div></div>
 
-    <!-- Hero -->
-    <div class="hero">
-      <img src="assets/mu-logo-white.png" alt="MU" class="hero-logo">
-      <h1>COS <em>Starter</em></h1>
-      <p class="tagline">Build an AI Chief of Staff that actually knows your job. Same model. Same prompt. Give it your context &mdash; and it becomes something fundamentally different.</p>
-      <div class="hero-actions">
-        <a href="https://milesukaoma.com/cos" class="primary">See the Philosophy</a>
-        <a href="#teams" class="secondary" onclick="event.preventDefault(); document.getElementById('teams').scrollIntoView({behavior:'smooth'}); setTimeout(function(){ var w=document.getElementById('teams-form-wrapper'); if(!w.classList.contains('expanded')) toggleTeamsForm(); }, 600);">For Teams</a>
-      </div>
-      <div class="badges">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT">
-        <img src="https://img.shields.io/badge/Claude%20Code-compatible-7C3AED" alt="Claude Code">
-      </div>
+<!-- ── 01 PROBLEM ── -->
+<section class="wrap reveal" id="problem">
+  <div class="split">
+    <div class="sec-head"><div class="eyebrow"><span class="num">01</span> The Problem</div>
+      <h2>AI is electricity. Most people still run <span class="it g">steam.</span></h2>
     </div>
-
-    <hr class="divider">
-
-    <!-- The Problem -->
-    <div class="section">
-      <h2>The Problem</h2>
-      <p>AI is electricity. But most people are still running steam-powered factories.</p>
-      <p>They open a chat window. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday.</p>
-      <p><strong>That's not a workflow. That's a slot machine.</strong></p>
-      <p>The executives who are actually getting leverage from AI aren't writing better prompts. They're building better context. They're giving the model the same information a world-class chief of staff would have on day 90 of the job:</p>
-      <ul>
-        <li>Who reports to you and how each person operates</li>
-        <li>What you're working on this quarter and why it matters</li>
-        <li>Which meetings need prep and which are noise</li>
-        <li>What patterns keep showing up that you keep missing</li>
+    <div>
+      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is not a workflow. It is a slot machine.</span></p>
+      <p>The executives getting real leverage from AI are not writing better prompts. They are building better context, giving the model what a world-class chief of staff would know on day 90:</p>
+      <ul class="ck">
+        <li>Who reports to you, and how each person operates</li>
+        <li>What you are working on this quarter, and why it matters</li>
+        <li>Which meetings need prep, and which are noise</li>
+        <li>The patterns that keep showing up that you keep missing</li>
       </ul>
-      <p>This repo gives you the scaffolding to build that.</p>
+      <p style="margin-top:22px"><strong>This repo gives you the scaffolding to build that.</strong></p>
     </div>
+  </div>
+</section>
 
-    <hr class="divider">
+<div class="wrap"><div class="rule"></div></div>
 
-    <!-- Quick Start -->
-    <div class="section">
-      <h2>Quick Start</h2>
-      <p><strong>Prerequisites:</strong> <a href="https://claude.ai/claude-code">Claude Code CLI</a> installed. Claude Max or Team subscription.</p>
+<!-- ── 02 QUICK START ── -->
+<section class="wrap reveal" id="start">
+  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> Quick Start</div>
+    <h2>Five minutes to a <span class="it g">working COS.</span></h2>
+    <p class="lead">Prerequisites: the <a href="https://claude.ai/claude-code">Claude Code CLI</a> and a Claude Max or Team subscription.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Create your COS directory</h3><code class="code">mkdir my-cos &amp;&amp; cd my-cos
+git init</code></div>
+    <div class="step"><div class="n">2</div><h3>Copy the setup prompt</h3><code class="code"><span class="c"># pull the kit</span>
+curl -O https://raw.\
+githubusercontent.com/ukaoma/\
+cos-starter/main/cos-starter.md</code></div>
+    <div class="step"><div class="n">3</div><h3>Run the interactive setup</h3><code class="code">claude</code><p style="font-size:.84rem;margin-top:12px">Then: <em style="color:var(--fg)">"Read cos-starter.md and run the interactive setup."</em></p></div>
+  </div>
+</section>
 
-      <div class="step">
-        <span class="step-number">1</span>
-        <h3>Create your COS directory</h3>
-        <div class="code-block"><code>mkdir my-cos && cd my-cos && git init</code></div>
-      </div>
+<div class="wrap"><div class="rule"></div></div>
 
-      <div class="step">
-        <span class="step-number">2</span>
-        <h3>Copy the setup prompt</h3>
-        <div class="code-block"><code>curl -O https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md</code></div>
-      </div>
-
-      <div class="step">
-        <span class="step-number">3</span>
-        <h3>Run the interactive setup</h3>
-        <div class="code-block"><code>claude</code></div>
-        <p style="margin-top: 0.8rem;">Then tell Claude: <em>"Read cos-starter.md and run the interactive setup."</em></p>
-      </div>
-
-      <p><strong>5 minutes to a working COS.</strong></p>
-    </div>
-
-    <hr class="divider">
-
-    <!-- What You Get -->
-    <div class="section">
-      <h2>What You Get</h2>
-      <div class="code-block"><code>my-cos/
-├── CLAUDE.md                 # Your COS brain (auto-generated)
+<!-- ── 03 WHAT YOU GET ── -->
+<section class="wrap reveal" id="get">
+  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> What You Get</div>
+    <h2>A directory that <span class="it g">is</span> the system.</h2>
+  </div>
+  <div class="term">
+    <div class="bar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>my-cos</span></div>
+    <pre><span class="cm">my-cos/</span>
+├── <b>CLAUDE.md</b>                 <span class="cm"># your COS brain (auto-generated)</span>
 ├── context/
-│   └── people.md             # Your team profiles
-├── .claude/
-│   └── commands/
-│       ├── start.md          # /start — daily briefing
-│       ├── learn.md          # /learn — capture corrections
-│       ├── prep.md           # /prep — meeting preparation
-│       └── connect.md        # /connect — wire external tools
+│   └── people.md             <span class="cm"># your team profiles</span>
+├── .claude/commands/
+│   ├── start.md              <span class="cm"># /start — daily briefing</span>
+│   ├── learn.md              <span class="cm"># /learn — capture corrections</span>
+│   └── prep.md               <span class="cm"># /prep — meeting preparation</span>
 ├── operations/
-│   └── tasks.md              # Your task tracker
-└── corrections.md            # Pattern corrections (auto-populated)</code></div>
-      <p>Every Claude Code session in this directory starts with your full context loaded. No re-explaining. Just: here's what matters today.</p>
+│   └── &lt;domain&gt;/             <span class="cm"># tasks.md · intelligence/ · wk&lt;NN&gt;_&lt;year&gt;/</span>
+└── corrections.md            <span class="cm"># patterns (auto-populated)</span></pre>
+  </div>
+  <p style="margin-top:24px">Every Claude Code session in this directory starts with your full context loaded. No re-explaining. Just: <strong>here is what matters today.</strong></p>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 04 TIERS ── -->
+<section class="wrap reveal" id="tiers">
+  <div class="sec-head"><div class="eyebrow"><span class="num">04</span> The 4 Tiers</div>
+    <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
+  </div>
+  <div class="tiers">
+    <div class="tier"><div class="tl">Tier 1 · 5 minutes</div><h4>Foundation</h4><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p><div class="bar-fill"><i style="width:25%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 2 · 30 minutes</div><h4>Operational</h4><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p><div class="bar-fill"><i style="width:50%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 3 · 2 weeks</div><h4>Compounding</h4><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p><div class="bar-fill"><i style="width:75%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 4 · 1+ month</div><h4>Agentic</h4><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p><div class="bar-fill"><i style="width:100%"></i></div></div>
+  </div>
+  <p style="margin-top:26px">Most people never get past Tier 1 with AI tools. <strong>COS is designed to pull you forward.</strong></p>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 05 COVERAGE ── -->
+<section class="wrap reveal" id="assess">
+  <div class="sec-head"><div class="eyebrow"><span class="num">05</span> Coverage Gap</div>
+    <h2>Score yourself across <span class="it g">14 domains.</span></h2>
+    <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold)">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
+  </div>
+  <div class="domains">
+    <div class="dm"><b>Meeting Intelligence</b><span>Capture, classify, extract, search by meaning</span></div>
+    <div class="dm"><b>Task Orchestration</b><span>Extract from conversations, dedup, stage, track</span></div>
+    <div class="dm"><b>Email &amp; Comms Triage</b><span>Prioritize inbox, draft responses, follow-ups</span></div>
+    <div class="dm"><b>Calendar Awareness</b><span>Meeting prep, conflict detection, time blocking</span></div>
+    <div class="dm"><b>People Intelligence</b><span>Profiles, comms styles, relationship health</span></div>
+    <div class="dm"><b>Cross-Source Synthesis</b><span>Connect signals across meetings, email, tasks, Slack</span></div>
+    <div class="dm"><b>Strategic Alignment</b><span>Goal tracking, resource allocation, priority scoring</span></div>
+    <div class="dm"><b>Proactive Alerting</b><span>Early warnings, signal detection, anomaly flagging</span></div>
+    <div class="dm"><b>Institutional Memory</b><span>Session persistence, correction compounding</span></div>
+    <div class="dm"><b>Delegation &amp; Follow-up</b><span>Track who owes what, escalation cadence</span></div>
+    <div class="dm"><b>Content &amp; Research</b><span>Market intel, competitor tracking, documents</span></div>
+    <div class="dm"><b>Reporting &amp; Dashboards</b><span>Status updates, briefings, visual dashboards</span></div>
+    <div class="dm"><b>Knowledge Management</b><span>File organization, templates, SOPs</span></div>
+    <div class="dm"><b>Ambient I/O</b><span>Multi-surface delivery — terminal, mobile, voice</span></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 06 INTEGRATIONS ── -->
+<section class="wrap reveal" id="integrations">
+  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> Integrations</div>
+    <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
+    <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a> — bring your own.</p>
+  </div>
+  <div class="ints">
+    <div class="int"><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
+    <div class="int"><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="t">15 min</span></div>
+    <div class="int"><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="t">10 min</span></div>
+    <div class="int"><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="t">30 min</span></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 07 GLASSES ── -->
+<section class="wrap reveal" id="glasses">
+  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> COS Glasses</div>
+    <h2>The frame, <span class="it g">on your face.</span></h2>
+    <p class="lead">Running on Even G2 smart glasses — a chief of staff on the lens. Same context you build here; now it follows you off the screen.</p>
+  </div>
+  <div class="glass-grid">
+    <div class="gc"><div class="tl">On the lens</div><h4>Talk &amp; listen</h4><p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with send / edit / re-record, answers read to your earbuds.</p></div>
+    <div class="gc"><div class="tl">Meeting-aware</div><h4>It works while you talk</h4><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
+    <div class="gc"><div class="tl">Yours to run</div><h4>MIT, self-hosted</h4><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
+  </div>
+  <div class="hero-cta" style="margin-top:34px">
+    <a href="wizard/" class="btn primary">Get Started</a>
+    <a href="https://hub.evenrealities.com" class="btn ghost">Get it on the Even Hub</a>
+    <a href="https://github.com/ukaoma/cos-glasses-app" class="btn ghost">View on GitHub</a>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 08 TEAMS ── -->
+<section class="wrap reveal" id="teams">
+  <div class="teams">
+    <div class="eyebrow" style="justify-content:center"><span class="num">08</span> For Teams</div>
+    <h3>Most teams buy AI and watch <span class="g">80% of the seats go cold.</span></h3>
+    <p>COS is built to be used. Hands-on onboarding gets every person to their first real answer in under 15 minutes. Shared team context so no one re-explains the company, and personal setups stay personal. Most teams go from a handful of power users to 70-80% daily use inside six weeks, and leadership sees adoption without chasing it.</p>
+    <div class="hero-cta" style="justify-content:center">
+      <a href="/readiness/" class="btn primary">Get your Readiness Score</a>
+      <a href="/connect/" class="btn ghost">Book a working session</a>
     </div>
+    <div class="teams-toggle"><button type="button" onclick="toggleTeamsForm()">Or tell us about your team and we'll reach out</button></div>
+    <div class="teams-form-wrapper" id="teams-form-wrapper"><div class="tf-inner"><div id="hs-teams-form"></div></div></div>
+  </div>
+</section>
 
-    <hr class="divider">
+<div class="wrap"><div class="rule"></div></div>
 
-    <!-- The 4 Tiers -->
-    <div class="section">
-      <h2>The 4 Tiers</h2>
-      <p>COS isn't a one-time setup. It's a system that deepens over time.</p>
-
-      <div class="tier-grid">
-        <div class="tier-card">
-          <div class="tier-label">Tier 1 &mdash; 5 minutes</div>
-          <h4>Foundation</h4>
-          <p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses. No more re-explaining your job.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-label">Tier 2 &mdash; 30 minutes</div>
-          <h4>Operational</h4>
-          <p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-label">Tier 3 &mdash; 2 weeks</div>
-          <h4>Compounding</h4>
-          <p>Use /learn to capture corrections. Build task tracking. Add meeting notes. The system starts connecting dots you didn't ask about.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-label">Tier 4 &mdash; 1+ month</div>
-          <h4>Agentic</h4>
-          <p>Scheduled tasks run automatically. Semantic search across all your meetings. A system that works while you sleep.</p>
-        </div>
-      </div>
-
-      <p>Most people never get past Tier 1 with AI tools. <strong>COS is designed to pull you forward.</strong></p>
+<!-- ── 09 PHILOSOPHY ── -->
+<section class="wrap reveal" id="philosophy">
+  <div class="split">
+    <div class="sec-head"><div class="eyebrow"><span class="num">09</span> Philosophy</div>
+      <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
-
-    <hr class="divider">
-
-    <!-- Coverage Gap -->
-    <div class="section">
-      <h2>Coverage Gap Assessment</h2>
-      <p>Not sure where to focus? Run <code style="background: rgba(255,255,255,0.05); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.88em;">/assess</code> to score yourself across 14 COS domains.</p>
-      <table>
-        <thead>
-          <tr><th>Domain</th><th>What It Covers</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Meeting Intelligence</strong></td><td>Capture, classify, extract insights, search by meaning</td></tr>
-          <tr><td><strong>Task Orchestration</strong></td><td>Extract from conversations, dedup, stage, track, complete</td></tr>
-          <tr><td><strong>Email & Comms Triage</strong></td><td>Prioritize inbox, draft responses, follow-up tracking</td></tr>
-          <tr><td><strong>Calendar Awareness</strong></td><td>Meeting prep, conflict detection, time blocking</td></tr>
-          <tr><td><strong>People Intelligence</strong></td><td>Profiles, communication styles, relationship health</td></tr>
-          <tr><td><strong>Cross-Source Synthesis</strong></td><td>Connect signals across meetings + email + tasks + Slack</td></tr>
-          <tr><td><strong>Strategic Alignment</strong></td><td>Goal tracking, resource allocation, priority scoring</td></tr>
-          <tr><td><strong>Proactive Alerting</strong></td><td>Early warnings, signal detection, anomaly flagging</td></tr>
-          <tr><td><strong>Institutional Memory</strong></td><td>Session persistence, correction compounding, decision history</td></tr>
-          <tr><td><strong>Delegation & Follow-up</strong></td><td>Track who owes what, escalation cadence</td></tr>
-          <tr><td><strong>Content & Research</strong></td><td>Market intel, competitor tracking, document creation</td></tr>
-          <tr><td><strong>Reporting & Dashboards</strong></td><td>Status updates, briefings, visual dashboards</td></tr>
-          <tr><td><strong>Knowledge Management</strong></td><td>File organization, templates, SOPs, documentation</td></tr>
-          <tr><td><strong>Ambient I/O</strong></td><td>Multi-surface delivery &mdash; terminal, mobile, voice</td></tr>
-        </tbody>
-      </table>
-      <p>See <a href="assess/coverage-gap-framework.html">assess/coverage-gap-framework.md</a> for the full scoring methodology. <strong>Your lowest scores are your highest-leverage next steps.</strong></p>
-    </div>
-
-    <hr class="divider">
-
-    <!-- Integrations -->
-    <div class="section">
-      <h2>Integrations</h2>
-      <p>COS connects to your existing tools through <a href="https://modelcontextprotocol.io/">MCP servers</a>.</p>
-      <table>
-        <thead>
-          <tr><th>Integration</th><th>What It Enables</th><th style="text-align:center">Setup</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Slack</strong></td><td>Channel monitoring, message context</td><td style="text-align:center">10 min</td></tr>
-          <tr><td><strong>Google Workspace</strong></td><td>Email, calendar, docs access</td><td style="text-align:center">15 min</td></tr>
-          <tr><td><strong>Meeting Tools</strong></td><td>Transcript sync (Granola, Fireflies, Fathom)</td><td style="text-align:center">10 min</td></tr>
-          <tr><td><strong>Vector Store</strong></td><td>Semantic search across all content</td><td style="text-align:center">30 min</td></tr>
-        </tbody>
-      </table>
-      <p>See <a href="integrations/">integrations/README.md</a> for configuration templates.</p>
-    </div>
-
-    <hr class="divider">
-
-    <!-- COS Glasses -->
-    <div class="section" id="glasses">
-      <h2>COS <em>Glasses</em></h2>
-      <p>The frame, running on Even G2 smart glasses &mdash; a chief of staff on the lens. Meeting capture, on-lens chat, and handoff to your desk. Same context you build here; now it follows you off the screen.</p>
-
-      <div class="tier-grid">
-        <div class="tier-card">
-          <div class="tier-label">On the lens</div>
-          <h4>Talk &amp; listen</h4>
-          <p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with a send / edit / re-record review, and answers read back to your earbuds.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-label">Meeting-aware</div>
-          <h4>It works while you talk</h4>
-          <p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD &mdash; start on the lens, finish at your desk.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-label">Yours to run</div>
-          <h4>The frame, on your face</h4>
-          <p>MIT and self-hosted &mdash; your keys, your server, your context. An OpenAI-compatible endpoint drops it straight into Even's agent slot.</p>
-        </div>
-      </div>
-
-      <div class="code-block"><code># Install on Even G2: search "COS Glasses" in the Even Hub
-# Or self-host the frame from source:
-git clone https://github.com/ukaoma/cos-glasses-app.git
-cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server</code></div>
-
-      <div class="hero-actions" style="margin-top:1.75rem;">
-        <a href="wizard/" class="primary">Get Started</a>
-        <a href="https://hub.evenrealities.com" class="secondary">Get it on the Even Hub</a>
-        <a href="https://github.com/ukaoma/cos-glasses-app" class="secondary">View on GitHub</a>
-      </div>
-      <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-muted);">Not technical? <a href="https://milesukaoma.com/schedule-a-call" style="color:var(--accent-gold);text-decoration:none;">Have me run it for you.</a> &middot; <a href="https://milesukaoma.com/cos" style="color:var(--accent-gold);text-decoration:none;">See the philosophy</a></p>
-    </div>
-
-    <hr class="divider">
-
-    <!-- For Teams -->
-    <div class="section">
-      <div class="teams-cta" id="teams">
-        <h3>For Teams</h3>
-        <p>Running COS for yourself is powerful. Running it across a leadership team is transformative. Multi-role deployments with shared knowledge architecture, cross-role intelligence, and consistent correction propagation.</p>
-        <div style="text-align: center;">
-          <a href="https://milesukaoma.com/schedule-a-call" class="schedule-link">Schedule a Call</a>
-        </div>
-        <div class="teams-form-toggle">
-          <button type="button" onclick="toggleTeamsForm()">Or tell us about your team and we'll reach out</button>
-        </div>
-        <div class="teams-form-wrapper" id="teams-form-wrapper">
-          <hr class="form-divider">
-          <!-- Slim form (shown when gate data exists) -->
-          <div id="teams-slim" style="display:none;">
-            <div class="gate-heading" id="teams-greeting"></div>
-            <div class="gate-sub">You're already in — just tell us your team size and we'll send an architecture proposal.</div>
-            <form id="teams-slim-form" novalidate>
-              <div class="form-group">
-                <label for="ts-employees">Number of Employees</label>
-                <select id="ts-employees" name="numemployees" required>
-                  <option value="" disabled selected>Select size</option>
-                  <option value="1-5">1 &ndash; 5</option>
-                  <option value="5-25">5 &ndash; 25</option>
-                  <option value="25-50">25 &ndash; 50</option>
-                  <option value="50-100">50 &ndash; 100</option>
-                  <option value="100-500">100 &ndash; 500</option>
-                  <option value="500-1000">500 &ndash; 1,000</option>
-                  <option value="1000+">1,000+</option>
-                </select>
-              </div>
-              <button type="submit" class="btn-submit">Request Team Architecture Guide</button>
-              <div class="gate-fine-print">We'll send a scoping guide within 24 hours. No spam.</div>
-            </form>
-            <div id="teams-slim-success" style="display:none; text-align:center; padding:1.5rem;">
-              <p style="color:var(--accent-gold); font-size:1rem;"><strong>Request received.</strong> Check your inbox for the architecture guide.</p>
-            </div>
-          </div>
-          <!-- Full HubSpot form (fallback when no gate data) -->
-          <div id="teams-full">
-            <div class="gate-heading">Deploy COS across your <em>leadership team.</em></div>
-            <div class="gate-sub">Tell us about your org. We'll send a scoping guide and architecture proposal.</div>
-            <div id="hs-teams-form"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <!-- Philosophy -->
-    <div class="section">
-      <h2>Philosophy</h2>
-      <p>COS is built on a specific belief: <strong>context compounds.</strong></p>
-      <p>Every correction you make, every meeting you feed in, every person you profile &mdash; it all accumulates into a system that understands your work better than any prompt could describe.</p>
-      <p>The <a href="philosophy/cos-philosophy-diagram.html">interactive philosophy diagram</a> maps the four tiers:</p>
-      <ul>
-        <li><strong>Foundation</strong> &mdash; Identity is the starting point</li>
-        <li><strong>Operational</strong> &mdash; Routines create rhythm</li>
-        <li><strong>Compounding</strong> &mdash; Corrections accumulate into intelligence</li>
-        <li><strong>Agentic</strong> &mdash; The system acts without being asked</li>
+    <div>
+      <p>The <a href="https://milesukaoma.com/cos">interactive philosophy map</a> traces the four tiers:</p>
+      <ul class="ck" style="margin-top:18px">
+        <li><strong>Foundation</strong> — identity is the starting point</li>
+        <li><strong>Operational</strong> — routines create rhythm</li>
+        <li><strong>Compounding</strong> — corrections accumulate into intelligence</li>
+        <li><strong>Agentic</strong> — the system acts without being asked</li>
       </ul>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <p>Created by <a href="https://milesukaoma.com">Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">View on GitHub</a> &middot; <a href="LICENSE">MIT License</a></p>
-      <div class="quote">The best chief of staff doesn't wait to be asked.</div>
+      <div class="hero-cta" style="margin-top:30px">
+        <a href="#start" class="btn ghost">Start building</a>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══════════════════════════════════════
-       SCRIPT
-       ═══════════════════════════════════════ -->
-  <script>
-    (function() {
-      const STORAGE_KEY = 'cos_gate_passed';
-      const PORTAL_ID = '2474026';
-      const FORM_GUID = 'b4cea52f-cf56-4025-9e09-2fd126809a7b';
+<footer>
+  <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <div class="links">
+    <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
+    <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·
+    <a href="LICENSE">MIT License</a>
+  </div>
+</footer>
 
-      const splash = document.getElementById('splash');
-      const gate = document.getElementById('gate');
-      const content = document.getElementById('content');
-      const form = document.getElementById('gate-form');
-      const errorEl = document.getElementById('gate-error');
-
-      // Check if already gated
-      if (localStorage.getItem(STORAGE_KEY)) {
-        splash.style.display = 'none';
-        gate.style.display = 'none';
-        content.classList.add('visible');
-        document.body.style.overflow = 'auto';
-        return;
-      }
-
-      // Prevent scroll while gated
-      document.body.style.overflow = 'hidden';
-
-      // Splash → Gate transition
-      splash.addEventListener('click', function() {
-        splash.classList.add('dismissed');
-        setTimeout(function() {
-          splash.style.display = 'none';
-          gate.classList.add('active');
-        }, 600);
-      });
-
-      // Also allow Enter/Space on splash for accessibility
-      splash.setAttribute('tabindex', '0');
-      splash.setAttribute('role', 'button');
-      splash.setAttribute('aria-label', 'Click to begin');
-      splash.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          splash.click();
-        }
-      });
-
-      // Form validation
-      function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      }
-
-      function showError(msg) {
-        errorEl.textContent = msg;
-        errorEl.style.display = 'block';
-      }
-
-      function hideError() {
-        errorEl.style.display = 'none';
-      }
-
-      // Form submission
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        hideError();
-
-        const firstname = document.getElementById('firstname').value.trim();
-        const lastname = document.getElementById('lastname').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const jobtitle = document.getElementById('jobtitle').value.trim();
-        const company = document.getElementById('company').value.trim();
-        const industry = document.getElementById('industry').value;
-
-        // Clear invalid states
-        document.querySelectorAll('.form-group').forEach(function(g) {
-          g.classList.remove('invalid');
-        });
-
-        // Validate required fields
-        var valid = true;
-        if (!firstname) {
-          document.getElementById('firstname').closest('.form-group').classList.add('invalid');
-          valid = false;
-        }
-        if (!lastname) {
-          document.getElementById('lastname').closest('.form-group').classList.add('invalid');
-          valid = false;
-        }
-        if (!email || !validateEmail(email)) {
-          document.getElementById('email').closest('.form-group').classList.add('invalid');
-          valid = false;
-        }
-
-        if (!valid) {
-          showError('Please fill in the required fields.');
-          return;
-        }
-
-        var btn = form.querySelector('.btn-submit');
-        btn.disabled = true;
-        btn.textContent = 'Submitting...';
-
-        // Submit to HubSpot Forms API
-        var fields = [
-          { name: 'firstname', value: firstname },
-          { name: 'lastname', value: lastname },
-          { name: 'email', value: email }
-        ];
-
-        if (jobtitle) fields.push({ name: 'jobtitle', value: jobtitle });
-        if (company) fields.push({ name: 'company', value: company });
-        if (industry) fields.push({ name: 'industry', value: industry });
-
-        var payload = {
-          fields: fields,
-          context: {
-            pageUri: window.location.href,
-            pageName: document.title
-          }
-        };
-
-        fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_GUID, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-        .then(function(res) {
-          if (!res.ok) throw new Error('Submission failed');
-          return res.json();
-        })
-        .then(function() {
-          localStorage.setItem(STORAGE_KEY, Date.now());
-          localStorage.setItem('cos_gate_data', JSON.stringify({
-            firstname: firstname, lastname: lastname, email: email,
-            jobtitle: jobtitle, company: company, industry: industry
-          }));
-          gate.classList.add('dismissed');
-          setTimeout(function() {
-            gate.style.display = 'none';
-            content.classList.add('visible');
-            document.body.style.overflow = 'auto';
-          }, 600);
-        })
-        .catch(function() {
-          // Even if HubSpot fails, let them through (graceful degradation)
-          localStorage.setItem(STORAGE_KEY, Date.now());
-          localStorage.setItem('cos_gate_data', JSON.stringify({
-            firstname: firstname, lastname: lastname, email: email,
-            jobtitle: jobtitle, company: company, industry: industry
-          }));
-          gate.classList.add('dismissed');
-          setTimeout(function() {
-            gate.style.display = 'none';
-            content.classList.add('visible');
-            document.body.style.overflow = 'auto';
-          }, 600);
-        });
-      });
-    })();
-
-    // ── Teams Form ──
-    var teamsFormInitialized = false;
-    function toggleTeamsForm() {
-      var wrapper = document.getElementById('teams-form-wrapper');
-      wrapper.classList.toggle('expanded');
-
-      if (!teamsFormInitialized && wrapper.classList.contains('expanded')) {
-        teamsFormInitialized = true;
-        var gateData = null;
-        try { gateData = JSON.parse(localStorage.getItem('cos_gate_data')); } catch(e) {}
-
-        if (gateData && gateData.email) {
-          // Show slim form — we already have their info
-          document.getElementById('teams-full').style.display = 'none';
-          document.getElementById('teams-slim').style.display = 'block';
-          document.getElementById('teams-greeting').innerHTML =
-            'Hey <em>' + gateData.firstname + '</em> — interested in a team deployment?';
-
-          // Handle slim form submission
-          document.getElementById('teams-slim-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var employees = document.getElementById('ts-employees').value;
-            if (!employees) {
-              document.getElementById('ts-employees').closest('.form-group').classList.add('invalid');
-              return;
-            }
-            var btn = this.querySelector('.btn-submit');
-            btn.disabled = true;
-            btn.textContent = 'Submitting...';
-
-            var fields = [
-              { name: 'firstname', value: gateData.firstname },
-              { name: 'lastname', value: gateData.lastname },
-              { name: 'email', value: gateData.email },
-              { name: 'numemployees', value: employees }
-            ];
-            if (gateData.jobtitle) fields.push({ name: 'jobtitle', value: gateData.jobtitle });
-            if (gateData.company) fields.push({ name: 'company', value: gateData.company });
-            if (gateData.industry) fields.push({ name: 'industry', value: gateData.industry });
-
-            fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ fields: fields, context: { pageUri: window.location.href, pageName: 'COS Starter — Teams Inquiry' } })
-            })
-            .then(function() {
-              document.getElementById('teams-slim-form').style.display = 'none';
-              document.getElementById('teams-slim-success').style.display = 'block';
-            })
-            .catch(function() {
-              document.getElementById('teams-slim-form').style.display = 'none';
-              document.getElementById('teams-slim-success').style.display = 'block';
-            });
-          });
-        } else {
-          // No gate data — show full HubSpot form
-          document.getElementById('teams-slim').style.display = 'none';
-          var script = document.createElement('script');
-          script.src = 'https://js.hsforms.net/forms/embed/v2.js';
-          script.charset = 'utf-8';
-          script.onload = function() {
-            hbspt.forms.create({
-              portalId: '2474026',
-              formId: 'c5439911-36e3-4063-ae21-0e0ab792f7a3',
-              target: '#hs-teams-form',
-              css: '', cssClass: '', submitButtonClass: 'hs-button'
-            });
-          };
-          document.head.appendChild(script);
-        }
-      }
-    }
-  </script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+})();
+// Teams HubSpot form — lazy-load on expand (ungated; full form)
+var teamsFormInitialized=false;
+function toggleTeamsForm(){
+  var w=document.getElementById('teams-form-wrapper');w.classList.toggle('expanded');
+  if(!teamsFormInitialized&&w.classList.contains('expanded')){
+    teamsFormInitialized=true;
+    var s=document.createElement('script');s.src='https://js.hsforms.net/forms/embed/v2.js';s.charset='utf-8';
+    s.onload=function(){hbspt.forms.create({portalId:'2474026',formId:'c5439911-36e3-4063-ae21-0e0ab792f7a3',target:'#hs-teams-form'});};
+    document.head.appendChild(s);
+  }
+}
+</script>
 </body>
 </html>
