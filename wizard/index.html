@@ -168,20 +168,21 @@
   <div class="header">
     <div class="eyebrow">COS Glasses · Personalize</div>
     <h1>Build <span class="accent">your</span> COS Glasses.</h1>
-    <p>Tell us how you'll use Even G2. We'll tune the model, wire your context, and pick what shows on the lens — then hand you the exact setup. The frame is the same for everyone; this is your layer.</p>
+    <p>Get your Even G2 running as a chief of staff on the lens. <strong style="color:var(--text-label);font-weight:600">Quick Start</strong> for the fast path on smart defaults, or <strong style="color:var(--text-label);font-weight:600">Build it</strong> to tune every config. The server setup is the same for everyone; this is your layer.</p>
   </div>
 
-  <!-- Start: do you already run COS? -->
+  <!-- Start: pick your path -->
   <div class="step" data-step="Start here">
-    <h2>Do you already run COS?</h2>
-    <p class="sub">COS Glasses is the lens for your Chief of Staff. Already run one? Your glasses inherit its context and skills — skip the setup and just connect.</p>
+    <h2>Pick your path</h2>
+    <p class="sub">Both get your glasses live. <strong style="color:var(--text-label)">Quick Start</strong> uses smart defaults; <strong style="color:var(--text-label)">Build it</strong> personalizes every config. Either way you set up the server and connect. That part is the same for everyone.</p>
     <div class="opt-grid" id="mode">
-      <button type="button" class="opt selected" data-mode="new"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Start fresh</span><h3>New to COS</h3><p>Set it up and personalize from scratch.</p></button>
-      <button type="button" class="opt" data-mode="existing"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Already running</span><h3>I run COS already</h3><p>Just point my glasses at it.</p></button>
+      <button type="button" class="opt selected" data-mode="quick"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Fast path</span><h3>Quick Start</h3><p>Up and running in minutes on smart defaults.</p></button>
+      <button type="button" class="opt" data-mode="build"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Full control</span><h3>Build it</h3><p>Customize model, context, and what shows on the lens.</p></button>
     </div>
+    <p class="sub" style="margin:0.9rem 0 0;font-size:0.82rem">Already run a COS from the Starter Kit? Your glasses inherit its context and skills automatically; you still set up the glasses server below.</p>
   </div>
 
-  <div id="path-new">
+  <div id="path-build" hidden>
 
   <!-- Step 1 — Use cases (the driver) -->
   <div class="step" data-step="Step 1">
@@ -293,26 +294,34 @@ Role: Your Role</span></div>
     </div>
     <p class="hosted">Want it done for you? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
   </div>
-  </div><!-- /path-new -->
+  </div><!-- /path-build -->
 
-  <!-- Existing COS path -->
-  <div id="path-existing" hidden>
-    <div class="step" data-step="Connect" style="margin-top:1.5rem;">
-      <h2>Point your glasses at your COS</h2>
-      <p class="sub">Your COS already holds your identity, model, context, and skills. Your glasses inherit all of it — nothing to re-personalize.</p>
+  <!-- QUICK START (default) -->
+  <div id="path-quick">
+    <div class="step" data-step="Quick Start" style="margin-top:1.5rem;">
+      <h2>Running in minutes, on smart defaults</h2>
+      <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
+      <div class="summary">
+        <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free)</small></span></div>
+        <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
+        <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
+      </div>
+      <div class="res-label">1 &middot; Get the server running</div>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
+      <div class="res-label">2 &middot; Connect your glasses</div>
       <ul class="enable">
-        <li>Make sure your <b>COS Glasses server</b> is running on the Mac that runs your COS.</li>
-        <li>Install <b>COS Glasses</b> from the Even Hub on your iPhone (or open it if it's already there).</li>
-        <li>In the app, tap <b>"I have a COS username"</b> and enter it — your server details resolve automatically.</li>
-        <li>No username yet? Enter your Mac's <b>server URL</b> and <b>API token</b> from the server terminal instead.</li>
-        <li>Tap <b>Connect</b>. Your glasses now run on your COS's model, context, and skills.</li>
+        <li>Open <b>COS Glasses</b> in the Even Hub app; tap <b>"I have a COS username"</b> (or enter your Mac's server URL + API token from the terminal).</li>
+        <li>Tap <b>Connect</b>. You're live on the lens.</li>
       </ul>
-      <div class="note"><strong>Want the lens to behave differently than your desktop?</strong> Override the model or HUD per-device in Settings — the glasses are a surface on your COS, not a separate brain.</div>
+      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Your glasses inherit its context, model, and skills automatically; nothing extra to wire. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
       <div class="actions">
         <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
         <a class="secondary" href="https://github.com/ukaoma/cos-glasses-app">View on GitHub</a>
       </div>
-      <p class="hosted">Don't run COS yet? <a href="#path-new" onclick="document.querySelector('[data-mode=new]').click();return false;">Start fresh instead.</a></p>
+      <p class="hosted">Want to tune every config? <a href="#path-build" onclick="document.querySelector('[data-mode=build]').click();return false;">Build it instead.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
     </div>
   </div>
 
@@ -532,14 +541,14 @@ Role: Your Role</span></div>
     }
   };
 
-  // mode: new (full personalize) vs existing (connect only)
+  // mode: quick (fast defaults) vs build (full personalize)
   $all('#mode .opt').forEach(function (btn) {
     btn.addEventListener('click', function () {
       $all('#mode .opt').forEach(function (b) { b.classList.remove('selected'); });
       btn.classList.add('selected');
       var m = btn.getAttribute('data-mode');
-      document.getElementById('path-new').hidden = (m !== 'new');
-      document.getElementById('path-existing').hidden = (m !== 'existing');
+      document.getElementById('path-quick').hidden = (m !== 'quick');
+      document.getElementById('path-build').hidden = (m !== 'build');
     });
   });
 
