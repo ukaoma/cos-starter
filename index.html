@@ -197,10 +197,93 @@
   #hs-teams-form .hs-button{width:100%!important;padding:14px!important;margin-top:8px!important;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose))!important;color:#1a1206!important;border:none!important;border-radius:999px!important;font-family:var(--body)!important;font-weight:600!important;font-size:.95rem!important;cursor:pointer!important}
   #hs-teams-form .hs-error-msgs label{color:var(--rose)!important;font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important}
   #hs-teams-form .submitted-message{color:var(--gold)!important;text-align:center!important;padding:1.4rem!important}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}}
+  /* ═══ Context Graph swarm (cg-) ═══ */
+  .cg-stage{position:relative;margin-top:48px;height:660px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(130% 120% at 50% 32%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,var(--panel-2),rgba(7,9,15,.5))}
+  .cg-web{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .cg-webline{stroke:rgba(236,230,218,.06);stroke-width:1}
+  .cg-webline.warm{stroke:rgba(201,169,110,.16)}
+  .cg-node{position:absolute;display:flex;align-items:center;gap:9px;transform:translate(-50%,-50%)}
+  .cg-node .cg-ic{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(155deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);box-shadow:0 10px 24px -14px rgba(0,0,0,.8)}
+  .cg-node .cg-ic svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .cg-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;color:var(--muted);white-space:nowrap}
+  .cg-node.ghost .cg-ic{width:29px;height:29px;background:rgba(255,255,255,.02)}
+  .cg-node.ghost .cg-ic svg{stroke:var(--faint);width:14px;height:14px}
+  .cg-card{position:absolute;width:230px;transform:translate(-50%,-50%);background:linear-gradient(158deg,rgba(16,19,27,.97),rgba(11,14,20,.92));border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 32px 74px -28px rgba(0,0,0,.92)}
+  .cg-card.back{filter:blur(.5px)}
+  .cg-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .cg-h .cg-badge{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(150deg,rgba(201,169,110,.42),rgba(196,115,110,.22));border:1px solid var(--line);flex-shrink:0}
+  .cg-h .cg-badge svg{width:14px;height:14px;stroke:#1a1206;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cg-h .cg-t{font-family:var(--body);font-weight:600;font-size:.83rem;color:var(--fg);line-height:1.15}
+  .cg-h .cg-m{font-family:var(--mono);font-size:.56rem;color:var(--faint);letter-spacing:.04em;margin-top:2px}
+  .cg-r{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:4px 0;border-top:1px solid var(--line-2)}
+  .cg-r .cg-k{color:var(--faint);font-family:var(--mono);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+  .cg-r .cg-v{color:var(--muted);font-size:.74rem;text-align:right}
+  .cg-r .cg-v.gold{color:var(--gold)}
+  /* one-shot staggered reveal (no infinite loops) */
+  .cg-stage .cg-node,.cg-stage .cg-card{opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .cg-stage .cg-node{transform:translate(-50%,calc(-50% + 14px))}
+  .cg-stage .cg-card{transform:translate(-50%,calc(-50% + 22px))}
+  .cg-stage .cg-card.back{transform:translate(-50%,calc(-50% + 22px)) scale(.92)}
+  .reveal.in .cg-stage .cg-node{opacity:1;transform:translate(-50%,-50%)}
+  .reveal.in .cg-stage .cg-node.ghost{opacity:.36;transform:translate(-50%,-50%)}
+  .reveal.in .cg-stage .cg-card{opacity:1;transform:translate(-50%,-50%)}
+  .reveal.in .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
+  .cg-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  @media(max-width:820px){.cg-pillars{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.cg-pillars{grid-template-columns:1fr}}
+  .cg-pill{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .cg-pill .cg-pl{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .cg-pill b{display:block;font-family:var(--body);font-weight:600;font-size:1rem;color:var(--fg);margin:9px 0 8px}
+  .cg-pill p{font-size:.84rem;line-height:1.55}
+  .cg-note{margin-top:26px;font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);color:var(--fg);text-wrap:balance}
+  .cg-note .g{font-style:italic}
+  /* ═══ Knowledge graph frame (kg-) ═══ */
+  .kgframe{margin-top:46px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0a0e18;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+  .kg-bar{display:flex;align-items:center;gap:16px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015)}
+  .kg-brand{font-family:var(--display);font-style:italic;font-size:.92rem;color:var(--fg)}
+  .kg-brand b{font-style:normal;font-weight:600;color:var(--gold)}
+  .kg-search{flex:1;max-width:300px;font-family:var(--body);font-size:.78rem;color:var(--faint);border:1px solid var(--line-2);border-radius:8px;padding:7px 12px;background:rgba(0,0,0,.3)}
+  .kg-count{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.04em}
+  .kg-count b{color:var(--fg);font-weight:500}
+  .kg-stage{position:relative;height:420px;overflow:hidden;background:radial-gradient(120% 120% at 50% 45%,rgba(40,60,110,.18),transparent 65%)}
+  .kg-stage .kbub{position:absolute;border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 12px rgba(255,255,255,.12),0 6px 18px -6px rgba(0,0,0,.6)}
+  .kg-stage .kbub.lab::after{content:attr(data-l);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--body);font-size:.66rem;font-weight:600;color:rgba(255,255,255,.92);white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+  .kg-stage .kbub.big::after{font-size:.82rem}
+  .kg-legend{display:flex;flex-wrap:wrap;gap:16px;padding:13px 18px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015)}
+  .kg-legend span{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.62rem;color:var(--muted);text-transform:lowercase;letter-spacing:.03em}
+  .kg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  /* mobile: swarm -> card stack */
+  @media(max-width:860px){
+    .cg-stage{height:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+    .cg-stage .cg-web,.cg-stage .cg-node{display:none}
+    .cg-stage .cg-card{position:static;transform:none;width:auto;opacity:1}
+    .cg-stage .cg-card.back{display:none}
+    .reveal.in .cg-stage .cg-card{transform:none}
+    .kg-stage{height:320px}.kg-search{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
+    .cg-stage .cg-node,.cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
+    .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
+    .cg-stage .cg-node.ghost{opacity:.36}}
 </style>
 </head>
 <body>
+
+<!-- icon sprite (context graph) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-doc" viewBox="0 0 20 20"><path d="M5 2.5h6.5L15 6v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z"/><path d="M11 2.5V6h3.5"/><path d="M6.5 10h6M6.5 13h4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20"><rect x="3" y="5" width="14" height="11" rx="1.6"/><path d="M3.5 6.2l6.5 4.8 6.5-4.8"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 20 20"><path d="M3.5 5.2a1.2 1.2 0 0 1 1.2-1.2h10.6a1.2 1.2 0 0 1 1.2 1.2v6.4a1.2 1.2 0 0 1-1.2 1.2H8.5l-3.6 3v-3a1.2 1.2 0 0 1-1.4-1.2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 20 20"><rect x="3" y="4.5" width="14" height="12.5" rx="1.6"/><path d="M3 8.5h14M7 2.6v3.6M13 2.6v3.6"/></symbol>
+  <symbol id="i-person" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.1"/><path d="M4.2 16.3c.4-3.1 3-4.8 5.8-4.8s5.4 1.7 5.8 4.8"/></symbol>
+  <symbol id="i-org" viewBox="0 0 20 20"><rect x="4.5" y="3" width="11" height="14" rx="1"/><path d="M7.6 6h1.6M7.6 9h1.6M7.6 12h1.6M11.2 6h1.6M11.2 9h1.6M11.2 12h1.6"/></symbol>
+  <symbol id="i-task" viewBox="0 0 20 20"><rect x="3.2" y="3.2" width="13.6" height="13.6" rx="2.4"/><path d="M6.6 10.2l2.5 2.5 5-5.4"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 20 20"><rect x="7.4" y="2.4" width="5.2" height="9" rx="2.6"/><path d="M4.8 9.2a5.2 5.2 0 0 0 10.4 0M10 14.4v3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 20 20"><path d="M10 2.2l1.7 4.7 4.7 1.7-4.7 1.7L10 15l-1.7-4.7L3.6 8.6l4.7-1.7z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><rect x="2.6" y="5.2" width="10.4" height="9.6" rx="2.2"/><path d="M13 8.4l4.2-2.2v7.6L13 11.6z"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.2"/><path d="M10 5.6v8.8M12.2 7.7c0-1.1-1-1.7-2.2-1.7s-2.2.7-2.2 1.8 1 1.5 2.2 1.7 2.2.6 2.2 1.8-1 1.7-2.2 1.7-2.2-.6-2.2-1.7"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 20 20"><path d="M3 6.2a1.1 1.1 0 0 1 1.1-1.1h3.8l2 2h6a1.1 1.1 0 0 1 1.1 1.1v6.5a1.1 1.1 0 0 1-1.1 1.1H4.1A1.1 1.1 0 0 1 3 14.7z"/></symbol>
+</svg>
 
 <div class="atmos"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div></div>
 <div class="vignette"></div>
@@ -258,9 +341,157 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
+<!-- ── 02 THE CONTEXT GRAPH ── -->
+<section class="wrap reveal" id="graph">
+  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> The Context Graph</div>
+    <h2>One context graph. <span class="it g">Every source you already use.</span></h2>
+    <p class="lead">Not another app to move into. COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected context graph. Structured, searchable, and yours.</p>
+  </div>
+
+  <div class="cg-stage" id="cgStage">
+    <svg class="cg-web" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true">
+      <line class="cg-webline" x1="220" y1="172" x2="140" y2="264"/>
+      <line class="cg-webline warm" x1="220" y1="172" x2="500" y2="264"/>
+      <line class="cg-webline" x1="220" y1="172" x2="400" y2="106"/>
+      <line class="cg-webline" x1="400" y1="106" x2="500" y2="264"/>
+      <line class="cg-webline" x1="400" y1="106" x2="860" y2="132"/>
+      <line class="cg-webline" x1="860" y1="132" x2="700" y2="145"/>
+      <line class="cg-webline warm" x1="700" y1="145" x2="500" y2="264"/>
+      <line class="cg-webline" x1="700" y1="145" x2="780" y2="356"/>
+      <line class="cg-webline warm" x1="500" y1="264" x2="600" y2="383"/>
+      <line class="cg-webline warm" x1="500" y1="264" x2="300" y2="422"/>
+      <line class="cg-webline warm" x1="500" y1="264" x2="560" y2="488"/>
+      <line class="cg-webline" x1="600" y1="383" x2="780" y2="356"/>
+      <line class="cg-webline" x1="600" y1="383" x2="560" y2="488"/>
+      <line class="cg-webline" x1="780" y1="356" x2="920" y2="422"/>
+      <line class="cg-webline" x1="300" y1="422" x2="140" y2="264"/>
+      <line class="cg-webline" x1="300" y1="422" x2="80" y2="462"/>
+      <line class="cg-webline" x1="300" y1="422" x2="560" y2="488"/>
+      <line class="cg-webline" x1="300" y1="422" x2="360" y2="554"/>
+      <line class="cg-webline" x1="560" y1="488" x2="500" y2="607"/>
+      <line class="cg-webline" x1="560" y1="488" x2="660" y2="568"/>
+      <line class="cg-webline" x1="360" y1="554" x2="80" y2="462"/>
+      <line class="cg-webline" x1="360" y1="554" x2="500" y2="607"/>
+      <line class="cg-webline" x1="120" y1="330" x2="140" y2="264"/>
+      <line class="cg-webline" x1="120" y1="330" x2="300" y2="422"/>
+      <line class="cg-webline" x1="660" y1="568" x2="500" y2="607"/>
+      <line class="cg-webline" x1="660" y1="568" x2="780" y2="356"/>
+      <line class="cg-webline" x1="140" y1="264" x2="80" y2="462"/>
+      <line class="cg-webline" x1="860" y1="132" x2="920" y2="422"/>
+      <line class="cg-webline" x1="220" y1="172" x2="120" y2="330"/>
+    </svg>
+
+    <div class="cg-node ghost" style="left:6%;top:15%"><div class="cg-ic"><svg><use href="#i-cal"/></svg></div></div>
+    <div class="cg-node ghost" style="left:95%;top:46%"><div class="cg-ic"><svg><use href="#i-person"/></svg></div></div>
+    <div class="cg-node ghost" style="left:46%;top:7%"><div class="cg-ic"><svg><use href="#i-mail"/></svg></div></div>
+    <div class="cg-node ghost" style="left:24%;top:93%"><div class="cg-ic"><svg><use href="#i-task"/></svg></div></div>
+    <div class="cg-node ghost" style="left:90%;top:88%"><div class="cg-ic"><svg><use href="#i-doc"/></svg></div></div>
+    <div class="cg-node ghost" style="left:4%;top:54%"><div class="cg-ic"><svg><use href="#i-org"/></svg></div></div>
+    <div class="cg-node ghost" style="left:96%;top:24%"><div class="cg-ic"><svg><use href="#i-chat"/></svg></div></div>
+    <div class="cg-node ghost" style="left:68%;top:40%"><div class="cg-ic"><svg><use href="#i-spark"/></svg></div></div>
+
+    <div class="cg-card back" style="left:12%;top:50%;--d:.04s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-task"/></svg></div><div><div class="cg-t">Draft Q3 deck</div><div class="cg-m">Task · staged</div></div></div>
+      <div class="cg-r"><span class="cg-k">Due</span><span class="cg-v gold">Friday</span></div>
+    </div>
+    <div class="cg-card back" style="left:88%;top:34%;--d:.08s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mail"/></svg></div><div><div class="cg-t">Re: term sheet</div><div class="cg-m">Gmail · 2h</div></div></div>
+      <div class="cg-r"><span class="cg-k">Status</span><span class="cg-v">Needs reply</span></div>
+    </div>
+
+    <div class="cg-node" style="left:40%;top:16%;--d:.05s"><div class="cg-ic"><svg><use href="#i-chat"/></svg></div><span class="cg-lbl">Slack</span></div>
+    <div class="cg-node" style="left:13.5%;top:39%;--d:.1s"><div class="cg-ic"><svg><use href="#i-mail"/></svg></div><span class="cg-lbl">Gmail</span></div>
+    <div class="cg-node" style="left:86%;top:20%;--d:.12s"><div class="cg-ic"><svg><use href="#i-cal"/></svg></div></div>
+    <div class="cg-node" style="left:60%;top:58%;--d:.16s"><div class="cg-ic"><svg><use href="#i-spark"/></svg></div><span class="cg-lbl">Granola</span></div>
+    <div class="cg-node" style="left:36%;top:84%;--d:.2s"><div class="cg-ic"><svg><use href="#i-mic"/></svg></div><span class="cg-lbl">Fireflies</span></div>
+    <div class="cg-node" style="left:92%;top:64%;--d:.14s"><div class="cg-ic"><svg><use href="#i-play"/></svg></div></div>
+    <div class="cg-node" style="left:8%;top:70%;--d:.18s"><div class="cg-ic"><svg><use href="#i-folder"/></svg></div></div>
+    <div class="cg-node" style="left:50%;top:92%;--d:.22s"><div class="cg-ic"><svg><use href="#i-doc"/></svg></div></div>
+
+    <div class="cg-card" style="left:22%;top:26%;--d:.1s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-doc"/></svg></div><div><div class="cg-t">Q3 Pitch Deck.pdf</div><div class="cg-m">Drive · 2.4 MB</div></div></div>
+      <div class="cg-r"><span class="cg-k">Owner</span><span class="cg-v">Jordan Pierce</span></div>
+      <div class="cg-r"><span class="cg-k">Modified</span><span class="cg-v">Yesterday</span></div>
+      <div class="cg-r"><span class="cg-k">Linked</span><span class="cg-v gold">3 deals</span></div>
+    </div>
+    <div class="cg-card" style="left:70%;top:23%;--d:.16s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mic"/></svg></div><div><div class="cg-t">Investor Update</div><div class="cg-m">Granola · 45 min</div></div></div>
+      <div class="cg-r"><span class="cg-k">Summary</span><span class="cg-v gold">3 action items</span></div>
+      <div class="cg-r"><span class="cg-k">With</span><span class="cg-v">Priya Raman</span></div>
+      <div class="cg-r"><span class="cg-k">Date</span><span class="cg-v">Apr 15</span></div>
+    </div>
+    <div class="cg-card" style="left:49%;top:41%;--d:.06s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-dollar"/></svg></div><div><div class="cg-t">Growth Plan</div><div class="cg-m">Subscription · Active</div></div></div>
+      <div class="cg-r"><span class="cg-k">Amount</span><span class="cg-v gold">$299/mo</span></div>
+      <div class="cg-r"><span class="cg-k">Account</span><span class="cg-v">Northwind Co.</span></div>
+      <div class="cg-r"><span class="cg-k">Renews</span><span class="cg-v">Apr 30</span></div>
+    </div>
+    <div class="cg-card" style="left:79%;top:55%;--d:.2s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-person"/></svg></div><div><div class="cg-t">Dana Mercer</div><div class="cg-m">Head of Growth</div></div></div>
+      <div class="cg-r"><span class="cg-k">Email</span><span class="cg-v">dana@northwind.com</span></div>
+      <div class="cg-r"><span class="cg-k">Last met</span><span class="cg-v">2 days ago</span></div>
+      <div class="cg-r"><span class="cg-k">Company</span><span class="cg-v">Northwind</span></div>
+    </div>
+    <div class="cg-card" style="left:29%;top:64%;--d:.14s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-org"/></svg></div><div><div class="cg-t">Northwind Co.</div><div class="cg-m">Series B · SaaS</div></div></div>
+      <div class="cg-r"><span class="cg-k">Team</span><span class="cg-v">150–200</span></div>
+      <div class="cg-r"><span class="cg-k">Domain</span><span class="cg-v">northwind.com</span></div>
+      <div class="cg-r"><span class="cg-k">HQ</span><span class="cg-v">Denver</span></div>
+    </div>
+    <div class="cg-card" style="left:55%;top:76%;--d:.24s">
+      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-chat"/></svg></div><div><div class="cg-t">#growth</div><div class="cg-m">Slack · 3 new</div></div></div>
+      <div class="cg-r"><span class="cg-k">From</span><span class="cg-v">Dana Mercer</span></div>
+      <div class="cg-r"><span class="cg-k">Re</span><span class="cg-v gold">Q3 launch</span></div>
+    </div>
+  </div>
+
+  <div class="cg-pillars">
+    <div class="cg-pill"><div class="cg-pl">Any source</div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connected through MCP, not migrated into a box.</p></div>
+    <div class="cg-pill"><div class="cg-pl">Structured for you</div><b>Organized automatically</b><p>Every meeting, email, and task sorted into people, decisions, and next steps. No tagging by hand.</p></div>
+    <div class="cg-pill"><div class="cg-pl">Model your world</div><b>Your schema, not a template</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div>
+    <div class="cg-pill"><div class="cg-pl">One graph, yours</div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. Your keys, your server.</p></div>
+  </div>
+
+  <p class="cg-note">The difference: everything-apps hold your graph. <span class="g">COS hands you yours.</span></p>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<!-- ── 03 NOT A MOCKUP ── -->
+<section class="wrap reveal" id="realgraph">
+  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> Not a Mockup</div>
+    <h2>The picture above is the pitch. <span class="it g">This is the product.</span></h2>
+    <p class="lead">Everything COS learns becomes a living knowledge graph. Every person, company, meeting, and decision, extracted and connected. Most platforms draw you an illustration. COS gives you the real graph, and you own it.</p>
+  </div>
+
+  <div class="kgframe">
+    <div class="kg-bar">
+      <span class="kg-brand"><b>MU</b> · Knowledge Graph</span>
+      <span class="kg-search">Search entities…</span>
+      <span class="kg-count"><b>128</b> entities · <b>1,940</b> edges</span>
+    </div>
+    <div class="kg-stage" id="kgStage"></div>
+    <div class="kg-legend">
+      <span><i style="background:#5b8def"></i>person</span>
+      <span><i style="background:#e08a3c"></i>organization</span>
+      <span><i style="background:#c9a96e"></i>concept</span>
+      <span><i style="background:#5fae7d"></i>content</span>
+      <span><i style="background:#9aa3ad"></i>artifact</span>
+      <span><i style="background:#a86fd0"></i>method</span>
+    </div>
+  </div>
+
+  <div class="inline-cta" style="margin-top:26px">
+    <div class="ic-text"><b>Not a render. A graph you can actually open.</b><span>Built on a knowledge graph plus a vector store. Your keys, your server, your context.</span></div>
+    <div class="ic-actions"><a class="btn primary" href="#start">Build your own</a><a class="btn ghost" href="https://milesukaoma.com/cos">See the philosophy</a></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
 <!-- ── 02 QUICK START ── -->
 <section class="wrap reveal" id="start">
-  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> Quick Start</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">04</span> Quick Start</div>
     <h2>Five minutes to a <span class="it g">working COS.</span></h2>
     <p class="lead">No setup gymnastics. Open <a href="https://claude.ai/claude-code">Claude Code</a> or <a href="https://developers.openai.com/codex/">Codex</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the whole system for you.</p>
   </div>
@@ -289,7 +520,7 @@
 
 <!-- ── 03 WHAT YOU GET ── -->
 <section class="wrap reveal" id="get">
-  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> What You Get</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">05</span> What You Get</div>
     <h2>A directory that <span class="it g">is</span> the system.</h2>
   </div>
   <div class="term">
@@ -313,7 +544,7 @@
 
 <!-- ── 04 TIERS ── -->
 <section class="wrap reveal" id="tiers">
-  <div class="sec-head"><div class="eyebrow"><span class="num">04</span> The 4 Tiers</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> The 4 Tiers</div>
     <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
   </div>
   <div class="tiers">
@@ -329,7 +560,7 @@
 
 <!-- ── 05 COVERAGE ── -->
 <section class="wrap reveal" id="assess">
-  <div class="sec-head"><div class="eyebrow"><span class="num">05</span> Coverage Gap</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> Coverage Gap</div>
     <h2>Score yourself across <span class="it g">14 domains.</span></h2>
     <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold)">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
   </div>
@@ -360,7 +591,7 @@
 
 <!-- ── 06 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
-  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> Integrations</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">08</span> Integrations</div>
     <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
@@ -381,7 +612,7 @@
 
 <!-- ── 07 GLASSES ── -->
 <section class="wrap reveal" id="glasses">
-  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> COS Glasses</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">09</span> COS Glasses</div>
     <h2>The frame, <span class="it g">on your face.</span></h2>
     <p class="lead">Running on Even G2 smart glasses. A chief of staff on the lens. Same context you build here; now it follows you off the screen.</p>
   </div>
@@ -402,7 +633,7 @@
 <!-- ── 08 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
-    <div class="eyebrow" style="justify-content:center"><span class="num">08</span> For Teams</div>
+    <div class="eyebrow" style="justify-content:center"><span class="num">10</span> For Teams</div>
     <h3>Most teams buy AI and watch <span class="g">80% of the seats go cold.</span></h3>
     <p>COS is built to be used. Hands-on onboarding gets every person to their first real answer in under 15 minutes. Shared team context so no one re-explains the company, and personal setups stay personal. Most teams go from a handful of power users to 70-80% daily use inside six weeks, and leadership sees adoption without chasing it.</p>
     <div class="hero-cta" style="justify-content:center">
@@ -419,7 +650,7 @@
 <!-- ── 09 PHILOSOPHY ── -->
 <section class="wrap reveal" id="philosophy">
   <div class="split">
-    <div class="sec-head"><div class="eyebrow"><span class="num">09</span> Philosophy</div>
+    <div class="sec-head"><div class="eyebrow"><span class="num">11</span> Philosophy</div>
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
     <div>
@@ -453,6 +684,33 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('in');}); }
+})();
+
+// Knowledge-graph teaser: static positioned bubbles (no physics, no loop)
+(function(){
+  var T={person:'#5b8def',org:'#e08a3c',concept:'#c9a96e',content:'#5fae7d',artifact:'#9aa3ad',method:'#a86fd0'};
+  var B=[
+    [50,46,64,'concept','You','big'],[34,32,40,'org','Acme'],[66,30,34,'person','Priya'],[24,58,30,'person',''],
+    [44,68,36,'org','Pipeline'],[72,60,30,'person','Dana'],[58,20,22,'artifact',''],[38,46,26,'person','Jordan'],
+    [64,74,28,'concept','Q3 Plan'],[18,40,22,'person',''],[82,42,26,'org','Northwind'],[30,78,20,'content',''],
+    [50,84,24,'artifact','Deck'],[12,68,18,'person',''],[88,68,20,'person',''],[76,18,18,'artifact',''],
+    [42,16,16,'content',''],[60,52,20,'method','Skill'],[26,24,18,'org',''],[90,30,16,'concept',''],
+    [16,52,14,'person',''],[70,86,18,'org',''],[84,80,14,'content',''],[36,88,14,'person',''],
+    [54,62,18,'person',''],[22,46,12,'artifact',''],[78,50,16,'person',''],[46,30,18,'person','']
+  ];
+  var st=document.getElementById('kgStage');
+  if(st){
+    var frag=document.createDocumentFragment();
+    B.forEach(function(b){
+      var d=document.createElement('div');
+      d.className='kbub'+(b[4]?' lab':'')+(b[5]?' '+b[5]:'');
+      var c=T[b[3]];
+      d.style.cssText='left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[2]+'px;background:radial-gradient(circle at 38% 32%,'+c+', '+c+'cc 70%, '+c+'88);';
+      if(b[4])d.setAttribute('data-l',b[4]);
+      frag.appendChild(d);
+    });
+    st.insertBefore(frag,st.firstChild);
+  }
 })();
 // Teams HubSpot form: lazy-load on expand (ungated; full form)
 var teamsFormInitialized=false;
