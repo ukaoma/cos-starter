@@ -242,8 +242,8 @@
   .kg-bar{display:flex;align-items:center;gap:16px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015)}
   .kg-brand{font-family:var(--display);font-style:italic;font-size:.92rem;color:var(--fg)}
   .kg-brand b{font-style:normal;font-weight:600;color:var(--gold)}
-  .kg-search{flex:1;max-width:300px;font-family:var(--body);font-size:.78rem;color:var(--faint);border:1px solid var(--line-2);border-radius:8px;padding:7px 12px;background:rgba(0,0,0,.3)}
-  .kg-count{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.04em}
+  .kg-search{flex:1;max-width:300px;font-family:var(--body);font-size:.78rem;color:var(--muted);border:1px solid var(--line-2);border-radius:8px;padding:7px 12px;background:rgba(0,0,0,.3)}
+  .kg-count{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.04em}
   .kg-count b{color:var(--fg);font-weight:500}
   .kg-stage{position:relative;height:420px;overflow:hidden;background:radial-gradient(120% 120% at 50% 45%,rgba(40,60,110,.18),transparent 65%)}
   .kg-stage .kbub{position:absolute;border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 12px rgba(255,255,255,.12),0 6px 18px -6px rgba(0,0,0,.6)}
@@ -261,6 +261,7 @@
     .reveal.in .cg-stage .cg-card{transform:none}
     .kg-stage{height:320px}.kg-search{display:none}
   }
+  @media(max-width:1040px){.cg-stage .cg-card.back{display:none}}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
     .cg-stage .cg-node,.cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
     .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
@@ -434,7 +435,7 @@
     </div>
     <div class="cg-card" style="left:29%;top:64%;--d:.14s">
       <div class="cg-h"><div class="cg-badge"><svg><use href="#i-org"/></svg></div><div><div class="cg-t">Northwind Co.</div><div class="cg-m">Series B · SaaS</div></div></div>
-      <div class="cg-r"><span class="cg-k">Team</span><span class="cg-v">150–200</span></div>
+      <div class="cg-r"><span class="cg-k">Team</span><span class="cg-v">150-200</span></div>
       <div class="cg-r"><span class="cg-k">Domain</span><span class="cg-v">northwind.com</span></div>
       <div class="cg-r"><span class="cg-k">HQ</span><span class="cg-v">Denver</span></div>
     </div>
@@ -482,14 +483,14 @@
   </div>
 
   <div class="inline-cta" style="margin-top:26px">
-    <div class="ic-text"><b>Not a render. A graph you can actually open.</b><span>Built on a knowledge graph plus a vector store. Your keys, your server, your context.</span></div>
+    <div class="ic-text"><b>A living knowledge graph, built from your real work.</b><span>Every person, company, meeting, and decision, connected. Yours to run, and yours to keep.</span></div>
     <div class="ic-actions"><a class="btn primary" href="#start">Build your own</a><a class="btn ghost" href="https://milesukaoma.com/cos">See the philosophy</a></div>
   </div>
 </section>
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 02 QUICK START ── -->
+<!-- ── 04 QUICK START ── -->
 <section class="wrap reveal" id="start">
   <div class="sec-head"><div class="eyebrow"><span class="num">04</span> Quick Start</div>
     <h2>Five minutes to a <span class="it g">working COS.</span></h2>
@@ -518,7 +519,7 @@
   </div>
 </div>
 
-<!-- ── 03 WHAT YOU GET ── -->
+<!-- ── 05 WHAT YOU GET ── -->
 <section class="wrap reveal" id="get">
   <div class="sec-head"><div class="eyebrow"><span class="num">05</span> What You Get</div>
     <h2>A directory that <span class="it g">is</span> the system.</h2>
@@ -542,7 +543,7 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 04 TIERS ── -->
+<!-- ── 06 TIERS ── -->
 <section class="wrap reveal" id="tiers">
   <div class="sec-head"><div class="eyebrow"><span class="num">06</span> The 4 Tiers</div>
     <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
@@ -558,7 +559,7 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 05 COVERAGE ── -->
+<!-- ── 07 COVERAGE ── -->
 <section class="wrap reveal" id="assess">
   <div class="sec-head"><div class="eyebrow"><span class="num">07</span> Coverage Gap</div>
     <h2>Score yourself across <span class="it g">14 domains.</span></h2>
@@ -589,7 +590,7 @@
   </div>
 </div>
 
-<!-- ── 06 INTEGRATIONS ── -->
+<!-- ── 08 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
   <div class="sec-head"><div class="eyebrow"><span class="num">08</span> Integrations</div>
     <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
@@ -610,7 +611,7 @@
   </div>
 </div>
 
-<!-- ── 07 GLASSES ── -->
+<!-- ── 09 GLASSES ── -->
 <section class="wrap reveal" id="glasses">
   <div class="sec-head"><div class="eyebrow"><span class="num">09</span> COS Glasses</div>
     <h2>The frame, <span class="it g">on your face.</span></h2>
@@ -630,7 +631,7 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 08 TEAMS ── -->
+<!-- ── 10 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
     <div class="eyebrow" style="justify-content:center"><span class="num">10</span> For Teams</div>
@@ -647,7 +648,7 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 09 PHILOSOPHY ── -->
+<!-- ── 11 PHILOSOPHY ── -->
 <section class="wrap reveal" id="philosophy">
   <div class="split">
     <div class="sec-head"><div class="eyebrow"><span class="num">11</span> Philosophy</div>
