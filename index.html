@@ -188,15 +188,25 @@
   .teams-form-wrapper{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .4s ease,margin .4s ease;margin-top:0}
   .teams-form-wrapper.expanded{max-height:1400px;opacity:1;margin-top:26px}
   .tf-inner{max-width:520px;margin:0 auto;text-align:left}
-  #hs-teams-form .hs-form{font-family:var(--body)!important}
-  #hs-teams-form .hs-form-field{margin-bottom:14px!important}
-  #hs-teams-form .hs-form-field label{display:block;font-family:var(--mono)!important;font-size:.62rem!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--faint)!important;margin-bottom:6px!important}
-  #hs-teams-form .hs-input{width:100%!important;padding:13px 16px!important;background:rgba(255,255,255,.04)!important;border:1px solid var(--line-2)!important;border-radius:10px!important;color:var(--fg)!important;font-family:var(--body)!important;font-size:.95rem!important;outline:none!important;-webkit-appearance:none!important}
-  #hs-teams-form .hs-input:focus{border-color:var(--gold)!important;background:rgba(255,255,255,.07)!important}
-  #hs-teams-form select.hs-input option{background:#13151a!important;color:var(--fg)!important}
-  #hs-teams-form .hs-button{width:100%!important;padding:14px!important;margin-top:8px!important;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose))!important;color:#1a1206!important;border:none!important;border-radius:999px!important;font-family:var(--body)!important;font-weight:600!important;font-size:.95rem!important;cursor:pointer!important}
-  #hs-teams-form .hs-error-msgs label{color:var(--rose)!important;font-size:.78rem!important;text-transform:none!important;letter-spacing:0!important}
-  #hs-teams-form .submitted-message{color:var(--gold)!important;text-align:center!important;padding:1.4rem!important}
+  /* ── For Teams form (raw, dark-themed; submits to HubSpot Forms API) ── */
+  .cos-form{font-family:var(--body)}
+  .cos-form .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.cos-form .cf-row{grid-template-columns:1fr}}
+  .cos-form .cf-field{margin-bottom:14px;display:flex;flex-direction:column}
+  .cos-form label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;text-align:left}
+  .cos-form label .req{color:var(--rose)}
+  .cos-form input,.cos-form select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,background .2s}
+  .cos-form input::placeholder{color:var(--faint)}
+  .cos-form input:focus,.cos-form select:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
+  .cos-form select{padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+  .cos-form select option{background:#13151a;color:var(--fg)}
+  .cos-form .cf-submit{width:100%;padding:14px;margin-top:6px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;border:none;border-radius:999px;font-family:var(--body);font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .25s}
+  .cos-form .cf-submit:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(201,169,110,.6)}
+  .cos-form .cf-submit:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+  .cos-form .cf-msg{margin-top:16px;font-size:.9rem;line-height:1.5;text-align:center;display:none}
+  .cos-form .cf-msg.show{display:block}
+  .cos-form .cf-msg.ok{color:var(--gold)}
+  .cos-form .cf-msg.err{color:var(--rose)}
   /* ═══ Context Graph swarm (cg-) ═══ */
   .cg-stage{position:relative;margin-top:48px;height:660px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(130% 120% at 50% 32%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,var(--panel-2),rgba(7,9,15,.5))}
   .cg-web{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -266,6 +276,19 @@
     .cg-stage .cg-node,.cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
     .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
     .cg-stage .cg-node.ghost{opacity:.36}}
+
+  /* §01 antique pixel-map — Franklin kite halftone on parchment (milesukaoma podium-bitmap style) */
+  #problem{overflow:hidden}
+  #problem .pixmap{position:absolute;left:-3%;bottom:-7%;z-index:0;pointer-events:none;
+    width:clamp(320px,48vw,600px);height:clamp(300px,80%,540px);opacity:.5;background:#e7d9bd;
+    -webkit-mask-image:radial-gradient(66% 68% at 44% 56%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%);
+            mask-image:radial-gradient(66% 68% at 44% 56%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%)}
+  #problem .pixmap .pi{position:absolute;inset:0;
+    background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("assets/franklin-kite.jpg");
+    background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;
+    background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
+  #problem .split{position:relative;z-index:1}
+  @media(max-width:820px){#problem .pixmap{display:none}}
 </style>
 </head>
 <body>
@@ -322,20 +345,21 @@
 
 <!-- ── 01 PROBLEM ── -->
 <section class="wrap reveal" id="problem">
+  <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="split">
     <div class="sec-head"><div class="eyebrow"><span class="num">01</span> The Problem</div>
-      <h2>AI is electricity. Most people still run <span class="it g">steam.</span></h2>
+      <h2>If AI is electricity, most people still haven't <span class="it g">wired the house.</span></h2>
     </div>
     <div>
-      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is not a workflow. It is a slot machine.</span></p>
-      <p>The executives getting real leverage from AI are not writing better prompts. They are building better context, giving the model what a world-class chief of staff would know on day 90:</p>
+      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is not a system. It is a match struck in the dark.</span></p>
+      <p>The executives getting real leverage from AI are not writing better prompts. They are wiring the house, giving the model the context a world-class chief of staff would have on day 90:</p>
       <ul class="ck">
         <li>Who reports to you, and how each person operates</li>
         <li>What you are working on this quarter, and why it matters</li>
         <li>Which meetings need prep, and which are noise</li>
         <li>The patterns that keep showing up that you keep missing</li>
       </ul>
-      <p style="margin-top:22px"><strong>This repo gives you the scaffolding to build that.</strong></p>
+      <p style="margin-top:22px"><strong>This repo gives you the wiring.</strong></p>
     </div>
   </div>
 </section>
@@ -642,7 +666,21 @@
       <a href="/connect/" class="btn ghost">Book a working session</a>
     </div>
     <div class="teams-toggle"><button type="button" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="toggleTeamsForm()">Or tell us about your team and we'll reach out</button></div>
-    <div class="teams-form-wrapper" id="teams-form-wrapper"><div class="tf-inner"><div id="hs-teams-form"></div></div></div>
+    <div class="teams-form-wrapper" id="teams-form-wrapper"><div class="tf-inner">
+      <form class="cos-form" id="teamsForm" novalidate onsubmit="submitTeamsForm(event)">
+        <div class="cf-row">
+          <div class="cf-field"><label for="tf-fn">First name</label><input id="tf-fn" name="firstname" type="text" autocomplete="given-name"></div>
+          <div class="cf-field"><label for="tf-ln">Last name</label><input id="tf-ln" name="lastname" type="text" autocomplete="family-name"></div>
+        </div>
+        <div class="cf-field"><label for="tf-em">Email <span class="req">*</span></label><input id="tf-em" name="email" type="email" required autocomplete="email"></div>
+        <div class="cf-field"><label for="tf-jt">Job title</label><input id="tf-jt" name="jobtitle" type="text" autocomplete="organization-title"></div>
+        <div class="cf-field"><label for="tf-co">Company name</label><input id="tf-co" name="company" type="text" autocomplete="organization"></div>
+        <div class="cf-field"><label for="tf-in">Industry</label><input id="tf-in" name="industry" type="text"></div>
+        <div class="cf-field"><label for="tf-ne">Number of employees</label><select id="tf-ne" name="numemployees" style="color:var(--faint)" onchange="this.style.color=this.value?'var(--fg)':'var(--faint)'"><option value="">Please select</option><option value="1-5">1-5</option><option value="5-25">5-25</option><option value="25-50">25-50</option><option value="50-100">50-100</option><option value="100-500">100-500</option><option value="500-1000">500-1000</option><option value="1000+">1000+</option></select></div>
+        <button type="submit" class="cf-submit">Get Access</button>
+        <div class="cf-msg" id="tf-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div></div>
   </div>
 </section>
 
@@ -714,17 +752,26 @@
   }
 })();
 // Teams HubSpot form: lazy-load on expand (ungated; full form)
-var teamsFormInitialized=false;
 function toggleTeamsForm(){
   var w=document.getElementById('teams-form-wrapper');w.classList.toggle('expanded');
   var exp=w.classList.contains('expanded');
   document.querySelectorAll('[aria-controls="teams-form-wrapper"]').forEach(function(t){t.setAttribute('aria-expanded',exp?'true':'false');});
-  if(!teamsFormInitialized&&exp){
-    teamsFormInitialized=true;
-    var s=document.createElement('script');s.src='https://js.hsforms.net/forms/embed/v2.js';s.charset='utf-8';
-    s.onload=function(){hbspt.forms.create({portalId:'2474026',formId:'c5439911-36e3-4063-ae21-0e0ab792f7a3',target:'#hs-teams-form'});};
-    document.head.appendChild(s);
-  }
+}
+// For Teams form: post to the HubSpot Forms API (portal 2474026, form c5439911-36e3-4063-ae21-0e0ab792f7a3)
+function submitTeamsForm(e){
+  e.preventDefault();
+  var f=document.getElementById('teamsForm'),msg=document.getElementById('tf-msg'),btn=f.querySelector('.cf-submit');
+  var email=(f.email.value||'').trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.className='cf-msg err show';msg.textContent='Please enter a valid email address.';f.email.focus();return;}
+  var fields=[];['firstname','lastname','email','jobtitle','company','industry','numemployees'].forEach(function(n){var el=f[n],v=el&&el.value?el.value.trim():'';if(v)fields.push({name:n,value:v});});
+  var orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';msg.className='cf-msg';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:document.title}})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};});}).then(function(res){
+    if(res.ok){f.reset();btn.style.display='none';msg.className='cf-msg ok show';msg.textContent='Thanks. We will be in touch shortly.';}
+    else{var m=(res.d&&(res.d.message||(res.d.errors&&res.d.errors[0]&&res.d.errors[0].message)))||'Something went wrong. Please try again in a moment.';msg.className='cf-msg err show';msg.textContent=m;btn.disabled=false;btn.textContent=orig;}
+  }).catch(function(){msg.className='cf-msg err show';msg.textContent='Network error. Please try again.';btn.disabled=false;btn.textContent=orig;});
 }
 // Copy the Starter Kit prompt: fetch the live canonical, fall back to a pointer
 function copyKit(){
