@@ -272,8 +272,7 @@
     </div>
 
     <div class="res-label">1 · Start your server (self-host)</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
 
     <div class="res-label">2 · Drop in your identity</div>
@@ -290,7 +289,7 @@ Role: Your Role</span></div>
 
     <div class="actions">
       <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
-      <a class="secondary" href="https://github.com/ukaoma/cos-glasses-app">View on GitHub</a>
+      <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
     </div>
     <p class="hosted">Want it done for you? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
   </div>
@@ -308,8 +307,7 @@ Role: Your Role</span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
       <div class="res-label">1 &middot; Get the server running</div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
       <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
       <div class="res-label">2 &middot; Connect your glasses</div>
       <ul class="enable">
@@ -319,7 +317,7 @@ Role: Your Role</span></div>
       <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Your glasses inherit its context, model, and skills automatically; nothing extra to wire. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
       <div class="actions">
         <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
-        <a class="secondary" href="https://github.com/ukaoma/cos-glasses-app">View on GitHub</a>
+        <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
       </div>
       <p class="hosted">Want to tune every config? <a href="#path-build" onclick="document.querySelector('[data-mode=build]').click();return false;">Build it instead.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
     </div>
@@ -334,7 +332,7 @@ Role: Your Role</span></div>
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
           <li class="req"><strong>Claude Code or Codex CLI</strong> on your Mac &mdash; Opus/Sonnet use <a href="https://claude.ai/download">Claude Code</a>; Codex High uses <a href="https://developers.openai.com/codex/">Codex</a></li>
-          <li class="req"><strong>Node.js 18+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
           <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
         </ul>
         <div class="note"><strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both a stable IP that works from anywhere &mdash; no port forwarding, no firewall hassle.</div>
@@ -342,8 +340,7 @@ Role: Your Role</span></div>
 
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
         <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
-        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>git clone https://github.com/ukaoma/cos-glasses-app.git<span class="copy-hint">click to copy</span></div>
-        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>cd cos-glasses-app &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm run start:server<span class="copy-hint">click to copy</span></div>
+        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
         <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
       </div>
 
@@ -377,7 +374,7 @@ Role: Your Role</span></div>
           <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
           <li><strong>"Codex not available"</strong> &mdash; Codex High needs the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
           <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
-          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npm run start:server</code> in the cloned repo.</li>
+          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx @gotcos/glasses-server</code>.</li>
         </ul>
       </div>
 
