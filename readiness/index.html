@@ -4,20 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COS Readiness Score · How ready is your team for an AI Chief of Staff?</title>
+<meta name="theme-color" content="#07090f">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{
+    color-scheme:dark;
     --ink:#07090f;--ink-2:#0b0e16;--panel:rgba(255,255,255,.025);--panel-2:rgba(255,255,255,.045);
-    --fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.34);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);
+    --fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.50);--ghost:rgba(236,230,218,.34);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);
     --gold:#c9a96e;--rose:#c4736e;--warm:#d4a07a;--green:#7fa98a;
     --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
     --maxw:880px;--gut:clamp(22px,5vw,56px);
   }
   html{font-size:16px;-webkit-font-smoothing:antialiased}
-  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+  body>.wrap{flex:1 0 auto;width:100%}
+  body::before{content:'';position:fixed;top:0;left:0;right:0;height:64px;z-index:40;pointer-events:none;background:linear-gradient(180deg,rgba(7,9,15,.8),transparent)}
+  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
+  .g::selection{-webkit-text-fill-color:#f4efe4}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn:focus-visible{outline-offset:2px}
+  input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #10131c inset;-webkit-text-fill-color:var(--fg);caret-color:var(--fg);transition:background-color 9999s}
   .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 28s ease-in-out infinite alternate}
   .atmos .a1{width:60vw;height:60vw;top:-20vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
@@ -25,8 +36,9 @@
   @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
   .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
   .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(40px,8vh,90px) var(--gut) 80px}
-  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:13px;margin-bottom:24px}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:13px;margin-bottom:24px;flex-wrap:wrap;row-gap:6px}
   .eyebrow::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .eyebrow::after{content:'';width:30px;height:1px;background:linear-gradient(270deg,var(--gold),transparent)}
   h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.025em;max-width:16ch}
   h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
   .lead{color:var(--muted);font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.6;max-width:54ch;margin-top:24px}
@@ -50,8 +62,10 @@
   .qmeta .cl{color:var(--gold)}
   .qtext{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.18;letter-spacing:-.01em;max-width:24ch;margin-bottom:30px}
   .opts{display:flex;flex-direction:column;gap:12px}
+  .opts{min-height:288px}
   .opt{text-align:left;width:100%;font-family:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 20px;font-size:1rem;line-height:1.45;cursor:pointer;transition:border-color .18s,background .18s,transform .12s}
-  .opt:hover{border-color:var(--line-2);background:var(--panel-2)}
+  .opt:hover{border-color:rgba(201,169,110,.4);background:var(--panel-2)}
+  .opt:active{transform:scale(.99)}
   .opt.sel{border-color:var(--gold);background:rgba(201,169,110,.09)}
   .qnav{margin-top:28px;display:flex;justify-content:space-between;align-items:center}
   .qnav .back{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.78rem;cursor:pointer;letter-spacing:.04em}
@@ -60,7 +74,7 @@
   /* gate */
   #gate{display:none}
   .field{margin-bottom:14px}
-  .field label{display:block;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;font-family:var(--mono)}
+  .field label{display:block;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;font-family:var(--mono)}
   .field input{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;transition:.2s}
   .field input:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -73,7 +87,7 @@
   .gauge svg{transform:rotate(-90deg)}
   .gauge .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
   .gauge .num b{font-family:var(--display);font-style:italic;font-weight:500;font-size:3.6rem;line-height:1;background:linear-gradient(120deg,var(--warm),var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .gauge .num span{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+  .gauge .num span{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-top:6px}
   .band{font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--fg);margin-top:14px}
   .band-sub{color:var(--muted);max-width:46ch;margin:10px auto 0}
   .bars{margin-top:40px;display:flex;flex-direction:column;gap:14px}
@@ -87,7 +101,7 @@
   .lev{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:640px){.lev{grid-template-columns:1fr}}
   .lev .card{border:1px solid var(--line);border-radius:16px;padding:24px 22px;background:linear-gradient(158deg,var(--panel),transparent)}
-  .lev .card .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .lev .card .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
   .lev .card h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem;margin:8px 0 10px}
   .lev .card p{font-size:.88rem;line-height:1.5;color:var(--muted)}
   .trust{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -99,11 +113,30 @@
   .cta h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);max-width:22ch;margin:0 auto 14px}
   .cta p{max-width:50ch;margin:0 auto 26px;color:var(--muted)}
   .share{margin-top:20px;font-family:var(--mono);font-size:.74rem;color:var(--faint)}
-  .share a{color:var(--gold);cursor:pointer}
+  .share a,.share button{color:var(--gold);cursor:pointer;background:none;border:none;font:inherit;padding:0;text-decoration:none}
+  .share a:hover,.share button:hover{text-decoration:underline;text-underline-offset:3px}
   footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64px;border-top:1px solid var(--line-2);margin-top:60px}
   footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:14px}
   footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted)}
   @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}*{transition:none!important}}
+  /* print: the report a prospect keeps */
+  @media print{
+    body{background:#fff;color:#15130e;display:block}
+    body::before,.atmos,#intro,#quiz,#gate,.cta,.share,footer,a[aria-label="Back to gotcos.com"]{display:none!important}
+    #results{display:block!important}
+    .wrap{padding:24px 0;max-width:100%}
+    .eyebrow{color:#8a6f3c}
+    .band,.bar .top b,.lev .card h4{color:#15130e}
+    .band-sub,.bar .rd,.lev .card p,.trust .t span{color:#444}
+    .gauge .num b{-webkit-text-fill-color:#8a6f3c;color:#8a6f3c}
+    .gauge .num span,#leverLine{color:#666!important}
+    .bar{border-top-color:#ddd}
+    .bar .track{background:#eee;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    .bar .track i{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    .bar .top .v{color:#8a6f3c}
+    .lev .card,.trust .t{border-color:#ddd;background:none}
+    .trust .t b,.lev .card .k{color:#8a6f3c}
+  }
 </style>
 </head>
 <body>
@@ -125,9 +158,9 @@
   <!-- QUIZ -->
   <section id="quiz">
     <div class="progress"><i id="pbar"></i></div>
-    <div class="qmeta"><span id="qcount">Question 1 of 14</span><span class="cl" id="qcluster"></span></div>
-    <div class="qtext" id="qtext"></div>
-    <div class="opts" id="opts"></div>
+    <div class="qmeta" aria-live="polite"><span id="qcount">Question 1 of 12</span><span class="cl" id="qcluster"></span></div>
+    <div class="qtext" id="qtext" tabindex="-1"></div>
+    <div class="opts" id="opts" role="group" aria-labelledby="qtext"></div>
     <div class="qnav"><button class="back" id="backbtn" onclick="back()">&larr; back</button><span></span></div>
   </section>
 
@@ -137,9 +170,9 @@
     <h1 style="font-size:clamp(2rem,4.4vw,3rem)">Where should we send your <span class="g">readiness report?</span></h1>
     <p class="lead">A one-page breakdown of your score, your biggest leverage areas, and what closing each gap looks like.</p>
     <div style="max-width:480px;margin-top:30px">
-      <div class="row2"><div class="field"><label>First name</label><input id="g-first" type="text" autocomplete="given-name"></div><div class="field"><label>Last name</label><input id="g-last" type="text" autocomplete="family-name"></div></div>
-      <div class="field"><label>Work email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
-      <div class="field"><label>Company</label><input id="g-co" type="text" autocomplete="organization"></div>
+      <div class="row2"><div class="field"><label for="g-first">First name</label><input id="g-first" type="text" autocomplete="given-name"></div><div class="field"><label for="g-last">Last name</label><input id="g-last" type="text" autocomplete="family-name"></div></div>
+      <div class="field"><label for="g-email">Work email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+      <div class="field"><label for="g-co">Company</label><input id="g-co" type="text" autocomplete="organization"></div>
       <button class="btn primary" style="width:100%;justify-content:center;margin-top:8px" onclick="reveal()">See my Readiness Score</button>
       <p class="trustline" style="margin-top:16px">One report. No spam. <!-- TODO: wire HubSpot Forms API (portal 2474026) + custom props: cos_readiness_score, band, team_size, ai_stage, 5 cluster scores --></p>
     </div>
@@ -181,7 +214,7 @@
       <div id="ctaAlt" style="margin-top:16px"></div>
     </div>
 
-    <p class="share">Want to keep it? <a onclick="copyLink()">Copy a shareable link to your results</a> &middot; <a onclick="window.print()">Download as PDF</a></p>
+    <p class="share">Want to keep it? <button type="button" onclick="copyLink()">Copy a shareable link to your results</button> &middot; <button type="button" onclick="window.print()">Download as PDF</button></p>
   </section>
 
 </div>
@@ -226,27 +259,32 @@
     "People & Synthesis":"Context is trapped in silos and in people's heads.",
     "Visibility & Foresight":"Leadership is flying on fog and finding out late."
   };
-  var ans=new Array(Q.length).fill(null), cur=0;
+  var ans=new Array(Q.length).fill(null), cur=0, busy=false;
+  var PRM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $=function(id){return document.getElementById(id)};
 
   window.start=function(){$('intro').style.display='none';$('quiz').style.display='block';cur=0;render();window.scrollTo(0,0)};
-  window.back=function(){if(cur>0){cur--;render()}else{$('quiz').style.display='none';$('intro').style.display='block'}};
+  window.back=function(){if(busy)return;if(cur>0){cur--;render()}else{$('quiz').style.display='none';$('intro').style.display='block'}};
 
-  function render(){
+  function render(focusQ){
     var q=Q[cur];
     $('pbar').style.width=((cur)/Q.length*100)+'%';
-    $('qcount').textContent='Question '+(cur+1)+' of '+Q.length;
+    $('qcount').textContent=q.qual?'':('Question '+(cur+1)+' of 12');
     $('qcluster').textContent=q.qual?'A couple last things':q.c;
     $('qtext').textContent=q.t;
     var h='';
     q.o.forEach(function(o,i){h+='<button class="opt'+(ans[cur]===i?' sel':'')+'" onclick="pick('+i+')">'+o[0]+'</button>'});
     $('opts').innerHTML=h;
     $('backbtn').style.visibility = cur===0 ? 'hidden':'visible';
+    if(focusQ)$('qtext').focus({preventScroll:true});
   }
   window.pick=function(i){
+    if(busy)return;busy=true;
     ans[cur]=i;
+    var btns=$('opts').children;if(btns[i])btns[i].classList.add('sel');
     setTimeout(function(){
-      if(cur<Q.length-1){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}
+      busy=false;
+      if(cur<Q.length-1){cur++;render(true);window.scrollTo({top:0,behavior:PRM?'auto':'smooth'})}
       else{$('pbar').style.width='100%';$('quiz').style.display='none';$('gate').style.display='block';window.scrollTo(0,0)}
     },180);
   };
@@ -262,11 +300,15 @@
     var score=Math.round(raw/36*100);
     var team=Q[12].o[ans[12]!=null?ans[12]:0][0], ai=Q[13].o[ans[13]!=null?ans[13]:0][0];
 
-    // gauge
-    var off=628-(628*score/100), arc=$('arc');
-    var n=0,target=score,t0=null;
-    function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1100,1);$('scoreNum').textContent=Math.round(target*p);arc.style.strokeDashoffset=628-(628*target/100*p);if(p<1)requestAnimationFrame(tick)}
-    requestAnimationFrame(tick);
+    // gauge (eased count-up; instant under prefers-reduced-motion)
+    var arc=$('arc'),target=score,t0=null;
+    if(PRM){
+      $('scoreNum').textContent=target;
+      arc.style.strokeDashoffset=628-(628*target/100);
+    } else {
+      var tick=function(ts){if(!t0)t0=ts;var t=Math.min((ts-t0)/1100,1),p=1-Math.pow(1-t,3);$('scoreNum').textContent=Math.round(target*p);arc.style.strokeDashoffset=628-(628*target/100*p);if(t<1)requestAnimationFrame(tick)};
+      requestAnimationFrame(tick);
+    }
 
     // band
     var band,sub,head,hsub,alt='';

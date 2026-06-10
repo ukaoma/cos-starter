@@ -8,24 +8,32 @@
 <meta property="og:title" content="COS Starter · AI Chief of Staff">
 <meta property="og:description" content="Build an AI Chief of Staff that actually knows your job.">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+<meta name="theme-color" content="#07090f">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
   :root{
+    color-scheme:dark;
     --ink:#07090f; --ink-2:#0b0e16; --panel:rgba(255,255,255,.025); --panel-2:rgba(255,255,255,.04);
-    --fg:#ece6da; --muted:rgba(236,230,218,.56); --faint:rgba(236,230,218,.34); --line:rgba(201,169,110,.16); --line-2:rgba(255,255,255,.07);
+    --fg:#ece6da; --muted:rgba(236,230,218,.56); --faint:rgba(236,230,218,.50); --ghost:rgba(236,230,218,.34); --line:rgba(201,169,110,.16); --line-2:rgba(255,255,255,.07);
     --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
     --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
     --maxw:1140px; --gut:clamp(22px,5vw,72px);
   }
 
-  html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  html{font-size:16px;-webkit-font-smoothing:antialiased}
+  @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden}
+  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
+  .g::selection{-webkit-text-fill-color:#f4efe4}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn:focus-visible,.nav .cta:focus-visible{outline-offset:2px}
 
   /* ── Atmosphere: aurora mesh + grain + vignette ── */
   .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -40,7 +48,8 @@
   .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 
   /* ── Shared editorial bits ── */
-  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;row-gap:6px}
+  @media(max-width:480px){.eyebrow{letter-spacing:.18em}.eyebrow::before{width:22px}}
   .eyebrow .num{color:var(--faint)}
   .eyebrow::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
   .g{background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
@@ -48,14 +57,15 @@
   .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent);margin:0}
   section{position:relative;z-index:2;padding-block:clamp(60px,9vw,128px)}
   .sec-head{display:flex;flex-direction:column;gap:18px;max-width:42ch}
-  h2{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em}
+  h2{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
   .lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
   p{color:var(--muted)} p strong{color:var(--fg);font-weight:600}
   a{color:var(--gold);text-decoration:none}
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
+  /* reveal (gated on .js so no-JS, print, and reader modes always see content) */
+  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media print{.reveal,.cg-stage .cg-node,.cg-stage .cg-card,.chat-mock .pc-msg,.chat-mock .pc-chip{opacity:1!important;transform:none!important}}
 
   /* ── Nav ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px)}
@@ -70,7 +80,7 @@
   /* ── Hero ── */
   .hero{padding-top:clamp(120px,18vh,200px);padding-bottom:clamp(50px,7vw,90px)}
   .hero .kick{margin-bottom:34px}
-  .hero h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;letter-spacing:-.03em;max-width:16ch}
+  .hero h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
   .hero h1 .l2{display:block;font-style:italic;font-weight:500}
   .hero .sub{margin-top:30px;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.6;max-width:54ch}
   .hero .sub b{color:var(--fg);font-weight:500}
@@ -81,7 +91,8 @@
   .btn.ghost{border-color:var(--line-2);color:var(--fg)}
   .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
   .badges{display:flex;gap:10px;margin-top:34px;align-items:center}
-  .badges img{height:21px;opacity:.85}
+  .badges .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .badges .chip b{color:var(--rose);font-weight:500}
   .hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--faint)}
   .hero-meta b{color:var(--gold);font-weight:500}
 
@@ -95,23 +106,16 @@
   .ck li::before{content:'';position:absolute;left:0;top:.5em;width:11px;height:11px;border:1px solid var(--gold);border-radius:50%}
   .ck li::after{content:'';position:absolute;left:4px;top:calc(.5em + 4px);width:3px;height:3px;border-radius:50%;background:var(--gold)}
 
-  /* ── Quick start (numbered steps) ── */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-  @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  .step{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:linear-gradient(158deg,var(--panel),transparent)}
-  .step .n{font-family:var(--display);font-style:italic;font-size:2.4rem;color:var(--gold);line-height:1;opacity:.85}
-  .step h3{font-family:var(--body);font-weight:600;font-size:1.05rem;margin:14px 0 12px;color:var(--fg)}
-  .code{font-family:var(--mono);font-size:.78rem;line-height:1.6;color:var(--green);background:rgba(0,0,0,.4);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre;display:block}
-  .code .c{color:var(--faint)}
-  . qs-foot{margin-top:26px}
-
   /* ── What you get (terminal) ── */
   .term{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:rgba(0,0,0,.42);margin-top:36px}
   .term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.02)}
   .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
   .term .bar .d1{background:#e0635b}.term .bar .d2{background:#e3b04b}.term .bar .d3{background:#5bb869}
-  .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--faint)}
-  .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto}
+  .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--ghost)}
+  .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(201,169,110,.3) transparent}
+  .term pre::-webkit-scrollbar{height:6px}
+  .term pre::-webkit-scrollbar-thumb{background:rgba(201,169,110,.3);border-radius:3px}
+  .term pre::-webkit-scrollbar-track{background:transparent}
   .term pre b{color:var(--gold);font-weight:500}.term pre .cm{color:var(--faint)}
 
   /* ── Tiers (stepped) ── */
@@ -120,8 +124,8 @@
   @media(max-width:520px){.tiers{grid-template-columns:1fr}}
   .tier{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 24px;background:linear-gradient(160deg,var(--panel),transparent);transition:transform .35s,border-color .35s}
   .tier:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.4)}
-  .tier .tl{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-  .tier h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.45rem;margin:8px 0 12px;color:var(--fg)}
+  .tier .tl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .tier h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.45rem;margin:8px 0 12px;color:var(--fg)}
   .tier p{font-size:.86rem;line-height:1.55}
   .tier .bar-fill{height:2px;background:var(--line-2);margin-top:18px;border-radius:2px;overflow:hidden}
   .tier .bar-fill i{display:block;height:100%;background:linear-gradient(90deg,var(--warm),var(--gold))}
@@ -144,13 +148,13 @@
   .glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
   @media(max-width:820px){.glass-grid{grid-template-columns:1fr}}
   .gc{border:1px solid var(--line);border-radius:16px;padding:24px 22px;background:linear-gradient(158deg,var(--panel),transparent)}
-  .gc .tl{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-  .gc h4{font-weight:600;font-size:1.05rem;margin:10px 0 10px;color:var(--fg)}
+  .gc .tl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .gc h3{font-weight:600;font-size:1.05rem;margin:10px 0 10px;color:var(--fg)}
   .gc p{font-size:.85rem;line-height:1.55}
 
   /* ── Teams CTA ── */
   .teams{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(38px,6vw,72px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);overflow:hidden}
-  .teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px}
+  .teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px;text-wrap:balance}
   .teams p{max-width:54ch;margin:0 auto 30px}
 
   /* ── Philosophy quote ── */
@@ -193,7 +197,7 @@
   .cos-form .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:520px){.cos-form .cf-row{grid-template-columns:1fr}}
   .cos-form .cf-field{margin-bottom:14px;display:flex;flex-direction:column}
-  .cos-form label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;text-align:left}
+  .cos-form label{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;text-align:left}
   .cos-form label .req{color:var(--rose)}
   .cos-form input,.cos-form select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,background .2s}
   .cos-form input::placeholder{color:var(--faint)}
@@ -217,23 +221,23 @@
   .cg-node .cg-ic svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
   .cg-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;color:var(--muted);white-space:nowrap}
   .cg-node.ghost .cg-ic{width:29px;height:29px;background:rgba(255,255,255,.02)}
-  .cg-node.ghost .cg-ic svg{stroke:var(--faint);width:14px;height:14px}
+  .cg-node.ghost .cg-ic svg{stroke:var(--ghost);width:14px;height:14px}
   .cg-card{position:absolute;width:230px;transform:translate(-50%,-50%);background:linear-gradient(158deg,rgba(16,19,27,.97),rgba(11,14,20,.92));border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 32px 74px -28px rgba(0,0,0,.92)}
   .cg-card.back{filter:blur(.5px)}
   .cg-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
   .cg-h .cg-badge{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(150deg,rgba(201,169,110,.42),rgba(196,115,110,.22));border:1px solid var(--line);flex-shrink:0}
   .cg-h .cg-badge svg{width:14px;height:14px;stroke:#1a1206;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .cg-h .cg-t{font-family:var(--body);font-weight:600;font-size:.83rem;color:var(--fg);line-height:1.15}
-  .cg-h .cg-m{font-family:var(--mono);font-size:.56rem;color:var(--faint);letter-spacing:.04em;margin-top:2px}
+  .cg-h .cg-m{font-family:var(--mono);font-size:.56rem;color:var(--ghost);letter-spacing:.04em;margin-top:2px}
   .cg-r{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:4px 0;border-top:1px solid var(--line-2)}
-  .cg-r .cg-k{color:var(--faint);font-family:var(--mono);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+  .cg-r .cg-k{color:var(--ghost);font-family:var(--mono);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
   .cg-r .cg-v{color:var(--muted);font-size:.74rem;text-align:right}
   .cg-r .cg-v.gold{color:var(--gold)}
-  /* one-shot staggered reveal (no infinite loops) */
-  .cg-stage .cg-node,.cg-stage .cg-card{opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
-  .cg-stage .cg-node{transform:translate(-50%,calc(-50% + 14px))}
-  .cg-stage .cg-card{transform:translate(-50%,calc(-50% + 22px))}
-  .cg-stage .cg-card.back{transform:translate(-50%,calc(-50% + 22px)) scale(.92)}
+  /* one-shot staggered reveal (no infinite loops; gated on .js) */
+  .js .cg-stage .cg-node,.js .cg-stage .cg-card{opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .js .cg-stage .cg-node{transform:translate(-50%,calc(-50% + 14px))}
+  .js .cg-stage .cg-card{transform:translate(-50%,calc(-50% + 22px))}
+  .js .cg-stage .cg-card.back{transform:translate(-50%,calc(-50% + 22px)) scale(.92)}
   .reveal.in .cg-stage .cg-node{opacity:1;transform:translate(-50%,-50%)}
   .reveal.in .cg-stage .cg-node.ghost{opacity:.36;transform:translate(-50%,-50%)}
   .reveal.in .cg-stage .cg-card{opacity:1;transform:translate(-50%,-50%)}
@@ -272,12 +276,12 @@
     .kg-stage{height:320px}.kg-search{display:none}
   }
   @media(max-width:1040px){.cg-stage .cg-card.back{display:none}}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
-    .cg-stage .cg-node,.cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
-    .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
-    .cg-stage .cg-node.ghost{opacity:.36}}
+  @media(prefers-reduced-motion:reduce){.reveal,.js .reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
+    .cg-stage .cg-node,.cg-stage .cg-card,.js .cg-stage .cg-node,.js .cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
+    .cg-stage .cg-card.back,.js .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
+    .cg-stage .cg-node.ghost,.js .cg-stage .cg-node.ghost{opacity:.36}}
 
-  /* §01 antique pixel-map — Franklin kite halftone on parchment (milesukaoma podium-bitmap style) */
+  /* §01 antique pixel-map: Franklin kite halftone on parchment (milesukaoma podium-bitmap style) */
   #problem{overflow:hidden}
   #problem .pixmap{position:absolute;left:-3%;bottom:-7%;z-index:0;pointer-events:none;
     width:clamp(320px,48vw,600px);height:clamp(300px,80%,540px);opacity:.5;background:#e7d9bd;
@@ -298,7 +302,7 @@
   .pc-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.015)}
   .pc-ava{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;color:#1a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
   .pc-t{font-family:var(--body);font-weight:600;font-size:.82rem;color:var(--fg);line-height:1.1}
-  .pc-s{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+  .pc-s{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-top:2px}
   .pc-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(127,169,138,.16)}
   .pc-body{padding:15px 16px;display:flex;flex-direction:column;gap:9px}
   .pc-msg{max-width:88%;font-size:.82rem;line-height:1.45;padding:9px 13px;border-radius:13px}
@@ -306,9 +310,11 @@
   .pc-msg.u{align-self:flex-end;background:rgba(201,169,110,.15);border:1px solid var(--line);color:var(--fg);border-bottom-right-radius:4px}
   .pc-chip{align-self:flex-start;display:flex;flex-wrap:wrap;gap:8px 12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.02em;color:var(--muted);background:rgba(127,169,138,.07);border:1px solid var(--line-2);border-radius:11px;padding:9px 13px}
   .pc-chip b{color:var(--green);font-weight:500}
-  .chat-mock .pc-msg,.chat-mock .pc-chip{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .js .chat-mock .pc-msg,.js .chat-mock .pc-chip{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
   .reveal.in .chat-mock .pc-msg,.reveal.in .chat-mock .pc-chip{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.chat-mock .pc-msg,.chat-mock .pc-chip{opacity:1;transform:none;transition:none}}
+  @media(prefers-reduced-motion:reduce){.chat-mock .pc-msg,.chat-mock .pc-chip,.js .chat-mock .pc-msg,.js .chat-mock .pc-chip{opacity:1;transform:none;transition:none}}
+  .kit-hint.ok{color:var(--green)}
+  #copyKit.copied{box-shadow:0 14px 40px -14px rgba(127,169,138,.65)}
 </style>
 </head>
 <body>
@@ -352,7 +358,7 @@
     <a href="https://milesukaoma.com/cos" class="btn ghost">See the philosophy</a>
   </div>
   <div class="badges">
-    <img src="https://img.shields.io/badge/Claude_Code_%2B_Codex-compatible-c4736e" alt="Claude Code + Codex compatible">
+    <span class="chip">Claude Code + Codex <b>compatible</b></span>
   </div>
   <div class="hero-meta">
     <div><b>5 min</b> to a working COS</div>
@@ -393,7 +399,7 @@
     <p class="lead">Not another app to move into. COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected context graph. Structured, searchable, and yours.</p>
   </div>
 
-  <div class="cg-stage" id="cgStage">
+  <div class="cg-stage" id="cgStage" aria-hidden="true">
     <svg class="cg-web" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true">
       <line class="cg-webline" x1="220" y1="172" x2="140" y2="264"/>
       <line class="cg-webline warm" x1="220" y1="172" x2="500" y2="264"/>
@@ -509,7 +515,7 @@
     <p class="lead">Everything COS learns becomes a living knowledge graph: every person, company, meeting, and decision you touch, extracted and connected. Search it, watch it compound, and own every byte. The longer you run it, the more it knows.</p>
   </div>
 
-  <div class="kgframe">
+  <div class="kgframe" aria-hidden="true">
     <div class="kg-bar">
       <span class="kg-brand"><b>MU</b> · Knowledge Graph</span>
       <span class="kg-search">Search entities…</span>
@@ -548,7 +554,7 @@
         <span class="kit-hint">Then paste it into Claude Code or Codex and hit enter.</span>
       </div>
     </div>
-    <div class="chat-mock">
+    <div class="chat-mock" aria-hidden="true">
       <div class="pc-card">
         <div class="pc-head"><span class="pc-ava">C</span><div><div class="pc-t">COS Starter</div><div class="pc-s">interactive setup</div></div><span class="pc-dot"></span></div>
         <div class="pc-body">
@@ -609,10 +615,10 @@
     <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
   </div>
   <div class="tiers">
-    <div class="tier"><div class="tl">Tier 1 · 5 minutes</div><h4>Foundation</h4><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p><div class="bar-fill"><i style="width:25%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 2 · 30 minutes</div><h4>Operational</h4><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p><div class="bar-fill"><i style="width:50%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 3 · 2 weeks</div><h4>Compounding</h4><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p><div class="bar-fill"><i style="width:75%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 4 · 1+ month</div><h4>Agentic</h4><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p><div class="bar-fill"><i style="width:100%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 1 · 5 minutes</div><h3>Foundation</h3><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p><div class="bar-fill"><i style="width:25%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 2 · 30 minutes</div><h3>Operational</h3><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p><div class="bar-fill"><i style="width:50%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 3 · 2 weeks</div><h3>Compounding</h3><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p><div class="bar-fill"><i style="width:75%"></i></div></div>
+    <div class="tier"><div class="tl">Tier 4 · 1+ month</div><h3>Agentic</h3><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p><div class="bar-fill"><i style="width:100%"></i></div></div>
   </div>
   <p style="margin-top:26px">Most people never get past Tier 1 with AI tools. <strong>COS pulls you forward.</strong></p>
 </section>
@@ -678,9 +684,9 @@
     <p class="lead">Running on Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
   </div>
   <div class="glass-grid">
-    <div class="gc"><div class="tl">On the lens</div><h4>Talk &amp; listen</h4><p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with send / edit / re-record, answers read to your earbuds.</p></div>
-    <div class="gc"><div class="tl">Meeting-aware</div><h4>It works while you talk</h4><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
-    <div class="gc"><div class="tl">Yours to run</div><h4>MIT, self-hosted</h4><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
+    <div class="gc"><div class="tl">On the lens</div><h3>Talk &amp; listen</h3><p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with send / edit / re-record, answers read to your earbuds.</p></div>
+    <div class="gc"><div class="tl">Meeting-aware</div><h3>It works while you talk</h3><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
+    <div class="gc"><div class="tl">Yours to run</div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
   </div>
   <div class="hero-cta" style="margin-top:34px">
     <a href="wizard/" class="btn primary">Get Started</a>
@@ -811,8 +817,13 @@ function submitTeamsForm(e){
 }
 // Copy the Starter Kit prompt: fetch the live canonical, fall back to a pointer
 function copyKit(){
-  var btn=document.getElementById('copyKit');
-  function done(text,full){if(navigator.clipboard)navigator.clipboard.writeText(text);btn.textContent=full?'Copied. Paste into Claude Code or Codex':'Copied a link. Open it';setTimeout(function(){btn.textContent='Copy the Starter Kit';},2800);}
+  var btn=document.getElementById('copyKit'),hint=document.querySelector('.kit-hint'),hintOrig=hint?hint.textContent:'';
+  function done(text,full){
+    if(navigator.clipboard)navigator.clipboard.writeText(text);
+    btn.classList.add('copied');
+    if(hint){hint.textContent=full?'Copied. Paste into Claude Code or Codex':'Copied a link. Open it';hint.classList.add('ok');}
+    setTimeout(function(){btn.classList.remove('copied');if(hint){hint.textContent=hintOrig;hint.classList.remove('ok');}},2800);
+  }
   fetch('https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md',{cache:'no-store'})
     .then(function(r){return r.ok?r.text():Promise.reject();})
     .then(function(md){var ok=md&&md.trim().length>200;done(ok?md:'Open https://gotcos.com/cos-starter.md and run the interactive setup.',ok);})

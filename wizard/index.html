@@ -3,34 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personalize your COS Glasses — Setup Wizard</title>
-  <meta name="description" content="Tell us how you'll use Even G2. We'll tune the model, your context, and what shows on the lens — then hand you the exact setup.">
+  <title>Personalize your COS Glasses · Setup Wizard</title>
+  <meta name="description" content="Tell us how you'll use Even G2. We'll tune the model, your context, and what shows on the lens, then hand you the exact setup.">
+  <meta name="theme-color" content="#07090f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg-deep: #080c14;
-      --bg-card: rgba(14, 19, 30, 0.85);
+      color-scheme: dark;
+      --bg-deep: #07090f;
+      --bg-card: rgba(16, 19, 27, 0.85);
       --bg-surface: rgba(255, 255, 255, 0.03);
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --border-form: rgba(255, 255, 255, 0.1);
-      --text-primary: #e8e4df;
-      --text-muted: rgba(255, 255, 255, 0.4);
-      --text-label: rgba(255, 255, 255, 0.55);
+      --border-subtle: rgba(201, 169, 110, 0.16);
+      --border-form: rgba(255, 255, 255, 0.08);
+      --text-primary: #ece6da;
+      --text-muted: rgba(236, 230, 218, 0.5);
+      --text-label: rgba(236, 230, 218, 0.62);
       --accent-rose: #c4736e;
       --accent-gold: #c9a96e;
       --accent-warm: #d4a07a;
-      --accent-green: #4BB956;
+      --accent-green: #7fa98a;
+      --on-accent: #1a1206;
       --font-body: 'DM Sans', -apple-system, sans-serif;
-      --font-display: 'Playfair Display', Georgia, serif;
+      --font-display: 'Fraunces', Georgia, serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
     }
 
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+    ::selection { background: rgba(201, 169, 110, 0.28); color: #f4efe4; }
+    :focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+    .actions a:focus-visible { outline-offset: 2px; }
+    .atmos { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .atmos .aur { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; mix-blend-mode: screen; animation: drift 30s ease-in-out infinite alternate; }
+    .atmos .a1 { width: 58vw; height: 58vw; top: -22vw; right: -16vw; background: radial-gradient(circle, rgba(201,169,110,.26), transparent 62%); }
+    .atmos .a2 { width: 50vw; height: 50vw; bottom: -20vw; left: -18vw; background: radial-gradient(circle, rgba(196,115,110,.2), transparent 60%); animation-duration: 36s; }
+    @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(2vw,-3vh,0) scale(1.08); } }
 
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -51,7 +63,7 @@
     .step { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.9rem; margin-bottom: 1.4rem; backdrop-filter: blur(20px); position: relative; }
     .step::before {
       content: attr(data-step); position: absolute; top: -11px; left: 20px;
-      background: var(--accent-rose); color: #fff; font-size: 0.62rem; font-weight: 700;
+      background: var(--accent-rose); color: #2b1512; font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
     }
     .step h2 { font-size: 1.12rem; font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
@@ -68,7 +80,8 @@
     }
     .opt:hover { border-color: var(--border-form); }
     .opt.selected { border-color: var(--accent-gold); background: rgba(201, 169, 110, 0.07); }
-    .opt .opt-k { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+    .opt .opt-k { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+    #usecases .opt .check, #context .opt .check { border-radius: 5px; }
     .opt.selected .opt-k { color: var(--accent-gold); }
     .opt h3 { font-size: 0.95rem; font-weight: 600; margin: 0.35rem 0 0.25rem; letter-spacing: -0.01em; }
     .opt p { font-size: 0.78rem; line-height: 1.45; color: var(--text-muted); }
@@ -76,19 +89,20 @@
     .opt.selected .check { background: var(--accent-gold); border-color: var(--accent-gold); }
     .opt .check svg { width: 9px; height: 9px; stroke: #0b0f17; stroke-width: 3; fill: none; opacity: 0; transition: opacity 0.2s; }
     .opt.selected .check svg { opacity: 1; }
-    .opt .rec-badge { display: none; position: absolute; top: -8px; right: 12px; background: var(--accent-green); color: #06210b; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
-    .opt.recommended .rec-badge { display: inline-block; }
+    .opt .rec-badge { display: inline-block; opacity: 0; transition: opacity .25s ease; position: absolute; top: -8px; right: 12px; background: var(--accent-green); color: #11271a; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; pointer-events: none; }
+    .opt.recommended .rec-badge { opacity: 1; }
 
     /* ── Text fields ── */
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
     .field { margin-bottom: 0.8rem; }
-    .field label { display: block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-label); margin-bottom: 0.35rem; }
+    .field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-label); margin-bottom: 0.35rem; font-family: var(--font-mono); }
     .field input {
       width: 100%; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form);
-      border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: all 0.2s;
+      border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s, background 0.2s;
     }
-    .field input::placeholder { color: rgba(255,255,255,0.2); }
-    .field input:focus { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); }
+    .field input::placeholder { color: rgba(236,230,218,0.34); }
+    .field input:focus { background: rgba(255,255,255,0.07); border-color: var(--accent-gold); }
+    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #10131c inset; -webkit-text-fill-color: var(--text-primary); caret-color: var(--text-primary); transition: background-color 9999s; }
 
     /* ── Notes ── */
     .note { background: rgba(201, 169, 110, 0.06); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 11px 15px; margin: 1rem 0 0; font-size: 0.8rem; color: var(--text-label); line-height: 1.5; }
@@ -102,17 +116,17 @@
     .result .config-line { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.3rem; min-height: 1.2em; }
     .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.4rem; margin-bottom: 1.4rem; }
     .summary .row { display: flex; flex-direction: column; gap: 2px; padding: 0.6rem 0; border-top: 1px solid var(--border-subtle); }
-    .summary .row .k { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .summary .row .k { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
     .summary .row .v { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }
     .summary .row .v small { color: var(--text-muted); font-weight: 400; font-size: 0.78rem; }
 
-    .res-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-label); margin: 1.3rem 0 0.5rem; }
+    .res-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-label); margin: 1.3rem 0 0.5rem; }
 
     /* ── Code blocks ── */
-    .cmd { display: block; background: rgba(0,0,0,0.4); border: 1px solid var(--border-form); border-radius: 8px; padding: 13px 15px; margin: 0.6rem 0; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.5; color: var(--accent-green); overflow-x: auto; position: relative; cursor: pointer; transition: border-color 0.2s; }
+    .cmd { display: block; background: rgba(0,0,0,0.4); border: 1px solid var(--border-form); border-radius: 8px; padding: 13px 96px 13px 15px; margin: 0.6rem 0; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.5; color: var(--accent-green); overflow-x: auto; position: relative; cursor: pointer; transition: border-color 0.2s; }
     .cmd:hover { border-color: var(--accent-gold); }
     .cmd .prompt { color: var(--text-muted); user-select: none; }
-    .cmd .copy-hint { position: absolute; top: 8px; right: 10px; font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .cmd .copy-hint { position: absolute; top: 8px; right: 10px; font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .cmd:hover .copy-hint { color: var(--accent-gold); }
     .gen { white-space: pre-wrap; color: var(--text-label); }
     .gen .c { color: var(--text-muted); }
@@ -124,21 +138,28 @@
     .enable li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-rose); }
     .enable li b { color: var(--text-primary); font-weight: 600; }
 
-    /* ── CTAs ── */
+    /* ── CTAs (system gold pills) ── */
     .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
-    .actions a { padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: all 0.2s; }
-    .actions a.primary { background: linear-gradient(135deg, rgba(196,115,110,0.18), rgba(201,169,110,0.18)); border-color: rgba(201,169,110,0.3); color: var(--accent-gold); }
-    .actions a.primary:hover { background: linear-gradient(135deg, rgba(196,115,110,0.3), rgba(201,169,110,0.3)); }
-    .actions a.secondary { border-color: var(--border-form); color: var(--text-label); }
-    .actions a.secondary:hover { border-color: rgba(255,255,255,0.25); color: var(--text-primary); }
+    .actions a { padding: 0.75rem 1.5rem; border-radius: 999px; font-size: 0.88rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: transform 0.2s, box-shadow 0.25s, border-color 0.2s, color 0.2s; }
+    .actions a.primary { background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); box-shadow: 0 12px 34px -14px rgba(201,169,110,.6); }
+    .actions a.primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(201,169,110,.7); }
+    .actions a.secondary { border-color: var(--border-form); color: var(--text-primary); }
+    .actions a.secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
     .hosted a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); }
 
     a { color: var(--accent-gold); }
-    .divider { height: 1px; background: var(--border-subtle); margin: 2.5rem 0; }
-    .footer { text-align: center; color: var(--text-muted); font-size: 0.75rem; margin-top: 2.5rem; line-height: 1.8; }
-    .footer .brand { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; }
-    .footer a { text-decoration: none; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-subtle) 18%, var(--border-subtle) 82%, transparent); margin: 2.5rem 0; }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 2.5rem; line-height: 1.8; }
+    .footer .q { font-family: var(--font-display); font-style: italic; font-size: 1.02rem; color: var(--accent-gold); margin-bottom: 8px; }
+    .footer .brand { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .footer a { text-decoration: none; color: var(--text-muted); transition: color 0.2s; }
+    .footer a:hover { color: var(--accent-gold); }
+    /* path-pane swap */
+    @keyframes wizfade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .pane-in { animation: wizfade .4s cubic-bezier(.2,.7,.2,1); }
+    #path-quick .step { margin-top: 1.5rem; }
+    @media (prefers-reduced-motion: reduce) { .atmos .aur { animation: none; } .pane-in { animation: none; } * { transition: none !important; } }
 
     /* ── Detailed setup (folded-in install guide) ── */
     .detailed-setup { margin-top: 2rem; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
@@ -163,6 +184,7 @@
   </style>
 </head>
 <body>
+<div class="atmos" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div></div>
 <a href="https://www.gotcos.com" aria-label="Back to gotcos.com" style="position:fixed;top:18px;left:clamp(22px,5vw,56px);z-index:50;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:1.05rem;color:#ece6da;text-decoration:none"><b style="font-style:normal;font-weight:600">COS</b> Starter</a>
 <div class="page">
 
@@ -185,7 +207,7 @@
 
   <div id="path-build" hidden>
 
-  <!-- Step 1 — Use cases (the driver) -->
+  <!-- Step 1: Use cases (the driver) -->
   <div class="step" data-step="Step 1">
     <h2>How will you use them?</h2>
     <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
@@ -199,7 +221,7 @@
     </div>
   </div>
 
-  <!-- Step 2 — Brain -->
+  <!-- Step 2: Brain -->
   <div class="step" data-step="Step 2 · Brain">
     <h2>Which model runs it?</h2>
     <p class="sub">We recommend one based on your use cases. Switch anytime from the phone or by voice.</p>
@@ -209,10 +231,10 @@
       <button type="button" class="opt" data-model="haiku"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Speed</span><h3>Haiku</h3><p>Snappiest, lightest, lowest cost.</p></button>
       <button type="button" class="opt" data-model="codex"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Code</span><h3>Codex High</h3><p>Technical depth via the local Codex CLI.</p></button>
     </div>
-    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on your own Claude Code or Codex CLI plan. Voice is separate — see Compute below.</div>
+    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on your own Claude Code or Codex CLI plan. Voice is separate. See Compute below.</div>
   </div>
 
-  <!-- Step 3 — Identity -->
+  <!-- Step 3: Identity -->
   <div class="step" data-step="Step 3 · Identity">
     <h2>Who is it working for?</h2>
     <p class="sub">This grounds the COS so it knows your job. Lives in your config, never in the code.</p>
@@ -223,10 +245,10 @@
     <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
   </div>
 
-  <!-- Step 4 — Context -->
+  <!-- Step 4: Context -->
   <div class="step" data-step="Step 4 · Functionality">
     <h2>What context should it see?</h2>
-    <p class="sub">Wire the sources you live in. We pre-select what fits your use cases — adjust freely.</p>
+    <p class="sub">Wire the sources you live in. We pre-select what fits your use cases. Adjust freely.</p>
     <div class="opt-grid" id="context">
       <button type="button" class="opt" data-ctx="calendar"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Time</span><h3>Calendar</h3><p>Today, next up, who you're meeting.</p></button>
       <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
@@ -237,10 +259,10 @@
     </div>
   </div>
 
-  <!-- Step 5 — Compute / voice -->
+  <!-- Step 5: Compute / voice -->
   <div class="step" data-step="Step 5 · Compute">
     <h2>Where does it run, and how does voice work?</h2>
-    <p class="sub">The server runs on your Mac — your keys, your machine. Pick how voice is transcribed.</p>
+    <p class="sub">The server runs on your Mac. Your keys, your machine. Pick how voice is transcribed.</p>
     <div class="opt-grid" id="voice">
       <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
       <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
@@ -248,7 +270,7 @@
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
   </div>
 
-  <!-- Step 6 — HUD -->
+  <!-- Step 6: HUD -->
   <div class="step" data-step="Step 6 · On the lens">
     <h2>What shows on the lens?</h2>
     <p class="sub">Your default layout. Adaptive switches it by context.</p>
@@ -268,7 +290,7 @@
     <div class="summary">
       <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
-      <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">—</span></div>
+      <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
       <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
     </div>
 
@@ -384,11 +406,11 @@ Role: Your Role</span></div>
 
   <div class="divider"></div>
   <div class="footer">
+    <div class="q">The best chief of staff doesn't wait to be asked.</div>
     <div class="brand">gotcos.com</div>
-    <div style="margin-top:0.4rem;">COS — the best chief of staff doesn't wait to be asked.</div>
     <div style="margin-top:0.3rem;">
-      <a href="https://www.gotcos.com" style="opacity:0.5;">Home</a> ·
-      <a href="https://milesukaoma.com/cos" style="opacity:0.5;">The philosophy</a>
+      <a href="https://www.gotcos.com">Home</a> ·
+      <a href="https://milesukaoma.com/cos">The philosophy</a>
     </div>
   </div>
 </div>
@@ -429,6 +451,9 @@ Role: Your Role</span></div>
   function $(s, r) { return (r || document).querySelector(s); }
   function $all(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 
+  function syncPressed(scope) {
+    $all(scope + ' .opt').forEach(function (b) { b.setAttribute('aria-pressed', b.classList.contains('selected') ? 'true' : 'false'); });
+  }
   // multi-select group
   function bindMulti(id, attr, set, after) {
     $all('#' + id + ' .opt').forEach(function (btn) {
@@ -436,10 +461,12 @@ Role: Your Role</span></div>
         var k = btn.getAttribute('data-' + attr);
         if (set.has(k)) { set.delete(k); btn.classList.remove('selected'); }
         else { set.add(k); btn.classList.add('selected'); }
+        syncPressed('#' + id);
         if (after) after(k);
         render();
       });
     });
+    syncPressed('#' + id);
   }
   // single-select group → sets state[key]
   function bindSingle(id, attr, key, after) {
@@ -447,11 +474,13 @@ Role: Your Role</span></div>
       btn.addEventListener('click', function () {
         $all('#' + id + ' .opt').forEach(function (b) { b.classList.remove('selected'); });
         btn.classList.add('selected');
+        syncPressed('#' + id);
         state[key] = btn.getAttribute('data-' + attr);
         if (after) after();
         render();
       });
     });
+    syncPressed('#' + id);
   }
 
   bindMulti('usecases', 'uc', state.useCases, function () {
@@ -474,6 +503,7 @@ Role: Your Role</span></div>
     $all('#context .opt').forEach(function (b) {
       b.classList.toggle('selected', state.context.has(b.getAttribute('data-ctx')));
     });
+    syncPressed('#context');
   }
 
   function markRecommended() {
@@ -533,22 +563,34 @@ Role: Your Role</span></div>
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(function () {
         var hint = el.querySelector('.copy-hint'); if (!hint) return;
-        var prev = hint.textContent; hint.textContent = 'COPIED'; hint.style.color = '#4BB956';
+        var prev = hint.textContent; hint.textContent = 'COPIED'; hint.style.color = '#7fa98a';
         setTimeout(function () { hint.textContent = prev; hint.style.color = ''; }, 1500);
       });
     }
   };
+  // keyboard access for click-to-copy command blocks
+  $all('.cmd').forEach(function (el) {
+    el.setAttribute('role', 'button'); el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCmd(el); }
+    });
+  });
 
   // mode: quick (fast defaults) vs build (full personalize)
   $all('#mode .opt').forEach(function (btn) {
     btn.addEventListener('click', function () {
       $all('#mode .opt').forEach(function (b) { b.classList.remove('selected'); });
       btn.classList.add('selected');
+      syncPressed('#mode');
       var m = btn.getAttribute('data-mode');
-      document.getElementById('path-quick').hidden = (m !== 'quick');
-      document.getElementById('path-build').hidden = (m !== 'build');
+      var pq = document.getElementById('path-quick'), pb = document.getElementById('path-build');
+      pq.hidden = (m !== 'quick');
+      pb.hidden = (m !== 'build');
+      var shown = (m === 'quick') ? pq : pb;
+      shown.classList.remove('pane-in'); void shown.offsetWidth; shown.classList.add('pane-in');
     });
   });
+  syncPressed('#mode');
 
   render();
 })();
