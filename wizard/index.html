@@ -181,17 +181,150 @@
       .step, .result { padding: 1.5rem; }
       .opt-grid, .opt-grid.three, .summary, .field-row { grid-template-columns: 1fr; }
     }
+
+    /* ════════ MARKETING RE-SKIN — Even layout PATTERNS, COS brand ════════
+       Green stays CONFINED to the baked HUD slide PNGs; all chrome stays warm
+       gold/rose/bone. No second hue, no new hex (binds the existing :root). */
+    .mkt { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .mkt-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-gold); display: inline-flex; align-items: center; gap: 14px; opacity: .9; margin-bottom: 1rem; }
+    .mkt-eyebrow::before { content: ''; width: 34px; height: 1px; background: linear-gradient(90deg, var(--accent-gold), transparent); }
+    .mkt-h { font-family: var(--font-body); font-weight: 300; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .mkt-h .g { font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--accent-gold); }
+    .mkt-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.65; max-width: 40ch; margin-top: 1.1rem; }
+
+    /* HUD frame — floats a baked green slide; NO second border, NO tint (mix-blend normal) */
+    .hud-frame { position: relative; width: 100%; max-width: 560px; aspect-ratio: 2 / 1; border-radius: 16px; overflow: hidden;
+      background: radial-gradient(120% 130% at 50% 0%, rgba(20,24,32,.55), rgba(7,9,15,.93));
+      box-shadow: 0 40px 90px -42px rgba(0,0,0,.85), inset 0 0 0 1px rgba(201,169,110,.10); }
+    .hud-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .hud-frame.is-pending { display: none; }
+    .hud-frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; transform: translateY(-115%);
+      background: linear-gradient(180deg, transparent 0%, rgba(236,230,218,.12) 48%, transparent 54%); }
+    .mkt-reveal.in .hud-frame::after { animation: hud-sweep 0.9s ease-out 0.15s 1; }
+    @keyframes hud-sweep { from { transform: translateY(-115%); } to { transform: translateY(115%); } }
+
+    /* HERO */
+    .mkt-hero { display: grid; gap: clamp(2rem,5vw,3.6rem); align-items: center; padding: clamp(3rem,7vw,5.5rem) 0 clamp(2.5rem,5vw,3.5rem); }
+    @media (min-width: 900px) { .mkt-hero { grid-template-columns: 1.05fr 0.95fr; } }
+    .mkt-hero .new-beat { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-label); letter-spacing: .01em; margin-top: 1.4rem; }
+    .mkt-hero .hud-stack { position: relative; min-height: 230px; }
+    .mkt-hero .hud-stack .behind { position: absolute; top: 16%; left: 14%; right: -8%; opacity: .5; filter: blur(2px); transform: scale(.9); z-index: 0; }
+    .mkt-hero .hud-stack .front { position: relative; z-index: 1; }
+
+    /* BENEFITS trio (the +/- expand-toggle signature) */
+    .mkt-band { padding: clamp(2.5rem,6vw,4.2rem) 0; }
+    .mkt-band > .mkt-h { margin-bottom: clamp(1.6rem,4vw,2.6rem); }
+    .trio { display: grid; gap: 1.2rem; }
+    @media (min-width: 900px) { .trio { grid-template-columns: repeat(3,1fr); } }
+    .tcard { border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.3rem; background: var(--bg-card); backdrop-filter: blur(16px); }
+    .tcard .hud-frame { max-width: 100%; margin-bottom: 1.1rem; }
+    .tcard h3 { font-size: 1.04rem; font-weight: 600; letter-spacing: -0.01em; }
+    .tcard .more { margin-top: .55rem; }
+    .tcard .more > summary { list-style: none; cursor: pointer; min-height: 44px; padding: .5rem 0; font-family: var(--font-mono); font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-gold); display: flex; align-items: center; justify-content: space-between; }
+    .tcard .more > summary::-webkit-details-marker { display: none; }
+    .tcard .more > summary::after { content: '+'; font-size: 1rem; line-height: 1; }
+    .tcard .more[open] > summary::after { content: '\2212'; }
+    .tcard .more p { font-size: .85rem; line-height: 1.55; color: var(--text-muted); margin-top: .7rem; }
+
+    /* CAPABILITY band with Franklin halftone ground */
+    .cap-band { display: grid; gap: clamp(2rem,5vw,3.4rem); align-items: center; position: relative; }
+    @media (min-width: 900px) { .cap-band { grid-template-columns: 1fr 1fr; } }
+    .cap-ground { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .42; overflow: hidden;
+      -webkit-mask-image: radial-gradient(58% 72% at 72% 50%, #000 8%, transparent 72%); mask-image: radial-gradient(58% 72% at 72% 50%, #000 8%, transparent 72%); }
+    .cap-ground .pi { position: absolute; inset: 0; background-image: radial-gradient(circle,#2b2117 1.05px,transparent 1.5px), url("../assets/franklin-kite.jpg");
+      background-size: 5px 5px,cover; background-position: 0 0,center; background-repeat: repeat,no-repeat; background-blend-mode: multiply; filter: grayscale(1) sepia(.55) contrast(1.08) brightness(1.05); mix-blend-mode: multiply; }
+    .cap-band > .cap-copy, .cap-band > .hud-frame { position: relative; z-index: 1; }
+
+    /* RUNS ON strip */
+    .tech-strip { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: rgba(255,255,255,.025); padding: 1.3rem 0; margin: clamp(2rem,5vw,3.4rem) 0; }
+    .tech-strip .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; justify-content: center; }
+    .tech-strip .lbl { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .22em; text-transform: uppercase; color: var(--accent-gold); opacity: .8; }
+    .tech-strip .wm { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; color: var(--text-muted); }
+
+    /* SET IT UP conversion seam */
+    .setup-seam { text-align: center; margin: 0 0 .4rem; }
+    .setup-seam .mkt-eyebrow { justify-content: center; }
+
+    /* reveal-on-scroll — default VISIBLE for no-JS / no-IO */
+    .js .mkt-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .js .mkt-reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .mkt-reveal { opacity: 1 !important; transform: none !important; transition: none; } .hud-frame::after { display: none; } }
+    @media (max-width: 640px) { .mkt-hero .hud-stack .behind { display: none; } .mkt-hero .hud-stack { min-height: 0; } }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <div class="atmos" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div></div>
 <a href="https://www.gotcos.com" aria-label="Back to gotcos.com" style="position:fixed;top:18px;left:clamp(22px,5vw,56px);z-index:50;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:1.05rem;color:#ece6da;text-decoration:none"><b style="font-style:normal;font-weight:600">COS</b> Starter</a>
+
+<!-- ════════ MARKETING BANDS (re-skin) ════════ -->
+<main class="mkt">
+
+  <!-- HERO: editorial copy + HUD priority stack -->
+  <section class="mkt-hero mkt-reveal">
+    <div class="hero-copy">
+      <div class="mkt-eyebrow">COS Glasses · Personalize</div>
+      <h1 class="mkt-h">Build <span class="g">your</span> COS Glasses.</h1>
+      <p class="mkt-sub">Your Even G2, running as a chief of staff on the lens. The context you have already built, now it follows you off the screen.</p>
+      <p class="new-beat">No slide deck. No black box. You own it, you do not rent it.</p>
+    </div>
+    <div class="hud-stack">
+      <div class="hud-frame behind"><img src="../assets/hud/slide-2.png" width="576" height="288" loading="lazy" alt="COS Glasses lens view: an answer streaming in green on the heads-up display."></div>
+      <div class="hud-frame front"><img src="../assets/hud/slide-1.png" width="576" height="288" loading="eager" alt="COS Glasses home on the lens: time, weather, next meeting and gesture hints in green."></div>
+    </div>
+  </section>
+
+  <!-- BENEFITS: 3-up HUD feature band with expand toggles -->
+  <section class="mkt-band mkt-reveal">
+    <h2 class="mkt-h">It works the way you <span class="g">do.</span></h2>
+    <div class="trio">
+      <article class="tcard">
+        <div class="hud-frame"><img src="../assets/hud/slide-3.png" width="576" height="288" loading="lazy" alt="COS Glasses reader: a full pre-call briefing scrolling in green on the lens."></div>
+        <h3>Brief me before the call.</h3>
+        <details class="more"><summary>How it works</summary><p>Numbered, ranked, on the lens. Walk in already knowing the three things that matter, read straight from your meetings and tasks.</p></details>
+      </article>
+      <article class="tcard">
+        <div class="hud-frame"><img src="../assets/hud/slide-4.png" width="576" height="288" loading="lazy" alt="COS Glasses dictation: a long message captured hands-free in green on the lens."></div>
+        <h3>Say it once, hands-free.</h3>
+        <details class="more"><summary>How it works</summary><p>Dictate a long prompt or reply by voice. Review the full transcript, edit it by voice, or re-record before a single word is sent.</p></details>
+      </article>
+      <article class="tcard">
+        <div class="hud-frame"><img src="../assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses meeting review: takeaways and action items in green on the lens."></div>
+        <h3>Every meeting, captured.</h3>
+        <details class="more"><summary>How it works</summary><p>Live, speaker-labeled transcription on the HUD. Takeaways and action items wait for you afterward, right from the glasses.</p></details>
+      </article>
+    </div>
+  </section>
+
+  <!-- CAPABILITY: on-lens control over Franklin halftone -->
+  <section class="mkt-band mkt-reveal">
+    <div class="cap-band">
+      <div class="cap-ground" aria-hidden="true"><div class="pi"></div></div>
+      <div class="cap-copy">
+        <div class="mkt-eyebrow">On the lens</div>
+        <h2 class="mkt-h">In your <span class="g">control.</span></h2>
+        <p class="mkt-sub">Confirm, edit, or send with a tap. The HUD is there when you need it and gone when you do not. Never a phone, never a screen between you and the room.</p>
+      </div>
+      <div class="hud-frame"><img src="../assets/hud/slide-5.png" width="576" height="288" loading="lazy" alt="COS Glasses review screen: send, edit, or re-record options in green on the lens."></div>
+    </div>
+  </section>
+
+  <!-- RUNS ON: honest tech strip, no fabricated press -->
+  <section class="tech-strip mkt-reveal">
+    <div class="row">
+      <span class="lbl">Runs on</span>
+      <span class="wm">EVEN G2</span><span class="wm">CLAUDE CODE</span><span class="wm">CODEX CLI</span><span class="wm">WHISPER.CPP</span><span class="wm">TAILSCALE</span>
+    </div>
+  </section>
+
+</main>
+
 <div class="page">
 
-  <div class="header">
-    <div class="eyebrow">COS Glasses · Personalize</div>
-    <h1>Build <span class="accent">your</span> COS Glasses.</h1>
-    <p>Get your Even G2 running as a chief of staff on the lens. <strong style="color:var(--text-label);font-weight:600">Quick Start</strong> for the fast path on smart defaults, or <strong style="color:var(--text-label);font-weight:600">Build it</strong> to tune every config. The server setup is the same for everyone; this is your layer.</p>
+  <div class="setup-seam">
+    <div class="mkt-eyebrow">Set it up</div>
+    <h2 style="font-family:var(--font-body);font-weight:300;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-0.02em;line-height:1.15;">Two paths, <span style="font-family:var(--font-display);font-style:italic;color:var(--accent-gold)">same glasses.</span></h2>
+    <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;max-width:480px;margin:0.6rem auto 0;">Quick Start for the fast path on smart defaults, or Build it to tune every config. The server setup is the same for everyone; this is your layer.</p>
   </div>
 
   <!-- Start: pick your path -->
@@ -414,6 +547,21 @@ Role: Your Role</span></div>
     </div>
   </div>
 </div>
+
+<script>
+/* Namespaced marketing motion — touches ONLY .mkt-reveal; never a wizard id/class. */
+(function () {
+  var els = document.querySelectorAll('.mkt-reveal');
+  if (!('IntersectionObserver' in window) || !els.length) {
+    Array.prototype.forEach.call(els, function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 
 <script>
 (function () {
