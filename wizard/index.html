@@ -290,6 +290,26 @@
     @keyframes hl-meter { 0%, 100% { height: 4px; background: rgba(70,232,120,.22); } 50% { height: 14px; background: #46e878; box-shadow: 0 0 6px rgba(70,232,120,.6); } }
     @keyframes hl-scroll { 0%, 38% { transform: translateY(0); } 70%, 100% { transform: translateY(-24px); } }
     @keyframes hl-bar { 0% { top: 0; height: 36%; } 50% { top: 40%; height: 42%; } 82%, 100% { top: 56%; height: 44%; } }
+
+    /* ── Animated Record Message flow (standalone band): screen-in nav,
+       transcription streams in body, header shifts to TRANSCRIBE + footer bar. ── */
+    .hud-rec { display: flex; flex-direction: column; gap: 9px; padding: 16px 18px 14px;
+      font-family: 'Share Tech Mono', 'JetBrains Mono', monospace; color: #46e878;
+      text-shadow: 0 0 10px rgba(70,232,120,.42), 0 0 2px rgba(70,232,120,.85); }
+    .hud-rec .hr-head { font-size: clamp(12px,1.45vw,15px); color: #7df0a3; letter-spacing: .02em; white-space: nowrap; }
+    .hud-rec .hr-title { color: #46e878; }
+    .hud-rec .hr-body { flex: 1; min-height: 0; position: relative; border: 1.5px solid #46e878; border-radius: 10px; padding: 10px 15px; overflow: hidden;
+      box-shadow: 0 0 14px rgba(70,232,120,.16), inset 0 0 10px rgba(70,232,120,.04); }
+    .hud-rec .hr-scroll { font-size: clamp(11px,1.4vw,14px); line-height: 1.55; }
+    .hud-rec .hr-listen { opacity: .68; }
+    .hud-rec .hr-cur { display: inline-block; width: 7px; height: 1em; vertical-align: -2px; margin-left: 1px; background: #46e878; animation: hl-blink .9s step-end infinite; }
+    .hud-rec .hr-foot { font-size: clamp(11px,1.4vw,14px); color: #46e878; opacity: .92; white-space: nowrap; display: flex; align-items: center; min-height: 1.2em; }
+    .hud-rec .hr-bar { display: inline-flex; gap: 2px; margin-left: 8px; }
+    .hud-rec .hr-bar i { width: 7px; height: 11px; background: rgba(70,232,120,.18); border-radius: 1px; transition: background .14s, box-shadow .14s; }
+    .hud-rec .hr-bar i.on { background: #46e878; box-shadow: 0 0 5px rgba(70,232,120,.55); }
+    .hud-rec.navin { animation: hr-navin .6s cubic-bezier(.2,.7,.2,1); }
+    @keyframes hr-navin { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .hud-rec.navin { animation: none; } .hud-rec .hr-cur { animation: none; opacity: 0; } }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -344,6 +364,24 @@
         <h3>Every meeting, captured.</h3>
         <details class="more"><summary>How it works</summary><p>Live, speaker-labeled transcription on the HUD. Takeaways and action items wait for you afterward, right from the glasses.</p></details>
       </article>
+    </div>
+  </section>
+
+  <!-- RECORD MESSAGE: animated dictation to transcribe flow -->
+  <section class="mkt-band mkt-reveal">
+    <div class="cap-band">
+      <div class="cap-copy">
+        <div class="mkt-eyebrow">Record a message</div>
+        <h2 class="mkt-h">Say it once. <span class="g">Send it clean.</span></h2>
+        <p class="mkt-sub">Dictate a long prompt or reply by voice. The transcription builds on the lens as you speak. Tap to finish and it submits, no phone, no keyboard.</p>
+      </div>
+      <div class="hud-frame hud-rec" role="img" aria-label="COS Glasses lens recording a message: a dictated prompt is transcribed in green on the lens, then submitted with a transcribing progress bar in the footer.">
+        <div class="hr-head"><span class="hr-title">MESSAGE</span> &middot; COS [O&#9679;]  100%</div>
+        <div class="hr-body">
+          <div class="hr-scroll"><span class="hr-listen">Listening&#8230;</span><span class="hr-text"></span><span class="hr-cur"></span></div>
+        </div>
+        <div class="hr-foot">Tap to finish</div>
+      </div>
     </div>
   </section>
 
@@ -620,6 +658,76 @@ Role: Your Role</span></div>
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { t.textContent = '0:14'; return; }
   var s = 12;
   setInterval(function () { s++; t.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }, 1000);
+})();
+
+/* Record Message flow animation — touches ONLY .hud-rec; never a wizard id/class. */
+(function () {
+  var hud = document.querySelector('.hud-rec');
+  if (!hud) return;
+  var titleEl = hud.querySelector('.hr-title');
+  var listenEl = hud.querySelector('.hr-listen');
+  var textEl = hud.querySelector('.hr-text');
+  var curEl = hud.querySelector('.hr-cur');
+  var footEl = hud.querySelector('.hr-foot');
+  var MSG = "Draft a follow-up to the team. Recap today's demo, confirm Thursday for the pricing review, and attach the one-pager we showed.";
+  var WORDS = MSG.split(' ');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce) {
+    if (listenEl) listenEl.style.display = 'none';
+    if (textEl) textEl.textContent = MSG;
+    if (curEl) curEl.style.display = 'none';
+    titleEl.textContent = 'MESSAGE';
+    footEl.textContent = 'Tap to finish';
+    return;
+  }
+
+  var timers = [];
+  function T(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function reset() { timers.forEach(clearTimeout); timers = []; }
+
+  function submit() {
+    if (curEl) curEl.style.display = 'none';
+    titleEl.textContent = 'TRANSCRIBE';
+    footEl.innerHTML = 'Transcribing <span class="hr-bar"></span>';
+    var bar = footEl.querySelector('.hr-bar');
+    var N = 12, sq = [];
+    for (var k = 0; k < N; k++) { var i = document.createElement('i'); bar.appendChild(i); sq.push(i); }
+    var j = 0;
+    (function fill() {
+      if (j < N) { sq[j].classList.add('on'); j++; T(130, fill); }
+      else { T(1500, play); }
+    })();
+  }
+
+  function play() {
+    reset();
+    hud.classList.remove('navin'); void hud.offsetWidth; hud.classList.add('navin');
+    titleEl.textContent = 'MESSAGE';
+    if (listenEl) listenEl.style.display = '';
+    textEl.textContent = '';
+    if (curEl) curEl.style.display = '';
+    footEl.textContent = 'Tap to finish';
+    T(1100, function () {
+      if (listenEl) listenEl.style.display = 'none';
+      var i = 0;
+      (function word() {
+        if (i < WORDS.length) {
+          textEl.textContent += (i ? ' ' : '') + WORDS[i]; i++;
+          T(80 + Math.random() * 70, word);
+        } else {
+          T(600, submit);
+        }
+      })();
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(hud);
+  } else { play(); }
 })();
 </script>
 
