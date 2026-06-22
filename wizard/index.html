@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#07090f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -250,6 +250,46 @@
     .js .mkt-reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .js .mkt-reveal { opacity: 1 !important; transform: none !important; transition: none; } .hud-frame::after { display: none; } }
     @media (max-width: 640px) { .mkt-hero .hud-stack .behind { display: none; } .mkt-hero .hud-stack { min-height: 0; } }
+
+    /* ── Animated live recording + transcription HUD (hero focal) ──
+       Monochrome green, 3-zone (borderless header / bordered body / borderless
+       footer). Animations gate on .mkt-reveal.in and OFF under reduced-motion. */
+    .hud-live { display: flex; flex-direction: column; gap: 9px; padding: 16px 18px 14px;
+      font-family: 'Share Tech Mono', 'JetBrains Mono', monospace; color: #46e878;
+      text-shadow: 0 0 10px rgba(70,232,120,.42), 0 0 2px rgba(70,232,120,.85); }
+    .hud-live .hl-head { font-size: clamp(12px,1.45vw,15px); letter-spacing: .02em; color: #7df0a3; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .hud-live .hl-meter { display: inline-flex; align-items: flex-end; gap: 3px; height: 14px; }
+    .hud-live .hl-meter i { width: 8px; height: 5px; background: rgba(70,232,120,.22); border-radius: 1px; }
+    .hud-live .hl-rec { color: #46e878; }
+    .hud-live .hl-body { flex: 1; min-height: 0; position: relative; border: 1.5px solid #46e878; border-radius: 10px; padding: 9px 16px 9px 13px; overflow: hidden;
+      box-shadow: 0 0 14px rgba(70,232,120,.16), inset 0 0 10px rgba(70,232,120,.04); }
+    .hud-live .hl-scroll { font-size: clamp(11px,1.35vw,13.5px); line-height: 1.5; }
+    .hud-live .hl-line { opacity: 0; margin-bottom: 5px; }
+    .hud-live .hl-spk { color: #9ffabb; }
+    .hud-live .hl-cur { display: inline-block; width: 7px; height: 1em; vertical-align: -2px; margin-left: 2px; background: #46e878; opacity: 0; }
+    .hud-live .hl-bar { position: absolute; right: 6px; top: 11px; bottom: 11px; width: 5px; background: rgba(70,232,120,.13); border-radius: 4px; }
+    .hud-live .hl-bar i { position: absolute; left: 0; width: 5px; top: 0; height: 38%; border-radius: 4px; background: #46e878; box-shadow: 0 0 8px rgba(70,232,120,.55); }
+    .hud-live .hl-foot { font-size: clamp(11px,1.35vw,13.5px); color: #46e878; opacity: .92; white-space: nowrap; }
+    /* static filled state by default (no JS / no reveal / reduced-motion) */
+    .hud-live .hl-line { opacity: 1; }
+    @media (prefers-reduced-motion: no-preference) {
+      .mkt-reveal.in .hud-live .hl-line { animation: hl-line 11s linear infinite; }
+      .mkt-reveal.in .hud-live .hl-line:nth-child(2) { animation-delay: 1.8s; }
+      .mkt-reveal.in .hud-live .hl-line:nth-child(3) { animation-delay: 3.6s; }
+      .mkt-reveal.in .hud-live .hl-line:nth-child(4) { animation-delay: 5.4s; }
+      .mkt-reveal.in .hud-live .hl-cur { animation: hl-blink .9s step-end infinite; }
+      .mkt-reveal.in .hud-live .hl-meter i { animation: hl-meter 1.05s ease-in-out infinite; }
+      .mkt-reveal.in .hud-live .hl-meter i:nth-child(2) { animation-delay: .16s; }
+      .mkt-reveal.in .hud-live .hl-meter i:nth-child(3) { animation-delay: .34s; }
+      .mkt-reveal.in .hud-live .hl-meter i:nth-child(4) { animation-delay: .09s; }
+      .mkt-reveal.in .hud-live .hl-scroll { animation: hl-scroll 11s ease-in-out infinite; }
+      .mkt-reveal.in .hud-live .hl-bar i { animation: hl-bar 11s ease-in-out infinite; }
+    }
+    @keyframes hl-line { 0% { opacity: 0; transform: translateY(7px); } 4%, 82% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; } }
+    @keyframes hl-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes hl-meter { 0%, 100% { height: 4px; background: rgba(70,232,120,.22); } 50% { height: 14px; background: #46e878; box-shadow: 0 0 6px rgba(70,232,120,.6); } }
+    @keyframes hl-scroll { 0%, 38% { transform: translateY(0); } 70%, 100% { transform: translateY(-24px); } }
+    @keyframes hl-bar { 0% { top: 0; height: 36%; } 50% { top: 40%; height: 42%; } 82%, 100% { top: 56%; height: 44%; } }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -269,8 +309,19 @@
       <p class="new-beat">No slide deck. No black box. You own it, you do not rent it.</p>
     </div>
     <div class="hud-stack">
-      <div class="hud-frame behind"><img src="../assets/hud/slide-2.png" width="576" height="288" loading="lazy" alt="COS Glasses lens view: an answer streaming in green on the heads-up display."></div>
-      <div class="hud-frame front"><img src="../assets/hud/slide-1.png" width="576" height="288" loading="eager" alt="COS Glasses home on the lens: time, weather, next meeting and gesture hints in green."></div>
+      <div class="hud-frame hud-live front" role="img" aria-label="COS Glasses lens: a meeting being recorded with live, speaker-labeled transcription appearing in green, an audio level meter, and a running timer.">
+        <div class="hl-head"><span class="hl-meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span> <span class="hl-rec">REC</span> <span class="hl-time">0:12</span>  &#9733;1  100%</div>
+        <div class="hl-body">
+          <div class="hl-scroll">
+            <p class="hl-line"><span class="hl-spk">[Priya]</span> if we shift budget to the comparison pages we can hold CPA under target through July.</p>
+            <p class="hl-line"><span class="hl-spk">[You]</span> Lock that in. Flag it in the recap as a decision.</p>
+            <p class="hl-line"><span class="hl-spk">[Marcus]</span> I will have the brief ready Thursday morning.</p>
+            <p class="hl-line"><span class="hl-spk">[Priya]</span> And let us pull the Q3 numbers first.<span class="hl-cur"></span></p>
+          </div>
+          <span class="hl-bar" aria-hidden="true"><i></i></span>
+        </div>
+        <div class="hl-foot">Double-tap &#9733; bookmark   &#8595; end</div>
+      </div>
     </div>
   </section>
 
@@ -560,6 +611,15 @@ Role: Your Role</span></div>
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
   els.forEach(function (el) { io.observe(el); });
+})();
+
+/* Live HUD timer — touches ONLY .hud-live .hl-time; never a wizard id/class. */
+(function () {
+  var t = document.querySelector('.hud-live .hl-time');
+  if (!t) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { t.textContent = '0:14'; return; }
+  var s = 12;
+  setInterval(function () { s++; t.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }, 1000);
 })();
 </script>
 
