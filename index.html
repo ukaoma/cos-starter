@@ -144,6 +144,11 @@
   .int{display:flex;align-items:baseline;justify-content:space-between;gap:14px;border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:linear-gradient(158deg,var(--panel),transparent)}
   .int b{font-weight:600;color:var(--fg)}.int .what{color:var(--muted);font-size:.85rem;flex:1;margin-left:14px}
   .int .t{font-family:var(--mono);font-size:.68rem;color:var(--gold);white-space:nowrap}
+  .int{align-items:center}
+  .int .bm{display:inline-flex;gap:8px;align-items:center;flex-shrink:0}
+  .int .bm svg{width:19px;height:19px;fill:var(--fg);opacity:.85}
+  .int:hover .bm svg{fill:var(--gold);opacity:1}
+  .int .bm-ch{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1px solid var(--line);font-family:var(--mono);font-size:.6rem;color:var(--gold);background:rgba(201,169,110,.08)}
 
   /* ── Glasses ── */
   .glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
@@ -267,6 +272,19 @@
   .kg-legend{display:flex;flex-wrap:wrap;gap:16px;padding:13px 18px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015)}
   .kg-legend span{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.62rem;color:var(--muted);text-transform:lowercase;letter-spacing:.03em}
   .kg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .kg-edges{position:absolute;inset:0;width:100%;height:100%}
+  .kg-edges line{stroke:rgba(236,230,218,.07);stroke-width:.14;vector-effect:non-scaling-stroke;stroke-width:1px}
+  .kg-edges line.w{stroke:rgba(201,169,110,.26);stroke-width:1.2px}
+  .kbub.ring{outline:1px dashed rgba(236,230,218,.38);outline-offset:5px}
+  .kbub.f1{filter:blur(1.8px);opacity:.32}
+  .kbub.f2{filter:blur(.6px);opacity:.58}
+  .kbub.you{box-shadow:0 0 0 6px rgba(201,169,110,.14),0 0 40px rgba(201,169,110,.4),inset 0 0 14px rgba(255,255,255,.28)}
+  .kbub.lab{pointer-events:auto}
+  .kg-stage{pointer-events:auto}
+  .kg-tipbox{position:absolute;z-index:5;pointer-events:none;background:linear-gradient(158deg,rgba(22,17,11,.97),rgba(12,10,7,.94));border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;box-shadow:0 18px 44px -18px rgba(0,0,0,.9);opacity:0;transition:opacity .15s}
+  .kg-tipbox.on{opacity:1}
+  .kg-tipbox b{color:var(--gold);font-weight:500}
+  @media(hover:none){.kg-tipbox{display:none}}
   /* mobile: swarm -> card stack */
   @media(max-width:860px){
     .cg-stage{height:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
@@ -378,11 +396,57 @@
   .bene-quote{margin-top:44px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.3;color:var(--ink-on-cream);text-wrap:balance;max-width:26ch}
   .bene-quote small{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint-on-cream)}
 
+  .kg-cap{margin-top:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--faint)}
+
+  /* ═══ FAQ (centaur) ═══ */
+  .faq{margin-top:44px;max-width:840px}
+  .fq{border-top:1px solid var(--line-on-cream)}
+  .fq:last-child{border-bottom:1px solid var(--line-on-cream)}
+  .fq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px;font-family:var(--display);font-weight:500;font-size:clamp(1.1rem,1.9vw,1.4rem);color:var(--ink-on-cream);min-height:44px}
+  .fq summary::-webkit-details-marker{display:none}
+  .fq summary::after{content:'+';font-family:var(--body);font-weight:300;font-size:1.5rem;color:#8a6a34;flex-shrink:0;transition:transform .25s ease}
+  .fq[open] summary::after{content:'\2212'}
+  .fq p{padding:0 2px 24px;max-width:64ch;color:var(--muted-on-cream);font-size:.97rem;line-height:1.65}
+
+  /* ═══ hero depth-graph (the lightrag, fading into the espresso) ═══ */
+  .hero{position:relative;overflow:visible}
+  .hero-fore{position:relative;z-index:1}
+  .hero-graph{position:absolute;top:4%;bottom:10%;right:0;width:min(56vw,740px);z-index:0;pointer-events:none;
+    -webkit-mask-image:radial-gradient(118% 96% at 70% 42%,#000 36%,transparent 75%);mask-image:radial-gradient(118% 96% at 70% 42%,#000 36%,transparent 75%)}
+  .hg-l,.hg-main{position:absolute;inset:0}
+  .hg-web{position:absolute;inset:0;width:100%;height:100%}
+  .hg-web line{stroke:rgba(236,230,218,.075);stroke-width:.16}
+  .hg-web line.w{stroke:rgba(201,169,110,.22);stroke-width:.2}
+  .hg-node{position:absolute;border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 10px rgba(255,255,255,.15),0 8px 22px -8px rgba(0,0,0,.65)}
+  .hg-node.lab::after{content:attr(data-l);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--body);font-weight:600;font-size:.58rem;color:rgba(255,255,255,.94);white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.85)}
+  .hg-node.big.lab::after{font-size:.78rem;color:#241708;text-shadow:none}
+  .hg-node.you{box-shadow:0 0 0 6px rgba(201,169,110,.12),0 0 44px rgba(201,169,110,.35),inset 0 0 14px rgba(255,255,255,.25)}
+  .hg-l1 .hg-node{filter:blur(2.2px);opacity:.3}
+  .hg-l2 .hg-node{filter:blur(.7px);opacity:.5}
+  .hg-l3 .hg-node{opacity:.96}
+  .hg-tip{position:absolute;transform:translate(14px,-100%);background:linear-gradient(158deg,rgba(22,17,11,.96),rgba(14,11,7,.93));border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-family:var(--mono);font-size:.56rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;box-shadow:0 18px 44px -18px rgba(0,0,0,.9)}
+  .hg-tip b{color:var(--gold);font-weight:500}
+  @media(prefers-reduced-motion:no-preference){
+    .hg-l1{animation:hgd1 70s ease-in-out infinite alternate}
+    .hg-main{animation:hgd2 46s ease-in-out infinite alternate}
+    .js .hg-node{opacity:0;animation:hgin .9s ease forwards}
+    .js .hg-l1 .hg-node{animation:hgin1 .9s ease forwards}
+    .js .hg-l2 .hg-node{animation:hgin2 .9s ease forwards}
+    .hg-node:nth-child(1){animation-delay:.05s}.hg-node:nth-child(2){animation-delay:.12s}.hg-node:nth-child(3){animation-delay:.2s}.hg-node:nth-child(4){animation-delay:.28s}.hg-node:nth-child(5){animation-delay:.34s}.hg-node:nth-child(6){animation-delay:.4s}.hg-node:nth-child(7){animation-delay:.48s}.hg-node:nth-child(8){animation-delay:.54s}.hg-node:nth-child(9){animation-delay:.62s}.hg-node:nth-child(10){animation-delay:.68s}.hg-node:nth-child(11){animation-delay:.74s}.hg-node:nth-child(12){animation-delay:.8s}.hg-node:nth-child(13){animation-delay:.86s}.hg-node:nth-child(14){animation-delay:.9s}
+  }
+  @keyframes hgd1{to{transform:translate3d(-1.1%,1.5%,0)}}
+  @keyframes hgd2{to{transform:translate3d(1.5%,-1.2%,0)}}
+  @keyframes hgin{to{opacity:.96}}
+  @keyframes hgin1{to{opacity:.3}}
+  @keyframes hgin2{to{opacity:.5}}
+  @media(max-width:900px){.hero-graph{right:0;left:0;width:auto;opacity:.34;-webkit-mask-image:radial-gradient(120% 90% at 50% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 50% 40%,#000 30%,transparent 80%)}.hg-tip{display:none}}
+
   /* footer wordmark (outline, cropped) */
   footer{overflow:hidden}
   .foot-mark{font-family:var(--display);font-weight:600;line-height:.72;font-size:clamp(110px,26vw,340px);letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(201,169,110,.20);user-select:none;pointer-events:none;margin:52px auto -.16em}
   @supports not (-webkit-text-stroke:1px black){.foot-mark{color:rgba(201,169,110,.08)}}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a centaur?", "acceptedAnswer": {"@type": "Answer", "text": "The human is the head and the machine is the body. You bring the domain expertise, the taste, and the judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified."}}, {"@type": "Question", "name": "What is a reverse centaur?", "acceptedAnswer": {"@type": "Answer", "text": "The flip. The machine is the head and the human is demoted to peripherals: the hands and the eyes, plus the legal liability for whatever the algorithm decided. We think that is the wrong way to deploy AI."}}, {"@type": "Question", "name": "Which one is COS?", "acceptedAnswer": {"@type": "Answer", "text": "A centaur by architecture. COS runs on your machine, loads your context, and answers to you. It preps, drafts, tracks, and connects; you decide. It exists to 10x the person running it."}}, {"@type": "Question", "name": "What happens when the AI platforms raise prices?", "acceptedAnswer": {"@type": "Answer", "text": "COS is model-agnostic and your context graph lives in your files, not on a platform. Swap the engine. Keep the brain."}}, {"@type": "Question", "name": "What is a context graph?", "acceptedAnswer": {"@type": "Answer", "text": "Everything your work touches, extracted into one connected, searchable graph that you own. The wiring between the tools you already use and the model you already run."}}, {"@type": "Question", "name": "Why does context beat prompts?", "acceptedAnswer": {"@type": "Answer", "text": "Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was."}}, {"@type": "Question", "name": "Do I need to be technical?", "acceptedAnswer": {"@type": "Answer", "text": "If you can paste one file into Claude Code or Codex, you are technical enough. About five minutes to a working COS."}}, {"@type": "Question", "name": "What does it cost to run?", "acceptedAnswer": {"@type": "Answer", "text": "The kit is free and MIT-licensed. Chat runs on the Claude or Codex plan you already pay for. Local voice costs zero per minute."}}]}</script>
 </head>
 <body>
 
@@ -400,6 +464,13 @@
   <symbol id="i-play" viewBox="0 0 20 20"><rect x="2.6" y="5.2" width="10.4" height="9.6" rx="2.2"/><path d="M13 8.4l4.2-2.2v7.6L13 11.6z"/></symbol>
   <symbol id="i-dollar" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.2"/><path d="M10 5.6v8.8M12.2 7.7c0-1.1-1-1.7-2.2-1.7s-2.2.7-2.2 1.8 1 1.5 2.2 1.7 2.2.6 2.2 1.8-1 1.7-2.2 1.7-2.2-.6-2.2-1.7"/></symbol>
   <symbol id="i-folder" viewBox="0 0 20 20"><path d="M3 6.2a1.1 1.1 0 0 1 1.1-1.1h3.8l2 2h6a1.1 1.1 0 0 1 1.1 1.1v6.5a1.1 1.1 0 0 1-1.1 1.1H4.1A1.1 1.1 0 0 1 3 14.7z"/></symbol>
+  <symbol id="b-slack" viewBox="0 0 24 24"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></symbol>
+  <symbol id="b-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
+  <symbol id="b-googlecalendar" viewBox="0 0 24 24"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H1.895A1.894 1.894 0 0 0 0 1.895v16.421h5.684V5.684h12.632zm-7.207 6.25v-.065c.272-.144.5-.349.687-.617s.279-.595.279-.982c0-.379-.099-.72-.3-1.025a2.05 2.05 0 0 0-.832-.714 2.703 2.703 0 0 0-1.197-.257c-.6 0-1.094.156-1.481.467-.386.311-.65.671-.793 1.078l1.085.452c.086-.249.224-.461.413-.633.189-.172.445-.257.767-.257.33 0 .602.088.816.264a.86.86 0 0 1 .322.703c0 .33-.12.589-.36.778-.24.19-.535.284-.886.284h-.567v1.085h.633c.407 0 .748.109 1.02.327.272.218.407.499.407.843 0 .336-.129.614-.387.832s-.565.327-.924.327c-.351 0-.651-.103-.897-.311-.248-.208-.422-.502-.521-.881l-1.096.452c.178.616.505 1.082.977 1.401.472.319.984.478 1.538.477a2.84 2.84 0 0 0 1.293-.291c.382-.193.684-.458.902-.794.218-.336.327-.72.327-1.149 0-.429-.115-.797-.344-1.105a2.067 2.067 0 0 0-.881-.689zm2.093-1.931l.602.913L15 10.045v5.744h1.187V8.446h-.827l-2.158 1.557zM22.105 0h-3.289v5.184H24V1.895A1.894 1.894 0 0 0 22.105 0zm-3.289 23.5l4.684-4.684h-4.684V23.5zM0 22.105C0 23.152.848 24 1.895 24h3.289v-5.184H0v3.289z"/></symbol>
+  <symbol id="b-notion" viewBox="0 0 24 24"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></symbol>
+  <symbol id="b-hubspot" viewBox="0 0 24 24"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></symbol>
+  <symbol id="b-openai" viewBox="0 0 24 24"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+  <symbol id="b-anthropic" viewBox="0 0 24 24"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></symbol>
 </svg>
 
 <div class="atmos"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div></div>
@@ -411,12 +482,71 @@
     <a href="#start">Quick Start</a>
     <a href="#tiers">The 4 Tiers</a>
     <a href="#glasses">Glasses</a>
+    <a href="#faq">FAQ</a>
     <a href="#start" class="cta">Get Started</a>
   </div>
 </nav>
 
 <!-- ── HERO ── -->
 <header class="hero wrap">
+  <div class="hero-graph" aria-hidden="true">
+    <div class="hg-l hg-l1">
+      <i class="hg-node" style="left:8%;top:18%;width:8px;height:8px;background:#5b8def"></i>
+      <i class="hg-node" style="left:22%;top:8%;width:6px;height:6px;background:#9aa3ad"></i>
+      <i class="hg-node" style="left:38%;top:14%;width:9px;height:9px;background:#e08a3c"></i>
+      <i class="hg-node" style="left:60%;top:6%;width:7px;height:7px;background:#5fae7d"></i>
+      <i class="hg-node" style="left:88%;top:12%;width:8px;height:8px;background:#5b8def"></i>
+      <i class="hg-node" style="left:14%;top:44%;width:7px;height:7px;background:#a86fd0"></i>
+      <i class="hg-node" style="left:5%;top:70%;width:9px;height:9px;background:#e08a3c"></i>
+      <i class="hg-node" style="left:30%;top:88%;width:7px;height:7px;background:#5b8def"></i>
+      <i class="hg-node" style="left:56%;top:94%;width:8px;height:8px;background:#9aa3ad"></i>
+      <i class="hg-node" style="left:80%;top:90%;width:6px;height:6px;background:#5fae7d"></i>
+      <i class="hg-node" style="left:96%;top:66%;width:9px;height:9px;background:#5b8def"></i>
+      <i class="hg-node" style="left:94%;top:34%;width:7px;height:7px;background:#c9a96e"></i>
+      <i class="hg-node" style="left:44%;top:96%;width:6px;height:6px;background:#a86fd0"></i>
+      <i class="hg-node" style="left:70%;top:2%;width:6px;height:6px;background:#e08a3c"></i>
+    </div>
+    <div class="hg-main">
+      <svg class="hg-web" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line class="w" x1="66" y1="44" x2="82" y2="28"/><line class="w" x1="66" y1="44" x2="52" y2="24"/>
+        <line class="w" x1="66" y1="44" x2="48" y2="58"/><line class="w" x1="66" y1="44" x2="84" y2="60"/>
+        <line class="w" x1="66" y1="44" x2="58" y2="74"/><line class="w" x1="66" y1="44" x2="36" y2="38"/>
+        <line class="w" x1="66" y1="44" x2="26" y2="64"/><line class="w" x1="66" y1="44" x2="72" y2="84"/>
+        <line x1="82" y1="28" x2="52" y2="24"/><line x1="52" y1="24" x2="36" y2="38"/>
+        <line x1="36" y1="38" x2="26" y2="64"/><line x1="26" y2="64" x2="48" y2="58" y1="64"/>
+        <line x1="48" y1="58" x2="58" y2="74"/><line x1="58" y1="74" x2="72" y2="84"/>
+        <line x1="72" y1="84" x2="84" y2="60"/><line x1="84" y1="60" x2="82" y2="28"/>
+        <line x1="52" y1="24" x2="40" y2="12"/><line x1="82" y1="28" x2="90" y2="16"/>
+        <line x1="36" y1="38" x2="20" y2="30"/><line x1="26" y1="64" x2="12" y2="58"/>
+        <line x1="58" y1="74" x2="46" y2="86"/><line x1="84" y1="60" x2="94" y2="48"/>
+      </svg>
+      <div class="hg-l hg-l2">
+        <i class="hg-node" style="left:40%;top:12%;width:13px;height:13px;background:#5fae7d"></i>
+        <i class="hg-node" style="left:90%;top:16%;width:12px;height:12px;background:#5b8def"></i>
+        <i class="hg-node" style="left:20%;top:30%;width:14px;height:14px;background:#e08a3c"></i>
+        <i class="hg-node" style="left:12%;top:58%;width:12px;height:12px;background:#5b8def"></i>
+        <i class="hg-node" style="left:46%;top:86%;width:13px;height:13px;background:#9aa3ad"></i>
+        <i class="hg-node" style="left:94%;top:48%;width:14px;height:14px;background:#a86fd0"></i>
+        <i class="hg-node" style="left:64%;top:16%;width:12px;height:12px;background:#c9a96e"></i>
+        <i class="hg-node" style="left:32%;top:74%;width:12px;height:12px;background:#5fae7d"></i>
+        <i class="hg-node" style="left:76%;top:70%;width:13px;height:13px;background:#5b8def"></i>
+        <i class="hg-node" style="left:88%;top:78%;width:11px;height:11px;background:#e08a3c"></i>
+      </div>
+      <div class="hg-l hg-l3">
+        <i class="hg-node lab" data-l="Priya" style="left:52%;top:24%;width:30px;height:30px;background:#5b8def"></i>
+        <i class="hg-node lab" data-l="Dana" style="left:82%;top:28%;width:32px;height:32px;background:#5b8def"></i>
+        <i class="hg-node lab" data-l="Pipeline" style="left:36%;top:38%;width:27px;height:27px;background:#e08a3c"></i>
+        <i class="hg-node lab" data-l="Jordan" style="left:48%;top:58%;width:29px;height:29px;background:#5b8def"></i>
+        <i class="hg-node lab" data-l="Northwind" style="left:84%;top:60%;width:30px;height:30px;background:#e08a3c"></i>
+        <i class="hg-node lab" data-l="Acme" style="left:26%;top:64%;width:25px;height:25px;background:#e08a3c"></i>
+        <i class="hg-node lab" data-l="Q3 Plan" style="left:58%;top:74%;width:27px;height:27px;background:#c9a96e"></i>
+        <i class="hg-node lab" data-l="Deck" style="left:72%;top:84%;width:23px;height:23px;background:#9aa3ad"></i>
+        <i class="hg-node big lab you" data-l="You" style="left:66%;top:44%;width:58px;height:58px;background:linear-gradient(150deg,#e8c98a,#c9a96e 60%,#b98a52)"></i>
+        <span class="hg-tip" style="left:70%;top:36%"><b>You</b> · 142 conn</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fore">
   <div class="kick eyebrow"><span>COS Starter</span> <span class="num">· open-source AI chief of staff</span></div>
   <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
   <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
@@ -427,6 +557,7 @@
   <div class="badges">
     <span class="chip"><b>118+</b> builders on the Even Hub</span>
     <span class="chip">Claude Code + Codex <b>compatible</b></span>
+  </div>
   </div>
   <div class="hero-meta">
     <div><b>118+</b> builders running COS</div>
@@ -601,7 +732,7 @@
     <div class="kg-bar">
       <span class="kg-brand"><b>MU</b> · Knowledge Graph</span>
       <span class="kg-search">Search entities…</span>
-      <span class="kg-count"><b>128</b> entities · <b>1,940</b> edges</span>
+      <span class="kg-count"><b>5,872</b> entities · <b>11,238</b> edges</span>
     </div>
     <div class="kg-stage" id="kgStage"></div>
     <div class="kg-legend">
@@ -613,6 +744,8 @@
       <span><i style="background:#a86fd0"></i>method</span>
     </div>
   </div>
+
+  <p class="kg-cap">Those counts are real, pulled from one running COS. The names in this demo are not.</p>
 
   <div class="inline-cta" style="margin-top:26px">
     <div class="ic-text"><b>Run it on your own work. Keep it forever.</b><span>Open-source and self-hosted: your keys, your machine, your data. Fork the whole stack, and nobody can take it back.</span></div>
@@ -743,10 +876,14 @@
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
   <div class="ints">
-    <div class="int"><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
-    <div class="int"><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="t">15 min</span></div>
-    <div class="int"><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="t">10 min</span></div>
-    <div class="int"><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="t">30 min</span></div>
+    <div class="int"><span class="bm"><svg><use href="#b-slack"/></svg></span><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
+    <div class="int"><span class="bm"><svg><use href="#b-gmail"/></svg><svg><use href="#b-googlecalendar"/></svg></span><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="t">15 min</span></div>
+    <div class="int"><span class="bm"><span class="bm-ch">G</span><span class="bm-ch">F</span></span><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="t">10 min</span></div>
+    <div class="int"><span class="bm"><svg><use href="#b-notion"/></svg></span><b>Notion &amp; Docs</b><span class="what">Pages, wikis, project docs</span><span class="t">10 min</span></div>
+    <div class="int"><span class="bm"><svg><use href="#b-hubspot"/></svg></span><b>HubSpot &amp; CRM</b><span class="what">Deals, contacts, page analytics</span><span class="t">20 min</span></div>
+    <div class="int"><span class="bm"><svg><use href="#b-anthropic"/></svg><svg><use href="#b-openai"/></svg></span><b>Claude Code / Codex</b><span class="what">The engine. Your existing plan</span><span class="t">0 min</span></div>
+    <div class="int"><span class="bm"><span class="bm-ch">Q</span></span><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="t">30 min</span></div>
+    <div class="int"><span class="bm"><span class="bm-ch">&#8734;</span></span><b>Anything with an MCP</b><span class="what">Thousands of servers. Bring your own</span><span class="t">varies</span></div>
   </div>
 </section>
 
@@ -806,12 +943,32 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 11 PHILOSOPHY ── -->
+<!-- ── 12 FAQ · THE CENTAUR TEST ── -->
+<section class="wrap reveal light" id="faq">
+  <div class="sec-head"><div class="eyebrow"><span class="num">12</span> FAQ</div>
+    <h2>Keep the human <span class="it g">the head.</span></h2>
+    <p class="lead">COS is built on the centaur idea: you set the direction and the judgment, the machine does the grunt compute. The framing, and the practical stuff.</p>
+  </div>
+  <div class="faq">
+    <details class="fq"><summary>What is a centaur?</summary><p>The human is the head and the machine is the body. You bring the domain expertise, the taste, and the judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified, and the main benefactor is you. That is the bar any AI deployment should clear.</p></details>
+    <details class="fq"><summary>What is a reverse centaur?</summary><p>The flip. The machine is the head and the human is demoted to peripherals: the hands and the eyes, plus the legal liability for whatever the algorithm decided. Warehouse pace-setting and rideshare routing are the classic examples. Throughput first, quality and people second. We think that is the wrong way to deploy AI.</p></details>
+    <details class="fq"><summary>Which one is COS?</summary><p>A centaur by architecture, not by promise. COS runs on your machine, loads your context, and answers to you. It preps, drafts, tracks, and connects; you decide. Nothing about it sets your pace, and nothing about it is designed to replace your judgment. It exists to 10x the person running it, never the other way around.</p></details>
+    <details class="fq"><summary>What happens when the AI platforms raise prices?</summary><p>Today the frontier platforms sell a hundred dollars of compute for one. When that subsidy ends, rented workflows get repriced overnight and everyone gets squeezed. COS is built for that day: it is model-agnostic (Claude Code or Codex today), and your context graph lives in your files, not on their platform. Swap the engine. Keep the brain.</p></details>
+    <details class="fq"><summary>What is a context graph?</summary><p>Everything your work touches (meetings, email, Slack, calls, docs, people) extracted into one connected, searchable graph that you own. It is the wiring between the tools you already use and the model you already run.</p></details>
+    <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was. A model with your context stops being a chatbot and starts being a chief of staff.</p></details>
+    <details class="fq"><summary>Do I need to be technical?</summary><p>If you can paste one file into Claude Code or Codex, you are technical enough. The starter kit interviews you and builds the whole system: about five minutes to a working COS. Want it done with you instead? Book a working session and we will stand it up together.</p></details>
+    <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free and MIT-licensed. Chat runs on the Claude or Codex plan you already pay for. Voice on the glasses runs locally through whisper.cpp at zero per-minute cost. No new subscription, nothing to rent, nothing anyone can take back.</p></details>
+  </div>
+</section>
+
+<div class="burn up" aria-hidden="true"></div>
+
+<!-- ── 13 PHILOSOPHY ── -->
 <section class="wrap reveal" id="philosophy">
   <div class="split">
-    <div class="sec-head"><div class="eyebrow"><span class="num">12</span> Philosophy</div>
+    <div class="sec-head"><div class="eyebrow"><span class="num">13</span> Philosophy</div>
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
     <div>
@@ -848,31 +1005,67 @@
   } else { els.forEach(function(el){el.classList.add('in');}); }
 })();
 
-// Knowledge-graph teaser: static positioned bubbles (no physics, no loop)
+// Knowledge-graph teaser: hub-and-spoke with edges, depth, and hover cards (no physics loop)
 (function(){
   var T={person:'#5b8def',org:'#e08a3c',concept:'#c9a96e',content:'#5fae7d',artifact:'#9aa3ad',method:'#a86fd0'};
+  // outer-ring anchors (dotted ring, like the real viz)
+  var A=[[50,6,36,'person','Priya Raman'],[80,13,34,'person','Marcus Hale'],[95,42,36,'person','Dana Mercer'],
+         [87,80,33,'person','Sam Okafor'],[57,93,35,'person','Jordan Pierce'],[25,89,33,'person','Elena Ruiz'],
+         [6,61,34,'person','Alex Chen'],[11,20,33,'person','Maya Patel']];
   var B=[
-    [50,46,64,'concept','You','big'],[34,32,40,'org','Acme'],[66,30,34,'person','Priya'],[24,58,30,'person',''],
-    [44,68,36,'org','Pipeline'],[72,60,30,'person','Dana'],[58,20,22,'artifact',''],[38,46,26,'person','Jordan'],
-    [64,74,28,'concept','Q3 Plan'],[18,40,22,'person',''],[82,42,26,'org','Northwind'],[30,78,20,'content',''],
-    [50,84,24,'artifact','Deck'],[12,68,18,'person',''],[88,68,20,'person',''],[76,18,18,'artifact',''],
-    [42,16,16,'content',''],[60,52,20,'method','Skill'],[26,24,18,'org',''],[90,30,16,'concept',''],
-    [16,52,14,'person',''],[70,86,18,'org',''],[84,80,14,'content',''],[36,88,14,'person',''],
-    [54,62,18,'person',''],[22,46,12,'artifact',''],[78,50,16,'person',''],[46,30,18,'person','']
+    [50,47,62,'concept','You','big you'],[34,32,38,'org','Acme'],[64,30,32,'person','Priya'],[24,58,28,'person',''],
+    [44,68,34,'org','Pipeline'],[71,60,29,'person','Dana'],[57,20,22,'artifact',''],[38,46,26,'person','Jordan'],
+    [63,74,27,'concept','Q3 Plan'],[19,41,21,'person',''],[81,43,26,'org','Northwind'],[30,77,20,'content',''],
+    [50,83,23,'artifact','Deck'],[14,68,17,'person',''],[87,67,19,'person',''],[75,19,18,'artifact',''],
+    [42,16,16,'content',''],[59,52,20,'method','Skill'],[27,24,18,'org',''],[89,29,15,'concept',''],
+    [17,52,14,'person',''],[69,85,17,'org',''],[83,79,14,'content',''],[36,87,14,'person',''],
+    [54,62,18,'person',''],[23,46,12,'artifact',''],[77,50,16,'person',''],[46,30,18,'person','']
   ];
+  // depth filler (f1 far / f2 mid)
+  var F=[[8,36,9,'person','f1'],[15,10,8,'org','f1'],[30,8,10,'content','f1'],[68,7,8,'person','f1'],[91,18,9,'artifact','f1'],
+         [97,58,8,'person','f1'],[93,90,9,'org','f1'],[73,95,8,'person','f1'],[40,95,9,'method','f1'],[10,84,8,'content','f1'],
+         [3,44,9,'person','f1'],[21,68,8,'concept','f1'],[62,42,9,'person','f1'],[47,55,8,'artifact','f1'],[55,37,8,'org','f1'],
+         [28,14,12,'person','f2'],[47,9,11,'org','f2'],[70,12,12,'person','f2'],[88,24,11,'content','f2'],[92,51,12,'person','f2'],
+         [91,72,11,'org','f2'],[78,89,12,'person','f2'],[62,88,11,'artifact','f2'],[45,90,12,'person','f2'],[18,80,11,'method','f2'],
+         [8,70,12,'org','f2'],[7,50,11,'person','f2'],[9,29,12,'content','f2'],[20,33,11,'person','f2'],[33,60,12,'person','f2'],
+         [58,64,11,'org','f2'],[68,48,12,'person','f2'],[52,38,11,'content','f2'],[41,24,11,'person','f2'],[85,35,12,'concept','f2']];
   var st=document.getElementById('kgStage');
-  if(st){
-    var frag=document.createDocumentFragment();
-    B.forEach(function(b){
-      var d=document.createElement('div');
-      d.className='kbub'+(b[4]?' lab':'')+(b[5]?' '+b[5]:'');
-      var c=T[b[3]];
-      d.style.cssText='left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[2]+'px;background:radial-gradient(circle at 38% 32%,'+c+', '+c+'cc 70%, '+c+'88);';
-      if(b[4])d.setAttribute('data-l',b[4]);
-      frag.appendChild(d);
-    });
-    st.insertBefore(frag,st.firstChild);
+  if(!st) return;
+  // edges first (under bubbles)
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','kg-edges');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');
+  function line(x1,y1,x2,y2,w){var l=document.createElementNS(NS,'line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);if(w)l.setAttribute('class','w');svg.appendChild(l);}
+  A.forEach(function(a){line(50,47,a[0],a[1],true);});                    // hub -> ring
+  for(var k=0;k<A.length;k++){var n=A[(k+1)%A.length];line(A[k][0],A[k][1],n[0],n[1],false);}  // ring segments
+  [[34,32],[44,68],[81,43],[63,74],[59,52],[64,30],[50,83]].forEach(function(p){line(50,47,p[0],p[1],true);}); // hub -> cluster
+  [[34,32,64,30],[34,32,38,46],[38,46,44,68],[44,68,63,74],[63,74,50,83],[81,43,71,60],[71,60,63,74],[64,30,81,43],
+   [24,58,44,68],[19,41,34,32],[87,67,81,43],[30,77,44,68],[59,52,71,60],[59,52,38,46]].forEach(function(p){line(p[0],p[1],p[2],p[3],false);});
+  st.appendChild(svg);
+  // bubbles
+  var frag=document.createDocumentFragment();
+  function bub(b,extra){
+    var d=document.createElement('div');
+    d.className='kbub'+(b[4]?' lab':'')+(b[5]?' '+b[5]:'')+(extra||'');
+    var c=T[b[3]];
+    d.style.cssText='left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[2]+'px;background:radial-gradient(circle at 38% 32%,'+c+', '+c+'cc 70%, '+c+'88);';
+    if(b[4]){d.setAttribute('data-l',b[4]);d.setAttribute('data-t',b[3]);d.setAttribute('data-c',Math.round(b[2]*3.4));}
+    return d;
   }
+  F.forEach(function(b){frag.appendChild(bub([b[0],b[1],b[2],b[3],'',b[4]]));});
+  B.forEach(function(b){frag.appendChild(bub(b));});
+  A.forEach(function(a){frag.appendChild(bub([a[0],a[1],a[2],a[3],a[4],'ring lab']));});
+  st.appendChild(frag);
+  // hover card
+  var tip=document.createElement('div');tip.className='kg-tipbox';st.appendChild(tip);
+  st.addEventListener('mouseover',function(e){
+    var b=e.target.closest('.kbub.lab');if(!b){tip.classList.remove('on');return;}
+    tip.innerHTML='<b>'+b.getAttribute('data-l')+'</b> &middot; '+b.getAttribute('data-t')+' &middot; '+b.getAttribute('data-c')+' conn';
+    var x=parseFloat(b.style.left),y=parseFloat(b.style.top);
+    tip.style.left=Math.min(x+4,72)+'%';tip.style.top=Math.max(y-9,3)+'%';
+    tip.classList.add('on');
+  });
+  st.addEventListener('mouseleave',function(){tip.classList.remove('on');});
 })();
 // Teams HubSpot form: lazy-load on expand (ungated; full form)
 function toggleTeamsForm(){
