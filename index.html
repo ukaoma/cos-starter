@@ -21,9 +21,9 @@
   :root{
     color-scheme:dark;
     --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
-    --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.50); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
+    --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
     --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
-    --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.48); --line-on-cream:rgba(46,31,16,.14);
+    --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
     --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
     --maxw:1140px; --gut:clamp(22px,5vw,72px);
   }
@@ -352,11 +352,11 @@
   .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
   section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
   section.light .lead,section.light p,section.light .ck li{color:var(--muted-on-cream)}
-  section.light .eyebrow{color:#8a6a34}
-  section.light .eyebrow::before{background:linear-gradient(90deg,#8a6a34,transparent)}
+  section.light .eyebrow{color:#7a5c2c}
+  section.light .eyebrow::before{background:linear-gradient(90deg,#7a5c2c,transparent)}
   section.light .eyebrow .num{color:var(--faint-on-cream)}
-  section.light a{color:#8a6a34}
-  section.light code{color:#8a6a34}
+  section.light a{color:#7a5c2c}
+  section.light code{color:#7a5c2c}
   section.light .tier,section.light .does{background:rgba(255,255,255,.58);border-color:var(--line-on-cream)}
   section.light .tier:hover{border-color:rgba(138,106,52,.55)}
   section.light .tier h3,section.light .does b,section.light .dm b{color:var(--ink-on-cream)}
@@ -364,10 +364,10 @@
   section.light .tier .tl,section.light .kit-hint{color:var(--faint-on-cream)}
   section.light .tier .bar-fill{background:rgba(46,31,16,.12)}
   section.light .dm{border-top-color:var(--line-on-cream)}
-  section.light .does .n{color:#8a6a34}
+  section.light .does .n{color:#7a5c2c}
   section.light .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
-  section.light .btn.ghost:hover{border-color:#8a6a34;color:#8a6a34}
-  section.light .kit-does > .eyebrow{color:#8a6a34}
+  section.light .btn.ghost:hover{border-color:#7a5c2c;color:#7a5c2c}
+  section.light .kit-does > .eyebrow{color:#7a5c2c}
   .lightband .inline-cta{background:rgba(255,255,255,.6);border-color:var(--line-on-cream)}
   .lightband .ic-text b{color:var(--ink-on-cream)}
   .lightband .ic-text span{color:var(--muted-on-cream)}
@@ -392,7 +392,7 @@
   .bene{border:1px solid var(--line-on-cream);border-radius:18px;padding:30px 26px 28px;background:rgba(255,255,255,.58)}
   .bene .bh{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink-on-cream);text-wrap:balance}
   .bene p{margin-top:12px;font-size:.94rem;line-height:1.6;color:var(--muted-on-cream)}
-  .bene .bt{margin-top:20px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6a34}
+  .bene .bt{margin-top:20px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#7a5c2c}
   .bene-quote{margin-top:44px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.3;color:var(--ink-on-cream);text-wrap:balance;max-width:26ch}
   .bene-quote small{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint-on-cream)}
 
@@ -404,42 +404,51 @@
   .fq:last-child{border-bottom:1px solid var(--line-on-cream)}
   .fq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px;font-family:var(--display);font-weight:500;font-size:clamp(1.1rem,1.9vw,1.4rem);color:var(--ink-on-cream);min-height:44px}
   .fq summary::-webkit-details-marker{display:none}
-  .fq summary::after{content:'+';font-family:var(--body);font-weight:300;font-size:1.5rem;color:#8a6a34;flex-shrink:0;transition:transform .25s ease}
+  .fq summary::after{content:'+';font-family:var(--body);font-weight:300;font-size:1.5rem;color:#7a5c2c;flex-shrink:0;transition:transform .25s ease}
   .fq[open] summary::after{content:'\2212'}
   .fq p{padding:0 2px 24px;max-width:64ch;color:var(--muted-on-cream);font-size:.97rem;line-height:1.65}
 
-  /* ═══ hero depth-graph (the lightrag, fading into the espresso) ═══ */
-  .hero{position:relative;overflow:visible}
-  .hero-fore{position:relative;z-index:1}
-  .hero-graph{position:absolute;top:4%;bottom:10%;right:0;width:min(56vw,740px);z-index:0;pointer-events:none;
-    -webkit-mask-image:radial-gradient(104% 96% at 77% 40%,#000 32%,transparent 66%);mask-image:radial-gradient(104% 96% at 77% 40%,#000 32%,transparent 66%)}
-  .hg-l,.hg-main{position:absolute;inset:0}
-  .hg-web{position:absolute;inset:0;width:100%;height:100%}
-  .hg-web line{stroke:rgba(236,230,218,.075);stroke-width:.16}
-  .hg-web line.w{stroke:rgba(201,169,110,.22);stroke-width:.2}
-  .hg-node{position:absolute;border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 10px rgba(255,255,255,.15),0 8px 22px -8px rgba(0,0,0,.65)}
-  .hg-node.lab::after{content:attr(data-l);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--body);font-weight:600;font-size:.58rem;color:rgba(255,255,255,.94);white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.85)}
-  .hg-node.big.lab::after{font-size:.78rem;color:#241708;text-shadow:none}
-  .hg-node.you{box-shadow:0 0 0 6px rgba(201,169,110,.12),0 0 44px rgba(201,169,110,.35),inset 0 0 14px rgba(255,255,255,.25)}
-  .hg-l1 .hg-node{filter:blur(2.2px);opacity:.3}
-  .hg-l2 .hg-node{filter:blur(.7px);opacity:.5}
-  .hg-l3 .hg-node{opacity:.96}
-  .hg-tip{position:absolute;transform:translate(14px,-100%);background:linear-gradient(158deg,rgba(22,17,11,.96),rgba(14,11,7,.93));border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-family:var(--mono);font-size:.56rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;box-shadow:0 18px 44px -18px rgba(0,0,0,.9)}
-  .hg-tip b{color:var(--gold);font-weight:500}
-  @media(prefers-reduced-motion:no-preference){
-    .hg-l1{animation:hgd1 70s ease-in-out infinite alternate}
-    .hg-main{animation:hgd2 46s ease-in-out infinite alternate}
-    .js .hg-node{opacity:0;animation:hgin .9s ease forwards}
-    .js .hg-l1 .hg-node{animation:hgin1 .9s ease forwards}
-    .js .hg-l2 .hg-node{animation:hgin2 .9s ease forwards}
-    .hg-node:nth-child(1){animation-delay:.05s}.hg-node:nth-child(2){animation-delay:.12s}.hg-node:nth-child(3){animation-delay:.2s}.hg-node:nth-child(4){animation-delay:.28s}.hg-node:nth-child(5){animation-delay:.34s}.hg-node:nth-child(6){animation-delay:.4s}.hg-node:nth-child(7){animation-delay:.48s}.hg-node:nth-child(8){animation-delay:.54s}.hg-node:nth-child(9){animation-delay:.62s}.hg-node:nth-child(10){animation-delay:.68s}.hg-node:nth-child(11){animation-delay:.74s}.hg-node:nth-child(12){animation-delay:.8s}.hg-node:nth-child(13){animation-delay:.86s}.hg-node:nth-child(14){animation-delay:.9s}
-  }
-  @keyframes hgd1{to{transform:translate3d(-1.1%,1.5%,0)}}
-  @keyframes hgd2{to{transform:translate3d(1.5%,-1.2%,0)}}
-  @keyframes hgin{to{opacity:.96}}
-  @keyframes hgin1{to{opacity:.3}}
-  @keyframes hgin2{to{opacity:.5}}
-  @media(max-width:900px){.hero-graph{right:0;left:0;width:auto;opacity:.34;-webkit-mask-image:radial-gradient(120% 90% at 50% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(120% 90% at 50% 40%,#000 30%,transparent 80%)}.hg-tip{display:none}}
+  /* ═══ hero: copy | live brief demo built from entity cards (no text overlap) ═══ */
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:44px;align-items:center}
+  @media(min-width:1080px){.hero-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr)}
+    .hero-grid h1{font-size:clamp(2.9rem,5vw,4.9rem)}}
+  .hero-demo{position:relative;min-height:500px;pointer-events:none}
+  @media(max-width:1079px){.hero-demo{min-height:470px;max-width:560px;margin:10px auto 0;width:100%}}
+  .hd-web{position:absolute;inset:0;width:100%;height:100%}
+  .hd-web line{stroke:rgba(240,232,218,.08);stroke-width:1px;vector-effect:non-scaling-stroke}
+  .hd-web line.w{stroke:rgba(201,169,110,.24)}
+  .hd-dot{position:absolute;width:8px;height:8px;border-radius:50%;opacity:.38;transform:translate(-50%,-50%)}
+  .hero-demo .cg-card{position:absolute;transform:translate(-50%,-50%);opacity:.94}
+  .hd-b1{left:76%;top:12%}
+  .hd-b2{left:20%;top:82%}
+  .hd-brief{position:absolute;left:47%;top:47%;transform:translate(-50%,-50%);width:min(410px,94%);
+    background:linear-gradient(158deg,rgba(21,16,10,.97),rgba(13,10,7,.95));border:1px solid var(--line);border-radius:18px;
+    padding:18px 20px 16px;box-shadow:0 48px 120px -42px rgba(0,0,0,.95),inset 0 0 0 1px rgba(255,246,232,.02)}
+  .hb-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line-2)}
+  .hb-ava{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;color:#1a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
+  .hb-t{font-family:var(--body);font-weight:600;font-size:.84rem;color:var(--fg)}
+  .hb-s{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+  .hb-time{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:var(--faint)}
+  .hb-greet{font-family:var(--display);font-style:italic;font-size:1.08rem;line-height:1.4;color:var(--fg);padding:13px 2px 4px}
+  .hb-greet em{font-style:italic;color:var(--gold)}
+  .hb-list{list-style:none;margin:6px 0 2px;padding:0;display:flex;flex-direction:column;gap:9px}
+  .hb-li{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid var(--line-2);border-radius:11px;padding:9px 12px;background:rgba(255,246,232,.02)}
+  .hb-li .tx{position:relative;font-size:.82rem;color:var(--fg);line-height:1.35}
+  .hb-li .tx::after{content:'';position:absolute;left:0;top:56%;height:1.5px;width:0;background:rgba(240,232,218,.7);transition:width .5s ease .15s}
+  .hb-chip{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:4px 9px;white-space:nowrap}
+  .hb-chip svg{width:11px;height:11px;fill:var(--muted)}
+  .hb-li.you .tx{color:var(--fg);font-weight:500}
+  .hb-li.you{border-color:rgba(201,169,110,.32);background:rgba(201,169,110,.05)}
+  .hb-li.you .hb-chip{color:#e8c98a;border-color:rgba(201,169,110,.4)}
+  .hb-li.you .hb-chip svg{fill:#e8c98a}
+  .hb-li.done.on .tx{color:var(--muted)}
+  .hb-li.done.on .tx::after{width:100%}
+  .js .hb-li{opacity:0;transform:translateY(7px);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+  .js .hb-li.on{opacity:1;transform:none}
+  .js .hero-demo .cg-card,.js .hd-dot{opacity:0;transition:opacity .8s ease .2s}
+  .js .hero-demo.in .cg-card{opacity:.94}
+  .js .hero-demo.in .hd-dot{opacity:.38}
+  @media(prefers-reduced-motion:reduce){.js .hb-li{opacity:1;transform:none;transition:none}.js .hero-demo .cg-card{opacity:.94}.js .hd-dot{opacity:.38}.hb-li .tx::after{transition:none}}
 
   /* footer wordmark (outline, cropped) */
   footer{overflow:hidden}
@@ -489,75 +498,54 @@
 
 <!-- ── HERO ── -->
 <header class="hero wrap">
-  <div class="hero-graph" aria-hidden="true">
-    <div class="hg-l hg-l1">
-      <i class="hg-node" style="left:8%;top:18%;width:8px;height:8px;background:#5b8def"></i>
-      <i class="hg-node" style="left:22%;top:8%;width:6px;height:6px;background:#9aa3ad"></i>
-      <i class="hg-node" style="left:38%;top:14%;width:9px;height:9px;background:#e08a3c"></i>
-      <i class="hg-node" style="left:60%;top:6%;width:7px;height:7px;background:#5fae7d"></i>
-      <i class="hg-node" style="left:88%;top:12%;width:8px;height:8px;background:#5b8def"></i>
-      <i class="hg-node" style="left:14%;top:44%;width:7px;height:7px;background:#a86fd0"></i>
-      <i class="hg-node" style="left:5%;top:70%;width:9px;height:9px;background:#e08a3c"></i>
-      <i class="hg-node" style="left:30%;top:88%;width:7px;height:7px;background:#5b8def"></i>
-      <i class="hg-node" style="left:56%;top:94%;width:8px;height:8px;background:#9aa3ad"></i>
-      <i class="hg-node" style="left:80%;top:90%;width:6px;height:6px;background:#5fae7d"></i>
-      <i class="hg-node" style="left:96%;top:66%;width:9px;height:9px;background:#5b8def"></i>
-      <i class="hg-node" style="left:94%;top:34%;width:7px;height:7px;background:#c9a96e"></i>
-      <i class="hg-node" style="left:44%;top:96%;width:6px;height:6px;background:#a86fd0"></i>
-      <i class="hg-node" style="left:70%;top:2%;width:6px;height:6px;background:#e08a3c"></i>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="kick eyebrow"><span>COS Starter</span> <span class="num">· open-source AI chief of staff</span></div>
+      <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
+      <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
+      <div class="hero-cta">
+        <a href="#start" class="btn primary">Get Started</a>
+        <a href="https://milesukaoma.com/cos" class="btn ghost">See the philosophy</a>
+      </div>
+      <div class="badges">
+        <span class="chip"><b>118+</b> builders on the Even Hub</span>
+        <span class="chip">Claude Code + Codex <b>compatible</b></span>
+      </div>
     </div>
-    <div class="hg-main">
-      <svg class="hg-web" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <line class="w" x1="66" y1="44" x2="82" y2="28"/><line class="w" x1="66" y1="44" x2="52" y2="24"/>
-        <line class="w" x1="66" y1="44" x2="48" y2="58"/><line class="w" x1="66" y1="44" x2="84" y2="60"/>
-        <line class="w" x1="66" y1="44" x2="58" y2="74"/><line class="w" x1="66" y1="44" x2="36" y2="38"/>
-        <line class="w" x1="66" y1="44" x2="26" y2="64"/><line class="w" x1="66" y1="44" x2="72" y2="84"/>
-        <line x1="82" y1="28" x2="52" y2="24"/><line x1="52" y1="24" x2="36" y2="38"/>
-        <line x1="36" y1="38" x2="26" y2="64"/><line x1="26" y2="64" x2="48" y2="58" y1="64"/>
-        <line x1="48" y1="58" x2="58" y2="74"/><line x1="58" y1="74" x2="72" y2="84"/>
-        <line x1="72" y1="84" x2="84" y2="60"/><line x1="84" y1="60" x2="82" y2="28"/>
-        <line x1="52" y1="24" x2="40" y2="12"/><line x1="82" y1="28" x2="90" y2="16"/>
-        <line x1="36" y1="38" x2="20" y2="30"/><line x1="26" y1="64" x2="12" y2="58"/>
-        <line x1="58" y1="74" x2="46" y2="86"/><line x1="84" y1="60" x2="94" y2="48"/>
+    <div class="hero-demo" aria-hidden="true">
+      <svg class="hd-web" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line class="w" x1="76" y1="12" x2="47" y2="47"/>
+        <line class="w" x1="20" y1="82" x2="47" y2="47"/>
+        <line x1="76" y1="12" x2="92" y2="34"/><line x1="20" y1="82" x2="8" y2="62"/>
+        <line x1="47" y1="47" x2="92" y2="62"/><line x1="47" y1="47" x2="10" y2="24"/>
+        <line x1="76" y1="12" x2="52" y2="4"/><line x1="20" y1="82" x2="46" y2="94"/>
       </svg>
-      <div class="hg-l hg-l2">
-        <i class="hg-node" style="left:40%;top:12%;width:13px;height:13px;background:#5fae7d"></i>
-        <i class="hg-node" style="left:90%;top:16%;width:12px;height:12px;background:#5b8def"></i>
-        <i class="hg-node" style="left:20%;top:30%;width:14px;height:14px;background:#e08a3c"></i>
-        <i class="hg-node" style="left:12%;top:58%;width:12px;height:12px;background:#5b8def"></i>
-        <i class="hg-node" style="left:46%;top:86%;width:13px;height:13px;background:#9aa3ad"></i>
-        <i class="hg-node" style="left:94%;top:48%;width:14px;height:14px;background:#a86fd0"></i>
-        <i class="hg-node" style="left:64%;top:16%;width:12px;height:12px;background:#c9a96e"></i>
-        <i class="hg-node" style="left:32%;top:74%;width:12px;height:12px;background:#5fae7d"></i>
-        <i class="hg-node" style="left:76%;top:70%;width:13px;height:13px;background:#5b8def"></i>
-        <i class="hg-node" style="left:88%;top:78%;width:11px;height:11px;background:#e08a3c"></i>
+      <i class="hd-dot" style="left:92%;top:34%;background:#5b8def"></i>
+      <i class="hd-dot" style="left:8%;top:62%;background:#e08a3c"></i>
+      <i class="hd-dot" style="left:92%;top:62%;background:#5fae7d"></i>
+      <i class="hd-dot" style="left:10%;top:24%;background:#a86fd0"></i>
+      <i class="hd-dot" style="left:52%;top:4%;background:#9aa3ad"></i>
+      <i class="hd-dot" style="left:46%;top:94%;background:#5b8def"></i>
+      <div class="cg-card hd-b1">
+        <div class="cg-h"><div class="cg-badge"><svg><use href="#i-person"/></svg></div><div><div class="cg-t">Dana Mercer</div><div class="cg-m">Head of Growth</div></div></div>
+        <div class="cg-r"><span class="cg-k">Last met</span><span class="cg-v">2 days ago</span></div>
+        <div class="cg-r"><span class="cg-k">Open</span><span class="cg-v gold">Q3 launch</span></div>
       </div>
-      <div class="hg-l hg-l3">
-        <i class="hg-node lab" data-l="Priya" style="left:52%;top:24%;width:30px;height:30px;background:#5b8def"></i>
-        <i class="hg-node lab" data-l="Dana" style="left:82%;top:28%;width:32px;height:32px;background:#5b8def"></i>
-        <i class="hg-node lab" data-l="Pipeline" style="left:36%;top:38%;width:27px;height:27px;background:#e08a3c"></i>
-        <i class="hg-node lab" data-l="Jordan" style="left:48%;top:58%;width:29px;height:29px;background:#5b8def"></i>
-        <i class="hg-node lab" data-l="Northwind" style="left:84%;top:60%;width:30px;height:30px;background:#e08a3c"></i>
-        <i class="hg-node lab" data-l="Acme" style="left:26%;top:64%;width:25px;height:25px;background:#e08a3c"></i>
-        <i class="hg-node lab" data-l="Q3 Plan" style="left:58%;top:74%;width:27px;height:27px;background:#c9a96e"></i>
-        <i class="hg-node lab" data-l="Deck" style="left:72%;top:84%;width:23px;height:23px;background:#9aa3ad"></i>
-        <i class="hg-node big lab you" data-l="You" style="left:66%;top:44%;width:58px;height:58px;background:linear-gradient(150deg,#e8c98a,#c9a96e 60%,#b98a52)"></i>
-        <span class="hg-tip" style="left:70%;top:36%"><b>You</b> · 142 conn</span>
+      <div class="cg-card hd-b2">
+        <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mic"/></svg></div><div><div class="cg-t">Investor Update</div><div class="cg-m">Granola · 45 min</div></div></div>
+        <div class="cg-r"><span class="cg-k">Summary</span><span class="cg-v gold">3 action items</span></div>
+      </div>
+      <div class="hd-brief">
+        <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">COS · Morning Brief</div><div class="hb-s">built from your graph</div></div><span class="hb-time">7:02</span></div>
+        <p class="hb-greet">Morning, Dana. Three things need you. <em>I handled the rest.</em></p>
+        <ul class="hb-list">
+          <li class="hb-li done"><span class="tx">Recap sent to the Northwind thread</span><span class="hb-chip"><svg><use href="#b-gmail"/></svg>Done</span></li>
+          <li class="hb-li done"><span class="tx">#growth triaged, replies drafted</span><span class="hb-chip"><svg><use href="#b-slack"/></svg>Handled</span></li>
+          <li class="hb-li you"><span class="tx">Pipeline call at 9:30</span><span class="hb-chip"><svg><use href="#b-googlecalendar"/></svg>Brief ready</span></li>
+          <li class="hb-li you"><span class="tx">Q3 pricing needs your call</span><span class="hb-chip">Decision · Yours</span></li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="hero-fore">
-  <div class="kick eyebrow"><span>COS Starter</span> <span class="num">· open-source AI chief of staff</span></div>
-  <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
-  <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
-  <div class="hero-cta">
-    <a href="#start" class="btn primary">Get Started</a>
-    <a href="https://milesukaoma.com/cos" class="btn ghost">See the philosophy</a>
-  </div>
-  <div class="badges">
-    <span class="chip"><b>118+</b> builders on the Even Hub</span>
-    <span class="chip">Claude Code + Codex <b>compatible</b></span>
-  </div>
   </div>
   <div class="hero-meta">
     <div><b>118+</b> builders running COS</div>
@@ -1003,6 +991,24 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('in');}); }
+})();
+
+// Hero morning-brief timeline — namespaced to .hero-demo/.hb-*; loops, reduced-motion static
+(function(){
+  var demo=document.querySelector('.hero-demo'); if(!demo) return;
+  var items=demo.querySelectorAll('.hb-li');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setAll(){demo.classList.add('in');items.forEach(function(li){li.classList.add('on');});}
+  if(reduce||!('IntersectionObserver' in window)){setAll();return;}
+  var t=[];
+  function play(){
+    t.forEach(clearTimeout);t=[];
+    items.forEach(function(li){li.classList.remove('on');});
+    items.forEach(function(li,i){t.push(setTimeout(function(){li.classList.add('on');},1000+i*950));});
+    t.push(setTimeout(play,1000+items.length*950+7000));
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){demo.classList.add('in');play();io.disconnect();}});},{threshold:.25});
+  io.observe(demo);
 })();
 
 // Knowledge-graph teaser: hub-and-spoke with edges, depth, and hover cards (no physics loop)
