@@ -62,11 +62,18 @@
   .lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
   p{color:var(--muted)} p strong{color:var(--fg);font-weight:600}
   a{color:var(--gold);text-decoration:none}
+  .lead a,p a,.fq p a{text-decoration:underline;text-underline-offset:3px}
 
   /* reveal (gated on .js so no-JS, print, and reader modes always see content) */
-  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-  .js .reveal.in{opacity:1;transform:none}
-  @media print{.reveal,.cg-stage .cg-node,.cg-stage .cg-card,.chat-mock .pc-msg,.chat-mock .pc-chip{opacity:1!important;transform:none!important}}
+  .js .reveal:not(.light):not(.lightband){opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in:not(.light):not(.lightband){opacity:1;transform:none}
+  /* light grounds stay painted (no dark flash, no traveling seam); content cascades hero-style */
+  .js .reveal.light > *,.js .reveal.lightband > *{opacity:0;transform:translateY(20px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.light.in > *,.js .reveal.lightband.in > *{opacity:1;transform:none}
+  .js .reveal.light > *:nth-child(2){transition-delay:.1s}
+  .js .reveal.light > *:nth-child(3){transition-delay:.2s}
+  .js .reveal.light > *:nth-child(n+4){transition-delay:.28s}
+  @media print{.reveal,.reveal > *,.cg-stage .cg-node,.cg-stage .cg-card,.chat-mock .pc-msg,.chat-mock .pc-chip,.hb-li,.hero-demo .cg-card,.hd-dot{opacity:1!important;transform:none!important}}
 
   /* ── Nav ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gut);background:rgba(23,15,9,.78);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,.08)}
@@ -91,7 +98,7 @@
   .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.7)}
   .btn.ghost{border-color:var(--line-2);color:var(--fg)}
   .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
-  .badges{display:flex;gap:10px;margin-top:34px;align-items:center}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;align-items:center}
   .badges .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
   .badges .chip b{color:var(--rose);font-weight:500}
   .hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--faint)}
@@ -112,7 +119,7 @@
   .term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.02)}
   .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
   .term .bar .d1{background:#e0635b}.term .bar .d2{background:#e3b04b}.term .bar .d3{background:#5bb869}
-  .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--ghost)}
+  .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
   .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(201,169,110,.3) transparent}
   .term pre::-webkit-scrollbar{height:6px}
   .term pre::-webkit-scrollbar-thumb{background:rgba(201,169,110,.3);border-radius:3px}
@@ -160,7 +167,7 @@
 
   /* ── Teams CTA ── */
   .teams{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(38px,6vw,72px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);overflow:hidden}
-  .teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px;text-wrap:balance}
+  .teams h2,.teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px;text-wrap:balance}
   .teams p{max-width:54ch;margin:0 auto 30px}
 
   /* ── Philosophy quote ── */
@@ -289,13 +296,13 @@
   @media(max-width:860px){
     .cg-stage{height:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
     .cg-stage .cg-web,.cg-stage .cg-node{display:none}
-    .cg-stage .cg-card{position:static;transform:none;width:auto;opacity:1}
+    .cg-stage .cg-card,.js .cg-stage .cg-card{position:static;transform:none;width:auto;opacity:1;transition:none}
     .cg-stage .cg-card.back{display:none}
     .reveal.in .cg-stage .cg-card{transform:none}
     .kg-stage{height:320px}.kg-search{display:none}
   }
   @media(max-width:1040px){.cg-stage .cg-card.back{display:none}}
-  @media(prefers-reduced-motion:reduce){.reveal,.js .reveal{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
+  @media(prefers-reduced-motion:reduce){.reveal,.js .reveal,.js .reveal:not(.light):not(.lightband),.js .reveal.light > *,.js .reveal.lightband > *{opacity:1;transform:none;transition:none}.atmos .aur{animation:none}
     .cg-stage .cg-node,.cg-stage .cg-card,.js .cg-stage .cg-node,.js .cg-stage .cg-card{opacity:1;transition:none;transform:translate(-50%,-50%)}
     .cg-stage .cg-card.back,.js .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
     .cg-stage .cg-node.ghost,.js .cg-stage .cg-node.ghost{opacity:.36}}
@@ -333,6 +340,7 @@
   .reveal.in .chat-mock .pc-msg,.reveal.in .chat-mock .pc-chip{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.chat-mock .pc-msg,.chat-mock .pc-chip,.js .chat-mock .pc-msg,.js .chat-mock .pc-chip{opacity:1;transform:none;transition:none}}
   .kit-hint.ok{color:var(--green)}
+  section.light .kit-hint.ok{color:#2e5d43}
   #copyKit.copied{box-shadow:0 14px 40px -14px rgba(127,169,138,.65)}
   /* §09 COS Glasses — HUD slide visuals (green confined to the baked PNGs) */
   .gc .hud-frame{position:relative;width:100%;aspect-ratio:2/1;border-radius:12px;overflow:hidden;margin:-2px 0 16px;
@@ -341,14 +349,14 @@
   .gc .hud-frame img{display:block;width:100%;height:100%;object-fit:contain}
   .gc .hud-frame::after{content:'';position:absolute;inset:0;pointer-events:none;transform:translateY(-115%);
     background:linear-gradient(180deg,transparent 0,rgba(236,230,218,.12) 48%,transparent 54%)}
-  .reveal.in #glasses .gc:nth-child(1) .hud-frame::after{animation:hud-sweep .9s ease-out .15s 1}
-  .reveal.in #glasses .gc:nth-child(2) .hud-frame::after{animation:hud-sweep .9s ease-out .3s 1}
-  .reveal.in #glasses .gc:nth-child(3) .hud-frame::after{animation:hud-sweep .9s ease-out .45s 1}
+  #glasses.reveal.in .gc:nth-child(1) .hud-frame::after{animation:hud-sweep .9s ease-out .15s 1}
+  #glasses.reveal.in .gc:nth-child(2) .hud-frame::after{animation:hud-sweep .9s ease-out .3s 1}
+  #glasses.reveal.in .gc:nth-child(3) .hud-frame::after{animation:hud-sweep .9s ease-out .45s 1}
   @keyframes hud-sweep{from{transform:translateY(-115%)}to{transform:translateY(115%)}}
   @media(prefers-reduced-motion:reduce){.gc .hud-frame::after{display:none}}
 
   /* ═══ v3: warm-ground rhythm — cream light sections on espresso (bond-cadence, COS brand) ═══ */
-  section.light,.wrap.lightband{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(0 -100vmax)}
+  section.light,.wrap.lightband{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
   .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
   section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
   section.light .lead,section.light p,section.light .ck li{color:var(--muted-on-cream)}
@@ -373,12 +381,13 @@
   .lightband .ic-text span{color:var(--muted-on-cream)}
   .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
   section.light ::selection{background:rgba(138,106,52,.25);color:#241708}
+  section.light :focus-visible,.wrap.lightband :focus-visible{outline-color:#7a5c2c}
   section.light .term{background:#1c1610;border-color:rgba(46,31,16,.28);box-shadow:0 34px 70px -34px rgba(46,31,16,.5)}
   section.light .term .bar{background:rgba(255,255,255,.03);border-bottom-color:rgba(255,246,232,.08)}
   section.light .term pre{color:rgba(240,232,218,.62)}
 
   /* amber-burn transitions between grounds */
-  .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none}
+  .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
   .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
   .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 
@@ -878,7 +887,7 @@
 <div class="wrap reveal">
   <div class="inline-cta">
     <div class="ic-text"><b>Rolling this out to a team?</b><span>We'll help you get the whole team using it, not just the power users.</span></div>
-    <div class="ic-actions"><a class="btn primary" href="#teams" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="event.preventDefault();document.getElementById('teams').scrollIntoView({behavior:'smooth'});setTimeout(function(){var w=document.getElementById('teams-form-wrapper');if(w&&!w.classList.contains('expanded'))toggleTeamsForm();},600);">Tell us about your team</a><a class="btn ghost" href="/connect/">Book a working session</a></div>
+    <div class="ic-actions"><a class="btn primary" href="#teams" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="event.preventDefault();document.getElementById('teams').scrollIntoView();setTimeout(function(){var w=document.getElementById('teams-form-wrapper');if(w&&!w.classList.contains('expanded'))toggleTeamsForm();},600);">Tell us about your team</a><a class="btn ghost" href="/connect/">Book a working session</a></div>
   </div>
 </div>
 
@@ -906,7 +915,7 @@
 <section class="wrap reveal" id="teams">
   <div class="teams">
     <div class="eyebrow" style="justify-content:center"><span class="num">11</span> For Teams</div>
-    <h3>Most teams buy AI and watch <span class="g">80% of the seats go cold.</span></h3>
+    <h2>Most teams buy AI and watch <span class="g">80% of the seats go cold.</span></h2>
     <p>COS is built to be used. Hands-on onboarding gets every person to their first real answer in under 15 minutes. Shared team context so no one re-explains the company, and personal setups stay personal. Most teams go from a handful of power users to 70-80% daily use inside six weeks, and leadership sees adoption without chasing it.</p>
     <div class="hero-cta" style="justify-content:center">
       <a href="/readiness/" class="btn primary">Get your Readiness Score</a>
@@ -957,6 +966,7 @@
 <section class="wrap reveal" id="philosophy">
   <div class="split">
     <div class="sec-head"><div class="eyebrow"><span class="num">13</span> Philosophy</div>
+      <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0">The philosophy</h2>
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
     <div>
@@ -988,8 +998,9 @@
 (function(){
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -4% 0px'});
     els.forEach(function(el){io.observe(el);});
+    document.addEventListener('focusin',function(e){var s=e.target.closest('.reveal');if(s&&!s.classList.contains('in')){s.classList.add('in');io.unobserve(s);}});
   } else { els.forEach(function(el){el.classList.add('in');}); }
 })();
 
@@ -1097,12 +1108,14 @@ function submitTeamsForm(e){
 }
 // Copy the Starter Kit prompt: fetch the live canonical, fall back to a pointer
 function copyKit(){
-  var btn=document.getElementById('copyKit'),hint=document.querySelector('.kit-hint'),hintOrig=hint?hint.textContent:'';
+  var btn=document.getElementById('copyKit'),hint=document.querySelector('.kit-hint');
+  if(hint&&!hint.dataset.orig)hint.dataset.orig=hint.textContent;
+  var hintOrig=hint?hint.dataset.orig:'';
   function done(text,full){
     if(navigator.clipboard)navigator.clipboard.writeText(text);
     btn.classList.add('copied');
     if(hint){hint.textContent=full?'Copied. Paste into Claude Code or Codex':'Copied a link. Open it';hint.classList.add('ok');}
-    setTimeout(function(){btn.classList.remove('copied');if(hint){hint.textContent=hintOrig;hint.classList.remove('ok');}},2800);
+    clearTimeout(copyKit._t);copyKit._t=setTimeout(function(){btn.classList.remove('copied');if(hint){hint.textContent=hintOrig;hint.classList.remove('ok');}},2800);
   }
   fetch('https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md',{cache:'no-store'})
     .then(function(r){return r.ok?r.text():Promise.reject();})
