@@ -8,7 +8,7 @@
 <meta property="og:title" content="COS Starter · AI Chief of Staff">
 <meta property="og:description" content="Build an AI Chief of Staff that actually knows your job.">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
-<meta name="theme-color" content="#07090f">
+<meta name="theme-color" content="#170f09">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,10 @@
 
   :root{
     color-scheme:dark;
-    --ink:#07090f; --ink-2:#0b0e16; --panel:rgba(255,255,255,.025); --panel-2:rgba(255,255,255,.04);
-    --fg:#ece6da; --muted:rgba(236,230,218,.56); --faint:rgba(236,230,218,.50); --ghost:rgba(236,230,218,.34); --line:rgba(201,169,110,.16); --line-2:rgba(255,255,255,.07);
+    --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
+    --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.50); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
     --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+    --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.48); --line-on-cream:rgba(46,31,16,.14);
     --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
     --maxw:1140px; --gut:clamp(22px,5vw,72px);
   }
@@ -68,7 +69,7 @@
   @media print{.reveal,.cg-stage .cg-node,.cg-stage .cg-card,.chat-mock .pc-msg,.chat-mock .pc-chip{opacity:1!important;transform:none!important}}
 
   /* ── Nav ── */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px)}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gut);background:rgba(23,15,9,.78);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,.08)}
   .nav .brand{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--fg)}
   .nav .brand b{font-style:normal;font-weight:600}
   .nav .links{display:flex;gap:26px;align-items:center;font-size:.82rem;color:var(--muted)}
@@ -327,6 +328,60 @@
   .reveal.in #glasses .gc:nth-child(3) .hud-frame::after{animation:hud-sweep .9s ease-out .45s 1}
   @keyframes hud-sweep{from{transform:translateY(-115%)}to{transform:translateY(115%)}}
   @media(prefers-reduced-motion:reduce){.gc .hud-frame::after{display:none}}
+
+  /* ═══ v3: warm-ground rhythm — cream light sections on espresso (bond-cadence, COS brand) ═══ */
+  section.light,.wrap.lightband{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(0 -100vmax)}
+  .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
+  section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
+  section.light .lead,section.light p,section.light .ck li{color:var(--muted-on-cream)}
+  section.light .eyebrow{color:#8a6a34}
+  section.light .eyebrow::before{background:linear-gradient(90deg,#8a6a34,transparent)}
+  section.light .eyebrow .num{color:var(--faint-on-cream)}
+  section.light a{color:#8a6a34}
+  section.light code{color:#8a6a34}
+  section.light .tier,section.light .does{background:rgba(255,255,255,.58);border-color:var(--line-on-cream)}
+  section.light .tier:hover{border-color:rgba(138,106,52,.55)}
+  section.light .tier h3,section.light .does b,section.light .dm b{color:var(--ink-on-cream)}
+  section.light .tier p,section.light .does p,section.light .dm span{color:var(--muted-on-cream)}
+  section.light .tier .tl,section.light .kit-hint{color:var(--faint-on-cream)}
+  section.light .tier .bar-fill{background:rgba(46,31,16,.12)}
+  section.light .dm{border-top-color:var(--line-on-cream)}
+  section.light .does .n{color:#8a6a34}
+  section.light .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
+  section.light .btn.ghost:hover{border-color:#8a6a34;color:#8a6a34}
+  section.light .kit-does > .eyebrow{color:#8a6a34}
+  .lightband .inline-cta{background:rgba(255,255,255,.6);border-color:var(--line-on-cream)}
+  .lightband .ic-text b{color:var(--ink-on-cream)}
+  .lightband .ic-text span{color:var(--muted-on-cream)}
+  .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
+  section.light ::selection{background:rgba(138,106,52,.25);color:#241708}
+  section.light .term{background:#1c1610;border-color:rgba(46,31,16,.28);box-shadow:0 34px 70px -34px rgba(46,31,16,.5)}
+  section.light .term .bar{background:rgba(255,255,255,.03);border-bottom-color:rgba(255,246,232,.08)}
+  section.light .term pre{color:rgba(240,232,218,.62)}
+
+  /* amber-burn transitions between grounds */
+  .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none}
+  .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+  .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+
+  /* proof strip (hero) — real numbers */
+  .hero-meta{border-top:1px solid var(--line);padding-top:26px;gap:16px 44px}
+  .hero-meta b{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.15rem;margin-right:2px}
+
+  /* benefits trio (bond-cadence outcome cards) */
+  .bene-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  @media(max-width:860px){.bene-grid{grid-template-columns:1fr}}
+  .bene{border:1px solid var(--line-on-cream);border-radius:18px;padding:30px 26px 28px;background:rgba(255,255,255,.58)}
+  .bene .bh{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink-on-cream);text-wrap:balance}
+  .bene p{margin-top:12px;font-size:.94rem;line-height:1.6;color:var(--muted-on-cream)}
+  .bene .bt{margin-top:20px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6a34}
+  .bene-quote{margin-top:44px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.3;color:var(--ink-on-cream);text-wrap:balance;max-width:26ch}
+  .bene-quote small{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint-on-cream)}
+
+  /* footer wordmark (outline, cropped) */
+  footer{overflow:hidden}
+  .foot-mark{font-family:var(--display);font-weight:600;line-height:.72;font-size:clamp(110px,26vw,340px);letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1.5px rgba(201,169,110,.20);user-select:none;pointer-events:none;margin:52px auto -.16em}
+  @supports not (-webkit-text-stroke:1px black){.foot-mark{color:rgba(201,169,110,.08)}}
 </style>
 </head>
 <body>
@@ -363,26 +418,28 @@
 <!-- ── HERO ── -->
 <header class="hero wrap">
   <div class="kick eyebrow"><span>COS Starter</span> <span class="num">· open-source AI chief of staff</span></div>
-  <h1>The prompt was never <span class="l2 g">the problem.</span></h1>
-  <p class="sub">Build an AI Chief of Staff that actually knows your job. <b>Same model. Same prompt.</b> Give it your context, and it becomes something fundamentally different.</p>
+  <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
+  <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
   <div class="hero-cta">
     <a href="#start" class="btn primary">Get Started</a>
     <a href="https://milesukaoma.com/cos" class="btn ghost">See the philosophy</a>
   </div>
   <div class="badges">
+    <span class="chip"><b>118+</b> builders on the Even Hub</span>
     <span class="chip">Claude Code + Codex <b>compatible</b></span>
   </div>
   <div class="hero-meta">
+    <div><b>118+</b> builders running COS</div>
+    <div><b>122</b> releases since April</div>
+    <div><b>In production</b> at a growth agency</div>
     <div><b>5 min</b> to a working COS</div>
-    <div><b>14</b> capability domains</div>
-    <div><b>Yours</b> · fork the whole stack</div>
   </div>
 </header>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="burn down" aria-hidden="true"></div>
 
 <!-- ── 01 PROBLEM ── -->
-<section class="wrap reveal" id="problem">
+<section class="wrap reveal light" id="problem">
   <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="split">
     <div class="sec-head"><div class="eyebrow"><span class="num">01</span> The Problem</div>
@@ -402,11 +459,24 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<!-- ── 02 WHAT CHANGES ── -->
+<section class="wrap reveal light" id="benefits">
+  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> What Changes</div>
+    <h2>You stop briefing the AI. <span class="it g">It starts briefing you.</span></h2>
+  </div>
+  <div class="bene-grid">
+    <div class="bene"><div class="bh">Walk in already knowing.</div><p>A morning brief built from your calendar, your threads, and your people. Prep for every meeting without opening six tabs.</p><div class="bt">Daily brief &middot; /prep</div></div>
+    <div class="bene"><div class="bh">Ask like it works there.</div><p>Instant answers from everything your company knows: clients, decisions, docs, calls. Not generic advice. Your context.</p><div class="bt">Instant recall &middot; your graph</div></div>
+    <div class="bene"><div class="bh">Add capacity, not headcount.</div><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p><div class="bt">Skills &middot; scheduled work</div></div>
+  </div>
+  <p class="bene-quote">&ldquo;Add revenue without adding headcount.&rdquo;<small>The brief one agency gave us for their COS. It stuck.</small></p>
+</section>
 
-<!-- ── 02 THE CONTEXT GRAPH ── -->
+<div class="burn up" aria-hidden="true"></div>
+
+<!-- ── 03 THE CONTEXT GRAPH ── -->
 <section class="wrap reveal" id="graph">
-  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> The Context Graph</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> The Context Graph</div>
     <h2>One context graph. <span class="it g">Every source you already use.</span></h2>
     <p class="lead">Not another app to move into. COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected context graph. Structured, searchable, and yours.</p>
   </div>
@@ -520,9 +590,9 @@
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 03 YOUR KNOWLEDGE GRAPH ── -->
+<!-- ── 04 YOUR KNOWLEDGE GRAPH ── -->
 <section class="wrap reveal" id="realgraph">
-  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> Your Knowledge Graph</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">04</span> Your Knowledge Graph</div>
     <h2>Everything it knows about your work. <span class="it g">Out in the open.</span></h2>
     <p class="lead">Everything COS learns becomes a living knowledge graph: every person, company, meeting, and decision you touch, extracted and connected. Search it, watch it compound, and own every byte. The longer you run it, the more it knows.</p>
   </div>
@@ -550,13 +620,13 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
+<div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 04 QUICK START ── -->
-<section class="wrap reveal" id="start">
+<!-- ── 05 QUICK START ── -->
+<section class="wrap reveal light" id="start">
   <div class="start-top">
     <div class="start-copy">
-      <div class="sec-head"><div class="eyebrow"><span class="num">04</span> Quick Start</div>
+      <div class="sec-head"><div class="eyebrow"><span class="num">05</span> Quick Start</div>
         <h2>Five minutes to a <span class="it g">working COS.</span></h2>
         <p class="lead">No setup gymnastics. Open <a href="https://claude.ai/claude-code">Claude Code</a> or <a href="https://developers.openai.com/codex/">Codex</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the whole system for you.</p>
       </div>
@@ -590,16 +660,16 @@
   </div>
 </section>
 
-<div class="wrap reveal">
+<div class="wrap reveal lightband">
   <div class="inline-cta">
     <div class="ic-text"><b>Rather have it done with you?</b><span>Skip the DIY. We stand up your COS in a working session, then your team runs it.</span></div>
     <div class="ic-actions"><a class="btn primary" href="/connect/">Book a working session</a></div>
   </div>
 </div>
 
-<!-- ── 05 WHAT YOU GET ── -->
-<section class="wrap reveal" id="get">
-  <div class="sec-head"><div class="eyebrow"><span class="num">05</span> What You Get</div>
+<!-- ── 06 WHAT YOU GET ── -->
+<section class="wrap reveal light" id="get">
+  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> What You Get</div>
     <h2>A directory that <span class="it g">is</span> the system.</h2>
   </div>
   <div class="term">
@@ -619,11 +689,9 @@
   <p style="margin-top:24px">Every Claude Code session in this directory starts with your full context loaded. No re-explaining. Just: <strong>here is what matters today.</strong></p>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
-
-<!-- ── 06 TIERS ── -->
-<section class="wrap reveal" id="tiers">
-  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> The 4 Tiers</div>
+<!-- ── 07 TIERS ── -->
+<section class="wrap reveal light" id="tiers">
+  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> The 4 Tiers</div>
     <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
   </div>
   <div class="tiers">
@@ -635,11 +703,9 @@
   <p style="margin-top:26px">Most people never get past Tier 1 with AI tools. <strong>COS pulls you forward.</strong></p>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
-
-<!-- ── 07 COVERAGE ── -->
-<section class="wrap reveal" id="assess">
-  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> Coverage Gap</div>
+<!-- ── 08 COVERAGE ── -->
+<section class="wrap reveal light" id="assess">
+  <div class="sec-head"><div class="eyebrow"><span class="num">08</span> Coverage Gap</div>
     <h2>Score yourself across <span class="it g">14 domains.</span></h2>
     <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold)">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
   </div>
@@ -661,16 +727,18 @@
   </div>
 </section>
 
-<div class="wrap reveal">
+<div class="wrap reveal lightband">
   <div class="inline-cta">
     <div class="ic-text"><b>See exactly where you stand.</b><span>See your team's biggest gaps and what to fix first. 12 questions, about 3 minutes, right in your browser.</span></div>
     <div class="ic-actions"><a class="btn primary" href="/readiness/">Get your Readiness Score</a></div>
   </div>
 </div>
 
-<!-- ── 08 INTEGRATIONS ── -->
+<div class="burn up" aria-hidden="true"></div>
+
+<!-- ── 09 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
-  <div class="sec-head"><div class="eyebrow"><span class="num">08</span> Integrations</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">09</span> Integrations</div>
     <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
@@ -689,9 +757,9 @@
   </div>
 </div>
 
-<!-- ── 09 GLASSES ── -->
+<!-- ── 10 GLASSES ── -->
 <section class="wrap reveal" id="glasses">
-  <div class="sec-head"><div class="eyebrow"><span class="num">09</span> COS Glasses</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">10</span> COS Glasses</div>
     <h2>The frame, <span class="it g">on your face.</span></h2>
     <p class="lead">Running on Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
   </div>
@@ -712,7 +780,7 @@
 <!-- ── 10 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
-    <div class="eyebrow" style="justify-content:center"><span class="num">10</span> For Teams</div>
+    <div class="eyebrow" style="justify-content:center"><span class="num">11</span> For Teams</div>
     <h3>Most teams buy AI and watch <span class="g">80% of the seats go cold.</span></h3>
     <p>COS is built to be used. Hands-on onboarding gets every person to their first real answer in under 15 minutes. Shared team context so no one re-explains the company, and personal setups stay personal. Most teams go from a handful of power users to 70-80% daily use inside six weeks, and leadership sees adoption without chasing it.</p>
     <div class="hero-cta" style="justify-content:center">
@@ -743,7 +811,7 @@
 <!-- ── 11 PHILOSOPHY ── -->
 <section class="wrap reveal" id="philosophy">
   <div class="split">
-    <div class="sec-head"><div class="eyebrow"><span class="num">11</span> Philosophy</div>
+    <div class="sec-head"><div class="eyebrow"><span class="num">12</span> Philosophy</div>
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
     <div>
@@ -762,12 +830,13 @@
 </section>
 
 <footer>
-  <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <div class="q">The prompt was never the problem.</div>
   <div class="links">
     <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
     <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·
     <a href="LICENSE">MIT License</a>
   </div>
+  <div class="foot-mark" aria-hidden="true">COS</div>
 </footer>
 
 <script>
