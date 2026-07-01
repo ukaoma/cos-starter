@@ -342,6 +342,31 @@
   .kit-hint.ok{color:var(--green)}
   section.light .kit-hint.ok{color:#2e5d43}
   #copyKit.copied{box-shadow:0 14px 40px -14px rgba(127,169,138,.65)}
+  /* §10 glasses pairing stage: animated lens HUD floating above the G2 frame */
+  .g2-top{display:grid;gap:clamp(28px,5vw,56px);align-items:center;margin-bottom:clamp(30px,5vw,52px)}
+  @media(min-width:980px){.g2-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .g2-stage{position:relative;display:flex;flex-direction:column;align-items:center;max-width:520px;margin-inline:auto;pointer-events:none}
+  .g2-img{display:block;width:min(440px,88%);height:auto;margin-top:-10px;filter:drop-shadow(0 30px 54px rgba(0,0,0,.6))}
+  .glhud{position:relative;z-index:1;width:min(430px,100%);border-radius:14px;background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.6),rgba(7,9,15,.95));box-shadow:0 34px 80px -38px rgba(0,0,0,.9),inset 0 0 0 1px rgba(201,169,110,.10);padding:13px 15px 11px;display:flex;flex-direction:column;gap:7px;font-family:var(--mono);color:#46e878;text-shadow:0 0 9px rgba(70,232,120,.4),0 0 2px rgba(70,232,120,.85);text-align:left}
+  .glhud .gt-head{font-size:.72rem;color:#7df0a3;display:flex;align-items:center;gap:7px;white-space:nowrap}
+  .glhud .gt-meter{display:inline-flex;align-items:flex-end;gap:2.5px;height:12px}
+  .glhud .gt-meter i{width:7px;height:4px;background:rgba(70,232,120,.22);border-radius:1px}
+  .glhud .gt-body{border:1.5px solid #46e878;border-radius:9px;padding:8px 12px;box-shadow:0 0 12px rgba(70,232,120,.15),inset 0 0 9px rgba(70,232,120,.04)}
+  .glhud .gt-line{font-size:.68rem;line-height:1.5;margin:0 0 4px;color:#46e878}
+  .glhud .gt-line:last-child{margin-bottom:0}
+  .glhud .gt-spk{color:#9ffabb}
+  .glhud .gt-cur{display:inline-block;width:6px;height:.95em;vertical-align:-2px;margin-left:2px;background:#46e878;opacity:0}
+  .glhud .gt-foot{font-size:.68rem;opacity:.92;white-space:nowrap}
+  @media(prefers-reduced-motion:no-preference){
+    #glasses.reveal.in .glhud .gt-meter i{animation:glm 1.05s ease-in-out infinite}
+    #glasses.reveal.in .glhud .gt-meter i:nth-child(2){animation-delay:.16s}
+    #glasses.reveal.in .glhud .gt-meter i:nth-child(3){animation-delay:.34s}
+    #glasses.reveal.in .glhud .gt-meter i:nth-child(4){animation-delay:.09s}
+    #glasses.reveal.in .glhud .gt-cur{animation:glb .9s step-end infinite}
+  }
+  @keyframes glm{0%,100%{height:4px;background:rgba(70,232,120,.22)}50%{height:12px;background:#46e878;box-shadow:0 0 5px rgba(70,232,120,.6)}}
+  @keyframes glb{0%,49%{opacity:1}50%,100%{opacity:0}}
+
   /* §09 COS Glasses — HUD slide visuals (green confined to the baked PNGs) */
   .gc .hud-frame{position:relative;width:100%;aspect-ratio:2/1;border-radius:12px;overflow:hidden;margin:-2px 0 16px;
     background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.5),rgba(7,9,15,.92));
@@ -893,25 +918,41 @@
 
 <!-- ── 10 GLASSES ── -->
 <section class="wrap reveal" id="glasses">
-  <div class="sec-head"><div class="eyebrow"><span class="num">10</span> COS Glasses</div>
-    <h2>The frame, <span class="it g">on your face.</span></h2>
-    <p class="lead">Running on Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
+  <div class="g2-top">
+    <div class="g2-copy">
+      <div class="sec-head"><div class="eyebrow"><span class="num">10</span> COS Glasses</div>
+        <h2>The frame, <span class="it g">on your face.</span></h2>
+        <p class="lead">Every green screen on this page lives here: the Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
+      </div>
+      <div class="hero-cta" style="margin-top:30px">
+        <a href="wizard/" class="btn primary">Get Started</a>
+        <a href="https://hub.evenrealities.com" class="btn ghost">Get it on the Even Hub</a>
+        <a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a>
+      </div>
+    </div>
+    <div class="g2-stage" aria-hidden="true">
+      <div class="glhud">
+        <div class="gt-head"><span class="gt-meter"><i></i><i></i><i></i><i></i></span> <span>REC</span> <span class="gt-time">12:47</span>  &#9733;2  100%</div>
+        <div class="gt-body">
+          <p class="gt-line"><span class="gt-spk">[Priya]</span> if we shift budget to the comparison pages we can hold CPA under target.</p>
+          <p class="gt-line"><span class="gt-spk">[You]</span> Lock that in. Flag it in the recap as a decision.</p>
+          <p class="gt-line"><span class="gt-spk">[Marcus]</span> I will have the brief ready Thursday.<span class="gt-cur"></span></p>
+        </div>
+        <div class="gt-foot">Double-tap &#9733; bookmark   &#8595; end</div>
+      </div>
+      <img class="g2-img" src="assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
+    </div>
   </div>
   <div class="glass-grid">
     <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-2.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: an answer streaming in green on the heads-up display."></div><div class="tl">On the lens</div><h3>Talk &amp; listen</h3><p>On-lens chat across Opus, Sonnet, Haiku, or Codex. Voice dictation with send / edit / re-record, answers read to your earbuds.</p></div>
     <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: meeting takeaways and action items in green."></div><div class="tl">Meeting-aware</div><h3>It works while you talk</h3><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
     <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-1.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: time, weather, and next meeting at a glance in green."></div><div class="tl">Yours to run</div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
   </div>
-  <div class="hero-cta" style="margin-top:34px">
-    <a href="wizard/" class="btn primary">Get Started</a>
-    <a href="https://hub.evenrealities.com" class="btn ghost">Get it on the Even Hub</a>
-    <a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a>
-  </div>
 </section>
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 10 TEAMS ── -->
+<!-- ── 11 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
     <div class="eyebrow" style="justify-content:center"><span class="num">11</span> For Teams</div>
@@ -1020,6 +1061,14 @@
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){demo.classList.add('in');play();io.disconnect();}});},{threshold:.25});
   io.observe(demo);
+})();
+
+// Glasses HUD timer — namespaced to .glhud; static under reduced motion
+(function(){
+  var t=document.querySelector('.glhud .gt-time'); if(!t) return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var s=767;
+  setInterval(function(){s++;t.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');},1000);
 })();
 
 // Knowledge-graph teaser: hub-and-spoke with edges, depth, and hover cards (no physics loop)
