@@ -286,10 +286,20 @@
   .js .cg-stage .cg-node{transform:translate(-50%,calc(-50% + 14px))}
   .js .cg-stage .cg-card{transform:translate(-50%,calc(-50% + 22px))}
   .js .cg-stage .cg-card.back{transform:translate(-50%,calc(-50% + 22px)) scale(.92)}
-  .reveal.in .cg-stage .cg-node{opacity:1;transform:translate(-50%,-50%)}
-  .reveal.in .cg-stage .cg-node.ghost{opacity:.36;transform:translate(-50%,-50%)}
-  .reveal.in .cg-stage .cg-card{opacity:1;transform:translate(-50%,-50%)}
-  .reveal.in .cg-stage .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
+  .cg-stage.go .cg-node{opacity:1;transform:translate(-50%,-50%)}
+  .cg-stage.go .cg-node.ghost{opacity:.36;transform:translate(-50%,-50%)}
+  .cg-stage.go .cg-card{opacity:1;transform:translate(-50%,-50%)}
+  .cg-stage.go .cg-card.back{opacity:.5;transform:translate(-50%,-50%) scale(.92)}
+  /* ambient float (desktop, motion-ok): cards hover in space after the reveal settles */
+  @media(min-width:861px) and (prefers-reduced-motion:no-preference){
+    .cg-stage.go .cg-card{animation:cgfloat 6s ease-in-out calc(1.2s + var(--d,0s)) infinite alternate}
+    .cg-stage.go .cg-card.back{animation:cgfloatb 7.5s ease-in-out calc(1.2s + var(--d,0s)) infinite alternate}
+  }
+  /* hover pulse: scale composes with the animated transform */
+  @media(hover:hover) and (pointer:fine){
+    .cg-stage.go .cg-card{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),scale .25s ease,box-shadow .25s ease}
+    .cg-stage.go .cg-card:hover{scale:1.03;box-shadow:0 40px 92px -28px rgba(0,0,0,.95),0 0 0 1px rgba(201,169,110,.4)}
+  }
   .cg-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
   @media(max-width:820px){.cg-pillars{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.cg-pillars{grid-template-columns:1fr}}
@@ -333,7 +343,7 @@
     .cg-stage .cg-web,.cg-stage .cg-node{display:none}
     .cg-stage .cg-card,.js .cg-stage .cg-card{position:static;transform:none;width:auto;opacity:1;transition:none}
     .cg-stage .cg-card.back{display:none}
-    .reveal.in .cg-stage .cg-card{transform:none}
+    .cg-stage.go .cg-card{transform:none}
     .kg-stage{height:320px}.kg-search{display:none}
   }
   @media(max-width:1040px){.cg-stage .cg-card.back{display:none}}
@@ -413,6 +423,8 @@
     #glasses.reveal.in .glhud .gt-cur{animation:glb .9s step-end infinite}
   }
   @keyframes glm{0%,100%{height:4px;background:rgba(70,232,120,.22)}50%{height:12px;background:#46e878;box-shadow:0 0 5px rgba(70,232,120,.6)}}
+  @keyframes cgfloat{from{transform:translate(-50%,-50%)}to{transform:translate(-50%,calc(-50% - 7px))}}
+  @keyframes cgfloatb{from{transform:translate(-50%,-50%) scale(.92)}to{transform:translate(-50%,calc(-50% - 5px)) scale(.92)}}
   @keyframes glb{0%,49%{opacity:1}50%,100%{opacity:0}}
 
   /* §09 COS Glasses — HUD slide visuals (green confined to the baked PNGs) */
@@ -661,8 +673,7 @@
   </div>
   <div class="hero-meta">
     <div><b>118+</b> builders running COS</div>
-    <div><b>122</b> releases since April</div>
-    <div><b>In production</b> at a growth agency</div>
+    <div><b>In production</b> at agencies and consulting shops</div>
     <div><b>5 min</b> to a working COS</div>
   </div>
 </header>
@@ -1121,7 +1132,9 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -4% 0px'});
     els.forEach(function(el){io.observe(el);});
     document.addEventListener('focusin',function(e){var s=e.target.closest('.reveal');if(s&&!s.classList.contains('in')){s.classList.add('in');io.unobserve(s);}});
-  } else { els.forEach(function(el){el.classList.add('in');}); }
+    var cgs=document.getElementById('cgStage');
+    if(cgs){var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cgs.classList.add('go');sio.disconnect();}});},{threshold:.28});sio.observe(cgs);}
+  } else { els.forEach(function(el){el.classList.add('in');}); var cgs2=document.getElementById('cgStage'); if(cgs2)cgs2.classList.add('go'); }
 })();
 
 // Hero morning-brief timeline — namespaced to .hero-demo/.hb-*; loops, reduced-motion static
