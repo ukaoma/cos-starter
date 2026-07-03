@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personalize your COS Glasses · Setup Wizard</title>
   <meta name="description" content="Tell us how you'll use Even G2. We'll tune the model, your context, and what shows on the lens, then hand you the exact setup.">
-  <meta name="theme-color" content="#07090f">
+  <meta name="theme-color" content="#170f09">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -23,12 +23,12 @@
 
     :root {
       color-scheme: dark;
-      --bg-deep: #07090f;
-      --bg-card: rgba(16, 19, 27, 0.85);
-      --bg-surface: rgba(255, 255, 255, 0.03);
+      --bg-deep: #170f09;
+      --bg-card: rgba(32, 21, 13, 0.80);
+      --bg-surface: rgba(255, 246, 232, 0.03);
       --border-subtle: rgba(201, 169, 110, 0.16);
-      --border-form: rgba(255, 255, 255, 0.08);
-      --text-primary: #ece6da;
+      --border-form: rgba(255, 246, 232, 0.09);
+      --text-primary: #f0e8da;
       --text-muted: rgba(236, 230, 218, 0.5);
       --text-label: rgba(236, 230, 218, 0.62);
       --accent-rose: #c4736e;
@@ -75,7 +75,7 @@
       background: var(--accent-rose); color: #2b1512; font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
     }
-    .step h2 { font-size: 1.12rem; font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+    .step h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
     .step .sub { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.2rem; }
 
     /* ── Option grid (multi + single select share styling) ── */
@@ -111,7 +111,7 @@
     }
     .field input::placeholder { color: rgba(236,230,218,0.34); }
     .field input:focus { background: rgba(255,255,255,0.07); border-color: var(--accent-gold); }
-    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #10131c inset; -webkit-text-fill-color: var(--text-primary); caret-color: var(--text-primary); transition: background-color 9999s; }
+    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #2a1c10 inset; -webkit-text-fill-color: var(--text-primary); caret-color: var(--text-primary); transition: background-color 9999s; }
 
     /* ── Notes ── */
     .note { background: rgba(201, 169, 110, 0.06); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 11px 15px; margin: 1rem 0 0; font-size: 0.8rem; color: var(--text-label); line-height: 1.5; }
@@ -120,7 +120,7 @@
     /* ── Result card ── */
     .result { background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(14,19,30,0.85)); border: 1px solid rgba(201,169,110,0.28); border-radius: 14px; padding: 2rem 1.9rem; margin-top: 2.4rem; position: relative; }
     .result::before { content: 'Your build'; position: absolute; top: -11px; left: 20px; background: var(--accent-gold); color: #0b0f17; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
-    .result h2 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .result h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.3rem; }
     .result h2 em { font-family: var(--font-display); font-style: italic; color: var(--accent-gold); font-weight: 400; }
     .result .config-line { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.3rem; min-height: 1.2em; }
     .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.4rem; margin-bottom: 1.4rem; }
@@ -197,7 +197,7 @@
     .mkt { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
     .mkt-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-gold); display: inline-flex; align-items: center; gap: 14px; opacity: .9; margin-bottom: 1rem; }
     .mkt-eyebrow::before { content: ''; width: 34px; height: 1px; background: linear-gradient(90deg, var(--accent-gold), transparent); }
-    .mkt-h { font-family: var(--font-body); font-weight: 300; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .mkt-h { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; }
     .mkt-h .g { font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--accent-gold); }
     .mkt-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.65; max-width: 40ch; margin-top: 1.1rem; }
 
@@ -326,6 +326,243 @@
 <div class="atmos" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div></div>
 <a href="https://www.gotcos.com" aria-label="Back to gotcos.com" style="position:fixed;top:18px;left:clamp(22px,5vw,56px);z-index:50;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:1.05rem;color:#ece6da;text-decoration:none"><b style="font-style:normal;font-weight:600">COS</b> Starter</a>
 
+
+
+<div class="page">
+
+  <div class="setup-seam" style="padding-top:3.2rem">
+    <div class="mkt-eyebrow" style="justify-content:center">COS Glasses &middot; Setup</div>
+    <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Your glasses, live in <span style="font-style:italic;color:var(--accent-gold)">about 10 minutes.</span></h1>
+    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.7rem auto 0;">Three steps: run the server on your Mac, connect the app on your iPhone, say your first prompt. No decisions required up front &mdash; everything is tunable later.</p>
+  </div>
+
+  <div class="step" data-step="Before you start">
+    <h2>You need three things</h2>
+    <ul class="checklist">
+      <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
+      <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; the server runs here, on your keys</li>
+      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; <a href="https://claude.ai/download">Claude Code</a> powers Opus, Sonnet, and Haiku; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers Codex High. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+    </ul>
+    <div class="note"><strong>Came here from the Even Hub?</strong> You already have the app half &mdash; the server in Step 1 below is the missing piece.</div>
+  </div>
+
+
+  <!-- QUICK START (default) -->
+  <div id="path-quick">
+    <div class="step" data-step="Quick Start" style="margin-top:1.5rem;">
+      <h2>Three steps, smart defaults</h2>
+      <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
+      <div class="summary">
+        <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free)</small></span></div>
+        <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
+        <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
+      </div>
+      <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. First run walks you through config and prints your <b style="color:var(--text-label);font-weight:600;">server URL + API token</b> &mdash; you'll paste those into the app in Step 2. Free local voice: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> once.</p>
+      <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
+      <ul class="enable">
+        <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
+        <li>Open it and enter the server URL + API token from your terminal (or tap <b>"I have a COS username"</b> and skip the typing).</li>
+        <li>Tap <b>Connect</b>.</li>
+      </ul>
+      <div class="res-label">3 &middot; Prove it</div>
+      <ul class="enable">
+        <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
+        <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
+      </ul>
+      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Your glasses inherit its context, model, and skills automatically; nothing extra to wire. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
+      <div class="actions">
+        <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
+        <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
+      </div>
+      <p class="hosted">Want to tune model, context, and the lens? <a href="#tune" onclick="var t=document.getElementById('tune');t.open=true;t.scrollIntoView({behavior:'smooth'});return false;">Make it yours below.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
+    </div>
+  </div>
+
+  <!-- MAKE IT YOURS: optional personalization (the old Build-it configurator) -->
+  <details class="detailed-setup" id="tune">
+    <summary>Make it yours &mdash; model, context, lens (optional)</summary>
+    <div class="ds-body">
+      <p class="sub" style="margin:0.8rem 0 0.4rem;">Nothing here blocks setup &mdash; the glasses run great on the defaults. Tune when you're ready; every pick renders a personalized checklist at the bottom.</p>
+
+  <!-- Step 1: Use cases (the driver) -->
+  <div class="step" data-step="Step 1">
+    <h2>How will you use them?</h2>
+    <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
+    <div class="opt-grid" id="usecases">
+      <button type="button" class="opt" data-uc="meetings"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Capture</span><h3>Meetings &amp; calls</h3><p>Live transcription, speaker labels, action items.</p></button>
+      <button type="button" class="opt" data-uc="capture"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">On the go</span><h3>Quick capture</h3><p>Voice to tasks and notes, hands-free.</p></button>
+      <button type="button" class="opt" data-uc="assistant"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Always on</span><h3>Ask-anything assistant</h3><p>Glance-able answers on the lens, any moment.</p></button>
+      <button type="button" class="opt" data-uc="comms"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Write</span><h3>Comms &amp; replies</h3><p>Dictate, review, send without your phone.</p></button>
+      <button type="button" class="opt" data-uc="dev"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Technical</span><h3>Dev &amp; debugging</h3><p>Codex on the lens for code and commands.</p></button>
+      <button type="button" class="opt" data-uc="field"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Hands-free</span><h3>Field / moving</h3><p>A minimal HUD you can read at a glance.</p></button>
+    </div>
+  </div>
+
+  <!-- Step 2: Brain -->
+  <div class="step" data-step="Step 2 · Brain">
+    <h2>Pick your default brain</h2>
+    <p class="sub">A soft default, not a commitment &mdash; every model stays available per query, by voice or from the toolbar. Opus, Sonnet, and Haiku run on Claude Code; Codex High runs on Codex CLI.</p>
+    <div class="opt-grid three" id="models">
+      <button type="button" class="opt" data-model="opus"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Depth</span><h3>Opus</h3><p>Hardest reasoning, richest answers.</p></button>
+      <button type="button" class="opt" data-model="sonnet"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Balance</span><h3>Sonnet</h3><p>Fast and sharp. The everyday default.</p></button>
+      <button type="button" class="opt" data-model="haiku"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Speed</span><h3>Haiku</h3><p>Snappiest, lightest, lowest cost.</p></button>
+      <button type="button" class="opt" data-model="codex"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Code</span><h3>Codex High</h3><p>Technical depth via the local Codex CLI.</p></button>
+    </div>
+    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on the Claude Code and/or Codex plans you already have. Install both engines and all four brains stay available &mdash; the server uses whichever is present. Voice is separate; see Compute below.</div>
+  </div>
+
+  <!-- Step 3: Identity -->
+  <div class="step" data-step="Step 3 · Identity">
+    <h2>Who is it working for?</h2>
+    <p class="sub">This grounds the COS so it knows your job. Lives in your config, never in the code.</p>
+    <div class="field-row">
+      <div class="field"><label>Name</label><input id="f-name" type="text" placeholder="Miles Ukaoma" autocomplete="off"></div>
+      <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
+    </div>
+    <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
+  </div>
+
+  <!-- Step 4: Context -->
+  <div class="step" data-step="Step 4 · Functionality">
+    <h2>What context should it see?</h2>
+    <p class="sub">Wire the sources you live in. We pre-select what fits your use cases. Adjust freely.</p>
+    <div class="opt-grid" id="context">
+      <button type="button" class="opt" data-ctx="calendar"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Time</span><h3>Calendar</h3><p>Today, next up, who you're meeting.</p></button>
+      <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
+      <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
+      <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
+      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Memory</span><h3>Semantic memory</h3><p>Search everything you've captured by meaning.</p></button>
+      <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
+    </div>
+  </div>
+
+  <!-- Step 5: Compute / voice -->
+  <div class="step" data-step="Step 5 · Compute">
+    <h2>Where does it run, and how does voice work?</h2>
+    <p class="sub">The server runs on your Mac. Your keys, your machine. Pick how voice is transcribed.</p>
+    <div class="opt-grid" id="voice">
+      <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
+      <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
+    </div>
+    <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
+  </div>
+
+  <!-- Step 6: HUD -->
+  <div class="step" data-step="Step 6 · On the lens">
+    <h2>What shows on the lens?</h2>
+    <p class="sub">Your default layout. Adaptive switches it by context.</p>
+    <div class="opt-grid" id="hud">
+      <button type="button" class="opt" data-hud="minimal"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Clean</span><h3>Minimal</h3><p>Just the answer. Nothing else.</p></button>
+      <button type="button" class="opt" data-hud="meeting"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">In the room</span><h3>Meeting mode</h3><p>Live transcript plus surfaced actions.</p></button>
+      <button type="button" class="opt" data-hud="glance"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">At a glance</span><h3>Glance</h3><p>Time, next event, top tasks.</p></button>
+      <button type="button" class="opt" data-hud="adaptive"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Smart</span><h3>Adaptive</h3><p>Switches by context: meeting, free, moving.</p></button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result" id="result">
+    <h2>Your COS Glasses, <em id="r-for">ready to set up</em></h2>
+    <p class="config-line" id="r-config">Make your picks above and your personalized setup appears here.</p>
+
+    <div class="summary">
+      <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
+      <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
+      <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
+      <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
+    </div>
+
+    <div class="res-label">1 · Start your server (self-host)</div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
+
+    <div class="res-label">2 · Drop in your identity</div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/identity.md
+Name: Your Name
+Role: Your Role</span></div>
+
+    <div class="res-label">3 · Turn these on in the app</div>
+    <ul class="enable" id="r-enable">
+      <li>Set <b>Default chat model</b> to your pick.</li>
+      <li>Connect the context sources you selected.</li>
+      <li>Choose your <b>HUD layout</b>.</li>
+    </ul>
+
+    <div class="actions">
+      <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
+      <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
+    </div>
+    <p class="hosted">Want it done for you? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
+  </div>
+
+    </div>
+  </details>
+
+  <!-- Detailed setup & troubleshooting (folded in from the install guide) -->
+  <details class="detailed-setup">
+    <summary>Detailed setup &amp; troubleshooting</summary>
+    <div class="ds-body">
+
+      <div class="step" data-step="Requirements"><h2>What you need</h2>
+        <ul class="checklist">
+          <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
+          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Opus/Sonnet/Haiku need <a href="https://claude.ai/download">Claude Code</a>; Codex High needs <a href="https://developers.openai.com/codex/">Codex</a></li>
+          <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
+        </ul>
+        <div class="note"><strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both a stable IP that works from anywhere &mdash; no port forwarding, no firewall hassle.</div>
+      </div>
+
+      <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
+        <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
+        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
+        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
+      </div>
+
+      <div class="step" data-step="2 · Devices"><h2>Connect your devices</h2>
+        <ul class="enable">
+          <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your Mac and iPhone; sign in with the same account on both.</li>
+          <li>Open Tailscale on your Mac and note its IP (starts with <code>100.</code>).</li>
+        </ul>
+        <div class="note"><strong>Same WiFi?</strong> You can use your Mac's local IP instead &mdash; Tailscale is just more reliable across networks.</div>
+      </div>
+
+      <div class="step" data-step="3 · Install"><h2>Install COS Glasses on the Even Hub</h2>
+        <ul class="enable">
+          <li>Open the <strong>Even Realities</strong> app on your iPhone.</li>
+          <li>Go to <strong>Even Hub</strong>, search <strong>"COS Glasses"</strong>, install, and open it.</li>
+        </ul>
+      </div>
+
+      <div class="step" data-step="4 · Connect"><h2>Connect and go</h2>
+        <ul class="enable">
+          <li>Enter your Mac's Tailscale IP and paste the API token from the server terminal.</li>
+          <li>Leave the server terminal running, then tap <strong>Connect</strong>.</li>
+        </ul>
+        <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
+        <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to Codex High."</div>
+      </div>
+
+      <div class="step" data-step="Help"><h2>Troubleshooting</h2>
+        <ul class="enable">
+          <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
+          <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
+          <li><strong>"Codex not available"</strong> &mdash; Codex High needs the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
+          <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
+          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx @gotcos/glasses-server</code>.</li>
+        </ul>
+      </div>
+
+    </div>
+  </details>
+
+  <div class="setup-seam" style="margin-top:4rem">
+    <div class="mkt-eyebrow" style="justify-content:center">What it feels like</div>
+  </div>
+</div>
+
 <!-- ════════ MARKETING BANDS (re-skin) ════════ -->
 <main class="mkt">
 
@@ -417,224 +654,7 @@
 
 </main>
 
-<div class="page">
-
-  <div class="setup-seam">
-    <div class="mkt-eyebrow">Set it up</div>
-    <h2 style="font-family:var(--font-body);font-weight:300;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-0.02em;line-height:1.15;">Two paths, <span style="font-family:var(--font-display);font-style:italic;color:var(--accent-gold)">same glasses.</span></h2>
-    <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;max-width:480px;margin:0.6rem auto 0;">Quick Start for the fast path on smart defaults, or Build it to tune every config. The server setup is the same for everyone; this is your layer.</p>
-  </div>
-
-  <!-- Start: pick your path -->
-  <div class="step" data-step="Start here">
-    <h2>Pick your path</h2>
-    <p class="sub">Both get your glasses live. <strong style="color:var(--text-label)">Quick Start</strong> uses smart defaults; <strong style="color:var(--text-label)">Build it</strong> personalizes every config. Either way you set up the server and connect. That part is the same for everyone.</p>
-    <div class="opt-grid" id="mode">
-      <button type="button" class="opt selected" data-mode="quick"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Fast path</span><h3>Quick Start</h3><p>Up and running in minutes on smart defaults.</p></button>
-      <button type="button" class="opt" data-mode="build"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Full control</span><h3>Build it</h3><p>Customize model, context, and what shows on the lens.</p></button>
-    </div>
-    <p class="sub" style="margin:0.9rem 0 0;font-size:0.82rem">Already run a COS from the Starter Kit? Your glasses inherit its context and skills automatically; you still set up the glasses server below.</p>
-  </div>
-
-  <div id="path-build" hidden>
-
-  <!-- Step 1: Use cases (the driver) -->
-  <div class="step" data-step="Step 1">
-    <h2>How will you use them?</h2>
-    <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
-    <div class="opt-grid" id="usecases">
-      <button type="button" class="opt" data-uc="meetings"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Capture</span><h3>Meetings &amp; calls</h3><p>Live transcription, speaker labels, action items.</p></button>
-      <button type="button" class="opt" data-uc="capture"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">On the go</span><h3>Quick capture</h3><p>Voice to tasks and notes, hands-free.</p></button>
-      <button type="button" class="opt" data-uc="assistant"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Always on</span><h3>Ask-anything assistant</h3><p>Glance-able answers on the lens, any moment.</p></button>
-      <button type="button" class="opt" data-uc="comms"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Write</span><h3>Comms &amp; replies</h3><p>Dictate, review, send without your phone.</p></button>
-      <button type="button" class="opt" data-uc="dev"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Technical</span><h3>Dev &amp; debugging</h3><p>Codex on the lens for code and commands.</p></button>
-      <button type="button" class="opt" data-uc="field"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Hands-free</span><h3>Field / moving</h3><p>A minimal HUD you can read at a glance.</p></button>
-    </div>
-  </div>
-
-  <!-- Step 2: Brain -->
-  <div class="step" data-step="Step 2 · Brain">
-    <h2>Which model runs it?</h2>
-    <p class="sub">We recommend one based on your use cases. Switch anytime from the phone or by voice.</p>
-    <div class="opt-grid three" id="models">
-      <button type="button" class="opt" data-model="opus"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Depth</span><h3>Opus</h3><p>Hardest reasoning, richest answers.</p></button>
-      <button type="button" class="opt" data-model="sonnet"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Balance</span><h3>Sonnet</h3><p>Fast and sharp. The everyday default.</p></button>
-      <button type="button" class="opt" data-model="haiku"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Speed</span><h3>Haiku</h3><p>Snappiest, lightest, lowest cost.</p></button>
-      <button type="button" class="opt" data-model="codex"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Code</span><h3>Codex High</h3><p>Technical depth via the local Codex CLI.</p></button>
-    </div>
-    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on your own Claude Code or Codex CLI plan. Voice is separate. See Compute below.</div>
-  </div>
-
-  <!-- Step 3: Identity -->
-  <div class="step" data-step="Step 3 · Identity">
-    <h2>Who is it working for?</h2>
-    <p class="sub">This grounds the COS so it knows your job. Lives in your config, never in the code.</p>
-    <div class="field-row">
-      <div class="field"><label>Name</label><input id="f-name" type="text" placeholder="Miles Ukaoma" autocomplete="off"></div>
-      <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
-    </div>
-    <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
-  </div>
-
-  <!-- Step 4: Context -->
-  <div class="step" data-step="Step 4 · Functionality">
-    <h2>What context should it see?</h2>
-    <p class="sub">Wire the sources you live in. We pre-select what fits your use cases. Adjust freely.</p>
-    <div class="opt-grid" id="context">
-      <button type="button" class="opt" data-ctx="calendar"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Time</span><h3>Calendar</h3><p>Today, next up, who you're meeting.</p></button>
-      <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
-      <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
-      <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
-      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Memory</span><h3>Semantic memory</h3><p>Search everything you've captured by meaning.</p></button>
-      <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
-    </div>
-  </div>
-
-  <!-- Step 5: Compute / voice -->
-  <div class="step" data-step="Step 5 · Compute">
-    <h2>Where does it run, and how does voice work?</h2>
-    <p class="sub">The server runs on your Mac. Your keys, your machine. Pick how voice is transcribed.</p>
-    <div class="opt-grid" id="voice">
-      <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
-      <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
-    </div>
-    <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
-  </div>
-
-  <!-- Step 6: HUD -->
-  <div class="step" data-step="Step 6 · On the lens">
-    <h2>What shows on the lens?</h2>
-    <p class="sub">Your default layout. Adaptive switches it by context.</p>
-    <div class="opt-grid" id="hud">
-      <button type="button" class="opt" data-hud="minimal"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Clean</span><h3>Minimal</h3><p>Just the answer. Nothing else.</p></button>
-      <button type="button" class="opt" data-hud="meeting"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">In the room</span><h3>Meeting mode</h3><p>Live transcript plus surfaced actions.</p></button>
-      <button type="button" class="opt" data-hud="glance"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">At a glance</span><h3>Glance</h3><p>Time, next event, top tasks.</p></button>
-      <button type="button" class="opt" data-hud="adaptive"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Smart</span><h3>Adaptive</h3><p>Switches by context: meeting, free, moving.</p></button>
-    </div>
-  </div>
-
-  <!-- Result -->
-  <div class="result" id="result">
-    <h2>Your COS Glasses, <em id="r-for">ready to set up</em></h2>
-    <p class="config-line" id="r-config">Make your picks above and your personalized setup appears here.</p>
-
-    <div class="summary">
-      <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
-      <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
-      <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
-      <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
-    </div>
-
-    <div class="res-label">1 · Start your server (self-host)</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
-
-    <div class="res-label">2 · Drop in your identity</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/identity.md
-Name: Your Name
-Role: Your Role</span></div>
-
-    <div class="res-label">3 · Turn these on in the app</div>
-    <ul class="enable" id="r-enable">
-      <li>Set <b>Default chat model</b> to your pick.</li>
-      <li>Connect the context sources you selected.</li>
-      <li>Choose your <b>HUD layout</b>.</li>
-    </ul>
-
-    <div class="actions">
-      <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
-      <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
-    </div>
-    <p class="hosted">Want it done for you? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
-  </div>
-  </div><!-- /path-build -->
-
-  <!-- QUICK START (default) -->
-  <div id="path-quick">
-    <div class="step" data-step="Quick Start" style="margin-top:1.5rem;">
-      <h2>Running in minutes, on smart defaults</h2>
-      <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
-      <div class="summary">
-        <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
-        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free)</small></span></div>
-        <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
-        <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
-      </div>
-      <div class="res-label">1 &middot; Get the server running</div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Prefer one tap? Install <b style="color:var(--text-label);font-weight:600;">COS Glasses</b> from the Even Hub on your iPhone instead.</p>
-      <div class="res-label">2 &middot; Connect your glasses</div>
-      <ul class="enable">
-        <li>Open <b>COS Glasses</b> in the Even Hub app; tap <b>"I have a COS username"</b> (or enter your Mac's server URL + API token from the terminal).</li>
-        <li>Tap <b>Connect</b>. You're live on the lens.</li>
-      </ul>
-      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Your glasses inherit its context, model, and skills automatically; nothing extra to wire. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
-      <div class="actions">
-        <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
-        <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
-      </div>
-      <p class="hosted">Want to tune every config? <a href="#path-build" onclick="document.querySelector('[data-mode=build]').click();return false;">Build it instead.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
-    </div>
-  </div>
-
-  <!-- Detailed setup & troubleshooting (folded in from the install guide) -->
-  <details class="detailed-setup">
-    <summary>Detailed setup &amp; troubleshooting</summary>
-    <div class="ds-body">
-
-      <div class="step" data-step="Requirements"><h2>What you need</h2>
-        <ul class="checklist">
-          <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-          <li class="req"><strong>Claude Code or Codex CLI</strong> on your Mac &mdash; Opus/Sonnet use <a href="https://claude.ai/download">Claude Code</a>; Codex High uses <a href="https://developers.openai.com/codex/">Codex</a></li>
-          <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
-          <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
-        </ul>
-        <div class="note"><strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both a stable IP that works from anywhere &mdash; no port forwarding, no firewall hassle.</div>
-      </div>
-
-      <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
-        <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
-        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
-      </div>
-
-      <div class="step" data-step="2 · Devices"><h2>Connect your devices</h2>
-        <ul class="enable">
-          <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your Mac and iPhone; sign in with the same account on both.</li>
-          <li>Open Tailscale on your Mac and note its IP (starts with <code>100.</code>).</li>
-        </ul>
-        <div class="note"><strong>Same WiFi?</strong> You can use your Mac's local IP instead &mdash; Tailscale is just more reliable across networks.</div>
-      </div>
-
-      <div class="step" data-step="3 · Install"><h2>Install COS Glasses on the Even Hub</h2>
-        <ul class="enable">
-          <li>Open the <strong>Even Realities</strong> app on your iPhone.</li>
-          <li>Go to <strong>Even Hub</strong>, search <strong>"COS Glasses"</strong>, install, and open it.</li>
-        </ul>
-      </div>
-
-      <div class="step" data-step="4 · Connect"><h2>Connect and go</h2>
-        <ul class="enable">
-          <li>Enter your Mac's Tailscale IP and paste the API token from the server terminal.</li>
-          <li>Leave the server terminal running, then tap <strong>Connect</strong>.</li>
-        </ul>
-        <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
-        <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to Codex High."</div>
-      </div>
-
-      <div class="step" data-step="Help"><h2>Troubleshooting</h2>
-        <ul class="enable">
-          <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
-          <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
-          <li><strong>"Codex not available"</strong> &mdash; Codex High needs the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
-          <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
-          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx @gotcos/glasses-server</code>.</li>
-        </ul>
-      </div>
-
-    </div>
-  </details>
-
+<div class="page" style="padding-top:0">
   <div class="divider"></div>
   <div class="footer">
     <div class="q">The best chief of staff doesn't wait to be asked.</div>
@@ -900,22 +920,6 @@ Role: Your Role</span></div>
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCmd(el); }
     });
   });
-
-  // mode: quick (fast defaults) vs build (full personalize)
-  $all('#mode .opt').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      $all('#mode .opt').forEach(function (b) { b.classList.remove('selected'); });
-      btn.classList.add('selected');
-      syncPressed('#mode');
-      var m = btn.getAttribute('data-mode');
-      var pq = document.getElementById('path-quick'), pb = document.getElementById('path-build');
-      pq.hidden = (m !== 'quick');
-      pb.hidden = (m !== 'build');
-      var shown = (m === 'quick') ? pq : pb;
-      shown.classList.remove('pane-in'); void shown.offsetWidth; shown.classList.add('pane-in');
-    });
-  });
-  syncPressed('#mode');
 
   render();
 })();

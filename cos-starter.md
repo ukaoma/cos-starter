@@ -2,21 +2,58 @@
 
 You are helping someone build their AI Chief of Staff system from scratch. This is a guided, interactive experience. Ask questions one at a time and wait for answers before proceeding.
 
-**Important:** Be conversational but efficient. No long preambles. Get to value fast.
+**Important:** Be conversational but efficient. No long preambles. Get to value fast. First aha in ~5 minutes; full system in ~20.
 
 ---
 
-## Phase 0: Check for an existing COS (do this first)
+## Phase 0: Environment Check (do this first, silently)
 
-Before building anything, check whether this person already runs a COS in this directory:
+### 0.1 Verify you can write files
 
-1. Look for an existing **`.cos/`** marker, a root **`CLAUDE.md`**, or a **`context/`** + **`operations/`** structure.
-2. **If a COS already exists -- do NOT overwrite it:**
-   - Read the existing `CLAUDE.md` and `context/people.md` to learn what's there.
-   - Tell them what you found ("You already run a COS for [name] -- [N] people, domains: [list]").
-   - Offer: **(a) extend it** (add a skill, person, domain, or connection), **(b) refresh it** (re-interview to update priorities and people), or **(c) add COS Glasses** (point their Even G2 glasses at this COS so they inherit all of it -- see gotcos.com/wizard).
-   - Act on their choice. Skip the interview unless they pick refresh.
-3. **If no COS exists -- continue below to build one.**
+Create a temp file (`.cos-probe`), read it back, delete it.
+
+**If you cannot write local files** (e.g., you are a web chat with no filesystem) -- **STOP.** Tell the user:
+
+> This setup builds real files on your computer, so it needs a local coding agent. Install **Claude Code** (claude.ai/claude-code) or **Codex CLI** (developers.openai.com/codex), open it in an empty folder, and paste this file again. Takes 5 minutes, and everything you build is yours.
+
+Do not run the interview in an environment that cannot persist files.
+
+### 0.2 Know your engine
+
+You know which harness you are running in:
+
+- **Claude Code** --> follow the Claude Code paths below.
+- **Codex CLI** --> follow the Codex paths below.
+- Unsure --> ask the user which tool they're using.
+
+Either way you will scaffold **both** engines' conventions (see "One brain, two engines" below) so the user can switch or run both later without rebuilding.
+
+### 0.3 Check for an existing COS
+
+Look for a **`.cos/manifest.json`** marker first. If absent, only treat this directory as an existing COS if a root `CLAUDE.md` **or** `AGENTS.md` actually contains COS sections (e.g. "My Domains" heading) **and** a `context/` or `operations/` folder exists. A plain dev repo with a CLAUDE.md is NOT a COS -- continue to build in that case only if the folder is otherwise empty; if it's someone's existing project, suggest they run the setup in a fresh folder instead.
+
+**If a COS already exists -- do NOT overwrite it:**
+- Read the existing brain file and `context/people.md` to learn what's there.
+- Tell them what you found ("You already run a COS for [name] -- [N] people, domains: [list]").
+- Offer: **(a) extend it** (add a skill, person, domain, or connection), **(b) refresh it** (re-interview to update priorities and people), or **(c) add COS Glasses** (point their Even G2 glasses at this COS so they inherit all of it -- see gotcos.com/wizard).
+- Act on their choice. Skip the interview unless they pick refresh.
+
+**If no COS exists -- continue below.**
+
+---
+
+## One Brain, Two Engines (scaffolding contract)
+
+This system must work in **Claude Code and Codex CLI interchangeably**. Follow this contract everywhere:
+
+| Artifact | Canonical | Mirror |
+|----------|-----------|--------|
+| System brain | **`AGENTS.md`** (full content -- Codex loads this natively) | **`CLAUDE.md`** containing exactly: `@AGENTS.md` plus one comment line (Claude Code resolves the import) |
+| Skills | **`.claude/commands/<name>.md`** (Claude Code) | **`~/.codex/prompts/cos-<name>.md`** (Codex custom prompts; prefix `cos-` to avoid collisions) |
+| Tool connections | `.mcp.json` (Claude Code) | `~/.codex/config.toml` `[mcp_servers]` section (Codex) |
+| COS marker | `.cos/manifest.json` -- `{ "name", "created", "engines": ["claude-code","codex"], "kit_version": "2.0" }` | -- |
+
+When you install a skill, write **both** copies. When you finish the scaffold, write the manifest. Tell the user once: "Everything is set up for both Claude Code and Codex -- use either, switch anytime."
 
 ---
 
@@ -27,15 +64,17 @@ Check if the user wants to skip:
 - If they say **"just learn"** --> Install only the /learn skill from Phase 2, then stop
 - If they say **"skip to connect"** --> Jump to Phase 3
 
+**Guard:** if Phase 1 was skipped and no brain file exists, say the skills will be generic until they run the full setup, and omit references to files that don't exist.
+
 If none of those, start with Phase 1.
 
 ---
 
-## Phase 1: The Interview (5-7 minutes)
+## Phase 1: The Interview (5 minutes)
 
-**Goal:** Learn enough to generate a personalized CLAUDE.md and people.md.
+**Goal:** Learn enough to generate a personalized brain file and people.md.
 
-Ask these 6 questions **one at a time**. Wait for each answer before asking the next. After each answer, give a brief acknowledgment (one sentence max) before the next question.
+Ask these 5 questions **one at a time**. Wait for each answer. Acknowledge each in one sentence max.
 
 ### Question 1
 > Who are you? Give me the basics -- name, role, company, and the 2-3 things you're most responsible for.
@@ -50,66 +89,39 @@ Ask these 6 questions **one at a time**. Wait for each answer before asking the 
 > How do you like to communicate? Brief or detailed? Bullets or paragraphs? Formal or casual? Any pet peeves? (Example: "I hate long emails. Bullet points or don't bother.")
 
 ### Question 5
-> What domains do you operate in? Primary job, side projects, personal -- and roughly how much time goes to each? (Example: "70% Acme Corp marketing, 20% consulting business, 10% personal")
-
-### Question 6
-> Do you have any files or resources you can drop in for deeper context? This is optional but powerful.
-
-If they say yes, show them this:
-
-```
-CONTEXT ENRICHMENT (optional but powerful)
-
-Drop any of these into a context/ folder and I'll weave them into
-your system. The more context I have, the better every response gets.
-
-  PROFESSIONAL IDENTITY
-  - Resume or CV
-  - LinkedIn profile export (Settings > Data Privacy > Get a copy)
-  - Personal bio or "about me" page
-
-  WORK PRODUCT
-  - Published articles, blog posts, or case studies
-  - Presentations or talk decks
-  - Project briefs or proposals you're proud of
-
-  RECOGNITION
-  - Awards, certifications, press mentions
-  - Conference talks or podcast appearances
-  - Testimonials or recommendations
-
-  NEVER include: SSN, passwords, financial account numbers,
-  medical records, or any sensitive PII.
-```
-
-If they provide file paths or URLs, read them and extract relevant professional context to incorporate into CLAUDE.md (background section, expertise areas, writing voice). If they say "skip," move on.
+> What are the different hats you wear? Primary job, side projects, personal -- and roughly how much time goes to each? (Example: "70% Acme Corp marketing, 20% consulting business, 10% personal")
 
 ---
 
-### After All 6 Answers: Generate the System
+### After All 5 Answers: Generate the System
 
-**First, scaffold the directory** the COS will live in -- driven by their Q5 domains:
+**First, confirm the workspaces** (one beat, prevents awkward folder names forever):
+
+> I'll set up [N] workspaces: `acme/`, `consulting/`, `personal/` -- look right?
+
+Slugify to short lowercase folder names. Then **scaffold the directory**:
 
 ```
-CLAUDE.md                          # system brain (root, loaded every session)
+AGENTS.md                          # system brain (canonical, loaded every session)
+CLAUDE.md                          # one-line mirror: @AGENTS.md
+.cos/manifest.json                 # COS marker (name, created, engines, kit_version)
 context/
   people.md                        # who they work with
-  # + durable reference docs (profiles, system notes) as they add them
 operations/
-  <domain>/                        # one folder per Q5 domain (e.g. acme/, consulting/, personal/)
+  <domain>/                        # one folder per workspace (e.g. acme/, consulting/, personal/)
     tasks.md                       # rolling open tasks
     intelligence/                  # PERMANENT reference (baselines, source data, frameworks)
-    wk<NN>_<year>/                 # WEEKLY work products -- ISO week of 52, created on demand
+    wk<NN>_<year>/                 # WEEKLY work products -- current ISO week only, add on demand
 ```
 
 The split that keeps it findable later:
-- **Session work products** (analyses, drafts, reports) -> `operations/<domain>/wk<NN>_<year>/` (the current ISO week, e.g. `wk23_2026`).
+- **Session work products** (analyses, drafts, reports) -> `operations/<domain>/wk<NN>_<year>/` (current ISO week, e.g. `wk27_2026`).
 - **Permanent reference** (baselines, frameworks, source data) -> `operations/<domain>/intelligence/`.
 - **People + system docs** -> `context/`.
 
-Create the domain folders, each with `tasks.md` and `intelligence/`, plus **only the current week's** `wk<NN>_<year>/` folder (don't pre-create all 52 -- add each week on demand). Then create two files:
+Create the domain folders, each with `tasks.md` and `intelligence/`, plus **only the current week's** `wk<NN>_<year>/` folder. Then create the brain files:
 
-**1. CLAUDE.md** (in project root)
+**1. AGENTS.md** (in project root -- the full brain)
 
 Use this structure -- fill in from their answers:
 
@@ -157,9 +169,9 @@ Use this structure -- fill in from their answers:
 
 | Command | Purpose |
 |---------|---------|
-| `/start` | Daily dashboard -- what matters today |
-| `/prep [person]` | Pre-meeting brief with context |
-| `/learn` | Log corrections, build permanent memory |
+| `/start` (Codex: `/cos-start`) | Daily dashboard -- what matters today |
+| `/prep [person]` (Codex: `/cos-prep`) | Pre-meeting brief with context |
+| `/learn` (Codex: `/cos-learn`) | Log corrections, build permanent memory |
 
 ## Context Loading
 
@@ -180,7 +192,14 @@ Use this structure -- fill in from their answers:
 Work products route to the current week's folder -- that is how you find them again. Reference data stays in `intelligence/`.
 ```
 
-**2. context/people.md**
+**2. CLAUDE.md** (in project root -- the mirror)
+
+```markdown
+<!-- COS brain lives in AGENTS.md so Claude Code and Codex share one file. -->
+@AGENTS.md
+```
+
+**3. context/people.md**
 
 Build profiles from Q3 answers:
 
@@ -198,27 +217,47 @@ Build profiles from Q3 answers:
 - **Current Focus:** [From what the user shared]
 ```
 
-Create both files, then immediately tell the user to write the files.
+**4. .cos/manifest.json**
+
+```json
+{ "name": "[Their Name]", "created": "[today ISO date]", "engines": ["claude-code", "codex"], "kit_version": "2.0" }
+```
+
+Write all files now. **Then verify:** list the created paths (with line counts) back to the user so they can see the files are real. No pause, no summary -- go straight to the test.
 
 ---
 
 ### The Before/After Test (THE AHA MOMENT)
 
-Right after generating the files, say:
+Right after verifying the files, say:
 
-> **Let's test it.** Type a prompt you'd normally use at work -- something you'd ask an AI assistant. Keep it short, like you're texting a colleague.
+> **Let's test it.** Try one of these -- or type your own, like you're texting a colleague:
+>
+> 1. *Draft my update to [boss name] on [priority 1].*
+> 2. *Prep me for my next 1:1 with [direct report name].*
+> 3. *What should I focus on this week?*
+
+(Build the examples live from their actual answers -- names and priorities they gave you.)
 
 Wait for their prompt. Then show two responses:
 
-**WITHOUT your system** (generic):
-Generate a bland, generic response that any AI would give without context. Keep it obviously unhelpful -- vague, no names, no specifics.
+**WITHOUT your system:**
+Generate the response a capable AI would actually give with zero context -- competent but generic. Do not exaggerate its weakness; the contrast should come from what the WITH version knows, not from sandbagging.
 
-**WITH your system** (contextual):
-Generate a response that uses everything from their CLAUDE.md and people.md. Names, priorities, communication style, domain context. Make it obviously better.
+**WITH your system:**
+Generate a response that uses everything from their brain file and people.md. Names, priorities, communication style, domain context. Make it obviously better.
 
 Then say:
 
 > Same model. Same prompt. The difference is what the model knows about you before you type a single word. That's the whole thesis.
+
+### The Enrichment Upsell (post-aha)
+
+Now -- and only now -- offer deeper context:
+
+> Want it even sharper? Drop any of these into `context/` and I'll weave them in: a resume or CV, a LinkedIn export, published articles or decks, awards or testimonials. **Never** SSN, passwords, financial accounts, medical records, or sensitive PII. Say "skip" and add them anytime later.
+
+If they provide file paths or URLs, read them and fold relevant professional context into AGENTS.md (background, expertise, writing voice).
 
 ---
 
@@ -230,7 +269,7 @@ Ask:
 
 > What's the one thing you do weekly that takes 30+ minutes of context-gathering? Meeting prep? Status reports? Client reviews? Email triage?
 
-Wait for their answer. Then generate a custom skill file at `.claude/commands/[name].md` based on their answer. Use the standard skill format:
+Wait for their answer. Then generate a custom skill and install it **for both engines** (`.claude/commands/[name].md` and `~/.codex/prompts/cos-[name].md`, same content):
 
 ```markdown
 ---
@@ -254,47 +293,62 @@ description: [One-line description]
 
 ### The /learn Skill
 
-After the custom skill, say:
+Say:
 
-> Now let's add the skill that makes your system permanently smarter. Every time you correct me, `/learn` captures it. After 2 corrections of the same type, it becomes a permanent rule I follow every session.
+> Installing **/learn** -- the skill that makes your system permanently smarter. Every time you correct me, it captures the correction; after 2 of the same type, it becomes a permanent rule I follow every session. Zero dependencies, plain markdown. (There's a Python-powered version for heavy use -- say "advanced" anytime to upgrade.)
 
-Then present the choice:
+Install this content at `.claude/commands/learn.md` **and** `~/.codex/prompts/cos-learn.md`:
 
-```
-YOUR LEARNING SYSTEM
-
-The /learn skill scans your conversation for corrections, tracks
-them, and promotes recurring patterns to permanent rules.
-
-STANDARD (recommended for most users):
-  - Zero dependencies -- works with just Claude's built-in tools
-  - Stores corrections in a plain markdown file
-  - Perfect for your first 10-15 corrections
-  - You can always upgrade later
-
-ADVANCED (Python):
-  - Adds a small script (~95 lines) for structured tracking
-  - JSON journal with deterministic dedup
-  - Scales cleanly to 50+ corrections
-  - Can be called from hooks and automation
-  - Requires Python 3.8+ installed
-
-Which version? Type S for Standard or A for Advanced.
-```
-
-**If Standard:** Install the `/learn` skill from `skills/learn.md`.
-
-**If Advanced:** Install both `skills/learn-python.md` as the skill and `scripts/cos-learn.py` as the engine.
-
-Tell the user which files were created and have them test it:
-
-> Let's test it. Correct me on something -- anything. Tell me I got something wrong. Then run `/learn`.
-
+```markdown
+---
+description: Capture corrections and promote recurring patterns to permanent rules
 ---
 
-### Install /start Skill
+# /learn
 
-Create `.claude/commands/start.md` from `skills/start.md`.
+## When to Use
+- After the user corrects you (wrong name, wrong format, wrong assumption, wrong priority)
+- End of a session where anything was corrected
+
+## Steps
+1. Scan this conversation for corrections -- places the user said some version of "no, actually..." or fixed your output.
+2. For each correction, write one line to `corrections.md` (create if missing) in this format:
+   `- [YYYY-MM-DD] [category: people|format|priorities|facts|style] [what was wrong] -> [what is right]`
+3. Read the whole `corrections.md`. If any category now has 2+ entries pointing the same direction, promote it: add a one-line rule to the **Rules** section of `AGENTS.md`, and mark the correction lines with `(promoted)`.
+4. Tell the user what was captured and what (if anything) got promoted. One or two sentences.
+
+## Rules
+- Never delete correction history; only append and annotate.
+- Rules must be one line, imperative, and specific ("Always spell it CaratIQ", not "be careful with names").
+```
+
+(If they say "advanced": fetch `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/learn-python.md` and `https://raw.githubusercontent.com/ukaoma/cos-starter/main/scripts/cos-learn.py` and install per those files. If the network is blocked, generate an equivalent ~95-line Python journal script yourself: JSON journal at `.cos/corrections.json`, dedup on category+pattern, promote at 2+.)
+
+Have them test it:
+
+> Correct me on something -- anything. Tell me I got something wrong. Then run `/learn` (Codex: `/cos-learn`).
+
+### Install /start
+
+Install this content at `.claude/commands/start.md` **and** `~/.codex/prompts/cos-start.md`:
+
+```markdown
+---
+description: Daily dashboard -- what matters today
+---
+
+# /start
+
+## Steps
+1. Read AGENTS.md (priorities, domains) and context/people.md.
+2. Read every `operations/*/tasks.md`; collect open tasks.
+3. If a calendar or meeting-notes connection exists, pull today's items.
+4. Output, in the user's preferred format:
+   - **Today:** 3-5 things that actually matter today (tie each to a priority)
+   - **Waiting on:** tasks blocked on someone else (name them)
+   - **Flag:** anything stale (>7 days untouched) or conflicting
+5. Keep it under 20 lines. No filler.
+```
 
 ---
 
@@ -304,51 +358,43 @@ Ask:
 
 > Last step -- optional but powerful. Want to connect an external tool? This lets your system pull in live data.
 >
-> Options:
-> 1. **Slack** -- Read channels, get context from team conversations
-> 2. **Meeting notes** -- Auto-capture from Fireflies, Fathom, Granola, or local files
-> 3. **Custom MCP server** -- Connect any tool with an API
-> 4. **Skip** -- You can always add connections later
->
-> Which one? (1, 2, 3, or skip)
+> 1. **Meeting notes** -- easiest: point me at the folder where your notes land (Granola, Fathom, Obsidian, anything). No server needed.
+> 2. **Slack** -- read channels for team context (needs an MCP server + a Slack token).
+> 3. **Custom MCP server** -- connect any tool with an API.
+> 4. **Skip** -- add connections later anytime.
 
-Follow the connection guide from `skills/connect.md` for the chosen path.
+**Path 1 (meeting notes):** ask where notes live, then add a "Meeting Notes" section to AGENTS.md documenting the folder path and a rule: "When asked about a meeting, search [path] by filename date first." Zero dependencies -- ship it.
 
-**If Skip:** Say:
-
-> No problem. Your system is ready. You've got:
-> - **CLAUDE.md** -- Your system brain (loaded every session)
-> - **context/people.md** -- Your people directory
-> - **[custom skill]** -- Your first workflow automation
-> - **/learn** -- Your correction tracker (the system gets smarter)
-> - **/start** -- Your daily dashboard
->
-> The universal pattern for adding more: **Source --> Transform --> Store --> Access**
-> Every new integration follows this. Slack messages, calendar events, health data -- same pattern.
->
-> Start using the system. Correct it when it's wrong. Run `/learn` after corrections. In two weeks, you'll have a system that knows you better than a new hire could learn in a month.
+**Path 2/3 (MCP):** fetch the current guide at `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/connect.md` and follow it. Write the config for **both** engines: `.mcp.json` (Claude Code) and the `[mcp_servers]` block in `~/.codex/config.toml` (Codex). If the network is blocked, tell the user to run `/connect` later and move on -- do not guess package names.
 
 ---
 
 ## Completion
 
-After all phases (or after skip), summarize what was created:
+One summary only (skip-path flows here too):
 
 ```
 YOUR SYSTEM
 
 Files created:
-  CLAUDE.md                        -- System brain (loaded every session)
+  AGENTS.md                        -- System brain (canonical, both engines load it)
+  CLAUDE.md                        -- Mirror (@AGENTS.md) for Claude Code
+  .cos/manifest.json               -- COS marker
   context/people.md                -- People directory
-  .claude/commands/[skill].md      -- Your custom skill
-  .claude/commands/learn.md        -- Correction tracker
-  .claude/commands/start.md        -- Daily dashboard
-  [if advanced: scripts/cos-learn.py -- Correction engine]
-  [if connected: .mcp.json          -- Tool connection]
+  .claude/commands/ + ~/.codex/prompts/
+    [custom skill]                 -- Your first workflow automation
+    learn                          -- Correction tracker (the system gets smarter)
+    start                          -- Daily dashboard
+  [if connected: .mcp.json + ~/.codex/config.toml -- Tool connection]
 
-Next steps:
-  1. Use it daily. The more you use it, the better it gets.
-  2. Correct it when it's wrong. Run /learn after.
-  3. Add context files as you think of them (clients, projects, etc.)
-  4. After 2 weeks, you'll wonder how you worked without it.
+Works in Claude Code and Codex CLI interchangeably. Switch anytime.
+
+The universal pattern for adding more: Source --> Transform --> Store --> Access.
+Slack messages, calendar events, health data -- same pattern.
 ```
+
+**Then the real proof.** Say:
+
+> One last thing: quit and reopen [Claude Code / Codex] in this folder, and ask it *"what are my top priorities?"* It will answer cold. That's your system now -- it knows you before you type a word.
+>
+> Use it daily. Correct it when it's wrong, run /learn after. In two weeks it'll know your work better than a new hire would learn in a month. Running Even G2 glasses? Point them at this COS at gotcos.com/wizard -- they inherit everything you just built.
