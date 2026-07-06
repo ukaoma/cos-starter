@@ -164,11 +164,8 @@
     .footer .brand { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
     .footer a { text-decoration: none; color: var(--text-muted); transition: color 0.2s; }
     .footer a:hover { color: var(--accent-gold); }
-    /* path-pane swap */
-    @keyframes wizfade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-    .pane-in { animation: wizfade .4s cubic-bezier(.2,.7,.2,1); }
     #path-quick .step { margin-top: 1.5rem; }
-    @media (prefers-reduced-motion: reduce) { .atmos .aur { animation: none; } .pane-in { animation: none; } * { transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .atmos .aur { animation: none; } * { transition: none !important; } }
 
     /* ── Detailed setup (folded-in install guide) ── */
     .detailed-setup { margin-top: 2rem; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
@@ -360,7 +357,7 @@
       </div>
       <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. First run walks you through config and prints your <b style="color:var(--text-label);font-weight:600;">server URL + API token</b> &mdash; you'll paste those into the app in Step 2. Free local voice: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> once.</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>, so it stays the same across restarts. Free local voice: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> once.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
@@ -372,7 +369,7 @@
         <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
         <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
       </ul>
-      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Your glasses inherit its context, model, and skills automatically; nothing extra to wire. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
+      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Run the command in Step 1 <strong>from your COS folder</strong> &mdash; the server detects it and glasses chat loads that brain automatically. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
       <div class="actions">
         <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
         <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
@@ -478,16 +475,17 @@
     <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
 
-    <div class="res-label">2 · Drop in your identity</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/identity.md
-Name: Your Name
-Role: Your Role</span></div>
+    <div class="res-label">2 · Set your identity (server profile)</div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/.cos-profile.json
+{
+  "owner_name": "Your Name",
+  "system_context": "Your Role"
+}</span></div>
 
     <div class="res-label">3 · Turn these on in the app</div>
     <ul class="enable" id="r-enable">
-      <li>Set <b>Default chat model</b> to your pick.</li>
-      <li>Connect the context sources you selected.</li>
-      <li>Choose your <b>HUD layout</b>.</li>
+      <li>Set <b>Default chat model</b> to your pick in the app's Settings.</li>
+      <li>Wire context sources via MCP in the COS folder your server runs from.</li>
     </ul>
 
     <div class="actions">
@@ -881,13 +879,16 @@ Role: Your Role</span></div>
     $('#r-context').innerHTML = ctx.length ? ctx.map(function (c) { return CTX_LABEL[c]; }).join(', ') : '<small>none yet</small>';
     $('#r-hud').innerHTML = HUD_LABEL[hud] + (state.hud ? '' : ' <small>(recommended)</small>');
 
-    // identity.md
+    // server profile fragment (~/.cos-glasses/.cos-profile.json — the file the server actually reads)
     var name = $('#f-name').value.trim(), role = $('#f-role').value.trim(), company = $('#f-company').value.trim();
-    var idLines = ['<span class="c"># ~/.cos-glasses/identity.md</span>'];
-    idLines.push('Name: ' + (name ? '<span class="g">' + esc(name) + '</span>' : 'Your Name'));
-    idLines.push('Role: ' + (role ? '<span class="g">' + esc(role) + '</span>' : 'Your Role'));
-    if (company) idLines.push('Company: <span class="g">' + esc(company) + '</span>');
-    if (ucs.length) idLines.push('Focus: <span class="g">' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', ') + '</span>');
+    var ctxBits = [];
+    if (role) ctxBits.push(esc(role));
+    if (company) ctxBits.push('at ' + esc(company));
+    if (ucs.length) ctxBits.push('Focus: ' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', '));
+    var idLines = ['<span class="c"># ~/.cos-glasses/.cos-profile.json</span>', '{'];
+    idLines.push('  "owner_name": "' + (name ? '<span class="g">' + esc(name) + '</span>' : 'Your Name') + '",');
+    idLines.push('  "system_context": "' + (ctxBits.length ? '<span class="g">' + ctxBits.join(' ') + '</span>' : 'Your Role') + '"');
+    idLines.push('}');
     $('#r-identity').innerHTML = idLines.join('\n');
 
     // enable checklist
@@ -895,9 +896,9 @@ Role: Your Role</span></div>
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model === 'codex' ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     if (state.voice === 'openai') li.push('Add your <b>OPENAI_API_KEY</b> for cloud voice.');
     else li.push('Run <code>brew install whisper-cpp</code> once for free local voice.');
-    if (ctx.length) li.push('Connect: <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> via MCP.');
-    else li.push('Add context sources anytime via MCP.');
-    li.push('Set your <b>HUD layout</b> to <b>' + HUD_LABEL[hud] + '</b>' + (hud === 'adaptive' ? ' so it switches by context.' : '.'));
+    if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
+    else li.push('Add context sources anytime via MCP in your COS folder.');
+    li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }
 

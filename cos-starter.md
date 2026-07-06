@@ -49,7 +49,7 @@ This system must work in **Claude Code and Codex CLI interchangeably**. Follow t
 | Artifact | Canonical | Mirror |
 |----------|-----------|--------|
 | System brain | **`AGENTS.md`** (full content -- Codex loads this natively) | **`CLAUDE.md`** containing exactly: `@AGENTS.md` plus one comment line (Claude Code resolves the import) |
-| Skills | **`.claude/commands/<name>.md`** (Claude Code) | **`~/.codex/prompts/cos-<name>.md`** (Codex custom prompts; prefix `cos-` to avoid collisions) |
+| Skills | **`.claude/commands/<name>.md`** (Claude Code) | **`~/.codex/prompts/cos-<name>.md`** (Codex custom prompts, invoked as `/prompts:cos-<name>`; prefix `cos-` to avoid collisions. If the prompt doesn't appear in Codex's `/` menu, that build has moved to skills -- install the same markdown per its skills docs) |
 | Tool connections | `.mcp.json` (Claude Code) | `~/.codex/config.toml` `[mcp_servers]` section (Codex) |
 | COS marker | `.cos/manifest.json` -- `{ "name", "created", "engines": ["claude-code","codex"], "kit_version": "2.0" }` | -- |
 
@@ -169,9 +169,9 @@ Use this structure -- fill in from their answers:
 
 | Command | Purpose |
 |---------|---------|
-| `/start` (Codex: `/cos-start`) | Daily dashboard -- what matters today |
-| `/prep [person]` (Codex: `/cos-prep`) | Pre-meeting brief with context |
-| `/learn` (Codex: `/cos-learn`) | Log corrections, build permanent memory |
+| `/start` (Codex: `/prompts:cos-start`) | Daily dashboard -- what matters today |
+| `/prep [person]` (Codex: `/prompts:cos-prep`) | Pre-meeting brief with context |
+| `/learn` (Codex: `/prompts:cos-learn`) | Log corrections, build permanent memory |
 
 ## Context Loading
 
@@ -326,7 +326,7 @@ description: Capture corrections and promote recurring patterns to permanent rul
 
 Have them test it:
 
-> Correct me on something -- anything. Tell me I got something wrong. Then run `/learn` (Codex: `/cos-learn`).
+> Correct me on something -- anything. Tell me I got something wrong. Then run `/learn` (Codex: `/prompts:cos-learn`).
 
 ### Install /start
 
@@ -350,6 +350,29 @@ description: Daily dashboard -- what matters today
 5. Keep it under 20 lines. No filler.
 ```
 
+### Install /prep
+
+Install this content at `.claude/commands/prep.md` **and** `~/.codex/prompts/cos-prep.md`:
+
+```markdown
+---
+description: Pre-meeting brief with context
+---
+
+# /prep [person or meeting]
+
+## Steps
+1. Read AGENTS.md and context/people.md -- pull the profile of whoever the meeting is with.
+2. Scan every `operations/*/tasks.md` for open items involving them (owed to you, owed by you).
+3. If a meetings/ folder or notes connection exists, pull the last 1-2 interactions with them.
+4. Output, in the user's preferred format:
+   - **Who:** one-line refresher (role, how to engage)
+   - **Open between you:** the live items, each with its current state
+   - **Since last time:** anything new that touches them
+   - **Walk in with:** 2-3 talking points tied to the user's priorities
+5. Keep it under 25 lines. If the person isn't in people.md, say so and offer to add them.
+```
+
 ---
 
 ## Phase 3: Wire a Connection (5-10 minutes, skippable)
@@ -365,7 +388,7 @@ Ask:
 
 **Path 1 (meeting notes):** ask where notes live, then add a "Meeting Notes" section to AGENTS.md documenting the folder path and a rule: "When asked about a meeting, search [path] by filename date first." Zero dependencies -- ship it.
 
-**Path 2/3 (MCP):** fetch the current guide at `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/connect.md` and follow it. Write the config for **both** engines: `.mcp.json` (Claude Code) and the `[mcp_servers]` block in `~/.codex/config.toml` (Codex). If the network is blocked, tell the user to run `/connect` later and move on -- do not guess package names.
+**Path 2/3 (MCP):** fetch the current guide at `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/connect.md` and follow it. Write the config for **both** engines: `.mcp.json` (Claude Code) and the `[mcp_servers]` block in `~/.codex/config.toml` (Codex). If the network is blocked, say: "We'll skip this for now -- when you want a connection, paste this setup file again and say **skip to connect**." Do not guess package names.
 
 ---
 
@@ -381,10 +404,12 @@ Files created:
   CLAUDE.md                        -- Mirror (@AGENTS.md) for Claude Code
   .cos/manifest.json               -- COS marker
   context/people.md                -- People directory
+  operations/<domain>/             -- One workspace per hat: tasks.md, intelligence/, wk<NN>_<year>/
   .claude/commands/ + ~/.codex/prompts/
     [custom skill]                 -- Your first workflow automation
     learn                          -- Correction tracker (the system gets smarter)
     start                          -- Daily dashboard
+    prep                           -- Pre-meeting briefs
   [if connected: .mcp.json + ~/.codex/config.toml -- Tool connection]
 
 Works in Claude Code and Codex CLI interchangeably. Switch anytime.
@@ -393,8 +418,10 @@ The universal pattern for adding more: Source --> Transform --> Store --> Access
 Slack messages, calendar events, health data -- same pattern.
 ```
 
+(The "just learn" skip path ends here too -- show only the files it actually created.)
+
 **Then the real proof.** Say:
 
 > One last thing: quit and reopen [Claude Code / Codex] in this folder, and ask it *"what are my top priorities?"* It will answer cold. That's your system now -- it knows you before you type a word.
 >
-> Use it daily. Correct it when it's wrong, run /learn after. In two weeks it'll know your work better than a new hire would learn in a month. Running Even G2 glasses? Point them at this COS at gotcos.com/wizard -- they inherit everything you just built.
+> Use it daily. Correct it when it's wrong, run /learn after. In two weeks it'll know your work better than a new hire would learn in a month. Running Even G2 glasses? Run `npx @gotcos/glasses-server` **from this folder** and the glasses load the brain you just built -- setup at gotcos.com/wizard.
