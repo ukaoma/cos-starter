@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COS Glasses Docs · User Guide</title>
+<meta name="description" content="The complete user guide for COS Glasses on Even Realities G2. Setup, every gesture, jobs, meetings, dictation, models, privacy, and troubleshooting.">
+<meta property="og:title" content="COS Glasses Docs · User Guide">
+<meta property="og:description" content="Everything the lenses do, on one page. Setup, gestures, jobs, meetings, dictation, models, privacy, troubleshooting.">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<!--
+  gotcos.com/docs · canonical COS Glasses user guide.
+  Covers COS Glasses v5.18.0 (build 171) · server @gotcos/glasses-server 6.3.1.
+  Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
+  On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
+-->
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
+  --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
+  --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+  --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
+  --hud:#46e878; --hud-hi:#9ffabb; --hud-mid:#7df0a3;
+  --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
+  --maxw:1140px; --gut:clamp(22px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,169,110,.32);color:#fff}
+a{color:var(--gold);text-decoration:none}
+p a,li a,.lead a{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+img{max-width:100%;height:auto}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);position:relative}
+.it{font-style:italic}
+.goldt{color:var(--gold)}
+
+/* ── top bar ─────────────────────────────────────────── */
+.topbar{border-bottom:1px solid var(--line-2);background:rgba(12,8,5,.74)}
+.tb-in{max-width:var(--maxw);margin:0 auto;padding:14px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tb-brand{font-family:var(--display);font-size:1.05rem;letter-spacing:.01em;color:var(--fg);display:flex;align-items:center;gap:10px;white-space:nowrap}
+.tb-brand a{color:inherit}
+.tb-brand b{font-weight:600}
+.tb-sep{color:var(--ghost);font-family:var(--mono);font-size:.8rem}
+.tb-doc{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.tb-links{display:flex;gap:20px;font-size:.85rem}
+.tb-links a{color:var(--muted);transition:color .2s}
+.tb-links a:hover{color:var(--gold)}
+
+/* ── chapter strip ───────────────────────────────────── */
+.tocbar{position:sticky;top:0;z-index:60;background:rgba(18,12,7,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.toc-in{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.toc-in::-webkit-scrollbar{display:none}
+.toc-in a{flex-shrink:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:14px 11px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s}
+.toc-in a:hover{color:var(--fg)}
+.toc-in a[aria-current]{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── sections ────────────────────────────────────────── */
+section,header.hero{padding-block:clamp(56px,8.5vw,120px);position:relative;scroll-margin-top:58px}
+section.light{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
+section.light h2,section.light h3,section.light p strong,section.light summary{color:var(--ink-on-cream)}
+section.light .lead,section.light p,section.light li{color:var(--muted-on-cream)}
+section.light .eyebrow{color:#7a5c2c}
+section.light a{color:#7a5c2c}
+section.light code{color:#7a5c2c}
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow .num{color:var(--ghost)}
+section.light .eyebrow .num{color:rgba(46,31,16,.4)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.6vw,4.1rem);line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em;text-wrap:balance;margin-bottom:18px}
+h3{font-family:var(--body);font-weight:600;font-size:1.02rem;margin:0 0 8px}
+.lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
+p{color:var(--muted)}
+p strong{color:var(--fg);font-weight:600}
+.sec-head{max-width:820px;margin-bottom:clamp(26px,4vw,44px)}
+code{font-family:var(--mono);font-size:.85em;color:var(--gold)}
+
+/* ── chips, keys, buttons ────────────────────────────── */
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+.badges .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
+.badges .chip b{color:var(--rose);font-weight:500}
+.g-key{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--line);border-radius:7px;color:var(--fg);background:rgba(255,246,232,.03);white-space:nowrap}
+section.light .g-key{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream);background:rgba(46,31,16,.05)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 34px -14px rgba(201,169,110,.55)}
+.btn.ghost{border-color:var(--line-2);color:var(--fg)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+section.light .btn.ghost{border-color:rgba(46,31,16,.28);color:var(--ink-on-cream)}
+section.light .btn.ghost:hover{border-color:#7a5c2c;color:#7a5c2c}
+
+/* ── command blocks ──────────────────────────────────── */
+.cmd{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#0d0906;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:14px 0;font-family:var(--mono);font-size:.85rem;color:var(--fg)}
+.cmd .p{color:var(--gold);user-select:none;margin-right:2px}
+.cmd code{color:var(--fg);flex:1;text-align:left;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.cmd code::-webkit-scrollbar{display:none}
+.cmd button{flex-shrink:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line-2);border-radius:7px;padding:6px 12px;cursor:pointer;transition:color .2s,border-color .2s}
+.cmd button:hover{color:var(--gold);border-color:var(--gold)}
+section.light .cmd code{color:var(--fg)}
+
+/* ── HUD mocks (phosphor lens panels) ────────────────── */
+.hud{position:relative;border-radius:14px;padding:18px 20px;border:1px solid rgba(70,232,120,.16);background:radial-gradient(120% 140% at 50% 0%,rgba(70,232,120,.08),transparent 60%),rgba(7,9,15,.95);font-family:var(--mono);font-size:.78rem;line-height:1.85;color:var(--hud);text-shadow:0 0 8px rgba(70,232,120,.4);overflow:hidden}
+.hud::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+.hud .dim{color:rgba(70,232,120,.52);text-shadow:none}
+.hud .hi{color:var(--hud-hi)}
+.hud .tag{color:var(--hud-mid)}
+.hud .foot{margin-top:12px;padding-top:10px;border-top:1px solid rgba(70,232,120,.18);font-size:.66rem;letter-spacing:.04em;color:rgba(70,232,120,.62);text-shadow:none;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hud-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);margin:10px 2px 0}
+section.light .hud-cap{color:rgba(46,31,16,.45)}
+
+/* ── hero ────────────────────────────────────────────── */
+.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
+.hero .lead{margin-top:18px}
+.g2-stage{display:flex;flex-direction:column;align-items:center;gap:0}
+.g2-stage .hud{width:min(430px,100%);z-index:1}
+.g2-img{display:block;width:min(440px,88%);margin-top:-8px;filter:drop-shadow(0 30px 54px rgba(0,0,0,.6))}
+.arch{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;margin-top:clamp(34px,5vw,56px)}
+.an{border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;background:linear-gradient(158deg,var(--panel),transparent)}
+.an b{display:block;font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.an span{font-size:.8rem;color:var(--muted);line-height:1.45;display:block}
+.al{width:clamp(22px,4.5vw,58px);padding:0 4px;text-align:center}
+.al b{display:block;font-family:var(--mono);font-weight:400;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:6px}
+.al i{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
+
+/* ── tables ──────────────────────────────────────────── */
+.tw{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost);text-align:left;padding:0 14px 10px}
+td{padding:13px 14px;border-top:1px solid var(--line-2);color:var(--muted);vertical-align:top}
+td:first-child{white-space:nowrap}
+section.light th{color:rgba(46,31,16,.45)}
+section.light td{border-top-color:var(--line-on-cream);color:var(--muted-on-cream)}
+td strong{color:var(--fg);font-weight:600}
+section.light td strong{color:var(--ink-on-cream)}
+
+/* ── cards, steps, faq ───────────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:22px}
+.card{border:1px solid var(--line);border-radius:16px;padding:20px;background:linear-gradient(158deg,var(--panel),transparent)}
+.card p{font-size:.92rem}
+section.light .card{border-color:var(--line-on-cream);background:rgba(255,255,255,.5)}
+.card .lbl{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--gold);border:1px solid var(--line);border-radius:7px;padding:4px 10px;margin-bottom:12px;background:rgba(201,169,110,.06)}
+section.light .card .lbl{color:#7a5c2c;border-color:rgba(46,31,16,.2);background:rgba(122,92,44,.07)}
+.steps{list-style:none;counter-reset:st;margin-top:8px}
+.steps li{counter-increment:st;position:relative;padding:20px 0 20px 62px;border-top:1px solid var(--line-on-cream)}
+.steps li:first-child{border-top:0}
+.steps li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:22px;font-family:var(--mono);font-size:.8rem;color:#7a5c2c}
+.steps h3{margin-bottom:6px}
+.steps p{font-size:.95rem}
+.faq details{border-top:1px solid var(--line-2);padding:4px 0}
+.faq details:last-child{border-bottom:1px solid var(--line-2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;font-family:var(--body);font-weight:600;font-size:1.02rem;color:var(--fg)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--gold);font-size:1.1rem;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 2px 18px;max-width:70ch}
+.note{border-left:2px solid var(--gold);padding:4px 0 4px 18px;margin-top:22px}
+.note p{font-size:.93rem}
+section.light .note{border-left-color:#7a5c2c}
+
+/* ── pixmap (engraving halftone) ─────────────────────── */
+#setup{overflow:hidden}
+#setup .pixmap{position:absolute;right:-4%;bottom:-7%;z-index:0;pointer-events:none;width:clamp(300px,40vw,520px);height:clamp(280px,72%,500px);opacity:.5;background:#e7d9bd;-webkit-mask-image:radial-gradient(66% 68% at 50% 50%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%);mask-image:radial-gradient(66% 68% at 50% 50%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%)}
+#setup .pixmap .pi{position:absolute;inset:0;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/franklin-kite.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
+#setup>*{position:relative;z-index:1}
+@media(max-width:820px){#setup .pixmap{display:none}}
+
+/* ── footer ──────────────────────────────────────────── */
+footer{text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2)}
+footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold)}
+footer .links{margin-top:14px;font-size:.85rem;color:var(--muted)}
+footer .links a{color:var(--muted)}
+footer .links a:hover{color:var(--gold)}
+.foot-mark{font-family:var(--display);font-style:italic;font-size:clamp(5rem,16vw,11rem);line-height:1;color:var(--fg);opacity:.045;margin-top:26px;user-select:none}
+
+/* ── reveal ──────────────────────────────────────────── */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .btn,.toc-in a,.cmd button{transition:none}
+}
+
+/* ── responsive ──────────────────────────────────────── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .g2-stage{order:-1}
+  .arch{grid-template-columns:1fr}
+  .al{width:auto;padding:8px 0}
+  .al i{width:1px;height:22px;margin:0 auto;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
+}
+@media(max-width:640px){
+  .hide-sm{display:none}
+  body{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site">
+  <div class="tb-in">
+    <div class="tb-brand"><a href="/"><b>COS</b> <span class="it">Starter</span></a><span class="tb-sep">/</span><span class="tb-doc">Docs</span></div>
+    <div class="tb-links">
+      <a class="hide-sm" href="/wizard/">Setup Wizard</a>
+      <a class="hide-sm" href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
+      <a href="/">gotcos.com</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="tocbar" aria-label="On this page">
+  <div class="toc-in">
+    <a href="#top">Start</a>
+    <a href="#setup">Setup</a>
+    <a href="#ask">Ask</a>
+    <a href="#lens">The Lens</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#recall">Recall</a>
+    <a href="#meetings">Meetings</a>
+    <a href="#dictation">Dictation</a>
+    <a href="#models">Models</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#settings">Settings</a>
+    <a href="#fixes">Fixes</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── 01 START ── -->
+<header class="hero wrap" id="top">
+  <div>
+    <div class="eyebrow"><span class="num">01</span> COS Glasses · User Guide</div>
+    <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
+    <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
+    <div class="badges">
+      <span class="chip">App <b>v5.18.0</b> · build 171</span>
+      <span class="chip">Server <b>6.3.1</b></span>
+      <span class="chip">Even G2</span>
+      <span class="chip">Even app 2.2.1+</span>
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="/wizard/">Run the setup wizard</a>
+      <a class="btn ghost" href="#setup">Read the setup steps</a>
+    </div>
+  </div>
+  <div class="g2-stage" aria-hidden="true">
+    <div class="hud">
+      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.18.0</span></div>
+      <div>MSG <span class="hi">#104</span> <span class="dim">· 2m ago</span></div>
+      <div><span class="dim">72° Clear · Thu Jul 9</span></div>
+      <div><span class="dim">10:00 Design review</span></div>
+      <div class="foot"><span>Tap=Latest&nbsp;&nbsp;↓ Menu&nbsp;&nbsp;↑ Messages</span></div>
+    </div>
+    <img class="g2-img" src="../assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
+  </div>
+</header>
+
+<section class="wrap reveal" id="how" aria-label="How it works">
+  <div class="sec-head">
+    <h2>Three pieces, <span class="it">one loop.</span></h2>
+    <p class="lead">Ask from the glasses. The G2 relays over Bluetooth to the Even app on your iPhone, the iPhone reaches your Mac over Wi-Fi or Tailscale, and the server runs your prompt through your own signed-in Claude Code or Codex CLI. The answer renders on the lens. The history stays on your Mac.</p>
+  </div>
+  <div class="arch" role="img" aria-label="Even G2 connects over Bluetooth to the Even app on iPhone, which connects over Wi-Fi or Tailscale to the glasses server on your Mac">
+    <div class="an"><b>Even G2</b><span>The lens. Taps, scrolls, voice in; answers out.</span></div>
+    <div class="al"><b>BLE</b><i></i></div>
+    <div class="an"><b>iPhone · Even app</b><span>Runs COS Glasses and the phone companion.</span></div>
+    <div class="al"><b>Wi-Fi · Tailscale</b><i></i></div>
+    <div class="an"><b>Your Mac</b><span>glasses server on :3141, driving your Claude Code and Codex CLIs.</span></div>
+  </div>
+</section>
+
+<!-- ── 02 SETUP ── -->
+<section class="wrap reveal light" id="setup">
+  <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">02</span> Setup</div>
+    <h2>Live in about ten minutes.</h2>
+    <p class="lead">Three moving pieces: the server on your Mac, the app on your glasses, one paste to connect them. The <a href="/wizard/">wizard</a> walks you through all of it. This is the short version.</p>
+  </div>
+  <ol class="steps">
+    <li>
+      <h3>Check the basics</h3>
+      <p>A Mac that stays on, with Node.js 20.11 or newer. At least one agent CLI signed in: Claude Code (<code>claude login</code>) or Codex (<code>codex login</code>). Your G2 paired to the Even Realities app, version 2.2.1 or newer.</p>
+    </li>
+    <li>
+      <h3>Start the server</h3>
+      <div class="cmd"><span class="p">$</span><code>npx @gotcos/glasses-server</code><button type="button">Copy</button></div>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Optional but recommended: <code>brew install whisper-cpp</code> for free local voice transcription; with it installed, the server downloads its voice model (about 1.5&nbsp;GB) on the next run.</p>
+    </li>
+    <li>
+      <h3>Install the app</h3>
+      <p>In the Even Realities app, open <strong>Even Hub</strong> and install <strong>COS Glasses</strong>.</p>
+    </li>
+    <li>
+      <h3>Connect once</h3>
+      <p>Open the <a href="/wizard/">setup wizard</a> on your phone. Paste the server URL and the API token. COS remembers both from then on.</p>
+    </li>
+  </ol>
+  <div class="note">
+    <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
+  </div>
+  <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
+</section>
+
+<!-- ── 03 ASK ── -->
+<section class="wrap reveal" id="ask">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">03</span> Ask anything</div>
+    <h2>Voice in. <span class="it goldt">Context out.</span></h2>
+    <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
+  </div>
+  <p style="max-width:70ch">Answers stream to the lens and read as <strong>one continuous message</strong>, scrolled natively by the glasses like a news feed. No pages. No chunk-tapping. The footer keeps the receipts: model, message number, elapsed time, session date, battery.</p>
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div>
+      <div class="hud" aria-hidden="true">
+        <div><span class="dim">MSG</span> <span class="hi">#104</span></div>
+        <div>Your Friday pilot is on track. Two</div>
+        <div>items need a decision before</div>
+        <div>Thursday: the data import owner</div>
+        <div>and the rollout email. <span class="dim">▾</span></div>
+        <div class="foot"><span>opus · #104 · jul 9</span><span>82%</span></div>
+      </div>
+      <div class="hud-cap">The reader · scroll to read, tap for the footer menu</div>
+    </div>
+    <div>
+      <h3>Reading controls</h3>
+      <div class="tw"><table>
+        <tr><td><span class="g-key">↑</span> <span class="g-key">↓</span></td><td>Scroll the message. The glasses handle it natively, so it feels like the firmware because it is.</td></tr>
+        <tr><td><span class="g-key">Tap</span></td><td>Opens the footer menu: <strong>Messages | Reply</strong>. Tap again to confirm the highlighted choice; scroll to switch between them.</td></tr>
+        <tr><td><span class="g-key">Double-tap</span></td><td>Reply straight away: dictate a voice follow-up to the open message.</td></tr>
+      </table></div>
+      <p style="font-size:.9rem">The two-tap footer menu is deliberate. G2 firmware occasionally reports phantom ring taps, and the confirmation step means a stray tap never throws you out of a message.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 THE LENS ── -->
+<section class="wrap reveal light" id="lens">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">04</span> The lens</div>
+    <h2>Four screens. Three gestures.</h2>
+    <p class="lead">Everything runs on tap, double-tap, and scroll. Each screen prints its own hint line, so the lens always tells you what is live.</p>
+  </div>
+  <h3>Home</h3>
+  <p style="font-size:.95rem">Shows the version, your latest message number and age, weather, and your next calendar event. Hint line: <span class="g-key">Tap=Latest&nbsp; ↓ Menu&nbsp; ↑ Messages</span></p>
+  <div class="tw"><table>
+    <tr><th>Gesture</th><th>What happens</th></tr>
+    <tr><td><span class="g-key">Tap</span></td><td>Open the latest message.</td></tr>
+    <tr><td><span class="g-key">↓</span></td><td>Open the Quick Actions menu.</td></tr>
+    <tr><td><span class="g-key">↑</span></td><td>Open the Messages list.</td></tr>
+    <tr><td><span class="g-key">Double-tap</span></td><td>Ask to exit COS. Home is exit-only by design, so you can always find your way out.</td></tr>
+  </table></div>
+  <h3 style="margin-top:30px">Quick Actions</h3>
+  <p style="font-size:.95rem">The main menu. Scroll moves the <span class="g-key">▸</span> cursor, tap runs the highlighted item:</p>
+  <div class="tw"><table>
+    <tr><td><strong>Home</strong></td><td>Back to the idle screen.</td></tr>
+    <tr><td><strong>Review Meetings</strong></td><td>Summaries, topics, decisions, and action items from past recordings.</td></tr>
+    <tr><td><strong>Start Meeting AI</strong></td><td>Begin a live-transcribed recording. While recording, this slot becomes <strong>Resume Meeting</strong> and <strong>Stop Meeting AI</strong>.</td></tr>
+    <tr><td><strong>Messages</strong></td><td>The live list of recent conversations.</td></tr>
+    <tr><td><strong>Message History</strong></td><td>The full archive, back to day one.</td></tr>
+    <tr><td><strong>Threads</strong></td><td>Ongoing topics COS is tracking.</td></tr>
+    <tr><td><strong>Memory</strong></td><td>What COS remembers about your world.</td></tr>
+    <tr><td><strong>Sessions</strong></td><td>Recent working sessions.</td></tr>
+    <tr><td><strong>Network</strong></td><td>Connection status.</td></tr>
+  </table></div>
+  <h3 style="margin-top:30px">Messages list</h3>
+  <p style="font-size:.95rem">Rows read <span class="g-key">▶ #104 09:14 what did we decide…</span> with the newest activity on top.</p>
+  <div class="tw"><table>
+    <tr><td><span class="g-key">Tap</span></td><td>Open the highlighted message in the reader. Tapping <span class="g-key">✉ Record Message</span> at the top starts a new dictation.</td></tr>
+    <tr><td><span class="g-key">↑</span> <span class="g-key">↓</span></td><td>Move through the list.</td></tr>
+    <tr><td><span class="g-key">Double-tap</span></td><td>Start dictating a new prompt from anywhere in the list.</td></tr>
+  </table></div>
+  <p style="font-size:.95rem">Running, queued, and <span class="g-key">✓ Done</span> rows appear in this list while jobs work. That is the next section.</p>
+</section>
+
+<!-- ── 05 JOBS ── -->
+<section class="wrap reveal" id="jobs">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">05</span> Jobs</div>
+    <h2>Watch it <span class="it goldt">work.</span></h2>
+    <p class="lead">Every prompt is a job you can watch, queue, or cancel. And nothing ever hijacks your screen.</p>
+  </div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div>
+      <div class="hud" aria-hidden="true">
+        <div><span class="dim">00:02</span> <span class="tag">SENT</span> summarize the pilot thread</div>
+        <div><span class="dim">00:09</span> <span class="tag">TOOL</span> Searching web...</div>
+        <div><span class="dim">00:21</span> <span class="tag">OUT</span> 5 results · vendor pricing</div>
+        <div><span class="dim">00:34</span> <span class="tag">TOOL</span> Reading page...</div>
+        <div><span class="dim">01:05</span> <span class="tag">LIVE</span> The pilot is on track. Two</div>
+        <div><span class="dim">01:06</span> <span class="tag">LIVE</span> items need a decision…</div>
+        <div class="foot"><span>Running · double-tap to cancel</span></div>
+      </div>
+      <div class="hud-cap">The job activity page · newest seven lines, scroll back anytime</div>
+    </div>
+    <div>
+      <h3>Queue, watch, cancel</h3>
+      <p style="font-size:.95rem">Ask while a reply is streaming and the new prompt <strong>queues</strong>: up to five wait in line, first in, first out. Rows in Messages show the state as <span class="g-key">… Queued 1/2</span>, <span class="g-key">Running · Searching web...</span>, and <span class="g-key">✓ Done #104</span>.</p>
+      <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The activity page is a terminal-style tail with mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
+    </div>
+  </div>
+  <div class="tw"><table>
+    <tr><td><strong>Cancel</strong></td><td>A deliberate two-step: double-tap arms it (<span class="g-key">Double-tap again to cancel</span>, three-second window), a second double-tap cancels. Canceling pauses the queue; nothing auto-fires until you tap a queued row.</td></tr>
+    <tr><td><strong>Done rows</strong></td><td>Finished jobs leave a short <span class="g-key">✓ Done #104</span> trail in Messages (the last three). Tap one to jump straight to the reply; the row retires itself after the jump.</td></tr>
+    <tr><td><strong>No-yank rule</strong></td><td>If you navigated somewhere else while the job ran, the finished reply never steals the screen. You get a <span class="g-key">✓ Reply #104 ready</span> flash instead. A reply only opens itself when you are sitting on Home.</td></tr>
+  </table></div>
+</section>
+
+<!-- ── 06 RECALL ── -->
+<section class="wrap reveal light" id="recall">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">06</span> Recall</div>
+    <h2>Never lose an answer.</h2>
+    <p class="lead">Every reply gets a permanent number the moment it lands. Numbers only count up; they are never renumbered and never reused.</p>
+  </div>
+  <p style="max-width:70ch">The Messages list keeps a recent window; the complete record lives in <strong>Message History</strong>. And the numbers are conversational: say <strong>“reference message 104”</strong> in any new prompt and COS pulls it back into context, whether it is still on the lens, in yesterday's archive, or from last month. The server resolves it across live sessions first, then the day archives.</p>
+</section>
+
+<!-- ── 07 MEETINGS ── -->
+<section class="wrap reveal" id="meetings">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">07</span> Meetings</div>
+    <h2>Record the room. <span class="it goldt">Read it later.</span></h2>
+    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript, newest line on top.</p>
+  </div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div>
+      <div class="hud" aria-hidden="true">
+        <div><span class="hi">★ Bookmarked</span></div>
+        <div><span class="dim">[maya]</span> we can ship the pilot friday</div>
+        <div><span class="dim">[sam]</span> blocking item is the data</div>
+        <div>import, one day of work</div>
+        <div><span class="dim">[maya]</span> then friday holds</div>
+        <div class="foot"><span>◆ 2 nudges&nbsp;&nbsp;↓ history&nbsp;&nbsp;↑↑ home</span></div>
+      </div>
+      <div class="hud-cap">Live meeting HUD · fictional example</div>
+    </div>
+    <div>
+      <div class="tw"><table>
+        <tr><td><span class="g-key">Tap</span></td><td>Bookmark the moment. The lens flashes <span class="g-key">★ Bookmarked</span> and stamps the elapsed time.</td></tr>
+        <tr><td><span class="g-key">↓</span></td><td>Scroll back through the transcript history.</td></tr>
+        <tr><td><span class="g-key">↑↑</span></td><td>Back to Home. Recording keeps going; a REC timer stays in the header while you browse anywhere else.</td></tr>
+      </table></div>
+      <p style="font-size:.95rem"><strong>Stop Meeting AI</strong> ends the session. <strong>Review Meetings</strong> then holds the summary, topics, decisions, and action items, readable right on the glasses.</p>
+      <p style="font-size:.95rem"><strong>No server? Keep talking.</strong> Recording buffers on the phone and uploads, transcribes, and files itself when the server is back. Start and stop offline meetings from Quick Actions as usual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 08 DICTATION ── -->
+<section class="wrap reveal light" id="dictation">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">08</span> Dictation</div>
+    <h2>Long prompts, hands free.</h2>
+    <p class="lead">Dictate a sentence or a page. Nothing sends until you approve the transcript.</p>
+  </div>
+  <ol class="steps">
+    <li>
+      <h3>Record</h3>
+      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span>; talk as long as you need.</p>
+    </li>
+    <li>
+      <h3>Review</h3>
+      <p>Tap to finish. COS transcribes and shows the full transcript for review before anything is sent.</p>
+    </li>
+    <li>
+      <h3>Send, edit, or redo</h3>
+      <p>The cursor starts on <strong>Send</strong>, so sending as-is is one tap. Or choose <strong>Edit</strong> and speak the change (“make the second sentence shorter”), <strong>Re-record</strong>, or <strong>Cancel</strong>. After an edit you also get <strong>Send revised</strong> and <strong>Undo edit</strong>.</p>
+    </li>
+  </ol>
+  <div class="note">
+    <p><strong>Optional polish.</strong> Settings has a <strong>Polish dictation (AI)</strong> toggle that cleans filler words before sending, with a fast Haiku default. It ships off; your words send verbatim unless you turn it on.</p>
+  </div>
+</section>
+
+<!-- ── 09 MODELS ── -->
+<section class="wrap reveal" id="models">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">09</span> Models</div>
+    <h2>Choose your brain. <span class="it goldt">Keep it current.</span></h2>
+    <p class="lead">Five entries in Settings under Default chat model. All five track the newest models automatically, so the picker never goes stale and the app never needs an update to follow a release.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="lbl">Opus — always latest (1M)</span>
+      <p>The newest Opus, resolved through your Claude Code CLI at the moment you send. 1M-token context.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">Fable — always latest (1M)</span>
+      <p>The newest Fable-tier model, same send-time resolution, same 1M context.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">Sonnet — always latest (1M)</span>
+      <p>The newest Sonnet: fast, capable, and cheap enough for the everyday questions.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">GPT Frontier — auto latest</span>
+      <p>The strongest model in the newest GPT generation, discovered live from Codex's model catalog. Currently resolves to GPT-5.6 Sol.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">GPT Balanced — auto latest</span>
+      <p>The strong-and-efficient sibling. Currently GPT-5.6 Terra. When the next generation ships, both slots follow it automatically.</p>
+    </div>
+  </div>
+  <p style="max-width:74ch;margin-top:22px">If the live catalog is unreachable, COS falls back to the local catalog cache, then lets the CLI pick its own current default. It never pins a stale model, and economy or hidden variants are excluded from the slots. The <strong>CLI DEBUG</strong> card in Settings always shows the exact model that served the last message.</p>
+  <h3 style="margin-top:30px">Reasoning effort</h3>
+  <p style="max-width:74ch">Four levels ride along with every message: <span class="g-key">High (default)</span> <span class="g-key">Extra High</span> <span class="g-key">Max</span> <span class="g-key">Ultracode</span>. Higher effort means deeper reasoning with slower, costlier answers. On GPT models that advertise support, Max stays Max and Ultracode maps to Codex Ultra; older models clamp safely to what they can do.</p>
+</section>
+
+<!-- ── 10 PRIVACY ── -->
+<section class="wrap reveal light" id="privacy">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">10</span> Privacy</div>
+    <h2>Private by architecture.</h2>
+    <p class="lead">There is no COS cloud. Prompts run through the CLIs you already trust, and the history stays on your Mac.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3>Your Mac is the brain</h3>
+      <p>Queries spawn your local <code>claude</code> or <code>codex</code> CLI and bill to the subscription you already have. Conversation history is a JSON file per day under <code>~/.cos-glasses/data</code> on your Mac.</p>
+    </div>
+    <div class="card">
+      <h3>Off means off at the source</h3>
+      <p>With Tool activity set to Off, previews are never transmitted to the phone, not merely hidden, and tool status flattens to a generic <span class="g-key">Processing...</span></p>
+    </div>
+    <div class="card">
+      <h3>Safe output is actually safe</h3>
+      <p>Preview lines are capped at about 180 characters, control codes are stripped, bearer tokens, API keys, passwords, and JWTs are redacted, and opaque blobs are hidden. Raw tool payloads never reach the phone.</p>
+    </div>
+    <div class="card">
+      <h3>Nothing lingers</h3>
+      <p>Live response lines and tool output exist only in the running job's memory. The trail kept with a finished message is tool names and timing, twelve entries at most.</p>
+    </div>
+    <div class="card">
+      <h3>No hidden reasoning</h3>
+      <p>COS surfaces observable work only. Model thinking appears as a generic <span class="g-key">Reasoning...</span> status, never as text on your lens or phone.</p>
+    </div>
+    <div class="card">
+      <h3>You choose what shows</h3>
+      <p>Four Activity Visibility controls in Settings decide what job detail appears, and where. Defaults below.</p>
+    </div>
+  </div>
+  <div class="tw"><table>
+    <tr><th>Control</th><th>Options</th><th>Default</th></tr>
+    <tr><td><strong>Tool activity</strong></td><td>Off / Status only / Status + safe output</td><td>Status only</td></tr>
+    <tr><td><strong>Live response lines</strong></td><td>On / Off</td><td>On</td></tr>
+    <tr><td><strong>Completed activity trail</strong></td><td>On / Off</td><td>On</td></tr>
+    <tr><td><strong>Detailed output location</strong></td><td>Phone + G2 / Phone only</td><td>Phone + G2</td></tr>
+  </table></div>
+</section>
+
+<!-- ── 11 SETTINGS ── -->
+<section class="wrap reveal" id="settings">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">11</span> Settings</div>
+    <h2>Every switch, <span class="it goldt">one card.</span></h2>
+    <p class="lead">Open the phone companion and tap the ⚙ gear. Every preference persists through Even Hub storage: force-quit the app, reconnect tomorrow, still there.</p>
+  </div>
+  <div class="tw"><table>
+    <tr><th>Section</th><th>What it holds</th></tr>
+    <tr><td><strong>CONNECTION</strong></td><td>Status, server URL, and Disconnect. Disconnect wipes the saved URL and token; reconnect through the wizard.</td></tr>
+    <tr><td><strong>MODEL</strong></td><td>Default chat model: the five always-current entries above.</td></tr>
+    <tr><td><strong>REASONING EFFORT</strong></td><td>High (default), Extra High, Max, Ultracode.</td></tr>
+    <tr><td><strong>CLI DEBUG</strong></td><td>Which CLI and exact model served the last message, working directory, last run. Metadata only; full prompts and tool payloads are not stored.</td></tr>
+    <tr><td><strong>ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
+    <tr><td><strong>TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), prompt recovery (beta), Polish dictation (AI) with Haiku or Sonnet, and Live meeting ASR: Server Whisper or iPhone WhisperKit (beta).</td></tr>
+    <tr><td><strong>VOICE (TTS)</strong></td><td>Nine voices with Echo as default, playback speed, fast first-audio (beta), and a test button. Used when you ask COS to speak; connect Bluetooth audio to hear it.</td></tr>
+    <tr><td><strong>OPENAI KEY</strong></td><td>Optional key for the cloud voice fallback. Stored on the server only; never returned to the phone.</td></tr>
+    <tr><td><strong>Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
+    <tr><td><strong>ABOUT</strong></td><td>Version, build, and the local-data note.</td></tr>
+  </table></div>
+</section>
+
+<!-- ── 12 FIXES ── -->
+<section class="wrap reveal light" id="fixes">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">12</span> Troubleshooting</div>
+    <h2>When something looks stuck.</h2>
+    <p class="lead">Almost everything comes back to one question: can the phone reach the Mac?</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3>“Query failed. Check COS server connection.”</h3>
+      <p>The phone cannot reach the Mac. Confirm the Mac is awake and the server is running (<code>npx @gotcos/glasses-server</code>), and that the phone is on the same Wi-Fi, or that Tailscale is up on both devices. Quick check: open <code>http://YOUR-SERVER-IP:3141/api/health</code> in the phone browser.</p>
+    </div>
+    <div class="card">
+      <h3>Restarted the server?</h3>
+      <p>Force-quit the Even app and reopen it. Settings and the connection survive. Disconnect in Settings is the last resort: it clears the saved URL and token, so you would re-paste them from the wizard.</p>
+    </div>
+    <div class="card">
+      <h3>Voice feels slow</h3>
+      <p>Local whisper transcribes for free. Without <code>whisper-cpp</code> installed, the server falls back to OpenAI, which needs a key and costs about $0.006 per minute. The health endpoint reports whisper status and remaining cloud budget.</p>
+    </div>
+    <div class="card">
+      <h3>Meeting with no server</h3>
+      <p>Keep talking. Audio buffers on the phone and uploads, transcribes, and files itself when the server returns.</p>
+    </div>
+    <div class="card">
+      <h3>Updating</h3>
+      <p>Server: rerun <code>npx @gotcos/glasses-server</code>; npx fetches the latest release. Glasses app: install the new version from Even Hub. History and settings carry over.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 13 FAQ ── -->
+<section class="wrap reveal" id="faq">
+  <div class="sec-head">
+    <div class="eyebrow"><span class="num">13</span> FAQ</div>
+    <h2>The short answers.</h2>
+  </div>
+  <div class="faq">
+    <details>
+      <summary>Which hardware and app versions do I need?</summary>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.1 or newer. The server side needs a Mac with Node.js 20.11 or newer.</p>
+    </details>
+    <details>
+      <summary>Do I need both Claude Code and Codex?</summary>
+      <p>One is enough. COS detects what is installed and signed in. Pick your default under Settings and switch whenever you like.</p>
+    </details>
+    <details>
+      <summary>What does it cost to run?</summary>
+      <p>The server is free and MIT-licensed. Prompts bill to the Claude or Codex subscription you already pay for. Voice is free with local whisper; the optional OpenAI fallback runs about $0.006 per minute.</p>
+    </details>
+    <details>
+      <summary>Does anything leave my network?</summary>
+      <p>Prompts go to the AI provider behind your own signed-in CLI, exactly as they would from your terminal. History, meetings, settings, and indexes stay on your Mac and phone. There is no COS-hosted copy.</p>
+    </details>
+    <details>
+      <summary>A new GPT or Claude model just shipped. Do I update anything?</summary>
+      <p>No. Claude tiers resolve at send time through your CLI, and GPT Frontier and Balanced follow Codex's live catalog to the newest generation automatically. The picker updates itself.</p>
+    </details>
+    <details>
+      <summary>Where do I report a bug or ask for help?</summary>
+      <p>Open an issue on <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>, or <a href="/connect/">book a working session</a> and bring the question.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="q">The prompt was never the problem.</div>
+  <div class="links">
+    <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
+    <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·
+    <a href="../LICENSE">MIT License</a>
+  </div>
+  <div class="foot-mark" aria-hidden="true">COS</div>
+</footer>
+
+<script>
+(function(){
+  // reveal on scroll
+  var rs = document.querySelectorAll('.reveal');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    rs.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.08});
+    rs.forEach(function(e){ io.observe(e); });
+  }
+  // chapter scrollspy
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-in a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var strip = document.querySelector('.toc-in');
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var a = map[e.target.id] || (e.target.id === 'how' ? map['top'] : null);
+        if (!a) return;
+        links.forEach(function(l){ l.removeAttribute('aria-current'); });
+        a.setAttribute('aria-current','true');
+        strip.scrollTo({left: a.offsetLeft - strip.clientWidth/2 + a.offsetWidth/2, behavior:'smooth'});
+      });
+    }, {rootMargin:'-25% 0px -65% 0px'});
+    document.querySelectorAll('main [id]').forEach(function(s){ spy.observe(s); });
+  }
+  // copy buttons
+  document.querySelectorAll('.cmd button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = b.closest('.cmd').querySelector('code').textContent.trim();
+      navigator.clipboard.writeText(t).then(function(){
+        var o = b.textContent; b.textContent = 'Copied';
+        setTimeout(function(){ b.textContent = o; }, 1400);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
