@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is an AI Harness? Own Your AI Memory | GotCOS</title>
+<meta name="description" content="An AI harness surrounds a frontier model with memory, instructions, tools, permissions, and persistence. Learn why the harness is the part you can own.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.gotcos.com/harness/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Is an AI Harness? The Model Is Rented. The Harness Is Yours.">
+<meta property="og:description" content="A practical guide to the layer that turns a frontier model into a persistent, tool-using system that remembers how you work.">
+<meta property="og:url" content="https://www.gotcos.com/harness/">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.className += ' js';</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Is an AI Harness? The Model Is Rented. The Harness Is Yours.",
+      "description": "A practical guide to AI harnesses, personal memory, tool use, model portability, and user-owned context.",
+      "datePublished": "2026-07-10",
+      "dateModified": "2026-07-10",
+      "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
+      "publisher": {"@type": "Organization", "name": "GotCOS", "url": "https://www.gotcos.com"},
+      "mainEntityOfPage": "https://www.gotcos.com/harness/",
+      "image": "https://www.gotcos.com/assets/banner.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "GotCOS", "item": "https://www.gotcos.com/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Harness", "item": "https://www.gotcos.com/harness/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is an AI harness?", "acceptedAnswer": {"@type": "Answer", "text": "An AI harness is the operating system around a model. It supplies instructions, context, memory, tools, permissions, workflow logic, and persistence so the model can do useful work repeatedly instead of answering one isolated prompt."}},
+        {"@type": "Question", "name": "Is an AI harness the same as an AI agent?", "acceptedAnswer": {"@type": "Answer", "text": "No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts."}},
+        {"@type": "Question", "name": "Is MCP an AI harness?", "acceptedAnswer": {"@type": "Answer", "text": "No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system."}},
+        {"@type": "Question", "name": "Can one harness use Claude, GPT, and Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "A harness can support multiple models. COS supports Claude Code and Codex today; GPT, Gemini, and local models require additional adapters."}},
+        {"@type": "Question", "name": "Does a local AI harness keep all data private?", "acceptedAnswer": {"@type": "Answer", "text": "A local-first harness can keep the durable corpus and outputs on devices you control. However, any context sent to a hosted model for inference is processed under that provider's terms and data controls. Local storage and local inference are separate choices."}},
+        {"@type": "Question", "name": "Why does an AI harness matter for personal memory?", "acceptedAnswer": {"@type": "Answer", "text": "The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a model change."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  color-scheme:dark;
+  --ink:#170f09;--ink2:#21160f;--paper:#f3ede1;--paper2:#e9dfcd;--fg:#f0e8da;
+  --muted:rgba(240,232,218,.64);--ghost:rgba(240,232,218,.38);--line:rgba(201,169,110,.20);--line2:rgba(255,246,232,.08);
+  --gold:#c9a96e;--warm:#d4a07a;--rose:#c4736e;--green:#7fa98a;--blue:#87a8bd;
+  --paper-ink:#281b11;--paper-muted:rgba(40,27,17,.68);--paper-line:rgba(40,27,17,.15);
+  --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
+  --max:1140px;--gut:clamp(22px,5vw,72px)
+}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.66;overflow-x:hidden}
+::selection{background:rgba(201,169,110,.30);color:#fff}
+a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+.topbar{border-bottom:1px solid var(--line2);background:rgba(12,8,5,.88);position:relative;z-index:20}
+.topin{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{font-family:var(--display);font-size:1.08rem;color:var(--fg);white-space:nowrap}.brand b{font-weight:600}.brand i{color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:22px;font-size:.86rem}.navlinks a{color:var(--muted)}.navlinks a:hover{color:var(--gold)}
+.navlinks .cta{padding:8px 15px;border:1px solid var(--line);border-radius:999px;color:var(--fg)}
+.hero{position:relative;isolation:isolate;padding:clamp(74px,10vw,136px) 0 clamp(70px,9vw,116px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}
+.eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
+h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 em{display:block;color:var(--gold);font-weight:400}
+.hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:58ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#1d1309;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
+.byline{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--ghost);margin-top:22px}
+.proofbar{padding:0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);background:rgba(255,246,232,.025)}
+.proofgrid{display:grid;grid-template-columns:repeat(3,1fr)}
+.proofitem{padding:24px clamp(18px,3vw,34px);border-right:1px solid var(--line2)}.proofitem:last-child{border-right:0}
+.proofitem b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:500;color:var(--gold);line-height:1.1}.proofitem span{display:block;margin-top:6px;color:var(--muted);font-size:.82rem}
+.rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
+.rig::before,.rig::after{content:"";position:absolute;inset:12px;border:1px solid rgba(201,169,110,.12);border-radius:19px;pointer-events:none}.rig::after{inset:22px;border-color:rgba(135,168,189,.1)}
+.rig-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 16px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
+.rig-top b{color:var(--gold);font-weight:500}.lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:7px}
+.rig-body{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:stretch}
+.rail{display:grid;gap:9px}.module{border:1px solid var(--line2);border-radius:12px;padding:12px;background:rgba(7,5,4,.35)}.module small{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);display:block}.module b{display:block;font-size:.83rem;margin-top:4px;font-weight:600}.module span{font-size:.7rem;color:var(--muted)}
+.engine{min-height:286px;border:1px solid rgba(201,169,110,.32);border-radius:18px;background:radial-gradient(circle at 50% 35%,rgba(201,169,110,.16),transparent 42%),#100b07;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.engine::before{content:"";position:absolute;inset:12px;border:1px dashed rgba(201,169,110,.24);border-radius:12px}.socket{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
+.engine-name{font-family:var(--display);font-size:2.05rem;line-height:1.05;color:var(--fg);margin:13px 0 7px;transition:opacity .18s,transform .18s}.engine-name.swap{opacity:0;transform:translateY(7px)}
+.engine-role{font-size:.72rem;color:var(--gold);font-family:var(--mono)}
+.model-switch{display:flex;gap:7px;margin-top:22px;position:relative;z-index:2}.model-switch button{font-family:var(--mono);font-size:.58rem;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:7px;padding:8px 10px;cursor:pointer}.model-switch button:hover,.model-switch button[aria-pressed="true"]{color:var(--fg);border-color:var(--gold);background:rgba(201,169,110,.09)}
+.rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:16px 10px 2px}.rig-caption strong{color:var(--fg)}
+.paper{background:var(--paper);color:var(--paper-ink)}
+section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:24px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
+.sticky{position:sticky;top:34px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
+.definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
+.compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
+.dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
+.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
+.memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,74px);align-items:start}.filetree{background:#0d0906;border:1px solid var(--line);border-radius:18px;padding:22px;font-family:var(--mono);font-size:.75rem;line-height:1.85;color:var(--muted);box-shadow:0 28px 70px rgba(0,0,0,.25)}.filetree .bar{display:flex;gap:7px;margin-bottom:17px}.filetree .bar i{width:8px;height:8px;border-radius:50%;background:var(--rose)}.filetree .bar i:nth-child(2){background:var(--gold)}.filetree .bar i:nth-child(3){background:var(--green)}.filetree b{color:var(--fg);font-weight:500}.filetree .note{color:var(--gold)}
+.memory-copy h2{font-size:clamp(2.3rem,4.2vw,3.75rem);line-height:1.03}.memory-copy>p{color:var(--muted);font-size:1.05rem;margin-top:20px}.truth{margin-top:25px;border-left:2px solid var(--gold);padding:4px 0 4px 18px}.truth b{display:block;margin-bottom:4px}.truth p{font-size:.88rem;color:var(--muted)}
+.fieldnotes{background:var(--paper);color:var(--paper-ink)}.field-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,7vw,94px);align-items:start}.fieldnotes h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.fieldnotes .lead{color:var(--paper-muted);margin-top:18px}.timeline{border-left:1px solid var(--paper-line);padding-left:28px}.moment{position:relative;padding:0 0 31px}.moment:last-child{padding-bottom:0}.moment::before{content:"";position:absolute;left:-34px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid #866633}.moment small{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d}.moment h3{font-size:1.08rem;margin:6px 0}.moment p{color:var(--paper-muted);font-size:.92rem}
+.build{background:var(--ink2)}.build-head{max-width:750px}.build h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.build .lead{color:var(--muted);margin-top:18px}.steps{display:grid;gap:1px;margin-top:42px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px;background:rgba(255,246,232,.025);border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.step .n{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1}.step h3{font-size:1.02rem;margin-bottom:5px}.step p{color:var(--muted);font-size:.9rem;max-width:72ch}
+.faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"−"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
+.sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#654919}
+.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
+footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.js .reveal.in{opacity:1;transform:none}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero h1{max-width:13ch}.rig{max-width:720px}.section-grid,.field-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}.anatomy{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.navlinks a:not(.cta){display:none}.rig-body{grid-template-columns:1fr}.rail{grid-template-columns:1fr 1fr}.engine{order:-1;min-height:230px}.memory-layout{grid-template-columns:1fr}.anatomy{grid-template-columns:1fr}.step{grid-template-columns:48px 1fr;padding:20px 17px}.model-switch{flex-wrap:wrap;justify-content:center}.hero{padding-top:62px}}
+@media(max-width:700px){.proofgrid{grid-template-columns:1fr}.proofitem{border-right:0;border-bottom:1px solid var(--line2)}.proofitem:last-child{border-bottom:0}}
+@media(max-width:430px){.rail{grid-template-columns:1fr}.rig{padding:12px}.definition{padding:21px}.definition p{font-size:1.27rem}.topin{min-height:52px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.engine-name{transition:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="Site">
+  <div class="topin wrap">
+    <a class="brand" href="/"><b>COS</b> <i>Starter</i></a>
+    <div class="navlinks">
+      <a href="/#graph">The system</a>
+      <a href="/docs/">Docs</a>
+      <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
+      <a class="cta" href="/#start">Build your COS</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid wrap">
+    <div class="reveal">
+      <div class="eyebrow">AI harnesses, explained</div>
+      <h1>The model is rented. <em>The harness is yours.</em></h1>
+      <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, tools, rules, and a place to keep working. That surrounding system—not one clever prompt—is what turns generic intelligence into an AI that knows how you operate.</p>
+      <div class="actions">
+        <a class="btn primary" href="#definition">Understand the harness</a>
+        <a class="btn ghost" href="#build">Build your own</a>
+      </div>
+      <p class="byline">Miles Ukaoma · GotCOS field guide · July 2026</p>
+    </div>
+
+    <div class="rig reveal" aria-label="Interactive diagram showing a replaceable AI model inside a user-owned harness">
+      <div class="rig-top"><b>Your harness</b><span><i class="lamp"></i>context online</span></div>
+      <div class="rig-body">
+        <div class="rail">
+          <div class="module"><small>Memory</small><b>People &amp; decisions</b><span>Owned corpus</span></div>
+          <div class="module"><small>Instructions</small><b>How you operate</b><span>Durable rules</span></div>
+          <div class="module"><small>Skills</small><b>Repeatable work</b><span>Portable methods</span></div>
+        </div>
+        <div class="engine">
+          <span class="socket">replaceable engine</span>
+          <div class="engine-name" id="engineName" aria-live="polite">Claude</div>
+          <span class="engine-role" id="engineRole">frontier reasoning model</span>
+          <div class="model-switch" aria-label="Choose a model to place inside the harness">
+            <button type="button" data-model="Claude" data-role="frontier reasoning model" aria-pressed="true">Claude</button>
+            <button type="button" data-model="GPT" data-role="frontier reasoning model" aria-pressed="false">GPT</button>
+            <button type="button" data-model="Gemini" data-role="frontier reasoning model" aria-pressed="false">Gemini</button>
+            <button type="button" data-model="Local" data-role="private specialist model" aria-pressed="false">Local</button>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="module"><small>Tools</small><b>Email, files, CRM</b><span>Connected via MCP</span></div>
+          <div class="module"><small>Permissions</small><b>What it may do</b><span>Human control</span></div>
+          <div class="module"><small>Outputs</small><b>Work that remains</b><span>Files, logs, history</span></div>
+        </div>
+      </div>
+      <p class="rig-caption">Swap the intelligence. <strong>Keep the operating system.</strong></p>
+    </div>
+  </div>
+</header>
+
+<section class="proofbar" aria-label="COS adoption proof">
+  <div class="proofgrid wrap">
+    <div class="proofitem"><b>140+ users</b><span>Running COS Glasses on Even G2.</span></div>
+    <div class="proofitem"><b>Company 119</b><span>A live agency deployment with role-based context and scheduled indexing.</span></div>
+    <div class="proofitem"><b>Paying clients</b><span>Using COS in production, not a lab-only demonstration.</span></div>
+  </div>
+</section>
+
+<main>
+  <section class="paper" id="definition">
+    <div class="section-grid wrap">
+      <div class="sticky reveal">
+        <div class="kicker">The plain-English definition</div>
+        <h2>What is an AI harness?</h2>
+        <p class="intro">The useful unit of AI is no longer just the model. It is the model plus the system that helps it understand, act, remember, and recover.</p>
+      </div>
+      <article class="prose reveal">
+        <div class="definition">
+          <span class="label">Definition</span>
+          <p>An AI harness is the operating system around a model: the instructions, context, memory, tools, permissions, workflow logic, and persistence that let it perform useful work repeatedly.</p>
+        </div>
+        <p>Ask a bare model a question and it produces an answer. Put that model inside a harness and it can inspect the right files, retrieve what happened last week, choose an approved tool, complete a multi-step task, record the result, and leave enough state for the next session to continue.</p>
+        <p>Anthropic describes a harness as the <a href="https://www.anthropic.com/research/trustworthy-agents">instructions and guardrails</a> a model operates under. OpenAI's description of the Codex harness adds the agent loop, thread lifecycle, tool execution, extensions, configuration, authentication, and persistence. The exact boundary varies by product. The central idea does not: <strong>the model is only one component of the working system.</strong></p>
+        <h3>AI model vs. AI agent vs. AI harness</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th>Layer</th><th>What it does</th><th>What survives a model swap</th></tr></thead>
+            <tbody>
+              <tr><td>Model</td><td>Reasons, generates, interprets, and decides what to do next.</td><td>Usually nothing. It is the replaceable engine.</td></tr>
+              <tr><td>Agent</td><td>The working system you experience: a model acting with tools inside an environment.</td><td>Only what its harness preserves.</td></tr>
+              <tr><td>Harness</td><td>Provides context, memory, tools, permissions, orchestration, and continuity.</td><td>Your operating rules, corpus, workflows, and outputs.</td></tr>
+              <tr><td>MCP</td><td>Standardizes connections to tools, resources, and prompts.</td><td>Portable connections, when the next host supports them.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>MCP is important, but it is not the whole harness. It is closer to a universal port. The harness still decides which connections are available, what context is retrieved, what requires approval, what gets recorded, and how work continues after the current context window ends.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="dark-section" id="anatomy">
+    <div class="wrap reveal">
+      <div class="eyebrow">Anatomy of a useful harness</div>
+      <h2>Six layers turn intelligence into leverage.</h2>
+      <p class="lead">A better model raises the ceiling. A better harness raises the floor—and makes good performance repeatable across models, sessions, and people.</p>
+      <div class="anatomy">
+        <div class="part"><span class="num">01 · IDENTITY</span><h3>Instructions and operating rules</h3><p>Role, goals, standards, preferences, and constraints. The map that tells the model what matters before work begins.</p></div>
+        <div class="part"><span class="num">02 · MEMORY</span><h3>Durable context</h3><p>People, decisions, meetings, corrections, and history—stored outside the model's temporary context window.</p></div>
+        <div class="part"><span class="num">03 · TOOLS</span><h3>Hands in the real world</h3><p>Files, search, terminal, calendar, email, CRM, databases, and APIs. Often connected through MCP or native integrations.</p></div>
+        <div class="part"><span class="num">04 · POLICY</span><h3>Permissions and guardrails</h3><p>What the agent may read, change, send, or publish. Where a human must confirm before the system acts.</p></div>
+        <div class="part"><span class="num">05 · ORCHESTRATION</span><h3>How work moves</h3><p>Planning, delegation, retries, queues, evaluations, handoffs, and the loop that keeps a long task coherent.</p></div>
+        <div class="part"><span class="num">06 · PERSISTENCE</span><h3>What remains afterward</h3><p>Files, logs, threads, outputs, and state. The artifacts that let tomorrow's session begin where today's stopped.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ownership">
+    <div class="memory-layout wrap">
+      <div class="filetree reveal" aria-label="Example of a locally stored personal AI corpus">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <b>my-cos/</b><br>
+        ├── <b>AGENTS.md</b> <span class="note"># operating map</span><br>
+        ├── context/<br>
+        │&nbsp;&nbsp; ├── people.md<br>
+        │&nbsp;&nbsp; ├── goals.md<br>
+        │&nbsp;&nbsp; └── decisions.md<br>
+        ├── operations/<br>
+        │&nbsp;&nbsp; ├── tasks.md<br>
+        │&nbsp;&nbsp; ├── meetings/<br>
+        │&nbsp;&nbsp; └── weekly-work/<br>
+        ├── skills/<br>
+        │&nbsp;&nbsp; ├── prep.md<br>
+        │&nbsp;&nbsp; └── reflect.md<br>
+        └── corrections.md <span class="note"># what compounds</span>
+      </div>
+      <div class="memory-copy reveal">
+        <div class="eyebrow">The ownership thesis</div>
+        <h2>Your personal AI memory should outlive the model.</h2>
+        <p>Models improve quickly. Subscriptions change. Interfaces disappear. If your working memory lives only inside one vendor's chat history, every switch starts with a partial amnesia.</p>
+        <p>A local-first harness changes the asset. Your corpus can live as ordinary files, databases, indexes, and logs on devices or infrastructure you control. The harness selects the relevant context and makes it legible to whichever model is best for the job.</p>
+        <div class="truth"><b>Local storage is not the same as local inference.</b><p>Your durable corpus can remain on your machine while selected context is sent to a hosted model for a task. Provider terms and data controls still apply to anything transmitted. A serious harness makes that boundary visible instead of hiding it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fieldnotes" id="cos">
+    <div class="field-grid wrap">
+      <div class="reveal">
+        <div class="kicker">A harness under real operating load</div>
+        <h2>COS is the conduit, not the intelligence monopoly.</h2>
+        <p class="lead">COS began as an AI chief of staff built while running marketing and digital transformation across a multi-brand software portfolio, alongside two operating businesses and a family. The job was never “chat better.” The job was to preserve context across the places real work happens.</p>
+        <p class="lead">A harness can use Claude, GPT, Gemini, or local models when the required integrations exist. COS currently supports Claude Code and Codex, with additional adapters as design intent. The personal operating layer makes the model's intelligence specific to you.</p>
+        <p class="lead"><strong>Production proof:</strong> Company 119 and other paying clients run COS in live operating environments. More than 140 people use COS Glasses on Even G2.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="moment"><small>Before the meeting</small><h3>Retrieve the people, history, and unfinished work.</h3><p>The model does not need every document. The harness finds the small set that changes the answer.</p></div>
+        <div class="moment"><small>During the work</small><h3>Use tools inside explicit boundaries.</h3><p>Search meetings, read tasks, inspect files, draft a response, or run an analysis—with approvals where actions become externally visible.</p></div>
+        <div class="moment"><small>After the decision</small><h3>Write the durable artifact.</h3><p>The decision, correction, output, and next step return to the corpus instead of disappearing into a transcript.</p></div>
+        <div class="moment"><small>Next model, next surface</small><h3>Continue without rebuilding the relationship.</h3><p>The same operating memory can appear in a terminal, desktop app, phone, or smart-glasses display because the harness—not the screen—holds continuity.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="build" id="build">
+    <div class="wrap reveal">
+      <div class="build-head">
+        <div class="eyebrow">Build the asset</div>
+        <h2>Start with a folder, not a platform migration.</h2>
+        <p class="lead">A personal harness can begin small. The first useful version needs an identity, a memory structure, one repeatable skill, one trusted connection, and a habit of recording corrections.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><div><h3>Write the operating map.</h3><p>Define who you are, what you own, the people around you, your priorities, and the rules an AI should follow. Keep the top-level map short; link to deeper sources of truth.</p></div></div>
+        <div class="step"><div class="n">02</div><div><h3>Choose a durable memory shape.</h3><p>Use readable files for identity and decisions, structured stores for tasks and events, and search indexes for retrieval. Version what matters.</p></div></div>
+        <div class="step"><div class="n">03</div><div><h3>Turn recurring work into skills.</h3><p>Meeting prep, daily briefing, research, reflection, and follow-up should become named workflows with inputs, checks, and expected outputs.</p></div></div>
+        <div class="step"><div class="n">04</div><div><h3>Connect one real source.</h3><p>Calendar, email, meetings, or tasks. A narrow live connection creates more value than ten empty integrations. Add permissions before autonomy.</p></div></div>
+        <div class="step"><div class="n">05</div><div><h3>Make every correction compound.</h3><p>When the system gets something wrong, fix the source, rule, or retrieval path—not only the current answer. That is how the harness becomes yours.</p></div></div>
+      </div>
+      <div class="actions"><a class="btn primary" href="/#start">Build a COS in five minutes</a><a class="btn ghost" href="https://github.com/ukaoma/cos-starter">Explore the open-source starter</a></div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap reveal">
+      <div class="kicker">Frequently asked questions</div>
+      <h2>AI harness questions, without the jargon.</h2>
+      <details><summary>What is an AI harness?</summary><p>An AI harness is the operating system around a model. It supplies instructions, context, memory, tools, permissions, workflow logic, and persistence so the model can do useful work repeatedly instead of answering one isolated prompt.</p></details>
+      <details><summary>Is an AI harness the same as an AI agent?</summary><p>No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts and determines what survives between runs.</p></details>
+      <details><summary>Is MCP an AI harness?</summary><p>No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system.</p></details>
+      <details><summary>Can one harness use Claude, GPT, and Gemini?</summary><p>A harness can support multiple models. COS supports Claude Code and Codex today; GPT, Gemini, and local models require additional adapters.</p></details>
+      <details><summary>Does a local AI harness keep all data private?</summary><p>Not automatically. A local-first harness can keep the durable corpus and outputs on devices you control. Any context sent to a hosted model for inference is still processed under that provider's terms and data controls. Local storage and local inference are separate choices.</p></details>
+      <details><summary>Why does a harness matter for personal AI memory?</summary><p>The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a new model, interface, or device.</p></details>
+
+      <div class="sources">
+        <h3>Primary sources and further reading</h3>
+        <ol>
+          <li><a href="https://openai.com/index/harness-engineering/">OpenAI: Harness engineering—leveraging Codex in an agent-first world</a></li>
+          <li><a href="https://openai.com/index/unlocking-the-codex-harness/">OpenAI: Unlocking the Codex harness—how we built the App Server</a></li>
+          <li><a href="https://www.anthropic.com/research/trustworthy-agents">Anthropic: Trustworthy agents in practice</a></li>
+          <li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Anthropic: Effective harnesses for long-running agents</a></li>
+          <li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Model Context Protocol: Architecture overview</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="reveal">
+      <h2>Do not just rent intelligence. <em>Build the system that remembers.</em></h2>
+      <p>COS gives frontier models a persistent operating layer built around your work—and gives you the files, context, and methods underneath it.</p>
+      <div class="actions"><a class="btn primary" href="/#start">Start with COS</a><a class="btn ghost" href="/readiness/">Assess your current system</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="quote">Context compounds when you can keep it.</div>
+  <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> · <a href="https://github.com/ukaoma/cos-starter">GitHub</a> · <a href="/privacy.html">Privacy</a> · <a href="/LICENSE">MIT License</a></div>
+</footer>
+
+<script>
+(function(){
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}
+      });
+    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+  } else {
+    reveals.forEach(function(el){el.classList.add('in');});
+  }
+
+  var name = document.getElementById('engineName');
+  var role = document.getElementById('engineRole');
+  document.querySelectorAll('.model-switch button').forEach(function(button){
+    button.addEventListener('click',function(){
+      document.querySelectorAll('.model-switch button').forEach(function(other){other.setAttribute('aria-pressed','false');});
+      button.setAttribute('aria-pressed','true');
+      name.classList.add('swap');
+      window.setTimeout(function(){
+        name.textContent = button.dataset.model;
+        role.textContent = button.dataset.role;
+        name.classList.remove('swap');
+      },180);
+    });
+  });
+})();
+</script>
+</body>
+</html>
