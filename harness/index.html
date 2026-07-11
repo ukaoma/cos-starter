@@ -145,8 +145,8 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 e
 .rig-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 16px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
 .rig-top b{color:var(--gold);font-weight:500}.lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:7px}
 .rig-body{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:stretch}
-.rail{display:grid;gap:9px}.module{border:1px solid var(--line2);border-radius:12px;padding:12px;background:rgba(7,5,4,.35)}.module small{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);display:block}.module b{display:block;font-size:.83rem;margin-top:4px;font-weight:600}.module span{font-size:.7rem;color:var(--muted)}
-.engine{min-height:286px;border:1px solid rgba(201,169,110,.32);border-radius:18px;background:radial-gradient(circle at 50% 35%,rgba(201,169,110,.16),transparent 42%),#100b07;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.rail{display:grid;gap:9px}.module{border:1px solid var(--line2);border-color:color-mix(in srgb,var(--line2),var(--gold) calc(var(--flare,0)*55%));border-radius:12px;padding:12px;background:rgba(7,5,4,.35);box-shadow:0 0 0 calc(var(--flare,0)*1.5px) rgba(201,169,110,.4),0 0 calc(var(--flare,0)*24px) rgba(201,169,110,calc(var(--flare,0)*.13))}.module small{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);display:block}.module b{display:block;font-size:.83rem;margin-top:4px;font-weight:600}.module span{font-size:.7rem;color:var(--muted)}
+.engine{min-height:286px;border:1px solid rgba(201,169,110,.32);border-radius:18px;background:radial-gradient(circle at 50% 35%,rgba(201,169,110,calc(.16 + var(--surge,0)*.22)),transparent calc(42% + var(--surge,0)*10%)),#100b07;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
 .engine::before{content:"";position:absolute;inset:12px;border:1px dashed rgba(201,169,110,.24);border-radius:12px}.socket{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
 .engine-name{font-family:var(--display);font-size:2.05rem;line-height:1.05;color:var(--fg);margin:13px 0 7px;transition:opacity .18s,transform .18s}.engine-name.swap{opacity:0;transform:translateY(7px)}
 .engine-role{font-size:.72rem;color:var(--gold);font-family:var(--mono)}
@@ -175,6 +175,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 @media(max-width:430px){.rail{grid-template-columns:1fr}.rig{padding:12px}.definition{padding:21px}.definition p{font-size:1.27rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.engine-name{transition:none}.btn{transition:none}}
 </style>
+<script src="../assets/anime.umd.min.js"></script>
 </head>
 <body>
 <nav class="nav" aria-label="Main">
@@ -244,12 +245,15 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
           <div class="module"><small>Instructions</small><b>How you operate</b><span>Durable rules</span></div>
           <div class="module"><small>Skills</small><b>Repeatable work</b><span>Portable methods</span></div>
         </div>
-        <div class="engine">
+        <div class="engine" id="engine">
           <span class="socket">replaceable engine</span>
           <div class="engine-name" id="engineName" aria-live="polite">Claude</div>
           <span class="engine-role" id="engineRole">frontier reasoning model</span>
           <div class="model-switch" aria-label="Choose a model to place inside the harness">
             <button type="button" data-model="Claude" data-role="frontier reasoning model" aria-pressed="true">Claude</button>
+            <button type="button" data-model="Codex" data-role="agentic coding harness" aria-pressed="false">Codex</button>
+            <button type="button" data-model="Cursor" data-role="AI-native code editor" aria-pressed="false">Cursor</button>
+            <button type="button" data-model="Grok" data-role="frontier reasoning model" aria-pressed="false">Grok</button>
             <button type="button" data-model="GPT" data-role="frontier reasoning model" aria-pressed="false">GPT</button>
             <button type="button" data-model="Gemini" data-role="frontier reasoning model" aria-pressed="false">Gemini</button>
             <button type="button" data-model="Local" data-role="private specialist model" aria-pressed="false">Local</button>
@@ -433,20 +437,102 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     reveals.forEach(function(el){el.classList.add('in');});
   }
 
+  // ── Engine swap: auto-cycle the frontier model inside the fixed harness (anime.js v4) ──
   var name = document.getElementById('engineName');
   var role = document.getElementById('engineRole');
-  document.querySelectorAll('.model-switch button').forEach(function(button){
-    button.addEventListener('click',function(){
-      document.querySelectorAll('.model-switch button').forEach(function(other){other.setAttribute('aria-pressed','false');});
-      button.setAttribute('aria-pressed','true');
-      name.classList.add('swap');
-      window.setTimeout(function(){
-        name.textContent = button.dataset.model;
-        role.textContent = button.dataset.role;
-        name.classList.remove('swap');
-      },180);
+  var engine = document.getElementById('engine');
+  var buttons = [].slice.call(document.querySelectorAll('.model-switch button'));
+  var AN = window.anime;
+  var animeOK = !!(AN && AN.createTimeline);
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+
+  function seat(i){
+    var b = buttons[i];
+    name.textContent = b.dataset.model;
+    role.textContent = b.dataset.role;
+    buttons.forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+  }
+
+  if (!animeOK) {
+    // No anime.js available: keep the original CSS-transition click swap, no auto-cycle.
+    buttons.forEach(function(button, i){
+      button.addEventListener('click', function(){
+        name.classList.add('swap');
+        window.setTimeout(function(){ seat(i); name.classList.remove('swap'); }, 180);
+      });
     });
-  });
+  } else {
+    var createTimeline = AN.createTimeline, createSpring = AN.createSpring, utils = AN.utils;
+    var modules = document.querySelectorAll('.module');
+    name.style.transition = 'none';               // anime owns the name; neutralize the CSS transition
+    utils.set(engine, { '--surge': 0 });           // prime CSS vars so v4 has a readable start value
+    utils.set(modules, { '--flare': 0 });
+
+    // geometry-based ripple: delay each module by its distance from the engine center
+    var flareDelay = [];
+    function measure(){
+      var e = engine.getBoundingClientRect(), ex = e.left + e.width/2, ey = e.top + e.height/2;
+      var ds = [].map.call(modules, function(m){ var r = m.getBoundingClientRect(); return Math.hypot(r.left + r.width/2 - ex, r.top + r.height/2 - ey); });
+      var mn = Math.min.apply(null, ds), mx = Math.max.apply(null, ds), sp = (mx - mn) || 1;
+      flareDelay = ds.map(function(d){ return Math.round((d - mn) / sp * 200); });
+    }
+    measure();
+    var rzt; window.addEventListener('resize', function(){ clearTimeout(rzt); rzt = setTimeout(measure, 200); });
+
+    var idx = 0, timer = null, armed = false, inView = true, hovered = false, seated = false;
+
+    function swapTo(i){
+      idx = i;
+      var tl = createTimeline({ defaults:{ ease:'outQuad' } });
+      // the old engine lifts out of the socket; swap identity at the seam (aria + name + role)
+      tl.add(name, { opacity:[1,0], translateY:[0,-10], scale:[1,0.96], filter:['blur(0px)','blur(6px)'], duration:200, ease:'inQuad', onComplete:function(){ seat(i); } }, 0);
+      tl.add(engine, { '--surge':[0,1], duration:200, ease:'outSine' }, 0);
+      // SIGNATURE: the harness re-binds — a gold pulse ripples through the six modules by distance
+      tl.add(modules, { '--flare':[ {to:1,duration:150,ease:'outSine'}, {to:0,duration:520,ease:'inSine'} ], delay:function(el, mi){ return flareDelay[mi] || 0; } }, 200);
+      tl.add(engine, { '--surge':[1,0], duration:600, ease:'outExpo' }, 200);
+      // the new engine springs into the socket
+      tl.add(name, { opacity:[0,1], translateY:[14,0], scale:[1.08,1], filter:['blur(8px)','blur(0px)'], ease: createSpring({ mass:1, stiffness:130, damping:12, velocity:0 }) }, 200);
+      tl.add(role, { opacity:[0,1], translateY:[6,0], duration:300, ease:'outQuad' }, 260);
+      tl.add(buttons[i], { scale:[1,1.12,1], duration:380, ease:'outBack(2)' }, 200);
+    }
+
+    function start(){
+      if (armed) return;
+      if (!inView || document.hidden || hovered || seated || rm.matches) return;
+      armed = true;
+      timer = setInterval(function(){ swapTo((idx + 1) % buttons.length); }, 2900);
+    }
+    function stop(){ armed = false; if (timer){ clearInterval(timer); timer = null; } }
+
+    // click-to-seat: seat that engine and keep cycling from there (fresh dwell)
+    buttons.forEach(function(button, i){
+      button.addEventListener('click', function(){
+        stop();
+        if (rm.matches){ seat(i); idx = i; return; }
+        swapTo(i);
+        start();
+      });
+    });
+
+    // pause on hover/focus so a reader can absorb it
+    engine.addEventListener('mouseenter', function(){ hovered = true; stop(); });
+    engine.addEventListener('mouseleave', function(){ hovered = false; start(); });
+    engine.addEventListener('focusin', function(){ hovered = true; stop(); });
+    engine.addEventListener('focusout', function(){ hovered = false; start(); });
+    // pause when the tab is hidden
+    document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else start(); });
+
+    // only cycle while the rig is on screen (separate observer from the reveal one)
+    if ('IntersectionObserver' in window){
+      inView = false;
+      var eio = new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; if (inView) start(); else stop(); }); }, { threshold:0.35 });
+      eio.observe(engine);
+    } else { inView = true; start(); }
+
+    // respond to a live reduced-motion toggle
+    if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) stop(); else start(); });
+  }
 })();
 
 // Nav: dropdown groups + mobile burger — namespaced to .nav (shared with homepage)
