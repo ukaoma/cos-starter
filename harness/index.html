@@ -154,6 +154,10 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 e
 .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:16px 10px 2px}.rig-caption strong{color:var(--fg)}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
+/* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
+.burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
+.burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD) — rides INSIDE the sticky column so it endures the whole section scroll */
 #definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
@@ -279,6 +283,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 <!-- proofbar (140+ users / Company 119 / Paying clients) removed 2026-07-10 per Miles — CSS retained for easy restore -->
 
 <main>
+  <div class="burn down" aria-hidden="true"></div>
   <section class="paper" id="definition">
     <div class="section-grid wrap">
       <div class="sticky reveal">
@@ -312,6 +317,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     </div>
   </section>
 
+  <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="anatomy">
     <div class="wrap reveal">
       <div class="eyebrow">Anatomy of a useful harness</div>
@@ -357,6 +363,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     </div>
   </section>
 
+  <div class="burn down" aria-hidden="true"></div>
   <section class="fieldnotes" id="cos">
     <div class="field-grid wrap">
       <div class="reveal">
@@ -374,6 +381,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     </div>
   </section>
 
+  <div class="burn up" aria-hidden="true"></div>
   <section class="build" id="build">
     <div class="wrap reveal">
       <div class="build-head">
@@ -392,6 +400,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     </div>
   </section>
 
+  <div class="burn down" aria-hidden="true"></div>
   <section class="faq" id="faq">
     <div class="wrap reveal">
       <div class="kicker">Frequently asked questions</div>
@@ -416,6 +425,7 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
     </div>
   </section>
 
+  <div class="burn up" aria-hidden="true"></div>
   <section class="closing">
     <div class="reveal">
       <h2>Do not just rent intelligence. <em>Build the system that remembers.</em></h2>
