@@ -162,8 +162,12 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD) — rides INSIDE the sticky column so it endures the whole section scroll */
 #definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
-#definition .pixmap-e .pi{position:absolute;inset:0;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-cradle.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
-@media(max-width:960px){#definition .sticky .pixmap-e{display:none}}
+#definition .pixmap-e .pi{position:absolute;inset:0;background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply;opacity:0}
+#definition .pixmap-e .pi.era-c{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-cradle.jpg");opacity:1}
+#definition .pixmap-e .pi.era-j{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-jet.jpg")}
+#definition .pixmap-e .pi.era-e{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-electric.jpg")}
+#definition .sticky .era-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d;min-height:1.2em}
+@media(max-width:960px){#definition .sticky .pixmap-e,#definition .sticky .era-tag{display:none}}
 .prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
 .definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
 .compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
@@ -291,7 +295,12 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <div class="kicker">The plain-English definition</div>
         <h2>What is an AI harness?</h2>
         <p class="intro">The useful unit of AI is no longer just the model. It is the model plus the system that helps it understand, act, remember, and recover.</p>
-        <div class="pixmap-e" aria-hidden="true"><div class="pi"></div></div>
+        <div class="pixmap-e" aria-hidden="true">
+          <div class="pi era-c"></div>
+          <div class="pi era-j"></div>
+          <div class="pi era-e"></div>
+        </div>
+        <div class="era-tag" aria-hidden="true"><span id="eraTag">combustion</span> &middot; the harness stays</div>
       </div>
       <article class="prose reveal">
         <div class="definition">
@@ -553,6 +562,33 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 
     // respond to a live reduced-motion toggle
     if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) stop(); else start(); });
+  }
+
+  // ── Engine-evolution plate: combustion -> turbojet -> electric. The engine advances; the harness stays. ──
+  var plate = document.querySelector('#definition .pixmap-e');
+  if (plate && animeOK && !rm.matches) {
+    var eraNames = ['combustion','turbojet','electric'];
+    var eraLayers = [plate.querySelector('.era-c'), plate.querySelector('.era-j'), plate.querySelector('.era-e')];
+    var eraTag = document.getElementById('eraTag');
+    if (eraLayers[0] && eraLayers[1] && eraLayers[2]) {
+      var E_DWELL = 3600, E_FADE = 950;
+      var etl = AN.createTimeline({ loop: true, autoplay: false, defaults: { ease: 'inOutSine', duration: E_FADE } });
+      for (var ei = 0; ei < 3; ei++) {
+        (function(ei){
+          var nx = (ei + 1) % 3;
+          var at = (ei + 1) * E_DWELL - E_FADE;
+          etl.add(eraLayers[nx], { opacity: [0, 1], onBegin: function(){ if (eraTag) eraTag.textContent = eraNames[nx]; } }, at);
+          etl.add(eraLayers[ei], { opacity: [1, 0] }, at);
+        })(ei);
+      }
+      var pInView = false;
+      var pSync = function(){ if (pInView && !document.hidden) etl.play(); else etl.pause(); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(es){ es.forEach(function(e){ pInView = e.isIntersecting; pSync(); }); }, { threshold: .25 }).observe(plate);
+      } else { pInView = true; pSync(); }
+      document.addEventListener('visibilitychange', pSync);
+      if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) etl.pause(); });
+    }
   }
 })();
 
