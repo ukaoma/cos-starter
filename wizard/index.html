@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personalize your COS Glasses · Setup Wizard</title>
-  <meta name="description" content="Tell us how you'll use Even G2. We'll tune the model, your context, and what shows on the lens, then hand you the exact setup.">
+  <meta name="description" content="Set up COS Glasses for Even G2: models, private context, phone photos, lens images, voice, and the exact self-hosted server connection.">
   <meta name="theme-color" content="#170f09">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -338,7 +338,8 @@
     <ul class="checklist">
       <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
       <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; the server runs here, on your keys</li>
-      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; <a href="https://claude.ai/download">Claude Code</a> powers Opus, Sonnet, and Haiku; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers Codex High. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; <a href="https://claude.ai/download">Claude Code</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="opt"><strong>ffmpeg for photos</strong> &mdash; run <code>brew install ffmpeg</code> for phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and voice still work without it.</li>
     </ul>
     <div class="note"><strong>Came here from the Even Hub?</strong> You already have the app half &mdash; the server in Step 1 below is the missing piece.</div>
   </div>
@@ -357,7 +358,7 @@
       </div>
       <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>, so it stays the same across restarts. Free local voice: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> once.</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>, so it stays the same across restarts. Optional one-time installs: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> for free local voice and <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install ffmpeg</code> for photos.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
@@ -368,6 +369,7 @@
       <ul class="enable">
         <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
         <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
+        <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
       </ul>
       <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Run the command in Step 1 <strong>from your COS folder</strong> &mdash; the server detects it and glasses chat loads that brain automatically. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
       <div class="actions">
@@ -401,12 +403,13 @@
   <!-- Step 2: Brain -->
   <div class="step" data-step="Step 2 · Brain">
     <h2>Pick your default brain</h2>
-    <p class="sub">A soft default, not a commitment &mdash; every model stays available per query, by voice or from the toolbar. Opus, Sonnet, and Haiku run on Claude Code; Codex High runs on Codex CLI.</p>
+    <p class="sub">A soft default, not a commitment &mdash; every model stays available per query, by voice or from the toolbar. Opus, Fable, and Sonnet follow Claude Code; GPT Frontier and GPT Balanced follow the newest capable Codex generation automatically.</p>
     <div class="opt-grid three" id="models">
       <button type="button" class="opt" data-model="opus"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Depth</span><h3>Opus</h3><p>Hardest reasoning, richest answers.</p></button>
+      <button type="button" class="opt" data-model="fable"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Creative</span><h3>Fable</h3><p>Long-context creative and visual work.</p></button>
       <button type="button" class="opt" data-model="sonnet"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Balance</span><h3>Sonnet</h3><p>Fast and sharp. The everyday default.</p></button>
-      <button type="button" class="opt" data-model="haiku"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Speed</span><h3>Haiku</h3><p>Snappiest, lightest, lowest cost.</p></button>
-      <button type="button" class="opt" data-model="codex"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Code</span><h3>Codex High</h3><p>Technical depth via the local Codex CLI.</p></button>
+      <button type="button" class="opt" data-model="codex-frontier"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Strongest GPT</span><h3>GPT Frontier</h3><p>The most capable current GPT from your Codex catalog.</p></button>
+      <button type="button" class="opt" data-model="codex-balanced"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Efficient GPT</span><h3>GPT Balanced</h3><p>The strong-and-efficient current GPT sibling.</p></button>
     </div>
     <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on the Claude Code and/or Codex plans you already have. Install both engines and all four brains stay available &mdash; the server uses whichever is present. Voice is separate; see Compute below.</div>
   </div>
@@ -445,6 +448,7 @@
       <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
     </div>
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
+    <div class="note"><strong>Photos stay local:</strong> install <code>ffmpeg</code> on the Mac for normalized phone uploads, private answer-image galleries, and exact 288&times;144 G2 previews. Images never need a COS-hosted cloud.</div>
   </div>
 
   <!-- Step 6: HUD -->
@@ -457,6 +461,7 @@
       <button type="button" class="opt" data-hud="glance"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">At a glance</span><h3>Glance</h3><p>Time, next event, top tasks.</p></button>
       <button type="button" class="opt" data-hud="adaptive"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Smart</span><h3>Adaptive</h3><p>Switches by context: meeting, free, moving.</p></button>
     </div>
+    <div class="note"><strong>Lens images are manual and off by default.</strong> Turn them on from the phone companion. Photo messages end with a cover page; a deliberate two-tap confirmation opens the image. Meetings and microphone-critical states always win.</div>
   </div>
 
   <!-- Result -->
@@ -506,8 +511,9 @@
       <div class="step" data-step="Requirements"><h2>What you need</h2>
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Opus/Sonnet/Haiku need <a href="https://claude.ai/download">Claude Code</a>; Codex High needs <a href="https://developers.openai.com/codex/">Codex</a></li>
+          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Opus/Fable/Sonnet need <a href="https://claude.ai/download">Claude Code</a>; GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a></li>
           <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
           <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
         </ul>
         <div class="note"><strong>Why Tailscale?</strong> Your glasses app on the phone needs to reach the server on your Mac. Tailscale gives both a stable IP that works from anywhere &mdash; no port forwarding, no firewall hassle.</div>
@@ -540,15 +546,16 @@
           <li>Leave the server terminal running, then tap <strong>Connect</strong>.</li>
         </ul>
         <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
-        <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to Codex High."</div>
+        <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to GPT Frontier."</div>
       </div>
 
       <div class="step" data-step="Help"><h2>Troubleshooting</h2>
         <ul class="enable">
           <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
           <li><strong>"Claude not found"</strong> &mdash; Opus/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
-          <li><strong>"Codex not available"</strong> &mdash; Codex High needs the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
+          <li><strong>"Codex not available"</strong> &mdash; GPT Frontier/Balanced need the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
           <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
+          <li><strong>Photos unavailable</strong> &mdash; run <code>brew install ffmpeg</code>, restart with <code>npx @gotcos/glasses-server</code>, and confirm Lens images is on before testing outside a meeting.</li>
           <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx @gotcos/glasses-server</code>.</li>
         </ul>
       </div>
@@ -770,11 +777,11 @@
   };
 
   var UC_LABEL = { meetings:'meetings', capture:'quick capture', assistant:'always-on', comms:'comms', dev:'dev', field:'field' };
-  var MODEL_LABEL = { opus:'Opus', sonnet:'Sonnet', haiku:'Haiku', codex:'Codex High' };
+  var MODEL_LABEL = { opus:'Opus', fable:'Fable', sonnet:'Sonnet', 'codex-frontier':'GPT Frontier', 'codex-balanced':'GPT Balanced' };
   var CTX_LABEL = { calendar:'Calendar', email:'Email', slack:'Slack', meetingtools:'Meeting tools', vector:'Semantic memory', mcp:'Custom MCPs' };
   var HUD_LABEL = { minimal:'Minimal', meeting:'Meeting mode', glance:'Glance', adaptive:'Adaptive' };
 
-  function recModel() { return state.useCases.has('dev') ? 'codex' : 'sonnet'; }
+  function recModel() { return state.useCases.has('dev') ? 'codex-frontier' : 'sonnet'; }
   function recHud() {
     if (state.useCases.has('meetings')) return 'meeting';
     if (state.useCases.has('field')) return 'glance';
@@ -893,7 +900,8 @@
 
     // enable checklist
     var li = [];
-    li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model === 'codex' ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
+    li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
+    li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
     if (state.voice === 'openai') li.push('Add your <b>OPENAI_API_KEY</b> for cloud voice.');
     else li.push('Run <code>brew install whisper-cpp</code> once for free local voice.');
     if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
