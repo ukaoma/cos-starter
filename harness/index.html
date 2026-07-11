@@ -127,7 +127,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 }
 @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg{transition:none}}
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%)}
+.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}
 .eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
