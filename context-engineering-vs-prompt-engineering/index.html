@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Engineering vs Prompt Engineering: The Real Shift | GotCOS</title>
+<meta name="description" content="Prompt engineering optimizes the question. Context engineering re-architects everything around it. Here's the difference, and why the second one actually scales.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.gotcos.com/context-engineering-vs-prompt-engineering/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Context Engineering vs Prompt Engineering: The Real Shift">
+<meta property="og:description" content="Prompt engineering optimizes the question. Context engineering re-architects everything around it. Here's the difference, and why the second one actually scales.">
+<meta property="og:url" content="https://www.gotcos.com/context-engineering-vs-prompt-engineering/">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.className += ' js';</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Context Engineering vs Prompt Engineering: The Real Shift",
+      "description": "Prompt engineering optimizes the question. Context engineering re-architects everything around it. Here is the difference, and why the second one actually scales.",
+      "datePublished": "2026-07-11",
+      "dateModified": "2026-07-11",
+      "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com", "sameAs": ["https://www.linkedin.com/in/milesukaoma"]},
+      "publisher": {"@type": "Organization", "name": "GotCOS", "url": "https://www.gotcos.com"},
+      "mainEntityOfPage": "https://www.gotcos.com/context-engineering-vs-prompt-engineering/",
+      "image": "https://www.gotcos.com/assets/banner.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "GotCOS", "item": "https://www.gotcos.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Context Engineering vs Prompt Engineering", "item": "https://www.gotcos.com/context-engineering-vs-prompt-engineering/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is the difference between context engineering and prompt engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining. One is a sentence. The other is an operating layer."}},
+        {"@type": "Question", "name": "Is prompt engineering still worth learning?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real leverage is the context you engineer around the prompt."}},
+        {"@type": "Question", "name": "What is an example of context engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Ask a bare model to prep you for a client call and you get generic boilerplate. Wire in the client, the deal history, your goals, past meetings, and open tasks, and the same request returns a specific brief. The prompt did not change. The context did."}},
+        {"@type": "Question", "name": "What are the pillars of context engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Right context at the right time. In practice that means four things: provide it upfront, structure it so the model finds what matters, persist it outside the chat, and embed it where the work happens, in files, transcripts, profiles, and repeatable skills."}},
+        {"@type": "Question", "name": "Does context engineering replace RAG or fine-tuning?", "acceptedAnswer": {"@type": "Answer", "text": "No. It includes them. Retrieval and fine-tuning are tools inside context engineering, not rivals. RAG decides what the model sees at query time. Context engineering designs the whole system of memory, retrieval, permissions, and persistence around it."}}
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "context engineering",
+      "description": "Context engineering is the practice of designing the memory, retrieval, rules, and persistence around an AI model so the right context is present before you prompt it.",
+      "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "GotCOS field guides", "url": "https://www.gotcos.com/"}
+    }
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  color-scheme:dark;
+  --ink:#170f09;--ink2:#21160f;--paper:#f3ede1;--paper2:#e9dfcd;--fg:#f0e8da;
+  --muted:rgba(240,232,218,.64);--ghost:rgba(240,232,218,.38);--line:rgba(201,169,110,.20);--line2:rgba(255,246,232,.08);
+  --gold:#c9a96e;--warm:#d4a07a;--rose:#c4736e;--green:#7fa98a;--blue:#87a8bd;
+  --paper-ink:#281b11;--paper-muted:rgba(40,27,17,.68);--paper-line:rgba(40,27,17,.15);
+  --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
+  --max:1140px;--maxw:1140px;--gut:clamp(22px,5vw,72px);
+  --faint:rgba(240,232,218,.62);--cream:#f3ede1;--ink-on-cream:#241708;--faint-on-cream:rgba(46,31,16,.72)
+}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.66;overflow-x:hidden}
+::selection{background:rgba(201,169,110,.30);color:#fff}
+a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+/* ── Nav - full-width dark strip + contained light card (shared with homepage) ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
+.nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+.nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt-links{display:flex;gap:20px;flex-shrink:0}
+.nt-links a{color:var(--muted);transition:color .2s}
+.nt-links a:hover{color:var(--gold)}
+.nav-main{pointer-events:auto;width:min(var(--maxw),calc(100% - 28px));margin:12px auto 0;padding:9px 12px 9px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(252,249,243,.94);backdrop-filter:blur(16px) saturate(1.15);border:1px solid rgba(46,31,16,.14);border-radius:16px;box-shadow:0 22px 54px -26px rgba(0,0,0,.6),0 4px 18px -8px rgba(46,31,16,.22)}
+.nav .brand{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-on-cream)}
+.nav .brand b{font-style:normal;font-weight:600}
+.nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
+.nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+.nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+.nav .links .cta{font-family:var(--body);font-weight:500;color:var(--cream);background:var(--ink);padding:9px 18px;border-radius:999px;margin-left:8px;transition:transform .2s,box-shadow .25s,background .2s;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+.nav .links .cta:hover{color:var(--cream);background:#2a1c10;transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(23,15,9,.65)}
+.nd{position:relative}
+.nd-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.85rem;color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+.nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+.nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.nd[data-open] .nd-btn svg{transform:rotate(180deg)}
+.nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+.nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
+@media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
+.nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
+.nd-menu a:hover{background:rgba(201,169,110,.18)}
+.nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
+.nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
+.nav-burger span{display:block;width:16px;height:1.6px;background:var(--ink-on-cream);margin:2.4px auto;border-radius:2px;transition:transform .25s,opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
+@media(max-width:900px){
+.nav-top{display:none}
+.nav-main{margin-top:10px}
+.nav-burger{display:grid}
+.nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;background:rgba(248,243,233,.98);border:1px solid rgba(46,31,16,.1);border-radius:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .25s,visibility .25s}
+.nav .links.open{opacity:1;visibility:visible;transform:none}
+.nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+.nd[data-open] .nd-menu{display:block}
+.nav .links .cta{margin:10px 0 0;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg{transition:none}}
+.hero{position:relative;isolation:isolate;padding:clamp(150px,20vh,208px) 0 clamp(74px,10vw,120px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+.eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
+h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:15ch}.hero h1 em{display:block;color:var(--gold);font-weight:400;font-style:italic}
+.hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#1d1309;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
+.byline{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--ghost);margin-top:22px}
+.paper{background:var(--paper);color:var(--paper-ink)}
+section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
+/* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
+.burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
+.burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.burn.up.to-ink2{background:linear-gradient(0deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.paper .say{color:var(--paper-muted);font-size:1.05rem;margin-top:16px;max-width:62ch}
+h2[id]{scroll-margin-top:108px}
+.prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
+.definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
+.compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
+/* §electricity halftone plate - harness pixmap mechanic on a single public-domain engraving */
+#electricity .sticky .pixmap{position:relative;margin-top:34px;width:100%;max-width:460px;aspect-ratio:1200/841;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
+#electricity .pixmap .pi{position:absolute;inset:0;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-mill.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
+#electricity .sticky .plate-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d}
+@media(max-width:960px){#electricity .sticky .pixmap,#electricity .sticky .plate-tag{display:none}}
+.dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
+.dark-section .body{max-width:66ch;margin-top:22px}.dark-section .body p{color:var(--muted);font-size:1.06rem;margin:0 0 18px}.dark-section .body p:last-child{margin-bottom:0}.dark-section .body strong{color:var(--fg);font-weight:600}.dark-section .body h3{font-family:var(--body);font-size:1.15rem;color:var(--fg);font-weight:600;margin:30px 0 10px}
+/* before/after money illustration */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.ba .card{border:1px solid var(--line);border-radius:17px;padding:24px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}
+.ba .card.after{border-color:rgba(201,169,110,.32);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.09),transparent 62%),rgba(7,5,4,.32)}
+.ba .tag{font-family:var(--mono);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.ba .q{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--fg);line-height:1.4;margin:12px 0 14px}
+.ba h3{font-size:1rem;margin:0 0 8px;font-weight:600;font-family:var(--body)}
+.ba p{font-size:.9rem;color:var(--muted);margin:0}
+/* dark pull-quote */
+.pull{margin-top:26px;border-left:2px solid var(--gold);padding:4px 0 4px 20px;max-width:62ch}
+.pull b{display:block;margin-bottom:6px;color:var(--fg)}
+.pull p{font-size:.95rem;color:var(--muted);margin:0}
+.faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"\2212"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
+.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400;font-style:italic}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
+footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.js .reveal.in{opacity:1;transform:none}
+@media(max-width:960px){.hero h1{max-width:15ch}.section-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}}
+@media(max-width:700px){.hero{padding-top:118px}.ba{grid-template-columns:1fr}}
+@media(max-width:430px){.definition{padding:21px}.definition p{font-size:1.27rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="nav-top">
+    <div class="nt-in">
+      <span class="nt-tag">Open-source AI chief of staff &middot; 140+ COS Glasses users</span>
+      <div class="nt-links">
+        <a href="/docs/">Docs</a>
+        <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
+        <a href="https://www.npmjs.com/package/@gotcos/glasses-server" rel="noopener">npm</a>
+        <a href="https://hub.evenrealities.com" rel="noopener">Even Hub</a>
+        <a href="/connect/">Book a session</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-main">
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none"><b>COS</b> <span class="it">Starter</span></a></div>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="links" id="navLinks">
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/harness/">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
+          <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
+          <a href="/#get">What You Get <small>The directory that is the system</small></a>
+          <a href="/#integrations">Integrations <small>Slack, Google, MCP</small></a>
+        </div>
+      </div>
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">Getting Started <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/#start">Quick Start <small>5 minutes, one paste</small></a>
+          <a href="/harness/">AI Harness <small>Understand the layer you own</small></a>
+          <a href="/docs/">Glasses Docs <small>The complete user guide</small></a>
+          <a href="/#tiers">The 4 Tiers <small>How it deepens</small></a>
+          <a href="/readiness/">Readiness Score <small>12 questions, free</small></a>
+          <a href="/#faq">FAQ <small>The centaur test</small></a>
+        </div>
+      </div>
+      <a href="/#glasses">Glasses</a>
+      <a href="/docs/">Docs</a>
+      <a href="/#teams">For Teams</a>
+      <a href="/#start" class="cta">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap reveal">
+    <div class="eyebrow">Field guide &middot; Context engineering</div>
+    <h1>Context Engineering <em>vs Prompt Engineering</em></h1>
+    <p class="hero-lead">Prompt engineering optimizes the question. <strong>Context engineering re-architects everything around it.</strong> One is a skill you practice per chat. The other is a system you build once and compound forever. I have spent a year running the second one at team scale. Here is the real difference, and why it scales.</p>
+    <div class="actions">
+      <a class="btn primary" href="#difference">See the difference</a>
+      <a class="btn ghost" href="/#start">Build your COS</a>
+    </div>
+    <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
+  </div>
+</header>
+
+<main>
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="paper" id="premise">
+    <div class="section-grid wrap">
+      <div class="sticky reveal">
+        <div class="kicker">The premise everyone got wrong</div>
+        <h2>The prompt was never the problem</h2>
+        <p class="intro">Every guide sells the same fix. Sharper role, cleaner instructions, a few examples. It works a little. Then it stops.</p>
+      </div>
+      <article class="prose reveal">
+        <div class="definition">
+          <span class="label">The flip</span>
+          <p>The prompt was never the problem. Your context is.</p>
+        </div>
+        <p>Every prompt guide sells the same move. Add a role. Add constraints. Add a few examples. Tune the wording until the model behaves. I did all of it. It helped at the margins, then it plateaued, because I was polishing the question while the model still knew nothing about my world.</p>
+        <p>Here is the uncomfortable part. A perfect prompt handed to a model with zero context still produces a generic answer. The ceiling is not your phrasing. The ceiling is what the model can actually see. Change what it can see and a mediocre prompt starts outperforming a brilliant one.</p>
+        <p>That is the whole shift. Prompt engineering optimizes the sentence you type. Context engineering optimizes everything the model reads before it ever reaches your sentence. The system prompt, the retrieved history, the files, the people, the decisions, the corrections. The instruction is the last five percent. The context is the other ninety-five.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
+  <section class="dark-section" id="prompt-engineering">
+    <div class="wrap reveal">
+      <div class="eyebrow">Definition one</div>
+      <h2>What is prompt engineering?</h2>
+      <p class="lead">Prompt engineering is the craft of shaping a single instruction to get a better answer from a model right now.</p>
+      <div class="body">
+        <p>It is real and it is useful. A clear role, a specific task, a few well-chosen examples, an explicit output format. Few-shot examples steer tone. A tight system prompt sets the rules. Good prompting can be the difference between garbage and gold on any one request.</p>
+        <p>But look at its shape. Prompt engineering is tactical. It works per query. It is mostly disposable. You tune the words, get the answer, and the effort evaporates when the chat closes. It optimizes language inside the model's context window, and it quietly assumes the model already has, or does not need, everything else.</p>
+        <p>That last assumption is the trap. Most real work is not language-limited. It is context-limited. The model does not need a cleverer sentence. It needs to know who the client is, what we agreed last week, and what I am actually trying to accomplish.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="paper" id="difference">
+    <div class="section-grid wrap">
+      <div class="sticky reveal">
+        <div class="kicker">Definition two</div>
+        <h2>What is context engineering?</h2>
+        <p class="intro">The deliberate practice of putting the right context in front of the model at the right time. Not more context. The right context.</p>
+      </div>
+      <article class="prose reveal">
+        <div class="definition">
+          <span class="label">Definition</span>
+          <p>Context engineering is designing the environment a model works inside, so the right information is already present before you ask.</p>
+        </div>
+        <p>If prompt engineering optimizes the question, context engineering re-architects everything around it. You stop treating each chat as a fresh start and begin building a durable operating layer the model draws from every time. The intelligence stays rented and replaceable. The context becomes the asset you own.</p>
+        <p>It has four load-bearing properties. It is <strong>upfront</strong>, not reactive. You provide identity, goals, and history before the work, not halfway through the conversation. It is <strong>structured</strong>, so retrieval surfaces the small set of facts that change the answer instead of drowning the model in everything. It is <strong>persistent</strong>, living in files, transcripts, profiles, and indexes outside any single chat. And it is <strong>embedded</strong> where the work actually happens, next to the tools and data, not pasted in by hand.</p>
+        <h3>Where RAG, memory, and the rest fit</h3>
+        <p>None of the familiar pieces are rivals to this. Retrieval and RAG are how the structured layer gets pulled at query time. Memory is how the persistent layer survives a closed window. The context window is the space you are budgeting inside. Fine-tuning bakes some patterns into the model itself. An agent is what you get when a model can act on that context with tools. They are all instruments inside one practice. This is the thesis behind every serious <a href="/harness/">AI harness</a>: the model is one component, and the system around it is what makes the work repeatable.</p>
+      </article>
+    </div>
+    <div class="wrap reveal" style="margin-top:clamp(48px,7vw,90px)">
+      <h2 id="five-differences">The five differences that actually matter</h2>
+      <p class="say">Same model, same request. Here is where prompt engineering and context engineering genuinely diverge, and why the gap widens the more you use them.</p>
+      <div class="compare">
+        <table>
+          <thead><tr><th>Dimension</th><th>Prompt engineering</th><th>Context engineering</th></tr></thead>
+          <tbody>
+            <tr><td>Locus of control</td><td>The words you type in one message.</td><td>The whole environment the model reads before the message.</td></tr>
+            <tr><td>Persistence</td><td>Disposable. Gone when the chat closes.</td><td>Durable. Files, memory, and logs that outlive the session and the model.</td></tr>
+            <tr><td>Scaling</td><td>Re-done by every person, every time.</td><td>Built once, shared, and it raises the floor for the whole team.</td></tr>
+            <tr><td>Effort</td><td>Constant fiddling with phrasing.</td><td>Upfront design, then compounding returns.</td></tr>
+            <tr><td>Cost</td><td>Cheap per prompt, expensive in repeated human time.</td><td>Higher to set up, far cheaper per outcome at volume.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
+  <section class="dark-section" id="example">
+    <div class="wrap reveal">
+      <div class="eyebrow">The money illustration</div>
+      <h2>Help me prep for my client call tomorrow</h2>
+      <p class="lead">Same sentence, two systems. This is the entire argument compressed into one request.</p>
+      <div class="body">
+        <p>Type that line into a bare model and it cannot help you in any specific way. It does not know the client, the deal, the history, or you. So it hedges, and it hands back a template. Now give the exact same words to a model wired into your context, and watch what comes out.</p>
+      </div>
+      <div class="ba">
+        <div class="card reveal">
+          <div class="tag">Prompt only</div>
+          <p class="q">"Help me prep for my client call tomorrow."</p>
+          <h3>What a bare model returns</h3>
+          <p>A tidy checklist. Research the company. Set an agenda. Prepare a few questions. Confirm next steps. All true, all generic, and worth almost nothing. You already knew every line of it. It is a template with your name nowhere in it.</p>
+        </div>
+        <div class="card after reveal">
+          <div class="tag">Same prompt, engineered context</div>
+          <p class="q">"Help me prep for my client call tomorrow."</p>
+          <h3>What a context-engineered system returns</h3>
+          <p>The account is Northwind. On the last call they pushed back on onboarding timelines. Their renewal lands in six weeks. Two follow-ups from me are still open. Here are the three risks to get ahead of, the numbers they will ask about, and a draft agenda. Same words from me. A different universe of an answer.</p>
+        </div>
+      </div>
+      <div class="body">
+        <p>Nobody wrote a cleverer prompt. Somebody engineered the context. The request never changed, the system did, and that is the difference you can feel.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="paper" id="electricity">
+    <div class="section-grid wrap">
+      <div class="sticky reveal">
+        <div class="kicker">The pattern from history</div>
+        <h2>The electricity paradox</h2>
+        <p class="intro">When factories first got electricity, they bolted it onto the old architecture. Productivity barely moved for a generation.</p>
+        <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
+        <div class="plate-tag">the mill, 1835 &middot; line shafts everywhere</div>
+      </div>
+      <article class="prose reveal">
+        <p>Nineteenth-century textile mills ran on one giant steam engine. It turned a central driveshaft, and belts and line shafts carried that power out to every machine on the floor. The entire building was laid out around the shaft. When electricity arrived, factory owners did the obvious thing. They pulled out the steam engine, dropped in one big electric motor, and connected it to the same shafts.</p>
+        <p>Output per worker rose a little. Then it flatlined for roughly three decades. The gain was disappointing because they had bolted a new power source onto an old design. They kept routing everything through the central shaft, so the electricity was doing a steam engine's job in a steam engine's building.</p>
+        <p>The breakthrough came when a new generation stopped retrofitting and re-architected the mill. Put a small motor on each machine. Lay the floor out around the flow of work instead of around the driveshaft. Once the building was designed for electricity rather than adapted to it, productivity did not inch up. It jumped.</p>
+        <p>The AI market is in the bolt-on phase right now. Prompt engineering is the electric motor wired to the old shaft. You keep your workflows exactly as they were and ask a model to help one task at a time. Context engineering is rebuilding the mill. You redesign how work, memory, and decisions flow so the intelligence has something to run through. That is why the first one plateaus and the second one scales.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
+  <section class="dark-section" id="reverse-centaur">
+    <div class="wrap reveal">
+      <div class="eyebrow">Individual vs organizational</div>
+      <h2>The reverse-centaur trap</h2>
+      <p class="lead">A centaur is a human leading a machine. A reverse centaur is a human serving one.</p>
+      <div class="body">
+        <p>The promise of AI at work is the centaur. You set the intent and the judgment. The machine does the grinding. But when you only ever prompt, you drift into the reverse. You become the context-delivery mechanism, feeding the model the same background over and over, chasing its pace, cleaning up its generic output. The tool speeds up and the human quietly starts serving it.</p>
+        <p>Context engineering flips it back. When the system already holds your roles, your people, your history, and your standards, you stop feeding it and start directing it. The machine catches up to your world instead of dragging you down to its blank slate. You are leading again.</p>
+        <div class="pull">
+          <b>The individual metric hides the trap.</b>
+          <p>Prompting can make one person a little faster and still leave the team stuck. Personal speedups do not compound. A shared context store does. It raises the floor for everyone who touches it, not just the person who wrote the clever prompt.</p>
+        </div>
+        <p>This is exactly why <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">an AI chief of staff runs on engineered context</a> rather than clever prompting. The leverage lives in the shared operating memory, not in any single instruction typed into a box.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="paper" id="prompt-dead">
+    <div class="section-grid wrap">
+      <div class="sticky reveal">
+        <div class="kicker">The honest answer</div>
+        <h2>Is prompt engineering dead?</h2>
+        <p class="intro">No. And anyone declaring it dead is selling you the opposite overcorrection to the one that got us here.</p>
+      </div>
+      <article class="prose reveal">
+        <p>Prompt engineering is a subset of context engineering, not its rival. The prompt is one instruction inside the system. Context engineering is the system. You still write the instruction, and clear phrasing, a sensible role, and a good example all still matter.</p>
+        <p>What changes is scope. You stop believing the sentence is the lever and start building the structure that makes every sentence land. A great prompt on top of great context is unbeatable. A great prompt on top of nothing is still just a well-worded shrug.</p>
+        <p>Put it plainly. Prompt engineering is how you ask. Context engineering is everything the model already knows when you ask. Keep the first. Build the second. The people who win the next few years will be fluent in both, and clear about which one is the foundation.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
+  <section class="dark-section" id="start-context">
+    <div class="wrap reveal">
+      <div class="eyebrow">Deploy your own</div>
+      <h2>How to start context-engineering your own work</h2>
+      <p class="lead">You do not need a platform or a migration. You need a folder and a habit. Five moves get you most of the way there.</p>
+      <div class="body">
+        <p><strong>Write the operating map.</strong> One short document: who you are, what you own, the people around you, your priorities, and the rules a model should follow.</p>
+        <p><strong>Give memory a durable shape.</strong> Readable files for identity and decisions. Structured stores for tasks and events. A search index for retrieval. Version what matters, so corrections stick instead of evaporating.</p>
+        <p><strong>Turn recurring work into skills.</strong> Meeting prep, daily briefings, research, follow-up. Name them, define their inputs and outputs, and reuse them instead of re-inventing the prompt each time.</p>
+        <p><strong>Connect one real source.</strong> Calendar, email, or your meetings. One live connection creates more value than ten empty integrations. Add permissions before autonomy.</p>
+        <p><strong>Make every correction compound.</strong> When the system gets something wrong, fix the source, the rule, or the retrieval path, not just the one answer. That is the moment the context stops being generic and becomes yours.</p>
+        <p>That folder is the whole idea behind the open <a href="/">COS starter</a>. Deploy your own chief of staff, wire your context in once, and stop re-explaining your world to a blank chat every morning. Want the long version. <a href="https://milesukaoma.com/context-engineering-vs-prompt-engineering">Read the full field guide on milesukaoma.com</a>.</p>
+      </div>
+      <div class="actions"><a class="btn primary" href="/#start">Deploy your own COS</a><a class="btn ghost" href="/harness/">See the harness it runs on</a></div>
+    </div>
+  </section>
+
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="faq" id="faq">
+    <div class="wrap reveal">
+      <div class="kicker">Frequently asked questions</div>
+      <h2>Context engineering vs prompt engineering, quick answers.</h2>
+      <details><summary>What is the difference between context engineering and prompt engineering?</summary><p>Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining. One is a sentence. The other is an operating layer.</p></details>
+      <details><summary>Is prompt engineering still worth learning?</summary><p>Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real leverage is the context you engineer around the prompt.</p></details>
+      <details><summary>What is an example of context engineering?</summary><p>Ask a bare model to prep you for a client call and you get generic boilerplate. Wire in the client, the deal history, your goals, past meetings, and open tasks, and the same request returns a specific brief. The prompt did not change. The context did.</p></details>
+      <details><summary>What are the pillars of context engineering?</summary><p>Right context at the right time. In practice that means four things: provide it upfront, structure it so the model finds what matters, persist it outside the chat, and embed it where the work happens, in files, transcripts, profiles, and repeatable skills.</p></details>
+      <details><summary>Does context engineering replace RAG or fine-tuning?</summary><p>No. It includes them. Retrieval and fine-tuning are tools inside context engineering, not rivals. RAG decides what the model sees at query time. Context engineering designs the whole system of memory, retrieval, permissions, and persistence around it.</p></details>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
+  <section class="closing">
+    <div class="reveal">
+      <h2>Stop polishing the prompt. <em>Build the context.</em></h2>
+      <p>A better prompt gives you a better sentence. A better context gives you a system that already knows how you work, and one you get to keep when the model changes.</p>
+      <div class="actions"><a class="btn primary" href="/#start">Build your COS in five minutes</a><a class="btn ghost" href="/harness/">Read the harness guide</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="quote">The prompt is how you ask. The context is what it already knows.</div>
+  <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/LICENSE">MIT License</a></div>
+</footer>
+
+<script>
+(function(){
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}
+      });
+    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+  } else {
+    reveals.forEach(function(el){el.classList.add('in');});
+  }
+})();
+
+// Nav: dropdown groups + mobile burger - namespaced to .nav (shared with homepage)
+(function(){
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  var burger=nav.querySelector('.nav-burger'), links=nav.querySelector('.links');
+  function closeAll(except){
+    nav.querySelectorAll('.nd[data-open]').forEach(function(d){ if(d!==except){ d.removeAttribute('data-open'); d.querySelector('.nd-btn').setAttribute('aria-expanded','false'); } });
+  }
+  nav.querySelectorAll('.nd-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var d=btn.closest('.nd'), open=d.hasAttribute('data-open');
+      closeAll(d);
+      if(open){ d.removeAttribute('data-open'); btn.setAttribute('aria-expanded','false'); }
+      else { d.setAttribute('data-open',''); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  if(burger){
+    burger.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      burger.setAttribute('aria-expanded',open?'true':'false');
+      burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+      if(!open) closeAll();
+    });
+  }
+  links.addEventListener('click',function(e){
+    if(e.target.closest('a')){ links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); closeAll(); }
+  });
+  document.addEventListener('click',function(e){ if(!nav.contains(e.target)) { closeAll(); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAll(); links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); } });
+})();
+</script>
+</body>
+</html>
