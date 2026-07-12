@@ -231,6 +231,7 @@
   footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:18px}
   footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   footer .links a{color:var(--muted)}
+  footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 
   /* inline CTA bands (woven mid-page) */
   .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(201,169,110,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
@@ -1152,6 +1153,13 @@
 
 <footer>
   <div class="q">The prompt was never the problem.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/" aria-current="page">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div class="links">
     <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
     <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·

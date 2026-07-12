@@ -150,6 +150,48 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#1d1309;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
 .byline{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--ghost);margin-top:22px}
+/* -- MOMENT 1: hero 2-col grid + "where the line sits" split diagram (device chassis adapted from /harness .rig) -- */
+.hero-grid{display:grid;grid-template-columns:minmax(0,.94fr) minmax(430px,1.06fr);gap:clamp(36px,5.5vw,70px);align-items:center}
+.hero-copy{min-width:0}
+.line-rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:20px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
+.line-rig::before,.line-rig::after{content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,110,.12);border-radius:21px;pointer-events:none}
+.line-rig::after{inset:12px;border-color:rgba(135,168,189,.1);border-radius:16px}
+.line-rig .lr-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 16px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
+.line-rig .lr-top b{color:var(--gold);font-weight:500}
+.line-rig .lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:7px;vertical-align:middle}
+.line-rig .lr-body{position:relative;z-index:2;display:flex;flex-direction:column;gap:15px;padding:3px 5px 2px}
+.lr-band .lr-name{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);font-weight:600;margin-bottom:7px}
+.lr-track{position:relative;height:30px;border-radius:8px;overflow:hidden;border:1px solid var(--line2);background:rgba(7,5,4,.4)}
+.lr-track .lr-human{position:absolute;top:0;bottom:0;left:0;width:calc(100% - var(--ai,0)*1%);background:linear-gradient(90deg,rgba(135,168,189,.34),rgba(135,168,189,.16))}
+.lr-track .lr-ai{position:absolute;top:0;bottom:0;right:0;width:calc(var(--ai,0)*1%);background:linear-gradient(90deg,rgba(201,169,110,.30),rgba(201,169,110,.62))}
+.lr-track .lr-div{position:absolute;top:-2px;bottom:-2px;left:calc(100% - var(--ai,0)*1%);width:1.5px;background:var(--gold);box-shadow:0 0 9px rgba(201,169,110,.7)}
+.lr-ends{display:flex;justify-content:space-between;gap:12px;margin-top:7px;font-family:var(--mono);font-size:.55rem;line-height:1.25;letter-spacing:.01em}
+.lr-ends .lr-h{color:var(--blue);max-width:54%}
+.lr-ends .lr-a{color:var(--gold);max-width:54%;text-align:right;margin-left:auto}
+.lr-lock{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px;color:var(--blue)}
+.line-rig .lr-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:15px 10px 3px}
+.line-rig .lr-caption strong{color:var(--fg)}
+/* -- MOMENT 2: "handled" brief card in #replaces (adapts homepage .pc-msg / .hb-li cascade, scoped) -- */
+.handled-card{max-width:430px;margin:44px auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,rgba(16,19,27,.92),rgba(11,14,20,.84));box-shadow:0 30px 72px -34px rgba(0,0,0,.86)}
+.handled-card .hc-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line2);background:rgba(255,255,255,.015)}
+.handled-card .hc-ava{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;color:#1a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
+.handled-card .hc-t{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+.handled-card .hc-time{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:var(--ghost)}
+.handled-card .hc-body{padding:14px 16px 4px;display:flex;flex-direction:column;gap:9px}
+.handled-card .hc-li{display:flex;align-items:center;gap:11px;border:1px solid var(--line2);border-radius:11px;padding:10px 12px;background:rgba(255,246,232,.02)}
+.handled-card .hc-check{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--green);color:var(--green);font-size:.6rem;line-height:1}
+.handled-card .hc-li .tx{position:relative;font-size:.82rem;line-height:1.35;color:var(--muted)}
+.handled-card .hc-li.done .tx::after{content:'';position:absolute;left:0;top:56%;width:100%;height:1.5px;background:rgba(240,232,218,.5)}
+.handled-card .hc-li.live{border-color:rgba(201,169,110,.34);background:rgba(201,169,110,.06)}
+.handled-card .hc-li.live .tx{color:var(--gold);font-weight:500}
+.handled-card .hc-live{flex-shrink:0;width:16px;height:16px;border-radius:50%;border:1px solid rgba(201,169,110,.7);position:relative}
+.handled-card .hc-live::after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--gold)}
+.handled-card .hc-tag{margin-left:auto;flex-shrink:0;font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:#e8c98a;border:1px solid rgba(201,169,110,.4);border-radius:999px;padding:4px 9px}
+.handled-card .hc-cap{text-align:center;color:var(--muted);font-size:.75rem;padding:13px 14px 16px}
+.js .handled-card .hc-li{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in .handled-card .hc-li{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.handled-card .hc-li,.js .handled-card .hc-li{opacity:1;transform:none;transition:none}}
+@media print{.handled-card .hc-li{opacity:1!important;transform:none!important}}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
@@ -173,8 +215,9 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"\2212"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
 .closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400;font-style:italic}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
 footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.js .reveal.in{opacity:1;transform:none}
-@media(max-width:960px){.hero h1{max-width:13ch}.section-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}.anatomy{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:38px}.line-rig{max-width:560px}.hero h1{max-width:13ch}.section-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}.anatomy{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.anatomy{grid-template-columns:1fr}.hero{padding-top:96px}}
 @media(max-width:430px){.definition{padding:21px}.definition p{font-size:1.27rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.btn{transition:none}}
@@ -202,6 +245,8 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
         <div class="nd-menu">
           <a href="/harness/">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/context-engineering-vs-prompt-engineering/">Context Engineering <small>vs prompt engineering, the real shift</small></a>
+          <a href="/ai-chief-of-staff-vs-human-chief-of-staff/" aria-current="page">AI Chief of Staff <small>vs a human one, what changes</small></a>
           <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
           <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
           <a href="/#get">What You Get <small>The directory that is the system</small></a>
@@ -228,15 +273,38 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 </nav>
 
 <header class="hero">
-  <div class="hero-inner wrap reveal">
-    <div class="eyebrow">Field Guide &middot; AI Chief of Staff</div>
-    <h1>AI Chief of Staff <em>vs Human Chief of Staff</em></h1>
-    <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for over a year, across a multi-brand software portfolio and two side businesses, so here is the honest version: what stays human, what gets handed to the machine, and exactly where the line sits between them.</p>
-    <div class="actions">
-      <a class="btn primary" href="#baseline">See what changes</a>
-      <a class="btn ghost" href="/#start">Deploy your own</a>
+  <div class="hero-grid wrap reveal">
+    <div class="hero-copy">
+      <div class="eyebrow">Field Guide &middot; AI Chief of Staff</div>
+      <h1>AI Chief of Staff <em>vs Human Chief of Staff</em></h1>
+      <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for over a year, across a multi-brand software portfolio and two side businesses, so here is the honest version: what stays human, what gets handed to the machine, and exactly where the line sits between them.</p>
+      <div class="actions">
+        <a class="btn primary" href="#baseline">See what changes</a>
+        <a class="btn ghost" href="/#start">Deploy your own</a>
+      </div>
+      <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
     </div>
-    <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
+    <div class="line-rig" role="img" aria-label="Diagram: the chief-of-staff job splits into three layers between human and AI. Intelligence, roughly a third to the AI, which surfaces the context while you set the intent. Execution, roughly two thirds to the AI, which drafts the routine first pass while you decide. Relationship, almost entirely human, always yours.">
+      <div class="lr-top"><span><i class="lamp"></i> Where the line sits</span><b>human &middot; ai</b></div>
+      <div class="lr-body" aria-hidden="true">
+        <div class="lr-band" style="--ai:35" data-ai="35">
+          <div class="lr-name">Intelligence</div>
+          <div class="lr-track"><span class="lr-human"></span><span class="lr-ai"></span><span class="lr-div"></span></div>
+          <div class="lr-ends"><span class="lr-h">you set the intent</span><span class="lr-a">it surfaces the context</span></div>
+        </div>
+        <div class="lr-band" style="--ai:60" data-ai="60">
+          <div class="lr-name">Execution</div>
+          <div class="lr-track"><span class="lr-human"></span><span class="lr-ai"></span><span class="lr-div"></span></div>
+          <div class="lr-ends"><span class="lr-h">you decide</span><span class="lr-a">it drafts the routine</span></div>
+        </div>
+        <div class="lr-band" style="--ai:5" data-ai="5">
+          <div class="lr-name">Relationship</div>
+          <div class="lr-track"><span class="lr-human"></span><span class="lr-ai"></span><span class="lr-div"></span></div>
+          <div class="lr-ends"><span class="lr-h"><svg class="lr-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>always you</span></div>
+        </div>
+      </div>
+      <p class="lr-caption">Replace the time-drain, <strong>not the human.</strong></p>
+    </div>
   </div>
 </header>
 
@@ -292,6 +360,16 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <div class="part"><span class="num">06 &middot; THE FIRST DRAFT</span><h3>Something to react to</h3><p>The recap, the summary, the routine reply that simply needs to exist before you sharpen it.</p></div>
       </div>
       <p class="after-note">None of that is the relationship. None of it is the decision. It is the drain around them. <strong>I am not looking for AI to replace people. I am looking to give the people their hours back.</strong></p>
+      <div class="handled-card" role="img" aria-label="Example brief. Three routine items are cleared and struck through: context pulled for the 9:30, notes filed to the thread, first-draft prep sent. One item stays live and highlighted for the human: Q3 pricing, a decision that is yours.">
+        <div class="hc-head"><span class="hc-ava" aria-hidden="true">C</span><span class="hc-t">COS &middot; handled</span><span class="hc-time">8:12</span></div>
+        <div class="hc-body">
+          <div class="hc-li done" style="--d:.05s"><span class="hc-check" aria-hidden="true">&#10003;</span><span class="tx">Context pulled for the 9:30.</span></div>
+          <div class="hc-li done" style="--d:.18s"><span class="hc-check" aria-hidden="true">&#10003;</span><span class="tx">Notes filed to the thread.</span></div>
+          <div class="hc-li done" style="--d:.31s"><span class="hc-check" aria-hidden="true">&#10003;</span><span class="tx">First-draft prep sent.</span></div>
+          <div class="hc-li live" style="--d:.44s"><span class="hc-live" aria-hidden="true"></span><span class="tx">Q3 pricing. Decision. Yours.</span><span class="hc-tag">Yours</span></div>
+        </div>
+        <p class="hc-cap">The busywork clears itself. The call stays yours.</p>
+      </div>
     </div>
   </section>
 
@@ -430,9 +508,17 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 
 <footer>
   <div class="quote">The best chief of staff doesn't wait to be asked.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/" aria-current="page">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/LICENSE">MIT License</a></div>
 </footer>
 
+<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
   var reveals = document.querySelectorAll('.reveal');
@@ -446,6 +532,46 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
   } else {
     reveals.forEach(function(el){el.classList.add('in');});
   }
+})();
+
+// MOMENT 1: "where the line sits" -- animate each band's AI split on first in-view (anime.js v4, guarded like /harness)
+(function(){
+  var rig = document.querySelector('.line-rig');
+  if (!rig) return;
+  var bands = [].slice.call(rig.querySelectorAll('.lr-band'));
+  if (!bands.length) return;
+  var AN = window.anime;
+  var animeOK = !!(AN && AN.animate && AN.utils && AN.stagger);
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+
+  function settle(){ bands.forEach(function(b){ b.style.setProperty('--ai', b.dataset.ai || 0); }); }
+
+  // No anime, or reduced motion: leave the inline --ai final split in place (static). Nothing to do.
+  if (!animeOK || rm.matches) return;
+
+  // Prime to the all-human state so there is no flash of the final split (the parent .reveal starts hidden).
+  AN.utils.set(bands, { '--ai': 0 });
+
+  var played = false;
+  function play(){
+    if (played) return; played = true;
+    AN.animate(bands, {
+      '--ai': function(el){ return +el.dataset.ai || 0; },
+      duration: 700,
+      delay: AN.stagger(150),
+      ease: 'outQuad'
+    });
+  }
+
+  if ('IntersectionObserver' in window){
+    var eio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ play(); eio.disconnect(); } });
+    }, { threshold: 0.35 });
+    eio.observe(rig);
+  } else { settle(); }
+
+  // If reduced-motion is switched on before it plays, drop straight to the static final split.
+  if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches && !played){ played = true; settle(); } });
 })();
 
 // Nav: dropdown groups + mobile burger -- namespaced to .nav (shared with homepage)

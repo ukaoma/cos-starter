@@ -183,6 +183,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#654919}
 .closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
 footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.js .reveal.in{opacity:1;transform:none}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero h1{max-width:13ch}.rig{max-width:720px}.section-grid,.field-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}.anatomy{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.rig{padding:20px}.rig-body{grid-template-columns:1fr 1fr}.rail{display:contents}.engine{order:-1;grid-column:1/-1;min-height:230px}.memory-layout{grid-template-columns:1fr}.anatomy{grid-template-columns:1fr}.step{grid-template-columns:48px 1fr;padding:20px 17px}.model-switch{flex-wrap:wrap;justify-content:center}.hero{padding-top:96px}}
@@ -215,6 +216,8 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
         <div class="nd-menu">
           <a href="/harness/" aria-current="page">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/context-engineering-vs-prompt-engineering/">Context Engineering <small>vs prompt engineering, the real shift</small></a>
+          <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff <small>vs a human one, what changes</small></a>
           <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
           <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
           <a href="/#get">What You Get <small>The directory that is the system</small></a>
@@ -449,6 +452,13 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 
 <footer>
   <div class="quote">Context compounds when you can keep it.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/" aria-current="page">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> · <a href="https://github.com/ukaoma/cos-starter">GitHub</a> · <a href="/privacy.html">Privacy</a> · <a href="/LICENSE">MIT License</a></div>
 </footer>
 

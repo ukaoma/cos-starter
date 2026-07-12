@@ -140,6 +140,36 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:15ch}.hero h1 em{
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#1d1309;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
 .byline{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--ghost);margin-top:22px}
+/* Hero 2-col grid + context rig (Moment 1: same model, same prompt, different world) */
+.hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,5.5vw,72px);align-items:center}
+.ctx-rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
+.ctx-rig::before,.ctx-rig::after{content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,110,.12);border-radius:21px;pointer-events:none}
+.ctx-rig::after{inset:12px;border-color:rgba(135,168,189,.1);border-radius:16px}
+.ctx-rig .rig-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:5px 7px 14px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
+.ctx-rig .rig-top b{color:var(--gold);font-weight:500;transition:color .35s}
+.ctx-rig .lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:6px;vertical-align:middle}
+.ctx-rig .rig-inner{position:relative;z-index:2;padding:0 4px}
+.ctx-prompt{display:flex;align-items:baseline;gap:10px;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;background:rgba(7,5,4,.4)}
+.ctx-prompt .chev{font-family:var(--mono);color:var(--gold);font-weight:500;flex:none}
+.ctx-prompt .ptext{font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--fg)}
+.ctx-answer{display:grid;margin-top:13px;min-height:238px}
+.ctx-state{grid-area:1/1}
+.ctx-state .stag{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin:2px 0 13px}
+.ctx-state ul{list-style:none;display:grid;gap:10px}
+.ctx-state li{font-size:.93rem;line-height:1.42;padding-left:17px;position:relative}
+.ctx-state li::before{content:"";position:absolute;left:0;top:.66em;width:7px;height:1px;background:currentColor;opacity:.45}
+.ctx-bare{color:var(--muted);opacity:0}
+.ctx-bare .stag{color:var(--ghost)}
+.ctx-ctx{color:var(--fg);opacity:1}
+.ctx-ctx .stag{color:var(--gold)}
+.ctx-ctx li b{color:var(--gold);font-weight:600}
+.ctx-rail{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding:0 4px}
+.ctx-chip{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);border:1px solid var(--line2);border-radius:7px;padding:6px 9px;transition:color .4s,border-color .4s,background .4s}
+.ctx-rail.lit .ctx-chip{color:var(--gold);border-color:rgba(201,169,110,.5);background:rgba(201,169,110,.09)}
+.ctx-rig .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:15px 10px 3px}
+.ctx-rig .rig-caption strong{color:var(--fg)}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:clamp(30px,7vw,48px)}.ctx-rig{max-width:560px;margin-inline:auto;width:100%}}
+@media(max-width:430px){.ctx-prompt .ptext{font-size:.72rem}.ctx-answer{min-height:250px}}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
@@ -159,6 +189,17 @@ h2[id]{scroll-margin-top:108px}
 #electricity .pixmap .pi{position:absolute;inset:0;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-mill.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
 #electricity .sticky .plate-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d}
 @media(max-width:960px){#electricity .sticky .pixmap,#electricity .sticky .plate-tag{display:none}}
+/* electricity productivity curve (Moment 2: small rise, long flat, then a jump) */
+#electricity .paradox-chart{margin:34px 0 4px;max-width:430px}
+#electricity .paradox-chart svg{width:100%;height:auto;display:block}
+#electricity .pc-axis{stroke:var(--paper-line);stroke-width:1}
+#electricity .pc-flat{stroke:rgba(40,27,17,.22);stroke-width:1;stroke-dasharray:2 4;fill:none}
+#electricity .pc-line{fill:none;stroke:#795c2d;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+#electricity .pc-dot{fill:var(--gold);stroke:#f3ede1;stroke-width:2}
+#electricity .pc-lab{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;fill:#795c2d}
+#electricity .pc-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;fill:rgba(40,27,17,.6)}
+.js #electricity .pc-line{stroke-dasharray:600;stroke-dashoffset:600}
+@media(prefers-reduced-motion:reduce){.js #electricity .pc-line{stroke-dasharray:none;stroke-dashoffset:0}}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
 .dark-section .body{max-width:66ch;margin-top:22px}.dark-section .body p{color:var(--muted);font-size:1.06rem;margin:0 0 18px}.dark-section .body p:last-child{margin-bottom:0}.dark-section .body strong{color:var(--fg);font-weight:600}.dark-section .body h3{font-family:var(--body);font-size:1.15rem;color:var(--fg);font-weight:600;margin:30px 0 10px}
 /* before/after money illustration */
@@ -176,6 +217,7 @@ h2[id]{scroll-margin-top:108px}
 .faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"\2212"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
 .closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400;font-style:italic}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
 footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.js .reveal.in{opacity:1;transform:none}
 @media(max-width:960px){.hero h1{max-width:15ch}.section-grid{grid-template-columns:1fr}.sticky{position:static}.paper .intro{max-width:58ch}}
 @media(max-width:700px){.hero{padding-top:118px}.ba{grid-template-columns:1fr}}
@@ -205,6 +247,8 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
         <div class="nd-menu">
           <a href="/harness/">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/context-engineering-vs-prompt-engineering/" aria-current="page">Context Engineering <small>vs prompt engineering, the real shift</small></a>
+          <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff <small>vs a human one, what changes</small></a>
           <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
           <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
           <a href="/#get">What You Get <small>The directory that is the system</small></a>
@@ -231,15 +275,50 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 </nav>
 
 <header class="hero">
-  <div class="wrap reveal">
-    <div class="eyebrow">Field guide &middot; Context engineering</div>
-    <h1>Context Engineering <em>vs Prompt Engineering</em></h1>
-    <p class="hero-lead">Prompt engineering optimizes the question. <strong>Context engineering re-architects everything around it.</strong> One is a skill you practice per chat. The other is a system you build once and compound forever. I have spent a year running the second one at team scale. Here is the real difference, and why it scales.</p>
-    <div class="actions">
-      <a class="btn primary" href="#difference">See the difference</a>
-      <a class="btn ghost" href="/#start">Build your COS</a>
+  <div class="hero-grid wrap">
+    <div class="reveal">
+      <div class="eyebrow">Field guide &middot; Context engineering</div>
+      <h1>Context Engineering <em>vs Prompt Engineering</em></h1>
+      <p class="hero-lead">Prompt engineering optimizes the question. <strong>Context engineering re-architects everything around it.</strong> One is a skill you practice per chat. The other is a system you build once and compound forever. I have spent a year running the second one at team scale. Here is the real difference, and why it scales.</p>
+      <div class="actions">
+        <a class="btn primary" href="#difference">See the difference</a>
+        <a class="btn ghost" href="/#start">Build your COS</a>
+      </div>
+      <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
     </div>
-    <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
+    <div class="ctx-rig reveal" id="ctxRig" role="img" aria-label="Same model, same prompt. With no context the answer is generic advice that is true for anyone. With your context the same request returns specifics: the Northwind renewal, what Dana flagged, and a stalled rollout.">
+      <div class="rig-top" aria-hidden="true"><span><i class="lamp"></i> SAME MODEL</span><b id="ctxState">your context</b></div>
+      <div class="rig-inner" aria-hidden="true">
+        <div class="ctx-prompt"><span class="chev">&gt;_</span><span class="ptext">Help me prep for my client call tomorrow</span></div>
+        <div class="ctx-answer">
+          <div class="ctx-state ctx-bare">
+            <span class="stag">generic. true for anyone.</span>
+            <ul>
+              <li>Look up the client before the call.</li>
+              <li>Skim your recent emails with them.</li>
+              <li>Draft a simple agenda.</li>
+              <li>Ask what their goals are this quarter.</li>
+            </ul>
+          </div>
+          <div class="ctx-state ctx-ctx">
+            <span class="stag">yours. true for this call.</span>
+            <ul>
+              <li><b>Northwind</b> renews in 3 weeks.</li>
+              <li><b>Dana</b> flagged pricing on the last call.</li>
+              <li>Their rollout stalled in <b>April</b>.</li>
+              <li>Open with the renewal, not the upsell.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctx-rail lit">
+          <span class="ctx-chip">people</span>
+          <span class="ctx-chip">decisions</span>
+          <span class="ctx-chip">numbers</span>
+          <span class="ctx-chip">last call</span>
+        </div>
+      </div>
+      <p class="rig-caption" aria-hidden="true">Same model. Same prompt. <strong>Different world.</strong></p>
+    </div>
   </div>
 </header>
 
@@ -359,6 +438,17 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
         <p>Output per worker rose a little. Then it flatlined for roughly three decades. The gain was disappointing because they had bolted a new power source onto an old design. They kept routing everything through the central shaft, so the electricity was doing a steam engine's job in a steam engine's building.</p>
         <p>The breakthrough came when a new generation stopped retrofitting and re-architected the mill. Put a small motor on each machine. Lay the floor out around the flow of work instead of around the driveshaft. Once the building was designed for electricity rather than adapted to it, productivity did not inch up. It jumped.</p>
         <p>The AI market is in the bolt-on phase right now. Prompt engineering is the electric motor wired to the old shaft. You keep your workflows exactly as they were and ask a model to help one task at a time. Context engineering is rebuilding the mill. You redesign how work, memory, and decisions flow so the intelligence has something to run through. That is why the first one plateaus and the second one scales.</p>
+        <div class="paradox-chart reveal" role="img" aria-label="Line chart of output per worker from 1890 to 1930. A small early rise, then a long flat stretch for roughly three decades, then a sharp jump at the end once the factory was rebuilt around electricity.">
+          <svg viewBox="0 0 480 200" width="480" height="200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <line class="pc-axis" x1="40" y1="170" x2="456" y2="170"/>
+            <line class="pc-flat" x1="146" y1="136" x2="350" y2="135"/>
+            <path class="pc-line" d="M44,150 L78,143 L112,139 L146,137 L200,136 L254,135 L308,136 L350,134 L384,130 L414,98 L452,54"/>
+            <circle class="pc-dot" cx="452" cy="54" r="4.5"/>
+            <text class="pc-note" x="368" y="44" text-anchor="end">the gain, after the rebuild</text>
+            <text class="pc-lab" x="44" y="188">1890</text>
+            <text class="pc-lab" x="452" y="188" text-anchor="end">1930</text>
+          </svg>
+        </div>
       </article>
     </div>
   </section>
@@ -440,9 +530,17 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
 
 <footer>
   <div class="quote">The prompt is how you ask. The context is what it already knows.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/" aria-current="page">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/LICENSE">MIT License</a></div>
 </footer>
 
+<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
   var reveals = document.querySelectorAll('.reveal');
@@ -487,6 +585,85 @@ footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gu
   });
   document.addEventListener('click',function(e){ if(!nav.contains(e.target)) { closeAll(); } });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAll(); links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); } });
+})();
+</script>
+<script>
+// Hero context rig + productivity curve. anime.js v4 UMD on window.anime, guarded for reduced-motion and no-JS
+(function(){
+  var AN = window.anime;
+  var animeOK = !!(AN && AN.createTimeline);
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches:false };
+
+  // Moment 1: hero context rig. Auto-cycle between the bare answer and the context answer
+  var crig = document.getElementById('ctxRig');
+  if (crig) {
+    var bare = crig.querySelector('.ctx-bare');
+    var ctxs = crig.querySelector('.ctx-ctx');
+    var rail = crig.querySelector('.ctx-rail');
+    var label = document.getElementById('ctxState');
+    var bareLines = bare ? bare.querySelectorAll('li') : [];
+    var ctxLines = ctxs ? ctxs.querySelectorAll('li') : [];
+
+    if (!animeOK || rm.matches) {
+      // static winning state: CONTEXT visible, BARE hidden, rail lit, label reads "your context"
+      if (bare) bare.style.opacity = '0';
+      if (ctxs) ctxs.style.opacity = '1';
+      if (rail) rail.classList.add('lit');
+      if (label) label.textContent = 'your context';
+    } else {
+      var utils = AN.utils, stagger = AN.stagger, createTimeline = AN.createTimeline;
+      utils.set(bare, { opacity:0 });
+      utils.set(ctxs, { opacity:1 });
+      var showingCtx = true, timer = null, armed = false, inView = false, hovered = false;
+
+      function crossfade(toCtx){
+        var incoming = toCtx ? ctxs : bare;
+        var outgoing = toCtx ? bare : ctxs;
+        var inLines  = toCtx ? ctxLines : bareLines;
+        var tl = createTimeline({ defaults:{ ease:'inOutSine' } });
+        tl.add(outgoing, { opacity:[1,0], duration:300 }, 0);
+        tl.add(incoming, { opacity:[0,1], duration:380, onBegin:function(){
+          if (label) label.textContent = toCtx ? 'your context' : 'no context';
+          if (rail){ if (toCtx) rail.classList.add('lit'); else rail.classList.remove('lit'); }
+        } }, 230);
+        tl.add(inLines, { opacity:[0,1], translateY:[8,0], duration:430, delay:stagger(70) }, 250);
+        showingCtx = toCtx;
+      }
+      function tick(){ crossfade(!showingCtx); }
+      function start(){ if (armed) return; if (!inView || document.hidden || hovered || rm.matches) return; armed = true; timer = setInterval(tick, 4200); }
+      function stop(){ armed = false; if (timer){ clearInterval(timer); timer = null; } }
+
+      crig.addEventListener('mouseenter', function(){ hovered = true; stop(); });
+      crig.addEventListener('mouseleave', function(){ hovered = false; start(); });
+      crig.addEventListener('focusin', function(){ hovered = true; stop(); });
+      crig.addEventListener('focusout', function(){ hovered = false; start(); });
+      document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else start(); });
+      if ('IntersectionObserver' in window){
+        var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; if (inView) start(); else stop(); }); }, { threshold:0.35 });
+        cio.observe(crig);
+      } else { inView = true; start(); }
+      if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) stop(); else start(); });
+    }
+  }
+
+  // Moment 2: productivity curve. Stroke-draw the path when the section scrolls into view
+  var pc = document.querySelector('#electricity .pc-line');
+  if (pc) {
+    var len = 600;
+    try { len = pc.getTotalLength() || 600; } catch(e){ len = 600; }
+    if (!animeOK || rm.matches) {
+      pc.style.strokeDasharray = 'none';
+      pc.style.strokeDashoffset = '0';
+    } else {
+      AN.utils.set(pc, { strokeDasharray: len, strokeDashoffset: len });
+      var drawn = false;
+      var drawIt = function(){ if (drawn) return; drawn = true; AN.animate(pc, { strokeDashoffset:[len,0], duration:1400, ease:'inOutSine' }); };
+      if ('IntersectionObserver' in window){
+        var pio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ drawIt(); pio.disconnect(); } }); }, { threshold:0.4 });
+        pio.observe(pc);
+      } else { drawIt(); }
+    }
+  }
 })();
 </script>
 </body>
