@@ -189,6 +189,7 @@ footer{text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(-
 footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold)}
 footer .links{margin-top:14px;font-size:.85rem;color:var(--muted)}
 footer .links a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 footer .links a:hover{color:var(--gold)}
 .foot-mark{font-family:var(--display);font-style:italic;font-size:clamp(5rem,16vw,11rem);line-height:1;color:var(--fg);opacity:.045;margin-top:26px;user-select:none}
 
@@ -695,6 +696,13 @@ footer .links a:hover{color:var(--gold)}
 
 <footer>
   <div class="q">The prompt was never the problem.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/" aria-current="page">Docs</a>
+  </nav>
   <div class="links">
     <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
     <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·

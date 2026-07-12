@@ -164,6 +164,8 @@
     .footer .brand { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
     .footer a { text-decoration: none; color: var(--text-muted); transition: color 0.2s; }
     .footer a:hover { color: var(--accent-gold); }
+    .footer .foot-nav { display:flex; gap:8px 16px; justify-content:center; flex-wrap:wrap; margin:12px 0 4px; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.04em; }
+    .footer .foot-nav a[aria-current=page] { color: var(--accent-gold); }
     #path-quick .step { margin-top: 1.5rem; }
     @media (prefers-reduced-motion: reduce) { .atmos .aur { animation: none; } * { transition: none !important; } }
 
@@ -663,6 +665,12 @@
   <div class="divider"></div>
   <div class="footer">
     <div class="q">The best chief of staff doesn't wait to be asked.</div>
+    <nav class="foot-nav" aria-label="Pages">
+      <a href="/harness/">AI Harness</a>
+      <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+      <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+      <a href="/docs/">Docs</a>
+    </nav>
     <div class="brand">gotcos.com</div>
     <div style="margin-top:0.3rem;">
       <a href="https://www.gotcos.com">Home</a> ·

@@ -70,7 +70,8 @@
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:13px 26px;border-radius:999px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;text-decoration:none;box-shadow:0 12px 34px -14px rgba(201,169,110,.6)}
   footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 60px;border-top:1px solid var(--line-2);margin-top:50px}
   footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:12px}
-  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted);transition:color .2s}footer .links a:hover{color:var(--gold)}
+  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted);transition:color .2s}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}footer .links a:hover{color:var(--gold)}
   @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}}
 </style>
 </head>
@@ -117,6 +118,13 @@
 
 <footer>
   <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a></div>
 </footer>
 </body>

@@ -127,6 +127,7 @@
   footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64px;border-top:1px solid var(--line-2);margin-top:60px}
   footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:14px}
   footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
   @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}*{transition:none!important}}
   /* print: the report a prospect keeps */
   @media print{
@@ -230,6 +231,13 @@
 
 <footer>
   <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
   <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a></div>
 </footer>
 
