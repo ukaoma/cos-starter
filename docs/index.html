@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
   Covers COS Glasses v5.22.6 (build 185) · server @gotcos/glasses-server 6.5.0.
@@ -319,7 +320,7 @@ footer .links a:hover{color:var(--gold)}
 
 /* print: reveal everything, drop chrome/interactive-only blocks */
 @media print{
-  .topbar,.tocbar,.docs-side,.search-wrap,.search-panel,.sub-form,.sub-nojs,.sb-marker{display:none!important}
+  .topbar,.tocbar,.docs-side,.search-wrap,.search-panel,.sub-form,.sub-nojs,.sb-marker,.cmd button{display:none!important}
   .docs-shell{display:block!important;width:auto!important}
   .docs-main .wrap{max-width:var(--maxw)!important}
   .js .reveal{opacity:1!important;transform:none!important}
@@ -901,10 +902,9 @@ footer .links a:hover{color:var(--gold)}
   <div class="foot-mark" aria-hidden="true">COS</div>
 </footer>
 
-<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
-  // reveal on scroll
+  // reveal on scroll — runs BEFORE the anime bundle so page content never waits on the 118KB fetch
   var rs = document.querySelectorAll('.reveal');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
     rs.forEach(function(e){ e.classList.add('in'); });
@@ -914,6 +914,11 @@ footer .links a:hover{color:var(--gold)}
     }, {threshold:.08});
     rs.forEach(function(e){ io.observe(e); });
   }
+})();
+</script>
+<script src="../assets/anime.umd.min.js"></script>
+<script>
+(function(){
   // shared motion guard
   var AN = window.anime;
   var animeOK = !!(AN && AN.animate);
@@ -1059,8 +1064,10 @@ footer .links a:hover{color:var(--gold)}
         es.forEach(function(e){
           if (e.isIntersecting && !archDone){
             archDone = true;
-            AN.animate(archAn, {opacity:[0,1], translateY:[12,0], duration:520, delay:AN.stagger(120), ease:'outQuad'});
-            AN.animate(archAl, {opacity:[0,1], translateX:[-6,0], duration:460, delay:AN.stagger(120,{start:400}), ease:'outQuad'});
+            // timeline position offsets, not stagger({start}) — this bundle's stagger() ignores {start} (same fix as 9f16c00)
+            var atl = AN.createTimeline({defaults:{ease:'outQuad'}});
+            atl.add(archAn, {opacity:[0,1], translateY:[12,0], duration:520, delay:AN.stagger(120)}, 0);
+            atl.add(archAl, {opacity:[0,1], translateX:[-6,0], duration:460, delay:AN.stagger(120)}, 400);
             aio.disconnect();
           }
         });
@@ -1133,10 +1140,12 @@ footer .links a:hover{color:var(--gold)}
     document.addEventListener('keydown', function(ev){
       var t=document.activeElement, tag=t?t.tagName:'';
       var typing = tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||(t&&t.isContentEditable);
-      if (ev.key==='/' && !typing){ ev.preventDefault(); sIn.focus(); }
-      else if ((ev.metaKey||ev.ctrlKey) && (ev.key==='k'||ev.key==='K')){ ev.preventDefault(); sIn.focus(); }
+      if (ev.key==='/' && !typing){ if (sIn.offsetParent){ ev.preventDefault(); sIn.focus(); } }
+      else if ((ev.metaKey||ev.ctrlKey) && (ev.key==='k'||ev.key==='K')){ if (sIn.offsetParent){ ev.preventDefault(); sIn.focus(); } }
     });
     document.addEventListener('click', function(ev){ if (!ev.target.closest('.search-wrap')) close(); });
+    var sWrap = document.querySelector('.search-wrap');
+    if (sWrap) sWrap.addEventListener('focusout', function(ev){ if (!ev.relatedTarget || !ev.relatedTarget.closest('.search-wrap')) close(); });
   }
 
   // ── subscribe (#updates) · HubSpot Forms API, homepage For Teams pattern ──
@@ -1147,6 +1156,7 @@ footer .links a:hover{color:var(--gold)}
     var subBtn = document.getElementById('subBtn'), subNote = document.getElementById('subNote'), subEmail = document.getElementById('subEmail');
     subForm.addEventListener('submit', function(ev){
       ev.preventDefault();
+      if (subBtn.disabled) return;
       var email=(subEmail.value||'').trim();
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ subNote.className='sub-note err'; subNote.textContent='Enter a valid email address.'; subEmail.focus(); return; }
       var orig=subBtn.textContent; subBtn.disabled=true; subBtn.textContent='Sending.'; subNote.className='sub-note'; subNote.textContent='';
