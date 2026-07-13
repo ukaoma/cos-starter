@@ -660,7 +660,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-// Logo on load: each section blooms in from its spark circle (mark, then C, O, S), radial blot + micro-snap
+// Logo on load: the mark crystallizes in four sections (spark, then each bone), then C, O, S bloom in
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
@@ -669,7 +669,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   if (!svg) return;
   var markEls = [].slice.call(svg.querySelectorAll(':scope > circle, :scope > path'));
   var letters = [].slice.call(svg.querySelectorAll('g path'));
-  if (!markEls.length || !letters.length) return;
+  if (markEls.length < 10 || !letters.length) return;
   // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
   var boxes;
   try {
@@ -688,30 +688,45 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     return 'url(#lkblot'+i+')';
   }
   svg.insertBefore(defs, svg.firstChild);
-  // mark blot in root space; letter blots in each letter's own (flipped) space
-  var markClip = clipCircle(0, 1240, 1079);
-  markEls.forEach(function(el){ el.setAttribute('clip-path', markClip); });
-  var covers = [352];
+  // the mark's four sections, in markup order: solo spark [0], left bone [1-3], mid bone [4-6], low bone [7-9]
+  // centers in the lockup's root px space (mark spans x 1004-1476, y 821-1338)
+  var sections = [
+    { els: [markEls[0]],                          cx: 1240.6, cy: 889,    r: 102 },
+    { els: [markEls[1], markEls[2], markEls[3]],  cx: 1072,   cy: 1079.4, r: 190 },
+    { els: [markEls[4], markEls[5], markEls[6]],  cx: 1323.6, cy: 1031.8, r: 190 },
+    { els: [markEls[7], markEls[8], markEls[9]],  cx: 1323.6, cy: 1222.2, r: 190 }
+  ];
+  var covers = [];
+  sections.forEach(function(sec, i){
+    var url = clipCircle(i, sec.cx, sec.cy);
+    sec.els.forEach(function(el){ el.setAttribute('clip-path', url); });
+    covers.push(sec.r);
+  });
   letters.forEach(function(p,i){
     var b = boxes[i];
     var r = Math.hypot(b.width, b.height) / 2 + 14;
     covers.push(r);
-    p.setAttribute('clip-path', clipCircle(i+1, b.x + b.width/2, b.y + b.height/2));
+    p.setAttribute('clip-path', clipCircle(i+4, b.x + b.width/2, b.y + b.height/2));
     p.style.transformBox = 'fill-box'; p.style.transformOrigin = 'center';
   });
   AN.utils.set(letters, { scale: 0.94 });
   var tl = AN.createTimeline();
-  tl.add(blots[0], { r: [0, covers[0]], duration: 520, ease: 'outQuint' }, 30);
+  // spark, then each bone crystallizes (top, left, center, bottom-right)
+  tl.add(blots[0], { r: [0, covers[0]], duration: 340, ease: 'outQuint' }, 20);
+  tl.add(blots[1], { r: [0, covers[1]], duration: 400, ease: 'outQuint' }, 125);
+  tl.add(blots[2], { r: [0, covers[2]], duration: 400, ease: 'outQuint' }, 230);
+  tl.add(blots[3], { r: [0, covers[3]], duration: 400, ease: 'outQuint' }, 335);
+  // then the letters bloom with a micro-snap
   for (var i = 0; i < letters.length; i++){
-    var at = 300 + i * 185;
-    tl.add(blots[i+1], { r: [0, covers[i+1]], duration: 430, ease: 'outQuint' }, at);
+    var at = 560 + i * 175;
+    tl.add(blots[i+4], { r: [0, covers[i+4]], duration: 430, ease: 'outQuint' }, at);
     tl.add(letters[i], { scale: [0.94, 1], duration: 430, ease: 'outBack(2)' }, at);
   }
   // background-tab safety: land the final state regardless of engine state
   setTimeout(function(){
     blots.forEach(function(c,i){ c.setAttribute('r', covers[i]); });
     AN.utils.set(letters, { scale: 1 });
-  }, 2600);
+  }, 2800);
 })();
 </script>
 </body>
