@@ -143,7 +143,6 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.hero-inner{max-width:60ch}
 .eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{display:block;color:var(--gold);font-weight:400;font-style:italic}
@@ -164,7 +163,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{
 .lr-track{position:relative;height:30px;border-radius:8px;overflow:hidden;border:1px solid var(--line2);background:rgba(7,5,4,.4)}
 .lr-track .lr-human{position:absolute;top:0;bottom:0;left:0;width:calc(100% - var(--ai,0)*1%);background:linear-gradient(90deg,rgba(135,168,189,.34),rgba(135,168,189,.16))}
 .lr-track .lr-ai{position:absolute;top:0;bottom:0;right:0;width:calc(var(--ai,0)*1%);background:linear-gradient(90deg,rgba(201,169,110,.30),rgba(201,169,110,.62))}
-.lr-track .lr-div{position:absolute;top:-2px;bottom:-2px;left:calc(100% - var(--ai,0)*1%);width:1.5px;background:var(--gold);box-shadow:0 0 9px rgba(201,169,110,.7)}
+.lr-track .lr-div{position:absolute;top:-2px;bottom:-2px;left:calc(100% - var(--ai,0)*1%);width:1.5px;background:var(--gold);box-shadow:0 0 calc(9px + var(--dp,0)*12px) rgba(201,169,110,calc(.7 + var(--dp,0)*.3))}
 .lr-ends{display:flex;justify-content:space-between;gap:12px;margin-top:7px;font-family:var(--mono);font-size:.55rem;line-height:1.25;letter-spacing:.01em}
 .lr-ends .lr-h{color:var(--blue);max-width:54%}
 .lr-ends .lr-a{color:var(--gold);max-width:54%;text-align:right;margin-left:auto}
@@ -181,7 +180,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{
 .handled-card .hc-li{display:flex;align-items:center;gap:11px;border:1px solid var(--line2);border-radius:11px;padding:10px 12px;background:rgba(255,246,232,.02)}
 .handled-card .hc-check{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--green);color:var(--green);font-size:.6rem;line-height:1}
 .handled-card .hc-li .tx{position:relative;font-size:.82rem;line-height:1.35;color:var(--muted)}
-.handled-card .hc-li.done .tx::after{content:'';position:absolute;left:0;top:56%;width:100%;height:1.5px;background:rgba(240,232,218,.5)}
+.handled-card .hc-li.done .tx::after{content:'';position:absolute;left:0;top:56%;width:calc(var(--sw,1)*100%);height:1.5px;background:rgba(240,232,218,.5)}
 .handled-card .hc-li.live{border-color:rgba(201,169,110,.34);background:rgba(201,169,110,.06)}
 .handled-card .hc-li.live .tx{color:var(--gold);font-weight:500}
 .handled-card .hc-live{flex-shrink:0;width:16px;height:16px;border-radius:50%;border:1px solid rgba(201,169,110,.7);position:relative}
@@ -191,7 +190,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{
 .js .handled-card .hc-li{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
 .reveal.in .handled-card .hc-li{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.handled-card .hc-li,.js .handled-card .hc-li{opacity:1;transform:none;transition:none}}
-@media print{.handled-card .hc-li{opacity:1!important;transform:none!important}}
+@media print{.reveal,.reveal>*{opacity:1!important;transform:none!important}.handled-card .hc-li{opacity:1!important;transform:none!important}.handled-card .hc-li.done .tx::after{width:100%!important}.line-rig .lr-band[data-ai="35"]{--ai:35!important}.line-rig .lr-band[data-ai="60"]{--ai:60!important}.line-rig .lr-band[data-ai="5"]{--ai:5!important}.line-rig .lr-ends span{opacity:1!important;transform:none!important}}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
@@ -287,6 +286,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="line-rig" role="img" aria-label="Diagram: the chief-of-staff job splits into three layers between human and AI. Intelligence, roughly a third to the AI, which surfaces the context while you set the intent. Execution, roughly two thirds to the AI, which drafts the routine first pass while you decide. Relationship, almost entirely human, always yours.">
       <div class="lr-top"><span><i class="lamp"></i> Where the line sits</span><b>human &middot; ai</b></div>
       <div class="lr-body" aria-hidden="true">
+        <!-- per band: inline style --ai (static/no-JS/print render) and data-ai (animated end state) must stay equal -->
         <div class="lr-band" style="--ai:35" data-ai="35">
           <div class="lr-name">Intelligence</div>
           <div class="lr-track"><span class="lr-human"></span><span class="lr-ai"></span><span class="lr-div"></span></div>
@@ -518,7 +518,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/LICENSE">MIT License</a></div>
 </footer>
 
-<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
   var reveals = document.querySelectorAll('.reveal');
@@ -533,7 +532,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     reveals.forEach(function(el){el.classList.add('in');});
   }
 })();
-
+</script>
+<script src="../assets/anime.umd.min.js"></script>
+<script>
 // MOMENT 1: "where the line sits" -- animate each band's AI split on first in-view (anime.js v4, guarded like /harness)
 (function(){
   var rig = document.querySelector('.line-rig');
@@ -549,18 +550,25 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   // No anime, or reduced motion: leave the inline --ai final split in place (static). Nothing to do.
   if (!animeOK || rm.matches) return;
 
-  // Prime to the all-human state so there is no flash of the final split (the parent .reveal starts hidden).
-  AN.utils.set(bands, { '--ai': 0 });
+  var ends = rig.querySelectorAll('.lr-ends span');
+  var divs = rig.querySelectorAll('.lr-div');
 
+  // Prime inside play(), not at parse: the inline --ai final split stays the safe static state
+  // (print, background-tab loads, short viewports) until the moment the grow-in actually runs.
   var played = false;
   function play(){
     if (played) return; played = true;
+    AN.utils.set(bands, { '--ai': 0 });
+    if (ends.length) AN.utils.set(ends, { opacity: 0, translateY: 4 });
+    if (divs.length) AN.utils.set(divs, { '--dp': 0 });
     AN.animate(bands, {
       '--ai': function(el){ return +el.dataset.ai || 0; },
       duration: 700,
       delay: AN.stagger(150),
       ease: 'outQuad'
     });
+    if (ends.length) AN.animate(ends, { opacity:[0,1], translateY:[4,0], duration: 450, delay: AN.stagger(90, {start: 620}), ease: 'outQuad' });
+    if (divs.length) AN.animate(divs, { '--dp':[{to:1,duration:420},{to:0,duration:620}], delay: AN.stagger(150, {start: 780}), ease: 'inOutSine' });
   }
 
   if ('IntersectionObserver' in window){
@@ -572,6 +580,28 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   // If reduced-motion is switched on before it plays, drop straight to the static final split.
   if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches && !played){ played = true; settle(); } });
+})();
+
+// Handled card: draw the strike-throughs after the cascade lands. Fallbacks never prime,
+// so the ::after default width (var(--sw,1) = struck) holds for no-JS, reduced-motion, and print.
+(function(){
+  var card = document.querySelector('.handled-card');
+  var AN = window.anime;
+  var ok = !!(AN && AN.animate && AN.utils && AN.stagger);
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!card || !ok || rm.matches || !('IntersectionObserver' in window)) return;
+  var txs = card.querySelectorAll('.hc-li.done .tx');
+  if (!txs.length) return;
+  var hio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){
+        hio.disconnect();
+        AN.utils.set(txs, { '--sw': 0 });
+        AN.animate(txs, { '--sw': 1, duration: 520, delay: AN.stagger(240, {start: 700}), ease: 'inOutQuart' });
+      }
+    });
+  }, { threshold: 0.6 });
+  hio.observe(card);
 })();
 
 // Nav: dropdown groups + mobile burger -- namespaced to .nav (shared with homepage)

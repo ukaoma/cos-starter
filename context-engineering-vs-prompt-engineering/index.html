@@ -152,7 +152,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:15ch}.hero h1 em{
 .ctx-prompt{display:flex;align-items:baseline;gap:10px;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;background:rgba(7,5,4,.4)}
 .ctx-prompt .chev{font-family:var(--mono);color:var(--gold);font-weight:500;flex:none}
 .ctx-prompt .ptext{font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--fg)}
-.ctx-answer{display:grid;margin-top:13px;min-height:238px}
+.ctx-answer{display:grid;margin-top:13px}
 .ctx-state{grid-area:1/1}
 .ctx-state .stag{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin:2px 0 13px}
 .ctx-state ul{list-style:none;display:grid;gap:10px}
@@ -166,10 +166,14 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:15ch}.hero h1 em{
 .ctx-rail{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding:0 4px}
 .ctx-chip{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);border:1px solid var(--line2);border-radius:7px;padding:6px 9px;transition:color .4s,border-color .4s,background .4s}
 .ctx-rail.lit .ctx-chip{color:var(--gold);border-color:rgba(201,169,110,.5);background:rgba(201,169,110,.09)}
+.ctx-rail .ctx-chip{box-shadow:0 0 calc(var(--rg,0)*12px) rgba(201,169,110,calc(var(--rg,0)*.38))}
+.ctx-prompt .chev i{font-style:normal;animation:pcaret 1.15s steps(2,start) infinite}
+@keyframes pcaret{to{opacity:.15}}
+@media(prefers-reduced-motion:reduce){.ctx-prompt .chev i{animation:none}}
 .ctx-rig .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:15px 10px 3px}
 .ctx-rig .rig-caption strong{color:var(--fg)}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:clamp(30px,7vw,48px)}.ctx-rig{max-width:560px;margin-inline:auto;width:100%}}
-@media(max-width:430px){.ctx-prompt .ptext{font-size:.72rem}.ctx-answer{min-height:250px}}
+@media(max-width:430px){.ctx-prompt .ptext{font-size:.72rem}}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
@@ -195,11 +199,12 @@ h2[id]{scroll-margin-top:108px}
 #electricity .pc-axis{stroke:var(--paper-line);stroke-width:1}
 #electricity .pc-flat{stroke:rgba(40,27,17,.22);stroke-width:1;stroke-dasharray:2 4;fill:none}
 #electricity .pc-line{fill:none;stroke:#795c2d;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-#electricity .pc-dot{fill:var(--gold);stroke:#f3ede1;stroke-width:2}
+#electricity .pc-dot{fill:var(--gold);stroke:#f3ede1;stroke-width:2;transform-box:fill-box;transform-origin:center}
 #electricity .pc-lab{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;fill:#795c2d}
 #electricity .pc-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;fill:rgba(40,27,17,.6)}
 .js #electricity .pc-line{stroke-dasharray:600;stroke-dashoffset:600}
 @media(prefers-reduced-motion:reduce){.js #electricity .pc-line{stroke-dasharray:none;stroke-dashoffset:0}}
+@media print{.reveal,.reveal>*{opacity:1!important;transform:none!important}.js #electricity .pc-line{stroke-dasharray:none!important;stroke-dashoffset:0!important}#electricity .pc-dot,#electricity .pc-note{opacity:1!important;transform:none!important}}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
 .dark-section .body{max-width:66ch;margin-top:22px}.dark-section .body p{color:var(--muted);font-size:1.06rem;margin:0 0 18px}.dark-section .body p:last-child{margin-bottom:0}.dark-section .body strong{color:var(--fg);font-weight:600}.dark-section .body h3{font-family:var(--body);font-size:1.15rem;color:var(--fg);font-weight:600;margin:30px 0 10px}
 /* before/after money illustration */
@@ -289,7 +294,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="ctx-rig reveal" id="ctxRig" role="img" aria-label="Same model, same prompt. With no context the answer is generic advice that is true for anyone. With your context the same request returns specifics: the Northwind renewal, what Dana flagged, and a stalled rollout.">
       <div class="rig-top" aria-hidden="true"><span><i class="lamp"></i> SAME MODEL</span><b id="ctxState">your context</b></div>
       <div class="rig-inner" aria-hidden="true">
-        <div class="ctx-prompt"><span class="chev">&gt;_</span><span class="ptext">Help me prep for my client call tomorrow</span></div>
+        <div class="ctx-prompt"><span class="chev">&gt;<i>_</i></span><span class="ptext">Help me prep for my client call tomorrow</span></div>
         <div class="ctx-answer">
           <div class="ctx-state ctx-bare">
             <span class="stag">generic. true for anyone.</span>
@@ -540,7 +545,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/LICENSE">MIT License</a></div>
 </footer>
 
-<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
   var reveals = document.querySelectorAll('.reveal');
@@ -587,6 +591,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAll(); links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); } });
 })();
 </script>
+<script src="../assets/anime.umd.min.js"></script>
 <script>
 // Hero context rig + productivity curve. anime.js v4 UMD on window.anime, guarded for reduced-motion and no-JS
 (function(){
@@ -614,6 +619,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       var utils = AN.utils, stagger = AN.stagger, createTimeline = AN.createTimeline;
       utils.set(bare, { opacity:0 });
       utils.set(ctxs, { opacity:1 });
+      var chips = rail ? rail.querySelectorAll('.ctx-chip') : [];
+      if (chips.length) utils.set(chips, { '--rg': 0 });
       var showingCtx = true, timer = null, armed = false, inView = false, hovered = false;
 
       function crossfade(toCtx){
@@ -625,6 +632,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         tl.add(incoming, { opacity:[0,1], duration:380, onBegin:function(){
           if (label) label.textContent = toCtx ? 'your context' : 'no context';
           if (rail){ if (toCtx) rail.classList.add('lit'); else rail.classList.remove('lit'); }
+          if (toCtx && chips.length) AN.animate(chips, { '--rg':[{to:1,duration:430},{to:0,duration:470}], delay:stagger(70), ease:'inOutSine' });
         } }, 230);
         tl.add(inLines, { opacity:[0,1], translateY:[8,0], duration:430, delay:stagger(70) }, 250);
         showingCtx = toCtx;
@@ -642,7 +650,17 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; if (inView) start(); else stop(); }); }, { threshold:0.35 });
         cio.observe(crig);
       } else { inView = true; start(); }
-      if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) stop(); else start(); });
+      if (rm.addEventListener) rm.addEventListener('change', function(e){
+        if (e.matches){
+          stop();
+          utils.set(bare, { opacity:0 });
+          utils.set(ctxs, { opacity:1 });
+          if (ctxLines.length) utils.set(ctxLines, { opacity:1, translateY:0 });
+          if (rail) rail.classList.add('lit');
+          if (label) label.textContent = 'your context';
+          showingCtx = true;
+        } else { start(); }
+      });
     }
   }
 
@@ -655,12 +673,23 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       pc.style.strokeDasharray = 'none';
       pc.style.strokeDashoffset = '0';
     } else {
+      var dot = document.querySelector('#electricity .pc-dot');
+      var note = document.querySelector('#electricity .pc-note');
       AN.utils.set(pc, { strokeDasharray: len, strokeDashoffset: len });
+      if (dot) AN.utils.set(dot, { opacity: 0 });
+      if (note) AN.utils.set(note, { opacity: 0 });
       var drawn = false;
-      var drawIt = function(){ if (drawn) return; drawn = true; AN.animate(pc, { strokeDashoffset:[len,0], duration:1400, ease:'inOutSine' }); };
+      var drawIt = function(){
+        if (drawn) return; drawn = true;
+        var ptl = AN.createTimeline({ defaults:{ ease:'inOutSine' } });
+        ptl.add(pc, { strokeDashoffset:[len,0], duration:1400 }, 0);
+        if (dot) ptl.add(dot, { opacity:[0,1], scale:[0,1], duration:480, ease:'outBack(1.7)' }, 1250);
+        if (note) ptl.add(note, { opacity:[0,1], duration:430 }, 1500);
+      };
       if ('IntersectionObserver' in window){
+        var pbox = document.querySelector('#electricity .paradox-chart') || pc;
         var pio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ drawIt(); pio.disconnect(); } }); }, { threshold:0.4 });
-        pio.observe(pc);
+        pio.observe(pbox);
       } else { drawIt(); }
     }
   }
