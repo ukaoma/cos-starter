@@ -719,35 +719,42 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-// Logo on load: nodes light, connections join, then C, O, S layer in on springs
+// Logo on load: the mark and C, O, S paint in as four staggered fills (the sheet's sections, mirrored)
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
-  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || !AN.createSpring || rm.matches) return;
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || rm.matches) return;
   var svg = document.querySelector('svg[viewBox="1004 821 1944 517"]');
   if (!svg) return;
-  var nodes = svg.querySelectorAll('circle');
-  var bridges = svg.querySelectorAll(':scope > path');
+  var markEls = [].slice.call(svg.querySelectorAll(':scope > circle, :scope > path'));
   var letters = [].slice.call(svg.querySelectorAll('g path'));
-  if (!nodes.length || !letters.length) return;
-  // potrace emits paths in scan order (S first); sort left-to-right so the stagger reads C, O, S
-  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){}
-  var pop = AN.createSpring({ mass: 1, stiffness: 190, damping: 12 });
-  nodes.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
-  letters.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
-  AN.utils.set(nodes, { scale: 0 });
-  AN.utils.set(bridges, { opacity: 0 });
-  AN.utils.set(letters, { opacity: 0, scale: 0.6, translateY: 10 });
-  var tl = AN.createTimeline();
-  tl.add(nodes, { scale: [0,1], ease: pop, delay: AN.stagger(55) }, 40);
-  tl.add(bridges, { opacity: { to: 1, duration: 300, ease: 'outQuad' }, delay: AN.stagger(80) }, 330);
-  tl.add(letters, { opacity: { to: 1, duration: 200, ease: 'outQuad' }, scale: [0.6, 1], translateY: [10, 0], duration: 780, ease: 'inOutElastic(1, .4)', delay: AN.stagger(200) }, 540);
-  // background-tab safety: whatever happens to the engine, land the final state
+  if (!markEls.length || !letters.length) return;
+  // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
+  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){ return; }
+  var NS = 'http://www.w3.org/2000/svg';
+  var defs = document.createElementNS(NS,'defs');
+  var rects = [];
+  // section 0: the mark (root space, bottom edge y=1338); sections 1-3: letters (flipped local space, bottom at y=0)
+  var spec = [{x:990,y:1338,w:520,h:0,yFrom:1338,yTo:815,hTo:523}].concat(letters.map(function(){ return {x:-40,y:-40,w:1400,h:0,yFrom:-40,yTo:-40,hTo:560}; }));
+  spec.forEach(function(s,i){
+    var cp = document.createElementNS(NS,'clipPath');
+    cp.setAttribute('id','lkpaint'+i);
+    var r = document.createElementNS(NS,'rect');
+    r.setAttribute('x',s.x); r.setAttribute('y',s.y); r.setAttribute('width',s.w); r.setAttribute('height',s.h);
+    cp.appendChild(r); defs.appendChild(cp); rects.push(r);
+  });
+  svg.insertBefore(defs, svg.firstChild);
+  markEls.forEach(function(el){ el.setAttribute('clip-path','url(#lkpaint0)'); });
+  letters.forEach(function(el,i){ el.setAttribute('clip-path','url(#lkpaint'+(i+1)+')'); });
+  var tl = AN.createTimeline({ defaults:{ ease:'inOutQuart', duration: 460 } });
+  tl.add(rects[0], { y: [spec[0].yFrom, spec[0].yTo], height: [0, spec[0].hTo] }, 30);
+  tl.add(rects[1], { height: [0, spec[1].hTo] }, 230);
+  tl.add(rects[2], { height: [0, spec[2].hTo] }, 400);
+  tl.add(rects[3], { height: [0, spec[3].hTo] }, 570);
+  // background-tab safety: land the final clips regardless of engine state
   setTimeout(function(){
-    AN.utils.set(nodes, { scale: 1 });
-    AN.utils.set(bridges, { opacity: 1 });
-    AN.utils.set(letters, { opacity: 1, scale: 1, translateY: 0 });
-  }, 3400);
+    rects.forEach(function(r,i){ r.setAttribute('y', spec[i].yTo); r.setAttribute('height', spec[i].hTo); });
+  }, 2600);
 })();
 </script>
 </body>
