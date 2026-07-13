@@ -542,7 +542,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   var bands = [].slice.call(rig.querySelectorAll('.lr-band'));
   if (!bands.length) return;
   var AN = window.anime;
-  var animeOK = !!(AN && AN.animate && AN.utils && AN.stagger);
+  var animeOK = !!(AN && AN.animate && AN.utils && AN.stagger && AN.createTimeline);
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
 
   function settle(){ bands.forEach(function(b){ b.style.setProperty('--ai', b.dataset.ai || 0); }); }
@@ -561,14 +561,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     AN.utils.set(bands, { '--ai': 0 });
     if (ends.length) AN.utils.set(ends, { opacity: 0, translateY: 4 });
     if (divs.length) AN.utils.set(divs, { '--dp': 0 });
-    AN.animate(bands, {
+    // Timeline with absolute position offsets: this bundle's stagger() ignores a {start} offset,
+    // so sequencing lives in the timeline positions (bands 0, labels 620, divider breathe 780).
+    var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
+    tl.add(bands, {
       '--ai': function(el){ return +el.dataset.ai || 0; },
       duration: 700,
-      delay: AN.stagger(150),
-      ease: 'outQuad'
-    });
-    if (ends.length) AN.animate(ends, { opacity:[0,1], translateY:[4,0], duration: 450, delay: AN.stagger(90, {start: 620}), ease: 'outQuad' });
-    if (divs.length) AN.animate(divs, { '--dp':[{to:1,duration:420},{to:0,duration:620}], delay: AN.stagger(150, {start: 780}), ease: 'inOutSine' });
+      delay: AN.stagger(150)
+    }, 0);
+    if (ends.length) tl.add(ends, { opacity:[0,1], translateY:[4,0], duration: 450, delay: AN.stagger(90) }, 620);
+    if (divs.length) tl.add(divs, { '--dp':[{to:1,duration:420},{to:0,duration:620}], delay: AN.stagger(150), ease: 'inOutSine' }, 780);
   }
 
   if ('IntersectionObserver' in window){
@@ -587,7 +589,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 (function(){
   var card = document.querySelector('.handled-card');
   var AN = window.anime;
-  var ok = !!(AN && AN.animate && AN.utils && AN.stagger);
+  var ok = !!(AN && AN.animate && AN.utils && AN.stagger && AN.createTimeline);
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
   if (!card || !ok || rm.matches || !('IntersectionObserver' in window)) return;
   var txs = card.querySelectorAll('.hc-li.done .tx');
@@ -597,7 +599,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       if (e.isIntersecting){
         hio.disconnect();
         AN.utils.set(txs, { '--sw': 0 });
-        AN.animate(txs, { '--sw': 1, duration: 520, delay: AN.stagger(240, {start: 700}), ease: 'inOutQuart' });
+        // Position offset 700 lets the CSS cascade land first (stagger {start} is a no-op in this bundle).
+        var stl = AN.createTimeline({ defaults:{ ease:'inOutQuart' } });
+        stl.add(txs, { '--sw': 1, duration: 520, delay: AN.stagger(240) }, 700);
       }
     });
   }, { threshold: 0.6 });
