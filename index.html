@@ -568,8 +568,8 @@
   /* footer wordmark (outline, cropped) */
   footer{overflow:hidden}
   .foot-mark{text-align:center;user-select:none;pointer-events:none;margin:52px auto -46px}
-  .foot-mark svg{width:clamp(180px,26vw,400px);height:auto;fill:none;stroke:rgba(201,169,110,.20);stroke-width:1.5px}
-  .foot-mark svg *{vector-effect:non-scaling-stroke}
+  .foot-mark svg{width:clamp(180px,26vw,400px);height:auto;fill:none;stroke:rgba(201,169,110,.20);stroke-width:2.8}
+  @media(max-width:700px){.foot-mark svg{stroke-width:5.5}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a centaur?","acceptedAnswer":{"@type":"Answer","text":"The human is the head and the machine is the body. You bring the domain expertise, taste, and judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified."}},{"@type":"Question","name":"What is a reverse centaur?","acceptedAnswer":{"@type":"Answer","text":"The flip. The machine is the head and the human is demoted to peripherals: the hands and eyes, plus the legal liability for whatever the algorithm decided. We think that is the wrong way to deploy AI."}},{"@type":"Question","name":"Which one is COS?","acceptedAnswer":{"@type":"Answer","text":"A centaur by architecture. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms."}},{"@type":"Question","name":"What happens when the AI platforms raise prices?","acceptedAnswer":{"@type":"Answer","text":"COS is portable across Claude Code and Codex today and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control. Swap the engine without rebuilding the operating memory."}},{"@type":"Question","name":"What is a context graph?","acceptedAnswer":{"@type":"Answer","text":"The context you choose to ingest, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control."}},{"@type":"Question","name":"Why does context beat prompts?","acceptedAnswer":{"@type":"Answer","text":"Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"If you can paste one file into Claude Code or Codex, you are technical enough. About five minutes to a useful foundation."}},{"@type":"Question","name":"What does it cost to run?","acceptedAnswer":{"@type":"Answer","text":"The kit is free and MIT-licensed. Chat runs on the Claude or Codex plan you already pay for. Local voice has no per-minute fee. There is no COS subscription."}}]}</script>
 </head>
@@ -1379,6 +1379,66 @@ function copyKit(){
     .then(function(md){var ok=md&&md.trim().length>200;done(ok?md:'Open https://gotcos.com/cos-starter.md and run the interactive setup.',ok);})
     .catch(function(){done('Open https://gotcos.com/cos-starter.md and run the interactive setup.',false);});
 }
+</script>
+<script src="/assets/anime.umd.min.js"></script>
+<script>
+// Logo on load: nodes light, connections join, letters arrive (the construction-sheet narrative)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || rm.matches) return;
+  var svg = document.querySelector('svg[viewBox="1004 821 1944 517"]');
+  if (!svg) return;
+  var nodes = svg.querySelectorAll('circle');
+  var bridges = svg.querySelectorAll(':scope > path');
+  var letters = svg.querySelectorAll('g path');
+  if (!nodes.length || !letters.length) return;
+  nodes.forEach(function(c){ c.style.transformBox='fill-box'; c.style.transformOrigin='center'; });
+  AN.utils.set(nodes, { scale: 0 });
+  AN.utils.set(bridges, { opacity: 0 });
+  AN.utils.set(letters, { opacity: 0, translateY: 6 });
+  var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
+  tl.add(nodes, { scale:[0,1], duration: 340, delay: AN.stagger(38), ease: 'outBack(1.7)' }, 60);
+  tl.add(bridges, { opacity:[0,1], duration: 300, delay: AN.stagger(70) }, 320);
+  tl.add(letters, { opacity:[0,1], translateY:[6,0], duration: 360, delay: AN.stagger(75) }, 520);
+  // background-tab safety: whatever happens to the engine, land the final state
+  setTimeout(function(){
+    AN.utils.set(nodes, { scale: 1 });
+    AN.utils.set(bridges, { opacity: 1 });
+    AN.utils.set(letters, { opacity: 1, translateY: 0 });
+  }, 2400);
+})();
+</script>
+<script>
+// Footer ghost: the mark assembles when the footer enters view (nodes light, connections join)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var fm = document.querySelector('.foot-mark svg');
+  if (!fm) return;
+  var nodes = fm.querySelectorAll('circle');
+  var bones = fm.querySelectorAll('path');
+  var played = false;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting && !played){
+        played = true; io.disconnect();
+        var k = fm.getBoundingClientRect().width / 693;
+        if (k > 0) fm.style.strokeWidth = (1.5 / k).toFixed(2);
+        nodes.forEach(function(c){ c.style.transformBox='fill-box'; c.style.transformOrigin='center'; });
+        bones.forEach(function(b){ b.style.transformBox='fill-box'; b.style.transformOrigin='center'; });
+        AN.utils.set(nodes, { scale: 0 });
+        AN.utils.set(bones, { opacity: 0, scale: 0.92 });
+        var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
+        tl.add(nodes, { scale:[0,1], duration: 520, ease: 'outBack(1.5)' }, 0);
+        tl.add(bones, { opacity:[0,1], scale:[0.92,1], duration: 560, delay: AN.stagger(150) }, 260);
+      }
+    });
+  }, { threshold: 0.25 });
+  io.observe(fm);
+})();
 </script>
 </body>
 </html>
