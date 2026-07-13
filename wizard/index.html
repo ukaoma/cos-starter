@@ -970,7 +970,7 @@
 </script>
 <script src="/assets/anime.umd.min.js"></script>
 <script>
-// Logo on load: the mark and C, O, S paint in as four staggered fills (the sheet's sections, mirrored)
+// Logo on load: each section blooms in from its spark circle (mark, then C, O, S), radial blot + micro-snap
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
@@ -981,30 +981,46 @@
   var letters = [].slice.call(svg.querySelectorAll('g path'));
   if (!markEls.length || !letters.length) return;
   // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
-  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){ return; }
+  var boxes;
+  try {
+    letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; });
+    boxes = letters.map(function(p){ return p.getBBox(); });
+  } catch(e){ return; }
   var NS = 'http://www.w3.org/2000/svg';
   var defs = document.createElementNS(NS,'defs');
-  var rects = [];
-  // section 0: the mark (root space, bottom edge y=1338); sections 1-3: letters (flipped local space, bottom at y=0)
-  var spec = [{x:990,y:1338,w:520,h:0,yFrom:1338,yTo:815,hTo:523}].concat(letters.map(function(){ return {x:-40,y:-40,w:1400,h:0,yFrom:-40,yTo:-40,hTo:560}; }));
-  spec.forEach(function(s,i){
+  var blots = [];
+  function clipCircle(i, cx, cy){
     var cp = document.createElementNS(NS,'clipPath');
-    cp.setAttribute('id','lkpaint'+i);
-    var r = document.createElementNS(NS,'rect');
-    r.setAttribute('x',s.x); r.setAttribute('y',s.y); r.setAttribute('width',s.w); r.setAttribute('height',s.h);
-    cp.appendChild(r); defs.appendChild(cp); rects.push(r);
-  });
+    cp.setAttribute('id','lkblot'+i);
+    var c = document.createElementNS(NS,'circle');
+    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',0);
+    cp.appendChild(c); defs.appendChild(cp); blots.push(c);
+    return 'url(#lkblot'+i+')';
+  }
   svg.insertBefore(defs, svg.firstChild);
-  markEls.forEach(function(el){ el.setAttribute('clip-path','url(#lkpaint0)'); });
-  letters.forEach(function(el,i){ el.setAttribute('clip-path','url(#lkpaint'+(i+1)+')'); });
-  var tl = AN.createTimeline({ defaults:{ ease:'inOutQuart', duration: 460 } });
-  tl.add(rects[0], { y: [spec[0].yFrom, spec[0].yTo], height: [0, spec[0].hTo] }, 30);
-  tl.add(rects[1], { height: [0, spec[1].hTo] }, 230);
-  tl.add(rects[2], { height: [0, spec[2].hTo] }, 400);
-  tl.add(rects[3], { height: [0, spec[3].hTo] }, 570);
-  // background-tab safety: land the final clips regardless of engine state
+  // mark blot in root space; letter blots in each letter's own (flipped) space
+  var markClip = clipCircle(0, 1240, 1079);
+  markEls.forEach(function(el){ el.setAttribute('clip-path', markClip); });
+  var covers = [352];
+  letters.forEach(function(p,i){
+    var b = boxes[i];
+    var r = Math.hypot(b.width, b.height) / 2 + 14;
+    covers.push(r);
+    p.setAttribute('clip-path', clipCircle(i+1, b.x + b.width/2, b.y + b.height/2));
+    p.style.transformBox = 'fill-box'; p.style.transformOrigin = 'center';
+  });
+  AN.utils.set(letters, { scale: 0.94 });
+  var tl = AN.createTimeline();
+  tl.add(blots[0], { r: [0, covers[0]], duration: 520, ease: 'outQuint' }, 30);
+  for (var i = 0; i < letters.length; i++){
+    var at = 300 + i * 185;
+    tl.add(blots[i+1], { r: [0, covers[i+1]], duration: 430, ease: 'outQuint' }, at);
+    tl.add(letters[i], { scale: [0.94, 1], duration: 430, ease: 'outBack(2)' }, at);
+  }
+  // background-tab safety: land the final state regardless of engine state
   setTimeout(function(){
-    rects.forEach(function(r,i){ r.setAttribute('y', spec[i].yTo); r.setAttribute('height', spec[i].hTo); });
+    blots.forEach(function(c,i){ c.setAttribute('r', covers[i]); });
+    AN.utils.set(letters, { scale: 1 });
   }, 2600);
 })();
 </script>
