@@ -25,7 +25,7 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses v5.22.5 (build 184) · server @gotcos/glasses-server 6.5.0.
+  Covers COS Glasses v5.22.6 (build 185) · server @gotcos/glasses-server 6.5.0.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -214,6 +214,121 @@ footer .links a:hover{color:var(--gold)}
   .hide-sm{display:none}
   body{font-size:16px}
 }
+
+/* ══ DOCS SHELL (>=1100px) · sidebar + content ═══════════ */
+.docs-shell{display:block}
+.docs-side{display:none}
+/* chapter card grid (all breakpoints) */
+#chapters{padding-block:clamp(30px,4.5vw,58px)}
+.chap-lead{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:16px}
+.chapgrid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.chapgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.chapgrid{grid-template-columns:repeat(3,1fr)}}
+.chapcard{position:relative;display:block;border:1px solid var(--line-2);border-radius:14px;padding:17px 18px;background:linear-gradient(158deg,var(--panel),transparent);overflow:hidden;transition:transform .18s ease,border-color .18s ease,background-color .18s ease}
+.chapcard::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(201,169,110,.10) 1px,transparent 1.1px);background-size:9px 9px;-webkit-mask-image:linear-gradient(135deg,transparent 12%,#000 100%);mask-image:linear-gradient(135deg,transparent 12%,#000 100%)}
+.chapcard>*{position:relative;z-index:1}
+.chapcard:hover{transform:translateY(-3px);border-color:rgba(201,169,110,.45);background-color:rgba(201,169,110,.035)}
+.chap-ix{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--ghost);margin-bottom:9px}
+.chap-t{display:block;font-family:var(--body);font-weight:600;font-size:1rem;color:var(--fg);margin-bottom:4px}
+.chap-d{display:block;font-size:.855rem;color:var(--muted);line-height:1.45}
+.chap-badge,.sb-badge{display:inline-block;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,.42);border-radius:5px;padding:2px 5px;vertical-align:middle;line-height:1}
+.chap-badge{margin-left:8px}
+
+/* subscribe block */
+#updates .sub-copy{max-width:60ch}
+.sub-form{display:none;margin-top:26px;max-width:520px}
+.js .sub-form{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.sub-form input{flex:1;min-width:210px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,background .2s}
+.sub-form input::placeholder{color:var(--faint)}
+.sub-form input:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
+.sub-form button{padding:14px 26px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;border:none;border-radius:999px;font-family:var(--body);font-weight:600;font-size:.95rem;cursor:pointer;white-space:nowrap;transition:transform .18s ease,box-shadow .25s ease}
+.sub-form button:hover{transform:translateY(-1px);box-shadow:0 14px 34px -14px rgba(201,169,110,.55)}
+.sub-form button:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.sub-note{margin-top:14px;font-size:.9rem;line-height:1.5;min-height:1.1em;color:var(--muted)}
+.sub-note.ok{color:var(--gold)}
+.sub-note.err{color:var(--rose)}
+.sub-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:9px;vertical-align:middle}
+.sub-nojs{margin-top:18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--faint)}
+
+@media(min-width:1100px){
+  .tocbar{display:none}
+  section,header.hero{scroll-margin-top:16px}
+  .docs-shell{display:grid;grid-template-columns:264px minmax(0,1fr);gap:clamp(28px,3.5vw,52px);width:min(1280px,calc(100% - 2 * var(--gut)));margin-inline:auto}
+  /* content column: sections drop their own gutters/max-width, column provides them */
+  .docs-main{min-width:0}
+  .docs-main .wrap{max-width:none;margin:0;padding-inline:0}
+  .docs-main>header.hero{padding-top:clamp(28px,4vw,54px)}
+  /* cream sections become contained panels (no full-bleed slab across the sidebar) */
+  .docs-shell section.light{box-shadow:none;clip-path:none;background:var(--cream);border:1px solid rgba(40,27,17,.12);border-radius:18px;padding-inline:clamp(24px,3vw,42px)}
+  /* pixmap: cap column-relative so it stays inside the contained panel */
+  #setup .pixmap{width:min(38%,420px);right:-2%}
+
+  /* sidebar */
+  .docs-side{display:block;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:28px 0 32px;scrollbar-width:thin}
+  .sb-eyebrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .sb-kicker{font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .sb-ver{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:linear-gradient(158deg,var(--panel),transparent)}
+  .search-wrap{display:none;position:relative;margin-bottom:22px}
+  .js .search-wrap{display:block}
+  .search-in{width:100%;padding:10px 30px 10px 12px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:9px;color:var(--fg);font-family:var(--body);font-size:.86rem;outline:none;transition:border-color .2s,background .2s}
+  .search-in::placeholder{color:var(--faint)}
+  .search-in:focus{border-color:var(--gold);background:rgba(255,255,255,.06)}
+  .search-key{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.66rem;color:var(--ghost);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;pointer-events:none}
+  .search-in:focus~.search-key{opacity:0}
+  .search-panel{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:70;background:rgba(16,11,7,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:12px;padding:6px;max-height:min(62vh,440px);overflow-y:auto;box-shadow:0 22px 50px -18px rgba(0,0,0,.7)}
+  .search-panel.open{display:block}
+  .sres{display:block;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+  .sres+.sres{margin-top:2px}
+  .sres[aria-selected="true"],.sres:hover{background:rgba(201,169,110,.10);border-color:rgba(201,169,110,.28)}
+  .sres-lbl{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+  .sres-h{display:block;font-family:var(--body);font-weight:600;font-size:.84rem;color:var(--fg);line-height:1.3}
+  .sres-s{display:block;font-size:.76rem;color:var(--muted);line-height:1.4;margin-top:2px}
+  .search-panel mark,.sres mark{background:rgba(201,169,110,.28);color:inherit;border-radius:2px}
+  .search-empty{padding:10px 10px 11px;font-size:.78rem;color:var(--faint)}
+
+  .sb-nav{position:relative;padding-left:15px;display:flex;flex-direction:column}
+  .sb-nav::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:2px;background:var(--line-2);border-radius:2px}
+  .sb-marker{display:none;position:absolute;left:0;top:0;width:2px;height:20px;background:var(--gold);border-radius:2px;box-shadow:0 0 8px rgba(201,169,110,.5)}
+  .js .sb-marker{display:block}
+  .sb-nav a{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:7px 0;transition:color .18s ease}
+  .sb-nav a:hover{color:var(--fg)}
+  .sb-nav a[aria-current]{color:var(--gold)}
+  .sb-cta{display:block;margin-top:24px;padding:14px;border:1px solid var(--line-2);border-radius:12px;background:linear-gradient(158deg,var(--panel),transparent);transition:border-color .18s ease}
+  .sb-cta:hover{border-color:var(--gold)}
+  .sb-cta-k{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+  .sb-cta-d{display:block;font-size:.8rem;color:var(--muted);line-height:1.4}
+}
+
+/* pre-hidden entrance states (JS on only; revealed by anime, or by fallbacks below) */
+.js #chapters .chapcard{opacity:0;transform:translateY(10px)}
+.js .g2-stage .hud>div{opacity:0}
+.js #how .arch .an{opacity:0;transform:translateY(12px)}
+.js #how .arch .al{opacity:0;transform:translateX(-6px)}
+
+/* search-jump highlight pulse on a section heading */
+.hl{background:rgba(201,169,110,.22);border-radius:4px;box-shadow:0 0 0 6px rgba(201,169,110,.22);transition:background .6s ease,box-shadow .6s ease}
+
+/* reduced motion: neutralize every new pre-hidden / animated state */
+@media(prefers-reduced-motion:reduce){
+  .js #chapters .chapcard{opacity:1;transform:none}
+  .js .g2-stage .hud>div{opacity:1}
+  .js #how .arch .an,.js #how .arch .al{opacity:1;transform:none}
+  .chapcard,.sb-nav a,.sb-cta,.sub-form button,.sub-form input,.search-in{transition:none}
+  .hl{transition:none}
+}
+
+/* print: reveal everything, drop chrome/interactive-only blocks */
+@media print{
+  .topbar,.tocbar,.docs-side,.search-wrap,.search-panel,.sub-form,.sub-nojs,.sb-marker{display:none!important}
+  .docs-shell{display:block!important;width:auto!important}
+  .docs-main .wrap{max-width:var(--maxw)!important}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .js #chapters .chapcard{opacity:1!important;transform:none!important}
+  .js .g2-stage .hud>div{opacity:1!important;transform:none!important}
+  .js #how .arch .an,.js #how .arch .al{opacity:1!important;transform:none!important}
+  .chapcard{break-inside:avoid}
+  .faq details>*{display:block!important}
+}
 </style>
 </head>
 <body>
@@ -250,6 +365,43 @@ footer .links a:hover{color:var(--gold)}
 
 <main>
 
+<div class="docs-shell">
+
+<aside class="docs-side" aria-label="Guide navigation">
+  <div class="sb-eyebrow">
+    <span class="sb-kicker">User Guide</span>
+    <span class="sb-ver">v5.22.6</span>
+  </div>
+  <div class="search-wrap">
+    <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
+    <span class="search-key" aria-hidden="true">/</span>
+    <div class="search-panel" id="searchPanel" role="listbox" aria-label="Search results"></div>
+  </div>
+  <nav class="sb-nav" aria-label="Chapters">
+    <span class="sb-marker" aria-hidden="true"></span>
+    <a href="#top">Start</a>
+    <a href="#setup">Setup</a>
+    <a href="#ask">Ask</a>
+    <a href="#photos">Photos</a>
+    <a href="#lens">The Lens</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#recall">Recall</a>
+    <a href="#meetings">Meetings</a>
+    <a href="#dictation">Dictation</a>
+    <a href="#models">Models</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#settings">Settings</a>
+    <a href="#fixes">Fixes</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="sb-cta" href="#updates">
+    <span class="sb-cta-k">Get Updates</span>
+    <span class="sb-cta-d">New features and beta access.</span>
+  </a>
+</aside>
+
+<div class="docs-main">
+
 <!-- ── 01 START ── -->
 <header class="hero wrap" id="top">
   <div>
@@ -257,7 +409,7 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>v5.22.5</b> · build 184</span>
+      <span class="chip">App <b>v5.22.6</b> · build 185</span>
       <span class="chip">Server <b>6.5.0</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.1+</span>
@@ -269,7 +421,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.22.5</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.22.6</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -278,6 +430,26 @@ footer .links a:hover{color:var(--gold)}
     <img class="g2-img" src="../assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
   </div>
 </header>
+
+<!-- ── CHAPTERS ── -->
+<section class="wrap" id="chapters" aria-label="Chapters">
+  <div class="chap-lead">The guide, chapter by chapter</div>
+  <div class="chapgrid">
+    <a class="chapcard" href="#setup"><span class="chap-ix">02</span><span class="chap-t">Setup</span><span class="chap-d">Server, app, and one paste to connect.</span></a>
+    <a class="chapcard" href="#ask"><span class="chap-ix">03</span><span class="chap-t">Ask</span><span class="chap-d">Voice a question, read the streamed answer.</span></a>
+    <a class="chapcard" href="#photos"><span class="chap-ix">04</span><span class="chap-t">Photos</span><span class="chap-d">Send phone photos and keep answer images.</span></a>
+    <a class="chapcard" href="#lens"><span class="chap-ix">05</span><span class="chap-t">The Lens</span><span class="chap-d">Four screens driven by three simple gestures.</span></a>
+    <a class="chapcard" href="#jobs"><span class="chap-ix">06</span><span class="chap-t">Jobs</span><span class="chap-d">Watch, queue, or cancel any running prompt.</span></a>
+    <a class="chapcard" href="#recall"><span class="chap-ix">07</span><span class="chap-t">Recall</span><span class="chap-d">Stable short numbers over a complete archive.</span></a>
+    <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Record the room, read the transcript later.</span></a>
+    <a class="chapcard" href="#dictation"><span class="chap-ix">09</span><span class="chap-t">Dictation</span><span class="chap-d">Dictate long prompts, approve before anything sends.</span></a>
+    <a class="chapcard" href="#models"><span class="chap-ix">10</span><span class="chap-t">Models</span><span class="chap-d">Five always-current slots for Claude and GPT.</span></a>
+    <a class="chapcard" href="#privacy"><span class="chap-ix">11</span><span class="chap-t">Privacy</span><span class="chap-d">No cloud; history stays on your Mac.</span></a>
+    <a class="chapcard" href="#settings"><span class="chap-ix">12</span><span class="chap-t">Settings</span><span class="chap-d">Every switch and preference on one card.</span></a>
+    <a class="chapcard" href="#fixes"><span class="chap-ix">13</span><span class="chap-t">Fixes</span><span class="chap-d">Common issues and the fastest way back.</span></a>
+    <a class="chapcard" href="#faq"><span class="chap-ix">14</span><span class="chap-t">FAQ</span><span class="chap-d">Short answers to the common questions.</span></a>
+  </div>
+</section>
 
 <section class="wrap reveal" id="how" aria-label="How it works">
   <div class="sec-head">
@@ -692,6 +864,24 @@ footer .links a:hover{color:var(--gold)}
   </div>
 </section>
 
+<!-- ── UPDATES ── -->
+<section class="wrap reveal" id="updates">
+  <div class="sec-head">
+    <div class="eyebrow">Updates</div>
+    <h2>Stay in the loop.</h2>
+    <p class="lead sub-copy">Run the glasses? Leave your email. New feature drops and beta access, nothing else.</p>
+  </div>
+  <form class="sub-form" id="subForm" novalidate>
+    <input type="email" name="email" id="subEmail" required placeholder="you@example.com" aria-label="Email" autocomplete="email">
+    <button type="submit" id="subBtn">Subscribe</button>
+  </form>
+  <p class="sub-note" id="subNote" role="status" aria-live="polite"></p>
+  <noscript><p class="sub-nojs">Search and subscribe need JavaScript; the guide itself reads fine without it.</p></noscript>
+</section>
+
+</div><!-- /.docs-main -->
+</div><!-- /.docs-shell -->
+
 </main>
 
 <footer>
@@ -711,6 +901,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="foot-mark" aria-hidden="true">COS</div>
 </footer>
 
+<script src="../assets/anime.umd.min.js"></script>
 <script>
 (function(){
   // reveal on scroll
@@ -723,23 +914,58 @@ footer .links a:hover{color:var(--gold)}
     }, {threshold:.08});
     rs.forEach(function(e){ io.observe(e); });
   }
-  // chapter scrollspy
+  // shared motion guard
+  var AN = window.anime;
+  var animeOK = !!(AN && AN.animate);
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // chapter scrollspy (one IntersectionObserver, two consumers: tocbar + sidebar)
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc-in a'));
-  var map = {};
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('.sb-nav a'));
+  var map = {}, sideMap = {};
   links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  sideLinks.forEach(function(a){ sideMap[a.getAttribute('href').slice(1)] = a; });
   var strip = document.querySelector('.toc-in');
+  var sideNav = document.querySelector('.sb-nav');
+  var sideAside = document.querySelector('.docs-side');
+  var marker = document.querySelector('.sb-marker');
+  var markerY = 0;
+  function moveMarker(a){
+    if (!marker || !sideNav || !sideNav.offsetParent) return; // sidebar hidden below 1100
+    var target = a.offsetTop + Math.max(0, (a.offsetHeight - 20) / 2);
+    if (animeOK && !rm) {
+      var spr = AN.spring ? AN.spring({mass:1, stiffness:170, damping:24})
+              : (AN.createSpring ? AN.createSpring({mass:1, stiffness:170, damping:24}) : null);
+      AN.animate(marker, {translateY:[markerY, target], duration:450, ease: spr || 'outQuad'});
+    } else {
+      marker.style.transform = 'translateY(' + target + 'px)';
+    }
+    markerY = target;
+  }
+  function setActive(id){
+    var a = map[id] || (id === 'how' ? map['top'] : null);
+    var sa = sideMap[id] || (id === 'how' ? sideMap['top'] : null);
+    if (a) {
+      links.forEach(function(l){ l.removeAttribute('aria-current'); });
+      a.setAttribute('aria-current','true');
+      if (strip) strip.scrollTo({left: a.offsetLeft - strip.clientWidth/2 + a.offsetWidth/2, behavior:'smooth'});
+    }
+    if (sa) {
+      sideLinks.forEach(function(l){ l.removeAttribute('aria-current'); });
+      sa.setAttribute('aria-current','true');
+      moveMarker(sa);
+      if (sideAside && sideAside.scrollHeight > sideAside.clientHeight) sa.scrollIntoView({block:'nearest'});
+    }
+  }
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function(es){
       es.forEach(function(e){
         if (!e.isIntersecting) return;
-        var a = map[e.target.id] || (e.target.id === 'how' ? map['top'] : null);
-        if (!a) return;
-        links.forEach(function(l){ l.removeAttribute('aria-current'); });
-        a.setAttribute('aria-current','true');
-        strip.scrollTo({left: a.offsetLeft - strip.clientWidth/2 + a.offsetWidth/2, behavior:'smooth'});
+        if (!map[e.target.id] && e.target.id !== 'how') return;
+        setActive(e.target.id);
       });
     }, {rootMargin:'-25% 0px -65% 0px'});
-    document.querySelectorAll('main [id]').forEach(function(s){ spy.observe(s); });
+    document.querySelectorAll('.docs-main [id]').forEach(function(s){ spy.observe(s); });
   }
   // copy buttons
   document.querySelectorAll('.cmd button').forEach(function(b){
@@ -747,10 +973,200 @@ footer .links a:hover{color:var(--gold)}
       var t = b.closest('.cmd').querySelector('code').textContent.trim();
       navigator.clipboard.writeText(t).then(function(){
         var o = b.textContent; b.textContent = 'Copied';
+        if (animeOK && !rm){ AN.animate(b, {scale:[1,1.12,1], duration:320, ease:'outQuad'}); }
         setTimeout(function(){ b.textContent = o; }, 1400);
       });
     });
   });
+
+  // ── NEW / UPDATED badges (grounded vs cos-glasses-app CHANGELOG build 185, 2026-07-12) ──
+  var BADGES = { photos:'NEW', recall:'NEW', jobs:'UPD', models:'UPD' };
+  function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
+  sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
+  document.querySelectorAll('#chapters .chapcard').forEach(function(c){
+    var id=c.getAttribute('href').slice(1);
+    if (BADGES[id]){ var t=c.querySelector('.chap-t'); if (t) t.appendChild(badgeEl(BADGES[id],'chap-badge')); }
+  });
+
+  // ── chapter cards entrance (staggered rise on first in-view) ──
+  var chapSection = document.getElementById('chapters');
+  var cards = chapSection ? Array.prototype.slice.call(chapSection.querySelectorAll('.chapcard')) : [];
+  function showCards(){
+    if (animeOK && !rm) {
+      AN.animate(cards, {opacity:[0,1], translateY:[10,0], duration:520, delay:AN.stagger(28), ease:'outQuad'});
+    } else {
+      cards.forEach(function(c){ c.style.opacity=1; c.style.transform='none'; });
+    }
+  }
+  if (cards.length) {
+    if (rm || !('IntersectionObserver' in window)) { showCards(); }
+    else {
+      var cio = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting){ showCards(); cio.disconnect(); } });
+      }, {threshold:.2});
+      cio.observe(chapSection);
+    }
+  }
+
+  // ── hero HUD phosphor boot loop (2-state cycle; interval-driven, pauses on hover/hidden/out-of-view) ──
+  var hud = document.querySelector('.g2-stage .hud');
+  if (hud) {
+    var hudKids = function(){ return Array.prototype.slice.call(hud.children); };
+    if (!animeOK || rm || !('IntersectionObserver' in window)) {
+      hudKids().forEach(function(d){ d.style.opacity = 1; });   // static first state (no-anim / reduced-motion / no-IO)
+    } else {
+      var hudStates = [
+        hud.innerHTML,   // state A = the documented Home HUD, exactly as it renders today
+        '<div><span class="dim">00:02</span> <span class="tag">SENT</span> gpt frontier</div>'
+        + '<div><span class="dim">00:09</span> <span class="tag">TOOL</span> calendar.read</div>'
+        + '<div><span class="dim">00:18</span> <span class="tag">OUT</span> drafting your reply</div>'
+        + '<div><span class="hi">◆ #412 DONE</span> <span class="dim">· 41s</span></div>'
+        + '<div class="foot"><span>Running&nbsp;·&nbsp;double-tap to cancel</span></div>'
+      ];
+      var hudCur = 0, hudHover = false, hudInView = false, hudBooted = false;
+      function hudStaggerIn(){ AN.animate(hudKids(), {opacity:[0,1], translateY:[4,0], duration:340, delay:AN.stagger(80), ease:'outQuad'}); }
+      function hudSwap(){
+        if (hudHover || document.hidden || !hudInView) return;
+        AN.animate(hud, {opacity:[1,0], translateY:[0,-3], duration:260, ease:'outQuad', onComplete:function(){
+          hudCur = (hudCur + 1) % hudStates.length;
+          hud.innerHTML = hudStates[hudCur];
+          hud.style.opacity = 1; hud.style.transform = 'none';
+          hudStaggerIn();
+        }});
+      }
+      var hio = new IntersectionObserver(function(es){
+        es.forEach(function(e){ hudInView = e.isIntersecting; if (e.isIntersecting && !hudBooted){ hudBooted = true; hudStaggerIn(); } });
+      }, {threshold:.25});
+      hio.observe(hud);
+      hud.addEventListener('mouseenter', function(){ hudHover = true; });
+      hud.addEventListener('mouseleave', function(){ hudHover = false; });
+      hud.addEventListener('focusin', function(){ hudHover = true; });
+      hud.addEventListener('focusout', function(){ hudHover = false; });
+      setInterval(hudSwap, 4000);
+    }
+  }
+
+  // ── #how arch: blocks stagger in, then connectors slide in after (one-shot) ──
+  var arch = document.querySelector('#how .arch');
+  if (arch) {
+    var archAn = Array.prototype.slice.call(arch.querySelectorAll('.an'));
+    var archAl = Array.prototype.slice.call(arch.querySelectorAll('.al'));
+    function archReveal(){ archAn.concat(archAl).forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; }); }
+    if (!animeOK || rm || !('IntersectionObserver' in window)) { archReveal(); }
+    else {
+      var archDone = false;
+      var aio = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting && !archDone){
+            archDone = true;
+            AN.animate(archAn, {opacity:[0,1], translateY:[12,0], duration:520, delay:AN.stagger(120), ease:'outQuad'});
+            AN.animate(archAl, {opacity:[0,1], translateX:[-6,0], duration:460, delay:AN.stagger(120,{start:400}), ease:'outQuad'});
+            aio.disconnect();
+          }
+        });
+      }, {threshold:.3});
+      aio.observe(arch);
+    }
+  }
+
+  // ── client-side search (zero deps) ──
+  var sIn = document.getElementById('docSearch');
+  var sPanel = document.getElementById('searchPanel');
+  if (sIn && sPanel) {
+    var SEC = [['top','Start'],['how','How it works'],['setup','Setup'],['ask','Ask'],['photos','Photos'],['lens','The Lens'],['jobs','Jobs'],['recall','Recall'],['meetings','Meetings'],['dictation','Dictation'],['models','Models'],['privacy','Privacy'],['settings','Settings'],['fixes','Fixes'],['faq','FAQ']];
+    var idx = [];
+    SEC.forEach(function(pair){
+      var sec = document.getElementById(pair[0]); if (!sec) return;
+      var htop = sec.querySelector('h1,h2'); var secTitle = htop ? htop.textContent.trim() : pair[1];
+      sec.querySelectorAll('h1,h2,h3,summary').forEach(function(h){ var tx=h.textContent.trim().replace(/\s+/g,' '); if (tx) idx.push({id:pair[0],label:pair[1],heading:tx,text:tx,w:3}); });
+      sec.querySelectorAll('p,li').forEach(function(p){ var tx=p.textContent.trim().replace(/\s+/g,' '); if (tx.length<5) return; idx.push({id:pair[0],label:pair[1],heading:secTitle,text:tx,w:1}); });
+    });
+    function esc(s){ return s.replace(/[&<>]/g,function(c){ return c==='&'?'&amp;':c==='<'?'&lt;':'&gt;'; }); }
+    var sel = -1, rows = [];
+    function snippet(text, q){
+      var low=text.toLowerCase(), pos=low.indexOf(q);
+      if (pos<0) return esc(text.slice(0,120)) + (text.length>120?'…':'');
+      var start=Math.max(0,pos-40), end=Math.min(text.length,pos+q.length+80);
+      var pre=(start>0?'…':'')+text.slice(start,pos), mid=text.slice(pos,pos+q.length), post=text.slice(pos+q.length,end)+(end<text.length?'…':'');
+      return esc(pre)+'<mark>'+esc(mid)+'</mark>'+esc(post);
+    }
+    function close(){ sPanel.classList.remove('open'); sPanel.innerHTML=''; sIn.setAttribute('aria-expanded','false'); sIn.removeAttribute('aria-activedescendant'); sel=-1; rows=[]; }
+    function run(q){
+      var scored=[];
+      for (var i=0;i<idx.length;i++){ if (idx[i].text.toLowerCase().indexOf(q)>=0) scored.push({e:idx[i],i:i}); }
+      scored.sort(function(a,b){ return (b.e.w-a.e.w) || (a.i-b.i); });
+      var out=[], seen={};
+      for (var j=0;j<scored.length && out.length<8;j++){
+        var e=scored[j].e, key=e.id+'|'+e.heading+'|'+e.text.slice(0,24);
+        if (seen[key]) continue; seen[key]=1; out.push(e);
+      }
+      return out;
+    }
+    function render(q){
+      rows=run(q);
+      if (!rows.length){ sPanel.innerHTML='<div class="search-empty">No matches for &ldquo;'+esc(q)+'&rdquo;</div>'; sPanel.classList.add('open'); sIn.setAttribute('aria-expanded','true'); sel=-1; return; }
+      var html='';
+      rows.forEach(function(e,n){ html+='<div class="sres" role="option" id="sres-'+n+'" aria-selected="false" data-id="'+e.id+'"><span class="sres-lbl">'+esc(e.label)+'</span><span class="sres-h">'+esc(e.heading)+'</span><span class="sres-s">'+snippet(e.text,q)+'</span></div>'; });
+      sPanel.innerHTML=html; sPanel.classList.add('open'); sIn.setAttribute('aria-expanded','true'); sel=-1;
+      Array.prototype.slice.call(sPanel.querySelectorAll('.sres')).forEach(function(r){ r.addEventListener('mousedown', function(ev){ ev.preventDefault(); jump(r.getAttribute('data-id')); }); });
+      if (animeOK && !rm){ AN.animate(sPanel, {opacity:[0,1], translateY:[-4,0], duration:160, ease:'outQuad'}); }
+    }
+    function select(n){
+      var opts=sPanel.querySelectorAll('.sres'); if (!opts.length) return;
+      if (n<0) n=opts.length-1; if (n>=opts.length) n=0; sel=n;
+      opts.forEach(function(o,k){ o.setAttribute('aria-selected', k===n?'true':'false'); });
+      var cur=opts[n]; sIn.setAttribute('aria-activedescendant', cur.id); cur.scrollIntoView({block:'nearest'});
+    }
+    function jump(id){
+      close(); sIn.blur();
+      var sec=document.getElementById(id); if (!sec) return;
+      sec.scrollIntoView({behavior: rm?'auto':'smooth', block:'start'});
+      var h=sec.querySelector('h1,h2'); if (h){ h.classList.add('hl'); setTimeout(function(){ h.classList.remove('hl'); }, 1200); }
+    }
+    sIn.addEventListener('input', function(){ var q=sIn.value.trim().toLowerCase(); if (q.length<2){ close(); return; } render(q); });
+    sIn.addEventListener('keydown', function(ev){
+      if (ev.key==='ArrowDown'){ ev.preventDefault(); select(sel+1); }
+      else if (ev.key==='ArrowUp'){ ev.preventDefault(); select(sel-1); }
+      else if (ev.key==='Enter'){ ev.preventDefault(); if (rows.length){ jump(rows[sel>=0?sel:0].id); } }
+      else if (ev.key==='Escape'){ sIn.value=''; close(); }
+    });
+    document.addEventListener('keydown', function(ev){
+      var t=document.activeElement, tag=t?t.tagName:'';
+      var typing = tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||(t&&t.isContentEditable);
+      if (ev.key==='/' && !typing){ ev.preventDefault(); sIn.focus(); }
+      else if ((ev.metaKey||ev.ctrlKey) && (ev.key==='k'||ev.key==='K')){ ev.preventDefault(); sIn.focus(); }
+    });
+    document.addEventListener('click', function(ev){ if (!ev.target.closest('.search-wrap')) close(); });
+  }
+
+  // ── subscribe (#updates) · HubSpot Forms API, homepage For Teams pattern ──
+  var SUB_FORM_GUID = 'c5439911-36e3-4063-ae21-0e0ab792f7a3'; // STOPGAP: shared For Teams form (email is its only required field; email-only pipe-tested HTTP 200 on 2026-07-12). Swap to the dedicated "COS Glasses Updates" guid once created in portal 2474026; until then filter docs signups by pageUri /docs/.
+  var SUB_PORTAL = '2474026';
+  var subForm = document.getElementById('subForm');
+  if (subForm) {
+    var subBtn = document.getElementById('subBtn'), subNote = document.getElementById('subNote'), subEmail = document.getElementById('subEmail');
+    subForm.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var email=(subEmail.value||'').trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ subNote.className='sub-note err'; subNote.textContent='Enter a valid email address.'; subEmail.focus(); return; }
+      var orig=subBtn.textContent; subBtn.disabled=true; subBtn.textContent='Sending.'; subNote.className='sub-note'; subNote.textContent='';
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+SUB_PORTAL+'/'+SUB_FORM_GUID, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ fields:[{name:'email',value:email}], context:{pageUri:location.href, pageName:document.title} })
+      }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(res){
+        if (res.ok){
+          subForm.style.display='none';
+          subNote.className='sub-note ok';
+          subNote.innerHTML='<span class="sub-dot" aria-hidden="true"></span>You are on the list. Watch your inbox.';
+          var dot=subNote.querySelector('.sub-dot');
+          if (dot && animeOK && !rm){ AN.animate(dot, {scale:[.6,1], opacity:[0,1], duration:420, ease:'outBack'}); }
+        } else {
+          var m=(res.d && (res.d.message || (res.d.errors && res.d.errors[0] && res.d.errors[0].message))) || 'That did not send. Try again.';
+          subNote.className='sub-note err'; subNote.textContent=m; subBtn.disabled=false; subBtn.textContent=orig;
+        }
+      }).catch(function(){ subNote.className='sub-note err'; subNote.textContent='That did not send. Try again.'; subBtn.disabled=false; subBtn.textContent=orig; });
+    });
+  }
 })();
 </script>
 </body>
