@@ -377,8 +377,8 @@
   #problem{overflow:hidden}
   #problem .pixmap{position:absolute;left:-3%;bottom:-7%;z-index:0;pointer-events:none;
     width:clamp(320px,48vw,600px);height:clamp(300px,80%,540px);opacity:.5;background:#e7d9bd;
-    -webkit-mask-image:radial-gradient(66% 68% at 44% 56%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%);
-            mask-image:radial-gradient(66% 68% at 44% 56%,#000 6%,rgba(0,0,0,.5) 46%,transparent 74%)}
+    -webkit-mask-image:radial-gradient(66% 68% at 44% 56%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%));
+            mask-image:radial-gradient(66% 68% at 44% 56%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%))}
   #problem .pixmap .pi{position:absolute;inset:0;
     background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("assets/franklin-kite.jpg");
     background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;
@@ -390,8 +390,8 @@
   #faq{overflow:hidden}
   #faq .pixmap-c{position:absolute;right:-3%;top:4%;z-index:0;pointer-events:none;
     width:clamp(320px,38vw,540px);height:clamp(380px,86%,700px);opacity:.44;background:#e7d9bd;
-    -webkit-mask-image:radial-gradient(62% 64% at 52% 44%,#000 8%,rgba(0,0,0,.5) 48%,transparent 74%);
-            mask-image:radial-gradient(62% 64% at 52% 44%,#000 8%,rgba(0,0,0,.5) 48%,transparent 74%)}
+    -webkit-mask-image:radial-gradient(62% 64% at 52% 44%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%));
+            mask-image:radial-gradient(62% 64% at 52% 44%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%))}
   #faq .pixmap-c .pi{position:absolute;inset:0;
     background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("assets/centaur.jpg");
     background-size:5px 5px,cover;background-position:0 0,center 22%;background-repeat:repeat,no-repeat;
@@ -1458,6 +1458,32 @@ function copyKit(){
     });
   }, { threshold: 0.25 });
   io.observe(fm);
+})();
+</script>
+<script>
+// Plates develop in like prints when they enter view (mask bloom on --dev)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.animate || !AN.utils || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  ['#problem .pixmap', '#faq .pixmap-c'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    if (getComputedStyle(el).display === 'none') return;
+    var played = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played){
+          played = true; io.disconnect();
+          AN.utils.set(el, { '--dev': 0 });
+          AN.animate(el, { '--dev': 1, duration: 1250, ease: 'outQuint' });
+          setTimeout(function(){ AN.utils.set(el, { '--dev': 1 }); }, 2300);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+  });
 })();
 </script>
 </body>

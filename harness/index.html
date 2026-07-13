@@ -162,7 +162,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD) — rides INSIDE the sticky column so it endures the whole section scroll */
-#definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
+#definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
 #definition .pixmap-e .pi{position:absolute;inset:0;background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply;opacity:0}
 #definition .pixmap-e .pi.era-c{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-cradle.jpg");opacity:1}
 #definition .pixmap-e .pi.era-j{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-jet.jpg")}
@@ -706,6 +706,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   setTimeout(function(){
     AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
   }, 3400);
+})();
+</script>
+<script>
+// Plates develop in like prints when they enter view (mask bloom on --dev)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.animate || !AN.utils || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  ['.pixmap-e'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    if (getComputedStyle(el).display === 'none') return;
+    var played = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played){
+          played = true; io.disconnect();
+          AN.utils.set(el, { '--dev': 0 });
+          AN.animate(el, { '--dev': 1, duration: 1250, ease: 'outQuint' });
+          setTimeout(function(){ AN.utils.set(el, { '--dev': 1 }); }, 2300);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+  });
 })();
 </script>
 </body>

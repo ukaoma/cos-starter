@@ -201,7 +201,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 /* halftone plate: 1861 Frank Leslie's headquarters-staff engraving (PD) rides INSIDE the sticky column as the human-staff baseline, faded into the section */
 #baseline .sticky .plate{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:3/2;opacity:.5;pointer-events:none;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-staff.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.03);mix-blend-mode:multiply}
 #baseline .sticky .plate::after{content:"";position:absolute;inset:0;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
-#baseline .sticky .plate-frame{position:relative;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
+#baseline .sticky .plate-frame{position:relative;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
 #baseline .sticky .plate-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d}
 @media(max-width:960px){#baseline .sticky .plate-frame,#baseline .sticky .plate-tag{display:none}}
 .prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
@@ -709,6 +709,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   setTimeout(function(){
     AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
   }, 3400);
+})();
+</script>
+<script>
+// Plates develop in like prints when they enter view (mask bloom on --dev)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.animate || !AN.utils || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  ['.plate-frame'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    if (getComputedStyle(el).display === 'none') return;
+    var played = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played){
+          played = true; io.disconnect();
+          AN.utils.set(el, { '--dev': 0 });
+          AN.animate(el, { '--dev': 1, duration: 1250, ease: 'outQuint' });
+          setTimeout(function(){ AN.utils.set(el, { '--dev': 1 }); }, 2300);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+  });
 })();
 </script>
 </body>

@@ -189,7 +189,7 @@ h2[id]{scroll-margin-top:108px}
 .definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
 .compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
 /* §electricity halftone plate - harness pixmap mechanic on a single public-domain engraving */
-#electricity .sticky .pixmap{position:relative;margin-top:34px;width:100%;max-width:460px;aspect-ratio:1200/841;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
+#electricity .sticky .pixmap{position:relative;margin-top:34px;width:100%;max-width:460px;aspect-ratio:1200/841;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
 #electricity .pixmap .pi{position:absolute;inset:0;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-mill.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
 #electricity .sticky .plate-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d}
 @media(max-width:960px){#electricity .sticky .pixmap,#electricity .sticky .plate-tag{display:none}}
@@ -765,6 +765,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   setTimeout(function(){
     AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
   }, 3400);
+})();
+</script>
+<script>
+// Plates develop in like prints when they enter view (mask bloom on --dev)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.animate || !AN.utils || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  ['#electricity .pixmap'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    if (getComputedStyle(el).display === 'none') return;
+    var played = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played){
+          played = true; io.disconnect();
+          AN.utils.set(el, { '--dev': 0 });
+          AN.animate(el, { '--dev': 1, duration: 1250, ease: 'outQuint' });
+          setTimeout(function(){ AN.utils.set(el, { '--dev': 1 }); }, 2300);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+  });
 })();
 </script>
 </body>
