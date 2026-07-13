@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service | GotCOS</title>
+<meta name="description" content="The terms that govern the gotcos.com site, the open-source COS starter kit, COS Glasses, and COS services.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.gotcos.com/terms/">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  color-scheme:dark;
+  --ink:#170f09;--fg:#f0e8da;--muted:rgba(240,232,218,.64);--faint:rgba(240,232,218,.62);--ghost:rgba(240,232,218,.38);
+  --line:rgba(201,169,110,.18);--line-2:rgba(255,246,232,.08);--gold:#c9a96e;--panel:rgba(255,246,232,.028);
+  --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
+  --gut:clamp(22px,5vw,72px)
+}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.7}
+::selection{background:rgba(201,169,110,.30);color:#fff}
+a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.topbar{border-bottom:1px solid var(--line-2)}
+.tb-in{max-width:1140px;margin:0 auto;padding:14px var(--gut);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.tb-brand{font-family:var(--display);font-size:1.05rem;color:var(--fg)}.tb-brand .it{font-style:italic;color:var(--gold)}
+.tb-links{display:flex;gap:18px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+.tb-links a{color:var(--muted)}.tb-links a:hover{color:var(--gold)}
+main{max-width:760px;margin:0 auto;padding:clamp(48px,8vw,84px) var(--gut) clamp(56px,9vw,96px)}
+.eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5vw,3.4rem);line-height:1.03;letter-spacing:-.015em;margin-bottom:12px}
+.updated{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ghost);margin-bottom:34px}
+h2{font-family:var(--display);font-weight:500;font-size:1.45rem;letter-spacing:-.01em;margin:42px 0 12px}
+p,li{color:var(--muted);font-size:.98rem;margin-bottom:12px}
+ul{padding-left:20px;margin-bottom:14px}li{margin-bottom:7px}
+strong{color:var(--fg);font-weight:600}
+code{font-family:var(--mono);font-size:.85em;background:var(--panel);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px}
+footer{text-align:center;border-top:1px solid var(--line-2);padding:44px var(--gut) 60px;color:var(--ghost);font-size:.82rem}
+footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}
+footer a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<nav class="topbar" aria-label="Site">
+  <div class="tb-in">
+    <a class="tb-brand" href="/"><b>COS</b> <span class="it">Starter</span></a>
+    <div class="tb-links"><a href="/docs/">Docs</a><a href="/privacy/">Privacy</a><a href="https://github.com/ukaoma/cos-starter">GitHub</a></div>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">GotCOS · Legal</div>
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: July 13, 2026</p>
+
+  <h2>1. Acceptance</h2>
+  <p>By using the gotcos.com website, the COS starter kit, the <code>@gotcos/glasses-server</code> software, the COS Glasses app, or a COS service that links to these terms (together, "COS"), you agree to them. If you do not agree, do not use COS.</p>
+
+  <h2>2. What COS is</h2>
+  <p>COS is a local-first, open-source AI chief of staff system: a website, a starter kit, server software that runs on your own computer, an application for Even Realities G2 smart glasses, and optional hosted services. COS connects to AI providers (such as Anthropic and OpenAI) through your own accounts and API keys.</p>
+
+  <h2>3. Open source and licensing</h2>
+  <p>The COS starter kit and <code>@gotcos/glasses-server</code> are released under the <a href="/LICENSE">MIT License</a>; the license text governs your rights to that code. The COS Glasses app is distributed through the Even Hub marketplace and may not be redistributed, reverse engineered, or repackaged outside the rights the MIT-licensed components grant.</p>
+
+  <h2>4. Your responsibilities</h2>
+  <ul>
+    <li>You are responsible for your own AI accounts and API keys, and for the costs of their use.</li>
+    <li>You are responsible for securing the machines and networks where you run COS, including the local server it starts.</li>
+    <li>You must comply with the terms of any third-party service you connect through COS (Anthropic, OpenAI, Google, Even Realities, and others).</li>
+    <li>You may not use COS to break the law or to interfere with the site or services we operate.</li>
+  </ul>
+
+  <h2>5. Google services</h2>
+  <p>Some COS services offer Sign in with Google or let you connect Google data through connectors you authorize. Your use of those features is also governed by Google's terms, and our handling of Google user data is described in the <a href="/privacy/">Privacy Policy</a>, which adheres to the Google API Services User Data Policy, including its Limited Use requirements. You can revoke access at any time from your Google account settings.</p>
+
+  <h2>6. No warranty</h2>
+  <p>COS is provided "as is" and "as available," without warranty of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not guarantee uninterrupted or error-free operation.</p>
+
+  <h2>7. Limitation of liability</h2>
+  <p>To the maximum extent permitted by law, Miles Ukaoma and GotCOS shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of COS, including but not limited to API costs, data loss, or hardware issues. Where liability cannot be excluded, it is limited to the amount you paid for COS, which for the open-source software is zero.</p>
+
+  <h2>8. Intellectual property</h2>
+  <p>COS, GotCOS, the COS marks, and the MU monogram are the property of Miles Ukaoma. Open-source components remain governed by their licenses. These terms grant no rights to the marks.</p>
+
+  <h2>9. Third-party services</h2>
+  <p>COS facilitates connections to third-party services but is not affiliated with Anthropic, OpenAI, Google, or Even Realities. Your use of those services is governed by their respective terms and privacy policies.</p>
+
+  <h2>10. Changes</h2>
+  <p>We may update these terms; updates are posted on this page with a new date. Continued use of COS after changes constitutes acceptance.</p>
+
+  <h2>11. Contact</h2>
+  <p>Questions: <strong>miles@milesukaoma.com</strong></p>
+</main>
+
+<footer>
+  <div class="quote">The prompt was never the problem.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
+  <div><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="https://github.com/ukaoma/cos-starter">GitHub</a> &middot; <a href="/LICENSE">MIT License</a></div>
+</footer>
+
+</body>
+</html>
