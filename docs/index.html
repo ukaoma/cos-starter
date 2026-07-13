@@ -1254,5 +1254,47 @@ footer .links a:hover{color:var(--gold)}
   }, 3400);
 })();
 </script>
+<script>
+// Footer watermark: draws itself in brighter, then recedes into the paper (svg.createDrawable)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var fm = document.querySelector('.foot-mark');
+  var svgEl = fm ? fm.querySelector('svg') : null;
+  if (!svgEl) return;
+  var shapes = [].slice.call(svgEl.querySelectorAll('circle, path'));
+  if (!shapes.length) return;
+  var played = false;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting && !played){
+        played = true; io.disconnect();
+        fm.style.opacity = '0.14';
+        var dmap = [];
+        shapes.forEach(function(s2){
+          s2.style.fillOpacity = '0';
+          s2.style.stroke = 'currentColor';
+          s2.style.strokeWidth = '7';
+          s2.style.strokeLinecap = 'round';
+          var d = AN.svg.createDrawable(s2)[0];
+          AN.utils.set(d, { draw: '0 0' });
+          dmap.push(d);
+        });
+        var tl = AN.createTimeline();
+        shapes.forEach(function(s2, i){
+          var at = i * 110;
+          tl.add(dmap[i], { draw: '0 1', duration: 620, ease: 'inOutSine' }, at);
+          tl.add(s2, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + 470);
+          tl.add(s2, { strokeOpacity: [1, 0], duration: 240, ease: 'outQuad' }, at + 540);
+        });
+        tl.add(fm, { opacity: [0.14, 0.045], duration: 900, ease: 'inOutQuad' }, '+=120');
+      }
+    });
+  }, { threshold: 0.2 });
+  io.observe(svgEl);
+})();
+</script>
 </body>
 </html>
