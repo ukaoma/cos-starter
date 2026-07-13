@@ -1215,10 +1215,11 @@ footer .links a:hover{color:var(--gold)}
   if (!svg) return;
   var nodes = svg.querySelectorAll('circle');
   var bridges = svg.querySelectorAll(':scope > path');
-  var letters = svg.querySelectorAll('g path');
+  var letters = [].slice.call(svg.querySelectorAll('g path'));
   if (!nodes.length || !letters.length) return;
+  // potrace emits paths in scan order (S first); sort left-to-right so the stagger reads C, O, S
+  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){}
   var pop = AN.createSpring({ mass: 1, stiffness: 190, damping: 12 });
-  var land = AN.createSpring({ mass: 1, stiffness: 150, damping: 13 });
   nodes.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
   letters.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
   AN.utils.set(nodes, { scale: 0 });
@@ -1227,7 +1228,7 @@ footer .links a:hover{color:var(--gold)}
   var tl = AN.createTimeline();
   tl.add(nodes, { scale: [0,1], ease: pop, delay: AN.stagger(55) }, 40);
   tl.add(bridges, { opacity: { to: 1, duration: 300, ease: 'outQuad' }, delay: AN.stagger(80) }, 330);
-  tl.add(letters, { opacity: { to: 1, duration: 220, ease: 'outQuad' }, scale: [0.6, 1], translateY: [10, 0], ease: land, delay: AN.stagger(170) }, 540);
+  tl.add(letters, { opacity: { to: 1, duration: 200, ease: 'outQuad' }, scale: [0.6, 1], translateY: [10, 0], duration: 780, ease: 'inOutElastic(1, .4)', delay: AN.stagger(200) }, 540);
   // background-tab safety: whatever happens to the engine, land the final state
   setTimeout(function(){
     AN.utils.set(nodes, { scale: 1 });
