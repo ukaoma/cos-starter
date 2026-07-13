@@ -719,73 +719,52 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-// Logo on load: the mark crystallizes in four sections (spark, then each bone), then C, O, S bloom in
+// Logo on load: each section draws its outline, then the ink fills in (svg.createDrawable)
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
-  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || rm.matches) return;
-  var svg = document.querySelector('svg[viewBox="1004 821 1944 517"]');
-  if (!svg) return;
-  var markEls = [].slice.call(svg.querySelectorAll(':scope > circle, :scope > path'));
-  var letters = [].slice.call(svg.querySelectorAll('g path'));
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
+  var svgEl = document.querySelector('svg[viewBox="1004 821 1944 517"]');
+  if (!svgEl) return;
+  var markEls = [].slice.call(svgEl.querySelectorAll(':scope > circle, :scope > path'));
+  var letters = [].slice.call(svgEl.querySelectorAll('g path'));
   if (markEls.length < 10 || !letters.length) return;
   // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
-  var boxes;
-  try {
-    letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; });
-    boxes = letters.map(function(p){ return p.getBBox(); });
-  } catch(e){ return; }
-  var NS = 'http://www.w3.org/2000/svg';
-  var defs = document.createElementNS(NS,'defs');
-  var blots = [];
-  function clipCircle(i, cx, cy){
-    var cp = document.createElementNS(NS,'clipPath');
-    cp.setAttribute('id','lkblot'+i);
-    var c = document.createElementNS(NS,'circle');
-    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',0);
-    cp.appendChild(c); defs.appendChild(cp); blots.push(c);
-    return 'url(#lkblot'+i+')';
-  }
-  svg.insertBefore(defs, svg.firstChild);
-  // the mark's four sections, in markup order: solo spark [0], left bone [1-3], mid bone [4-6], low bone [7-9]
-  // centers in the lockup's root px space (mark spans x 1004-1476, y 821-1338)
+  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){ return; }
+  // the mark's four sections by markup order, then each letter
   var sections = [
-    { els: [markEls[0]],                          cx: 1240.6, cy: 889,    r: 102 },
-    { els: [markEls[1], markEls[2], markEls[3]],  cx: 1072,   cy: 1079.4, r: 190 },
-    { els: [markEls[4], markEls[5], markEls[6]],  cx: 1323.6, cy: 1031.8, r: 190 },
-    { els: [markEls[7], markEls[8], markEls[9]],  cx: 1323.6, cy: 1222.2, r: 190 }
+    [markEls[0]],
+    [markEls[1], markEls[2], markEls[3]],
+    [markEls[4], markEls[5], markEls[6]],
+    [markEls[7], markEls[8], markEls[9]],
+    [letters[0]], [letters[1]], [letters[2]]
   ];
-  var covers = [];
-  sections.forEach(function(sec, i){
-    var url = clipCircle(i, sec.cx, sec.cy);
-    sec.els.forEach(function(el){ el.setAttribute('clip-path', url); });
-    covers.push(sec.r);
+  var all = markEls.concat(letters);
+  var drawableOf = new Map();
+  all.forEach(function(el){
+    el.style.fillOpacity = '0';
+    el.style.stroke = 'currentColor';
+    el.style.strokeWidth = '26';
+    el.style.strokeLinecap = 'round';
+    el.style.strokeLinejoin = 'round';
+    var d = AN.svg.createDrawable(el)[0];
+    AN.utils.set(d, { draw: '0 0' });
+    drawableOf.set(el, d);
   });
-  letters.forEach(function(p,i){
-    var b = boxes[i];
-    var r = Math.hypot(b.width, b.height) / 2 + 14;
-    covers.push(r);
-    p.setAttribute('clip-path', clipCircle(i+4, b.x + b.width/2, b.y + b.height/2));
-    p.style.transformBox = 'fill-box'; p.style.transformOrigin = 'center';
-  });
-  AN.utils.set(letters, { scale: 0.94 });
   var tl = AN.createTimeline();
-  // spark, then each bone crystallizes (top, left, center, bottom-right)
-  tl.add(blots[0], { r: [0, covers[0]], duration: 340, ease: 'outQuint' }, 20);
-  tl.add(blots[1], { r: [0, covers[1]], duration: 400, ease: 'outQuint' }, 125);
-  tl.add(blots[2], { r: [0, covers[2]], duration: 400, ease: 'outQuint' }, 230);
-  tl.add(blots[3], { r: [0, covers[3]], duration: 400, ease: 'outQuint' }, 335);
-  // then the letters bloom with a micro-snap
-  for (var i = 0; i < letters.length; i++){
-    var at = 560 + i * 175;
-    tl.add(blots[i+4], { r: [0, covers[i+4]], duration: 430, ease: 'outQuint' }, at);
-    tl.add(letters[i], { scale: [0.94, 1], duration: 430, ease: 'outBack(2)' }, at);
-  }
-  // background-tab safety: land the final state regardless of engine state
+  sections.forEach(function(els, i){
+    var at = i < 4 ? (20 + i * 130) : (600 + (i - 4) * 190);
+    var dur = i < 4 ? 420 : 480;
+    els.forEach(function(el){
+      tl.add(drawableOf.get(el), { draw: '0 1', duration: dur, ease: 'inOutQuad' }, at);
+    });
+    tl.add(els, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + dur - 130);
+    tl.add(els, { strokeOpacity: [1, 0], duration: 230, ease: 'outQuad' }, at + dur - 40);
+  });
+  // background-tab safety: whatever happens to the engine, land the inked logo
   setTimeout(function(){
-    blots.forEach(function(c,i){ c.setAttribute('r', covers[i]); });
-    AN.utils.set(letters, { scale: 1 });
-  }, 2800);
+    AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
+  }, 3400);
 })();
 </script>
 </body>
