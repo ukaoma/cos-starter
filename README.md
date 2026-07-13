@@ -1,7 +1,7 @@
-<a href="https://milesukaoma.com/cos"><img src="assets/banner.png" alt="COS — Context is King — The AI Chief of Staff" width="100%"></a>
+<a href="https://www.gotcos.com"><img src="assets/banner.png" alt="COS · Open-Source AI Chief of Staff" width="100%"></a>
 
 <p align="center">
-  <a href="https://milesukaoma.com/cos">See the philosophy</a> · <a href="https://milesukaoma.com/schedule-a-call">For teams</a>
+  <a href="https://www.gotcos.com">gotcos.com</a> · <a href="https://www.gotcos.com/docs/">Docs</a> · <a href="https://milesukaoma.com/cos">The philosophy</a> · <a href="https://www.gotcos.com/connect/">For teams</a>
 </p>
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT"></a>
@@ -10,17 +10,17 @@
 
 ---
 
-# COS Starter
+# COS
 
 **Build an AI Chief of Staff that actually knows your job.**
 
-Same model. Same prompt. Give it your context — your people, your priorities, your patterns — and it becomes something fundamentally different. It becomes useful.
+Same model. Same prompt. Give it your context: your people, your priorities, your patterns. It becomes something fundamentally different. It becomes useful.
 
-COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code) — and compatible with [Codex](https://openai.com/index/introducing-codex/) and other agentic coding environments. Not a chatbot. Not a wrapper. A persistent, context-aware system that compounds in value every time you use it.
+COS is an AI Chief of Staff built on [Claude Code](https://claude.ai/claude-code), compatible with [Codex](https://openai.com/index/introducing-codex/) and other agentic coding environments. Not a chatbot. Not a wrapper. A persistent, context-aware system that compounds in value every time you use it.
 
-**Model-agnostic by design.** When the next frontier model drops — Claude, Gemini, GPT — your COS gets smarter immediately. No migration. No rebuild. The context is yours. The model is interchangeable.
+**Model-agnostic by design.** When the next frontier model drops, Claude, Gemini, or GPT, your COS gets smarter immediately. No migration. No rebuild. The context is yours. The model is interchangeable.
 
-**[See the philosophy](https://milesukaoma.com/cos)** | **[For teams](https://milesukaoma.com/schedule-a-call)**
+**[gotcos.com](https://www.gotcos.com)** | **[The philosophy](https://milesukaoma.com/cos)** | **[For teams](https://www.gotcos.com/connect/)**
 
 ---
 
@@ -86,10 +86,10 @@ my-cos/
 │   └── people.md             # Your team profiles
 ├── .claude/
 │   └── commands/
-│       ├── start.md          # /start — daily briefing
-│       ├── learn.md          # /learn — capture corrections
-│       ├── prep.md           # /prep — meeting preparation
-│       └── connect.md        # /connect — wire external tools
+│       ├── start.md          # /start · daily briefing
+│       ├── learn.md          # /learn · capture corrections
+│       ├── prep.md           # /prep · meeting preparation
+│       └── connect.md        # /connect · wire external tools
 ├── operations/
 │   └── tasks.md              # Your task tracker
 └── corrections.md            # Pattern corrections (auto-populated)
@@ -119,7 +119,7 @@ Add people profiles. Configure your first skill (`/start` for daily briefings). 
 
 Use `/learn` to capture corrections. Build task tracking. Add meeting notes. The system starts connecting dots you didn't ask about.
 
-**You get:** Cross-source intelligence. "You have a 1:1 with Sarah at 2pm — she mentioned budget concerns in Monday's team sync and hasn't responded to your Thursday email."
+**You get:** Cross-source intelligence. "You have a 1:1 with Sarah at 2pm. She mentioned budget concerns in Monday's team sync and hasn't responded to your Thursday email."
 
 ### Tier 4: Agentic (1+ month)
 
@@ -150,7 +150,7 @@ Not sure where to focus? Run `/assess` to score yourself across 14 COS domains.
 | 11 | **Content & Research** | Market intel, competitor tracking, document creation |
 | 12 | **Reporting & Dashboards** | Status updates, briefings, visual dashboards |
 | 13 | **Knowledge Management** | File organization, templates, SOPs, documentation |
-| 14 | **Ambient I/O** | Multi-surface delivery — terminal, mobile, voice |
+| 14 | **Ambient I/O** | Multi-surface delivery: terminal, mobile, voice |
 
 See [`assess/coverage-gap-framework.md`](assess/coverage-gap-framework.md) for the full scoring methodology and reference implementation benchmarks.
 
@@ -185,7 +185,7 @@ Running COS for yourself is powerful. Running it across a leadership team is tra
 - Consistent correction propagation across the team
 
 **Need help deploying COS at your organization?**
-**[Schedule a call](https://milesukaoma.com/schedule-a-call)** to discuss architecture consulting and implementation.
+**[Book a working session](https://www.gotcos.com/connect/)** to discuss architecture consulting and implementation.
 
 ---
 
@@ -193,14 +193,14 @@ Running COS for yourself is powerful. Running it across a leadership team is tra
 
 COS is built on a specific belief: **context compounds.**
 
-Every correction you make, every meeting you feed in, every person you profile — it all accumulates into a system that understands your work better than any prompt could describe.
+Every correction you make, every meeting you feed in, every person you profile: it all accumulates into a system that understands your work better than any prompt could describe.
 
 The [interactive philosophy diagram](philosophy/cos-philosophy-diagram.html) maps the four tiers:
 
-1. **Foundation** — Identity is the starting point
-2. **Operational** — Routines create rhythm
-3. **Compounding** — Corrections accumulate into intelligence
-4. **Agentic** — The system acts without being asked
+1. **Foundation**: identity is the starting point
+2. **Operational**: routines create rhythm
+3. **Compounding**: corrections accumulate into intelligence
+4. **Agentic**: the system acts without being asked
 
 ---
 
@@ -237,9 +237,9 @@ COS is opinionated by design. If you've built something that made your COS meani
 
 Created by [Miles Ukaoma](https://milesukaoma.com).
 
-COS was born from running an AI Chief of Staff across three businesses simultaneously — learning what works when the stakes are real and the calendar is full.
+COS was born from running an AI Chief of Staff across three businesses simultaneously, learning what works when the stakes are real and the calendar is full.
 
-Learn more at [milesukaoma.com/cos](https://milesukaoma.com/cos).
+Learn more at [gotcos.com](https://www.gotcos.com).
 
 ---
 

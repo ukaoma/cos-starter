@@ -154,31 +154,34 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 </footer>
 <script src="/assets/anime.umd.min.js"></script>
 <script>
-// Logo on load: nodes light, connections join, letters arrive (the construction-sheet narrative)
+// Logo on load: nodes light, connections join, then C, O, S layer in on springs
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
-  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || rm.matches) return;
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.stagger || !AN.createSpring || rm.matches) return;
   var svg = document.querySelector('svg[viewBox="1004 821 1944 517"]');
   if (!svg) return;
   var nodes = svg.querySelectorAll('circle');
   var bridges = svg.querySelectorAll(':scope > path');
   var letters = svg.querySelectorAll('g path');
   if (!nodes.length || !letters.length) return;
-  nodes.forEach(function(c){ c.style.transformBox='fill-box'; c.style.transformOrigin='center'; });
+  var pop = AN.createSpring({ mass: 1, stiffness: 190, damping: 12 });
+  var land = AN.createSpring({ mass: 1, stiffness: 150, damping: 13 });
+  nodes.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
+  letters.forEach(function(el){ el.style.transformBox='fill-box'; el.style.transformOrigin='center'; });
   AN.utils.set(nodes, { scale: 0 });
   AN.utils.set(bridges, { opacity: 0 });
-  AN.utils.set(letters, { opacity: 0, translateY: 6 });
-  var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
-  tl.add(nodes, { scale:[0,1], duration: 340, delay: AN.stagger(38), ease: 'outBack(1.7)' }, 60);
-  tl.add(bridges, { opacity:[0,1], duration: 300, delay: AN.stagger(70) }, 320);
-  tl.add(letters, { opacity:[0,1], translateY:[6,0], duration: 360, delay: AN.stagger(75) }, 520);
+  AN.utils.set(letters, { opacity: 0, scale: 0.6, translateY: 10 });
+  var tl = AN.createTimeline();
+  tl.add(nodes, { scale: [0,1], ease: pop, delay: AN.stagger(55) }, 40);
+  tl.add(bridges, { opacity: { to: 1, duration: 300, ease: 'outQuad' }, delay: AN.stagger(80) }, 330);
+  tl.add(letters, { opacity: { to: 1, duration: 220, ease: 'outQuad' }, scale: [0.6, 1], translateY: [10, 0], ease: land, delay: AN.stagger(170) }, 540);
   // background-tab safety: whatever happens to the engine, land the final state
   setTimeout(function(){
     AN.utils.set(nodes, { scale: 1 });
     AN.utils.set(bridges, { opacity: 1 });
-    AN.utils.set(letters, { opacity: 1, translateY: 0 });
-  }, 2400);
+    AN.utils.set(letters, { opacity: 1, scale: 1, translateY: 0 });
+  }, 3400);
 })();
 </script>
 </body>
