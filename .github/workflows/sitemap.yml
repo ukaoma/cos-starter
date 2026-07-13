@@ -1,0 +1,48 @@
+name: Regenerate sitemap
+
+# The HubSpot-equivalent watcher: on every push that touches page content,
+# rebuild sitemap.xml from the live route tree and commit it back if it
+# changed. New pages get picked up automatically; noindex pages stay out.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'scripts/gen-sitemap.mjs'
+      - '.github/workflows/sitemap.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so <lastmod> reads real commit dates
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate sitemap.xml
+        run: node scripts/gen-sitemap.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "sitemap.xml unchanged — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "gotcos-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "chore(gotcos): auto-regenerate sitemap.xml [skip ci]"
+          git push
