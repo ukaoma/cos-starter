@@ -573,11 +573,10 @@
 
   /* footer wordmark (outline, cropped) */
   footer{overflow:hidden}
-  .foot-mark{text-align:center;user-select:none;pointer-events:none;margin:52px auto -46px}
-  .foot-mark svg{width:clamp(180px,26vw,400px);height:auto;fill:none;stroke:rgba(201,169,110,.20);stroke-width:2.8}
-  @media(max-width:700px){.foot-mark svg{stroke-width:5.5}}
+  .foot-mark{text-align:center;opacity:.045;margin-top:26px;user-select:none;pointer-events:none}
+  .foot-mark svg{width:clamp(110px,16vw,220px);height:auto;fill:var(--fg)}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a centaur?","acceptedAnswer":{"@type":"Answer","text":"The human is the head and the machine is the body. You bring the domain expertise, taste, and judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified."}},{"@type":"Question","name":"What is a reverse centaur?","acceptedAnswer":{"@type":"Answer","text":"The flip. The machine is the head and the human is demoted to peripherals: the hands and eyes, plus the legal liability for whatever the algorithm decided. We think that is the wrong way to deploy AI."}},{"@type":"Question","name":"Which one is COS?","acceptedAnswer":{"@type":"Answer","text":"A centaur by architecture. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms."}},{"@type":"Question","name":"What happens when the AI platforms raise prices?","acceptedAnswer":{"@type":"Answer","text":"COS is portable across Claude Code and Codex today and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control. Swap the engine without rebuilding the operating memory."}},{"@type":"Question","name":"What is a context graph?","acceptedAnswer":{"@type":"Answer","text":"The context you choose to ingest, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control."}},{"@type":"Question","name":"Why does context beat prompts?","acceptedAnswer":{"@type":"Answer","text":"Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"If you can paste one file into Claude Code or Codex, you are technical enough. About five minutes to a useful foundation."}},{"@type":"Question","name":"What does it cost to run?","acceptedAnswer":{"@type":"Answer","text":"The kit is free and MIT-licensed. Chat runs on the Claude or Codex plan you already pay for. Local voice has no per-minute fee. There is no COS subscription."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a centaur?","acceptedAnswer":{"@type":"Answer","text":"The human is the head and the machine is the body. You bring the domain expertise, taste, and judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified."}},{"@type":"Question","name":"What is a reverse centaur?","acceptedAnswer":{"@type":"Answer","text":"The flip. The machine is the head and the human is demoted to peripherals: the hands and eyes, plus the legal liability for whatever the algorithm decided. We think that is the wrong way to deploy AI."}},{"@type":"Question","name":"Which one is COS?","acceptedAnswer":{"@type":"Answer","text":"A centaur by architecture. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms."}},{"@type":"Question","name":"What happens when the AI platforms raise prices?","acceptedAnswer":{"@type":"Answer","text":"COS is portable across Claude Code and Codex today and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control. Swap the engine without rebuilding the operating memory."}},{"@type":"Question","name":"What is a context graph?","acceptedAnswer":{"@type":"Answer","text":"The context you choose to ingest, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control."}},{"@type":"Question","name":"Why does context beat prompts?","acceptedAnswer":{"@type":"Answer","text":"Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was."}},{"@type":"Question","name":"Do I need to be technical?","acceptedAnswer":{"@type":"Answer","text":"If you can paste one file into Claude Code or Codex, you are technical enough. About five minutes to a useful foundation."}},{"@type":"Question","name":"What does it cost to run?","acceptedAnswer":{"@type":"Answer","text":"The kit is free. Chat runs on the Claude or Codex plan you already pay for. Local voice has no per-minute fee. There is no COS subscription."}}]}</script>
 </head>
 <body>
 
@@ -945,7 +944,7 @@
       </div>
       <div class="kit-gate" id="kitGate" aria-hidden="true">
         <div class="ku-card">
-          <p class="ku-lead"><strong>One email unlocks the kit.</strong> We send new skills, role packs, and updates as COS grows. No spam, unsubscribe anytime.</p>
+          <p class="ku-lead"><strong>Your role and industry personalize the kit.</strong> Tell us both and we tune the skills, role packs, and playbooks to how you actually work. No spam, unsubscribe anytime.</p>
           <form class="cos-form" id="kitGateForm" novalidate onsubmit="submitKitGate(event)">
             <div class="cf-field"><label for="ku-em">Email <span class="req">*</span></label><input id="ku-em" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
             <div class="cf-row">
@@ -955,7 +954,7 @@
             <button type="submit" class="cf-submit">Unlock the kit</button>
             <div class="cf-msg" id="ku-msg" role="status" aria-live="polite"></div>
           </form>
-          <p class="ku-fine">Free forever. MIT-licensed. The email is how we keep your COS current.</p>
+          <p class="ku-fine">Free forever. Your email is how we tailor your kit and keep it current.</p>
         </div>
       </div>
     </div>
@@ -1168,7 +1167,7 @@
     <details class="fq"><summary>What is a context graph?</summary><p>The context you choose to ingest from meetings, email, Slack, calls, docs, and people, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control.</p></details>
     <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was. A model with your context stops being a chatbot and starts being a chief of staff.</p></details>
     <details class="fq"><summary>Do I need to be technical?</summary><p>If you can paste one file into Claude Code or Codex, you are technical enough. The starter kit interviews you and builds a useful foundation in about five minutes. Want it done with you instead? Book a working session and we will stand it up together.</p></details>
-    <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free and MIT-licensed. Chat runs on the Claude or Codex plan you already pay for. Local voice on the glasses has no per-minute fee. There is no COS subscription, and your files stay yours.</p></details>
+    <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free. Chat runs on the Claude or Codex plan you already pay for. Local voice on the glasses has no per-minute fee. There is no COS subscription, and your files stay yours.</p></details>
   </div>
 </section>
 
@@ -1212,7 +1211,7 @@
     <a href="/terms/">Terms</a> ·
     <a href="LICENSE">MIT License</a>
   </div>
-  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 693 760" xmlns="http://www.w3.org/2000/svg"><circle cx="348" cy="100" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg></div>
+  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 693 760" xmlns="http://www.w3.org/2000/svg"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg></div>
 </footer>
 
 <script>
@@ -1493,33 +1492,45 @@ function doCopyKit(){
 })();
 </script>
 <script>
-// Footer ghost: the outline draws itself in when the footer enters view (svg.createDrawable)
+// Footer watermark: draws itself in brighter, then recedes into the paper (svg.createDrawable)
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
   if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
   if (!('IntersectionObserver' in window)) return;
-  var fm = document.querySelector('.foot-mark svg');
-  if (!fm) return;
-  var shapes = [].slice.call(fm.querySelectorAll('circle, path'));
+  var fm = document.querySelector('.foot-mark');
+  var svgEl = fm ? fm.querySelector('svg') : null;
+  if (!svgEl) return;
+  var shapes = [].slice.call(svgEl.querySelectorAll('circle, path'));
   if (!shapes.length) return;
   var played = false;
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if (e.isIntersecting && !played){
         played = true; io.disconnect();
-        var k = fm.getBoundingClientRect().width / 693;
-        if (k > 0) fm.style.strokeWidth = (1.5 / k).toFixed(2);
-        var tl = AN.createTimeline();
-        shapes.forEach(function(s2, i){
+        fm.style.opacity = '0.14';
+        var dmap = [];
+        shapes.forEach(function(s2){
+          s2.style.fillOpacity = '0';
+          s2.style.stroke = 'currentColor';
+          s2.style.strokeWidth = '7';
+          s2.style.strokeLinecap = 'round';
           var d = AN.svg.createDrawable(s2)[0];
           AN.utils.set(d, { draw: '0 0' });
-          tl.add(d, { draw: '0 1', duration: 950, ease: 'inOutSine' }, i * 190);
+          dmap.push(d);
         });
+        var tl = AN.createTimeline();
+        shapes.forEach(function(s2, i){
+          var at = i * 110;
+          tl.add(dmap[i], { draw: '0 1', duration: 620, ease: 'inOutSine' }, at);
+          tl.add(s2, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + 470);
+          tl.add(s2, { strokeOpacity: [1, 0], duration: 240, ease: 'outQuad' }, at + 540);
+        });
+        tl.add(fm, { opacity: [0.14, 0.045], duration: 900, ease: 'inOutQuad' }, '+=120');
       }
     });
-  }, { threshold: 0.25 });
-  io.observe(fm);
+  }, { threshold: 0.2 });
+  io.observe(svgEl);
 })();
 </script>
 <script>
