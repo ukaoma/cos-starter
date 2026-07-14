@@ -373,6 +373,57 @@ description: Pre-meeting brief with context
 5. Keep it under 25 lines. If the person isn't in people.md, say so and offer to add them.
 ```
 
+### Install /cos-glasses (if they run COS Glasses)
+
+Ask: **"Do you use the COS Glasses (the Even G2 companion)?"** If yes, install this so their agent runs and babysits the server for them. Install at `.claude/commands/cos-glasses.md` **and** `~/.codex/prompts/cos-glasses.md`:
+
+```markdown
+---
+description: Start the COS Glasses server, verify health, keep it current, and troubleshoot
+---
+
+# /cos-glasses
+
+## Steps
+1. Start `npx @gotcos/glasses-server` from this COS folder (so the glasses load this brain). Keep the terminal open; the server prints the URL + API token and saves the token to `~/.cos-glasses/.env`. `npx` pulls the latest release every run -- so this doubles as the update path.
+2. Health-check: `curl http://YOUR-SERVER-IP:3141/api/health` returns `"status":"ok"`. To confirm the server is current, hit the authenticated models probe `curl -H "X-COS-Token: $COS_TOKEN" http://YOUR-SERVER-IP:3141/api/models` -- it returns a `serverInstanceId` on 6.6.0+. Ports 3141 (HTTP) / 3143 (HTTPS).
+3. Troubleshoot by symptom: "can't reach server" -> same Wi-Fi use `192.168.x.x:3141`, else Tailscale `100.x.x.x:3141`; photos missing -> `brew install ffmpeg`; voice slow -> `brew install whisper-cpp`; "server update required" -> rerun the npx command.
+4. A Mac curl to its OWN mesh IP (`100.x`) times out by design -- verify from the phone, not the Mac.
+
+## Rules
+- Never launch a second server or kill unrelated processes -- one server owns 3141/3143.
+- Never print or commit the API token; it lives in `~/.cos-glasses/.env`.
+```
+
+(Full version: `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md`. If they don't use the glasses, skip this skill.)
+
+### Install /glasses-day (optional, glasses users)
+
+Also for glasses users: this pulls a day of their glasses questions and answers into the session so they can continue on the desk what they started on the go. Install at `.claude/commands/glasses-day.md` **and** `~/.codex/prompts/cos-glasses-day.md`:
+
+```markdown
+---
+description: Pull a day of COS Glasses messages into this session so you can pick up what was top of mind
+---
+
+# /glasses-day [date]
+
+## Requires
+- COS Glasses server running (see /cos-glasses), API token from `~/.cos-glasses/.env` (export as COS_TOKEN), server URL (Wi-Fi 192.168.x.x:3141 or mesh 100.x.x.x:3141).
+
+## Steps
+1. Default date is today (YYYY-MM-DD). List available days: `curl -s -H "X-COS-Token: $COS_TOKEN" http://YOUR-SERVER-IP:3141/api/archive`.
+2. Pull the day: `curl -s -H "X-COS-Token: $COS_TOKEN" http://YOUR-SERVER-IP:3141/api/archive/DATE/messages`. One conversation: `/api/archive/DATE/chats` then `/api/archive/DATE/chats/INDEX/messages`.
+3. If today isn't archived yet, snapshot first (non-destructive): `curl -s -X POST -H "X-COS-Token: $COS_TOKEN" http://YOUR-SERVER-IP:3141/api/archive/now`.
+4. Give the user: **Top of mind** (threads they pursued), **Open loops** (needs follow-up), **Carry forward** (turn into tasks/next steps). Offer to act.
+
+## Rules
+- Read the token from `~/.cos-glasses/.env`; never paste or commit it.
+- Day archive is the message-level record; long/photo turns may be condensed. A Mac curl to its own mesh IP (100.x) times out by design -- run it from the phone or with localhost/Wi-Fi IP.
+```
+
+(Full version: `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md`. If they don't use the glasses, skip this skill.)
+
 ---
 
 ## Phase 3: Wire a Connection (5-10 minutes, skippable)

@@ -206,8 +206,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="row2"><div class="field"><label for="g-first">First name</label><input id="g-first" type="text" autocomplete="given-name"></div><div class="field"><label for="g-last">Last name</label><input id="g-last" type="text" autocomplete="family-name"></div></div>
       <div class="field"><label for="g-email">Work email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@company.com"></div>
       <div class="field"><label for="g-co">Company</label><input id="g-co" type="text" autocomplete="organization"></div>
-      <button class="btn primary" style="width:100%;justify-content:center;margin-top:8px" onclick="reveal()">See my Readiness Score</button>
-      <p class="trustline" style="margin-top:16px">One report. No spam. <!-- TODO: wire HubSpot Forms API (portal 2474026) + custom props: cos_readiness_score, band, team_size, ai_stage, 5 cluster scores --></p>
+      <button class="btn primary" id="g-btn" style="width:100%;justify-content:center;margin-top:8px" onclick="reveal()">See my Readiness Score</button>
+      <p id="g-err" role="alert" style="display:none;margin-top:12px;font-size:.86rem;color:#c4736e"></p>
+      <p class="trustline" style="margin-top:16px">Your score on screen now, plus new benchmarks and playbooks as COS grows. No spam.</p>
     </div>
   </section>
 
@@ -330,8 +331,29 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   };
 
   window.reveal=function(){
-    // (gate is non-blocking in this prototype; real build posts to HubSpot then proceeds)
-    $('gate').style.display='none';$('results').style.display='block';window.scrollTo(0,0);compute();
+    // Posts the gate to the gotcos HubSpot form (portal 2474026) with the score in context, then reveals.
+    // The score is never blocked on a failed POST: one attempt, then proceed regardless.
+    var em=($('g-email').value||'').trim(), fn=($('g-first').value||'').trim(), ln=($('g-last').value||'').trim(), co=($('g-co').value||'').trim();
+    var err=$('g-err'), btn=$('g-btn');
+    if(btn.disabled)return;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.style.display='block';err.textContent='Enter a valid work email to see your score.';$('g-email').focus();return;}
+    err.style.display='none';
+    var raw=0;for(var i=0;i<12;i++){raw+=Q[i].o[ans[i]!=null?ans[i]:0][1];}
+    var score=Math.round(raw/36*100);
+    var team=Q[12].o[ans[12]!=null?ans[12]:0][0], ai=Q[13].o[ans[13]!=null?ans[13]:0][0];
+    var fields=[{name:'email',value:em}];
+    if(fn)fields.push({name:'firstname',value:fn});
+    if(ln)fields.push({name:'lastname',value:ln});
+    if(co)fields.push({name:'company',value:co});
+    var proceed=function(){
+      try{localStorage.setItem('cos_kit_access','1');}catch(e){}
+      $('gate').style.display='none';$('results').style.display='block';window.scrollTo(0,0);compute();
+    };
+    btn.disabled=true;btn.textContent='Scoring…';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:'gotcos.com · Readiness score '+score+' (team='+team+'; ai='+ai+')'}})
+    }).then(function(){proceed();}).catch(function(){proceed();});
   };
 
   function compute(){

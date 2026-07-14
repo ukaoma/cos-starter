@@ -243,6 +243,12 @@
   /* quick start kit */
   .kit-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px}
   .kit-hint{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
+  .kit-gate{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .4s ease,margin .4s ease;margin-top:0}
+  .kit-gate.expanded{max-height:680px;opacity:1;margin-top:24px}
+  .kit-gate .ku-card{max-width:560px;background:linear-gradient(160deg,rgba(16,19,27,.96),rgba(11,14,20,.9));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 30px 72px -34px rgba(0,0,0,.5);text-align:left}
+  .kit-gate .ku-lead{color:rgba(240,232,218,.72);font-size:.92rem;line-height:1.55;margin:0 0 16px}
+  .kit-gate .ku-lead strong{color:var(--fg)}
+  .kit-gate .ku-fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:rgba(240,232,218,.42);margin:14px 0 0;text-align:center}
   .kit-does{margin-top:52px}
   .does-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:820px){.does-grid{grid-template-columns:1fr 1fr}}
@@ -934,8 +940,23 @@
       </div>
       <div class="kit-cta">
         <button class="btn primary" id="copyKit" onclick="copyKit()">Copy the Starter Kit</button>
-        <a class="btn ghost" href="/cos-starter.md" target="_blank" rel="noopener">View the kit</a>
+        <a class="btn ghost" href="/cos-starter.md" target="_blank" rel="noopener" id="viewKit" onclick="return viewKit(event)">View the kit</a>
         <span class="kit-hint">Then paste it into Claude Code or Codex and hit enter.</span>
+      </div>
+      <div class="kit-gate" id="kitGate" aria-hidden="true">
+        <div class="ku-card">
+          <p class="ku-lead"><strong>One email unlocks the kit.</strong> We send new skills, role packs, and updates as COS grows. No spam, unsubscribe anytime.</p>
+          <form class="cos-form" id="kitGateForm" novalidate onsubmit="submitKitGate(event)">
+            <div class="cf-field"><label for="ku-em">Email <span class="req">*</span></label><input id="ku-em" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+            <div class="cf-row">
+              <div class="cf-field"><label for="ku-role">Role</label><input id="ku-role" name="jobtitle" type="text" autocomplete="organization-title" placeholder="Head of Growth"></div>
+              <div class="cf-field"><label for="ku-ind">Industry</label><input id="ku-ind" name="industry" type="text" placeholder="SaaS"></div>
+            </div>
+            <button type="submit" class="cf-submit">Unlock the kit</button>
+            <div class="cf-msg" id="ku-msg" role="status" aria-live="polite"></div>
+          </form>
+          <p class="ku-fine">Free forever. MIT-licensed. The email is how we keep your COS current.</p>
+        </div>
       </div>
     </div>
     <div class="chat-mock" aria-hidden="true">
@@ -1359,12 +1380,53 @@ function submitTeamsForm(e){
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:document.title}})
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};});}).then(function(res){
-    if(res.ok){f.reset();btn.style.display='none';msg.className='cf-msg ok show';msg.textContent='Thanks. We will be in touch shortly.';}
+    if(res.ok){f.reset();btn.style.display='none';msg.className='cf-msg ok show';msg.textContent='Thanks. We will be in touch shortly.';setKitUnlocked();}
     else{var m=(res.d&&(res.d.message||(res.d.errors&&res.d.errors[0]&&res.d.errors[0].message)))||'Something went wrong. Please try again in a moment.';msg.className='cf-msg err show';msg.textContent=m;btn.disabled=false;btn.textContent=orig;}
   }).catch(function(){msg.className='cf-msg err show';msg.textContent='Network error. Please try again.';btn.disabled=false;btn.textContent=orig;});
 }
+// Starter Kit gate: one email unlocks copy + view (persisted locally; posts to the CRM form above)
+var kitMemUnlock=false,kitPending='';
+function kitUnlocked(){if(kitMemUnlock)return true;try{return localStorage.getItem('cos_kit_access')==='1'}catch(e){return false}}
+function setKitUnlocked(){kitMemUnlock=true;try{localStorage.setItem('cos_kit_access','1')}catch(e){}}
+function openKitGate(action){
+  kitPending=action||'copy';
+  var g=document.getElementById('kitGate');if(!g){runKitAction();return;}
+  if(!g.classList.contains('expanded')){g.classList.add('expanded');g.setAttribute('aria-hidden','false');}
+  var em=document.getElementById('ku-em');if(em)setTimeout(function(){em.focus()},380);
+}
+function closeKitGate(){var g=document.getElementById('kitGate');if(g){g.classList.remove('expanded');g.setAttribute('aria-hidden','true');}}
+function runKitAction(){
+  var act=kitPending||'copy';kitPending='';
+  if(act==='view'){var v=document.getElementById('viewKit');window.location.assign((v&&v.getAttribute('href'))||'/cos-starter.md');}
+  else doCopyKit();
+}
+function viewKit(e){if(kitUnlocked())return true;if(e)e.preventDefault();openKitGate('view');return false;}
+function copyKit(){if(kitUnlocked()){doCopyKit();}else{openKitGate('copy');}}
+function submitKitGate(e){
+  e.preventDefault();
+  var f=document.getElementById('kitGateForm'),msg=document.getElementById('ku-msg'),btn=f.querySelector('.cf-submit');
+  if(btn.disabled)return;
+  var email=(f.email.value||'').trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.className='cf-msg err show';msg.textContent='Please enter a valid email address.';f.email.focus();return;}
+  var fields=[{name:'email',value:email}];
+  ['jobtitle','industry'].forEach(function(n){var el=f[n],v=el&&el.value?el.value.trim():'';if(v)fields.push({name:n,value:v});});
+  var orig=btn.textContent;btn.disabled=true;btn.textContent='Unlocking…';msg.className='cf-msg';
+  function unlock(){
+    setKitUnlocked();
+    msg.className='cf-msg ok show';msg.textContent='Unlocked. Welcome aboard.';
+    closeKitGate();runKitAction();
+    setTimeout(function(){btn.disabled=false;btn.textContent=orig;},600);
+  }
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:'gotcos.com · Starter Kit unlock (homepage)'}})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};}).catch(function(){return{ok:r.ok,d:null};});}).then(function(res){
+    if(res.ok){unlock();}
+    else{var m=(res.d&&(res.d.message||(res.d.errors&&res.d.errors[0]&&res.d.errors[0].message)))||'That did not send. Check the email and try again.';msg.className='cf-msg err show';msg.textContent=m;btn.disabled=false;btn.textContent=orig;}
+  }).catch(function(){unlock();});
+}
 // Copy the Starter Kit prompt: fetch the live canonical, fall back to a pointer
-function copyKit(){
+function doCopyKit(){
   var btn=document.getElementById('copyKit'),hint=document.querySelector('.kit-hint');
   if(hint&&!hint.dataset.orig)hint.dataset.orig=hint.textContent;
   var hintOrig=hint?hint.dataset.orig:'';
@@ -1372,7 +1434,7 @@ function copyKit(){
     if(navigator.clipboard)navigator.clipboard.writeText(text);
     btn.classList.add('copied');
     if(hint){hint.textContent=full?'Copied. Paste into Claude Code or Codex':'Copied a link. Open it';hint.classList.add('ok');}
-    clearTimeout(copyKit._t);copyKit._t=setTimeout(function(){btn.classList.remove('copied');if(hint){hint.textContent=hintOrig;hint.classList.remove('ok');}},2800);
+    clearTimeout(doCopyKit._t);doCopyKit._t=setTimeout(function(){btn.classList.remove('copied');if(hint){hint.textContent=hintOrig;hint.classList.remove('ok');}},2800);
   }
   fetch('https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md',{cache:'no-store'})
     .then(function(r){return r.ok?r.text():Promise.reject();})

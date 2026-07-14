@@ -507,6 +507,7 @@ footer .links a:hover{color:var(--gold)}
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx @gotcos/glasses-server</code><button type="button">Copy</button></div>
       <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Optional but recommended: <code>brew install whisper-cpp</code> for free local voice transcription and <code>brew install ffmpeg</code> for phone photos and answer images. Text chat still works without either.</p>
+      <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
       <h3>Install the app</h3>
@@ -850,7 +851,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx @gotcos/glasses-server</code>; npx fetches the latest release. Glasses app: install the new version from Even Hub. History and settings carry over.</p>
+      <p>Server: rerun <code>npx @gotcos/glasses-server</code>; npx fetches the latest release. Glasses app: install the new version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
     </div>
   </div>
 </section>
@@ -1191,6 +1192,7 @@ footer .links a:hover{color:var(--gold)}
         body: JSON.stringify({ fields:[{name:'email',value:email}], context:{pageUri:location.href, pageName:document.title} })
       }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d}; }); }).then(function(res){
         if (res.ok){
+          try{localStorage.setItem('cos_kit_access','1');}catch(e){}
           subForm.style.display='none';
           subNote.className='sub-note ok';
           subNote.innerHTML='<span class="sub-dot" aria-hidden="true"></span>You are on the list. Watch your inbox.';

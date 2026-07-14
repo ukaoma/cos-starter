@@ -157,6 +157,21 @@
     .actions a.secondary { border-color: var(--border-form); color: var(--text-primary); }
     .actions a.secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
+    .save-build { margin-top: 1.6rem; padding: 1rem 1.1rem; background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.22); border-radius: 10px; }
+    .save-build label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.55rem; }
+    .save-build label b { color: var(--text-primary); font-weight: 600; }
+    .sb-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sb-row input { flex: 1; min-width: 200px; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+    .sb-row input::placeholder { color: rgba(236,230,218,0.34); }
+    .sb-row input:focus { border-color: var(--accent-gold); }
+    .sb-row button { padding: 0.6rem 1.1rem; background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: transform 0.2s; }
+    .sb-row button:hover { transform: translateY(-1px); }
+    .sb-row button:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .sb-msg { font-size: 0.78rem; margin-top: 0.5rem; display: none; }
+    .sb-msg.show { display: block; }
+    .sb-msg.ok { color: var(--accent-gold); }
+    .sb-msg.err { color: var(--accent-rose); }
+    .sb-fine { font-size: 0.68rem; font-family: var(--font-mono); color: rgba(236,230,218,0.4); margin-top: 0.55rem; }
     .hosted a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); }
 
     a { color: var(--accent-gold); }
@@ -399,6 +414,8 @@
         <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
       </ul>
       <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Run the command in Step 1 <strong>from your COS folder</strong> &mdash; the server detects it and glasses chat loads that brain automatically. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
+      <div class="note"><strong>Never babysit the server again.</strong> Have your COS create a <code>/cos-glasses</code> skill &mdash; ask it: <em>"add the /cos-glasses skill from the Starter Kit."</em> Then <code>/cos-glasses</code> starts the server, health-checks it, keeps it on the latest release, and troubleshoots connection issues for you. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>.</div>
+      <div class="note"><strong>Pick up where the glasses left off.</strong> Add the <code>/glasses-day</code> skill and your COS pulls the day's glasses questions and answers into your desk session &mdash; so anything you asked on the go becomes something you can act on. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md">skills/glasses-day.md</a>.</div>
       <div class="actions">
         <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
         <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
@@ -520,6 +537,18 @@
       <li>Wire context sources via MCP in the COS folder your server runs from.</li>
     </ul>
 
+    <div class="save-build" id="saveBuild">
+      <form id="sbForm" novalidate onsubmit="submitSaveBuild(event)">
+        <label for="sb-em"><b>Keep this build.</b> New skills, role packs, and updates land in your inbox as COS grows.</label>
+        <div class="sb-row">
+          <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email">
+          <button type="submit" id="sb-btn">Keep me posted</button>
+        </div>
+        <div class="sb-msg" id="sb-msg" role="status" aria-live="polite"></div>
+        <p class="sb-fine">No spam, unsubscribe anytime.</p>
+      </form>
+    </div>
+
     <div class="actions">
       <a class="primary" href="https://hub.evenrealities.com">Install on the Even Hub</a>
       <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
@@ -550,6 +579,7 @@
         <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
         <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
         <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
+        <div class="note"><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill so your agent starts the server, health-checks it, keeps it on the latest release, and troubleshoots for you &mdash; ask your COS to <em>"add the /cos-glasses skill from the Starter Kit"</em> (<a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>).</div>
       </div>
 
       <div class="step" data-step="2 · Devices"><h2>Connect your devices</h2>
@@ -944,6 +974,34 @@
     li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }
+
+  // Keep-this-build capture: posts to the gotcos HubSpot form (portal 2474026) with the wizard picks in context
+  window.submitSaveBuild = function (e) {
+    e.preventDefault();
+    var em = ($('#sb-em').value || '').trim(), msg = $('#sb-msg'), btn = $('#sb-btn');
+    if (btn.disabled) return;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { msg.className = 'sb-msg err show'; msg.textContent = 'Enter a valid email address.'; $('#sb-em').focus(); return; }
+    var fields = [{ name: 'email', value: em }];
+    var name = ($('#f-name').value || '').trim(), role = ($('#f-role').value || '').trim(), co = ($('#f-company').value || '').trim();
+    if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
+    if (role) fields.push({ name: 'jobtitle', value: role });
+    if (co) fields.push({ name: 'company', value: co });
+    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
+    var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: 'gotcos.com · Wizard build (' + cfg + ')' } })
+    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }).catch(function () { return { ok: r.ok, d: null }; }); }).then(function (res) {
+      if (res.ok) {
+        try { localStorage.setItem('cos_kit_access', '1'); } catch (err) {}
+        msg.className = 'sb-msg ok show'; msg.textContent = 'You are on the list. New skills land in your inbox.';
+        $('#sb-em').disabled = true; btn.style.display = 'none';
+      } else {
+        var m = (res.d && (res.d.message || (res.d.errors && res.d.errors[0] && res.d.errors[0].message))) || 'That did not send. Try again.';
+        msg.className = 'sb-msg err show'; msg.textContent = m; btn.disabled = false; btn.textContent = orig;
+      }
+    }).catch(function () { msg.className = 'sb-msg err show'; msg.textContent = 'Network error. Try again.'; btn.disabled = false; btn.textContent = orig; });
+  };
 
   window.copyCmd = function (el) {
     var clone = el.cloneNode(true);
