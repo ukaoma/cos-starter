@@ -84,12 +84,10 @@ section,header.hero{padding-block:clamp(56px,8.5vw,120px);position:relative;scro
 section.light{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
 section.light h2,section.light h3,section.light p strong,section.light summary{color:var(--ink-on-cream)}
 section.light .lead,section.light p,section.light li{color:var(--muted-on-cream)}
-section.light .eyebrow{color:#7a5c2c}
+section.light .ch .num{font-style:italic;font-weight:400;opacity:.45}
+.ch-sub{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2vw,1.35rem);line-height:1.35;opacity:.75;margin:-6px 0 16px}
 section.light a{color:#7a5c2c}
 section.light code{color:#7a5c2c}
-.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:20px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
-.eyebrow .num{color:var(--ghost)}
-section.light .eyebrow .num{color:rgba(46,31,16,.4)}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.6vw,4.1rem);line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em;text-wrap:balance;margin-bottom:18px}
 h3{font-family:var(--body);font-weight:600;font-size:1.02rem;margin:0 0 8px}
@@ -434,7 +432,6 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 01 START ── -->
 <header class="hero wrap" id="top">
   <div>
-    <div class="eyebrow"><span class="num">1.</span> COS Glasses · User Guide</div>
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
@@ -498,8 +495,8 @@ footer .links a:hover{color:var(--gold)}
 <section class="wrap reveal light" id="setup">
   <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">2.</span> Setup</div>
-    <h2>Live in about ten minutes.</h2>
+    <h2 class="ch"><span class="num">2.</span> Setup</h2>
+    <p class="ch-sub">Live in about ten minutes.</p>
     <p class="lead">Three moving pieces: the server on your Mac, the app on your glasses, one paste to connect them. The <a href="/wizard/">wizard</a> walks you through all of it. This is the short version.</p>
   </div>
   <ol class="steps">
@@ -531,8 +528,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 03 ASK ── -->
 <section class="wrap reveal" id="ask">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">3.</span> Ask anything</div>
-    <h2>Voice in. <span class="it goldt">Context out.</span></h2>
+    <h2 class="ch"><span class="num">3.</span> Ask anything</h2>
+    <p class="ch-sub">Voice in. <span class="it goldt">Context out.</span></p>
     <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
   </div>
   <p style="max-width:70ch">Answers stream to the lens and read as <strong>one continuous message</strong>, scrolled natively by the glasses like a news feed. No pages. No chunk-tapping. The footer keeps the receipts: model, message number, elapsed time, session date, battery.</p>
@@ -563,8 +560,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 04 PHOTOS ── -->
 <section class="wrap reveal light" id="photos">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">4.</span> Photos &amp; answer images</div>
-    <h2>Show it. Ask it. <span class="it">See it on the lens.</span></h2>
+    <h2 class="ch"><span class="num">4.</span> Photos &amp; answer images</h2>
+    <p class="ch-sub">Show it. Ask it. <span class="it">See it on the lens.</span></p>
     <p class="lead">Phone photos and useful images from an answer travel with the message as durable attachments, not pasted blobs or temporary links.</p>
   </div>
   <div class="cards">
@@ -587,8 +584,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 05 THE LENS ── -->
 <section class="wrap reveal light" id="lens">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">5.</span> The lens</div>
-    <h2>Four screens. Three gestures.</h2>
+    <h2 class="ch"><span class="num">5.</span> The lens</h2>
+    <p class="ch-sub">Four screens. Three gestures.</p>
     <p class="lead">Everything runs on tap, double-tap, and scroll. Each screen prints its own hint line, so the lens always tells you what is live.</p>
   </div>
   <h3>Home</h3>
@@ -626,8 +623,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 06 JOBS ── -->
 <section class="wrap reveal" id="jobs">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">6.</span> Jobs</div>
-    <h2>Watch it <span class="it goldt">work.</span></h2>
+    <h2 class="ch"><span class="num">6.</span> Jobs</h2>
+    <p class="ch-sub">Watch it <span class="it goldt">work.</span></p>
     <p class="lead">Every prompt is a job you can watch, queue, or cancel. And nothing ever hijacks your screen.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
@@ -659,8 +656,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 07 RECALL ── -->
 <section class="wrap reveal light" id="recall">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">7.</span> Recall</div>
-    <h2>Never lose an answer.</h2>
+    <h2 class="ch"><span class="num">7.</span> Recall</h2>
+    <p class="ch-sub">Never lose an answer.</p>
     <p class="lead">Every reply gets a stable short number in the current message era. Your full archive remains intact when a fresh era starts again at #1.</p>
   </div>
   <p style="max-width:70ch">The Messages list keeps a recent window; the complete record lives in <strong>Message History</strong>. Numbers stay stable inside an era, so you can say <strong>“reference message 4”</strong> instead of repeating a prompt. If an operator starts a fresh era, old messages keep their original numbers in the dated archive while ordinary voice references resolve only within the new short list. No deletion, no collision.</p>
@@ -669,8 +666,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 08 MEETINGS ── -->
 <section class="wrap reveal" id="meetings">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">8.</span> Meetings</div>
-    <h2>Record the room. <span class="it goldt">Read it later.</span></h2>
+    <h2 class="ch"><span class="num">8.</span> Meetings</h2>
+    <p class="ch-sub">Record the room. <span class="it goldt">Read it later.</span></p>
     <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript, newest line on top.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
@@ -700,8 +697,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 09 DICTATION ── -->
 <section class="wrap reveal light" id="dictation">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">9.</span> Dictation</div>
-    <h2>Long prompts, hands free.</h2>
+    <h2 class="ch"><span class="num">9.</span> Dictation</h2>
+    <p class="ch-sub">Long prompts, hands free.</p>
     <p class="lead">Dictate a sentence or a page. Nothing sends until you approve the transcript.</p>
   </div>
   <ol class="steps">
@@ -726,8 +723,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 10 MODELS ── -->
 <section class="wrap reveal" id="models">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">10.</span> Models</div>
-    <h2>Choose your brain. <span class="it goldt">Keep it current.</span></h2>
+    <h2 class="ch"><span class="num">10.</span> Models</h2>
+    <p class="ch-sub">Choose your brain. <span class="it goldt">Keep it current.</span></p>
     <p class="lead">Five entries in Settings under Default chat model. All five track the newest models automatically, so the picker never goes stale and the app never needs an update to follow a release.</p>
   </div>
   <div class="cards">
@@ -760,8 +757,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 11 PRIVACY ── -->
 <section class="wrap reveal light" id="privacy">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">11.</span> Privacy</div>
-    <h2>Private by architecture.</h2>
+    <h2 class="ch"><span class="num">11.</span> Privacy</h2>
+    <p class="ch-sub">Private by architecture.</p>
     <p class="lead">There is no COS cloud. Prompts run through the CLIs you already trust, and the history stays on your Mac.</p>
   </div>
   <div class="cards">
@@ -806,8 +803,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 12 SETTINGS ── -->
 <section class="wrap reveal" id="settings">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">12.</span> Settings</div>
-    <h2>Every switch, <span class="it goldt">one card.</span></h2>
+    <h2 class="ch"><span class="num">12.</span> Settings</h2>
+    <p class="ch-sub">Every switch, <span class="it goldt">one card.</span></p>
     <p class="lead">Open the phone companion and tap the ⚙ gear. Every preference persists through Even Hub storage: force-quit the app, reconnect tomorrow, still there.</p>
   </div>
   <div class="tw"><table>
@@ -828,8 +825,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 13 FIXES ── -->
 <section class="wrap reveal light" id="fixes">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">13.</span> Troubleshooting</div>
-    <h2>When something looks stuck.</h2>
+    <h2 class="ch"><span class="num">13.</span> Troubleshooting</h2>
+    <p class="ch-sub">When something looks stuck.</p>
     <p class="lead">Almost everything comes back to one question: can the phone reach the Mac?</p>
   </div>
   <div class="cards">
@@ -863,8 +860,8 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 14 FAQ ── -->
 <section class="wrap reveal" id="faq">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">14.</span> FAQ</div>
-    <h2>The short answers.</h2>
+    <h2 class="ch"><span class="num">14.</span> FAQ</h2>
+    <p class="ch-sub">The short answers.</p>
   </div>
   <div class="faq">
     <details>
@@ -897,7 +894,6 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── UPDATES ── -->
 <section class="wrap reveal" id="updates">
   <div class="sec-head">
-    <div class="eyebrow">Updates</div>
     <h2>Stay in the loop.</h2>
     <p class="lead sub-copy">Run the glasses? Leave your email. New feature drops and beta access, nothing else.</p>
   </div>

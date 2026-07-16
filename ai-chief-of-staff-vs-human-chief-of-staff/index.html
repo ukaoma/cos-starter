@@ -146,7 +146,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:22px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
+
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{display:block;color:var(--gold);font-weight:400;font-style:italic}
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
@@ -204,7 +204,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
 .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.sticky{position:sticky;top:120px;align-self:start}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* halftone plate: 1861 Frank Leslie's headquarters-staff engraving (PD) rides INSIDE the sticky column as the human-staff baseline, faded into the section */
 #baseline .sticky .plate{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:3/2;opacity:.5;pointer-events:none;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-staff.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.03);mix-blend-mode:multiply}
 #baseline .sticky .plate::after{content:"";position:absolute;inset:0;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
@@ -305,7 +305,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap reveal">
     <div class="hero-copy">
-      <div class="eyebrow">Field guide <svg class="eb-mark" viewBox="0 0 693 760" fill="currentColor" aria-hidden="true"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg> AI Chief of Staff</div>
       <h1>AI Chief of Staff <em>vs Human Chief of Staff</em></h1>
       <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for over a year, across a multi-brand software portfolio and two side businesses, so here is the honest version: what stays human, what gets handed to the machine, and exactly where the line sits between them.</p>
       <div class="actions">
@@ -372,7 +371,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="baseline">
     <div class="section-grid wrap">
       <div class="sticky reveal">
-        <div class="kicker">The baseline both are measured against</div>
         <h2>What a chief of staff actually does</h2>
         <p class="intro">Before you compare a human to an AI, define the job. A chief of staff is not a senior assistant. The role exists to extend one leader's capacity.</p>
         <div class="plate-frame" aria-hidden="true"><div class="plate"></div></div>
@@ -392,7 +390,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="ai-cos">
     <div class="wrap reveal">
-      <div class="eyebrow">The category, defined</div>
       <h2>What is an AI chief of staff?</h2>
       <p class="lead">An AI chief of staff is a context-engineered system that walks into the work already knowing your roles, your people, your history, and your numbers. It is not a chatbot with a calendar plugin. It is not an AI executive assistant. It holds your operating context and reasons across it.</p>
       <p class="after-note">The whole difference sits in that phrase, context-engineered. A generic model is brilliant and blank. It has never met your team. An AI chief of staff is the same model wrapped in a system that hands it the right context at the right moment: who this person is, what you last decided, where the project stalled. When it answers like it has been in every meeting, that is not the model being smart. It is the system being prepared. That work has a name, and <a href="/context-engineering-vs-prompt-engineering/">this is context engineering, not prompt engineering</a>.</p>
@@ -407,7 +404,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   <section class="dark-section" id="replaces">
     <div class="wrap reveal">
-      <div class="eyebrow">The time-drain</div>
       <h2>What the AI actually replaces</h2>
       <p class="lead">Start with what nobody will miss. Large parts of the chief-of-staff job burn hours and require almost no judgment. That is the layer an AI chief of staff absorbs first.</p>
       <div class="anatomy">
@@ -436,7 +432,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="human">
     <div class="section-grid wrap">
       <div class="sticky reveal">
-        <div class="kicker">The line that does not move</div>
         <h2>What stays human</h2>
         <p class="intro">Every real chief-of-staff task splits into three layers. The AI works the bottom of each. The human owns the top of each. That division is the entire model.</p>
       </div>
@@ -460,7 +455,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="reframe">
     <div class="wrap reveal">
-      <div class="eyebrow">The reframe</div>
       <h2>Replace the time-drain, not the human</h2>
       <p class="lead">Here is the sentence that should change how you buy. A traditional chief of staff and an AI chief of staff make two different promises, and the difference is the whole point.</p>
       <div class="anatomy">
@@ -476,7 +470,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="vs-ea">
     <div class="section-grid wrap">
       <div class="sticky reveal">
-        <div class="kicker">A common mix-up</div>
         <h2>AI chief of staff vs executive assistant</h2>
         <p class="intro">People collapse these two because both save time. They operate at completely different altitudes.</p>
       </div>
@@ -501,7 +494,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="capacity">
     <div class="wrap reveal">
-      <div class="eyebrow">The business case</div>
       <h2>Add capacity, not headcount</h2>
       <p class="lead">The clearest proof is not on my calendar. It is in someone else's staffing math. Take one agency deployment.</p>
       <div class="anatomy">
@@ -517,7 +509,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="replace">
     <div class="section-grid wrap">
       <div class="sticky reveal">
-        <div class="kicker">The question everyone asks</div>
         <h2>Can AI replace a chief of staff?</h2>
         <p class="intro">Short answer, no. Longer answer, the question is pointed at the wrong target.</p>
       </div>
@@ -531,7 +522,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="deploy">
     <div class="wrap reveal">
-      <div class="eyebrow">Getting started</div>
       <h2>How to deploy an AI chief of staff</h2>
       <p class="lead">You do not really buy an AI chief of staff. You build one, or you start from a system that is already built. COS is the open-source version I run: a frontier model given a persistent, user-owned operating layer, plus the files, context, and methods underneath it.</p>
       <div class="actions">
@@ -545,7 +535,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn down" aria-hidden="true"></div>
   <section class="faq" id="faq">
     <div class="wrap reveal">
-      <div class="kicker">Frequently asked questions</div>
       <h2>AI chief of staff questions, straight.</h2>
       <details><summary>What is an AI chief of staff?</summary><p>An AI chief of staff is a context-engineered system that already knows your roles, people, history, and priorities, and reasons across them. It is not an AI executive assistant or a scheduler. It holds your operating context and drafts the routine work around your decisions.</p></details>
       <details><summary>Can an AI replace a human chief of staff?</summary><p>No, and the question aims at the wrong target. An AI chief of staff does not replace the human. It removes the low-judgment time-drain, the context retrieval and routine prep, so the person spends their hours on judgment, relationships, and the calls only they can make.</p></details>

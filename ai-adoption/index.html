@@ -541,7 +541,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero{position:relative;isolation:isolate;padding:clamp(150px,20vh,208px) 0 clamp(74px,10vw,120px);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:22px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
+
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(2.7rem,5.6vw,4.9rem);line-height:.99;max-width:16ch}.hero h1 em{display:block;color:var(--gold);font-weight:400;font-style:italic}
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
@@ -570,7 +570,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
 .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.sticky{position:sticky;top:120px;align-self:start}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 h2[id]{scroll-margin-top:108px}
 .prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
@@ -795,7 +795,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap">
     <div class="reveal">
-      <div class="eyebrow">Field guide <svg class="eb-mark" viewBox="0 0 693 760" fill="currentColor" aria-hidden="true"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg> The adoption index</div>
       <h1>Everyone is talking about AI. <em>Who actually uses it?</em></h1>
       <p class="hero-lead">Half the rich world has now tried generative AI. About a third uses it in a given week. Businesses sit near one in five. <strong>Paying users are a rounding error on humanity.</strong> Here is the real adoption curve — from the Census Bureau, Pew, the Reuters Institute, Eurostat, and the providers' own disclosures. Every number cited.</p>
       <div class="actions">
@@ -819,7 +818,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap">
       <div class="section-grid">
         <div class="sticky reveal">
-          <div class="kicker">1. The index</div>
           <h2>Adoption, measured honestly</h2>
           <p class="intro">Not provider hype. Probability-sampled surveys, each strand labeled with exactly what it asks.</p>
         </div>
@@ -848,7 +846,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="explorer">
     <div class="wrap">
       <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:14px">2. The explorer</div>
         <h2>Every state. Every country. <em style="font-style:italic;color:var(--gold)">One curve.</em></h2>
         <p class="lead">Pick up to four geographies and scrub six years. US states come from the Census Bureau's
         <strong style="color:var(--fg)">biweekly</strong> business survey; European countries from Eurostat's
@@ -890,7 +887,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="engines">
     <div class="wrap">
       <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:14px">3. The engines</div>
         <h2>Every engine's own scoreboard</h2>
         <p class="lead">The same engines you can seat in <a href="/harness/">your harness</a>, on their own disclosed milestones. Read the metric tags carefully — <strong style="color:var(--fg)">these numbers cannot be added together.</strong> The same person shows up in three of them, and weekly users, monthly users, downloads, and revenue are different animals.</p>
       </div>
@@ -904,7 +900,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap">
       <div class="section-grid">
         <div class="sticky reveal">
-          <div class="kicker">4. Where it lands</div>
           <h2>Adoption has a zip code</h2>
           <p class="intro">Businesses, by state and by country — from the two official statistical agencies that actually ask.</p>
         </div>
@@ -930,7 +925,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="gap">
     <div class="wrap">
       <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:14px">5. The gap</div>
         <h2>The doors still haven't opened</h2>
         <p class="gap-stat">&asymp; 9 in 10 humans<br><em>have no weekly AI habit.</em></p>
         <p class="gap-sub">ChatGPT's 800 million weekly users is the biggest number any provider has ever disclosed — and it is under 10% of the planet. Trial is mainstream in rich countries. Habit is not. Paying is 50-odd million seats. Building on it is a village.</p>
@@ -946,7 +940,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="faq" id="sources">
     <div class="wrap">
       <div class="srcs reveal">
-        <div class="kicker">6. Method</div>
         <h2 style="margin-bottom:26px">The numbers, sourced</h2>
         <div class="src-row"><span class="t">T1</span><span><b><a href="https://www.census.gov/hfp/btos/">US Census Bureau, BTOS AI supplement</a></b> — biweekly firm survey; national, state, sector. Natl &asymp;18% (2026) from &lt;4% (2023). Corroborated by the <a href="https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html">Federal Reserve FEDS Note (Apr 2026)</a>.</span></div>
         <div class="src-row"><span class="t">T1</span><span><b><a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a></b> — enterprises (10+ emp.) using AI, per EU country, annual. EU 20.0% (2025), DK 42.0%, RO 5.2%.</span></div>

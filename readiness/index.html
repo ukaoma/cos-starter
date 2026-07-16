@@ -56,8 +56,7 @@
   @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
   .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
   .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(40px,8vh,90px) var(--gut) 80px}
-  .eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:24px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
-  .eyebrow::after{content:'';width:30px;height:1px;background:linear-gradient(270deg,var(--gold),transparent)}
+  .eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:24px}  .eyebrow::after{content:'';width:30px;height:1px;background:linear-gradient(270deg,var(--gold),transparent)}
   h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.025em;max-width:16ch}
   h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
   .lead{color:var(--muted);font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.6;max-width:54ch;margin-top:24px}
@@ -190,7 +189,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   <!-- INTRO -->
   <section id="intro">
-    <div class="eyebrow">COS Readiness Score</div>
     <h1>How ready is your team for an <span class="g">AI chief of staff?</span></h1>
     <p class="lead">Most teams buy AI and watch 80% of the seats go cold. This scores where an AI Chief of Staff would pay for itself first, across the operating areas that decide whether it sticks. Answer for how your team <em>actually</em> works today. The gaps are the point.</p>
     <div class="meta"><div><b>12</b> questions</div><div><b>~3</b> minutes</div><div><b>No</b> black box</div></div>
@@ -209,7 +207,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   <!-- GATE -->
   <section id="gate">
-    <div class="eyebrow">Your score is ready</div>
     <h1 style="font-size:clamp(2rem,4.4vw,3rem)">Where should we send your <span class="g">readiness report?</span></h1>
     <p class="lead">A one-page breakdown of your score, your biggest leverage areas, and what closing each gap looks like.</p>
     <div style="max-width:480px;margin-top:30px">
@@ -225,7 +222,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <!-- RESULTS -->
   <section id="results">
     <div class="gauge-wrap">
-      <div class="eyebrow" style="justify-content:center">Your COS Readiness</div>
+      <div class="eyebrow" style="text-align:center">Your COS Readiness</div>
       <div class="gauge">
         <svg width="230" height="230" viewBox="0 0 230 230">
           <circle cx="115" cy="115" r="100" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="14"/>

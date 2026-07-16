@@ -133,7 +133,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}
-.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:22px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
+
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 em{display:block;color:var(--gold);font-weight:400}
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:58ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
@@ -163,7 +163,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .burn.up.to-ink2{background:linear-gradient(0deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.sticky{position:sticky;top:120px;align-self:start}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD) — rides INSIDE the sticky column so it endures the whole section scroll */
 #definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
 #definition .pixmap-e .pi{position:absolute;inset:0;background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply;opacity:0}
@@ -273,7 +273,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap">
     <div class="reveal">
-      <div class="eyebrow">AI harnesses, explained</div>
       <h1>The model is rented. <em>The harness is yours.</em></h1>
       <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, tools, rules, and a place to keep working. That surrounding system—not one clever prompt—is what turns generic intelligence into an AI that knows how you operate.</p>
       <div class="actions">
@@ -324,7 +323,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="definition">
     <div class="section-grid wrap">
       <div class="sticky reveal">
-        <div class="kicker">The plain-English definition</div>
         <h2>What is an AI harness?</h2>
         <p class="intro">The useful unit of AI is no longer just the model. It is the model plus the system that helps it understand, act, remember, and recover.</p>
         <div class="pixmap-e" aria-hidden="true">
@@ -363,7 +361,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="anatomy">
     <div class="wrap reveal">
-      <div class="eyebrow">Anatomy of a useful harness</div>
       <h2>Six layers turn intelligence into leverage.</h2>
       <p class="lead">A better model raises the ceiling. A better harness raises the floor—and makes good performance repeatable across models, sessions, and people.</p>
       <div class="anatomy">
@@ -397,7 +394,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         └── corrections.md <span class="note"># what compounds</span>
       </div>
       <div class="memory-copy reveal">
-        <div class="eyebrow">The ownership thesis</div>
         <h2>Your personal AI memory should outlive the model.</h2>
         <p>Models improve quickly. Subscriptions change. Interfaces disappear. If your working memory lives only inside one vendor's chat history, every switch starts with a partial amnesia.</p>
         <p>A local-first harness changes the asset. Your corpus can live as ordinary files, databases, indexes, and logs on devices or infrastructure you control. The harness selects the relevant context and makes it legible to whichever model is best for the job.</p>
@@ -410,7 +406,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="fieldnotes" id="cos">
     <div class="field-grid wrap">
       <div class="reveal">
-        <div class="kicker">A harness under real operating load</div>
         <h2>COS is the conduit, not the intelligence monopoly.</h2>
         <p class="lead">COS began as an AI chief of staff built while running marketing and digital transformation across a multi-brand software portfolio, alongside two operating businesses and a family. The job was never “chat better.” The job was to preserve context across the places real work happens.</p>
         <p class="lead">A harness can use Claude, GPT, Gemini, or local models when the required integrations exist. COS currently supports Claude Code and Codex, with additional adapters as design intent. The personal operating layer makes the model's intelligence specific to you. And the crowd is earlier than the headlines suggest: see <a href="/ai-adoption/">the AI Adoption Index</a> for who actually uses these engines, with every number cited.</p>
@@ -428,7 +423,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="build" id="build">
     <div class="wrap reveal">
       <div class="build-head">
-        <div class="eyebrow">Build the asset</div>
         <h2>Start with a folder, not a platform migration.</h2>
         <p class="lead">A personal harness can begin small. The first useful version needs an identity, a memory structure, one repeatable skill, one trusted connection, and a habit of recording corrections.</p>
       </div>
@@ -446,7 +440,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn down from-ink2" aria-hidden="true"></div>
   <section class="faq" id="faq">
     <div class="wrap reveal">
-      <div class="kicker">Frequently asked questions</div>
       <h2>AI harness questions, without the jargon.</h2>
       <details><summary>What is an AI harness?</summary><p>An AI harness is the operating system around a model. It supplies instructions, context, memory, tools, permissions, workflow logic, and persistence so the model can do useful work repeatedly instead of answering one isolated prompt.</p></details>
       <details><summary>Is an AI harness the same as an AI agent?</summary><p>No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts and determines what survives between runs.</p></details>
