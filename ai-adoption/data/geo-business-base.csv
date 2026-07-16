@@ -1,0 +1,88 @@
+geography,geo_type,business_base_count,base_definition,base_year,source,source_url,trust_tier
+Alaska,US state,22178,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Alabama,US state,105720,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Arkansas,US state,70452,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Arizona,US state,162845,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+California,US state,1029689,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Colorado,US state,182486,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Connecticut,US state,89234,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Washington DC,US state,23801,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Delaware,US state,29706,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Florida,US state,645575,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Georgia,US state,261320,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Hawaii,US state,32911,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Iowa,US state,83321,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Idaho,US state,58100,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Illinois,US state,322415,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Indiana,US state,155692,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Kansas,US state,76139,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Kentucky,US state,94402,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Louisiana,US state,108561,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Massachusetts,US state,183767,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Maryland,US state,142967,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Maine,US state,43345,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Michigan,US state,229564,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Minnesota,US state,154455,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Missouri,US state,151475,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Mississippi,US state,60465,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Montana,US state,42566,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+North Carolina,US state,258169,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+North Dakota,US state,25402,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Nebraska,US state,56503,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+New Hampshire,US state,39298,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+New Jersey,US state,237968,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+New Mexico,US state,44861,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Nevada,US state,77297,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+New York,US state,541313,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Ohio,US state,255049,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Oklahoma,US state,96402,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Oregon,US state,122451,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Pennsylvania,US state,307065,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Rhode Island,US state,29510,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+South Carolina,US state,122958,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+South Dakota,US state,29106,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Tennessee,US state,150129,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Texas,US state,670878,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+United States (national),country,8361342,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Utah,US state,95494,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Virginia,US state,210842,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Vermont,US state,20841,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Washington,US state,202177,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Wisconsin,US state,144774,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+West Virginia,US state,35839,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Wyoming,US state,23865,"employer establishments, all sizes",2023,"US Census Bureau, County Business Patterns",https://www.census.gov/programs-surveys/cbp.html,T1
+Albania,country,7763,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Austria,country,48278,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Bosnia and Herzegovina,country,8438,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Belgium,country,36023,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Bulgaria,country,31080,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+CH,country,55640,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Cyprus,country,6206,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Czechia,country,45863,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Germany,country,501364,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Denmark,country,31717,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Estonia,country,7203,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Greece,country,54592,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Spain,country,182296,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+European Union,aggregate,1875488,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Finland,country,21972,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+France,country,187506,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Croatia,country,17757,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Hungary,country,37641,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Ireland,country,30230,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+IS,country,2548,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Italy,country,242914,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Lithuania,country,15509,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Luxembourg,country,5532,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Latvia,country,10331,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+MK,country,5713,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Malta,country,3623,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Netherlands,country,67221,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Norway,country,30389,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Poland,country,112223,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Portugal,country,56362,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Romania,country,54958,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Serbia,country,20464,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Sweden,country,41691,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Slovenia,country,9520,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
+Slovakia,country,15876,"enterprises with 10+ employees, business economy",2024,"Eurostat, Structural Business Statistics (sbs_sc_ovw, ENT_NR)",https://ec.europa.eu/eurostat/databrowser/product/view/sbs_sc_ovw,T1
