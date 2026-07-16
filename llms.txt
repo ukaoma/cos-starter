@@ -18,4 +18,7 @@
 - [us-state-btos.csv](https://www.gotcos.com/ai-adoption/data/us-state-btos.csv): share of US businesses using AI by state — Census Bureau BTOS
 - [eu-enterprise-ai.csv](https://www.gotcos.com/ai-adoption/data/eu-enterprise-ai.csv): share of EU enterprises using AI by country — Eurostat isoc_eb_ai
 
+- [btos-state-series.csv](https://www.gotcos.com/ai-adoption/data/btos-state-series.csv): biweekly share of US businesses using AI, Sep 2023 - Jun 2026, national + every state (Census BTOS)
+- [eurostat-country-series.csv](https://www.gotcos.com/ai-adoption/data/eurostat-country-series.csv): annual share of enterprises using AI, 2021-2025, 35 European geographies (Eurostat)
+
 Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belong to their publishers. Compiled 2026-07-15.
