@@ -556,7 +556,7 @@ h1{font-size:clamp(2.7rem,5.6vw,4.9rem);line-height:.99;max-width:16ch}.hero h1 
 .adx-rig .rig-top b{color:var(--gold);font-weight:500;transition:color .35s;text-align:right}
 .adx-rig .lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:6px;vertical-align:middle}
 .adx-grid{position:relative;z-index:2;display:block;width:100%;height:auto}
-.adx-grid circle{transition:opacity .55s cubic-bezier(.3,.7,.25,1)}
+.adx-grid circle{transition:opacity .38s cubic-bezier(.3,.7,.25,1);transform-box:fill-box;transform-origin:center}
 #adxState,#adxNum,#adxTag{transition:opacity .45s cubic-bezier(.3,.7,.25,1)}
 .adx-read{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 7px 3px;font-size:.86rem;color:var(--muted)}
 .adx-read b{font-family:var(--display);font-size:1.35rem;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -804,7 +804,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <p class="byline">Miles Ukaoma &middot; GotCOS field guide &middot; July 2026</p>
     </div>
-    <div class="adx-rig reveal" id="adxRig" role="img" aria-label="A grid of 2,500 dots representing 8.2 billion people. About 76 percent have never touched generative AI, 15 percent have tried it without a habit, 9 percent use it weekly, 0.6 percent pay for it, and 0.2 percent build with it.">
+    <div class="adx-rig reveal" id="adxRig" role="img" aria-label="A grid of 2,500 dots representing 8.2 billion people. About 75 percent have never touched generative AI, 15 percent have tried it without a habit, 9 percent use it weekly, 0.6 percent pay for it, and 0.2 percent build with it.">
       <div class="rig-top" aria-hidden="true"><span><i class="lamp"></i> HUMANITY &middot; 8.2B</span><b id="adxState">one dot &asymp; 3.3M people</b></div>
       <svg class="adx-grid" id="adxGrid" viewBox="0 0 500 320" aria-hidden="true"></svg>
       <div class="adx-read" aria-hidden="true"><b id="adxNum">2,500 dots</b><span class="tag" id="adxTag">each &asymp; 3.3 million people</span></div>
@@ -1050,15 +1050,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script>
-// ── The humanity grid: 2,500 dots, five tiers, auto-cycling readout ──
+// ── The humanity grid: 2,500 dots, five tiers, row-staggered sweep ──
 (function(){
   var AN = window.anime;
   var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
   var svg = document.getElementById('adxGrid');
   if (!svg) return;
-  var COLS = 63, ROWS = 40, N = 2520 - 20; // 2500 dots in a 63x40 grid minus trailing cells
-  N = 2500;
-  // tiers, allocated from the END of the grid (bottom-right corner outward), like the film
+  var N = 2500, COLS = 63;
   var TIERS = [
     { k:'build', n:6,    c:'#c4736e', num:'~20M',   tag:'builds with AI &middot; Copilot 20M users, Ollama 8.9M devs/mo', state:'building with it' },
     { k:'pay',   n:15,   c:'#d4a07a', num:'~50M',   tag:'pays for AI &middot; Plus + Copilot + enterprise seats',          state:'paying for it' },
@@ -1066,60 +1064,81 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     { k:'try',   n:384,  c:'#c9a96e', num:'~1.3B',  tag:'tried it, no habit &middot; modeled from survey ratios',          state:'tried it once' },
     { k:'never', n:1866, c:'rgba(240,232,218,.13)', num:'~6.1B', tag:'never touched generative AI', state:'never touched it' }
   ];
-  // build cells: order index 0 = top-left; tiers fill from the end
+  // order index 0 = top-left; tiers fill from the end (bottom-right block)
   var order = [];
   TIERS.slice().reverse().forEach(function(t){ for (var i=0;i<t.n;i++) order.push(t); });
-  // order[0]..order[1865] = never ... order[2494..2499] = build; index maps directly
   var W = 500, H = 320, PAD = 6;
-  var cols = 63, rows = Math.ceil(N/cols);
-  var cw = (W - PAD*2) / cols, ch = (H - PAD*2) / rows;
+  var rows = Math.ceil(N/COLS);
+  var cw = (W - PAD*2) / COLS, ch = (H - PAD*2) / rows;
   var r = Math.min(cw, ch) * 0.32;
-  var frag = [];
+  // Every dot carries a fixed transition-delay — col*10ms + row*12ms — so ANY
+  // opacity change sweeps left→right along each row, rows cascading downward.
+  // --wv on the svg scales the wave: 1 for the first paint, .55 for cycle sweeps.
+  var DLY = new Array(N), frag = [];
   for (var i = 0; i < N; i++) {
-    var t = order[i];
-    var x = PAD + (i % cols) * cw + cw/2;
-    var y = PAD + Math.floor(i / cols) * ch + ch/2;
-    frag.push('<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+t.c+'" data-k="'+t.k+'"/>');
+    var t = order[i], col = i % COLS, row = (i / COLS) | 0;
+    var x = PAD + col * cw + cw/2;
+    var y = PAD + row * ch + ch/2;
+    DLY[i] = col * 10 + row * 12;
+    frag.push('<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(2)+'" fill="'+t.c+'" data-k="'+t.k+'" opacity="0" style="transition-delay:calc(var(--wv,1)*'+DLY[i]+'ms)"/>');
   }
   svg.innerHTML = frag.join('');
+  var dots = Array.prototype.slice.call(svg.querySelectorAll('circle'));
   var stateEl = document.getElementById('adxState'), numEl = document.getElementById('adxNum'), tagEl = document.getElementById('adxTag');
   var seq = ['never','try','wk','pay','build'];
   var byK = {}; TIERS.forEach(function(t){ byK[t.k] = t; });
-  var idx = -1, timer = null, inView = false, hovered = false;
-  function show(k){
-    var t = byK[k];
-    svg.querySelectorAll('circle').forEach(function(c){
-      c.style.opacity = (c.dataset.k === k) ? '1' : '0.22';
-    });
-    if (stateEl) stateEl.textContent = t.state;
-    if (numEl) numEl.innerHTML = t.num + ' people';
-    if (tagEl) tagEl.innerHTML = t.tag;
-    if (AN && AN.animate && !rm.matches) {
-      var read = [stateEl, numEl, tagEl].filter(Boolean);
-      if (read.length) AN.animate(read, { opacity:[0.25,1], duration:520, ease:'out(2)' });
-      var lit = svg.querySelectorAll('circle[data-k="'+k+'"]');
-      if (lit.length && lit.length <= 400) AN.animate(lit, { scale:[1,1.9,1], duration:650, delay:AN.stagger ? AN.stagger(1.2) : 0, ease:'inOutSine' });
-    }
-  }
-  function tick(){ idx = (idx+1) % seq.length; show(seq[idx]); }
-  function start(){ if (timer || rm.matches) return; if (!inView || document.hidden || hovered) return; timer = setInterval(tick, 3600); }
-  function stop(){ if (timer){ clearInterval(timer); timer = null; } }
-  if (rm.matches || !AN) {
-    // static: all tiers at full strength, readout = weekly floor
-    svg.querySelectorAll('circle').forEach(function(c){ c.style.opacity = '1'; });
+  var starts = {}, acc = 0;
+  TIERS.slice().reverse().forEach(function(t){ starts[t.k] = acc; acc += t.n; });
+  var idx = -1, timer = null, inView = false, hovered = false, booted = false, cycleReady = false;
+  if (rm.matches) {
+    // static: full grid, readout pinned to the weekly floor
+    dots.forEach(function(c){ c.style.opacity = '1'; });
     if (numEl) numEl.innerHTML = '&ge;800M weekly';
     if (tagEl) tagEl.innerHTML = 'ChatGPT alone &middot; one in ten humans';
     if (stateEl) stateEl.textContent = 'the whole grid';
     return;
   }
+  function show(k){
+    var t = byK[k];
+    dots.forEach(function(c){
+      var mine = c.getAttribute('data-k');
+      c.style.opacity = (mine === k || mine === 'never') ? '1' : '0.35';
+    });
+    if (stateEl) stateEl.textContent = t.state;
+    if (numEl) numEl.innerHTML = t.num + ' people';
+    if (tagEl) tagEl.innerHTML = t.tag;
+    if (AN && AN.animate) {
+      var read = [stateEl, numEl, tagEl].filter(Boolean);
+      if (read.length) AN.animate(read, { opacity:[0.25,1], duration:520, ease:'out(2)' });
+      if (t.n <= 400) {
+        var lit = dots.slice(starts[k], starts[k] + t.n);
+        AN.animate(lit, { scale:[1,1.3,1], duration:560, delay:function(el, i2){ return DLY[starts[k] + i2] * 0.55 + 60; }, ease:'inOut(2)' });
+      }
+    }
+  }
+  function tick(){ idx = (idx+1) % seq.length; show(seq[idx]); }
+  function start(){ if (timer) return; if (!cycleReady || !inView || document.hidden || hovered) return; timer = setInterval(tick, 3600); }
+  function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+  function wake(){ if (!cycleReady || !inView || document.hidden) return; if (idx < 0) tick(); start(); }
+  function boot(){
+    if (booted || !inView || document.hidden) return;
+    booted = true;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      dots.forEach(function(c){ c.style.opacity = '1'; }); // whole-grid resting view sweeps in
+      setTimeout(function(){ svg.style.setProperty('--wv', '0.55'); cycleReady = true; wake(); }, 2600);
+    }); });
+  }
   var rig = document.getElementById('adxRig');
-  rig.addEventListener('mouseenter', function(){ hovered = true; stop(); });
-  rig.addEventListener('mouseleave', function(){ hovered = false; start(); });
-  document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else start(); });
+  if (window.matchMedia && window.matchMedia('(hover:hover)').matches) {
+    rig.addEventListener('mouseenter', function(){ hovered = true; stop(); });
+    rig.addEventListener('mouseleave', function(){ hovered = false; start(); });
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else { boot(); wake(); } });
   if ('IntersectionObserver' in window){
-    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; if (inView){ if (idx < 0) tick(); start(); } else stop(); }); }, { threshold:0.35 });
+    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; if (inView){ boot(); wake(); } else stop(); }); }, { threshold:0.35 });
     cio.observe(rig);
-  } else { inView = true; tick(); start(); }
+  } else { inView = true; boot(); }
+  setTimeout(function(){ if (!booted){ inView = true; boot(); } }, 6000); // catch-all: never leave the grid black
 })();
 
 // ── The index chart: labeled strands, never spliced ──
