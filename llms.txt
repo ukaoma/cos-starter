@@ -1,0 +1,21 @@
+# GotCOS
+
+> Open-source AI chief of staff. The harness, memory, and context layer you own around rented AI models. Created by Miles Ukaoma.
+
+## Field guides
+
+- [What is an AI harness?](https://www.gotcos.com/harness/): the model is rented, the harness is yours — memory, files, rules, and skills around any frontier model
+- [The AI Adoption Index](https://www.gotcos.com/ai-adoption/): how many people actually use AI — survey-anchored, source-tiered, updated July 2026
+- [Context engineering vs prompt engineering](https://www.gotcos.com/context-engineering-vs-prompt-engineering/): the real shift — engineering the system around the model, not the sentence
+- [AI chief of staff vs human chief of staff](https://www.gotcos.com/ai-chief-of-staff-vs-human-chief-of-staff/): what changes when the briefing layer is software
+- [COS Glasses docs](https://www.gotcos.com/docs/): user guide for the G2 smart-glasses client
+- [Readiness score](https://www.gotcos.com/readiness/): 12 questions on whether your team is ready
+
+## Open data
+
+- [adoption-surveys.csv](https://www.gotcos.com/ai-adoption/data/adoption-surveys.csv): generative-AI adoption by survey wave — Pew, Reuters Institute, Google-Ipsos, Microsoft WTI (percent, 2023-2026)
+- [provider-milestones.csv](https://www.gotcos.com/ai-adoption/data/provider-milestones.csv): dated user and revenue milestones per AI provider, with trust tier — not additive across providers
+- [us-state-btos.csv](https://www.gotcos.com/ai-adoption/data/us-state-btos.csv): share of US businesses using AI by state — Census Bureau BTOS
+- [eu-enterprise-ai.csv](https://www.gotcos.com/ai-adoption/data/eu-enterprise-ai.csv): share of EU enterprises using AI by country — Eurostat isoc_eb_ai
+
+Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belong to their publishers. Compiled 2026-07-15.

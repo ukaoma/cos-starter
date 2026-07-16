@@ -1,0 +1,26 @@
+provider,metric,value,unit,disclosure_date,source,source_url,trust_tier
+ChatGPT (OpenAI),weekly active users,100000000,users,2023-11-06,OpenAI DevDay,https://openai.com/news/,T3
+ChatGPT (OpenAI),weekly active users,400000000,users,2025-02,OpenAI,https://openai.com/news/,T3
+ChatGPT (OpenAI),weekly active users,500000000,users,2025-03,OpenAI,https://openai.com/news/,T3
+ChatGPT (OpenAI),weekly active users,700000000,users,2025-08,OpenAI,https://openai.com/news/,T3
+ChatGPT (OpenAI),weekly active users,800000000,users,2025-10-06,OpenAI DevDay (Sam Altman),https://openai.com/news/,T3
+Gemini app (Google),monthly active users,90000000,users,2024-10,US v. Google court filing,https://blog.google/products/gemini/,T3
+Gemini app (Google),monthly active users,350000000,users,2025-03,US v. Google court filing,https://blog.google/products/gemini/,T3
+Gemini app (Google),monthly active users,450000000,users,2025-05,Google I/O,https://blog.google/products/gemini/,T3
+Gemini app (Google),monthly active users,650000000,users,2025-10-29,Alphabet Q3 2025 earnings,https://abc.xyz/investor/,T3
+Gemini app (Google),monthly active users,750000000,users,2026-02,Alphabet Q4 2025 earnings,https://abc.xyz/investor/,T3
+GitHub Copilot,all-time users,15000000,users,2025-04,Microsoft earnings,https://github.blog/,T3
+GitHub Copilot,all-time users,20000000,users,2025-07-30,Microsoft earnings (Satya Nadella),https://github.blog/,T3
+GitHub Copilot,paid subscribers,4700000,users,2026-01,Microsoft,https://github.blog/,T3
+Cursor (Anysphere),annualized recurring revenue,100000000,USD,2025-01,company disclosure,https://cursor.com/,T3
+Cursor (Anysphere),annualized recurring revenue,500000000,USD,2025-06,company disclosure,https://cursor.com/,T3
+Cursor (Anysphere),annualized recurring revenue,1000000000,USD,2025-11,company disclosure,https://cursor.com/,T3
+Cursor (Anysphere),annualized recurring revenue,2000000000,USD,2026-02,company disclosure via Reuters,https://cursor.com/,T3
+Llama (Meta),cumulative downloads,650000000,downloads,2024-12,Meta,https://ai.meta.com/blog/,T3
+Llama (Meta),cumulative downloads,1000000000,downloads,2025-03,Meta,https://ai.meta.com/blog/,T3
+Llama (Meta),cumulative downloads,1200000000,downloads,2025-04,Meta LlamaCon,https://ai.meta.com/blog/,T3
+Ollama,monthly active developers,8900000,developers,2026-07,company disclosure (Series B),https://ollama.com/blog,T3
+Claude (Anthropic),enterprise LLM API market share,40,percent,2025-12,Menlo Ventures enterprise survey,https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/,T3
+Grok (xAI),monthly active users,64000000,users,2025-09,company statement via press,https://x.ai/news,T4
+Perplexity,queries per month,780000000,queries,2025-05,company statement via press,https://www.perplexity.ai/hub,T4
+DeepSeek,app store rank,1,rank in 140 markets,2025-01-27,app store charts via press,https://www.deepseek.com/,T4

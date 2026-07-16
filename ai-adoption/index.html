@@ -34,37 +34,335 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.gotcos.com/#org",
+   "name": "GotCOS",
+   "url": "https://www.gotcos.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.gotcos.com/assets/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+   },
+   "sameAs": [
+    "https://github.com/ukaoma/cos-starter"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.gotcos.com/#website",
+   "name": "GotCOS",
+   "url": "https://www.gotcos.com/",
+   "publisher": {
+    "@id": "https://www.gotcos.com/#org"
+   }
+  },
+  {
+   "@type": "Article",
+   "@id": "https://www.gotcos.com/ai-adoption/#article",
+   "headline": "How Many People Actually Use AI? The Adoption Index",
+   "description": "Half the rich world has tried generative AI. A third uses it weekly. Businesses sit near 20 percent. The real AI adoption numbers from Census, Pew, Reuters Institute, Eurostat, and the providers' own disclosures, all cited.",
+   "datePublished": "2026-07-15",
+   "dateModified": "2026-07-15",
+   "author": {
+    "@type": "Person",
+    "name": "Miles Ukaoma",
+    "url": "https://milesukaoma.com",
+    "sameAs": [
+     "https://www.linkedin.com/in/milesukaoma"
+    ]
+   },
+   "publisher": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://www.gotcos.com/#website"
+   },
+   "mainEntityOfPage": "https://www.gotcos.com/ai-adoption/",
+   "image": "https://www.gotcos.com/assets/banner.png",
+   "about": [
     {
-      "@type": "Article",
-      "headline": "How Many People Actually Use AI? The Adoption Index",
-      "description": "Half the rich world has tried generative AI. A third uses it weekly. Businesses sit near 20 percent. The real AI adoption numbers from Census, Pew, Reuters Institute, Eurostat, and the providers' own disclosures, all cited.",
-      "datePublished": "2026-07-15",
-      "dateModified": "2026-07-15",
-      "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com", "sameAs": ["https://www.linkedin.com/in/milesukaoma"]},
-      "publisher": {"@type": "Organization", "name": "GotCOS", "url": "https://www.gotcos.com"},
-      "mainEntityOfPage": "https://www.gotcos.com/ai-adoption/",
-      "image": "https://www.gotcos.com/assets/banner.png"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "GotCOS", "item": "https://www.gotcos.com/"},
-        {"@type": "ListItem", "position": 2, "name": "The AI Adoption Index", "item": "https://www.gotcos.com/ai-adoption/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type": "Question", "name": "How many people use ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "OpenAI reported 800 million weekly active users in October 2025, the largest disclosed figure for any AI product. In the US, 44 percent of adults told Pew Research in February 2026 that they have used ChatGPT, up from 18 percent in 2023."}},
-        {"@type": "Question", "name": "What share of people use generative AI?", "acceptedAnswer": {"@type": "Answer", "text": "In the six countries the Reuters Institute surveys, 61 percent of people had tried generative AI by mid-2025 and 34 percent used it in a given week. Across 21 countries, Google and Ipsos found 48 percent had used AI in the past year. Worldwide, weekly use is still roughly one in ten humans."}},
-        {"@type": "Question", "name": "What share of businesses use AI?", "acceptedAnswer": {"@type": "Answer", "text": "About 18 percent of US firms told the Census Bureau they use AI to produce goods or services in early 2026, up from under 4 percent in late 2023. In the EU, Eurostat counts 20 percent of enterprises in 2025, led by Denmark at 42 percent."}},
-        {"@type": "Question", "name": "Which US state uses AI the most?", "acceptedAnswer": {"@type": "Answer", "text": "Colorado leads business adoption at 23.2 percent of firms, with Arizona and Washington DC just behind, per Census Bureau BTOS releases from early 2026. West Virginia is lowest at 10.8 percent. On usage intensity, Anthropic's Economic Index puts Washington DC far ahead of every state."}},
-        {"@type": "Question", "name": "Can you add up ChatGPT and Gemini users to get total AI users?", "acceptedAnswer": {"@type": "Answer", "text": "No. Provider numbers overlap heavily because the same person uses several tools, they are self-reported and unaudited, and they mix incompatible metrics: weekly users, monthly users, downloads, and paid seats. Population surveys are the only honest basis for a total."}}
-      ]
+     "@type": "DefinedTerm",
+     "name": "AI adoption",
+     "description": "The share of people or organizations that use artificial intelligence tools, measured by surveys, official statistics, and provider disclosures."
     }
-  ]
+   ],
+   "citation": [
+    {
+     "@type": "CreativeWork",
+     "name": "US Census Bureau, Business Trends and Outlook Survey (AI supplement)",
+     "url": "https://www.census.gov/hfp/btos/"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Federal Reserve FEDS Note: Monitoring AI Adoption in the U.S. Economy (Apr 2026)",
+     "url": "https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Eurostat, Use of artificial intelligence in enterprises (isoc_eb_ai)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Pew Research Center: 34% of U.S. adults have used ChatGPT (Jun 2025)",
+     "url": "https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Reuters Institute, Generative AI and News Report 2025",
+     "url": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Stanford HAI, AI Index Report 2026",
+     "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Anthropic Economic Index (open dataset)",
+     "url": "https://huggingface.co/datasets/Anthropic/EconomicIndex"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Microsoft and LinkedIn, Work Trend Index",
+     "url": "https://www.microsoft.com/en-us/worklab/work-trend-index"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Menlo Ventures, 2025: The State of Generative AI in the Enterprise",
+     "url": "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/"
+    }
+   ]
+  },
+  {
+   "@type": "DataCatalog",
+   "@id": "https://www.gotcos.com/ai-adoption/#catalog",
+   "name": "GotCOS AI Adoption Index — open data",
+   "description": "Compiled, source-tiered CSV datasets behind the AI Adoption Index: population-survey adoption waves, provider user milestones, US state business adoption, and EU enterprise adoption.",
+   "url": "https://www.gotcos.com/ai-adoption/",
+   "creator": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+   "@type": "Dataset",
+   "@id": "https://www.gotcos.com/ai-adoption/#ds-surveys",
+   "name": "AI adoption by population survey, 2023-2026",
+   "description": "Share of people who have used generative AI, by survey wave: Pew Research (US adults, ChatGPT), Reuters Institute (six countries, ever and weekly use), Google-Ipsos (21 countries, past-12-months), Microsoft Work Trend Index (knowledge workers). Values in percent.",
+   "url": "https://www.gotcos.com/ai-adoption/",
+   "creator": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "dateModified": "2026-07-15",
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "temporalCoverage": "2023-07/2026-02",
+   "spatialCoverage": "United States; Argentina; Denmark; France; Japan; United Kingdom; 21-country and 31-country survey panels",
+   "variableMeasured": [
+    "share of adults who have used ChatGPT",
+    "share who have ever used generative AI",
+    "share who used generative AI in the last week",
+    "share who used AI in the past 12 months"
+   ],
+   "includedInDataCatalog": {
+    "@id": "https://www.gotcos.com/ai-adoption/#catalog"
+   },
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://www.gotcos.com/ai-adoption/data/adoption-surveys.csv"
+    }
+   ],
+   "citation": [
+    {
+     "@type": "CreativeWork",
+     "name": "Pew Research Center: 34% of U.S. adults have used ChatGPT (Jun 2025)",
+     "url": "https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Reuters Institute, Generative AI and News Report 2025",
+     "url": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf"
+    }
+   ]
+  },
+  {
+   "@type": "Dataset",
+   "@id": "https://www.gotcos.com/ai-adoption/#ds-milestones",
+   "name": "AI provider user and revenue milestones, 2023-2026",
+   "description": "Dated, self-reported milestones per AI provider: ChatGPT weekly active users, Gemini monthly active users, GitHub Copilot users, Cursor annualized revenue, Meta Llama downloads, Ollama monthly developers, and flagged third-party estimates for Grok and Perplexity. Metrics are not comparable across rows and must not be summed.",
+   "url": "https://www.gotcos.com/ai-adoption/",
+   "creator": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "dateModified": "2026-07-15",
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "temporalCoverage": "2023-11/2026-07",
+   "spatialCoverage": "Worldwide",
+   "variableMeasured": [
+    "weekly active users",
+    "monthly active users",
+    "cumulative downloads",
+    "annualized recurring revenue",
+    "paid subscribers"
+   ],
+   "includedInDataCatalog": {
+    "@id": "https://www.gotcos.com/ai-adoption/#catalog"
+   },
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://www.gotcos.com/ai-adoption/data/provider-milestones.csv"
+    }
+   ],
+   "citation": []
+  },
+  {
+   "@type": "Dataset",
+   "@id": "https://www.gotcos.com/ai-adoption/#ds-btos",
+   "name": "US businesses using AI, by state (Census BTOS)",
+   "description": "Share of US businesses reporting AI use in producing goods or services, from the Census Bureau Business Trends and Outlook Survey: national trend since 2023 and selected states averaged over the January-March 2026 releases.",
+   "url": "https://www.gotcos.com/ai-adoption/",
+   "creator": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "dateModified": "2026-07-15",
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "temporalCoverage": "2023-10/2026-03",
+   "spatialCoverage": "United States, by state",
+   "variableMeasured": [
+    "share of businesses using AI"
+   ],
+   "includedInDataCatalog": {
+    "@id": "https://www.gotcos.com/ai-adoption/#catalog"
+   },
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://www.gotcos.com/ai-adoption/data/us-state-btos.csv"
+    }
+   ],
+   "citation": [
+    {
+     "@type": "CreativeWork",
+     "name": "US Census Bureau, Business Trends and Outlook Survey (AI supplement)",
+     "url": "https://www.census.gov/hfp/btos/"
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Federal Reserve FEDS Note: Monitoring AI Adoption in the U.S. Economy (Apr 2026)",
+     "url": "https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html"
+    }
+   ]
+  },
+  {
+   "@type": "Dataset",
+   "@id": "https://www.gotcos.com/ai-adoption/#ds-eu",
+   "name": "EU enterprises using AI, by country (Eurostat)",
+   "description": "Share of enterprises with 10 or more employees using artificial intelligence, from Eurostat isoc_eb_ai: EU average 2024 and 2025, plus the highest (Denmark) and lowest (Romania) countries.",
+   "url": "https://www.gotcos.com/ai-adoption/",
+   "creator": {
+    "@id": "https://www.gotcos.com/#org"
+   },
+   "dateModified": "2026-07-15",
+   "license": "https://creativecommons.org/licenses/by/4.0/",
+   "isAccessibleForFree": true,
+   "temporalCoverage": "2024/2025",
+   "spatialCoverage": "European Union, by country",
+   "variableMeasured": [
+    "share of enterprises using AI"
+   ],
+   "includedInDataCatalog": {
+    "@id": "https://www.gotcos.com/ai-adoption/#catalog"
+   },
+   "distribution": [
+    {
+     "@type": "DataDownload",
+     "encodingFormat": "text/csv",
+     "contentUrl": "https://www.gotcos.com/ai-adoption/data/eu-enterprise-ai.csv"
+    }
+   ],
+   "citation": [
+    {
+     "@type": "CreativeWork",
+     "name": "Eurostat, Use of artificial intelligence in enterprises (isoc_eb_ai)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "GotCOS",
+     "item": "https://www.gotcos.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "The AI Adoption Index",
+     "item": "https://www.gotcos.com/ai-adoption/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How many people use ChatGPT?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "OpenAI reported 800 million weekly active users in October 2025, the largest disclosed figure for any AI product. In the US, 44 percent of adults told Pew Research in February 2026 that they have used ChatGPT, up from 18 percent in 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What share of people use generative AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In the six countries the Reuters Institute surveys, 61 percent of people had tried generative AI by mid-2025 and 34 percent used it in a given week. Across 21 countries, Google and Ipsos found 48 percent had used AI in the past year. Worldwide, weekly use is still roughly one in ten humans."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What share of businesses use AI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "About 18 percent of US firms told the Census Bureau they use AI to produce goods or services in early 2026, up from under 4 percent in late 2023. In the EU, Eurostat counts 20 percent of enterprises in 2025, led by Denmark at 42 percent."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which US state uses AI the most?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Colorado leads business adoption at 23.2 percent of firms, with Arizona and Washington DC just behind, per Census Bureau BTOS releases from early 2026. West Virginia is lowest at 10.8 percent. On usage intensity, Anthropic's Economic Index puts Washington DC far ahead of every state."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can you add up ChatGPT and Gemini users to get total AI users?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Provider numbers overlap heavily because the same person uses several tools, they are self-reported and unaudited, and they mix incompatible metrics: weekly users, monthly users, downloads, and paid seats. Population surveys are the only honest basis for a total."
+     }
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>
@@ -167,6 +465,13 @@ h2[id]{scroll-margin-top:108px}
 .pull{margin-top:26px;border-left:2px solid var(--gold);padding:4px 0 4px 20px;max-width:62ch}
 .pull b{display:block;margin-bottom:6px;color:var(--fg)}
 .pull p{font-size:.95rem;color:var(--muted);margin:0}
+/* answer-first key numbers */
+.keystats{border:1px solid var(--paper-line);border-radius:16px;background:rgba(255,255,255,.5);padding:20px 24px;margin:0 0 26px}
+.keystats .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d;margin-bottom:10px}
+.keystats ul{list-style:none;display:grid;gap:8px}
+.keystats li{display:flex;align-items:baseline;gap:10px;font-size:.92rem;color:var(--paper-muted);flex-wrap:wrap}
+.keystats li b{font-family:var(--display);font-size:1.25rem;color:var(--paper-ink);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.keystats li span{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;color:#795c2d}
 /* ── Index chart (individual adoption strands) ── */
 .idx-chart{margin:38px 0 6px;max-width:820px}
 .idx-chart svg{width:100%;height:auto;display:block;overflow:visible}
@@ -348,6 +653,17 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <p class="intro">Not provider hype. Probability-sampled surveys, each strand labeled with exactly what it asks.</p>
         </div>
         <div class="prose reveal">
+          <div class="keystats" id="key-stats">
+            <div class="label">Key numbers &middot; updated July 2026</div>
+            <ul>
+              <li><b>800M</b> weekly ChatGPT users, the largest disclosed AI user count <span>OpenAI &middot; Oct 2025</span></li>
+              <li><b>44%</b> of US adults have used ChatGPT <span>Pew &middot; Feb 2026</span></li>
+              <li><b>61% tried &middot; 34% weekly</b> generative AI across six rich countries <span>Reuters Institute &middot; 2025</span></li>
+              <li><b>&asymp;18%</b> of US businesses use AI, up from under 4% in 2023 <span>Census BTOS &middot; 2026</span></li>
+              <li><b>20%</b> of EU enterprises use AI; Denmark leads at 42% <span>Eurostat &middot; 2025</span></li>
+              <li><b>&asymp;1 in 10</b> humans has a weekly AI habit <span>floor estimate &middot; method below</span></li>
+            </ul>
+          </div>
           <p><strong>There is no single "AI adoption number."</strong> There are strands, and each answers a different question. Tried it once? The rich world crossed half in 2025. Weekly habit? A third. In the US, ChatGPT alone has gone from 18% of adults to 44% in three years — the fastest consumer technology diffusion ever polled by Pew.</p>
           <div class="idx-chart" id="idxChart" role="img" aria-label="Adoption strands 2023 to 2026: Pew US ChatGPT use rises 18 to 44 percent; Reuters Institute six-country ever-use rises 40 to 61 percent; weekly use 18 to 34 percent; Google Ipsos 21-country past-year use 38 to 48 percent."></div>
           <div class="idx-legend" id="idxLegend"></div>
@@ -419,15 +735,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="srcs reveal">
         <div class="kicker">05 &middot; Method</div>
         <h2 style="margin-bottom:26px">The numbers, sourced</h2>
-        <div class="src-row"><span class="t">T1</span><span><b>US Census Bureau, BTOS AI supplement</b> — biweekly firm survey; national, state, sector. Natl &asymp;18% (2026) from &lt;4% (2023). census.gov/hfp/btos</span></div>
-        <div class="src-row"><span class="t">T1</span><span><b>Eurostat isoc_eb_ai</b> — enterprises (10+ emp.) using AI, per EU country, annual. EU 20.0% (2025), DK 42.0%, RO 5.2%.</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b>Pew Research Center</b> — % of US adults who have used ChatGPT: 18% (2023), 34% (Feb&#8211;Mar 2025, n=5,123), 44% (Feb 2026).</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b>Reuters Institute, Generative AI &amp; News 2025</b> — six countries (AR DK FR JP UK US): ever used 40&rarr;61%, weekly 18&rarr;34% (2024&rarr;2025).</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b>Stanford HAI AI Index</b> — organizations using AI in &ge;1 function: 55% (2023) &rarr; 78% (2024) &rarr; 88% (2026 report).</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b>Google &middot; Ipsos, "Our Life With AI"</b> — 21 countries: used AI past 12 months 38&rarr;48%. <b>Microsoft &middot; LinkedIn WTI</b> — 75% of knowledge workers (31 countries, 2025).</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b>Anthropic Economic Index</b> — Claude usage intensity by country and US state; open data on Hugging Face (Anthropic/EconomicIndex).</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b>Provider disclosures</b> — OpenAI WAU (100M Nov 2023 &rarr; 800M Oct 2025), Alphabet earnings (Gemini 750M MAU Feb 2026), Microsoft (Copilot 20M users, 4.7M paid), Meta (Llama 1.2B downloads), Anysphere (Cursor $2B ARR), Ollama (8.9M monthly devs). Dated inline above.</span></div>
-        <div class="src-row"><span class="t">T3/4</span><span><b>Flagged estimates</b> — Grok ~64M MAU, Perplexity 780M queries/mo: company statements relayed by press, shown as hollow markers. Menlo Ventures enterprise LLM share (Anthropic 40% / OpenAI 27% / Google 21%, Dec 2025) is a VC survey, not an audit.</span></div>
+        <div class="src-row"><span class="t">T1</span><span><b><a href="https://www.census.gov/hfp/btos/">US Census Bureau, BTOS AI supplement</a></b> — biweekly firm survey; national, state, sector. Natl &asymp;18% (2026) from &lt;4% (2023). Corroborated by the <a href="https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html">Federal Reserve FEDS Note (Apr 2026)</a>.</span></div>
+        <div class="src-row"><span class="t">T1</span><span><b><a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a></b> — enterprises (10+ emp.) using AI, per EU country, annual. EU 20.0% (2025), DK 42.0%, RO 5.2%.</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/">Pew Research Center</a></b> — % of US adults who have used ChatGPT: 18% (2023), 34% (Feb&#8211;Mar 2025, n=5,123), 44% (Feb 2026, <a href="https://www.pewresearch.org/topic/internet-technology/emerging-technology/artificial-intelligence/">latest wave</a>).</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf">Reuters Institute, Generative AI &amp; News 2025</a></b> — six countries (AR DK FR JP UK US): ever used 40&rarr;61%, weekly 18&rarr;34% (2024&rarr;2025).</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">Stanford HAI AI Index</a></b> — organizations using AI in &ge;1 function: 55% (2023) &rarr; 78% (2024) &rarr; 88% (2026 report).</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.ipsos.com/en">Google &middot; Ipsos, "Our Life With AI"</a></b> — 21 countries: used AI past 12 months 38&rarr;48%. <b><a href="https://www.microsoft.com/en-us/worklab/work-trend-index">Microsoft &middot; LinkedIn WTI</a></b> — 75% of knowledge workers (31 countries, 2025).</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.anthropic.com/economic-index">Anthropic Economic Index</a></b> — Claude usage intensity by country and US state; <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">open data on Hugging Face</a>.</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b>Provider disclosures</b> — <a href="https://openai.com/news/">OpenAI</a> WAU (100M Nov 2023 &rarr; 800M Oct 2025), <a href="https://abc.xyz/investor/">Alphabet earnings</a> (Gemini 750M MAU Feb 2026), <a href="https://github.blog/">Microsoft/GitHub</a> (Copilot 20M users, 4.7M paid), <a href="https://ai.meta.com/blog/">Meta</a> (Llama 1.2B downloads), Anysphere (Cursor $2B ARR), <a href="https://ollama.com/blog">Ollama</a> (8.9M monthly devs). Dated inline above.</span></div>
+        <div class="src-row"><span class="t">T3/4</span><span><b>Flagged estimates</b> — Grok ~64M MAU, Perplexity 780M queries/mo: company statements relayed by press, shown as hollow markers. Menlo Ventures enterprise LLM share (Anthropic 40% / OpenAI 27% / Google 21%, Dec 2025) is a <a href="https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/">VC survey</a>, not an audit.</span></div>
+        <div class="src-row"><span class="t">CSV</span><span><b>Download this page's data</b> — <a href="/ai-adoption/data/adoption-surveys.csv">adoption-surveys.csv</a> &middot; <a href="/ai-adoption/data/provider-milestones.csv">provider-milestones.csv</a> &middot; <a href="/ai-adoption/data/us-state-btos.csv">us-state-btos.csv</a> &middot; <a href="/ai-adoption/data/eu-enterprise-ai.csv">eu-enterprise-ai.csv</a>. Compilation CC BY 4.0 — cite "GotCOS AI Adoption Index." Underlying figures belong to their publishers.</span></div>
         <div class="caveats">
           <div class="label">How to read all of this honestly</div>
           <ul>
@@ -441,11 +758,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="reveal">
         <h2 id="faq" style="font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:22px">Questions people actually ask</h2>
-        <details><summary>How many people use ChatGPT?</summary><p>OpenAI reported <strong>800 million weekly active users</strong> in October 2025 — the largest disclosed figure for any AI product. In the US, 44% of adults told Pew in February 2026 they have used it, up from 18% in 2023.</p></details>
-        <details><summary>What share of people use generative AI?</summary><p>In the six countries the Reuters Institute tracks, <strong>61% have tried it</strong> and <strong>34% use it weekly</strong> (2025). Across 21 countries, Google/Ipsos found 48% used AI in the past year. Globally, weekly use is still roughly one human in ten.</p></details>
-        <details><summary>What share of businesses use AI?</summary><p>About <strong>18% of US firms</strong> (Census BTOS, early 2026, up from under 4% in late 2023) and <strong>20% of EU enterprises</strong> (Eurostat 2025), led by Denmark at 42%. Enterprise surveys of larger firms run much higher — 88% on Stanford HAI's broad measure.</p></details>
-        <details><summary>Which US state uses AI most?</summary><p><strong>Colorado</strong>, at 23.2% of businesses, with Arizona (22.9%) and Washington DC (22.5%) close behind; West Virginia is lowest at 10.8%. On per-capita usage intensity of Claude, DC is in a league of its own at 3.8&times; its population share.</p></details>
-        <details><summary>Can you add ChatGPT and Gemini users for a total?</summary><p>No. The counts <strong>overlap</strong> (same people, several tools), they are <strong>self-reported</strong>, and they mix incompatible metrics — weekly vs monthly users vs downloads vs seats. That is why this page anchors its index on population surveys and treats provider numbers as dated milestones.</p></details>
+        <details id="faq-chatgpt-users"><summary>How many people use ChatGPT?</summary><p>OpenAI reported <strong>800 million weekly active users</strong> in October 2025 — the largest disclosed figure for any AI product. In the US, 44% of adults told Pew in February 2026 they have used it, up from 18% in 2023.</p></details>
+        <details id="faq-genai-share"><summary>What share of people use generative AI?</summary><p>In the six countries the Reuters Institute tracks, <strong>61% have tried it</strong> and <strong>34% use it weekly</strong> (2025). Across 21 countries, Google/Ipsos found 48% used AI in the past year. Globally, weekly use is still roughly one human in ten.</p></details>
+        <details id="faq-business-share"><summary>What share of businesses use AI?</summary><p>About <strong>18% of US firms</strong> (Census BTOS, early 2026, up from under 4% in late 2023) and <strong>20% of EU enterprises</strong> (Eurostat 2025), led by Denmark at 42%. Enterprise surveys of larger firms run much higher — 88% on Stanford HAI's broad measure.</p></details>
+        <details id="faq-top-state"><summary>Which US state uses AI most?</summary><p><strong>Colorado</strong>, at 23.2% of businesses, with Arizona (22.9%) and Washington DC (22.5%) close behind; West Virginia is lowest at 10.8%. On per-capita usage intensity of Claude, DC is in a league of its own at 3.8&times; its population share.</p></details>
+        <details id="faq-non-additive"><summary>Can you add ChatGPT and Gemini users for a total?</summary><p>No. The counts <strong>overlap</strong> (same people, several tools), they are <strong>self-reported</strong>, and they mix incompatible metrics — weekly vs monthly users vs downloads vs seats. That is why this page anchors its index on population surveys and treats provider numbers as dated milestones.</p></details>
       </div>
     </div>
   </section>

@@ -1,0 +1,11 @@
+series,geography,metric,wave_date,value_pct,source,source_url,trust_tier
+pew_us_chatgpt,United States,share of adults who have ever used ChatGPT,2023-07,18,Pew Research Center,https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/,T2
+pew_us_chatgpt,United States,share of adults who have ever used ChatGPT,2025-02,34,Pew Research Center,https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/,T2
+pew_us_chatgpt,United States,share of adults who have ever used ChatGPT,2026-02,44,Pew Research Center,https://www.pewresearch.org/topic/internet-technology/emerging-technology/artificial-intelligence/,T2
+reuters_ever,AR DK FR JP UK US (avg),share who have ever used generative AI,2024-05,40,Reuters Institute for the Study of Journalism,https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf,T2
+reuters_ever,AR DK FR JP UK US (avg),share who have ever used generative AI,2025-05,61,Reuters Institute for the Study of Journalism,https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf,T2
+reuters_weekly,AR DK FR JP UK US (avg),share who used generative AI in the last week,2024-05,18,Reuters Institute for the Study of Journalism,https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf,T2
+reuters_weekly,AR DK FR JP UK US (avg),share who used generative AI in the last week,2025-05,34,Reuters Institute for the Study of Journalism,https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf,T2
+ipsos_google,21 countries (avg),share who used AI in the past 12 months,2024-06,38,"Google and Ipsos, Our Life With AI",https://www.ipsos.com/en,T3
+ipsos_google,21 countries (avg),share who used AI in the past 12 months,2025-06,48,"Google and Ipsos, Our Life With AI",https://www.ipsos.com/en,T3
+msft_wti,31 countries,share of knowledge workers using generative AI,2025-04,75,"Microsoft and LinkedIn, Work Trend Index",https://www.microsoft.com/en-us/worklab/work-trend-index,T3
