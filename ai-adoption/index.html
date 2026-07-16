@@ -644,7 +644,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .xp-play:hover{background:rgba(201,169,110,.1)}
 .xp-chartbox{position:relative;z-index:2}
 .xp-chartbox svg#xpChart{display:block;width:100%;height:auto}
-.xp-lens{position:absolute;top:4px;right:4px;width:170px;text-align:center;pointer-events:none}
+.xp-lens{position:absolute;top:4px;right:4px;width:170px;text-align:center;pointer-events:none;transition:opacity .3s ease,left .35s ease,right .35s ease,top .35s ease,bottom .35s ease}
+.xp-lens.peek{opacity:.14}
+.xp-lens[data-pos="tl"]{left:56px;top:4px;right:auto;bottom:auto}
+.xp-lens[data-pos="tr"]{right:4px;top:4px;left:auto;bottom:auto}
+.xp-lens[data-pos="br"]{right:4px;bottom:36px;left:auto;top:auto}
+.xp-lens[data-pos="bl"]{left:56px;bottom:36px;right:auto;top:auto}
 .xp-lens svg{width:170px;height:170px;display:block;margin:0 auto}
 .xp-lens .cap{margin-top:1px;font-size:.72rem;font-weight:600;color:var(--fg)}
 .xp-lens .cap small{display:block;font-family:var(--mono);font-weight:400;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ghost)}
@@ -1316,9 +1321,38 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
     svg.setAttribute('width', W); svg.setAttribute('height', H);
     svg.innerHTML = g;
     marker = svg.querySelector('#xpMark');
+    dodgeLens();
   }
 
+  // place the lens in the corner with the least data under it
+  function dodgeLens(){
+    var lensEl = document.getElementById('xpLens');
+    if (!lensEl || !CG) return;
+    var bw = 200, bh = 205; // lens footprint incl. caption
+    var corners = {
+      tl: { x0: CG.ml + 12, x1: CG.ml + 12 + bw, y0: 0, y1: bh, penalty: 0 },
+      tr: { x0: CG.W - CG.mr - bw, x1: CG.W - CG.mr, y0: 0, y1: bh, penalty: 0.5 },
+      br: { x0: CG.W - CG.mr - bw, x1: CG.W - CG.mr, y0: CG.H - 36 - bh, y1: CG.H - 36, penalty: 6 },
+      bl: { x0: CG.ml + 12, x1: CG.ml + 12 + bw, y0: CG.H - 36 - bh, y1: CG.H - 36, penalty: 8 }
+    };
+    var scores = { tl: corners.tl.penalty, tr: corners.tr.penalty, br: corners.br.penalty, bl: corners.bl.penalty };
+    sel.forEach(function(id){
+      (REG[id].pts || []).forEach(function(pt){
+        var px = CG.X(pt[0]), py = CG.Y(pt[1]);
+        Object.keys(corners).forEach(function(k){
+          var b = corners[k];
+          if (px >= b.x0 - 10 && px <= b.x1 + 46 && py >= b.y0 && py <= b.y1 + 12) scores[k]++;
+        });
+      });
+    });
+    var best = 'tl';
+    Object.keys(scores).forEach(function(k){ if (scores[k] < scores[best]) best = k; });
+    lensEl.dataset.pos = best;
+  }
+
+  var lensPeekEl = document.getElementById('xpLens');
   svg.addEventListener('mousemove', function(e){
+    if (lensPeekEl) lensPeekEl.classList.add('peek');
     if (!CG) return;
     var r = svg.getBoundingClientRect();
     var x = (e.clientX - r.left) * (CG.W / r.width);
@@ -1336,7 +1370,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
     if (lx + tt.offsetWidth > br.width - 6) lx = e.clientX - br.left - tt.offsetWidth - 14;
     tt.style.left = lx + 'px'; tt.style.top = ly + 'px';
   });
-  svg.addEventListener('mouseleave', function(){ tt.style.display = 'none'; });
+  svg.addEventListener('mouseleave', function(){ tt.style.display = 'none'; if (lensPeekEl) lensPeekEl.classList.remove('peek'); });
 
   // ---- spotlight lens (world + US states) ----
   var lensSvg = document.getElementById('xpLensSvg'), lensCap = document.getElementById('xpLensCap');
