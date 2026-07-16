@@ -834,7 +834,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="xp-tt" id="xpTT"></div>
         </div>
         <div class="xp-cards" id="xpCards"></div>
-        <p class="xp-note">Sources: <a href="https://www.census.gov/hfp/btos/">Census Bureau BTOS</a> (US + states, share of all businesses using AI in the last two weeks, biweekly since Sep 2023, suppressed cells omitted) &middot; <a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a> (countries, share of enterprises 10+ using any AI technology, annual waves 2021 &middot; 2023 &middot; 2024 &middot; 2025, interpolated between waves). Download: <a href="/ai-adoption/data/btos-state-series.csv">btos-state-series.csv</a> &middot; <a href="/ai-adoption/data/eurostat-country-series.csv">eurostat-country-series.csv</a>.</p>
+        <p class="xp-note">Sources: <a href="https://www.census.gov/hfp/btos/">Census Bureau BTOS</a> (US + states, share of all businesses using AI in the last two weeks, biweekly since Sep 2023; lines show a 3-release rolling average, faint dots are the raw readings, suppressed cells omitted) &middot; <a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a> (countries, share of enterprises 10+ using any AI technology; solid dots are the annual waves 2021 &middot; 2023 &middot; 2024 &middot; 2025, dashes interpolate between them, dotted tails carry the last wave forward). Download: <a href="/ai-adoption/data/btos-state-series.csv">btos-state-series.csv</a> &middot; <a href="/ai-adoption/data/eurostat-country-series.csv">eurostat-country-series.csv</a>.</p>
       </div>
     </div>
   </section>
@@ -1248,6 +1248,18 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
     REG['E:' + k] = { id:'E:'+k, code:k, name: e.name.replace(/ - .*$/, '').replace(/ \(.*$/, ''), kind: kind,
       frame:'Eurostat · annual · enterprises 10+', pts: e.pts, cadence:'annual' };
   });
+  // 3-release centered rolling mean for the noisy biweekly series; annual stays raw
+  function smooth3(pts){
+    return pts.map(function(p, i){
+      var lo = Math.max(0, i-1), hi = Math.min(pts.length-1, i+1), s = 0, n = 0;
+      for (var j = lo; j <= hi; j++){ s += pts[j][1]; n++; }
+      return [p[0], Math.round(s / n * 10) / 10];
+    });
+  }
+  Object.keys(REG).forEach(function(id){
+    var g = REG[id];
+    g.sm = (g.cadence === 'biweekly' && g.pts && g.pts.length > 2) ? smooth3(g.pts) : g.pts;
+  });
   var ALL = Object.keys(REG).sort(function(a,b){ return REG[a].name.localeCompare(REG[b].name); });
 
   var sel = ['S:US', 'S:CO', 'E:DK', 'E:EU27_2020'];
@@ -1260,7 +1272,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
 
   // series value at fractional year (linear between points, null outside range)
   function valAt(g, t){
-    var p = g.pts;
+    var p = g.sm || g.pts;
     if (!p || !p.length) return null;
     if (t < p[0][0] - 0.01) return null;
     if (t <= p[0][0]) return p[0][1];
@@ -1280,7 +1292,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
 
   function buildChart(){
     var W = box.clientWidth || 900, H = Math.max(300, Math.min(400, W * 0.4));
-    var ml = 44, mr = 16, mt = 18, mb = 30;
+    var ml = 44, mr = (W < 640 ? 56 : 128), mt = 28, mb = 30;
     var pw = W - ml - mr, ph = H - mt - mb;
     var yMax = 10;
     sel.forEach(function(id){ (REG[id].pts||[]).forEach(function(p){ if (p[1] > yMax) yMax = p[1]; }); });
@@ -1298,23 +1310,49 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
       g += '<text x="'+X(yr)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10.5" fill="rgba(240,232,218,.4)" style="font-variant-numeric:tabular-nums">'+yr+'</text>';
     }
     g += '<line x1="'+ml+'" y1="'+Y(0)+'" x2="'+(W-mr)+'" y2="'+Y(0)+'" stroke="rgba(240,232,218,.22)" stroke-width="1"/>';
+    g += '<text x="'+ml+'" y="12" font-size="9" letter-spacing="2" fill="rgba(240,232,218,.42)" style="font-family:var(--mono);text-transform:uppercase">% of businesses using AI</text>';
 
+    var ends = [];
     sel.forEach(function(id){
       var geo = REG[id], cc = colorOf(id), f = (id === focusId);
-      var p = geo.pts || [];
+      var raw = geo.pts || [], p = geo.sm || raw;
       if (!p.length) return;
-      var d = '';
-      p.forEach(function(pt, k){ d += (k ? ' L ' : 'M ') + X(pt[0]).toFixed(1) + ' ' + Y(pt[1]).toFixed(1); });
-      var dash = geo.cadence === 'annual' ? ' stroke-dasharray="1 0"' : '';
-      g += '<path class="xp-line" d="'+d+'" fill="none" stroke="'+cc+'" stroke-width="'+(f?2.6:1.5)+'" opacity="'+(f?0.95:0.45)+'" stroke-linejoin="round"'+dash+'/>';
-      // wave dots: annual = every point; biweekly = subsample every 6th + last
-      var dots = geo.cadence === 'annual' ? p : p.filter(function(_, i){ return i % 6 === 0 || i === p.length-1; });
-      dots.forEach(function(pt){
-        g += '<circle cx="'+X(pt[0]).toFixed(1)+'" cy="'+Y(pt[1]).toFixed(1)+'" r="'+(geo.cadence==='annual' ? (f?3.4:2.6) : (f?2:1.4))+'" fill="'+cc+'" opacity="'+(f?1:0.5)+'" stroke="#1d140c" stroke-width="1"/>';
-      });
-      // end label
-      var last = p[p.length-1];
-      g += '<text x="'+(X(last[0])+6)+'" y="'+(Y(last[1])+3)+'" font-size="10.5" font-weight="600" fill="'+cc+'" opacity="'+(f?1:0.6)+'" style="font-variant-numeric:tabular-nums">'+last[1].toFixed(0)+'%</text>';
+      if (geo.cadence === 'annual'){
+        // dashed = interpolation between measured waves; dotted tail = last wave carried forward
+        var d = '';
+        p.forEach(function(pt, k){ d += (k ? ' L ' : 'M ') + X(pt[0]).toFixed(1) + ' ' + Y(pt[1]).toFixed(1); });
+        g += '<path class="xp-line" d="'+d+'" fill="none" stroke="'+cc+'" stroke-width="'+(f?2.4:1.5)+'" opacity="'+(f?0.9:0.45)+'" stroke-linejoin="round" stroke-dasharray="5 4"/>';
+        var lastW = p[p.length-1];
+        g += '<line x1="'+X(lastW[0]).toFixed(1)+'" y1="'+Y(lastW[1]).toFixed(1)+'" x2="'+X(T1).toFixed(1)+'" y2="'+Y(lastW[1]).toFixed(1)+'" stroke="'+cc+'" stroke-width="'+(f?1.6:1)+'" opacity="'+(f?0.5:0.28)+'" stroke-dasharray="2 5"/>';
+        p.forEach(function(pt){
+          g += '<circle cx="'+X(pt[0]).toFixed(1)+'" cy="'+Y(pt[1]).toFixed(1)+'" r="'+(f?4:3.1)+'" fill="'+cc+'" opacity="'+(f?1:0.6)+'" stroke="#1d140c" stroke-width="1.2"/>';
+        });
+        ends.push({ sx: X(T1), sy: Y(lastW[1]), ty: Y(lastW[1]), v: lastW[1], name: geo.name, cc: cc, f: f });
+      } else {
+        // smoothed trend is the stroke; raw biweekly readings sit behind as faint dots
+        raw.forEach(function(pt){
+          g += '<circle cx="'+X(pt[0]).toFixed(1)+'" cy="'+Y(pt[1]).toFixed(1)+'" r="1.3" fill="'+cc+'" opacity="'+(f?0.32:0.16)+'"/>';
+        });
+        var d2 = '';
+        p.forEach(function(pt, k){ d2 += (k ? ' L ' : 'M ') + X(pt[0]).toFixed(1) + ' ' + Y(pt[1]).toFixed(1); });
+        g += '<path class="xp-line" d="'+d2+'" fill="none" stroke="'+cc+'" stroke-width="'+(f?2.6:1.6)+'" opacity="'+(f?0.95:0.5)+'" stroke-linejoin="round"/>';
+        var lastS = p[p.length-1];
+        ends.push({ sx: X(lastS[0]), sy: Y(lastS[1]), ty: Y(lastS[1]), v: lastS[1], name: geo.name, cc: cc, f: f });
+      }
+    });
+    // named end labels, collision-resolved, leader lines when displaced
+    ends.sort(function(a,b){ return a.ty - b.ty; });
+    for (var ei = 0; ei < ends.length; ei++){
+      var mn = mt + 6, mx = mt + ph - 4;
+      ends[ei].ty = Math.min(mx, Math.max(mn, ends[ei].ty));
+      if (ei > 0 && ends[ei].ty - ends[ei-1].ty < 14) ends[ei].ty = ends[ei-1].ty + 14;
+    }
+    ends.forEach(function(en){
+      var lx = W - mr + 8;
+      if (Math.abs(en.ty - en.sy) > 5 || en.sx < W - mr - 6)
+        g += '<line x1="'+(en.sx+3)+'" y1="'+en.sy.toFixed(1)+'" x2="'+(lx-3)+'" y2="'+en.ty.toFixed(1)+'" stroke="'+en.cc+'" stroke-width="0.7" opacity="0.35"/>';
+      var lab = (W < 640) ? en.v.toFixed(1)+'%' : esc(en.name)+' '+en.v.toFixed(1)+'%';
+      g += '<text x="'+lx+'" y="'+(en.ty+3.5).toFixed(1)+'" font-size="10.5" font-weight="600" fill="'+en.cc+'" opacity="'+(en.f?1:0.78)+'" style="font-variant-numeric:tabular-nums">'+lab+'</text>';
     });
     g += '<line id="xpMark" x1="'+X(Math.min(tF,T1))+'" y1="'+mt+'" x2="'+X(Math.min(tF,T1))+'" y2="'+(mt+ph)+'" stroke="rgba(240,232,218,.5)" stroke-width="1" stroke-dasharray="3 3"/>';
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
