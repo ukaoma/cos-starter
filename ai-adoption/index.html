@@ -1311,7 +1311,8 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
     }
     g += '<line x1="'+ml+'" y1="'+Y(0)+'" x2="'+(W-mr)+'" y2="'+Y(0)+'" stroke="rgba(240,232,218,.22)" stroke-width="1"/>';
     g += '<text x="'+ml+'" y="12" font-size="9" letter-spacing="2" fill="rgba(240,232,218,.42)" style="font-family:var(--mono);text-transform:uppercase">% of businesses using AI</text>';
-    g += '<defs><clipPath id="xpwipe"><rect id="xpWipeRect" x="0" y="0" width="'+W+'" height="'+H+'"/></clipPath></defs>';
+    g += '<defs><clipPath id="xpwipe"><rect id="xpWipeRect" x="0" y="0" width="'+W+'" height="'+H+'"/></clipPath>' +
+         '<linearGradient id="xpSweepGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c9a96e" stop-opacity="0"/><stop offset="1" stop-color="#c9a96e" stop-opacity="0.13"/></linearGradient></defs>';
     g += '<g clip-path="url(#xpwipe)">';
 
     var ends = [];
@@ -1343,6 +1344,9 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
       }
     });
     g += '</g>';
+    g += '<g id="xpSweep" opacity="0" pointer-events="none">' +
+         '<rect id="xpSweepTrail" x="'+(ml-90)+'" y="'+mt+'" width="90" height="'+ph+'" fill="url(#xpSweepGrad)"/>' +
+         '<line id="xpSweepLine" x1="'+ml+'" x2="'+ml+'" y1="'+(mt-4)+'" y2="'+(mt+ph)+'" stroke="#c9a96e" stroke-width="1"/></g>';
     // named end labels, collision-resolved, leader lines when displaced
     ends.sort(function(a,b){ return a.ty - b.ty; });
     for (var ei = 0; ei < ends.length; ei++){
@@ -1375,29 +1379,59 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
   function finishPaint(){
     var rect = svg.querySelector('#xpWipeRect');
     if (rect && CG) rect.setAttribute('width', CG.W);
+    var sweep = svg.querySelector('#xpSweep');
+    if (sweep) sweep.setAttribute('opacity', '0');
     svg.querySelectorAll('.xp-endlab, #xpMark').forEach(function(el){ el.style.opacity = ''; });
   }
+  var queueToken = 0;
   function ensurePainted(){
+    queueToken++;
     if (!painted){ painted = true; if (wipeTween && wipeTween.cancel) wipeTween.cancel(); finishPaint(); }
   }
-  function paintChart(){
+  // start the wipe only once scrolling has settled, so the whole sweep is actually seen
+  function queueFirstPaint(){
+    var tk = ++queueToken, idleT = null;
+    function go(){
+      if (tk !== queueToken) return;
+      queueToken++;
+      window.removeEventListener('scroll', onScroll);
+      paintChart();
+    }
+    function onScroll(){ if (idleT) clearTimeout(idleT); idleT = setTimeout(go, 170); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    idleT = setTimeout(go, 200);
+    setTimeout(go, 950);
+  }
+  function paintChart(fast){
     if (!CG) return;
     if (rm.matches || !AN || !AN.animate || playing){ finishPaint(); return; }
     var rect = svg.querySelector('#xpWipeRect');
     if (!rect) { finishPaint(); return; }
     var late = svg.querySelectorAll('.xp-endlab, #xpMark');
     late.forEach(function(el){ el.style.opacity = '0'; });
-    rect.setAttribute('width', 0);
+    var sweep = svg.querySelector('#xpSweep'), sline = svg.querySelector('#xpSweepLine'), strail = svg.querySelector('#xpSweepTrail');
+    var x0 = CG.ml, x1 = CG.W - CG.mr + 4;
+    rect.setAttribute('width', x0);
+    if (sweep) sweep.setAttribute('opacity', '1');
     if (wipeTween && wipeTween.cancel) wipeTween.cancel();
-    var o = { w: 0 };
-    wipeTween = AN.animate(o, { w: CG.W, duration: 1500, ease: 'inOut(2)',
-      onUpdate: function(){ rect.setAttribute('width', o.w.toFixed(1)); },
+    var o = { p: 0 };
+    wipeTween = AN.animate(o, { p: 1, duration: fast ? 1200 : 2300, ease: 'out(1.7)',
+      onUpdate: function(){
+        var front = x0 + (x1 - x0) * o.p;
+        rect.setAttribute('width', front.toFixed(1));
+        if (sline){ sline.setAttribute('x1', front.toFixed(1)); sline.setAttribute('x2', front.toFixed(1)); }
+        if (strail) strail.setAttribute('x', (front - 90).toFixed(1));
+        if (sweep && o.p > 0.93) sweep.setAttribute('opacity', Math.max(0, (1 - o.p) / 0.07).toFixed(2));
+      },
       onComplete: function(){
         rect.setAttribute('width', CG.W);
-        AN.animate(late, { opacity: [0, 1], duration: 420, ease: 'out(2)', delay: AN.stagger ? AN.stagger(50) : 0,
-          onComplete: function(){ late.forEach(function(el){ el.style.opacity = ''; }); } });
+        if (sweep) sweep.setAttribute('opacity', '0');
+        try {
+          AN.animate(late, { opacity: [0, 1], translateX: [-6, 0], duration: 460, ease: 'out(2)', delay: AN.stagger ? AN.stagger(55) : 0,
+            onComplete: function(){ late.forEach(function(el){ el.style.opacity = ''; el.style.transform = ''; }); } });
+        } catch (err){ late.forEach(function(el){ el.style.opacity = ''; }); }
       } });
-    setTimeout(finishPaint, 3000);
+    setTimeout(finishPaint, fast ? 2400 : 3600);
   }
 
   // place the lens in the corner with the least data under it
@@ -1677,7 +1711,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
   function rebuild(lensAnim, paint){
     renderChips(); buildChart(); renderCards(); moveLens(focusId, !!lensAnim);
     lastReadYear = null; frame();
-    if (paint && painted) paintChart();
+    if (paint && painted) paintChart(true);
   }
   var rsz;
   window.addEventListener('resize', function(){ clearTimeout(rsz); rsz = setTimeout(function(){ rebuild(false); }, 140); });
@@ -1691,7 +1725,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
     var pio = new IntersectionObserver(function(es){
       es.forEach(function(en){
         lastXpIntersect = en.isIntersecting;
-        if (en.isIntersecting && !painted && !document.hidden){ painted = true; pio.disconnect(); paintChart(); }
+        if (en.isIntersecting && !painted && !document.hidden){ painted = true; pio.disconnect(); queueFirstPaint(); }
       });
     }, { threshold: 0.3 });
     pio.observe(box);
@@ -1699,7 +1733,7 @@ window.XP_META={"focus":{"E:MT":{"c":[14.4,35.9],"w":3.4,"h":2.6},"S:US":{"c":[-
       if (!document.hidden && !painted && lastXpIntersect){
         painted = true;
         try { pio.disconnect(); } catch(err){}
-        paintChart();
+        queueFirstPaint();
       }
     });
     setTimeout(ensurePainted, 12000);
