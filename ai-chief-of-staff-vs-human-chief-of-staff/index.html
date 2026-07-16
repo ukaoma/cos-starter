@@ -103,7 +103,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 /* -- Nav -- full-width dark strip + contained light card (shared with homepage) -- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
 .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
-.nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
 .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nt-links{display:flex;gap:20px;flex-shrink:0}
 .nt-links a{color:var(--muted);transition:color .2s}
@@ -146,7 +146,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px}.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:22px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{display:block;color:var(--gold);font-weight:400;font-style:italic}
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:60ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
@@ -204,7 +204,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
 .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
 .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
+.sticky{position:sticky;top:120px;align-self:start}.kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:#795c2d;margin-bottom:18px}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* halftone plate: 1861 Frank Leslie's headquarters-staff engraving (PD) rides INSIDE the sticky column as the human-staff baseline, faded into the section */
 #baseline .sticky .plate{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:3/2;opacity:.5;pointer-events:none;background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/plate-staff.jpg");background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.03);mix-blend-mode:multiply}
 #baseline .sticky .plate::after{content:"";position:absolute;inset:0;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%);mask-image:radial-gradient(68% 66% at 48% 50%,#000 12%,rgba(0,0,0,.5) 52%,transparent 80%)}
@@ -215,7 +215,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
 .compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
-.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
+.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--display);font-style:italic;font-weight:500;font-size:.85rem;letter-spacing:0;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
 .dark-section .after-note{color:var(--muted);font-size:1rem;max-width:62ch;margin-top:30px}.dark-section .after-note strong{color:var(--fg)}
 .crosslink{color:var(--paper-muted);font-size:.95rem;margin-top:26px}
 .faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"\2212"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
@@ -305,7 +305,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap reveal">
     <div class="hero-copy">
-      <div class="eyebrow">Field Guide &middot; AI Chief of Staff</div>
+      <div class="eyebrow">Field guide <svg class="eb-mark" viewBox="0 0 693 760" fill="currentColor" aria-hidden="true"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg> AI Chief of Staff</div>
       <h1>AI Chief of Staff <em>vs Human Chief of Staff</em></h1>
       <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for over a year, across a multi-brand software portfolio and two side businesses, so here is the honest version: what stays human, what gets handed to the machine, and exactly where the line sits between them.</p>
       <div class="actions">
@@ -397,9 +397,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="lead">An AI chief of staff is a context-engineered system that walks into the work already knowing your roles, your people, your history, and your numbers. It is not a chatbot with a calendar plugin. It is not an AI executive assistant. It holds your operating context and reasons across it.</p>
       <p class="after-note">The whole difference sits in that phrase, context-engineered. A generic model is brilliant and blank. It has never met your team. An AI chief of staff is the same model wrapped in a system that hands it the right context at the right moment: who this person is, what you last decided, where the project stalled. When it answers like it has been in every meeting, that is not the model being smart. It is the system being prepared. That work has a name, and <a href="/context-engineering-vs-prompt-engineering/">this is context engineering, not prompt engineering</a>.</p>
       <div class="anatomy">
-        <div class="part"><span class="num">01 &middot; YOUR PEOPLE</span><h3>Who is in the room</h3><p>Who reports to you, who you answer to, who the client is, and how each one wants to be handled.</p></div>
-        <div class="part"><span class="num">02 &middot; YOUR HISTORY</span><h3>What already happened</h3><p>Every decision, correction, and meeting, kept outside a single chat window so it actually survives.</p></div>
-        <div class="part"><span class="num">03 &middot; YOUR PRIORITIES</span><h3>What you are paid for</h3><p>What matters this quarter, the numbers you watch, and the outcomes the business measures you on.</p></div>
+        <div class="part"><span class="num">1. Your people</span><h3>Who is in the room</h3><p>Who reports to you, who you answer to, who the client is, and how each one wants to be handled.</p></div>
+        <div class="part"><span class="num">2. Your history</span><h3>What already happened</h3><p>Every decision, correction, and meeting, kept outside a single chat window so it actually survives.</p></div>
+        <div class="part"><span class="num">3. Your priorities</span><h3>What you are paid for</h3><p>What matters this quarter, the numbers you watch, and the outcomes the business measures you on.</p></div>
       </div>
       <p class="after-note">Take any of that away and you are back to a clever scheduler. <strong>Agentic AI without your context is just autocomplete with permissions.</strong></p>
     </div>
@@ -411,12 +411,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>What the AI actually replaces</h2>
       <p class="lead">Start with what nobody will miss. Large parts of the chief-of-staff job burn hours and require almost no judgment. That is the layer an AI chief of staff absorbs first.</p>
       <div class="anatomy">
-        <div class="part"><span class="num">01 &middot; CONTEXT RETRIEVAL</span><h3>Who, what, where were we</h3><p>Who is this, what did we decide, where did we leave it. Answered in seconds, not a folder dig.</p></div>
-        <div class="part"><span class="num">02 &middot; DATA GATHERING</span><h3>The same numbers, again</h3><p>Pulling the same figures out of your CRM, your call recordings, your chat, and your inbox.</p></div>
-        <div class="part"><span class="num">03 &middot; MEETING PREP</span><h3>Arrive loaded</h3><p>Assembling the brief before every call so you walk in ready instead of skimming on the way there.</p></div>
-        <div class="part"><span class="num">04 &middot; COORDINATION</span><h3>The follow-up churn</h3><p>The repetitive reminders, nudges, and status chasing that quietly eats a Friday afternoon.</p></div>
-        <div class="part"><span class="num">05 &middot; HANDOFF FRICTION</span><h3>Knowledge in one head</h3><p>The context that used to live in one person's memory, now written down and retrievable by anyone.</p></div>
-        <div class="part"><span class="num">06 &middot; THE FIRST DRAFT</span><h3>Something to react to</h3><p>The recap, the summary, the routine reply that simply needs to exist before you sharpen it.</p></div>
+        <div class="part"><span class="num">1. Context retrieval</span><h3>Who, what, where were we</h3><p>Who is this, what did we decide, where did we leave it. Answered in seconds, not a folder dig.</p></div>
+        <div class="part"><span class="num">2. Data gathering</span><h3>The same numbers, again</h3><p>Pulling the same figures out of your CRM, your call recordings, your chat, and your inbox.</p></div>
+        <div class="part"><span class="num">3. Meeting prep</span><h3>Arrive loaded</h3><p>Assembling the brief before every call so you walk in ready instead of skimming on the way there.</p></div>
+        <div class="part"><span class="num">4. Coordination</span><h3>The follow-up churn</h3><p>The repetitive reminders, nudges, and status chasing that quietly eats a Friday afternoon.</p></div>
+        <div class="part"><span class="num">5. Handoff friction</span><h3>Knowledge in one head</h3><p>The context that used to live in one person's memory, now written down and retrievable by anyone.</p></div>
+        <div class="part"><span class="num">6. The first draft</span><h3>Something to react to</h3><p>The recap, the summary, the routine reply that simply needs to exist before you sharpen it.</p></div>
       </div>
       <p class="after-note">None of that is the relationship. None of it is the decision. It is the drain around them. <strong>I am not looking for AI to replace people. I am looking to give the people their hours back.</strong></p>
       <div class="handled-card" role="img" aria-label="Example brief. Three routine items are cleared and struck through: context pulled for the 9:30, notes filed to the thread, first-draft prep sent. One item stays live and highlighted for the human: Q3 pricing, a decision that is yours.">
@@ -464,9 +464,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Replace the time-drain, not the human</h2>
       <p class="lead">Here is the sentence that should change how you buy. A traditional chief of staff and an AI chief of staff make two different promises, and the difference is the whole point.</p>
       <div class="anatomy">
-        <div class="part"><span class="num">01 &middot; THE OLD PROMISE</span><h3>Handle the logistics</h3><p>A human chief of staff says: I will handle the logistics so you can focus on strategy.</p></div>
-        <div class="part"><span class="num">02 &middot; THE NEW PROMISE</span><h3>Surface and draft</h3><p>An AI chief of staff says: I will surface the context and handle the routine so you can focus on judgment and relationships.</p></div>
-        <div class="part"><span class="num">03 &middot; THE LINE</span><h3>The human stays</h3><p>The human is never the part that gets replaced. The time-drain is. That is the only honest way to frame it.</p></div>
+        <div class="part"><span class="num">1. The old promise</span><h3>Handle the logistics</h3><p>A human chief of staff says: I will handle the logistics so you can focus on strategy.</p></div>
+        <div class="part"><span class="num">2. The new promise</span><h3>Surface and draft</h3><p>An AI chief of staff says: I will surface the context and handle the routine so you can focus on judgment and relationships.</p></div>
+        <div class="part"><span class="num">3. The line</span><h3>The human stays</h3><p>The human is never the part that gets replaced. The time-drain is. That is the only honest way to frame it.</p></div>
       </div>
       <p class="after-note">Notice what did not change. Someone still owns the strategy, the judgment, and the relationships. What changed is that the person no longer has to earn those hours by grinding through prep first. <strong>The AI clears the runway. The human still flies the plane.</strong></p>
     </div>
@@ -505,9 +505,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Add capacity, not headcount</h2>
       <p class="lead">The clearest proof is not on my calendar. It is in someone else's staffing math. Take one agency deployment.</p>
       <div class="anatomy">
-        <div class="part"><span class="num">01 &middot; THE SETUP</span><h3>Advisors stretched thin</h3><p>At a growth agency we deployed COS at, the client-facing advisors were split between real client work and the prep, notes, and research wrapped around it.</p></div>
-        <div class="part"><span class="num">02 &middot; THE SHIFT</span><h3>The drain moves</h3><p>The system absorbed the prep and the research. The advisor stayed on the client-facing work that only a person can do well.</p></div>
-        <div class="part"><span class="num">03 &middot; THE RESULT</span><h3>Capacity without hiring</h3><p>More output per advisor, with no new hire. The team added revenue without adding headcount.</p></div>
+        <div class="part"><span class="num">1. The setup</span><h3>Advisors stretched thin</h3><p>At a growth agency we deployed COS at, the client-facing advisors were split between real client work and the prep, notes, and research wrapped around it.</p></div>
+        <div class="part"><span class="num">2. The shift</span><h3>The drain moves</h3><p>The system absorbed the prep and the research. The advisor stayed on the client-facing work that only a person can do well.</p></div>
+        <div class="part"><span class="num">3. The result</span><h3>Capacity without hiring</h3><p>More output per advisor, with no new hire. The team added revenue without adding headcount.</p></div>
       </div>
       <p class="after-note">That is the business case in a sentence. An AI chief of staff does not thin your team out. <strong>It lets the team you already have operate above their old ceiling</strong>, because the hours they used to lose to preparation come back as hours they can spend with clients.</p>
     </div>

@@ -68,10 +68,9 @@
   .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 
   /* ── Shared editorial bits ── */
-  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;row-gap:6px}
-  @media(max-width:480px){.eyebrow{letter-spacing:.18em}.eyebrow::before{width:22px}}
+  .eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:0}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
+  
   .eyebrow .num{color:var(--faint)}
-  .eyebrow::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
   .g{background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
   .it{font-style:italic}
   .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent);margin:0}
@@ -97,7 +96,7 @@
   /* ── Nav — full-width dark strip + contained light card (marktpos pattern) ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
   .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
-  .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+  .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
   .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nt-links{display:flex;gap:20px;flex-shrink:0}
   .nt-links a{color:var(--muted);transition:color .2s}
@@ -476,7 +475,6 @@
   section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
   section.light .lead,section.light p,section.light .ck li{color:var(--muted-on-cream)}
   section.light .eyebrow{color:#7a5c2c}
-  section.light .eyebrow::before{background:linear-gradient(90deg,#7a5c2c,transparent)}
   section.light .eyebrow .num{color:var(--faint-on-cream)}
   section.light a{color:#7a5c2c}
   section.light code{color:#7a5c2c}
@@ -750,7 +748,7 @@
 <section class="wrap reveal light" id="problem">
   <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="split">
-    <div class="sec-head"><div class="eyebrow"><span class="num">01</span> The Problem</div>
+    <div class="sec-head"><div class="eyebrow"><span class="num">1.</span> The Problem</div>
       <h2>If AI is electricity, most people still haven't <span class="it g">wired the house.</span></h2>
     </div>
     <div>
@@ -769,7 +767,7 @@
 
 <!-- ── 02 WHAT CHANGES ── -->
 <section class="wrap reveal light" id="benefits">
-  <div class="sec-head"><div class="eyebrow"><span class="num">02</span> What Changes</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">2.</span> What Changes</div>
     <h2>You stop briefing the AI. <span class="it g">It starts briefing you.</span></h2>
   </div>
   <div class="bene-grid">
@@ -784,7 +782,7 @@
 
 <!-- ── 03 THE CONTEXT GRAPH ── -->
 <section class="wrap reveal" id="graph">
-  <div class="sec-head"><div class="eyebrow"><span class="num">03</span> The Context Graph</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">3.</span> The Context Graph</div>
     <h2>One context graph. <span class="it g">Every source you already use.</span></h2>
     <p class="lead">Not another app to move into. COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected context graph. Structured, searchable, and yours.</p>
   </div>
@@ -900,7 +898,7 @@
 
 <!-- ── 04 YOUR KNOWLEDGE GRAPH ── -->
 <section class="wrap reveal" id="realgraph">
-  <div class="sec-head"><div class="eyebrow"><span class="num">04</span> Your Knowledge Graph</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">4.</span> Your Knowledge Graph</div>
     <h2>Everything it knows about your work. <span class="it g">Out in the open.</span></h2>
     <p class="lead">The context you choose to ingest becomes a living knowledge graph: people, companies, meetings, and decisions, extracted and connected. Search it, watch it compound, and keep the working corpus in files and indexes you control. Cloud models and source systems still follow their providers' terms.</p>
   </div>
@@ -937,7 +935,7 @@
 <section class="wrap reveal light" id="start">
   <div class="start-top">
     <div class="start-copy">
-      <div class="sec-head"><div class="eyebrow"><span class="num">05</span> Quick Start</div>
+      <div class="sec-head"><div class="eyebrow"><span class="num">5.</span> Quick Start</div>
         <h2>Five minutes to a <span class="it g">useful foundation.</span></h2>
         <p class="lead">No setup gymnastics. Open <a href="https://claude.ai/claude-code">Claude Code</a> or <a href="https://developers.openai.com/codex/">Codex</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the foundation, then deepens as you use it.</p>
       </div>
@@ -995,7 +993,7 @@
 
 <!-- ── 06 WHAT YOU GET ── -->
 <section class="wrap reveal light" id="get">
-  <div class="sec-head"><div class="eyebrow"><span class="num">06</span> What You Get</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">6.</span> What You Get</div>
     <h2>A directory that <span class="it g">is</span> the system.</h2>
   </div>
   <div class="term">
@@ -1017,7 +1015,7 @@
 
 <!-- ── 07 TIERS ── -->
 <section class="wrap reveal light" id="tiers">
-  <div class="sec-head"><div class="eyebrow"><span class="num">07</span> The 4 Tiers</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">7.</span> The 4 Tiers</div>
     <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
   </div>
   <div class="tiers">
@@ -1031,7 +1029,7 @@
 
 <!-- ── 08 COVERAGE ── -->
 <section class="wrap reveal light" id="assess">
-  <div class="sec-head"><div class="eyebrow"><span class="num">08</span> Coverage Gap</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">8.</span> Coverage Gap</div>
     <h2>Score yourself across <span class="it g">14 domains.</span></h2>
     <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold)">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
   </div>
@@ -1064,7 +1062,7 @@
 
 <!-- ── 09 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
-  <div class="sec-head"><div class="eyebrow"><span class="num">09</span> Integrations</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">9.</span> Integrations</div>
     <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
@@ -1091,7 +1089,7 @@
 <section class="wrap reveal" id="glasses">
   <div class="g2-top">
     <div class="g2-copy">
-      <div class="sec-head"><div class="eyebrow"><span class="num">10</span> COS Glasses</div>
+      <div class="sec-head"><div class="eyebrow"><span class="num">10.</span> COS Glasses</div>
         <h2>The same COS. <span class="it g">Now on your glasses.</span></h2>
         <p class="lead">Every green screen on this page lives here: the Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
       </div>
@@ -1126,7 +1124,7 @@
 <!-- ── 11 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
-    <div class="eyebrow" style="justify-content:center"><span class="num">11</span> For Teams</div>
+    <div class="eyebrow" style="justify-content:center"><span class="num">11.</span> For Teams</div>
     <h2>Buying AI is easy. <span class="g">Getting a team to use it is the real work.</span></h2>
     <p>COS gets each person to a useful answer from real work. Shared company context keeps the team aligned while personal setups stay personal. Start with one workflow, prove the value, then expand.</p>
     <p><strong>Production proof:</strong> COS runs in production at agencies and growth companies. One agency deployment uses role-based context, shared knowledge, scheduled indexing, and integrations with its operating stack, with a formal target of moving utilization from a 51% baseline to 70-80%.</p>
@@ -1158,7 +1156,7 @@
 <!-- ── 12 FAQ · THE CENTAUR TEST ── -->
 <section class="wrap reveal light" id="faq">
   <div class="pixmap-c" aria-hidden="true"><div class="pi"></div></div>
-  <div class="sec-head"><div class="eyebrow"><span class="num">12</span> FAQ</div>
+  <div class="sec-head"><div class="eyebrow"><span class="num">12.</span> FAQ</div>
     <h2>Keep the human as <span class="it g">the head.</span></h2>
     <p class="lead">COS is built on the centaur idea: you keep the direction and judgment. The machine handles the repetition, retrieval, and grunt compute.</p>
     <p class="lead">Go deeper: <a href="/context-engineering-vs-prompt-engineering/">context engineering vs prompt engineering</a> explains why the prompt was never the problem, and <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI chief of staff vs human chief of staff</a> draws the line between what gets automated and what stays yours.</p>
@@ -1180,7 +1178,7 @@
 <!-- ── 13 PHILOSOPHY ── -->
 <section class="wrap reveal" id="philosophy">
   <div class="split">
-    <div class="sec-head"><div class="eyebrow"><span class="num">13</span> Philosophy</div>
+    <div class="sec-head"><div class="eyebrow"><span class="num">13.</span> Philosophy</div>
       <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0">The philosophy</h2>
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>

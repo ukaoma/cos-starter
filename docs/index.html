@@ -87,8 +87,7 @@ section.light .lead,section.light p,section.light li{color:var(--muted-on-cream)
 section.light .eyebrow{color:#7a5c2c}
 section.light a{color:#7a5c2c}
 section.light code{color:#7a5c2c}
-.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow{font-family:var(--display);font-style:italic;font-weight:500;font-size:.98rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-bottom:20px}.eyebrow .eb-mark{display:inline-block;height:.72em;width:auto;vertical-align:-1px;margin:0 7px;opacity:.9}
 .eyebrow .num{color:var(--ghost)}
 section.light .eyebrow .num{color:rgba(46,31,16,.4)}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.6vw,4.1rem);line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
@@ -273,7 +272,7 @@ footer .links a:hover{color:var(--gold)}
   /* sidebar */
   .docs-side{display:block;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:28px 0 32px;scrollbar-width:thin}
   .sb-eyebrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-  .sb-kicker{font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .sb-kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:.9rem;letter-spacing:0;text-transform:none;color:var(--gold)}
   .sb-ver{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:linear-gradient(158deg,var(--panel),transparent)}
   .search-wrap{display:none;position:relative;margin-bottom:22px}
   .js .search-wrap{display:block}
@@ -435,7 +434,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 01 START ── -->
 <header class="hero wrap" id="top">
   <div>
-    <div class="eyebrow"><span class="num">01</span> COS Glasses · User Guide</div>
+    <div class="eyebrow"><span class="num">1.</span> COS Glasses · User Guide</div>
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
@@ -499,7 +498,7 @@ footer .links a:hover{color:var(--gold)}
 <section class="wrap reveal light" id="setup">
   <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">02</span> Setup</div>
+    <div class="eyebrow"><span class="num">2.</span> Setup</div>
     <h2>Live in about ten minutes.</h2>
     <p class="lead">Three moving pieces: the server on your Mac, the app on your glasses, one paste to connect them. The <a href="/wizard/">wizard</a> walks you through all of it. This is the short version.</p>
   </div>
@@ -532,7 +531,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 03 ASK ── -->
 <section class="wrap reveal" id="ask">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">03</span> Ask anything</div>
+    <div class="eyebrow"><span class="num">3.</span> Ask anything</div>
     <h2>Voice in. <span class="it goldt">Context out.</span></h2>
     <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
   </div>
@@ -564,7 +563,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 04 PHOTOS ── -->
 <section class="wrap reveal light" id="photos">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">04</span> Photos &amp; answer images</div>
+    <div class="eyebrow"><span class="num">4.</span> Photos &amp; answer images</div>
     <h2>Show it. Ask it. <span class="it">See it on the lens.</span></h2>
     <p class="lead">Phone photos and useful images from an answer travel with the message as durable attachments, not pasted blobs or temporary links.</p>
   </div>
@@ -588,7 +587,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 05 THE LENS ── -->
 <section class="wrap reveal light" id="lens">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">05</span> The lens</div>
+    <div class="eyebrow"><span class="num">5.</span> The lens</div>
     <h2>Four screens. Three gestures.</h2>
     <p class="lead">Everything runs on tap, double-tap, and scroll. Each screen prints its own hint line, so the lens always tells you what is live.</p>
   </div>
@@ -627,7 +626,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 06 JOBS ── -->
 <section class="wrap reveal" id="jobs">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">06</span> Jobs</div>
+    <div class="eyebrow"><span class="num">6.</span> Jobs</div>
     <h2>Watch it <span class="it goldt">work.</span></h2>
     <p class="lead">Every prompt is a job you can watch, queue, or cancel. And nothing ever hijacks your screen.</p>
   </div>
@@ -660,7 +659,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 07 RECALL ── -->
 <section class="wrap reveal light" id="recall">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">07</span> Recall</div>
+    <div class="eyebrow"><span class="num">7.</span> Recall</div>
     <h2>Never lose an answer.</h2>
     <p class="lead">Every reply gets a stable short number in the current message era. Your full archive remains intact when a fresh era starts again at #1.</p>
   </div>
@@ -670,7 +669,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 08 MEETINGS ── -->
 <section class="wrap reveal" id="meetings">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">08</span> Meetings</div>
+    <div class="eyebrow"><span class="num">8.</span> Meetings</div>
     <h2>Record the room. <span class="it goldt">Read it later.</span></h2>
     <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript, newest line on top.</p>
   </div>
@@ -701,7 +700,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 09 DICTATION ── -->
 <section class="wrap reveal light" id="dictation">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">09</span> Dictation</div>
+    <div class="eyebrow"><span class="num">9.</span> Dictation</div>
     <h2>Long prompts, hands free.</h2>
     <p class="lead">Dictate a sentence or a page. Nothing sends until you approve the transcript.</p>
   </div>
@@ -727,7 +726,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 10 MODELS ── -->
 <section class="wrap reveal" id="models">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">10</span> Models</div>
+    <div class="eyebrow"><span class="num">10.</span> Models</div>
     <h2>Choose your brain. <span class="it goldt">Keep it current.</span></h2>
     <p class="lead">Five entries in Settings under Default chat model. All five track the newest models automatically, so the picker never goes stale and the app never needs an update to follow a release.</p>
   </div>
@@ -761,7 +760,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 11 PRIVACY ── -->
 <section class="wrap reveal light" id="privacy">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">11</span> Privacy</div>
+    <div class="eyebrow"><span class="num">11.</span> Privacy</div>
     <h2>Private by architecture.</h2>
     <p class="lead">There is no COS cloud. Prompts run through the CLIs you already trust, and the history stays on your Mac.</p>
   </div>
@@ -807,7 +806,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 12 SETTINGS ── -->
 <section class="wrap reveal" id="settings">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">12</span> Settings</div>
+    <div class="eyebrow"><span class="num">12.</span> Settings</div>
     <h2>Every switch, <span class="it goldt">one card.</span></h2>
     <p class="lead">Open the phone companion and tap the ⚙ gear. Every preference persists through Even Hub storage: force-quit the app, reconnect tomorrow, still there.</p>
   </div>
@@ -829,7 +828,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 13 FIXES ── -->
 <section class="wrap reveal light" id="fixes">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">13</span> Troubleshooting</div>
+    <div class="eyebrow"><span class="num">13.</span> Troubleshooting</div>
     <h2>When something looks stuck.</h2>
     <p class="lead">Almost everything comes back to one question: can the phone reach the Mac?</p>
   </div>
@@ -864,7 +863,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── 14 FAQ ── -->
 <section class="wrap reveal" id="faq">
   <div class="sec-head">
-    <div class="eyebrow"><span class="num">14</span> FAQ</div>
+    <div class="eyebrow"><span class="num">14.</span> FAQ</div>
     <h2>The short answers.</h2>
   </div>
   <div class="faq">
