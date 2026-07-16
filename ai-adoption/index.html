@@ -556,7 +556,7 @@ h1{font-size:clamp(2.7rem,5.6vw,4.9rem);line-height:.99;max-width:16ch}.hero h1 
 .adx-rig .rig-top b{color:var(--gold);font-weight:500;transition:color .35s;text-align:right}
 .adx-rig .lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:6px;vertical-align:middle}
 .adx-grid{position:relative;z-index:2;display:block;width:100%;height:auto}
-.adx-grid circle{transition:opacity .38s cubic-bezier(.3,.7,.25,1);transform-box:fill-box;transform-origin:center}
+.adx-grid circle{transition:opacity .38s cubic-bezier(.3,.7,.25,1),fill .5s cubic-bezier(.3,.7,.25,1);transform-box:fill-box;transform-origin:center}
 #adxState,#adxNum,#adxTag{transition:opacity .45s cubic-bezier(.3,.7,.25,1)}
 .adx-read{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 7px 3px;font-size:.86rem;color:var(--muted)}
 .adx-read b{font-family:var(--display);font-size:1.35rem;color:var(--fg);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -1093,9 +1093,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   }
   function show(k){
     var t = byK[k];
+    var nf = (k === 'never') ? 'rgba(240,232,218,.46)' : 'rgba(240,232,218,.13)';
     dots.forEach(function(c){
       var mine = c.getAttribute('data-k');
-      c.style.opacity = (mine === k || mine === 'never') ? '1' : '0.35';
+      if (mine === 'never') { c.style.fill = nf; c.style.opacity = '1'; }
+      else { c.style.opacity = (mine === k) ? '1' : '0.35'; }
     });
     if (stateEl) stateEl.textContent = t.state;
     if (numEl) numEl.innerHTML = t.num + ' people';
