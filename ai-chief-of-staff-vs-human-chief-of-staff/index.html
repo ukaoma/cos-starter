@@ -61,7 +61,8 @@
         {"@type": "Question", "name": "Can an AI replace a human chief of staff?", "acceptedAnswer": {"@type": "Answer", "text": "No, and the question aims at the wrong target. An AI chief of staff does not replace the human. It removes the low-judgment time-drain, the context retrieval and routine prep, so the person spends their hours on judgment, relationships, and the calls only they can make."}},
         {"@type": "Question", "name": "AI chief of staff vs executive assistant, what's the difference?", "acceptedAnswer": {"@type": "Answer", "text": "An executive assistant, or an AI EA, manages your calendar and inbox. An AI chief of staff holds your full operating context and reasons across it. Different altitude: the EA works the schedule, the chief of staff works the decision and the outcome."}},
         {"@type": "Question", "name": "How much does a chief of staff cost vs an AI one?", "acceptedAnswer": {"@type": "Answer", "text": "A human chief of staff is a full salaried hire or a fractional retainer. An AI chief of staff is software you run. COS is open source, so the practical floor is your own setup time plus the model costs you already pay, not another headcount."}},
-        {"@type": "Question", "name": "What does an AI chief of staff actually do day to day?", "acceptedAnswer": {"@type": "Answer", "text": "Day to day it retrieves context before meetings, gathers data across your tools, drafts recaps and first passes, tracks follow-through, and records decisions and corrections so the next session starts where the last one ended. You keep every judgment call."}}
+        {"@type": "Question", "name": "What does an AI chief of staff actually do day to day?", "acceptedAnswer": {"@type": "Answer", "text": "Day to day it retrieves context before meetings, gathers data across your tools, drafts recaps and first passes, tracks follow-through, and records decisions and corrections so the next session starts where the last one ended. You keep every judgment call."}},
+        {"@type": "Question", "name": "Is an AI chief of staff a centaur or a reverse centaur?", "acceptedAnswer": {"@type": "Answer", "text": "It can be either, and that is the real choice. A centaur keeps you as the head: you set the direction and make the call, the machine does the grunt compute, and you get amplified. A reverse centaur flips it, so the tool sets the pace and you become the peripheral. Cory Doctorow coined the frame. COS is built as a centaur, so it preps, drafts, and remembers, and every decision stays yours."}}
       ]
     },
     {
@@ -198,6 +199,34 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:13ch}.hero h1 em{
 .reveal.in .handled-card .hc-li{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.handled-card .hc-li,.js .handled-card .hc-li{opacity:1;transform:none;transition:none}}
 @media print{.reveal,.reveal>*{opacity:1!important;transform:none!important}.handled-card .hc-li{opacity:1!important;transform:none!important}.handled-card .hc-li.done .tx::after{width:100%!important}.duet .dn,.duet .dbone,.duet .d-edge,.duet .d-lab,.duet .d-mark{opacity:1!important;transform:none!important}}
+/* -- MOMENT 3: centaur vs reverse-centaur figures (#reframe) -- which one stays the head -- */
+.cen-stage{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+@media(max-width:640px){.cen-stage{grid-template-columns:1fr;gap:24px}}
+.cen-fig{position:relative;border:1px solid var(--line);border-radius:18px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:11px;text-align:center;background:linear-gradient(155deg,rgba(255,246,232,.05),transparent)}
+.cen-fig.cen-bad{background:linear-gradient(155deg,rgba(196,115,110,.055),transparent)}
+.cen-name{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
+.cen-fig.cen-good .cen-name{color:var(--gold)}.cen-fig.cen-bad .cen-name{color:var(--rose)}
+.cen-plate{border:1px solid var(--line2);border-radius:13px;padding:14px;background:rgba(255,255,255,.02)}
+.cen-plate .cen-role{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);margin-bottom:6px}
+.cen-plate b{display:block;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.42rem;color:var(--fg);line-height:1.05}
+.cen-plate .cen-do{display:block;font-size:.82rem;color:var(--muted);margin-top:6px;line-height:1.4}
+.cen-plate.lit{border-color:rgba(201,169,110,.42);background:radial-gradient(130% 120% at 50% 0%,rgba(201,169,110,.13),transparent 70%),rgba(255,255,255,.02);box-shadow:inset 0 0 0 1px rgba(201,169,110,.14),0 20px 44px -30px rgba(201,169,110,.55)}
+.cen-plate.lit b{color:var(--gold)}
+.cen-plate.lit.cold{border-color:rgba(196,115,110,.42);background:radial-gradient(130% 120% at 50% 0%,rgba(196,115,110,.13),transparent 70%),rgba(255,255,255,.02);box-shadow:inset 0 0 0 1px rgba(196,115,110,.16),0 20px 44px -30px rgba(196,115,110,.5)}
+.cen-plate.lit.cold b{color:var(--rose)}
+.cen-plate.dim{background:rgba(255,255,255,.012);border-color:var(--line2)}
+.cen-plate.dim b{color:var(--muted)}.cen-plate.dim .cen-role,.cen-plate.dim .cen-do{color:var(--ghost)}
+.cen-link{position:relative;width:2px;height:34px;margin:1px auto;border-radius:2px;background:linear-gradient(180deg,rgba(201,169,110,.55),rgba(201,169,110,.06))}
+.cen-link.cold{background:linear-gradient(180deg,rgba(196,115,110,.55),rgba(196,115,110,.06))}
+.cen-link .cen-dot{position:absolute;left:50%;top:0;width:8px;height:8px;border-radius:50%;background:var(--gold);transform:translate(-50%,-4px);opacity:0;box-shadow:0 0 11px rgba(201,169,110,.85);will-change:transform,opacity}
+.cen-link.cold .cen-dot{background:var(--rose);box-shadow:0 0 11px rgba(196,115,110,.85)}
+.cen-verdict{font-family:var(--display);font-style:italic;font-size:1.02rem;color:var(--muted)}
+.cen-fig.cen-good .cen-verdict{color:var(--gold)}.cen-fig.cen-bad .cen-verdict{color:var(--rose)}
+/* reveal driven off .reveal.in (anime-independent); no-JS & reduced-motion sit at rest, no CLS (transform/opacity only) */
+.js .cen-name,.js .cen-plate,.js .cen-verdict{opacity:0;transform:translateY(12px)}
+.js .reveal.in .cen-name,.js .reveal.in .cen-plate,.js .reveal.in .cen-verdict{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--cd,0s)}
+@media(prefers-reduced-motion:reduce){.js .cen-name,.js .cen-plate,.js .cen-verdict{opacity:1;transform:none;transition:none}}
+@media print{.cen-name,.cen-plate,.cen-verdict{opacity:1!important;transform:none!important}}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
@@ -308,7 +337,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="hero-grid wrap reveal">
     <div class="hero-copy">
       <h1>AI Chief of Staff <em>vs Human Chief of Staff</em></h1>
-      <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for over a year, across a multi-brand software portfolio and two side businesses, so here is the honest version: what stays human, what gets handed to the machine, and exactly where the line sits between them.</p>
+      <p class="hero-lead">An AI chief of staff does not replace your chief of staff. It replaces the <strong>time-drain</strong>. I have run a real one for more than a year, across a software portfolio and two side businesses of my own. So here is the honest version. What stays human. What gets handed to the machine. And where the line sits between them.</p>
       <div class="actions">
         <a class="btn primary" href="#baseline">See what changes</a>
         <a class="btn ghost" href="/#start">Deploy your own</a>
@@ -382,10 +411,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <article class="prose reveal">
         <div class="definition">
           <span class="label">Definition</span>
-          <p>A chief of staff extends a single leader's capacity across coordination, context retrieval, decision support, preparation, and follow-through, so the principal spends their hours on judgment instead of logistics.</p>
+          <p>A chief of staff exists to extend one leader. They carry the busywork a decision needs, so the person they serve spends their hours on the decision itself and not the logistics around it.</p>
         </div>
-        <p>Strip it down and the work is five moves. A chief of staff <strong>coordinates</strong> the people and the moving parts. They <strong>retrieve context</strong>, the history and the numbers a decision needs. They <strong>support the decision</strong> itself, laying out options and trade-offs. They handle <strong>meeting prep</strong> so the principal walks in loaded. And they own <strong>follow-through</strong>, so nothing agreed in the room quietly dies after it.</p>
-        <p>This is not calendar management. An executive assistant guards the schedule and the inbox. A chief of staff holds the operating picture. Delegation flows through them because they know what matters this week and who owns what. That is the baseline. Whether the work is done by a person or a system, it gets measured against those same five moves.</p>
+        <p>Strip it down and the work is five moves. A chief of staff <strong>coordinates</strong> the people and the moving parts. They <strong>retrieve the context</strong> a decision needs, the history and the numbers. They <strong>support the decision</strong>, laying out the options and the trade-offs. They handle <strong>meeting prep</strong> so their exec walks in loaded. And they own <strong>follow-through</strong>, so nothing agreed in the room quietly dies once everyone leaves it.</p>
+        <p>This is not calendar management. An executive assistant guards the schedule and the inbox. A chief of staff holds the whole picture. Work gets delegated through them because they know what matters this week and who owns what. That is the baseline. A person or a system, the work gets judged against those same five moves.</p>
       </article>
     </div>
   </section>
@@ -395,13 +424,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap reveal">
       <h2>What is an AI chief of staff?</h2>
       <p class="lead">An AI chief of staff is a context-engineered system that walks into the work already knowing your roles, your people, your history, and your numbers. It is not a chatbot with a calendar plugin. It is not an AI executive assistant. It holds your operating context and reasons across it.</p>
-      <p class="after-note">The whole difference sits in that phrase, context-engineered. A generic model is brilliant and blank. It has never met your team. An AI chief of staff is the same model wrapped in a system that hands it the right context at the right moment: who this person is, what you last decided, where the project stalled. When it answers like it has been in every meeting, that is not the model being smart. It is the system being prepared. That work has a name, and <a href="/context-engineering-vs-prompt-engineering/">this is context engineering, not prompt engineering</a>.</p>
+      <p class="after-note">The whole difference sits in that phrase, context-engineered. A generic model is brilliant, and it has never met your team. An AI chief of staff is the same model wrapped in a system that hands it the right context at the right moment. Who this person is. What you last decided. Where the project stalled. When it answers like it has sat in every meeting, that is not the model being smart. It is the system being prepared. That work has a name, and <a href="/context-engineering-vs-prompt-engineering/">this is context engineering, not prompt engineering</a>.</p>
       <div class="anatomy">
         <div class="part"><span class="num">1. Your people</span><h3>Who is in the room</h3><p>Who reports to you, who you answer to, who the client is, and how each one wants to be handled.</p></div>
         <div class="part"><span class="num">2. Your history</span><h3>What already happened</h3><p>Every decision, correction, and meeting, kept outside a single chat window so it actually survives.</p></div>
         <div class="part"><span class="num">3. Your priorities</span><h3>What you are paid for</h3><p>What matters this quarter, the numbers you watch, and the outcomes the business measures you on.</p></div>
       </div>
-      <p class="after-note">Take any of that away and you are back to a clever scheduler. <strong>Agentic AI without your context is just autocomplete with permissions.</strong></p>
+      <p class="after-note">Take any of that away and you are back to a clever scheduler. <strong>Without your context, even a brilliant model is just autocomplete with your logins.</strong></p>
     </div>
   </section>
 
@@ -414,7 +443,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="part"><span class="num">2. Data gathering</span><h3>The same numbers, again</h3><p>Pulling the same figures out of your CRM, your call recordings, your chat, and your inbox.</p></div>
         <div class="part"><span class="num">3. Meeting prep</span><h3>Arrive loaded</h3><p>Assembling the brief before every call so you walk in ready instead of skimming on the way there.</p></div>
         <div class="part"><span class="num">4. Coordination</span><h3>The follow-up churn</h3><p>The repetitive reminders, nudges, and status chasing that quietly eats a Friday afternoon.</p></div>
-        <div class="part"><span class="num">5. Handoff friction</span><h3>Knowledge in one head</h3><p>The context that used to live in one person's memory, now written down and retrievable by anyone.</p></div>
+        <div class="part"><span class="num">5. Trapped knowledge</span><h3>Everything in one head</h3><p>The context that used to live in one person's memory, now written down where anyone on the team can find it.</p></div>
         <div class="part"><span class="num">6. The first draft</span><h3>Something to react to</h3><p>The recap, the summary, the routine reply that simply needs to exist before you sharpen it.</p></div>
       </div>
       <p class="after-note">None of that is the relationship. None of it is the decision. It is the drain around them. <strong>I am not looking for AI to replace people. I am looking to give the people their hours back.</strong></p>
@@ -426,7 +455,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="hc-li done" style="--d:.31s"><span class="hc-check" aria-hidden="true">&#10003;</span><span class="tx">First-draft prep sent.</span></div>
           <div class="hc-li live" style="--d:.44s"><span class="hc-live" aria-hidden="true"></span><span class="tx">Q3 pricing. Decision. Yours.</span><span class="hc-tag">Yours</span></div>
         </div>
-        <p class="hc-cap">The busywork clears itself. The call stays yours.</p>
+        <p class="hc-cap">Three cleared before the day starts. One left, because the decision is yours.</p>
       </div>
     </div>
   </section>
@@ -436,10 +465,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="section-grid wrap">
       <div class="sticky reveal">
         <h2>What stays human</h2>
-        <p class="intro">Every real chief-of-staff task splits into three layers. The AI works the bottom of each. The human owns the top of each. That division is the entire model.</p>
+        <p class="intro">Every chief-of-staff task splits into three layers. The human owns the top of each. The machine works the bottom. That division is the whole model.</p>
       </div>
       <article class="prose reveal">
-        <p>Read it as a table and the pattern stops being abstract.</p>
+        <p>Give a sharp operator real AI and something specific happens. They take the taste and the judgment they already have, and they cover far more ground with it. The person still calls every shot that matters. The machine just does the heavy lifting underneath.</p>
+        <p>Read it as a table and the split stops being abstract.</p>
         <div class="compare">
           <table>
             <thead><tr><th>Layer</th><th>The human owns</th><th>The AI surfaces or drafts</th></tr></thead>
@@ -450,7 +480,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
             </tbody>
           </table>
         </div>
-        <p>Top to bottom, the rule holds. <strong>The human sets intent and owns relationships. The AI surfaces context and drafts routine.</strong> Push either party across that line, let the AI make the call or send the message unsupervised, and the system loses the one thing that made it trustworthy.</p>
+        <p>Top to bottom, the head stays human and the body stays machine. Let the AI start making the calls or sending the messages on its own, and that whole order flips. There is a right shape for this and a wrong one. Both have a name, and that is where this goes next.</p>
       </article>
     </div>
   </section>
@@ -458,14 +488,28 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="reframe">
     <div class="wrap reveal">
-      <h2>Replace the time-drain, not the human</h2>
-      <p class="lead">Here is the sentence that should change how you buy. A traditional chief of staff and an AI chief of staff make two different promises, and the difference is the whole point.</p>
-      <div class="anatomy">
-        <div class="part"><span class="num">1. The old promise</span><h3>Handle the logistics</h3><p>A human chief of staff says: I will handle the logistics so you can focus on strategy.</p></div>
-        <div class="part"><span class="num">2. The new promise</span><h3>Surface and draft</h3><p>An AI chief of staff says: I will surface the context and handle the routine so you can focus on judgment and relationships.</p></div>
-        <div class="part"><span class="num">3. The line</span><h3>The human stays</h3><p>The human is never the part that gets replaced. The time-drain is. That is the only honest way to frame it.</p></div>
+      <h2>The centaur and the reverse centaur</h2>
+      <p class="dek">Who is the head, and who is the body</p>
+      <p class="lead">Walk through an Amazon warehouse. The worker does not set the pace. The route algorithm sets it. It picks the path, the package count, the seconds per aisle. The person just keeps up. An Uber driver is told where to go and follows the line on the screen. The machine decides. The human executes.</p>
+      <p class="lead">Cory Doctorow gave that a name. He calls it the reverse centaur. It sits inside the same idea as enshittification, his word for how a platform slowly turns on the people who came to depend on it.</p>
+      <div class="cen-stage" role="img" aria-label="Two stacked figures. Left, the centaur: you are the head on top, gold-lit, setting the direction and making the call, and the machine is the body below doing the grunt compute. You get amplified. Right, the reverse centaur: the machine is the head on top, and you are demoted to the body below, dimmed down to hands, eyes, and the liability for whatever the algorithm decided. You get squeezed.">
+        <div class="cen-fig cen-good">
+          <span class="cen-name">Centaur</span>
+          <div class="cen-plate cen-head lit" style="--cd:.06s"><span class="cen-role">Head</span><b>You</b><span class="cen-do">Set the direction. Make the call.</span></div>
+          <div class="cen-link"><i class="cen-dot"></i></div>
+          <div class="cen-plate cen-body" style="--cd:.18s"><span class="cen-role">Body</span><b>The machine</b><span class="cen-do">Grunt compute. Drafts. Recall.</span></div>
+          <span class="cen-verdict" style="--cd:.28s">You get amplified.</span>
+        </div>
+        <div class="cen-fig cen-bad">
+          <span class="cen-name">Reverse centaur</span>
+          <div class="cen-plate cen-head lit cold" style="--cd:.06s"><span class="cen-role">Head</span><b>The machine</b><span class="cen-do">Sets the pace. Owns the route.</span></div>
+          <div class="cen-link cold"><i class="cen-dot"></i></div>
+          <div class="cen-plate cen-body dim" style="--cd:.18s"><span class="cen-role">Body</span><b>You</b><span class="cen-do">Hands. Eyes. The liability.</span></div>
+          <span class="cen-verdict" style="--cd:.28s">You get squeezed.</span>
+        </div>
       </div>
-      <p class="after-note">Notice what did not change. Someone still owns the strategy, the judgment, and the relationships. What changed is that the person no longer has to earn those hours by grinding through prep first. <strong>The AI clears the runway. The human still flies the plane.</strong></p>
+      <p class="after-note">A centaur is the old myth. Human on top, horse below. <strong>You are the head. The machine is the body.</strong> You set the direction. You make the judgment. The machine does the grunt compute. You get amplified. A reverse centaur is the flip. The machine is the head and you are the body. You get demoted to a peripheral: the hands, the eyes, and the legal liability for whatever the algorithm decided.</p>
+      <p class="after-note">An AI chief of staff can land on either side. Build it right and it is a centaur. You stay the head. It preps, drafts, and remembers, and you make every call. Build it wrong and it is a reverse centaur. The tool sets your pace and you turn into the peripheral of your own software. So the real question is not whether the AI is smart. It is who ends up on top. <strong>Which one are you building?</strong> COS is a centaur by design. You stay the head.</p>
     </div>
   </section>
 
@@ -485,7 +529,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
             <tbody>
               <tr><td>Altitude</td><td>Manages your calendar and your inbox.</td><td>Holds your full operating context and reasons across it.</td></tr>
               <tr><td>Unit of work</td><td>The task and the appointment.</td><td>The decision and the outcome.</td></tr>
-              <tr><td>What it optimizes</td><td>Your schedule.</td><td>Your leverage.</td></tr>
+              <tr><td>What it optimizes</td><td>Your schedule.</td><td>Your capacity.</td></tr>
               <tr><td>Where it lives</td><td>On the surface of the day.</td><td>Underneath the work, across every source.</td></tr>
             </tbody>
           </table>
@@ -506,7 +550,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="part"><span class="num">2. The shift</span><h3>The drain moves</h3><p>The system absorbed the prep and the research. The advisor stayed on the client-facing work that only a person can do well.</p></div>
         <div class="part"><span class="num">3. The result</span><h3>Capacity without hiring</h3><p>More output per advisor, with no new hire. The team added revenue without adding headcount.</p></div>
       </div>
-      <p class="after-note">That is the business case in a sentence. An AI chief of staff does not thin your team out. <strong>It lets the team you already have operate above their old ceiling</strong>, because the hours they used to lose to preparation come back as hours they can spend with clients.</p>
+      <p class="after-note">That is the business case in a sentence. An AI chief of staff does not thin your team out. <strong>It lets the people you already have cover more ground</strong>, because the hours they used to lose to prep come back as hours with clients.</p>
     </div>
   </section>
 
@@ -518,7 +562,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <p class="intro">Short answer, no. Longer answer, the question is pointed at the wrong target.</p>
       </div>
       <article class="prose reveal">
-        <p>A chief of staff is trusted with judgment, discretion, and relationships. None of those transfer to a model, and you would not want them to. The moment an AI owns a real decision or sends a real message with no human behind it, it stops being a chief of staff and starts being a liability.</p>
+        <p>A chief of staff is trusted with judgment, discretion, and relationships. None of those transfer to a model, and you would not want them to. The moment an AI owns a real decision or sends a real message with no human behind it, the head and the body have swapped. It stops being a chief of staff and becomes a liability.</p>
         <p>So no, it does not replace the role. What it does is remove the reason you would ever burn a talented person on low-judgment work. <strong>The human stays. The grind leaves.</strong> That is the trade, and it is a good one.</p>
       </article>
     </div>
@@ -546,6 +590,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <details><summary>AI chief of staff vs executive assistant, what's the difference?</summary><p>An executive assistant, or an AI EA, manages your calendar and inbox. An AI chief of staff holds your full operating context and reasons across it. Different altitude: the EA works the schedule, the chief of staff works the decision and the outcome.</p></details>
       <details><summary>How much does a chief of staff cost vs an AI one?</summary><p>A human chief of staff is a full salaried hire or a fractional retainer. An AI chief of staff is software you run. COS is open source, so the practical floor is your own setup time plus the model costs you already pay, not another headcount.</p></details>
       <details><summary>What does an AI chief of staff actually do day to day?</summary><p>Day to day it retrieves context before meetings, gathers data across your tools, drafts recaps and first passes, tracks follow-through, and records decisions and corrections so the next session starts where the last one ended. You keep every judgment call.</p></details>
+      <details><summary>Is an AI chief of staff a centaur or a reverse centaur?</summary><p>It can be either, and that is the real choice. A centaur keeps you as the head: you set the direction and make the call, the machine does the grunt compute, and you get amplified. A reverse centaur flips it, so the tool sets the pace and you become the peripheral. Cory Doctorow coined the frame. COS is built as a centaur, so it preps, drafts, and remembers, and every decision stays yours.</p></details>
     </div>
   </section>
 
@@ -725,6 +770,49 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     });
   }, { threshold: 0.6 });
   hio.observe(card);
+})();
+
+// Centaur figures: control flows head -> body. A dot travels each connector to show who
+// drives whom (gold: you drive the machine; rose: the machine drives you). Pure enhancement --
+// the diagram + labels reveal via CSS, so no-JS, reduced-motion, and an anime-load failure all
+// leave the figures rendered at rest. Dots default to opacity:0, so if this never runs they just
+// stay invisible. GPU transforms only; loop is gated to in-view and paused when the tab is hidden.
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  var stage = document.querySelector('.cen-stage');
+  if (!stage || !AN || !AN.animate || rm.matches) return;
+  var links = [].slice.call(stage.querySelectorAll('.cen-link'));
+  if (!links.length) return;
+  var inView = false;
+  var runners = links.map(function(link){
+    var dot = link.querySelector('.cen-dot');
+    if (!dot) return { start: function(){} };
+    var running = false;
+    function step(){
+      if (!running || !inView || document.hidden){ running = false; return; }
+      var h = link.offsetHeight || 34;
+      var st = { t: 0 };
+      AN.animate(st, {
+        t: 1, duration: 1400, ease: 'inOutSine',
+        onUpdate: function(){
+          dot.style.transform = 'translate(-50%,' + (st.t * h - 4).toFixed(1) + 'px)';
+          var f = Math.min(1, Math.min(st.t, 1 - st.t) * 6);
+          dot.style.opacity = (0.95 * f).toFixed(3);
+        },
+        onComplete: function(){ dot.style.opacity = '0'; setTimeout(step, 720); }
+      });
+    }
+    return { start: function(){ if (!running){ running = true; step(); } } };
+  });
+  function startAll(){ if (inView && !document.hidden) runners.forEach(function(r){ r.start(); }); }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) startAll(); });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ inView = e.isIntersecting; if (inView) startAll(); });
+    }, { threshold: 0.3 });
+    io.observe(stage);
+  } else { inView = true; startAll(); }
 })();
 
 // Nav: dropdown groups + mobile burger -- namespaced to .nav (shared with homepage)
