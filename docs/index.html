@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses v5.23.2 (build 188) · server @gotcos/glasses-server 6.7.0.
+  Covers COS Glasses v5.23.18 (build 204) · server @gotcos/glasses-server 6.7.0.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -400,7 +400,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">v5.23.2</span>
+    <span class="sb-ver">v5.23.18</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -438,7 +438,7 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>v5.23.2</b> · build 188</span>
+      <span class="chip">App <b>v5.23.18</b> · build 204</span>
       <span class="chip">Server <b>6.7.0</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.1+</span>
@@ -450,7 +450,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.2</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.18</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -468,7 +468,7 @@ footer .links a:hover{color:var(--gold)}
     <a class="chapcard" href="#ask"><span class="chap-ix">03</span><span class="chap-t">Ask</span><span class="chap-d">Voice a question, read the streamed answer.</span></a>
     <a class="chapcard" href="#photos"><span class="chap-ix">04</span><span class="chap-t">Photos</span><span class="chap-d">Send phone photos and keep answer images.</span></a>
     <a class="chapcard" href="#lens"><span class="chap-ix">05</span><span class="chap-t">The Lens</span><span class="chap-d">Four screens driven by three simple gestures.</span></a>
-    <a class="chapcard" href="#jobs"><span class="chap-ix">06</span><span class="chap-t">Jobs</span><span class="chap-d">Watch, queue, or cancel any running prompt.</span></a>
+    <a class="chapcard" href="#jobs"><span class="chap-ix">06</span><span class="chap-t">Jobs</span><span class="chap-d">Jobs run on your Mac and survive the app closing.</span></a>
     <a class="chapcard" href="#recall"><span class="chap-ix">07</span><span class="chap-t">Recall</span><span class="chap-d">Stable short numbers over a complete archive.</span></a>
     <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Record the room, read the transcript later.</span></a>
     <a class="chapcard" href="#dictation"><span class="chap-ix">09</span><span class="chap-t">Dictation</span><span class="chap-d">Dictate long prompts, approve before anything sends.</span></a>
@@ -628,7 +628,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">6.</span> Jobs</h2>
     <p class="ch-sub">Watch it <span class="it goldt">work.</span></p>
-    <p class="lead">Every prompt is a job you can watch, queue, or cancel. And nothing ever hijacks your screen.</p>
+    <p class="lead">Every prompt is a job that lives on your Mac. Watch it, queue it, or cancel it, and once it starts it keeps running even if you close the app. Nothing ever hijacks your screen.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
     <div>
@@ -648,9 +648,15 @@ footer .links a:hover{color:var(--gold)}
       <p style="font-size:.95rem">Ask while a reply is streaming and the new prompt <strong>queues</strong>: up to five wait in line, first in, first out. Rows in Messages show the state as <span class="g-key">… Queued 1/2</span>, <span class="g-key">Running · Searching web...</span>, and <span class="g-key">◆ Done #4 09:14 summarize the pilot</span>.</p>
       <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The activity page is a terminal-style tail with mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
     </div>
+    <div>
+      <h3>The job lives on your Mac</h3>
+      <p style="font-size:.95rem">The moment your Mac accepts a prompt, the job belongs to the <strong>server</strong>, not the phone connection. Closing or backgrounding Even Hub, losing Wi-Fi, or switching networks does not stop it. Reopen COS and it <strong>reattaches to the same job</strong>, replays the activity you missed, and delivers the finished reply. Only an explicit Cancel ends the work.</p>
+      <p style="font-size:.95rem">A send moves through <span class="g-key">Submitting</span>, <span class="g-key">Accepted</span>, <span class="g-key">Running</span>. A dropped connection shows <span class="g-key">Reconnecting · job still running</span>, never a false Failed. If the Mac server itself restarts, COS shows <span class="g-key">Interrupted · prompt preserved</span> and offers a one-tap retry; it never silently reruns.</p>
+    </div>
   </div>
   <div class="tw"><table>
     <tr><td><strong>Cancel</strong></td><td>A deliberate two-step: double-tap arms it (<span class="g-key">Double-tap again to cancel</span>, three-second window), a second double-tap cancels. Canceling pauses the queue; nothing auto-fires until you tap a queued row.</td></tr>
+    <tr><td><strong>Close or disconnect</strong></td><td>Not the same as cancel. An Accepted job keeps running on your Mac; closing the app, losing Wi-Fi, or switching networks shows <span class="g-key">Reconnecting · job still running</span>, then reattaches the moment you reopen. Only Cancel ends the work on purpose.</td></tr>
     <tr><td><strong>Done rows</strong></td><td>Finished jobs leave a short <span class="g-key">◆ Done #4 09:14 summary</span> trail in Messages (the last three). Tap one to jump straight to the reply; the row retires itself after the jump.</td></tr>
     <tr><td><strong>No-yank rule</strong></td><td>If you are reading, browsing a list, or viewing a photo when a job finishes, the reply never steals the screen. You get a <span class="g-key">✓ Reply #4 ready</span> flash instead; double-tap when you want to open it. Only idle Home may open a finished reply automatically.</td></tr>
   </table></div>
@@ -840,6 +846,10 @@ footer .links a:hover{color:var(--gold)}
     <div class="card">
       <h3>Restarted the server?</h3>
       <p>Force-quit the Even app and reopen it. Settings and the connection survive. Disconnect in Settings is the last resort: it clears the saved URL and token, so you would re-paste them from the wizard.</p>
+    </div>
+    <div class="card">
+      <h3>Closed the app while it was working?</h3>
+      <p>Nothing is lost. Once a prompt is Accepted, the job runs on your Mac, not the phone. Reopen COS and it reattaches to the same job and shows the reply. A brief drop reads <span class="g-key">Reconnecting · job still running</span>, not Failed. If the Mac server restarted, you will see <span class="g-key">Interrupted · prompt preserved</span> with a one-tap retry. Only Cancel stops a job on purpose.</p>
     </div>
     <div class="card">
       <h3>Voice feels slow</h3>
