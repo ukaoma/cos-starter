@@ -209,6 +209,8 @@ h2[id]{scroll-margin-top:108px}
 @media(prefers-reduced-motion:reduce){.js #electricity .pc-line{stroke-dasharray:none;stroke-dashoffset:0}}
 @media print{.reveal,.reveal>*{opacity:1!important;transform:none!important}.js #electricity .pc-line{stroke-dasharray:none!important;stroke-dashoffset:0!important}#electricity .pc-dot,#electricity .pc-note{opacity:1!important;transform:none!important}}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
+.dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
+.paper .dek,.faq .dek{color:#795c2d}
 .dark-section .body{max-width:66ch;margin-top:22px}.dark-section .body p{color:var(--muted);font-size:1.06rem;margin:0 0 18px}.dark-section .body p:last-child{margin-bottom:0}.dark-section .body strong{color:var(--fg);font-weight:600}.dark-section .body h3{font-family:var(--body);font-size:1.15rem;color:var(--fg);font-weight:600;margin:30px 0 10px}
 /* before/after money illustration */
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
@@ -359,6 +361,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="section-grid wrap">
       <div class="sticky reveal">
         <h2>The prompt was never the problem</h2>
+      <p class="dek">The premise everyone got wrong</p>
         <p class="intro">Every guide sells the same fix. Sharper role, cleaner instructions, a few examples. It works a little. Then it stops.</p>
       </div>
       <article class="prose reveal">
@@ -426,6 +429,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="example">
     <div class="wrap reveal">
       <h2>Help me prep for my client call tomorrow</h2>
+      <p class="dek">The money illustration</p>
       <p class="lead">Same sentence, two systems. This is the entire argument compressed into one request.</p>
       <div class="body">
         <p>Type that line into a bare model and it cannot help you in any specific way. It does not know the client, the deal, the history, or you. So it hedges, and it hands back a template. Now give the exact same words to a model wired into your context, and watch what comes out.</p>
@@ -455,6 +459,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="section-grid wrap">
       <div class="sticky reveal">
         <h2>The electricity paradox</h2>
+      <p class="dek">The pattern from history</p>
         <p class="intro">When factories first got electricity, they bolted it onto the old architecture. Productivity barely moved for a generation.</p>
         <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
         <div class="plate-tag">the mill, 1835 &middot; line shafts everywhere</div>
@@ -483,6 +488,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="reverse-centaur">
     <div class="wrap reveal">
       <h2>The reverse-centaur trap</h2>
+      <p class="dek">Individual vs organizational</p>
       <p class="lead">A centaur is a human leading a machine. A reverse centaur is a human serving one.</p>
       <div class="body">
         <p>The promise of AI at work is the centaur. You set the intent and the judgment. The machine does the grinding. But when you only ever prompt, you drift into the reverse. You become the context-delivery mechanism, feeding the model the same background over and over, chasing its pace, cleaning up its generic output. The tool speeds up and the human quietly starts serving it.</p>

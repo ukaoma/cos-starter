@@ -177,6 +177,8 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
 .compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
+.dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
+.paper .dek,.faq .dek{color:#795c2d}
 .anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--display);font-style:italic;font-weight:500;font-size:.85rem;letter-spacing:0;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
 .memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,74px);align-items:start}.filetree{background:#0d0906;border:1px solid var(--line);border-radius:18px;padding:22px;font-family:var(--mono);font-size:.75rem;line-height:1.85;color:var(--muted);box-shadow:0 28px 70px rgba(0,0,0,.25)}.filetree .bar{display:flex;gap:7px;margin-bottom:17px}.filetree .bar i{width:8px;height:8px;border-radius:50%;background:var(--rose)}.filetree .bar i:nth-child(2){background:var(--gold)}.filetree .bar i:nth-child(3){background:var(--green)}.filetree b{color:var(--fg);font-weight:500}.filetree .note{color:var(--gold)}
 .memory-copy h2{font-size:clamp(2.3rem,4.2vw,3.75rem);line-height:1.03}.memory-copy>p{color:var(--muted);font-size:1.05rem;margin-top:20px}.truth{margin-top:25px;border-left:2px solid var(--gold);padding:4px 0 4px 18px}.truth b{display:block;margin-bottom:4px}.truth p{font-size:.88rem;color:var(--muted)}
@@ -362,6 +364,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="dark-section" id="anatomy">
     <div class="wrap reveal">
       <h2>Six layers turn intelligence into leverage.</h2>
+      <p class="dek">Anatomy of a useful harness</p>
       <p class="lead">A better model raises the ceiling. A better harness raises the floor—and makes good performance repeatable across models, sessions, and people.</p>
       <div class="anatomy">
         <div class="part"><span class="num">1. Identity</span><h3>Instructions and operating rules</h3><p>Role, goals, standards, preferences, and constraints. The map that tells the model what matters before work begins.</p></div>
@@ -395,6 +398,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="memory-copy reveal">
         <h2>Your personal AI memory should outlive the model.</h2>
+      <p class="dek">The ownership thesis</p>
         <p>Models improve quickly. Subscriptions change. Interfaces disappear. If your working memory lives only inside one vendor's chat history, every switch starts with a partial amnesia.</p>
         <p>A local-first harness changes the asset. Your corpus can live as ordinary files, databases, indexes, and logs on devices or infrastructure you control. The harness selects the relevant context and makes it legible to whichever model is best for the job.</p>
         <div class="truth"><b>Local storage is not the same as local inference.</b><p>Your durable corpus can remain on your machine while selected context is sent to a hosted model for a task. Provider terms and data controls still apply to anything transmitted. A serious harness makes that boundary visible instead of hiding it.</p></div>
@@ -407,6 +411,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="field-grid wrap">
       <div class="reveal">
         <h2>COS is the conduit, not the intelligence monopoly.</h2>
+      <p class="dek">A harness under real operating load</p>
         <p class="lead">COS began as an AI chief of staff built while running marketing and digital transformation across a multi-brand software portfolio, alongside two operating businesses and a family. The job was never “chat better.” The job was to preserve context across the places real work happens.</p>
         <p class="lead">A harness can use Claude, GPT, Gemini, or local models when the required integrations exist. COS currently supports Claude Code and Codex, with additional adapters as design intent. The personal operating layer makes the model's intelligence specific to you. And the crowd is earlier than the headlines suggest: see <a href="/ai-adoption/">the AI Adoption Index</a> for who actually uses these engines, with every number cited.</p>
       </div>
@@ -424,6 +429,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap reveal">
       <div class="build-head">
         <h2>Start with a folder, not a platform migration.</h2>
+      <p class="dek">Build the asset</p>
         <p class="lead">A personal harness can begin small. The first useful version needs an identity, a memory structure, one repeatable skill, one trusted connection, and a habit of recording corrections.</p>
       </div>
       <div class="steps">
