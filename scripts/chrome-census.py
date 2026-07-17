@@ -22,12 +22,13 @@ CHECKS = {
     "pill":     lambda p: "nav-main" in p and 'viewBox="1004 821 1944 517"' in p,
     "linedraw": lambda p: p.count("each section draws its outline") == 1,
     "footnav":  lambda p: bool(re.search(r'<nav class="foot-nav"', p)),
+    "hubspot":  lambda p: 'id="hs-script-loader"' in p,  # required on EVERY page, no exemptions
 }
 
 def main() -> int:
     pages = [ROOT / "index.html"] + sorted(ROOT.glob("*/index.html"))
     bad = []
-    print(f"{'page':56s} strip pill linedraw footnav")
+    print(f"{'page':56s} strip pill linedraw footnav hubspot")
     for f in pages:
         p = f.read_text(encoding="utf-8")
         name = f.parent.name if f.parent != ROOT else "(home)"
@@ -36,8 +37,10 @@ def main() -> int:
         need_nav = not exempt
         ok = (r["strip"] and r["pill"] if need_nav else True) and r["linedraw"] and r["footnav"]
         flag = "  OK" if ok else ("  exempt-partial" if exempt else "  MISSING CHROME")
+        if not r["hubspot"]:
+            flag += "  NO HUBSPOT TAG"
         print(f"{name:56s} {int(r['strip'])}     {int(r['pill'])}    {int(r['linedraw'])}        {int(r['footnav'])}{flag}")
-        if not ok and not exempt:
+        if (not ok and not exempt) or not r["hubspot"]:
             bad.append(name)
     if bad:
         print(f"\nFAIL: content pages missing homepage chrome: {', '.join(bad)}")
