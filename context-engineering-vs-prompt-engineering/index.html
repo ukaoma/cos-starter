@@ -57,8 +57,8 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "What is the difference between context engineering and prompt engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining. One is a sentence. The other is an operating layer."}},
-        {"@type": "Question", "name": "Is prompt engineering still worth learning?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real leverage is the context you engineer around the prompt."}},
+        {"@type": "Question", "name": "What is the difference between context engineering and prompt engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining."}},
+        {"@type": "Question", "name": "Is prompt engineering still worth learning?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real payoff is the context you engineer around the prompt."}},
         {"@type": "Question", "name": "What is an example of context engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Ask a bare model to prep you for a client call and you get generic boilerplate. Wire in the client, the deal history, your goals, past meetings, and open tasks, and the same request returns a specific brief. The prompt did not change. The context did."}},
         {"@type": "Question", "name": "What are the pillars of context engineering?", "acceptedAnswer": {"@type": "Answer", "text": "Right context at the right time. In practice that means four things: provide it upfront, structure it so the model finds what matters, persist it outside the chat, and embed it where the work happens, in files, transcripts, profiles, and repeatable skills."}},
         {"@type": "Question", "name": "Does context engineering replace RAG or fine-tuning?", "acceptedAnswer": {"@type": "Answer", "text": "No. It includes them. Retrieval and fine-tuning are tools inside context engineering, not rivals. RAG decides what the model sees at query time. Context engineering designs the whole system of memory, retrieval, permissions, and persistence around it."}}
@@ -312,7 +312,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="hero-grid wrap">
     <div class="reveal">
       <h1>Context Engineering <em>vs Prompt Engineering</em></h1>
-      <p class="hero-lead">Prompt engineering optimizes the question. <strong>Context engineering re-architects everything around it.</strong> One is a skill you practice per chat. The other is a system you build once and compound forever. I have spent a year running the second one at team scale. Here is the real difference, and why it scales.</p>
+      <p class="hero-lead">Prompt engineering optimizes the question. <strong>Context engineering rebuilds everything around it.</strong> I have spent the last year running the second one at team scale, not just tuning prompts in a chat window. Here is the real difference, and why it scales.</p>
       <div class="actions">
         <a class="btn primary" href="#difference">See the difference</a>
         <a class="btn ghost" href="/#start">Build your COS</a>
@@ -370,8 +370,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <p>The prompt was never the problem. Your context is.</p>
         </div>
         <p>Every prompt guide sells the same move. Add a role. Add constraints. Add a few examples. Tune the wording until the model behaves. I did all of it. It helped at the margins, then it plateaued, because I was polishing the question while the model still knew nothing about my world.</p>
-        <p>Here is the uncomfortable part. A perfect prompt handed to a model with zero context still produces a generic answer. The ceiling is not your phrasing. The ceiling is what the model can actually see. Change what it can see and a mediocre prompt starts outperforming a brilliant one.</p>
-        <p>That is the whole shift. Prompt engineering optimizes the sentence you type. Context engineering optimizes everything the model reads before it ever reaches your sentence. The system prompt, the retrieved history, the files, the people, the decisions, the corrections. The instruction is the last five percent. The context is the other ninety-five.</p>
+        <p>Here is the uncomfortable part. A perfect prompt handed to a model with zero context still hands back a generic answer. The ceiling is not your phrasing. It is what the model can see. Widen what it sees and the answer improves on its own, no matter how plainly you asked.</p>
+        <p>That is the whole shift. Prompt engineering tunes the sentence you type. Context engineering shapes everything the model reads before it gets to that sentence. The files. The people. The history. The decisions you already made. The instruction is the last five percent. The context is the other ninety-five.</p>
       </article>
     </div>
   </section>
@@ -382,9 +382,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>What is prompt engineering?</h2>
       <p class="lead">Prompt engineering is the craft of shaping a single instruction to get a better answer from a model right now.</p>
       <div class="body">
-        <p>It is real and it is useful. A clear role, a specific task, a few well-chosen examples, an explicit output format. Few-shot examples steer tone. A tight system prompt sets the rules. Good prompting can be the difference between garbage and gold on any one request.</p>
+        <p>It is real and it is useful. A clear role. A specific task. A couple of good examples. A defined output format. Few-shot examples steer the tone. A tight system prompt sets the rules. On any single request, good prompting can turn a useless answer into a genuinely good one.</p>
         <p>But look at its shape. Prompt engineering is tactical. It works per query. It is mostly disposable. You tune the words, get the answer, and the effort evaporates when the chat closes. It optimizes language inside the model's context window, and it quietly assumes the model already has, or does not need, everything else.</p>
-        <p>That last assumption is the trap. Most real work is not language-limited. It is context-limited. The model does not need a cleverer sentence. It needs to know who the client is, what we agreed last week, and what I am actually trying to accomplish.</p>
+        <p>That last assumption is the trap. Most real work does not stall on wording. It stalls on missing context. The model does not need a cleverer sentence from me. It needs to know who the client is, what we agreed last week, and what I am actually trying to get done.</p>
       </div>
     </div>
   </section>
@@ -401,10 +401,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="label">Definition</span>
           <p>Context engineering is designing the environment a model works inside, so the right information is already present before you ask.</p>
         </div>
-        <p>If prompt engineering optimizes the question, context engineering re-architects everything around it. You stop treating each chat as a fresh start and begin building a durable operating layer the model draws from every time. The intelligence stays rented and replaceable. The context becomes the asset you own.</p>
-        <p>It has four load-bearing properties. It is <strong>upfront</strong>, not reactive. You provide identity, goals, and history before the work, not halfway through the conversation. It is <strong>structured</strong>, so retrieval surfaces the small set of facts that change the answer instead of drowning the model in everything. It is <strong>persistent</strong>, living in files, transcripts, profiles, and indexes outside any single chat. And it is <strong>embedded</strong> where the work actually happens, next to the tools and data, not pasted in by hand.</p>
+        <p>You stop treating every chat as a blank slate. Instead you build a durable operating layer the model reads from every time. The model itself stays rented. Swap it whenever a better one ships. The context is the part you keep.</p>
+        <p>Good context does four things. It shows up <strong>upfront</strong>, not halfway through the chat. You load identity, goals, and history before the work starts. It is <strong>structured</strong>, so retrieval surfaces the few facts that change the answer instead of burying the model in everything. It is <strong>persistent</strong>. It lives in files and indexes outside any single chat, so it survives the window closing. And it is <strong>embedded</strong> where the work happens, next to the tools and the data, not pasted in by hand.</p>
         <h3>Where RAG, memory, and the rest fit</h3>
-        <p>None of the familiar pieces are rivals to this. Retrieval and RAG are how the structured layer gets pulled at query time. Memory is how the persistent layer survives a closed window. The context window is the space you are budgeting inside. Fine-tuning bakes some patterns into the model itself. An agent is what you get when a model can act on that context with tools. They are all instruments inside one practice. This is the thesis behind every serious <a href="/harness/">AI harness</a>: the model is one component, and the system around it is what makes the work repeatable.</p>
+        <p>None of the familiar pieces are rivals to this. Retrieval and RAG are how the structured layer gets pulled at the moment you ask. Memory is how the persistent layer survives a closed window. The context window is the space you are working inside. Fine-tuning bakes a few patterns into the model itself. An agent is what you get when a model can act on that context with real tools. They are all pieces of the same job, not competitors to it. This is the whole idea behind a serious <a href="/harness/">AI harness</a>. The model is one part. The system around it is what makes the work repeatable.</p>
       </article>
     </div>
     <div class="wrap reveal" style="margin-top:clamp(48px,7vw,90px)">
@@ -414,7 +414,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <table>
           <thead><tr><th>Dimension</th><th>Prompt engineering</th><th>Context engineering</th></tr></thead>
           <tbody>
-            <tr><td>Locus of control</td><td>The words you type in one message.</td><td>The whole environment the model reads before the message.</td></tr>
+            <tr><td>Where control lives</td><td>The words you type in one message.</td><td>The whole environment the model reads before the message.</td></tr>
             <tr><td>Persistence</td><td>Disposable. Gone when the chat closes.</td><td>Durable. Files, memory, and logs that outlive the session and the model.</td></tr>
             <tr><td>Scaling</td><td>Re-done by every person, every time.</td><td>Built once, shared, and it raises the floor for the whole team.</td></tr>
             <tr><td>Effort</td><td>Constant fiddling with phrasing.</td><td>Upfront design, then compounding returns.</td></tr>
@@ -432,7 +432,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="dek">The money illustration</p>
       <p class="lead">Same sentence, two systems. This is the entire argument compressed into one request.</p>
       <div class="body">
-        <p>Type that line into a bare model and it cannot help you in any specific way. It does not know the client, the deal, the history, or you. So it hedges, and it hands back a template. Now give the exact same words to a model wired into your context, and watch what comes out.</p>
+        <p>Type that line into a bare model and it cannot help you in any specific way. It has never met your client. It does not know the deal or the history. So it hedges, and it hands you a template. Now give the exact same words to a model wired into your context. Watch what comes out.</p>
       </div>
       <div class="ba">
         <div class="card reveal">
@@ -445,11 +445,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="tag">Same prompt, engineered context</div>
           <p class="q">"Help me prep for my client call tomorrow."</p>
           <h3>What a context-engineered system returns</h3>
-          <p>The account is Northwind. On the last call they pushed back on onboarding timelines. Their renewal lands in six weeks. Two follow-ups from me are still open. Here are the three risks to get ahead of, the numbers they will ask about, and a draft agenda. Same words from me. A different universe of an answer.</p>
+          <p>The account is Northwind. On the last call they pushed back on onboarding timelines. Their renewal lands in six weeks. Two follow-ups from me are still open. Here are the three risks to get ahead of, the numbers they will ask about, and a draft agenda. Same words from me. A completely different answer.</p>
         </div>
       </div>
       <div class="body">
-        <p>Nobody wrote a cleverer prompt. Somebody engineered the context. The request never changed, the system did, and that is the difference you can feel.</p>
+        <p>No one wrote a smarter prompt. Someone built the context first. The words stayed the same. The system underneath them changed.</p>
       </div>
     </div>
   </section>
@@ -467,7 +467,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <article class="prose reveal">
         <p>Nineteenth-century textile mills ran on one giant steam engine. It turned a central driveshaft, and belts and line shafts carried that power out to every machine on the floor. The entire building was laid out around the shaft. When electricity arrived, factory owners did the obvious thing. They pulled out the steam engine, dropped in one big electric motor, and connected it to the same shafts.</p>
         <p>Output per worker rose a little. Then it flatlined for roughly three decades. The gain was disappointing because they had bolted a new power source onto an old design. They kept routing everything through the central shaft, so the electricity was doing a steam engine's job in a steam engine's building.</p>
-        <p>The breakthrough came when a new generation stopped retrofitting and re-architected the mill. Put a small motor on each machine. Lay the floor out around the flow of work instead of around the driveshaft. Once the building was designed for electricity rather than adapted to it, productivity did not inch up. It jumped.</p>
+        <p>The breakthrough came when a new generation stopped retrofitting and rebuilt the mill instead. Put a small motor on each machine. Lay the floor out around the flow of work instead of around the driveshaft. Once the building was designed for electricity rather than adapted to it, productivity did not inch up. It jumped.</p>
         <p>The AI market is in the bolt-on phase right now. Prompt engineering is the electric motor wired to the old shaft. You keep your workflows exactly as they were and ask a model to help one task at a time. Context engineering is rebuilding the mill. You redesign how work, memory, and decisions flow so the intelligence has something to run through. That is why the first one plateaus and the second one scales.</p>
         <div class="paradox-chart reveal" role="img" aria-label="Line chart of output per worker from 1890 to 1930. A small early rise, then a long flat stretch for roughly three decades, then a sharp jump at the end once the factory was rebuilt around electricity.">
           <svg viewBox="0 0 480 200" width="480" height="200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -489,15 +489,15 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap reveal">
       <h2>The reverse-centaur trap</h2>
       <p class="dek">Individual vs organizational</p>
-      <p class="lead">A centaur is a human leading a machine. A reverse centaur is a human serving one.</p>
+      <p class="lead">The more you lean on prompting alone, the more you end up working for the model instead of the other way around.</p>
       <div class="body">
-        <p>The promise of AI at work is the centaur. You set the intent and the judgment. The machine does the grinding. But when you only ever prompt, you drift into the reverse. You become the context-delivery mechanism, feeding the model the same background over and over, chasing its pace, cleaning up its generic output. The tool speeds up and the human quietly starts serving it.</p>
-        <p>Context engineering flips it back. When the system already holds your roles, your people, your history, and your standards, you stop feeding it and start directing it. The machine catches up to your world instead of dragging you down to its blank slate. You are leading again.</p>
+        <p>Start with the promise of AI at work. You set the intent. You make the calls. The machine does the grinding. Now look at what prompt-only work actually becomes. You retype the same background every session. You chase the model's pace. You clean up its generic output before anyone can use it. The tool gets faster and you quietly start serving it. Cory Doctorow has a name for that flip. A centaur is a person leading a machine and getting amplified by it. The reverse centaur is the opposite. The machine sets the pace, and the person is reduced to its hands and eyes. Prompt forever and you drift into the reverse.</p>
+        <p>Context engineering flips it back. When the system already carries your role, your people, your history, and how you like things done, you stop feeding the model and start directing it. It starts from your world now, not from a blank slate every morning. You are leading again.</p>
         <div class="pull">
           <b>The individual metric hides the trap.</b>
-          <p>Prompting can make one person a little faster and still leave the team stuck. Personal speedups do not compound. A shared context store does. It raises the floor for everyone who touches it, not just the person who wrote the clever prompt.</p>
+          <p>Prompting can make one person a little faster while the team stays exactly where it was. That speed lives in one head, so it never spreads. Context in shared files does the opposite. It lifts everyone who touches it, not just whoever wrote the clever prompt.</p>
         </div>
-        <p>This is exactly why <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">an AI chief of staff runs on engineered context</a> rather than clever prompting. The leverage lives in the shared operating memory, not in any single instruction typed into a box.</p>
+        <p>This is exactly why <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">an AI chief of staff runs on engineered context</a> rather than clever prompting. The advantage is the shared operating memory, not any single instruction typed into a box.</p>
       </div>
     </div>
   </section>
@@ -511,8 +511,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <article class="prose reveal">
         <p>Prompt engineering is a subset of context engineering, not its rival. The prompt is one instruction inside the system. Context engineering is the system. You still write the instruction, and clear phrasing, a sensible role, and a good example all still matter.</p>
-        <p>What changes is scope. You stop believing the sentence is the lever and start building the structure that makes every sentence land. A great prompt on top of great context is unbeatable. A great prompt on top of nothing is still just a well-worded shrug.</p>
-        <p>Put it plainly. Prompt engineering is how you ask. Context engineering is everything the model already knows when you ask. Keep the first. Build the second. The people who win the next few years will be fluent in both, and clear about which one is the foundation.</p>
+        <p>What changes is the scope. You stop treating the sentence as the whole job and start building the structure that makes every sentence land. A sharp prompt on top of rich context is hard to beat. Put that same prompt on top of nothing and you get a generic answer in nicer words.</p>
+        <p>So keep prompting. Keep writing clear, sharp instructions. Then build the context underneath them, because that is the part that carries from one task to the next. The people who win the next few years will do both, and stay clear about which one is the foundation.</p>
       </article>
     </div>
   </section>
@@ -523,12 +523,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>How to start context-engineering your own work</h2>
       <p class="lead">You do not need a platform or a migration. You need a folder and a habit. Five moves get you most of the way there.</p>
       <div class="body">
-        <p><strong>Write the operating map.</strong> One short document: who you are, what you own, the people around you, your priorities, and the rules a model should follow.</p>
+        <p><strong>Write the operating map.</strong> One short document. Who you are. What you own. The people around you. What you are trying to get done. The rules a model should follow.</p>
         <p><strong>Give memory a durable shape.</strong> Readable files for identity and decisions. Structured stores for tasks and events. A search index for retrieval. Version what matters, so corrections stick instead of evaporating.</p>
-        <p><strong>Turn recurring work into skills.</strong> Meeting prep, daily briefings, research, follow-up. Name them, define their inputs and outputs, and reuse them instead of re-inventing the prompt each time.</p>
+        <p><strong>Turn recurring work into skills.</strong> The work you repeat every week. Meeting prep. Daily briefings. Follow-up. Name each one, give it clear inputs and outputs, and reuse it instead of writing the prompt from scratch every time.</p>
         <p><strong>Connect one real source.</strong> Calendar, email, or your meetings. One live connection creates more value than ten empty integrations. Add permissions before autonomy.</p>
         <p><strong>Make every correction compound.</strong> When the system gets something wrong, fix the source, the rule, or the retrieval path, not just the one answer. That is the moment the context stops being generic and becomes yours.</p>
-        <p>That folder is the whole idea behind the open <a href="/">COS starter</a>. Deploy your own chief of staff, wire your context in once, and stop re-explaining your world to a blank chat every morning. Want the long version. <a href="https://milesukaoma.com/context-engineering-vs-prompt-engineering">Read the full field guide on milesukaoma.com</a>.</p>
+        <p>That folder is the whole idea behind the open <a href="/">COS starter</a>. Deploy your own chief of staff, wire your context in once, and stop re-explaining your world to a blank chat every morning. Want the long version? <a href="https://milesukaoma.com/context-engineering-vs-prompt-engineering">Read the full field guide on milesukaoma.com</a>.</p>
       </div>
       <div class="actions"><a class="btn primary" href="/#start">Deploy your own COS</a><a class="btn ghost" href="/harness/">See the harness it runs on</a></div>
     </div>
@@ -538,8 +538,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="faq" id="faq">
     <div class="wrap reveal">
       <h2>Context engineering vs prompt engineering, quick answers.</h2>
-      <details><summary>What is the difference between context engineering and prompt engineering?</summary><p>Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining. One is a sentence. The other is an operating layer.</p></details>
-      <details><summary>Is prompt engineering still worth learning?</summary><p>Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real leverage is the context you engineer around the prompt.</p></details>
+      <details><summary>What is the difference between context engineering and prompt engineering?</summary><p>Prompt engineering optimizes a single instruction inside one chat. Context engineering builds the system around the model: the memory, files, rules, and history it can draw on, so good answers repeat without you re-explaining.</p></details>
+      <details><summary>Is prompt engineering still worth learning?</summary><p>Yes. Prompt engineering is not dead, it is a subset. Clear instructions still matter. But it is one instruction inside a larger system. Learn it, then stop treating it as the whole job. The real payoff is the context you engineer around the prompt.</p></details>
       <details><summary>What is an example of context engineering?</summary><p>Ask a bare model to prep you for a client call and you get generic boilerplate. Wire in the client, the deal history, your goals, past meetings, and open tasks, and the same request returns a specific brief. The prompt did not change. The context did.</p></details>
       <details><summary>What are the pillars of context engineering?</summary><p>Right context at the right time. In practice that means four things: provide it upfront, structure it so the model finds what matters, persist it outside the chat, and embed it where the work happens, in files, transcripts, profiles, and repeatable skills.</p></details>
       <details><summary>Does context engineering replace RAG or fine-tuning?</summary><p>No. It includes them. Retrieval and fine-tuning are tools inside context engineering, not rivals. RAG decides what the model sees at query time. Context engineering designs the whole system of memory, retrieval, permissions, and persistence around it.</p></details>
@@ -550,7 +550,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="closing">
     <div class="reveal">
       <h2>Stop polishing the prompt. <em>Build the context.</em></h2>
-      <p>A better prompt gives you a better sentence. A better context gives you a system that already knows how you work, and one you get to keep when the model changes.</p>
+      <p>A better prompt gives you a better sentence. Build the context and you get a system that already knows how you work, one you keep when the model underneath it changes.</p>
       <div class="actions"><a class="btn primary" href="/#start">Build your COS in five minutes</a><a class="btn ghost" href="/harness/">Read the harness guide</a></div>
     </div>
   </section>
