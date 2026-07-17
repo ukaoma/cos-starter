@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How Many People Actually Use AI? The Adoption Index | GotCOS</title>
-<meta name="description" content="Half the rich world has tried generative AI. A third uses it weekly. Businesses sit near 20%. The real AI adoption numbers from Census, Pew, Reuters Institute, Eurostat, and the providers' own disclosures — all cited.">
+<meta name="description" content="Half the rich world has tried generative AI. A third uses it weekly. Businesses sit near 20%. The real AI adoption numbers from Census, Pew, Reuters Institute, Eurostat, and the providers' own disclosures. All cited.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://www.gotcos.com/ai-adoption/">
 <meta property="og:type" content="article">
@@ -141,7 +141,7 @@
   {
    "@type": "DataCatalog",
    "@id": "https://www.gotcos.com/ai-adoption/#catalog",
-   "name": "GotCOS AI Adoption Index — open data",
+   "name": "GotCOS AI Adoption Index: open data",
    "description": "Compiled, source-tiered CSV datasets behind the AI Adoption Index: population-survey adoption waves, provider user milestones, US state business adoption, and EU enterprise adoption.",
    "url": "https://www.gotcos.com/ai-adoption/",
    "creator": {
@@ -798,7 +798,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="hero-grid wrap">
     <div class="reveal">
       <h1>Everyone is talking about AI. <em>Who actually uses it?</em></h1>
-      <p class="hero-lead">Half the rich world has now tried generative AI. About a third uses it in a given week. Businesses sit near one in five. <strong>Paying users are a rounding error on humanity.</strong> Here is the real adoption curve — from the Census Bureau, Pew, the Reuters Institute, Eurostat, and the providers' own disclosures. Every number cited.</p>
+      <p class="hero-lead">Half the rich world has now tried generative AI. About a third uses it in a given week. Businesses sit near one in five. <strong>Paying users are a rounding error on humanity.</strong> Here is the real adoption curve. Pulled from the Census Bureau, Pew, the Reuters Institute, Eurostat, and the providers' own disclosures. Every number cited.</p>
       <div class="actions">
         <a class="btn primary" href="#index">See the index</a>
         <a class="btn ghost" href="/harness/">Meet the engines</a>
@@ -835,10 +835,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
               <li><b>&asymp;1 in 10</b> humans has a weekly AI habit <span>floor estimate &middot; method below</span></li>
             </ul>
           </div>
-          <p><strong>There is no single "AI adoption number."</strong> There are strands, and each answers a different question. Tried it once? The rich world crossed half in 2025. Weekly habit? A third. In the US, ChatGPT alone has gone from 18% of adults to 44% in three years — the fastest consumer technology diffusion ever polled by Pew.</p>
+          <p><strong>There is no single "AI adoption number."</strong> There are strands, and each answers a different question. Tried it once? The rich world crossed half in 2025. Weekly habit? A third. In the US, ChatGPT alone has gone from 18% of adults to 44% in three years. That is the fastest consumer technology diffusion Pew has ever polled.</p>
           <div class="idx-chart" id="idxChart" role="img" aria-label="Adoption strands 2023 to 2026: Pew US ChatGPT use rises 18 to 44 percent; Reuters Institute six-country ever-use rises 40 to 61 percent; weekly use 18 to 34 percent; Google Ipsos 21-country past-year use 38 to 48 percent."></div>
           <div class="idx-legend" id="idxLegend"></div>
-          <p class="src-note">Sources: Pew Research Center (Feb 2026) &middot; Reuters Institute Digital News / Gen AI Report 2025 &middot; Google&#8211;Ipsos "Our Life With AI" 2025 &middot; provider milestones per company disclosures. Pulled 2026-07-15.</p>
+          <p class="src-note">Sources: Pew Research Center (Feb 2026) &middot; Reuters Institute Digital News / Gen AI Report 2025 &middot; Google &middot; Ipsos "Our Life With AI" 2025 &middot; provider milestones per company disclosures. Pulled 2026-07-15.</p>
         </div>
       </div>
     </div>
@@ -852,8 +852,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="dek">The explorer</p>
         <p class="lead">Pick up to four geographies and scrub six years. US states come from the Census Bureau's
         <strong style="color:var(--fg)">biweekly</strong> business survey; European countries from Eurostat's
-        <strong style="color:var(--fg)">annual</strong> one. The frames differ — Census asks all firms about the last
-        two weeks, Eurostat asks enterprises with 10+ staff — so compare trajectories, not decimal points.</p>
+        <strong style="color:var(--fg)">annual</strong> one. The frames differ. Census asks all firms about the last
+        two weeks. Eurostat asks enterprises with 10+ staff. So compare trajectories, not decimal points.</p>
       </div>
 
       <div class="xp reveal" id="xp">
@@ -882,7 +882,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="xp-tt" id="xpTT"></div>
         </div>
         <div class="xp-cards" id="xpCards"></div>
-        <p class="xp-note">Sources: <a href="https://www.census.gov/hfp/btos/">Census Bureau BTOS</a> (US + states, share of all businesses using AI in the last two weeks, biweekly since Sep 2023; lines show a 3-release rolling average, faint dots are the raw readings, suppressed cells omitted) &middot; <a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a> (countries, share of enterprises 10+ using any AI technology; solid dots are the annual waves 2021 &middot; 2023 &middot; 2024 &middot; 2025, dashes interpolate between them, dotted tails carry the last wave forward). The <b>Businesses</b> scale multiplies each share by the geography&#8217;s business base &mdash; US states: Census CBP establishments (2023, all sizes); European countries: Eurostat SBS enterprises 10+ (2024) &mdash; held fixed across the timeline, so counts are estimates. Download: <a href="/ai-adoption/data/btos-state-series.csv">btos-state-series.csv</a> &middot; <a href="/ai-adoption/data/eurostat-country-series.csv">eurostat-country-series.csv</a> &middot; <a href="/ai-adoption/data/geo-business-base.csv">geo-business-base.csv</a>.</p>
+        <p class="xp-note">Sources: <a href="https://www.census.gov/hfp/btos/">Census Bureau BTOS</a> (US + states, share of all businesses using AI in the last two weeks, biweekly since Sep 2023; lines show a 3-release rolling average, faint dots are the raw readings, suppressed cells omitted) &middot; <a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a> (countries, share of enterprises 10+ using any AI technology; solid dots are the annual waves 2021 &middot; 2023 &middot; 2024 &middot; 2025, dashes interpolate between them, dotted tails carry the last wave forward). The <b>Businesses</b> scale multiplies each share by the geography&#8217;s business base. US states use Census CBP establishments (2023, all sizes); European countries use Eurostat SBS enterprises 10+ (2024). That base is held fixed across the timeline, so counts are estimates. Download: <a href="/ai-adoption/data/btos-state-series.csv">btos-state-series.csv</a> &middot; <a href="/ai-adoption/data/eurostat-country-series.csv">eurostat-country-series.csv</a> &middot; <a href="/ai-adoption/data/geo-business-base.csv">geo-business-base.csv</a>.</p>
       </div>
     </div>
   </section>
@@ -891,7 +891,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap">
       <div class="reveal">
         <h2>Every engine's own scoreboard</h2>
-        <p class="lead">The same engines you can seat in <a href="/harness/">your harness</a>, on their own disclosed milestones. Read the metric tags carefully — <strong style="color:var(--fg)">these numbers cannot be added together.</strong> The same person shows up in three of them, and weekly users, monthly users, downloads, and revenue are different animals.</p>
+        <p class="lead">The same engines you can seat in <a href="/harness/">your harness</a>, on their own disclosed milestones. Read the metric tags carefully. <strong style="color:var(--fg)">These numbers cannot be added together.</strong> The same person shows up in three of them. Weekly users, monthly users, downloads, revenue are different animals.</p>
       </div>
       <div class="eng-board reveal" id="engBoard"></div>
       <p class="eng-note reveal"><b>&#9679;</b> company disclosure &nbsp;&nbsp;<b>&#9675;</b> press / third-party estimate &nbsp;&middot;&nbsp; WAU weekly &middot; MAU monthly &middot; DL cumulative downloads &middot; ARR annualized revenue</p>
@@ -904,10 +904,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="section-grid">
         <div class="sticky reveal">
           <h2>Adoption has a zip code</h2>
-          <p class="intro">Businesses, by state and by country — from the two official statistical agencies that actually ask.</p>
+          <p class="intro">Businesses, by state and by country. From the two official statistical agencies that actually ask.</p>
         </div>
         <div class="prose reveal">
-          <p>The US Census Bureau asks businesses every two weeks whether they use AI to produce goods or services. In late 2023 the answer was <strong>under 4%</strong>. By early 2026 it is <strong>roughly one in five</strong> — and the spread between states is nearly 2&times;. Europe's official count tells the same story at the same altitude: 20% of enterprises, with a 8&times; spread between Denmark and Romania.</p>
+          <p>The US Census Bureau asks businesses every two weeks whether they use AI to produce goods or services. In late 2023 the answer was <strong>under 4%</strong>. By early 2026 it is <strong>roughly one in five</strong>. And the spread between states is nearly 2&times;. Europe's official count tells the same story at the same altitude: 20% of enterprises, with an 8&times; spread between Denmark and Romania.</p>
           <div class="geo-grid">
             <div class="geo-panel" id="geoUS">
               <h3>US businesses using AI, by state</h3>
@@ -918,7 +918,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
               <p class="gsub">Eurostat isoc_eb_ai, 2025 (10+ employees)</p>
             </div>
           </div>
-          <p class="geo-foot">Intensity is a different map again: on Anthropic's Economic Index, Washington DC uses Claude at <strong>3.8&times;</strong> its population share — the highest of any US state-level geography — and Israel and Singapore lead countries. Enterprise surveys run far hotter than official counts (Stanford HAI: 88% of organizations use AI in at least one function; McKinsey: 71% for generative AI) because they ask bigger firms a broader question.</p>
+          <p class="geo-foot">Intensity is a different map again: on Anthropic's Economic Index, Washington DC uses Claude at <strong>3.8&times;</strong> its population share, the highest of any US state-level geography. Israel and Singapore lead countries. Enterprise surveys run far hotter than official counts (Stanford HAI: 88% of organizations use AI in at least one function; McKinsey: 71% for generative AI) because they ask bigger firms a broader question.</p>
         </div>
       </div>
     </div>
@@ -931,10 +931,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <h2>The doors still haven't opened</h2>
       <p class="dek">The gap</p>
         <p class="gap-stat">&asymp; 9 in 10 humans<br><em>have no weekly AI habit.</em></p>
-        <p class="gap-sub">ChatGPT's 800 million weekly users is the biggest number any provider has ever disclosed — and it is under 10% of the planet. Trial is mainstream in rich countries. Habit is not. Paying is 50-odd million seats. Building on it is a village.</p>
+        <p class="gap-sub">ChatGPT's 800 million weekly users is the biggest number any provider has ever disclosed. And it is under 10% of the planet. Trial is mainstream in rich countries. Habit is not. Paying is 50-odd million seats. Building on it is a village.</p>
+        <p class="gap-sub">Right now, getting in is cheap, and it is cheap for a reason. Every frontier plan is subsidized today, roughly $100 of compute sold to you for one. Same move Uber made: half price across the bridge until the habit sets, then the premium lands. When the subsidy lifts, one question decides who comes out ahead. How is your org deploying this, and who is the benefactor?</p>
         <div class="pull">
           <b>Why this matters for you</b>
-          <p>Adoption curves reward whoever is ready before the crowd arrives. The model layer is rented and it changes monthly. The context layer — your memory, your files, your harness — is the part you own, and the part that compounds while everyone else is still trying the free tier.</p>
+          <p>Adoption curves reward whoever is ready before the crowd arrives. The model layer is rented and it changes monthly. The context layer is the part you own. Your memory, your files, your harness. It compounds while everyone else is still trying the free tier.</p>
         </div>
       </div>
     </div>
@@ -945,20 +946,20 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap">
       <div class="srcs reveal">
         <h2 style="margin-bottom:26px">The numbers, sourced</h2>
-        <div class="src-row"><span class="t">T1</span><span><b><a href="https://www.census.gov/hfp/btos/">US Census Bureau, BTOS AI supplement</a></b> — biweekly firm survey; national, state, sector. Natl &asymp;18% (2026) from &lt;4% (2023). Corroborated by the <a href="https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html">Federal Reserve FEDS Note (Apr 2026)</a>.</span></div>
-        <div class="src-row"><span class="t">T1</span><span><b><a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a></b> — enterprises (10+ emp.) using AI, per EU country, annual. EU 20.0% (2025), DK 42.0%, RO 5.2%.</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b><a href="https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/">Pew Research Center</a></b> — % of US adults who have used ChatGPT: 18% (2023), 34% (Feb&#8211;Mar 2025, n=5,123), 44% (Feb 2026, <a href="https://www.pewresearch.org/topic/internet-technology/emerging-technology/artificial-intelligence/">latest wave</a>).</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b><a href="https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf">Reuters Institute, Generative AI &amp; News 2025</a></b> — six countries (AR DK FR JP UK US): ever used 40&rarr;61%, weekly 18&rarr;34% (2024&rarr;2025).</span></div>
-        <div class="src-row"><span class="t">T2</span><span><b><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">Stanford HAI AI Index</a></b> — organizations using AI in &ge;1 function: 55% (2023) &rarr; 78% (2024) &rarr; 88% (2026 report).</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.ipsos.com/en">Google &middot; Ipsos, "Our Life With AI"</a></b> — 21 countries: used AI past 12 months 38&rarr;48%. <b><a href="https://www.microsoft.com/en-us/worklab/work-trend-index">Microsoft &middot; LinkedIn WTI</a></b> — 75% of knowledge workers (31 countries, 2025).</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.anthropic.com/economic-index">Anthropic Economic Index</a></b> — Claude usage intensity by country and US state; <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">open data on Hugging Face</a>.</span></div>
-        <div class="src-row"><span class="t">T3</span><span><b>Provider disclosures</b> — <a href="https://openai.com/news/">OpenAI</a> WAU (100M Nov 2023 &rarr; 800M Oct 2025), <a href="https://abc.xyz/investor/">Alphabet earnings</a> (Gemini 750M MAU Feb 2026), <a href="https://github.blog/">Microsoft/GitHub</a> (Copilot 20M users, 4.7M paid), <a href="https://ai.meta.com/blog/">Meta</a> (Llama 1.2B downloads), Anysphere (Cursor $2B ARR), <a href="https://ollama.com/blog">Ollama</a> (8.9M monthly devs). Dated inline above.</span></div>
-        <div class="src-row"><span class="t">T3/4</span><span><b>Flagged estimates</b> — Grok ~64M MAU, Perplexity 780M queries/mo: company statements relayed by press, shown as hollow markers. Menlo Ventures enterprise LLM share (Anthropic 40% / OpenAI 27% / Google 21%, Dec 2025) is a <a href="https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/">VC survey</a>, not an audit.</span></div>
-        <div class="src-row"><span class="t">CSV</span><span><b>Download this page's data</b> — <a href="/ai-adoption/data/adoption-surveys.csv">adoption-surveys.csv</a> &middot; <a href="/ai-adoption/data/provider-milestones.csv">provider-milestones.csv</a> &middot; <a href="/ai-adoption/data/us-state-btos.csv">us-state-btos.csv</a> &middot; <a href="/ai-adoption/data/eu-enterprise-ai.csv">eu-enterprise-ai.csv</a>. Compilation CC BY 4.0 — cite "GotCOS AI Adoption Index." Underlying figures belong to their publishers.</span></div>
+        <div class="src-row"><span class="t">T1</span><span><b><a href="https://www.census.gov/hfp/btos/">US Census Bureau, BTOS AI supplement</a></b>. Biweekly firm survey; national, state, sector. Natl &asymp;18% (2026) from &lt;4% (2023). Corroborated by the <a href="https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html">Federal Reserve FEDS Note (Apr 2026)</a>.</span></div>
+        <div class="src-row"><span class="t">T1</span><span><b><a href="https://ec.europa.eu/eurostat/databrowser/product/view/isoc_eb_ai">Eurostat isoc_eb_ai</a></b>. Enterprises (10+ emp.) using AI, per EU country, annual. EU 20.0% (2025), DK 42.0%, RO 5.2%.</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://www.pewresearch.org/short-reads/2025/06/25/34-of-us-adults-have-used-chatgpt-about-double-the-share-in-2023/">Pew Research Center</a></b>. % of US adults who have used ChatGPT: 18% (2023), 34% (Feb&#8211;Mar 2025, n=5,123), 44% (Feb 2026, <a href="https://www.pewresearch.org/topic/internet-technology/emerging-technology/artificial-intelligence/">latest wave</a>).</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2025-06/Gen_AI_and_News_Report_2025.pdf">Reuters Institute, Generative AI &amp; News 2025</a></b>. Six countries (AR DK FR JP UK US): ever used 40 to 61%, weekly 18 to 34% (2024 to 2025).</span></div>
+        <div class="src-row"><span class="t">T2</span><span><b><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report">Stanford HAI AI Index</a></b>. Organizations using AI in &ge;1 function: 55% (2023) to 78% (2024) to 88% (2026 report).</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.ipsos.com/en">Google &middot; Ipsos, "Our Life With AI"</a></b>. 21 countries: used AI past 12 months 38 to 48%. <b><a href="https://www.microsoft.com/en-us/worklab/work-trend-index">Microsoft &middot; LinkedIn WTI</a></b>. 75% of knowledge workers (31 countries, 2025).</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b><a href="https://www.anthropic.com/economic-index">Anthropic Economic Index</a></b>. Claude usage intensity by country and US state; <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">open data on Hugging Face</a>.</span></div>
+        <div class="src-row"><span class="t">T3</span><span><b>Provider disclosures</b>. <a href="https://openai.com/news/">OpenAI</a> WAU (100M Nov 2023 to 800M Oct 2025), <a href="https://abc.xyz/investor/">Alphabet earnings</a> (Gemini 750M MAU Feb 2026), <a href="https://github.blog/">Microsoft/GitHub</a> (Copilot 20M users, 4.7M paid), <a href="https://ai.meta.com/blog/">Meta</a> (Llama 1.2B downloads), Anysphere (Cursor $2B ARR), <a href="https://ollama.com/blog">Ollama</a> (8.9M monthly devs). Dated inline above.</span></div>
+        <div class="src-row"><span class="t">T3/4</span><span><b>Flagged estimates</b>. Grok ~64M MAU, Perplexity 780M queries/mo: company statements relayed by press, shown as hollow markers. Menlo Ventures enterprise LLM share (Anthropic 40% / OpenAI 27% / Google 21%, Dec 2025) is a <a href="https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/">VC survey</a>, not an audit.</span></div>
+        <div class="src-row"><span class="t">CSV</span><span><b>Download this page's data</b>. <a href="/ai-adoption/data/adoption-surveys.csv">adoption-surveys.csv</a> &middot; <a href="/ai-adoption/data/provider-milestones.csv">provider-milestones.csv</a> &middot; <a href="/ai-adoption/data/us-state-btos.csv">us-state-btos.csv</a> &middot; <a href="/ai-adoption/data/eu-enterprise-ai.csv">eu-enterprise-ai.csv</a>. Compilation CC BY 4.0. Cite "GotCOS AI Adoption Index." Underlying figures belong to their publishers.</span></div>
         <div class="caveats">
           <div class="label">How to read all of this honestly</div>
           <ul>
-            <li><strong>Never sum provider users.</strong> ChatGPT's 800M + Gemini's 750M + Copilot's 20M overlap heavily — one person is in several counts. Only surveys estimate unduplicated people.</li>
+            <li><strong>Never sum provider users.</strong> ChatGPT's 800M + Gemini's 750M + Copilot's 20M overlap heavily. One person is in several counts. Only surveys estimate unduplicated people.</li>
             <li><strong>Metrics differ:</strong> weekly users &ne; monthly users &ne; cumulative downloads &ne; paid seats &ne; revenue. Each engine row above is tagged with its own metric.</li>
             <li><strong>Survey wording drives the number:</strong> "ever used" (61%) vs "weekly" (34%) vs "used ChatGPT" (44%) are different questions. Strands are never spliced.</li>
             <li><strong>Company figures are unaudited</strong> and usually disclosed at launches and earnings. All are dated to the disclosure.</li>
@@ -968,11 +969,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="reveal">
         <h2 id="faq" style="font-size:clamp(1.9rem,3vw,2.6rem);margin-bottom:22px">Questions people actually ask</h2>
-        <details id="faq-chatgpt-users"><summary>How many people use ChatGPT?</summary><p>OpenAI reported <strong>800 million weekly active users</strong> in October 2025 — the largest disclosed figure for any AI product. In the US, 44% of adults told Pew in February 2026 they have used it, up from 18% in 2023.</p></details>
+        <details id="faq-chatgpt-users"><summary>How many people use ChatGPT?</summary><p>OpenAI reported <strong>800 million weekly active users</strong> in October 2025. That is the largest disclosed figure for any AI product. In the US, 44% of adults told Pew in February 2026 they have used it, up from 18% in 2023.</p></details>
         <details id="faq-genai-share"><summary>What share of people use generative AI?</summary><p>In the six countries the Reuters Institute tracks, <strong>61% have tried it</strong> and <strong>34% use it weekly</strong> (2025). Across 21 countries, Google/Ipsos found 48% used AI in the past year. Globally, weekly use is still roughly one human in ten.</p></details>
-        <details id="faq-business-share"><summary>What share of businesses use AI?</summary><p>About <strong>18% of US firms</strong> (Census BTOS, early 2026, up from under 4% in late 2023) and <strong>20% of EU enterprises</strong> (Eurostat 2025), led by Denmark at 42%. Enterprise surveys of larger firms run much higher — 88% on Stanford HAI's broad measure.</p></details>
+        <details id="faq-business-share"><summary>What share of businesses use AI?</summary><p>About <strong>18% of US firms</strong> (Census BTOS, early 2026, up from under 4% in late 2023) and <strong>20% of EU enterprises</strong> (Eurostat 2025), led by Denmark at 42%. Enterprise surveys of larger firms run much higher. Stanford HAI's broad measure hits 88%.</p></details>
         <details id="faq-top-state"><summary>Which US state uses AI most?</summary><p><strong>Colorado</strong>, at 23.2% of businesses, with Arizona (22.9%) and Washington DC (22.5%) close behind; West Virginia is lowest at 10.8%. On per-capita usage intensity of Claude, DC is in a league of its own at 3.8&times; its population share.</p></details>
-        <details id="faq-non-additive"><summary>Can you add ChatGPT and Gemini users for a total?</summary><p>No. The counts <strong>overlap</strong> (same people, several tools), they are <strong>self-reported</strong>, and they mix incompatible metrics — weekly vs monthly users vs downloads vs seats. That is why this page anchors its index on population surveys and treats provider numbers as dated milestones.</p></details>
+        <details id="faq-non-additive"><summary>Can you add ChatGPT and Gemini users for a total?</summary><p>No. The counts <strong>overlap</strong> (same people, several tools), they are <strong>self-reported</strong>, and they mix incompatible metrics: weekly vs monthly users vs downloads vs seats. That is why this page anchors its index on population surveys and treats provider numbers as dated milestones.</p></details>
       </div>
     </div>
   </section>
@@ -1117,8 +1118,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   var rows = Math.ceil(N/COLS);
   var cw = (W - PAD*2) / COLS, ch = (H - PAD*2) / rows;
   var r = Math.min(cw, ch) * 0.32;
-  // Every dot carries a fixed transition-delay — col*10ms + row*12ms — so ANY
-  // opacity change sweeps left→right along each row, rows cascading downward.
+  // Every dot carries a fixed transition-delay, col*10ms + row*12ms, so ANY
+  // opacity change sweeps left-to-right along each row, rows cascading downward.
   // --wv on the svg scales the wave: 1 for the first paint, .55 for cycle sweeps.
   var DLY = new Array(N), frag = [];
   for (var i = 0; i < N; i++) {
@@ -1713,7 +1714,7 @@ window.XP_BASE={"S:AL":105720,"S:AK":22178,"S:AZ":162845,"S:AR":70452,"S:CA":102
           ? '<div class="delta na">share view only</div>'
           : (delta != null
             ? '<div class="delta">'+(carried ? 'latest wave '+carried+' &middot; ' : '')+'+'+(xpMode === 'share' ? delta.toFixed(1)+' pts' : fmtV(delta))+' since '+Math.floor(first[0])+'</div>'
-            : '<div class="delta na">series starts '+(first ? Math.floor(first[0]) : '&mdash;')+'</div>')) +
+            : '<div class="delta na">'+(first ? 'series starts '+Math.floor(first[0]) : 'no series yet')+'</div>')) +
         '</div>';
     });
     el.innerHTML = html;
@@ -1783,7 +1784,7 @@ window.XP_BASE={"S:AL":105720,"S:AK":22178,"S:AZ":162845,"S:AR":70452,"S:CA":102
           return '<button class="opt'+(i===sActive?' active':'')+'" data-id="'+id+'" role="option">' +
             '<span class="dot"'+(inSel ? ' style="background:'+colorOf(id)+'"' : '')+'></span>'+esc(REG[id].name)+
             '<span class="kind">'+(inSel ? 'selected' : REG[id].kind)+'</span></button>';
-        }).join('') + (sel.length >= 4 ? '<div class="hint">Max 4 — remove a chip to add another.</div>' : '')
+        }).join('') + (sel.length >= 4 ? '<div class="hint">Max 4. Remove a chip to add another.</div>' : '')
       : '<div class="hint">No match. Try a US state or a European country.</div>';
     sPop.classList.add('open'); sIn.setAttribute('aria-expanded','true');
     sPop.querySelectorAll('.opt').forEach(function(o){
