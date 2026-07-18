@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses v5.23.18 (build 204) · server @gotcos/glasses-server 6.7.0.
+  Covers COS Glasses v5.23.23 (build 209) · server @gotcos/glasses-server 6.10.0.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -400,7 +400,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">v5.23.18</span>
+    <span class="sb-ver">v5.23.23</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -438,10 +438,10 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>v5.23.18</b> · build 204</span>
-      <span class="chip">Server <b>6.7.0</b></span>
+      <span class="chip">App <b>v5.23.23</b> · build 209</span>
+      <span class="chip">Server <b>6.10.0</b></span>
       <span class="chip">Even G2</span>
-      <span class="chip">Even app 2.2.1+</span>
+      <span class="chip">Even app 2.2.6+</span>
     </div>
     <div class="btns">
       <a class="btn primary" href="/wizard/">Run the setup wizard</a>
@@ -450,7 +450,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.18</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.23</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -470,7 +470,7 @@ footer .links a:hover{color:var(--gold)}
     <a class="chapcard" href="#lens"><span class="chap-ix">05</span><span class="chap-t">The Lens</span><span class="chap-d">Four screens driven by three simple gestures.</span></a>
     <a class="chapcard" href="#jobs"><span class="chap-ix">06</span><span class="chap-t">Jobs</span><span class="chap-d">Jobs run on your Mac and survive the app closing.</span></a>
     <a class="chapcard" href="#recall"><span class="chap-ix">07</span><span class="chap-t">Recall</span><span class="chap-d">Stable short numbers over a complete archive.</span></a>
-    <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Record the room, read the transcript later.</span></a>
+    <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Live transcription with offline-safe audio.</span></a>
     <a class="chapcard" href="#dictation"><span class="chap-ix">09</span><span class="chap-t">Dictation</span><span class="chap-d">Dictate long prompts, approve before anything sends.</span></a>
     <a class="chapcard" href="#models"><span class="chap-ix">10</span><span class="chap-t">Models</span><span class="chap-d">Five always-current slots for Claude and GPT.</span></a>
     <a class="chapcard" href="#privacy"><span class="chap-ix">11</span><span class="chap-t">Privacy</span><span class="chap-d">No cloud; history stays on your Mac.</span></a>
@@ -505,7 +505,7 @@ footer .links a:hover{color:var(--gold)}
   <ol class="steps">
     <li>
       <h3>Check the basics</h3>
-      <p>A Mac that stays on, with Node.js 20.11 or newer. At least one agent CLI signed in: Claude Code (<code>claude login</code>) or Codex (<code>codex login</code>). Your G2 paired to the Even Realities app, version 2.2.1 or newer.</p>
+      <p>A Mac that stays on, with Node.js 20.11 or newer. At least one agent CLI signed in: Claude Code (<code>claude login</code>) or Codex (<code>codex login</code>). Your G2 paired to the Even Realities app, version 2.2.6 or newer.</p>
     </li>
     <li>
       <h3>Start the server</h3>
@@ -653,6 +653,11 @@ footer .links a:hover{color:var(--gold)}
       <p style="font-size:.95rem">The moment your Mac accepts a prompt, the job belongs to the <strong>server</strong>, not the phone connection. Closing or backgrounding Even Hub, losing Wi-Fi, or switching networks does not stop it. Reopen COS and it <strong>reattaches to the same job</strong>, replays the activity you missed, and delivers the finished reply. Only an explicit Cancel ends the work.</p>
       <p style="font-size:.95rem">A send moves through <span class="g-key">Submitting</span>, <span class="g-key">Accepted</span>, <span class="g-key">Running</span>. A dropped connection shows <span class="g-key">Reconnecting · job still running</span>, never a false Failed. If the Mac server itself restarts, COS shows <span class="g-key">Interrupted · prompt preserved</span> and offers a one-tap retry; it never silently reruns.</p>
     </div>
+    <div>
+      <h3>Catch up when you return</h3>
+      <p style="font-size:.95rem"><strong>Updates while away</strong> reconstructs accepted, running, finished, and interrupted work from the server ledger after the app reopens. Resume always targets the original job and model settings, so a reconnect cannot create a silent duplicate.</p>
+      <p style="font-size:.95rem">Restored photo-and-message rows verify their attachments before they run. If a photo still needs to be recovered, the row waits and explains why; it never submits the text alone or loses the queued prompt.</p>
+    </div>
   </div>
   <div class="tw"><table>
     <tr><td><strong>Cancel</strong></td><td>A deliberate two-step: double-tap arms it (<span class="g-key">Double-tap again to cancel</span>, three-second window), a second double-tap cancels. Canceling pauses the queue; nothing auto-fires until you tap a queued row.</td></tr>
@@ -677,7 +682,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">8.</span> Meetings</h2>
     <p class="ch-sub">Record the room. <span class="it goldt">Read it later.</span></p>
-    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript, newest line on top.</p>
+    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript. Audio is written to private phone storage first, so a network interruption does not become a lost meeting.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
     <div>
@@ -697,8 +702,17 @@ footer .links a:hover{color:var(--gold)}
         <tr><td><span class="g-key">↓</span></td><td>Scroll back through the transcript history.</td></tr>
         <tr><td><span class="g-key">↑↑</span></td><td>Back to Home. Recording keeps going; a REC timer stays in the header while you browse anywhere else.</td></tr>
       </table></div>
-      <p style="font-size:.95rem"><strong>Stop Meeting AI</strong> ends the session. <strong>Review Meetings</strong> then holds the summary, topics, decisions, and action items, readable right on the glasses.</p>
-      <p style="font-size:.95rem"><strong>No server? Keep talking.</strong> Recording buffers on the phone and uploads, transcribes, and files itself when the server is back. Start and stop offline meetings from Quick Actions as usual.</p>
+      <p style="font-size:.95rem"><strong>Stop Meeting AI</strong> ends the session. <strong>Review Meetings</strong> then holds the transcript, summary, topics, decisions, and action items, readable right on the glasses.</p>
+      <p style="font-size:.95rem"><strong>Connection dropped? Keep talking.</strong> Every audio chunk enters a local write-ahead log before upload. When the server returns, COS sends only the missing ranges and keeps the local audio until the Mac confirms a complete, canonical copy.</p>
+    </div>
+    <div>
+      <h3>The lens catches up</h3>
+      <p style="font-size:.95rem">The phone can keep receiving transcript chunks while the G2 display bridge is busy or disconnected. COS retains the newest unpainted transcript body and catches the lens up through one ordered display lane after reconnection. Scrolling into history intentionally pauses the live reveal; choose <strong>Resume Meeting</strong> to return to the newest text.</p>
+    </div>
+    <div>
+      <h3>Stopping is durability-aware</h3>
+      <p style="font-size:.95rem">A normal stop is one tap. If storage or connectivity is changing at that instant, COS shows <span class="g-key">Meeting paused · tap Stop again</span> instead of claiming the recording was saved. The second tap finishes the durable close; message recording unlocks only after the meeting reaches idle.</p>
+      <p style="font-size:.95rem">The live transcript remains canonical. A higher-quality post-meeting pass replaces it only when coverage and repetition checks pass; a bad rewrite is rejected without touching the complete streaming transcript.</p>
     </div>
   </div>
 </section>
@@ -713,11 +727,11 @@ footer .links a:hover{color:var(--gold)}
   <ol class="steps">
     <li>
       <h3>Record</h3>
-      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span>; talk as long as you need.</p>
+      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span> and fills with warm transcript chunks while you speak, so you can catch a mistake before you finish.</p>
     </li>
     <li>
       <h3>Review</h3>
-      <p>Tap to finish. COS transcribes and shows the full transcript for review before anything is sent.</p>
+      <p>Tap to finish. COS reconciles the live chunks with the final transcription and shows the complete draft for review before anything is sent. The recording remains recoverable on the phone, with a server backup when reachable.</p>
     </li>
     <li>
       <h3>Send, edit, or redo</h3>
@@ -792,6 +806,10 @@ footer .links a:hover{color:var(--gold)}
       <p>Messages and ledgers carry random attachment IDs, never image bytes or private filesystem paths. Uploads are size/type checked, metadata-stripped, normalized locally, and served only through the authenticated server.</p>
     </div>
     <div class="card">
+      <h3>Offline meeting audio is temporary</h3>
+      <p>Meeting chunks wait in private phone storage only until the Mac acknowledges the complete canonical recording. Exact missing ranges are retried idempotently; acknowledged audio can then be removed without risking an un-uploaded tail.</p>
+    </div>
+    <div class="card">
       <h3>No hidden reasoning</h3>
       <p>COS surfaces observable work only. Model thinking appears as a generic <span class="g-key">Reasoning...</span> status, never as text on your lens or phone.</p>
     </div>
@@ -823,7 +841,7 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>REASONING EFFORT</strong></td><td>High (default), Extra High, Max, Ultracode.</td></tr>
     <tr><td><strong>CLI DEBUG</strong></td><td>Which CLI and exact model served the last message, working directory, last run. Metadata only; full prompts and tool payloads are not stored.</td></tr>
     <tr><td><strong>ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), prompt recovery (beta), Polish dictation (AI) with Haiku or Sonnet, and Live meeting ASR: Server Whisper or iPhone WhisperKit (beta).</td></tr>
+    <tr><td><strong>TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery on a compatible server.</td></tr>
     <tr><td><strong>VOICE (TTS)</strong></td><td>Nine voices with Echo as default, playback speed, fast first-audio (beta), and a test button. Used when you ask COS to speak; connect Bluetooth audio to hear it.</td></tr>
     <tr><td><strong>OPENAI KEY</strong></td><td>Optional key for the cloud voice fallback. Stored on the server only; never returned to the phone.</td></tr>
     <tr><td><strong>Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
@@ -853,11 +871,19 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Voice feels slow</h3>
-      <p>Local whisper transcribes for free. Without <code>whisper-cpp</code> installed, the server falls back to OpenAI, which needs a key and costs about $0.006 per minute. The health endpoint reports whisper status and remaining cloud budget.</p>
+      <p>Local Whisper transcribes for free. A heavy post-meeting pass can briefly restart the local worker; COS keeps the audio and retries instead of discarding the prompt. Without <code>whisper-cpp</code>, the optional OpenAI fallback needs a key and costs about $0.006 per minute. The health endpoint reports Whisper status and remaining cloud budget.</p>
     </div>
     <div class="card">
-      <h3>Meeting with no server</h3>
-      <p>Keep talking. Audio buffers on the phone and uploads, transcribes, and files itself when the server returns.</p>
+      <h3>Server dropped during a meeting</h3>
+      <p>Keep talking. The phone journals audio locally and reconnects without restarting the meeting. When the server returns, COS uploads the exact missing ranges, catches transcription up, and retains local audio until the complete receipt arrives.</p>
+    </div>
+    <div class="card">
+      <h3>“Meeting paused · tap Stop again”</h3>
+      <p>The first stop reached a transient storage or reconnect boundary, so COS refused to show a false success. Tap <strong>Stop Meeting AI</strong> once more. Your audio is retained, and new message recording unlocks after the meeting reaches idle.</p>
+    </div>
+    <div class="card">
+      <h3>Phone transcript is ahead of G2</h3>
+      <p>The recorder is still working. COS keeps the newest unpainted body and normally catches the lens up within the existing display cadence after the bridge returns. If you scrolled through history, choose <strong>Resume Meeting</strong>. If it persists, check the G2 connection while leaving the meeting running.</p>
     </div>
     <div class="card">
       <h3>Photos unavailable</h3>
@@ -879,7 +905,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.1 or newer. The server side needs a Mac with Node.js 20.11 or newer.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>
@@ -892,6 +918,10 @@ footer .links a:hover{color:var(--gold)}
     <details>
       <summary>Does anything leave my network?</summary>
       <p>Prompts go to the AI provider behind your own signed-in CLI, exactly as they would from your terminal. History, meetings, settings, and indexes stay on your Mac and phone. There is no COS-hosted copy.</p>
+    </details>
+    <details>
+      <summary>What happens if my connection drops during a meeting?</summary>
+      <p>Recording continues into private phone storage. On reconnect, COS uploads only the missing audio ranges and keeps the local copy until the Mac confirms the meeting is complete. The G2 transcript catches up separately, so a paused lens display does not mean recording stopped.</p>
     </details>
     <details>
       <summary>A new GPT or Claude model just shipped. Do I update anything?</summary>
