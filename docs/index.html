@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses v5.23.23 (build 209) · server @gotcos/glasses-server 6.11.0.
+  Covers COS Glasses v5.23.24 (build 210) · server @gotcos/glasses-server 6.12.0.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -400,7 +400,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">v5.23.23</span>
+    <span class="sb-ver">v5.23.24</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -438,8 +438,8 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>v5.23.23</b> · build 209</span>
-      <span class="chip">Server <b>6.11.0</b></span>
+      <span class="chip">App <b>v5.23.24</b> · build 210</span>
+      <span class="chip">Server <b>6.12.0</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -450,7 +450,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.23</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.24</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -510,7 +510,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx @gotcos/glasses-server</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 209's offline-safe meetings require server <strong>6.11.0 or newer</strong>; rerunning the command pulls the current release. Optional but recommended: <code>brew install whisper-cpp</code> for free local voice transcription and <code>brew install ffmpeg</code> for phone photos and answer images. Text chat still works without either.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 210 requires server <strong>6.11.0 or newer</strong> for offline-safe meetings and <strong>6.12.0</strong> for the hardened local-only transcription and Recovery Center behavior; rerunning the command pulls the current release. Optional but recommended: <code>brew install whisper-cpp</code> for free local voice transcription and <code>brew install ffmpeg</code> for phone photos and answer images. Text chat still works without either.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -717,7 +717,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 209 plus server 6.11.0 enables local-first recovery. Server 6.11.0 remains additive for older COS builds, which keep their existing live transcription and save behavior.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 210 plus server 6.12.0 enables the complete local-first recovery and local-only transcription defaults. Server 6.12.0 keeps existing query, meeting, photo, and display routes compatible with older COS builds.</p>
     </div>
   </div>
 </section>
@@ -846,9 +846,9 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>REASONING EFFORT</strong></td><td>High (default), Extra High, Max, Ultracode.</td></tr>
     <tr><td><strong>CLI DEBUG</strong></td><td>Which CLI and exact model served the last message, working directory, last run. Metadata only; full prompts and tool payloads are not stored.</td></tr>
     <tr><td><strong>ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer.</td></tr>
+    <tr><td><strong>TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer. With server 6.12.0, speech stays on local Whisper by default.</td></tr>
     <tr><td><strong>VOICE (TTS)</strong></td><td>Nine voices with Echo as default, playback speed, fast first-audio (beta), and a test button. Used when you ask COS to speak; connect Bluetooth audio to hear it.</td></tr>
-    <tr><td><strong>OPENAI KEY</strong></td><td>Optional key for the cloud voice fallback. Stored on the server only; never returned to the phone.</td></tr>
+    <tr><td><strong>OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
     <tr><td><strong>ABOUT</strong></td><td>Version, build, and the local-data note.</td></tr>
   </table></div>
@@ -875,8 +875,12 @@ footer .links a:hover{color:var(--gold)}
       <p>Nothing is lost. Once a prompt is Accepted, the job runs on your Mac, not the phone. Reopen COS and it reattaches to the same job and shows the reply. A brief drop reads <span class="g-key">Reconnecting · job still running</span>, not Failed. If the Mac server restarted, you will see <span class="g-key">Interrupted · prompt preserved</span> with a one-tap retry. Only Cancel stops a job on purpose.</p>
     </div>
     <div class="card">
-      <h3>Voice feels slow</h3>
-      <p>Local Whisper transcribes for free. A heavy post-meeting pass can briefly restart the local worker; COS keeps the audio and retries instead of discarding the prompt. Without <code>whisper-cpp</code>, the optional OpenAI fallback needs a key and costs about $0.006 per minute. The health endpoint reports Whisper status and remaining cloud budget.</p>
+      <h3>Voice feels slow or local Whisper is unavailable</h3>
+      <p>Local Whisper transcribes for free and is the default. A heavy post-meeting pass can briefly restart the local worker; COS keeps the audio and returns a retryable state instead of discarding the prompt. Install or restart <code>whisper-cpp</code> to resume locally. Cloud fallback is off unless the server operator explicitly sets <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</p>
+    </div>
+    <div class="card">
+      <h3>Recovery Center shows a disconnected component</h3>
+      <p>Build 210 evaluates API health, live display stream, G2 attachment, and local Whisper independently. A missing optional recovery route is shown as unsupported rather than turning every row red, and restart buttons appear only when the connected server advertises that capability. Use the row that is actually down to choose the next step.</p>
     </div>
     <div class="card">
       <h3>Server dropped during a meeting</h3>
@@ -896,11 +900,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 209's full recovery path is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. If either is missing, rerun <code>npx @gotcos/glasses-server</code> and reconnect COS.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 210's full recovery path is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. Server 6.12.0 also reports its local transcription policy and recovery-control capabilities. If the meeting fields are missing, rerun <code>npx @gotcos/glasses-server</code> and reconnect COS.</p>
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx @gotcos/glasses-server</code>; npx fetches the latest release. Build 209 needs server 6.11.0+ for offline-safe meetings. Glasses app: install the new version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
+      <p>Server: rerun <code>npx @gotcos/glasses-server</code>; npx fetches the latest release. Build 210 needs server 6.11.0+ for offline-safe meetings and 6.12.0 for the local-only transcription default plus capability-aware recovery. Glasses app: install the new version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
     </div>
   </div>
 </section>
@@ -914,7 +918,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds the hardened local-only transcription and Recovery Center behavior.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>
@@ -922,7 +926,7 @@ footer .links a:hover{color:var(--gold)}
     </details>
     <details>
       <summary>What does it cost to run?</summary>
-      <p>The server is free and MIT-licensed. Prompts bill to the Claude or Codex subscription you already pay for. Voice is free with local whisper; the optional OpenAI fallback runs about $0.006 per minute.</p>
+      <p>The server is free and MIT-licensed. Prompts bill to the Claude or Codex subscription you already pay for. Voice is free with local Whisper. Cloud transcription is disabled by default; administrators who explicitly opt in and provide an OpenAI key pay the provider's current audio-transcription rate.</p>
     </details>
     <details>
       <summary>Does anything leave my network?</summary>
