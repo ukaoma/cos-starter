@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embodied Intelligence · From Wearables to Robots · COS</title>
+<meta name="description" content="Intelligence is moving beyond the screen and into everyday life. A cited visual history from early automata to wearables, autonomous cars, and useful robots.">
+<link rel="canonical" href="https://www.gotcos.com/embodied-intelligence/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.gotcos.com/embodied-intelligence/">
+<meta property="og:title" content="Embodied Intelligence · From Wearables to Robots">
+<meta property="og:description" content="From the digital ether into everyday life: the cited arc from early automata to wearables, autonomous cars, and useful robots.">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="COS. Open-source AI chief of staff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Embodied Intelligence · From Wearables to Robots">
+<meta name="twitter:description" content="From the digital ether into everyday life: a cited visual history of embodied intelligence.">
+<meta name="twitter:image" content="https://www.gotcos.com/assets/banner.png?v=2">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    color-scheme:dark;
+    --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
+    --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
+    --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+    --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
+    --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
+    --maxw:1140px; --gut:clamp(22px,5vw,72px);
+  }
+
+  html{font-size:16px;-webkit-font-smoothing:antialiased}
+  @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden}
+  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
+  .g::selection{-webkit-text-fill-color:#f4efe4}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn:focus-visible,.nav .cta:focus-visible{outline-offset:2px}
+
+  /* ── Atmosphere: aurora mesh + grain + vignette ── */
+  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
+  .atmos .a1{width:60vw;height:60vw;top:-18vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
+  .atmos .a2{width:52vw;height:52vw;top:34vh;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.26),transparent 60%);animation-duration:32s}
+  .atmos .a3{width:46vw;height:46vw;bottom:-16vw;right:6vw;background:radial-gradient(circle,rgba(127,169,138,.16),transparent 60%);animation-duration:38s}
+  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
+  .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+  .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%,transparent 55%,rgba(0,0,0,.5) 100%)}
+
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+  /* ── Shared editorial bits ── */
+  .g{background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .it{font-style:italic}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 18%,var(--line) 82%,transparent);margin:0}
+  section{position:relative;z-index:2;padding-block:clamp(60px,9vw,128px)}
+  .sec-head{display:flex;flex-direction:column;gap:18px;max-width:46ch}
+  h2{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
+  .lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
+  .dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
+  section.light .dek{color:#7a5c2c}
+  p{color:var(--muted)} p strong{color:var(--fg);font-weight:600}
+  a{color:var(--gold);text-decoration:none}
+  .lead a,p a{text-decoration:underline;text-underline-offset:3px}
+  .pull{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.25;color:var(--fg);margin:6px 0 26px;text-wrap:balance}
+  .pull .g{font-style:italic}
+  .split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,72px);align-items:start}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:28px}}
+
+  /* reveal (gated on .js so no-JS, print, and reader modes always see content) */
+  .js .reveal:not(.light):not(.lightband){opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in:not(.light):not(.lightband){opacity:1;transform:none}
+  .js .reveal.light > *,.js .reveal.lightband > *{opacity:0;transform:translateY(20px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.light.in > *,.js .reveal.lightband.in > *{opacity:1;transform:none}
+  .js .reveal.light > *:nth-child(2){transition-delay:.1s}
+  .js .reveal.light > *:nth-child(3){transition-delay:.2s}
+  .js .reveal.light > *:nth-child(n+4){transition-delay:.28s}
+  @media print{.reveal,.reveal > *,.tl-item,.arc-label,.arc-node{opacity:1!important;transform:none!important}}
+
+  /* ── Nav — full-width dark strip + contained light card ── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
+  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+  .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
+  .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nt-links{display:flex;gap:20px;flex-shrink:0}
+  .nt-links a{color:var(--muted);transition:color .2s}
+  .nt-links a:hover{color:var(--gold)}
+  .nav-main{pointer-events:auto;width:min(var(--maxw),calc(100% - 28px));margin:12px auto 0;padding:9px 12px 9px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(252,249,243,.94);backdrop-filter:blur(16px) saturate(1.15);border:1px solid rgba(46,31,16,.14);border-radius:16px;box-shadow:0 22px 54px -26px rgba(0,0,0,.6),0 4px 18px -8px rgba(46,31,16,.22)}
+  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-on-cream)}
+  .nav .brand b{font-style:normal;font-weight:600}
+  .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
+  .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+  .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+  .nav .links .cta{font-family:var(--body);font-weight:500;color:var(--cream);background:var(--ink);padding:9px 18px;border-radius:999px;margin-left:8px;transition:transform .2s,box-shadow .25s,background .2s;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+  .nav .links .cta:hover{color:var(--cream);background:#2a1c10;transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(23,15,9,.65)}
+  .nd{position:relative}
+  .nd-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.85rem;color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+  .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+  .nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+  .nd[data-open] .nd-btn svg{transform:rotate(180deg)}
+  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+  .nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
+  @media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
+  .nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
+  .nd-menu a:hover{background:rgba(201,169,110,.18)}
+  .nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
+  .nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
+  .nav-burger span{display:block;width:16px;height:1.6px;background:var(--ink-on-cream);margin:2.4px auto;border-radius:2px;transition:transform .25s,opacity .2s}
+  .nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+  .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
+  @media(max-width:900px){
+    .nav-top{display:none}
+    .nav-main{margin-top:10px}
+    .nav-burger{display:grid}
+    .nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;background:rgba(248,243,233,.98);border:1px solid rgba(46,31,16,.1);border-radius:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .25s,visibility .25s}
+    .nav .links.open{opacity:1;visibility:visible;transform:none}
+    .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+    .nd[data-open] .nd-menu{display:block}
+    .nav .links .cta{margin:10px 0 0;text-align:center}
+  }
+  @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg{transition:none}}
+
+  /* ── Burn dividers ── */
+  .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
+  .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+  .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+
+  /* ── Light (cream) sections ── */
+  section.light,.wrap.lightband{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
+  .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
+  section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
+  section.light .lead,section.light p{color:var(--muted-on-cream)}
+  section.light a{color:#7a5c2c}
+  section.light ::selection{background:rgba(138,106,52,.25);color:#241708}
+  section.light :focus-visible{outline-color:#7a5c2c}
+  section.light .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
+  section.light .btn.ghost:hover{border-color:#7a5c2c;color:#7a5c2c}
+
+  /* ── Buttons ── */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;transition:transform .2s,box-shadow .25s,border-color .2s,background .2s;border:1px solid transparent}
+  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 40px -14px rgba(201,169,110,.6)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.7)}
+  .btn.ghost{border-color:var(--line-2);color:var(--fg)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* inline CTA band */
+  .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(201,169,110,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
+  .inline-cta .ic-text b{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.25rem;color:var(--fg);display:block;line-height:1.15}
+  .inline-cta .ic-text span{font-size:.9rem;color:var(--muted);display:block;margin-top:5px;max-width:54ch}
+  .inline-cta .ic-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+  .inline-cta .btn{font-size:.9rem;padding:12px 22px}
+  @media(max-width:680px){.inline-cta{flex-direction:column;align-items:flex-start;padding:22px}}
+  .lightband .inline-cta{background:rgba(255,255,255,.6);border-color:var(--line-on-cream)}
+  .lightband .ic-text b{color:var(--ink-on-cream)}
+  .lightband .ic-text span{color:var(--muted-on-cream)}
+  .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
+
+  /* ── Footer ── */
+  footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2);overflow:hidden}
+  footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:18px}
+  footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  footer .links a{color:var(--muted)}
+  footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
+  .foot-mark{text-align:center;opacity:.045;margin-top:26px;user-select:none;pointer-events:none}
+  .foot-mark svg{width:clamp(110px,16vw,220px);height:auto;fill:var(--fg)}
+
+  /* ═══ Page: hero ═══ */
+  .hero{padding-top:clamp(150px,20vh,215px);padding-bottom:clamp(50px,7vw,90px)}
+  .hero h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.9rem,8vw,6rem);line-height:.99;letter-spacing:-.03em;max-width:17ch;text-wrap:balance}
+  .hero h1 .l2{display:block;font-style:italic;font-weight:500}
+  .hero .sub{margin-top:30px;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.6;max-width:56ch}
+  .hero .sub b{color:var(--fg);font-weight:500}
+  .hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--faint)}
+  .hero-meta b{color:var(--gold);font-weight:500}
+
+  /* the arc: stepped ascent from pocket to embodiment (instrument chrome) */
+  .arc-rig{margin-top:clamp(40px,6vw,64px);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,34px) clamp(14px,2.6vw,30px) clamp(12px,2vw,22px);background:radial-gradient(130% 140% at 50% 0%,rgba(201,169,110,.07),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent)}
+  .arc-rig svg{display:block;width:100%;height:auto}
+  .arc-rig .arc-path{fill:none;stroke:var(--gold);stroke-width:1.6;opacity:.9}
+  .arc-rig .arc-ghost{fill:none;stroke:rgba(240,232,218,.10);stroke-width:1.6;stroke-dasharray:3 5}
+  .arc-rig .arc-node{fill:var(--ink);stroke:var(--gold);stroke-width:1.4}
+  .arc-rig .arc-node.dim{stroke:rgba(240,232,218,.30)}
+  .arc-rig .arc-node.next{stroke:var(--rose)}
+  .arc-rig text{font-family:var(--mono);letter-spacing:.06em}
+  .arc-rig .al-y{font-size:8.6px;fill:rgba(240,232,218,.38)}
+  .arc-rig .al-t{font-size:10.4px;fill:#f0e8da;font-weight:500}
+  .arc-rig .al-s{font-size:8.6px;fill:rgba(240,232,218,.55)}
+  .arc-rig .al-t.gold{fill:#c9a96e}
+  .arc-rig .al-t.rose{fill:#d08a86}
+  .arc-axis{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost)}
+  .js .arc-rig .arc-label{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .arc-rig.in .arc-label{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .arc-rig .arc-label{opacity:1;transform:none;transition:none}}
+  @media(max-width:680px){.arc-rig{overflow-x:auto}.arc-rig svg{min-width:640px}}
+
+  /* ═══ §01 plates (Turk + duck), Franklin halftone treatment ═══ */
+  #dream{overflow:hidden}
+  #dream .pixmap{position:absolute;right:-4%;top:2%;z-index:0;pointer-events:none;
+    width:clamp(320px,44vw,600px);height:clamp(320px,88%,600px);opacity:.5;background:#e7d9bd;
+    -webkit-mask-image:radial-gradient(64% 66% at 50% 46%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%));
+            mask-image:radial-gradient(64% 66% at 50% 46%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%))}
+  #dream .pixmap .pi{position:absolute;inset:0;
+    background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("/assets/turk-engraving.jpg");
+    background-size:5px 5px,cover;background-position:0 0,center 30%;background-repeat:repeat,no-repeat;
+    background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
+  #dream .split{position:relative;z-index:1}
+  @media(max-width:820px){#dream .pixmap{display:none}}
+  .plate-cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint-on-cream);margin-top:18px;max-width:38ch;line-height:1.7}
+
+  /* ═══ §02 timeline (tl-) ═══ */
+  .tl-intro{max-width:60ch}
+  .tl-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .tl-jump a{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent);transition:color .2s,border-color .2s}
+  .tl-jump a:hover{color:var(--gold);border-color:rgba(201,169,110,.45)}
+  .tl-jump a b{color:var(--gold);font-weight:500;margin-right:6px}
+  .tl{position:relative;margin-top:clamp(44px,6vw,70px);padding-left:clamp(26px,4vw,44px)}
+  .tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--line-2) 3%,var(--line-2) 97%,transparent)}
+  .tl .tl-progress{position:absolute;left:8px;top:0;width:1px;height:0;background:linear-gradient(180deg,var(--warm),var(--gold) 60%,var(--rose));box-shadow:0 0 14px rgba(201,169,110,.55)}
+  .tl-era{position:relative;padding:34px 0 10px}
+  .tl-era .te-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .tl-era .te-h::before{content:'';position:absolute;left:calc(-1 * clamp(26px,4vw,44px) + 3.5px);top:44px;width:10px;height:10px;border-radius:50%;background:var(--ink);border:1.5px solid var(--gold);box-shadow:0 0 0 5px rgba(201,169,110,.10)}
+  .tl-era h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.6vw,2.05rem);color:var(--fg)}
+  .tl-era .te-y{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--gold)}
+  .tl-era .te-sub{color:var(--muted);max-width:62ch;font-size:.96rem;line-height:1.6}
+  .tl-item{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr);gap:8px 22px;padding:17px 0;border-bottom:1px solid rgba(255,246,232,.05)}
+  .tl-item:last-child{border-bottom:none}
+  .tl-item::before{content:'';position:absolute;left:calc(-1 * clamp(26px,4vw,44px) + 6px);top:26px;width:5px;height:5px;border-radius:50%;background:var(--ghost)}
+  .tl-item.hot::before{background:var(--gold);box-shadow:0 0 8px rgba(201,169,110,.7)}
+  .tl-item .ti-y{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;color:var(--gold);padding-top:2px;white-space:nowrap}
+  .tl-item .ti-b b{display:block;font-family:var(--body);font-weight:600;font-size:1rem;color:var(--fg);margin-bottom:3px}
+  .tl-item .ti-b p{font-size:.88rem;line-height:1.55;color:var(--muted);max-width:70ch}
+  .tl-item .ti-b p em{color:var(--fg);font-style:normal;font-weight:500}
+  .tl-item .ti-tag{display:inline-block;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost);border:1px solid var(--line-2);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:2px}
+  .tl-item .ti-tag.body{color:#d08a86;border-color:rgba(196,115,110,.3)}
+  .tl-item .ti-tag.mind{color:#8fbf9d;border-color:rgba(127,169,138,.3)}
+  .tl-item .ti-tag.worn{color:#e0c188;border-color:rgba(201,169,110,.35)}
+  sup.cite{font-family:var(--mono);font-size:.62em;letter-spacing:0}
+  sup.cite a{color:var(--gold);text-decoration:none}
+  section.light sup.cite a{color:#7a5c2c}
+  .js .tl-item{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .tl-item.on{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .tl-item{opacity:1;transform:none;transition:none}.tl .tl-progress{display:none}}
+  @media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:2px}.tl-item .ti-y{padding-top:0}}
+
+  /* ═══ §03 wearable on-ramp ═══ */
+  #onramp{overflow:hidden}
+  #onramp .pixmap-d{position:absolute;left:-4%;bottom:-4%;z-index:0;pointer-events:none;
+    width:clamp(300px,40vw,520px);height:clamp(300px,78%,520px);opacity:.42;background:#e7d9bd;
+    -webkit-mask-image:radial-gradient(62% 64% at 46% 50%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%));
+            mask-image:radial-gradient(62% 64% at 46% 50%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%))}
+  #onramp .pixmap-d .pi{position:absolute;inset:0;
+    background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("/assets/vaucanson-duck.jpg");
+    background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;
+    background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
+  #onramp > .sec-head,#onramp .dev-grid,#onramp .onramp-note{position:relative;z-index:1}
+  @media(max-width:900px){#onramp .pixmap-d{display:none}}
+  .dev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+  @media(max-width:960px){.dev-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.dev-grid{grid-template-columns:1fr}}
+  .dev{border:1px solid var(--line-on-cream);border-radius:16px;padding:24px 22px;background:rgba(255,255,255,.58);transition:transform .35s,border-color .35s}
+  .dev:hover{transform:translateY(-5px);border-color:rgba(138,106,52,.55)}
+  .dev .dv-era{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:#7a5c2c}
+  .dev h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.35rem;color:var(--ink-on-cream);margin:8px 0 10px}
+  .dev p{font-size:.86rem;line-height:1.55;color:var(--muted-on-cream)}
+  .dev .dv-meter{margin-top:16px}
+  .dev .dv-meter .lb{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint-on-cream);margin-bottom:5px}
+  .dev .dv-bar{height:3px;border-radius:2px;background:rgba(46,31,16,.12);overflow:hidden;margin-bottom:9px}
+  .dev .dv-bar i{display:block;height:100%;border-radius:2px;background:linear-gradient(90deg,#b3874a,#8a5f28)}
+  .dev .dv-bar.rose i{background:linear-gradient(90deg,#c4736e,#a04f4a)}
+  .onramp-note{margin-top:34px;font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);color:var(--ink-on-cream);max-width:34ch;text-wrap:balance}
+
+  /* ═══ §04 why now ═══ */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:46px}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+  .why{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:linear-gradient(160deg,var(--panel),transparent)}
+  .why .wn{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--gold);line-height:1}
+  .why b{display:block;font-family:var(--body);font-weight:600;font-size:1.02rem;margin:12px 0 9px;color:var(--fg)}
+  .why p{font-size:.87rem;line-height:1.58}
+  .why .wq{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:.68rem;line-height:1.7;color:var(--faint)}
+  .why .wq b{display:inline;font-family:var(--mono);font-weight:500;font-size:inherit;color:var(--gold);margin:0}
+
+  /* ═══ §05 forecasts ═══ */
+  .fc-wrap{margin-top:46px;border:1px solid var(--line-on-cream);border-radius:18px;background:rgba(255,255,255,.58);padding:clamp(20px,3.4vw,34px)}
+  .fc-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) 96px;gap:10px 18px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(46,31,16,.09)}
+  .fc-row:last-of-type{border-bottom:none}
+  .fc-row .fc-l b{display:block;font-weight:600;font-size:.92rem;color:var(--ink-on-cream)}
+  .fc-row .fc-l span{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
+  .fc-row .fc-bar{height:10px;border-radius:5px;background:rgba(46,31,16,.08);overflow:hidden}
+  .fc-row .fc-bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#c9a96e,#8a5f28);width:calc(var(--w) * 1%)}
+  .fc-row .fc-v{font-family:var(--mono);font-size:.8rem;color:#7a5c2c;text-align:right;white-space:nowrap}
+  .fc-note{margin-top:18px;font-size:.82rem;line-height:1.6;color:var(--muted-on-cream)}
+  @media(max-width:640px){.fc-row{grid-template-columns:1fr 70px}.fc-row .fc-bar{grid-column:1/-1;order:3}}
+
+  /* ═══ §06 stage-1 bridge ═══ */
+  .stage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:46px}
+  @media(max-width:820px){.stage-grid{grid-template-columns:1fr}}
+  .stage{border:1px solid var(--line);border-radius:18px;padding:28px 26px;background:linear-gradient(160deg,var(--panel),transparent)}
+  .stage.now{border-color:rgba(201,169,110,.4);background:radial-gradient(120% 150% at 0% 0%,rgba(201,169,110,.09),transparent 55%),linear-gradient(160deg,var(--panel-2),transparent)}
+  .stage .st-k{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .stage h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--fg);margin:10px 0 12px}
+  .stage p{font-size:.92rem;line-height:1.6}
+  .stage ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+  .stage li{position:relative;padding-left:24px;color:var(--muted);font-size:.88rem;line-height:1.5}
+  .stage li::before{content:'';position:absolute;left:0;top:.52em;width:9px;height:9px;border:1px solid var(--gold);border-radius:50%}
+  .creed{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.28;letter-spacing:-.01em;color:var(--fg);max-width:26ch;text-wrap:balance}
+  .creed .it{color:var(--muted)}
+
+  /* ═══ §07 sources ═══ */
+  .cite-list{margin-top:40px;columns:2;column-gap:44px;counter-reset:cite}
+  @media(max-width:820px){.cite-list{columns:1}}
+  .cite-list li{list-style:none;counter-increment:cite;break-inside:avoid;padding:11px 0;border-top:1px solid var(--line-on-cream);font-size:.84rem;line-height:1.55;color:var(--muted-on-cream)}
+  .cite-list li::before{content:counter(cite,decimal-leading-zero);font-family:var(--mono);font-size:.66rem;color:#7a5c2c;margin-right:10px}
+  .cite-list li b{color:var(--ink-on-cream);font-weight:600}
+  .cite-list li a{font-family:var(--mono);font-size:.7rem;word-break:break-all}
+  .src-note{font-family:var(--mono);font-size:.68rem;letter-spacing:.03em;color:var(--faint-on-cream);margin-top:26px;line-height:1.7}
+
+  /* graphic language: etched instruments, not product mockups */
+  .device-mark{width:74px;height:62px;margin:4px 0 18px;color:#7a5c2c}
+  .device-mark *{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .device-mark .wash{fill:rgba(201,169,110,.12);stroke:none}
+  .convergence{margin-top:44px;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,38px);background:radial-gradient(80% 120% at 50% 100%,rgba(201,169,110,.1),transparent 64%),linear-gradient(160deg,var(--panel-2),transparent)}
+  .convergence svg{width:100%;height:auto;display:block;overflow:visible}
+  .convergence .cv-path{fill:none;stroke:rgba(201,169,110,.62);stroke-width:1.4}
+  .convergence .cv-orbit{fill:none;stroke:rgba(240,232,218,.1);stroke-width:1;stroke-dasharray:3 6}
+  .convergence .cv-node{fill:var(--ink);stroke:var(--gold);stroke-width:1.4}
+  .convergence .cv-core{fill:rgba(201,169,110,.13);stroke:var(--gold);stroke-width:1.6}
+  .convergence text{font-family:var(--mono);letter-spacing:.07em;fill:var(--muted);font-size:11px}
+  .convergence .cv-big{font-family:var(--display);font-style:italic;letter-spacing:0;fill:var(--fg);font-size:20px}
+  .convergence .cv-small{font-size:8px;fill:var(--ghost);text-transform:uppercase}
+  .road-band{margin-top:44px;border:1px solid var(--line-on-cream);border-radius:18px;padding:clamp(22px,4vw,34px);background:rgba(255,255,255,.58)}
+  .road-band svg{display:block;width:100%;height:auto;min-height:170px}
+  .road-line{fill:none;stroke:#8a6a34;stroke-width:2;stroke-linecap:round}
+  .road-dash{fill:none;stroke:rgba(46,31,16,.18);stroke-width:1;stroke-dasharray:5 8}
+  .road-stop{fill:var(--cream);stroke:#8a6a34;stroke-width:1.4}
+  .road-band text{font-family:var(--mono);font-size:9px;letter-spacing:.06em;fill:var(--muted-on-cream)}
+  .road-band .rb-title{font-family:var(--display);font-style:italic;font-size:18px;letter-spacing:0;fill:var(--ink-on-cream)}
+  .bridge-viz{position:relative;margin:42px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .bridge-viz::before{content:'';position:absolute;left:16.6%;right:16.6%;top:31px;height:1px;background:linear-gradient(90deg,var(--gold),var(--warm),var(--rose));opacity:.55}
+  .bv-step{position:relative;text-align:center;padding-top:58px}
+  .bv-step::before{content:'';position:absolute;z-index:1;top:24px;left:50%;width:15px;height:15px;border-radius:50%;transform:translateX(-50%);background:var(--ink);border:1.5px solid var(--gold);box-shadow:0 0 0 7px rgba(201,169,110,.08)}
+  .bv-step:last-child::before{border-color:var(--rose)}
+  .bv-step b{display:block;color:var(--fg);font-size:.92rem;font-weight:600}
+  .bv-step span{display:block;color:var(--muted);font-size:.78rem;margin-top:4px}
+  .forecast-scale{display:flex;justify-content:space-between;margin-top:12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint-on-cream)}
+  .forecast-callout{margin-top:28px;padding:20px 22px;border-left:2px solid #8a6a34;background:rgba(138,106,52,.06);font-family:var(--display);font-style:italic;font-size:1.16rem;line-height:1.45;color:var(--ink-on-cream)}
+  .signal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+  .signal > div{border-top:1px solid var(--line);padding-top:15px}
+  .signal b{display:block;font-family:var(--display);font-style:italic;font-size:1.16rem;color:var(--fg)}
+  .signal span{display:block;margin-top:5px;font-size:.8rem;color:var(--muted)}
+  @media(max-width:680px){.signal{grid-template-columns:1fr}.bridge-viz{grid-template-columns:1fr;text-align:left}.bridge-viz::before{left:31px;right:auto;top:32px;bottom:32px;width:1px;height:auto}.bv-step{text-align:left;padding:12px 0 12px 64px}.bv-step::before{left:31px;top:17px}}
+
+  @media(prefers-reduced-motion:reduce){
+    .atmos .aur{animation:none}
+    .js .reveal:not(.light):not(.lightband),.js .reveal.light > *,.js .reveal.lightband > *{opacity:1;transform:none;transition:none}
+    .device-mark *,.convergence *,.road-band *{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+    .fc-row .fc-bar i{width:calc(var(--w) * 1%)!important}
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Embodied Intelligence: From Wearables to Robots","description":"A cited visual history of intelligence moving beyond the screen and into everyday physical life.","datePublished":"2026-07-19","dateModified":"2026-07-19","author":{"@type":"Person","name":"Miles Ukaoma","url":"https://milesukaoma.com"},"publisher":{"@type":"Organization","name":"COS","url":"https://www.gotcos.com"},"mainEntityOfPage":"https://www.gotcos.com/embodied-intelligence/"}</script>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
+<!-- End of HubSpot Embed Code -->
+</head>
+<body>
+<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div></div>
+<div class="vignette"></div>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-top">
+    <div class="nt-in">
+      <span class="nt-tag">Open-source AI chief of staff &middot; 140+ COS Glasses users</span>
+      <div class="nt-links">
+        <a href="/docs/">Docs</a>
+        <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
+        <a href="https://www.npmjs.com/package/@gotcos/glasses-server" rel="noopener">npm</a>
+        <a href="https://hub.evenrealities.com" rel="noopener">Even Hub</a>
+        <a href="/connect/">Book a session</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-main">
+    <div class="brand"><a href="/" aria-label="COS" style="color:inherit;text-decoration:none"><svg viewBox="1004 821 1944 517" fill="currentColor" aria-hidden="true" style="height:1.22em;width:auto;vertical-align:-19%"><circle cx="1240.6" cy="889.0" r="68"/><circle cx="1072.0" cy="984.2" r="68"/><circle cx="1072.0" cy="1174.6" r="68"/><path d="M 1023.9 1032.3 C 1057.2 1065.6 1057.2 1093.2 1023.9 1126.5 A 68 68 0 1 0 1120.1 1126.5 C 1086.8 1093.2 1086.8 1065.6 1120.1 1032.3 A 68 68 0 1 0 1023.9 1032.3 Z"/><circle cx="1407.2" cy="984.2" r="68"/><circle cx="1240.6" cy="1079.4" r="68"/><path d="M 1341.6 966.3 C 1329.0 1012.5 1304.7 1026.4 1258.5 1013.8 A 68 68 0 1 0 1306.2 1097.3 C 1318.8 1051.1 1343.2 1037.2 1389.3 1049.8 A 68 68 0 1 0 1341.6 966.3 Z"/><circle cx="1407.2" cy="1174.6" r="68"/><circle cx="1240.6" cy="1269.8" r="68"/><path d="M 1341.6 1156.7 C 1329.0 1202.9 1304.7 1216.8 1258.5 1204.2 A 68 68 0 1 0 1306.2 1287.7 C 1318.8 1241.5 1343.2 1227.6 1389.3 1240.2 A 68 68 0 1 0 1341.6 1156.7 Z"/><g transform="translate(1690,1330) scale(1,-1)"><path d="M1057 473 c-10 0 -28 -3 -39 -6 -29 -8 -55 -24 -71 -44 -16 -19 -23
+-41 -24 -71 -1 -48 14 -82 48 -110 25 -20 53 -34 102 -51 25 -8 33 -12 46 -18
+23 -11 40 -26 47 -40 10 -20 10 -43 2 -61 -5 -10 -17 -22 -28 -27 -12 -6 -22
+-7 -39 -7 -16 0 -26 1 -41 8 -39 16 -72 49 -107 109 -4 7 -8 14 -9 14 -3 2 -5
+-1 -5 -5 0 -6 21 -126 23 -129 1 -2 3 -4 4 -5 3 -1 4 -1 8 1 3 2 12 7 19 12
+17 11 22 14 25 14 1 0 6 -3 12 -6 12 -7 30 -16 42 -19 26 -8 63 -6 93 3 41 13
+74 45 84 83 9 30 7 66 -5 94 -16 36 -53 66 -106 84 -6 2 -20 7 -30 10 -44 13
+-70 26 -86 42 -14 14 -19 28 -19 50 0 15 2 25 8 35 13 21 35 31 68 31 42 0 76
+-16 107 -50 19 -21 38 -50 57 -86 4 -7 5 -9 7 -9 6 0 6 -1 -8 78 -12 64 -14
+74 -16 75 -1 1 -3 2 -3 2 -3 0 -9 -3 -23 -9 -22 -10 -24 -11 -28 -13 -6 -2 -7
+-1 -19 4 -12 6 -28 12 -40 14 -13 3 -36 4 -56 3z"/><path d="M224 472 c-51 -4 -94 -24 -129 -59 -35 -35 -57 -81 -65 -135 -2 -17
+-2 -59 0 -77 7 -46 21 -82 46 -112 30 -35 73 -56 125 -61 57 -5 111 12 148 46
+24 24 41 53 51 91 3 14 4 18 2 20 -2 1 -4 -2 -7 -12 -6 -18 -15 -32 -27 -43
+-14 -14 -38 -25 -63 -29 -13 -1 -37 -1 -49 1 -60 10 -102 63 -114 144 -4 25
+-4 69 -1 96 4 32 14 63 28 84 2 4 8 12 13 17 15 14 31 21 52 21 18 0 31 -5 43
+-17 7 -7 11 -14 14 -25 2 -7 2 -11 3 -41 1 -26 1 -35 2 -39 6 -21 19 -33 38
+-38 8 -2 25 -3 32 0 19 4 33 19 38 40 1 6 1 10 1 19 -1 20 -6 34 -16 50 -14
+20 -35 36 -63 47 -27 10 -67 15 -102 12z"/><path d="M642 472 c-81 -6 -147 -50 -181 -119 -10 -21 -16 -40 -20 -65 -2 -16
+-2 -64 0 -81 3 -14 8 -35 12 -46 13 -35 38 -69 67 -91 30 -23 68 -38 108 -42
+14 -1 46 -1 61 0 44 6 84 22 116 48 9 7 25 23 32 32 23 30 38 66 44 106 2 15
+2 51 0 66 -9 71 -44 128 -102 162 -38 23 -87 34 -137 30z m16 -10 c38 -8 68
+-49 87 -118 13 -51 22 -128 19 -176 -2 -41 -10 -73 -21 -93 -16 -27 -36 -40
+-63 -40 -21 0 -38 8 -55 26 -32 33 -54 96 -63 184 -1 10 -2 25 -3 32 -1 18 -1
+56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a></div>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="links" id="navLinks">
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/harness/">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/context-engineering-vs-prompt-engineering/">Context Engineering <small>vs prompt engineering, the real shift</small></a>
+          <a href="/ai-adoption/">AI Adoption Index <small>who actually uses AI, cited</small></a>
+          <a href="/embodied-intelligence/" aria-current="page">Embodied Intelligence <small>from wearables to robots, cited</small></a>
+          <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff <small>vs a human one, what changes</small></a>
+          <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
+          <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
+          <a href="/#get">What You Get <small>The directory that is the system</small></a>
+          <a href="/#integrations">Integrations <small>Slack, Google, MCP</small></a>
+        </div>
+      </div>
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">Getting Started <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/#start">Quick Start <small>5 minutes, one paste</small></a>
+          <a href="/harness/">AI Harness <small>Understand the layer you own</small></a>
+          <a href="/docs/">Glasses Docs <small>The complete user guide</small></a>
+          <a href="/#tiers">The 4 Tiers <small>How it deepens</small></a>
+          <a href="/readiness/">Readiness Score <small>12 questions, free</small></a>
+          <a href="/#faq">FAQ <small>The centaur test</small></a>
+        </div>
+      </div>
+      <a href="/#glasses">Glasses</a>
+      <a href="/docs/">Docs</a>
+      <a href="/#teams">For Teams</a>
+      <a href="/#start" class="cta">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ── HERO ── -->
+<header class="hero wrap">
+  <h1>Intelligence is moving beyond the screen. <span class="l2 g">Into the rhythm of everyday life.</span></h1>
+  <p class="sub">First it lived in apps. Then it moved onto our wrists, fingers, glasses, and roads. Now it is beginning to navigate rooms and work beside us. This is not five unrelated gadgets. It is one steady migration: <b>from digital capability to useful presence in the physical world.</b></p>
+  <div class="hero-meta">
+    <div><b>287 years</b> of trying to build a body</div>
+    <div><b>5 surfaces</b> on one arc</div>
+    <div><b>Every claim</b> cited below</div>
+  </div>
+
+  <div class="arc-rig reveal" id="arcRig" role="img" aria-label="A rising stepped curve from 2007 to 2026 and beyond: smartphone, held in the hand; smartwatch, glanced at; smart ring, worn passively; AI glasses, ambient display; humanoid robot, acts on your behalf. Attention you give the device falls while action the device takes rises.">
+    <svg viewBox="0 0 960 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path class="arc-ghost" d="M60 250 H 910"/>
+      <path class="arc-path" id="arcPath" d="M60 250 C 170 248 200 216 290 210 C 380 204 400 172 490 164 C 570 157 600 124 690 114 C 770 105 800 68 890 52"/>
+      <g class="arc-label" style="--d:.05s">
+        <circle class="arc-node dim" cx="60" cy="250" r="5"/>
+        <text class="al-y" x="60" y="278" text-anchor="middle">2007</text>
+        <text class="al-t" x="60" y="225" text-anchor="middle">Smartphone</text>
+        <text class="al-s" x="60" y="211" text-anchor="middle">you operate it</text>
+      </g>
+      <g class="arc-label" style="--d:.2s">
+        <circle class="arc-node dim" cx="290" cy="210" r="5"/>
+        <text class="al-y" x="290" y="238" text-anchor="middle">2015</text>
+        <text class="al-t" x="290" y="185" text-anchor="middle">Smartwatch</text>
+        <text class="al-s" x="290" y="171" text-anchor="middle">you glance at it</text>
+      </g>
+      <g class="arc-label" style="--d:.35s">
+        <circle class="arc-node dim" cx="490" cy="164" r="5"/>
+        <text class="al-y" x="490" y="192" text-anchor="middle">2015&ndash;24</text>
+        <text class="al-t" x="490" y="139" text-anchor="middle">Ring</text>
+        <text class="al-s" x="490" y="125" text-anchor="middle">it senses you</text>
+      </g>
+      <g class="arc-label" style="--d:.5s">
+        <circle class="arc-node" cx="690" cy="114" r="5"/>
+        <text class="al-y" x="690" y="142" text-anchor="middle">2023&ndash;26</text>
+        <text class="al-t gold" x="690" y="89" text-anchor="middle">AI glasses</text>
+        <text class="al-s" x="690" y="75" text-anchor="middle">it briefs you</text>
+      </g>
+      <g class="arc-label" style="--d:.65s">
+        <circle class="arc-node next" cx="890" cy="52" r="5"/>
+        <text class="al-y" x="890" y="80" text-anchor="middle">2026&rarr;</text>
+        <text class="al-t rose" x="890" y="27" text-anchor="middle">Humanoid</text>
+        <text class="al-s" x="890" y="13" text-anchor="middle">it acts for you</text>
+      </g>
+    </svg>
+    <div class="arc-axis"><span>More attention from you</span><span>More action from it</span></div>
+  </div>
+</header>
+
+<div class="burn down" aria-hidden="true"></div>
+
+<!-- ── 01 THE OLD DREAM ── -->
+<section class="wrap reveal light" id="dream">
+  <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
+  <div class="split">
+    <div class="sec-head">
+      <h2>1. The dream is old. The mind is new.</h2>
+      <p class="dek">Nearly three centuries of bodies waiting for a capable mind.</p>
+    </div>
+    <div>
+      <p class="pull">In 1770 a machine sat down at a chessboard and beat half of Europe. The intelligence inside was <span class="g">a hidden human.</span></p>
+      <p>Wolfgang von Kempelen's Mechanical Turk toured the world's courts for eight decades and reportedly played Napoleon Bonaparte and Benjamin Franklin. It was a sensation because everyone wanted it to be true: a machine that perceives the world and acts in it. The body was convincing. The mind was a chess master crouched in the cabinet.<sup class="cite"><a href="#s1" aria-label="source 1">[1]</a></sup></p>
+      <p style="margin-top:14px">That has been the shape of the failure ever since. Vaucanson's celebrated duck of 1739 flapped and ate and digested nothing.<sup class="cite"><a href="#s2" aria-label="source 2">[2]</a></sup> Factory arms of the 1960s moved with superhuman precision and understood none of it. We could build bodies. We could not build the part that knows what the room means.</p>
+      <p style="margin-top:14px"><strong>Then the order reversed.</strong> The last decade produced minds without bodies: models that read, reason, plan, and write software, trapped behind a text box. For the first time in the 287-year history of this dream, the missing piece is not the intelligence. It is the hardware catching up to it. That is what makes this moment different, and it is why the timeline below bends so hard after 2023.</p>
+      <p class="plate-cap">Plate: the Turk's cabinet opened, copper engraving, Joseph Racknitz, 1789. Public domain, Humboldt University Library.</p>
+    </div>
+  </div>
+</section>
+
+<div class="burn up" aria-hidden="true"></div>
+<!-- ── 02 THE ARC ── -->
+<section class="wrap reveal" id="arc">
+  <div class="sec-head">
+    <h2>2. The path was not screen to robot. It was screen to world.</h2>
+    <p class="dek">Each step asked a little less attention from us—and learned to do a little more with its surroundings.</p>
+    <p class="lead">The important story is not that hardware became smaller. It is that intelligence gained better senses, richer context, and eventually a way to act.</p>
+  </div>
+
+  <div class="tl" id="timeline">
+    <i class="tl-progress" aria-hidden="true"></i>
+    <div class="tl-era">
+      <div class="te-h"><span class="te-y">1739–1770</span><h3>The imitation</h3></div>
+      <p class="te-sub">Mechanical bodies created the appearance of intelligence long before machinery could supply the real thing.</p>
+      <div class="tl-item"><span class="ti-y">1739</span><div class="ti-b"><b>Vaucanson’s duck <span class="ti-tag body">body</span></b><p>It flapped, drank, ate, and appeared to digest. The performance was mechanical theater; the intelligence was projection.<sup class="cite"><a href="#s2" aria-label="source 2">[2]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">1770</span><div class="ti-b"><b>The Mechanical Turk <span class="ti-tag body">body</span></b><p>A chess-playing automaton toured Europe. Its brilliant “machine mind” was a human operator concealed in the cabinet.<sup class="cite"><a href="#s1" aria-label="source 1">[1]</a></sup></p></div></div>
+    </div>
+
+    <div class="tl-era">
+      <div class="te-h"><span class="te-y">2004–2007</span><h3>The world becomes navigable</h3></div>
+      <p class="te-sub">DARPA’s autonomous-vehicle challenges turned physical reasoning into a measurable engineering problem.</p>
+      <div class="tl-item"><span class="ti-y">2004</span><div class="ti-b"><b>No car finishes <span class="ti-tag mind">mind</span></b><p>Fifteen finalists entered the first Grand Challenge. None completed the desert route.<sup class="cite"><a href="#s3" aria-label="source 3">[3]</a></sup></p></div></div>
+      <div class="tl-item hot"><span class="ti-y">2005</span><div class="ti-b"><b>Five cars finish <span class="ti-tag mind">mind</span></b><p>Stanford won the second challenge; five vehicles completed 132 autonomous desert miles. A failure became a field in eighteen months.<sup class="cite"><a href="#s3" aria-label="source 3">[3]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">2007</span><div class="ti-b"><b>Traffic, people, intersections <span class="ti-tag mind">mind</span></b><p>Six vehicles finished DARPA’s Urban Challenge while interacting with manned and unmanned traffic.<sup class="cite"><a href="#s4" aria-label="source 4">[4]</a></sup></p></div></div>
+    </div>
+
+    <div class="tl-era">
+      <div class="te-h"><span class="te-y">2007–2015</span><h3>The intelligence moves closer</h3></div>
+      <p class="te-sub">The interface traveled from desk, to hand, to wrist, to a sensor that could disappear into the background.</p>
+      <div class="tl-item"><span class="ti-y">2007</span><div class="ti-b"><b>iPhone <span class="ti-tag worn">held</span></b><p>A full software platform arrived in a small handheld device, operated directly with our fingers.<sup class="cite"><a href="#s5" aria-label="source 5">[5]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">2014–15</span><div class="ti-b"><b>Apple Watch <span class="ti-tag worn">glanced</span></b><p>Computing shifted to the wrist: timely information, health signals, and small interactions designed to be checked at a glance.<sup class="cite"><a href="#s6" aria-label="source 6">[6]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">2015</span><div class="ti-b"><b>Oura Ring <span class="ti-tag worn">sensed</span></b><p>The screen disappeared. A device could learn quietly from sleep, temperature, heart rate, and movement, then explain the pattern later.<sup class="cite"><a href="#s7" aria-label="source 7">[7]</a></sup></p></div></div>
+    </div>
+
+    <div class="tl-era">
+      <div class="te-h"><span class="te-y">2020–2024</span><h3>The model learns action</h3></div>
+      <p class="te-sub">Robots left the lab while foundation models learned to convert language and vision into movement.</p>
+      <div class="tl-item"><span class="ti-y">2020</span><div class="ti-b"><b>Spot goes on sale <span class="ti-tag body">body</span></b><p>Boston Dynamics opened commercial sales after early adopters used Spot in construction, energy, factories, and hazardous environments.<sup class="cite"><a href="#s8" aria-label="source 8">[8]</a></sup></p></div></div>
+      <div class="tl-item hot"><span class="ti-y">2023</span><div class="ti-b"><b>RT-2 translates language into action <span class="ti-tag mind">mind</span></b><p>Google DeepMind’s vision-language-action model trained on web and robot data, then emitted control instructions for a physical robot.<sup class="cite"><a href="#s9" aria-label="source 9">[9]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">2024</span><div class="ti-b"><b>GR00T, electric Atlas, π<sub>0</sub> <span class="ti-tag body">convergence</span></b><p>NVIDIA announced a humanoid foundation model; Boston Dynamics showed a commercial electric Atlas program; Physical Intelligence published a generalist robot policy.<sup class="cite"><a href="#s10" aria-label="source 10">[10]</a></sup><sup class="cite"><a href="#s11" aria-label="source 11">[11]</a></sup><sup class="cite"><a href="#s12" aria-label="source 12">[12]</a></sup></p></div></div>
+    </div>
+
+    <div class="tl-era">
+      <div class="te-h"><span class="te-y">2025–2026</span><h3>The product race</h3></div>
+      <p class="te-sub">Capital, manufacturing, and real deployment—not polished demo reels—become the proof.</p>
+      <div class="tl-item"><span class="ti-y">2025</span><div class="ti-b"><b>Figure funds embodied intelligence <span class="ti-tag mind">scale</span></b><p>Figure announced more than $1 billion in Series C funding at a $39 billion post-money valuation to scale Helix, manufacturing, and deployments.<sup class="cite"><a href="#s13" aria-label="source 13">[13]</a></sup></p></div></div>
+      <div class="tl-item hot"><span class="ti-y">2025–26</span><div class="ti-b"><b>1X sells the home promise <span class="ti-tag body">home</span></b><p>NEO opened preorders at $20,000, with U.S. priority delivery stated for 2026. Its advertised tasks include tidying, fetching, opening doors, and turning off lights.<sup class="cite"><a href="#s14" aria-label="source 14">[14]</a></sup></p></div></div>
+      <div class="tl-item"><span class="ti-y">2026</span><div class="ti-b"><b>Apptronik’s Series A passes $935M <span class="ti-tag body">scale</span></b><p>Investment is moving from “can a humanoid walk?” toward manufacturing, field operations, and repeatable work.<sup class="cite"><a href="#s15" aria-label="source 15">[15]</a></sup></p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="burn down" aria-hidden="true"></div>
+
+<!-- ── 03 WEARABLE ON-RAMP ── -->
+<section class="wrap reveal light" id="onramp">
+  <div class="pixmap-d" aria-hidden="true"><div class="pi"></div></div>
+  <div class="sec-head">
+    <h2>3. The wearable is the on-ramp, not the destination.</h2>
+    <p class="dek">Embodiment begins before a machine has arms and legs.</p>
+    <p class="lead">A system becomes physically useful when it can sense the same moment you are in, remember what matters, and respond without pulling you out of the room.</p>
+  </div>
+
+  <div class="dev-grid">
+    <article class="dev">
+      <svg class="device-mark" viewBox="0 0 74 62" aria-hidden="true"><rect class="wash" x="20" y="2" width="34" height="58" rx="7"/><rect x="20" y="2" width="34" height="58" rx="7"/><path d="M31 7h12M34 54h6"/><path d="M27 20h20M27 27h14M27 34h18"/></svg>
+      <span class="dv-era">Held · 2007</span><h3>The phone</h3><p>A world of software in your palm—but only after you reach, unlock, look, and operate.</p>
+      <div class="dv-meter"><div class="lb"><span>Your attention</span><span>high</span></div><div class="dv-bar"><i style="width:94%"></i></div><div class="lb"><span>Its action</span><span>low</span></div><div class="dv-bar rose"><i style="width:18%"></i></div></div>
+    </article>
+    <article class="dev">
+      <svg class="device-mark" viewBox="0 0 74 62" aria-hidden="true"><rect class="wash" x="23" y="13" width="28" height="36" rx="8"/><path d="M31 1h12l2 12H29zM29 49h16l-2 12H31z"/><rect x="23" y="13" width="28" height="36" rx="8"/><circle cx="37" cy="31" r="8"/><path d="M37 31v-5M37 31l4 3"/></svg>
+      <span class="dv-era">Glanced · 2015</span><h3>The watch</h3><p>The interface becomes a moment: a tap, a direction, a pulse, the next thing on your calendar.</p>
+      <div class="dv-meter"><div class="lb"><span>Your attention</span><span>medium</span></div><div class="dv-bar"><i style="width:68%"></i></div><div class="lb"><span>Its action</span><span>low</span></div><div class="dv-bar rose"><i style="width:28%"></i></div></div>
+    </article>
+    <article class="dev">
+      <svg class="device-mark" viewBox="0 0 74 62" aria-hidden="true"><ellipse class="wash" cx="37" cy="31" rx="22" ry="16"/><ellipse cx="37" cy="31" rx="22" ry="16"/><ellipse cx="37" cy="31" rx="13" ry="9"/><path d="M23 23c5 5 23 5 28 0M23 39c5-5 23-5 28 0"/></svg>
+      <span class="dv-era">Passive · 2015</span><h3>The ring</h3><p>No screen at all. It pays attention continuously, then turns a stream of signals into a useful pattern.</p>
+      <div class="dv-meter"><div class="lb"><span>Your attention</span><span>low</span></div><div class="dv-bar"><i style="width:28%"></i></div><div class="lb"><span>Its action</span><span>insight</span></div><div class="dv-bar rose"><i style="width:46%"></i></div></div>
+    </article>
+    <article class="dev">
+      <svg class="device-mark" viewBox="0 0 74 62" aria-hidden="true"><path class="wash" d="M5 24c4-7 11-10 20-8l12 3 12-3c9-2 16 1 20 8l-4 18c-2 7-12 8-18 2l-4-7H31l-4 7c-6 6-16 5-18-2z"/><path d="M5 24c4-7 11-10 20-8l12 3 12-3c9-2 16 1 20 8l-4 18c-2 7-12 8-18 2l-4-7H31l-4 7c-6 6-16 5-18-2zM31 37h12M5 24l-4-3M69 24l4-3"/><path d="M16 28h13M45 28h13"/></svg>
+      <span class="dv-era">Ambient · now</span><h3>The glasses</h3><p>Even G2 puts prep notes, quiet cues, directions, and summaries into a discreet display while your hands stay free.<sup class="cite"><a href="#s16" aria-label="source 16">[16]</a></sup></p>
+      <div class="dv-meter"><div class="lb"><span>Your attention</span><span>lower</span></div><div class="dv-bar"><i style="width:18%"></i></div><div class="lb"><span>Its action</span><span>context</span></div><div class="dv-bar rose"><i style="width:62%"></i></div></div>
+    </article>
+  </div>
+  <p class="onramp-note">The shift is subtle: from a device you visit to intelligence that shares the moment with you.</p>
+
+  <div class="road-band" id="roadBand">
+    <svg viewBox="0 0 900 190" role="img" aria-label="Autonomous driving as the first large-scale example of intelligence sensing and acting in the physical world">
+      <path class="road-dash" d="M45 132 C230 38 345 172 510 91 S730 22 855 72"/>
+      <path class="road-line" d="M45 116 C230 22 345 156 510 75 S730 6 855 56"/>
+      <circle class="road-stop" cx="76" cy="101" r="6"/><circle class="road-stop" cx="310" cy="91" r="6"/><circle class="road-stop" cx="532" cy="66" r="6"/><circle class="road-stop" cx="823" cy="49" r="6"/>
+      <text x="45" y="25" class="rb-title">The road got there first.</text>
+      <text x="76" y="143" text-anchor="middle">sense</text><text x="310" y="133" text-anchor="middle">predict</text><text x="532" y="108" text-anchor="middle">decide</text><text x="823" y="91" text-anchor="middle">act</text>
+      <text x="45" y="176">A physical environment · continuous uncertainty · real consequences</text>
+    </svg>
+    <p>Autonomous driving is embodied intelligence at metropolitan scale: perception, prediction, planning, and motion in one loop. Through March 2026, Waymo reported 220.6 million rider-only miles and materially lower crash rates than its human-driver benchmarks. Those are company-reported figures, but the scale is the point: physical AI is already operating outside the lab.<sup class="cite"><a href="#s17" aria-label="source 17">[17]</a></sup></p>
+  </div>
+</section>
+
+<div class="burn up" aria-hidden="true"></div>
+
+<!-- ── 04 WHY NOW ── -->
+<section class="wrap reveal" id="why-now">
+  <div class="sec-head">
+    <h2>4. Three curves finally meet.</h2>
+    <p class="dek">The body, the model, and the training world are arriving at the same time.</p>
+    <p class="lead">Humanoid demos are not new. What changed is that movement can now be paired with models that generalize, simulation that multiplies experience, and hardware designed for deployment.</p>
+  </div>
+
+  <div class="why-grid">
+    <article class="why"><span class="wn">01</span><b>A model that can generalize</b><p>RT-2 showed that web knowledge and robot demonstrations can live in one vision-language-action model. π<sub>0</sub> pushed the idea toward a generalist policy across robots and dexterous tasks.</p><p class="wq"><b>Change:</b> actions can be learned as a reusable vocabulary, not hand-coded one task at a time.</p></article>
+    <article class="why"><span class="wn">02</span><b>A world that can be rehearsed</b><p>Modern robotics stacks train and test in simulation, then transfer policies into physical machines. NVIDIA’s Isaac platform and GR00T package that loop for humanoid developers.</p><p class="wq"><b>Change:</b> a robot can accumulate more practice than the calendar alone permits.</p></article>
+    <article class="why"><span class="wn">03</span><b>A body built for work</b><p>Electric actuators, better batteries, dexterous hands, and maturing supply chains are turning spectacular prototypes into products designed for factories and homes.</p><p class="wq"><b>Change:</b> the success metric becomes a useful shift—not a flawless demo.</p></article>
+  </div>
+
+  <div class="convergence" id="convergence">
+    <svg viewBox="0 0 900 390" role="img" aria-label="Three systems—general models, simulated experience, and capable hardware—converge into embodied intelligence">
+      <ellipse class="cv-orbit" cx="450" cy="210" rx="350" ry="142"/>
+      <path class="cv-path" d="M150 86 C260 90 310 151 408 190"/>
+      <path class="cv-path" d="M750 86 C640 90 590 151 492 190"/>
+      <path class="cv-path" d="M450 342 C450 292 450 264 450 252"/>
+      <circle class="cv-node" cx="150" cy="86" r="10"/><circle class="cv-node" cx="750" cy="86" r="10"/><circle class="cv-node" cx="450" cy="342" r="10"/>
+      <circle class="cv-core" cx="450" cy="218" r="42"/>
+      <text x="150" y="54" text-anchor="middle">GENERAL MODELS</text><text class="cv-small" x="150" y="118" text-anchor="middle">language · vision · action</text>
+      <text x="750" y="54" text-anchor="middle">SIMULATED EXPERIENCE</text><text class="cv-small" x="750" y="118" text-anchor="middle">practice at machine speed</text>
+      <text x="450" y="378" text-anchor="middle">CAPABLE HARDWARE</text><text class="cv-small" x="450" y="326" text-anchor="middle">balance · hands · batteries</text>
+      <text class="cv-big" x="450" y="214" text-anchor="middle">physical</text><text class="cv-big" x="450" y="237" text-anchor="middle">intelligence</text>
+    </svg>
+  </div>
+</section>
+
+<div class="burn down" aria-hidden="true"></div>
+
+<!-- ── 05 FORECASTS ── -->
+<section class="wrap reveal light" id="forecasts">
+  <div class="sec-head">
+    <h2>5. The forecasts disagree. The direction does not.</h2>
+    <p class="dek">Do not confuse a long-range scenario with a near-term market.</p>
+    <p class="lead">The headline numbers span different years and include different things. They are not apples-to-apples. Read them as evidence of widening possibility—not a promise that a robot will unload your dishwasher next Tuesday.</p>
+  </div>
+
+  <div class="fc-wrap" id="forecastChart">
+    <div class="fc-row"><div class="fc-l"><b>Goldman Sachs Research</b><span>2035 · humanoid TAM</span></div><div class="fc-bar"><i style="--w:22"></i></div><div class="fc-v">$38B</div></div>
+    <div class="fc-row"><div class="fc-l"><b>Morgan Stanley Research</b><span>2050 · market + ecosystem</span></div><div class="fc-bar"><i style="--w:72"></i></div><div class="fc-v">$5T+</div></div>
+    <div class="fc-row"><div class="fc-l"><b>Citi scenario</b><span>2050 · potential market</span></div><div class="fc-bar"><i style="--w:100"></i></div><div class="fc-v">$7T</div></div>
+    <div class="forecast-scale"><span>nearer horizon</span><span>broader + longer horizon →</span></div>
+    <p class="fc-note">Goldman’s 2024 estimate projects a $38 billion total addressable market in 2035.<sup class="cite"><a href="#s18" aria-label="source 18">[18]</a></sup> Morgan Stanley’s 2025 scenario reaches beyond robot sales into supply chains, maintenance, and support, and explicitly expects adoption to remain relatively slow until the mid-2030s.<sup class="cite"><a href="#s19" aria-label="source 19">[19]</a></sup> Citi’s 2024 model puts almost 650 million humanoids and a potential $7 trillion market in 2050.<sup class="cite"><a href="#s20" aria-label="source 20">[20]</a></sup></p>
+    <div class="forecast-callout">The honest near-term thesis is smaller and more useful: factories first, bounded tasks first, assistance before autonomy, and a long learning curve inside the home.</div>
+  </div>
+</section>
+
+<div class="burn up" aria-hidden="true"></div>
+
+<!-- ── 06 THE BRIDGE ── -->
+<section class="wrap reveal" id="bridge">
+  <div class="sec-head">
+    <h2>6. Before intelligence works around us, it learns to work with us.</h2>
+    <p class="dek">The first useful body may be yours.</p>
+    <p class="lead">That is why ambient systems matter. They let intelligence practice the hard parts of physical life—timing, context, memory, restraint—without pretending today’s hardware can do everything.</p>
+  </div>
+
+  <div class="stage-grid">
+    <article class="stage now"><span class="st-k">Stage one · now</span><h3>Intelligence beside you</h3><p>It listens when invited, remembers the context you choose to give it, and surfaces the next useful thing while you remain the actor.</p><ul><li>Prepares you before a conversation</li><li>Keeps key context in your line of sight</li><li>Captures commitments without breaking presence</li><li>Leaves judgment and action with you</li></ul></article>
+    <article class="stage"><span class="st-k">Stage two · emerging</span><h3>Intelligence around you</h3><p>It perceives the shared environment, plans within real constraints, and acts through a car, arm, mobile platform, or humanoid body.</p><ul><li>Navigates roads and rooms</li><li>Manipulates ordinary objects</li><li>Learns new physical tasks</li><li>Earns autonomy through bounded reliability</li></ul></article>
+  </div>
+
+  <div class="bridge-viz" aria-hidden="true">
+    <div class="bv-step"><b>Observe</b><span>share the moment</span></div><div class="bv-step"><b>Understand</b><span>build context over time</span></div><div class="bv-step"><b>Act</b><span>change the physical world</span></div>
+  </div>
+
+  <div class="signal">
+    <div><b>Presence over interruption.</b><span>The system should help you stay in the room, not pull you into another screen.</span></div>
+    <div><b>Assistance before spectacle.</b><span>A quiet useful cue matters more than a cinematic demo.</span></div>
+    <div><b>Earned autonomy.</b><span>The closer software gets to the physical world, the more reliability, consent, and restraint matter.</span></div>
+  </div>
+
+  <p class="creed" style="margin-top:58px">The future is not intelligence replacing daily life. <span class="it">It is intelligence learning how to fit inside it.</span></p>
+
+  <div class="inline-cta" style="margin-top:46px">
+    <div class="ic-text"><b>COS Glasses is the stage-one experiment.</b><span>Context in your line of sight, with you still firmly in the loop.</span></div>
+    <div class="ic-actions"><a class="btn primary" href="/#glasses">See COS Glasses</a><a class="btn ghost" href="/docs/">Read the docs</a></div>
+  </div>
+</section>
+
+<div class="burn down" aria-hidden="true"></div>
+
+<!-- ── 07 SOURCES ── -->
+<section class="wrap reveal light" id="src">
+  <div class="sec-head">
+    <h2>7. Read the trail.</h2>
+    <p class="dek">Primary sources first. Forecasts labeled as forecasts.</p>
+    <p class="lead">Product capabilities are the manufacturers’ stated claims unless independent performance data is explicitly noted. Market estimates use different definitions and horizons.</p>
+  </div>
+  <ol class="cite-list">
+    <li id="s1"><b>Smithsonian Institution.</b> “Can a Machine Think?” Archive essay on Kempelen’s Turk. <a href="https://repository.si.edu/server/api/core/bitstreams/dd3ca961-a472-41d6-8190-02fe7891dcb1/content" rel="noopener">repository.si.edu</a></li>
+    <li id="s2"><b>Museum of Modern Art.</b> <i>The Machine as Seen at the End of the Mechanical Age</i>, catalogue entry on Vaucanson’s duck. <a href="https://assets.moma.org/documents/moma_catalogue_2776_300292931.pdf" rel="noopener">moma.org</a></li>
+    <li id="s3"><b>DARPA.</b> Grand Challenge innovation timeline: no 2004 finisher; five 2005 finishers. <a href="https://www.darpa.mil/about/innovation-timeline/grand-challenge" rel="noopener">darpa.mil</a></li>
+    <li id="s4"><b>DARPA.</b> Urban Challenge record, 2007. <a href="https://www.darpa.mil/node/2028" rel="noopener">darpa.mil</a></li>
+    <li id="s5"><b>Apple.</b> “Apple Reinvents the Phone with iPhone,” January 9, 2007. <a href="https://www.apple.com/uk/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" rel="noopener">apple.com</a></li>
+    <li id="s6"><b>Apple.</b> “Apple Unveils Apple Watch,” September 9, 2014. <a href="https://www.apple.com/newsroom/2014/09/09Apple-Unveils-Apple-Watch-Apples-Most-Personal-Device-Ever/" rel="noopener">apple.com</a></li>
+    <li id="s7"><b>ŌURA.</b> “The Origins and Evolution of Oura Ring,” February 10, 2025. <a href="https://ouraring.com/blog/history-of-oura/" rel="noopener">ouraring.com</a></li>
+    <li id="s8"><b>Boston Dynamics.</b> Commercial sales of Spot, June 16, 2020. <a href="https://bostondynamics.com/news/boston-dynamics-launches-commercial-sales-of-spot-robot/" rel="noopener">bostondynamics.com</a></li>
+    <li id="s9"><b>Google DeepMind.</b> “RT-2: New model translates vision and language into action,” July 28, 2023. <a href="https://deepmind.google/blog/rt-2-new-model-translates-vision-and-language-into-action/" rel="noopener">deepmind.google</a></li>
+    <li id="s10"><b>NVIDIA.</b> Project GR00T and Isaac robotics platform announcement, March 18, 2024. <a href="https://nvidianews.nvidia.com/news/foundation-model-isaac-robotics-platform" rel="noopener">nvidia.com</a></li>
+    <li id="s11"><b>Boston Dynamics.</b> “An Electric New Era for Atlas,” April 2024. <a href="https://bostondynamics.com/blog/electric-new-era-for-atlas/" rel="noopener">bostondynamics.com</a></li>
+    <li id="s12"><b>Physical Intelligence.</b> “π<sub>0</sub>: Our First Generalist Policy,” October 31, 2024. <a href="https://www.pi.website/blog/pi0" rel="noopener">pi.website</a></li>
+    <li id="s13"><b>Figure.</b> Series C and $39B post-money valuation announcement, September 16, 2025. <a href="https://www.figure.ai/news/series-c" rel="noopener">figure.ai</a></li>
+    <li id="s14"><b>1X.</b> NEO launch, capabilities, pricing, and delivery plan, October 28, 2025. <a href="https://www.1x.tech/discover/neo-home-robot" rel="noopener">1x.tech</a></li>
+    <li id="s15"><b>Apptronik.</b> Series A funding update, February 11, 2026. <a href="https://apptronik.com/news-collection/apptronik-closes-over-935-million-series-a" rel="noopener">apptronik.com</a></li>
+    <li id="s16"><b>Even Realities.</b> Even G2 product capabilities and design. <a href="https://www.evenrealities.com/en-en/smart-glasses" rel="noopener">evenrealities.com</a></li>
+    <li id="s17"><b>Waymo.</b> Safety Impact Data Hub, rider-only miles through March 2026. <a href="https://waymo.com/safety/impact/" rel="noopener">waymo.com</a></li>
+    <li id="s18"><b>Goldman Sachs Research.</b> Humanoid robot TAM forecast to 2035, February 27, 2024. <a href="https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035" rel="noopener">goldmansachs.com</a></li>
+    <li id="s19"><b>Morgan Stanley Research.</b> “Humanoids: A $5 Trillion Market,” May 14, 2025. <a href="https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050" rel="noopener">morganstanley.com</a></li>
+    <li id="s20"><b>Citi.</b> “The Rise of AI Robots,” November 4, 2024. <a href="https://www.citigroup.com/global/insights/the-rise-of-ai-robots-humanoids-are-coming-for-you" rel="noopener">citigroup.com</a></li>
+  </ol>
+  <p class="src-note">Research reviewed July 19, 2026. Dates above refer to the source publication or the data cutoff stated by the source. Company announcements describe company claims; forecast figures describe analyst scenarios, not observed outcomes.</p>
+</section>
+
+<div class="burn up" aria-hidden="true"></div>
+
+</main>
+<footer>
+  <div class="q">Intelligence belongs in the flow of life—not in the way of it.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a><a href="/harness/">AI Harness</a><a href="/ai-adoption/">AI Adoption</a><a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a><a href="/embodied-intelligence/" aria-current="page">Embodied Intelligence</a><a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a><a href="/docs/">Docs</a>
+  </nav>
+  <div class="links"><a href="https://milesukaoma.com">Created by Miles Ukaoma</a> · <a href="https://github.com/ukaoma/cos-starter">GitHub</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/LICENSE">MIT License</a></div>
+  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 693 760" xmlns="http://www.w3.org/2000/svg"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg></div>
+</footer>
+
+<script>
+// Baseline reveals and accessible nav behavior. All content remains visible without JS.
+(function(){
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -3% 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+    document.addEventListener('focusin',function(e){var s=e.target.closest('.reveal');if(s&&!s.classList.contains('in')){s.classList.add('in');io.unobserve(s);}});
+  } else {reveals.forEach(function(el){el.classList.add('in');});}
+
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  var burger=nav.querySelector('.nav-burger'),links=nav.querySelector('.links');
+  function closeAll(except){nav.querySelectorAll('.nd[data-open]').forEach(function(d){if(d!==except){d.removeAttribute('data-open');d.querySelector('.nd-btn').setAttribute('aria-expanded','false');}});}
+  nav.querySelectorAll('.nd-btn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var d=btn.closest('.nd'),open=d.hasAttribute('data-open');closeAll(d);if(open){d.removeAttribute('data-open');btn.setAttribute('aria-expanded','false');}else{d.setAttribute('data-open','');btn.setAttribute('aria-expanded','true');}});});
+  if(burger){burger.addEventListener('click',function(){var open=links.classList.toggle('open');burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'Close menu':'Open menu');if(!open)closeAll();});}
+  links.addEventListener('click',function(e){if(e.target.closest('a')){links.classList.remove('open');if(burger)burger.setAttribute('aria-expanded','false');closeAll();}});
+  document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAll();links.classList.remove('open');if(burger)burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+<script src="/assets/anime.umd.min.js"></script>
+<script>
+// Anime.js motion system: drawn paths, staggered assemblies, and resilient fallbacks.
+(function(){
+  var AN=window.anime;
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!AN||!AN.animate||!AN.utils||reduced)return;
+  function observe(el,play,threshold){if(!el)return;if(!('IntersectionObserver' in window)){play();return;}var done=false;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;io.disconnect();play();}});},{threshold:threshold||.22});io.observe(el);}
+  function draw(el,duration,delay){if(!AN.svg||!AN.svg.createDrawable||!el)return;var d=AN.svg.createDrawable(el)[0];AN.utils.set(d,{draw:'0 0'});AN.animate(d,{draw:'0 1',duration:duration||900,delay:delay||0,ease:'inOutQuad'});}
+
+  // Hero reads as one sentence arriving, then the physical arc sketches itself.
+  var heroBits=document.querySelectorAll('.hero h1,.hero .sub,.hero-meta > div');
+  try{AN.utils.set(heroBits,{opacity:0,translateY:'18px'});AN.animate(heroBits,{opacity:[0,1],translateY:['18px','0px'],delay:function(_,i){return 120+i*105;},duration:760,ease:'outQuint'});}catch(e){}
+  var arc=document.getElementById('arcRig');
+  if(arc){observe(arc,function(){draw(document.getElementById('arcPath'),1350,80);var labels=arc.querySelectorAll('.arc-label');AN.animate(labels,{opacity:[0,1],translateY:['8px','0px'],delay:function(_,i){return 420+i*130;},duration:620,ease:'outQuint'});},.25);}
+
+  // Timeline writes down the page and then reveals each dated proof point.
+  var timeline=document.getElementById('timeline');
+  if(timeline){observe(timeline,function(){var prog=timeline.querySelector('.tl-progress');if(prog)AN.animate(prog,{height:['0%','100%'],duration:2400,ease:'inOutCubic'});var items=timeline.querySelectorAll('.tl-item');AN.animate(items,{opacity:[0,1],translateY:['14px','0px'],delay:function(_,i){return 140+i*75;},duration:620,ease:'outQuint'});},.08);}
+
+  // Each wearable is assembled like a small technical drawing.
+  document.querySelectorAll('.device-mark').forEach(function(svg,i){observe(svg,function(){svg.querySelectorAll('path,rect,circle,ellipse').forEach(function(shape,j){if(!shape.classList.contains('wash'))draw(shape,620,Math.min(j*85,340));});AN.animate(svg.closest('.dev'),{translateY:['10px','0px'],opacity:[.6,1],duration:650,delay:i*70,ease:'outQuint'});},.35);});
+
+  var road=document.getElementById('roadBand');
+  if(road){observe(road,function(){draw(road.querySelector('.road-line'),1400,0);AN.animate(road.querySelectorAll('.road-stop'),{scale:[0,1],opacity:[0,1],delay:function(_,i){return 300+i*180;},duration:520,ease:'outBack'});},.28);}
+
+  var cv=document.getElementById('convergence');
+  if(cv){observe(cv,function(){cv.querySelectorAll('.cv-path').forEach(function(p,i){draw(p,1050,i*140);});AN.animate(cv.querySelectorAll('.cv-node'),{scale:[0,1],opacity:[0,1],delay:function(_,i){return 180+i*160;},duration:650,ease:'outBack'});AN.animate(cv.querySelector('.cv-core'),{scale:[.7,1],opacity:[0,1],delay:720,duration:900,ease:'outElastic(1,.55)'});},.28);}
+
+  var forecast=document.getElementById('forecastChart');
+  if(forecast){var bars=forecast.querySelectorAll('.fc-bar i');AN.utils.set(bars,{width:'0%'});observe(forecast,function(){bars.forEach(function(bar,i){AN.animate(bar,{width:['0%',bar.style.getPropertyValue('--w')+'%'],delay:i*170,duration:1050,ease:'outQuint'});});},.28);}
+
+  var bridge=document.querySelector('.bridge-viz');
+  if(bridge){observe(bridge,function(){AN.animate(bridge.querySelectorAll('.bv-step'),{opacity:[0,1],translateY:['12px','0px'],delay:function(_,i){return i*180;},duration:700,ease:'outQuint'});},.35);}
+
+  // Historical plates bloom into the paper like developed prints.
+  ['#dream .pixmap','#onramp .pixmap-d'].forEach(function(sel){var el=document.querySelector(sel);if(!el||getComputedStyle(el).display==='none')return;observe(el,function(){AN.utils.set(el,{'--dev':0});AN.animate(el,{'--dev':1,duration:1350,ease:'outQuint'});setTimeout(function(){AN.utils.set(el,{'--dev':1});},2300);},.24);});
+})();
+</script>
+<script>
+// Logo on load: each section draws its outline, then the ink fills in (svg.createDrawable)
+(function(){
+  var AN=window.anime,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+  if(!AN||!AN.createTimeline||!AN.utils||!AN.svg||!AN.svg.createDrawable||rm.matches)return;
+  var svgEl=document.querySelector('svg[viewBox="1004 821 1944 517"]');if(!svgEl)return;
+  var markEls=[].slice.call(svgEl.querySelectorAll(':scope > circle, :scope > path')),letters=[].slice.call(svgEl.querySelectorAll('g path'));if(markEls.length<10||!letters.length)return;
+  try{letters.sort(function(a,b){return a.getBBox().x-b.getBBox().x;});}catch(e){return;}
+  var sections=[[markEls[0]],[markEls[1],markEls[2],markEls[3]],[markEls[4],markEls[5],markEls[6]],[markEls[7],markEls[8],markEls[9]],[letters[0]],[letters[1]],[letters[2]]];
+  var all=markEls.concat(letters),map=new Map();all.forEach(function(el){el.style.fillOpacity='0';el.style.stroke='currentColor';el.style.strokeWidth='26';el.style.strokeLinecap='round';el.style.strokeLinejoin='round';var d=AN.svg.createDrawable(el)[0];AN.utils.set(d,{draw:'0 0'});map.set(el,d);});
+  var tl=AN.createTimeline();sections.forEach(function(els,i){var at=i<4?20+i*130:600+(i-4)*190,dur=i<4?420:480;els.forEach(function(el){tl.add(map.get(el),{draw:'0 1',duration:dur,ease:'inOutQuad'},at);});tl.add(els,{fillOpacity:[0,1],duration:260,ease:'outQuad'},at+dur-130);tl.add(els,{strokeOpacity:[1,0],duration:230,ease:'outQuad'},at+dur-40);});
+  setTimeout(function(){AN.utils.set(all,{fillOpacity:1,strokeOpacity:0});},3400);
+})();
+</script>
+<script>
+// Footer watermark draws, fills, and settles back into the page.
+(function(){
+  var AN=window.anime,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};if(!AN||!AN.createTimeline||!AN.utils||!AN.svg||!AN.svg.createDrawable||rm.matches||!('IntersectionObserver' in window))return;
+  var fm=document.querySelector('.foot-mark'),svgEl=fm?fm.querySelector('svg'):null;if(!svgEl)return;var shapes=[].slice.call(svgEl.querySelectorAll('circle,path')),played=false;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!played){played=true;io.disconnect();fm.style.opacity='.14';var dm=[];shapes.forEach(function(s){s.style.fillOpacity='0';s.style.stroke='currentColor';s.style.strokeWidth='7';s.style.strokeLinecap='round';var d=AN.svg.createDrawable(s)[0];AN.utils.set(d,{draw:'0 0'});dm.push(d);});var tl=AN.createTimeline();shapes.forEach(function(s,i){var at=i*110;tl.add(dm[i],{draw:'0 1',duration:620,ease:'inOutSine'},at);tl.add(s,{fillOpacity:[0,1],duration:260,ease:'outQuad'},at+470);tl.add(s,{strokeOpacity:[1,0],duration:240,ease:'outQuad'},at+540);});tl.add(fm,{opacity:[.14,.045],duration:900,ease:'inOutQuad'},'+=120');}});},{threshold:.2});io.observe(svgEl);
+})();
+</script>
+
+</body>
+</html>

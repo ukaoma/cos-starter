@@ -7,6 +7,7 @@
 - [What is an AI harness?](https://www.gotcos.com/harness/): the model is rented, the harness is yours — memory, files, rules, and skills around any frontier model
 - [The AI Adoption Index](https://www.gotcos.com/ai-adoption/): how many people actually use AI — survey-anchored, source-tiered, updated July 2026
 - [Context engineering vs prompt engineering](https://www.gotcos.com/context-engineering-vs-prompt-engineering/): the real shift — engineering the system around the model, not the sentence
+- [Embodied intelligence](https://www.gotcos.com/embodied-intelligence/): a cited visual history of intelligence moving from screens to wearables, autonomous roads, and useful robots
 - [AI chief of staff vs human chief of staff](https://www.gotcos.com/ai-chief-of-staff-vs-human-chief-of-staff/): what changes when the briefing layer is software
 - [COS Glasses docs](https://www.gotcos.com/docs/): user guide for the G2 smart-glasses client
 - [Readiness score](https://www.gotcos.com/readiness/): 12 questions on whether your team is ready
