@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The COS Starter Kit · COS</title>
+<meta name="description" content="One paste. A working chief of staff. Get the prompt, the build steps, and the script your Claude Code or COS session runs to stand up a starter chief of staff on your own machine.">
+<meta name="theme-color" content="#07090f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The COS Starter Kit · COS">
+<meta property="og:description" content="One paste. A working chief of staff. The prompt, the build steps, and the script your Claude Code or COS session runs on your own machine. Yours to keep.">
+<meta property="og:url" content="https://www.gotcos.com/kit/">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="COS. Open-source AI chief of staff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The COS Starter Kit · COS">
+<meta name="twitter:description" content="One paste. A working chief of staff. The prompt, the build steps, and the script your Claude Code or COS session runs on your own machine.">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{color-scheme:dark;--ink:#07090f;--panel:rgba(255,255,255,.025);--panel-2:rgba(255,255,255,.045);--fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.50);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);--gold:#c9a96e;--rose:#c4736e;--warm:#d4a07a;--display:'Fraunces',Georgia,serif;--body:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;--gut:clamp(22px,5vw,64px)}
+  html{font-size:16px;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh}
+  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
+  .g::selection{-webkit-text-fill-color:#f4efe4}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn:focus-visible{outline-offset:2px}
+  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 30s ease-in-out infinite alternate}
+  .atmos .a1{width:58vw;height:58vw;top:-20vw;right:-14vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
+  .atmos .a2{width:50vw;height:50vw;bottom:-18vw;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.24),transparent 60%);animation-duration:36s}
+  @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
+  .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px);
+    -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.1rem}.nav .brand b{font-style:normal;font-weight:600}
+  .nav a{color:var(--muted);font-size:.82rem;text-decoration:none;padding:8px 10px;margin:-8px -10px;transition:color .2s}
+  .nav a:hover{color:var(--fg)}
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:clamp(110px,16vh,170px) var(--gut) 80px}
+  
+  h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.03em;text-wrap:balance}
+  h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .lead{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;max-width:52ch;margin-top:24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);margin-top:clamp(44px,7vw,76px);align-items:start}
+  @media(max-width:880px){.grid{grid-template-columns:1fr;gap:40px}}
+  .sect{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
+  .gets{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .gets li{position:relative;padding-left:30px}
+  .gets li::before{content:'';position:absolute;left:0;top:.45em;width:11px;height:11px;border:1px solid var(--gold);border-radius:50%}
+  .gets li::after{content:'';position:absolute;left:4px;top:calc(.45em + 4px);width:3px;height:3px;border-radius:50%;background:var(--gold)}
+  .gets li b{display:block;color:var(--fg);font-weight:600;margin-bottom:3px}
+  .gets li span{color:var(--muted);font-size:.92rem;line-height:1.5}
+  .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:30px 0}
+  .trust{display:flex;flex-direction:column;gap:12px}
+  .trust .t{font-size:.88rem;color:var(--muted)}.trust .t b{color:var(--gold);font-weight:500}
+  /* booking panel */
+  .book{border:1px solid rgba(201,169,110,.28);border-radius:20px;padding:8px;background:radial-gradient(120% 120% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);position:sticky;top:90px}
+  .book-head{padding:22px 22px 6px}
+  .book-head .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .book-head h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.5rem;margin-top:8px}
+  .book-head p{font-size:.88rem;color:var(--muted);margin-top:6px}
+  /* HubSpot meetings embed: branded loading ring shows until the iframe paints over it */
+  .meetings-iframe-container{position:relative;min-height:640px;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.25)}
+  .meetings-iframe-container::before{content:'';position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--gold);border-right-color:var(--rose);animation:bookspin 1.1s linear infinite}
+  @keyframes bookspin{to{transform:rotate(360deg)}}
+  .meetings-iframe-container iframe{position:relative;z-index:1;background:#fff;border-radius:12px}
+  @media(prefers-reduced-motion:reduce){.meetings-iframe-container::before{animation:none}}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:13px 26px;border-radius:999px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;text-decoration:none;box-shadow:0 12px 34px -14px rgba(201,169,110,.6)}
+  footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 60px;border-top:1px solid var(--line-2);margin-top:50px}
+  footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:12px}
+  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted);transition:color .2s}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}footer .links a:hover{color:var(--gold)}
+  @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}}
+  /* gate form */
+  .form{padding:6px 22px 22px;display:flex;flex-direction:column;gap:12px}
+  .field label{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
+  .field input{width:100%;font-family:var(--body);font-size:.95rem;color:var(--fg);background:rgba(0,0,0,.22);border:1px solid var(--line-2);border-radius:11px;padding:12px 14px;transition:border-color .2s}
+  .field input:focus{outline:none;border-color:var(--gold)}
+  .field input::placeholder{color:rgba(236,230,218,.34)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .gbtn{width:100%;justify-content:center;border:0;cursor:pointer;margin-top:4px}
+  .gbtn:disabled{opacity:.6;cursor:default}
+  .gerr{display:none;color:var(--rose);font-size:.82rem}
+  .fine{color:var(--faint);font-size:.72rem;line-height:1.5;text-align:center;margin-top:2px}
+  /* revealed kit */
+  #kit{display:none;margin-top:clamp(44px,7vw,72px)}
+  .kit-head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.02em;line-height:1.05}
+  .kit-head h2 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
+  .kit-head p{color:var(--muted);font-size:1rem;max-width:60ch;margin-top:14px}
+  .runbar{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0 18px;font-size:.9rem;color:var(--muted)}
+  .runbar b{color:var(--gold);font-weight:500;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;margin-right:6px}
+  .code{position:relative;border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(0,0,0,.28));overflow:hidden}
+  .code-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line-2);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .cbtn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,.08);border:1px solid var(--line);border-radius:999px;padding:6px 13px;transition:background .2s}
+  .cbtn:hover{background:rgba(201,169,110,.16)}
+  .code pre{margin:0;padding:20px 18px;overflow-x:auto;font-family:var(--mono);font-size:.82rem;line-height:1.65;color:var(--fg);white-space:pre;tab-size:2}
+  .kit-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:22px}
+  .btn.ghost{background:none;border:1px solid var(--line);color:var(--fg);box-shadow:none}
+  .granted{display:none;padding:22px;text-align:center}
+  .granted .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .granted h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.4rem;margin-top:8px}
+  .granted p{color:var(--muted);font-size:.88rem;margin-top:8px}
+  /* teased prompt: Step 1 shows as proof, the rest is redacted behind a veil until you copy/download */
+  .code .peek{filter:blur(5px);opacity:.42;user-select:none}
+  .code-veil{position:absolute;left:0;right:0;bottom:0;height:58%;background:linear-gradient(180deg,transparent,rgba(9,11,17,.66) 44%,rgba(9,11,17,.95));display:flex;align-items:flex-end;justify-content:center;padding:18px 16px;pointer-events:none}
+  .code-lock{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,.1);border:1px solid var(--line);border-radius:999px;padding:8px 15px;backdrop-filter:blur(2px)}
+  .code-lock b{color:var(--fg);font-weight:500}
+</style>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
+<!-- End of HubSpot Embed Code -->
+</head>
+<body>
+<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div></div>
+<nav class="nav"><a class="brand" href="https://www.gotcos.com" aria-label="COS" style="color:inherit;text-decoration:none"><svg viewBox="1004 821 1944 517" fill="currentColor" aria-hidden="true" style="height:1.22em;width:auto;vertical-align:-19%"><circle cx="1240.6" cy="889.0" r="68"/><circle cx="1072.0" cy="984.2" r="68"/><circle cx="1072.0" cy="1174.6" r="68"/><path d="M 1023.9 1032.3 C 1057.2 1065.6 1057.2 1093.2 1023.9 1126.5 A 68 68 0 1 0 1120.1 1126.5 C 1086.8 1093.2 1086.8 1065.6 1120.1 1032.3 A 68 68 0 1 0 1023.9 1032.3 Z"/><circle cx="1407.2" cy="984.2" r="68"/><circle cx="1240.6" cy="1079.4" r="68"/><path d="M 1341.6 966.3 C 1329.0 1012.5 1304.7 1026.4 1258.5 1013.8 A 68 68 0 1 0 1306.2 1097.3 C 1318.8 1051.1 1343.2 1037.2 1389.3 1049.8 A 68 68 0 1 0 1341.6 966.3 Z"/><circle cx="1407.2" cy="1174.6" r="68"/><circle cx="1240.6" cy="1269.8" r="68"/><path d="M 1341.6 1156.7 C 1329.0 1202.9 1304.7 1216.8 1258.5 1204.2 A 68 68 0 1 0 1306.2 1287.7 C 1318.8 1241.5 1343.2 1227.6 1389.3 1240.2 A 68 68 0 1 0 1341.6 1156.7 Z"/><g transform="translate(1690,1330) scale(1,-1)"><path d="M1057 473 c-10 0 -28 -3 -39 -6 -29 -8 -55 -24 -71 -44 -16 -19 -23
+-41 -24 -71 -1 -48 14 -82 48 -110 25 -20 53 -34 102 -51 25 -8 33 -12 46 -18
+23 -11 40 -26 47 -40 10 -20 10 -43 2 -61 -5 -10 -17 -22 -28 -27 -12 -6 -22
+-7 -39 -7 -16 0 -26 1 -41 8 -39 16 -72 49 -107 109 -4 7 -8 14 -9 14 -3 2 -5
+-1 -5 -5 0 -6 21 -126 23 -129 1 -2 3 -4 4 -5 3 -1 4 -1 8 1 3 2 12 7 19 12
+17 11 22 14 25 14 1 0 6 -3 12 -6 12 -7 30 -16 42 -19 26 -8 63 -6 93 3 41 13
+74 45 84 83 9 30 7 66 -5 94 -16 36 -53 66 -106 84 -6 2 -20 7 -30 10 -44 13
+-70 26 -86 42 -14 14 -19 28 -19 50 0 15 2 25 8 35 13 21 35 31 68 31 42 0 76
+-16 107 -50 19 -21 38 -50 57 -86 4 -7 5 -9 7 -9 6 0 6 -1 -8 78 -12 64 -14
+74 -16 75 -1 1 -3 2 -3 2 -3 0 -9 -3 -23 -9 -22 -10 -24 -11 -28 -13 -6 -2 -7
+-1 -19 4 -12 6 -28 12 -40 14 -13 3 -36 4 -56 3z"/><path d="M224 472 c-51 -4 -94 -24 -129 -59 -35 -35 -57 -81 -65 -135 -2 -17
+-2 -59 0 -77 7 -46 21 -82 46 -112 30 -35 73 -56 125 -61 57 -5 111 12 148 46
+24 24 41 53 51 91 3 14 4 18 2 20 -2 1 -4 -2 -7 -12 -6 -18 -15 -32 -27 -43
+-14 -14 -38 -25 -63 -29 -13 -1 -37 -1 -49 1 -60 10 -102 63 -114 144 -4 25
+-4 69 -1 96 4 32 14 63 28 84 2 4 8 12 13 17 15 14 31 21 52 21 18 0 31 -5 43
+-17 7 -7 11 -14 14 -25 2 -7 2 -11 3 -41 1 -26 1 -35 2 -39 6 -21 19 -33 38
+-38 8 -2 25 -3 32 0 19 4 33 19 38 40 1 6 1 10 1 19 -1 20 -6 34 -16 50 -14
+20 -35 36 -63 47 -27 10 -67 15 -102 12z"/><path d="M642 472 c-81 -6 -147 -50 -181 -119 -10 -21 -16 -40 -20 -65 -2 -16
+-2 -64 0 -81 3 -14 8 -35 12 -46 13 -35 38 -69 67 -91 30 -23 68 -38 108 -42
+14 -1 46 -1 61 0 44 6 84 22 116 48 9 7 25 23 32 32 23 30 38 66 44 106 2 15
+2 51 0 66 -9 71 -44 128 -102 162 -38 23 -87 34 -137 30z m16 -10 c38 -8 68
+-49 87 -118 13 -51 22 -128 19 -176 -2 -41 -10 -73 -21 -93 -16 -27 -36 -40
+-63 -40 -21 0 -38 8 -55 26 -32 33 -54 96 -63 184 -1 10 -2 25 -3 32 -1 18 -1
+56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a><a href="https://www.gotcos.com">gotcos.com</a></nav>
+
+<div class="wrap">
+  <h1>One paste. <span class="g">A working chief of staff.</span></h1>
+  <p class="lead">The prompt, the build steps, and the script your Claude Code or COS session runs to stand up a starter chief of staff on your own machine. It interviews you, writes your context to plain files you can read, and prints your first brief. Yours to keep, yours to change.</p>
+
+  <div class="grid">
+    <div>
+      <p class="sect">What's inside</p>
+      <ul class="gets">
+        <li><b>The prompt</b><span>Drop it into Claude Code or your COS session. It interviews you about your role, your tools, and the work you keep redoing, then writes what it learns to plain files.</span></li>
+        <li><b>The build instructions</b><span>Step by step, it scaffolds your context files, one outcome-grouped task list, and a daily brief. No black box. Every file lands where you can open it.</span></li>
+        <li><b>The script</b><span>One runnable setup that wires it together and prints your first brief with a single command. Model-agnostic, MIT-licensed, runs local.</span></li>
+      </ul>
+
+      <div class="rule"></div>
+      <p class="sect">How to run it</p>
+      <div class="trust">
+        <div class="t"><b>Paste and go.</b> Works in Claude Code, Cursor, or any COS session. No account and no install beyond what you already run.</div>
+        <div class="t"><b>You own it.</b> Self-hosted, inspectable, MIT-licensed. Everything it knows about you lives in files on your machine. Nothing phones home.</div>
+        <div class="t"><b>From starter to system.</b> This is the on-ramp. When you outgrow it, the full COS and the Glasses are waiting.</div>
+      </div>
+    </div>
+
+    <div class="book" id="gatePanel">
+      <div class="book-head">
+        <div class="k">Free · takes your email</div>
+        <h3>Get the kit</h3>
+        <p>Name, email, and your role. We send the kit and nothing you didn't ask for.</p>
+      </div>
+      <form class="form" id="kitForm" novalidate onsubmit="revealKit(event)">
+        <div class="row2">
+          <div class="field"><label for="g-first">First name</label><input id="g-first" name="firstname" autocomplete="given-name" placeholder="Jane"></div>
+          <div class="field"><label for="g-last">Last name</label><input id="g-last" name="lastname" autocomplete="family-name" placeholder="Doe"></div>
+        </div>
+        <div class="field"><label for="g-email">Work email</label><input id="g-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required></div>
+        <div class="row2">
+          <div class="field"><label for="g-role">Your role</label><input id="g-role" name="jobtitle" autocomplete="organization-title" placeholder="Founder, Ops lead, Engineer"></div>
+          <div class="field"><label for="g-co">Company</label><input id="g-co" name="company" autocomplete="organization" placeholder="Optional"></div>
+        </div>
+        <p class="gerr" id="g-err"></p>
+        <button class="btn gbtn" id="g-btn" type="submit">Unlock the kit</button>
+        <p class="fine">One email. No spam. Unsubscribe anytime. <a href="/privacy/" style="color:var(--muted)">Privacy</a>.</p>
+      </form>
+      <div class="granted" id="granted">
+        <div class="k">Access granted</div>
+        <h3>Your kit is below</h3>
+        <p>Copy the prompt, or grab the file. It's saved on this device so you can come back to it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- revealed after gate -->
+  <section id="kit" aria-live="polite">
+    <div class="kit-head">
+      <h2>Your kit: <span class="g">the bootstrap prompt.</span></h2>
+      <p>Open a new, empty folder. Start Claude Code or your COS session inside it. Paste the whole block below and answer the questions. In a few minutes you'll have a starter chief of staff that runs with one command.</p>
+    </div>
+    <div class="runbar">
+      <span><b>Step 1</b>New empty folder</span>
+      <span><b>Step 2</b>Start Claude Code or COS</span>
+      <span><b>Step 3</b>Paste, then answer</span>
+    </div>
+    <div class="code">
+      <div class="code-top"><span>cos-starter.prompt.md</span><button class="cbtn" id="copyBtn" onclick="copyKit()" type="button">Copy full prompt</button></div>
+      <pre id="kitText"># COS Starter · the bootstrap prompt
+# Paste this whole block into Claude Code (or your COS session)
+# at the root of a new, empty folder.
+
+You are my Chief of Staff. Before you do any work, set yourself up on this
+machine so everything you learn about me lives in files I can open and edit.
+
+Step 1. Interview me. Ask one question at a time and wait for each answer:
+  1. My name and my role.
+  2. The 3 to 5 things I redo every week that I wish I didn't.
+  3. The tools where my work actually lives: email, calendar, docs, code, chat.
+  4. Who I answer to, and who answers to me.
+Do not assume. If an answer is thin, ask one follow-up, then move on.
+<span class="peek">
+Step 2. Write my context to plain, human-readable files:
+  context/profile.md   who I am, my role, how I like to be spoken to
+  context/tools.md     where my work lives and how you can reach it
+  context/people.md    my reporting lines, both directions
+
+Step 3. Stand up the operating loop: tasks.md + brief.md, grouped by outcome.
+Step 4. Write run.sh — print today's brief with one command, then run it.
+Step 5. Name the single most useful thing I should hand you first, and wait.</span></pre>
+      <div class="code-veil"><span class="code-lock">◆ Full prompt copies with the <b>Copy full prompt</b> button</span></div>
+    </div>
+    <!-- full prompt lives here, out of the visible tease; Copy + Download read from this buffer -->
+    <script type="text/plain" id="kitFull"># COS Starter, the bootstrap prompt
+# Paste this whole message into Claude Code (or your COS session)
+# at the root of a new, empty folder.
+
+You are my Chief of Staff. Before you do any work, set yourself up on this
+machine so everything you learn about me lives in files I can open and edit.
+
+Step 1. Interview me. Ask one question at a time and wait for each answer:
+  1. My name and my role.
+  2. The 3 to 5 things I redo every week that I wish I didn't.
+  3. The tools where my work actually lives: email, calendar, docs, code, chat.
+  4. Who I answer to, and who answers to me.
+Do not assume. If an answer is thin, ask one follow-up, then move on.
+
+Step 2. Write my context to plain, human-readable files:
+  context/profile.md   who I am, my role, how I like to be spoken to
+  context/tools.md     where my work lives and how you can reach it
+  context/people.md    my reporting lines, both directions
+Keep each file short. No databases, no hidden state.
+
+Step 3. Stand up the operating loop:
+  tasks.md   one open-tasks list, grouped by outcome, newest intent on top
+  brief.md   a daily brief: what is urgent, what is next, what is waiting on
+             someone else
+
+Step 4. Write run.sh, a script that reads tasks.md and brief.md and prints
+today's brief with one command. Then run it once and show me the output.
+
+Step 5. Tell me the single most useful thing I should hand you first, and wait.
+
+Rules you keep:
+  - Everything you know about me stays in files I can read. No black box.
+  - Model-agnostic and local. Nothing leaves this machine unless I say so.
+  - The best chief of staff doesn't wait to be asked. When you see the next
+    step, name it.</script>
+    <div class="kit-foot">
+      <a class="btn" id="dlBtn" href="#" download="cos-starter.prompt.md">Download the file</a>
+      <a class="btn ghost" href="https://github.com/ukaoma/cos-starter">See the full repo</a>
+      <a class="btn ghost" href="/connect/">Want it built for your team? Book 30 min</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="q">The best chief of staff doesn't wait to be asked.</div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/ai-adoption/">AI Adoption</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
+  <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+</footer>
+<script>
+// Gate: capture name/email/role to the gotcos HubSpot form (portal 2474026),
+// then reveal the kit. Delivery is never blocked on a failed POST: one attempt,
+// then proceed regardless. Access persists on-device so returning visitors skip the gate.
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  function buildDownload(){
+    try{
+      var blob=new Blob([$('kitFull').textContent],{type:'text/markdown'});
+      $('dlBtn').href=URL.createObjectURL(blob);
+    }catch(e){}
+  }
+  function open_(){
+    $('kitForm').style.display='none';
+    $('granted').style.display='block';
+    $('kit').style.display='block';
+    buildDownload();
+    // kit rises into place as it unlocks (anime.js v4; motion- and no-JS-safe)
+    try{
+      var AN=window.anime, rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(AN&&AN.animate&&AN.utils&&!rm){
+        var els=[].slice.call($('kit').querySelectorAll('.kit-head,.runbar,.code,.kit-foot'));
+        AN.utils.set(els,{opacity:0,translateY:20});
+        AN.animate(els,{opacity:[0,1],translateY:[20,0],duration:720,delay:AN.stagger?AN.stagger(90):0,ease:'outQuint'});
+        setTimeout(function(){AN.utils.set(els,{opacity:1,translateY:0});},2600);
+      }
+    }catch(e){}
+  }
+  window.revealKit=function(ev){
+    if(ev)ev.preventDefault();
+    var em=($('g-email').value||'').trim(),fn=($('g-first').value||'').trim(),
+        ln=($('g-last').value||'').trim(),ro=($('g-role').value||'').trim(),
+        co=($('g-co').value||'').trim();
+    var err=$('g-err'),btn=$('g-btn');
+    if(btn.disabled)return;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.style.display='block';err.textContent='Enter a valid email to get the kit.';$('g-email').focus();return;}
+    err.style.display='none';
+    var fields=[{name:'email',value:em}];
+    if(fn)fields.push({name:'firstname',value:fn});
+    if(ln)fields.push({name:'lastname',value:ln});
+    if(ro)fields.push({name:'jobtitle',value:ro});
+    if(co)fields.push({name:'company',value:co});
+    var proceed=function(){try{localStorage.setItem('cos_kit_access','1');}catch(e){}open_();window.scrollTo({top:$('kit').offsetTop-70,behavior:'smooth'});};
+    btn.disabled=true;btn.textContent='Unlocking…';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:'gotcos.com · COS Starter Kit (role='+(ro||'n/a')+')'}})
+    }).then(function(){proceed();}).catch(function(){proceed();});
+  };
+  window.copyKit=function(){
+    var t=$('kitFull').textContent,b=$('copyBtn');
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy prompt';},1800);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(done);}
+    else{try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}catch(e){}}
+  };
+  // returning visitor: skip the gate
+  try{if(localStorage.getItem('cos_kit_access')==='1')open_();}catch(e){}
+})();
+</script>
+<script src="/assets/anime.umd.min.js"></script>
+<script>
+// Logo on load: each section draws its outline, then the ink fills in (svg.createDrawable)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
+  var svgEl = document.querySelector('svg[viewBox="1004 821 1944 517"]');
+  if (!svgEl) return;
+  var markEls = [].slice.call(svgEl.querySelectorAll(':scope > circle, :scope > path'));
+  var letters = [].slice.call(svgEl.querySelectorAll('g path'));
+  if (markEls.length < 10 || !letters.length) return;
+  // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
+  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){ return; }
+  // the mark's four sections by markup order, then each letter
+  var sections = [
+    [markEls[0]],
+    [markEls[1], markEls[2], markEls[3]],
+    [markEls[4], markEls[5], markEls[6]],
+    [markEls[7], markEls[8], markEls[9]],
+    [letters[0]], [letters[1]], [letters[2]]
+  ];
+  var all = markEls.concat(letters);
+  var drawableOf = new Map();
+  all.forEach(function(el){
+    el.style.fillOpacity = '0';
+    el.style.stroke = 'currentColor';
+    el.style.strokeWidth = '26';
+    el.style.strokeLinecap = 'round';
+    el.style.strokeLinejoin = 'round';
+    var d = AN.svg.createDrawable(el)[0];
+    AN.utils.set(d, { draw: '0 0' });
+    drawableOf.set(el, d);
+  });
+  var tl = AN.createTimeline();
+  sections.forEach(function(els, i){
+    var at = i < 4 ? (20 + i * 130) : (600 + (i - 4) * 190);
+    var dur = i < 4 ? 420 : 480;
+    els.forEach(function(el){
+      tl.add(drawableOf.get(el), { draw: '0 1', duration: dur, ease: 'inOutQuad' }, at);
+    });
+    tl.add(els, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + dur - 130);
+    tl.add(els, { strokeOpacity: [1, 0], duration: 230, ease: 'outQuad' }, at + dur - 40);
+  });
+  // background-tab safety: whatever happens to the engine, land the inked logo
+  setTimeout(function(){
+    AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
+  }, 3400);
+})();
+</script>
+<script>
+// Scroll-reveal: hero, the "what's inside" list, run steps, and the gate panel
+// rise + fade as they enter view (anime.js v4). No-JS, print, and reduced-motion
+// all see everything — initial hidden state is only applied here in JS.
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.animate || !AN.utils || rm.matches || !('IntersectionObserver' in window)) return;
+  var groups = [
+    { sel: '.wrap > h1',      step: 0  },
+    { sel: '.wrap > .lead',   step: 0  },
+    { sel: '.grid .sect',     step: 0  },
+    { sel: '.gets li',        step: 80 },
+    { sel: '.trust .t',       step: 90 },
+    { sel: '#gatePanel',      step: 0  }
+  ];
+  var everything = [];
+  groups.forEach(function(g){
+    var els = [].slice.call(document.querySelectorAll(g.sel));
+    if (!els.length) return;
+    els.forEach(function(el){ everything.push(el); });
+    AN.utils.set(els, { opacity: 0, translateY: 24 });
+    var played = false;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting && !played){
+          played = true; io.disconnect();
+          AN.animate(els, {
+            opacity: [0, 1], translateY: [24, 0], duration: 780,
+            delay: (AN.stagger && g.step) ? AN.stagger(g.step) : 40,
+            ease: 'outQuint'
+          });
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(els[0]);
+  });
+  // safety: anything never scrolled into view (or a throttled bg tab) lands visible
+  setTimeout(function(){ AN.utils.set(everything, { opacity: 1, translateY: 0 }); }, 4200);
+})();
+</script>
+</body>
+</html>
