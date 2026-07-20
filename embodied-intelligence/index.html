@@ -288,7 +288,7 @@
   .dev .dv-bar.rose i{background:linear-gradient(90deg,#c4736e,#a04f4a)}
   .onramp-note{margin-top:34px;font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);color:var(--ink-on-cream);max-width:34ch;text-wrap:balance}
 
-  /* ═══ §04 why now ═══ */
+  /* ═══ §04 personal corpus / §05 why now ═══ */
   .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:46px}
   @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
   .why{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:linear-gradient(160deg,var(--panel),transparent)}
@@ -298,7 +298,7 @@
   .why .wq{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:.68rem;line-height:1.7;color:var(--faint)}
   .why .wq b{display:inline;font-family:var(--mono);font-weight:500;font-size:inherit;color:var(--gold);margin:0}
 
-  /* ═══ §05 forecasts ═══ */
+  /* ═══ §06 forecasts ═══ */
   .fc-wrap{margin-top:46px;border:1px solid var(--line-on-cream);border-radius:18px;background:rgba(255,255,255,.58);padding:clamp(20px,3.4vw,34px)}
   .fc-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) 96px;gap:10px 18px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(46,31,16,.09)}
   .fc-row:last-of-type{border-bottom:none}
@@ -310,7 +310,7 @@
   .fc-note{margin-top:18px;font-size:.82rem;line-height:1.6;color:var(--muted-on-cream)}
   @media(max-width:640px){.fc-row{grid-template-columns:1fr 70px}.fc-row .fc-bar{grid-column:1/-1;order:3}}
 
-  /* ═══ §06 stage-1 bridge ═══ */
+  /* ═══ §07 stage-1 bridge ═══ */
   .stage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:46px}
   @media(max-width:820px){.stage-grid{grid-template-columns:1fr}}
   .stage{border:1px solid var(--line);border-radius:18px;padding:28px 26px;background:linear-gradient(160deg,var(--panel),transparent)}
@@ -324,7 +324,7 @@
   .creed{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.28;letter-spacing:-.01em;color:var(--fg);max-width:26ch;text-wrap:balance}
   .creed .it{color:var(--muted)}
 
-  /* ═══ §07 sources ═══ */
+  /* ═══ §08 sources ═══ */
   .cite-list{margin-top:40px;columns:2;column-gap:44px;counter-reset:cite}
   @media(max-width:820px){.cite-list{columns:1}}
   .cite-list li{list-style:none;counter-increment:cite;break-inside:avoid;padding:11px 0;border-top:1px solid var(--line-on-cream);font-size:.84rem;line-height:1.55;color:var(--muted-on-cream)}
@@ -629,10 +629,34 @@
 
 <div class="burn up" aria-hidden="true"></div>
 
-<!-- ── 04 WHY NOW ── -->
+<!-- ── 04 THE PERSONAL CORPUS ── -->
+<section class="wrap reveal" id="corpus">
+  <div class="sec-head">
+    <h2>4. A day can become context.</h2>
+    <p class="dek">A personal corpus is the record you choose to keep.</p>
+    <p class="lead">The phone put compute in your pocket. Watches and rings made passive self-data normal. The next layer is a private, permissioned record of the moments that matter: signals from your body, words from a conversation, and eventually the first-person context that helps an assistant understand your day.</p>
+  </div>
+
+  <div class="why-grid">
+    <article class="why"><span class="wn">01</span><b>Signals</b><p>Health platforms already make a personal data layer practical: with permission, apps can read and write health and fitness data while the person remains in control of access and deletion.</p><p class="wq"><b>From:</b> sleep, heart rate, movement, and recovery.<sup class="cite"><a href="#s21" aria-label="source 21">[21]</a></sup></p></article>
+    <article class="why"><span class="wn">02</span><b>Words</b><p>A recorder such as PLAUD can be intentionally started for a meeting, a thought, or an interview, then turn that moment into a searchable transcript and summary. It extends memory without claiming to record a life by default.</p><p class="wq"><b>From:</b> conversations you choose to capture.<sup class="cite"><a href="#s22" aria-label="source 22">[22]</a></sup></p></article>
+    <article class="why"><span class="wn">03</span><b>First-person context</b><p>Meta’s Ego4D research shows the direction, not a released 24/7 consumer product: AI learning to locate an answer within past first-person video and understand the ongoing visual, audio, and motion context of daily life.</p><p class="wq"><b>From:</b> research into episodic memory and wearable perception.<sup class="cite"><a href="#s23" aria-label="source 23">[23]</a></sup></p></article>
+  </div>
+
+  <div class="inline-cta" style="margin-top:28px">
+    <div class="ic-text"><b>The useful question is not “what did it watch?”</b><span>It is “what did I choose to preserve, and can I retrieve it?” A personal corpus could help answer a narrow question—what did I have for breakfast, what did we decide, where did I leave something—only from data its owner permitted it to keep.</span></div>
+    <div class="ic-actions"><a class="btn ghost" href="#src">Read the sources</a></div>
+  </div>
+
+  <p class="creed" style="margin-top:46px">Useful context must be <span class="it">visible, consented, controllable, and yours to remove.</span></p>
+</section>
+
+<div class="burn down" aria-hidden="true"></div>
+
+<!-- ── 05 WHY NOW ── -->
 <section class="wrap reveal" id="why-now">
   <div class="sec-head">
-    <h2>4. Three curves finally meet.</h2>
+    <h2>5. Three curves finally meet.</h2>
     <p class="dek">The body, the model, and the training world are arriving at the same time.</p>
     <p class="lead">Humanoid demos are not new. What changed is that movement can now be paired with models that generalize, simulation that multiplies experience, and hardware designed for deployment.</p>
   </div>
@@ -661,10 +685,10 @@
 
 <div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 05 FORECASTS ── -->
+<!-- ── 06 FORECASTS ── -->
 <section class="wrap reveal light" id="forecasts">
   <div class="sec-head">
-    <h2>5. The forecasts disagree. The direction does not.</h2>
+    <h2>6. The forecasts disagree. The direction does not.</h2>
     <p class="dek">Do not confuse a long-range scenario with a near-term market.</p>
     <p class="lead">The headline numbers span different years and include different things. They are not apples-to-apples. Read them as evidence of widening possibility—not a promise that a robot will unload your dishwasher next Tuesday.</p>
   </div>
@@ -681,10 +705,10 @@
 
 <div class="burn up" aria-hidden="true"></div>
 
-<!-- ── 06 THE BRIDGE ── -->
+<!-- ── 07 THE BRIDGE ── -->
 <section class="wrap reveal" id="bridge">
   <div class="sec-head">
-    <h2>6. Before intelligence works around us, it learns to work with us.</h2>
+    <h2>7. Before intelligence works around us, it learns to work with us.</h2>
     <p class="dek">The first useful body may be yours.</p>
     <p class="lead">That is why ambient systems matter. They let intelligence practice the hard parts of physical life—timing, context, memory, restraint—without pretending today’s hardware can do everything.</p>
   </div>
@@ -714,10 +738,10 @@
 
 <div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 07 SOURCES ── -->
+<!-- ── 08 SOURCES ── -->
 <section class="wrap reveal light" id="src">
   <div class="sec-head">
-    <h2>7. Read the trail.</h2>
+    <h2>8. Read the trail.</h2>
     <p class="dek">Primary sources first. Forecasts labeled as forecasts.</p>
     <p class="lead">Product capabilities are the manufacturers’ stated claims unless independent performance data is explicitly noted. Market estimates use different definitions and horizons.</p>
   </div>
@@ -742,6 +766,9 @@
     <li id="s18"><b>Goldman Sachs Research.</b> Humanoid robot TAM forecast to 2035, February 27, 2024. <a href="https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035" rel="noopener">goldmansachs.com</a></li>
     <li id="s19"><b>Morgan Stanley Research.</b> “Humanoids: A $5 Trillion Market,” May 14, 2025. <a href="https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050" rel="noopener">morganstanley.com</a></li>
     <li id="s20"><b>Citi.</b> “The Rise of AI Robots,” November 4, 2024. <a href="https://www.citigroup.com/global/insights/the-rise-of-ai-robots-humanoids-are-coming-for-you" rel="noopener">citigroup.com</a></li>
+    <li id="s21"><b>Apple Developer.</b> HealthKit documentation: health and fitness data shared with apps only with the user’s permission, and managed by the user. <a href="https://developer.apple.com/documentation/healthkit" rel="noopener">developer.apple.com</a></li>
+    <li id="s22"><b>PLAUD.</b> Voice recorder workflow: intentionally start a recording, then search the resulting transcript and summary. <a href="https://www.plaud.ai/blogs/articles/voice-recorder-for-writers-and-authors" rel="noopener">plaud.ai</a></li>
+    <li id="s23"><b>Meta AI.</b> Ego4D research on first-person video understanding and episodic-memory queries; this is research, not a claim of a released always-on consumer camera. <a href="https://ai.meta.com/tools/ego4d/" rel="noopener">ai.meta.com</a></li>
   </ol>
   <p class="src-note">Research reviewed July 19, 2026. Dates above refer to the source publication or the data cutoff stated by the source. Company announcements describe company claims; forecast figures describe analyst scenarios, not observed outcomes.</p>
 </section>
