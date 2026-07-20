@@ -213,17 +213,19 @@
   @media(max-width:680px){.arc-rig{overflow-x:auto}.arc-rig svg{min-width:640px}}
 
   /* ═══ §01 plates (Turk + duck), Franklin halftone treatment ═══ */
-  #dream{overflow:hidden}
-  #dream .pixmap{position:absolute;right:-4%;top:2%;z-index:0;pointer-events:none;
-    width:clamp(320px,44vw,600px);height:clamp(320px,88%,600px);opacity:.5;background:#e7d9bd;
+  #dream{overflow:visible}
+  #dream .dream-rail{position:sticky;top:120px;align-self:start}
+  #dream .pixmap{position:relative;margin-top:36px;width:min(100%,460px);aspect-ratio:755/512;pointer-events:none;
+    opacity:.5;background:#e7d9bd;
     -webkit-mask-image:radial-gradient(64% 66% at 50% 46%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%));
             mask-image:radial-gradient(64% 66% at 50% 46%,#000 calc(var(--dev,1)*6%),rgba(0,0,0,.5) calc(var(--dev,1)*46%),transparent calc(var(--dev,1)*74%))}
   #dream .pixmap .pi{position:absolute;inset:0;
     background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("/assets/turk-engraving.jpg");
     background-size:5px 5px,cover;background-position:0 0,center 30%;background-repeat:repeat,no-repeat;
     background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
-  #dream .split{position:relative;z-index:1}
-  @media(max-width:820px){#dream .pixmap{display:none}}
+  #dream .split{position:relative}
+  @media(min-width:821px){#dream .split{min-height:860px}}
+  @media(max-width:820px){#dream .dream-rail{position:static}#dream .pixmap{max-width:460px}}
   .plate-cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint-on-cream);margin-top:18px;max-width:38ch;line-height:1.7}
 
   /* ═══ §02 timeline (tl-) ═══ */
@@ -511,18 +513,20 @@
 
 <!-- ── 01 THE OLD DREAM ── -->
 <section class="wrap reveal light" id="dream">
-  <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="split">
-    <div class="sec-head">
-      <h2>1. The dream is old. The mind is new.</h2>
-      <p class="dek">Nearly three centuries of bodies waiting for a capable mind.</p>
+    <div class="dream-rail">
+      <div class="sec-head">
+        <h2>1. The dream is old. The mind is new.</h2>
+        <p class="dek">Nearly three centuries of bodies waiting for a capable mind.</p>
+      </div>
+      <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
+      <p class="plate-cap">Plate: the Turk's cabinet opened, copper engraving, Joseph Racknitz, 1789. Public domain, Humboldt University Library.</p>
     </div>
     <div>
       <p class="pull">In 1770 a machine sat down at a chessboard and beat half of Europe. The intelligence inside was <span class="g">a hidden human.</span></p>
       <p>Wolfgang von Kempelen's Mechanical Turk toured the world's courts for eight decades and reportedly played Napoleon Bonaparte and Benjamin Franklin. It was a sensation because everyone wanted it to be true: a machine that perceives the world and acts in it. The body was convincing. The mind was a chess master crouched in the cabinet.<sup class="cite"><a href="#s1" aria-label="source 1">[1]</a></sup></p>
       <p style="margin-top:14px">That has been the shape of the failure ever since. Vaucanson's celebrated duck of 1739 flapped and ate and digested nothing.<sup class="cite"><a href="#s2" aria-label="source 2">[2]</a></sup> Factory arms of the 1960s moved with superhuman precision and understood none of it. We could build bodies. We could not build the part that knows what the room means.</p>
       <p style="margin-top:14px"><strong>Then the order reversed.</strong> The last decade produced minds without bodies: models that read, reason, plan, and write software, trapped behind a text box. For the first time in the 287-year history of this dream, the missing piece is not the intelligence. It is the hardware catching up to it. That is what makes this moment different, and it is why the timeline below bends so hard after 2023.</p>
-      <p class="plate-cap">Plate: the Turk's cabinet opened, copper engraving, Joseph Racknitz, 1789. Public domain, Humboldt University Library.</p>
     </div>
   </div>
 </section>
