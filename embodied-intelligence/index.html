@@ -264,17 +264,20 @@
   @media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:2px}.tl-item .ti-y{padding-top:0}}
 
   /* ═══ §03 wearable on-ramp ═══ */
-  #onramp{overflow:hidden}
-  #onramp .pixmap-d{position:absolute;left:-4%;bottom:-4%;z-index:0;pointer-events:none;
-    width:clamp(300px,40vw,520px);height:clamp(300px,78%,520px);opacity:.42;background:#e7d9bd;
+  #onramp{overflow:visible}
+  .onramp-story{display:grid;grid-template-columns:minmax(230px,.34fr) minmax(0,.66fr);gap:clamp(36px,6vw,80px);align-items:start;margin-top:44px}
+  .onramp-plate{position:sticky;top:120px;align-self:start;min-width:0}
+  #onramp .pixmap-d{position:relative;width:100%;max-width:420px;aspect-ratio:1200/1193;pointer-events:none;
+    opacity:.42;background:#e7d9bd;
     -webkit-mask-image:radial-gradient(62% 64% at 46% 50%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%));
             mask-image:radial-gradient(62% 64% at 46% 50%,#000 calc(var(--dev,1)*8%),rgba(0,0,0,.5) calc(var(--dev,1)*48%),transparent calc(var(--dev,1)*74%))}
   #onramp .pixmap-d .pi{position:absolute;inset:0;
     background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("/assets/vaucanson-duck.jpg");
     background-size:5px 5px,cover;background-position:0 0,center;background-repeat:repeat,no-repeat;
     background-blend-mode:multiply;filter:grayscale(1) sepia(.55) contrast(1.08) brightness(1.05);mix-blend-mode:multiply}
-  #onramp > .sec-head,#onramp .dev-grid,#onramp .onramp-note{position:relative;z-index:1}
-  @media(max-width:900px){#onramp .pixmap-d{display:none}}
+  .onramp-plate .plate-tag{margin-top:14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}
+  .onramp-plate .plate-cap{margin-top:9px;font-family:var(--body);font-size:.82rem;letter-spacing:0;text-transform:none;line-height:1.55;color:var(--muted-on-cream);max-width:38ch}
+  @media(max-width:960px){.onramp-story{grid-template-columns:1fr}.onramp-plate{display:none}}
   .dev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
   @media(max-width:960px){.dev-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.dev-grid{grid-template-columns:1fr}}
@@ -348,7 +351,7 @@
   .convergence text{font-family:var(--mono);letter-spacing:.07em;fill:var(--muted);font-size:11px}
   .convergence .cv-big{font-family:var(--display);font-style:italic;letter-spacing:0;fill:var(--fg);font-size:20px}
   .convergence .cv-small{font-size:8px;fill:var(--ghost);text-transform:uppercase}
-  .road-band{margin-top:44px;border:1px solid var(--line-on-cream);border-radius:18px;padding:clamp(22px,4vw,34px);background:rgba(255,255,255,.58)}
+  .road-band{margin-top:0;border:1px solid var(--line-on-cream);border-radius:18px;padding:clamp(22px,4vw,34px);background:rgba(255,255,255,.58)}
   .road-band svg{display:block;width:100%;height:auto;min-height:170px}
   .road-line{fill:none;stroke:#8a6a34;stroke-width:2;stroke-linecap:round}
   .road-dash{fill:none;stroke:rgba(46,31,16,.18);stroke-width:1;stroke-dasharray:5 8}
@@ -587,7 +590,6 @@
 
 <!-- ── 03 WEARABLE ON-RAMP ── -->
 <section class="wrap reveal light" id="onramp">
-  <div class="pixmap-d" aria-hidden="true"><div class="pi"></div></div>
   <div class="sec-head">
     <h2>3. The wearable is the on-ramp, not the destination.</h2>
     <p class="dek">Embodiment begins before a machine has arms and legs.</p>
@@ -618,16 +620,23 @@
   </div>
   <p class="onramp-note">The shift is subtle: from a device you visit to intelligence that shares the moment with you.</p>
 
-  <div class="road-band" id="roadBand">
-    <svg viewBox="0 0 900 190" role="img" aria-label="Autonomous driving as the first large-scale example of intelligence sensing and acting in the physical world">
-      <path class="road-dash" d="M45 132 C230 38 345 172 510 91 S730 22 855 72"/>
-      <path class="road-line" d="M45 116 C230 22 345 156 510 75 S730 6 855 56"/>
-      <circle class="road-stop" cx="76" cy="101" r="6"/><circle class="road-stop" cx="310" cy="91" r="6"/><circle class="road-stop" cx="532" cy="66" r="6"/><circle class="road-stop" cx="823" cy="49" r="6"/>
-      <text x="45" y="25" class="rb-title">The road got there first.</text>
-      <text x="76" y="143" text-anchor="middle">sense</text><text x="310" y="133" text-anchor="middle">predict</text><text x="532" y="108" text-anchor="middle">decide</text><text x="823" y="91" text-anchor="middle">act</text>
-      <text x="45" y="176">A physical environment · continuous uncertainty · real consequences</text>
-    </svg>
-    <p>Autonomous driving is embodied intelligence at metropolitan scale: perception, prediction, planning, and motion in one loop. Through March 2026, Waymo reported 220.6 million rider-only miles and materially lower crash rates than its human-driver benchmarks. Those are company-reported figures, but the scale is the point: physical AI is already operating outside the lab.<sup class="cite"><a href="#s17" aria-label="source 17">[17]</a></sup></p>
+  <div class="onramp-story">
+    <aside class="onramp-plate" aria-label="Historical illustration">
+      <div class="pixmap-d" aria-hidden="true"><div class="pi"></div></div>
+      <p class="plate-tag">Vaucanson’s duck · 1739</p>
+      <p class="plate-cap">A mechanical body could imitate motion. Embodied intelligence closes the loop with perception, context, and judgment.</p>
+    </aside>
+    <div class="road-band" id="roadBand">
+      <svg viewBox="0 0 900 190" role="img" aria-label="Autonomous driving as the first large-scale example of intelligence sensing and acting in the physical world">
+        <path class="road-dash" d="M45 132 C230 38 345 172 510 91 S730 22 855 72"/>
+        <path class="road-line" d="M45 116 C230 22 345 156 510 75 S730 6 855 56"/>
+        <circle class="road-stop" cx="76" cy="101" r="6"/><circle class="road-stop" cx="310" cy="91" r="6"/><circle class="road-stop" cx="532" cy="66" r="6"/><circle class="road-stop" cx="823" cy="49" r="6"/>
+        <text x="45" y="25" class="rb-title">The road got there first.</text>
+        <text x="76" y="143" text-anchor="middle">sense</text><text x="310" y="133" text-anchor="middle">predict</text><text x="532" y="108" text-anchor="middle">decide</text><text x="823" y="91" text-anchor="middle">act</text>
+        <text x="45" y="176">A physical environment · continuous uncertainty · real consequences</text>
+      </svg>
+      <p>Autonomous driving is embodied intelligence at metropolitan scale: perception, prediction, planning, and motion in one loop. Through March 2026, Waymo reported 220.6 million rider-only miles and materially lower crash rates than its human-driver benchmarks. Those are company-reported figures, but the scale is the point: physical AI is already operating outside the lab.<sup class="cite"><a href="#s17" aria-label="source 17">[17]</a></sup></p>
+    </div>
   </div>
 </section>
 
