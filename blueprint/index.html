@@ -116,8 +116,9 @@
   .bp-row .ic{flex:0 0 auto;width:26px;height:26px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--mono);font-size:.7rem}
   .bp-row b{font-weight:600;font-size:.96rem}
   .bp-row p{color:var(--muted);font-size:.86rem;margin-top:3px}
-  .bp-locked .bp-list{filter:blur(7px);opacity:.55;pointer-events:none;user-select:none}
-  .bp-veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(120% 90% at 50% 60%,rgba(11,14,22,.86),rgba(11,14,22,.62))}
+  .bp-locked .bp-list{opacity:.9;pointer-events:none;user-select:none}
+  .bp-locked .bp-row p{filter:blur(4px);opacity:.7}
+  .bp-veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(178deg,rgba(11,14,22,.34),rgba(11,14,22,.74) 44%,rgba(11,14,22,.92))}
   .bp-veil .lk{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
   .bp-veil h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.4rem,3vw,2rem);max-width:20ch}
   .bp-veil p{color:var(--muted);max-width:40ch;margin:10px auto 20px;font-size:.92rem}
@@ -236,7 +237,7 @@
       <div class="t"><b>Built for your role</b><span>Executive, attorney, chief of staff, clinician, engineer. The engine adapts, the plan is yours.</span></div>
     </div>
 
-    <p class="share">Want to keep your score? <button type="button" onclick="copyLink()">Copy a shareable link</button></p>
+    <p class="share">Want to keep your score? <button type="button" id="shareBtn" onclick="copyLink()">Copy a shareable link</button></p>
   </section>
 </div>
 
@@ -255,7 +256,7 @@
 <script>
 (function(){
   var BOOK="https://meetings.hubspot.com/ukaoma";
-  var CHECKOUT="#"; // TODO: Stripe Checkout link for COS Blueprint ($49). Placeholder until Miles approves live payment.
+  var CHECKOUT="#"; // set when live payment is wired
 
   // Role definitions drive the "not generic" engine: same dimensions, role-specific language.
   var ROLES={
@@ -297,14 +298,33 @@
     "Recall":"Decisions leak out after every meeting.",
     "Foresight":"You're finding out about problems late."
   };
+  var BARMID={
+    "Context load":"Some context still lives only in your head.",
+    "Tool sprawl":"Your context is partly connected, partly manual.",
+    "Repetitive work":"Some is templated; a lot is still by hand.",
+    "Prep & handoff":"Prep works, but assembling it is its own job.",
+    "Follow-through":"Status exists; you connect the dots yourself.",
+    "Recall":"Findable, if you know where to look.",
+    "Foresight":"You catch some, but it's still reactive."
+  };
+  var BARGOOD={
+    "Context load":"Context is captured, not carried in your head.",
+    "Tool sprawl":"One layer already connects your tools.",
+    "Repetitive work":"The repeat work is largely handled for you.",
+    "Prep & handoff":"You walk in with context auto-assembled.",
+    "Follow-through":"You get flagged before things slip.",
+    "Recall":"Decisions stay findable. Nothing gets lost.",
+    "Foresight":"Early-warning signals reach you across the board."
+  };
 
-  var ans=new Array(Q.length).fill(null), cur=0, busy=false, role="exec";
+  var ans=new Array(Q.length).fill(null), cur=0, busy=false, role="exec", heroTimer=null;
   var PRM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $=function(id){return document.getElementById(id)};
+  function track(ev,params){try{if(window.gtag)window.gtag('event',ev,params||{});}catch(e){}}
   function R(){return ROLES[role]||ROLES.exec}
   function fill(t){return t.replace('{things}',R().things).replace('{redo}',R().redo)}
 
-  window.start=function(){$('intro').style.display='none';$('quiz').style.display='block';cur=0;render(true);window.scrollTo(0,0)};
+  window.start=function(){if(heroTimer){clearInterval(heroTimer);heroTimer=null;}track('blueprint_start');$('intro').style.display='none';$('quiz').style.display='block';cur=0;render(true);window.scrollTo(0,0)};
   window.back=function(){if(busy)return;if(cur>0){cur--;render(true)}else{$('quiz').style.display='none';$('intro').style.display='block'}};
 
   function render(focusQ){
@@ -320,6 +340,7 @@
   }
   window.pick=function(i){
     if(busy)return;busy=true;ans[cur]=i;
+    track('blueprint_answer',{q:cur+1});
     if(Q[cur].role){role=Q[cur].o[i][1];}
     var btns=$('opts').children;if(btns[i])btns[i].classList.add('sel');
     setTimeout(function(){
@@ -346,9 +367,10 @@
     $('bandName').textContent=band;$('bandSub').textContent=sub;
     $('leverLine').textContent=score+"% of your load is manual work a COS could carry.";
     $('veilHead').textContent="Turn your score into "+R().label.toLowerCase()+"'s plan";
+    track('blueprint_complete',{score:score,band:band});
 
     var arr=CLUSTERS.map(function(c){return {c:c,v:cl[c].m?Math.round(cl[c].s/cl[c].m*100):0}}).sort(function(a,b){return b.v-a.v});
-    var bh='';arr.forEach(function(b){bh+='<div class="bar"><div class="top"><b>'+b.c+'</b><span class="v">'+b.v+'</span></div><div class="track"><i style="width:0" data-w="'+b.v+'%"></i></div><div class="rd">'+BARREAD[b.c]+'</div></div>'});
+    var bh='';arr.forEach(function(b){var rd=b.v>=67?BARREAD[b.c]:(b.v>=33?BARMID[b.c]:BARGOOD[b.c]);bh+='<div class="bar"><div class="top"><b>'+b.c+'</b><span class="v">'+b.v+'</span></div><div class="track"><i style="width:0" data-w="'+b.v+'%"></i></div><div class="rd">'+rd+'</div></div>'});
     $('bars').innerHTML=bh;
     setTimeout(function(){document.querySelectorAll('#bars .track i').forEach(function(i){i.style.width=i.getAttribute('data-w')})},120);
   }
@@ -368,6 +390,7 @@
     var fields=[{name:'email',value:em}];
     if(fn)fields.push({name:'firstname',value:fn});
     var proceed=function(sent){
+      track(sent?'blueprint_lead':'blueprint_lead_failed',{score:score});
       try{localStorage.setItem('cos_kit_access','1');}catch(e){}
       var bp=$('blueprint');if(bp)bp.classList.remove('bp-locked');
       var veil=$('bpVeil');if(veil)veil.style.display='none';
@@ -385,7 +408,12 @@
   };
   // PAID GATE (disabled for now): restore when Stripe checkout is live, then point the veil button back to unlock().
   window.unlock=function(){ if(CHECKOUT&&CHECKOUT!=="#"){location.href=CHECKOUT;return;} };
-  window.copyLink=function(){var url=location.origin+location.pathname+'#r='+role+'.'+ans.join('');if(navigator.clipboard)navigator.clipboard.writeText(url);};
+  window.copyLink=function(){
+    var url=location.origin+location.pathname+'#r='+role+'.'+ans.map(function(a){return a==null?0:a}).join('');
+    var confirm=function(){var b=$('shareBtn');if(!b)return;if(b._t)clearTimeout(b._t);var orig=b.getAttribute('data-label')||b.textContent;b.setAttribute('data-label',orig);b.textContent='Copied ✓';b._t=setTimeout(function(){b.textContent=orig;},2000);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(confirm,confirm);}
+    else{try{var ta=document.createElement('textarea');ta.value=url;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}confirm();}
+  };
 
   /* ---- role-morph hero animation (teases what's behind the gate) ---- */
   var NODES=[
@@ -428,7 +456,7 @@
     if(rm||!AN||!AN.animate){
       labels().forEach(function(l){l.style.opacity='1';});
       if(rm)return; // fully static
-      setInterval(function(){
+      heroTimer=setInterval(function(){
         ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
         labels().forEach(function(l){l.style.transition='opacity .45s';l.style.opacity='0';});
         if(sr){sr.style.transition='opacity .45s';sr.style.opacity='0';}
@@ -447,7 +475,7 @@
     try{AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[6,0],delay:AN.stagger(55,{start:380}),duration:600,ease:'outCubic'});}catch(e){}
 
     // smooth role morph every 2.6s: fade out -> swap at the trough -> fade in
-    setInterval(function(){
+    heroTimer=setInterval(function(){
       ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
       try{
         AN.animate('#nodes .nlabel',{opacity:[1,0],translateY:[0,-7],duration:320,delay:AN.stagger(38),ease:'inQuad'});
@@ -464,7 +492,15 @@
   }
 
   // restore from shared link
-  if(location.hash.indexOf('#r=')===0){var raw=location.hash.slice(3),parts=raw.split('.');if(parts.length===2){role=parts[0]||'exec';ans=parts[1].split('').map(Number);$('intro').style.display='none';$('results').style.display='block';compute();}}
+  if(location.hash.indexOf('#r=')===0){try{
+    var raw=location.hash.slice(3),parts=raw.split('.');
+    if(parts.length===2&&parts[1].length){
+      role=ROLES[parts[0]]?parts[0]:'exec';
+      ans=parts[1].split('').map(function(d){var n=parseInt(d,10);return (isFinite(n)&&n>=0&&n<=3)?n:0;});
+      if(heroTimer){clearInterval(heroTimer);heroTimer=null;}
+      $('intro').style.display='none';$('results').style.display='block';compute();
+    }
+  }catch(e){$('results').style.display='none';$('intro').style.display='block';}}
   if(document.readyState!=='loading')initHero();else document.addEventListener('DOMContentLoaded',initHero);
 })();
 </script>
