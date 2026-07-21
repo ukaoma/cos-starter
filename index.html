@@ -110,6 +110,7 @@ section.light .dek{color:#7a5c2c}
   .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
   .nav .links .cta{font-family:var(--body);font-weight:500;color:var(--cream);background:var(--ink);padding:9px 18px;border-radius:999px;margin-left:8px;transition:transform .2s,box-shadow .25s,background .2s;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
   .nav .links .cta:hover{color:var(--cream);background:#2a1c10;transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(23,15,9,.65)}
+  .nav .links .nav-login{color:var(--ink-on-cream);font-weight:500}
   /* dropdown groups */
   .nd{position:relative}
   .nd-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.85rem;color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
@@ -234,6 +235,10 @@ section.light .dek{color:#7a5c2c}
   footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   footer .links a{color:var(--muted)}
   footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
+  footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--faint)}
+  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint);margin-right:2px}
+  footer .foot-app a{color:var(--gold);opacity:.9;transition:opacity .2s}
+  footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
 
   /* inline CTA bands (woven mid-page) */
   .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(201,169,110,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
@@ -681,7 +686,8 @@ section.light .dek{color:#7a5c2c}
       <a href="#glasses">Glasses</a>
       <a href="/docs/">Docs</a>
       <a href="#teams">For Teams</a>
-      <a href="#start" class="cta">Get Started</a>
+      <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
+      <a href="https://app.gotcos.com/" class="cta" rel="noopener">Sign up</a>
     </div>
   </div>
 </nav>
@@ -693,7 +699,7 @@ section.light .dek{color:#7a5c2c}
       <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
       <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
       <div class="hero-cta">
-        <a href="#start" class="btn primary">Get Started</a>
+        <a href="https://app.gotcos.com/" class="btn primary" rel="noopener">Sign up</a>
         <a href="https://milesukaoma.com/cos" class="btn ghost">See the philosophy</a>
       </div>
       <div class="badges">
@@ -1191,6 +1197,13 @@ section.light .dek{color:#7a5c2c}
 
 <footer>
   <div class="q">The prompt was never the problem.</div>
+  <div class="foot-app">
+    <span class="fa-label">The app</span>
+    <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Sign up</a> &middot;
+    <a href="https://app.gotcos.com/dashboard" rel="noopener">Dashboard</a>
+  </div>
   <nav class="foot-nav" aria-label="Pages">
     <a href="/blueprint/">COS Blueprint</a>
     <a href="/" aria-current="page">Home</a>

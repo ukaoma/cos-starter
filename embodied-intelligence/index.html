@@ -175,7 +175,12 @@
   .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
 
   /* ── Footer ── */
-  footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2);overflow:hidden}
+    .nav .links .nav-login{color:var(--ink-on-cream,#241708);font-weight:500}
+  footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
+  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
+  footer .foot-app a{color:var(--gold,#c9a96e);opacity:.9;transition:opacity .2s}
+  footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2);overflow:hidden}
   footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:18px}
   footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   footer .links a{color:var(--muted)}
@@ -457,7 +462,8 @@
       <a href="/#glasses">Glasses</a>
       <a href="/docs/">Docs</a>
       <a href="/#teams">For Teams</a>
-      <a href="/#start" class="cta">Get Started</a>
+      <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
+      <a href="https://app.gotcos.com/" class="cta" rel="noopener">Sign up</a>
     </div>
   </div>
 </nav>
@@ -791,6 +797,13 @@
 </main>
 <footer>
   <div class="q">Intelligence belongs in the flow of life—not in the way of it.</div>
+    <div class="foot-app">
+    <span class="fa-label">The app</span>
+    <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Sign up</a> &middot;
+    <a href="https://app.gotcos.com/dashboard" rel="noopener">Dashboard</a>
+  </div>
   <nav class="foot-nav" aria-label="Pages">
     <a href="/blueprint/">COS Blueprint</a>
     <a href="/">Home</a><a href="/harness/">AI Harness</a><a href="/ai-adoption/">AI Adoption</a><a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a><a href="/embodied-intelligence/" aria-current="page">Embodied Intelligence</a><a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a><a href="/docs/">Docs</a>

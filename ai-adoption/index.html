@@ -652,6 +652,11 @@ h2[id]{scroll-margin-top:108px}
 .caveats li strong{color:var(--paper-ink)}
 /* ── Closing / footer ── */
 .closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400;font-style:italic}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
+  .nav .links .nav-login{color:var(--ink-on-cream,#241708);font-weight:500}
+  footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
+  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
+  footer .foot-app a{color:var(--gold,#c9a96e);opacity:.9;transition:opacity .2s}
+  footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
 footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
 footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a[aria-current=page]{color:var(--gold)}
 .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s cubic-bezier(.3,.7,.25,1),transform .75s cubic-bezier(.3,.7,.25,1)}.js .reveal.in{opacity:1;transform:none}
@@ -793,7 +798,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <a href="/#glasses">Glasses</a>
       <a href="/docs/">Docs</a>
       <a href="/#teams">For Teams</a>
-      <a href="/#start" class="cta">Get Started</a>
+      <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
+      <a href="https://app.gotcos.com/" class="cta" rel="noopener">Sign up</a>
     </div>
   </div>
 </nav>
@@ -994,6 +1000,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <footer>
   <div class="quote">The crowd hasn't shown up. Your context can be ready when it does.</div>
+    <div class="foot-app">
+    <span class="fa-label">The app</span>
+    <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Sign up</a> &middot;
+    <a href="https://app.gotcos.com/dashboard" rel="noopener">Dashboard</a>
+  </div>
   <nav class="foot-nav" aria-label="Pages">
     <a href="/blueprint/">COS Blueprint</a>
     <a href="/">Home</a>
