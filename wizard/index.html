@@ -187,6 +187,10 @@
 
     a { color: var(--accent-gold); }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-subtle) 18%, var(--border-subtle) 82%, transparent); margin: 2.5rem 0; }
+    .footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--font-mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--text-muted)}
+    .footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--text-muted);margin-right:2px}
+    .footer .foot-app a{color:var(--accent-gold);opacity:.9;transition:opacity .2s}
+    .footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
     .footer { text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 2.5rem; line-height: 1.8; }
     .footer .q { font-family: var(--font-display); font-style: italic; font-size: 1.02rem; color: var(--accent-gold); margin-bottom: 8px; }
     .footer .brand { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
@@ -390,11 +394,12 @@
   </div>
 
   <div class="step" data-step="Before you start">
-    <h2>You need three things</h2>
+    <h2>Check these before you start</h2>
     <ul class="checklist">
       <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
       <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; the server runs here, on your keys</li>
-      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; <a href="https://claude.ai/download">Claude Code</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; Claude Desktop is not the terminal CLI. Install Claude Code on one line with <code>npm install -g @anthropic-ai/claude-code</code> (<strong>never use sudo</strong>), then run <code>claude</code> and finish sign-in. <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started">Claude Code setup</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="opt"><strong>whisper.cpp for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once, then restart the COS server. This is <strong>required for local voice</strong>; text chat works without it.</li>
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; run <code>brew install ffmpeg</code> for phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and voice still work without it.</li>
     </ul>
     <div class="note"><strong>Came here from the Even Hub?</strong> You already have the app half &mdash; the server in Step 1 below is the missing piece.</div>
@@ -408,13 +413,13 @@
       <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
       <div class="summary">
         <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
-        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free)</small></span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free &middot; install once)</small></span></div>
         <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
       <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>, so it stays the same across restarts. Optional one-time installs: <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> for free local voice and <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install ffmpeg</code> for photos.</p>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>, so it stays the same across restarts. <strong>Before testing voice</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code> once and restart COS. Text works without it. <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install ffmpeg</code> remains optional for photos.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
@@ -423,6 +428,7 @@
       </ul>
       <div class="res-label">3 &middot; Prove it</div>
       <ul class="enable">
+        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, and rerun the server command before tapping the mic.</li>
         <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
         <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
         <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
@@ -503,7 +509,7 @@
     <p class="sub">The server runs on your Mac. Your keys, your machine. Pick how voice is transcribed.</p>
     <div class="opt-grid" id="voice">
       <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
-      <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Cloud</span><h3>OpenAI voice</h3><p>Falls back to the OpenAI API with your key. ~$0.006/min.</p></button>
+      <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Admin opt-in</span><h3>OpenAI voice</h3><p>Requires both the explicit fallback flag and your API key. ~$0.006/min.</p></button>
     </div>
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
     <div class="note"><strong>Photos stay local:</strong> install <code>ffmpeg</code> on the Mac for normalized phone uploads, private answer-image galleries, and exact 288&times;144 G2 previews. Images never need a COS-hosted cloud.</div>
@@ -535,7 +541,7 @@
     </div>
 
     <div class="res-label">1 · Start your server (self-host)</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
 
     <div class="res-label">2 · Set your identity (server profile)</div>
@@ -581,7 +587,7 @@
       <div class="step" data-step="Requirements"><h2>What you need</h2>
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Opus/Fable/Sonnet need <a href="https://claude.ai/download">Claude Code</a>; GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a></li>
+          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Claude Desktop is not the CLI. For Opus/Fable/Sonnet, run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a>.</li>
           <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
           <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
@@ -591,8 +597,8 @@
 
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
         <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
-        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx @gotcos/glasses-server<span class="copy-hint">click to copy</span></div>
-        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Prefer cloud? Set <code>OPENAI_API_KEY</code> and it falls back to the OpenAI API (~$0.006/min).</div>
+        <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
+        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>
         <div class="note"><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill so your agent starts the server, health-checks it, keeps it on the latest release, and troubleshoots for you &mdash; ask your COS to <em>"add the /cos-glasses skill from the Starter Kit"</em> (<a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>).</div>
       </div>
 
@@ -623,11 +629,12 @@
       <div class="step" data-step="Help"><h2>Troubleshooting</h2>
         <ul class="enable">
           <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
-          <li><strong>"Claude not found"</strong> &mdash; Opus/Fable/Sonnet need Claude Code (<a href="https://claude.ai/download">claude.ai/download</a>); verify with <code>claude --version</code>.</li>
+          <li><strong>"Claude not found"</strong> &mdash; Claude Desktop is not the terminal CLI. Run <code>npm install -g @anthropic-ai/claude-code</code> on one line without sudo, then run <code>claude</code> and finish sign-in. Verify with <code>claude --version</code>.</li>
+          <li><strong>npm EACCES / root-owned cache</strong> &mdash; do not rerun with sudo or recursively change system ownership. Use <code>npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>. Server 6.12.2+ does not run a second install inside npm's temporary cache.</li>
           <li><strong>"Codex not available"</strong> &mdash; GPT Frontier/Balanced need the local Codex CLI on the server Mac; run <code>codex --version</code>, then <code>codex login</code>.</li>
-          <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription; without it, voice needs <code>OPENAI_API_KEY</code>.</li>
-          <li><strong>Photos unavailable</strong> &mdash; run <code>brew install ffmpeg</code>, restart with <code>npx @gotcos/glasses-server</code>, and confirm Lens images is on before testing outside a meeting.</li>
-          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx @gotcos/glasses-server</code>.</li>
+          <li><strong>Voice silent or expensive</strong> &mdash; run <code>brew install whisper-cpp</code> for free local transcription. Cloud fallback remains off unless an administrator sets both <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and <code>OPENAI_API_KEY</code>.</li>
+          <li><strong>Photos unavailable</strong> &mdash; run <code>brew install ffmpeg</code>, restart with <code>npx --yes @gotcos/glasses-server@latest</code>, and confirm Lens images is on before testing outside a meeting.</li>
+          <li><strong>Server disconnects</strong> &mdash; it auto-reconnects; if persistent, restart with <code>npx --yes @gotcos/glasses-server@latest</code>.</li>
         </ul>
       </div>
 
@@ -734,7 +741,15 @@
   <div class="divider"></div>
   <div class="footer">
     <div class="q">The best chief of staff doesn't wait to be asked.</div>
-    <nav class="foot-nav" aria-label="Pages">
+      <div class="foot-app">
+    <span class="fa-label">The app</span>
+    <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Sign up</a> &middot;
+    <a href="https://app.gotcos.com/dashboard" rel="noopener">Dashboard</a>
+  </div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/blueprint/">COS Blueprint</a>
       <a href="/harness/">AI Harness</a>
       <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
       <a href="/embodied-intelligence/">Embodied Intelligence</a>
@@ -982,7 +997,7 @@
     var li = [];
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
-    if (state.voice === 'openai') li.push('Add your <b>OPENAI_API_KEY</b> for cloud voice.');
+    if (state.voice === 'openai') li.push('Set <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and add your <b>OPENAI_API_KEY</b> for deliberate cloud voice fallback.');
     else li.push('Run <code>brew install whisper-cpp</code> once for free local voice.');
     if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
     else li.push('Add context sources anytime via MCP in your COS folder.');
