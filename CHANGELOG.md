@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 — 2026-07-21
+
+### Changed
+- Readiness quiz replaced by the COS Blueprint. `/readiness` now client-redirects to `/blueprint` (canonical, noindex, query and hash preserved). "COS Blueprint" replaces "Readiness" in the header nav on 6 pages and is added to the footer nav sitewide. The homepage and body CTAs that pointed at `/readiness` now point at `/blueprint`.
+- Blueprint gate swapped from the placeholder $49 Stripe checkout to the shared HubSpot email gate (portal 2474026, form c5439911). Submitting reveals the on-screen build plan and sets the shared `cos_kit_access` unlock, so the starter kit unlocks too. Emailed fulfillment of the plan and personalized starter kit is a HubSpot follow-up workflow on that form (pending the MU-HC-COS-MCP private-app token).
+- Removed `/readiness` from `sitemap.xml` and repointed `llms.txt` to `/blueprint`.
+
 ## 0.2.0 — 2026-07-13
 
 ### Added

@@ -10,7 +10,7 @@
 - [Embodied intelligence](https://www.gotcos.com/embodied-intelligence/): a cited visual history of intelligence moving from screens to wearables, autonomous roads, and useful robots
 - [AI chief of staff vs human chief of staff](https://www.gotcos.com/ai-chief-of-staff-vs-human-chief-of-staff/): what changes when the briefing layer is software
 - [COS Glasses docs](https://www.gotcos.com/docs/): user guide for the G2 smart-glasses client
-- [Readiness score](https://www.gotcos.com/readiness/): 12 questions on whether your team is ready
+- [COS Blueprint](https://www.gotcos.com/blueprint/): a 12-question, role-based build plan for your AI chief of staff
 
 ## Open data
 

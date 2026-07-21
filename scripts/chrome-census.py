@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # minimal-chrome pages: conversion/tool funnels + approved custom shells + legal
-EXEMPT_NAV = {"connect", "readiness", "wizard", "docs", "privacy", "terms", "119", "miles", "queen"}
+EXEMPT_NAV = {"connect", "readiness", "blueprint", "kit", "wizard", "docs", "privacy", "terms", "119", "miles", "queen"}
 
 CHECKS = {
     "strip":    lambda p: "nt-tag" in p,
