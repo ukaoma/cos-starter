@@ -67,9 +67,9 @@
   .orbit{position:relative;width:100%;height:220px}
   .orbit svg{width:100%;height:100%;overflow:visible}
   .orbit .core{font-family:var(--display);font-style:italic;fill:var(--gold)}
-  .nlabel{font-family:var(--mono);font-size:11px;fill:var(--muted);transition:opacity .5s}
-  .flow{stroke:var(--line);stroke-width:1;fill:none}
-  .node{fill:rgba(201,169,110,.5)}
+  .nlabel{font-family:var(--mono);font-size:11px;fill:var(--muted);transform-box:fill-box;transform-origin:center;will-change:opacity,transform}
+  .flow{stroke:var(--line);stroke-width:1;fill:none;will-change:stroke-dashoffset,opacity}
+  .node{fill:rgba(201,169,110,.5);transform-box:fill-box;transform-origin:center;will-change:transform,opacity}
   .stage .tease{margin-top:8px;font-size:.9rem;color:var(--muted);text-align:center}
   .stage .tease b{color:var(--fg);font-weight:600}
 
@@ -125,6 +125,11 @@
   .bp-price s{color:var(--ghost);margin-right:8px}
   .bp-price b{color:var(--gold);font-style:italic;font-weight:500}
   .bp-guar{margin-top:14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--faint)}
+  .bp-form{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;margin:6px auto 0}
+  .bp-form input{width:100%;font-family:var(--body);font-size:.95rem;color:var(--fg);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+  .bp-form input::placeholder{color:var(--ghost)}
+  .bp-form input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+  .bp-form .btn{width:100%;justify-content:center;margin-top:2px}
   .trust{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media(max-width:640px){.trust{grid-template-columns:1fr}}
   .trust .t{border:1px solid var(--line-2);border-radius:13px;padding:18px;background:var(--panel)}
@@ -204,6 +209,7 @@
         <h3>Your full COS Blueprint, for <span class="g" id="bpRole">your role</span></h3>
         <p>The free score shows the gaps. The Blueprint is the build: the exact skills, the deployment call, and the plan to stand it up.</p>
       </div>
+      <div id="bpDone" style="display:none;margin:6px clamp(22px,4vw,34px) 0;padding:13px 16px;border:1px solid rgba(127,169,138,.42);border-radius:12px;background:rgba(127,169,138,.09);font-size:.9rem;color:var(--fg)"></div>
       <div class="bp-list" id="bpList" aria-hidden="true">
         <div class="bp-row"><div class="ic">01</div><div><b>Your skill stack, ranked</b><p>The exact COS skills to install first, ordered by payback for your role.</p></div></div>
         <div class="bp-row"><div class="ic">02</div><div><b>Self-host vs managed call</b><p>Based on your data sensitivity and technical capacity, the right deployment path.</p></div></div>
@@ -212,12 +218,15 @@
         <div class="bp-row"><div class="ic">05</div><div><b>Stand-it-up steps</b><p>The step-by-step to a working COS, plus where a done-for-you build makes sense.</p></div></div>
       </div>
       <div class="bp-veil" id="bpVeil">
-        <div class="lk">&#9679; Blueprint locked</div>
         <h4 id="veilHead">Turn your score into a plan</h4>
-        <p id="veilSub">A personalized build plan for how you work, generated from your 12 answers.</p>
-        <div class="bp-price"><s>$129</s> <b>$49</b> &middot; one-time &middot; instant</div>
-        <button class="btn primary" id="unlockBtn" onclick="unlock()">Unlock my Blueprint</button>
-        <div class="bp-guar">Not useful in 10 minutes? Full refund. &middot; Powered by COS, open-source forever.</div>
+        <p id="veilSub">Your personalized build plan and starter kit, emailed to you. The full plan appears on screen the moment you submit.</p>
+        <form class="bp-form" id="bpForm" onsubmit="reveal(event)" novalidate>
+          <input id="g-email" type="email" autocomplete="email" placeholder="you@company.com" aria-label="Work email" required>
+          <input id="g-first" type="text" autocomplete="given-name" placeholder="First name (optional)" aria-label="First name">
+          <button class="btn primary" id="unlockBtn" type="submit">Email me my Blueprint + kit</button>
+        </form>
+        <p id="bp-err" role="alert" style="display:none;color:var(--rose);font-size:.84rem;margin-top:10px"></p>
+        <div class="bp-guar">On screen now, in your inbox in a minute. No spam. Powered by COS, open-source forever.</div>
       </div>
     </div>
 
@@ -234,13 +243,15 @@
 <footer>
   <div class="q">The best chief of staff doesn't wait to be asked.</div>
   <nav class="foot-nav" aria-label="Pages">
+    <a href="/blueprint/">COS Blueprint</a>
     <a href="/">Home</a><a href="/harness/">AI Harness</a><a href="/ai-adoption/">AI Adoption</a>
-    <a href="/readiness/">Readiness</a><a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
     <a href="/embodied-intelligence/">Embodied Intelligence</a><a href="/docs/">Docs</a>
   </nav>
   <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
 </footer>
 
+<script src="/assets/anime.umd.min.js"></script>
 <script>
 (function(){
   var BOOK="https://meetings.hubspot.com/ukaoma";
@@ -342,12 +353,38 @@
     setTimeout(function(){document.querySelectorAll('#bars .track i').forEach(function(i){i.style.width=i.getAttribute('data-w')})},120);
   }
 
-  window.unlock=function(){
-    // Prepaid gate. Live Stripe link goes in CHECKOUT once Miles approves payment. Placeholder holds the flow.
-    if(CHECKOUT&&CHECKOUT!=="#"){location.href=CHECKOUT;return;}
-    var b=$('unlockBtn');b.textContent="Checkout coming online…";b.disabled=true;
-    setTimeout(function(){b.disabled=false;b.textContent="Unlock my Blueprint";},1600);
+  window.reveal=function(ev){
+    if(ev&&ev.preventDefault)ev.preventDefault();
+    // Interim gate: capture the lead in the gotcos HubSpot form (portal 2474026, form c5439911), the same
+    // form /readiness and /kit already post to. Also sets cos_kit_access so the starter kit unlocks.
+    // When paid checkout is live, re-enable the CHECKOUT/unlock() path below and swap the veil button back.
+    var em=($('g-email').value||'').trim(), fn=($('g-first').value||'').trim();
+    var err=$('bp-err'), btn=$('unlockBtn');
+    if(btn.disabled)return;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.style.display='block';err.textContent='Enter a valid email to get your Blueprint.';$('g-email').focus();return;}
+    err.style.display='none';
+    var raw=0,max=0;SCORED.forEach(function(idx){raw+=Q[idx].o[ans[idx]!=null?ans[idx]:0][1];max+=3;});
+    var score=Math.round(raw/max*100);
+    var fields=[{name:'email',value:em}];
+    if(fn)fields.push({name:'firstname',value:fn});
+    var proceed=function(sent){
+      try{localStorage.setItem('cos_kit_access','1');}catch(e){}
+      var bp=$('blueprint');if(bp)bp.classList.remove('bp-locked');
+      var veil=$('bpVeil');if(veil)veil.style.display='none';
+      var list=$('bpList');if(list)list.setAttribute('aria-hidden','false');
+      var safe=em.replace(/[<&>]/g,'');
+      var done=$('bpDone');if(done){done.style.display='block';done.innerHTML=sent
+        ? '&#10003; You\'re in, <b>'+safe+'</b>. Your plan is below and the starter kit is unlocked. We\'ll email your copy shortly.'
+        : 'Your plan is below and the starter kit is unlocked. If your emailed copy does not arrive, reach out and we will send it.';}
+    };
+    btn.disabled=true;btn.textContent='Sending…';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:'gotcos.com · Blueprint · '+R().label+' · score '+score+' · a='+ans.join('')}})
+    }).then(function(resp){proceed(resp&&resp.ok);}).catch(function(){proceed(false);});
   };
+  // PAID GATE (disabled for now): restore when Stripe checkout is live, then point the veil button back to unlock().
+  window.unlock=function(){ if(CHECKOUT&&CHECKOUT!=="#"){location.href=CHECKOUT;return;} };
   window.copyLink=function(){var url=location.origin+location.pathname+'#r='+role+'.'+ans.join('');if(navigator.clipboard)navigator.clipboard.writeText(url);};
 
   /* ---- role-morph hero animation (teases what's behind the gate) ---- */
@@ -385,19 +422,45 @@
     var rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)').matches:false;
     var AN=window.anime;
     var cyc=["exec","legal","cos","clinician","engineer","marketer"],ci=0;
-    if(rm){ // static, still legible
+    var labels=function(){return document.querySelectorAll('#nodes .nlabel')};
+
+    // reduced-motion OR anime unavailable: legible static, optional CSS-only cycle
+    if(rm||!AN||!AN.animate){
+      labels().forEach(function(l){l.style.opacity='1';});
+      if(rm)return; // fully static
+      setInterval(function(){
+        ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
+        labels().forEach(function(l){l.style.transition='opacity .45s';l.style.opacity='0';});
+        if(sr){sr.style.transition='opacity .45s';sr.style.opacity='0';}
+        setTimeout(function(){paintRole(k);labels().forEach(function(l){l.style.opacity='1';});if(sr)sr.style.opacity='1';},460);
+      },2600);
       return;
     }
-    // gentle node pulse
-    if(AN&&AN.animate){try{AN.animate('#nodes .node',{opacity:[.35,.9],scale:[1,1.25],delay:AN.stagger?AN.stagger(120):0,duration:1400,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}}
-    // cycle roles every 2.4s, fading labels
+
+    // draw the flow lines in once (v4 createDrawable)
+    try{AN.animate(AN.createDrawable('.flow'),{draw:['0 0','0 1'],duration:1000,delay:AN.stagger(90),ease:'outQuad'});}catch(e){}
+    // anchored node breathing — transform-box:fill-box keeps each dot on its graph point
+    try{AN.animate('#nodes .node',{scale:[1,1.18],opacity:[.42,.9],delay:AN.stagger(150),duration:1700,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
+    // slow opacity shimmer travelling along the flow lines
+    try{AN.animate('.flow',{opacity:[.55,1],delay:AN.stagger(170),duration:2100,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
+    // first labels fade in, staggered
+    try{AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[6,0],delay:AN.stagger(55,{start:380}),duration:600,ease:'outCubic'});}catch(e){}
+
+    // smooth role morph every 2.6s: fade out -> swap at the trough -> fade in
     setInterval(function(){
-      ci=(ci+1)%cyc.length;var k=cyc[ci];
-      var labels=document.querySelectorAll('#nodes .nlabel');
-      labels.forEach(function(l){l.style.opacity='0';});
-      if($('stageRole'))$('stageRole').style.opacity='0';
-      setTimeout(function(){paintRole(k);labels.forEach(function(l){l.style.opacity='1';});if($('stageRole'))$('stageRole').style.opacity='1';},500);
-    },2400);
+      ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
+      try{
+        AN.animate('#nodes .nlabel',{opacity:[1,0],translateY:[0,-7],duration:320,delay:AN.stagger(38),ease:'inQuad'});
+        if(sr)AN.animate('#stageRole',{opacity:0,translateY:-4,duration:320,ease:'inQuad'});
+      }catch(e){}
+      setTimeout(function(){
+        paintRole(k);
+        try{
+          AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[7,0],duration:470,delay:AN.stagger(50),ease:'outCubic'});
+          if(sr)AN.animate('#stageRole',{opacity:[0,1],translateY:[4,0],duration:450,ease:'outCubic'});
+        }catch(e){}
+      },480);
+    },2600);
   }
 
   // restore from shared link
@@ -405,6 +468,5 @@
   if(document.readyState!=='loading')initHero();else document.addEventListener('DOMContentLoaded',initHero);
 })();
 </script>
-<script src="/assets/anime.umd.min.js"></script>
 </body>
 </html>
