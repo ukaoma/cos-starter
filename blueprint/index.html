@@ -460,12 +460,25 @@
     other:["threads","context","people","tasks","signals"]
   };
   function buildOrbit(){
-    var ns=$('nodes'),fs=$('flows');if(!ns)return;var nh='',fh='';
+    var ns=$('nodes'),fs=$('flows');if(!ns)return;var nh='',fh='',sh='';
     NODES.forEach(function(n,i){
-      fh+='<path class="flow" d="M'+n.x+' '+n.y+' Q '+((n.x+260)/2)+' '+((n.y+110)/2+(i%2?26:-26))+' 260 110"/>';
+      fh+='<path class="flow" id="flow'+i+'" d="M'+n.x+' '+n.y+' Q '+((n.x+260)/2)+' '+((n.y+110)/2+(i%2?26:-26))+' 260 110"/>';
       nh+='<circle class="node" cx="'+n.x+'" cy="'+n.y+'" r="4"/><text class="nlabel" x="'+n.x+'" y="'+(n.y-9)+'" text-anchor="middle" id="nl'+i+'"></text>';
+      sh+='<circle class="sig" id="sig'+i+'" r="2.6" cx="'+n.x+'" cy="'+n.y+'" style="fill:#e8cf92;opacity:0"/>';
     });
     fs.innerHTML=fh;ns.innerHTML=nh;
+    var svg=$('orbitSvg');
+    if(svg&&!$('corePulse')){
+      var NS='http://www.w3.org/2000/svg';
+      var pulse=document.createElementNS(NS,'circle');
+      pulse.setAttribute('id','corePulse');pulse.setAttribute('cx','260');pulse.setAttribute('cy','110');pulse.setAttribute('r','30');
+      pulse.setAttribute('fill','none');pulse.setAttribute('stroke','rgba(201,169,110,.55)');pulse.setAttribute('stroke-width','1');
+      pulse.style.opacity='0';pulse.style.transformBox='fill-box';pulse.style.transformOrigin='center';
+      svg.insertBefore(pulse,svg.firstChild);          // behind everything, emanates from the core
+      var sg=document.createElementNS(NS,'g');
+      sg.setAttribute('id','signals');sg.innerHTML=sh;
+      svg.appendChild(sg);                             // signal dots ride on top
+    }
   }
   function paintRole(k){
     var w=WORDS[k]||WORDS.other;
@@ -479,45 +492,109 @@
     var rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)').matches:false;
     var AN=window.anime;
     var cyc=["exec","legal","cos","clinician","engineer","marketer"],ci=0;
-    var labels=function(){return document.querySelectorAll('#nodes .nlabel')};
+    var labelList=function(){return document.querySelectorAll('#nodes .nlabel')};
+    var showLabels=function(){[].forEach.call(labelList(),function(l){l.style.opacity='1';});};
+    var nodeEls=[].slice.call(document.querySelectorAll('#nodes .node'));
+    var flows=[].slice.call(document.querySelectorAll('.flow'));
+    var sigs=[].slice.call(document.querySelectorAll('#signals .sig'));
+    var pulse=$('corePulse');
 
-    // reduced-motion OR anime unavailable: legible static, optional CSS-only cycle
+    // reduced-motion OR anime unavailable: legible static, optional CSS-only role cycle
     if(rm||!AN||!AN.animate){
-      labels().forEach(function(l){l.style.opacity='1';});
+      showLabels();
       if(rm)return; // fully static
       heroTimer=setInterval(function(){
         ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
-        labels().forEach(function(l){l.style.transition='opacity .45s';l.style.opacity='0';});
+        [].forEach.call(labelList(),function(l){l.style.transition='opacity .45s';l.style.opacity='0';});
         if(sr){sr.style.transition='opacity .45s';sr.style.opacity='0';}
-        setTimeout(function(){paintRole(k);labels().forEach(function(l){l.style.opacity='1';});if(sr)sr.style.opacity='1';},460);
+        setTimeout(function(){paintRole(k);showLabels();if(sr)sr.style.opacity='1';},460);
       },2600);
       return;
     }
 
-    // draw the flow lines in once (v4 createDrawable)
-    try{AN.animate(AN.createDrawable('.flow'),{draw:['0 0','0 1'],duration:1000,delay:AN.stagger(90),ease:'outQuad'});}catch(e){}
-    // anchored node breathing — transform-box:fill-box keeps each dot on its graph point
-    try{AN.animate('#nodes .node',{scale:[1,1.18],opacity:[.42,.9],delay:AN.stagger(150),duration:1700,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
-    // slow opacity shimmer travelling along the flow lines
-    try{AN.animate('.flow',{opacity:[.55,1],delay:AN.stagger(170),duration:2100,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
-    // first labels fade in, staggered
-    try{AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[6,0],delay:AN.stagger(55,{start:380}),duration:600,ease:'outCubic'});}catch(e){}
+    nodeEls.forEach(function(n){n.style.transformBox='fill-box';n.style.transformOrigin='center';});
+    var started=false, intro=false;
 
-    // smooth role morph every 2.6s: fade out -> swap at the trough -> fade in
-    heroTimer=setInterval(function(){
-      ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
-      try{
-        AN.animate('#nodes .nlabel',{opacity:[1,0],translateY:[0,-7],duration:320,delay:AN.stagger(38),ease:'inQuad'});
-        if(sr)AN.animate('#stageRole',{opacity:0,translateY:-4,duration:320,ease:'inQuad'});
-      }catch(e){}
-      setTimeout(function(){
-        paintRole(k);
+    // land the finished graph regardless of engine/visibility state
+    function landStatic(){
+      try{AN.utils.set(nodeEls,{scale:1,opacity:.75});}catch(e){nodeEls.forEach(function(n){n.style.opacity='.75';});}
+      showLabels();
+      flows.forEach(function(f){f.style.strokeDasharray='none';f.style.strokeDashoffset='0';});
+    }
+
+    // one signal dot flows from its source node into the COS core, loops with a staggered cadence
+    function runSignal(dot,path,i){
+      if(!dot||!path)return;
+      var len=600; try{len=path.getTotalLength()||600;}catch(e){}
+      var st={t:0};
+      (function loop(){
+        if(document.hidden){setTimeout(loop,600);return;}
+        st.t=0;
+        try{AN.animate(st,{t:1,duration:1450+i*90,ease:'inOutSine',
+          onUpdate:function(){
+            var p; try{p=path.getPointAtLength(st.t*len);}catch(e){return;}
+            dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);
+            var f=Math.min(1,Math.min(st.t,1-st.t)*6);
+            dot.style.opacity=(0.92*f).toFixed(3);
+          },
+          onComplete:function(){dot.style.opacity='0';setTimeout(loop,520+i*150);}
+        });}catch(e){}
+      })();
+    }
+
+    function startMorph(){
+      heroTimer=setInterval(function(){
+        ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
         try{
-          AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[7,0],duration:470,delay:AN.stagger(50),ease:'outCubic'});
-          if(sr)AN.animate('#stageRole',{opacity:[0,1],translateY:[4,0],duration:450,ease:'outCubic'});
+          AN.animate('#nodes .nlabel',{opacity:[1,0],translateY:[0,-7],duration:320,delay:AN.stagger(38),ease:'inQuad'});
+          if(sr)AN.animate('#stageRole',{opacity:0,translateY:-4,duration:320,ease:'inQuad'});
         }catch(e){}
-      },480);
-    },2600);
+        setTimeout(function(){
+          paintRole(k);
+          try{
+            AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[7,0],duration:470,delay:AN.stagger(50),ease:'outCubic'});
+            if(sr)AN.animate('#stageRole',{opacity:[0,1],translateY:[4,0],duration:450,ease:'outCubic'});
+          }catch(e){}
+        },480);
+      },2600);
+    }
+
+    function startLoops(){
+      if(started)return;started=true;
+      landStatic();
+      // anchored node breathing (transform-box:fill-box keeps each dot on its graph point)
+      try{AN.animate('#nodes .node',{scale:[1,1.16],opacity:[.5,.92],delay:AN.stagger(150),duration:1700,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
+      // the core continuously "reads" — a receive-pulse ring emanating from COS
+      try{if(pulse)AN.animate(pulse,{scale:[1,2.15],opacity:[.5,0],duration:1900,loop:true,ease:'outSine'});}catch(e){}
+      // signal particles flowing from every source into the core
+      sigs.forEach(function(dot,i){setTimeout(function(){runSignal(dot,flows[i],i);},180+i*240);});
+      startMorph();
+    }
+
+    // scroll-triggered assembly: nodes pop, edges draw, labels fade in — then the loops kick on
+    function playIntro(){
+      if(intro)return;intro=true;
+      try{AN.utils.set(nodeEls,{scale:0,opacity:0});}catch(e){}
+      [].forEach.call(labelList(),function(l){l.style.opacity='0';});
+      var draw=[]; try{flows.forEach(function(f){var d=AN.svg.createDrawable(f)[0];AN.utils.set(d,{draw:'0 0'});draw.push(d);});}catch(e){}
+      var pop; try{pop=AN.createSpring?AN.createSpring({mass:1,stiffness:170,damping:14}):'outBack';}catch(e){pop='outBack';}
+      var tl=null; try{tl=AN.createTimeline();}catch(e){}
+      if(tl){
+        tl.add(nodeEls,{scale:[0,1],opacity:{to:.75,duration:320},ease:pop,delay:AN.stagger(80)},40);
+        draw.forEach(function(d,i){tl.add(d,{draw:'0 1',duration:520,ease:'inOutQuad'},240+i*80);});
+        tl.add(labelList(),{opacity:[0,1],translateY:[6,0],duration:420,ease:'outQuad',delay:AN.stagger(50)},780);
+      }
+      setTimeout(startLoops,1250);
+    }
+
+    // fire the assembly when the stage scrolls into view
+    var stageEl=$('stage');
+    if('IntersectionObserver' in window && stageEl){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){playIntro();io.disconnect();}});},{threshold:.3});
+      io.observe(stageEl);
+    } else { playIntro(); }
+    // safety: if IO never fires (hidden/background tab) or the engine stalls, land + run anyway
+    setTimeout(function(){ if(!intro)playIntro(); if(!started){landStatic();startLoops();} },1500);
   }
 
   // restore from shared link
