@@ -530,7 +530,7 @@ footer .links a:hover{color:var(--gold)}
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Latest release &mdash; build 223.</strong> Setup saves your server only after proving authenticated API identity and a live stream, not merely a reachable health check. Meetings pin to the Mac that admitted them and track raw audio, transcription, and final text separately, so recovery is exact. A blank model reply becomes a visible, retryable failure instead of a silent Done. The active-job monitor opens a finished reply on double-tap and scrolls back to your original request, and waiting queue rows open in the prompt reviewer so you can read, edit, or re-record before they run. Build 215 remains the proven rollback.</p>
+    <p><strong>Latest release &mdash; build 223.</strong> Setup saves your server only after proving authenticated API identity and a live stream, not merely a reachable health check. Meetings pin to the Mac that admitted them and track raw audio, transcription, and final text separately, so recovery is exact. A blank model reply becomes a visible, retryable failure instead of a silent Done. The active-job monitor opens a finished reply on double-tap and scrolls back to your original request, and waiting queue rows open in the prompt reviewer so you can read, edit, or re-record before they run.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -726,7 +726,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 223 plus server 6.12.6 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription keep working on server 6.11.0 or 6.12.0; a server that predates a capability simply shows an update-required row rather than breaking. Server 6.12.6 adds the Mac-pinned meeting recovery and single-owner Whisper restart on top of the 6.12.1 runtime contracts. Build 215 with server 6.12.1 remains the proven rollback.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 223 plus server 6.12.6 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription keep working on server 6.11.0 or 6.12.0; a server that predates a capability simply shows an update-required row rather than breaking. Server 6.12.6 adds the Mac-pinned meeting recovery and single-owner Whisper restart on top of the 6.12.1 runtime contracts.</p>
     </div>
   </div>
 </section>
@@ -944,7 +944,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; build 215 adds organized System/AI/Voice settings, safer empty-response handling, and faster first-HUD startup; and the latest build 223 with server 6.12.6 adds proven-before-saved setup, Mac-pinned exact meeting recovery, a bounded five-second Stop, the queue prompt reviewer, and single-owner local Whisper restarts. Build 215 with server 6.12.1 remains the proven rollback.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; build 215 adds organized System/AI/Voice settings, safer empty-response handling, and faster first-HUD startup; and the latest build 223 with server 6.12.6 adds proven-before-saved setup, Mac-pinned exact meeting recovery, a bounded five-second Stop, the queue prompt reviewer, and single-owner local Whisper restarts.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>
