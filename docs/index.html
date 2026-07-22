@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses v5.23.29 (build 215) · server @gotcos/glasses-server 6.12.2.
+  Covers COS Glasses 6.7.223 (build 223) · server @gotcos/glasses-server 6.12.6.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -404,7 +404,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">v5.23.29</span>
+    <span class="sb-ver">6.7.223</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -442,8 +442,8 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>v5.23.29</b> · build 215</span>
-      <span class="chip">Server <b>6.12.2</b></span>
+      <span class="chip">App <b>6.7.223</b> · build 223</span>
+      <span class="chip">Server <b>6.12.6</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -454,7 +454,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">v5.23.29</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">6.7.223</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -514,7 +514,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 215 requires server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription and capability-aware recovery, and <strong>6.12.1</strong> for independent Claude CLI and Codex CLI diagnostics. Rerunning the command pulls the current release. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once, restart COS, and confirm Recovery Center shows Local Whisper ready. Text chat works without it. <code>brew install ffmpeg</code> is optional for phone photos and answer images.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 223 uses server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription, <strong>6.12.1</strong> for independent Claude CLI and Codex CLI diagnostics, and <strong>6.12.6</strong> for Mac-pinned meeting recovery and single-owner local Whisper restarts. Rerunning the command pulls the current release. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once, restart COS, and confirm Recovery Center shows Local Whisper ready. Text chat works without it. <code>brew install ffmpeg</code> is optional for phone photos and answer images.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -523,14 +523,14 @@ footer .links a:hover{color:var(--gold)}
     </li>
     <li>
       <h3>Connect once</h3>
-      <p>Open the <a href="/wizard/">setup wizard</a> on your phone. Paste the server URL and the API token. COS remembers both from then on.</p>
+      <p>Open the <a href="/wizard/">setup wizard</a> on your phone. Paste the server URL and the API token. COS saves the pair only after it proves the server&rsquo;s authenticated API identity and a live stream, so a reachable-but-not-ready server is never stored as connected. It remembers both from then on.</p>
     </li>
   </ol>
   <div class="note">
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Current public release:</strong> build 215 opens the first G2 HUD faster when optional Even launch metadata is missing, while preserving one startup-create attempt and the existing bounded rebuild recovery. It also includes the three-tab phone Settings layout and safeguards that keep blank provider completions or stale references from becoming permanent messages.</p>
+    <p><strong>Latest release &mdash; build 223.</strong> Setup saves your server only after proving authenticated API identity and a live stream, not merely a reachable health check. Meetings pin to the Mac that admitted them and track raw audio, transcription, and final text separately, so recovery is exact. A blank model reply becomes a visible, retryable failure instead of a silent Done. The active-job monitor opens a finished reply on double-tap and scrolls back to your original request, and waiting queue rows open in the prompt reviewer so you can read, edit, or re-record before they run. Build 215 remains the proven rollback.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -653,7 +653,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Queue, watch, cancel</h3>
       <p style="font-size:.95rem">Ask while a reply is streaming and the new prompt <strong>queues</strong>: up to five wait in line, first in, first out. Rows in Messages show the state as <span class="g-key">… Queued 1/2</span>, <span class="g-key">Running · Searching web...</span>, and <span class="g-key">◆ Done #4 09:14 summarize the pilot</span>.</p>
-      <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The activity page is a terminal-style tail with mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
+      <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The activity page is a terminal-style tail with mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events, all the way to the complete original request pinned at the top. If a reply finishes while you are watching, <strong>double-tap opens it</strong> before the two-step cancel gesture. Hidden phone-only or tool activity never shifts a history window you scrolled to by hand. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
     </div>
     <div>
       <h3>The job lives on your Mac</h3>
@@ -671,6 +671,8 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>Close or disconnect</strong></td><td>Not the same as cancel. An Accepted job keeps running on your Mac; closing the app, losing Wi-Fi, or switching networks shows <span class="g-key">Reconnecting · job still running</span>, then reattaches the moment you reopen. Only Cancel ends the work on purpose.</td></tr>
     <tr><td><strong>Done rows</strong></td><td>Finished jobs leave a short <span class="g-key">◆ Done #4 09:14 summary</span> trail in Messages (the last three). Tap one to jump straight to the reply; the row retires itself after the jump.</td></tr>
     <tr><td><strong>No-yank rule</strong></td><td>If you are reading, browsing a list, or viewing a photo when a job finishes, the reply never steals the screen. You get a <span class="g-key">✓ Reply #4 ready</span> flash instead; double-tap when you want to open it. Only idle Home may open a finished reply automatically.</td></tr>
+    <tr><td><strong>Edit a waiting prompt</strong></td><td>Tap a queued G2 row and it opens in the prompt reviewer instead of firing: read the full request, edit with undo, re-record, keep the original, or save it for now or next. Photos, references, and model choice are preserved, and abandoning the edit leaves the original queued row intact.</td></tr>
+    <tr><td><strong>Empty reply</strong></td><td>If a model finishes with no answer, the job does not become a blank Done. It stays a visible, retryable <span class="g-key">empty_response</span> row with your original prompt intact, and a blank reply can never be armed as a reference.</td></tr>
   </table></div>
 </section>
 
@@ -689,7 +691,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">8.</span> Meetings</h2>
     <p class="ch-sub">Record the room. <span class="it goldt">Read it later.</span></p>
-    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript. Audio is written to private phone storage first, so a network interruption does not become a lost meeting.</p>
+    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript with a single meeting-owned recording indicator. Audio is written to private phone storage first, so a network interruption does not become a lost meeting.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
     <div>
@@ -710,7 +712,7 @@ footer .links a:hover{color:var(--gold)}
         <tr><td><span class="g-key">↑↑</span></td><td>Back to Home. Recording keeps going; a REC timer stays in the header while you browse anywhere else.</td></tr>
       </table></div>
       <p style="font-size:.95rem"><strong>Stop Meeting AI</strong> ends the session. <strong>Review Meetings</strong> then holds the transcript, summary, topics, decisions, and action items, readable right on the glasses.</p>
-      <p style="font-size:.95rem"><strong>Connection dropped? Keep talking.</strong> Every audio chunk enters a local write-ahead log before upload. When the server returns, COS compares exact received ranges, sends only what is missing, and keeps the phone copy until the Mac has durably stored both the audio and its received-range ledger. A retryable server response never discards the local chunk.</p>
+      <p style="font-size:.95rem"><strong>Connection dropped? Keep talking.</strong> Every audio chunk enters a local write-ahead log before upload. Each meeting is pinned to the Mac that admitted it, and raw audio receipt, transcription completion, and the final canonical transcript are tracked separately &mdash; so a silent stretch counts as complete without being mistaken for transcript text, and a delivered-but-not-yet-transcribed chunk stays retryable. When the server returns, COS reconciles those ledgers, sends only the ranges that are missing, and keeps the phone copy until the Mac has durably stored both the audio and its received-range record. A retryable server response never discards the local chunk.</p>
     </div>
     <div>
       <h3>The lens catches up</h3>
@@ -718,13 +720,13 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div>
       <h3>Stopping is durability-aware</h3>
-      <p style="font-size:.95rem">A normal stop is one tap. If storage or connectivity is changing at that instant, COS shows <span class="g-key">Meeting paused · tap Stop again</span> instead of claiming the recording was saved. The second tap finishes the durable close; message recording unlocks only after the meeting reaches idle.</p>
+      <p style="font-size:.95rem">A normal stop is one tap, and it returns within a bounded five-second foreground budget. If storage or connectivity is changing at that instant, COS shows <span class="g-key">Meeting paused · tap Stop again</span> instead of claiming the recording was saved &mdash; a slow network returns a truthful pending state while your audio and retry ledger stay intact in phone storage. The second tap finishes the durable close; message recording unlocks only after the meeting reaches idle.</p>
       <p style="font-size:.95rem">The live transcript remains canonical. A higher-quality post-meeting pass replaces it only when coverage and repetition checks pass; a bad rewrite is rejected without touching the complete streaming transcript.</p>
     </div>
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 215 plus server 6.12.2 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription continue to work with server 6.11.0 or 6.12.0; only the CLI diagnostic rows ask you to update the server. Server 6.12.2 keeps the 6.12.1 runtime contracts while hardening clean first installs, provider sign-in checks, and local credential permissions.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 223 plus server 6.12.6 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription keep working on server 6.11.0 or 6.12.0; a server that predates a capability simply shows an update-required row rather than breaking. Server 6.12.6 adds the Mac-pinned meeting recovery and single-owner Whisper restart on top of the 6.12.1 runtime contracts. Build 215 with server 6.12.1 remains the proven rollback.</p>
     </div>
   </div>
 </section>
@@ -844,17 +846,17 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">12.</span> Settings</h2>
     <p class="ch-sub">Three tabs, <span class="it goldt">one place.</span></p>
-    <p class="lead">Open the phone companion and tap the ⚙ gear. Build 215 groups the same controls under <strong>System</strong>, <strong>AI</strong>, and <strong>Voice</strong> without changing their saved keys or behavior. Every preference persists through Even Hub storage: force-quit the app, reconnect tomorrow, still there.</p>
+    <p class="lead">Open the phone companion and tap the ⚙ gear. Build 223 groups the same controls under <strong>System</strong>, <strong>AI</strong>, and <strong>Voice</strong> without changing their saved keys or behavior. Every preference persists through Even Hub storage: force-quit the app, reconnect tomorrow, still there.</p>
   </div>
   <div class="tw"><table>
     <tr><th>Section</th><th>What it holds</th></tr>
     <tr><td><strong>SYSTEM · CONNECTION</strong></td><td>Status, server URL, and Disconnect. Disconnect wipes the saved URL and token; reconnect through the wizard.</td></tr>
     <tr><td><strong>AI · MODEL</strong></td><td>Default chat model: the five always-current entries above.</td></tr>
     <tr><td><strong>AI · REASONING EFFORT</strong></td><td>High (default), Extra High, Max, Ultracode.</td></tr>
-    <tr><td><strong>SYSTEM · RECOVERY CENTER</strong></td><td>App API, live stream, G2 bridge, local Whisper, transcription policy, Claude CLI, and Codex CLI are evaluated independently. <strong>Refresh diagnostics</strong> checks them together without converting an unsupported optional route into a false system-wide disconnect. Build 215 actively checks current G2 device evidence: definitive attachment is green, a definitive disconnect is red, and transitional or unavailable evidence stays <strong>Unknown</strong>.</td></tr>
+    <tr><td><strong>SYSTEM · RECOVERY CENTER</strong></td><td>App API, live stream, G2 bridge, local Whisper, transcription policy, Claude CLI, and Codex CLI are evaluated independently. <strong>Refresh diagnostics</strong> checks them together without converting an unsupported optional route into a false system-wide disconnect. Build 223 actively checks current G2 device evidence: definitive attachment is green, a definitive disconnect is red, and transitional or unavailable evidence stays <strong>Unknown</strong>.</td></tr>
     <tr><td><strong>SYSTEM · CLI DEBUG</strong></td><td>Claude CLI and Codex CLI each show support, last-run status, and whether action is needed. <span class="g-key">Last run OK</span> describes the most recent run; it is not a live login guarantee. Diagnostic responses are metadata-only: no prompts, answers, tool output, paths, commands, raw session IDs, tokens, or credentials are returned to the phone. Sign-in and credential updates happen on the Mac with <code>claude auth login</code> or <code>codex login</code>.</td></tr>
     <tr><td><strong>AI · ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer. With server 6.12.0, speech stays on local Whisper by default.</td></tr>
+    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer (6.12.6 adds Mac-pinned recovery and separate audio, transcription, and final-text ledgers). With server 6.12.0, speech stays on local Whisper by default.</td></tr>
     <tr><td><strong>VOICE · VOICE (TTS)</strong></td><td>Nine voices with Echo as default, playback speed, fast first-audio (beta), and a test button. Used when you ask COS to speak; connect Bluetooth audio to hear it.</td></tr>
     <tr><td><strong>VOICE · OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>SYSTEM · Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
@@ -892,11 +894,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Voice feels slow or local Whisper is unavailable</h3>
-      <p>Local Whisper transcribes for free and is the default. It is a one-time prerequisite for voice: run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Text chat remains available without it. A heavy post-meeting pass can briefly restart the local worker; COS keeps the audio and returns a retryable state instead of discarding the prompt. Cloud fallback is off unless the server operator explicitly sets <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</p>
+      <p>Local Whisper transcribes for free and is the default. It is a one-time prerequisite for voice: run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Text chat remains available without it. A heavy post-meeting pass can briefly restart the local worker. Server 6.12.6 serializes concurrent restarts: it reaps only its own worker, proves port 8178 is clear, and starts exactly one healthy replacement &mdash; it never kills an unrelated Whisper process and fails closed if it cannot prove ownership. COS keeps the audio and returns a retryable state instead of discarding the prompt. Cloud fallback is off unless the server operator explicitly sets <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</p>
     </div>
     <div class="card">
       <h3>Recovery Center shows a disconnected component</h3>
-      <p>Build 215 evaluates App API, live stream, current G2 attachment, local Whisper, transcription policy, Claude CLI, and Codex CLI independently. Tap <strong>Refresh diagnostics</strong> for one coordinated check. A missing optional route is shown only on its own row as <span class="g-key">Update server</span>; it does not turn API, SSE, G2, or Whisper red. The G2 row turns red only after definitive SDK disconnect evidence; a transition, timeout, or missing reading stays <strong>Unknown</strong>. Restart controls appear only when the connected server advertises that capability.</p>
+      <p>Build 223 evaluates App API, live stream, current G2 attachment, local Whisper, transcription policy, Claude CLI, and Codex CLI independently. Tap <strong>Refresh diagnostics</strong> for one coordinated check. A missing optional route is shown only on its own row as <span class="g-key">Update server</span>; it does not turn API, SSE, G2, or Whisper red. The G2 row turns red only after definitive SDK disconnect evidence; a transition, timeout, or missing reading stays <strong>Unknown</strong>. Restart controls appear only when the connected server advertises that capability.</p>
     </div>
     <div class="card">
       <h3>Claude CLI or Codex CLI says “Sign in on Mac”</h3>
@@ -908,7 +910,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Server dropped during a meeting</h3>
-      <p>Keep talking. The phone journals audio locally and reconnects without restarting the meeting. When the server returns, COS uploads the exact missing ranges, catches transcription up, and retains local audio until the complete receipt arrives. If Mac storage is unavailable or full, COS returns a retryable error and preserves the phone copy instead of silently accepting the audio.</p>
+      <p>Keep talking. The phone journals audio locally and reconnects without restarting the meeting. When the server returns, COS reconciles the Mac identity and its audio and transcription ledgers before draining, uploads the exact missing ranges, catches transcription up, and retains local audio until the complete receipt arrives. If Mac storage is unavailable or full, COS returns a retryable error and preserves the phone copy instead of silently accepting the audio.</p>
     </div>
     <div class="card">
       <h3>“Meeting paused · tap Stop again”</h3>
@@ -924,11 +926,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 215's full recovery path is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. Server 6.12.1+ also provides authenticated, metadata-only CLI diagnostics while keeping raw CLI session identifiers out of health responses. If the meeting fields are missing, rerun <code>npx --yes @gotcos/glasses-server@latest</code> and reconnect COS.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 223's full recovery path is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. Server 6.12.1+ also provides authenticated, metadata-only CLI diagnostics while keeping raw CLI session identifiers out of health responses. If the meeting fields are missing, rerun <code>npx --yes @gotcos/glasses-server@latest</code> and reconnect COS.</p>
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>; npx fetches the latest release. Build 215 needs server 6.11.0+ for offline-safe meetings, 6.12.0 for the local-only transcription default plus capability-aware recovery, and 6.12.1 for Claude/Codex diagnostics. Server 6.12.2 adds clean-install, sign-in, and credential-permission hardening without changing those runtime contracts. Glasses app: install the current public version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
+      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>; npx fetches the latest release. Build 223 needs server 6.11.0+ for offline-safe meetings, 6.12.0 for the local-only transcription default, 6.12.1 for Claude/Codex diagnostics, and 6.12.6 for Mac-pinned meeting recovery and single-owner Whisper restarts. Glasses app: install the current version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
     </div>
   </div>
 </section>
@@ -942,7 +944,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; and the current public build 215 adds organized System/AI/Voice settings, safer empty-response/reference handling, playback-to-microphone isolation, and faster first-HUD startup.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; build 215 adds organized System/AI/Voice settings, safer empty-response handling, and faster first-HUD startup; and the latest build 223 with server 6.12.6 adds proven-before-saved setup, Mac-pinned exact meeting recovery, a bounded five-second Stop, the queue prompt reviewer, and single-owner local Whisper restarts. Build 215 with server 6.12.1 remains the proven rollback.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>
@@ -1101,8 +1103,8 @@ footer .links a:hover{color:var(--gold)}
     });
   });
 
-  // ── NEW / UPDATED badges (grounded vs cos-glasses-app CHANGELOG build 185, 2026-07-12) ──
-  var BADGES = { photos:'NEW', recall:'NEW', jobs:'UPD', models:'UPD' };
+  // ── NEW / UPDATED badges (grounded vs cos-glasses-app CHANGELOG build 223, 2026-07-21) ──
+  var BADGES = { setup:'UPD', jobs:'UPD', meetings:'UPD', settings:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
   document.querySelectorAll('#chapters .chapcard').forEach(function(c){
