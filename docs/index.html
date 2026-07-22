@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.7.223 (build 223) · server @gotcos/glasses-server 6.12.5 (6.12.6 rolling out).
+  Covers COS Glasses 6.7.223 (build 223) · server @gotcos/glasses-server 6.12.6.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -443,7 +443,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.7.223</b> · build 223</span>
-      <span class="chip">Server <b>6.12.5</b></span>
+      <span class="chip">Server <b>6.12.6</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -514,7 +514,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 223 uses server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription, <strong>6.12.1</strong> for independent Claude CLI and Codex CLI diagnostics. The current release is <strong>6.12.5</strong>; server <strong>6.12.6</strong> (rolling out) completes the Mac-pinned meeting recovery and single-owner local Whisper restart. Rerunning the command always pulls the current release. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once, restart COS, and confirm Recovery Center shows Local Whisper ready. Text chat works without it. <code>brew install ffmpeg</code> is optional for phone photos and answer images.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 223 uses server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription, <strong>6.12.1</strong> for independent Claude CLI and Codex CLI diagnostics, and <strong>6.12.6</strong> for Mac-pinned meeting recovery and single-owner local Whisper restarts. Rerunning the command pulls the current release. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once, restart COS, and confirm Recovery Center shows Local Whisper ready. Text chat works without it. <code>brew install ffmpeg</code> is optional for phone photos and answer images.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -726,7 +726,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 223 plus server 6.12.5 is the current installable pair, and all of build 223&rsquo;s on-glasses hardening works with it. Core queries, meetings, photos, display, queues, and local-first transcription keep working back to server 6.11.0 or 6.12.0; a server that predates a capability simply shows an update-required row rather than breaking. Server 6.12.6 (rolling out) completes the Mac-pinned meeting recovery and single-owner Whisper restart on top of the 6.12.1 runtime contracts; once it is the current release, <code>npx --yes @gotcos/glasses-server@latest</code> installs it automatically.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 223 plus server 6.12.6 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription keep working on server 6.11.0 or 6.12.0; a server that predates a capability simply shows an update-required row rather than breaking. Server 6.12.6 adds the Mac-pinned meeting recovery and single-owner Whisper restart on top of the 6.12.1 runtime contracts.</p>
     </div>
   </div>
 </section>
@@ -856,7 +856,7 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>SYSTEM · RECOVERY CENTER</strong></td><td>App API, live stream, G2 bridge, local Whisper, transcription policy, Claude CLI, and Codex CLI are evaluated independently. <strong>Refresh diagnostics</strong> checks them together without converting an unsupported optional route into a false system-wide disconnect. Build 223 actively checks current G2 device evidence: definitive attachment is green, a definitive disconnect is red, and transitional or unavailable evidence stays <strong>Unknown</strong>.</td></tr>
     <tr><td><strong>SYSTEM · CLI DEBUG</strong></td><td>Claude CLI and Codex CLI each show support, last-run status, and whether action is needed. <span class="g-key">Last run OK</span> describes the most recent run; it is not a live login guarantee. Diagnostic responses are metadata-only: no prompts, answers, tool output, paths, commands, raw session IDs, tokens, or credentials are returned to the phone. Sign-in and credential updates happen on the Mac with <code>claude auth login</code> or <code>codex login</code>.</td></tr>
     <tr><td><strong>AI · ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer (6.12.6, rolling out, adds Mac-pinned recovery and separate audio, transcription, and final-text ledgers). With server 6.12.0, speech stays on local Whisper by default.</td></tr>
+    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Fast mode (off is highest quality, on is turbo), recoverable prompts using phone storage plus a server backup, Polish dictation (AI) with Haiku or Sonnet, Live meeting ASR, and local-first meeting recovery with server 6.11.0 or newer (6.12.6 adds Mac-pinned recovery and separate audio, transcription, and final-text ledgers). With server 6.12.0, speech stays on local Whisper by default.</td></tr>
     <tr><td><strong>VOICE · VOICE (TTS)</strong></td><td>Nine voices with Echo as default, playback speed, fast first-audio (beta), and a test button. Used when you ask COS to speak; connect Bluetooth audio to hear it.</td></tr>
     <tr><td><strong>VOICE · OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>SYSTEM · Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
@@ -894,7 +894,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Voice feels slow or local Whisper is unavailable</h3>
-      <p>Local Whisper transcribes for free and is the default. It is a one-time prerequisite for voice: run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Text chat remains available without it. A heavy post-meeting pass can briefly restart the local worker. Server 6.12.6 (rolling out) serializes concurrent restarts: it reaps only its own worker, proves port 8178 is clear, and starts exactly one healthy replacement &mdash; it never kills an unrelated Whisper process and fails closed if it cannot prove ownership. COS keeps the audio and returns a retryable state instead of discarding the prompt. Cloud fallback is off unless the server operator explicitly sets <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</p>
+      <p>Local Whisper transcribes for free and is the default. It is a one-time prerequisite for voice: run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Text chat remains available without it. A heavy post-meeting pass can briefly restart the local worker. Server 6.12.6 serializes concurrent restarts: it reaps only its own worker, proves port 8178 is clear, and starts exactly one healthy replacement &mdash; it never kills an unrelated Whisper process and fails closed if it cannot prove ownership. COS keeps the audio and returns a retryable state instead of discarding the prompt. Cloud fallback is off unless the server operator explicitly sets <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</p>
     </div>
     <div class="card">
       <h3>Recovery Center shows a disconnected component</h3>
@@ -930,7 +930,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>; npx fetches the latest release. Build 223 needs server 6.11.0+ for offline-safe meetings, 6.12.0 for the local-only transcription default, 6.12.1 for Claude/Codex diagnostics, and the current release 6.12.5 for clean-install and credential hardening; server 6.12.6 (rolling out) adds Mac-pinned meeting recovery and single-owner Whisper restarts. Glasses app: install the current version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
+      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>; npx fetches the latest release. Build 223 needs server 6.11.0+ for offline-safe meetings, 6.12.0 for the local-only transcription default, 6.12.1 for Claude/Codex diagnostics, and 6.12.6 for Mac-pinned meeting recovery and single-owner Whisper restarts. Glasses app: install the current version from Even Hub. History and settings carry over. Tip: the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> does the server side for you &mdash; every run pulls the current release automatically.</p>
     </div>
   </div>
 </section>
@@ -944,7 +944,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; build 215 adds organized System/AI/Voice settings, safer empty-response handling, and faster first-HUD startup; and the latest build 223 adds proven-before-saved setup, a bounded five-second Stop, the queue prompt reviewer, and safer empty replies on the glasses today; server 6.12.6 (rolling out) completes the Mac-pinned exact meeting recovery and single-owner local Whisper restart.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Local-first meeting recovery requires COS Glasses build 209 and <code>@gotcos/glasses-server</code> 6.11.0 or newer; build 210 with server 6.12.0 adds hardened local-only transcription; build 212 with server 6.12.1 adds privacy-safe, current-state diagnostics; build 215 adds organized System/AI/Voice settings, safer empty-response handling, and faster first-HUD startup; and the latest build 223 with server 6.12.6 adds proven-before-saved setup, Mac-pinned exact meeting recovery, a bounded five-second Stop, the queue prompt reviewer, and single-owner local Whisper restarts.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>
