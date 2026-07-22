@@ -19,9 +19,14 @@ A detailed walkthrough for setting up your first COS instance.
 # macOS / Linux
 npm install -g @anthropic-ai/claude-code
 
-# Verify
+# Sign in and verify
+claude auth login
 claude --version
 ```
+
+Claude Desktop does not install the terminal CLI. Keep the scoped install
+command on one line and **never run npm with `sudo`**; sudo can leave a
+root-owned cache that breaks later `npx` installs.
 
 If you don't have Node.js, install it first: [nodejs.org](https://nodejs.org)
 
