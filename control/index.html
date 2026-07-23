@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>COS Control for macOS | gotcos.com</title>
+  <meta name="description" content="Start, stop, update, diagnose, and recover your COS Glasses server from the macOS menu bar.">
+  <link rel="canonical" href="https://www.gotcos.com/control/">
+  <style>
+    :root{--ink:#f4eee5;--muted:#aaa196;--line:#302a25;--panel:#171411;--black:#0d0c0b;--gold:#d7a867;--green:#98d89f;--red:#eb8d82}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center}.nav .wrap{display:flex;align-items:center;justify-content:space-between}.brand{font-family:Georgia,serif;font-size:28px;font-weight:800;letter-spacing:.02em}.links{display:flex;gap:24px;align-items:center}.links a{color:var(--muted);text-decoration:none;font-size:14px}.links a:hover{color:var(--ink)}
+    .hero{padding:92px 0 70px;display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}.hero h1{font-family:Georgia,serif;font-size:clamp(48px,6vw,78px);line-height:.98;margin:18px 0 24px;letter-spacing:-.04em}.hero h1 em{color:var(--gold);font-weight:400}.lead{font-size:20px;color:var(--muted);max-width:620px}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid var(--line)}.primary{background:var(--ink);color:var(--black);border-color:var(--ink)}.ghost:hover{border-color:var(--gold)}.meta{margin-top:18px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#7e766e;word-break:break-all}
+    .preview{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 30px 80px #0008}.menubar{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16;margin-bottom:18px}.pill{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green)}.state{display:grid;gap:12px}.row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.row span{color:var(--muted)}.ok{color:var(--green)!important}.warn{color:var(--gold)!important}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.action{padding:11px;border:1px solid var(--line);border-radius:10px;text-align:center;color:var(--muted);font-size:13px}
+    section{padding:72px 0;border-top:1px solid var(--line)}h2{font-family:Georgia,serif;font-size:clamp(34px,4vw,52px);line-height:1.05;margin:0 0 18px}.sub{color:var(--muted);font-size:18px;max-width:720px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.card{background:var(--panel);border:1px solid var(--line);padding:26px;border-radius:18px}.card b{display:block;margin-bottom:8px}.card p{margin:0;color:var(--muted)}
+    .paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}.path{border:1px solid var(--line);border-radius:18px;padding:28px}.path.recommended{border-color:#765c3b;background:#17130f}.tag{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:12px}.steps{counter-reset:item;padding:0;list-style:none}.steps li{counter-increment:item;display:grid;grid-template-columns:34px 1fr;gap:12px;margin:16px 0;color:var(--muted)}.steps li:before{content:counter(item);width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink);font-size:12px}.note{border-left:2px solid var(--gold);padding:2px 0 2px 18px;color:var(--muted);margin-top:24px}.foot{padding:40px 0;color:#756e67;font-size:13px;border-top:1px solid var(--line)}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--green)}
+    @media(max-width:800px){.hero,.grid,.paths{grid-template-columns:1fr}.hero{padding-top:58px;gap:42px}.links a:not(:last-child){display:none}.nav{height:62px}.actions{grid-template-columns:1fr}.wrap{width:min(100% - 28px,1120px)}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="wrap"><div class="brand"><a href="/" style="text-decoration:none">COS</a></div><div class="links"><a href="/docs/">Docs</a><a href="https://github.com/ukaoma/cos-control-macos">Source</a><a href="#download">Download</a></div></div></nav>
+  <main>
+    <header class="hero wrap">
+      <div>
+        <div class="eyebrow">COS Control for macOS</div>
+        <h1>Your glasses server, <em>under control.</em></h1>
+        <p class="lead">Start, stop, update, diagnose, and recover COS Glasses from the menu bar. One owner. One durable configuration. No terminal required after setup.</p>
+        <div class="buttons" id="download">
+          <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.0.zip" download>Download for Mac</a>
+          <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
+        </div>
+        <div class="meta">v0.1.0 · macOS 14+ · Apple Silicon · SHA-256 1d48d7042fa5066c52b46d95ed63d7bbecdc2a672ac18a09962713cb2a7d7b40</div>
+      </div>
+      <div class="preview" aria-label="COS Control status preview">
+        <div class="menubar"><b>COS Control</b><span class="pill">● Running</span></div>
+        <div class="state">
+          <div class="row"><span>Server</span><b class="ok">Healthy · 6.13.0</b></div>
+          <div class="row"><span>Local Whisper</span><b class="ok">Ready</b></div>
+          <div class="row"><span>Install</span><b>Managed</b></div>
+          <div class="row"><span>Update</span><b class="warn">Available</b></div>
+          <div class="row"><span>Project</span><b>~/Documents/COS</b></div>
+        </div>
+        <div class="actions"><div class="action">Open COS</div><div class="action">Run Doctor</div><div class="action">Restart Safely</div><div class="action">Check for Update</div></div>
+      </div>
+    </header>
+
+    <section><div class="wrap">
+      <h2>The server appliance COS was missing.</h2>
+      <p class="sub">COS Control wraps the same open-source npm server in a small native controller. It adds durable startup, safe updates, rollback, clear health, and actionable diagnostics without changing how the glasses work.</p>
+      <div class="grid">
+        <div class="card"><b>Single owner</b><p>A managed LaunchAgent owns the server. COS Control will not fight a terminal process or replace an unknown port owner.</p></div>
+        <div class="card"><b>Safe operations</b><p>Restart is blocked while recordings or jobs are active. Updates stage a new immutable generation before switching.</p></div>
+        <div class="card"><b>No lock-in</b><p>The runtime is still <code>@gotcos/glasses-server</code>. Stop COS Control and return to the foreground npx command whenever you want.</p></div>
+      </div>
+    </div></section>
+
+    <section><div class="wrap">
+      <h2>Choose how you want to run COS.</h2>
+      <div class="paths">
+        <div class="path recommended"><span class="tag">Recommended</span><h3>COS Control</h3><p class="sub">Best for daily use. Guided setup once, automatic launch at login, menu bar status, Doctor, safe restart, update, and rollback.</p><div class="buttons"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.0.zip" download>Download v0.1.0</a></div></div>
+        <div class="path"><span class="tag">Terminal</span><h3>Public npm server</h3><p class="sub">Best for developers and existing setups. The foreground workflow remains fully supported.</p><p><code>npx --yes @gotcos/glasses-server@latest</code></p><div class="buttons"><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server">View on npm</a></div></div>
+      </div>
+    </div></section>
+
+    <section><div class="wrap">
+      <h2>Install in three moves.</h2>
+      <ol class="steps">
+        <li><div><b>Download and unzip.</b><br>Move COS Control to Applications.</div></li>
+        <li><div><b>Right-click and choose Open.</b><br>The MVP is ad-hoc signed, so macOS asks you to approve the first launch once.</div></li>
+        <li><div><b>Run Guided Setup.</b><br>COS Control opens the existing server setup, preserves your token and data, then installs the managed server.</div></li>
+      </ol>
+      <div class="note"><b>Already running COS in Terminal?</b> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over an unknown process, protecting your jobs and recordings.</div>
+    </div></section>
+  </main>
+  <footer class="foot"><div class="wrap">COS Control is open source. The server stays on your Mac, and your existing COS Glasses data remains compatible.</div></footer>
+</body>
+</html>
