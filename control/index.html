@@ -242,6 +242,20 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .paper code,.insteps code{font-family:var(--mono);font-size:.85em;color:#654919;background:rgba(46,31,16,.06);padding:1px 5px;border-radius:5px}
 .dark-section code{font-family:var(--mono);color:var(--green)}
 .cc-anatomy .part{background:rgba(255,255,255,.5);border-color:var(--paper-line)}.cc-anatomy .part h3{color:var(--paper-ink)}.cc-anatomy .part p{color:var(--paper-muted)}.cc-anatomy .part code{color:#654919}
+.gk{margin:32px auto 0;max-width:600px}
+.gk-win{background:#242427;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:15px 15px 13px;box-shadow:0 34px 74px -32px rgba(0,0,0,.55),0 2px 10px rgba(0,0,0,.28);color:#f5f5f7;font-family:-apple-system,var(--body)}
+.gk-bar{display:flex;align-items:center;gap:11px;font-size:.9rem;color:#f5f5f7;padding:0 2px 13px}
+.gk-bar .gk-nav{font-family:var(--mono);letter-spacing:.16em;color:rgba(245,245,247,.4)}
+.gk-bar b{font-weight:600}
+.gk-sec{font-size:.7rem;font-weight:700;color:rgba(245,245,247,.5);letter-spacing:.02em;padding:2px 2px 8px}
+.gk-row{display:flex;justify-content:space-between;align-items:center;gap:14px;background:#2f2f34;padding:12px 14px;font-size:.86rem;margin-bottom:2px}
+.gk-row:first-of-type{border-radius:9px 9px 3px 3px}
+.gk-block{border-radius:3px 3px 9px 9px}
+.gk-pop{display:inline-flex;align-items:center;gap:7px;background:#48484e;border-radius:7px;padding:5px 11px;font-size:.8rem;white-space:nowrap}
+.gk-btn{flex:none;background:#54545b;border:1px solid var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,.4);border-radius:8px;padding:7px 15px;font-size:.82rem;font-weight:500;color:#fff}
+.gk-note{font-size:.76rem;color:rgba(245,245,247,.5);line-height:1.5;padding:12px 4px 2px}
+.gk figcaption{margin-top:14px;text-align:center;font-family:var(--display);font-style:italic;font-size:.92rem;color:#795c2d}
+@media(max-width:540px){.gk-row{flex-wrap:wrap}.gk-btn{margin-top:2px}}
 @media(max-width:760px){.paths{grid-template-columns:1fr}.cc-actions{grid-template-columns:1fr}.insteps li{grid-template-columns:44px 1fr;padding:20px 17px}}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
@@ -427,6 +441,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>COS Control opens the existing server setup, keeps your token and data, then installs the managed server.</p></div></li>
       </ol>
       <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
+      <figure class="gk reveal">
+        <div class="gk-win" role="img" aria-label="System Settings, Privacy and Security. A Security section shows Allow applications from set to App Store and Known Developers, a row reading COS Control was blocked to protect your Mac with an Open Anyway button, and a note that Apple could not verify the app.">
+          <div class="gk-bar"><span class="gk-nav">&#8249;&#8250;</span> <b>Privacy &amp; Security</b></div>
+          <div class="gk-sec">Security</div>
+          <div class="gk-row"><span>Allow applications from</span><span class="gk-pop">App Store &amp; Known Developers &#9663;</span></div>
+          <div class="gk-row gk-block"><span>&ldquo;COS Control&rdquo; was blocked to protect your Mac.</span><span class="gk-btn">Open Anyway</span></div>
+          <div class="gk-note">Apple could not verify &ldquo;COS Control&rdquo; is free of malware that may harm your Mac or compromise your privacy.</div>
+        </div>
+        <figcaption>Open System Settings, go to Privacy &amp; Security, scroll to Security, and click Open Anyway.</figcaption>
+      </figure>
       <div class="pnote reveal"><b>Already running COS in Terminal?</b> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</div>
     </div>
   </section>
