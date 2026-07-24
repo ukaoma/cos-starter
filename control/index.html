@@ -401,7 +401,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
             <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.1.0.zip</code></div>
-            <p class="sha">SHA-256<br>31ae26f98dbe37a8e9f4fc25e9e6be43debcf4c66502f983f48f43660051791d</p>
+            <p class="sha">SHA-256<br>866dda58053afebaf53935215b4484ed5fd38b3a59a942934fd6ce82b992ce3b</p>
           </details>
         </div>
         <div class="path reveal">
@@ -423,9 +423,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <ol class="insteps">
         <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
-        <li class="reveal"><span class="n">2</span><div><h3>Right-click, then choose Open.</h3><p>The v0.1.0 build is ad-hoc signed, so macOS asks you to approve the first launch once.</p></div></li>
+        <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
         <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>COS Control opens the existing server setup, keeps your token and data, then installs the managed server.</p></div></li>
       </ol>
+      <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
       <div class="pnote reveal"><b>Already running COS in Terminal?</b> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</div>
     </div>
   </section>
