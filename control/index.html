@@ -39,8 +39,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.1.1",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.1.1.zip",
+  "softwareVersion": "0.1.7",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.1.7.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Durable startup, safe updates, rollback, health, and diagnostics without changing how the glasses work.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -352,16 +352,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses server, <em>under control.</em></h1>
       <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Start, stop, update, diagnose, and recover it from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.1.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.7.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.1.1 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.1.7 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.13.0, local Whisper ready, managed install, up to date, project at your Documents folder.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.14.0, local Whisper ready, managed install, up to date, project at your Documents folder.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.13.0</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.14.0</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
         <div class="cc-row"><span class="cc-k">Install</span><b class="cc-v">Managed</b></div>
         <div class="cc-row"><span class="cc-k">Update</span><b class="cc-v ok">Up to date</b></div>
@@ -391,7 +391,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="anatomy cc-anatomy">
           <div class="part reveal"><h3>One owner, no fights</h3><p>A managed LaunchAgent owns the server. COS Control will not race a terminal process or seize a port it does not recognize.</p></div>
           <div class="part reveal"><h3>Safe by default</h3><p>Restart is blocked while a recording or job is live. Updates stage a new immutable generation, then switch, so a bad update rolls back clean.</p></div>
-          <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Quit COS Control and go back to the plain <code>npx</code> command whenever you want.</p></div>
+          <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
         </div>
       </div>
     </div>
@@ -409,13 +409,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="path recommended reveal">
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
-          <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.1.zip" download>Download v0.1.1</a></div>
+          <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.7.zip" download>Download v0.1.7</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.1.1.zip</code></div>
-            <p class="sha">SHA-256<br>00ecf1cab0583be12dee812ab9e2c677c3c44f1f61c4e812aefe4c38a53b8522</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.1.7.zip</code></div>
+            <p class="sha">SHA-256<br>1687098b3e202147978cab47e90100f334a03bbbf680da40a6cbbab919bc5a89</p>
           </details>
         </div>
         <div class="path reveal">
@@ -461,10 +461,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.1.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.1.7.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.1.1 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.1.7 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>
