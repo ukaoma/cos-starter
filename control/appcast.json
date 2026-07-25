@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "channels": {
+    "stable": {
+      "version": "0.2.0",
+      "build": 11,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.0.zip",
+      "sha256": "b0bc52623bef56b690b64b1e3be9cb117c53630cd5e23e9aa1b8f1a59d914583",
+      "minMacOS": "14.0",
+      "serverTarget": "6.15.0",
+      "publishedAt": "2026-07-25T23:08:07Z",
+      "notes": "Recent Glasses layout fix and in-app update checks."
+    }
+  },
+  "killSwitch": { "disableAutoUpdate": false, "reason": "" }
+}
