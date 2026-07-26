@@ -28,7 +28,9 @@ Claude Desktop does not install the terminal CLI. Keep the scoped install
 command on one line and **never run npm with `sudo`**; sudo can leave a
 root-owned cache that breaks later `npx` installs.
 
-If you don't have Node.js, install it first: [nodejs.org](https://nodejs.org)
+Check `node -v` first. Any Node.js 20.11 or newer is sufficient, including
+newer major releases; do not install `node@20` alongside a compatible existing
+Node. If Node is missing or older, install it from [nodejs.org](https://nodejs.org).
 
 ---
 

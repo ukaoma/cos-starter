@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.7.244 (build 244) · server @gotcos/glasses-server 6.15.1.
+  Covers COS Glasses 6.7.244 (build 244) · server @gotcos/glasses-server 6.15.2.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -446,7 +446,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.7.244</b> · build 244</span>
-      <span class="chip">Server <b>6.15.1</b></span>
+      <span class="chip">Server <b>6.15.2</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -512,12 +512,12 @@ footer .links a:hover{color:var(--gold)}
   <ol class="steps">
     <li>
       <h3>Check the basics</h3>
-      <p>A Mac that stays on, with Node.js 20.11 or newer. At least one agent CLI signed in. Claude Desktop does not install the terminal CLI: run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. Or install Codex and run <code>codex login</code>. Your G2 must be paired to the Even Realities app, version 2.2.6 or newer.</p>
+      <p>A Mac that stays on, with Node.js 20.11 or newer. Run <code>node -v</code> first; any newer compatible major version is fine, so do not install <code>node@20</code> beside it. At least one agent CLI must be signed in. Claude Desktop does not install the terminal CLI: run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. Or install Codex and run <code>codex login</code>. Your G2 must be paired to the Even Realities app, version 2.2.6 or newer.</p>
     </li>
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 244 uses server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription, <strong>6.12.1</strong> for independent CLI diagnostics, <strong>6.12.6</strong> for Mac-pinned recovery, <strong>6.12.7</strong> for canonical meeting context, <strong>6.13.0</strong> for COS Control, and <strong>6.15.1</strong> for reliable local-first Kokoro spoken replies. Rerunning the command pulls the current release. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Build 244 uses server <strong>6.11.0 or newer</strong> for offline-safe meetings, <strong>6.12.0</strong> for hardened local-only transcription, <strong>6.12.1</strong> for independent CLI diagnostics, <strong>6.12.6</strong> for Mac-pinned recovery, <strong>6.12.7</strong> for canonical meeting context, <strong>6.13.0</strong> for COS Control, and <strong>6.15.2</strong> for self-repairing Kokoro, MCP selectors, and transactional Control proof. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -749,7 +749,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 244 plus server 6.15.1 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers; unsupported additive capabilities show an update-required or unavailable state instead of breaking the established flows. Server 6.15.1 provides Kokoro spoken replies without changing the Whisper transcription contract.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 244 plus server 6.15.2 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers; unsupported additive capabilities show an update-required or unavailable state instead of breaking the established flows. Server 6.15.2 provides self-repairing Kokoro spoken replies without changing the Whisper transcription contract.</p>
     </div>
   </div>
 </section>
@@ -908,6 +908,10 @@ footer .links a:hover{color:var(--gold)}
       <p>Do not use sudo and do not recursively change system ownership. Start COS with a private user-owned cache: <code>npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>. Server 6.12.2+ resolves the dependencies npm already installed and never launches a second install from npm's temporary package folder.</p>
     </div>
     <div class="card">
+      <h3><code>@latest</code> started an older server</h3>
+      <p>Compare <code>server_version</code> in <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. If they differ, stop the old process and rerun with fresh metadata: <code>npm_config_prefer_online=true npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>. Do not use sudo or delete system caches.</p>
+    </div>
+    <div class="card">
       <h3>Restarted the server?</h3>
       <p>Force-quit the Even app and reopen it. Settings and the connection survive. Disconnect in Settings is the last resort: it clears the saved URL and token, so you would re-paste them from the wizard.</p>
     </div>
@@ -949,11 +953,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 244's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.15.1, local speech readiness is reported additively under <code>tts_local</code>; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 244's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.15.2, local speech readiness is reported additively under <code>tts_local</code>; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>; npx fetches 6.15.1 or newer. To roll the server back while diagnosing a release, run <code>npx --yes @gotcos/glasses-server@6.14.1</code>. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>; the current target is 6.15.2 or newer. To roll the server back while diagnosing a release, run <code>npx --yes @gotcos/glasses-server@6.15.1</code>. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
     </div>
   </div>
 </section>
@@ -967,7 +971,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer. Build 244 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.15.1 for optional local Kokoro speech on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer; newer compatible Node majors are fine. Build 244 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.15.2 for optional local Kokoro speech on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>

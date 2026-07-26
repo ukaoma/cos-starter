@@ -385,9 +385,9 @@ description: Start the COS Glasses server, verify health, keep it current, and t
 # /cos-glasses
 
 ## Steps
-1. Start `npx @gotcos/glasses-server` from this COS folder (so the glasses load this brain). Keep the terminal open; the server prints the URL + API token and saves the token to `~/.cos-glasses/.env`. `npx` pulls the latest release every run -- so this doubles as the update path.
+1. Start `npx --yes @gotcos/glasses-server@latest` from this COS folder (so the glasses load this brain). Keep the terminal open; the server prints the URL + API token and saves the token to `~/.cos-glasses/.env`.
 2. Health-check: `curl http://YOUR-SERVER-IP:3141/api/health` returns `"status":"ok"`. To confirm the server is current, hit the authenticated models probe `curl -H "X-COS-Token: $COS_TOKEN" http://YOUR-SERVER-IP:3141/api/models` -- it returns a `serverInstanceId` on 6.6.0+. Ports 3141 (HTTP) / 3143 (HTTPS).
-3. Troubleshoot by symptom: "can't reach server" -> same Wi-Fi use `192.168.x.x:3141`, else Tailscale `100.x.x.x:3141`; photos missing -> `brew install ffmpeg`; voice slow -> `brew install whisper-cpp`; "server update required" -> rerun the npx command.
+3. Compare the running `server_version` with `npm view @gotcos/glasses-server dist-tags.latest`. If `@latest` launched an older cached release, stop it and rerun with `npm_config_prefer_online=true npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest`. Troubleshoot other symptoms: "can't reach server" -> same Wi-Fi use `192.168.x.x:3141`, else Tailscale `100.x.x.x:3141`; photos missing -> `brew install ffmpeg`; voice slow -> `brew install whisper-cpp`.
 4. A Mac curl to its OWN mesh IP (`100.x`) times out by design -- verify from the phone, not the Mac.
 
 ## Rules

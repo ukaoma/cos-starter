@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.1",
-      "build": 12,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.1.zip",
-      "sha256": "39f3573028f170a22772cf2b410e5a00f05cb77d56ede2e448dd6b0bb08e0379",
+      "version": "0.2.2",
+      "build": 13,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.2.zip",
+      "sha256": "eca9188020accdae53dd0c21562a1c09c86e08c9d010b0ed76f2573744b59e17",
       "minMacOS": "14.0",
-      "serverTarget": "6.15.1",
-      "publishedAt": "2026-07-26T00:48:47Z",
-      "notes": "Preserves Claude, Codex, and Cursor access across managed updates; verifies provider capabilities; installs server 6.15.1."
+      "serverTarget": "6.15.2",
+      "publishedAt": "2026-07-26T01:48:30Z",
+      "notes": "Proves a real provider response and native Kokoro playback before managed success; preserves MCP, work-folder, Python, and CLI configuration; installs server 6.15.2."
     }
   },
   "killSwitch": { "disableAutoUpdate": false, "reason": "" }

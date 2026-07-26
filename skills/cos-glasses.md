@@ -12,7 +12,7 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
 - You want to be sure you're on the latest server release
 
 ## Why a skill (not just the command)
-`npx --yes @gotcos/glasses-server@latest` starts the server, but it doesn't tell you whether the server is actually healthy, why the phone can't reach it, or whether you're up to date. This skill wraps the command with a health check, a symptom-to-fix table, and the update path. The explicit `@latest` keeps every run on the current public release -- there is no separate upgrade step.
+`npx --yes @gotcos/glasses-server@latest` starts the server, but it doesn't tell you whether the server is actually healthy, why the phone can't reach it, or whether npm served stale cached metadata. This skill wraps the command with a health check, a registry-version comparison, a symptom-to-fix table, and the update path.
 
 ## Steps
 
@@ -22,7 +22,10 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
      npx --yes @gotcos/glasses-server@latest
      ```
    - Keep the terminal open. On boot the server prints your **server URL** (Wi-Fi and, if present, Tailscale/mesh addresses, labeled) and your **API token**. The token is written to `~/.cos-glasses/.env`, so it is stable across restarts -- you paste it into the phone app only once.
-   - `npx` fetches the latest release every run. "Already up to date" is the expected message on a repeat run.
+   - Compare the running `server_version` with `npm view @gotcos/glasses-server dist-tags.latest`. If they differ, stop the old server and rerun with fresh registry metadata:
+     ```
+     npm_config_prefer_online=true npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest
+     ```
 
 2. **Confirm it's healthy.** Curl the health endpoint (no token needed):
    ```
@@ -49,9 +52,10 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
    | Token rejected after a URL change | Origin changed | Re-enter the token in the app (a new host never auto-receives your old token, by design). The token itself hasn't changed -- it's in `~/.cos-glasses/.env`. |
    | "Claude/Codex not found" | Desktop app is present, but the terminal CLI is missing | Claude: run `npm install -g @anthropic-ai/claude-code` on one line **without sudo**, then run `claude` and finish sign-in. Codex: verify `codex --version`, then `codex login`. |
    | npm `EACCES` / root-owned cache | A prior sudo npm install poisoned the shared cache | Never use sudo or broad `chown`. Retry with `npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest`. Server 6.12.2+ never runs a nested install inside the npx cache. |
+   | `@latest` starts an older server | npm reused stale metadata | Compare against `npm view @gotcos/glasses-server dist-tags.latest`, then restart with `npm_config_prefer_online=true` and the private COS cache command above. |
 
 4. **Keep it current.**
-   - Server: this skill already does it -- `npx` resolves the latest dist-tag every run.
+   - Server: compare the running health version with the registry dist-tag; never assume the word `latest` proves which cached artifact launched.
    - App: update separately from the Even Hub on your iPhone. History and settings carry over; you don't re-pair.
    - App and server upgrade independently. A brief version-skew window is handled gracefully: normal Q&A keeps working, and the app just nudges you to rerun the server when a new capability needs it.
 
