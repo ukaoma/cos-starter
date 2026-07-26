@@ -39,8 +39,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.2.2",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.2.zip",
+  "softwareVersion": "0.2.3",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.3.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Durable startup, safe updates, rollback, health, and diagnostics without changing how the glasses work.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -352,16 +352,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses server, <em>under control.</em></h1>
       <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Start, stop, update, diagnose, and recover it from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.2.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.3.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.2.2 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.2.3 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.15.2, local Whisper ready, Cursor CLI connected, managed install, project at your Documents folder.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.15.3, local Whisper ready, Cursor CLI connected, managed install, project at your Documents folder.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.15.2</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.15.3</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
         <div class="cc-row"><span class="cc-k">Cursor CLI</span><b class="cc-v ok">Connected</b></div>
         <div class="cc-row"><span class="cc-k">Install</span><b class="cc-v">Managed</b></div>
@@ -392,7 +392,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>One owner, no fights</h3><p>A managed LaunchAgent owns the server. COS Control will not race a terminal process or seize a port it does not recognize.</p></div>
           <div class="part reveal"><h3>Safe by default</h3><p>Restart is blocked while a recording or job is live. Updates stage a new immutable generation, then switch, so a bad update rolls back clean.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
-          <div class="part reveal"><h3>Knows your harness</h3><p>Doctor checks <strong>Cursor Agent</strong> beside Claude Code and Codex, and the status card shows whether the Cursor CLI is connected. One click opens Cursor in your work folder. Any one harness is enough.</p></div>
+          <div class="part reveal"><h3>One provider workspace</h3><p><strong>Choose Folder</strong> sets the project Claude, Codex, and Cursor search and edit. It does not move the managed server package. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, one copy away</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today and copies a paste-ready handoff into any chat, so you can pick up a thread on the Mac without a recall command. Messages are read from your own local server and never leave the machine.</p></div>
         </div>
       </div>
@@ -412,12 +412,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.2.zip" download>Download v0.2.2</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.3.zip" download>Download v0.2.3</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.2.2.zip</code></div>
-            <p class="sha">SHA-256<br>eca9188020accdae53dd0c21562a1c09c86e08c9d010b0ed76f2573744b59e17</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.2.3.zip</code></div>
+            <p class="sha">SHA-256<br>2bbce2bb72b3ad5cadc1888522a4eea6332af7e2d2dceb313709de0344c4a3f0</p>
           </details>
         </div>
         <div class="path reveal">
@@ -464,10 +464,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.2.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.2.3.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.2.2 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.2.3 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

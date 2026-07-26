@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.2",
-      "build": 13,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.2.zip",
-      "sha256": "eca9188020accdae53dd0c21562a1c09c86e08c9d010b0ed76f2573744b59e17",
+      "version": "0.2.3",
+      "build": 14,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.3.zip",
+      "sha256": "2bbce2bb72b3ad5cadc1888522a4eea6332af7e2d2dceb313709de0344c4a3f0",
       "minMacOS": "14.0",
-      "serverTarget": "6.15.2",
-      "publishedAt": "2026-07-26T01:48:30Z",
-      "notes": "Proves a real provider response and native Kokoro playback before managed success; preserves MCP, work-folder, Python, and CLI configuration; installs server 6.15.2."
+      "serverTarget": "6.15.3",
+      "publishedAt": "2026-07-26T03:02:00Z",
+      "notes": "Choose Folder now updates the Claude, Codex, and Cursor provider workspace without moving the server package. Managed switches restart transactionally; older adopted servers save without interruption and offer a confirmation-gated LaunchAgent reload. Installs server 6.15.3."
     }
   },
   "killSwitch": { "disableAutoUpdate": false, "reason": "" }
