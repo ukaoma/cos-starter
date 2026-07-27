@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.8",
-      "build": 19,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.8.zip",
-      "sha256": "f0e1949bb67bb819dc8ca5425167cbb8b467b2e255e867da8dc426e9e6645e5b",
+      "version": "0.2.9",
+      "build": 20,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.9.zip",
+      "sha256": "583d2be9d9ef3a1d6425ce6016294f9de3fc5012f6099b389b0a1fae5766c4fd",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-07-27T14:05:00Z",
-      "notes": "The panel footer now shows the live managed server version instead of a compile-time \"verified\" pin that lagged behind Update Server. QA'd against glasses-server 6.16.9 (message era + per-exchange model stamps); Install, Adopt, and Update Server still resolve npm latest."
+      "publishedAt": "2026-07-27T14:30:00Z",
+      "notes": "A failed server install no longer leaves in-place management switched off: the ownership marker is restored when an update rolls back, so the in-place recovery watchdog keeps running after a transient npm outage. Doctor and Copy Report now name the Control version and build. QA'd against glasses-server 6.16.9; Install, Adopt, and Update Server still resolve npm latest."
     }
   },
   "killSwitch": {
