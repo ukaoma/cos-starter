@@ -186,18 +186,43 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.engine-name{transition:none}.btn{transition:none}}
 
 /* ── Glasses Challenge (/challenge) ── */
-.ch-panel{position:relative;z-index:2;display:grid;gap:0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:rgba(7,5,4,.42)}
-.ch-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 16px;border-bottom:1px solid var(--line2)}
-.ch-row:last-child{border-bottom:0}
-.ch-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)}
-.ch-v{font-size:.9rem;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums;text-align:right}
-.ch-v.gold{color:var(--gold)}
-.ch-v.ok{color:var(--green)}
-.ch-v.sm{font-family:var(--mono);font-size:.74rem;font-weight:400;color:var(--muted)}
+/* ── The lens. The one place this page spends its boldness. ──
+   An emissive G2 HUD at its true 576x288 ratio, embedded in a warm analog page.
+   The material contrast is the point: the glasses really are monochrome green. */
+.lens-rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35)}
+.lens-rig::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,110,.12);border-radius:21px;pointer-events:none}
+.lens-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 14px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
+.lens-top b{color:var(--gold);font-weight:500}
+
+.lens{position:relative;z-index:2;aspect-ratio:576/288;border-radius:14px;overflow:hidden;background:radial-gradient(120% 140% at 50% 0%,#0b1410,#050907 70%);border:1px solid rgba(134,224,161,.16);box-shadow:inset 0 0 42px rgba(134,224,161,.05)}
+.lens::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(134,224,161,.045) 0 1px,transparent 1px 3px);mix-blend-mode:screen}
+.lens-inner{position:absolute;inset:0;padding:clamp(14px,2.4vw,22px) clamp(16px,2.8vw,26px);display:flex;flex-direction:column;font-family:var(--mono);line-height:1.5}
+.lens-ask{font-size:clamp(.62rem,1.02vw,.78rem);letter-spacing:.02em;color:rgba(134,224,161,.55);text-transform:lowercase;margin:0 0 auto;white-space:pre-wrap}
+.lens-ask .cur{display:inline-block;width:.52em;height:1em;background:#86e0a1;vertical-align:-.14em;margin-left:.16em;box-shadow:0 0 8px rgba(134,224,161,.6)}
+.lens-ans{font-size:clamp(.74rem,1.28vw,.98rem);color:#86e0a1;text-shadow:0 0 14px rgba(134,224,161,.4);display:grid;gap:.24em;align-content:end}
+.lens-ans .ln{margin:0;white-space:pre-wrap}
+.lens-ans .ln.hi{color:#d6f5e0;text-shadow:0 0 16px rgba(214,245,224,.45)}
+/* sweep: fires once per exchange, reads as the display refreshing */
+.lens-scan{position:absolute;left:0;right:0;top:0;height:38%;pointer-events:none;z-index:3;opacity:0;background:linear-gradient(180deg,transparent,rgba(134,224,161,.13) 60%,transparent);mix-blend-mode:screen}
+
+/* facts: instrument readout, the sanctioned mono-caps use */
+.lens-facts{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:14px;border:1px solid var(--line2);border-radius:11px;overflow:hidden;background:var(--line2)}
+.lens-facts div{background:rgba(7,5,4,.55);padding:11px 13px}
+.lens-facts span{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
+.lens-facts b{display:block;margin-top:4px;font-size:.86rem;color:var(--fg);font-weight:600}
+.lens-facts b.gold{color:var(--gold)}
+.lens-cap{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:15px 8px 2px}
+.lens-cap strong{color:var(--fg)}
+
+/* pre-states gated on .js so no-JS and cold-cache render the first exchange at rest */
+.js .lens-scan{opacity:0}
+@media(prefers-reduced-motion:reduce){.lens-scan{display:none}.lens-ask .cur{display:none}}
+@media(max-width:700px){.lens-facts{grid-template-columns:1fr;gap:1px}}
+
 /* two tiers */
 .tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
 .tier{position:relative;border:1px solid var(--line);border-radius:18px;padding:28px;background:linear-gradient(150deg,rgba(255,246,232,.04),transparent)}
-.tier.win{border-color:rgba(201,169,110,.42);background:linear-gradient(150deg,rgba(201,169,110,.1),rgba(7,5,4,.2))}
+.tier.win{border-color:rgba(201,169,110,.5);background:linear-gradient(150deg,rgba(201,169,110,.13),rgba(7,5,4,.2));box-shadow:0 0 0 1px rgba(201,169,110,.14),0 26px 60px -34px rgba(201,169,110,.4)}
 .tier h3{font-family:var(--display);font-size:1.5rem;font-weight:400;margin:0 0 8px}
 .tier>p{color:var(--muted);font-size:.92rem}
 .tier .ttag{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:.54rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.4);padding:5px 10px;border-radius:999px}
@@ -345,18 +370,28 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="byline">Free to enter &middot; One entry per person &middot; No purchase necessary</p>
     </div>
 
-    <div class="rig reveal" role="img" aria-label="Challenge summary panel: prize one pair of Even G2, entry one answer, window fourteen days, opens August with the flagship video, cost free.">
-      <div class="rig-top"><b>Glasses Challenge</b><span><i class="lamp"></i>waitlist open</span></div>
-      <div class="ch-panel">
-        <div class="ch-row"><span class="ch-k">Prize</span><b class="ch-v gold">1&times; Even G2</b></div>
-        <div class="ch-row"><span class="ch-k">To enter</span><b class="ch-v">One answer</b></div>
-        <div class="ch-row"><span class="ch-k">Window</span><b class="ch-v">14 days</b></div>
-        <div class="ch-row"><span class="ch-k">Opens</span><b class="ch-v sm">August, with the video</b></div>
-        <div class="ch-row"><span class="ch-k">Cost</span><b class="ch-v ok">Free</b></div>
+    <div class="lens-rig reveal">
+      <div class="lens-top"><b>On the lens</b><span>576 &times; 288</span></div>
+      <div class="lens" role="img" aria-label="The Even G2 heads-up display, showing a question typed to your chief of staff and the answer rendered back on the lens. Example: asking who you are about to meet, and getting the person, the time, when you last spoke, and the thing you promised them and never sent.">
+        <div class="lens-scan" aria-hidden="true"></div>
+        <div class="lens-inner">
+          <p class="lens-ask"><span class="ask-t">who am i about to meet</span><i class="cur" aria-hidden="true"></i></p>
+          <div class="lens-ans">
+            <p class="ln hi">Dana Mercer &middot; 2:00</p>
+            <p class="ln">Last spoke Apr 9, renewal.</p>
+            <p class="ln">She asked for the security</p>
+            <p class="ln">review. It never went out.</p>
+          </div>
+        </div>
       </div>
-      <p class="rig-caption">One question, one box. <strong>The glasses go to someone who does not have a pair yet.</strong> Join the waitlist and we will tell you the day it opens.</p>
+      <div class="lens-facts">
+        <div><span>Prize</span><b class="gold">1&times; Even G2</b></div>
+        <div><span>Window</span><b>14 days</b></div>
+        <div><span>To enter</span><b>One answer</b></div>
+      </div>
+      <p class="lens-cap">This is the whole product. <strong>Tell us what yours would say.</strong></p>
     </div>
-  </div>
+</div>
 </header>
 
 <main>
@@ -698,32 +733,97 @@ window.joinWaitlist=function(ev){
 })();
 </script>
 <script>
-// Masthead: the challenge panel boots. Lamp lights, rows resolve (anime.js v4).
+// The lens. One orchestrated sequence: ask types, beat, answer renders line by line,
+// hold, wipe, next. Northwind cast per the site's fictional-cast rule.
 (function(){
   var AN = window.anime;
-  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
-  var rig = document.querySelector('.hero .rig');
+  var rig = document.querySelector('.lens-rig');
   if (!rig) return;
-  var rows = [].slice.call(rig.querySelectorAll('.ch-row'));
-  var lamp = rig.querySelector('.lamp');
-  var animeOK = !!(AN && AN.createTimeline && AN.utils);
-  if (!animeOK || rm.matches) return;   // no-JS / reduced-motion: CSS renders it all at rest
-  AN.utils.set(rows, { opacity:0, translateX:14 });
-  if (lamp) AN.utils.set(lamp, { scale:0, opacity:0 });
-  var booted = false;
-  function boot(){
-    if (booted || document.hidden) return;
-    booted = true;
-    var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
-    if (lamp) tl.add(lamp, { scale:[0,1], opacity:[0,1], duration:340, ease:'outBack(2)' }, 0);
-    tl.add(rows, { opacity:[0,1], translateX:[14,0], duration:420, delay: AN.stagger(90) }, 180);
+  var askEl = rig.querySelector('.ask-t'),
+      cur   = rig.querySelector('.cur'),
+      ansEl = rig.querySelector('.lens-ans'),
+      scan  = rig.querySelector('.lens-scan');
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  var animeOK = !!(AN && AN.createTimeline && AN.utils && AN.animate);
+  // no-JS, no-anime, or reduced-motion: the markup already renders exchange 1 at rest
+  if (!animeOK || rm.matches) return;
+
+  var EXCHANGES = [
+    { ask:'who am i about to meet',
+      ans:[['Dana Mercer · 2:00',1],['Last spoke Apr 9, renewal.',0],['She asked for the security',0],['review. It never went out.',0]] },
+    { ask:'why did we drop the starter tier',
+      ans:[['Mar 14. You and Priya cut it.',1],['It was pulling demos off Pro.',0],['Jordan still disagrees.',0]] },
+    { ask:'should i bring it up now',
+      ans:[['Not now.',1],['Budget review is Thursday,',0],['same room. More leverage then.',0]] }
+  ];
+
+  function paint(lines){
+    ansEl.innerHTML = '';
+    return lines.map(function(l){
+      var p = document.createElement('p');
+      p.className = 'ln' + (l[1] ? ' hi' : '');
+      p.textContent = l[0];
+      ansEl.appendChild(p);
+      return p;
+    });
   }
-  setTimeout(function(){ AN.utils.set(rows,{opacity:1,translateX:0}); if(lamp)AN.utils.set(lamp,{scale:1,opacity:1}); }, 2600);
+
+  var i = 0, running = false, tl = null;
+
+  function play(){
+    if (document.hidden) return;
+    var ex = EXCHANGES[i];
+    var lines = paint(ex.ans);
+    AN.utils.set(lines, { opacity:0, translateY:7 });
+    AN.utils.set(askEl, { opacity:1 });
+    askEl.textContent = '';
+
+    tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
+
+    // display refresh sweep
+    tl.add(scan, { opacity:[0,1,0], translateY:['-40%','260%'], duration:620, ease:'inOutQuad' }, 0);
+
+    // the ask types in
+    var typed = { n:0 }, txt = ex.ask;
+    tl.add(typed, {
+      n:[0, txt.length], duration: Math.max(420, txt.length*34), ease:'linear',
+      onUpdate: function(){ askEl.textContent = txt.slice(0, Math.round(typed.n)); }
+    }, 340);
+
+    // cursor blinks while waiting on the answer
+    tl.add(cur, { opacity:[1,0], duration:460, loop:3, alternate:true }, 340);
+
+    // answer lands line by line
+    var ansAt = 340 + Math.max(420, txt.length*34) + 320;
+    tl.add(lines, { opacity:[0,1], translateY:[7,0], duration:420, delay: AN.stagger(150) }, ansAt);
+    tl.add(cur, { opacity:0, duration:200 }, ansAt);
+
+    // hold, then clear for the next one
+    var holdAt = ansAt + lines.length*150 + 3000;
+    tl.add(lines, { opacity:0, translateY:-6, duration:400, delay: AN.stagger(50) }, holdAt);
+    tl.add(askEl, { opacity:0, duration:360 }, holdAt);
+
+    tl.then(function(){
+      if (!running) return;
+      i = (i + 1) % EXCHANGES.length;
+      play();
+    });
+  }
+
+  function start(){ if (running) return; running = true; play(); }
+  function stop(){ running = false; if (tl && tl.pause) tl.pause(); }
+
   if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ boot(); io.disconnect(); } }); }, { threshold:.3 });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.isIntersecting ? start() : stop(); });
+    }, { threshold:.25 });
     io.observe(rig);
-  } else { boot(); }
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden && !booted) boot(); });
+  } else { start(); }
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) stop();
+    else if (!running) start();
+  });
 })();
 </script>
 </body>
