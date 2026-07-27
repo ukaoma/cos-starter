@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.3",
-      "build": 14,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.3.zip",
-      "sha256": "2bbce2bb72b3ad5cadc1888522a4eea6332af7e2d2dceb313709de0344c4a3f0",
+      "version": "0.2.5",
+      "build": 16,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.5.zip",
+      "sha256": "0ed786bf84ca5a5c348f065f0a712e83b7912b0bf18659e50b351790c63be65d",
       "minMacOS": "14.0",
-      "serverTarget": "6.15.3",
-      "publishedAt": "2026-07-26T03:02:00Z",
-      "notes": "Choose Folder now updates the Claude, Codex, and Cursor provider workspace without moving the server package. Managed switches restart transactionally; older adopted servers save without interruption and offer a confirmation-gated LaunchAgent reload. Installs server 6.15.3."
+      "serverTarget": "latest",
+      "publishedAt": "2026-07-27T01:57:00Z",
+      "notes": "Install, Adopt, and Update Server resolve npm @gotcos/glasses-server@latest (verified against 6.16.1 with Cursor + Silero). From a running legacy LaunchAgent, Install managed server stops when idle then installs latest. Repair commits an already-healthy candidate after interrupted updates."
     }
   },
   "killSwitch": { "disableAutoUpdate": false, "reason": "" }
