@@ -9,7 +9,7 @@
       "minMacOS": "14.0",
       "serverTarget": "latest",
       "publishedAt": "2026-07-27T02:43:52Z",
-      "notes": "Clarify folder pickers: Work Folder (agent workspace) vs Meetings Library (operations/). Verified against glasses-server 6.16.2; Update Server still resolves npm latest."
+      "notes": "Work Folder vs Meetings Library pickers, plus download-page guidance for pointing each install at its own COS project and operations/ tree. Verified against glasses-server 6.16.2; Update Server still resolves npm latest."
     }
   },
   "killSwitch": {

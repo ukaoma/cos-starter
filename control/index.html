@@ -392,7 +392,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>One owner, no fights</h3><p>A managed LaunchAgent owns the server. COS Control will not race a terminal process or seize a port it does not recognize.</p></div>
           <div class="part reveal"><h3>Safe by default</h3><p>Restart is blocked while a recording or job is live. Updates stage a new immutable generation, then switch, so a bad update rolls back clean.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
-          <div class="part reveal"><h3>One provider workspace</h3><p><strong>Choose Folder</strong> sets the project Claude, Codex, and Cursor search and edit. It does not move the managed server package. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
+          <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root &mdash; the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
+          <div class="part reveal"><h3>Meetings Library</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree (the folder that contains <code>quilt/meetings</code>, <code>personal/meetings</code>, and the rest) so G2 Review Meetings reads your real meeting markdown. Leave it unset for standalone local recordings only. Different COS layouts are expected &mdash; set the path that fits your machine.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, one copy away</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today and copies a paste-ready handoff into any chat, so you can pick up a thread on the Mac without a recall command. Messages are read from your own local server and never leave the machine.</p></div>
         </div>
       </div>
@@ -434,13 +435,14 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="install">
     <div class="wrap">
       <div class="reveal" style="max-width:750px">
-        <h2>Install in three moves.</h2>
-        <p class="dek">Download, approve once, guided setup.</p>
+        <h2>Install in four moves.</h2>
+        <p class="dek">Download, approve once, guided setup, point your folders.</p>
       </div>
       <ol class="insteps">
         <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
         <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
         <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>COS Control opens the existing server setup, keeps your token and data, then installs the managed server.</p></div></li>
+        <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>In the menu-bar panel under Tools: set <strong>Work Folder</strong> to your COS project (agent workspace), and set <strong>Meetings Library</strong> to that project&rsquo;s <code>operations/</code> folder if you use COS meeting markdown on G2. Paths differ per install &mdash; pick what matches your machine.</p></div></li>
       </ol>
       <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
       <figure class="gk reveal">
