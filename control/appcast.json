@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.7",
-      "build": 18,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.7.zip",
-      "sha256": "0d9efcc24b06cbe4f16499c7c31e0498b62e3c1f3c832f9e92496c19f1b2ced6",
+      "version": "0.2.8",
+      "build": 19,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.8.zip",
+      "sha256": "f0e1949bb67bb819dc8ca5425167cbb8b467b2e255e867da8dc426e9e6645e5b",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-07-27T02:43:52Z",
-      "notes": "Work Folder vs Meetings Library pickers, plus download-page guidance for pointing each install at its own COS project and operations/ tree. Verified against glasses-server 6.16.2; Update Server still resolves npm latest."
+      "publishedAt": "2026-07-27T14:05:00Z",
+      "notes": "The panel footer now shows the live managed server version instead of a compile-time \"verified\" pin that lagged behind Update Server. QA'd against glasses-server 6.16.9 (message era + per-exchange model stamps); Install, Adopt, and Update Server still resolve npm latest."
     }
   },
   "killSwitch": {
