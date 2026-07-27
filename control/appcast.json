@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.5",
-      "build": 16,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.5.zip",
-      "sha256": "0ed786bf84ca5a5c348f065f0a712e83b7912b0bf18659e50b351790c63be65d",
+      "version": "0.2.6",
+      "build": 17,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.6.zip",
+      "sha256": "a7e083218a1fa267d71c701e5242bd7e0fa5d3ac9b76b7977c1b54b2670dac2b",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-07-27T01:57:00Z",
-      "notes": "Install, Adopt, and Update Server resolve npm @gotcos/glasses-server@latest (verified against 6.16.1 with Cursor + Silero). From a running legacy LaunchAgent, Install managed server stops when idle then installs latest. Repair commits an already-healthy candidate after interrupted updates."
+      "publishedAt": "2026-07-27T02:35:00Z",
+      "notes": "Meetings Folder lets each install point G2 Review Meetings at its own COS operations/ tree (COS_OPERATIONS_DIR). Verified against glasses-server 6.16.2; Update Server still resolves npm latest."
     }
   },
-  "killSwitch": { "disableAutoUpdate": false, "reason": "" }
+  "killSwitch": {
+    "disableAutoUpdate": false,
+    "reason": ""
+  }
 }
