@@ -253,6 +253,14 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .wl input:focus,.wl select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
 .wl input::placeholder{color:rgba(240,232,218,.3)}
 .wl select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 19px) calc(1.28em),calc(100% - 14px) calc(1.28em);background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.wl textarea{width:100%;padding:13px 15px;border-radius:11px;border:1px solid var(--line);background:rgba(7,5,4,.5);color:var(--fg);font-family:var(--body);font-size:.95rem;line-height:1.55;resize:vertical;min-height:76px;max-height:200px;overflow-y:auto;field-sizing:content}
+.wl textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.wl textarea::placeholder{color:rgba(240,232,218,.3)}
+.wl-meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:7px}
+.wl .wl-meta .fine{margin-top:0;text-align:left;flex:1}
+.wl-count{flex:none;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums}
+.wl-count.near b{color:var(--gold)}
+.wl-count.at b{color:var(--rose)}
 .wl .wbtn{width:100%;margin-top:6px;cursor:pointer;font-family:var(--body);font-size:.95rem}
 .wl .wbtn[disabled]{opacity:.6;cursor:default}
 .wl .werr{display:none;color:var(--rose);font-size:.84rem;margin:2px 0 10px}
@@ -501,7 +509,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="closing" id="waitlist">
     <div class="reveal">
       <h2>It opens in <em>August.</em></h2>
-      <p>The challenge goes live the day the flagship video drops, and runs for fourteen days. Leave your email and we will tell you the morning it opens. That is the only thing this list is for.</p>
+      <p>The challenge goes live the day the flagship video drops, and runs for fourteen days. Leave your email and we will tell you the morning it opens, which is the only thing this list is for. If you already know what yours would say, leave that too.</p>
 
       <form class="wl" id="wlForm" novalidate onsubmit="joinWaitlist(event)">
         <div class="field">
@@ -516,6 +524,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
             <option value="new">New to COS, tell me how to start</option>
           </select>
         </div>
+        <div class="field">
+          <label for="w-answer">What would yours say?</label>
+          <textarea id="w-answer" name="answer" rows="2" maxlength="280"
+            placeholder="Brief me before I walk into the room."
+            aria-describedby="w-answer-help w-count"></textarea>
+          <div class="wl-meta">
+            <p class="fine" id="w-answer-help">Optional, and not an entry. It stays private.</p>
+            <span class="wl-count" id="w-count"><b>0</b>/280</span>
+          </div>
+        </div>
         <p class="werr" id="w-err" role="alert"></p>
         <button class="btn primary wbtn" id="w-btn" type="submit">Tell me when it opens</button>
         <p class="fine">One email when it opens. Nothing else. <a href="/privacy/">Privacy</a> &middot; <a href="#rules">Rules</a></p>
@@ -523,7 +541,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
       <div class="wl-done" id="wlDone" aria-live="polite">
         <h3>You are on the list.</h3>
-        <p>In the meantime, the fastest way to have a strong entry is to actually be running COS. Start there.</p>
+        <p id="wlDoneMsg">In the meantime, the fastest way to have a strong entry is to actually be running COS. Start there.</p>
         <div class="actions" style="justify-content:center;margin-top:22px">
           <a class="btn primary" href="https://app.gotcos.com/" rel="noopener">Build your Chief of Staff</a>
           <a class="btn ghost" href="/control/">Get COS Control</a>
@@ -595,6 +613,22 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   }catch(e){}
 })();
 
+// answer box: live counter, and a manual auto-grow for browsers without field-sizing:content
+(function(){
+  var ta=document.getElementById('w-answer'), cnt=document.getElementById('w-count');
+  if(!ta||!cnt) return;
+  var num=cnt.querySelector('b'), max=+ta.getAttribute('maxlength');
+  var canSize = window.CSS && CSS.supports && CSS.supports('field-sizing','content');
+  function grow(){ if(canSize) return; ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,200)+'px'; }
+  function tick(){
+    var n=ta.value.length; num.textContent=n;
+    cnt.classList.toggle('near', n>=max*0.85 && n<max);
+    cnt.classList.toggle('at', n>=max);
+    grow();
+  }
+  ta.addEventListener('input',tick); tick();
+})();
+
 window.joinWaitlist=function(ev){
   if(ev)ev.preventDefault();
   var $=function(id){return document.getElementById(id);};
@@ -614,8 +648,9 @@ window.joinWaitlist=function(ev){
   }catch(e){}
   if(!src && document.referrer) src='referrer='+document.referrer;
 
+  var ans=(document.getElementById('w-answer').value||'').trim().replace(/\s+/g,' ').slice(0,280);
   var fields=[{name:'email',value:em}];
-  var ctx={pageUri:location.href,pageName:'gotcos.com · Glasses Challenge waitlist (track='+tr+(src?'; '+src:'')+')'};
+  var ctx={pageUri:location.href,pageName:'gotcos.com · Glasses Challenge waitlist (track='+tr+(src?'; '+src:'')+')'+(ans?' | answer: '+ans:'')};
   // HubSpot needs the tracking cookie to attribute the submission to its source
   try{
     var m=document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/);
@@ -625,6 +660,7 @@ window.joinWaitlist=function(ev){
   var done=function(){
     $('wlForm').style.display='none';
     var d=$('wlDone'); d.style.display='block';
+    if(ans){ var m=$('wlDoneMsg'); if(m) m.textContent='We kept your answer. It is not an entry and it stays private, but it means you already know what you are going to say when this opens.'; }
     try{ if(window.gtag) gtag('event','challenge_waitlist',{track:tr}); }catch(e){}
     try{ d.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
   };
