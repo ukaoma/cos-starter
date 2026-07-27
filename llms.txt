@@ -11,6 +11,7 @@
 - [AI chief of staff vs human chief of staff](https://www.gotcos.com/ai-chief-of-staff-vs-human-chief-of-staff/): what changes when the briefing layer is software
 - [COS Glasses docs](https://www.gotcos.com/docs/): user guide for the G2 smart-glasses client
 - [COS Blueprint](https://www.gotcos.com/blueprint/): a 12-question, role-based build plan for your AI chief of staff
+- [Glasses Challenge](https://www.gotcos.com/challenge/): win a pair of Even G2 glasses by showing what you would do with your chief of staff on the lens, not a raffle
 
 ## Open data
 

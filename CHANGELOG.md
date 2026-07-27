@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 - 2026-07-27
+
+### Added
+- `/challenge` - the Glasses Challenge landing page, shipped in waitlist state. Two-tier entry (Answer wins the Even G2 and is open only to entrants who do not already own a pair; Proof wins a featured case study, a recorded session, and credit), a published per-tier judging rubric, a capture how-to that accounts for the G2 having no camera, and a short rules section covering eligibility, the public/private entry choice, and the media license. The waitlist form posts to the shared HubSpot form (portal 2474026, form c5439911) with the track and inbound UTMs in context, and passes `hubspotutk` as `context.hutk` so submissions attribute to their source.
+- `/giveaway` - client redirect stub to `/challenge` (canonical, noindex, query and hash preserved), matching the `/readiness` pattern.
+- "Glasses Challenge" added to the footer nav sitewide (15 pages) and to `llms.txt`.
+
 ## 0.3.0 — 2026-07-21
 
 ### Changed
