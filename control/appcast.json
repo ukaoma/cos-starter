@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.2.9",
-      "build": 20,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.2.9.zip",
-      "sha256": "583d2be9d9ef3a1d6425ce6016294f9de3fc5012f6099b389b0a1fae5766c4fd",
+      "version": "0.3.0",
+      "build": 21,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.0.zip",
+      "sha256": "055a7163cff445de290ae08c8750a825b572a8a7b26b57a9360f8fa85bf03d32",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-07-27T14:30:00Z",
-      "notes": "A failed server install no longer leaves in-place management switched off: the ownership marker is restored when an update rolls back, so the in-place recovery watchdog keeps running after a transient npm outage. Doctor and Copy Report now name the Control version and build. QA'd against glasses-server 6.16.9; Install, Adopt, and Update Server still resolve npm latest."
+      "publishedAt": "2026-07-29T17:21:11Z",
+      "notes": "Meeting sync status: Control shows HQ polish progress (percent when glasses-server 6.18.4+ publishes it; otherwise pending-batch chunk counts) so Update/Restart drain is no longer a black box during long post-meeting Whisper jobs."
     }
   },
   "killSwitch": {
