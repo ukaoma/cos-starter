@@ -21,3 +21,15 @@ jobs:
 
       - name: Reject incompatible Kokoro Python guidance
         run: python3 scripts/check-kokoro-python-contract.py
+
+  registry-no-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reject credentials in the public username registry
+        run: python3 scripts/check-registry-no-secrets.py
