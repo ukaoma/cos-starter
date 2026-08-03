@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.0",
-      "build": 21,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.0.zip",
-      "sha256": "055a7163cff445de290ae08c8750a825b572a8a7b26b57a9360f8fa85bf03d32",
+      "version": "0.3.1",
+      "build": 22,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.1.zip",
+      "sha256": "274ab093f7e90ce0f98a6540838995035ed12bd5d1fe5a2a7dfd353c4e1dc147",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-07-29T17:21:11Z",
-      "notes": "Meeting sync status: Control shows HQ polish progress (percent when glasses-server 6.18.4+ publishes it; otherwise pending-batch chunk counts) so Update/Restart drain is no longer a black box during long post-meeting Whisper jobs."
+      "publishedAt": "2026-08-03T00:51:00Z",
+      "notes": "Unsaved captures row: with glasses-server 6.19.0+, meeting audio whose save never landed is quarantined instead of deleted, and Control now shows the recoverable count in the status card with a recovery hint. Row hides at zero and on older servers."
     }
   },
   "killSwitch": {
