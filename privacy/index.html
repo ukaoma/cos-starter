@@ -104,7 +104,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: July 13, 2026</p>
+  <p class="updated">Last updated: August 3, 2026</p>
 
   <div class="tldr">
     <p><strong>The short version:</strong> COS is local-first by architecture. The software runs on your own machine, through your own AI accounts, and we operate no backend that stores your working data. What we do collect is small and listed plainly below: standard website analytics, an email address if you subscribe to updates, and your basic Google profile if you sign in to a COS service with Google.</p>
@@ -132,15 +132,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   <h2>Google user data</h2>
   <p>Some COS services offer <strong>Sign in with Google</strong>. If you choose it, we receive your basic Google profile: your name, email address, and profile picture. We use that information only to create and secure your session and to identify you inside the service. We do not sell it, share it for advertising, or use it to train AI models.</p>
-  <p>Where a COS deployment lets you connect Google data through connectors you explicitly authorize, that data is read on demand to answer your requests and lives only within your own COS instance, on infrastructure you or your organization control. We operate no central store of your Google data.</p>
+  <p>Where you connect Google data through connectors you explicitly authorize, that data is read to answer your requests. How it is stored depends on how you run COS:</p>
+  <ul>
+    <li><strong>Self-hosted COS.</strong> Connected data is read on demand and stays within your own COS instance, on infrastructure you or your organization control.</li>
+    <li><strong>Our hosted service.</strong> We store what is needed to keep the connection working and to answer your requests, such as OAuth tokens and an indexed knowledge graph built from the content you connect. This is held in access-controlled storage, encrypted at rest, and described under <a href="#protect">How we protect your data</a> below.</li>
+  </ul>
+  <p>In both cases we do not sell your Google data, share it for advertising, or use it to train AI models.</p>
   <p>COS's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
   <p><strong>Revoking access:</strong> you can revoke COS's access to your Google account at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Sign-in data we hold for a service session is deleted when the account or deployment is removed, or on request at the contact below.</p>
+
+  <h2 id="protect">How we protect your data</h2>
+  <p>We protect your data, including sensitive Google user data (Gmail and Drive content) accessed through connectors you authorize, with the following measures:</p>
+  <ul>
+    <li><strong>Encryption in transit.</strong> All data is transmitted over secure, encrypted connections using HTTPS/TLS (version 1.2 or higher). Google user data is never transmitted over unencrypted channels.</li>
+    <li><strong>Encryption at rest.</strong> Where data is stored, for example an indexed knowledge graph, OAuth tokens, or a graph file saved to your own Google Drive, it is held in access-controlled storage that is encrypted at rest by our infrastructure providers.</li>
+    <li><strong>Access controls and isolation.</strong> Access to your Google user data is restricted to your own authenticated account. Each user's data is logically isolated, and internal access is limited to the minimum necessary to operate and support the service.</li>
+    <li><strong>Least-privilege, read-only scopes.</strong> We request read-only access to your Gmail and Drive content, and the per-file <code>drive.file</code> scope only to save your knowledge graph to your Drive. We never modify or delete your existing emails or Drive files.</li>
+    <li><strong>Secure credential handling.</strong> OAuth access and refresh tokens are stored securely and are never shared with third parties. You can revoke access at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+    <li><strong>Data minimization and deletion.</strong> We store only what is needed to provide the service. You can disconnect a connected source or delete your account at any time, which removes the associated stored data.</li>
+  </ul>
 
   <h2>Retention and deletion</h2>
   <ul>
     <li><strong>Software data:</strong> stored on your machine, deleted whenever you delete it. Uninstalling removes the software; your context files are yours to keep or remove.</li>
     <li><strong>Subscription emails:</strong> kept until you unsubscribe or ask us to delete them.</li>
     <li><strong>Google sign-in data:</strong> deleted with the account/deployment or on request.</li>
+    <li><strong>Connected Google content (hosted service):</strong> OAuth tokens and any indexed knowledge graph built from content you connect are deleted when you disconnect that source or delete your account, and on request at the contact below. Revoking access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> immediately stops further access.</li>
   </ul>
 
   <h2>Children's privacy</h2>
@@ -150,7 +167,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <p>Updates are posted on this page with a new date. Material changes to how a COS service handles Google data will be reflected here before they take effect.</p>
 
   <h2>Contact</h2>
-  <p>Questions about this policy: <strong>miles@milesukaoma.com</strong></p>
+  <p>Questions about this policy: <a href="mailto:dev@gotcos.com"><strong>dev@gotcos.com</strong></a></p>
 </main>
 
 <footer>
