@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.2",
-      "build": 23,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.2.zip",
-      "sha256": "364766d528629b19fcc6ba8d7b3f9e73b9e2e1ba95e1ded75a1311814d38c63c",
+      "version": "0.3.3",
+      "build": 24,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.3.zip",
+      "sha256": "b260860d06d8876b9c8fa6a1cc286fab76efca84e741ff16ecda77d9f06d8c09",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T01:12:00Z",
-      "notes": "Agent CLI row: one quick-glance line for all three backends COS routes to (Claude, Codex, Cursor), so a signed-out CLI is visible before a query fails on the glasses. Versions when all are ready, the exact login command when one is not. Also carries the 0.3.1 unsaved-captures row for glasses-server 6.19.0+."
+      "publishedAt": "2026-08-03T02:13:44Z",
+      "notes": "Adaptive local transcription for glasses-server 6.20.0: Guided Setup provisions Small.en preview, Large-v3-Turbo live commit, and Large-v3 HQ polish. Control reports the effective model and readiness of every lane, shows fallback truthfully, and prompts users to add real names and specialist vocabulary when the profile is empty."
     }
   },
   "killSwitch": {

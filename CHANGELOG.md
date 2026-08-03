@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.1 - 2026-08-02
+
+### Changed
+- The public wizard, glasses starter skill, docs, and COS Control setup now use the server's adaptive transcription setup: Small.en for provisional lens text, Large-v3-Turbo for the committed live transcript, and Large-v3 for HQ meeting polish.
+- Wizard identity setup now collects real names and specialist vocabulary, writes the server's canonical `system_prompt_context` profile key, and avoids the placeholder vocabulary that silently degraded transcription accuracy.
+- COS Control 0.3.3 targets glasses-server 6.20.0 and reports the effective Live Preview, Live Commit, and HQ Polish models, including truthful fallback and unavailable states.
+
 ## 0.4.0 - 2026-07-27
 
 ### Added

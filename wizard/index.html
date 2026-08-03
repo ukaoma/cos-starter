@@ -399,7 +399,7 @@
       <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
       <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; run <code>node -v</code> first; newer compatible major versions are fine, so do not install <code>node@20</code> beside one</li>
       <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; Claude Desktop is not the terminal CLI. Install Claude Code on one line with <code>npm install -g @anthropic-ai/claude-code</code> (<strong>never use sudo</strong>), then run <code>claude</code> and finish sign-in. <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started">Claude Code setup</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
-      <li class="opt"><strong>whisper.cpp for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once, then restart the COS server. This is <strong>required for local voice</strong>; text chat works without it.</li>
+      <li class="opt"><strong>whisper.cpp and about 6 GB free for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once. The setup command verifies disk space before downloading anything. This is <strong>required for local voice</strong>; text chat works without it.</li>
       <li class="opt"><strong>Local spoken replies on Apple silicon</strong> &mdash; optional: run <code>brew install python@3.12 ffmpeg espeak-ng</code>. Python 3.11 or 3.12 is supported. The normal server start provisions Kokoro asynchronously; chat and transcription work while it prepares.</li>
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; the command above also covers phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and transcription still work without it.</li>
     </ul>
@@ -414,14 +414,14 @@
       <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
       <div class="summary">
         <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
-        <div class="row"><span class="k">Voice</span><span class="v">Local whisper <small>(free &middot; install once)</small></span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Adaptive local <small>(Small preview &middot; Turbo commit &middot; Large-v3 HQ)</small></span></div>
         <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
       <p style="font-size:0.88rem;color:var(--text-muted);margin:0 0 0.7rem;">Prefer a menu bar app? <a href="/control/" style="color:var(--accent-green)">Download COS Control for Mac</a> for guided setup, launch at login, Doctor, safe updates, and rollback.</p>
       <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install whisper-cpp</code>. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; server 6.15.3 validates and self-repairs its pinned Kokoro environment.</p>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription<span class="copy-hint">click to copy</span></div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
@@ -489,6 +489,8 @@
       <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
     </div>
     <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
+    <div class="field"><label>Names and specialist terms <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(comma separated)</span></label><input id="f-vocab" type="text" placeholder="Silas, tacrolimus, Ascension Seton" autocomplete="off"></div>
+    <div class="note"><strong>This directly improves transcription.</strong> COS feeds these spellings to the decoder. Factory examples are ignored, so an untouched profile can no longer bias Whisper toward literal placeholders such as NameOne or YourCompany.</div>
   </div>
 
   <!-- Step 4: Context -->
@@ -514,6 +516,7 @@
       <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Admin opt-in</span><h3>OpenAI transcription</h3><p>Requires both the explicit fallback flag and your API key. ~$0.006/min.</p></button>
     </div>
     <div class="note"><strong>Spoken replies are separate from transcription.</strong> Server 6.15.3 provides Local (Kokoro), Local-first, and OpenAI speech engines. Explicit Local fails closed and never calls OpenAI. Local-first can fall back only after a local failure and only when your own OpenAI key and budget are configured. Check <code>tts_local.ready</code> in <code>/api/health</code>.</div>
+    <div class="note"><strong>Adaptive local is the recommended setup.</strong> Small.en produces provisional words quickly, Large-v3-Turbo commits the authoritative live transcript, and Large-v3 polishes saved meetings. A preview failure falls back to Turbo and never changes the committed transcript.</div>
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
     <div class="note"><strong>Photos stay local:</strong> install <code>ffmpeg</code> on the Mac for normalized phone uploads, private answer-image galleries, and exact 288&times;144 G2 previews. Images never need a COS-hosted cloud.</div>
   </div>
@@ -544,14 +547,15 @@
     </div>
 
     <div class="res-label">1 · Start your server (self-host)</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription<span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
 
     <div class="res-label">2 · Set your identity (server profile)</div>
     <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/.cos-profile.json
 {
-  "owner_name": "Your Name",
-  "system_context": "Your Role"
+  "owner_name": "User",
+  "vocabulary": [],
+  "system_prompt_context": "Your Role"
 }</span></div>
 
     <div class="res-label">3 · Turn these on in the app</div>
@@ -946,7 +950,7 @@
   bindSingle('voice', 'voice', 'voice');
   bindSingle('hud', 'hud', 'hud');
 
-  ['f-name', 'f-role', 'f-company'].forEach(function (id) {
+  ['f-name', 'f-role', 'f-company', 'f-vocab'].forEach(function (id) {
     $('#' + id).addEventListener('input', render);
   });
 
@@ -989,13 +993,17 @@
 
     // server profile fragment (~/.cos-glasses/.cos-profile.json — the file the server actually reads)
     var name = $('#f-name').value.trim(), role = $('#f-role').value.trim(), company = $('#f-company').value.trim();
+    var vocabulary = $('#f-vocab').value.split(',').map(function (term) { return term.trim(); }).filter(Boolean).filter(function (term, index, all) { return all.findIndex(function (candidate) { return candidate.toLowerCase() === term.toLowerCase(); }) === index; });
     var ctxBits = [];
-    if (role) ctxBits.push(esc(role));
-    if (company) ctxBits.push('at ' + esc(company));
+    // Keep raw values until JSON serialization, then HTML-escape exactly once
+    // for display. Escaping here as well would copy `R&D` as `R&amp;D`.
+    if (role) ctxBits.push(role);
+    if (company) ctxBits.push('at ' + company);
     if (ucs.length) ctxBits.push('Focus: ' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', '));
     var idLines = ['<span class="c"># ~/.cos-glasses/.cos-profile.json</span>', '{'];
-    idLines.push('  "owner_name": "' + (name ? '<span class="g">' + esc(name) + '</span>' : 'Your Name') + '",');
-    idLines.push('  "system_context": "' + (ctxBits.length ? '<span class="g">' + ctxBits.join(' ') + '</span>' : 'Your Role') + '"');
+    idLines.push('  "owner_name": ' + (name ? '<span class="g">' + esc(JSON.stringify(name)) + '</span>' : '"User"') + ',');
+    idLines.push('  "vocabulary": ' + (vocabulary.length ? '<span class="g">' + esc(JSON.stringify(vocabulary)) + '</span>' : '[]') + ',');
+    idLines.push('  "system_prompt_context": ' + (ctxBits.length ? '<span class="g">' + esc(JSON.stringify(ctxBits.join(' '))) + '</span>' : '""'));
     idLines.push('}');
     $('#r-identity').innerHTML = idLines.join('\n');
 
@@ -1004,7 +1012,8 @@
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
     if (state.voice === 'openai') li.push('Set <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and add your <b>OPENAI_API_KEY</b> for deliberate cloud voice fallback.');
-    else li.push('Run <code>brew install whisper-cpp</code> once for free local voice.');
+    else li.push('Run the generated <code>--setup-transcription</code> command for adaptive local voice: Small.en preview, Turbo commit, Large-v3 HQ.');
+    if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
     if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
     else li.push('Add context sources anytime via MCP in your COS folder.');
     li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
