@@ -3,7 +3,8 @@
 ## 0.4.3 - 2026-08-03
 
 ### Changed
-- COS Control 0.3.5 and glasses-server 6.21.0 add a machine-owned Balanced / Max transcription choice. Balanced remains the default; Max reuses the resident Large-v3 worker for live commit on powerful Macs and falls back visibly to Turbo when unavailable.
+- COS Control 0.3.5 build 27 and glasses-server 6.21.1 are the public hotfix pair. Managed updates and transcription-tier changes now use a bounded Claude Haiku readiness proof, preserve the real timeout/cancel result, and show an in-progress recovery-armed state instead of falsely demanding Repair.
+- COS Control 0.3.5 and glasses-server 6.21.1 add a machine-owned Balanced / Max transcription choice. Balanced remains the default; Max reuses the resident Large-v3 worker for live commit on powerful Macs and falls back visibly to Turbo when unavailable.
 - Guided Setup, the public wizard, docs, Starter skill, Control panel illustration, download hash, and appcast now describe the same two-tier policy. Control activates tier changes through a verified restart with rollback.
 - Agent CLI diagnostics use Control's local Cursor probe so the caption can show Cursor's real build when the server only reports “About Cursor CLI.”
 - The glasses app remains 6.8.276; this train changes no EHPK, SDK, route, or package identity.

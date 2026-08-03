@@ -3,13 +3,13 @@
   "channels": {
     "stable": {
       "version": "0.3.5",
-      "build": 26,
+      "build": 27,
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.5.zip",
-      "sha256": "a27970b88fd452daa83edd0a03408afeda82157fd2e78d90654a1554a84aac66",
+      "sha256": "296b7484adf26d8674e61df9e34d193fe05705bd686408af541e6c52b9214a9a",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T12:37:31Z",
-      "notes": "Control 0.3.5 targets glasses-server 6.21.0. Guided Setup and Control now offer Balanced or Max transcription, apply the machine-owned tier with verified rollback, show requested/effective fallback truth, and report Cursor's locally probed version."
+      "publishedAt": "2026-08-03T13:07:11Z",
+      "notes": "Control 0.3.5 build 27 targets glasses-server 6.21.1. Managed updates and transcription-tier changes now prove Claude with a bounded Haiku readiness query, report the correct timeout outcome, retain verified rollback, and distinguish an active transaction from an interrupted change."
     }
   },
   "killSwitch": {
