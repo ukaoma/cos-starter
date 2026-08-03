@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2 - 2026-08-02
+
+### Changed
+- COS Control 0.3.4 and glasses-server 6.20.1 are now the public pair. Control no longer falsely rolls back a healthy update when Claude and Codex use their normal verification time, and interrupted Whisper model downloads resume safely.
+- The Control page, appcast, versioned download, latest alias, verification hash, and server setup documentation now agree on the same release.
+
 ## 0.4.1 - 2026-08-02
 
 ### Changed

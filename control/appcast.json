@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.3",
-      "build": 24,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.3.zip",
-      "sha256": "b260860d06d8876b9c8fa6a1cc286fab76efca84e741ff16ecda77d9f06d8c09",
+      "version": "0.3.4",
+      "build": 25,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.4.zip",
+      "sha256": "0ece6ad3adfdbc8b4bfea149aaa1dc9323a3c75fb6017d728b3dd5f42e7e344d",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T02:13:44Z",
-      "notes": "Adaptive local transcription for glasses-server 6.20.0: Guided Setup provisions Small.en preview, Large-v3-Turbo live commit, and Large-v3 HQ polish. Control reports the effective model and readiness of every lane, shows fallback truthfully, and prompts users to add real names and specialist vocabulary when the profile is empty."
+      "publishedAt": "2026-08-03T03:45:20Z",
+      "notes": "Control 0.3.4 targets glasses-server 6.20.1. Healthy Claude, Codex, and Kokoro transactions now receive their full bounded verification windows, preventing false update rollbacks. Interrupted Whisper model downloads resume safely, and mixed-version transcription rows stay truthful."
     }
   },
   "killSwitch": {
