@@ -358,10 +358,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="byline">v0.3.5 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.21.1, Balanced tier, Small.en prompt preview ready, Large-v3-Turbo live commit ready, Large-v3 polish ready, agent CLIs connected with versions, managed install, project at your Documents folder.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.21.3, Balanced tier, Small.en prompt preview ready, Large-v3-Turbo live commit ready, Large-v3 polish ready, agent CLIs connected with versions, managed install, project at your Documents folder.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.21.1</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.21.3</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
         <div class="cc-row"><span class="cc-k">Tier</span><b class="cc-v ok">Balanced</b></div>
         <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Small.en</b></div>
@@ -399,7 +399,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root &mdash; the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Meetings Library</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree (the folder that contains <code>quilt/meetings</code>, <code>personal/meetings</code>, and the rest) so G2 Review Meetings reads your real meeting markdown. Leave it unset for standalone local recordings only. Different COS layouts are expected &mdash; set the path that fits your machine.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, one copy away</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today and copies a paste-ready handoff into any chat, so you can pick up a thread on the Mac without a recall command. Messages are read from your own local server and never leave the machine.</p></div>
-          <div class="part reveal"><h3>Your speed / quality choice</h3><p>Guided Setup offers Balanced or Max. Balanced keeps Small.en prompt previews fast while Turbo commits the authoritative live transcript. Max reuses the resident Large-v3 worker for preview and commit on powerful Macs. Control applies the choice transactionally, reports the model actually running, and restores the prior tier if verification fails.</p></div>
+          <div class="part reveal"><h3>Your speed / quality choice</h3><p>Guided Setup offers Balanced or Max. Balanced keeps Small.en prompt previews fast while Turbo commits the authoritative live transcript. Max uses Turbo for low-latency provisional preview while Large-v3 remains authoritative for commit and polish. Canonical transcription always gets priority. Control applies the choice transactionally, reports the model actually running, and restores the prior tier if verification fails.</p></div>
           <div class="part reveal"><h3>Real CLI versions</h3><p>The Agent CLIs caption shows Claude, Codex, and Cursor versions for support. Cursor's build comes from Control's local probe even when server health only says “About Cursor CLI.”</p></div>
         </div>
       </div>

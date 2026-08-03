@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.8.276 (build 276) · server @gotcos/glasses-server 6.21.1.
+  Covers COS Glasses 6.8.276 (build 276) · server @gotcos/glasses-server 6.21.3.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -446,7 +446,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.8.276</b> · build 276</span>
-      <span class="chip">Server <b>6.21.1</b></span>
+      <span class="chip">Server <b>6.21.3</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -517,7 +517,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.21.1</strong> provides two local tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max is an opt-in for powerful Macs and reuses the resident Large-v3 worker for live preview and commit; it never adds a third Whisper process. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free; Guided Setup verifies space before downloading the selected local lanes. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.21.3</strong> provides two local tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free; Guided Setup verifies space before downloading the selected local lanes. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -749,7 +749,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 276 plus server 6.21.1 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers; unsupported additive capabilities show an update-required or unavailable state instead of breaking the established flows. Server 6.21.1 adds machine-owned Balanced and Max transcription tiers without changing the phone protocol.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 276 plus server 6.21.3 is the complete current pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers; unsupported additive capabilities show an update-required or unavailable state instead of breaking the established flows. Server 6.21.3 keeps machine-owned Balanced and Max transcription tiers without changing the phone protocol.</p>
     </div>
   </div>
 </section>
@@ -879,7 +879,7 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>SYSTEM · RECOVERY CENTER</strong></td><td>App API, live stream, G2 bridge, local Whisper, transcription policy, Claude CLI, and Codex CLI are evaluated independently. <strong>Refresh diagnostics</strong> checks them together without converting an unsupported optional route into a false system-wide disconnect. Build 228 actively checks current G2 device evidence: definitive attachment is green, a definitive disconnect is red, and transitional or unavailable evidence stays <strong>Unknown</strong>.</td></tr>
     <tr><td><strong>SYSTEM · CLI DEBUG</strong></td><td>Claude CLI and Codex CLI each show support, last-run status, and whether action is needed. <span class="g-key">Last run OK</span> describes the most recent run; it is not a live login guarantee. Diagnostic responses are metadata-only: no prompts, answers, tool output, paths, commands, raw session IDs, tokens, or credentials are returned to the phone. Sign-in and credential updates happen on the Mac with <code>claude auth login</code> or <code>codex login</code>.</td></tr>
     <tr><td><strong>AI · ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Balanced local setup uses Small.en for provisional prompt words, Large-v3-Turbo for committed live text, and Large-v3 for polish. Max reuses Large-v3 for preview and commit on powerful Macs. Fast mode still controls final dictation quality; previews never enter the recovery ledger or overwrite committed text. Add the names, companies, acronyms, and specialist terms you say often in <code>~/.cos-glasses/.cos-profile.json</code>; factory placeholders are ignored.</td></tr>
+    <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Balanced local setup uses Small.en for provisional prompt words, Large-v3-Turbo for committed live text, and Large-v3 for polish. Max uses Large-v3-Turbo for provisional preview and Large-v3 for authoritative commit and polish. Canonical work preempts cosmetic preview. Fast mode still controls final dictation quality; previews never enter the recovery ledger or overwrite committed text. Add the names, companies, acronyms, and specialist terms you say often in <code>~/.cos-glasses/.cos-profile.json</code>; factory placeholders are ignored.</td></tr>
     <tr><td><strong>VOICE · VOICE (TTS)</strong></td><td>Choose Local, Local-first, or OpenAI. Local uses on-Mac Kokoro and fails closed; Local-first may fall back only after a local failure and only when OpenAI is configured. The voice picker is engine-aware, persists through reinstall, and includes a test button. Connect Bluetooth audio to hear playback.</td></tr>
     <tr><td><strong>VOICE · OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>SYSTEM · Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
@@ -953,7 +953,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 276's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.21.1, local speech readiness remains additive under <code>tts_local</code>, and the selected transcription policy is reported under <code>capabilities.transcription.live</code>; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 276's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.21.3, local speech readiness remains additive under <code>tts_local</code>, and the selected transcription policy is reported under <code>capabilities.transcription.live</code>; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
@@ -965,7 +965,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>; this setup targets 6.21.1. To roll the server back while diagnosing this release, run <code>npx --yes @gotcos/glasses-server@6.20.1</code>. Do not assume a changelog version exists on npm: 6.15.4 and 6.16.6&ndash;6.16.8 were never published. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>; this setup targets 6.21.3. To roll the server back while diagnosing this release, run <code>npx --yes @gotcos/glasses-server@6.21.2</code>. Do not assume a changelog version exists on npm: 6.15.4 and 6.16.6&ndash;6.16.8 were never published. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
     </div>
   </div>
 </section>
@@ -979,7 +979,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer; newer compatible Node majors are fine. Build 276 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.1 for optional local Kokoro speech and selectable local transcription tiers on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs a Mac with Node.js 20.11 or newer; newer compatible Node majors are fine. Build 276 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.3 for optional local Kokoro speech and selectable local transcription tiers on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
     </details>
     <details>
       <summary>Do I need both Claude Code and Codex?</summary>

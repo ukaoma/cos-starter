@@ -9,7 +9,7 @@
       "minMacOS": "14.0",
       "serverTarget": "latest",
       "publishedAt": "2026-08-03T13:07:11Z",
-      "notes": "Control 0.3.5 build 27 targets glasses-server 6.21.1. Managed updates and transcription-tier changes now prove Claude with a bounded Haiku readiness query, report the correct timeout outcome, retain verified rollback, and distinguish an active transaction from an interrupted change."
+      "notes": "Control 0.3.5 build 27 works with glasses-server 6.21.3. Max uses Turbo for provisional preview and Large-v3 for authoritative commit and polish. Managed updates retain bounded provider proof and verified rollback."
     }
   },
   "killSwitch": {
