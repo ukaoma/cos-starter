@@ -39,8 +39,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.3.4",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.4.zip",
+  "softwareVersion": "0.3.5",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.5.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Durable startup, safe updates, rollback, health, and diagnostics without changing how the glasses work.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -352,21 +352,22 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses server, <em>under control.</em></h1>
       <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Start, stop, update, diagnose, and recover it from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.4.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.5.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.3.4 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.3.5 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.20.1, Small.en live preview ready, Large-v3-Turbo live commit ready, Large-v3 HQ polish ready, Cursor CLI connected, managed install, project at your Documents folder.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.21.0, Balanced tier, Small.en prompt preview ready, Large-v3-Turbo live commit ready, Large-v3 polish ready, agent CLIs connected with versions, managed install, project at your Documents folder.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.20.1</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.21.0</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
-        <div class="cc-row"><span class="cc-k">Live preview</span><b class="cc-v ok">Small.en</b></div>
-        <div class="cc-row"><span class="cc-k">Live commit</span><b class="cc-v ok">Large-v3-Turbo</b></div>
-        <div class="cc-row"><span class="cc-k">HQ polish</span><b class="cc-v ok">Large-v3</b></div>
-        <div class="cc-row"><span class="cc-k">Cursor CLI</span><b class="cc-v ok">Connected</b></div>
+        <div class="cc-row"><span class="cc-k">Tier</span><b class="cc-v ok">Balanced</b></div>
+        <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Small.en</b></div>
+        <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3-Turbo</b></div>
+        <div class="cc-row"><span class="cc-k">Polish, on save</span><b class="cc-v ok">Large-v3</b></div>
+        <div class="cc-row"><span class="cc-k">Agent CLIs</span><b class="cc-v ok">Claude &middot; Codex &middot; Cursor</b></div>
         <div class="cc-row"><span class="cc-k">Install</span><b class="cc-v">Managed</b></div>
         <div class="cc-row"><span class="cc-k">Project</span><b class="cc-v dir">~/Documents/COS</b></div>
       </div>
@@ -398,7 +399,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root &mdash; the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Meetings Library</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree (the folder that contains <code>quilt/meetings</code>, <code>personal/meetings</code>, and the rest) so G2 Review Meetings reads your real meeting markdown. Leave it unset for standalone local recordings only. Different COS layouts are expected &mdash; set the path that fits your machine.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, one copy away</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today and copies a paste-ready handoff into any chat, so you can pick up a thread on the Mac without a recall command. Messages are read from your own local server and never leave the machine.</p></div>
-          <div class="part reveal"><h3>Fast words, faithful record</h3><p>Guided Setup provisions three local transcription lanes automatically: Small.en for provisional lens text, Large-v3-Turbo for the committed live transcript, and Large-v3 for saved-meeting polish. Control reports the model that is actually running and makes any fallback visible.</p></div>
+          <div class="part reveal"><h3>Your speed / quality choice</h3><p>Guided Setup offers Balanced or Max. Balanced keeps Small.en prompt previews fast while Turbo commits the authoritative live transcript. Max reuses the resident Large-v3 worker for preview and commit on powerful Macs. Control applies the choice transactionally, reports the model actually running, and restores the prior tier if verification fails.</p></div>
+          <div class="part reveal"><h3>Real CLI versions</h3><p>The Agent CLIs caption shows Claude, Codex, and Cursor versions for support. Cursor's build comes from Control's local probe even when server health only says “About Cursor CLI.”</p></div>
         </div>
       </div>
     </div>
@@ -417,18 +419,18 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.4.zip" download>Download v0.3.4</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.5.zip" download>Download v0.3.5</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.3.4.zip</code></div>
-            <p class="sha">SHA-256<br>0ece6ad3adfdbc8b4bfea149aaa1dc9323a3c75fb6017d728b3dd5f42e7e344d</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.3.5.zip</code></div>
+            <p class="sha">SHA-256<br>a27970b88fd452daa83edd0a03408afeda82157fd2e78d90654a1554a84aac66</p>
           </details>
         </div>
         <div class="path reveal">
           <h3>Public npm server</h3>
           <p>Best for developers and existing setups. The foreground workflow stays fully supported and unchanged.</p>
-          <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription</code></div>
+          <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code></div>
           <div class="actions"><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server" rel="noopener">View on npm</a></div>
         </div>
       </div>
@@ -445,7 +447,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <ol class="insteps">
         <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
         <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
-        <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>COS Control checks <code>whisper.cpp</code>, verifies free disk space, downloads the three local transcription models, keeps your token and data, then installs the managed server. Add the names and specialist terms you say often when the wizard asks; factory placeholders are ignored.</p></div></li>
+        <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>Choose Balanced (recommended) or Max. COS Control checks <code>whisper.cpp</code>, verifies free disk space, and provisions the selected local models without interrupting the running server. When it finishes, Install or Update Server if offered, then Apply the tier for a verified restart. Then use the <a href="/wizard/#tune">setup wizard profile step</a> to add names and specialist terms; factory placeholders are ignored.</p></div></li>
         <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>In the menu-bar panel under Tools: set <strong>Work Folder</strong> to your COS project (agent workspace), and set <strong>Meetings Library</strong> to that project&rsquo;s <code>operations/</code> folder if you use COS meeting markdown on G2. Paths differ per install &mdash; pick what matches your machine.</p></div></li>
       </ol>
       <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
@@ -470,10 +472,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.4.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.5.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.3.4 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.3.5 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

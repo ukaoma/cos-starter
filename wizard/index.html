@@ -414,13 +414,13 @@
       <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
       <div class="summary">
         <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
-        <div class="row"><span class="k">Voice</span><span class="v">Adaptive local <small>(Small preview &middot; Turbo commit &middot; Large-v3 HQ)</small></span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Balanced local <small>(Small preview &middot; Turbo commit &middot; Large-v3 HQ)</small></span></div>
         <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
       <p style="font-size:0.88rem;color:var(--text-muted);margin:0 0 0.7rem;">Prefer a menu bar app? <a href="/control/" style="color:var(--accent-green)">Download COS Control for Mac</a> for guided setup, launch at login, Doctor, safe updates, and rollback.</p>
       <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
-      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription<span class="copy-hint">click to copy</span></div>
+      <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced<span class="copy-hint">click to copy</span></div>
       <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
@@ -515,8 +515,13 @@
       <button type="button" class="opt selected" data-voice="local"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Free</span><h3>Local whisper</h3><p>Runs on your Mac via whisper.cpp. Zero per-minute cost.</p></button>
       <button type="button" class="opt" data-voice="openai"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Admin opt-in</span><h3>OpenAI transcription</h3><p>Requires both the explicit fallback flag and your API key. ~$0.006/min.</p></button>
     </div>
+    <h3 style="margin-top:1.2rem;">Live transcription tier</h3>
+    <div class="opt-grid" id="transcription-tier">
+      <button type="button" class="opt selected" data-tier="balanced"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recommended</span><h3>Balanced</h3><p>Small.en preview, Turbo authoritative commit, Large-v3 polish. Fast and faithful on every supported Mac.</p></button>
+      <button type="button" class="opt" data-tier="max"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Powerful Macs</span><h3>Max</h3><p>Large-v3 stays resident for preview and commit. Higher memory use; no third Whisper process.</p></button>
+    </div>
     <div class="note"><strong>Spoken replies are separate from transcription.</strong> Server 6.15.3 provides Local (Kokoro), Local-first, and OpenAI speech engines. Explicit Local fails closed and never calls OpenAI. Local-first can fall back only after a local failure and only when your own OpenAI key and budget are configured. Check <code>tts_local.ready</code> in <code>/api/health</code>.</div>
-    <div class="note"><strong>Adaptive local is the recommended setup.</strong> Small.en produces provisional words quickly, Large-v3-Turbo commits the authoritative live transcript, and Large-v3 polishes saved meetings. A preview failure falls back to Turbo and never changes the committed transcript.</div>
+    <div class="note"><strong>Balanced is the recommended setup.</strong> Small.en produces provisional prompt words quickly, Large-v3-Turbo commits the authoritative live transcript, and Large-v3 polishes saved work. Max is opt-in and reuses the existing Large-v3 worker for live commit. A missing Max model falls back visibly to Turbo instead of breaking transcription.</div>
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
     <div class="note"><strong>Photos stay local:</strong> install <code>ffmpeg</code> on the Mac for normalized phone uploads, private answer-image galleries, and exact 288&times;144 G2 previews. Images never need a COS-hosted cloud.</div>
   </div>
@@ -547,7 +552,7 @@
     </div>
 
     <div class="res-label">1 · Start your server (self-host)</div>
-    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription<span class="copy-hint">click to copy</span></div>
+    <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span><span id="r-server-command">npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</span><span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
 
     <div class="res-label">2 · Set your identity (server profile)</div>
@@ -878,6 +883,7 @@
     ctxTouched: false,
     context: new Set(),
     voice: 'local',
+    transcriptionTier: 'balanced',
     hud: null               // null = use recommendation
   };
 
@@ -948,6 +954,7 @@
   bindMulti('context', 'ctx', state.context, function () { state.ctxTouched = true; });
   bindSingle('models', 'model', 'model');
   bindSingle('voice', 'voice', 'voice');
+  bindSingle('transcription-tier', 'tier', 'transcriptionTier');
   bindSingle('hud', 'hud', 'hud');
 
   ['f-name', 'f-role', 'f-company', 'f-vocab'].forEach(function (id) {
@@ -986,7 +993,10 @@
 
     // summary
     $('#r-model').innerHTML = MODEL_LABEL[model] + (state.model ? '' : ' <small>(recommended)</small>');
-    $('#r-voice').innerHTML = state.voice === 'openai' ? 'OpenAI transcription <small>(your key)</small>' : 'Local whisper <small>(free)</small>';
+    $('#r-voice').innerHTML = state.voice === 'openai'
+      ? 'OpenAI transcription <small>(your key)</small>'
+      : (state.transcriptionTier === 'max' ? 'Local Max <small>(Large-v3 live)</small>' : 'Local Balanced <small>(recommended)</small>');
+    $('#r-server-command').textContent = 'npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier ' + state.transcriptionTier;
     var ctx = Array.from(state.context);
     $('#r-context').innerHTML = ctx.length ? ctx.map(function (c) { return CTX_LABEL[c]; }).join(', ') : '<small>none yet</small>';
     $('#r-hud').innerHTML = HUD_LABEL[hud] + (state.hud ? '' : ' <small>(recommended)</small>');
@@ -1012,7 +1022,8 @@
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
     if (state.voice === 'openai') li.push('Set <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and add your <b>OPENAI_API_KEY</b> for deliberate cloud voice fallback.');
-    else li.push('Run the generated <code>--setup-transcription</code> command for adaptive local voice: Small.en preview, Turbo commit, Large-v3 HQ.');
+    else if (state.transcriptionTier === 'max') li.push('Run the generated setup command for Max local voice: Large-v3 preview + commit, Large-v3 polish, with Turbo retained as the safe fallback.');
+    else li.push('Run the generated setup command for Balanced local voice: Small.en preview, Turbo commit, Large-v3 polish.');
     if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
     if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
     else li.push('Add context sources anytime via MCP in your COS folder.');
@@ -1031,7 +1042,7 @@
     if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
     if (role) fields.push({ name: 'jobtitle', value: role });
     if (co) fields.push({ name: 'company', value: co });
-    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
+    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
     var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },

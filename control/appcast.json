@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.4",
-      "build": 25,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.4.zip",
-      "sha256": "0ece6ad3adfdbc8b4bfea149aaa1dc9323a3c75fb6017d728b3dd5f42e7e344d",
+      "version": "0.3.5",
+      "build": 26,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.5.zip",
+      "sha256": "a27970b88fd452daa83edd0a03408afeda82157fd2e78d90654a1554a84aac66",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T03:45:20Z",
-      "notes": "Control 0.3.4 targets glasses-server 6.20.1. Healthy Claude, Codex, and Kokoro transactions now receive their full bounded verification windows, preventing false update rollbacks. Interrupted Whisper model downloads resume safely, and mixed-version transcription rows stay truthful."
+      "publishedAt": "2026-08-03T12:37:31Z",
+      "notes": "Control 0.3.5 targets glasses-server 6.21.0. Guided Setup and Control now offer Balanced or Max transcription, apply the machine-owned tier with verified rollback, show requested/effective fallback truth, and report Cursor's locally probed version."
     }
   },
   "killSwitch": {

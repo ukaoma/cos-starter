@@ -19,9 +19,9 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
 1. **Start it -- from your COS folder if you have one.**
    - On first setup, provision the adaptive local transcription lanes:
      ```
-     npx --yes @gotcos/glasses-server@latest --setup-transcription
+     npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced
      ```
-     Small.en supplies provisional words, Large-v3-Turbo commits live text, and Large-v3 performs HQ polish.
+     Balanced is recommended: Small.en supplies provisional prompt words, Large-v3-Turbo commits live text, and Large-v3 performs polish. Max is an opt-in for powerful Macs: use `--transcription-tier max`; it reuses Large-v3 for live preview + commit and retains Turbo as the safe fallback.
    - On later starts, if a COS project exists here (an `AGENTS.md` / `CLAUDE.md` is present), start from that folder so the glasses load your brain:
      ```
      npx --yes @gotcos/glasses-server@latest
@@ -53,7 +53,7 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
    | "Port already in use" / two servers | It's already running | Don't launch a second -- one server owns 3141/3143. Use the running one, or stop the old terminal and restart. |
    | Phone: "can't reach server" | Network path | Same Wi-Fi: use the `192.168.x.x:3141` address. Away from home: install Tailscale on Mac + phone (same account), use the `100.x.x.x:3141` address. Quick check: open `http://YOUR-SERVER-IP:3141/api/health` in the phone browser. |
    | Photos don't render on the lens | Missing ffmpeg | `brew install ffmpeg`, then rerun the server. Needs server 6.5.0+ and Lens images on. |
-   | Voice slow or unavailable | Local models not provisioned | `brew install whisper-cpp`, then run `npx --yes @gotcos/glasses-server@latest --setup-transcription`. Confirm health reports Small.en preview, Large-v3-Turbo commit, and Large-v3 HQ. Cloud fallback is deliberate opt-in only and requires both `COS_OPENAI_WHISPER_FALLBACK=1` and a configured `OPENAI_API_KEY`. |
+   | Voice slow or unavailable | Local models not provisioned | `brew install whisper-cpp`, then run `npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced`. Confirm health reports requested/effective tier, Small.en preview, Large-v3-Turbo commit, and Large-v3 HQ. Cloud fallback is deliberate opt-in only and requires both `COS_OPENAI_WHISPER_FALLBACK=1` and a configured `OPENAI_API_KEY`. |
    | App: "server update required" | Server older than app | Rerun `npx --yes @gotcos/glasses-server@latest` -- it pulls the latest. |
    | Token rejected after a URL change | Origin changed | Re-enter the token in the app (a new host never auto-receives your old token, by design). The token itself hasn't changed -- it's in `~/.cos-glasses/.env`. |
    | "Claude/Codex not found" | Desktop app is present, but the terminal CLI is missing | Claude: run `npm install -g @anthropic-ai/claude-code` on one line **without sudo**, then run `claude` and finish sign-in. Codex: verify `codex --version`, then `codex login`. |
