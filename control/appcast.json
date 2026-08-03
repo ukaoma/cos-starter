@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.5",
-      "build": 27,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.5.zip",
-      "sha256": "296b7484adf26d8674e61df9e34d193fe05705bd686408af541e6c52b9214a9a",
+      "version": "0.3.6",
+      "build": 28,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.6.zip",
+      "sha256": "e4775f83c021066a07cf16b289f9d69f68666d32fcc383674eca7ca9c4ab5559",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T13:07:11Z",
-      "notes": "Control 0.3.5 build 27 works with glasses-server 6.21.3. Max uses Turbo for provisional preview and Large-v3 for authoritative commit and polish. Managed updates retain bounded provider proof and verified rollback."
+      "publishedAt": "2026-08-03T18:07:03Z",
+      "notes": "Control 0.3.6 build 28 works with glasses-server 6.21.4. Recent Glasses restores validated photo context with local thumbnails, full preview, and an explicit Copy + images handoff. Images remain on your Mac and private recovery boundaries are enforced."
     }
   },
   "killSwitch": {
