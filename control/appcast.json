@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.6",
-      "build": 28,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.6.zip",
-      "sha256": "e4775f83c021066a07cf16b289f9d69f68666d32fcc383674eca7ca9c4ab5559",
+      "version": "0.3.7",
+      "build": 29,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.7.zip",
+      "sha256": "3b27055c70240b8f351bc4b50188d2963a4bc5ea271815f3b05a38e38f2fed47",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-03T18:07:03Z",
-      "notes": "Control 0.3.6 build 28 works with glasses-server 6.21.4. Recent Glasses restores validated photo context with local thumbnails, full preview, and an explicit Copy + images handoff. Images remain on your Mac and private recovery boundaries are enforced."
+      "publishedAt": "2026-08-04T13:02:24Z",
+      "notes": "Control 0.3.7 build 29 adds a machine-wide Background jobs switch. Apply drains active work, restarts safely, verifies the authenticated server capability, and restores the prior configuration if proof fails. The current public glasses-server 6.21.5 remains supported."
     }
   },
   "killSwitch": {
