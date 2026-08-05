@@ -164,6 +164,24 @@ section.light td strong{color:var(--ink-on-cream)}
 .cards.mixed{grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));align-items:start;gap:20px 26px}
 .cards.mixed > div > h3{margin-top:0}
 .exhibit{max-width:560px;margin:22px 0 4px}
+/* COS Control menu-bar panel. Row labels and values mirror the shipping 0.3.7 app so
+   the reader recognises what they are downloading. Drawn, not screenshotted, so it
+   stays legible at any width and carries no image weight. */
+.ccp{max-width:440px;border:1px solid var(--line);border-radius:16px;padding:6px;background:linear-gradient(168deg,rgba(255,246,232,.05),transparent)}
+.ccp-in{border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+.ccp-top{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.ccp-top i{font-style:normal;display:inline-flex;align-items:center;gap:6px;color:rgba(120,206,146,.92)}
+.ccp-top i::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(120,206,146,.92)}
+.ccp-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 14px;border-top:1px solid var(--line-2)}
+.ccp-row span{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.ccp-row b{font-size:.82rem;font-weight:600;color:rgba(120,206,146,.92);text-align:right}
+.ccp-row b.dim{color:var(--muted);font-family:var(--mono);font-size:.68rem;font-weight:400}
+.ccp-acts{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:11px 12px 12px}
+.ccp-acts span{text-align:center;border:1px solid var(--line-2);border-radius:9px;padding:8px 6px;font-size:.76rem;color:var(--muted)}
+.macpair{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-top:24px}
+.macpair .cards{margin-top:0}
+.macpair .duo-cap{margin-bottom:0}
+@media(max-width:860px){.macpair{grid-template-columns:1fr}}
 /* Query-a-meeting flow. Three ordered steps, because the order IS the information:
    a saved meeting only becomes conversational after it has been processed. */
 .qflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:24px 0 6px;counter-reset:qf}
@@ -641,11 +659,35 @@ footer .links a:hover{color:var(--gold)}
     <p class="ch-sub">The server, without the terminal babysitting.</p>
     <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, shows the effective Balanced or Max tier plus each transcription model, reports real Agent CLI versions, runs Doctor, and performs safe updates, restarts, and rollbacks.</p>
   </div>
-  <div class="cards mixed">
+  <div class="macpair">
+    <div>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.21.6, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
+    <div class="ccp-in">
+      <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
+      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.21.6</b></div>
+      <div class="ccp-row"><span>Ownership</span><b>Verified direct PID</b></div>
+      <div class="ccp-row"><span>Recovery</span><b>Scheduled</b></div>
+      <div class="ccp-row"><span>Local Whisper</span><b>Ready</b></div>
+      <div class="ccp-row"><span>Background jobs</span><b>Allowed</b></div>
+      <div class="ccp-row"><span>Transcription tier</span><b>Max</b></div>
+      <div class="ccp-row"><span>Preview, while dictating</span><b>Large-v3-Turbo</b></div>
+      <div class="ccp-row"><span>Commit, live meeting</span><b>Large-v3</b></div>
+      <div class="ccp-row"><span>Polish, on save</span><b>Large-v3</b></div>
+      <div class="ccp-row"><span>Meeting sync</span><b>Idle</b></div>
+      <div class="ccp-row"><span>Agent CLIs</span><b>Claude &#183; Codex &#183; Cursor</b></div>
+      <div class="ccp-row"><span>Work folder</span><b class="dim">~/Documents/COS</b></div>
+      <div class="ccp-acts"><span>Open COS</span><span>Open Cursor</span><span>Run Doctor</span><span>Restart Safely</span></div>
+    </div>
+  </div>
+      <p class="duo-cap">See what is actually running, not what you hope is running.</p>
+    </div>
+    <div class="cards mixed">
     <div><h3>One server owner</h3><p>The managed LaunchAgent prevents split port ownership. COS Control refuses to replace an unknown process.</p></div>
     <div><h3>Recording-safe controls</h3><p>Restart is blocked while meetings or jobs are active. Updates stage a complete new generation before switching.</p></div>
     <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
   </div>
+  </div>
+
   <div class="note"><p><strong>Migrating from Terminal?</strong> Stop the foreground server with Control-C first. Then install COS Control and run Guided Setup. You can return to the npx command later without converting your data.</p></div>
   <div class="btns"><a class="btn primary" href="/control/">Download COS Control</a><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server">Use npm instead</a></div>
 </section>
