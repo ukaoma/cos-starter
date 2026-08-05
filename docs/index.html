@@ -361,6 +361,10 @@ footer .links a:hover{color:var(--gold)}
   .docs-main>header.hero{padding-top:clamp(28px,4vw,54px)}
   /* cream sections become contained panels (no full-bleed slab across the sidebar) */
   .docs-shell section.light{box-shadow:none;clip-path:none;background:var(--cream);border:1px solid rgba(40,27,17,.12);border-radius:18px;padding-inline:clamp(24px,3vw,42px)}
+  /* Panels are cards, so they need air around them. Without this two consecutive cream
+     sections (Photos then The Lens) butt edge to edge and read as one broken panel. */
+  .docs-shell section.light{margin-block:clamp(14px,1.6vw,24px)}
+  .docs-shell section.light + section.light{margin-top:clamp(20px,2.4vw,34px)}
   /* pixmap: cap column-relative so it stays inside the contained panel */
   #setup .pixmap{width:min(38%,420px);right:-2%}
 
@@ -990,7 +994,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">10.</span> Models</h2>
     <p class="ch-sub">Choose your brain. <span class="it goldt">Keep it current.</span></p>
-    <p class="lead">Five entries in Settings under Default chat model. All five track the newest models automatically, so the picker never goes stale and the app never needs an update to follow a release.</p>
+    <p class="lead">Seven entries in Settings under Default chat model, spanning all three agent CLIs: Claude Code, Codex, and Cursor. Every slot resolves the newest model at the moment you send, so the picker never goes stale and the app never needs an update to follow a release.</p>
   </div>
   <div class="cards">
     <div class="card">
@@ -1012,6 +1016,14 @@ footer .links a:hover{color:var(--gold)}
     <div class="card">
       <span class="lbl">GPT Balanced — auto latest</span>
       <p>The strong-and-efficient sibling from that same live generation. When the catalog advances, both GPT slots follow it automatically.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">Grok — via Cursor</span>
+      <p>Cursor's fast reasoning slot, <code>cursor-grok-4.5-high</code>. The concrete id and its label resolve from <code>agent models</code> at runtime, so the slot follows Cursor's catalog instead of a pinned version.</p>
+    </div>
+    <div class="card">
+      <span class="lbl">Composer — via Cursor</span>
+      <p>Cursor's own model, <code>composer-2.5</code>, tuned for speed on everyday work. Both Cursor slots stay recognized even when the Cursor CLI is absent, so version skew fails closed instead of silently remapping to Opus.</p>
     </div>
   </div>
   <p style="max-width:74ch;margin-top:22px">If the live catalog is unreachable, COS falls back to the local catalog cache, then lets the CLI pick its own current default. It never pins a stale model, and economy or hidden variants are excluded from the slots. The <strong>CLI DEBUG</strong> card in Settings always shows the exact model that served the last message.</p>
