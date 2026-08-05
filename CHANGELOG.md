@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.4 - 2026-08-05
+
+### Changed
+- COS Control 0.3.8 build 30 exposes and persists the server 6.21.7 Meeting
+  Turbo preview canary. Provisional text arrives before the canonical
+  speaker-attributed Large-v3 transcript and can be rolled back independently.
+- The versioned download, latest alias, SHA-256, appcast, Control page, and
+  setup documentation now agree on the same release.
+
 ## 0.4.3 - 2026-08-03
 
 ### Changed

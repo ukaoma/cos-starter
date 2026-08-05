@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.7",
-      "build": 29,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.7.zip",
-      "sha256": "3b27055c70240b8f351bc4b50188d2963a4bc5ea271815f3b05a38e38f2fed47",
+      "version": "0.3.8",
+      "build": 30,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.8.zip",
+      "sha256": "029a8a5fb5d4fae68ec57cdae46b26867879425f3a26bc0f6299498bf1e4fd0b",
       "minMacOS": "14.0",
       "serverTarget": "latest",
-      "publishedAt": "2026-08-04T13:02:24Z",
-      "notes": "Control 0.3.7 build 29 adds a machine-wide Background jobs switch. Apply drains active work, restarts safely, verifies the authenticated server capability, and restores the prior configuration if proof fails. The current public glasses-server 6.21.5 remains supported."
+      "publishedAt": "2026-08-05T18:55:57Z",
+      "notes": "Control 0.3.8 build 30 adds a machine-wide Meeting Turbo preview switch for glasses-server 6.21.7+. It persists the canary through managed updates, verifies the replacement launchd process loaded it, and preserves canonical Large-v3 speaker attribution."
     }
   },
   "killSwitch": {
