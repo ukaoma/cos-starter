@@ -156,8 +156,12 @@ section.light .dek{color:#7a5c2c}
   .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;align-items:center}
   .badges .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
   .badges .chip b{color:var(--rose);font-weight:500}
-.chip a{color:inherit;text-decoration:none}
-.chip a:hover b,.chip a:focus-visible b{text-decoration:underline;text-underline-offset:3px}
+  .chip a{color:inherit;text-decoration:none}
+  .chip a:hover b,.chip a:focus-visible b{text-decoration:underline;text-underline-offset:3px}
+  .badge-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ghost);margin-top:11px;padding-left:2px}
+  .badge-note b{color:var(--muted);font-weight:400}
+  .badge-note a{color:inherit;text-decoration:none}
+  .badge-note a:hover b,.badge-note a:focus-visible b{color:var(--rose);text-decoration:underline;text-underline-offset:3px}
   .hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--faint)}
   .hero-meta b{color:var(--gold);font-weight:500}
 
@@ -715,8 +719,8 @@ section.light .dek{color:#7a5c2c}
       <div class="badges">
         <span class="chip">Runs on <b>Mac, Windows, Linux</b></span>
         <span class="chip">Claude Code, Codex, Cursor <b>or local</b></span>
-        <span class="chip">Optional <a href="https://www.evenrealities.com/" target="_blank" rel="noopener noreferrer"><b>Even G2</b></a> integration</span>
       </div>
+      <p class="badge-note">Optional <a href="https://www.evenrealities.com/" target="_blank" rel="noopener noreferrer"><b>Even G2</b></a> integration</p>
     </div>
     <div class="hero-demo" aria-hidden="true">
       <svg class="hd-web" viewBox="0 0 100 100" preserveAspectRatio="none">
