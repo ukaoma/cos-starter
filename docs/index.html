@@ -158,6 +158,22 @@ section.light td strong{color:var(--ink-on-cream)}
 
 /* ── cards, steps, faq ───────────────────────────────── */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:22px}
+/* Grids that mix an exhibit (HUD mockup, table) with explanation prose. auto-fit was
+   fanning six unequal blocks into 3-5 narrow columns starting with the mockup. Cap the
+   measure and top-align so each column reads as a column, not a ragged leftover. */
+.cards.mixed{grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));align-items:start;gap:20px 26px}
+.cards.mixed > div > h3{margin-top:0}
+.exhibit{max-width:560px;margin:22px 0 4px}
+/* Query-a-meeting flow. Three ordered steps, because the order IS the information:
+   a saved meeting only becomes conversational after it has been processed. */
+.qflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:24px 0 6px;counter-reset:qf}
+.qf{position:relative;border:1px solid var(--line);border-radius:14px;padding:15px 16px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
+.qf b{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.qf b::before{counter-increment:qf;content:counter(qf) "\00A0\00B7\00A0";color:var(--gold);opacity:.7}
+.qf-scr{font-family:var(--mono);font-size:.62rem;line-height:1.5;color:rgba(70,232,120,.86);background:rgba(8,18,11,.55);border:1px solid rgba(70,232,120,.16);border-radius:9px;padding:10px 11px;min-height:74px}
+.qf-scr .dim{color:rgba(70,232,120,.5)}
+.qf-scr .tag{display:inline-block;border:1px solid rgba(70,232,120,.38);border-radius:5px;padding:1px 5px;font-size:.54rem;letter-spacing:.06em}
+.qf p{font-size:.86rem;margin:9px 0 0}
 .card{border:1px solid var(--line);border-radius:16px;padding:20px;background:linear-gradient(158deg,var(--panel),transparent)}
 .card p{font-size:.92rem}
 section.light .card{border-color:var(--line-on-cream);background:rgba(255,255,255,.5)}
@@ -202,6 +218,8 @@ section.light .lf-top,section.light .lf-foot{color:rgba(201,169,110,.82)}
 .pf-scr{position:relative;height:100%;overflow:hidden;background:#eceae5;border-radius:11%/5.1%;font-family:var(--body);display:flex;flex-direction:column}
 .pf-island{position:absolute;top:2.1%;left:50%;transform:translateX(-50%);width:31%;height:2.6%;background:#0d0c0b;border-radius:99px;z-index:3}
 .pf-status{display:flex;justify-content:space-between;align-items:center;padding:5px 12px 2px;font-size:.47rem;font-weight:600;color:#1c1a17}
+.pf-status i{display:inline-flex;align-items:center;gap:3px;font-style:normal}
+.pf-status svg{height:8px;width:auto;fill:#1c1a17}
 .pf-nav{display:flex;justify-content:space-between;align-items:center;padding:4px 10px 6px;font-size:.62rem;font-weight:600;color:#1c1a17}
 .pf-nav span:first-child,.pf-nav span:last-child{color:rgba(28,26,23,.55);font-size:.66rem}
 .pf-body{flex:1;min-height:0;padding:0 9px 8px;display:flex;flex-direction:column;gap:6px}
@@ -214,12 +232,16 @@ section.light .lf-top,section.light .lf-foot{color:rgba(201,169,110,.82)}
 .pf-tabs span{flex:1;text-align:center;color:rgba(28,26,23,.45)}
 .pf-tabs span.on{color:#1c1a17;font-weight:600}
 /* the media selector, shown open: the three ways a photo gets in */
-.pf-menu{position:absolute;bottom:20%;right:6%;width:60%;background:#4b4a47;border-radius:13px;padding:5px;box-shadow:0 12px 26px -10px rgba(11,9,6,.55);z-index:2}
+.pf-menu{position:absolute;top:calc(100% + 8px);right:30px;width:78%;background:#4b4a47;border-radius:13px;padding:5px;box-shadow:0 14px 30px -10px rgba(11,9,6,.6);z-index:4}
+.pf-menu::before{content:'';position:absolute;top:-5px;right:16px;width:11px;height:11px;background:#4b4a47;border-radius:2px;transform:rotate(45deg)}
 .pf-mi{display:flex;align-items:center;gap:7px;padding:6px 7px;font-size:.55rem;color:#f6f4ef;line-height:1}
 .pf-mi + .pf-mi{border-top:1px solid rgba(246,244,239,.13)}
 .pf-mi svg{width:12px;height:12px;flex:none;stroke:#f6f4ef;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.pf-ask{display:flex;gap:5px;align-items:stretch}
-.pf-in{flex:1;background:#dedbd4;border-radius:8px;padding:7px 8px;font-size:.55rem;color:rgba(36,23,8,.74);display:flex;align-items:center}
+.pf-ask{position:relative;display:flex;gap:5px;align-items:stretch}
+.pf-in{flex:1;background:#dedbd4;border-radius:8px;padding:7px 8px;font-size:.55rem;color:rgba(36,23,8,.74);display:flex;align-items:center;min-height:30px}
+.pf-in span,.lf-body span{transition:opacity .34s ease}
+.duo.swap .pf-in span,.duo.swap .lf-body span{opacity:0}
+@media(prefers-reduced-motion:reduce){.pf-in span,.lf-body span{transition:none}.duo.swap .pf-in span,.duo.swap .lf-body span{opacity:1}}
 .pf-cam,.pf-go{border-radius:8px;font-family:var(--mono);font-size:.46rem;letter-spacing:.06em;padding:0 8px;display:flex;align-items:center;justify-content:center}
 .pf-cam{background:#fff;border:1px solid rgba(36,23,8,.22)}
 .pf-cam svg{width:12px;height:12px;stroke:rgba(36,23,8,.75);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -237,7 +259,7 @@ section.light .lf-top,section.light .lf-foot{color:rgba(201,169,110,.82)}
 .pf-tray b{font-family:var(--mono);font-size:.47rem;letter-spacing:.09em;color:rgba(36,23,8,.66);font-weight:400}
 .pf-rm{font-family:var(--mono);font-size:.44rem;letter-spacing:.07em;border:1px solid rgba(36,23,8,.22);border-radius:5px;padding:3px 6px;color:rgba(36,23,8,.6)}
 .pf-thumbs{display:flex;gap:5px}
-.pf-th{width:100%;aspect-ratio:3/4;border-radius:5px;background:linear-gradient(150deg,#8d9c7e,#4f5f47)}
+.pf-th{width:100%;aspect-ratio:1/1;border-radius:4px;background:linear-gradient(150deg,#8d9c7e,#4f5f47)}
 .pf-th:nth-child(2){background:linear-gradient(150deg,#b8a377,#7d6a44)}
 .pf-th:nth-child(3){background:linear-gradient(150deg,#9a8866,#6d5a3c)}
 
@@ -615,7 +637,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="ch-sub">The server, without the terminal babysitting.</p>
     <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, shows the effective Balanced or Max tier plus each transcription model, reports real Agent CLI versions, runs Doctor, and performs safe updates, restarts, and rollbacks.</p>
   </div>
-  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+  <div class="cards mixed">
     <div><h3>One server owner</h3><p>The managed LaunchAgent prevents split port ownership. COS Control refuses to replace an unknown process.</p></div>
     <div><h3>Recording-safe controls</h3><p>Restart is blocked while meetings or jobs are active. Updates stage a complete new generation before switching.</p></div>
     <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
@@ -632,7 +654,8 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
   </div>
   <p style="max-width:70ch">Answers stream to the lens and read as <strong>one continuous message</strong>, scrolled natively by the glasses like a news feed. No pages. No chunk-tapping. The footer keeps the receipts: model, message number, elapsed time, session date, battery.</p>
-  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+  
+<div class="cards mixed">
     <div>
       <div class="hud" aria-hidden="true">
         <div><span class="dim">MSG</span> <span class="hi">#4</span></div>
@@ -644,6 +667,7 @@ footer .links a:hover{color:var(--gold)}
       </div>
       <div class="hud-cap">The reader · scroll to read, tap for the footer menu</div>
     </div>
+
     <div>
       <h3>Reading controls</h3>
       <div class="tw"><table>
@@ -668,16 +692,21 @@ footer .links a:hover{color:var(--gold)}
     <div class="pf">
       <span class="pf-island"></span>
       <div class="pf-scr">
-        <div class="pf-status"><span>10:22</span><span>&#9679;&#9679;&#9679; &#8226; 69%</span></div>
+        <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
           <div class="pf-app"><b>COS GLASSES</b><i>v6.8.299 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
-            <span class="pf-in">What is this plant?</span>
+            <span class="pf-in"><span data-q>What is this plant?</span></span>
             <span class="pf-cam"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5h4l1.5-2.5h7L17 8.5h4v10H3z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
             <span class="pf-go">ASK</span>
+            <div class="pf-menu">
+                  <div class="pf-mi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-2 4 3"/></svg>Photo Library</div>
+                  <div class="pf-mi"><svg viewBox="0 0 24 24"><path d="M3 8.5h4l1.5-2.5h7L17 8.5h4v10H3z"/><circle cx="12" cy="13" r="3.4"/></svg>Take Photo</div>
+                  <div class="pf-mi"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2.5h8a2 2 0 012 2V18a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg>Choose Files</div>
+            </div>
           </div>
           <div class="pf-chips">
             <span class="pf-chip">OPUS</span><span class="pf-chip">VOICE</span><span class="pf-chip">SPEAK</span><span class="pf-chip on">LENS IMG</span>
@@ -701,20 +730,51 @@ footer .links a:hover{color:var(--gold)}
             <p>Q: Read this label and tell me if it has dairy in it.</p>
           </div>
         </div>
-        <div class="pf-menu">
-          <div class="pf-mi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-2 4 3"/></svg>Photo Library</div>
-          <div class="pf-mi"><svg viewBox="0 0 24 24"><path d="M3 8.5h4l1.5-2.5h7L17 8.5h4v10H3z"/><circle cx="12" cy="13" r="3.4"/></svg>Take Photo</div>
-          <div class="pf-mi"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2.5h8a2 2 0 012 2V18a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg>Choose Files</div>
-        </div>
       </div>
     </div>
     <div class="lf">
       <div class="lf-top"><span>MSG #128</span><span>OPUS</span></div>
-      <p class="lf-body">Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. It will survive Texas heat in morning sun with afternoon shade, but it wilts daily above 95 and needs deep water twice a week.</p>
+      <p class="lf-body"><span data-a>Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. It will survive Texas heat in morning sun with afternoon shade, but it wilts daily above 95 and needs deep water twice a week.</span></p>
       <div class="lf-foot"><span>&#9660; history</span><span>&#9650;&#9650; home</span></div>
     </div>
   </div>
   <p class="duo-cap">Capture on the phone. Read the answer on the lens.</p>
+  <script>
+  /* Rotates the composer question and the lens answer together, so one component shows
+     the range of people COS is for instead of a single hobby example. Pauses when the
+     tab is hidden, and honours prefers-reduced-motion by never starting. */
+  (function(){
+    var duo=document.querySelector('.duo'); if(!duo) return;
+    var q=duo.querySelector('[data-q]'), a=duo.querySelector('[data-a]');
+    if(!q||!a) return;
+    var pairs=[
+      ['What is this plant?',
+       'Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. Morning sun with afternoon shade survives a Texas summer, but it wilts daily above 95 and wants deep water twice a week.'],
+      ['Review this contract page. What should I push back on?',
+       'Two things. Clause 7 auto-renews for 24 months with a 90-day notice window, which is long for this contract size. Clause 11 caps their liability at one month of fees while yours is uncapped.'],
+      ['What do you think of this layout?',
+       'The eye lands on the illustration before the headline, so the value proposition reads second. The two CTAs carry equal weight, which splits the decision. Pick one primary action and demote the other to a text link.'],
+      ['What is the part number on this filter, and what fits it?',
+       'FRAM CA10755, a panel air filter. It fits the 2015 to 2020 F-150 with the 2.7 and 3.5 EcoBoost. The Wix 49128 and Motorcraft FA-1927 are the usual equivalents.'],
+      ['Read this label. Does it have dairy?',
+       'Yes. Sodium caseinate is a milk protein, and it is listed fourth. The contains statement at the bottom names milk and soy explicitly.']
+    ];
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i=0, timer=null;
+    function tick(){
+      i=(i+1)%pairs.length;
+      duo.classList.add('swap');
+      setTimeout(function(){
+        q.textContent=pairs[i][0]; a.textContent=pairs[i][1];
+        duo.classList.remove('swap');
+      },360);
+    }
+    function start(){ if(!timer) timer=setInterval(tick,5200); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    document.addEventListener('visibilitychange',function(){ document.hidden?stop():start(); });
+    start();
+  })();
+  </script>
 
   <div class="cards">
     <div class="card">
@@ -783,7 +843,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="ch-sub">Watch it <span class="it goldt">work.</span></p>
     <p class="lead">Every prompt is a job that lives on your Mac. Watch it, queue it, or cancel it, and once it starts it keeps running even if you close the app. Nothing ever hijacks your screen.</p>
   </div>
-  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+  <div class="cards mixed">
     <div>
       <div class="hud" aria-hidden="true">
         <div><span class="dim">00:02</span> <span class="tag">SENT</span> summarize the pilot thread</div>
@@ -836,12 +896,28 @@ footer .links a:hover{color:var(--gold)}
 <section class="wrap reveal" id="meetings">
   <div class="sec-head">
     <h2 class="ch"><span class="num">8.</span> Meetings</h2>
-    <p class="ch-sub">Record the room. <span class="it goldt">Read it later.</span></p>
-    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript with a single meeting-owned recording indicator. Audio is written to private phone storage first, so a network interruption does not become a lost meeting.</p>
+    <p class="ch-sub">Record the room. <span class="it goldt">Then talk to it.</span></p>
+    <p class="lead">Start Meeting AI from Quick Actions and the HUD becomes a live, speaker-labeled transcript with a single meeting-owned recording indicator. Audio is written to private phone storage first, so a network interruption does not become a lost meeting. A saved meeting is not a document you go back and skim. Double-tap a processed meeting and it opens as a conversation in Messages, grounded in the full transcript, and it keeps answering follow-ups.</p>
   </div>
-  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div>
-      <div class="hud" aria-hidden="true">
+  <div class="qflow">
+    <div class="qf">
+      <b>Double-tap a saved meeting</b>
+      <div class="qf-scr"><span class="dim">Review Meetings</span><br>&#9656; Pilot scope &#183; 41m<br><span class="dim">&nbsp;&nbsp;Roadmap sync &#183; 28m</span></div>
+      <p>Open <strong>Review Meetings</strong> and double-tap any idle, processed meeting.</p>
+    </div>
+    <div class="qf">
+      <b>Ask it anything, out loud</b>
+      <div class="qf-scr"><span class="tag">MEETING CONTEXT ATTACHED</span><br><br>&#8220;What did we actually commit to, and who owns it?&#8221;</div>
+      <p>Record a voice follow-up with that exact meeting attached as context.</p>
+    </div>
+    <div class="qf">
+      <b>It answers from the record</b>
+      <div class="qf-scr">Two commitments. Maya owns the pilot ship date, Friday. Sam owns the data import, one day of work, and it is the only blocker.</div>
+      <p>Grounded in the full transcript, not a summary. Follow-ups keep the thread.</p>
+    </div>
+  </div>
+    <div class="exhibit">
+    <div class="hud" aria-hidden="true">
         <div><span class="hi">★ Bookmarked</span></div>
         <div><span class="dim">[maya]</span> we can ship the pilot friday</div>
         <div><span class="dim">[sam]</span> blocking item is the data</div>
@@ -850,7 +926,8 @@ footer .links a:hover{color:var(--gold)}
         <div class="foot"><span>◆ 2 nudges&nbsp;&nbsp;↓ history&nbsp;&nbsp;↑↑ home</span></div>
       </div>
       <div class="hud-cap">Live meeting HUD · fictional example</div>
-    </div>
+  </div>
+<div class="cards mixed">
     <div>
       <div class="tw"><table>
         <tr><td><span class="g-key">Tap</span></td><td>Bookmark the moment. The lens flashes <span class="g-key">★ Bookmarked</span> and stamps the elapsed time.</td></tr>
