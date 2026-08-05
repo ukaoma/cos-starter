@@ -181,6 +181,11 @@ section.light td strong{color:var(--ink-on-cream)}
 .macpair{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-top:24px}
 .macpair .cards{margin-top:0}
 .macpair .duo-cap{margin-bottom:0}
+.anim-on .ccp-row,.anim-on .ccp-acts span{opacity:0}
+.anim-on .qf{opacity:0}
+.anim-on .pf-th{opacity:0}
+.anim-on .pf-menu{opacity:0}
+.anim-on .lf-body span{opacity:0}
 @media(max-width:860px){.macpair{grid-template-columns:1fr}}
 /* Query-a-meeting flow. Three ordered steps, because the order IS the information:
    a saved meeting only becomes conversational after it has been processed. */
@@ -1488,6 +1493,70 @@ footer .links a:hover{color:var(--gold)}
       }, {threshold:.3});
       aio.observe(arch);
     }
+  }
+
+  // ── exhibits: control panel, photo staging, meeting query flow ──────────
+  // Same contract as the arch reveal above: no anime / reduced motion / no IO all
+  // fall back to showing everything at rest, and each runs once on first sight.
+  var animTargets = ['.ccp-row','.ccp-acts span','.qf','.pf-th','.pf-menu','.lf-body span'];
+  function restAll(){
+    animTargets.forEach(function(sel){
+      Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function(el){
+        el.style.opacity = 1; el.style.transform = 'none';
+      });
+    });
+  }
+  if (!animeOK || rm || !('IntersectionObserver' in window)) {
+    restAll();
+  } else {
+    document.documentElement.classList.add('anim-on');
+    function onceSeen(el, run, thr){
+      if (!el) return;
+      var fired = false;
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting && !fired){ fired = true; run(); io.disconnect(); }
+        });
+      }, {threshold: thr || .25});
+      io.observe(el);
+    }
+
+    // 2A: the panel reports what is running, one row at a time.
+    var ccp = document.querySelector('.ccp');
+    onceSeen(ccp, function(){
+      var tl = AN.createTimeline({defaults:{ease:'outQuad'}});
+      tl.add(ccp.querySelectorAll('.ccp-row'), {opacity:[0,1], translateY:[7,0], duration:400, delay:AN.stagger(48)}, 0);
+      tl.add(ccp.querySelectorAll('.ccp-acts span'), {opacity:[0,1], duration:360, delay:AN.stagger(60)}, 620);
+    });
+
+    // 4: photos stage, then the media selector drops, then the lens answers.
+    var duo = document.querySelector('.duo');
+    onceSeen(duo, function(){
+      var tl = AN.createTimeline({defaults:{ease:'outQuad'}});
+      tl.add(duo.querySelectorAll('.pf-th'), {opacity:[0,1], scale:[.86,1], duration:420, delay:AN.stagger(90)}, 0);
+      tl.add(duo.querySelector('.pf-menu'), {opacity:[0,1], translateY:[-8,0], duration:380}, 320);
+      tl.add(duo.querySelector('.lf-body span'), {opacity:[0,1], duration:520}, 640);
+    });
+
+    // 8: the three query steps land in order, because the order is the point.
+    var qflow = document.querySelector('.qflow');
+    onceSeen(qflow, function(){
+      AN.animate(qflow.querySelectorAll('.qf'),
+        {opacity:[0,1], translateY:[14,0], duration:520, delay:AN.stagger(140), ease:'outQuad'});
+    });
+
+    // Failsafe: these pre-states hide real content, so a thrown timeline or an
+    // observer that never fires must not leave the section blank. Anything still
+    // transparent after 6s is forced back to rest.
+    setTimeout(function(){
+      animTargets.forEach(function(sel){
+        Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function(el){
+          if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+            el.style.opacity = 1; el.style.transform = 'none';
+          }
+        });
+      });
+    }, 6000);
   }
 
   // ── client-side search (zero deps) ──
