@@ -12,12 +12,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COS Control for macOS | Run the COS Glasses server from the menu bar | GotCOS</title>
-<meta name="description" content="COS Control runs the COS Glasses server as a native macOS app. Start, stop, update, diagnose, and recover it from the menu bar. Same open-source server, no terminal after setup.">
+<meta name="description" content="COS Control runs the COS Glasses server as a native macOS app. Monitor local transcription, keep replies working in the background, recover meetings, and update safely from the menu bar.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://www.gotcos.com/control/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="COS Control for macOS. Your glasses server, under control.">
-<meta property="og:description" content="A native macOS menu-bar app that owns, updates, diagnoses, and recovers the COS Glasses server. Same open-source runtime, no terminal after setup.">
+<meta property="og:description" content="A native macOS menu-bar app for local transcription, background replies, meeting recovery, safe updates, rollback, and truthful server diagnostics.">
 <meta property="og:url" content="https://www.gotcos.com/control/">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
 <meta property="og:image:width" content="1200">
@@ -42,7 +42,7 @@
   "softwareVersion": "0.3.7",
   "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.7.zip",
   "url": "https://www.gotcos.com/control/",
-  "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Durable startup, safe updates, rollback, health, and diagnostics without changing how the glasses work.",
+  "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
   "isAccessibleForFree": true,
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
@@ -112,7 +112,7 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}.hero-grid>*{min-width:0}
 
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 em{display:block;color:var(--gold);font-weight:400}
@@ -123,7 +123,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 e
 .proofgrid{display:grid;grid-template-columns:repeat(3,1fr)}
 .proofitem{padding:24px clamp(18px,3vw,34px);border-right:1px solid var(--line2)}.proofitem:last-child{border-right:0}
 .proofitem b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:500;color:var(--gold);line-height:1.1}.proofitem span{display:block;margin-top:6px;color:var(--muted);font-size:.82rem}
-.rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
+.rig{position:relative;width:100%;min-width:0;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
 .rig::before,.rig::after{content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,110,.12);border-radius:21px;pointer-events:none}.rig::after{inset:12px;border-color:rgba(135,168,189,.1);border-radius:16px}
 .rig-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 16px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
 .rig-top b{color:var(--gold);font-weight:500}.lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:7px}
@@ -203,11 +203,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 /* ── COS Control (/control) ── */
 .cc .rig-top b{color:var(--fg)}
-.cc-panel{position:relative;z-index:2;display:grid;gap:0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:rgba(7,5,4,.42)}
-.cc-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 16px;border-bottom:1px solid var(--line2)}
+.cc-panel{position:relative;z-index:2;display:grid;min-width:0;gap:0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:rgba(7,5,4,.42)}
+.cc-row{display:flex;min-width:0;justify-content:space-between;align-items:center;gap:18px;padding:13px 16px;border-bottom:1px solid var(--line2)}
 .cc-row:last-child{border-bottom:0}
-.cc-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)}
-.cc-v{font-size:.9rem;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums;text-align:right}
+.cc-k{flex:1 1 44%;min-width:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)}
+.cc-v{flex:1 1 52%;min-width:0;font-size:.9rem;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
 .cc-v.ok{color:var(--green)}
 .cc-v.warn{color:var(--gold)}
 .cc-v.dir{font-family:var(--mono);font-size:.75rem;font-weight:400;color:var(--muted)}
@@ -257,6 +257,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .gk figcaption{margin-top:14px;text-align:center;font-family:var(--display);font-style:italic;font-size:.92rem;color:#795c2d}
 @media(max-width:540px){.gk-row{flex-wrap:wrap}.gk-btn{margin-top:2px}}
 @media(max-width:760px){.paths{grid-template-columns:1fr}.cc-actions{grid-template-columns:1fr}.insteps li{grid-template-columns:44px 1fr;padding:20px 17px}}
+@media(max-width:430px){.cc.rig{padding:14px}.cc-row{gap:10px;padding:11px 12px}.cc-k{font-size:.56rem}.cc-v{font-size:.8rem}.rig-caption{padding-inline:2px}}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
 <!-- Start of HubSpot Embed Code -->
@@ -350,7 +351,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="hero-grid wrap">
     <div class="reveal">
       <h1>Your glasses server, <em>under control.</em></h1>
-      <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Start, stop, update, diagnose, and recover it from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
+      <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Monitor local transcription, keep accepted replies working in the background, recover meeting captures, and update safely from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
         <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.3.7.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
@@ -358,18 +359,20 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <p class="byline">v0.3.7 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: server healthy on 6.21.5, background jobs on, Balanced tier, Small.en prompt preview ready, Large-v3-Turbo live commit ready, Large-v3 polish ready, agent CLIs connected with versions, managed install, project at your Documents folder.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.21.6 with verified ownership and scheduled recovery, background jobs allowed, Local Whisper ready, Max transcription tier, Large-v3-Turbo preview, Large-v3 live commit and polish, meeting sync idle, and Claude, Codex, and Cursor connected.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Healthy &middot; 6.21.5</b></div>
-        <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">On</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Managed &middot; 6.21.6</b></div>
+        <div class="cc-row"><span class="cc-k">Ownership</span><b class="cc-v ok">Verified direct PID</b></div>
+        <div class="cc-row"><span class="cc-k">Recovery</span><b class="cc-v ok">Scheduled</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
-        <div class="cc-row"><span class="cc-k">Tier</span><b class="cc-v ok">Balanced</b></div>
-        <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Small.en</b></div>
-        <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3-Turbo</b></div>
+        <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">Allowed</b></div>
+        <div class="cc-row"><span class="cc-k">Transcription tier</span><b class="cc-v ok">Max</b></div>
+        <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Large-v3-Turbo</b></div>
+        <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3</b></div>
         <div class="cc-row"><span class="cc-k">Polish, on save</span><b class="cc-v ok">Large-v3</b></div>
+        <div class="cc-row"><span class="cc-k">Meeting sync</span><b class="cc-v ok">Idle</b></div>
         <div class="cc-row"><span class="cc-k">Agent CLIs</span><b class="cc-v ok">Claude &middot; Codex &middot; Cursor</b></div>
-        <div class="cc-row"><span class="cc-k">Install</span><b class="cc-v">Managed</b></div>
         <div class="cc-row"><span class="cc-k">Project</span><b class="cc-v dir">~/Documents/COS</b></div>
       </div>
       <div class="cc-actions" aria-hidden="true">
@@ -378,7 +381,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <span class="cc-act">Run Doctor</span>
         <span class="cc-act">Restart Safely</span>
       </div>
-      <p class="rig-caption">Live status in the menu bar. <strong>Doctor, safe restart, rollback.</strong> Browse today's glasses turns and copy a handoff into any chat.</p>
+      <p class="rig-caption">See what is actually running. <strong>Models, jobs, recordings, recovery, and agent CLIs.</strong> Browse today's glasses turns and copy a handoff into any chat.</p>
     </div>
   </div>
 </header>
@@ -390,19 +393,20 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="sticky reveal">
         <h2>The server appliance COS was missing.</h2>
         <p class="dek">Same server. A native controller around it.</p>
-        <p class="intro">COS Control wraps <code>@gotcos/glasses-server</code> in a small Mac app that adds durable startup, safe updates, rollback, clear health, and real diagnostics, without changing how the glasses work.</p>
+        <p class="intro">COS Control wraps <code>@gotcos/glasses-server</code> in a small Mac app that adds durable startup, background work, local transcription controls, meeting recovery, safe updates, rollback, and diagnostics that report the system you are actually running.</p>
       </div>
       <div class="prose">
         <div class="anatomy cc-anatomy">
-          <div class="part reveal"><h3>One owner, no fights</h3><p>A managed LaunchAgent owns the server. COS Control will not race a terminal process or seize a port it does not recognize.</p></div>
-          <div class="part reveal"><h3>Safe by default</h3><p>Restart is blocked while a recording or job is live. Updates stage a new immutable generation, then switch, so a bad update rolls back clean.</p></div>
-          <div class="part reveal"><h3>Background jobs, one policy</h3><p>Keep accepted replies running on your Mac while you browse, lock the phone, or close COS. One machine-wide switch controls every connected device. Apply drains active work, restarts safely, verifies the server capability, and rolls back if proof fails.</p></div>
+          <div class="part reveal"><h3>Verified ownership, scheduled recovery</h3><p>A managed LaunchAgent owns one verified server process. COS Control will not race a terminal process or seize a port it does not recognize. Scheduled recovery brings the service back without creating a second owner.</p></div>
+          <div class="part reveal"><h3>Safe updates with proof</h3><p>Restart is blocked while a recording or job is live. Updates stage an immutable generation, verify the server and agent paths, then switch. If proof fails, the prior verified generation is restored.</p></div>
+          <div class="part reveal"><h3>Replies that survive the phone</h3><p>Accepted replies can keep running on your Mac while you browse, lock the phone, or close COS. One machine-wide Background jobs switch controls every connected device. Applying a change drains active work, restarts safely, verifies the capability, and rolls back if proof fails.</p></div>
+          <div class="part reveal"><h3>Fast preview, authoritative transcript</h3><p>Choose Balanced or Max and see the effective model for every lane. A low-latency preview shows what COS hears while you dictate. The authoritative live commit replaces it, and saved meetings receive full local polish. Canonical work always gets priority over provisional preview.</p></div>
+          <div class="part reveal"><h3>Meeting safety you can see</h3><p>Control reports active recordings, HQ polish, retained batches, and unsaved captures instead of hiding them behind a generic healthy light. Restarts stay locked while durable work is active, and recoverable captures remain visible before retention expires.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
-          <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root &mdash; the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
-          <div class="part reveal"><h3>Meetings Library</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree (the folder that contains <code>quilt/meetings</code>, <code>personal/meetings</code>, and the rest) so G2 Review Meetings reads your real meeting markdown. Leave it unset for standalone local recordings only. Different COS layouts are expected &mdash; set the path that fits your machine.</p></div>
+          <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root: the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
+          <div class="part reveal"><h3>Meetings Library and sync</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree so G2 Review Meetings reads your real meeting markdown. Control reports whether meeting sync is idle, polishing, or retaining a batch that needs attention. Leave the path unset for standalone local recordings only.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, with their photo context</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today, restores validated photo thumbnails, and opens a full local preview. Copy a text-only handoff, or explicitly choose <strong>Copy + images</strong> to bring up to five local images into another chat. Images remain on your Mac, and old privacy eras fail closed.</p></div>
-          <div class="part reveal"><h3>Your speed / quality choice</h3><p>Guided Setup offers Balanced or Max. Balanced keeps Small.en prompt previews fast while Turbo commits the authoritative live transcript. Max uses Turbo for low-latency provisional preview while Large-v3 remains authoritative for commit and polish. Canonical transcription always gets priority. Control applies the choice transactionally, reports the model actually running, and restores the prior tier if verification fails.</p></div>
-          <div class="part reveal"><h3>Real CLI versions</h3><p>The Agent CLIs caption shows Claude, Codex, and Cursor versions for support. Cursor's build comes from Control's local probe even when server health only says “About Cursor CLI.”</p></div>
+          <div class="part reveal"><h3>Real agent readiness</h3><p>Control checks Claude, Codex, and Cursor separately, shows their actual local versions, and distinguishes connected, available but untested, and failed states. That gives support something concrete to debug instead of a generic server health result.</p></div>
         </div>
       </div>
     </div>
@@ -450,7 +454,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
         <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
         <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>Choose Balanced (recommended) or Max. COS Control checks <code>whisper.cpp</code>, verifies free disk space, and provisions the selected local models without interrupting the running server. When it finishes, Install or Update Server if offered, then Apply the tier for a verified restart. Then use the <a href="/wizard/#tune">setup wizard profile step</a> to add names and specialist terms; factory placeholders are ignored.</p></div></li>
-        <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>In the menu-bar panel under Tools: set <strong>Work Folder</strong> to your COS project (agent workspace), and set <strong>Meetings Library</strong> to that project&rsquo;s <code>operations/</code> folder if you use COS meeting markdown on G2. Paths differ per install &mdash; pick what matches your machine.</p></div></li>
+        <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>In the menu-bar panel under Tools: set <strong>Work Folder</strong> to your COS project (agent workspace), and set <strong>Meetings Library</strong> to that project&rsquo;s <code>operations/</code> folder if you use COS meeting markdown on G2. Paths differ per install. Pick what matches your machine.</p></div></li>
       </ol>
       <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
       <figure class="gk reveal">
