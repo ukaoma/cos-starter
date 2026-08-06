@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.4.0",
-      "build": 32,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.4.0.zip",
-      "sha256": "c87911223fc7323676dc6c33773ab14d2425bb8fd84f49fbe4ea1c242bb02175",
+      "version": "0.5.0",
+      "build": 37,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.0.zip",
+      "sha256": "f16642944947530ab9c3cc2f55a9e582d67863847800e73622e6de8995e844c6",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.14",
-      "publishedAt": "2026-08-06T05:19:58Z",
-      "notes": "Control 0.4.0 build 32 reviews who spoke in a saved meeting. Each voice shows two or three of its own verbatim lines with timestamps, because a similarity score cannot tell you who someone is and a sentence you remember can. A voice that swaps labels with another every few segments is marked unreliable rather than named, and a wrong one can be folded into the right person after a preview showing the measured voice similarity. Needs glasses-server 6.21.14 or newer."
+      "serverTarget": "6.21.18",
+      "publishedAt": "2026-08-06T23:19:04Z",
+      "notes": "COS Control 0.5.0 build 37 makes correcting a speaker a per-meeting act. Renaming a voice now fixes the meeting on screen by default instead of folding two profiles together across your whole history; \"Every meeting\" is still there as an explicit choice. \"Not in this meeting\" removes a voice that was never in the room. Each quoted line has a play button so you can hear the segment before deciding, and meeting audio is kept for a week. A name below the confidence floor now reads \"Unidentified voice\" with the closest match and why it did not qualify, rather than asserting somebody's name on one weak segment. The ribbon is a real timeline with hover and a legend. Supersedes builds 33-36, which were never published. Needs glasses-server 6.21.18 or newer \u2014 use Update Server. Update to server 6.21.19 when available for playback on meetings recorded before the upgrade."
     }
   },
   "killSwitch": {
