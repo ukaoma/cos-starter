@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.3.8",
-      "build": 30,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.3.8.zip",
-      "sha256": "029a8a5fb5d4fae68ec57cdae46b26867879425f3a26bc0f6299498bf1e4fd0b",
+      "version": "0.4.0",
+      "build": 32,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.4.0.zip",
+      "sha256": "c87911223fc7323676dc6c33773ab14d2425bb8fd84f49fbe4ea1c242bb02175",
       "minMacOS": "14.0",
-      "serverTarget": "latest",
-      "publishedAt": "2026-08-05T18:55:57Z",
-      "notes": "Control 0.3.8 build 30 adds a machine-wide Meeting Turbo preview switch for glasses-server 6.21.7+. It persists the canary through managed updates, verifies the replacement launchd process loaded it, and preserves canonical Large-v3 speaker attribution."
+      "serverTarget": "6.21.14",
+      "publishedAt": "2026-08-06T05:19:58Z",
+      "notes": "Control 0.4.0 build 32 reviews who spoke in a saved meeting. Each voice shows two or three of its own verbatim lines with timestamps, because a similarity score cannot tell you who someone is and a sentence you remember can. A voice that swaps labels with another every few segments is marked unreliable rather than named, and a wrong one can be folded into the right person after a preview showing the measured voice similarity. Needs glasses-server 6.21.14 or newer."
     }
   },
   "killSwitch": {
