@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.2",
-      "build": 39,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.2.zip",
-      "sha256": "16f3fdeb9e90c70f1b6f2255b8d47f6e9d33a9a7a0e51006e56caf2f016465a1",
+      "version": "0.5.3",
+      "build": 40,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.3.zip",
+      "sha256": "6dc6ff960c564a6ac031d38ef8cb67687410094c1afced5a2977abb8eebf5c18",
       "minMacOS": "14.0",
       "serverTarget": "6.21.23",
       "publishedAt": "2026-08-06T23:19:04Z",
-      "notes": "You can now name a voice the system never identified. The row used to say \"give it one from the list above\" and then offer no way to do it. Naming one opens the same scope picker and confirmation as any other correction, and the confirmation says how many segments it will label \u2014 an unmatched voice was never established to be one person. Also adds Idle Metal HQ for capable Macs: post-meeting polish runs on the GPU when the machine is idle, measured about six times faster per word. Public default stays CPU; the wearer still cannot be renamed."
+      "notes": "The meeting list now shows 15 recent meetings and scrolls once it needs to, and each row says what is in the meeting: topics, decisions, actions and attendees. It showed 12 before, and the counts were already being sent by your server and thrown away. Also includes Idle Metal HQ for capable Macs and naming a voice the system never identified."
     }
   },
   "killSwitch": {
