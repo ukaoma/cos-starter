@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.4",
-      "build": 41,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.4.zip",
-      "sha256": "dac156d6fa7f57c4200fca1b06c863713fee75e267f83c18b74f0f531b0dc908",
+      "version": "0.5.5",
+      "build": 42,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.5.zip",
+      "sha256": "1052185318ad7180944036d556bb18874d77c2a32a5342ab43878bc93e700748",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.25",
-      "publishedAt": "2026-08-06T23:19:04Z",
-      "notes": "You can now finish naming a voice. Typing a name and choosing a scope had no way to save it: the only way to commit was clicking a suggested profile, and often no suggestion could appear. Two fixes \u2014 confirm a name the system proposed but was not confident enough to show, and use a name that belongs to someone not yet enrolled. A confirmed voice keeps its caveats: if it swaps with another speaker, it still says so. Needs server 6.21.25."
+      "serverTarget": "6.21.26",
+      "publishedAt": "2026-08-07T16:35:00Z",
+      "notes": "The speaker sheet now tells you how much of a meeting carries a name. The header showed only segments and voices, and the only coverage signal was a boolean that goes false when NOTHING was identified - so a meeting where 295 of 299 chunks matched nobody looked normally attributed. It counts segments whose row is actually shown with a name, not chunks carrying a name-shaped label. Needs glasses-server 6.21.26; against an older server the line is omitted rather than shown as zero."
     }
   },
   "killSwitch": {
