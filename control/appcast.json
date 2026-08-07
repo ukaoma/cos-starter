@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.5",
-      "build": 42,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.5.zip",
-      "sha256": "1052185318ad7180944036d556bb18874d77c2a32a5342ab43878bc93e700748",
+      "version": "0.5.6",
+      "build": 43,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.6.zip",
+      "sha256": "17f5f19aa10129c432e8ffdc9a1a66559ac5bfe81f2598dfa8c7d7f5fd921765",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.26",
-      "publishedAt": "2026-08-07T16:35:00Z",
-      "notes": "The speaker sheet now tells you how much of a meeting carries a name. The header showed only segments and voices, and the only coverage signal was a boolean that goes false when NOTHING was identified - so a meeting where 295 of 299 chunks matched nobody looked normally attributed. It counts segments whose row is actually shown with a name, not chunks carrying a name-shaped label. Needs glasses-server 6.21.26; against an older server the line is omitted rather than shown as zero."
+      "serverTarget": "6.21.27",
+      "publishedAt": "2026-08-07T17:05:00Z",
+      "notes": "Talk time per voice in the speaker sheet: minutes and share of voice beside each row, shown only where the panel actually names the voice. Shares are a share of named speech and total 100%. Below 60% identified the header says so instead of drawing shares, because unattributed is routinely the largest slice and a percentage there invites reading the missing majority as a person. Needs glasses-server 6.21.27; older servers omit the numbers rather than showing zeros."
     }
   },
   "killSwitch": {
