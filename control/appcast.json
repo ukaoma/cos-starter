@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.3",
-      "build": 40,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.3.zip",
-      "sha256": "6dc6ff960c564a6ac031d38ef8cb67687410094c1afced5a2977abb8eebf5c18",
+      "version": "0.5.4",
+      "build": 41,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.4.zip",
+      "sha256": "dac156d6fa7f57c4200fca1b06c863713fee75e267f83c18b74f0f531b0dc908",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.23",
+      "serverTarget": "6.21.25",
       "publishedAt": "2026-08-06T23:19:04Z",
-      "notes": "The meeting list now shows 15 recent meetings and scrolls once it needs to, and each row says what is in the meeting: topics, decisions, actions and attendees. It showed 12 before, and the counts were already being sent by your server and thrown away. Also includes Idle Metal HQ for capable Macs and naming a voice the system never identified."
+      "notes": "You can now finish naming a voice. Typing a name and choosing a scope had no way to save it: the only way to commit was clicking a suggested profile, and often no suggestion could appear. Two fixes \u2014 confirm a name the system proposed but was not confident enough to show, and use a name that belongs to someone not yet enrolled. A confirmed voice keeps its caveats: if it swaps with another speaker, it still says so. Needs server 6.21.25."
     }
   },
   "killSwitch": {
