@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.6",
-      "build": 43,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.6.zip",
-      "sha256": "17f5f19aa10129c432e8ffdc9a1a66559ac5bfe81f2598dfa8c7d7f5fd921765",
+      "version": "0.5.9",
+      "build": 47,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.9.zip",
+      "sha256": "ff4d93da3413b55e9651a8eaeb968c0275c2b348df26494f9e51fd553b9a5e63",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.27",
-      "publishedAt": "2026-08-07T17:05:00Z",
-      "notes": "Talk time per voice in the speaker sheet: minutes and share of voice beside each row, shown only where the panel actually names the voice. Shares are a share of named speech and total 100%. Below 60% identified the header says so instead of drawing shares, because unattributed is routinely the largest slice and a percentage there invites reading the missing majority as a person. Needs glasses-server 6.21.27; older servers omit the numbers rather than showing zeros."
+      "serverTarget": "6.21.30",
+      "publishedAt": "2026-08-08T03:00:00Z",
+      "notes": "The meeting write-up, with two copy buttons: a compact form for pasting into a message and a full form with the speaker-labelled transcript. Per-voice talk time and share of identified speech, hidden below 60% identified because a share of a small identified slice reads more precise than it is. Names say how they were established: by wearing the device, by voice match, or because you named that voice. Personal meetings are marked before the content. And when you remove a voice from a meeting, the panel now says so above the write-up, because the write-up was generated earlier and may still use the name. Needs glasses-server 6.21.30; older servers omit the newer fields rather than showing zeros."
     }
   },
   "killSwitch": {
