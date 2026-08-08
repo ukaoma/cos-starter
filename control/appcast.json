@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.9",
-      "build": 47,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.9.zip",
-      "sha256": "ff4d93da3413b55e9651a8eaeb968c0275c2b348df26494f9e51fd553b9a5e63",
+      "version": "0.5.10",
+      "build": 48,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.10.zip",
+      "sha256": "cafb0257c4ae5d081f67b7e9fd7f899a4673a791f5915544e1d12308bee4db18",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.30",
-      "publishedAt": "2026-08-08T03:00:00Z",
-      "notes": "The meeting write-up, with two copy buttons: a compact form for pasting into a message and a full form with the speaker-labelled transcript. Per-voice talk time and share of identified speech, hidden below 60% identified because a share of a small identified slice reads more precise than it is. Names say how they were established: by wearing the device, by voice match, or because you named that voice. Personal meetings are marked before the content. And when you remove a voice from a meeting, the panel now says so above the write-up, because the write-up was generated earlier and may still use the name. Needs glasses-server 6.21.30; older servers omit the newer fields rather than showing zeros."
+      "serverTarget": "6.21.31",
+      "publishedAt": "2026-08-08T22:00:00Z",
+      "notes": "Your domains, not ours. The Meetings Library picker used to require folders named after one person's business units, so nobody else could point it anywhere. Any subfolder holding a meetings/ folder now counts, whatever it is called, spaces included, and when a folder will not work the message says which of the three reasons applies instead of leaving you guessing. A fresh COS starts with two domains, personal and business, and files each meeting by what was said in it. Set your own in .cos-profile.json. Needs glasses-server 6.21.31."
     }
   },
   "killSwitch": {
