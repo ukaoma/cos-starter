@@ -39,8 +39,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.10",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.10.zip",
+  "softwareVersion": "0.5.11",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.11.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -353,22 +353,23 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses server, <em>under control.</em></h1>
       <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Monitor local transcription, keep accepted replies working in the background, recover meeting captures, and update safely from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.10.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.11.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.5.10 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.11 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.21.31 with verified ownership and scheduled recovery, background jobs allowed, Meeting Turbo preview on, Idle Metal HQ on and preemptible, Local Whisper ready, Max transcription tier, Large-v3-Turbo dictation preview, Large-v3 canonical live commit and polish, meeting sync idle, early meeting sync verified, HQ prefill reporting sealed windows and thread policy, and Claude, Codex, and Cursor connected.">
+    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.21.32 with verified ownership and scheduled recovery, background jobs allowed, Meeting Turbo preview on, Idle Metal HQ on and preemptible, Adaptive replay off, Local Whisper ready, Max transcription tier, Large-v3-Turbo dictation preview, Large-v3 canonical live commit and polish, meeting sync idle, early meeting sync verified, HQ prefill reporting sealed windows and thread policy, and Claude, Codex, and Cursor connected.">
       <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
       <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Managed &middot; 6.21.31</b></div>
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Managed &middot; 6.21.32</b></div>
         <div class="cc-row"><span class="cc-k">Ownership</span><b class="cc-v ok">Verified direct PID</b></div>
         <div class="cc-row"><span class="cc-k">Recovery</span><b class="cc-v ok">Scheduled</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
         <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">Allowed</b></div>
         <div class="cc-row"><span class="cc-k">Meeting preview</span><b class="cc-v ok">Turbo &middot; On</b></div>
         <div class="cc-row"><span class="cc-k">Idle Metal HQ</span><b class="cc-v ok">On &middot; preemptible</b></div>
+        <div class="cc-row"><span class="cc-k">Adaptive replay</span><b class="cc-v ok">Off &middot; raw preserved</b></div>
         <div class="cc-row"><span class="cc-k">Transcription tier</span><b class="cc-v ok">Max</b></div>
         <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Large-v3-Turbo</b></div>
         <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3</b></div>
@@ -407,6 +408,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>Live meetings without the six-second wait</h3><p>Meeting Turbo preview renders provisional text from the still-open phrase, then gives way to the canonical speaker-attributed Large-v3 transcript. The machine-wide switch is default-off, persists through managed updates, and can be disabled immediately without touching saved audio, recovery, or polish.</p></div>
           <div class="part reveal"><h3>Fast preview, authoritative transcript</h3><p>Choose Balanced or Max and see the effective model for every lane. A low-latency preview shows what COS hears while you dictate. The authoritative live commit replaces it, and saved meetings receive full local polish. Canonical work always gets priority over provisional preview.</p></div>
           <div class="part reveal"><h3>Meeting safety you can see</h3><p>Control reports active recordings, HQ polish, retained batches, and unsaved captures instead of hiding them behind a generic healthy light. Restarts stay locked while durable work is active, and recoverable captures remain visible before retention expires.</p></div>
+          <div class="part reveal"><h3>Cleaner review audio, raw always preserved</h3><p>An optional, default-off Adaptive replay switch cleans retained audio only after you press Play. The immutable raw WAV stays authoritative and remains an exact bypass. Live recording and transcription preempt cleanup, and failed cleanup immediately falls back to raw playback.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root: the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Meetings Library and sync</h3><p><strong>Meetings Library</strong> is separate. Point it at your COS <code>operations/</code> tree so G2 Review Meetings reads your real meeting markdown. Control reports whether meeting sync is idle, polishing, or retaining a batch that needs attention. Leave the path unset for standalone local recordings only.</p></div>
@@ -430,12 +432,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.10.zip" download>Download v0.5.10</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.11.zip" download>Download v0.5.11</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.10.zip</code></div>
-            <p class="sha">SHA-256<br>cafb0257c4ae5d081f67b7e9fd7f899a4673a791f5915544e1d12308bee4db18</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.11.zip</code></div>
+            <p class="sha">SHA-256<br>8f2e0e7625e9b5e1e52ad6740be283d2eeab4f385e181cba913392b3733d4d73</p>
           </details>
         </div>
         <div class="path reveal">
@@ -483,10 +485,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.10.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.11.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.10 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.11 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

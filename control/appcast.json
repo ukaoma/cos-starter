@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.10",
-      "build": 48,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.10.zip",
-      "sha256": "cafb0257c4ae5d081f67b7e9fd7f899a4673a791f5915544e1d12308bee4db18",
+      "version": "0.5.11",
+      "build": 49,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.11.zip",
+      "sha256": "8f2e0e7625e9b5e1e52ad6740be283d2eeab4f385e181cba913392b3733d4d73",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.31",
-      "publishedAt": "2026-08-08T22:00:00Z",
-      "notes": "Your domains, not ours. The Meetings Library picker used to require folders named after one person's business units, so nobody else could point it anywhere. Any subfolder holding a meetings/ folder now counts, whatever it is called, spaces included, and when a folder will not work the message says which of the three reasons applies instead of leaving you guessing. A fresh COS starts with two domains, personal and business, and files each meeting by what was said in it. Set your own in .cos-profile.json. Needs glasses-server 6.21.31."
+      "serverTarget": "6.21.32",
+      "publishedAt": "2026-08-08T23:26:00Z",
+      "notes": "Adaptive review-audio cleanup is now visible, reversible, and off by default. When enabled, pressing Play may create a temporary replay-only cleanup copy while the immutable raw WAV remains the source of truth. Raw playback is always available, live capture and transcription preempt cleanup, and Stop or closing review cancels pending playback. Activation proves the selected server capability and rolls back automatically if verification fails. Needs glasses-server 6.21.32."
     }
   },
   "killSwitch": {
