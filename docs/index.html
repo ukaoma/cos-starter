@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.8.316 (build 316) · server @gotcos/glasses-server 6.21.33 · COS Control 0.5.12.
+  Covers COS Glasses 6.8.316 (build 316) · server @gotcos/glasses-server 6.21.33 · COS Control 0.5.13.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -653,7 +653,7 @@ footer .links a:hover{color:var(--gold)}
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Latest release package &mdash; build 316.</strong> Review Meetings now preserves direct read-only library references without inventing a multi-domain operations path. It retains the proven setup, durable jobs, queue editing, meeting recovery, diagnostics, live transcription, and Local/OpenAI speech controls from prior builds.</p>
+    <p><strong>Latest release package &mdash; build 316.</strong> Review Meetings now preserves direct read-only library references without inventing a different filesystem path. It retains the proven setup, durable jobs, queue editing, meeting recovery, diagnostics, live transcription, and Local/OpenAI speech controls from prior builds.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -693,7 +693,7 @@ footer .links a:hover{color:var(--gold)}
     <div><h3>Recording-safe controls</h3><p>Restart is blocked while meetings or jobs are active. Updates stage a complete new generation before switching.</p></div>
     <div><h3>Fast meeting preview</h3><p>Provisional Turbo text appears before the canonical speaker-attributed Large-v3 chunk lands. Introduced default-off in 6.21.7, this is <strong>on by default since server 6.21.22</strong> and app 6.8.315; the committed Large-v3 transcript stays authoritative and still atomically replaces the provisional line. Control owns the machine-wide switch and applies it with verified restart and rollback.</p></div>
     <div><h3>Adaptive review audio</h3><p>Control 0.5.11 and server 6.21.32 add a default-off canary for retained playback. Pressing Play may create a temporary cleaned replay while the immutable raw WAV remains authoritative and available through an exact bypass. Cleanup never enters live capture, transcription, speaker attribution, save, HQ polish, or meeting sync. Live work preempts it, a busy or failed worker returns raw immediately, and Control rolls back if activation proof fails.</p></div>
-    <div><h3>Use the meetings you already have</h3><p>Control 0.5.12 and server 6.21.33 accept either a direct library containing <code>YYYY-MM/*.md</code>, or a multi-domain operations tree containing <code>&lt;domain&gt;/meetings/YYYY-MM/*.md</code>. Direct libraries are browse-only. Multi-domain roots retain sync, enrichment, new G2 output, and speaker edits. Control explains malformed layouts and lets setup continue without one.</p></div>
+    <div><h3>Use the meetings you already have</h3><p>Control 0.5.13 and server 6.21.33 make the common case one click: choose the folder that already contains <code>YYYY-MM/*.md</code>. COS browses it in place. If you already keep several libraries, choose their parent; every child name is customizable and only needs <code>meetings/YYYY-MM/*.md</code> inside. Control explains an incomplete selection and lets setup continue without one.</p></div>
     <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
   </div>
   </div>
@@ -998,7 +998,8 @@ footer .links a:hover{color:var(--gold)}
       <p style="font-size:.95rem">A saved meeting is also the starting point for a new question. Open it in <strong>Review Meetings</strong> and double-tap an idle meeting to record a voice follow-up with that exact meeting attached as context. A compact <span class="g-key">Meeting context attached</span> indicator replaces the usual message-reference label, and the finished answer is stamped with the meeting so you can see what it was grounded in, both on the lens and in phone message review.</p>
       <p style="font-size:.95rem">The grounding is the real record, not a summary. The paired server hands the Mac agent a bounded, UTF-8-safe copy of the canonical meeting so it can read the full transcript for decisions, outcomes, sentiment, details, or related topics. This needs server <strong>6.12.7</strong>: an older server fails closed for this one action with a truthful update-server message, and COS never silently sends an ungrounded meeting question. A follow-up you queue or recover re-fetches the exact meeting before it runs, and survives the automatic post-meeting rename.</p>
       <h3>Connect an existing meeting library</h3>
-      <p style="font-size:.95rem">In COS Control, choose <strong>Meetings Library</strong>. If one folder already holds all of your meetings, choose the folder whose immediate children are months, such as <code>meetings/2026-08/*.md</code>. COS browses it without moving, renaming, or rewriting anything. For multiple domains, choose the operations root whose domain folders each contain <code>meetings/YYYY-MM/*.md</code>. Names such as <code>academic</code>, <code>clinical</code>, and <code>committee</code> are valid; they do not need to match another user's COS.</p>
+      <p style="font-size:.95rem">In COS Control, choose <strong>Meetings Library</strong>. The recommended choice is the folder you already use: its immediate children are months such as <code>2026-08</code>, containing Markdown meetings. COS browses it without moving, renaming, or rewriting anything. If you already organize meetings into several libraries, choose their parent instead; each custom-named folder only needs <code>meetings/YYYY-MM/*.md</code> inside.</p>
+      <p style="font-size:.95rem"><strong>Your COS role never determines these names.</strong> The same setup works for executives, marketers, engineers, product and people leaders, attorneys, chiefs of staff, clinicians, and other roles. The Blueprint adapts COS behavior to the person; your existing filesystem remains yours.</p>
       <p style="font-size:.95rem">A direct library can coexist with a separate operations pipeline. Review Meetings merges direct, enriched, and standalone G2 records, then prefers the enriched writable copy when the same session exists more than once. Direct-only records show as read-only for speaker edits. If the picker finds an incomplete shape, it names both valid layouts and offers Choose Again or Skip for Now.</p>
     </div>
     <div>
@@ -1265,7 +1266,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux; newer compatible Node majors are fine. Build 316 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.33 for direct or multi-domain meeting libraries, optional local Kokoro speech, selectable local transcription tiers, and retained-audio replay on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux; newer compatible Node majors are fine. Build 316 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.33 for a direct meeting folder or several custom-named libraries, optional local Kokoro speech, selectable local transcription tiers, and retained-audio replay on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>

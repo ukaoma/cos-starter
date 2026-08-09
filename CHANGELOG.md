@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.6 - 2026-08-08
+
+### Changed
+- COS Control 0.5.13 makes an existing month-based meeting folder the
+  recommended one-click setup instead of leading with COS-specific structure.
+- Multiple libraries remain optional and accept any safe user-chosen folder
+  names when each contains `meetings/YYYY-MM/*.md`.
+- The Control page, docs, and wizard now separate role personalization from
+  filesystem organization. Blueprint roles shape COS behavior, never folder
+  names.
+
 ## 0.4.5 - 2026-08-08
 
 ### Changed
