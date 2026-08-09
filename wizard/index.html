@@ -503,7 +503,7 @@
       <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
       <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
       <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
-      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Memory</span><h3>Semantic memory</h3><p>Search everything you've captured by meaning.</p></button>
+      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">COS Data</span><h3>Memory and Threads</h3><p>Browse stored context and ongoing work by stable ID.</p></button>
       <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
     </div>
     <div class="note"><strong>Your role is not your folder structure.</strong> Executive, marketer, engineer, product lead, people lead, attorney, chief of staff, clinician, or something else: the Blueprint personalizes how COS works, never what your folders must be called. For the easiest setup, choose the folder that directly contains <code>YYYY-MM/*.md</code>. Organize several libraries only if you already work that way; their names are entirely yours.</div>
@@ -891,7 +891,7 @@
 
   var UC_LABEL = { meetings:'meetings', capture:'quick capture', assistant:'always-on', comms:'comms', dev:'dev', field:'field' };
   var MODEL_LABEL = { opus:'Opus', fable:'Fable', sonnet:'Sonnet', 'codex-frontier':'GPT Frontier', 'codex-balanced':'GPT Balanced' };
-  var CTX_LABEL = { calendar:'Calendar', email:'Email', slack:'Slack', meetingtools:'Meeting tools', vector:'Semantic memory', mcp:'Custom MCPs' };
+  var CTX_LABEL = { calendar:'Calendar', email:'Email', slack:'Slack', meetingtools:'Meeting tools', vector:'Memory and Threads', mcp:'Custom MCPs' };
   var HUD_LABEL = { minimal:'Minimal', meeting:'Meeting mode', glance:'Glance', adaptive:'Adaptive' };
 
   function recModel() { return state.useCases.has('dev') ? 'codex-frontier' : 'sonnet'; }
@@ -1027,8 +1027,9 @@
     else if (state.transcriptionTier === 'max') li.push('Run the generated setup command for Max local voice: Large-v3 preview + commit, Large-v3 polish, with Turbo retained as the safe fallback.');
     else li.push('Run the generated setup command for Balanced local voice: Small.en preview, Turbo commit, Large-v3 polish.');
     if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
-    if (ctx.length) li.push('Wire <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> as MCP connections in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
-    else li.push('Add context sources anytime via MCP in your COS folder.');
+    if (ctx.length) li.push('Connect <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
+    if (ctx.indexOf('vector') >= 0) li.push('In <b>COS Control</b>, choose <b>COS Data</b>, then select your COS workspace or its <code>operations/scripts</code> folder. Control validates the local bridge without creating or changing stored data. Memory additionally needs an existing local <code>cos_memory</code> Qdrant collection; Threads use the workspace thread cache and manual store. An existing empty store is healthy. A missing collection, setup issue, or required workspace update is shown separately.');
+    else if (!ctx.length) li.push('Add context sources anytime via MCP in your COS folder.');
     li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }

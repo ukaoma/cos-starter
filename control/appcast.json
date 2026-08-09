@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.13",
-      "build": 51,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.13.zip",
-      "sha256": "77075d4a35653ccd3999faa422fed4b0d0368d321c56eec4dfdb167192efacc6",
+      "version": "0.5.14",
+      "build": 52,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.14.zip",
+      "sha256": "29789358f3188f9e9b1f9f9f5bf9cfa8721cd374c9fc6a55c625902c3c1a7e8a",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.33",
-      "publishedAt": "2026-08-09T01:50:36Z",
-      "notes": "Meeting-library setup now defaults to the folder users already have: choose the folder that directly contains YYYY-MM meeting folders. Multiple libraries remain optional, every folder name is customizable, and COS roles never dictate filesystem names. Existing direct-library safety, operations enrichment, standalone recordings, verification, and rollback remain unchanged. Needs glasses-server 6.21.33."
+      "serverTarget": "6.21.35",
+      "publishedAt": "2026-08-09T15:38:23Z",
+      "notes": "Adds a separate COS Data picker for Memory and Threads. Control validates the selected workspace or operations/scripts folder, Python bridge protocol 1, and authenticated server capability before transactionally persisting COS_SCRIPTS_DIR. Existing empty stores remain healthy; missing, degraded, and outdated dependencies are reported honestly. Work Folder and Meetings Library remain independent. Needs glasses-server 6.21.35."
     }
   },
   "killSwitch": {
