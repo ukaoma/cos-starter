@@ -93,6 +93,16 @@
 
     /* ── Option grid (multi + single select share styling) ── */
     .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    /* Memory/Threads explainer. Two plain cards, no eyebrow labels above the
+       headings — the heading carries it. */
+    .mem-explain { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.2rem 0 0.9rem; }
+    .mem-card { border: 1px solid var(--line); border-radius: 10px; padding: 0.95rem 1.05rem; background: rgba(0,0,0,0.015); }
+    .mem-card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+    .mem-card p { margin: 0; font-size: 0.83rem; line-height: 1.5; color: var(--text-muted); }
+    .mem-eg { margin-top: 0.6rem; }
+    .mem-eg span { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72rem;
+      color: var(--text-muted); background: rgba(0,0,0,0.05); border-radius: 5px; padding: 0.2rem 0.42rem; }
+    @media (max-width: 620px) { .mem-explain { grid-template-columns: 1fr; } }
     .opt-grid.three { grid-template-columns: 1fr 1fr; }
     .opt-grid .opt {
       position: relative; text-align: left; cursor: pointer; padding: 1rem 1.1rem 1rem;
@@ -503,14 +513,51 @@
       <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
       <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
       <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
-      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">COS Data</span><h3>Memory and Threads</h3><p>Browse stored context and ongoing work by stable ID.</p></button>
+      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">COS Data</span><h3>Memory and Threads</h3><p>What you decided, and what is still open. Set up in the next step.</p></button>
       <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
     </div>
     <div class="note"><strong>Your role is not your folder structure.</strong> Executive, marketer, engineer, product lead, people lead, attorney, chief of staff, clinician, or something else: the Blueprint personalizes how COS works, never what your folders must be called. For the easiest setup, choose the folder that directly contains <code>YYYY-MM/*.md</code>. Organize several libraries only if you already work that way; their names are entirely yours.</div>
   </div>
 
-  <!-- Step 5: Compute / voice -->
-  <div class="step" data-step="Step 5 · Compute">
+  <!-- Step 5: Memory and Threads -->
+  <div class="step" data-step="Step 5 · Memory">
+    <h2>What should it remember?</h2>
+    <p class="sub">Two stores, both plain markdown on your own machine, both readable from the lens.</p>
+
+    <div class="mem-explain">
+      <div class="mem-card">
+        <h3>Memory</h3>
+        <p>Individual notes worth keeping: a decision and why, a correction you had to make twice,
+        a fact about a person. One file per note. On the glasses you browse them by type and
+        summary, and double-tap one to ask a follow-up grounded in that exact record.</p>
+        <div class="mem-eg"><span>memory/2026-08-09-pricing-call.md</span></div>
+      </div>
+      <div class="mem-card">
+        <h3>Threads</h3>
+        <p>Work that spans weeks: a launch, a hire, a renewal. One file per thread, appended as it
+        moves, so the whole arc stays in one place instead of scattered across meetings.</p>
+        <div class="mem-eg"><span>threads/website-rebuild.md</span></div>
+      </div>
+    </div>
+
+    <div class="note"><strong>No database required.</strong> Since server 6.22.0 a folder of markdown
+    is a complete setup. Any nesting, any filename, front matter optional. A symlink is followed, so
+    notes that already live somewhere else can stay there &mdash; at any depth on
+    <strong>6.22.1</strong>, top level only on 6.22.0. Add a Python bridge later and the same
+    files become what it indexes &mdash; nothing to migrate, because the files were always the source.</div>
+
+    <h3 style="margin-top:1.2rem;">How do you want to start?</h3>
+    <div class="opt-grid" id="memory">
+      <button type="button" class="opt selected" data-memory="files-new"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Fastest</span><h3>Start empty</h3><p>COS Control creates <code>memory/</code> and <code>threads/</code> for you. Browsable immediately, empty until you write something.</p></button>
+      <button type="button" class="opt" data-memory="files-existing"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Bring your own</span><h3>I already keep notes</h3><p>Point COS at the folder you use now. Nothing is copied, moved, or rewritten.</p></button>
+      <button type="button" class="opt" data-memory="bridge"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Full pipeline</span><h3>I run a COS workspace</h3><p>You have <code>cos_api_bridge.py</code> and a venv. Adds semantic recall, dedup, and type statistics.</p></button>
+      <button type="button" class="opt" data-memory="none"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Later</span><h3>Skip for now</h3><p>Everything else works. Turn Memory on any time; nothing needs redoing.</p></button>
+    </div>
+    <div class="note" id="memory-note"><strong>Where the notes go.</strong> Pick the folder in COS Control and it shows you the resolved path, so you always know where a note you wrote will land.</div>
+  </div>
+
+  <!-- Step 6: Compute / voice -->
+  <div class="step" data-step="Step 6 · Compute">
     <h2>Where does it run, and how does voice work?</h2>
     <p class="sub">The server runs on your Mac. Your keys, your machine. Pick how voice is transcribed.</p>
     <div class="opt-grid" id="voice">
@@ -529,7 +576,7 @@
   </div>
 
   <!-- Step 6: HUD -->
-  <div class="step" data-step="Step 6 · On the lens">
+  <div class="step" data-step="Step 7 · On the lens">
     <h2>What shows on the lens?</h2>
     <p class="sub">Your default layout. Adaptive switches it by context.</p>
     <div class="opt-grid" id="hud">
@@ -550,6 +597,7 @@
       <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
       <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
+      <div class="row"><span class="k">Memory &amp; Threads</span><span class="v" id="r-memory">New folders</span></div>
       <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
     </div>
 
@@ -886,12 +934,22 @@
     context: new Set(),
     voice: 'local',
     transcriptionTier: 'balanced',
+    // Defaults to the zero-dependency path, matching the checked card, so the
+    // Blueprint is correct before anyone touches this step.
+    memoryMode: 'files-new',
+    memoryTouched: false,   // true once the user answers the memory question
     hud: null               // null = use recommendation
   };
 
   var UC_LABEL = { meetings:'meetings', capture:'quick capture', assistant:'always-on', comms:'comms', dev:'dev', field:'field' };
   var MODEL_LABEL = { opus:'Opus', fable:'Fable', sonnet:'Sonnet', 'codex-frontier':'GPT Frontier', 'codex-balanced':'GPT Balanced' };
   var CTX_LABEL = { calendar:'Calendar', email:'Email', slack:'Slack', meetingtools:'Meeting tools', vector:'Memory and Threads', mcp:'Custom MCPs' };
+  var MEMORY_LABEL = {
+    'files-new': 'New folders <small>(no database)</small>',
+    'files-existing': 'Existing notes folder',
+    'bridge': 'COS workspace bridge <small>(vector store)</small>',
+    'none': '<small>not set up yet</small>',
+  };
   var HUD_LABEL = { minimal:'Minimal', meeting:'Meeting mode', glance:'Glance', adaptive:'Adaptive' };
 
   function recModel() { return state.useCases.has('dev') ? 'codex-frontier' : 'sonnet'; }
@@ -949,15 +1007,59 @@
   bindMulti('usecases', 'uc', state.useCases, function () {
     // auto-suggest context (additive; respect manual edits once user has touched it)
     if (!state.ctxTouched) {
-      state.context = recContext();
+      // Mutate IN PLACE. bindMulti captured this Set by reference at bind time, so
+      // reassigning state.context orphaned the handler's copy: every context tile
+      // kept highlighting while the Blueprint never changed again. Reproduced live on
+      // an unrelated tile (Email) before this fix, so it predates the Memory step.
+      var suggested = recContext();
+      state.context.clear();
+      suggested.forEach(function (k) { state.context.add(k); });
       syncContextUI();
+      // recContext() adds 'vector' for meetings, capture, assistant and dev, so a
+      // use-case click could re-add the Memory source AFTER someone answered "Skip
+      // for now" — leaving the Blueprint listing Memory as wired with no setup steps
+      // for it. Reproduced in the browser before this line existed.
+      syncMemoryPair('preset');
     }
   });
-  bindMulti('context', 'ctx', state.context, function () { state.ctxTouched = true; });
+  bindMulti('context', 'ctx', state.context, function (k) { state.ctxTouched = true; if (k === 'vector') syncMemoryPair('source'); });
   bindSingle('models', 'model', 'model');
   bindSingle('voice', 'voice', 'voice');
   bindSingle('transcription-tier', 'tier', 'transcriptionTier');
   bindSingle('hud', 'hud', 'hud');
+  bindSingle('memory', 'memory', 'memoryMode', function () { state.memoryTouched = true; syncMemoryPair('mode'); });
+
+  // Memory mode and the Step 4 "Memory and Threads" source are ONE decision shown
+  // twice, so they are kept in lockstep. Without this the Blueprint could print
+  // setup steps for a source the user had switched off, or list the source with no
+  // instructions for it — a contradiction the reader has to resolve.
+  function syncMemoryPair(source) {
+    // An explicit answer outranks a use-case PRESET only. A manual click on the
+    // Step 4 tile is itself explicit and must win — an earlier version of this guard
+    // matched every 'source' call, which silently swallowed that click and made the
+    // tile dead once the question had been answered. Caught by reading the state
+    // matrix rather than the pass count.
+    if (source === 'preset' && state.memoryTouched) {
+      if (state.memoryMode === 'none') state.context.delete('vector');
+      else state.context.add('vector');
+      syncContextUI();
+      syncPressed('#memory');
+      return;
+    }
+    if (source === 'mode') {
+      if (state.memoryMode === 'none') state.context.delete('vector');
+      else state.context.add('vector');
+      syncContextUI();
+    } else if (state.context.has('vector')) {
+      if (state.memoryMode === 'none') state.memoryMode = 'files-new';
+    } else {
+      state.memoryMode = 'none';
+    }
+    $all('#memory .opt').forEach(function (b) {
+      b.classList.toggle('selected', b.getAttribute('data-memory') === state.memoryMode);
+    });
+    syncPressed('#memory');
+  }
 
   ['f-name', 'f-role', 'f-company', 'f-vocab'].forEach(function (id) {
     $('#' + id).addEventListener('input', render);
@@ -1002,6 +1104,7 @@
     var ctx = Array.from(state.context);
     $('#r-context').innerHTML = ctx.length ? ctx.map(function (c) { return CTX_LABEL[c]; }).join(', ') : '<small>none yet</small>';
     $('#r-hud').innerHTML = HUD_LABEL[hud] + (state.hud ? '' : ' <small>(recommended)</small>');
+    $('#r-memory').innerHTML = MEMORY_LABEL[state.memoryMode] || MEMORY_LABEL['none'];
 
     // server profile fragment (~/.cos-glasses/.cos-profile.json — the file the server actually reads)
     var name = $('#f-name').value.trim(), role = $('#f-role').value.trim(), company = $('#f-company').value.trim();
@@ -1028,7 +1131,25 @@
     else li.push('Run the generated setup command for Balanced local voice: Small.en preview, Turbo commit, Large-v3 polish.');
     if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
     if (ctx.length) li.push('Connect <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
-    if (ctx.indexOf('vector') >= 0) li.push('In <b>COS Control</b>, choose <b>COS Data</b>, then select your COS workspace or its <code>operations/scripts</code> folder. Control validates the local bridge without creating or changing stored data. Memory additionally needs an existing local <code>cos_memory</code> Qdrant collection; Threads use the workspace thread cache and manual store. An existing empty store is healthy. A missing collection, setup issue, or required workspace update is shown separately.');
+    // Per-mode Memory setup. The previous single line described the bridge tier only
+    // — "select your operations/scripts folder", "needs a cos_memory Qdrant
+    // collection" — which was the whole story before 6.22.0 and is now the LEAST
+    // common path. Queen followed it to the wrong control and got "Setup needed" for
+    // two folders that simply did not exist yet.
+    if (state.memoryMode === 'files-new') {
+      li.push('In <b>COS Control</b>, click <b>Create Folders</b>. It makes <code>memory/</code> and <code>threads/</code> where COS already looks, writes a README into each, and shows you the resolved path. Needs server <b>6.22.0</b> or newer; no database, no venv, nothing to install.');
+      li.push('Write your first note as a markdown file in <code>memory/</code>. Any filename works, and front matter is optional &mdash; a <code>#&nbsp;heading</code> becomes the summary you see on the lens.');
+      li.push('Browse it from the Mac with <b>Review Memories</b> and <b>Review Threads</b> in COS Control (0.5.18+), or from the glasses under Quick Actions.');
+    } else if (state.memoryMode === 'files-existing') {
+      li.push('Put your existing notes where COS looks, without moving them: <code>ln -s /path/to/your/notes ~/.cos-glasses/memory</code>. Symlinks are followed at any depth on server <b>6.22.1</b> or newer &mdash; on 6.22.0 only a top-level link is read.');
+      li.push('Or point <b>COS Data</b> in COS Control straight at the folder that contains your <code>memory/</code> or <code>threads/</code> subfolder. Nothing is copied, moved, or rewritten; browsing is read-only.');
+      li.push('Accepted names are <code>memory/</code> or <code>memories/</code> and <code>threads/</code> or <code>thread/</code>. Any nesting inside them is fine.');
+    } else if (state.memoryMode === 'bridge') {
+      li.push('In <b>COS Control</b>, choose <b>COS Data</b> and select your COS workspace or its <code>operations/scripts</code> folder. Control verifies <code>cos_api_bridge.py</code>, an executable <code>venv/bin/python3</code>, bridge protocol 1, and the authenticated server route before saving.');
+      li.push('Memory needs an existing local <code>cos_memory</code> Qdrant collection; Threads use the workspace thread cache and manual store. Validation never creates or changes stored data, and an existing empty store is healthy.');
+      li.push('The bridge takes precedence over plain folders whenever it resolves, so a workspace install browses the vector store rather than markdown.');
+    }
+    if (!ctx.length && state.memoryMode === 'none') li.push('Add context sources anytime via MCP in your COS folder. Memory and Threads can be turned on later without redoing anything.');
     else if (!ctx.length) li.push('Add context sources anytime via MCP in your COS folder.');
     li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
@@ -1045,7 +1166,7 @@
     if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
     if (role) fields.push({ name: 'jobtitle', value: role });
     if (co) fields.push({ name: 'company', value: co });
-    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
+    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; memory=' + state.memoryMode + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
     var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -1082,6 +1203,11 @@
     });
   });
 
+  // Initial sync BEFORE the first render, so a page load starts consistent:
+  // memoryMode defaults to files-new, which means the Step 4 source must show as on.
+  // Rendering first would print a Blueprint that disagreed with the checkboxes until
+  // the user clicked something.
+  syncMemoryPair('mode');
   render();
 })();
 </script>
