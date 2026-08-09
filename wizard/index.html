@@ -436,6 +436,7 @@
         <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
       </ul>
       <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Run the command in Step 1 <strong>from your COS folder</strong> &mdash; the server detects it and glasses chat loads that brain automatically. New to COS? The glasses run great on their own; set up the full system anytime at <a href="https://gotcos.com">gotcos.com</a>.</div>
+      <div class="note"><strong>Already have meeting files?</strong> After setup, open <a href="/control/">COS Control</a> and choose <strong>Meetings Library</strong>. For one library, choose the folder that directly contains <code>YYYY-MM/*.md</code>. For multiple domains, choose the operations folder whose subfolders each contain <code>meetings/YYYY-MM/*.md</code>. The website does not change your Mac; the final folder choice happens in COS Control. You can also skip this step and use new standalone G2 recordings.</div>
       <div class="note"><strong>Never babysit the server again.</strong> Have your COS create a <code>/cos-glasses</code> skill &mdash; ask it: <em>"add the /cos-glasses skill from the Starter Kit."</em> Then <code>/cos-glasses</code> starts the server, health-checks it, keeps it on the latest release, and troubleshoots connection issues for you. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>.</div>
       <div class="note"><strong>Pick up where the glasses left off.</strong> Add the <code>/glasses-day</code> skill and your COS pulls the day's glasses questions and answers into your desk session &mdash; so anything you asked on the go becomes something you can act on. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md">skills/glasses-day.md</a>.</div>
       <div class="actions">
@@ -505,6 +506,7 @@
       <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Memory</span><h3>Semantic memory</h3><p>Search everything you've captured by meaning.</p></button>
       <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
     </div>
+    <div class="note"><strong>Meeting library layouts:</strong> a single existing library can be <code>meetings/2026-08/*.md</code>. A multi-domain COS can be <code>operations/clinical/meetings/2026-08/*.md</code>, <code>operations/academic/meetings/2026-08/*.md</code>, and so on. Domain names are yours. COS Control recognizes both shapes, shows a useful correction when the shape is incomplete, and lets you skip without blocking setup.</div>
   </div>
 
   <!-- Step 5: Compute / voice -->

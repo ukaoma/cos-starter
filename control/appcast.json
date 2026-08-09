@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.11",
-      "build": 49,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.11.zip",
-      "sha256": "8f2e0e7625e9b5e1e52ad6740be283d2eeab4f385e181cba913392b3733d4d73",
+      "version": "0.5.12",
+      "build": 50,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.12.zip",
+      "sha256": "bd50591474449bc33de6e9c9c77e1b1efdd99759370c97a089ff535f766fba6d",
       "minMacOS": "14.0",
-      "serverTarget": "6.21.32",
-      "publishedAt": "2026-08-08T23:26:00Z",
-      "notes": "Adaptive review-audio cleanup is now visible, reversible, and off by default. When enabled, pressing Play may create a temporary replay-only cleanup copy while the immutable raw WAV remains the source of truth. Raw playback is always available, live capture and transcription preempt cleanup, and Stop or closing review cancels pending playback. Activation proves the selected server capability and rolls back automatically if verification fails. Needs glasses-server 6.21.32."
+      "serverTarget": "6.21.33",
+      "publishedAt": "2026-08-09T01:15:00Z",
+      "notes": "Existing meeting libraries now work in either direct YYYY-MM form or multi-domain domain/meetings/YYYY-MM form. Direct libraries stay read-only, operations pipelines keep enrichment and writes, and mixed results prefer the canonical enriched copy. Invalid selections show actionable examples and may be skipped. Activation verifies the authenticated effective layout and rolls back on failure. Needs glasses-server 6.21.33."
     }
   },
   "killSwitch": {

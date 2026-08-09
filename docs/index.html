@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.8.315 (build 315) · server @gotcos/glasses-server 6.21.32 · COS Control 0.5.11.
+  Covers COS Glasses 6.8.316 (build 316) · server @gotcos/glasses-server 6.21.33 · COS Control 0.5.12.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -526,7 +526,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">6.8.315</span>
+    <span class="sb-ver">6.8.316</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -565,8 +565,8 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>6.8.315</b> · build 315</span>
-      <span class="chip">Server <b>6.21.32</b></span>
+      <span class="chip">App <b>6.8.316</b> · build 316</span>
+      <span class="chip">Server <b>6.21.33</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -577,7 +577,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">6.8.315</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">6.8.316</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -637,7 +637,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.21.32</strong> provides two local tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free; Guided Setup verifies space before downloading the selected local lanes. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.21.33</strong> provides two local tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for voice prompts:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free; Guided Setup verifies space before downloading the selected local lanes. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -653,7 +653,7 @@ footer .links a:hover{color:var(--gold)}
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Latest release package &mdash; build 315.</strong> The voice review menu advances on the first scroll again: the note moved to the footer, so the menu body stays inside the lens line budget in every combination, including a revised prompt with a queued edit. It retains the proven setup, durable jobs, queue editing, meeting recovery, diagnostics, and Local/OpenAI speech controls from prior builds. Local uses Kokoro on Apple silicon, fails closed when explicitly selected, preserves cancellation, and never silently becomes an OpenAI request. Local-first may use the existing bounded OpenAI fallback only after local synthesis fails and only when a key and budget are configured.</p>
+    <p><strong>Latest release package &mdash; build 316.</strong> Review Meetings now preserves direct read-only library references without inventing a multi-domain operations path. It retains the proven setup, durable jobs, queue editing, meeting recovery, diagnostics, live transcription, and Local/OpenAI speech controls from prior builds.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -666,10 +666,10 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="macpair">
     <div>
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.21.32, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.21.33, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
     <div class="ccp-in">
       <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.21.32</b></div>
+      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.21.33</b></div>
       <div class="ccp-row"><span>Ownership</span><b>Verified direct PID</b></div>
       <div class="ccp-row"><span>Recovery</span><b>Scheduled</b></div>
       <div class="ccp-row"><span>Local Whisper</span><b>Ready</b></div>
@@ -693,6 +693,7 @@ footer .links a:hover{color:var(--gold)}
     <div><h3>Recording-safe controls</h3><p>Restart is blocked while meetings or jobs are active. Updates stage a complete new generation before switching.</p></div>
     <div><h3>Fast meeting preview</h3><p>Provisional Turbo text appears before the canonical speaker-attributed Large-v3 chunk lands. Introduced default-off in 6.21.7, this is <strong>on by default since server 6.21.22</strong> and app 6.8.315; the committed Large-v3 transcript stays authoritative and still atomically replaces the provisional line. Control owns the machine-wide switch and applies it with verified restart and rollback.</p></div>
     <div><h3>Adaptive review audio</h3><p>Control 0.5.11 and server 6.21.32 add a default-off canary for retained playback. Pressing Play may create a temporary cleaned replay while the immutable raw WAV remains authoritative and available through an exact bypass. Cleanup never enters live capture, transcription, speaker attribution, save, HQ polish, or meeting sync. Live work preempts it, a busy or failed worker returns raw immediately, and Control rolls back if activation proof fails.</p></div>
+    <div><h3>Use the meetings you already have</h3><p>Control 0.5.12 and server 6.21.33 accept either a direct library containing <code>YYYY-MM/*.md</code>, or a multi-domain operations tree containing <code>&lt;domain&gt;/meetings/YYYY-MM/*.md</code>. Direct libraries are browse-only. Multi-domain roots retain sync, enrichment, new G2 output, and speaker edits. Control explains malformed layouts and lets setup continue without one.</p></div>
     <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
   </div>
   </div>
@@ -750,7 +751,7 @@ footer .links a:hover{color:var(--gold)}
         <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
-          <div class="pf-app"><b>COS GLASSES</b><i>v6.8.315 &#183; Live on G2</i></div>
+          <div class="pf-app"><b>COS GLASSES</b><i>v6.8.316 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
@@ -996,6 +997,9 @@ footer .links a:hover{color:var(--gold)}
       <h3>Turn a saved meeting into a question</h3>
       <p style="font-size:.95rem">A saved meeting is also the starting point for a new question. Open it in <strong>Review Meetings</strong> and double-tap an idle meeting to record a voice follow-up with that exact meeting attached as context. A compact <span class="g-key">Meeting context attached</span> indicator replaces the usual message-reference label, and the finished answer is stamped with the meeting so you can see what it was grounded in, both on the lens and in phone message review.</p>
       <p style="font-size:.95rem">The grounding is the real record, not a summary. The paired server hands the Mac agent a bounded, UTF-8-safe copy of the canonical meeting so it can read the full transcript for decisions, outcomes, sentiment, details, or related topics. This needs server <strong>6.12.7</strong>: an older server fails closed for this one action with a truthful update-server message, and COS never silently sends an ungrounded meeting question. A follow-up you queue or recover re-fetches the exact meeting before it runs, and survives the automatic post-meeting rename.</p>
+      <h3>Connect an existing meeting library</h3>
+      <p style="font-size:.95rem">In COS Control, choose <strong>Meetings Library</strong>. If one folder already holds all of your meetings, choose the folder whose immediate children are months, such as <code>meetings/2026-08/*.md</code>. COS browses it without moving, renaming, or rewriting anything. For multiple domains, choose the operations root whose domain folders each contain <code>meetings/YYYY-MM/*.md</code>. Names such as <code>academic</code>, <code>clinical</code>, and <code>committee</code> are valid; they do not need to match another user's COS.</p>
+      <p style="font-size:.95rem">A direct library can coexist with a separate operations pipeline. Review Meetings merges direct, enriched, and standalone G2 records, then prefers the enriched writable copy when the same session exists more than once. Direct-only records show as read-only for speaker edits. If the picker finds an incomplete shape, it names both valid layouts and offers Choose Again or Skip for Now.</p>
     </div>
     <div>
       <h3>The lens catches up</h3>
@@ -1023,7 +1027,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 315 plus server 6.21.32 remains the supported public pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers; unsupported additive capabilities show an update-required or unavailable state instead of breaking the established flows. Meeting Turbo preview arrived default-off in 6.21.7 and is on by default from 6.21.22 with app 6.8.315. Early Sync, progressive HQ checkpoints, Idle Metal HQ, and retained Adaptive replay are described under Meetings; all are server-side switches and change no phone protocol.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 316 plus server 6.21.33 is the supported public pair. Core queries, meetings, photos, display, queues, and local-first transcription remain backward compatible with earlier 6.x servers. Build 316 adds source-aware references for direct meeting libraries; older persisted references remain valid. Meeting Turbo preview arrived default-off in 6.21.7 and is on by default from 6.21.22. Early Sync, progressive HQ checkpoints, Idle Metal HQ, and retained Adaptive replay are described under Meetings.</p>
     </div>
   </div>
 </section>
@@ -1235,7 +1239,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 315's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.21.32, local speech readiness remains additive under <code>tts_local</code>, the selected transcription policy is reported under <code>capabilities.transcription.live</code>, and retained Adaptive replay reports its exact scope and raw-preservation contract; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 316's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.21.33, local speech readiness remains additive under <code>tts_local</code>, the selected transcription policy is reported under <code>capabilities.transcription.live</code>, and retained Adaptive replay reports its exact scope and raw-preservation contract; a missing Kokoro dependency never makes chat or transcription unhealthy.</p>
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
@@ -1247,7 +1251,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>; this setup targets 6.21.32. To roll the server back while diagnosing this release, run <code>npx --yes @gotcos/glasses-server@6.21.31</code>. Do not assume a changelog version exists on npm: 6.15.4, 6.16.6&ndash;6.16.8, and 6.21.8 were never published. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any specific build. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Server: rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>; this setup targets 6.21.33. To roll the server back while diagnosing this release, run <code>npx --yes @gotcos/glasses-server@6.21.32</code>. Do not assume a changelog version exists on npm: 6.15.4, 6.16.6&ndash;6.16.8, and 6.21.8 were never published. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any specific build. Glasses app: install the current version from Even Hub. History and settings carry over. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
     </div>
   </div>
 </section>
@@ -1261,7 +1265,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux; newer compatible Node majors are fine. Build 315 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.32 for optional local Kokoro speech, selectable local transcription tiers, and the additive retained-audio replay canary on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux; newer compatible Node majors are fine. Build 316 preserves the durable job, meeting, image, queue, and diagnostics contracts and pairs with server 6.21.33 for direct or multi-domain meeting libraries, optional local Kokoro speech, selectable local transcription tiers, and retained-audio replay on Apple silicon. Kokoro requires Python 3.11 or 3.12, ffmpeg, and espeak-ng; the established text and Whisper paths remain available without it.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -1421,7 +1425,7 @@ footer .links a:hover{color:var(--gold)}
     });
   });
 
-  // ── NEW / UPDATED badges (grounded vs cos-glasses-app CHANGELOG build 315, 2026-08-04) ──
+  // NEW / UPDATED badges (grounded vs cos-glasses-app CHANGELOG build 316, 2026-08-08)
   var BADGES = { setup:'UPD', jobs:'UPD', meetings:'UPD', settings:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

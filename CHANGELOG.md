@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.5 - 2026-08-08
+
+### Changed
+- COS Control 0.5.12, glasses-server 6.21.33, and COS Glasses 6.8.316 add
+  source-aware support for existing direct meeting libraries.
+- Users may choose either `meetings/YYYY-MM/*.md` or a multi-domain
+  `<domain>/meetings/YYYY-MM/*.md` operations tree. The wizard and docs explain
+  both formats and direct users to complete the local choice in COS Control.
+- Direct libraries stay read-only. Existing enrichment and G2 write paths remain
+  separate, mixed results prefer the canonical enriched copy, and old meeting
+  references remain compatible.
+
 ## 0.4.4 - 2026-08-05
 
 ### Changed
