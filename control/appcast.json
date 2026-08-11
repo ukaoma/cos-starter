@@ -2,14 +2,14 @@
  "schemaVersion": 1,
  "channels": {
   "stable": {
-   "version": "0.5.18",
-   "build": 56,
-   "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.18.zip",
-   "sha256": "8834c6f51f1b7a1e646920e2c9c105aaf3ad0a5972a2264c347cc5d1e304d2d8",
+   "version": "0.5.19",
+   "build": 57,
+   "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.19.zip",
+   "sha256": "b55ff692b67f035e9b8c233560837dccfd1599d381dba8f76c14aa7736d7d8b5",
    "minMacOS": "14.0",
-   "serverTarget": "6.22.0",
-   "publishedAt": "2026-08-09T17:27:44Z",
-   "notes": "Review Memories and Review Threads open from the panel: a list card with Refresh, and a click that opens the record full-panel with Copy as Context and Reveal in Finder for file-backed notes. Create Folders makes memory/ and threads/ so Memory and Threads never read \"Setup needed\" for a folder that simply does not exist yet, and the panel now shows the resolved root or the roots it tried. A complete but unused Python bridge is reported instead of sitting silent. Needs glasses-server 6.22.0."
+   "serverTarget": "6.27.1",
+   "publishedAt": "2026-08-11T17:25:52Z",
+   "notes": "COS Activity opens Messages, Speakers, Memories, and Threads in one resizable window with tabs, Home, Back, and scoped breadcrumbs. The new Voice Directory shows enrolled voices, observed-match evidence, attributed and review segments, meeting history, and meeting-local unidentified voices without merging them into false global identities. Late responses cannot overwrite newer selections, closing Activity stops playback, and Finder-launched server updates now resolve npm reliably. Requires glasses-server 6.27.1 for full Voice Directory history."
   }
  },
  "killSwitch": {

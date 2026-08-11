@@ -39,8 +39,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.18",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.18.zip",
+  "softwareVersion": "0.5.19",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.19.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -353,10 +353,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses server, <em>under control.</em></h1>
       <p class="hero-lead">COS Control runs the COS Glasses server as a native macOS app. Monitor local transcription, keep accepted replies working in the background, recover meeting captures, and update safely from the menu bar. <strong>One owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.18.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.19.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.5.18 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.19 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
     <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.21.35 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
@@ -410,10 +410,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>Fast preview, authoritative transcript</h3><p>Choose Balanced or Max and see the effective model for every lane. A low-latency preview shows what COS hears while you dictate. The authoritative live commit replaces it, and saved meetings receive full local polish. Canonical work always gets priority over provisional preview.</p></div>
           <div class="part reveal"><h3>Meeting safety you can see</h3><p>Control reports active recordings, HQ polish, retained batches, and unsaved captures instead of hiding them behind a generic healthy light. Restarts stay locked while durable work is active, and recoverable captures remain visible before retention expires.</p></div>
           <div class="part reveal"><h3>Cleaner review audio, raw always preserved</h3><p>An optional, default-off Adaptive replay switch cleans retained audio only after you press Play. The immutable raw WAV stays authoritative and remains an exact bypass. Live recording and transcription preempt cleanup, and failed cleanup immediately falls back to raw playback.</p></div>
+          <div class="part reveal"><h3>One Activity workspace</h3><p>Messages, Speakers, Memories, and Threads now open together in a resizable window. Peer tabs, Home, Back, and scoped breadcrumbs keep your place clear. Closing Activity stops voice playback, and a late server response cannot replace the newer record you selected.</p></div>
+          <div class="part reveal"><h3>A Voice Directory with evidence</h3><p>Browse every enrolled voice with training-sample provenance, attributed and review segments, meeting count, last seen, and a segment-weighted observed match. Open a person to see recent meeting appearances. Unidentified voices stay grouped by meeting and are never combined into a false global identity.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root: the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Your existing meeting library</h3><p>Choose the folder you already use for meetings. The recommended path directly contains <code>YYYY-MM/*.md</code>. If you already maintain several libraries, choose their parent; every folder name is customizable and only needs <code>meetings/YYYY-MM/*.md</code> inside. Direct libraries stay read-only, while existing operations pipelines keep enrichment and writes.</p></div>
-          <div class="part reveal"><h3>Memory and Threads, proved locally</h3><p>No vector database required. <strong>Create Folders</strong> makes <code>memory/</code> and <code>threads/</code> where COS already looks, and any markdown you drop in becomes browsable. <strong>Review Memories</strong> and <strong>Review Threads</strong> open the same read-only records your glasses show, with Copy as Context and Reveal in Finder for file-backed notes. <strong>COS Data</strong> still points at a full Python workspace when you have one, and Control verifies the bridge, protocol, and authenticated route before saving. The panel names the resolved folder, and a store that exists but is empty reads as healthy rather than broken.</p></div>
+          <div class="part reveal"><h3>Memory and Threads, proved locally</h3><p>No vector database required. <strong>Create Folders</strong> makes <code>memory/</code> and <code>threads/</code> where COS already looks, and any markdown you drop in becomes browsable. The Activity workspace opens the same read-only Memory and Thread records your glasses show, with Copy as Context and Reveal in Finder for file-backed notes. <strong>COS Data</strong> still points at a full Python workspace when you have one, and Control verifies the bridge, protocol, and authenticated route before saving. The panel names the resolved folder, and a store that exists but is empty reads as healthy rather than broken.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, with their photo context</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today, restores validated photo thumbnails, and opens a full local preview. Copy a text-only handoff, or explicitly choose <strong>Copy + images</strong> to bring up to five local images into another chat. Images remain on your Mac, and old privacy eras fail closed.</p></div>
           <div class="part reveal"><h3>Real agent readiness</h3><p>Control checks Claude, Codex, and Cursor separately, shows their actual local versions, and distinguishes connected, available but untested, and failed states. That gives support something concrete to debug instead of a generic server health result.</p></div>
         </div>
@@ -434,12 +436,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.18.zip" download>Download v0.5.18</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.19.zip" download>Download v0.5.19</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.18.zip</code></div>
-            <p class="sha">SHA-256<br>29789358f3188f9e9b1f9f9f5bf9cfa8721cd374c9fc6a55c625902c3c1a7e8a</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.19.zip</code></div>
+            <p class="sha">SHA-256<br>b55ff692b67f035e9b8c233560837dccfd1599d381dba8f76c14aa7736d7d8b5</p>
           </details>
         </div>
         <div class="path reveal">
@@ -487,10 +489,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.18.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.19.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.18 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.19 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>
