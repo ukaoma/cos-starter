@@ -660,7 +660,7 @@
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
         <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
         <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
-        <div class="note"><strong>Voice runs locally</strong> via whisper.cpp &mdash; zero per-minute cost. Install once: <code>brew install whisper-cpp</code>. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>
+        <div class="note"><strong>Voice runs locally.</strong> Mac whisper.cpp remains the authoritative meeting engine and costs zero per minute. Install once: <code>brew install whisper-cpp</code>. In COS Glasses 6.8.336, you can also choose on-phone Moonshine Tiny or Base for rolling Message and Meeting preview. Text forms and may revise while you speak; the shared glossary + AI finalizer cleans settled phrases, while speaker-attributed Large-v3 remains canonical for meetings. This requires server 6.27.2. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>
         <div class="note"><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill so your agent starts the server, health-checks it, keeps it on the latest release, and troubleshoots for you &mdash; ask your COS to <em>"add the /cos-glasses skill from the Starter Kit"</em> (<a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>).</div>
       </div>
 
@@ -750,12 +750,12 @@
       <article class="tcard">
         <div class="hud-frame"><img src="../assets/hud/slide-4.png" width="576" height="288" loading="lazy" alt="COS Glasses dictation: a long message captured hands-free in green on the lens."></div>
         <h3>Say it once, hands-free.</h3>
-        <details class="more"><summary>How it works</summary><p>Dictate a long prompt or reply by voice. Review the full transcript, edit it by voice, or re-record before a single word is sent.</p></details>
+        <details class="more"><summary>How it works</summary><p>Dictate a long prompt or reply by voice. With on-phone Moonshine, text forms and revises while you speak, then the existing finalizer cleans the settled draft. Review it, edit by voice, or re-record before a single word is sent.</p></details>
       </article>
       <article class="tcard">
         <div class="hud-frame"><img src="../assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses meeting review: takeaways and action items in green on the lens."></div>
         <h3>Every meeting, captured.</h3>
-        <details class="more"><summary>How it works</summary><p>Live, speaker-labeled transcription on the HUD. Takeaways and action items wait for you afterward, right from the glasses.</p></details>
+        <details class="more"><summary>How it works</summary><p>Fast Moonshine preview can appear while you speak, then speaker-attributed Large-v3 replaces it as the canonical transcript. Takeaways and action items wait for you afterward, right from the glasses.</p></details>
       </article>
     </div>
   </section>
@@ -766,7 +766,7 @@
       <div class="cap-copy">
         <div class="mkt-eyebrow">Record a message</div>
         <h2 class="mkt-h">Say it once. <span class="g">Send it clean.</span></h2>
-        <p class="mkt-sub">Dictate a long prompt or reply by voice. The transcription builds on the lens as you speak. Tap to finish and it submits, no phone, no keyboard.</p>
+        <p class="mkt-sub">Dictate a long prompt or reply by voice. Moonshine Tiny or Base can form and revise the text on the lens as you speak; the shared finalizer cleans the settled draft before review. No keyboard required.</p>
       </div>
       <div class="hud-frame hud-rec" role="img" aria-label="COS Glasses lens recording a message: a dictated prompt is transcribed in green on the lens, then submitted with a transcribing progress bar in the footer.">
         <div class="hr-head"><span class="hr-title">MESSAGE</span> &middot; COS [O&#9679;]  100%</div>

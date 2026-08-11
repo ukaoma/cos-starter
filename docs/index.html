@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.8.335 (build 335) · server @gotcos/glasses-server 6.27.1 · COS Control 0.5.19.
+  Covers COS Glasses 6.8.336 (build 336) · server @gotcos/glasses-server 6.27.2 · COS Control 0.5.19.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -526,7 +526,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">6.8.335</span>
+    <span class="sb-ver">6.8.336</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -565,8 +565,8 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>6.8.335</b> · build 335</span>
-      <span class="chip">Server <b>6.27.1</b></span>
+      <span class="chip">App <b>6.8.336</b> · build 336</span>
+      <span class="chip">Server <b>6.27.2</b></span>
       <span class="chip">Control <b>0.5.19</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
@@ -578,7 +578,7 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
     <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">6.8.335</span></div>
+      <div><span class="hi">Chief of Staff</span> <span class="dim">6.8.336</span></div>
       <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
       <div><span class="dim">72° Clear · Sat Jul 11</span></div>
       <div><span class="dim">10:00 Design review</span></div>
@@ -638,7 +638,7 @@ footer .links a:hover{color:var(--gold)}
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.27.1</strong> provides two Mac transcription tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free. Phone-local Moonshine prompt dictation is optional, downloads its own model on the iPhone, and does not replace Mac Whisper for meetings. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.27.2</strong> provides two Mac transcription tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free. Phone-local Moonshine Tiny or Base is optional and downloads its own model on the iPhone. It can now provide rolling provisional text for both Messages and Meetings; Mac Whisper remains authoritative for speaker-attributed meeting transcription and saved-work polish. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -654,7 +654,7 @@ footer .links a:hover{color:var(--gold)}
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Latest release package: build 335.</strong> Prompt dictation can now run entirely on the iPhone with the English Moonshine Tiny or Base model. Tiny favors speed; Base favors accuracy. Models download once from pinned HTTPS assets, remain in private browser storage, and are verified before loading. Build 335 fixes the <code>text/html is not a valid JavaScript MIME type</code> startup failure in build 334. Existing downloads are reused. No server update or model redownload is required for this hotfix. Mac Whisper remains the default and the visible fallback.</p>
+    <p><strong>Latest release package: build 336.</strong> Moonshine Tiny and Base now form and revise provisional text while you speak in Messages and Meetings. When a phrase settles, COS reuses the existing glossary and Haiku/Sonnet finalizer; final Message text remains reviewable, while authoritative speaker-attributed Large-v3 text replaces Meeting preview. The rolling preview is never saved, indexed, or treated as canonical. Build 336 includes build 335's WKWebView loader fix and reuses verified model downloads. Shared final polish requires server 6.27.2 and fails open to the raw transcript if unavailable.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -667,10 +667,10 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="macpair">
     <div>
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.27.1, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.27.2, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
     <div class="ccp-in">
       <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.27.1</b></div>
+      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.27.2</b></div>
       <div class="ccp-row"><span>Ownership</span><b>Verified direct PID</b></div>
       <div class="ccp-row"><span>Recovery</span><b>Scheduled</b></div>
       <div class="ccp-row"><span>Local Whisper</span><b>Ready</b></div>
@@ -753,7 +753,7 @@ footer .links a:hover{color:var(--gold)}
         <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
-          <div class="pf-app"><b>COS GLASSES</b><i>v6.8.335 &#183; Live on G2</i></div>
+          <div class="pf-app"><b>COS GLASSES</b><i>v6.8.336 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
@@ -1030,7 +1030,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 335 plus server 6.27.1 is the current supported pair. Phone-local Moonshine is companion-only and default-off; Mac Whisper remains the default, so upgrading does not change existing transcription behavior. Core queries, meetings, rich media, display, queues, Memory, Threads, Sessions, recovery, and local-first transcription preserve their established contracts. Memory and Threads still require a compatible full-COS workspace bridge; standalone installs keep all core glasses features and show those two surfaces as unavailable. Older persisted meeting references remain valid.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> build 336 plus server 6.27.2 is the current supported pair. Phone-local Moonshine remains opt-in; Mac Whisper remains the default. Enabling Tiny or Base adds rolling provisional text to Messages and Meetings without changing canonical meeting capture, speaker attribution, save, HQ polish, recovery, or sync. Core queries, rich media, display, queues, Memory, Threads, and Sessions preserve their established contracts. Memory and Threads still require a compatible full-COS workspace bridge; standalone installs keep all core glasses features and show those two surfaces as unavailable. Older persisted meeting references remain valid.</p>
     </div>
   </div>
 </section>
@@ -1040,16 +1040,16 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">9.</span> Dictation</h2>
     <p class="ch-sub">Long prompts, hands free or phone local.</p>
-    <p class="lead">Dictate a sentence or a page. Mac Whisper remains the default. Build 335 also lets English prompts transcribe on the iPhone with Moonshine Tiny or Base. Nothing sends until you approve the transcript.</p>
+    <p class="lead">Dictate a sentence or a page. Mac Whisper remains the default. Build 336 lets English Moonshine Tiny or Base form and revise text on the iPhone while you speak in both Messages and Meetings. Nothing sends until you approve a Message transcript, and Meeting preview never becomes the canonical record.</p>
   </div>
   <ol class="steps">
     <li>
       <h3>Record</h3>
-      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span> and fills with warm transcript chunks while you speak, so you can catch a mistake before you finish. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
+      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span> and fills with warm transcript text while you speak. Moonshine reruns over the still-open phrase, so words may revise as more audio arrives. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
     </li>
     <li>
       <h3>Review</h3>
-      <p>Tap to finish. COS reconciles the live chunks with the final transcription and shows the complete draft for review before anything is sent. The recording remains recoverable on the phone, with a server backup when reachable.</p>
+      <p>Tap to finish. COS runs one complete Moonshine transcription, then reuses the same deterministic glossary and optional Haiku/Sonnet finalizer used by Mac dictation. The complete draft remains reviewable before anything is sent. Final polish is on by default and can be disabled under Voice. The recording remains recoverable on the phone, with a server backup when reachable.</p>
     </li>
     <li>
       <h3>Send, edit, or redo</h3>
@@ -1063,11 +1063,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Moonshine Tiny</h3>
-      <p>The smallest, fastest English phone model. Select <strong>Settings, Voice, Prompt dictation, On phone: Tiny</strong>. The model downloads once, is verified before loading, and is reused on later prompts.</p>
+      <p>The smallest, fastest English phone model. Select <strong>Settings, Voice, Dictation + live preview, On phone: Tiny</strong>. The model downloads once, is verified before loading, and is reused for rolling Message and Meeting preview.</p>
     </div>
     <div class="card">
       <h3>Moonshine Base</h3>
-      <p>The larger English phone model for better accuracy when a little more local processing time is acceptable. Select <strong>On phone: Base</strong>. Tiny and Base are optional, so the EHPK stays small instead of bundling hundreds of megabytes of weights.</p>
+      <p>The larger English phone model for better accuracy when a little more local processing time is acceptable. Select <strong>On phone: Base</strong>. It uses the same rolling-preview and settled-finalizer contract as Tiny. Both are optional, so the EHPK stays small instead of bundling hundreds of megabytes of weights.</p>
     </div>
     <div class="card">
       <h3>Local audio boundary</h3>
@@ -1075,7 +1075,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="note">
-    <p><strong>Meetings stay on the Mac.</strong> Moonshine changes prompt dictation only. Live meeting transcription, speaker attribution, Large-v3 canonical text, HQ polish, recovery, and meeting sync are unchanged. Optional AI polish also remains off by default, so your reviewed words send verbatim unless you enable it.</p>
+    <p><strong>Preview is not the record.</strong> Moonshine can show fast, unlabeled Meeting text while a phrase is still open. When it settles, the shared finalizer may clean that provisional phrase, but only after the durable audio capture succeeds. Speaker-attributed Large-v3 remains authoritative and atomically replaces it. Preview is never persisted, indexed, saved, sent to HQ polish, or used by recovery and sync. Final polish is on by default; turn it off to keep settled Moonshine text raw.</p>
   </div>
 </section>
 
@@ -1151,7 +1151,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Phone-local means audio stays local</h3>
-      <p>When Moonshine Tiny or Base succeeds, the iPhone turns prompt audio into text before contacting the Mac. The text still goes to your paired server and selected agent, but the prompt audio does not. A visible Mac fallback is the only path that uploads that durable WAV.</p>
+      <p>When Moonshine Tiny or Base succeeds, the iPhone turns audio into text before contacting the Mac. Rolling inference stays on the phone. At a settled Message or Meeting boundary, only bounded text may reach the authenticated finalizer; raw phone audio does not. A visible Mac fallback is the only path that uploads the durable Message WAV. Meeting audio continues through its existing local-first capture contract.</p>
     </div>
     <div class="card">
       <h3>Offline meeting audio is temporary</h3>
@@ -1180,7 +1180,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="sec-head">
     <h2 class="ch"><span class="num">12.</span> Settings</h2>
     <p class="ch-sub">Three tabs, <span class="it goldt">one place.</span></p>
-    <p class="lead">Open the phone companion and tap the gear. Build 335 groups controls under <strong>System</strong>, <strong>AI</strong>, and <strong>Voice</strong>. Every preference, including prompt dictation, the spoken-reply engine, and local voice, persists through Even Hub storage.</p>
+    <p class="lead">Open the phone companion and tap the gear. Build 336 groups controls under <strong>System</strong>, <strong>AI</strong>, and <strong>Voice</strong>. Every preference, including dictation + live preview, final polish, the spoken-reply engine, and local voice, persists through Even Hub storage.</p>
   </div>
   <div class="tw"><table>
     <tr><th>Section</th><th>What it holds</th></tr>
@@ -1190,8 +1190,9 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>SYSTEM · RECOVERY CENTER</strong></td><td>App API, live stream, G2 bridge, local Whisper, transcription policy, Claude CLI, Codex CLI, and Cursor CLI are evaluated independently. <strong>Refresh diagnostics</strong> checks them together without converting an unsupported optional route into a false system-wide disconnect. Build 228 actively checks current G2 device evidence: definitive attachment is green, a definitive disconnect is red, and transitional or unavailable evidence stays <strong>Unknown</strong>.</td></tr>
     <tr><td><strong>SYSTEM · CLI DEBUG</strong></td><td>Claude CLI and Codex CLI each show support, last-run status, and whether action is needed. <span class="g-key">Last run OK</span> describes the most recent run; it is not a live login guarantee. Diagnostic responses are metadata-only: no prompts, answers, tool output, paths, commands, raw session IDs, tokens, or credentials are returned to the phone. Sign-in and credential updates happen on the Mac with <code>claude auth login</code> or <code>codex login</code>.</td></tr>
     <tr><td><strong>AI · ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location.</td></tr>
-    <tr><td><strong>VOICE · PROMPT DICTATION</strong></td><td>Mac Whisper is the default. <strong>On phone: Tiny</strong> favors speed and <strong>On phone: Base</strong> favors accuracy. Both are English-only, download their verified model assets on first use, and visibly fall back to the Mac if local setup or inference fails. Successful phone-local dictation keeps prompt audio on the iPhone.</td></tr>
-    <tr><td><strong>VOICE · LIVE MEETING ASR</strong></td><td>Meetings remain on server Whisper. Balanced uses Small.en for provisional text, Large-v3-Turbo for committed live text, and Large-v3 for polish. Max uses Large-v3-Turbo for provisional preview and Large-v3 for authoritative commit and polish. Canonical work preempts cosmetic preview. Add the names, companies, acronyms, and specialist terms you say often in <code>~/.cos-glasses/.cos-profile.json</code>; factory placeholders are ignored.</td></tr>
+    <tr><td><strong>VOICE · DICTATION + LIVE PREVIEW</strong></td><td>Mac Whisper is the default. <strong>On phone: Tiny</strong> favors speed and <strong>On phone: Base</strong> favors accuracy. Both are English-only, download verified model assets on first use, and can form and revise provisional text in Messages and Meetings. Local setup or inference failure falls back visibly. Successful phone-local Message dictation keeps its audio on the iPhone.</td></tr>
+    <tr><td><strong>VOICE · FINAL POLISH (AI)</strong></td><td>On by default. Reuses the existing dictionary plus Haiku or Sonnet finalizer only after a Moonshine Message or Meeting phrase settles. Live preview stays fast; failures keep the raw transcript. Turn this off for verbatim settled Moonshine text.</td></tr>
+    <tr><td><strong>VOICE · LIVE MEETING ASR</strong></td><td>Server Whisper remains canonical for Meetings. Balanced uses Small.en for provisional server text, Large-v3-Turbo for committed live text, and Large-v3 for polish. Max uses Large-v3-Turbo for provisional server preview and Large-v3 for authoritative commit and polish. Phone Moonshine preview may appear earlier, but canonical work always replaces it. Add the names, companies, acronyms, and specialist terms you say often in <code>~/.cos-glasses/.cos-profile.json</code>; factory placeholders are ignored.</td></tr>
     <tr><td><strong>VOICE · VOICE (TTS)</strong></td><td>Choose Local, Local-first, or OpenAI. Local uses on-Mac Kokoro and fails closed; Local-first may fall back only after a local failure and only when OpenAI is configured. The voice picker is engine-aware, persists through reinstall, and includes a test button. Connect Bluetooth audio to hear playback.</td></tr>
     <tr><td><strong>VOICE · OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>SYSTEM · Reset preferences</strong></td><td>Restores every preference to defaults. Your connection is kept.</td></tr>
@@ -1233,11 +1234,11 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Voice feels slow or local Whisper is unavailable</h3>
-      <p>Mac Whisper transcribes for free and remains the default. It is a one-time prerequisite for Mac voice and meetings: run <code>brew install whisper-cpp</code>, stop COS with Control-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Phone-local Tiny or Base can transcribe prompts without sending their audio to the Mac, but meetings still require Mac Whisper. Text chat remains available without either path. COS keeps retryable audio instead of discarding a prompt. Cloud fallback stays off unless the server operator explicitly enables it and configures a key.</p>
+      <p>Mac Whisper transcribes for free and remains the default. It is a one-time prerequisite for Mac voice and canonical Meetings: run <code>brew install whisper-cpp</code>, stop COS with Control-C, rerun <code>npx --yes @gotcos/glasses-server@latest</code>, then confirm Recovery Center shows Local Whisper ready. Phone-local Tiny or Base can provide Message dictation and provisional Meeting text, but final speaker-attributed Meeting text still requires Mac Whisper. Text chat remains available without either path. COS keeps retryable audio instead of discarding a prompt. Cloud fallback stays off unless the server operator explicitly enables it and configures a key.</p>
     </div>
     <div class="card">
       <h3>Phone dictation says <code>text/html</code> is not a valid JavaScript MIME type</h3>
-      <p>You are running build 334. Its bundled ONNX runtime asked the Even WKWebView for a relative JavaScript loader and received the EHPK document instead. Install COS Glasses <strong>6.8.335</strong> from Even Hub. Build 335 pins the loader URL explicitly and reuses any verified Tiny or Base model already on the phone, so you do not need to redownload the model or update the server. Until you update, select <strong>Mac Whisper</strong> under Settings, Voice, Prompt dictation.</p>
+      <p>You are running build 334. Its bundled ONNX runtime asked the Even WKWebView for a relative JavaScript loader and received the EHPK document instead. Install COS Glasses <strong>6.8.336</strong> from Even Hub. Build 335 and newer pin the loader URL explicitly and reuse any verified Tiny or Base model already on the phone, so you do not need to redownload the model. Until you update, select <strong>Mac Whisper</strong> under Settings, Voice, Dictation + live preview.</p>
     </div>
     <div class="card">
       <h3>Tiny or Base is downloading</h3>
@@ -1273,7 +1274,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Confirm offline-safe meeting support</h3>
-      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 335's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.27.1, local speech readiness remains additive under <code>tts_local</code>, the selected transcription policy is reported under <code>capabilities.transcription.live</code>, and retained Adaptive replay reports its exact scope and raw-preservation contract. Phone-local Moonshine is a companion capability, so it does not turn the Mac server health row green or red.</p>
+      <p>Open <code>http://YOUR-SERVER-IP:3141/api/health</code>. Build 336's meeting recovery is ready when the response includes <code>features.localFirstMeetings: true</code> and <code>capabilities.localFirstMeetings.protocolVersion: 1</code>. On server 6.27.2, local speech readiness remains additive under <code>tts_local</code>, the selected transcription policy is reported under <code>capabilities.transcription.live</code>, and retained Adaptive replay reports its exact scope and raw-preservation contract. Phone-local Moonshine is a companion capability, so it does not turn the Mac server health row green or red.</p>
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
@@ -1285,7 +1286,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Glasses <strong>6.8.335</strong>, server <strong>6.27.1</strong>, and COS Control <strong>0.5.19</strong>. Rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The 6.8.335 Moonshine loader fix does not require a server update. For immediate feature rollback, select <strong>Mac Whisper</strong> under Prompt dictation. The package-level rollback before phone-local Moonshine is COS Glasses <strong>6.8.333</strong> with server 6.27.1; history, settings, meetings, and attachment data carry over. Do not roll back to 6.8.334 because that build contains the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Current supported versions are COS Glasses <strong>6.8.336</strong>, server <strong>6.27.2</strong>, and COS Control <strong>0.5.19</strong>. Rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. For immediate feature rollback, select <strong>Mac Whisper</strong> under Dictation + live preview or turn off Final polish. The package-level rollback before rolling Moonshine preview is COS Glasses <strong>6.8.335</strong> with server 6.27.1; history, settings, meetings, and attachment data carry over. Do not roll back to 6.8.334 because that build contains the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
     </div>
   </div>
 </section>
@@ -1299,7 +1300,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.8.335 and server 6.27.1; COS Control 0.5.19 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.8.336 and server 6.27.2; COS Control 0.5.19 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
