@@ -1,19 +1,19 @@
 {
- "schemaVersion": 1,
- "channels": {
-  "stable": {
-   "version": "0.5.19",
-   "build": 57,
-   "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.19.zip",
-   "sha256": "b55ff692b67f035e9b8c233560837dccfd1599d381dba8f76c14aa7736d7d8b5",
-   "minMacOS": "14.0",
-   "serverTarget": "6.27.1",
-   "publishedAt": "2026-08-11T17:25:52Z",
-   "notes": "COS Activity opens Messages, Speakers, Memories, and Threads in one resizable window with tabs, Home, Back, and scoped breadcrumbs. The new Voice Directory shows enrolled voices, observed-match evidence, attributed and review segments, meeting history, and meeting-local unidentified voices without merging them into false global identities. Late responses cannot overwrite newer selections, closing Activity stops playback, and Finder-launched server updates now resolve npm reliably. Requires glasses-server 6.27.1 for full Voice Directory history."
+  "schemaVersion": 1,
+  "channels": {
+    "stable": {
+      "version": "0.5.20",
+      "build": 58,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.20.zip",
+      "sha256": "789914c5c6ce0d739c906a040e0eae064eb7972bcfc6c7963dc20a7e952c4136",
+      "minMacOS": "14.0",
+      "serverTarget": "6.27.3",
+      "publishedAt": "2026-08-12T05:30:00Z",
+      "notes": "Reliable video uploads: MP4 and MOV transfers resume from server-confirmed 256 KiB chunks after a timeout or a restart, meeting audio keeps transfer priority, and Remove cancels the current transfer. Enable it under Reliable video uploads. Requires glasses-server 6.27.3 and COS Glasses 6.8.343 or later on the phone."
+    }
+  },
+  "killSwitch": {
+    "disableAutoUpdate": false,
+    "reason": ""
   }
- },
- "killSwitch": {
-  "disableAutoUpdate": false,
-  "reason": ""
- }
 }
