@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.20",
-      "build": 58,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.20.zip",
-      "sha256": "789914c5c6ce0d739c906a040e0eae064eb7972bcfc6c7963dc20a7e952c4136",
+      "version": "0.5.21",
+      "build": 59,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.21.zip",
+      "sha256": "8ea33b5c75946f03edf64fabb6a1aa22326bb6ca1015f95a6c829a2a893e8bf8",
       "minMacOS": "14.0",
-      "serverTarget": "6.27.3",
+      "serverTarget": "6.27.4",
       "publishedAt": "2026-08-12T05:30:00Z",
-      "notes": "Reliable video uploads: MP4 and MOV transfers resume from server-confirmed 256 KiB chunks after a timeout or a restart, meeting audio keeps transfer priority, and Remove cancels the current transfer. Enable it under Reliable video uploads. Requires glasses-server 6.27.3 and COS Glasses 6.8.343 or later on the phone."
+      "notes": "A blocked update now tells you what is blocking it. The progress line used to read \"restart proof\" no matter the cause, because it only ever looked at named active work. It now names the real blocker: a video upload still finishing, the server shutting down, or exactly which part of the restart check did not line up. One stuck video upload held an update for over an hour before this, and the reason was already in the data nobody was reading."
     }
   },
   "killSwitch": {
