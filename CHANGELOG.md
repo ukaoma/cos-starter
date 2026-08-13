@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.7 - 2026-08-12
+
+### Changed
+- COS Control 0.5.26 (build 64) is the public Mac download. Meetings is a fifth
+  Activity view with calendar, transcript, summary, copy, and keyword plus
+  meaning search. The home Activity card lists Meetings with the other views.
+- COS Glasses 6.8.353 (build 353) is the current Even Hub pin. Long on-device
+  dictations no longer freeze. Moonshine yields the main thread now, so the
+  footer progress bar fills and audio capture keeps up on long recordings.
+  Video uploads no longer stall behind meeting audio: a stuck meeting transfer
+  could starve media uploads indefinitely, now capped at 20 seconds. Adds
+  rolled-up upload timing and a dictation finalize breadcrumb so the next issue
+  is measurable instead of invisible. Requires server 6.27.4.
+- The versioned download, latest alias, SHA-256, appcast, Control page, and
+  docs now agree on Control 0.5.26, glasses 6.8.353, and server 6.27.6.
+
 ## 0.4.6 - 2026-08-08
 
 ### Changed
