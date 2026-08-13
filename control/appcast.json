@@ -9,7 +9,7 @@
       "minMacOS": "14.0",
       "serverTarget": "6.27.6",
       "publishedAt": "2026-08-13T20:00:00Z",
-      "notes": "Sessions is a sixth Activity view. Updated / Opened / Pinned clocks list Claude Desktop stars, Cursor sidebar pins, and ChatGPT/Codex pinned threads at any age. Keep-warm ready rows stay out. Companion video attachments upload as resumable 1 MiB originals with progress and resume. The Grok slot follows Cursor's newest high-fast catalog id (today Grok 4.6). Needs server 6.27.6."
+      "notes": "Sessions is a sixth Activity view. Updated / Opened / Pinned clocks list Claude Desktop stars, Cursor sidebar pins, and ChatGPT/Codex pinned threads at any age. Keep-warm ready rows stay out. Companion video attachments upload as resumable 1 MiB chunks with progress and resume. The Grok slot follows Cursor's newest high-fast catalog id (today Grok 4.6). Needs server 6.27.6."
     }
   },
   "killSwitch": {
