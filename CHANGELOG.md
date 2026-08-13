@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.9 - 2026-08-13
+
+### Changed
+- COS Control 0.5.37 (build 75) is the public Mac download. Open panels show
+  the GOT COS lockup. Headings use Fraunces, UI copy uses DM Sans, and chrome
+  numbers use JetBrains Mono. The menu bar still uses eyeglasses.
+- The versioned download, latest alias, SHA-256, appcast, Control page, and
+  docs now agree on Control 0.5.37, glasses 6.8.353, and server 6.27.6.
+
 ## 0.4.8 - 2026-08-13
 
 ### Changed
