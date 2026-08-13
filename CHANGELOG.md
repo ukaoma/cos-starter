@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.8 - 2026-08-13
+
+### Changed
+- COS Control 0.5.36 (build 74) is the public Mac download. Activity is six
+  views: Messages, Speakers, Meetings, Memories, Threads, and Sessions.
+  Sessions clocks are Updated, Opened, and Pinned. Pinned reads ChatGPT/Codex
+  pins, Cursor sidebar pins, and Claude Desktop stars at any age.
+- Docs cover companion video recording: attach a Photos clip or record on the
+  iPhone. Original MP4/MOV uploads use resumable 1 MiB chunks, progress, and
+  resume. The Grok slot follows Cursor's newest high-fast catalog id (today
+  Grok 4.6). The Even Hub pin stays COS Glasses 6.8.353 with server 6.27.6.
+- The versioned download, latest alias, SHA-256, appcast, Control page, and
+  docs now agree on Control 0.5.36, glasses 6.8.353, and server 6.27.6.
+
 ## 0.4.7 - 2026-08-12
 
 ### Changed
