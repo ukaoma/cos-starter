@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.10 - 2026-08-13
+
+### Changed
+- COS Control 0.5.41 (build 79) is the public Mac download. Activity lookup
+  on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or
+  Best match. Sessions search matches sidebar titles and recent transcript
+  bodies. Needs server 6.27.6.
+- Docs cover COS Glasses 6.8.360 as the current companion pack: Sessions look
+  back 7 days across Claude, Codex, and Cursor, and opening a session shows a
+  DISCUSSION gist when the running server returns `discussion_summary`. Even
+  Hub still lists 6.8.353. Public npm 6.27.6 does not include that field yet.
+- The versioned download, latest alias, SHA-256, appcast, Control page, and
+  docs now agree on Control 0.5.41, glasses 6.8.360 (Hub pin 6.8.353), and
+  server 6.27.6.
+
 ## 0.4.9 - 2026-08-13
 
 ### Changed

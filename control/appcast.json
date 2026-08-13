@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.37",
-      "build": 75,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.37.zip",
-      "sha256": "329e3b2b0607356fce651385bbc6c522cfc8c5686cd7216d178bc28c5cdc2893",
+      "version": "0.5.41",
+      "build": 79,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.41.zip",
+      "sha256": "3e122504111556d3d5de1c5080dd237b4053da9fd54c0a614d607ed3f55fb86c",
       "minMacOS": "14.0",
       "serverTarget": "6.27.6",
-      "publishedAt": "2026-08-13T20:25:00Z",
-      "notes": "Open Control and Activity show the GOT COS lockup. Headings use Fraunces, UI copy uses DM Sans, and chrome numbers use JetBrains Mono — the same trio as gotcos.com. The menu bar still uses eyeglasses for a running glance. Sessions clocks and Claude/Cursor pins are unchanged. Needs server 6.27.6."
+      "publishedAt": "2026-08-13T23:25:00Z",
+      "notes": "Activity lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match. Sessions search matches sidebar titles and recent transcript bodies. Needs server 6.27.6."
     }
   },
   "killSwitch": {
