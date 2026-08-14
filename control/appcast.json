@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.41",
-      "build": 79,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.41.zip",
-      "sha256": "3e122504111556d3d5de1c5080dd237b4053da9fd54c0a614d607ed3f55fb86c",
+      "version": "0.5.42",
+      "build": 80,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.42.zip",
+      "sha256": "e5a852282c5730b0d53277e9c4bd253c3630913d311125146bf0f532994f57f4",
       "minMacOS": "14.0",
-      "serverTarget": "6.27.6",
-      "publishedAt": "2026-08-13T23:25:00Z",
-      "notes": "Activity lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match. Sessions search matches sidebar titles and recent transcript bodies. Needs server 6.27.6."
+      "serverTarget": "6.27.12",
+      "publishedAt": "2026-08-14T16:00:00Z",
+      "notes": "COS Data no longer switches your Memory and Threads tier on its own. Picking a folder keeps the tier you are already on; moving between plain notes and the Python bridge is now an explicit choice. Symlinked memory/ and threads/ folders are recognised again, and the misleading \"older bridge\" error now reports what actually failed."
     }
   },
   "killSwitch": {
