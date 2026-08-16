@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.42",
-      "build": 80,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.42.zip",
-      "sha256": "e5a852282c5730b0d53277e9c4bd253c3630913d311125146bf0f532994f57f4",
+      "version": "0.5.43",
+      "build": 81,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.43.zip",
+      "sha256": "023e31ff8d6fba35a299ae562e8a64409ce865c5746f0443bb2a7712e0b49372",
       "minMacOS": "14.0",
-      "serverTarget": "6.27.12",
-      "publishedAt": "2026-08-14T16:00:00Z",
-      "notes": "COS Data no longer switches your Memory and Threads tier on its own. Picking a folder keeps the tier you are already on; moving between plain notes and the Python bridge is now an explicit choice. Symlinked memory/ and threads/ folders are recognised again, and the misleading \"older bridge\" error now reports what actually failed."
+      "serverTarget": "6.29.0",
+      "publishedAt": "2026-08-16T20:56:00Z",
+      "notes": "Continue an agent thread now survives Update Server. Server 6.29.0 gates that write path behind a setting Control rebuilds on every install and update, and the setting was not in the set Control carries over, so it was silently dropped and Continue disappeared with no message. There is now a \"Continue agent threads\" toggle in Tools, off by default, which appears only when your server supports it. Turning it off removes the setting entirely rather than leaving a disabled value behind."
     }
   },
   "killSwitch": {
