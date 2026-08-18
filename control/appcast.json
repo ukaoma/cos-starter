@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.43",
-      "build": 81,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.43.zip",
-      "sha256": "023e31ff8d6fba35a299ae562e8a64409ce865c5746f0443bb2a7712e0b49372",
+      "version": "0.5.45",
+      "build": 83,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.45.zip",
+      "sha256": "511787cc4e4a2c460f71b0ef06b6ce3fc800c076036d2ec8316685f2ba665141",
       "minMacOS": "14.0",
-      "serverTarget": "6.29.0",
-      "publishedAt": "2026-08-16T20:56:00Z",
-      "notes": "Continue an agent thread now survives Update Server. Server 6.29.0 gates that write path behind a setting Control rebuilds on every install and update, and the setting was not in the set Control carries over, so it was silently dropped and Continue disappeared with no message. There is now a \"Continue agent threads\" toggle in Tools, off by default, which appears only when your server supports it. Turning it off removes the setting entirely rather than leaving a disabled value behind."
+      "serverTarget": "6.36.10",
+      "publishedAt": "2026-08-18T23:14:00Z",
+      "notes": "Fenced threads are now visible and releasable from Control. When COS sends a turn to a thread on your Mac and never learns whether it arrived, it stops writing to that thread so the same message cannot land twice. Until now the only thing that cleared it was restarting the server, and there was no way to see that it had happened. A card now lists any fenced threads with when each was fenced, and Release reopens one after a confirmation. The card only appears when there is something to act on. Needs COS Glasses server 6.36.10."
     }
   },
   "killSwitch": {
