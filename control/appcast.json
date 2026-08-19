@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.51",
-      "build": 89,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.51.zip",
-      "sha256": "f5d45921ad315d10975c058a76c916ca46cb8adb20fecbd9010e488b3390ac92",
+      "version": "0.5.52",
+      "build": 90,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.52.zip",
+      "sha256": "d4b2403dd947dd692ebb52ec28b802e500d8c9819cb9308077d60f0a4314d08c",
       "minMacOS": "14.0",
       "serverTarget": "6.36.14",
-      "publishedAt": "2026-08-19T22:27:04Z",
-      "notes": "Install Control updates from the menu bar. The banner downloads the zip, checks the published SHA-256, replaces the app, and reopens it. The glasses server stays running. This is the last unzip for later releases."
+      "publishedAt": "2026-08-19T23:16:34Z",
+      "notes": "Activity is now the first thing in the menu bar, above Restart / Stop / Update Server. Each chip opens that tab: Messages, Speakers, Meetings, Memories, Threads, Sessions. Open still restores the window without wiping a place you already had."
     }
   },
   "killSwitch": {
