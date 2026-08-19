@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.49",
-      "build": 87,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.49.zip",
-      "sha256": "c8ff3c6e5a4d840fb958f33f438415343a4f0ba328ec4460dc93174a9cd8a135",
+      "version": "0.5.50",
+      "build": 88,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.50.zip",
+      "sha256": "031319e596d131ef595008345dc99388371ddf549b98b2b12946cd2283daf284",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.12",
-      "publishedAt": "2026-08-19T13:55:57Z",
-      "notes": "Pinned Claude sessions were missing from the Sessions list. Control compared pins against a short session id when they are stored as full ids, and it built the list by scanning one folder that six of seven pinned sessions do not live in. The list now comes from the server, which had both cases right already. Live status is still shown for running sessions, and if the server is unreachable the local scan still fills the window. Also since 0.5.45: session lookup waits long enough for the server to answer instead of falling back on timing, and when it does fall back it says why rather than blaming an out-of-date server. Needs COS Glasses server 6.36.12."
+      "serverTarget": "6.36.14",
+      "publishedAt": "2026-08-19T22:19:23Z",
+      "notes": "Sessions no longer label idle rows as Today. That word meant not running, so an 82-day-old session looked like it moved this morning. Each row now shows when it was actually updated. The list also reports how many sessions the 7-day window, the 20-per-provider cap, and the Cursor 32 MB skip hid. Needs COS Glasses server 6.36.14."
     }
   },
   "killSwitch": {
