@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.48",
-      "build": 86,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.48.zip",
-      "sha256": "a2c95a6433b7140c4458749d6bacbafe7c57f27389b525ccffd0a83d923a31b5",
+      "version": "0.5.49",
+      "build": 87,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.49.zip",
+      "sha256": "c8ff3c6e5a4d840fb958f33f438415343a4f0ba328ec4460dc93174a9cd8a135",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.11",
-      "publishedAt": "2026-08-19T12:53:32Z",
-      "notes": "Session lookup stops throwing away the server's answer. Control gave the server two seconds to respond to a search; that route takes one and a half to two and a half, so whether you got the real ranked answer or a local keyword scan came down to timing. It now waits fifteen. And when it does fall back, it says why: a missing token, an unreachable server and a genuinely old one all used to report \"this server is too old\", which sent you looking for an update that was never the problem. Also included since 0.5.45: a forked conversation and the thread it came from are no longer shown as one row, and the Release button on a fenced thread can no longer be dismissed out from under itself. Needs COS Glasses server 6.36.11."
+      "serverTarget": "6.36.12",
+      "publishedAt": "2026-08-19T13:55:57Z",
+      "notes": "Pinned Claude sessions were missing from the Sessions list. Control compared pins against a short session id when they are stored as full ids, and it built the list by scanning one folder that six of seven pinned sessions do not live in. The list now comes from the server, which had both cases right already. Live status is still shown for running sessions, and if the server is unreachable the local scan still fills the window. Also since 0.5.45: session lookup waits long enough for the server to answer instead of falling back on timing, and when it does fall back it says why rather than blaming an out-of-date server. Needs COS Glasses server 6.36.12."
     }
   },
   "killSwitch": {
