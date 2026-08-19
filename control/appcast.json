@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.50",
-      "build": 88,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.50.zip",
-      "sha256": "031319e596d131ef595008345dc99388371ddf549b98b2b12946cd2283daf284",
+      "version": "0.5.51",
+      "build": 89,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.51.zip",
+      "sha256": "f5d45921ad315d10975c058a76c916ca46cb8adb20fecbd9010e488b3390ac92",
       "minMacOS": "14.0",
       "serverTarget": "6.36.14",
-      "publishedAt": "2026-08-19T22:19:23Z",
-      "notes": "Sessions no longer label idle rows as Today. That word meant not running, so an 82-day-old session looked like it moved this morning. Each row now shows when it was actually updated. The list also reports how many sessions the 7-day window, the 20-per-provider cap, and the Cursor 32 MB skip hid. Needs COS Glasses server 6.36.14."
+      "publishedAt": "2026-08-19T22:27:04Z",
+      "notes": "Install Control updates from the menu bar. The banner downloads the zip, checks the published SHA-256, replaces the app, and reopens it. The glasses server stays running. This is the last unzip for later releases."
     }
   },
   "killSwitch": {
