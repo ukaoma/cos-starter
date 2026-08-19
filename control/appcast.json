@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.45",
-      "build": 83,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.45.zip",
-      "sha256": "511787cc4e4a2c460f71b0ef06b6ce3fc800c076036d2ec8316685f2ba665141",
+      "version": "0.5.48",
+      "build": 86,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.48.zip",
+      "sha256": "a2c95a6433b7140c4458749d6bacbafe7c57f27389b525ccffd0a83d923a31b5",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.10",
-      "publishedAt": "2026-08-18T23:14:00Z",
-      "notes": "Fenced threads are now visible and releasable from Control. When COS sends a turn to a thread on your Mac and never learns whether it arrived, it stops writing to that thread so the same message cannot land twice. Until now the only thing that cleared it was restarting the server, and there was no way to see that it had happened. A card now lists any fenced threads with when each was fenced, and Release reopens one after a confirmation. The card only appears when there is something to act on. Needs COS Glasses server 6.36.10."
+      "serverTarget": "6.36.11",
+      "publishedAt": "2026-08-19T12:53:32Z",
+      "notes": "Session lookup stops throwing away the server's answer. Control gave the server two seconds to respond to a search; that route takes one and a half to two and a half, so whether you got the real ranked answer or a local keyword scan came down to timing. It now waits fifteen. And when it does fall back, it says why: a missing token, an unreachable server and a genuinely old one all used to report \"this server is too old\", which sent you looking for an update that was never the problem. Also included since 0.5.45: a forked conversation and the thread it came from are no longer shown as one row, and the Release button on a fenced thread can no longer be dismissed out from under itself. Needs COS Glasses server 6.36.11."
     }
   },
   "killSwitch": {
