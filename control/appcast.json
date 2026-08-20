@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.52",
-      "build": 90,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.52.zip",
-      "sha256": "d4b2403dd947dd692ebb52ec28b802e500d8c9819cb9308077d60f0a4314d08c",
+      "version": "0.5.53",
+      "build": 91,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.53.zip",
+      "sha256": "2351754bf4d4f9902048bb95cece1c5a5549bb105658ddf8fea3bed4e703c287",
       "minMacOS": "14.0",
       "serverTarget": "6.36.14",
-      "publishedAt": "2026-08-19T23:16:34Z",
-      "notes": "Activity is now the first thing in the menu bar, above Restart / Stop / Update Server. Each chip opens that tab: Messages, Speakers, Meetings, Memories, Threads, Sessions. Open still restores the window without wiping a place you already had."
+      "publishedAt": "2026-08-20T01:35:15Z",
+      "notes": "The Activity gateway is rebuilt. The accent stripe down each card is gone \u2014 it never followed the card's rounded corner. Each view now carries its own mark, drawn on as the window opens, with the heading painting in beside it. One gold highlight replaces six colors, the tab underline slides between tabs instead of blinking, and all six views fit above the fold. Open panes use the same marks, so nothing changes vocabulary when you step into one. All motion is skipped under Reduce Motion."
     }
   },
   "killSwitch": {
