@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.54",
-      "build": 92,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.54.zip",
-      "sha256": "839bb90c9fcfd1e4a4943a7b8efa70b0c48180e7f3730564213b972951e2d515",
+      "version": "0.5.55",
+      "build": 93,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.55.zip",
+      "sha256": "26d8f78fd8c58272a4d7240a51a56058ada8e1e63a6d546204b7a4ebc426d0bd",
       "minMacOS": "14.0",
       "serverTarget": "6.36.14",
-      "publishedAt": "2026-08-20T01:55:31Z",
-      "notes": "Polish on the rebuilt Activity gateway. The engraved mark behind each card was not rendering at all. The COS lockup showed black on the dark panel. And the counts were being read out of a sentence rather than from the numbers themselves, so Memories showed 50 instead of the 5,528 it holds. Hover now reads clearly on every card."
+      "publishedAt": "2026-08-20T02:08:08Z",
+      "notes": "The COS mark showed black on the dark window toolbar and in the menu bar. It now inverts with the theme everywhere it appears. The engraved texture behind each Activity card reads properly too \u2014 it was being traced along the mark's outline instead of filling the corner behind it."
     }
   },
   "killSwitch": {
