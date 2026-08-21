@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.56",
-      "build": 94,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.56.zip",
-      "sha256": "e31c973412475b0d6cd880b1d5cde79fd47dbbe05ca86306f124c53d46a4115b",
+      "version": "0.5.58",
+      "build": 96,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.58.zip",
+      "sha256": "ce709fc9756ed9b8c9cb97d22f0760d917503b5348ede3787f88909d1fd7ea76",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.14",
-      "publishedAt": "2026-08-21T02:48:14Z",
-      "notes": "Activity cards are gotcos paper now: a full-tile 9px gold stipple, faded from the leading edge, the same field as the chapter cards on this site. Hover densifies it. The previous cut kept that screen on a corner glyph, so the gateway photographed as flat espresso."
+      "serverTarget": "6.36.18",
+      "publishedAt": "2026-08-21T15:30:27Z",
+      "notes": "Speakers now opens on Meetings to review. New recordings, a refresh-needed cue, and reviewed / to-name tags on each row. Naming a new person claims the voice profile it creates. Needs server 6.36.18 for unnamed counts before you open a meeting."
     }
   },
   "killSwitch": {
