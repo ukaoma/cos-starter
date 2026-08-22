@@ -127,6 +127,13 @@ section.light .cmd code{color:var(--fg)}
 .hud .dim{color:rgba(70,232,120,.52);text-shadow:none}
 .hud .hi{color:var(--hud-hi)}
 .hud .tag{color:var(--hud-mid)}
+/* ── session action menu (four-row cursor walk) ─────── */
+.smenu .srow{white-space:nowrap;color:rgba(70,232,120,.58);text-shadow:none;transition:color .22s ease}
+.smenu .srow .scur{display:inline-block;width:1ch;opacity:0}
+.smenu .srow.on{color:var(--hud-hi);text-shadow:0 0 8px rgba(70,232,120,.45)}
+.smenu .srow.on .scur{opacity:1}
+.smenu .sfoot{display:block}
+@media (prefers-reduced-motion: reduce){.smenu .srow{transition:none}}
 .hud .foot{margin-top:12px;padding-top:10px;border-top:1px solid rgba(70,232,120,.18);font-size:.66rem;letter-spacing:.04em;color:rgba(70,232,120,.62);text-shadow:none;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .hud-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);margin:10px 2px 0}
 section.light .hud-cap{color:rgba(46,31,16,.45)}
@@ -883,7 +890,7 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><strong>Message History</strong></td><td>The full archive, back to day one.</td></tr>
     <tr><td><strong>Threads</strong></td><td>Ongoing work with stable IDs, meetings, milestones, sources, and status. Double-tap a detail to attach its refreshed context to a new prompt.</td></tr>
     <tr><td><strong>Memory</strong></td><td>Recent stored context with full-store type totals, summary, stable ID, and bounded detail. Double-tap a detail to attach its refreshed context to a new prompt.</td></tr>
-    <tr><td><strong>Sessions</strong></td><td>Claude, Codex, and Cursor chats from this Mac. Updated and Opened look back 7 days. Pinned lists ChatGPT pins, Cursor sidebar pins, and Claude Desktop stars at any age. On 6.8.360, list rows and the first detail page show a DISCUSSION gist when the server sends <code>discussion_summary</code>.</td></tr>
+    <tr><td><strong>Sessions</strong></td><td>Claude, Codex, and Cursor chats from this Mac. Updated and Opened look back 7 days. Pinned lists ChatGPT pins, Cursor sidebar pins, and Claude Desktop stars at any age. On 6.8.360, list rows and the first detail page show a DISCUSSION gist when the server sends <code>discussion_summary</code>. Opening a session gives you the action menu below.</td></tr>
     <tr><td><strong>Network</strong></td><td>Connection status.</td></tr>
   </table></div>
   <h3 style="margin-top:30px">Messages list</h3>
@@ -893,7 +900,59 @@ footer .links a:hover{color:var(--gold)}
     <tr><td><span class="g-key">↑</span> <span class="g-key">↓</span></td><td>Move through the list.</td></tr>
     <tr><td><span class="g-key">Double-tap</span></td><td>Start dictating a new prompt from anywhere in the list.</td></tr>
   </table></div>
-  <p style="font-size:.95rem">Running, queued, and <span class="g-key">✓ Done</span> rows appear in this list while jobs work. That is the next section.</p>
+  <p style="font-size:.95rem">Running, queued, and <span class="g-key">✓ Done</span> rows appear in this list while jobs work. Jobs covers those.</p>
+  <h3 id="session-menu" style="margin-top:34px">Session detail</h3>
+  <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
+  <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
+
+  <div class="exhibit">
+    <div class="hud smenu" aria-hidden="true">
+      <div class="srow on" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
+      <div class="srow" data-label="Continue"><span class="scur">&#9654;</span> Continue</div>
+      <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
+      <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
+      <div class="foot"><span class="sfoot">&#9654; Back to list &#183; 1/4 &#183; Scroll=move Tap=select</span></div>
+    </div>
+    <div class="hud-cap">Session action menu &#183; scroll moves the cursor, tap selects</div>
+  </div>
+
+  <div class="tw"><table>
+    <tr><th>Gesture</th><th>What happens</th></tr>
+    <tr><td><span class="g-key">Tap</span></td><td>Open the menu. Tap again to run the highlighted row.</td></tr>
+    <tr><td><span class="g-key">&#8593;</span> <span class="g-key">&#8595;</span></td><td>Move the <span class="g-key">&#9654;</span> cursor. The list <strong>wraps</strong>, so scrolling past <strong>Ask COS</strong> returns to <strong>Back to list</strong> instead of dead-ending.</td></tr>
+    <tr><td><span class="g-key">Double-tap</span></td><td>Leave for Quick Actions, behind a confirmation. The footer reads <span class="g-key">Double-tap again for Quick Actions</span> and you have three seconds. An open menu closes on the way out.</td></tr>
+    <tr><td><span class="g-key">Wait</span></td><td>The menu retires itself after three seconds of no input and the normal footer returns.</td></tr>
+  </table></div>
+
+  <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Continue</strong> sits exactly one scroll away.</p>
+
+  <div class="tw"><table>
+    <tr><th>Row</th><th>What it does</th></tr>
+    <tr><td><strong>Back to list</strong></td><td>Return to Sessions. Nothing is written, and it is always present, so the menu can never trap you.</td></tr>
+    <tr><td><strong>Continue</strong></td><td>Attach to the original thread and start recording a turn. Selecting it only opens the microphone. Nothing enters the conversation until you send, which is its own confirmed step.</td></tr>
+    <tr><td><strong>Fork</strong></td><td>Record against a copy of the thread and leave the original untouched. This is what every refusal points you to.</td></tr>
+    <tr><td><strong>Ask COS</strong></td><td>Ask a question about the session without writing into it at all.</td></tr>
+  </table></div>
+
+  <h3 id="continue-unavailable" style="margin-top:34px">When Continue is unavailable</h3>
+  <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The row says so in words, the reason prints under the list, and the footer stops advertising a tap.</p>
+
+  <div class="exhibit">
+    <div class="hud" aria-hidden="true">
+      <div><span class="dim">&nbsp;&nbsp;Back to list</span></div>
+      <div><span class="hi">&#9654; Continue (unavailable)</span></div>
+      <div><span class="dim">&nbsp;&nbsp;Fork</span></div>
+      <div><span class="dim">&nbsp;&nbsp;Ask COS</span></div>
+      <div><span class="dim">COS has not checked whether this thread is</span></div>
+      <div><span class="dim">free yet. Fork it instead.</span></div>
+      <div class="foot"><span>&#9654; Continue (unavailable) &#183; 2/4 &#183; Scroll=move &#183; Unavailable</span></div>
+    </div>
+    <div class="hud-cap">A refused Continue names the reason and points at Fork</div>
+  </div>
+
+  <p style="font-size:.95rem">A greyed word with no explanation is indistinguishable from a rendering glitch on a monochrome lens, so the refusal is spelled out rather than implied. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
+  <p style="font-size:.95rem">The menu only appears for a session whose provider COS has a write path for, which today means <strong>Claude</strong>, <strong>Codex</strong>, and <strong>Cursor</strong>. Any other provider leaves the page exactly as it reads, with no menu at all, rather than offering an action that cannot run.</p>
+
 </section>
 
 <!-- ── 06 JOBS ── -->
@@ -1530,6 +1589,41 @@ footer .links a:hover{color:var(--gold)}
       hud.addEventListener('focusin', function(){ hudHover = true; });
       hud.addEventListener('focusout', function(){ hudHover = false; });
       setInterval(hudSwap, 4000);
+    }
+  }
+
+  // ── session action menu: the cursor walks the four rows and the footer tracks it ──
+  // Static HTML already renders row 1 selected with a matching footer, so no-JS and
+  // reduced-motion readers get a correct, complete frame and nothing below runs.
+  var smenu = document.querySelector('.smenu');
+  if (smenu) {
+    var srows = Array.prototype.slice.call(smenu.querySelectorAll('.srow'));
+    var sfoot = smenu.querySelector('.sfoot');
+    if (animeOK && !rm && ('IntersectionObserver' in window) && srows.length) {
+      var sIdx = 0, sHover = false, sInView = false;
+      var sLabels = srows.map(function(r){ return r.getAttribute('data-label') || ''; });
+      var sPaint = function(){
+        srows.forEach(function(r,i){ if (i === sIdx) r.classList.add('on'); else r.classList.remove('on'); });
+        if (sfoot) {
+          sfoot.textContent = '\u25B6 ' + sLabels[sIdx] + ' \u00B7 ' + (sIdx+1) + '/' + srows.length + ' \u00B7 Scroll=move Tap=select';
+          AN.animate(sfoot, {opacity:[.25,1], duration:240, ease:'outQuad'});
+        }
+        AN.animate(srows[sIdx], {translateX:[-4,0], duration:260, ease:'outQuad'});
+      };
+      var sStep = function(){
+        if (sHover || document.hidden || !sInView) return;
+        sIdx = (sIdx + 1) % srows.length;   // modulo: the lens wraps here too
+        sPaint();
+      };
+      var sio = new IntersectionObserver(function(es){
+        es.forEach(function(e){ sInView = e.isIntersecting; });
+      }, {threshold:.3});
+      sio.observe(smenu);
+      smenu.addEventListener('mouseenter', function(){ sHover = true; });
+      smenu.addEventListener('mouseleave', function(){ sHover = false; });
+      smenu.addEventListener('focusin',    function(){ sHover = true; });
+      smenu.addEventListener('focusout',   function(){ sHover = false; });
+      setInterval(sStep, 1700);
     }
   }
 
