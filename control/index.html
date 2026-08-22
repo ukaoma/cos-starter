@@ -305,9 +305,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .vname{font-size:.9rem;color:var(--fg);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .vmeta{font-family:var(--mono);font-size:.66rem;color:var(--ghost);white-space:nowrap}
 .vspace{flex:1;min-width:8px}
-.vbar{width:76px;height:5px;border-radius:3px;background:rgba(255,246,232,.09);overflow:hidden;flex:none}
-.vbar i{display:block;height:100%;border-radius:3px;background:var(--gold)}
-.vbar.low i{background:var(--warm)}
 .vconf{font-family:var(--mono);font-size:.7rem;color:var(--fg);font-variant-numeric:tabular-nums;width:34px;text-align:right;flex:none}
 .vconf.na{color:var(--ghost)}
 .vspark{display:flex;align-items:flex-end;gap:2px;height:20px;flex:none}
@@ -329,7 +326,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .vkind{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ghost);width:78px;flex:none}
 .vprov{font-family:var(--mono);font-size:.66rem;width:52px;flex:none;color:var(--blue)}
 .vprov.cx{color:var(--green)}.vprov.cu{color:var(--warm)}
-@media (max-width:900px){ .vgrid{grid-template-columns:1fr;gap:26px} .vbar{width:56px} }
+@media (max-width:900px){ .vgrid{grid-template-columns:1fr;gap:26px} }
 @media (prefers-reduced-motion:reduce){ .vpanel[data-open="true"]{animation:none} }
 
 </style>
@@ -848,27 +845,28 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     else AN.utils.set(slide, to);
   }
 
-  /* Animate the DATA, not just the container. A confidence bar that fills and a spark that
-     grows say something about the number; a fade says the panel changed. Targets are read
-     back off the markup, so the values animated to are the values authored. */
+  /* The authored spark heights are snapshotted ONCE, here, before anything has animated.
+     Reading them back off el.style inside enter() looked equivalent and was not: anime writes
+     that same inline style, so a re-entrance read its own mid-flight value as the new target
+     and ratcheted it down. Switching tabs faster than the ~1.2s settle permanently flattened
+     the sparklines to 0% and they never recovered. Verified in headless Chrome, 2026-08-21. */
+  var SPARK_TO = new WeakMap();
+  [].slice.call(document.querySelectorAll('.vspark i')).forEach(function(el){
+    SPARK_TO.set(el, el.style.height || '0%');
+  });
+
+  /* Animate the DATA, not just the container. A spark that grows says something about the
+     number; a fade only says the panel changed. */
   function enter(pane){
     var rows  = [].slice.call(pane.querySelectorAll('.vrow, .vq, .va, .vchip, .vday'));
-    var bars  = [].slice.call(pane.querySelectorAll('.vbar i'));
     var spark = [].slice.call(pane.querySelectorAll('.vspark i'));
 
-    var barTo   = bars.map(function(el){ return el.style.width || '0%'; });
-    var sparkTo = spark.map(function(el){ return el.style.height || '0%'; });
-
     AN.utils.set(rows, { opacity: 0, translateY: 9 });
-    AN.utils.set(bars, { width: '0%' });
     AN.utils.set(spark, { height: '0%' });
 
     AN.animate(rows, { opacity: 1, translateY: 0, duration: 460, ease: 'out(2)', delay: AN.stagger(58) });
-    bars.forEach(function(el, i){
-      AN.animate(el, { width: barTo[i], duration: 720, ease: 'out(3)', delay: 180 + i * 58 });
-    });
     spark.forEach(function(el, i){
-      AN.animate(el, { height: sparkTo[i], duration: 520, ease: 'out(2)', delay: 200 + i * 34 });
+      AN.animate(el, { height: SPARK_TO.get(el), duration: 520, ease: 'out(2)', delay: 200 + i * 34 });
     });
   }
 
