@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.60",
-      "build": 98,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.60.zip",
-      "sha256": "2bf7ab92e63daa2a63afe8130d7d1e873ee5899085b845f5c35897f971959e46",
+      "version": "0.5.63",
+      "build": 101,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.63.zip",
+      "sha256": "a834a6810fdfff749f756414493a1050d00ab17bd300083a1a9d87b77643f67d",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.18",
-      "publishedAt": "2026-08-22T17:31:15Z",
-      "notes": "Show Claude sessions is a switch again. The helper could always set it; nothing in the app ever called it, so the feature was reachable only through an undocumented environment variable and looked broken. Advanced now has the toggle, and it survives Control rewriting the LaunchAgent. A switched-off list now says it is switched off instead of showing an empty list."
+      "serverTarget": "6.36.20",
+      "publishedAt": "2026-08-23T17:35:00Z",
+      "notes": "Every confirmation button in the panel was dead except Cancel. Inside the menu-bar panel a confirmation sheet's non-cancel button never ran its action, so Release fence, Reset live message count, Clear stranded video uploads, Restart self-managed server and Stop legacy and install all did nothing when confirmed. Cancel worked, which is why it looked healthy. All ten confirmations are now inline and fire."
     }
   },
   "killSwitch": {
