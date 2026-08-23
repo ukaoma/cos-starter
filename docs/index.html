@@ -134,6 +134,22 @@ section.light .cmd code{color:var(--fg)}
 .smenu .srow.on .scur{opacity:1}
 .smenu .sfoot{display:block}
 @media (prefers-reduced-motion: reduce){.smenu .srow{transition:none}}
+/* story frames: one exhibit = one looping timeline; frames share a line budget (--lines) so
+   the loop never reflows the prose below. Static HTML marks the key frame .show for no-JS,
+   no-anime, and reduced-motion readers; JS only ever moves .show between frames. */
+.smenu .sfrs{min-height:calc(var(--lines,4) * 1.85em)}
+.smenu .sfr{display:none}
+.smenu .sfr.show{display:block}
+/* gesture score under a lens exhibit: the CAUSE of each frame, in the page's own chip
+   vocabulary. Decorative and never clickable, so a desktop click is never mistaken for a
+   glasses control. Lit = the Harness model-switch pressed state. */
+.sg{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 2px 0}
+.sg i{display:block;width:14px;height:1px;background:var(--line-2)}
+section.light .sg i{background:var(--line-on-cream)}
+.sg .g-key{transition:color .2s ease,border-color .2s ease,background .2s ease}
+.sg .g-key.lit{color:var(--fg);border-color:var(--gold);background:rgba(201,169,110,.09)}
+section.light .sg .g-key.lit{color:var(--ink-on-cream);border-color:#7a5c2c;background:rgba(122,92,44,.1)}
+@media (prefers-reduced-motion: reduce){.sg .g-key{transition:none}}
 .hud .foot{margin-top:12px;padding-top:10px;border-top:1px solid rgba(70,232,120,.18);font-size:.66rem;letter-spacing:.04em;color:rgba(70,232,120,.62);text-shadow:none;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .hud-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);margin:10px 2px 0}
 section.light .hud-cap{color:rgba(46,31,16,.45)}
@@ -905,15 +921,32 @@ footer .links a:hover{color:var(--gold)}
   <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
   <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
 
-  <div class="exhibit">
+  <div class="exhibit" data-story="choice">
     <div class="hud smenu" aria-hidden="true">
-      <div class="srow on" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
-      <div class="srow" data-label="Continue"><span class="scur">&#9654;</span> Continue</div>
-      <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
-      <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
+      <div class="sfrs">
+        <div class="sfr" data-frame="read">
+          <div><span class="hi">Friday pilot rollout</span></div>
+          <div><span class="dim">[ANT] 14m &#8226; 31msg &#8226; mac</span></div>
+          <div>Latest: Import owner is Dana. Rollout</div>
+          <div>email drafts Thursday. <span class="dim">&#9662;</span></div>
+        </div>
+        <div class="sfr show" data-frame="menu">
+          <div class="srow on" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
+          <div class="srow" data-label="Continue"><span class="scur">&#9654;</span> Continue</div>
+          <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
+          <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
+        </div>
+        <div class="sfr" data-frame="mic">
+          <div><span class="hi">MESSAGE</span></div>
+          <div>Listening...</div>
+          <div>&nbsp;</div>
+          <div>Speak your message.</div>
+        </div>
+      </div>
       <div class="foot"><span class="sfoot">&#9654; Back to list &#183; 1/4 &#183; Scroll=move Tap=select</span></div>
     </div>
-    <div class="hud-cap">Session action menu &#183; scroll moves the cursor, tap selects</div>
+    <div class="sg" aria-hidden="true"><span class="g-key">Tap</span><i></i><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
+    <div class="hud-cap">Two taps &#183; the first opens the menu, the second opens the mic</div>
   </div>
 
   <div class="tw"><table>
@@ -937,16 +970,27 @@ footer .links a:hover{color:var(--gold)}
   <h3 id="continue-unavailable" style="margin-top:34px">When Continue is unavailable</h3>
   <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The row says so in words, the reason prints under the list, and the footer stops advertising a tap.</p>
 
-  <div class="exhibit">
-    <div class="hud" aria-hidden="true">
-      <div><span class="dim">&nbsp;&nbsp;Back to list</span></div>
-      <div><span class="hi">&#9654; Continue (unavailable)</span></div>
-      <div><span class="dim">&nbsp;&nbsp;Fork</span></div>
-      <div><span class="dim">&nbsp;&nbsp;Ask COS</span></div>
-      <div><span class="dim">COS has not checked whether this thread is</span></div>
-      <div><span class="dim">free yet. Fork it instead.</span></div>
-      <div class="foot"><span>&#9654; Continue (unavailable) &#183; 2/4 &#183; Scroll=move &#183; Unavailable</span></div>
+  <div class="exhibit" data-story="refusal">
+    <div class="hud smenu" aria-hidden="true" style="--lines:6">
+      <div class="sfrs">
+        <div class="sfr show" data-frame="menu">
+          <div class="srow" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
+          <div class="srow on" data-label="Continue (unavailable)"><span class="scur">&#9654;</span> Continue (unavailable)</div>
+          <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
+          <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
+          <div><span class="dim">COS has not checked whether this thread is</span></div>
+          <div><span class="dim">free yet. Fork it instead.</span></div>
+        </div>
+        <div class="sfr" data-frame="mic">
+          <div><span class="hi">MESSAGE</span></div>
+          <div>Listening...</div>
+          <div>&nbsp;</div>
+          <div>Speak your message.</div>
+        </div>
+      </div>
+      <div class="foot"><span class="sfoot">&#9654; Continue (unavailable) &#183; 2/4 &#183; Scroll=move &#183; Unavailable</span></div>
     </div>
+    <div class="sg" aria-hidden="true"><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
     <div class="hud-cap">A refused Continue names the reason and points at Fork</div>
   </div>
 
@@ -1592,39 +1636,75 @@ footer .links a:hover{color:var(--gold)}
     }
   }
 
-  // ── session action menu: the cursor walks the four rows and the footer tracks it ──
-  // Static HTML already renders row 1 selected with a matching footer, so no-JS and
-  // reduced-motion readers get a correct, complete frame and nothing below runs.
-  var smenu = document.querySelector('.smenu');
-  if (smenu) {
-    var srows = Array.prototype.slice.call(smenu.querySelectorAll('.srow'));
-    var sfoot = smenu.querySelector('.sfoot');
-    if (animeOK && !rm && ('IntersectionObserver' in window) && srows.length) {
-      var sIdx = 0, sHover = false, sInView = false;
-      var sLabels = srows.map(function(r){ return r.getAttribute('data-label') || ''; });
-      var sPaint = function(){
-        srows.forEach(function(r,i){ if (i === sIdx) r.classList.add('on'); else r.classList.remove('on'); });
-        if (sfoot) {
-          sfoot.textContent = '\u25B6 ' + sLabels[sIdx] + ' \u00B7 ' + (sIdx+1) + '/' + srows.length + ' \u00B7 Scroll=move Tap=select';
-          AN.animate(sfoot, {opacity:[.25,1], duration:240, ease:'outQuad'});
-        }
-        AN.animate(srows[sIdx], {translateX:[-4,0], duration:260, ease:'outQuad'});
-      };
-      var sStep = function(){
-        if (sHover || document.hidden || !sInView) return;
-        sIdx = (sIdx + 1) % srows.length;   // modulo: the lens wraps here too
-        sPaint();
-      };
-      var sio = new IntersectionObserver(function(es){
-        es.forEach(function(e){ sInView = e.isIntersecting; });
-      }, {threshold:.3});
-      sio.observe(smenu);
-      smenu.addEventListener('mouseenter', function(){ sHover = true; });
-      smenu.addEventListener('mouseleave', function(){ sHover = false; });
-      smenu.addEventListener('focusin',    function(){ sHover = true; });
-      smenu.addEventListener('focusout',   function(){ sHover = false; });
-      setInterval(sStep, 1700);
+  // ── lens stories: one looping timeline per exhibit, DOM swaps at the seams ──
+  // Static HTML renders each exhibit's key frame with a matching footer, so no-JS,
+  // no-anime, and reduced-motion readers get a complete frame and nothing below runs.
+  // The rig is the Harness engine-evolution plate: createTimeline({loop}) with absolute
+  // offsets (never stagger({start}), a no-op in this bundle; same fix as 9f16c00), a child
+  // onBegin at every seam (re-fires each iteration; verified against 4.5.0 in node: the
+  // callback order is ABCL ABCL ABCL), and one sync() that owns play/pause from in-view,
+  // tab visibility, hover/focus, and a live reduced-motion toggle. Lens content CUTS and
+  // blooms because the G2 does not tween; only the gesture chips get the house outBack
+  // pulse, because they are site chrome rather than lens content. Every string the lens
+  // shows below is the glasses app's own (session-thread-actions.ts, gesture-handlers.ts,
+  // reference-hint.ts, display-pages.ts), not a paraphrase.
+  var REST_FOOT = "1/3 \u00b7 Tap: actions";
+  var MENU_FOOT = function(label, pos, enabled){ return '\u25B6 ' + label + ' \u00B7 ' + pos + '/4 \u00B7 ' + (enabled ? 'Scroll=move Tap=select' : 'Scroll=move \u00B7 Unavailable'); };
+  var STORIES = {
+    choice: { loop: 8800, beats: [
+      { at: 0,    frame: 'read', foot: REST_FOOT },
+      { at: 1500, chip: 0, frame: 'menu', cursor: 0, foot: MENU_FOOT('Back to list', 1, true) },
+      { at: 3400, chip: 1, cursor: 1, foot: MENU_FOOT('Continue', 2, true) },
+      { at: 5300, chip: 2, frame: 'mic', foot: 'Continue: say your next message' }
+    ]},
+    refusal: { loop: 7600, beats: [
+      { at: 0,    frame: 'menu', cursor: 1, foot: MENU_FOOT('Continue (unavailable)', 2, false) },
+      { at: 2200, chip: 0, cursor: 2, foot: MENU_FOOT('Fork', 3, true) },
+      { at: 4200, chip: 1, frame: 'mic', foot: 'Fork: say what the copy should start with' }
+    ]}
+  };
+  function lensStory(root, story){
+    var hud = root.querySelector('.hud'), foot = root.querySelector('.sfoot');
+    var rows = [].slice.call(hud.querySelectorAll('.srow'));
+    var chips = [].slice.call(root.querySelectorAll('.sg .g-key'));
+    var frames = {};
+    [].forEach.call(hud.querySelectorAll('.sfr'), function(f){ frames[f.getAttribute('data-frame')] = f; });
+    function apply(b){
+      if (b.at === 0) chips.forEach(function(c){ c.classList.remove('lit'); });
+      if (b.chip != null && chips[b.chip]) chips[b.chip].classList.add('lit');
+      if (b.frame) for (var k in frames) frames[k].classList.toggle('show', k === b.frame);
+      if (b.cursor != null) rows.forEach(function(r, i){ r.classList.toggle('on', i === b.cursor); });
+      if (b.foot != null && foot) foot.textContent = b.foot;
     }
+    var tl = AN.createTimeline({ loop: true, autoplay: false, defaults: { ease: 'outQuad' } });
+    story.beats.forEach(function(b){
+      var seam = function(){ apply(b); };
+      if (b.at === 0) { tl.add(hud, { opacity: [0, 1], duration: 320, onBegin: seam }, 0); return; }
+      // the seam: swap the DOM, then whatever changed blooms in like a phosphor redraw
+      if (b.frame) tl.add(frames[b.frame], { opacity: [.25, 1], duration: 260, onBegin: seam }, b.at);
+      else if (b.cursor != null) tl.add(rows[b.cursor], { opacity: [.25, 1], translateX: [-4, 0], duration: 260, onBegin: seam }, b.at);
+      if (foot) tl.add(foot, { opacity: [.25, 1], duration: 240 }, b.at);
+      if (b.chip != null && chips[b.chip]) tl.add(chips[b.chip], { scale: [1, 1.12, 1], duration: 380, ease: 'outBack(2)' }, b.at);
+    });
+    tl.add(hud, { opacity: [1, 0], duration: 300, ease: 'inQuad' }, story.loop - 300);
+
+    var inView = false, hover = false;
+    function sync(){ if (inView && !hover && !document.hidden && !rmq.matches) tl.play(); else tl.pause(); }
+    new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; sync(); }); }, { threshold: .3 }).observe(root);
+    hud.addEventListener('mouseenter', function(){ hover = true;  sync(); });
+    hud.addEventListener('mouseleave', function(){ hover = false; sync(); });
+    hud.addEventListener('focusin',    function(){ hover = true;  sync(); });
+    hud.addEventListener('focusout',   function(){ hover = false; sync(); });
+    document.addEventListener('visibilitychange', sync);
+    if (rmq.addEventListener) rmq.addEventListener('change', sync);
+    root.__cosStage = tl;   // QA hook: a headless render pauses this and seeks to a beat
+  }
+  var rmq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (animeOK && !rm && ('IntersectionObserver' in window)) {
+    [].forEach.call(document.querySelectorAll('.exhibit[data-story]'), function(root){
+      var story = STORIES[root.getAttribute('data-story')];
+      if (story && root.querySelector('.hud')) lensStory(root, story);
+    });
   }
 
   // ── #how arch: blocks stagger in, then connectors slide in after (one-shot) ──
