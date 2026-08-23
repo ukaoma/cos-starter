@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.63",
-      "build": 101,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.63.zip",
-      "sha256": "a834a6810fdfff749f756414493a1050d00ab17bd300083a1a9d87b77643f67d",
+      "version": "0.5.64",
+      "build": 102,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.64.zip",
+      "sha256": "13208a04d89ba33fb75c6c4ad301f28df3283d268fe5859045fe6e736f23ed05",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.20",
-      "publishedAt": "2026-08-23T17:35:00Z",
-      "notes": "Every confirmation button in the panel was dead except Cancel. Inside the menu-bar panel a confirmation sheet's non-cancel button never ran its action, so Release fence, Reset live message count, Clear stranded video uploads, Restart self-managed server and Stop legacy and install all did nothing when confirmed. Cancel worked, which is why it looked healthy. All ten confirmations are now inline and fire."
+      "serverTarget": "6.36.22",
+      "publishedAt": "2026-08-23T19:10:00Z",
+      "notes": "Show Claude sessions was reporting off while it was on. The checkbox read its state from a call the panel never made, so it rendered false whatever the setting was. It now reads the same status feed as every other toggle, and server 6.36.22 publishes the flag there. Also in 0.5.63: every confirmation button in the panel except Cancel was inert -- Release fence, Reset live message count, Clear stranded video uploads, Restart server and Stop legacy and install all did nothing when confirmed."
     }
   },
   "killSwitch": {
