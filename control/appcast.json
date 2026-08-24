@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.64",
-      "build": 102,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.64.zip",
-      "sha256": "13208a04d89ba33fb75c6c4ad301f28df3283d268fe5859045fe6e736f23ed05",
+      "version": "0.5.65",
+      "build": 103,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.65.zip",
+      "sha256": "58b403020c5b9ee4ff546c5e17e3ba69628e9dbb637d006324067d1c891ba1f0",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.22",
-      "publishedAt": "2026-08-23T19:10:00Z",
-      "notes": "Show Claude sessions was reporting off while it was on. The checkbox read its state from a call the panel never made, so it rendered false whatever the setting was. It now reads the same status feed as every other toggle, and server 6.36.22 publishes the flag there. Also in 0.5.63: every confirmation button in the panel except Cancel was inert -- Release fence, Reset live message count, Clear stranded video uploads, Restart server and Stop legacy and install all did nothing when confirmed."
+      "serverTarget": "6.36.28",
+      "publishedAt": "2026-08-24T22:15:00Z",
+      "notes": "An empty speaker review used to say \"predates speaker review. Update the server\". That named the one action that could not help: the count it reported has nothing to do with the server version. For a new user the real cause is that no voices are enrolled, which the system cannot fix by itself, and every speaker is correctly labelled Ext until one is. Both empty states now say what is actually wrong and name the fix: say \"enroll my voice\" on the glasses to record a 30-second sample."
     }
   },
   "killSwitch": {
