@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.65",
-      "build": 103,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.65.zip",
-      "sha256": "58b403020c5b9ee4ff546c5e17e3ba69628e9dbb637d006324067d1c891ba1f0",
+      "version": "0.5.66",
+      "build": 104,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.66.zip",
+      "sha256": "cf6c6b470f7b7af1c28e746f32afe931a809eb82cd748dfac21134a62c9f2b70",
       "minMacOS": "14.0",
       "serverTarget": "6.36.28",
-      "publishedAt": "2026-08-24T22:15:00Z",
-      "notes": "An empty speaker review used to say \"predates speaker review. Update the server\". That named the one action that could not help: the count it reported has nothing to do with the server version. For a new user the real cause is that no voices are enrolled, which the system cannot fix by itself, and every speaker is correctly labelled Ext until one is. Both empty states now say what is actually wrong and name the fix: say \"enroll my voice\" on the glasses to record a 30-second sample."
+      "publishedAt": "2026-08-24T22:55:00Z",
+      "notes": "Add a voice, from the Speakers pane. Naming a voice used to work only inside a meeting review, which can only rename a voice the system had already separated out. If your transcript came back entirely Ext there was nothing to rename and nowhere to click. You can now name any unrecognized session the server is still holding, which builds a real profile from real meeting audio. Scoped to one session at a time, and the panel tells you a session can hold more than one unknown speaker and that naming it uses up the audio."
     }
   },
   "killSwitch": {
