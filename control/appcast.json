@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.66",
-      "build": 104,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.66.zip",
-      "sha256": "cf6c6b470f7b7af1c28e746f32afe931a809eb82cd748dfac21134a62c9f2b70",
+      "version": "0.5.67",
+      "build": 105,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.67.zip",
+      "sha256": "8d1d21a4da80e70db9170a00410e28b4d726298820ba62c66cfa18fec6dc67a6",
       "minMacOS": "14.0",
       "serverTarget": "6.36.28",
-      "publishedAt": "2026-08-24T22:55:00Z",
-      "notes": "Add a voice, from the Speakers pane. Naming a voice used to work only inside a meeting review, which can only rename a voice the system had already separated out. If your transcript came back entirely Ext there was nothing to rename and nowhere to click. You can now name any unrecognized session the server is still holding, which builds a real profile from real meeting audio. Scoped to one session at a time, and the panel tells you a session can hold more than one unknown speaker and that naming it uses up the audio."
+      "publishedAt": "2026-08-24T23:35:00Z",
+      "notes": "A Check for updates button in the footer. The automatic check runs at launch and every 6 hours, so a Control left running can sit behind a release with no banner and no way to ask. Clicking now always answers: it offers the update, says you are on the latest, or tells you the check failed."
     }
   },
   "killSwitch": {
