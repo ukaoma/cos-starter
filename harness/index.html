@@ -180,8 +180,8 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
 .paper .dek,.faq .dek{color:#795c2d}
 .anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--display);font-style:italic;font-weight:500;font-size:.85rem;letter-spacing:0;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
-/* ═══ Harness assembly stage (hb-): six layers ring a swappable core ═══ */
-.hstage{position:relative;margin-top:48px;height:clamp(500px,54vw,600px);border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 120% at 50% 50%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,rgba(255,246,232,.03),rgba(7,5,4,.42))}
+/* ═══ Harness assembly stage (hb-): eight layers ring a swappable core ═══ */
+.hstage{position:relative;margin-top:48px;height:clamp(560px,64vw,660px);border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 120% at 50% 50%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,rgba(255,246,232,.03),rgba(7,5,4,.42))}
 .hstage-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hstage-links line{stroke:rgba(201,169,110,.32);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1}
 .hcore-pos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(148px,17vw,188px);z-index:2}
@@ -198,8 +198,10 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .hb-js .hcore{opacity:0;transform:translateY(10px) scale(.82)}
 .hb-js .hlayer{opacity:0;transform:translateY(16px) scale(.94)}
 .hb-js .hstage-links line{stroke-dashoffset:1}
+/* 861-1000px: cards at 15vw go skinny and tall; Orchestration then clips the stage floor. Wider cards are shorter cards. */
+@media(min-width:861px) and (max-width:1000px){.hlayer-pos{width:clamp(150px,17.5vw,170px)}}
 @media(prefers-reduced-motion:reduce){.hb-js .hcore,.hb-js .hlayer{opacity:1;transform:none}.hb-js .hstage-links line{stroke-dashoffset:0}}
-@media(max-width:760px){.hstage{height:auto;padding:20px;display:flex;flex-direction:column;gap:12px}.hstage-links{display:none}.hcore-pos,.hlayer-pos{position:static;transform:none;width:auto}.hcore{aspect-ratio:auto;padding:22px}.hb-js .hcore,.hb-js .hlayer{opacity:1;transform:none}}
+@media(max-width:860px){.hstage{height:auto;padding:20px;display:flex;flex-direction:column;gap:12px}.hstage-links{display:none}.hcore-pos,.hlayer-pos{position:static;transform:none;width:auto}.hcore{aspect-ratio:auto;padding:22px}.hb-js .hcore,.hb-js .hlayer{opacity:1;transform:none}}
 .memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,74px);align-items:start}.filetree{background:#0d0906;border:1px solid var(--line);border-radius:18px;padding:22px;font-family:var(--mono);font-size:.75rem;line-height:1.85;color:var(--muted);box-shadow:0 28px 70px rgba(0,0,0,.25)}.filetree .bar{display:flex;gap:7px;margin-bottom:17px}.filetree .bar i{width:8px;height:8px;border-radius:50%;background:var(--rose)}.filetree .bar i:nth-child(2){background:var(--gold)}.filetree .bar i:nth-child(3){background:var(--green)}.filetree b{color:var(--fg);font-weight:500}.filetree .note{color:var(--gold)}
 .memory-copy h2{font-size:clamp(2.3rem,4.2vw,3.75rem);line-height:1.03}.memory-copy>p{color:var(--muted);font-size:1.05rem;margin-top:20px}.truth{margin-top:25px;border-left:2px solid var(--gold);padding:4px 0 4px 18px}.truth b{display:block;margin-bottom:4px}.truth p{font-size:.88rem;color:var(--muted)}
 .fieldnotes{background:var(--paper);color:var(--paper-ink)}.field-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,7vw,94px);align-items:start}.fieldnotes h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.fieldnotes .lead{color:var(--paper-muted);margin-top:18px}.timeline{border-left:1px solid var(--paper-line);padding-left:28px}.moment{position:relative;padding:0 0 31px}.moment:last-child{padding-bottom:0}.moment::before{content:"";position:absolute;left:-34px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid #866633}.moment small{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d}.moment h3{font-size:1.08rem;margin:6px 0}.moment p{color:var(--paper-muted);font-size:.92rem}
@@ -398,18 +400,20 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="burn up" aria-hidden="true"></div>
   <section class="dark-section" id="anatomy">
     <div class="wrap reveal">
-      <h2>The six layers you actually own.</h2>
+      <h2>The eight layers you actually own.</h2>
       <p class="dek">Anatomy of a useful harness</p>
-      <p class="lead">A better model raises the ceiling. A better harness raises the floor. These six layers do the raising, and they keep working when you swap the model underneath them.</p>
+      <p class="lead">A better model raises the ceiling. A better harness raises the floor. These eight layers do the raising, and they keep working when you swap the model underneath them.</p>
 
       <div class="hstage" id="hstage">
         <svg class="hstage-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="50" y1="50" x2="50" y2="12" pathLength="1"></line>
-          <line x1="50" y1="50" x2="88" y2="30" pathLength="1"></line>
-          <line x1="50" y1="50" x2="88" y2="70" pathLength="1"></line>
-          <line x1="50" y1="50" x2="50" y2="88" pathLength="1"></line>
-          <line x1="50" y1="50" x2="12" y2="70" pathLength="1"></line>
-          <line x1="50" y1="50" x2="12" y2="30" pathLength="1"></line>
+          <line x1="50" y1="50" x2="50" y2="14" pathLength="1"></line>
+          <line x1="50" y1="50" x2="80" y2="20" pathLength="1"></line>
+          <line x1="50" y1="50" x2="88" y2="50" pathLength="1"></line>
+          <line x1="50" y1="50" x2="80" y2="80" pathLength="1"></line>
+          <line x1="50" y1="50" x2="50" y2="86" pathLength="1"></line>
+          <line x1="50" y1="50" x2="20" y2="80" pathLength="1"></line>
+          <line x1="50" y1="50" x2="12" y2="50" pathLength="1"></line>
+          <line x1="50" y1="50" x2="20" y2="20" pathLength="1"></line>
         </svg>
 
         <div class="hcore-pos">
@@ -420,23 +424,29 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           </div>
         </div>
 
-        <div class="hlayer-pos" style="--x:50;--y:12">
+        <div class="hlayer-pos" style="--x:50;--y:14">
           <div class="hlayer"><span class="hl-k">01 &middot; Identity</span><b>Rules you set</b><span class="hl-d">Who you are and how the AI should work, before it starts.</span></div>
         </div>
-        <div class="hlayer-pos" style="--x:88;--y:30">
+        <div class="hlayer-pos" style="--x:80;--y:20">
           <div class="hlayer"><span class="hl-k">02 &middot; Memory</span><b>Context that stays</b><span class="hl-d">People, decisions, and history, kept outside the chat window.</span></div>
         </div>
-        <div class="hlayer-pos" style="--x:88;--y:70">
+        <div class="hlayer-pos" style="--x:88;--y:50">
           <div class="hlayer"><span class="hl-k">03 &middot; Tools</span><b>Hands on the world</b><span class="hl-d">Files, search, calendar, email, and CRM, wired in through MCP.</span></div>
         </div>
-        <div class="hlayer-pos" style="--x:50;--y:88">
+        <div class="hlayer-pos" style="--x:80;--y:80">
           <div class="hlayer"><span class="hl-k">04 &middot; Policy</span><b>Permission to act</b><span class="hl-d">What it may send or change, and where you sign off first.</span></div>
         </div>
-        <div class="hlayer-pos" style="--x:12;--y:70">
+        <div class="hlayer-pos" style="--x:50;--y:86">
           <div class="hlayer"><span class="hl-k">05 &middot; Orchestration</span><b>How work moves</b><span class="hl-d">Planning, retries, and handoffs that hold a long task together.</span></div>
         </div>
-        <div class="hlayer-pos" style="--x:12;--y:30">
+        <div class="hlayer-pos" style="--x:20;--y:80">
           <div class="hlayer"><span class="hl-k">06 &middot; Persistence</span><b>What remains</b><span class="hl-d">The files and logs that let tomorrow start where today stopped.</span></div>
+        </div>
+        <div class="hlayer-pos" style="--x:12;--y:50">
+          <div class="hlayer"><span class="hl-k">07 &middot; I/O</span><b>Ears and a voice</b><span class="hl-d">Dictation in and speech out, running on hardware you control.</span></div>
+        </div>
+        <div class="hlayer-pos" style="--x:20;--y:20">
+          <div class="hlayer"><span class="hl-k">08 &middot; Cadence</span><b>Runs without you</b><span class="hl-d">Work on a clock or in parallel, running while you are away.</span></div>
         </div>
       </div>
     </div>
@@ -486,7 +496,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="moment"><small>Before the meeting</small><h3>Retrieve the people, history, and unfinished work.</h3><p>The model does not need every document. The harness finds the small set that changes the answer.</p></div>
         <div class="moment"><small>During the work</small><h3>Use tools inside explicit boundaries.</h3><p>Search meetings, read tasks, inspect files, draft a response, run an analysis. Anything that becomes externally visible waits for your approval first.</p></div>
         <div class="moment"><small>After the decision</small><h3>Write the durable artifact.</h3><p>The decision, correction, output, and next step return to the corpus instead of disappearing into a transcript.</p></div>
-        <div class="moment"><small>Next model, next surface</small><h3>Continue without rebuilding the relationship.</h3><p>The same operating memory shows up in a terminal, a desktop app, a phone, or a pair of smart glasses. The harness holds the continuity. The screen is just where you read it.</p></div>
+        <div class="moment"><small>Next model, next surface</small><h3>Continue without rebuilding the relationship.</h3><p>The same operating memory shows up in a terminal, a desktop app, a phone, or a pair of smart glasses. The harness holds the continuity. The surface is just where you meet it. Some days you read it. Some days you just talk.</p></div>
       </div>
     </div>
   </section>
@@ -816,7 +826,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-// Harness assembly stage (hb-): six layers ring a swappable core. Scroll-triggered, anime.js v4.
+// Harness assembly stage (hb-): eight layers ring a swappable core. Scroll-triggered, anime.js v4.
 (function(){
   var stage = document.getElementById('hstage');
   if (!stage) return;
@@ -839,7 +849,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
     // the swappable core seats first
     tl.add(core, { opacity:[0,1], scale:[.82,1], translateY:[10,0], duration:560, ease:'outBack(1.4)' }, 0);
-    // then the six layers assemble around it, one by one (timeline offsets; stagger({start}) is a no-op in this bundle)
+    // then the eight layers assemble around it, one by one (timeline offsets; stagger({start}) is a no-op in this bundle)
     layers.forEach(function(el, i){
       var at = 240 + i * 128;
       tl.add(el, { opacity:[0,1], translateY:[16,0], scale:[.94,1], duration:440, ease:'outBack(1.5)' }, at);
@@ -859,15 +869,23 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   function startCyc(){ if (cyc || !vis || document.hidden) return; cyc = setInterval(tick, 2800); }
   function stopCyc(){ if (cyc){ clearInterval(cyc); cyc = null; } }
 
+  // 08 · Cadence runs on a clock, so its spoke keeps time: a quiet redraw pulse
+  // rides the eighth line every few seconds, on the same gates as the name cycle.
+  var cadLine = lines.length === 8 ? lines[7] : null;
+  var cad = null;
+  function cadTick(){ if (built && cadLine) AN.animate(cadLine, { strokeDashoffset:[1,0], duration:900, ease:'outQuad' }); }
+  function startCad(){ if (cad || !vis || document.hidden || !cadLine) return; cad = setInterval(cadTick, 5600); }
+  function stopCad(){ if (cad){ clearInterval(cad); cad = null; } }
+
   if ('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ vis = e.isIntersecting; if (vis){ assemble(); startCyc(); } else { stopCyc(); } });
+      es.forEach(function(e){ vis = e.isIntersecting; if (vis){ assemble(); startCyc(); startCad(); } else { stopCyc(); stopCad(); } });
     }, { threshold:0.3 });
     io.observe(stage);
   } else {
     stage.classList.remove('hb-js'); // no observer: show at rest
   }
-  document.addEventListener('visibilitychange', function(){ if (document.hidden) stopCyc(); else if (vis) startCyc(); });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden){ stopCyc(); stopCad(); } else if (vis){ startCyc(); startCad(); } });
 })();
 </script>
 </body>
