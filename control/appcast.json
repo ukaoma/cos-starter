@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.68",
-      "build": 106,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.68.zip",
-      "sha256": "f456febc949b755cc11c6b7fecd4977a13b8f4e95b863f89a7c4d8af26e86b92",
+      "version": "0.5.69",
+      "build": 107,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.69.zip",
+      "sha256": "9adb8b2c5f50faaa5c39bad38f74bbeb063148a4ebfdc40a1f4dc717772a2541",
       "minMacOS": "14.0",
-      "serverTarget": "6.37.1",
-      "publishedAt": "2026-08-25T16:32:19Z",
-      "notes": "The Meeting Turbo preview checkbox was lying. It read your setting as \"on only if explicitly set to 1\", but an unset value reads as nothing \u2014 so the box showed OFF for everyone who had never touched it, while the server had the feature running the whole time. Three more settings that ship on by default in server 6.37.0 \u2014 Continue agent threads, Reliable video uploads and Adaptive audio cleanup \u2014 had the same mistake in their stopped-server display."
+      "serverTarget": "6.37.3",
+      "publishedAt": "2026-08-25T22:23:54Z",
+      "notes": "Two buttons that read wrong. With exactly one unsaved capture the panel showed two buttons both labelled \"Recover\", firing the same recovery on the same session, one of them greyed, and nothing said which was authoritative. The bulk button now appears only when there is more than one capture to recover. The per-row button already covers a single capture and carries the label and chunk count that say what is being recovered. Separately, \"Check for updates\" and \"Quit\" were plain links jammed together with no gap, so nothing separated a harmless action from the one that kills the app. They are now bordered buttons with icons on their own row."
     }
   },
   "killSwitch": {
