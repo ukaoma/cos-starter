@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.67",
-      "build": 105,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.67.zip",
-      "sha256": "8d1d21a4da80e70db9170a00410e28b4d726298820ba62c66cfa18fec6dc67a6",
+      "version": "0.5.68",
+      "build": 106,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.68.zip",
+      "sha256": "f456febc949b755cc11c6b7fecd4977a13b8f4e95b863f89a7c4d8af26e86b92",
       "minMacOS": "14.0",
-      "serverTarget": "6.36.28",
-      "publishedAt": "2026-08-24T23:35:00Z",
-      "notes": "A Check for updates button in the footer. The automatic check runs at launch and every 6 hours, so a Control left running can sit behind a release with no banner and no way to ask. Clicking now always answers: it offers the update, says you are on the latest, or tells you the check failed."
+      "serverTarget": "6.37.1",
+      "publishedAt": "2026-08-25T16:32:19Z",
+      "notes": "The Meeting Turbo preview checkbox was lying. It read your setting as \"on only if explicitly set to 1\", but an unset value reads as nothing \u2014 so the box showed OFF for everyone who had never touched it, while the server had the feature running the whole time. Three more settings that ship on by default in server 6.37.0 \u2014 Continue agent threads, Reliable video uploads and Adaptive audio cleanup \u2014 had the same mistake in their stopped-server display."
     }
   },
   "killSwitch": {
