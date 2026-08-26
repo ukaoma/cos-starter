@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.73",
-      "build": 111,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.73.zip",
-      "sha256": "d3dacaf0d5e34a348220d81ba53053c9eca1f7248e94121e93e91e05795f9496",
+      "version": "0.5.74",
+      "build": 112,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.74.zip",
+      "sha256": "1714722a2647f685736fa01f5e10d094e2e647d23ea22d8f85df8550ef423927",
       "minMacOS": "14.0",
-      "serverTarget": "6.39.0",
-      "publishedAt": "2026-08-26T19:29:54Z",
-      "notes": "Server 6.39.0 adds local models through Ollama, and this build keeps your Ollama settings. The helper writes the server's environment from a fixed list of keys, so a pinned local model or loopback override would have silently vanished on every server update without this release. Pair with server 6.39.0. Also note server 6.38.1: your conversation archive will shrink dramatically after updating — a bug had been storing the same conversations repeatedly, and the fix collapses the duplicates. Nothing real is lost."
+      "serverTarget": "6.39.1",
+      "publishedAt": "2026-08-26T20:04:21Z",
+      "notes": "When a local Ollama model is live, the panel now says so: an Ollama row with the pulled model appears in About and Doctor, and disappears entirely when the daemon is not running. No red mark on Macs without Ollama, and servers older than 6.39.0 look unchanged. Pair with server 6.39.1, which also fixes durable Ollama queries forgetting their engine on replay."
     }
   },
   "killSwitch": {
