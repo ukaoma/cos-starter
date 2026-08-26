@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.75",
-      "build": 113,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.75.zip",
-      "sha256": "485bfe59e928186d56f1628d320166d27dce5cb2127734b57bd376b069d1efaf",
+      "version": "0.5.76",
+      "build": 114,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.76.zip",
+      "sha256": "399e5d53eb31a6ef496c5d5bd32b2f4be1c06b775b49892fd804c74f662d7b44",
       "minMacOS": "14.0",
       "serverTarget": "6.39.1",
-      "publishedAt": "2026-08-26T20:57:56Z",
-      "notes": "Continue a session from the Sessions view: a text composer under every Claude, Codex, and Cursor session detail sends into the real thread on your Mac and shows the reply. Long turns keep running if you close the window. Also fixes the Continue agent threads Off toggle, which silently re-enabled the feature on servers 6.37 and newer."
+      "publishedAt": "2026-08-26T21:29:18Z",
+      "notes": "Session Chat follow-up: when a busy thread's refusal says 'fork it', a Fork with this message button now does exactly that \u2014 your message runs in a copy of the thread while the original stays untouched. The fork appears at the top of the Sessions list."
     }
   },
   "killSwitch": {
