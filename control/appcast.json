@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.77",
-      "build": 115,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.77.zip",
-      "sha256": "7f73d967f24a437d119eb5cac752a8ef2be288b35151500950150ed0a9d90d96",
+      "version": "0.5.78",
+      "build": 116,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.78.zip",
+      "sha256": "b36d65449751ee10937ddf7f2ba269f666036dc0a85000ce236ca51863c15f35",
       "minMacOS": "14.0",
-      "serverTarget": "6.39.1",
-      "publishedAt": "2026-08-26T22:24:42Z",
-      "notes": "Fixes Review speakers running off the window: when the server is holding many unrecognized audio sessions, the Add a voice list now scrolls inside the card instead of pushing the header and breadcrumbs off screen."
+      "serverTarget": "6.39.3",
+      "publishedAt": "2026-08-26T22:40:31Z",
+      "notes": "Pairs with server 6.39.3: local Ollama replies now answer in seconds because hidden thinking is off by default, and the new COS_OLLAMA_THINK preference survives Update Server. Also carries the Review speakers overflow fix from 0.5.77."
     }
   },
   "killSwitch": {
