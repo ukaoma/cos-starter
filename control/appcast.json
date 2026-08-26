@@ -2,18 +2,24 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.70",
-      "build": 108,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.70.zip",
-      "sha256": "e8ebaac58ee6142a5ca3d648196634e742b038846b1a802e9f12e19dddd72b69",
+      "version": "0.5.71",
+      "build": 109,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.71.zip",
+      "sha256": "99c7c2458c7bddc7f55605ec68d9affc7b969af83861c55a1340f2e2a1feb4e0",
       "minMacOS": "14.0",
       "serverTarget": "6.37.3",
-      "publishedAt": "2026-08-26T00:23:06Z",
-      "notes": "Named speakers could be switched off without the panel ever saying so. The voiceprint model that tells speakers apart is fetched by Guided Setup and by nothing else: installing COS Control does not fetch it, and neither does Update Server. Without it every voice is recorded as Me or Ext. Review speakers showed exactly that, two voices in a five-person meeting, with no reason given. The server had been reporting the state the whole time and Control was not reading it. It now does, and shows a banner with a Guided Setup button whenever named speakers are unavailable. A server too old to report it stays quiet."
+      "publishedAt": "2026-08-26T01:51:37Z",
+      "notes": "COS Control can now show a short notice from the publisher at the top of the panel, so a new capability can be explained at the moment you update rather than going unnoticed. Notices are dismissible and never repeat."
     }
   },
   "killSwitch": {
     "disableAutoUpdate": false,
     "reason": ""
+  },
+  "notice": {
+    "id": "voice-enrolment-2026-08",
+    "minBuild": 109,
+    "title": "You can now enrol a voice",
+    "body": "COS can tell speakers apart and remember them. Record a meeting, then open Review speakers below and give each voice a name. That name is saved as a voice profile and COS labels that person automatically from then on. Voices are learned only from meetings recorded after the voiceprint model is installed, so start with a fresh recording rather than an older meeting."
   }
 }
