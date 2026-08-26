@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.76",
-      "build": 114,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.76.zip",
-      "sha256": "399e5d53eb31a6ef496c5d5bd32b2f4be1c06b775b49892fd804c74f662d7b44",
+      "version": "0.5.77",
+      "build": 115,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.77.zip",
+      "sha256": "7f73d967f24a437d119eb5cac752a8ef2be288b35151500950150ed0a9d90d96",
       "minMacOS": "14.0",
       "serverTarget": "6.39.1",
-      "publishedAt": "2026-08-26T21:29:18Z",
-      "notes": "Session Chat follow-up: when a busy thread's refusal says 'fork it', a Fork with this message button now does exactly that \u2014 your message runs in a copy of the thread while the original stays untouched. The fork appears at the top of the Sessions list."
+      "publishedAt": "2026-08-26T22:24:42Z",
+      "notes": "Fixes Review speakers running off the window: when the server is holding many unrecognized audio sessions, the Add a voice list now scrolls inside the card instead of pushing the header and breadcrumbs off screen."
     }
   },
   "killSwitch": {
