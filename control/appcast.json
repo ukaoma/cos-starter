@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.74",
-      "build": 112,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.74.zip",
-      "sha256": "1714722a2647f685736fa01f5e10d094e2e647d23ea22d8f85df8550ef423927",
+      "version": "0.5.75",
+      "build": 113,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.75.zip",
+      "sha256": "485bfe59e928186d56f1628d320166d27dce5cb2127734b57bd376b069d1efaf",
       "minMacOS": "14.0",
       "serverTarget": "6.39.1",
-      "publishedAt": "2026-08-26T20:04:21Z",
-      "notes": "When a local Ollama model is live, the panel now says so: an Ollama row with the pulled model appears in About and Doctor, and disappears entirely when the daemon is not running. No red mark on Macs without Ollama, and servers older than 6.39.0 look unchanged. Pair with server 6.39.1, which also fixes durable Ollama queries forgetting their engine on replay."
+      "publishedAt": "2026-08-26T20:57:56Z",
+      "notes": "Continue a session from the Sessions view: a text composer under every Claude, Codex, and Cursor session detail sends into the real thread on your Mac and shows the reply. Long turns keep running if you close the window. Also fixes the Continue agent threads Off toggle, which silently re-enabled the feature on servers 6.37 and newer."
     }
   },
   "killSwitch": {
