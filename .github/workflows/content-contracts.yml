@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request: {}
   workflow_dispatch: {}
+  # Version drift almost always arrives from OUTSIDE this repo: a server
+  # published to npm, a Control release cut elsewhere. A push trigger cannot
+  # see any of that, so check on a clock too.
+  schedule:
+    - cron: '17 13 * * *'   # 08:17 CT daily
 
 permissions:
   contents: read
@@ -33,3 +38,15 @@ jobs:
 
       - name: Reject credentials in the public username registry
         run: python3 scripts/check-registry-no-secrets.py
+
+  version-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Public pages must match what actually ships
+        run: python3 scripts/check-version-drift.py
