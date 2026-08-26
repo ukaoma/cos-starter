@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "voice-enrolment-2026-08",
-    "minBuild": 109,
-    "title": "You can now enrol a voice",
-    "body": "COS can tell speakers apart and remember them. Record a meeting, then open Review speakers below and give each voice a name. That name is saved as a voice profile and COS labels that person automatically from then on. Voices are learned only from meetings recorded after the voiceprint model is installed, so start with a fresh recording rather than an older meeting."
+    "id": "ollama-local-models-2026-08",
+    "minBuild": 112,
+    "title": "Bring your own local model",
+    "body": "COS now supports Ollama. Install Ollama on this Mac, pull a model, and COS offers it as a fourth model family next to Claude, Codex, and Cursor. Replies on that model run entirely on your Mac. When the daemon is live, About shows an Ollama row with the model name, and Doctor confirms it. Needs server 6.39.1 or newer. Nothing to configure if you skip it."
   }
 }
