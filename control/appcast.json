@@ -7,8 +7,8 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.72.zip",
       "sha256": "4b449828de3e538a6634e8d28e36c4d1dbb926bf5d3d2c941fd2a47396063207",
       "minMacOS": "14.0",
-      "serverTarget": "6.37.3",
-      "publishedAt": "2026-08-26T14:12:04Z",
+      "serverTarget": "6.38.0",
+      "publishedAt": "2026-08-26T14:22:30Z",
       "notes": "Messages now has a Recent and Archive switch. COS keeps every day's conversations, which on a working install runs to months of history, and until now nothing in COS Control could open any of it. Archive lists each archived day with how many chats and messages it holds, and searches the whole store by text. A result points at a day, with the wording around each match. Search runs when you press return rather than as you type, because it is a real scan on your server rather than a filter on a list already loaded. Archive needs a server that carries the archive routes; until you update the server it says so instead of failing."
     }
   },
