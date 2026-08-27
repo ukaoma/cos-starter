@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.83",
-      "build": 121,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.83.zip",
-      "sha256": "a6567bc4a8ac02fac63c19ec2887d30022f271ff08373ccf3311e3ef80283fb7",
+      "version": "0.5.84",
+      "build": 122,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.84.zip",
+      "sha256": "2a05b68bae4a2292c3ede0f527d748d5df7dc48cb3186a7fcd6e251dd15d310a",
       "minMacOS": "14.0",
       "serverTarget": "6.40.0",
-      "publishedAt": "2026-08-27T01:58:21Z",
-      "notes": "Message timestamps carry their day in 12-hour time, and videos and files attached to a message show a poster, a play badge and their length. Clicking a video opens it in QuickTime."
+      "publishedAt": "2026-08-27T02:35:26Z",
+      "notes": "Message rows now show what is attached at a glance: a video icon for video, a file icon for documents, a photo icon for images, with the type named on hover. Timestamps carry their day in 12-hour time, and clicking a video opens it in QuickTime."
     }
   },
   "killSwitch": {
