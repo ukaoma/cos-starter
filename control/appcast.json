@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.105",
-      "build": 143,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.105.zip",
-      "sha256": "3f0ddd8745370ce7fc4262fe0257c9e9313616412f3af96d8ec158f297358eb5",
+      "version": "0.5.106",
+      "build": 144,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.106.zip",
+      "sha256": "3f0c95def212ca8d07a4d08dfa114dff1a544816b306577e66f497a85bd54db5",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T21:47:31Z",
-      "notes": "A pet session card opens that session. A Codex turn that is writing shows on the pet. A Codex pet click opens that thread. The Cursor card opens the Agents Window, then selects that session's tab. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T21:57:38Z",
+      "notes": "A pet session card opens that session. A Codex turn that is writing shows on the pet. A Codex pet click opens that thread. A Claude pet click opens that session. The Cursor card opens the Agents Window, then selects that session's tab. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
