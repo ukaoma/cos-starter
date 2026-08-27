@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.94",
-      "build": 132,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.94.zip",
-      "sha256": "ae8c85879548d27240895c90f41121f6e447cf413a401329a7ceb5a16140e0d7",
+      "version": "0.5.95",
+      "build": 133,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.95.zip",
+      "sha256": "321195f34886f6e43e412af487b741372541d8e467130d33405d9141ac1fa80e",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T18:46:22Z",
-      "notes": "Open in platform unhides Cursor, Claude Desktop, or ChatGPT instead of quitting Control. The desktop pet prints Running, Waiting, or Idle. The target opens that row in Activity. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T19:16:20Z",
+      "notes": "The desktop pet follows the session that is actually working. Cursor Open in platform opens the Agents window instead of the IDE. A minimized Claude or Cursor window comes back. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
