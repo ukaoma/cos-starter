@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.88",
-      "build": 126,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.88.zip",
-      "sha256": "6c78f6cf921abcedfd2451ffa076bda5e0675d887251d2e64474b194539daf2b",
+      "version": "0.5.90",
+      "build": 128,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.90.zip",
+      "sha256": "ed0ca854b10f601674e41dce81d954497a1021453b2f8a262965aef66b710248",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T16:59:25Z",
-      "notes": "Open in platform from the session jumps to Cursor, Claude Desktop, or ChatGPT. Choose sprite sets a custom PNG on the desktop figure. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T17:46:44Z",
+      "notes": "The menu-bar eyeglasses show a pip when a Control update is waiting. Pet gallery next to Choose sprite picks an OpenPets thumbnail as the session figure. Sessions and Open in platform stay on COS. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
