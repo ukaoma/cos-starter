@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.90",
-      "build": 128,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.90.zip",
-      "sha256": "ed0ca854b10f601674e41dce81d954497a1021453b2f8a262965aef66b710248",
+      "version": "0.5.91",
+      "build": 129,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.91.zip",
+      "sha256": "b863c24f153d73fbc10f30ed4f74ebbf7d458ee21f775430d403931ed6096fdb",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T17:46:44Z",
-      "notes": "The menu-bar eyeglasses show a pip when a Control update is waiting. Pet gallery next to Choose sprite picks an OpenPets thumbnail as the session figure. Sessions and Open in platform stay on COS. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T18:00:31Z",
+      "notes": "The menu-bar eyeglasses keep their native shape. A pip still appears when a Control update is waiting. Pet gallery next to Choose sprite picks an OpenPets thumbnail as the session figure. Sessions and Open in platform stay on COS. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
