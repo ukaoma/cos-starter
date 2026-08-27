@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.78",
-      "build": 116,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.78.zip",
-      "sha256": "b36d65449751ee10937ddf7f2ba269f666036dc0a85000ce236ca51863c15f35",
+      "version": "0.5.79",
+      "build": 117,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.79.zip",
+      "sha256": "2ed111d77795d5f8534e4bf2ac716713fee566bc8671d65d0c5e9bddb083de20",
       "minMacOS": "14.0",
-      "serverTarget": "6.39.3",
-      "publishedAt": "2026-08-26T22:40:31Z",
-      "notes": "Pairs with server 6.39.3: local Ollama replies now answer in seconds because hidden thinking is off by default, and the new COS_OLLAMA_THINK preference survives Update Server. Also carries the Review speakers overflow fix from 0.5.77."
+      "serverTarget": "6.40.0",
+      "publishedAt": "2026-08-27T00:09:16Z",
+      "notes": "A Local model picker in Settings pins which Ollama model COS uses, so pulling a new model no longer silently repoints your glasses. Pairs with server 6.40.0, where local thinking scales with the effort you pick instead of staying off."
     }
   },
   "killSwitch": {
