@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.92",
-      "build": 130,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.92.zip",
-      "sha256": "5467f1dba43669f296b4075abab489d298cf03bfdbad54a442b49eaac44b06e3",
+      "version": "0.5.93",
+      "build": 131,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.93.zip",
+      "sha256": "37d6ff7dafb8d6b2b3fab47fb17401d9e691e821fc9b8f039cdba09237e526d9",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T18:08:09Z",
-      "notes": "The Session pet panel shows the OpenPets thumbnail gallery, with search. Choose sprite is still your own PNG. The menu-bar eyeglasses keep their native shape. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T18:36:32Z",
+      "notes": "The Session pet panel shows the OpenPets thumbnail gallery, with search. Thumbs stay loaded while you scroll. Choose sprite is still your own PNG. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
