@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.85",
-      "build": 123,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.85.zip",
-      "sha256": "370529012ca90b2a68a607b68d3b72dbde6ae79ff5eacdba51713a69501b18af",
+      "version": "0.5.86",
+      "build": 124,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.86.zip",
+      "sha256": "124a2ccd851f3e2dd26b985795a4272fc647049d0d9b61888c3c9303e6a66a82",
       "minMacOS": "14.0",
-      "serverTarget": "6.40.0",
-      "publishedAt": "2026-08-27T02:56:16Z",
-      "notes": "The message icon now says what is attached: a camcorder for video, a framed peak for photos, a folded page for files, stacked cards when a turn holds more than one kind. Timestamps carry their day in 12-hour time, and clicking a video opens it in QuickTime."
+      "serverTarget": "6.40.2",
+      "publishedAt": "2026-08-27T15:14:37Z",
+      "notes": "Picking a day in Meetings now works anywhere in the highlighted square, not just on the date number. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
