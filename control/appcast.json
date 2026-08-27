@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.95",
-      "build": 133,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.95.zip",
-      "sha256": "321195f34886f6e43e412af487b741372541d8e467130d33405d9141ac1fa80e",
+      "version": "0.5.96",
+      "build": 134,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.96.zip",
+      "sha256": "bd334cf4e5555b79a72f625553ba2da01cc1fc247c34738a9490c884fdeaeb82",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T19:16:20Z",
-      "notes": "The desktop pet follows the session that is actually working. Cursor Open in platform opens the Agents window instead of the IDE. A minimized Claude or Cursor window comes back. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T19:32:09Z",
+      "notes": "The pet target opens Cursor's Agents Window instead of the IDE. Claude and Codex still open Activity. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
