@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.102",
-      "build": 140,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.102.zip",
-      "sha256": "ad709a0d49445b9963d85ad58c04aa419b6406827d484f9f67d0f9abdbadaf1e",
+      "version": "0.5.103",
+      "build": 141,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.103.zip",
+      "sha256": "17480230af3ca4f6d656220180288437f55648c0d378399b22a25253c40eee08",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T21:04:26Z",
-      "notes": "A pet session card opens that session. The Cursor card opens Cursor. It tries the Agents Window first. If that misses, you get the last Cursor window, with a notice. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T21:23:41Z",
+      "notes": "A pet session card opens that session. The Cursor card opens the Agents Window, then selects that session's tab. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
