@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.101",
-      "build": 139,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.101.zip",
-      "sha256": "5d72875d9cdd859abad598fa79e761be0a533d9d67fd24e8c31f6bccf50cb65f",
+      "version": "0.5.102",
+      "build": 140,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.102.zip",
+      "sha256": "ad709a0d49445b9963d85ad58c04aa419b6406827d484f9f67d0f9abdbadaf1e",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T20:44:45Z",
-      "notes": "A pet session card opens that session. If Cursor is already open and Agents does not come forward, the pet names the miss instead of opening another IDE window. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T21:04:26Z",
+      "notes": "A pet session card opens that session. The Cursor card opens Cursor. It tries the Agents Window first. If that misses, you get the last Cursor window, with a notice. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
