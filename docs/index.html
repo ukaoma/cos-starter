@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-  Covers COS Glasses 6.8.437 (build 437, Hub pin 6.8.353) · server @gotcos/glasses-server 6.39.3 · COS Control 0.5.78.
+  Covers COS Glasses 6.8.437 (build 437, Hub pin 6.8.353) · server @gotcos/glasses-server 6.40.0 · COS Control 0.5.79.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -589,8 +589,8 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.8.437</b> · build 437</span>
-      <span class="chip">Server <b>6.39.3</b></span>
-      <span class="chip">Control <b>0.5.78</b></span>
+      <span class="chip">Server <b>6.40.0</b></span>
+      <span class="chip">Control <b>0.5.79</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -677,7 +677,7 @@ footer .links a:hover{color:var(--gold)}
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note">
-    <p><strong>Latest release package: Control 0.5.78, glasses 6.8.437.</strong> COS Control 0.5.78 is the public Mac download. Activity lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match. Sessions search matches sidebar titles and recent transcript bodies. COS Glasses 6.8.437 is the current companion pack: Sessions look back 7 days across Claude, Codex, and Cursor, and opening a session shows a DISCUSSION gist (first user turn plus latest assistant) when the running server returns <code>discussion_summary</code>. Even Hub still lists 6.8.353. Server identity is 6.39.3. From the phone companion you can attach a clip from Photos or record one on the iPhone; large MP4/MOV uploads use resumable 1&nbsp;MiB chunks with on-screen progress and resume after a drop.</p>
+    <p><strong>Latest release package: Control 0.5.79, glasses 6.8.437.</strong> COS Control 0.5.79 is the public Mac download. Activity lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match. Sessions search matches sidebar titles and recent transcript bodies. COS Glasses 6.8.437 is the current companion pack: Sessions look back 7 days across Claude, Codex, and Cursor, and opening a session shows a DISCUSSION gist (first user turn plus latest assistant) when the running server returns <code>discussion_summary</code>. Even Hub still lists 6.8.353. Server identity is 6.40.0. From the phone companion you can attach a clip from Photos or record one on the iPhone; large MP4/MOV uploads use resumable 1&nbsp;MiB chunks with on-screen progress and resume after a drop.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -690,10 +690,10 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="macpair">
     <div>
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.39.3, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.40.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
     <div class="ccp-in">
       <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.39.3</b></div>
+      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.40.0</b></div>
       <div class="ccp-row"><span>Ownership</span><b>Verified direct PID</b></div>
       <div class="ccp-row"><span>Recovery</span><b>Scheduled</b></div>
       <div class="ccp-row"><span>Local Whisper</span><b>Ready</b></div>
@@ -726,7 +726,7 @@ footer .links a:hover{color:var(--gold)}
     <div><h3>Connect Memory and Threads</h3><p>Update to Control 0.5.41 and server 6.27.6. In COS Control, click <strong>COS Data</strong> and choose your full COS workspace or its <code>operations/scripts</code> folder. This is separate from Work Folder and Meetings Library. Control verifies <code>cos_api_bridge.py</code>, the workspace Python environment, bridge protocol 1, and the authenticated server response before saving the LaunchAgent change. Memory needs an existing local Qdrant <code>cos_memory</code> collection. Threads use the workspace thread cache and manual-thread store. Control reports an existing empty store as healthy, while a missing collection, degraded dependency, or outdated workspace is shown as setup-needed. It never creates, moves, or rewrites your stored data. Memories and Threads lookup share the same Recency control as Meetings and Sessions.</p></div>
     <div><h3>Sessions from this Mac</h3><p>Activity → Sessions is a sixth view alongside Messages, Speakers, Meetings, Memories, and Threads. Updated and Opened look back 7 days across Claude, Codex, and Cursor. Pinned is its own clock: ChatGPT/Codex <code>pinned-thread-ids</code>, Cursor sidebar pins, and Claude Desktop stars stay listed at any age, including Desktop-only chats with no local jsonl. Keep-warm <code>ready</code> rows stay out. Search matches sidebar titles and recent transcript bodies; Recency sorts Newest, Oldest, or Best match. Click a row to read the transcript; Copy session puts a redacted kickstart brief on the clipboard. On glasses 6.8.360, Sessions list a DISCUSSION gist when the running server returns <code>discussion_summary</code>.</p></div>
     <div><h3>Chat into a session from the Mac</h3><p>Since COS Control 0.5.75 a text composer sits under every Claude, Codex, and Cursor session detail. Open <strong>Activity</strong>, choose <strong>Sessions</strong>, pick a session, and type. Your message lands in the real thread on this Mac, and the reply comes back in the same pane. A long turn keeps running even with the window closed; reopen the session and the newest reply is there. Text only, by design. The <strong>Continue agent threads</strong> toggle in Settings gates the feature and is on by default.</p></div>
-    <div><h3>Busy thread? Retry, or fork it</h3><p>Since COS Control 0.5.78 a thread that is mid-turn refuses politely and offers <strong>Retry</strong> and <strong>Fork with this message</strong>. The fork runs your message in a copy of the thread, seeded with its history, while the original stays untouched. The new thread appears at the top of the Sessions list. Cursor sessions accept messages but do not fork, and say so in the server&rsquo;s own words.</p></div>
+    <div><h3>Busy thread? Retry, or fork it</h3><p>Since COS Control 0.5.79 a thread that is mid-turn refuses politely and offers <strong>Retry</strong> and <strong>Fork with this message</strong>. The fork runs your message in a copy of the thread, seeded with its history, while the original stays untouched. The new thread appears at the top of the Sessions list. Cursor sessions accept messages but do not fork, and say so in the server&rsquo;s own words.</p></div>
     <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
   </div>
   </div>
@@ -1149,7 +1149,7 @@ footer .links a:hover{color:var(--gold)}
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.8.437 plus server 6.39.3 is the current companion pair; Even Hub still lists 6.8.353. Phone-local Moonshine remains opt-in; Mac Whisper remains the default. Enabling Tiny or Base adds rolling provisional text to Messages and Meetings without changing canonical meeting capture, speaker attribution, save, HQ polish, recovery, or sync. Core queries, rich media, display, queues, Memory, Threads, and Sessions preserve their established contracts. Memory and Threads still require a compatible full-COS workspace bridge; standalone installs keep all core glasses features and show those two surfaces as unavailable. Older persisted meeting references remain valid.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.8.437 plus server 6.40.0 is the current companion pair; Even Hub still lists 6.8.353. Phone-local Moonshine remains opt-in; Mac Whisper remains the default. Enabling Tiny or Base adds rolling provisional text to Messages and Meetings without changing canonical meeting capture, speaker attribution, save, HQ polish, recovery, or sync. Core queries, rich media, display, queues, Memory, Threads, and Sessions preserve their established contracts. Memory and Threads still require a compatible full-COS workspace bridge; standalone installs keep all core glasses features and show those two surfaces as unavailable. Older persisted meeting references remain valid.</p>
     </div>
   </div>
 </section>
@@ -1244,7 +1244,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="cmd"><span class="p">$</span><code>ollama pull qwen2.5-coder</code><button type="button">Copy</button></div>
   <p style="max-width:74ch">That is the whole setup. When the daemon answers on <code>127.0.0.1:11434</code> with at least one pulled model, <strong>Ollama</strong> appears in the glasses and companion pickers. When the daemon is down, the slot hides again, and a saved Ollama choice safely resets to Opus. Local models are chat and summarize only: no tools, no vision, no Continue or Fork, no Live Cues.</p>
   <p style="max-width:74ch">Two optional keys in <code>~/.cos-glasses/.env</code>: <code>COS_OLLAMA_MODEL</code> pins the model COS uses, and <code>COS_OLLAMA_HOST</code> points at an alternate loopback address (LAN addresses and <code>0.0.0.0</code> are refused). COS Control 0.5.73 and newer preserves both keys across server updates, so Update Server never drops your local-model settings. Since Control 0.5.74 the About view shows an <strong>Ollama</strong> row with the live model when the daemon is ready, and Doctor prints a matching line; no row is the correct render for a Mac without a local daemon.</p>
-  <p style="max-width:74ch">Requires server <strong>6.39.0</strong> or newer. <strong>6.39.3</strong> or newer is strongly recommended: 6.39.1 fixed durable Ollama jobs forgetting their engine, and 6.39.3 turns hidden thinking off by default. Thinking-class models otherwise spend a long private reasoning chain before the first visible word; measured on qwen3.5:35b, the same answer took 98 seconds with thinking and about 2 seconds without, at the same quality. Set <code>COS_OLLAMA_THINK</code> to <code>1</code> or a budget (<code>low</code>, <code>medium</code>, <code>high</code>, <code>max</code>) to opt back in; Control 0.5.78 and newer keeps that setting across server updates.</p>
+  <p style="max-width:74ch">Requires server <strong>6.39.0</strong> or newer. <strong>6.40.0</strong> or newer is strongly recommended: 6.39.1 fixed durable Ollama jobs forgetting their engine, and since 6.40.0 hidden thinking follows the effort you ask for: the default effort keeps local turns instant (a thinking chain once turned a 2-second answer into 98 seconds), while xhigh and max raise the thinking budget with them. In a controlled flag test a thinking local Qwen matched an Opus 5 reference at 10/10 where the same model without thinking scored 6 to 7. <code>COS_OLLAMA_THINK</code> pins the behavior in either direction (1/0 or a budget: low, medium, high, max), and Control 0.5.79 adds a Local model picker in Settings that pins <code>COS_OLLAMA_MODEL</code>, so pulling a new model no longer silently repoints selection.</p>
 </section>
 
 <!-- ── 11 PRIVACY ── -->
@@ -1421,7 +1421,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.78</strong>, server <strong>6.39.3</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.8.437</strong> for the newest companion build; Even Hub still lists 6.8.353. Rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. For immediate feature rollback, select <strong>Mac Whisper</strong> under Dictation + live preview or turn off Final polish. The package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.39.3. Do not roll back to 6.8.334 because that build contains the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Current supported versions are COS Control <strong>0.5.79</strong>, server <strong>6.40.0</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.8.437</strong> for the newest companion build; Even Hub still lists 6.8.353. Rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. For immediate feature rollback, select <strong>Mac Whisper</strong> under Dictation + live preview or turn off Final polish. The package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.40.0. Do not roll back to 6.8.334 because that build contains the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
     </div>
   </div>
 </section>
@@ -1435,7 +1435,7 @@ footer .links a:hover{color:var(--gold)}
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.8.437 (Even Hub still lists 6.8.353) and server 6.39.3; COS Control 0.5.78 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.8.437 (Even Hub still lists 6.8.353) and server 6.40.0; COS Control 0.5.79 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -1595,7 +1595,7 @@ footer .links a:hover{color:var(--gold)}
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.8.437 / Control 0.5.78 / server 6.39.3, 2026-08-26)
+  // NEW / UPDATED badges (grounded vs glasses 6.8.437 / Control 0.5.79 / server 6.40.0, 2026-08-26)
   var BADGES = { setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
