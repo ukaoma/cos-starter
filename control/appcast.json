@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.79",
-      "build": 117,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.79.zip",
-      "sha256": "2ed111d77795d5f8534e4bf2ac716713fee566bc8671d65d0c5e9bddb083de20",
+      "version": "0.5.80",
+      "build": 118,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.80.zip",
+      "sha256": "a2f28a360e0c9dfa1b283d93349a131101de18daf0c748599a23aac34443e557",
       "minMacOS": "14.0",
       "serverTarget": "6.40.0",
-      "publishedAt": "2026-08-27T00:09:16Z",
-      "notes": "A Local model picker in Settings pins which Ollama model COS uses, so pulling a new model no longer silently repoints your glasses. Pairs with server 6.40.0, where local thinking scales with the effort you pick instead of staying off."
+      "publishedAt": "2026-08-27T00:50:56Z",
+      "notes": "Message timestamps now carry their day and read in 12-hour time (Today 7:15 PM, Aug 24, 2:19 PM). Videos and files attached to a message finally appear: a video shows its poster frame, a play badge and its length, files show a glyph and size, and clicking either opens it in QuickTime or Preview."
     }
   },
   "killSwitch": {
