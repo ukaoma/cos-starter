@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.84",
-      "build": 122,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.84.zip",
-      "sha256": "2a05b68bae4a2292c3ede0f527d748d5df7dc48cb3186a7fcd6e251dd15d310a",
+      "version": "0.5.85",
+      "build": 123,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.85.zip",
+      "sha256": "370529012ca90b2a68a607b68d3b72dbde6ae79ff5eacdba51713a69501b18af",
       "minMacOS": "14.0",
       "serverTarget": "6.40.0",
-      "publishedAt": "2026-08-27T02:35:26Z",
-      "notes": "Message rows now show what is attached at a glance: a video icon for video, a file icon for documents, a photo icon for images, with the type named on hover. Timestamps carry their day in 12-hour time, and clicking a video opens it in QuickTime."
+      "publishedAt": "2026-08-27T02:56:16Z",
+      "notes": "The message icon now says what is attached: a camcorder for video, a framed peak for photos, a folded page for files, stacked cards when a turn holds more than one kind. Timestamps carry their day in 12-hour time, and clicking a video opens it in QuickTime."
     }
   },
   "killSwitch": {
