@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.97",
-      "build": 135,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.97.zip",
-      "sha256": "9727a7cc6501e4b2daac941fc721477648755f04074d11bea877c7a32ad811a7",
+      "version": "0.5.98",
+      "build": 136,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.98.zip",
+      "sha256": "4d158ed5736ac2d616b56de040c9afc1944def1834d3ef66bf351d01e91372e0",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T19:43:20Z",
-      "notes": "Pet size is Small, Medium, Large, or a custom pixel value. The target still opens Cursor's Agents Window. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T19:57:14Z",
+      "notes": "The session pet snaps back if a size change parked it off-screen. Pet size is still Small, Medium, Large, or custom pixels. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
