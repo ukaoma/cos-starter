@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.99",
-      "build": 137,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.99.zip",
-      "sha256": "e4c2ce18314ab23dc22f7b1d6305678bd4eab93802626cbf9d7005690dab202a",
+      "version": "0.5.100",
+      "build": 138,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.100.zip",
+      "sha256": "c667ba2b22700ba9f5dd633c1066c34869e5a767b64ebe4fb3e248698bd0ec7a",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T20:11:14Z",
-      "notes": "The pet target opens Cursor's Agents Window, not the IDE. Pet size is still Small, Medium, Large, or custom pixels. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T20:21:09Z",
+      "notes": "A pet session card opens that session. The pet target still opens Cursor's Agents Window, not the IDE. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
