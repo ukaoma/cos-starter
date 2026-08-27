@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.93",
-      "build": 131,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.93.zip",
-      "sha256": "37d6ff7dafb8d6b2b3fab47fb17401d9e691e821fc9b8f039cdba09237e526d9",
+      "version": "0.5.94",
+      "build": 132,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.94.zip",
+      "sha256": "ae8c85879548d27240895c90f41121f6e447cf413a401329a7ceb5a16140e0d7",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T18:36:32Z",
-      "notes": "The Session pet panel shows the OpenPets thumbnail gallery, with search. Thumbs stay loaded while you scroll. Choose sprite is still your own PNG. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T18:46:22Z",
+      "notes": "Open in platform unhides Cursor, Claude Desktop, or ChatGPT instead of quitting Control. The desktop pet prints Running, Waiting, or Idle. The target opens that row in Activity. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
