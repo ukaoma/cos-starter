@@ -8,6 +8,11 @@ on:
   # Version drift almost always arrives from OUTSIDE this repo: a server
   # published to npm, a Control release cut elsewhere. A push trigger cannot
   # see any of that, so check on a clock too.
+  # This cron is a scheduled DETECTOR, not a writer. It re-runs the checker
+  # and leaves a red Actions run when drift exists. An npm-only
+  # publish stays red until a unique-anchor docs commit lands. Do not add
+  # repository_dispatch here without a typed sender, a cross-repo token, and
+  # an honest pager-vs-writer contract.
   schedule:
     - cron: '17 13 * * *'   # 08:17 CT daily
 
@@ -47,6 +52,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Version-drift mutation fixtures
+        run: python3 scripts/test_check_version_drift.py
 
       - name: Public pages must match what actually ships
         run: python3 scripts/check-version-drift.py
