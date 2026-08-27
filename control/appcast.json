@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.106",
-      "build": 144,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.106.zip",
-      "sha256": "3f0c95def212ca8d07a4d08dfa114dff1a544816b306577e66f497a85bd54db5",
+      "version": "0.5.107",
+      "build": 145,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.107.zip",
+      "sha256": "835bbbb9860523b142dfff7dd810d4e809423bb62f4754d752573811b2fbca81",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T21:57:38Z",
-      "notes": "A pet session card opens that session. A Codex turn that is writing shows on the pet. A Codex pet click opens that thread. A Claude pet click opens that session. The Cursor card opens the Agents Window, then selects that session's tab. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-27T23:15:48Z",
+      "notes": "The Accessibility grant survives updates. COS Control now signs with a stable identity, so the permission you grant once keeps working across future updates. macOS drops the old grant one final time on this update: toggle COS Control off and on under Accessibility, then reopen it. If a session jump cannot use Accessibility, the pet now opens that Settings pane and says the fix. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "ollama-local-models-2026-08",
-    "minBuild": 112,
-    "title": "Bring your own local model",
-    "body": "COS now supports Ollama. Install Ollama on this Mac, pull a model, and COS offers it as a fourth model family next to Claude, Codex, and Cursor. Replies on that model run entirely on your Mac. When the daemon is live, About shows an Ollama row with the model name, and Doctor confirms it. Needs server 6.39.1 or newer. Nothing to configure if you skip it."
+    "id": "accessibility-regrant-2026-08",
+    "minBuild": 1,
+    "title": "One last Accessibility toggle",
+    "body": "This update changes how COS Control is signed so macOS keeps your Accessibility permission across future updates. macOS drops the old grant one final time: open System Settings, Privacy & Security, Accessibility, toggle COS Control off and on, then reopen COS Control. You will not need to do this again."
   }
 }
