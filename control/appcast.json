@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.120",
-      "build": 158,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.120.zip",
-      "sha256": "4826168b179d884d96ae1eb008a656474e3ba7002c9b8965fd7aaf2f4930663a",
+      "version": "0.5.121",
+      "build": 159,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.121.zip",
+      "sha256": "b57cb7758dbae2f0c4df2ef6657070593c56ad39b5ad52992fef7e6ba32e4bfb",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-28T03:21:19Z",
-      "notes": "Jedi Miles Windu ships as the default character: the pet has real art on a fresh install, with no sprite pack to add. Character size is its own 100-300% dial, so the figure can grow while the card keeps its size, and the card now measures the actual art instead of assuming a wide cinematic frame. Story strips drop the scenes their subject is absent from, frames cut by a boundary no longer leave a flash in the corner, cinematic scenes cross-dissolve, and three sessions no longer animate the same as five. A Cursor pet click opens that session's Agents tab. Pet controls read in dark mode. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-28T04:21:03Z",
+      "notes": "The default character now animates in every state. Jedi Miles Windu ships with ten animated states and 74 frames — idle, patrol, waiting, running, success, error, attention, duel, trio, and swarm — so the pet moves on a fresh install with no sprite pack to add. A pack's own animated duel, trio, or swarm strip takes precedence over the stitched escalation ladder, so three and five sessions play their own choreography. Character size remains a separate 100-300% dial. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
