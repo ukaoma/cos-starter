@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.107",
-      "build": 145,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.107.zip",
-      "sha256": "835bbbb9860523b142dfff7dd810d4e809423bb62f4754d752573811b2fbca81",
+      "version": "0.5.109",
+      "build": 147,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.109.zip",
+      "sha256": "7f2b1e20288296a7296ca9dfd21b716b8f3109148e6293bbaa294a73c015af53",
       "minMacOS": "14.0",
       "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-27T23:15:48Z",
-      "notes": "The Accessibility grant survives updates. COS Control now signs with a stable identity, so the permission you grant once keeps working across future updates. macOS drops the old grant one final time on this update: toggle COS Control off and on under Accessibility, then reopen it. If a session jump cannot use Accessibility, the pet now opens that Settings pane and says the fix. Pairs with server 6.40.2."
+      "publishedAt": "2026-08-28T00:42:00Z",
+      "notes": "The pet escalates from patrol to a five-droid swarm. One quiet session patrols. A running turn sprints with the saber. Two sessions duel a droid. Three fight a cluster. Four or more go full swarm. Install sprite pack maps a folder of state strips onto the pet. Choose sprite is still your own PNG. Pairs with server 6.40.2."
     }
   },
   "killSwitch": {
