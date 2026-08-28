@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.127",
-      "build": 165,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.127.zip",
-      "sha256": "69041dd7aecc05dc75d1acfb30d147a361b697f033755899b46b878c2977a750",
+      "version": "0.5.129",
+      "build": 167,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.129.zip",
+      "sha256": "c12bc7f36c02e1f1b43ded023b4aa3ea1230b23eaa54766b9159c585a4fbf32c",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-28T16:33:51Z",
-      "notes": "Characters 301 and a bigger, smoother session pet. Miles Windu is now a searchable bundled animated character in the Pet gallery alongside 300 OpenPets options. Character scale defaults to 300%, reaches 600%, and migrates an existing 300% maximum once. Combat strips advance frame by frame, ambient playback reserves saber-draw clips for real signals, and repaired duel, patrol, and sprint artwork removes ghosting, displaced figures, spillover, and white paper pockets. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-28T23:17:38Z",
+      "notes": "Four bundled Jedi now sit inside one searchable 304-character gallery, with advanced animated packs clearly marked. Pet settings and state sprites are nested to keep the menu compact. The collapsed pet keeps one stable viewport, only the chevron expands sessions, and an enabled pet remains idle when no sessions are active. Miles Windu adds four directed V7 story loops: running bridges the one- and two-session fights, three-session combat keeps one saber and persistent droids, and the five-droid swarm now blocks before contact. All four loops use transparent, guttered frames with exact opening/closing seams. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
