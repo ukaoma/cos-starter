@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.125",
-      "build": 163,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.125.zip",
-      "sha256": "63a34a447d683c4ef9c917d0eaf883a7ad5e31ef0536f5a278bf0eda99f4ae43",
+      "version": "0.5.127",
+      "build": 165,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.127.zip",
+      "sha256": "69041dd7aecc05dc75d1acfb30d147a361b697f033755899b46b878c2977a750",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-28T14:11:17Z",
-      "notes": "A polished default character. Miles Windu V4 ships as the bundled pet: rebuilt meditation frames, corrected anatomy, the aura kept inside safe margins, and body scale and baseline normalised across all ten states — no frame in any pose is clipped at its edge now. The pet gallery gains a Restore row to put the shipped character back, and asks first, since it replaces an installed pack. Running stays a burst rather than a treadmill, with settled beats rotating through every solo sequence. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-28T16:33:51Z",
+      "notes": "Characters 301 and a bigger, smoother session pet. Miles Windu is now a searchable bundled animated character in the Pet gallery alongside 300 OpenPets options. Character scale defaults to 300%, reaches 600%, and migrates an existing 300% maximum once. Combat strips advance frame by frame, ambient playback reserves saber-draw clips for real signals, and repaired duel, patrol, and sprint artwork removes ghosting, displaced figures, spillover, and white paper pockets. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
