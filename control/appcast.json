@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.123",
-      "build": 161,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.123.zip",
-      "sha256": "56362556178cbc8359d3e72a8be41033df47234bdd9b663cc21f597a6a2a9241",
+      "version": "0.5.124",
+      "build": 162,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.124.zip",
+      "sha256": "4946bf41e0b478e0946508f98df4cac84d6457a1ba8507e547dff5a885e91118",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-28T04:42:02Z",
-      "notes": "Running is a burst, not a treadmill. A session is working almost all the time, so the sprint used to loop forever; running and patrol now settle on the idle clip most of the time and break into the action about 30% of it, never for more than two beats. The character also holds one size and one baseline through an animation — frames were being scaled individually, so a crouched stride got enlarged to match a standing one. Jedi Miles Windu ships as the default with ten animated states and 74 frames. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-28T12:09:58Z",
+      "notes": "The pet stops repeating itself. Running is a burst rather than a treadmill — a session is working almost all the time, so the sprint now settles between bursts, and settled beats rotate through every solo sequence the character has: breathing idle, meditation, draw-and-flourish, and guard. The character also holds one size and one baseline through an animation. Jedi Miles Windu ships as the default with ten animated states and 74 frames. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
