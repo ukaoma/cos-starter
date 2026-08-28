@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.121",
-      "build": 159,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.121.zip",
-      "sha256": "b57cb7758dbae2f0c4df2ef6657070593c56ad39b5ad52992fef7e6ba32e4bfb",
+      "version": "0.5.123",
+      "build": 161,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.123.zip",
+      "sha256": "56362556178cbc8359d3e72a8be41033df47234bdd9b663cc21f597a6a2a9241",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-28T04:21:03Z",
-      "notes": "The default character now animates in every state. Jedi Miles Windu ships with ten animated states and 74 frames — idle, patrol, waiting, running, success, error, attention, duel, trio, and swarm — so the pet moves on a fresh install with no sprite pack to add. A pack's own animated duel, trio, or swarm strip takes precedence over the stitched escalation ladder, so three and five sessions play their own choreography. Character size remains a separate 100-300% dial. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-28T04:42:02Z",
+      "notes": "Running is a burst, not a treadmill. A session is working almost all the time, so the sprint used to loop forever; running and patrol now settle on the idle clip most of the time and break into the action about 30% of it, never for more than two beats. The character also holds one size and one baseline through an animation — frames were being scaled individually, so a crouched stride got enlarged to match a standing one. Jedi Miles Windu ships as the default with ten animated states and 74 frames. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
