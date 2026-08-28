@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.109",
-      "build": 147,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.109.zip",
-      "sha256": "7f2b1e20288296a7296ca9dfd21b716b8f3109148e6293bbaa294a73c015af53",
+      "version": "0.5.119",
+      "build": 157,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.119.zip",
+      "sha256": "3d058bced0b3f5c526147b5c2e06f0fe10284ef3598065e6c6ce844b9155cf4b",
       "minMacOS": "14.0",
-      "serverTarget": "6.40.2",
-      "publishedAt": "2026-08-28T00:42:00Z",
-      "notes": "The pet escalates from patrol to a five-droid swarm. One quiet session patrols. A running turn sprints with the saber. Two sessions duel a droid. Three fight a cluster. Four or more go full swarm. Install sprite pack maps a folder of state strips onto the pet. Choose sprite is still your own PNG. Pairs with server 6.40.2."
+      "serverTarget": "6.41.0",
+      "publishedAt": "2026-08-28T03:11:42Z",
+      "notes": "The pet fight plays for real, and the character has its own size dial. Character size (100-300%) scales the figure while Pet size keeps the card, and the panel now measures the actual art instead of assuming a wide cinematic frame, so the card sits tight around the figure. Story strips drop the scenes their subject is absent from, cinematic frames align to their cells and cross-dissolve, and three sessions no longer animate the same as five. A Cursor pet click opens that session's Agents tab: prefix-aware row matching, a search fallback for rows scrolled out of view, and File > New Agent recovery when the window is closed. Pet controls read in dark mode. Reinstall your sprite pack once so it reprocesses through the fixed pipeline. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
