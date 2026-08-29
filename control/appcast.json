@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.134",
-      "build": 172,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.134.zip",
-      "sha256": "43fcba0b3085acb0978867b95274627c1dae35ec16c4d8bc4e74cb73eda71713",
+      "version": "0.5.135",
+      "build": 173,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.135.zip",
+      "sha256": "afc9ac7d86af92387ba36bdc58067e963d3831469df443efafa321c8f0870d2e",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-29T13:35:00Z",
-      "notes": "Jedi Nia Solari, Jedi Elara Vale and Jedi Rowan Vale now fight. Each carries authored four-frame animation for the two, three and four-plus session states: guard, the droids fire, the blade lands on one of them, and that droid is knocked back with a cut scar and its blaster down while the rest stay upright. How many droids you see tells you how many sessions are running, one then three then five. Their other seven states keep the single portrait. If you already picked one of the three, the new animation lands on its own the next time you open Control. Fixes: a sprite pack or a single image that failed to install no longer takes your current character with it; a dropped session row stays dropped instead of returning on the next refresh, and the list now offers to show dropped rows again; older packs draw correctly at every session count; and a short animation no longer plays faster than it was drawn for. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-29T14:08:18Z",
+      "notes": "Miles Windu's four active-session stories now use the reviewed V15 artwork rendered from 2x masters. One session deflects an off-screen bolt, closes the distance, reveals the droid and cuts it down. Two sessions restore the approved single-strike and backswing-deflection fight. Three sessions carry the rebuilt thirteen-frame three-droid sequence with one attached purple saber in the final recovery. Four or more sessions keep the full sixteen-frame swarm escalation. Every strip keeps one authored scale through the loop, transparent RGBA, cleared frame gutters and an exact opening composition at the seam. Existing byte-identical stock Miles V7 installs advance automatically; custom sprites, OpenPets characters and the three other bundled Jedi are unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
