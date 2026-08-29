@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.132",
-      "build": 170,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.132.zip",
-      "sha256": "cdfcd4b74877d985227365bcff3a41fb40091a3f7ff1a9f6827834bfc97a4eb4",
+      "version": "0.5.134",
+      "build": 172,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.134.zip",
+      "sha256": "43fcba0b3085acb0978867b95274627c1dae35ec16c4d8bc4e74cb73eda71713",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-29T03:35:00Z",
-      "notes": "Reverts the 0.5.131 motion for still characters. Sliding and rotating a whole static figure read as a sticker being wiggled rather than a character moving, so the three bundled Jedi go back to standing still until they have real sprite frames. Everything from 0.5.130 stays: switching characters replaces the whole character instead of layering, legacy packs draw every state, idle session rows can be dropped from the pet list after ten minutes, and double-clicking the character opens the active-session list. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-29T13:35:00Z",
+      "notes": "Jedi Nia Solari, Jedi Elara Vale and Jedi Rowan Vale now fight. Each carries authored four-frame animation for the two, three and four-plus session states: guard, the droids fire, the blade lands on one of them, and that droid is knocked back with a cut scar and its blaster down while the rest stay upright. How many droids you see tells you how many sessions are running, one then three then five. Their other seven states keep the single portrait. If you already picked one of the three, the new animation lands on its own the next time you open Control. Fixes: a sprite pack or a single image that failed to install no longer takes your current character with it; a dropped session row stays dropped instead of returning on the next refresh, and the list now offers to show dropped rows again; older packs draw correctly at every session count; and a short animation no longer plays faster than it was drawn for. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
