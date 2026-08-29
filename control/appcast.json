@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.130",
-      "build": 168,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.130.zip",
-      "sha256": "80ec61908080a46fcc8d8979c5a24c1487fe975de606dd96b78642efcd3135c5",
+      "version": "0.5.131",
+      "build": 169,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.131.zip",
+      "sha256": "68f9789c0404e7fbae0f9076c3cbae75ddb25fde811f6afd29da96d455c937cc",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-29T02:25:00Z",
-      "notes": "Switching characters now actually switches. Installing a sprite pack or picking a single sprite used to layer on top of whatever was already installed, so any pose the new character did not define stayed owned by the old one. Choosing a legacy pet while an advanced Jedi pack was installed could not change anything on screen. A pack is now built in a scratch folder and swapped in whole, so a pack that fails partway leaves your current character untouched, and an old combat strip can no longer keep fighting under new artwork. Legacy packs draw every state again: error and attention used to fall back only to each other, so a pack carrying neither drew nothing for both. Idle sessions can now be dropped from the pet list. After ten minutes without activity a row shows an x that removes it from the list only. The session keeps running, nothing is deleted, and the row returns on its own the moment it does something. Four parked sessions no longer pin the pet in the five-droid swarm while the one session actually working goes unseen. Double-clicking the character opens the active-session list, so the chevron is no longer the only way in. A single click still opens the focused session and still never expands the list. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-29T03:15:00Z",
+      "notes": "The three bundled Jedi besides Miles Windu carried an Advanced badge while standing perfectly still, because each maps one image onto all ten states. A character with no authored animation for a state now shifts its weight: it bobs on the feet, leans, and takes a small step. The motion gets faster and wider as sessions stack up, so two, three, and four or more sessions still read off the figure itself. The same cadence covers every OpenPets still and any single PNG you drop on the pet. Miles Windu is untouched, because his states carry real authored animation already. Resting states stay still, and Reduce Motion turns the cadence off. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
