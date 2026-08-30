@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.135",
-      "build": 173,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.135.zip",
-      "sha256": "afc9ac7d86af92387ba36bdc58067e963d3831469df443efafa321c8f0870d2e",
+      "version": "0.5.139",
+      "build": 177,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.139.zip",
+      "sha256": "345e7558c7a6556acf0990305a55614d378e196d946a7eb31c3db012a816946a",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-29T14:08:18Z",
-      "notes": "Miles Windu's four active-session stories now use the reviewed V15 artwork rendered from 2x masters. One session deflects an off-screen bolt, closes the distance, reveals the droid and cuts it down. Two sessions restore the approved single-strike and backswing-deflection fight. Three sessions carry the rebuilt thirteen-frame three-droid sequence with one attached purple saber in the final recovery. Four or more sessions keep the full sixteen-frame swarm escalation. Every strip keeps one authored scale through the loop, transparent RGBA, cleared frame gutters and an exact opening composition at the seam. Existing byte-identical stock Miles V7 installs advance automatically; custom sprites, OpenPets characters and the three other bundled Jedi are unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-30T13:32:50Z",
+      "notes": "Miles Windu's active one-, two-, three-, and four-plus-session stories now use the approved V15.1 strips with 16, 12, 13, and 16 frames. The transitions preserve droid positions, visible hits, the behind-the-back saber toss, and clean loop seams. Miles's idle portrait renders at pack-owned 2x scale while combat and global scaling remain unchanged inside the stable viewport. Elara Vale's V1.1 strips remove the oversized white matte around the green saber without changing its choreography. Exact stock Miles V15 and Elara V1 installs advance automatically; custom sprite packs are never overwritten. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
