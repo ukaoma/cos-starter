@@ -605,14 +605,15 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="install">
     <div class="wrap">
       <div class="reveal" style="max-width:750px">
-        <h2>Install in four moves.</h2>
-        <p class="dek">Download, approve once, guided setup, point your folders.</p>
+        <h2>Install in five moves.</h2>
+        <p class="dek">Download, approve once, guided setup, point your folders, and let the pet jump.</p>
       </div>
       <ol class="insteps">
         <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
         <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
         <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>Choose Balanced (recommended) or Max. COS Control checks <code>whisper.cpp</code>, verifies free disk space, and provisions the selected local models without interrupting the running server. When it finishes, Install or Update Server if offered, then Apply the tier for a verified restart. Then use the <a href="/wizard/#tune">setup wizard profile step</a> to add names and specialist terms; factory placeholders are ignored.</p></div></li>
         <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>Set <strong>Work Folder</strong> to your agent workspace. For <strong>Meetings Library</strong>, choose the folder that already contains your <code>YYYY-MM/*.md</code> meeting folders. That is the recommended setup. If you keep several custom-named libraries, select their parent instead. Control detects both layouts and lets you skip if you only want new standalone recordings.</p></div></li>
+        <li class="reveal"><span class="n">5</span><div><h3>Only if you want the pet: allow Accessibility.</h3><p>The desktop pet can jump you straight into the session you clicked, in Claude, Codex, or Cursor. macOS treats moving another app's window as automation, so that one feature needs Accessibility. Turn the pet on in Settings and COS Control asks for it and opens the right pane for you; approve it there and you are done. If a jump ever reports it could not select the session, the grant was dropped: toggle <strong>COS Control</strong> off and on under System Settings, Privacy &amp; Security, Accessibility, then reopen COS Control.</p><p><strong>Skipping this costs you nothing else.</strong> Accessibility gates the pet's jump and nothing more. Meetings, transcription, the server, Activity, and search all work without it, so leave it off if you do not use the pet.</p></div></li>
       </ol>
       <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
       <figure class="gk reveal">
