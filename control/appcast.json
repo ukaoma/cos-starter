@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.151",
-      "build": 189,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.151.zip",
-      "sha256": "c00eac2becb78a5522167befb603b36b1937fb7f8d6f19fa047edfd00cc6bb9f",
+      "version": "0.5.152",
+      "build": 190,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.152.zip",
+      "sha256": "c21d762ca262ab46f567b2f333819ac494cacbb16d93b3ab9f18e6ffd82bb556",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T12:56:25Z",
-      "notes": "Nia Solari, Elara Vale and Rowan Vale now have eight-frame idle loops and four distinct combat stories each: 223 new authored frames with connected defense, strikes, Force moves, visible defeats and recovery. Each idle is scaled to its own combat art. Exact-stock older packs upgrade automatically; custom artwork, pose timing and scale, selected character, and saved global size/speed remain untouched. Versioned images land before the active map changes for safe retry. Miles Windu V15.4 and his 1.30x idle are unchanged. Includes 0.5.150 pet/panel polish: quiet IDLE hover controls and shared blur surfaces. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T13:43:00Z",
+      "notes": "Fixes blank Nia Solari, Elara Vale and Rowan Vale gallery previews. Thumbnails now load the idle filename and frame count together from each character's configuration. All four Jedi previews are pixel-checked. The approved 223-frame animation upgrade from 0.5.151, Miles Windu V15.4 and his 1.30x idle, custom art, selected character and saved size/speed settings are unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
