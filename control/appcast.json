@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.160",
-      "build": 198,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.160.zip",
-      "sha256": "aa55795b710d843de5a8d41650f6f647d35b944ee82abc8e1ddf1a3685ad11af",
+      "version": "0.5.161",
+      "build": 199,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.161.zip",
+      "sha256": "98e84605f83a935fb978867a860f4adaf6072309c2480aa6f0ab6b9e584315d5",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T18:01:34Z",
-      "notes": "The live activity line is readable. It shared the title column with the age and workspace stack, which left it about 84 points \u2014 under twenty characters, not enough to show one whole word of a scrolling sentence. It now has its own full-width line beneath the title at 209 points with a slightly larger face: 39 characters visible instead of 18. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T18:18:52Z",
+      "notes": "Every agent row now carries its platform's mark, so you can tell Claude from Codex from Cursor at a glance instead of reading the label: a spark for Claude, a terminal prompt for Codex, a cube for Cursor, and a chip for a local model, each in that platform's colour. Live rows, idle rows and finished entries all draw from one shared mark, so a platform can never look like one thing in the list and another in the chips. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
