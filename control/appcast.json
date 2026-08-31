@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.148",
-      "build": 186,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.148.zip",
-      "sha256": "1cd01cba067603b97417cda594351003e440e34af044ee3d4747e756a74dca08",
+      "version": "0.5.149",
+      "build": 187,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.149.zip",
+      "sha256": "7014b152706edfc9365418aec1040ba6c0ac08b8a521329859b7d78db827ec0c",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T02:03:29Z",
-      "notes": "The droids now agree with the ledger. Escalation used to read total alive sessions, so three sessions with one running rendered a three-droid trio over a 1 RUNNING caption. The fight ladder now counts sessions in play \u2014 running plus waiting, the same units the bar's colored segments show \u2014 so one running is one droid and idle-alive sessions read as patrol instead of summoning opponents. Error, attention, amber waiting, and the completing flash keep their precedence. The clear x in an overflowing list no longer sits under the scroll indicator, in both the live and finished lists, and the ledger's blurred capsule is optically re-balanced. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T02:43:04Z",
+      "notes": "Miles Windu V15.4 publishes the approved 26-frame four-plus-session story: rear-facing block, underhand rising cut, slash follow-through, staged Force lift and chest thrust, and clearer blaster travel. Stock idle now uses the approved 1.30x scale to match combat character size. Exact-stock older packs upgrade automatically; custom art and non-stock pose scales stay untouched. Other session stories, characters, ledger UI, and saved global size and speed are unchanged. The complete swarm plays in 5.72 seconds at 100% speed. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
