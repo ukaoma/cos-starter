@@ -12,9 +12,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COS Glasses Docs · User Guide</title>
-<meta name="description" content="The complete user guide for COS Glasses on Even Realities G2. Setup, rich media, phone-local dictation, meetings, models, privacy, recovery, and troubleshooting.">
+<meta name="description" content="The complete COS guide: glasses setup, Control for Mac, cross-platform agent sessions, animated desktop pets, custom sprite packs, meetings, models, privacy, recovery, and troubleshooting.">
 <meta property="og:title" content="COS Glasses Docs · User Guide">
-<meta property="og:description" content="Everything the lenses do, on one page. Setup, rich media, phone-local dictation, meetings, models, privacy, recovery, and troubleshooting.">
+<meta property="og:description" content="Everything COS does, on one page: the lenses, the Mac controller, agent session orchestration, animated pets, custom sprites, meetings, models, privacy, and recovery.">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
 <meta property="og:url" content="https://www.gotcos.com/docs/">
 <meta property="og:image:width" content="1200">
@@ -326,6 +326,34 @@ section.light .note{border-left-color:#7a5c2c}
 #setup>*{position:relative;z-index:1}
 @media(max-width:820px){#setup .pixmap{display:none}}
 
+/* ── session pet + orchestration guide ───────────────── */
+.petdoc{margin:0 0 clamp(38px,6vw,68px);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 12% 28%,rgba(240,182,52,.1),transparent 36%),linear-gradient(155deg,var(--panel-2),transparent)}
+.petdoc-top{display:grid;grid-template-columns:minmax(250px,.74fr) minmax(0,1.26fr);gap:clamp(24px,4vw,46px);align-items:center;padding:clamp(18px,3vw,30px)}
+.petdoc-shot{margin:0;border:1px solid rgba(240,182,52,.22);border-radius:16px;padding:8px;background:rgba(240,182,52,.07);transform:rotate(-.7deg)}
+.petdoc-shot img{display:block;width:100%;border-radius:11px;background:#f2b52f}
+.petdoc-copy .eyebrow{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.petdoc-copy h3{font-family:var(--display);font-size:clamp(1.65rem,3vw,2.4rem);font-weight:500;line-height:1.08;max-width:18ch}
+.petdoc-copy p{margin-top:12px;max-width:58ch}
+.petdoc-ledger{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.petdoc-state{padding:16px 12px;border-right:1px solid var(--line-2);min-width:0}
+.petdoc-state:last-child{border-right:0}
+.petdoc-state b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:500;color:var(--fg)}
+.petdoc-state span{display:block;margin-top:3px;font-family:var(--mono);font-size:.55rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ghost)}
+.petdoc-state code{display:block;margin-top:8px;font-size:.62rem}
+.petdoc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,34px);margin:28px 0 8px}
+.petdoc-panel{min-width:0;border:1px solid var(--line-2);border-radius:15px;padding:20px 21px;background:linear-gradient(155deg,var(--panel),transparent)}
+.petdoc-panel h3{color:var(--fg)}
+.petdoc-panel>p{font-size:.9rem}
+.route-list{margin-top:16px}
+.route-row{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--line-2)}
+.route-row b{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.route-row span{color:var(--muted);font-size:.84rem;line-height:1.5}
+.petdoc-code{margin-top:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:#0d0906;color:var(--fg);font:400 .7rem/1.65 var(--mono);white-space:pre;overflow-x:auto;tab-size:2}
+.petdoc-steps{margin:16px 0 0 20px}.petdoc-steps li{padding-left:4px;margin:8px 0;color:var(--muted);font-size:.88rem}
+.petdoc-note{grid-column:1/-1;border-left:2px solid var(--gold);padding:13px 16px;background:rgba(201,169,110,.06);color:var(--muted);font-size:.86rem}
+@media(max-width:820px){.petdoc-top,.petdoc-grid{grid-template-columns:1fr}.petdoc-shot{max-width:480px;transform:none}.petdoc-ledger{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.petdoc-state{flex:0 0 150px;scroll-snap-align:start}.petdoc-note{grid-column:auto}}
+@media(max-width:520px){.petdoc-top{padding:16px}.petdoc-panel{padding:17px}.route-row{grid-template-columns:1fr;gap:4px}}
+
 /* ── footer ──────────────────────────────────────────── */
   footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
   footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
@@ -527,6 +555,7 @@ footer .links a:hover{color:var(--gold)}
     <a href="#top">Start</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
+    <a href="#session-pet">Session pet</a>
     <a href="#ask">Ask</a>
     <a href="#photos">Rich media</a>
     <a href="#lens">The Lens</a>
@@ -561,6 +590,7 @@ footer .links a:hover{color:var(--gold)}
     <a href="#top">Start</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
+    <a href="#session-pet">Session pet</a>
     <a href="#ask">Ask</a>
     <a href="#photos">Rich media</a>
     <a href="#lens">The Lens</a>
@@ -682,11 +712,80 @@ footer .links a:hover{color:var(--gold)}
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
 
-<section class="wrap reveal" id="mac-control">
+<section class="wrap" id="mac-control">
   <div class="sec-head">
     <h2 class="ch"><span class="num">2A.</span> COS Control for Mac</h2>
     <p class="ch-sub">The server, without the terminal babysitting.</p>
     <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, shows the effective Balanced or Max tier plus each transcription model, reports real Agent CLI versions, runs Doctor, and performs safe updates, restarts, and rollbacks.</p>
+  </div>
+
+  <div class="petdoc" id="session-pet">
+    <div class="petdoc-top">
+      <figure class="petdoc-shot">
+        <img src="../control/assets/session-command/live-session-ledger.png" width="904" height="1276" loading="lazy" alt="COS Control desktop pet and session ledger showing concurrent Codex, Claude, and Cursor work.">
+      </figure>
+      <div class="petdoc-copy">
+        <span class="eyebrow">Power-user guide · sessions + pet</span>
+        <h3>A living index of the agents on your Mac.</h3>
+        <p>The figure is the collapsed session surface. Its ledger counts running work, finished turns, and sessions waiting on you. Double-click the character for the live list; use the pills to pin Running or Done, or jump straight to a single Waiting session. Open Activity → Sessions when you want the transcript and composer.</p>
+        <p><strong>What is actually aggregated:</strong> Claude, Codex, and Cursor sessions. Ollama is different: when its local daemon is available it appears as a private model family inside COS, not as a fourth session provider.</p>
+      </div>
+    </div>
+    <div class="petdoc-ledger" aria-label="Animated session count mapping">
+      <div class="petdoc-state"><b>Idle</b><span>0 sessions</span><code>idle</code></div>
+      <div class="petdoc-state"><b>One</b><span>1 session</span><code>working</code></div>
+      <div class="petdoc-state"><b>Two</b><span>2 sessions</span><code>duel</code></div>
+      <div class="petdoc-state"><b>Three</b><span>3 sessions</span><code>trio</code></div>
+      <div class="petdoc-state"><b>Four +</b><span>4 or more</span><code>swarm</code></div>
+    </div>
+  </div>
+
+  <div class="petdoc-grid">
+    <div class="petdoc-panel">
+      <h3>Where a session click goes</h3>
+      <p>Control uses a provider-aware route instead of pretending every agent exposes the same kind of deep link.</p>
+      <div class="route-list">
+        <div class="route-row"><b>Codex</b><span>Opens the task thread. Its session composer writes back into that real thread.</span></div>
+        <div class="route-row"><b>Claude</b><span>Opens the matching Desktop session. Claude Code running in iTerm2 or Terminal raises that terminal instead.</span></div>
+        <div class="route-row"><b>Cursor</b><span>Raises the Cursor Agents window, then selects the accessible row whose title matches the session. Cursor accepts follow-ups but does not fork from Control.</span></div>
+      </div>
+    </div>
+
+    <div class="petdoc-panel">
+      <h3>Choose the pet depth you want</h3>
+      <div class="route-list">
+        <div class="route-row"><b>Advanced</b><span>Four bundled Jedi each carry animated idle, walking, and one-, two-, three-, and four-plus-session stories.</span></div>
+        <div class="route-row"><b>Variety</b><span>The 300 OpenPets choices are still figures. They keep the complete ledger and session controls without authored workload animation.</span></div>
+        <div class="route-row"><b>Custom</b><span><strong>Choose sprite</strong> installs one still image. <strong>Install sprite pack</strong> maps a folder of strips to every state.</span></div>
+      </div>
+    </div>
+
+    <div class="petdoc-panel">
+      <h3>Build a custom animated pack</h3>
+      <ol class="petdoc-steps">
+        <li>Draw each animation as one horizontal PNG strip. Every frame in a strip must have the same width and height.</li>
+        <li>Add <code>session-pet-states.json</code> to the same folder. Name each file explicitly and declare its frame count.</li>
+        <li>Use <code>interval</code> for seconds per frame. Use <code>renderScale</code> only when one pose needs visual normalization.</li>
+        <li>In Control, open Session pet → Character → <strong>Install sprite pack</strong> and choose the folder.</li>
+      </ol>
+      <pre class="petdoc-code" aria-label="Minimal custom sprite pack state map"><code>{
+  "poses": {
+    "idle":    { "file": "idle.png",    "frames": 8,  "interval": 0.20 },
+    "working": { "file": "one.png",     "frames": 12, "interval": 0.12 },
+    "duel":    { "file": "two.png",     "frames": 16, "interval": 0.14 },
+    "trio":    { "file": "three.png",   "frames": 16, "interval": 0.16 },
+    "swarm":   { "file": "fourplus.png","frames": 24, "interval": 0.18 }
+  }
+}</code></pre>
+    </div>
+
+    <div class="petdoc-panel">
+      <h3>Complete state vocabulary</h3>
+      <p>A full pack may also define <code>waiting</code>, <code>done</code>, <code>error</code>, <code>attention</code>, and <code>patrol</code>. A strip can contain 1–32 frames. Per-pose <code>renderScale</code> is clamped from 0.5 to 3.0. Missing states fall back safely instead of turning a one-cell image into sliced confetti.</p>
+      <p style="margin-top:14px">Character size and animation speed remain user settings. The pack's interval establishes authored timing at 100%; macOS Reduced Motion freezes animated strips.</p>
+    </div>
+
+    <div class="petdoc-note"><strong>Privacy and control:</strong> session history, sprite files, and local Ollama models stay on your Mac. Sending a follow-up is an explicit action from the session composer; the pet does not write into a thread on its own.</div>
   </div>
   <div class="macpair">
     <div>
