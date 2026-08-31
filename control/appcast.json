@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.162",
-      "build": 200,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.162.zip",
-      "sha256": "91baabf81b566b464849e1118548da90ce60a5c775f550a8518e30c6144b2f82",
+      "version": "0.5.163",
+      "build": 201,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.163.zip",
+      "sha256": "4502005de867f177df52ea1d16d41b05bf878a0fbfa12c01a206e4f0ce94fcfc",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T18:46:23Z",
-      "notes": "Large Codex and Cursor sessions open now. A transcript past the size cap was refused outright \u2014 'This session is too large to open in Control', behind a Retry that could never succeed. Oversized transcripts are windowed instead: the head still supplies the working folder, branch and title, the newest turns come from the end of the file, and the session subtitle says the middle was skipped. Nothing is refused for size any more. Finished sessions on the pet also gain three paths instead of one: open the session in its own platform, open the session view in Control, or clear the entry. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T19:56:30Z",
+      "notes": "The agent rows now carry each platform's real logo instead of a stand-in: the Anthropic sunburst for Claude, the OpenAI knot for Codex, and the Cursor prism. They ship as monochrome vectors tinted like every other mark in the app, so they stay legible in light and dark, and a local model keeps its chip. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
