@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.155",
-      "build": 193,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.155.zip",
-      "sha256": "8baff3b76c82cd52be01fbb1269f73ea8e063f554973f3faf10043dc4cc73dac",
+      "version": "0.5.156",
+      "build": 194,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.156.zip",
+      "sha256": "0bdd3067e01563830d06a87b8d7402507c362c078f90a7663e8ec5d702caec16",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T15:34:24Z",
-      "notes": "The Session Pet's live list is now mission rows, built to orchestrate a fleet of agents at a glance. One list, three weights: RUNNING rows carry a green rail, a two-line title, a pulsing mono LIVE line saying what the agent is doing right now, its workspace, and a compact colored age. WAITING ON YOU is its own amber section that names what each session waits on \u2014 a raw permission wait reads as 'needs you'. Idle sessions recede to dim one-liners. The LIVE line renders the per-session activity summary the server has always shipped and the pet never displayed. The whole row still jumps to the session, the drop x and restore controls are unchanged, and the list's scroll frame grew to fit the richer rows. Everything in 0.5.154 \u2014 the Jedi walking loops, Nia's meditation, the ledger chrome, completion chips, terminal jump \u2014 is unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T16:01:07Z",
+      "notes": "Fixes the tall blank column 0.5.155's mission rows could open inside the live-session list: the state rail was a bare shape that stretched to any offered height, so one running row could absorb hundreds of points of empty card. The rail now rides as an overlay that takes exactly the row's own height \u2014 rows are as tall as what they say, nothing more. Everything else in 0.5.155 is unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
