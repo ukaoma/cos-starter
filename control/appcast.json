@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.163",
-      "build": 201,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.163.zip",
-      "sha256": "4502005de867f177df52ea1d16d41b05bf878a0fbfa12c01a206e4f0ce94fcfc",
+      "version": "0.5.164",
+      "build": 202,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.164.zip",
+      "sha256": "9bad32d9b5d05101c108d920df4587ea6e1aef54d40f766c279d12e08be529c0",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T19:56:30Z",
-      "notes": "The agent rows now carry each platform's real logo instead of a stand-in: the Anthropic sunburst for Claude, the OpenAI knot for Codex, and the Cursor prism. They ship as monochrome vectors tinted like every other mark in the app, so they stay legible in light and dark, and a local model keeps its chip. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T20:21:16Z",
+      "notes": "A large session now opens with its full history rather than a sliver. The previous release fixed the outright refusal but read only the newest 8 MB, which on a 278 MB transcript surfaced fifteen turns where the session view can hold a hundred and twenty. The window is now sized by measurement: 64 MB fills the view's turn budget on that same transcript in about a second, and reading further buys nothing. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
