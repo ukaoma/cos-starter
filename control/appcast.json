@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.144",
-      "build": 182,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.144.zip",
-      "sha256": "550bb59685067818da39cdeb2d44f7a204a26324efeff9c378b744ab3acdb214",
+      "version": "0.5.145",
+      "build": 183,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.145.zip",
+      "sha256": "b31665ac3458b18e9311bd44cc7a8edd18725fefaac5990eb4487191a03d7a60",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T00:16:01Z",
-      "notes": "The consolidated release of everything since 0.5.139. The Session Pet's idle chrome is a ledger bar above the sprite: amber for sessions waiting on you always at the front, a breathing green for running work, gold for finished, with a counted caption. Hover cross-fades the bar into RUNNING, DONE, and WAITING pills in the same slot and unfolds the focused session's title card and actions; the pills pin the live and finished lists, WAITING jumps to the session that needs you, and nothing above the sprite ever changes size, so the character never moves. Finished sessions persist per session for four hours across relaunches, capped at eight, and clicking one opens it in Control. Clicking a Claude Code session running in a terminal raises iTerm2 or Terminal instead of Claude Desktop, keyed on the session's own recorded entrypoint. Miles Windu ships the approved V15.3 stories: 16, 17, and 13 frames for one, two, and three sessions, and the 25-frame four-plus swarm with the clockwise spin, reverse-grip strike, electrical breakup, and visible saber release, flip, and catch. Character speed is a saved 25% to 200% control; the stock idle renders at 3x. Stock packs upgrade by exact-byte match and custom artwork is never touched. macOS Reduced Motion drops every slide and the bar's breathing. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T00:30:42Z",
+      "notes": "The ledger bar now hugs the character. 0.5.144 reserved the tallest pose's height for every pose, and with the stock idle at 3x that left a 1x combat figure under roughly two figure-heights of empty space \u2014 the bar floated up to ~700px above the character's head. The panel keeps its stable width so a poll never re-centers the pet, but its height now tracks the current pose: the bar, caption, hover pills, title card, and lists sit directly above the figure in every state, and the figure itself never moves. Everything else in 0.5.144 \u2014 the ledger vocabulary, completion chips, terminal jump, Miles Windu V15.3, character speed \u2014 is unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
