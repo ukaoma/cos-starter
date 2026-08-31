@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.143",
-      "build": 181,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.143.zip",
-      "sha256": "51f5e1660fe4dac71482439bcb47f3b46601f244537576fecfe603b905daeb3e",
+      "version": "0.5.144",
+      "build": 182,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.144.zip",
+      "sha256": "550bb59685067818da39cdeb2d44f7a204a26324efeff9c378b744ab3acdb214",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T00:04:35Z",
-      "notes": "Miles Windu V15.3 ships the approved 25-frame four-plus-session sequence: a continuous clockwise spin into a reverse-grip strike on the lower-right droid, electrical breakup, wrist load, and visible saber release, flip, and catch. Force control and pull-to-strike, defensive blocks, and full droid dissolves remain intact. The one-, two-, and three-session stories are unchanged at 16, 17, and 13 frames. The swarm plays all 25 frames in 5.50 seconds at 100% speed. Exact stock V15.2 and earlier packs upgrade automatically; custom artwork and pose scales remain untouched. Preserves the ledger-bar pet interface, hover pills, per-session completion history, terminal jump, 25% to 200% character speed, and 3x stock idle from 0.5.142. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T00:16:01Z",
+      "notes": "The consolidated release of everything since 0.5.139. The Session Pet's idle chrome is a ledger bar above the sprite: amber for sessions waiting on you always at the front, a breathing green for running work, gold for finished, with a counted caption. Hover cross-fades the bar into RUNNING, DONE, and WAITING pills in the same slot and unfolds the focused session's title card and actions; the pills pin the live and finished lists, WAITING jumps to the session that needs you, and nothing above the sprite ever changes size, so the character never moves. Finished sessions persist per session for four hours across relaunches, capped at eight, and clicking one opens it in Control. Clicking a Claude Code session running in a terminal raises iTerm2 or Terminal instead of Claude Desktop, keyed on the session's own recorded entrypoint. Miles Windu ships the approved V15.3 stories: 16, 17, and 13 frames for one, two, and three sessions, and the 25-frame four-plus swarm with the clockwise spin, reverse-grip strike, electrical breakup, and visible saber release, flip, and catch. Character speed is a saved 25% to 200% control; the stock idle renders at 3x. Stock packs upgrade by exact-byte match and custom artwork is never touched. macOS Reduced Motion drops every slide and the bar's breathing. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
