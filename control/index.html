@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/session-command/session-deck.css">
+<link rel="stylesheet" href="assets/session-command/session-deck.css?v=2">
 <script>document.documentElement.className += ' js';</script>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
@@ -338,8 +338,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .sc-head h2{font-size:clamp(2.55rem,5.2vw,4.85rem);line-height:.95;max-width:12ch}
 .sc-head h2 em{color:var(--gold);font-weight:400}
 .sc-head .lead{color:var(--muted);font-size:1.04rem;max-width:35ch;margin:0}
-.sc-proof{position:relative;display:grid;grid-template-columns:minmax(430px,1.08fr) minmax(0,.92fr);gap:clamp(24px,5vw,64px);align-items:center;margin-top:clamp(44px,7vw,82px)}
-.sc-deck{min-width:0;margin:0}
+.sc-proof{position:relative;display:flex;gap:clamp(24px,5vw,64px);align-items:flex-start;margin-top:clamp(44px,7vw,82px)}
+.sc-deck{flex:1.08 1 0;min-width:0;margin:0}.sc-story{flex:.92 1 0;min-width:0}
 .sc-story h3{font-family:var(--display);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:500;line-height:1.08;max-width:18ch}
 .sc-story>p{color:var(--muted);margin-top:14px;max-width:56ch}
 .sc-platforms{margin-top:25px;border-top:1px solid var(--line)}
@@ -372,13 +372,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-option b{display:block;font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--fg)}
 .pet-option span{display:block;margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.55}
 .pet-option a{display:inline-block;margin-top:10px;font:500 .6rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:980px){.sc-head,.sc-proof{grid-template-columns:1fr}.sc-head h2{max-width:15ch}.sc-head .lead{max-width:58ch}.sc-deck{max-width:780px}.pet-dock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-card{flex:0 0 min(300px,78vw);scroll-snap-align:start}}
+@media(max-width:980px){.sc-head{grid-template-columns:1fr}.sc-proof{flex-direction:column}.sc-head h2{max-width:15ch}.sc-head .lead{max-width:58ch}.sc-deck{width:100%;max-width:780px}.pet-dock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-card{flex:0 0 min(300px,78vw);scroll-snap-align:start}}
 @media(max-width:700px){.sc-platform{grid-template-columns:72px minmax(0,1fr)}.sc-platform i{grid-column:2}.pet-chapter{margin-top:112px;padding-top:32px}.pet-intro{display:block}.pet-pause{display:block;margin:22px auto 0}.pet-options{grid-template-columns:1fr}.session-command::before{display:none}}
 @media(prefers-reduced-motion:reduce){.pet-card{transition:none}.pet-card:hover{transform:none}}
 
 </style>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="assets/session-command/session-deck.js" defer></script>
+<script src="assets/session-command/session-deck.js?v=2" defer></script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
@@ -595,43 +595,45 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
 
       <div class="sc-proof">
-        <figure class="sc-deck reveal">
-          <div class="session-deck" data-session-deck role="group" aria-label="Animated COS Control session deck with four live Codex, Claude, and Cursor tasks, completion filters, and the Miles Windu workload animation.">
-            <div class="sd-topline"><strong><i class="sd-signal" aria-hidden="true"></i>COS session deck</strong><span>4 agents · live</span></div>
+        <figure class="sc-deck">
+          <div class="session-deck" data-session-deck data-state="running" role="group" aria-label="Interactive COS Control session deck. Choose Running, Done, or Waiting to update the ledger and Miles Windu animation.">
+            <div class="sd-topline"><strong><i class="sd-signal" aria-hidden="true"></i>COS session deck</strong><span data-deck-top>4 agents · live</span></div>
+            <div class="sd-workspace">
             <div class="sd-ledger">
-              <div class="sd-ledger-head"><b><i class="sd-signal" aria-hidden="true"></i>Running 4</b><span>All systems</span></div>
-              <div class="sd-rows">
+              <div class="sd-ledger-head"><b><i class="sd-signal" aria-hidden="true"></i><span data-ledger-title>Running 4</span></b><span data-ledger-context>All systems</span></div>
+              <div class="sd-rows" data-row-count="4" aria-live="polite">
                 <div class="sd-row sd-codex">
                   <i class="sd-rail" aria-hidden="true"></i>
-                  <span class="sd-provider-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.2 3.2a4.5 4.5 0 0 1 7.4 3.4 4.5 4.5 0 0 1 1.8 7 4.5 4.5 0 0 1-5.6 5.4 4.5 4.5 0 0 1-7.3-3.3 4.5 4.5 0 0 1-1.9-7 4.5 4.5 0 0 1 5.6-5.5Z"/><path d="m8.3 8.1 3.7-2.2 3.7 2.2v4.5L12 14.8l-3.7-2.2Z"/></svg></span>
+                  <span class="sd-provider-mark" aria-hidden="true"></span>
                   <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Codex</b><strong class="sd-task">Release checks</strong></span><span class="sd-row-detail"><span>mu-chief-staff · building</span></span></span>
                   <time class="sd-time" data-session-timer data-start="16">16s</time>
                 </div>
                 <div class="sd-row sd-claude">
                   <i class="sd-rail" aria-hidden="true"></i>
-                  <span class="sd-provider-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.8v5.1M12 16.1v5.1M2.8 12h5.1M16.1 12h5.1M5.5 5.5l3.6 3.6M14.9 14.9l3.6 3.6M18.5 5.5l-3.6 3.6M9.1 14.9l-3.6 3.6"/><circle cx="12" cy="12" r="2.7"/></svg></span>
+                  <span class="sd-provider-mark" aria-hidden="true"></span>
                   <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Claude</b><strong class="sd-task">Control motion</strong></span><span class="sd-row-detail"><span>cos-control · refining</span></span></span>
                   <time class="sd-time" data-session-timer data-start="21">21s</time>
                 </div>
                 <div class="sd-row sd-cursor">
                   <i class="sd-rail" aria-hidden="true"></i>
-                  <span class="sd-provider-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m4 3 15.4 9L12 14.1 8.8 21Z"/><path d="m12 14.1 7.4-2.1M4 3l4.8 18"/></svg></span>
+                  <span class="sd-provider-mark" aria-hidden="true"></span>
                   <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Cursor</b><strong class="sd-task">Agent routing</strong></span><span class="sd-row-detail"><span>cos-glasses · wiring</span></span></span>
                   <time class="sd-time" data-session-timer data-start="21">21s</time>
                 </div>
                 <div class="sd-row sd-claude">
                   <i class="sd-rail" aria-hidden="true"></i>
-                  <span class="sd-provider-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.8v5.1M12 16.1v5.1M2.8 12h5.1M16.1 12h5.1M5.5 5.5l3.6 3.6M14.9 14.9l3.6 3.6M18.5 5.5l-3.6 3.6M9.1 14.9l-3.6 3.6"/><circle cx="12" cy="12" r="2.7"/></svg></span>
+                  <span class="sd-provider-mark" aria-hidden="true"></span>
                   <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Claude</b><strong class="sd-task">Docs launch</strong></span><span class="sd-row-detail"><span>gotcos-site · verifying</span></span></span>
                   <time class="sd-time" data-session-timer data-start="22">22s</time>
                 </div>
               </div>
             </div>
-            <div class="sd-pet-stage" aria-hidden="true"><canvas data-session-pet data-src="assets/session-command/miles-four-plus.png" data-frames="26" data-interval=".22"></canvas></div>
-            <div class="sd-statuses" aria-label="Session completion filters">
-              <span class="sd-status running"><i aria-hidden="true"></i><b>Running 4</b></span>
-              <span class="sd-status done"><i aria-hidden="true"></i><b>Done 7</b></span>
-              <span class="sd-status waiting"><i aria-hidden="true"></i><b>Waiting 0</b></span>
+            <div class="sd-pet-stage" data-pet-caption="Live workload" aria-hidden="true"><canvas data-session-pet data-src="/control/assets/session-command/miles-four-plus.png" data-frames="26" data-interval=".22"></canvas></div>
+            </div>
+            <div class="sd-statuses" role="tablist" aria-label="Preview session state">
+              <button class="sd-status running" type="button" role="tab" aria-selected="true" data-deck-state="running"><i aria-hidden="true"></i><b>Running 4</b></button>
+              <button class="sd-status done" type="button" role="tab" aria-selected="false" tabindex="-1" data-deck-state="done"><i aria-hidden="true"></i><b>Done 3</b></button>
+              <button class="sd-status waiting" type="button" role="tab" aria-selected="false" tabindex="-1" data-deck-state="waiting"><i aria-hidden="true"></i><b>Waiting 1</b></button>
             </div>
           </div>
         </figure>
