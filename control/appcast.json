@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.157",
-      "build": 195,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.157.zip",
-      "sha256": "d7243530ca22dc0aafc11d1fcbe1fab958f5dc891568e4139ddd8055c6c26acd",
+      "version": "0.5.158",
+      "build": 196,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.158.zip",
+      "sha256": "d5e30ff370948b3e7bb770557a020e99c615e0adfa0d44c597f97e0026f1a6ba",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T16:42:19Z",
-      "notes": "The Session Pet stays where you park it. Opening a list grows the panel upward, and when that would run past the top of the screen macOS slides the panel down to keep it visible \u2014 the pet then treated that slid position as its new home, so closing the list left it lower than it started. A pet parked high on screen walked 450 points down in a single open. Frames are now rebuilt from the spot you dragged it to, so a slide is temporary and closing returns it exactly; dragging still re-parks it. The live activity line is also a news ticker now: a long summary scrolls through a fixed window at a steady reading pace so you can see what an agent is actually doing, text that already fits never moves, a new summary restarts from the beginning, and Reduced Motion keeps it still. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T17:26:56Z",
+      "notes": "The WAITING pill now respects the choice. With one session waiting on you it jumps straight in. With two or more it opens the live session list \u2014 where waiting sessions have their own amber section \u2014 instead of picking one arbitrarily and silently ignoring the rest. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
