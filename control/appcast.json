@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.159",
-      "build": 197,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.159.zip",
-      "sha256": "a5d87c1cd6ff994153fe1e25dad0746a75fc35b0ed8674f949621c0618299420",
+      "version": "0.5.160",
+      "build": 198,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.160.zip",
+      "sha256": "aa55795b710d843de5a8d41650f6f647d35b944ee82abc8e1ddf1a3685ad11af",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T17:51:27Z",
-      "notes": "Fixes found by an adversarial QA pass over the last two days of Session Pet work. A session dropped from the list could become unreachable: the list is the only home of the restore row, but the poll closed it whenever no sessions remained, so dropping your last row shut it under the cursor and re-opening lasted twenty seconds. The live-line ticker mismeasured every non-Latin summary \u2014 width was estimated from a monospaced advance, exact for ASCII but up to 2.3x short for CJK and emoji, so overflowing text was judged to fit and silently clipped; non-ASCII text is now really measured. A line that does not scroll ends in an ellipsis instead of a hard cut, which is every running row under Reduced Motion, and a line whose window narrows under it re-evaluates instead of freezing. The bar's green segment now breathes even when it becomes the running one while already on screen, the WAITING tooltip matches what the pill does, and the live list starts scrolling at four rows where the taller mission rows genuinely need it. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T18:01:34Z",
+      "notes": "The live activity line is readable. It shared the title column with the age and workspace stack, which left it about 84 points \u2014 under twenty characters, not enough to show one whole word of a scrolling sentence. It now has its own full-width line beneath the title at 209 points with a slightly larger face: 39 characters visible instead of 18. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
