@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.156",
-      "build": 194,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.156.zip",
-      "sha256": "0bdd3067e01563830d06a87b8d7402507c362c078f90a7663e8ec5d702caec16",
+      "version": "0.5.157",
+      "build": 195,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.157.zip",
+      "sha256": "d7243530ca22dc0aafc11d1fcbe1fab958f5dc891568e4139ddd8055c6c26acd",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T16:01:07Z",
-      "notes": "Fixes the tall blank column 0.5.155's mission rows could open inside the live-session list: the state rail was a bare shape that stretched to any offered height, so one running row could absorb hundreds of points of empty card. The rail now rides as an overlay that takes exactly the row's own height \u2014 rows are as tall as what they say, nothing more. Everything else in 0.5.155 is unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T16:42:19Z",
+      "notes": "The Session Pet stays where you park it. Opening a list grows the panel upward, and when that would run past the top of the screen macOS slides the panel down to keep it visible \u2014 the pet then treated that slid position as its new home, so closing the list left it lower than it started. A pet parked high on screen walked 450 points down in a single open. Frames are now rebuilt from the spot you dragged it to, so a slide is temporary and closing returns it exactly; dragging still re-parks it. The live activity line is also a news ticker now: a long summary scrolls through a fixed window at a steady reading pace so you can see what an agent is actually doing, text that already fits never moves, a new summary restarts from the beginning, and Reduced Motion keeps it still. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
