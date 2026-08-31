@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.153",
-      "build": 191,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.153.zip",
-      "sha256": "17c93043f5bcd5721013761d25c2d5bf7aa51c36da65097081f1a203aaa9c5e3",
+      "version": "0.5.154",
+      "build": 192,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.154.zip",
+      "sha256": "39b1867aa82ab0d183093c29062704703b5258a37b1c476c9e15046109c2f370",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T14:26:25.638Z",
-      "notes": "Keeps Nia Solari, Elara Vale and Rowan Vale animated with quiet open sessions and while waiting. Those runtime states previously loaded a legacy still instead of the approved eight-frame idle. Shared calm clips keep their authored cadence without duplicate playlist resets. Native canary checks cover all four Jedi across no-session, quiet and waiting states. Exact-stock 0.5.151/0.5.152 and older packs upgrade automatically; custom art, timing, scale and saved settings are preserved. All artwork, combat loops, Miles Windu V15.4 and his 1.30x idle remain unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T15:00:35.553Z",
+      "notes": "Adds dedicated eight-frame walking loops for Nia Solari, Elara Vale and Rowan Vale, joining Miles Windu's existing walk. Nia also gets an eight-frame seated meditation loop while waiting. Distinct calm clips remain walking rests. The 32 new frames are registered to each character's existing scale. Native canary checks cover all four Jedi, speed controls, Reduced Motion and 16 retained stock upgrade histories. All previous idle/combat PNGs and Miles's 1.30x idle stay unchanged. Untouched stock packs upgrade automatically; custom art, timing, scale and saved preferences are preserved. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
