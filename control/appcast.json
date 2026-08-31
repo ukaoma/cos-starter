@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.146",
-      "build": 184,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.146.zip",
-      "sha256": "e8d23443a4302c011c4f3f46b0e61d2e91d1d8a1dae51857af57a39c084a2946",
+      "version": "0.5.147",
+      "build": 185,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.147.zip",
+      "sha256": "c7ed092f2808b7c8136a9e6bb56e28f2805c91d8d554b20eeca407962c5644c9",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T00:56:42Z",
-      "notes": "The ledger bar now sits under the figure \u2014 a nameplate at the character's feet \u2014 instead of riding its head. Character on top, bar and counted caption beneath, and hovering still cross-fades the bar into the RUNNING, DONE, and WAITING pills in the same slot. Both rows ride the panel's fixed bottom edge, so nothing moves when the title card, actions, or session lists unfold above the figure. Everything else in 0.5.145 \u2014 the tight current-pose footprint, ledger vocabulary, completion chips, terminal jump, Miles Windu V15.3, character speed \u2014 is unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T01:33:18Z",
+      "notes": "Hover is pills-only. The focused-session title card and the two circular buttons are gone from the reveal: the RUNNING, DONE, and WAITING pills open whatever is active, so a card naming one session and a second set of openers were redundancy. A single click on the figure still opens the focused session, and a double-click still opens the live list. Hover no longer changes the panel's layout at all. Finished entries are now clearable \u2014 every DONE row carries the same x the live list has; clearing removes that one entry, persists, and returns only if the session finishes again, and clearing the last entry closes the list. The ledger bar and its counts now sit on a soft blurred capsule so they stay readable over busy wallpaper; with Reduce Transparency the blur becomes a flat fill. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
