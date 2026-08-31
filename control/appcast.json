@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.149",
-      "build": 187,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.149.zip",
-      "sha256": "7014b152706edfc9365418aec1040ba6c0ac08b8a521329859b7d78db827ec0c",
+      "version": "0.5.151",
+      "build": 189,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.151.zip",
+      "sha256": "c00eac2becb78a5522167befb603b36b1937fb7f8d6f19fa047edfd00cc6bb9f",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T02:43:04Z",
-      "notes": "Miles Windu V15.4 publishes the approved 26-frame four-plus-session story: rear-facing block, underhand rising cut, slash follow-through, staged Force lift and chest thrust, and clearer blaster travel. Stock idle now uses the approved 1.30x scale to match combat character size. Exact-stock older packs upgrade automatically; custom art and non-stock pose scales stay untouched. Other session stories, characters, ledger UI, and saved global size and speed are unchanged. The complete swarm plays in 5.72 seconds at 100% speed. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T12:56:25Z",
+      "notes": "Nia Solari, Elara Vale and Rowan Vale now have eight-frame idle loops and four distinct combat stories each: 223 new authored frames with connected defense, strikes, Force moves, visible defeats and recovery. Each idle is scaled to its own combat art. Exact-stock older packs upgrade automatically; custom artwork, pose timing and scale, selected character, and saved global size/speed remain untouched. Versioned images land before the active map changes for safe retry. Miles Windu V15.4 and his 1.30x idle are unchanged. Includes 0.5.150 pet/panel polish: quiet IDLE hover controls and shared blur surfaces. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {

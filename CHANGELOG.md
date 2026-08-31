@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-08-31 - COS Control 0.5.151 (build 189)
+
+### Changed
+- Nia Solari, Elara Vale, and Rowan Vale now ship the approved eight-frame
+  idle loops and four authored combat stories per character: 223 new frames
+  across 15 strips. Each idle is sized against its own combat art.
+- Exact-stock older packs upgrade automatically with versioned images copied
+  before the active state map changes. Custom artwork, pose timing and scale,
+  selected character, and global size/speed settings are preserved.
+- Miles Windu V15.4 and his 1.30x idle are unchanged. Includes the committed
+  0.5.150 pet/panel UI polish: quiet IDLE hover controls and shared blur surfaces.
+- Control downloads, update feed, Control page, docs, and setup wizard now
+  advertise 0.5.151. Server remains 6.41.0; glasses remains 6.8.437 with the
+  Even Hub pin at 6.8.353. No server or glasses release is part of this update.
+
 ## 0.4.10 - 2026-08-13
 
 ### Changed
