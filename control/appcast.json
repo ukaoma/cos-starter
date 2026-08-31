@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.154",
-      "build": 192,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.154.zip",
-      "sha256": "39b1867aa82ab0d183093c29062704703b5258a37b1c476c9e15046109c2f370",
+      "version": "0.5.155",
+      "build": 193,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.155.zip",
+      "sha256": "8baff3b76c82cd52be01fbb1269f73ea8e063f554973f3faf10043dc4cc73dac",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T15:00:35.553Z",
-      "notes": "Adds dedicated eight-frame walking loops for Nia Solari, Elara Vale and Rowan Vale, joining Miles Windu's existing walk. Nia also gets an eight-frame seated meditation loop while waiting. Distinct calm clips remain walking rests. The 32 new frames are registered to each character's existing scale. Native canary checks cover all four Jedi, speed controls, Reduced Motion and 16 retained stock upgrade histories. All previous idle/combat PNGs and Miles's 1.30x idle stay unchanged. Untouched stock packs upgrade automatically; custom art, timing, scale and saved preferences are preserved. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T15:34:24Z",
+      "notes": "The Session Pet's live list is now mission rows, built to orchestrate a fleet of agents at a glance. One list, three weights: RUNNING rows carry a green rail, a two-line title, a pulsing mono LIVE line saying what the agent is doing right now, its workspace, and a compact colored age. WAITING ON YOU is its own amber section that names what each session waits on \u2014 a raw permission wait reads as 'needs you'. Idle sessions recede to dim one-liners. The LIVE line renders the per-session activity summary the server has always shipped and the pet never displayed. The whole row still jumps to the session, the drop x and restore controls are unchanged, and the list's scroll frame grew to fit the richer rows. Everything in 0.5.154 \u2014 the Jedi walking loops, Nia's meditation, the ledger chrome, completion chips, terminal jump \u2014 is unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
