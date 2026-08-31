@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.145",
-      "build": 183,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.145.zip",
-      "sha256": "b31665ac3458b18e9311bd44cc7a8edd18725fefaac5990eb4487191a03d7a60",
+      "version": "0.5.146",
+      "build": 184,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.146.zip",
+      "sha256": "e8d23443a4302c011c4f3f46b0e61d2e91d1d8a1dae51857af57a39c084a2946",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T00:30:42Z",
-      "notes": "The ledger bar now hugs the character. 0.5.144 reserved the tallest pose's height for every pose, and with the stock idle at 3x that left a 1x combat figure under roughly two figure-heights of empty space \u2014 the bar floated up to ~700px above the character's head. The panel keeps its stable width so a poll never re-centers the pet, but its height now tracks the current pose: the bar, caption, hover pills, title card, and lists sit directly above the figure in every state, and the figure itself never moves. Everything else in 0.5.144 \u2014 the ledger vocabulary, completion chips, terminal jump, Miles Windu V15.3, character speed \u2014 is unchanged. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T00:56:42Z",
+      "notes": "The ledger bar now sits under the figure \u2014 a nameplate at the character's feet \u2014 instead of riding its head. Character on top, bar and counted caption beneath, and hovering still cross-fades the bar into the RUNNING, DONE, and WAITING pills in the same slot. Both rows ride the panel's fixed bottom edge, so nothing moves when the title card, actions, or session lists unfold above the figure. Everything else in 0.5.145 \u2014 the tight current-pose footprint, ledger vocabulary, completion chips, terminal jump, Miles Windu V15.3, character speed \u2014 is unchanged. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
