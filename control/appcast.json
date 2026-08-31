@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.161",
-      "build": 199,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.161.zip",
-      "sha256": "98e84605f83a935fb978867a860f4adaf6072309c2480aa6f0ab6b9e584315d5",
+      "version": "0.5.162",
+      "build": 200,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.162.zip",
+      "sha256": "91baabf81b566b464849e1118548da90ce60a5c775f550a8518e30c6144b2f82",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T18:18:52Z",
-      "notes": "Every agent row now carries its platform's mark, so you can tell Claude from Codex from Cursor at a glance instead of reading the label: a spark for Claude, a terminal prompt for Codex, a cube for Cursor, and a chip for a local model, each in that platform's colour. Live rows, idle rows and finished entries all draw from one shared mark, so a platform can never look like one thing in the list and another in the chips. Pairs with server 6.41.0."
+      "publishedAt": "2026-08-31T18:46:23Z",
+      "notes": "Large Codex and Cursor sessions open now. A transcript past the size cap was refused outright \u2014 'This session is too large to open in Control', behind a Retry that could never succeed. Oversized transcripts are windowed instead: the head still supplies the working folder, branch and title, the newest turns come from the end of the file, and the session subtitle says the middle was skipped. Nothing is refused for size any more. Finished sessions on the pet also gain three paths instead of one: open the session in its own platform, open the session view in Control, or clear the entry. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
