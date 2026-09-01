@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.167",
-      "build": 205,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.167.zip",
-      "sha256": "e0585d69d762b58bcb0391c42e7a02f9a8692b25c22ed3a937ec64df9fd17204",
+      "version": "0.5.168",
+      "build": 206,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.168.zip",
+      "sha256": "1d12a60ce8b2c910e33b95315b4d406ea5c5749a8e4f46244ea214f022bd64b2",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-09-01T01:08:08Z",
-      "notes": "Updates moved to the top of the panel. The check used to be the last thing under everything else, so asking whether you were current meant scrolling to the bottom. The first card now answers it on every open: your version when you are current, an install offer when you are not, and the manual check in both states. Search also follows you all the way down \u2014 an archived chat now has its own find bar, seeded with the term that got you there, with a match count, next and previous, and matched turns highlighted in place, so a chat with forty-six mentions takes one keystroke to walk rather than a scroll. Pairs with server 6.41.0."
+      "publishedAt": "2026-09-01T01:50:24Z",
+      "notes": "Search results read like conversations again. Snippets are cut by the server as a raw window out of the archive file, so a hit near the top of a chat dragged sessionId, exchanges and role into the result; they are now cleaned to the sentence a person actually said. A search also opens on its matches instead of making you flip a switch, and stays unfiltered when nothing matched so a day is never mysteriously empty. Finally, search tolerates a typo: Thulle finds Thule, while short words still match exactly, because at three letters almost every word is one edit from another. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
