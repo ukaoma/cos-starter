@@ -372,9 +372,22 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-option b{display:block;font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--fg)}
 .pet-option span{display:block;margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.55}
 .pet-option a{display:inline-block;margin-top:10px;font:500 .6rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.pet-community{display:grid;grid-template-columns:minmax(230px,.72fr) minmax(0,2.28fr);margin-top:18px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(145deg,rgba(201,169,110,.075),rgba(8,5,3,.22))}
+.pet-community-copy{display:flex;flex-direction:column;justify-content:center;padding:27px 25px;border-right:1px solid var(--line2)}
+.pet-community-copy strong{font:400 clamp(3.7rem,6.5vw,6.3rem)/.78 var(--display);color:var(--gold)}
+.pet-community-copy h4{margin-top:17px;font:500 1.28rem/1.12 var(--display);color:var(--fg)}
+.pet-community-copy p{margin-top:8px;color:var(--muted);font-size:.82rem;line-height:1.55}
+.pet-community-copy a{display:inline-block;align-self:flex-start;margin-top:13px;font:500 .58rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.pet-shelf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.pet-sample{min-width:0;min-height:142px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;padding:13px 8px 11px;border-left:1px solid var(--line2);border-bottom:1px solid var(--line2);background:rgba(255,246,232,.018);transition:background .2s ease,transform .2s ease}
+.pet-sample:nth-child(n+6){border-bottom:0}.pet-sample:nth-child(5n+1){border-left:0}
+.pet-sample:hover{background:rgba(201,169,110,.09);transform:translateY(-3px)}
+.pet-sample img{display:block;width:min(88px,86%);height:94px;object-fit:contain;filter:drop-shadow(0 9px 8px rgba(0,0,0,.32));image-rendering:auto}
+.pet-sample span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ghost);font:500 .53rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
 @media(max-width:980px){.sc-head{grid-template-columns:1fr}.sc-proof{flex-direction:column}.sc-head h2{max-width:15ch}.sc-head .lead{max-width:58ch}.sc-deck{width:100%;max-width:780px}.pet-dock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-card{flex:0 0 min(300px,78vw);scroll-snap-align:start}}
-@media(max-width:700px){.sc-platform{grid-template-columns:72px minmax(0,1fr)}.sc-platform i{grid-column:2}.pet-chapter{margin-top:112px;padding-top:32px}.pet-intro{display:block}.pet-pause{display:block;margin:22px auto 0}.pet-options{grid-template-columns:1fr}.session-command::before{display:none}}
-@media(prefers-reduced-motion:reduce){.pet-card{transition:none}.pet-card:hover{transform:none}}
+@media(max-width:820px){.pet-community{grid-template-columns:1fr}.pet-community-copy{border-right:0;border-bottom:1px solid var(--line2)}.pet-community-copy strong{font-size:4.8rem}.pet-community-copy p{max-width:55ch}}
+@media(max-width:700px){.sc-platform{grid-template-columns:72px minmax(0,1fr)}.sc-platform i{grid-column:2}.pet-chapter{margin-top:112px;padding-top:32px}.pet-intro{display:block}.pet-pause{display:block;margin:22px auto 0}.pet-options{grid-template-columns:1fr}.pet-shelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-sample{flex:0 0 126px;scroll-snap-align:start;border-bottom:0}.pet-sample:nth-child(5n+1){border-left:1px solid var(--line2)}.pet-sample:first-child{border-left:0}.session-command::before{display:none}}
+@media(prefers-reduced-motion:reduce){.pet-card,.pet-sample{transition:none}.pet-card:hover,.pet-sample:hover{transform:none}}
 
 </style>
 <script src="../assets/anime.umd.min.js"></script>
@@ -692,7 +705,28 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="pet-options reveal">
           <div class="pet-option"><b>Four advanced Jedi</b><span>Miles Windu, Nia Solari, Elara Vale, and Rowan Vale ship with authored idle, walking, and workload-specific stories.</span></div>
           <div class="pet-option"><b>300 variety pets</b><span>Choose from the OpenPets gallery. They stay still, but the live ledger, routing, and session controls remain fully available.</span></div>
-          <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="/docs/#session-pet">Build a custom pet pack →</a></div>
+          <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="/docs/#session-pet">Build a custom pet pack</a></div>
+        </div>
+
+        <div class="pet-community reveal">
+          <div class="pet-community-copy">
+            <strong>300</strong>
+            <h4>Choose a companion that feels like yours.</h4>
+            <p>These are ten of the community figures available inside Control. Every one keeps the same Running, Done, and Waiting ledger beneath it.</p>
+            <a href="https://openpets.dev/" target="_blank" rel="noopener noreferrer">Visit the OpenPets gallery</a>
+          </div>
+          <div class="pet-shelf" aria-label="Sample community pets available in COS Control">
+            <div class="pet-sample"><img src="https://openpets.dev/pets/cloud-puff-openpets/thumb.webp" alt="Cloud Puff community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Cloud Puff</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/raccoon-openpets/thumb.webp" alt="Raccoon community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Raccoon</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/fox-openpets/thumb.webp" alt="Fox community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Fox</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/penguin-openpets/thumb.webp" alt="Penguin community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Penguin</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/robot-openpets/thumb.webp" alt="Robot community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Robot</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/budgie-berry-openpets/thumb.webp" alt="Budgie Berry community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Budgie Berry</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/rabbit-openpets/thumb.webp" alt="Rabbit community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Rabbit</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/astro-bot-openpets/thumb.webp" alt="Astro Bot community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Astro Bot</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/planet-openpets/thumb.webp" alt="Planet community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Planet</span></div>
+            <div class="pet-sample"><img src="https://openpets.dev/pets/brew-89ba472f/thumb.webp" alt="Brew community pet" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span>Brew</span></div>
+          </div>
         </div>
       </div>
     </div>
