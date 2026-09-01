@@ -22,7 +22,7 @@
     },
     done:{
       top:'3 turns · complete', title:'Done 3', context:'Finished turns', caption:'Work complete',
-      pet:{src:assetRoot + 'miles-idle.png',frames:8,interval:.24,scale:1.3},
+      pet:{src:assetRoot + 'miles-one.png',frames:16,interval:.10,scale:1},
       rows:[
         {provider:'codex',label:'Codex',task:'Codex session audit',detail:'Finished · transcript ready',meta:'Open'},
         {provider:'claude',label:'Claude',task:'Sprocket Rocket copy',detail:'Finished · transcript ready',meta:'Open'},
@@ -31,7 +31,7 @@
     },
     waiting:{
       top:'1 thread · needs you', title:'Waiting 1', context:'Needs you', caption:'Awaiting reply',
-      pet:{src:assetRoot + 'miles-one.png',frames:16,interval:.10,scale:1},
+      pet:{src:assetRoot + 'miles-idle.png',frames:8,interval:.24,scale:1.3},
       rows:[
         {provider:'claude',label:'Claude',task:'Sprocket Rocket plan',detail:'Needs your reply',meta:'Open'}
       ]
