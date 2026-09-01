@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.164",
-      "build": 202,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.164.zip",
-      "sha256": "9bad32d9b5d05101c108d920df4587ea6e1aef54d40f766c279d12e08be529c0",
+      "version": "0.5.165",
+      "build": 203,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.165.zip",
+      "sha256": "9d9e5b31d5a15e2dd206dd3424a5abc27a11063568bf63e33331e37be2cc0a12",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-08-31T20:21:16Z",
-      "notes": "A large session now opens with its full history rather than a sliver. The previous release fixed the outright refusal but read only the newest 8 MB, which on a 278 MB transcript surfaced fifteen turns where the session view can hold a hundred and twenty. The window is now sized by measurement: 64 MB fills the view's turn budget on that same transcript in about a second, and reading further buys nothing. Pairs with server 6.41.0."
+      "publishedAt": "2026-09-01T00:02:35Z",
+      "notes": "Calm motion. An advanced character's multi-session fights are the appeal for most people and motion sickness or distraction for others, and until now the only alternative was macOS Reduced Motion, which freezes the figure entirely. Turn on Calm motion in Session Pet settings and the character rests on its gentle idle loop no matter how many sessions run \u2014 the same register as the still characters \u2014 while the bar keeps reporting every count: running, waiting, finished. Lower motion costs nothing in status. Errors and attention still reach the figure, because an alert is not a motion preference. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
