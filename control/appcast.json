@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.171",
-      "build": 209,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.171.zip",
-      "sha256": "a9c9980a9653e6904f9aacde1dfb95e3a5ce84462cc511f2bb9b524282386eff",
+      "version": "0.5.173",
+      "build": 211,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.173.zip",
+      "sha256": "9530bde4a263e4fddcf69980518932799986298806a0ae155db66f9c01545820",
       "minMacOS": "14.0",
       "serverTarget": "6.42.0",
-      "publishedAt": "2026-09-01T13:29:06Z",
-      "notes": "The session card tells you what happened. Every finished row used to print the literal word Finished, so two sessions forked off the same repo read as the same three tokens no matter how long you looked at them. A row now leads with what that session actually did. The card is wider too, because the sprite was deciding how much room the reading got: at the old width a finished title was 68pt, which is ten characters of the font it is set in. Point at a row and it opens up. The three paths off a row, open it in the platform, open the session view here, clear it, used to sit lit on every row spending 57pt of every line; they now share the fixed slot that carries the age and the workspace at rest, and cross over when the pointer arrives. Nothing changes size, so the card never jumps, and right-click reaches the same three. The outcome scrolls while you point at it so a long sentence can be read without the row growing, and only the row under the pointer moves. Search by meaning moved out of the toolbar to the end of the Messages search row, beside the search it governs. Pairs with server 6.42.0."
+      "publishedAt": "2026-09-01T15:12:15Z",
+      "notes": "Miles Windu's production animation now carries the approved connected cadence. The three-session story keeps its exact 2.86-second authored loop and the four-plus-session swarm keeps its exact 5.72-second loop, with transition holds encoded directly into the strips so Control preserves the timing without changing the animation engine. Idle is normalized to 1.45x, about 12 percent larger than the prior 1.30x setting, while custom sprites, custom timing, custom scale, character choice, global size, and speed preferences remain untouched. The session card also gains the tighter trailing alignment prepared in 0.5.172. Release packaging now automatically uses the stable local COS Control signing identity when it is available, preserving the app's designated requirement across updates. Pairs with server 6.42.0."
     }
   },
   "killSwitch": {
