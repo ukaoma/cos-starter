@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.165",
-      "build": 203,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.165.zip",
-      "sha256": "9d9e5b31d5a15e2dd206dd3424a5abc27a11063568bf63e33331e37be2cc0a12",
+      "version": "0.5.166",
+      "build": 204,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.166.zip",
+      "sha256": "e7954733626b04b6ad28a8d00dc67d9ac1dc6ba3c954651fd93adff9b95f5655",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-09-01T00:02:35Z",
-      "notes": "Calm motion. An advanced character's multi-session fights are the appeal for most people and motion sickness or distraction for others, and until now the only alternative was macOS Reduced Motion, which freezes the figure entirely. Turn on Calm motion in Session Pet settings and the character rests on its gentle idle loop no matter how many sessions run \u2014 the same register as the still characters \u2014 while the bar keeps reporting every count: running, waiting, finished. Lower motion costs nothing in status. Errors and attention still reach the figure, because an alert is not a motion preference. Pairs with server 6.41.0."
+      "publishedAt": "2026-09-01T00:34:00Z",
+      "notes": "Archived days are searchable and readable. Finding the day a conversation happened on used to end there: the day opened as Chat 1 through Chat 11, and the term you searched for did not come with you. Each chat now leads with what it was actually about \u2014 the words that conversation kept returning to, taken from your own side of it \u2014 with the time, message count and chat number underneath. The search that found the day now carries into it: matching chats are badged with a match count and show the passage that matched, and a switch narrows the day to just those chats. Searching an archived day costs one request, not one per chat. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
