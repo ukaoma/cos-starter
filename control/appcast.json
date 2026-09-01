@@ -7,9 +7,9 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.170.zip",
       "sha256": "f4f04cc78e1637e69160a095001d1d0eaa0a5cb76007dc70bfd110d8688c0f5d",
       "minMacOS": "14.0",
-      "serverTarget": "6.41.0",
+      "serverTarget": "6.42.0",
       "publishedAt": "2026-09-01T03:48:52Z",
-      "notes": "One box now searches recent messages and the archive. Two boxes meant a term missing from the newest turns looked like it was nowhere, while the archive held it one tap away, and you had to retype the word to find that out. The line under the box carries both counts for the same term, and crossing over runs it for you. It also stops reporting the last term's answer beside a new one: until the scan runs for what is in the box it says press return. Search by meaning is new and it is off. It is the only thing in Control that spends model tokens, so its switch sits in the toolbar and says what it costs in both states. Turned on, Control offers to look for related days when a search comes up thin and asks only when you tap it, twenty five a day, on a small pinned model, and every day it proposes is checked against the real archive before it reaches you. Pairs with server 6.41.0."
+      "notes": "One box now searches recent messages and the archive. Two boxes meant a term missing from the newest turns looked like it was nowhere, while the archive held it one tap away, and you had to retype the word to find that out. The line under the box carries both counts for the same term, and crossing over runs it for you. It also stops reporting the last term's answer beside a new one: until the scan runs for what is in the box it says press return. Search by meaning is new and it is off. It is the only thing in Control that spends model tokens, so its switch sits in the toolbar and says what it costs in both states. Turned on, Control offers to look for related days when a search comes up thin and asks only when you tap it, twenty five a day, on a small pinned model, and every day it proposes is checked against the real archive before it reaches you. Pairs with server 6.42.0."
     }
   },
   "killSwitch": {
