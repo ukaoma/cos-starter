@@ -1556,7 +1556,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
-      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (every <code>/api</code> route is token-gated, so a plain <code>curl</code> returns 401 &mdash; copy the token from COS Control &rarr; <b>Copy Pairing Token</b>):</p>
+      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (this route is token-gated, so a plain <code>curl</code> returns 401 &mdash; copy the token from COS Control &rarr; <b>Copy Pairing Token</b>):</p>
       <p><code>curl -H "X-Cos-Token: YOUR-TOKEN" http://YOUR-SERVER-IP:3141/api/message-counter</code></p>
       <p>A healthy install returns both a <code>max</code> and an <code>era</code>. If <code>era</code> is missing, update to server <strong>6.16.9 or newer</strong>, then start a fresh era once:</p>
       <p><code>npx --yes tsx server/scripts/reset-message-era.ts --confirm</code></p>
