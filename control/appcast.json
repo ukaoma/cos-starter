@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.168",
-      "build": 206,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.168.zip",
-      "sha256": "1d12a60ce8b2c910e33b95315b4d406ea5c5749a8e4f46244ea214f022bd64b2",
+      "version": "0.5.169",
+      "build": 207,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.169.zip",
+      "sha256": "2810b3bfa236dca36e4b0dbf353e53f7bd60b7a52a47048390209399881028a4",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-09-01T01:50:24Z",
-      "notes": "Search results read like conversations again. Snippets are cut by the server as a raw window out of the archive file, so a hit near the top of a chat dragged sessionId, exchanges and role into the result; they are now cleaned to the sentence a person actually said. A search also opens on its matches instead of making you flip a switch, and stays unfiltered when nothing matched so a day is never mysteriously empty. Finally, search tolerates a typo: Thulle finds Thule, while short words still match exactly, because at three letters almost every word is one edit from another. Pairs with server 6.41.0."
+      "publishedAt": "2026-09-01T02:12:08Z",
+      "notes": "Recent messages are searchable \u2014 the newest turns were the one place you could not look. The search box also stays put while you scroll an archived day or a chat, instead of scrolling away with the content, so the term is still on screen when you reach the passage. And matches are marked in the text itself, yellow on dark and amber on light with dark ink either way: a tinted row said the term was somewhere in there, the mark says where. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
