@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.170",
-      "build": 208,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.170.zip",
-      "sha256": "f4f04cc78e1637e69160a095001d1d0eaa0a5cb76007dc70bfd110d8688c0f5d",
+      "version": "0.5.171",
+      "build": 209,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.171.zip",
+      "sha256": "a9c9980a9653e6904f9aacde1dfb95e3a5ce84462cc511f2bb9b524282386eff",
       "minMacOS": "14.0",
       "serverTarget": "6.42.0",
-      "publishedAt": "2026-09-01T03:48:52Z",
-      "notes": "One box now searches recent messages and the archive. Two boxes meant a term missing from the newest turns looked like it was nowhere, while the archive held it one tap away, and you had to retype the word to find that out. The line under the box carries both counts for the same term, and crossing over runs it for you. It also stops reporting the last term's answer beside a new one: until the scan runs for what is in the box it says press return. Search by meaning is new and it is off. It is the only thing in Control that spends model tokens, so its switch sits in the toolbar and says what it costs in both states. Turned on, Control offers to look for related days when a search comes up thin and asks only when you tap it, twenty five a day, on a small pinned model, and every day it proposes is checked against the real archive before it reaches you. Pairs with server 6.42.0."
+      "publishedAt": "2026-09-01T13:29:06Z",
+      "notes": "The session card tells you what happened. Every finished row used to print the literal word Finished, so two sessions forked off the same repo read as the same three tokens no matter how long you looked at them. A row now leads with what that session actually did. The card is wider too, because the sprite was deciding how much room the reading got: at the old width a finished title was 68pt, which is ten characters of the font it is set in. Point at a row and it opens up. The three paths off a row, open it in the platform, open the session view here, clear it, used to sit lit on every row spending 57pt of every line; they now share the fixed slot that carries the age and the workspace at rest, and cross over when the pointer arrives. Nothing changes size, so the card never jumps, and right-click reaches the same three. The outcome scrolls while you point at it so a long sentence can be read without the row growing, and only the row under the pointer moves. Search by meaning moved out of the toolbar to the end of the Messages search row, beside the search it governs. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
