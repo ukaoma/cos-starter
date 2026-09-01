@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.166",
-      "build": 204,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.166.zip",
-      "sha256": "e7954733626b04b6ad28a8d00dc67d9ac1dc6ba3c954651fd93adff9b95f5655",
+      "version": "0.5.167",
+      "build": 205,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.167.zip",
+      "sha256": "e0585d69d762b58bcb0391c42e7a02f9a8692b25c22ed3a937ec64df9fd17204",
       "minMacOS": "14.0",
       "serverTarget": "6.41.0",
-      "publishedAt": "2026-09-01T00:34:00Z",
-      "notes": "Archived days are searchable and readable. Finding the day a conversation happened on used to end there: the day opened as Chat 1 through Chat 11, and the term you searched for did not come with you. Each chat now leads with what it was actually about \u2014 the words that conversation kept returning to, taken from your own side of it \u2014 with the time, message count and chat number underneath. The search that found the day now carries into it: matching chats are badged with a match count and show the passage that matched, and a switch narrows the day to just those chats. Searching an archived day costs one request, not one per chat. Pairs with server 6.41.0."
+      "publishedAt": "2026-09-01T01:08:08Z",
+      "notes": "Updates moved to the top of the panel. The check used to be the last thing under everything else, so asking whether you were current meant scrolling to the bottom. The first card now answers it on every open: your version when you are current, an install offer when you are not, and the manual check in both states. Search also follows you all the way down \u2014 an archived chat now has its own find bar, seeded with the term that got you there, with a match count, next and previous, and matched turns highlighted in place, so a chat with forty-six mentions takes one keystroke to walk rather than a scroll. Pairs with server 6.41.0."
     }
   },
   "killSwitch": {
