@@ -7,9 +7,9 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.184.zip",
       "sha256": "334718d091555f0e0f0f51fb24ca362120609fed922d01440a7a31512a6e2747",
       "minMacOS": "14.0",
-      "serverTarget": "6.43.2",
-      "publishedAt": "2026-09-02T12:35:50Z",
-      "notes": "Update Server proves any installed provider (Claude, Codex, and Cursor when its agent is present) and commits when at least one real query passes; a vendor session or usage limit is recorded as a skip with its reason instead of rolling the update back. Zero proofs still fails closed. The Morning brief card shows what is behind each source and how the last brief came back. Pairs with server 6.43.2; server 6.43.3 adds proof failure codes and Cursor as a proof provider."
+      "serverTarget": "6.43.3",
+      "publishedAt": "2026-09-02T13:05:12Z",
+      "notes": "Update Server proves any installed provider (Claude, Codex, and Cursor when its agent is present) and commits when at least one real query passes; a vendor session or usage limit is recorded as a skip with its reason instead of rolling the update back. Zero proofs still fails closed. The Morning brief card shows what is behind each source and how the last brief came back. Pairs with server 6.43.3, which returns proof failure codes and accepts Cursor as a proof provider."
     }
   },
   "killSwitch": {
