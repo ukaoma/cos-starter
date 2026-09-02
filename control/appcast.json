@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.184",
-      "build": 222,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.184.zip",
-      "sha256": "334718d091555f0e0f0f51fb24ca362120609fed922d01440a7a31512a6e2747",
+      "version": "0.5.185",
+      "build": 223,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.185.zip",
+      "sha256": "c9da470af4bc19a1d2a59ef98bd637aee6cfddd3c2c710abc5de7ae9eb1eb4f1",
       "minMacOS": "14.0",
-      "serverTarget": "6.43.3",
-      "publishedAt": "2026-09-02T13:05:12Z",
-      "notes": "Update Server proves any installed provider (Claude, Codex, and Cursor when its agent is present) and commits when at least one real query passes; a vendor session or usage limit is recorded as a skip with its reason instead of rolling the update back. Zero proofs still fails closed. The Morning brief card shows what is behind each source and how the last brief came back. Pairs with server 6.43.3, which returns proof failure codes and accepts Cursor as a proof provider."
+      "serverTarget": "6.43.4",
+      "publishedAt": "2026-09-02T20:32:21Z",
+      "notes": "Every message row says where it came from. With server 6.43.4 a run the Mac started (the scheduled morning brief today, agent tasks next) carries a ROUTINE or TASK label in the Activity window Messages list and on the message detail line, with the model that answered beside it; the routine or task is named in the hover. Nothing is inferred from a row that carries no label. The Morning brief card shows why the last brief failed, on its own line. Pairs with server 6.43.4; on an older server rows carry no label."
     }
   },
   "killSwitch": {
