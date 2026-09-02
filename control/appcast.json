@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.182",
-      "build": 220,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.182.zip",
-      "sha256": "1807188ed9ccd4a75e503fa2b9215d7044a093ed0dff64f2bad8bf6d8f3c3b28",
+      "version": "0.5.184",
+      "build": 222,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.184.zip",
+      "sha256": "334718d091555f0e0f0f51fb24ca362120609fed922d01440a7a31512a6e2747",
       "minMacOS": "14.0",
-      "serverTarget": "6.43.0",
-      "publishedAt": "2026-09-02T03:23:49Z",
-      "notes": "Miles's three-session fight now keeps his feet under him through both retreat beats instead of explaining depth with a shrinking figure. The repaired footwork leads into the approved slash, the Force-thrown debris blocks the incoming bolt without putting it through his hand, and the bottom-right droid separates on contact before the larger destruction burst. The exact 2.86-second loop, 110 ms shipping cadence, other session stories, idle scale, and every custom character remain unchanged. This release also carries the Morning brief card and all prior 0.5.181 functionality. Pairs with server 6.43.0."
+      "serverTarget": "6.43.2",
+      "publishedAt": "2026-09-02T12:35:50Z",
+      "notes": "Update Server proves any installed provider (Claude, Codex, and Cursor when its agent is present) and commits when at least one real query passes; a vendor session or usage limit is recorded as a skip with its reason instead of rolling the update back. Zero proofs still fails closed. The Morning brief card shows what is behind each source and how the last brief came back. Pairs with server 6.43.2; server 6.43.3 adds proof failure codes and Cursor as a proof provider."
     }
   },
   "killSwitch": {
