@@ -89,6 +89,7 @@ my-cos/
 │       ├── start.md          # /start · daily briefing
 │       ├── learn.md          # /learn · capture corrections
 │       ├── prep.md           # /prep · meeting preparation
+│       ├── morning-brief.md  # /morning-brief · start-of-day brief (COS Glasses runs it on a schedule)
 │       ├── cos-glasses.md     # /cos-glasses · run & health-check the Glasses server
 │       ├── glasses-day.md     # /glasses-day · pull a glasses day into the session
 │       └── connect.md        # /connect · wire external tools
@@ -213,7 +214,7 @@ cos-starter/
 ├── README.md                    # You are here
 ├── cos-starter.md               # Interactive setup prompt
 ├── templates/                   # Blank templates for CLAUDE.md, people, tasks
-├── skills/                      # Starter skills (/start, /learn, /prep, /cos-glasses, /glasses-day, /assess, /connect)
+├── skills/                      # Starter skills (/start, /learn, /prep, /morning-brief, /cos-glasses, /glasses-day, /assess, /connect)
 ├── scripts/                     # Utility scripts (cos-learn.py)
 ├── philosophy/                  # Interactive philosophy diagram
 ├── assess/                      # Coverage gap self-assessment framework

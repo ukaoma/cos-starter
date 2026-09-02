@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.173",
-      "build": 211,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.173.zip",
-      "sha256": "9530bde4a263e4fddcf69980518932799986298806a0ae155db66f9c01545820",
+      "version": "0.5.181",
+      "build": 219,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.181.zip",
+      "sha256": "63a6f5eca3fd547985dd32e1bf8c6a88c88e1d9b90a3dc33a3ae6c8b3a4792ae",
       "minMacOS": "14.0",
-      "serverTarget": "6.42.1",
-      "publishedAt": "2026-09-01T15:12:15Z",
-      "notes": "Miles Windu's production animation now carries the approved connected cadence. The three-session story keeps its exact 2.86-second authored loop and the four-plus-session swarm keeps its exact 5.72-second loop, with transition holds encoded directly into the strips so Control preserves the timing without changing the animation engine. Idle is normalized to 1.45x, about 12 percent larger than the prior 1.30x setting, while custom sprites, custom timing, custom scale, character choice, global size, and speed preferences remain untouched. The session card also gains the tighter trailing alignment prepared in 0.5.172. Release packaging now automatically uses the stable local COS Control signing identity when it is available, preserving the app's designated requirement across updates. Pairs with server 6.42.1."
+      "serverTarget": "6.43.0",
+      "publishedAt": "2026-09-02T03:10:21Z",
+      "notes": "A Morning brief card, when the managed server is 6.43.0 or newer. The server now composes a start-of-day brief on a schedule and drops it in the inbox as a numbered reply; this card is where you say when and from what. Turn it on or off, set the time and the weekdays, and open Sources to choose what goes in (Calendar, recent-meeting decisions, tasks due, what is waiting on you, and the optional set: knowledge graph, reflection, health, an opening reading, a metrics pulse, one of your own skills such as /good-morning, or a custom section), each with its own window. Apply saves the whole card in one change; Run Now fires a brief immediately, five a day at most. The status line says when the next brief fires, or why it will not. This release also carries the 0.5.174 to 0.5.180 work: the approved connected Miles Windu cadence, the tighter session card, and packaging that keeps the stable COS Control signing identity across updates. Pairs with server 6.43.0."
     }
   },
   "killSwitch": {

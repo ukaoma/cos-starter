@@ -171,6 +171,7 @@ Use this structure -- fill in from their answers:
 |---------|---------|
 | `/start` (Codex: `/prompts:cos-start`) | Daily dashboard -- what matters today |
 | `/prep [person]` (Codex: `/prompts:cos-prep`) | Pre-meeting brief with context |
+| `/morning-brief` (Codex: `/prompts:cos-morning-brief`) | Start-of-day brief -- calendar, meeting decisions, tasks due, who is waiting on you |
 | `/learn` (Codex: `/prompts:cos-learn`) | Log corrections, build permanent memory |
 
 ## Context Loading
@@ -373,6 +374,37 @@ description: Pre-meeting brief with context
 5. Keep it under 25 lines. If the person isn't in people.md, say so and offer to add them.
 ```
 
+### Install /morning-brief
+
+Install this content at `.claude/commands/morning-brief.md` **and** `~/.codex/prompts/cos-morning-brief.md`:
+
+```markdown
+---
+description: Start-of-day brief -- calendar, meeting decisions, tasks due, who is waiting on you
+---
+
+# /morning-brief [YYYY-MM-DD]
+
+## Rules
+- Nobody is watching this run: no questions, no pauses, no stopping early.
+- Read-only: never send, create, edit, or write anything.
+- Evidence only: a source you cannot read gets one line, "<Section>: unavailable (reason)". Never invent.
+- Hard edges only: include an item only if it has a decision, a date, a dollar figure, or an owner.
+
+## Steps
+1. Run `date` (or use the argument). On Monday, "last business day" is Friday.
+2. CALENDAR -- today's commitments in time order, one line each; name the first one and the open time before it.
+3. FROM RECENT MEETINGS -- last 3 days of meetings/: decisions, deadlines within 7 days, dollar figures, owners. 3-5 items by consequence. Never paste an extracted action-item list.
+4. DUE -- every operations/*/tasks.md: open tasks due within 7 days, overdue first, cap 7.
+5. WAITING ON YOU -- every channel you can read, last 7 days: unanswered mentions and asks, up to 5, each with channel, who, and the ask. Never claim "unread".
+6. Close with one line beginning "Order your energy:".
+
+## Output
+Plain text, glasses-ready: a label line, then short lines under 60 chars. Under 60 lines. No markdown, no preamble, no "here is".
+```
+
+(Full version: `https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/morning-brief.md`. COS Glasses server 6.43.0+ runs this on a schedule and drops the result in the inbox; the time and sources are set in COS Control or the companion app.)
+
 ### Install /cos-glasses (if they run COS Glasses)
 
 Ask: **"Do you use the COS Glasses (the Even G2 companion)?"** If yes, install this so their agent runs and babysits the server for them. Install at `.claude/commands/cos-glasses.md` **and** `~/.codex/prompts/cos-glasses.md`:
@@ -462,6 +494,7 @@ Files created:
     learn                          -- Correction tracker (the system gets smarter)
     start                          -- Daily dashboard
     prep                           -- Pre-meeting briefs
+    morning-brief                  -- Start-of-day brief (COS Glasses runs it on a schedule)
   [if connected: .mcp.json + ~/.codex/config.toml -- Tool connection]
 
 Works in Claude Code and Codex CLI interchangeably. Switch anytime.
