@@ -7,9 +7,9 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.173.zip",
       "sha256": "9530bde4a263e4fddcf69980518932799986298806a0ae155db66f9c01545820",
       "minMacOS": "14.0",
-      "serverTarget": "6.42.0",
+      "serverTarget": "6.42.1",
       "publishedAt": "2026-09-01T15:12:15Z",
-      "notes": "Miles Windu's production animation now carries the approved connected cadence. The three-session story keeps its exact 2.86-second authored loop and the four-plus-session swarm keeps its exact 5.72-second loop, with transition holds encoded directly into the strips so Control preserves the timing without changing the animation engine. Idle is normalized to 1.45x, about 12 percent larger than the prior 1.30x setting, while custom sprites, custom timing, custom scale, character choice, global size, and speed preferences remain untouched. The session card also gains the tighter trailing alignment prepared in 0.5.172. Release packaging now automatically uses the stable local COS Control signing identity when it is available, preserving the app's designated requirement across updates. Pairs with server 6.42.0."
+      "notes": "Miles Windu's production animation now carries the approved connected cadence. The three-session story keeps its exact 2.86-second authored loop and the four-plus-session swarm keeps its exact 5.72-second loop, with transition holds encoded directly into the strips so Control preserves the timing without changing the animation engine. Idle is normalized to 1.45x, about 12 percent larger than the prior 1.30x setting, while custom sprites, custom timing, custom scale, character choice, global size, and speed preferences remain untouched. The session card also gains the tighter trailing alignment prepared in 0.5.172. Release packaging now automatically uses the stable local COS Control signing identity when it is available, preserving the app's designated requirement across updates. Pairs with server 6.42.1."
     }
   },
   "killSwitch": {
