@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.186",
-      "build": 224,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.186.zip",
-      "sha256": "ecf2ef9d38a0cf8d0721e1d64279bb0216bfdba42b06c09a090d77fab2e126f9",
+      "version": "0.5.187",
+      "build": 225,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.187.zip",
+      "sha256": "3172c0f8e2b5e005ceb02006d1fa25ea73442c3bd0ba25552cddb624c488b40b",
       "minMacOS": "14.0",
-      "serverTarget": "6.44.1",
-      "publishedAt": "2026-09-03T04:27:31Z",
-      "notes": "Tasks is a seventh Activity pane. Capture, schedule, move, and Run now go through the helper to server 6.44.1. The home grid is four-wide so seven tiles stay two rows. Task titles now strip Markdown before truncation and cut on a word boundary. Pairs with server 6.44.1."
+      "serverTarget": "6.44.2",
+      "publishedAt": "2026-09-03T15:15:00Z",
+      "notes": "The Tasks pane kept only what was due, so a server holding captured rows and nothing scheduled reported \"No open tasks\". It shows every open row now, ranked so the newest capture is never pushed out by history. The domain picker reads the domains your COS actually has instead of four names baked into the app; on an older server it derives them from your own board rather than emptying itself. Pairs with server 6.44.2."
     }
   },
   "killSwitch": {
