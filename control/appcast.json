@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.185",
-      "build": 223,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.185.zip",
-      "sha256": "c9da470af4bc19a1d2a59ef98bd637aee6cfddd3c2c710abc5de7ae9eb1eb4f1",
+      "version": "0.5.186",
+      "build": 224,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.186.zip",
+      "sha256": "ecf2ef9d38a0cf8d0721e1d64279bb0216bfdba42b06c09a090d77fab2e126f9",
       "minMacOS": "14.0",
-      "serverTarget": "6.43.4",
-      "publishedAt": "2026-09-02T20:32:21Z",
-      "notes": "Every message row says where it came from. With server 6.43.4 a run the Mac started (the scheduled morning brief today, agent tasks next) carries a ROUTINE or TASK label in the Activity window Messages list and on the message detail line, with the model that answered beside it; the routine or task is named in the hover. Nothing is inferred from a row that carries no label. The Morning brief card shows why the last brief failed, on its own line. Pairs with server 6.43.4; on an older server rows carry no label."
+      "serverTarget": "6.44.1",
+      "publishedAt": "2026-09-03T04:27:31Z",
+      "notes": "Tasks is a seventh Activity pane. Capture, schedule, move, and Run now go through the helper to server 6.44.1. The home grid is four-wide so seven tiles stay two rows. Task titles now strip Markdown before truncation and cut on a word boundary. Pairs with server 6.44.1."
     }
   },
   "killSwitch": {
