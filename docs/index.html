@@ -186,12 +186,13 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-ring-shell.is-ready .rp-ring-canvas{opacity:1;pointer-events:auto;cursor:grab}
 .rp-ring-fallback{position:absolute;z-index:1;left:50%;top:48%;width:164px;height:150px;transform:translate(-50%,-50%) rotate(-7deg);filter:drop-shadow(0 0 15px rgba(77,213,138,.34));transition:opacity .2s ease}
 .rp-ring-shell.is-ready .rp-ring-fallback{opacity:0}
-.rp-ring-fallback .rp-band{position:absolute;inset:18px 8px;border:18px solid rgba(31,117,75,.72);border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(7,16,10,.85) 0 47%,rgba(77,213,138,.2) 48% 55%,transparent 56%);box-shadow:inset 0 0 0 2px rgba(216,251,232,.35),inset 0 0 18px rgba(77,213,138,.3),0 0 0 1px rgba(77,213,138,.68),0 0 20px rgba(77,213,138,.24)}
+.rp-ring-fallback .rp-band{position:absolute;inset:22px 10px;border:6px solid rgba(31,117,75,.72);border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(7,16,10,.85) 0 47%,rgba(77,213,138,.2) 48% 55%,transparent 56%);box-shadow:inset 0 0 0 1px rgba(216,251,232,.35),inset 0 0 12px rgba(77,213,138,.26),0 0 0 1px rgba(77,213,138,.68),0 0 20px rgba(77,213,138,.24)}
 .rp-ring-fallback .rp-band::before,.rp-ring-fallback .rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
 .rp-ring-fallback .rp-band::before{inset:-8px;border:1px solid rgba(77,213,138,.34)}
 .rp-ring-fallback .rp-band::after{inset:1px;border-top:2px solid rgba(216,251,232,.64);border-right:1px solid rgba(77,213,138,.16);border-bottom:1px solid rgba(77,213,138,.3);border-left:1px solid rgba(77,213,138,.16)}
-.rp-ring-fallback .rp-touch{position:absolute;left:50%;bottom:30px;width:70px;height:20px;border:1px solid rgba(216,251,232,.78);border-radius:7px;background:repeating-linear-gradient(90deg,rgba(77,213,138,.28) 0 10px,transparent 10px 13px),rgba(4,24,15,.86);box-shadow:inset 0 1px rgba(216,251,232,.18),0 0 14px rgba(77,213,138,.3);transform:translateX(-50%)}
-.rp-ring-fallback .rp-touch::before{content:"E";position:absolute;left:50%;bottom:73px;transform:translateX(-50%);font:700 1.1rem/1 var(--mono);color:#d8fbe8;text-shadow:0 0 7px rgba(77,213,138,.75)}
+.rp-ring-fallback .rp-touch{position:absolute;left:50%;bottom:34px;width:60px;height:14px;border:1px solid rgba(216,251,232,.78);border-radius:6px;background:repeating-linear-gradient(90deg,rgba(77,213,138,.28) 0 8px,transparent 8px 11px),rgba(4,24,15,.86);box-shadow:inset 0 1px rgba(216,251,232,.18),0 0 14px rgba(77,213,138,.3);transform:translateX(-50%)}
+.rp-even-mark{position:absolute;left:50%;top:18px;width:30px;height:22px;transform:translateX(-50%);padding:3px 4px;border:1px solid rgba(121,244,178,.55);border-radius:3px;background:rgba(9,38,25,.55);box-shadow:0 0 8px rgba(77,213,138,.28)}
+.rp-even-mark svg{display:block;width:100%;height:100%;overflow:visible;fill:#deffeb;filter:drop-shadow(0 0 3px rgba(152,255,200,.84))}
 .rp-orbit-hint{display:flex;align-items:center;justify-content:center;gap:9px;max-width:94%;margin-top:-2px;font:400 .56rem/1.45 var(--mono);color:var(--ghost);text-align:center}
 .rp-orbit-hint[hidden]{display:none}
 .rp-orbit-hint button{appearance:none;border:0;border-bottom:1px solid rgba(201,169,110,.34);background:transparent;color:var(--gold);font:inherit;cursor:pointer;padding:1px 0}
@@ -213,7 +214,7 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-step .rp-action{display:block;margin-top:5px;font:500 .65rem/1.4 var(--mono);color:var(--gold)}
 .rp-step p{grid-column:2;margin-top:9px;font-size:.9rem;line-height:1.55;color:var(--muted)}
 @media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
-@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:13px 6px;border-width:12px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:20px;transform:translateX(-50%) scale(.72)}.rp-ring-fallback .rp-touch::before{bottom:57px}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
+@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:15px 6px;border-width:4px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:22px;transform:translateX(-50%) scale(.72)}.rp-even-mark{top:10px;transform:translateX(-50%) scale(.72)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
 @media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:174px;padding:0}.rp-ring-shell{width:222px;height:166px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
 @media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw{animation:none}.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
 
@@ -750,6 +751,7 @@ footer .links a:hover{color:var(--gold)}
             <canvas class="rp-ring-canvas" id="rpRingCanvas" role="img" tabindex="-1" aria-hidden="true" aria-describedby="rpOrbitHint" aria-label="Interactive 3D COS ring. Drag to rotate. Shift-drag or use two fingers to roll. Arrow keys rotate; Q and E roll; Space resets."></canvas>
             <div class="rp-ring-fallback" role="img" aria-label="COS control ring with an attached touch surface">
               <div class="rp-band"></div><div class="rp-touch"></div>
+              <span class="rp-even-mark" aria-hidden="true"><svg viewBox="12 10 19 17"><path d="M18.5873 11.1777H29.9651V14.0222H18.5873V11.1777Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M15.7429 11.1777H12.8984V25.4H15.7429V22.5555H18.5873V25.4H29.9651V22.5555H18.5873V19.7111H29.9651V16.8666H18.5873V14.0222L15.7429 14.0222V11.1777ZM15.7429 19.7111H18.5873V16.8666H15.7429V19.7111Z"/></svg></span>
             </div>
           </div>
           <div class="rp-orbit-hint" id="rpOrbitHint" hidden><span>Drag to rotate. Two fingers or Shift-drag to roll.</span><button type="button" id="rpRingReset" hidden>Reset view</button></div>
@@ -1817,7 +1819,7 @@ footer .links a:hover{color:var(--gold)}
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
-<script src="../assets/ring-3d.js?v=2"></script>
+<script src="../assets/ring-3d.js?v=3"></script>
 <script>
 (function(){
   // shared motion guard

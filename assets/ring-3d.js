@@ -53,32 +53,36 @@
     this.motionQuery=global.matchMedia ? global.matchMedia('(prefers-reduced-motion: reduce)') : null;
     this.reduced=!!(this.motionQuery && this.motionQuery.matches);
     this.light=normalize({x:-0.42,y:-0.66,z:0.9});
-    this.innerRadius=0.82;
+    this.innerRadius=1.21;
     this.outerRadius=1.36;
     this.uSegments=72;
     this.profile=[
-      {r:0.88,z:-0.30,mat:'steel'},
-      {r:1.24,z:-0.30,mat:'body'},
-      {r:1.31,z:-0.27,mat:'body'},
-      {r:1.35,z:-0.21,mat:'body'},
-      {r:1.37,z:-0.12,mat:'body'},
-      {r:1.37,z:0.12,mat:'body'},
-      {r:1.35,z:0.21,mat:'body'},
-      {r:1.31,z:0.27,mat:'body'},
-      {r:1.24,z:0.30,mat:'body'},
-      {r:0.88,z:0.30,mat:'steel'},
-      {r:0.84,z:0.27,mat:'steel'},
-      {r:0.80,z:0.20,mat:'steel'},
-      {r:0.79,z:0.09,mat:'steel'},
-      {r:0.79,z:-0.09,mat:'steel'},
-      {r:0.80,z:-0.20,mat:'steel'},
-      {r:0.84,z:-0.27,mat:'steel'}
+      {r:1.23,z:-0.21,mat:'steel'},
+      {r:1.28,z:-0.21,mat:'body'},
+      {r:1.33,z:-0.18,mat:'body'},
+      {r:1.36,z:-0.11,mat:'body'},
+      {r:1.37,z:-0.04,mat:'body'},
+      {r:1.37,z:0.04,mat:'body'},
+      {r:1.36,z:0.11,mat:'body'},
+      {r:1.33,z:0.18,mat:'body'},
+      {r:1.28,z:0.21,mat:'body'},
+      {r:1.23,z:0.21,mat:'steel'},
+      {r:1.20,z:0.18,mat:'steel'},
+      {r:1.19,z:0.12,mat:'steel'},
+      {r:1.19,z:0.04,mat:'steel'},
+      {r:1.19,z:-0.04,mat:'steel'},
+      {r:1.19,z:-0.12,mat:'steel'},
+      {r:1.20,z:-0.18,mat:'steel'}
     ];
     this.vSegments=this.profile.length;
     this.vertices=[];
     this.faces=[];
     this.crownAngle=-Math.PI/2;
     this.sensorAngle=Math.PI/2;
+    this.evenMarkPaths=global.Path2D ? [
+      new global.Path2D('M18.5873 11.1777H29.9651V14.0222H18.5873V11.1777Z'),
+      new global.Path2D('M15.7429 11.1777H12.8984V25.4H15.7429V22.5555H18.5873V25.4H29.9651V22.5555H18.5873V19.7111H29.9651V16.8666H18.5873V14.0222L15.7429 14.0222V11.1777ZM15.7429 19.7111H18.5873V16.8666H15.7429V19.7111Z')
+    ] : null;
 
     this.buildMesh();
     this.bind();
@@ -103,7 +107,7 @@
       var cu=Math.cos(ua), su=Math.sin(ua);
       for(var v=0;v<this.vSegments;v++){
         var section=this.profile[v];
-        var crownWeight=section.r>1.2 ? this.crownField(ua)*((section.r-1.2)/.17) : 0;
+        var crownWeight=section.mat==='body' && section.r>1.27 ? this.crownField(ua)*((section.r-1.27)/.1) : 0;
         var radius=section.r+crownWeight;
         this.vertices.push({
           x:radius*cu,
@@ -127,12 +131,12 @@
 
   RingRenderer.prototype.crownField=function(angle){
     var delta=Math.abs(normalizeAngle(angle-this.crownAngle));
-    var plateau=.27;
-    var shoulder=.32;
-    if(delta<=plateau) return .1;
+    var plateau=.18;
+    var shoulder=.26;
+    if(delta<=plateau) return .06;
     if(delta>=plateau+shoulder) return 0;
     var t=(delta-plateau)/shoulder;
-    return .1*(1-t*t*(3-2*t));
+    return .06*(1-t*t*(3-2*t));
   };
 
   RingRenderer.prototype.bind=function(){
@@ -451,43 +455,50 @@
   };
 
   RingRenderer.prototype.drawCrown=function(ctx){
-    var radius=this.outerRadius+this.crownField(this.crownAngle)+.055;
+    var radius=this.outerRadius+this.crownField(this.crownAngle)+.035;
     var normal=rotate({x:Math.cos(this.crownAngle),y:Math.sin(this.crownAngle),z:0},this.pose);
     var visibility=clamp((normal.z+.25)/.75,.16,1);
-    var panel=this.patchPoints(this.crownAngle,.27,.23,radius);
-    var inset=this.patchPoints(this.crownAngle,.238,.2,radius+.008);
+    var panel=this.patchPoints(this.crownAngle,.18,.145,radius);
+    var inset=this.patchPoints(this.crownAngle,.164,.13,radius+.006);
+    var mark=this.patchPoints(this.crownAngle,.085,.1,radius+.012);
     ctx.save();
     ctx.globalAlpha=visibility;
-    ctx.shadowColor='rgba(77,213,138,.48)';ctx.shadowBlur=8;
-    this.tracePatch(ctx,panel);ctx.fillStyle='rgba(9,38,25,.72)';ctx.fill();ctx.strokeStyle='rgba(121,244,178,.68)';ctx.lineWidth=1;ctx.stroke();
+    ctx.shadowColor='rgba(77,213,138,.4)';ctx.shadowBlur=6;
+    this.tracePatch(ctx,panel);ctx.fillStyle='rgba(9,38,25,.5)';ctx.fill();ctx.strokeStyle='rgba(121,244,178,.58)';ctx.lineWidth=.8;ctx.stroke();
     ctx.shadowBlur=0;
-    this.tracePatch(ctx,inset);ctx.strokeStyle='rgba(77,213,138,.42)';ctx.lineWidth=.65;ctx.stroke();
-
-    var bars=[
-      {s:-.085,z:0,w:.052,h:.22},
-      {s:0,z:-.09,w:.17,h:.042},
-      {s:-.005,z:0,w:.16,h:.042},
-      {s:0,z:.09,w:.17,h:.042}
-    ];
-    var self=this;
-    ctx.fillStyle='rgba(222,255,235,.94)';
-    ctx.shadowColor='rgba(152,255,200,.82)';ctx.shadowBlur=4;
-    bars.forEach(function(bar){
-      var corrected=[
-        self.project(rotate(self.surfacePoint(self.crownAngle+(bar.s-bar.w/2)/radius,bar.z-bar.h/2,radius+.014),self.pose)),
-        self.project(rotate(self.surfacePoint(self.crownAngle+(bar.s+bar.w/2)/radius,bar.z-bar.h/2,radius+.014),self.pose)),
-        self.project(rotate(self.surfacePoint(self.crownAngle+(bar.s+bar.w/2)/radius,bar.z+bar.h/2,radius+.014),self.pose)),
-        self.project(rotate(self.surfacePoint(self.crownAngle+(bar.s-bar.w/2)/radius,bar.z+bar.h/2,radius+.014),self.pose))
-      ];
-      self.tracePatch(ctx,corrected);ctx.fill();
-    });
+    this.tracePatch(ctx,inset);ctx.strokeStyle='rgba(77,213,138,.36)';ctx.lineWidth=.55;ctx.stroke();
     ctx.restore();
+
+    this.drawEvenMark(ctx,mark,visibility);
 
     ctx.save();ctx.globalAlpha=visibility;ctx.fillStyle='rgba(178,255,211,.72)';ctx.shadowColor='rgba(77,213,138,.85)';ctx.shadowBlur=4;
     for(var i=0;i<5;i++){
       var theta=this.crownAngle+.55+i*.105;
       var p=this.project(rotate(this.surfacePoint(theta,0,this.outerRadius+.025),this.pose));
       ctx.fillRect(p.x-1.1,p.y-1.1,2.2,2.2);
+    }
+    ctx.restore();
+  };
+
+  RingRenderer.prototype.drawEvenMark=function(ctx,patch,visibility){
+    var x0=12.8984,y0=11.1777,width=17.0667,height=14.2223;
+    var p0=patch[0],p1=patch[1],p3=patch[3];
+    var a=(p1.x-p0.x)/width,b=(p1.y-p0.y)/width;
+    var c=(p3.x-p0.x)/height,d=(p3.y-p0.y)/height;
+    var e=p0.x-a*x0-c*y0,f=p0.y-b*x0-d*y0;
+    ctx.save();
+    ctx.globalAlpha=visibility;
+    ctx.transform(a,b,c,d,e,f);
+    ctx.fillStyle='rgba(222,255,235,.96)';
+    ctx.shadowColor='rgba(152,255,200,.84)';ctx.shadowBlur=4/Math.max(Math.abs(a),Math.abs(d),.01);
+    if(this.evenMarkPaths){
+      ctx.fill(this.evenMarkPaths[0]);
+      ctx.fill(this.evenMarkPaths[1],'evenodd');
+    }else{
+      ctx.fillRect(12.8984,11.1777,2.8445,14.2223);
+      ctx.fillRect(18.5873,11.1777,11.3778,2.8445);
+      ctx.fillRect(18.5873,16.8666,11.3778,2.8445);
+      ctx.fillRect(18.5873,22.5555,11.3778,2.8445);
     }
     ctx.restore();
   };
