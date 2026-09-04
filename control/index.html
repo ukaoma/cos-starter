@@ -138,12 +138,11 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 e
 .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:16px 10px 2px}.rig-caption strong{color:var(--fg)}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
-/* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
-.burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
-.burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.up.to-ink2{background:linear-gradient(0deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+/* Signature amber burns between dark and cream sections. One continuous ramp owns
+   each bridge so a second gradient can never begin with a visible horizontal edge. */
+.burn{--burn-dark:var(--ink);--burn-angle:180deg;position:relative;z-index:2;height:clamp(132px,17vw,220px);pointer-events:none;margin-block:-2px;background:linear-gradient(var(--burn-angle),var(--burn-dark) 0%,#1d120a 14%,#28180c 30%,#392311 46%,#503018 60%,#6b421f 72%,#8b5a2d 82%,#ab7a48 89%,#c9a46a 94%,#deca9d 97.5%,#ebe0c8 99%,var(--cream) 100%)}
+.burn.up{--burn-angle:0deg}
+.burn.up.to-ink2,.burn.down.from-ink2{--burn-dark:var(--ink2)}
 .sticky{position:sticky;top:120px;align-self:start}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD). Rides INSIDE the sticky column so it endures the whole section scroll */
 #definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
@@ -332,7 +331,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 /* ---------- Session command surface: real ledger + authored Miles timelines ---------- */
 .session-command{position:relative;background:var(--ink2);padding:0 0 clamp(76px,10vw,132px);overflow:hidden}
-.session-command::before{content:"";position:absolute;inset:6% -12% auto;height:540px;pointer-events:none;background:radial-gradient(circle at 28% 45%,rgba(240,182,52,.13),transparent 31%),radial-gradient(circle at 75% 45%,rgba(135,168,189,.11),transparent 28%)}
+.session-command::before{content:"";position:absolute;inset:0 -12% auto;height:760px;pointer-events:none;background:radial-gradient(circle at 28% 45%,rgba(240,182,52,.13),transparent 34%),radial-gradient(circle at 75% 45%,rgba(135,168,189,.11),transparent 32%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%)}
 .sc-head{position:relative;display:grid;grid-template-columns:minmax(0,.72fr) minmax(280px,.28fr);gap:clamp(28px,6vw,84px);align-items:end;padding-top:clamp(30px,5vw,70px);border-top:1px solid var(--line2)}
 .sc-kicker{display:block;font:500 .62rem var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:15px}
 .sc-head h2{font-size:clamp(2.55rem,5.2vw,4.85rem);line-height:.95;max-width:12ch}

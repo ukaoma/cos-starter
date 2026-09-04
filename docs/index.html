@@ -155,6 +155,67 @@ section.light .sg .g-key.lit{color:var(--ink-on-cream);border-color:#7a5c2c;back
 .hud-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);margin:10px 2px 0}
 section.light .hud-cap{color:rgba(46,31,16,.45)}
 
+/* ── ring-to-lens path ─────────────────────────────────
+   One teaching device owns the gesture story. The ring is drawn here rather than
+   borrowed from a product render, so the interaction stays native to the COS system. */
+.ring-path{padding-bottom:clamp(72px,10vw,138px)}
+.ring-path .sec-head{max-width:720px}
+.rp-grid{display:grid;grid-template-columns:minmax(350px,1.08fr) minmax(290px,.92fr);gap:clamp(28px,5vw,64px);align-items:start}
+.rp-stage{position:sticky;top:84px;min-width:0;border:1px solid var(--line);border-radius:24px;background:radial-gradient(90% 72% at 50% 38%,rgba(70,232,120,.065),transparent 66%),linear-gradient(156deg,rgba(255,246,232,.045),rgba(7,5,4,.46)),var(--ink);box-shadow:0 34px 90px -42px rgba(0,0,0,.78);overflow:hidden;isolation:isolate}
+.rp-stage::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.32;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);-webkit-mask-image:linear-gradient(to bottom,#000,transparent 88%);mask-image:linear-gradient(to bottom,#000,transparent 88%)}
+.rp-stage-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 17px;border-bottom:1px solid var(--line-2);font:400 .62rem/1.3 var(--mono);letter-spacing:.08em;color:var(--ghost)}
+.rp-stage-head b{font-weight:500;color:var(--gold)}
+.rp-demo{padding:clamp(18px,3vw,28px)}
+.rp-lens{position:relative;aspect-ratio:2/1;border:1px solid rgba(70,232,120,.24);border-radius:18px;background:radial-gradient(100% 130% at 50% 0%,rgba(70,232,120,.09),transparent 65%),#07100a;box-shadow:inset 0 0 50px rgba(70,232,120,.025),0 22px 48px -28px rgba(0,0,0,.92);overflow:hidden}
+.rp-lens::before{content:"";position:absolute;inset:9px;border:1px solid rgba(70,232,120,.08);border-radius:12px;pointer-events:none}
+.rp-screen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,3vw,28px);font:400 clamp(.62rem,1.2vw,.78rem)/1.55 var(--mono);color:var(--hud);text-shadow:0 0 8px rgba(70,232,120,.38)}
+.rp-screen.rp-redraw{animation:rpRedraw .34s ease-out both}
+@keyframes rpRedraw{0%{opacity:.66;transform:translateY(2px)}100%{opacity:1;transform:none}}
+.rp-screen .rp-title{color:var(--hud-hi);margin-bottom:3px}
+.rp-screen .rp-dim{color:rgba(70,232,120,.5);text-shadow:none}
+.rp-screen .rp-row{display:flex;gap:9px;color:rgba(70,232,120,.64);text-shadow:none;padding:2px 6px;border-radius:5px}
+.rp-screen .rp-row.on{color:var(--hud-hi);background:rgba(70,232,120,.075);text-shadow:0 0 8px rgba(70,232,120,.38)}
+.rp-screen .rp-cursor{width:1ch;color:var(--hud-hi)}
+.rp-screen .rp-copy{max-width:46ch}
+.rp-screen .rp-foot{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:9px;border-top:1px solid rgba(70,232,120,.14);font-size:.78em;color:rgba(70,232,120,.55);text-shadow:none}
+.rp-ring-zone{position:relative;min-height:190px;display:grid;place-items:center;padding:20px 0 4px}
+.rp-ring{position:relative;width:168px;height:105px;transform:rotate(-9deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.48))}
+.rp-band{position:absolute;inset:0;border:17px solid #846a43;border-radius:50%;background:radial-gradient(ellipse at 46% 42%,rgba(70,232,120,.12),transparent 58%);box-shadow:inset 0 0 0 2px rgba(242,221,180,.2),inset 0 0 16px rgba(23,15,9,.92),0 0 0 1px rgba(201,169,110,.35),0 0 24px rgba(70,232,120,.07)}
+.rp-band::before,.rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.rp-band::before{inset:-10px;border:1px solid rgba(201,169,110,.24)}
+.rp-band::after{inset:2px;border-top:2px solid rgba(240,232,218,.32);border-right:1px solid transparent;border-bottom:1px solid transparent;border-left:1px solid rgba(70,232,120,.15)}
+.rp-touch{position:absolute;right:13px;bottom:6px;width:64px;height:22px;border:1px solid rgba(201,169,110,.62);border-radius:9px;background:linear-gradient(180deg,#2f281d,#17130e);box-shadow:inset 0 1px rgba(240,232,218,.16),0 0 16px rgba(70,232,120,.08);transform:rotate(8deg);overflow:visible}
+.rp-touch::before{content:"";position:absolute;inset:4px 8px;border-top:1px solid rgba(201,169,110,.22);border-bottom:1px solid rgba(201,169,110,.12);border-radius:4px}
+.rp-dot{position:absolute;left:27px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--hud-hi);box-shadow:0 0 12px rgba(70,232,120,.9);opacity:.34}
+.rp-wave{position:absolute;left:23px;top:3px;width:15px;height:15px;border:1px solid var(--hud-hi);border-radius:50%;opacity:0}
+.rp-ring.play[data-gesture="swipe-up"] .rp-dot{animation:rpSwipeUp .78s cubic-bezier(.2,.72,.24,1) both}
+.rp-ring.play[data-gesture="swipe-down"] .rp-dot{animation:rpSwipeDown .78s cubic-bezier(.2,.72,.24,1) both}
+.rp-ring.play[data-gesture="tap"] .rp-wave{animation:rpTap .48s ease-out both}
+.rp-ring.play[data-gesture="double-tap"] .rp-wave{animation:rpTap .42s ease-out 2}
+.rp-ring.play[data-gesture="tap"] .rp-dot,.rp-ring.play[data-gesture="double-tap"] .rp-dot{opacity:1;animation:rpDot .48s ease-out both}
+@keyframes rpSwipeUp{0%{opacity:0;transform:translateX(15px) scale(.65)}18%{opacity:1}82%{opacity:1}100%{opacity:0;transform:translateX(-15px) scale(1)}}
+@keyframes rpSwipeDown{0%{opacity:0;transform:translateX(-15px) scale(.65)}18%{opacity:1}82%{opacity:1}100%{opacity:0;transform:translateX(15px) scale(1)}}
+@keyframes rpTap{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(2.1)}}
+@keyframes rpDot{0%,100%{transform:scale(.72)}45%{transform:scale(1.25)}}
+.rp-gesture{position:absolute;left:50%;bottom:3px;transform:translateX(-50%);font:500 .66rem/1 var(--mono);letter-spacing:.06em;color:var(--gold);white-space:nowrap}
+.rp-stage-foot{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 15px;border-top:1px solid var(--line-2)}
+.rp-stage-foot button{appearance:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);padding:8px 12px;font:500 .62rem var(--mono);cursor:pointer;transition:color .18s,border-color .18s}
+.rp-stage-foot button:hover{color:var(--gold);border-color:var(--gold)}
+.rp-stage-foot button:disabled{cursor:default;opacity:.34;color:var(--ghost);border-color:var(--line-2)}
+.rp-progress{text-align:center;font:400 .62rem var(--mono);letter-spacing:.06em;color:var(--ghost)}
+.rp-steps{list-style:none;display:grid;gap:16px;padding:8vh 0 24vh}
+.rp-step{min-height:43vh;display:flex;align-items:center}
+.rp-step button{width:100%;display:grid;grid-template-columns:42px 1fr;column-gap:15px;text-align:left;border:1px solid var(--line-2);border-radius:16px;background:linear-gradient(158deg,var(--panel),transparent);color:inherit;padding:20px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.rp-step button:hover{transform:translateY(-2px);border-color:rgba(201,169,110,.34)}
+.rp-step[aria-current="step"] button{border-color:rgba(201,169,110,.48);background:linear-gradient(158deg,rgba(201,169,110,.1),rgba(255,246,232,.015));box-shadow:0 18px 42px -34px rgba(201,169,110,.8)}
+.rp-step-num{grid-row:1/4;font:400 1.25rem/1 var(--display);font-style:italic;color:var(--gold)}
+.rp-step strong{font:600 1rem/1.3 var(--body);color:var(--fg)}
+.rp-step .rp-action{display:block;margin-top:5px;font:500 .65rem/1.4 var(--mono);color:var(--gold)}
+.rp-step p{grid-column:2;margin-top:9px;font-size:.9rem;line-height:1.55;color:var(--muted)}
+@media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
+@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:108px;padding:5px 0 2px}.rp-ring{width:108px;height:67px}.rp-band{border-width:10px}.rp-band::before{inset:-6px}.rp-touch{right:-3px;bottom:-6px;transform:scale(.68) rotate(8deg)}.rp-gesture{bottom:0;font-size:.58rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
+@media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw,.rp-ring.play .rp-dot,.rp-ring.play .rp-wave{animation:none}.rp-ring.play .rp-dot{opacity:.9}.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
+
 /* ── hero ────────────────────────────────────────────── */
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
 .hero .lead{margin-top:18px}
@@ -553,6 +614,7 @@ footer .links a:hover{color:var(--gold)}
 <nav class="tocbar" aria-label="On this page">
   <div class="toc-in">
     <a href="#top">Start</a>
+    <a href="#ring-path">Ring controls</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
     <a href="#session-pet">Session pet</a>
@@ -588,6 +650,7 @@ footer .links a:hover{color:var(--gold)}
   <nav class="sb-nav" aria-label="Chapters">
     <span class="sb-marker" aria-hidden="true"></span>
     <a href="#top">Start</a>
+    <a href="#ring-path">Ring controls</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
     <a href="#session-pet">Session pet</a>
@@ -645,6 +708,7 @@ footer .links a:hover{color:var(--gold)}
 <section class="wrap" id="chapters" aria-label="Chapters">
   <div class="chap-lead">The guide, chapter by chapter</div>
   <div class="chapgrid">
+    <a class="chapcard" href="#ring-path"><span class="chap-ix">01</span><span class="chap-t">Ring controls</span><span class="chap-d">Watch each swipe and tap change the HUD.</span></a>
     <a class="chapcard" href="#setup"><span class="chap-ix">02</span><span class="chap-t">Setup</span><span class="chap-d">Server, app, and one paste to connect.</span></a>
     <a class="chapcard" href="#ask"><span class="chap-ix">03</span><span class="chap-t">Ask</span><span class="chap-d">Voice a question, read the streamed answer.</span></a>
     <a class="chapcard" href="#photos"><span class="chap-ix">04</span><span class="chap-t">Rich media</span><span class="chap-d">Send photos, documents, PDFs, and recorded videos.</span></a>
@@ -658,6 +722,81 @@ footer .links a:hover{color:var(--gold)}
     <a class="chapcard" href="#settings"><span class="chap-ix">12</span><span class="chap-t">Settings</span><span class="chap-d">System, AI, and Voice controls in three tabs.</span></a>
     <a class="chapcard" href="#fixes"><span class="chap-ix">13</span><span class="chap-t">Fixes</span><span class="chap-d">Common issues and the fastest way back.</span></a>
     <a class="chapcard" href="#faq"><span class="chap-ix">14</span><span class="chap-t">FAQ</span><span class="chap-d">Short answers to the common questions.</span></a>
+  </div>
+</section>
+
+<!-- ── RING CONTROLS ── -->
+<section class="wrap ring-path" id="ring-path" data-ring-path>
+  <div class="sec-head">
+    <h2>Five gestures. <span class="it goldt">One continuous path.</span></h2>
+    <p class="lead">Scroll the steps and watch the ring change the HUD. This is the shortest useful route through COS: Home to Messages, into a reply, without taking out the phone.</p>
+  </div>
+  <div class="rp-grid">
+    <div class="rp-stage" tabindex="0" aria-label="Interactive ring and HUD walkthrough. Use Previous and Next, or the left and right arrow keys, to change steps.">
+      <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
+      <div class="rp-demo">
+        <div class="rp-lens" aria-label="Simulated COS heads-up display">
+          <div class="rp-screen" id="rpScreen" aria-live="polite">
+            <div class="rp-title">Chief of Staff <span class="rp-dim">6.9.453</span></div>
+            <div>MSG <span class="rp-title">#412</span> <span class="rp-dim">&middot; 2m ago</span></div>
+            <div class="rp-dim">72&deg; Clear &middot; Fri Sep 4</div>
+            <div class="rp-dim">10:00 Design review</div>
+            <div class="rp-foot"><span>Tap=Latest &middot; scroll=move</span><span>82%</span></div>
+          </div>
+        </div>
+        <div class="rp-ring-zone">
+          <div class="rp-ring play" data-gesture="idle" aria-hidden="true">
+            <div class="rp-band"></div>
+            <div class="rp-touch"><span class="rp-dot"></span><span class="rp-wave"></span></div>
+          </div>
+          <div class="rp-gesture" id="rpGesture">Ready on Home</div>
+        </div>
+      </div>
+      <div class="rp-stage-foot">
+        <button type="button" id="rpPrev" aria-label="Show previous gesture">Previous</button>
+        <span class="rp-progress" id="rpProgress">1 of 6 &middot; Home</span>
+        <button type="button" id="rpNext" aria-label="Show next gesture">Next</button>
+      </div>
+    </div>
+
+    <ol class="rp-steps" aria-label="Ring gesture sequence">
+      <li class="rp-step" data-rp-step="0" aria-current="step">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">01</span><strong>Begin on Home</strong><span class="rp-action">Ready</span>
+          <p>The latest reply, weather, and next meeting are already in view. The footer tells you which move is live.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="1">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">02</span><strong>Show Messages</strong><span class="rp-action">Swipe up</span>
+          <p>One upward swipe opens the recent message list. The newest item is highlighted and ready.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="2">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">03</span><strong>Move one row</strong><span class="rp-action">Swipe down</span>
+          <p>Scroll moves the highlight without opening anything. The footer keeps the current position visible.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="3">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">04</span><strong>Open the message</strong><span class="rp-action">Tap</span>
+          <p>A tap selects the highlighted row. The reader keeps the answer continuous rather than splitting it into pages.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="4">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">05</span><strong>Keep reading</strong><span class="rp-action">Swipe down</span>
+          <p>The same ring motion scrolls the reader. A small cue shows that more text remains.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="5">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">06</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
+          <p>Double-tap starts a voice follow-up to the open message. Nothing sends until you finish and confirm it.</p>
+        </button>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -1742,7 +1881,7 @@ footer .links a:hover{color:var(--gold)}
   });
 
   // NEW / UPDATED badges (grounded vs glasses 6.9.453 / Control 0.5.189 / server 6.44.4, 2026-09-03)
-  var BADGES = { setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
+  var BADGES = { 'ring-path':'NEW', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
   document.querySelectorAll('#chapters .chapcard').forEach(function(c){
@@ -1806,6 +1945,86 @@ footer .links a:hover{color:var(--gold)}
       hud.addEventListener('focusout', function(){ hudHover = false; });
       setInterval(hudSwap, 4000);
     }
+  }
+
+  // ── ring-to-lens path: scrolling or manual controls drive one shared stage ──
+  var ringPath = document.querySelector('[data-ring-path]');
+  if (ringPath) {
+    var rpScreen = document.getElementById('rpScreen');
+    var rpRing = ringPath.querySelector('.rp-ring');
+    var rpGesture = document.getElementById('rpGesture');
+    var rpProgress = document.getElementById('rpProgress');
+    var rpPrev = document.getElementById('rpPrev');
+    var rpNext = document.getElementById('rpNext');
+    var rpStage = ringPath.querySelector('.rp-stage');
+    var rpSteps = Array.prototype.slice.call(ringPath.querySelectorAll('[data-rp-step]'));
+    var rpStates = [
+      {
+        name:'Home', gesture:'idle', label:'Ready on Home',
+        html:'<div class="rp-title">Chief of Staff <span class="rp-dim">6.9.453</span></div><div>MSG <span class="rp-title">#412</span> <span class="rp-dim">&middot; 2m ago</span></div><div class="rp-dim">72&deg; Clear &middot; Fri Sep 4</div><div class="rp-dim">10:00 Design review</div><div class="rp-foot"><span>Tap=Latest &middot; scroll=move</span><span>82%</span></div>'
+      },
+      {
+        name:'Messages', gesture:'swipe-up', label:'Swipe up',
+        html:'<div class="rp-title">Messages</div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#412 09:14 Friday pilot</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>1/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
+      },
+      {
+        name:'Move highlight', gesture:'swipe-down', label:'Swipe down',
+        html:'<div class="rp-title">Messages</div><div class="rp-row"><span class="rp-cursor"></span><span>#412 09:14 Friday pilot</span></div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>2/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
+      },
+      {
+        name:'Reader', gesture:'tap', label:'Tap',
+        html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; 08:42</span></div><div class="rp-copy">The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.</div><div class="rp-dim">More below &#9662;</div><div class="rp-foot"><span>1/2 &middot; Scroll=read</span><span>Opus &middot; 82%</span></div>'
+      },
+      {
+        name:'Continue reading', gesture:'swipe-down', label:'Swipe down',
+        html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; continued</span></div><div class="rp-copy">The open decision is whether the setup path stays inside Docs or moves into the guided wizard.</div><div class="rp-dim">End of message</div><div class="rp-foot"><span>2/2 &middot; Double-tap=reply</span><span>Opus &middot; 82%</span></div>'
+      },
+      {
+        name:'Voice reply', gesture:'double-tap', label:'Double-tap',
+        html:'<div class="rp-title">REPLY TO #411</div><div>Listening...</div><div>&nbsp;</div><div class="rp-copy">Speak your follow-up.</div><div class="rp-foot"><span>Tap=finish &middot; Double-tap=cancel</span><span>Mic live</span></div>'
+      }
+    ];
+    var rpIndex = 0;
+    function renderRingPath(nextIndex, replay) {
+      rpIndex = Math.max(0, Math.min(rpStates.length - 1, nextIndex));
+      var state = rpStates[rpIndex];
+      rpScreen.classList.remove('rp-redraw');
+      rpScreen.innerHTML = state.html;
+      void rpScreen.offsetWidth;
+      rpScreen.classList.add('rp-redraw');
+      rpRing.classList.remove('play');
+      rpRing.setAttribute('data-gesture', state.gesture);
+      void rpRing.offsetWidth;
+      rpRing.classList.add('play');
+      rpGesture.textContent = state.label;
+      rpProgress.textContent = (rpIndex + 1) + ' of ' + rpStates.length + ' \u00b7 ' + state.name;
+      rpSteps.forEach(function(step, i){
+        if (i === rpIndex) step.setAttribute('aria-current','step');
+        else step.removeAttribute('aria-current');
+      });
+      rpPrev.disabled = rpIndex === 0;
+      rpNext.disabled = rpIndex === rpStates.length - 1;
+      if (replay && rpStage) rpStage.focus({preventScroll:true});
+    }
+    rpSteps.forEach(function(step, i){
+      var button = step.querySelector('button');
+      if (button) button.addEventListener('click', function(){ renderRingPath(i, false); });
+    });
+    rpPrev.addEventListener('click', function(){ renderRingPath(rpIndex - 1, true); });
+    rpNext.addEventListener('click', function(){ renderRingPath(rpIndex + 1, true); });
+    rpStage.addEventListener('keydown', function(ev){
+      if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); renderRingPath(rpIndex + 1, false); }
+      else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); renderRingPath(rpIndex - 1, false); }
+    });
+    if ('IntersectionObserver' in window) {
+      var rpObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) renderRingPath(parseInt(entry.target.getAttribute('data-rp-step'),10), false);
+        });
+      }, {rootMargin:'-30% 0px -48% 0px', threshold:.15});
+      rpSteps.forEach(function(step){ rpObserver.observe(step); });
+    }
+    renderRingPath(0, false);
   }
 
   // ── lens stories: one looping timeline per exhibit, DOM swaps at the seams ──
@@ -1972,7 +2191,7 @@ footer .links a:hover{color:var(--gold)}
   var sIn = document.getElementById('docSearch');
   var sPanel = document.getElementById('searchPanel');
   if (sIn && sPanel) {
-    var SEC = [['top','Start'],['how','How it works'],['setup','Setup'],['mac-control','Mac app'],['ask','Ask'],['photos','Rich media'],['lens','The Lens'],['jobs','Jobs'],['recall','Recall'],['meetings','Meetings'],['dictation','Dictation'],['models','Models'],['privacy','Privacy'],['settings','Settings'],['fixes','Fixes'],['faq','FAQ']];
+    var SEC = [['top','Start'],['ring-path','Ring controls'],['how','How it works'],['setup','Setup'],['mac-control','Mac app'],['ask','Ask'],['photos','Rich media'],['lens','The Lens'],['jobs','Jobs'],['recall','Recall'],['meetings','Meetings'],['dictation','Dictation'],['models','Models'],['privacy','Privacy'],['settings','Settings'],['fixes','Fixes'],['faq','FAQ']];
     var idx = [];
     SEC.forEach(function(pair){
       var sec = document.getElementById(pair[0]); if (!sec) return;
