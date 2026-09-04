@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.188",
-      "build": 226,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.188.zip",
-      "sha256": "aeb7757fc859ca54e745c96ee39739d61027bd465e6b7d3aebb55e29b35a347f",
+      "version": "0.5.189",
+      "build": 227,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.189.zip",
+      "sha256": "ab58f083c5dd4a702e6735b787bac42a848df92b83cc5332fd249f712357ad27",
       "minMacOS": "14.0",
-      "serverTarget": "6.44.3",
-      "publishedAt": "2026-09-04T01:13:00Z",
-      "notes": "Task rows open. Click one and you get the whole line with its source, lane, section, schedule and agent state, instead of the short title the server trims for the glasses. Edit the words and save them, mark a task Done or Reopen it, send it back to inbox, schedule it, or hand it to COS, all from the same place. A task with a running agent refuses a text edit rather than changing the job underneath it. A new Domains card sets your own domain list instead of hand-editing a profile file, and it says plainly that removing a name only unlists it while the folder and its tasks stay. Needs server 6.44.3."
+      "serverTarget": "6.44.4",
+      "publishedAt": "2026-09-04T12:30:00Z",
+      "notes": "A task now says what finished looks like, and nothing runs until it does. Every task detail carries a finish line, and Run now is refused while it is empty, because an agent sent at a task with no definition of done cannot succeed at it and cannot be judged to have failed either. Tasks also move between three stages, Planning, Active and Review, and the detail shows the stage and moves between them. A task with no marker reads as Planning, so nothing needed migrating. Needs server 6.44.4."
     }
   },
   "killSwitch": {
