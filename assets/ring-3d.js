@@ -53,11 +53,11 @@
     this.motionQuery=global.matchMedia ? global.matchMedia('(prefers-reduced-motion: reduce)') : null;
     this.reduced=!!(this.motionQuery && this.motionQuery.matches);
     this.light=normalize({x:-0.42,y:-0.66,z:0.9});
-    this.innerRadius=1.195;
+    this.innerRadius=1.12;
     this.outerRadius=1.36;
     this.uSegments=72;
     this.profile=[
-      {r:1.215,z:-0.21,mat:'steel'},
+      {r:1.18,z:-0.21,mat:'steel'},
       {r:1.28,z:-0.21,mat:'body'},
       {r:1.33,z:-0.18,mat:'body'},
       {r:1.36,z:-0.11,mat:'body'},
@@ -66,13 +66,13 @@
       {r:1.36,z:0.11,mat:'body'},
       {r:1.33,z:0.18,mat:'body'},
       {r:1.28,z:0.21,mat:'body'},
-      {r:1.215,z:0.21,mat:'steel'},
-      {r:1.185,z:0.18,mat:'steel'},
-      {r:1.175,z:0.12,mat:'steel'},
-      {r:1.175,z:0.04,mat:'steel'},
-      {r:1.175,z:-0.04,mat:'steel'},
-      {r:1.175,z:-0.12,mat:'steel'},
-      {r:1.185,z:-0.18,mat:'steel'}
+      {r:1.18,z:0.21,mat:'steel'},
+      {r:1.125,z:0.18,mat:'steel'},
+      {r:1.1,z:0.12,mat:'steel'},
+      {r:1.1,z:0.04,mat:'steel'},
+      {r:1.1,z:-0.04,mat:'steel'},
+      {r:1.1,z:-0.12,mat:'steel'},
+      {r:1.125,z:-0.18,mat:'steel'}
     ];
     this.vSegments=this.profile.length;
     this.vertices=[];
@@ -135,10 +135,10 @@
     var delta=Math.abs(normalizeAngle(angle-this.crownAngle));
     var plateau=.202;
     var shoulder=.291;
-    if(delta<=plateau) return .06;
+    if(delta<=plateau) return .05;
     if(delta>=plateau+shoulder) return 0;
     var t=(delta-plateau)/shoulder;
-    return .06*(1-t*t*(3-2*t));
+    return .05*(1-t*t*(3-2*t));
   };
 
   RingRenderer.prototype.bind=function(){
@@ -460,9 +460,9 @@
     var radius=this.outerRadius+this.crownField(this.crownAngle)+.035;
     var normal=rotate({x:Math.cos(this.crownAngle),y:Math.sin(this.crownAngle),z:0},this.pose);
     var visibility=clamp((normal.z+.25)/.75,.16,1);
-    var panel=this.patchPoints(this.crownAngle,.18,.145,radius);
-    var inset=this.patchPoints(this.crownAngle,.164,.13,radius+.006);
-    var mark=this.patchPoints(this.crownAngle,.085,.1,radius+.012);
+    var panel=this.patchPoints(this.crownAngle,.245,.12,radius);
+    var inset=this.patchPoints(this.crownAngle,.225,.106,radius+.006);
+    var mark=this.patchPoints(this.crownAngle,.123,.088,radius+.012);
     ctx.save();
     ctx.globalAlpha=visibility;
     ctx.shadowColor='rgba(77,213,138,.4)';ctx.shadowBlur=6;
