@@ -156,8 +156,8 @@ section.light .sg .g-key.lit{color:var(--ink-on-cream);border-color:#7a5c2c;back
 section.light .hud-cap{color:rgba(46,31,16,.45)}
 
 /* ── ring-to-lens path ─────────────────────────────────
-   One teaching device owns the gesture story. The ring is drawn here rather than
-   borrowed from a product render, so the interaction stays native to the COS system. */
+   One teaching device owns the gesture story. The canvas renders the physical ring
+   as a translucent instrument, while the surrounding walkthrough stays in COS. */
 .ring-path{padding-bottom:clamp(72px,10vw,138px)}
 .ring-path .sec-head{max-width:720px}
 .rp-grid{display:grid;grid-template-columns:minmax(350px,1.08fr) minmax(290px,.92fr);gap:clamp(28px,5vw,64px);align-items:start}
@@ -178,24 +178,26 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-screen .rp-cursor{width:1ch;color:var(--hud-hi)}
 .rp-screen .rp-copy{max-width:46ch}
 .rp-screen .rp-foot{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:9px;border-top:1px solid rgba(70,232,120,.14);font-size:.78em;color:rgba(70,232,120,.55);text-shadow:none}
-.rp-ring-zone{position:relative;min-height:276px;display:grid;justify-items:center;align-content:center;padding:10px 0 4px}
-.rp-ring-shell{position:relative;width:min(286px,94%);height:224px;isolation:isolate}
-.rp-ring-canvas{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;opacity:0;touch-action:none;cursor:grab;transition:opacity .28s ease}
+.rp-ring-zone{position:relative;min-height:292px;display:grid;justify-items:center;align-content:center;padding:8px 0 4px;background:radial-gradient(circle at 50% 42%,rgba(77,213,138,.06),transparent 48%)}
+.rp-ring-shell{position:relative;width:min(300px,96%);height:236px;isolation:isolate;filter:drop-shadow(0 0 9px rgba(77,213,138,.22)) drop-shadow(0 0 25px rgba(77,213,138,.09))}
+.rp-ring-canvas{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;opacity:0;pointer-events:none;touch-action:none;cursor:default;transition:opacity .28s ease}
+.rp-ring-canvas:focus-visible{outline:1px solid rgba(77,213,138,.5);outline-offset:-4px;border-radius:14px}
 .rp-ring-canvas.is-dragging{cursor:grabbing}
-.rp-ring-shell.is-ready .rp-ring-canvas{opacity:1}
-.rp-ring-fallback{position:absolute;z-index:1;left:50%;top:50%;width:168px;height:105px;transform:translate(-50%,-50%) rotate(-9deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.48));transition:opacity .2s ease}
+.rp-ring-shell.is-ready .rp-ring-canvas{opacity:1;pointer-events:auto;cursor:grab}
+.rp-ring-fallback{position:absolute;z-index:1;left:50%;top:48%;width:164px;height:150px;transform:translate(-50%,-50%) rotate(-7deg);filter:drop-shadow(0 0 15px rgba(77,213,138,.34));transition:opacity .2s ease}
 .rp-ring-shell.is-ready .rp-ring-fallback{opacity:0}
-.rp-ring-fallback .rp-band{position:absolute;inset:0;border:17px solid #846a43;border-radius:50%;background:radial-gradient(ellipse at 46% 42%,rgba(70,232,120,.12),transparent 58%);box-shadow:inset 0 0 0 2px rgba(242,221,180,.2),inset 0 0 16px rgba(23,15,9,.92),0 0 0 1px rgba(201,169,110,.35),0 0 24px rgba(70,232,120,.07)}
+.rp-ring-fallback .rp-band{position:absolute;inset:18px 8px;border:18px solid rgba(31,117,75,.72);border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(7,16,10,.85) 0 47%,rgba(77,213,138,.2) 48% 55%,transparent 56%);box-shadow:inset 0 0 0 2px rgba(216,251,232,.35),inset 0 0 18px rgba(77,213,138,.3),0 0 0 1px rgba(77,213,138,.68),0 0 20px rgba(77,213,138,.24)}
 .rp-ring-fallback .rp-band::before,.rp-ring-fallback .rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
-.rp-ring-fallback .rp-band::before{inset:-10px;border:1px solid rgba(201,169,110,.24)}
-.rp-ring-fallback .rp-band::after{inset:2px;border-top:2px solid rgba(240,232,218,.32);border-right:1px solid transparent;border-bottom:1px solid transparent;border-left:1px solid rgba(70,232,120,.15)}
-.rp-ring-fallback .rp-touch{position:absolute;right:13px;bottom:6px;width:64px;height:22px;border:1px solid rgba(201,169,110,.62);border-radius:9px;background:linear-gradient(180deg,#2f281d,#17130e);box-shadow:inset 0 1px rgba(240,232,218,.16),0 0 16px rgba(70,232,120,.08);transform:rotate(8deg)}
-.rp-ring-fallback .rp-touch::before{content:"";position:absolute;inset:4px 8px;border-top:1px solid rgba(201,169,110,.22);border-bottom:1px solid rgba(201,169,110,.12);border-radius:4px}
+.rp-ring-fallback .rp-band::before{inset:-8px;border:1px solid rgba(77,213,138,.34)}
+.rp-ring-fallback .rp-band::after{inset:1px;border-top:2px solid rgba(216,251,232,.64);border-right:1px solid rgba(77,213,138,.16);border-bottom:1px solid rgba(77,213,138,.3);border-left:1px solid rgba(77,213,138,.16)}
+.rp-ring-fallback .rp-touch{position:absolute;left:50%;bottom:30px;width:70px;height:20px;border:1px solid rgba(216,251,232,.78);border-radius:7px;background:repeating-linear-gradient(90deg,rgba(77,213,138,.28) 0 10px,transparent 10px 13px),rgba(4,24,15,.86);box-shadow:inset 0 1px rgba(216,251,232,.18),0 0 14px rgba(77,213,138,.3);transform:translateX(-50%)}
+.rp-ring-fallback .rp-touch::before{content:"E";position:absolute;left:50%;bottom:73px;transform:translateX(-50%);font:700 1.1rem/1 var(--mono);color:#d8fbe8;text-shadow:0 0 7px rgba(77,213,138,.75)}
 .rp-orbit-hint{display:flex;align-items:center;justify-content:center;gap:9px;max-width:94%;margin-top:-2px;font:400 .56rem/1.45 var(--mono);color:var(--ghost);text-align:center}
 .rp-orbit-hint[hidden]{display:none}
 .rp-orbit-hint button{appearance:none;border:0;border-bottom:1px solid rgba(201,169,110,.34);background:transparent;color:var(--gold);font:inherit;cursor:pointer;padding:1px 0}
 .rp-orbit-hint button:hover{border-bottom-color:var(--gold)}
-.rp-gesture{margin-top:8px;font:500 .66rem/1 var(--mono);letter-spacing:.06em;color:var(--gold);white-space:nowrap}
+.rp-gesture{margin-top:5px;font:500 .72rem/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#4dd58a;text-shadow:0 0 9px rgba(77,213,138,.45);white-space:nowrap}
+.rp-gesture[data-gesture="idle"]{color:#858d87;text-shadow:none}
 .rp-stage-foot{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 15px;border-top:1px solid var(--line-2)}
 .rp-stage-foot button{appearance:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);padding:8px 12px;font:500 .62rem var(--mono);cursor:pointer;transition:color .18s,border-color .18s}
 .rp-stage-foot button:hover{color:var(--gold);border-color:var(--gold)}
@@ -211,8 +213,8 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-step .rp-action{display:block;margin-top:5px;font:500 .65rem/1.4 var(--mono);color:var(--gold)}
 .rp-step p{grid-column:2;margin-top:9px;font-size:.9rem;line-height:1.55;color:var(--muted)}
 @media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
-@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:194px;padding:2px 0}.rp-ring-shell{width:210px;height:154px}.rp-ring-fallback{width:118px;height:74px}.rp-ring-fallback .rp-band{border-width:11px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{right:-1px;bottom:-5px;transform:scale(.72) rotate(8deg)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:6px;font-size:.58rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
-@media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:164px;padding:0}.rp-ring-shell{width:210px;height:154px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
+@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:13px 6px;border-width:12px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:20px;transform:translateX(-50%) scale(.72)}.rp-ring-fallback .rp-touch::before{bottom:57px}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
+@media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:174px;padding:0}.rp-ring-shell{width:222px;height:166px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
 @media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw{animation:none}.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
 
 /* ── hero ────────────────────────────────────────────── */
@@ -1815,7 +1817,7 @@ footer .links a:hover{color:var(--gold)}
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
-<script src="../assets/ring-3d.js?v=1"></script>
+<script src="../assets/ring-3d.js?v=2"></script>
 <script>
 (function(){
   // shared motion guard
@@ -1958,7 +1960,11 @@ footer .links a:hover{color:var(--gold)}
     var rpRingCanvas = document.getElementById('rpRingCanvas');
     var rpRingReset = document.getElementById('rpRingReset');
     var rpOrbitHint = document.getElementById('rpOrbitHint');
-    var rpRing3D = window.CosRing3D ? window.CosRing3D.create(rpRingCanvas, {shell:rpRing,resetButton:rpRingReset}) : null;
+    var rpRing3D = null;
+    if (window.CosRing3D) {
+      try { rpRing3D = window.CosRing3D.create(rpRingCanvas, {shell:rpRing,resetButton:rpRingReset}); }
+      catch (ringError) { rpRing3D = null; }
+    }
     if (rpRing3D && rpOrbitHint) rpOrbitHint.hidden = false;
     var rpGesture = document.getElementById('rpGesture');
     var rpProgress = document.getElementById('rpProgress');
@@ -1992,6 +1998,7 @@ footer .links a:hover{color:var(--gold)}
       state.label=step.querySelector('.rp-action').textContent.trim();
       state.gesture=step.getAttribute('data-gesture') || 'idle';
     });
+    var rpDisplayLabels = {'idle':'Ring','swipe-up':'Swipe up','swipe-down':'Swipe down','tap':'Tap','double-tap':'Double tap'};
     var rpIndex = 0;
     var rpManualLock = false;
     function renderRingPath(nextIndex, replay) {
@@ -2003,7 +2010,8 @@ footer .links a:hover{color:var(--gold)}
       rpScreen.classList.add('rp-redraw');
       rpRing.setAttribute('data-gesture', state.gesture);
       if (rpRing3D) rpRing3D.setGesture(state.gesture, state.label);
-      rpGesture.textContent = state.label;
+      rpGesture.textContent = rpDisplayLabels[state.gesture] || state.label;
+      rpGesture.setAttribute('data-gesture', state.gesture);
       rpProgress.textContent = (rpIndex + 1) + ' of ' + rpStates.length + ' \u00b7 ' + state.name;
       rpSteps.forEach(function(step, i){
         if (i === rpIndex) step.setAttribute('aria-current','step');
