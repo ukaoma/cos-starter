@@ -53,11 +53,11 @@
     this.motionQuery=global.matchMedia ? global.matchMedia('(prefers-reduced-motion: reduce)') : null;
     this.reduced=!!(this.motionQuery && this.motionQuery.matches);
     this.light=normalize({x:-0.42,y:-0.66,z:0.9});
-    this.innerRadius=1.21;
+    this.innerRadius=1.195;
     this.outerRadius=1.36;
     this.uSegments=72;
     this.profile=[
-      {r:1.23,z:-0.21,mat:'steel'},
+      {r:1.215,z:-0.21,mat:'steel'},
       {r:1.28,z:-0.21,mat:'body'},
       {r:1.33,z:-0.18,mat:'body'},
       {r:1.36,z:-0.11,mat:'body'},
@@ -66,19 +66,21 @@
       {r:1.36,z:0.11,mat:'body'},
       {r:1.33,z:0.18,mat:'body'},
       {r:1.28,z:0.21,mat:'body'},
-      {r:1.23,z:0.21,mat:'steel'},
-      {r:1.20,z:0.18,mat:'steel'},
-      {r:1.19,z:0.12,mat:'steel'},
-      {r:1.19,z:0.04,mat:'steel'},
-      {r:1.19,z:-0.04,mat:'steel'},
-      {r:1.19,z:-0.12,mat:'steel'},
-      {r:1.20,z:-0.18,mat:'steel'}
+      {r:1.215,z:0.21,mat:'steel'},
+      {r:1.185,z:0.18,mat:'steel'},
+      {r:1.175,z:0.12,mat:'steel'},
+      {r:1.175,z:0.04,mat:'steel'},
+      {r:1.175,z:-0.04,mat:'steel'},
+      {r:1.175,z:-0.12,mat:'steel'},
+      {r:1.185,z:-0.18,mat:'steel'}
     ];
     this.vSegments=this.profile.length;
     this.vertices=[];
     this.faces=[];
     this.crownAngle=-Math.PI/2;
     this.sensorAngle=Math.PI/2;
+    this.touchRailStart=this.crownAngle+.54;
+    this.touchRailEnd=this.crownAngle+1.01;
     this.evenMarkPaths=global.Path2D ? [
       new global.Path2D('M18.5873 11.1777H29.9651V14.0222H18.5873V11.1777Z'),
       new global.Path2D('M15.7429 11.1777H12.8984V25.4H15.7429V22.5555H18.5873V25.4H29.9651V22.5555H18.5873V19.7111H29.9651V16.8666H18.5873V14.0222L15.7429 14.0222V11.1777ZM15.7429 19.7111H18.5873V16.8666H15.7429V19.7111Z')
@@ -131,8 +133,8 @@
 
   RingRenderer.prototype.crownField=function(angle){
     var delta=Math.abs(normalizeAngle(angle-this.crownAngle));
-    var plateau=.18;
-    var shoulder=.26;
+    var plateau=.202;
+    var shoulder=.291;
     if(delta<=plateau) return .06;
     if(delta>=plateau+shoulder) return 0;
     var t=(delta-plateau)/shoulder;
@@ -295,8 +297,8 @@
     this.gestureStarted=performance.now();
     var poses={
       'idle':BASE_POSE,
-      'swipe-up':{x:-0.42,y:0.46,z:-0.13},
-      'swipe-down':{x:-0.36,y:0.08,z:0.1},
+      'swipe-up':{x:-0.66,y:-0.18,z:-0.13},
+      'swipe-down':{x:-0.5,y:0.08,z:0.1},
       'tap':{x:-1.12,y:0.32,z:-0.11},
       'double-tap':{x:-0.76,y:-0.18,z:0.13}
     };
@@ -409,7 +411,7 @@
       ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(c.x,c.y);ctx.lineTo(d.x,d.y);ctx.closePath();ctx.fill();
     }
     this.drawSeams(ctx,points);
-    this.drawCrown(ctx);
+    this.drawCrown(ctx,now);
     this.drawSensorStack(ctx,now);
     this.drawScan(ctx);
   };
@@ -454,7 +456,7 @@
     ctx.closePath();
   };
 
-  RingRenderer.prototype.drawCrown=function(ctx){
+  RingRenderer.prototype.drawCrown=function(ctx,now){
     var radius=this.outerRadius+this.crownField(this.crownAngle)+.035;
     var normal=rotate({x:Math.cos(this.crownAngle),y:Math.sin(this.crownAngle),z:0},this.pose);
     var visibility=clamp((normal.z+.25)/.75,.16,1);
@@ -471,13 +473,18 @@
 
     this.drawEvenMark(ctx,mark,visibility);
 
-    ctx.save();ctx.globalAlpha=visibility;ctx.fillStyle='rgba(178,255,211,.72)';ctx.shadowColor='rgba(77,213,138,.85)';ctx.shadowBlur=4;
+    var railAngle=(this.touchRailStart+this.touchRailEnd)/2;
+    var railNormal=rotate({x:Math.cos(railAngle),y:Math.sin(railAngle),z:0},this.pose);
+    var railVisibility=clamp((railNormal.z+.08)/.55,0,1);
+    var railRadius=this.outerRadius+.026;
+    ctx.save();ctx.globalAlpha=railVisibility;ctx.fillStyle='rgba(178,255,211,.72)';ctx.shadowColor='rgba(77,213,138,.85)';ctx.shadowBlur=4;
     for(var i=0;i<5;i++){
-      var theta=this.crownAngle+.55+i*.105;
-      var p=this.project(rotate(this.surfacePoint(theta,0,this.outerRadius+.025),this.pose));
+      var theta=lerp(this.touchRailStart,this.touchRailEnd,i/4);
+      var p=this.project(rotate(this.surfacePoint(theta,0,railRadius),this.pose));
       ctx.fillRect(p.x-1.1,p.y-1.1,2.2,2.2);
     }
     ctx.restore();
+    this.drawGesture(ctx,now,railVisibility,railRadius,this.touchRailStart,this.touchRailEnd);
   };
 
   RingRenderer.prototype.drawEvenMark=function(ctx,patch,visibility){
@@ -525,11 +532,20 @@
       var pocket=this.patchPoints(this.sensorAngle+offset,.055,.09,radius-.006);
       this.tracePatch(ctx,pocket);ctx.fillStyle='rgba(18,85,52,.35)';ctx.fill();ctx.strokeStyle='rgba(121,244,178,.46)';ctx.stroke();
     },this);
-    this.drawGesture(ctx,now,visibility,radius);
     ctx.restore();
   };
 
-  RingRenderer.prototype.drawGesture=function(ctx,now,visibility,radius){
+  RingRenderer.prototype.surfaceLoop=function(angle,radius,angleHalf,zHalf){
+    var path=[];
+    for(var i=0;i<=28;i++){
+      var phase=TAU*i/28;
+      var point=this.surfacePoint(angle+Math.cos(phase)*angleHalf,Math.sin(phase)*zHalf,radius);
+      path.push(this.project(rotate(point,this.pose)));
+    }
+    return path;
+  };
+
+  RingRenderer.prototype.drawGesture=function(ctx,now,visibility,radius,railStart,railEnd){
     if(this.gesture==='idle') return;
     var elapsed=now-this.gestureStarted;
     var cycle=this.gesture.indexOf('swipe')===0 ? 2400 : 2200;
@@ -539,17 +555,17 @@
 
     if(this.gesture==='swipe-up' || this.gesture==='swipe-down'){
       var progress=easeOut(local/820);
-      var from=this.gesture==='swipe-up' ? .24 : -.24;
-      var to=-from;
+      var from=this.gesture==='swipe-up' ? railEnd : railStart;
+      var to=this.gesture==='swipe-up' ? railStart : railEnd;
       var current=lerp(from,to,progress);
       var tailStart=lerp(from,to,Math.max(0,progress-.34));
       var path=[];
       for(var i=0;i<=12;i++){
         var along=lerp(tailStart,current,i/12);
-        path.push(this.project(rotate(this.surfacePoint(this.sensorAngle+along,0,radius-.035),this.pose)));
+        path.push(this.project(rotate(this.surfacePoint(along,0,radius+.018),this.pose)));
       }
-      var guideStart=this.project(rotate(this.surfacePoint(this.sensorAngle+from,0,radius-.03),this.pose));
-      var guideEnd=this.project(rotate(this.surfacePoint(this.sensorAngle+to,0,radius-.03),this.pose));
+      var guideStart=this.project(rotate(this.surfacePoint(from,0,radius+.014),this.pose));
+      var guideEnd=this.project(rotate(this.surfacePoint(to,0,radius+.014),this.pose));
       var guideDx=guideEnd.x-guideStart.x,guideDy=guideEnd.y-guideStart.y;
       var guideLength=Math.sqrt(guideDx*guideDx+guideDy*guideDy) || 1;
       var ux=guideDx/guideLength,uy=guideDy/guideLength;
@@ -567,18 +583,23 @@
       return;
     }
 
-    var center=this.project(rotate(this.surfacePoint(this.sensorAngle,0,radius-.04),this.pose));
+    var centerAngle=(railStart+railEnd)/2;
+    var center=this.project(rotate(this.surfacePoint(centerAngle,0,radius+.022),this.pose));
     if(this.reduced){
-      var staticRings=this.gesture==='double-tap' ? [7,15] : [11];
+      var staticRings=this.gesture==='double-tap' ? [.055,.12] : [.09];
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha;
       ctx.strokeStyle='rgba(159,250,187,.9)';ctx.lineWidth=1.7;ctx.shadowColor='rgba(70,232,120,.82)';ctx.shadowBlur=8;
-      staticRings.forEach(function(radius){ctx.beginPath();ctx.arc(center.x,center.y,radius*center.scale,0,TAU);ctx.stroke();});
+      staticRings.forEach(function(spread){
+        var loop=this.surfaceLoop(centerAngle,radius+.024,spread,spread*.7);
+        ctx.beginPath();loop.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
+      },this);
       ctx.fillStyle='rgba(159,250,187,.95)';ctx.beginPath();ctx.arc(center.x,center.y,2.5*center.scale,0,TAU);ctx.fill();ctx.restore();
       return;
     }
     ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*.32;
     ctx.strokeStyle='rgba(159,250,187,.92)';ctx.lineWidth=1.4;ctx.shadowColor='rgba(70,232,120,.7)';ctx.shadowBlur=6;
-    ctx.beginPath();ctx.arc(center.x,center.y,(this.gesture==='double-tap' ? 9 : 7)*center.scale,0,TAU);ctx.stroke();
+    var resting=this.surfaceLoop(centerAngle,radius+.024,this.gesture==='double-tap'?.075:.06,this.gesture==='double-tap'?.052:.042);
+    ctx.beginPath();resting.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
     ctx.fillStyle='rgba(159,250,187,.9)';ctx.beginPath();ctx.arc(center.x,center.y,2.2*center.scale,0,TAU);ctx.fill();ctx.restore();
     var pulses=this.gesture==='double-tap' ? [0,340] : [0];
     pulses.forEach(function(offset){
@@ -587,7 +608,9 @@
       var alpha=(1-p)*visibility*visibilityAlpha;
       ctx.save();ctx.globalAlpha=alpha;
       ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=1.6;ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=10;
-      ctx.beginPath();ctx.arc(center.x,center.y,(3+p*15)*center.scale,0,TAU);ctx.stroke();
+      var spread=.03+p*.14;
+      var pulse=this.surfaceLoop(centerAngle,radius+.026,spread,spread*.7);
+      ctx.beginPath();pulse.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
       ctx.fillStyle='rgba(159,250,187,.95)';ctx.beginPath();ctx.arc(center.x,center.y,(2.8-p)*center.scale,0,TAU);ctx.fill();ctx.restore();
     });
   };

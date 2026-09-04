@@ -186,7 +186,7 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-ring-shell.is-ready .rp-ring-canvas{opacity:1;pointer-events:auto;cursor:grab}
 .rp-ring-fallback{position:absolute;z-index:1;left:50%;top:48%;width:164px;height:150px;transform:translate(-50%,-50%) rotate(-7deg);filter:drop-shadow(0 0 15px rgba(77,213,138,.34));transition:opacity .2s ease}
 .rp-ring-shell.is-ready .rp-ring-fallback{opacity:0}
-.rp-ring-fallback .rp-band{position:absolute;inset:22px 10px;border:6px solid rgba(31,117,75,.72);border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(7,16,10,.85) 0 47%,rgba(77,213,138,.2) 48% 55%,transparent 56%);box-shadow:inset 0 0 0 1px rgba(216,251,232,.35),inset 0 0 12px rgba(77,213,138,.26),0 0 0 1px rgba(77,213,138,.68),0 0 20px rgba(77,213,138,.24)}
+.rp-ring-fallback .rp-band{position:absolute;inset:22px 10px;border:6.5px solid rgba(31,117,75,.72);border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(7,16,10,.85) 0 47%,rgba(77,213,138,.2) 48% 55%,transparent 56%);box-shadow:inset 0 0 0 1px rgba(216,251,232,.35),inset 0 0 12px rgba(77,213,138,.26),0 0 0 1px rgba(77,213,138,.68),0 0 20px rgba(77,213,138,.24)}
 .rp-ring-fallback .rp-band::before,.rp-ring-fallback .rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
 .rp-ring-fallback .rp-band::before{inset:-8px;border:1px solid rgba(77,213,138,.34)}
 .rp-ring-fallback .rp-band::after{inset:1px;border-top:2px solid rgba(216,251,232,.64);border-right:1px solid rgba(77,213,138,.16);border-bottom:1px solid rgba(77,213,138,.3);border-left:1px solid rgba(77,213,138,.16)}
@@ -214,7 +214,7 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-step .rp-action{display:block;margin-top:5px;font:500 .65rem/1.4 var(--mono);color:var(--gold)}
 .rp-step p{grid-column:2;margin-top:9px;font-size:.9rem;line-height:1.55;color:var(--muted)}
 @media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
-@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:15px 6px;border-width:4px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:22px;transform:translateX(-50%) scale(.72)}.rp-even-mark{top:10px;transform:translateX(-50%) scale(.72)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
+@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:15px 6px;border-width:4.5px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:22px;transform:translateX(-50%) scale(.72)}.rp-even-mark{top:10px;transform:translateX(-50%) scale(.72)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
 @media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:174px;padding:0}.rp-ring-shell{width:222px;height:166px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
 @media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw{animation:none}.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
 
@@ -1819,7 +1819,7 @@ footer .links a:hover{color:var(--gold)}
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
-<script src="../assets/ring-3d.js?v=3"></script>
+<script src="../assets/ring-3d.js?v=4"></script>
 <script>
 (function(){
   // shared motion guard
