@@ -1985,6 +1985,7 @@ footer .links a:hover{color:var(--gold)}
       }
     ];
     var rpIndex = 0;
+    var rpManualLock = false;
     function renderRingPath(nextIndex, replay) {
       rpIndex = Math.max(0, Math.min(rpStates.length - 1, nextIndex));
       var state = rpStates[rpIndex];
@@ -2004,22 +2005,27 @@ footer .links a:hover{color:var(--gold)}
       });
       rpPrev.disabled = rpIndex === 0;
       rpNext.disabled = rpIndex === rpStates.length - 1;
-      if (replay && rpStage) rpStage.focus({preventScroll:true});
     }
     rpSteps.forEach(function(step, i){
       var button = step.querySelector('button');
-      if (button) button.addEventListener('click', function(){ renderRingPath(i, false); });
+      if (button) button.addEventListener('click', function(){ rpManualLock = true; renderRingPath(i, false); });
     });
-    rpPrev.addEventListener('click', function(){ renderRingPath(rpIndex - 1, true); });
-    rpNext.addEventListener('click', function(){ renderRingPath(rpIndex + 1, true); });
+    rpPrev.addEventListener('click', function(){ rpManualLock = true; renderRingPath(rpIndex - 1, true); });
+    rpNext.addEventListener('click', function(){ rpManualLock = true; renderRingPath(rpIndex + 1, true); });
     rpStage.addEventListener('keydown', function(ev){
-      if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); renderRingPath(rpIndex + 1, false); }
-      else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); renderRingPath(rpIndex - 1, false); }
+      if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); rpManualLock = true; renderRingPath(rpIndex + 1, false); }
+      else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); rpManualLock = true; renderRingPath(rpIndex - 1, false); }
     });
+    function releaseManualRingPath(){ rpManualLock = false; }
+    window.addEventListener('wheel', releaseManualRingPath, {passive:true});
+    window.addEventListener('touchmove', releaseManualRingPath, {passive:true});
+    document.addEventListener('keydown', function(ev){
+      if (!rpStage.contains(ev.target) && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].indexOf(ev.key) !== -1) releaseManualRingPath();
+    }, true);
     if ('IntersectionObserver' in window) {
       var rpObserver = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
-          if (entry.isIntersecting) renderRingPath(parseInt(entry.target.getAttribute('data-rp-step'),10), false);
+          if (entry.isIntersecting && !rpManualLock) renderRingPath(parseInt(entry.target.getAttribute('data-rp-step'),10), false);
         });
       }, {rootMargin:'-30% 0px -48% 0px', threshold:.15});
       rpSteps.forEach(function(step){ rpObserver.observe(step); });
