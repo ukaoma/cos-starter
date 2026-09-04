@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.187",
-      "build": 225,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.187.zip",
-      "sha256": "3172c0f8e2b5e005ceb02006d1fa25ea73442c3bd0ba25552cddb624c488b40b",
+      "version": "0.5.188",
+      "build": 226,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.188.zip",
+      "sha256": "aeb7757fc859ca54e745c96ee39739d61027bd465e6b7d3aebb55e29b35a347f",
       "minMacOS": "14.0",
-      "serverTarget": "6.44.2",
-      "publishedAt": "2026-09-03T15:15:00Z",
-      "notes": "The Tasks pane kept only what was due, so a server holding captured rows and nothing scheduled reported \"No open tasks\". It shows every open row now, ranked so the newest capture is never pushed out by history. The domain picker reads the domains your COS actually has instead of four names baked into the app; on an older server it derives them from your own board rather than emptying itself. Pairs with server 6.44.2."
+      "serverTarget": "6.44.3",
+      "publishedAt": "2026-09-04T01:13:00Z",
+      "notes": "Task rows open. Click one and you get the whole line with its source, lane, section, schedule and agent state, instead of the short title the server trims for the glasses. Edit the words and save them, mark a task Done or Reopen it, send it back to inbox, schedule it, or hand it to COS, all from the same place. A task with a running agent refuses a text edit rather than changing the job underneath it. A new Domains card sets your own domain list instead of hand-editing a profile file, and it says plainly that removing a name only unlists it while the folder and its tasks stay. Needs server 6.44.3."
     }
   },
   "killSwitch": {
