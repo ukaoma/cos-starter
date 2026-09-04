@@ -178,26 +178,24 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-screen .rp-cursor{width:1ch;color:var(--hud-hi)}
 .rp-screen .rp-copy{max-width:46ch}
 .rp-screen .rp-foot{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:9px;border-top:1px solid rgba(70,232,120,.14);font-size:.78em;color:rgba(70,232,120,.55);text-shadow:none}
-.rp-ring-zone{position:relative;min-height:190px;display:grid;place-items:center;padding:20px 0 4px}
-.rp-ring{position:relative;width:168px;height:105px;transform:rotate(-9deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.48))}
-.rp-band{position:absolute;inset:0;border:17px solid #846a43;border-radius:50%;background:radial-gradient(ellipse at 46% 42%,rgba(70,232,120,.12),transparent 58%);box-shadow:inset 0 0 0 2px rgba(242,221,180,.2),inset 0 0 16px rgba(23,15,9,.92),0 0 0 1px rgba(201,169,110,.35),0 0 24px rgba(70,232,120,.07)}
-.rp-band::before,.rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
-.rp-band::before{inset:-10px;border:1px solid rgba(201,169,110,.24)}
-.rp-band::after{inset:2px;border-top:2px solid rgba(240,232,218,.32);border-right:1px solid transparent;border-bottom:1px solid transparent;border-left:1px solid rgba(70,232,120,.15)}
-.rp-touch{position:absolute;right:13px;bottom:6px;width:64px;height:22px;border:1px solid rgba(201,169,110,.62);border-radius:9px;background:linear-gradient(180deg,#2f281d,#17130e);box-shadow:inset 0 1px rgba(240,232,218,.16),0 0 16px rgba(70,232,120,.08);transform:rotate(8deg);overflow:visible}
-.rp-touch::before{content:"";position:absolute;inset:4px 8px;border-top:1px solid rgba(201,169,110,.22);border-bottom:1px solid rgba(201,169,110,.12);border-radius:4px}
-.rp-dot{position:absolute;left:27px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--hud-hi);box-shadow:0 0 12px rgba(70,232,120,.9);opacity:.34}
-.rp-wave{position:absolute;left:23px;top:3px;width:15px;height:15px;border:1px solid var(--hud-hi);border-radius:50%;opacity:0}
-.rp-ring.play[data-gesture="swipe-up"] .rp-dot{animation:rpSwipeUp .78s cubic-bezier(.2,.72,.24,1) both}
-.rp-ring.play[data-gesture="swipe-down"] .rp-dot{animation:rpSwipeDown .78s cubic-bezier(.2,.72,.24,1) both}
-.rp-ring.play[data-gesture="tap"] .rp-wave{animation:rpTap .48s ease-out both}
-.rp-ring.play[data-gesture="double-tap"] .rp-wave{animation:rpTap .42s ease-out 2}
-.rp-ring.play[data-gesture="tap"] .rp-dot,.rp-ring.play[data-gesture="double-tap"] .rp-dot{opacity:1;animation:rpDot .48s ease-out both}
-@keyframes rpSwipeUp{0%{opacity:0;transform:translateX(15px) scale(.65)}18%{opacity:1}82%{opacity:1}100%{opacity:0;transform:translateX(-15px) scale(1)}}
-@keyframes rpSwipeDown{0%{opacity:0;transform:translateX(-15px) scale(.65)}18%{opacity:1}82%{opacity:1}100%{opacity:0;transform:translateX(15px) scale(1)}}
-@keyframes rpTap{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(2.1)}}
-@keyframes rpDot{0%,100%{transform:scale(.72)}45%{transform:scale(1.25)}}
-.rp-gesture{position:absolute;left:50%;bottom:3px;transform:translateX(-50%);font:500 .66rem/1 var(--mono);letter-spacing:.06em;color:var(--gold);white-space:nowrap}
+.rp-ring-zone{position:relative;min-height:276px;display:grid;justify-items:center;align-content:center;padding:10px 0 4px}
+.rp-ring-shell{position:relative;width:min(286px,94%);height:224px;isolation:isolate}
+.rp-ring-canvas{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;opacity:0;touch-action:none;cursor:grab;transition:opacity .28s ease}
+.rp-ring-canvas.is-dragging{cursor:grabbing}
+.rp-ring-shell.is-ready .rp-ring-canvas{opacity:1}
+.rp-ring-fallback{position:absolute;z-index:1;left:50%;top:50%;width:168px;height:105px;transform:translate(-50%,-50%) rotate(-9deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.48));transition:opacity .2s ease}
+.rp-ring-shell.is-ready .rp-ring-fallback{opacity:0}
+.rp-ring-fallback .rp-band{position:absolute;inset:0;border:17px solid #846a43;border-radius:50%;background:radial-gradient(ellipse at 46% 42%,rgba(70,232,120,.12),transparent 58%);box-shadow:inset 0 0 0 2px rgba(242,221,180,.2),inset 0 0 16px rgba(23,15,9,.92),0 0 0 1px rgba(201,169,110,.35),0 0 24px rgba(70,232,120,.07)}
+.rp-ring-fallback .rp-band::before,.rp-ring-fallback .rp-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.rp-ring-fallback .rp-band::before{inset:-10px;border:1px solid rgba(201,169,110,.24)}
+.rp-ring-fallback .rp-band::after{inset:2px;border-top:2px solid rgba(240,232,218,.32);border-right:1px solid transparent;border-bottom:1px solid transparent;border-left:1px solid rgba(70,232,120,.15)}
+.rp-ring-fallback .rp-touch{position:absolute;right:13px;bottom:6px;width:64px;height:22px;border:1px solid rgba(201,169,110,.62);border-radius:9px;background:linear-gradient(180deg,#2f281d,#17130e);box-shadow:inset 0 1px rgba(240,232,218,.16),0 0 16px rgba(70,232,120,.08);transform:rotate(8deg)}
+.rp-ring-fallback .rp-touch::before{content:"";position:absolute;inset:4px 8px;border-top:1px solid rgba(201,169,110,.22);border-bottom:1px solid rgba(201,169,110,.12);border-radius:4px}
+.rp-orbit-hint{display:flex;align-items:center;justify-content:center;gap:9px;max-width:94%;margin-top:-2px;font:400 .56rem/1.45 var(--mono);color:var(--ghost);text-align:center}
+.rp-orbit-hint[hidden]{display:none}
+.rp-orbit-hint button{appearance:none;border:0;border-bottom:1px solid rgba(201,169,110,.34);background:transparent;color:var(--gold);font:inherit;cursor:pointer;padding:1px 0}
+.rp-orbit-hint button:hover{border-bottom-color:var(--gold)}
+.rp-gesture{margin-top:8px;font:500 .66rem/1 var(--mono);letter-spacing:.06em;color:var(--gold);white-space:nowrap}
 .rp-stage-foot{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 15px;border-top:1px solid var(--line-2)}
 .rp-stage-foot button{appearance:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);padding:8px 12px;font:500 .62rem var(--mono);cursor:pointer;transition:color .18s,border-color .18s}
 .rp-stage-foot button:hover{color:var(--gold);border-color:var(--gold)}
@@ -213,8 +211,9 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-step .rp-action{display:block;margin-top:5px;font:500 .65rem/1.4 var(--mono);color:var(--gold)}
 .rp-step p{grid-column:2;margin-top:9px;font-size:.9rem;line-height:1.55;color:var(--muted)}
 @media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
-@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:108px;padding:5px 0 2px}.rp-ring{width:108px;height:67px}.rp-band{border-width:10px}.rp-band::before{inset:-6px}.rp-touch{right:-3px;bottom:-6px;transform:scale(.68) rotate(8deg)}.rp-gesture{bottom:0;font-size:.58rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
-@media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw,.rp-ring.play .rp-dot,.rp-ring.play .rp-wave{animation:none}.rp-ring.play .rp-dot{opacity:.9}.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
+@media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:194px;padding:2px 0}.rp-ring-shell{width:210px;height:154px}.rp-ring-fallback{width:118px;height:74px}.rp-ring-fallback .rp-band{border-width:11px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{right:-1px;bottom:-5px;transform:scale(.72) rotate(8deg)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:6px;font-size:.58rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
+@media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:164px;padding:0}.rp-ring-shell{width:210px;height:154px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
+@media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw{animation:none}.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
 
 /* ── hero ────────────────────────────────────────────── */
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
@@ -745,10 +744,13 @@ footer .links a:hover{color:var(--gold)}
           </div>
         </div>
         <div class="rp-ring-zone">
-          <div class="rp-ring play" data-gesture="idle" aria-hidden="true">
-            <div class="rp-band"></div>
-            <div class="rp-touch"><span class="rp-dot"></span><span class="rp-wave"></span></div>
+          <div class="rp-ring-shell" data-gesture="idle">
+            <canvas class="rp-ring-canvas" id="rpRingCanvas" role="img" tabindex="-1" aria-hidden="true" aria-describedby="rpOrbitHint" aria-label="Interactive 3D COS ring. Drag to rotate. Shift-drag or use two fingers to roll. Arrow keys rotate; Q and E roll; Space resets."></canvas>
+            <div class="rp-ring-fallback" role="img" aria-label="COS control ring with an attached touch surface">
+              <div class="rp-band"></div><div class="rp-touch"></div>
+            </div>
           </div>
+          <div class="rp-orbit-hint" id="rpOrbitHint" hidden><span>Drag to rotate. Two fingers or Shift-drag to roll.</span><button type="button" id="rpRingReset" hidden>Reset view</button></div>
           <div class="rp-gesture" id="rpGesture">Ready on Home</div>
         </div>
       </div>
@@ -760,37 +762,37 @@ footer .links a:hover{color:var(--gold)}
     </div>
 
     <ol class="rp-steps" aria-label="Ring gesture sequence">
-      <li class="rp-step" data-rp-step="0" aria-current="step">
+      <li class="rp-step" data-rp-step="0" data-gesture="idle" aria-current="step">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">01</span><strong>Begin on Home</strong><span class="rp-action">Ready</span>
           <p>The latest reply, weather, and next meeting are already in view. The footer tells you which move is live.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="1">
+      <li class="rp-step" data-rp-step="1" data-gesture="swipe-up">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">02</span><strong>Show Messages</strong><span class="rp-action">Swipe up</span>
           <p>One upward swipe opens the recent message list. The newest item is highlighted and ready.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="2">
+      <li class="rp-step" data-rp-step="2" data-gesture="swipe-down">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">03</span><strong>Move one row</strong><span class="rp-action">Swipe down</span>
           <p>Scroll moves the highlight without opening anything. The footer keeps the current position visible.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="3">
+      <li class="rp-step" data-rp-step="3" data-gesture="tap">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">04</span><strong>Open the message</strong><span class="rp-action">Tap</span>
           <p>A tap selects the highlighted row. The reader keeps the answer continuous rather than splitting it into pages.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="4">
+      <li class="rp-step" data-rp-step="4" data-gesture="swipe-down">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">05</span><strong>Keep reading</strong><span class="rp-action">Swipe down</span>
           <p>The same ring motion scrolls the reader. A small cue shows that more text remains.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="5">
+      <li class="rp-step" data-rp-step="5" data-gesture="double-tap">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">06</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
           <p>Double-tap starts a voice follow-up to the open message. Nothing sends until you finish and confirm it.</p>
@@ -1813,6 +1815,7 @@ footer .links a:hover{color:var(--gold)}
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
+<script src="../assets/ring-3d.js?v=1"></script>
 <script>
 (function(){
   // shared motion guard
@@ -1951,7 +1954,12 @@ footer .links a:hover{color:var(--gold)}
   var ringPath = document.querySelector('[data-ring-path]');
   if (ringPath) {
     var rpScreen = document.getElementById('rpScreen');
-    var rpRing = ringPath.querySelector('.rp-ring');
+    var rpRing = ringPath.querySelector('.rp-ring-shell');
+    var rpRingCanvas = document.getElementById('rpRingCanvas');
+    var rpRingReset = document.getElementById('rpRingReset');
+    var rpOrbitHint = document.getElementById('rpOrbitHint');
+    var rpRing3D = window.CosRing3D ? window.CosRing3D.create(rpRingCanvas, {shell:rpRing,resetButton:rpRingReset}) : null;
+    if (rpRing3D && rpOrbitHint) rpOrbitHint.hidden = false;
     var rpGesture = document.getElementById('rpGesture');
     var rpProgress = document.getElementById('rpProgress');
     var rpPrev = document.getElementById('rpPrev');
@@ -1960,30 +1968,30 @@ footer .links a:hover{color:var(--gold)}
     var rpSteps = Array.prototype.slice.call(ringPath.querySelectorAll('[data-rp-step]'));
     var rpStates = [
       {
-        name:'Home', gesture:'idle', label:'Ready on Home',
         html:'<div class="rp-title">Chief of Staff <span class="rp-dim">6.9.453</span></div><div>MSG <span class="rp-title">#412</span> <span class="rp-dim">&middot; 2m ago</span></div><div class="rp-dim">72&deg; Clear &middot; Fri Sep 4</div><div class="rp-dim">10:00 Design review</div><div class="rp-foot"><span>Tap=Latest &middot; scroll=move</span><span>82%</span></div>'
       },
       {
-        name:'Messages', gesture:'swipe-up', label:'Swipe up',
         html:'<div class="rp-title">Messages</div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#412 09:14 Friday pilot</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>1/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
       },
       {
-        name:'Move highlight', gesture:'swipe-down', label:'Swipe down',
         html:'<div class="rp-title">Messages</div><div class="rp-row"><span class="rp-cursor"></span><span>#412 09:14 Friday pilot</span></div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>2/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
       },
       {
-        name:'Reader', gesture:'tap', label:'Tap',
         html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; 08:42</span></div><div class="rp-copy">The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.</div><div class="rp-dim">More below &#9662;</div><div class="rp-foot"><span>1/2 &middot; Scroll=read</span><span>Opus &middot; 82%</span></div>'
       },
       {
-        name:'Continue reading', gesture:'swipe-down', label:'Swipe down',
         html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; continued</span></div><div class="rp-copy">The open decision is whether the setup path stays inside Docs or moves into the guided wizard.</div><div class="rp-dim">End of message</div><div class="rp-foot"><span>2/2 &middot; Double-tap=reply</span><span>Opus &middot; 82%</span></div>'
       },
       {
-        name:'Voice reply', gesture:'double-tap', label:'Double-tap',
         html:'<div class="rp-title">REPLY TO #411</div><div>Listening...</div><div>&nbsp;</div><div class="rp-copy">Speak your follow-up.</div><div class="rp-foot"><span>Tap=finish &middot; Double-tap=cancel</span><span>Mic live</span></div>'
       }
     ];
+    rpStates.forEach(function(state,i){
+      var step=rpSteps[i];
+      state.name=step.querySelector('strong').textContent.trim();
+      state.label=step.querySelector('.rp-action').textContent.trim();
+      state.gesture=step.getAttribute('data-gesture') || 'idle';
+    });
     var rpIndex = 0;
     var rpManualLock = false;
     function renderRingPath(nextIndex, replay) {
@@ -1993,10 +2001,8 @@ footer .links a:hover{color:var(--gold)}
       rpScreen.innerHTML = state.html;
       void rpScreen.offsetWidth;
       rpScreen.classList.add('rp-redraw');
-      rpRing.classList.remove('play');
       rpRing.setAttribute('data-gesture', state.gesture);
-      void rpRing.offsetWidth;
-      rpRing.classList.add('play');
+      if (rpRing3D) rpRing3D.setGesture(state.gesture, state.label);
       rpGesture.textContent = state.label;
       rpProgress.textContent = (rpIndex + 1) + ' of ' + rpStates.length + ' \u00b7 ' + state.name;
       rpSteps.forEach(function(step, i){
