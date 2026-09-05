@@ -388,6 +388,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 @media(max-width:700px){.sc-platform{grid-template-columns:72px minmax(0,1fr)}.sc-platform i{grid-column:2}.pet-chapter{margin-top:112px;padding-top:32px}.pet-intro{display:block}.pet-pause{display:block;margin:22px auto 0}.pet-options{grid-template-columns:1fr}.pet-shelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-sample{flex:0 0 126px;scroll-snap-align:start;border-bottom:0}.pet-sample:nth-child(5n+1){border-left:1px solid var(--line2)}.pet-sample:first-child{border-left:0}.session-command::before{display:none}}
 @media(prefers-reduced-motion:reduce){.pet-card,.pet-sample{transition:none}.pet-card:hover,.pet-sample:hover{transform:none}}
 
+.pet-pack{border-block:1px solid var(--line);padding:18px 0;margin:28px 0;scroll-margin-top:100px}
+.pet-pack summary{cursor:pointer;font-weight:600}
+.pet-pack ol{padding-left:1.4em;margin:18px 0;max-width:78ch;color:var(--muted)}
+.pet-pack p{max-width:78ch;color:var(--muted)}
+.pet-pack pre{max-width:100%;overflow-x:auto;padding:18px 0;font:.75rem/1.7 var(--mono)}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="assets/session-command/session-deck.js?v=3" defer></script>
@@ -704,8 +709,30 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="pet-options reveal">
           <div class="pet-option"><b>Four advanced Jedi</b><span>Miles Windu, Nia Solari, Elara Vale, and Rowan Vale ship with authored idle, walking, and workload-specific stories.</span></div>
           <div class="pet-option"><b>300 variety pets</b><span>Choose from the OpenPets gallery. They stay still, but the live ledger, routing, and session controls remain fully available.</span></div>
-          <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="/docs/#session-pet">Build a custom pet pack</a></div>
+          <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="#custom-pet-pack">Build a custom pet pack</a></div>
         </div>
+
+        <details class="pet-pack" id="custom-pet-pack">
+          <summary>Build a custom animated pet pack</summary>
+          <ol>
+        <li>Draw each animation as one horizontal PNG strip. Every frame in a strip must have the same width and height.</li>
+        <li>Add <code>session-pet-states.json</code> to the same folder. Name each file explicitly and declare its frame count.</li>
+        <li>Use <code>interval</code> for seconds per frame. Use <code>renderScale</code> only when one pose needs visual normalization.</li>
+        <li>In Control, open Session pet, Character, <strong>Install sprite pack</strong> and choose the folder.</li>
+      </ol>
+          <pre aria-label="Minimal custom sprite pack state map"><code>{
+  "poses": {
+    "idle":    { "file": "idle.png",    "frames": 8,  "interval": 0.20 },
+    "working": { "file": "one.png",     "frames": 12, "interval": 0.12 },
+    "duel":    { "file": "two.png",     "frames": 16, "interval": 0.14 },
+    "trio":    { "file": "three.png",   "frames": 16, "interval": 0.16 },
+    "swarm":   { "file": "fourplus.png","frames": 24, "interval": 0.18 }
+  }
+}</code></pre>
+          <h4>Complete state vocabulary</h4>
+      <p>A full pack may also define <code>waiting</code>, <code>done</code>, <code>error</code>, <code>attention</code>, and <code>patrol</code>. A strip can contain 1–32 frames. Per-pose <code>renderScale</code> is clamped from 0.5 to 3.0. Missing states fall back safely instead of turning a one-cell image into sliced confetti.</p>
+      <p style="margin-top:14px">Character size and animation speed remain user settings. The pack's interval establishes authored timing at 100%; macOS Reduced Motion freezes animated strips.</p>
+        </details>
 
         <div class="pet-community reveal">
           <div class="pet-community-copy">

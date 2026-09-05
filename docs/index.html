@@ -27,7 +27,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../control/assets/session-command/session-deck.css?v=2">
 <script>document.documentElement.className+=' js';</script>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
@@ -390,32 +389,6 @@ section.light .note{border-left-color:#7a5c2c}
 #setup>*{position:relative;z-index:1}
 @media(max-width:820px){#setup .pixmap{display:none}}
 
-/* ── session pet + orchestration guide ───────────────── */
-.petdoc{margin:0 0 clamp(38px,6vw,68px);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 12% 28%,rgba(240,182,52,.1),transparent 36%),linear-gradient(155deg,var(--panel-2),transparent)}
-.petdoc-top{display:grid;grid-template-columns:minmax(420px,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,46px);align-items:start;padding:clamp(18px,3vw,30px)}
-.petdoc-demo{min-width:0;margin:0}
-.petdoc-copy .eyebrow{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.petdoc-copy h3{font-family:var(--display);font-size:clamp(1.65rem,3vw,2.4rem);font-weight:500;line-height:1.08;max-width:18ch}
-.petdoc-copy p{margin-top:12px;max-width:58ch}
-.petdoc-ledger{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
-.petdoc-state{padding:16px 12px;border-right:1px solid var(--line-2);min-width:0}
-.petdoc-state:last-child{border-right:0}
-.petdoc-state b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:500;color:var(--fg)}
-.petdoc-state span{display:block;margin-top:3px;font-family:var(--mono);font-size:.55rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ghost)}
-.petdoc-state code{display:block;margin-top:8px;font-size:.62rem}
-.petdoc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,34px);margin:28px 0 8px}
-.petdoc-panel{min-width:0;border:1px solid var(--line-2);border-radius:15px;padding:20px 21px;background:linear-gradient(155deg,var(--panel),transparent)}
-.petdoc-panel h3{color:var(--fg)}
-.petdoc-panel>p{font-size:.9rem}
-.route-list{margin-top:16px}
-.route-row{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--line-2)}
-.route-row b{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.route-row span{color:var(--muted);font-size:.84rem;line-height:1.5}
-.petdoc-code{margin-top:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:#0d0906;color:var(--fg);font:400 .7rem/1.65 var(--mono);white-space:pre;overflow-x:auto;tab-size:2}
-.petdoc-steps{margin:16px 0 0 20px}.petdoc-steps li{padding-left:4px;margin:8px 0;color:var(--muted);font-size:.88rem}
-.petdoc-note{grid-column:1/-1;border-left:2px solid var(--gold);padding:13px 16px;background:rgba(201,169,110,.06);color:var(--muted);font-size:.86rem}
-@media(max-width:920px){.petdoc-top,.petdoc-grid{grid-template-columns:1fr}.petdoc-demo{max-width:720px}.petdoc-ledger{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.petdoc-state{flex:0 0 150px;scroll-snap-align:start}.petdoc-note{grid-column:auto}}
-@media(max-width:520px){.petdoc-top{padding:16px}.petdoc-panel{padding:17px}.route-row{grid-template-columns:1fr;gap:4px}}
 
 /* ── footer ──────────────────────────────────────────── */
   footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
@@ -575,7 +548,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
-<link rel="stylesheet" href="../assets/docs-hud.css?v=4">
+<link rel="stylesheet" href="../assets/docs-hud.css?v=5">
 </head>
 <body>
 
@@ -620,7 +593,7 @@ footer .links a:hover{color:var(--gold)}
     <a href="#ring-path">Ring controls</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
-    <a href="#session-pet">Session pet</a>
+    <a href="#sessions">Sessions</a>
     <a href="#ask">Ask</a>
     <a href="#photos">Rich media</a>
     <a href="#lens">The Lens</a>
@@ -656,7 +629,7 @@ footer .links a:hover{color:var(--gold)}
     <a href="#ring-path">Ring controls</a>
     <a href="#setup">Setup</a>
     <a href="#mac-control">Mac app</a>
-    <a href="#session-pet">Session pet</a>
+    <a href="#sessions">Sessions</a>
     <a href="#ask">Ask</a>
     <a href="#photos">Rich media</a>
     <a href="#lens">The Lens</a>
@@ -733,7 +706,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="sec-head">
     <h2>Your ring. <span class="it goldt">The HUD in context.</span></h2>
     <p class="lead">Tap and hold for shortcuts, scroll to Messages, then read and reply without taking out your phone. Follow the steps to see which part of the HUD changes.</p>
-    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a></nav>
+    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a><a href="#models-ring">Models &amp; effort</a></nav>
   </div>
   <div class="rp-grid">
     <div class="rp-stage" tabindex="0" aria-label="Interactive ring and HUD walkthrough. Use Previous and Next, or the left and right arrow keys, to change steps.">
@@ -826,7 +799,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <p class="hud-note">The animation slows down the contact phases for teaching. It is not a stopwatch for the firmware's recognition threshold.</p>
       <ul>
         <li><strong>Ask COS</strong> opens a new voice prompt.</li>
-        <li><strong>Model: Opus</strong> shows the current model. Choose a model, then its reasoning effort.</li>
+        <li><strong>Model: Opus</strong> shows the current model. Choose a model, then its reasoning effort. <a href="#models-ring">Practice the two-stage picker.</a></li>
         <li><strong>Start Meeting</strong> begins Meeting AI. While recording, <strong>Resume Meeting</strong> and <strong>Stop Meeting</strong> take its place.</li>
         <li><strong>Messages</strong>, <strong>Sessions</strong>, <strong>Tasks</strong>, and <strong>Home</strong> jump straight to that view.</li>
       </ul>
@@ -898,114 +871,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, shows the effective Balanced or Max tier plus each transcription model, reports real Agent CLI versions, runs Doctor, and performs safe updates, restarts, and rollbacks.</p>
   </div>
 
-  <div class="petdoc" id="session-pet">
-    <div class="petdoc-top">
-      <figure class="petdoc-demo">
-        <div class="session-deck" data-session-deck data-state="running" role="group" aria-label="Interactive COS Control session deck. Choose Running, Done, or Waiting to update the ledger and Miles Windu animation.">
-          <div class="sd-topline"><strong><i class="sd-signal" aria-hidden="true"></i>COS session deck</strong><span data-deck-top>4 agents · live</span></div>
-          <div class="sd-workspace">
-          <div class="sd-ledger">
-            <div class="sd-ledger-head"><b><i class="sd-signal" aria-hidden="true"></i><span data-ledger-title>Running 4</span></b><span data-ledger-context>All systems</span></div>
-            <div class="sd-rows" data-row-count="4" aria-live="polite">
-              <div class="sd-row sd-codex">
-                <i class="sd-rail" aria-hidden="true"></i>
-                <span class="sd-provider-mark" aria-hidden="true"></span>
-                <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Codex</b><strong class="sd-task">Release checks</strong></span><span class="sd-row-detail"><span>mu-chief-staff · building</span></span></span>
-                <time class="sd-time" data-session-timer data-start="16">16s</time>
-              </div>
-              <div class="sd-row sd-claude">
-                <i class="sd-rail" aria-hidden="true"></i>
-                <span class="sd-provider-mark" aria-hidden="true"></span>
-                <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Claude</b><strong class="sd-task">Control motion</strong></span><span class="sd-row-detail"><span>cos-control · refining</span></span></span>
-                <time class="sd-time" data-session-timer data-start="21">21s</time>
-              </div>
-              <div class="sd-row sd-cursor">
-                <i class="sd-rail" aria-hidden="true"></i>
-                <span class="sd-provider-mark" aria-hidden="true"></span>
-                <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Cursor</b><strong class="sd-task">Agent routing</strong></span><span class="sd-row-detail"><span>cos-glasses · wiring</span></span></span>
-                <time class="sd-time" data-session-timer data-start="21">21s</time>
-              </div>
-              <div class="sd-row sd-claude">
-                <i class="sd-rail" aria-hidden="true"></i>
-                <span class="sd-provider-mark" aria-hidden="true"></span>
-                <span class="sd-row-main"><span class="sd-row-line"><b class="sd-provider">Claude</b><strong class="sd-task">Docs launch</strong></span><span class="sd-row-detail"><span>gotcos-site · verifying</span></span></span>
-                <time class="sd-time" data-session-timer data-start="22">22s</time>
-              </div>
-            </div>
-          </div>
-          <div class="sd-pet-stage" data-pet-caption="Live workload" aria-hidden="true"><canvas data-session-pet data-src="/control/assets/session-command/miles-four-plus.png" data-frames="26" data-interval=".22"></canvas></div>
-          </div>
-          <div class="sd-statuses" role="tablist" aria-label="Preview session state">
-            <button class="sd-status running" type="button" role="tab" aria-selected="true" data-deck-state="running"><i aria-hidden="true"></i><b>Running 4</b></button>
-            <button class="sd-status done" type="button" role="tab" aria-selected="false" tabindex="-1" data-deck-state="done"><i aria-hidden="true"></i><b>Done 3</b></button>
-            <button class="sd-status waiting" type="button" role="tab" aria-selected="false" tabindex="-1" data-deck-state="waiting"><i aria-hidden="true"></i><b>Waiting 1</b></button>
-          </div>
-        </div>
-      </figure>
-      <div class="petdoc-copy">
-        <span class="eyebrow">Power-user guide · sessions + pet</span>
-        <h3>A living index of the agents on your Mac.</h3>
-        <p>The live demo mirrors the collapsed Control surface. Its first job is glanceable completion: Running means an agent is still working, Done means its latest turn finished, and Waiting means it needs you. Double-click the character for the live list; use the centered filters to pin a state, or select one session to open its transcript and composer.</p>
-        <p>The character turns workload into peripheral vision. Use one of the four authored Jedi, choose from 300 still pets, upload a single sprite, or install your own state pack to give every session count a custom animation.</p>
-        <p><strong>What is actually aggregated:</strong> Claude, Codex, and Cursor sessions. Ollama is different: when its local daemon is available it appears as a private model family inside COS, not as a fourth session provider.</p>
-      </div>
-    </div>
-    <div class="petdoc-ledger" aria-label="Animated session count mapping">
-      <div class="petdoc-state"><b>Idle</b><span>No sessions running</span><code>Idle animation</code></div>
-      <div class="petdoc-state"><b>1 session</b><span>One session running</span><code>1-session animation</code></div>
-      <div class="petdoc-state"><b>2 sessions</b><span>Two sessions running</span><code>2-session animation</code></div>
-      <div class="petdoc-state"><b>3 sessions</b><span>Three sessions running</span><code>3-session animation</code></div>
-      <div class="petdoc-state"><b>4+ sessions</b><span>Four or more running</span><code>4+ session animation</code></div>
-    </div>
-  </div>
-
-  <div class="petdoc-grid">
-    <div class="petdoc-panel">
-      <h3>Where a session click goes</h3>
-      <p>Control uses a provider-aware route instead of pretending every agent exposes the same kind of deep link.</p>
-      <div class="route-list">
-        <div class="route-row"><b>Codex</b><span>Opens the task thread. Its session composer writes back into that real thread.</span></div>
-        <div class="route-row"><b>Claude</b><span>Opens the matching Desktop session. Claude Code running in iTerm2 or Terminal raises that terminal instead.</span></div>
-        <div class="route-row"><b>Cursor</b><span>Raises the Cursor Agents window, then selects the accessible row whose title matches the session. Cursor accepts follow-ups but does not fork from Control.</span></div>
-      </div>
-    </div>
-
-    <div class="petdoc-panel">
-      <h3>Choose the pet depth you want</h3>
-      <div class="route-list">
-        <div class="route-row"><b>Advanced</b><span>Four bundled Jedi each carry animated idle, walking, and one-, two-, three-, and four-plus-session stories.</span></div>
-        <div class="route-row"><b>Variety</b><span>The 300 OpenPets choices are still figures. They keep the complete ledger and session controls without authored workload animation.</span></div>
-        <div class="route-row"><b>Custom</b><span><strong>Choose sprite</strong> installs one still image. <strong>Install sprite pack</strong> maps a folder of strips to every state.</span></div>
-      </div>
-    </div>
-
-    <div class="petdoc-panel">
-      <h3>Build a custom animated pack</h3>
-      <ol class="petdoc-steps">
-        <li>Draw each animation as one horizontal PNG strip. Every frame in a strip must have the same width and height.</li>
-        <li>Add <code>session-pet-states.json</code> to the same folder. Name each file explicitly and declare its frame count.</li>
-        <li>Use <code>interval</code> for seconds per frame. Use <code>renderScale</code> only when one pose needs visual normalization.</li>
-        <li>In Control, open Session pet → Character → <strong>Install sprite pack</strong> and choose the folder.</li>
-      </ol>
-      <pre class="petdoc-code" aria-label="Minimal custom sprite pack state map"><code>{
-  "poses": {
-    "idle":    { "file": "idle.png",    "frames": 8,  "interval": 0.20 },
-    "working": { "file": "one.png",     "frames": 12, "interval": 0.12 },
-    "duel":    { "file": "two.png",     "frames": 16, "interval": 0.14 },
-    "trio":    { "file": "three.png",   "frames": 16, "interval": 0.16 },
-    "swarm":   { "file": "fourplus.png","frames": 24, "interval": 0.18 }
-  }
-}</code></pre>
-    </div>
-
-    <div class="petdoc-panel">
-      <h3>Complete state vocabulary</h3>
-      <p>A full pack may also define <code>waiting</code>, <code>done</code>, <code>error</code>, <code>attention</code>, and <code>patrol</code>. A strip can contain 1–32 frames. Per-pose <code>renderScale</code> is clamped from 0.5 to 3.0. Missing states fall back safely instead of turning a one-cell image into sliced confetti.</p>
-      <p style="margin-top:14px">Character size and animation speed remain user settings. The pack's interval establishes authored timing at 100%; macOS Reduced Motion freezes animated strips.</p>
-    </div>
-
-    <div class="petdoc-note"><strong>Privacy and control:</strong> session history, sprite files, and local Ollama models stay on your Mac. Sending a follow-up is an explicit action from the session composer; the pet does not write into a thread on its own.</div>
-  </div>
+  <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="macpair">
     <div>
       <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.44.4, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
@@ -1057,6 +923,47 @@ Tap=Latest  ↓ Menu  ↑ Messages
 
   <div class="note"><p><strong>Migrating from Terminal?</strong> Stop the foreground server with Control-C first. Then install COS Control and run Guided Setup. You can return to the npx command later without converting your data.</p></div>
   <div class="btns"><a class="btn primary" href="/control/">Download COS Control</a><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server">Use npm instead</a></div>
+</section>
+
+<section class="wrap" id="sessions">
+  <div class="sec-head">
+    <h2 class="ch"><span class="num">2B.</span> Sessions on the lens</h2>
+    <p class="ch-sub">One thread. Four choices. A rolling footer.</p>
+    <p class="lead">Open Sessions from Quick Actions or the hold menu, then tap a thread. Keep its context in view while the ring moves through Back to list, Continue, Fork, and Ask COS. The last row is not the end: another downward scroll takes 4 of 4 back to 1 of 4.</p>
+  </div>
+  <h3 id="session-menu">Read first. Act from the footer.</h3>
+  <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
+  <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
+  <div class="ring-lesson" id="sessions-ring" data-ring-lesson="sessions">
+    <h3>Sessions: one footer, a rolling menu.</h3>
+    <p>Tap to open, scroll through Back to list, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
+    <p class="rl-fallback">The body stays at its reading position. Menu input resets a three-second timeout; waiting dismisses the footer actions. Double-tap instead asks for confirmation to leave for Quick Actions. The hold menu is a separate window above the page.</p>
+  </div>
+
+  <div class="tw"><table>
+    <tr><th>Gesture</th><th>What happens</th></tr>
+    <tr><td><span class="g-key">Tap</span></td><td>Open the menu. Tap again to run the highlighted row.</td></tr>
+    <tr><td><span class="g-key">&#8593;</span> <span class="g-key">&#8595;</span></td><td>Move the <span class="g-key">&#9654;</span> cursor. The list <strong>wraps</strong>, so scrolling past <strong>Ask COS</strong> returns to <strong>Back to list</strong> instead of dead-ending.</td></tr>
+    <tr><td><span class="g-key">Double-tap</span></td><td>Leave for Quick Actions, behind a confirmation. The footer reads <span class="g-key">Double-tap again for Quick Actions</span> and you have three seconds. An open menu closes on the way out.</td></tr>
+    <tr><td><span class="g-key">Wait</span></td><td>The menu retires itself after three seconds of no input and the normal footer returns.</td></tr>
+  </table></div>
+
+  <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Continue</strong> sits exactly one scroll away.</p>
+
+  <div class="tw"><table>
+    <tr><th>Row</th><th>What it does</th></tr>
+    <tr><td><strong>Back to list</strong></td><td>Return to Sessions. Nothing is written, and it is always present, so the menu can never trap you.</td></tr>
+    <tr><td><strong>Continue</strong></td><td>Attach to the original thread and start recording a turn. Selecting it only opens the microphone. Nothing enters the conversation until you send, which is its own confirmed step.</td></tr>
+    <tr><td><strong>Fork</strong></td><td>Record against a copy of the thread and leave the original untouched. This is what every refusal points you to.</td></tr>
+    <tr><td><strong>Ask COS</strong></td><td>Ask a question about the session without writing into it at all.</td></tr>
+  </table></div>
+
+  <h3 id="continue-unavailable" style="margin-top:34px">When Continue is unavailable</h3>
+  <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The footer marks Continue as unavailable. Selecting it shows the reason in the footer without replacing the reader body.</p>
+
+  <p style="font-size:.95rem">The refusal is spelled out in the footer rather than implied by a greyed word. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
+  <p style="font-size:.95rem">The menu only appears for a session whose provider COS has a write path for, which today means <strong>Claude</strong>, <strong>Codex</strong>, and <strong>Cursor</strong>. Any other provider leaves the page exactly as it reads, with no menu at all, rather than offering an action that cannot run.</p>
+
 </section>
 
 <!-- ── 03 ASK ── -->
@@ -1261,66 +1168,6 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <p>Finish reading the body, tap to open the footer, scroll to a choice, then tap again to select. Those are two deliberate single taps separated by reading the menu, not the quick double-tap that starts a reply.</p>
     <p class="rl-fallback">Messages and Reply are always in the idle reader menu. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. The reader menu stops at its ends; it does not wrap. A tap can open it before you reach the bottom, too.</p>
   </div>
-  <h3 id="session-menu" style="margin-top:34px">Session detail</h3>
-  <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
-  <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
-  <div class="ring-lesson" id="sessions-ring" data-ring-lesson="sessions">
-    <h3>Sessions: one footer, a rolling menu.</h3>
-    <p>Tap to open, scroll through Back to list, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
-    <p class="rl-fallback">The body stays at its reading position. Menu input resets a three-second timeout; waiting dismisses the footer actions. Double-tap instead asks for confirmation to leave for Quick Actions. The hold menu is a separate window above the page.</p>
-  </div>
-
-  <div class="exhibit" data-story="choice">
-    <div class="hud lens-hud" data-hud="sessionMenu" aria-label="Session reader with footer action menu"><div class="lens-nav">COS [O] Sess 1/3 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Friday pilot rollout</span>
-[ANT] 14m • 31msg • mac
-
-DISCUSSION
-Import owner is Dana. Rollout email drafts Thursday.
-
-STATS
-Messages: 15u / 16a
-Branch: main</div></div><div class="lens-footer">▶ Back to list · 1/4 · Scroll=move Tap=select</div></div>
-    <div class="sg" aria-hidden="true"><span class="g-key">Tap</span><i></i><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
-    <div class="hud-cap">Two taps &#183; the first opens the menu, the second opens the mic</div>
-  </div>
-
-  <div class="tw"><table>
-    <tr><th>Gesture</th><th>What happens</th></tr>
-    <tr><td><span class="g-key">Tap</span></td><td>Open the menu. Tap again to run the highlighted row.</td></tr>
-    <tr><td><span class="g-key">&#8593;</span> <span class="g-key">&#8595;</span></td><td>Move the <span class="g-key">&#9654;</span> cursor. The list <strong>wraps</strong>, so scrolling past <strong>Ask COS</strong> returns to <strong>Back to list</strong> instead of dead-ending.</td></tr>
-    <tr><td><span class="g-key">Double-tap</span></td><td>Leave for Quick Actions, behind a confirmation. The footer reads <span class="g-key">Double-tap again for Quick Actions</span> and you have three seconds. An open menu closes on the way out.</td></tr>
-    <tr><td><span class="g-key">Wait</span></td><td>The menu retires itself after three seconds of no input and the normal footer returns.</td></tr>
-  </table></div>
-
-  <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Continue</strong> sits exactly one scroll away.</p>
-
-  <div class="tw"><table>
-    <tr><th>Row</th><th>What it does</th></tr>
-    <tr><td><strong>Back to list</strong></td><td>Return to Sessions. Nothing is written, and it is always present, so the menu can never trap you.</td></tr>
-    <tr><td><strong>Continue</strong></td><td>Attach to the original thread and start recording a turn. Selecting it only opens the microphone. Nothing enters the conversation until you send, which is its own confirmed step.</td></tr>
-    <tr><td><strong>Fork</strong></td><td>Record against a copy of the thread and leave the original untouched. This is what every refusal points you to.</td></tr>
-    <tr><td><strong>Ask COS</strong></td><td>Ask a question about the session without writing into it at all.</td></tr>
-  </table></div>
-
-  <h3 id="continue-unavailable" style="margin-top:34px">When Continue is unavailable</h3>
-  <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The footer marks Continue as unavailable. Selecting it shows the reason in the footer without replacing the reader body.</p>
-
-  <div class="exhibit" data-story="refusal">
-    <div class="hud lens-hud" data-hud="sessionRefusal" aria-label="Session reader with unavailable Continue in the footer"><div class="lens-nav">COS [O] Sess 1/3 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Friday pilot rollout</span>
-[ANT] 14m • 31msg • mac
-
-DISCUSSION
-Import owner is Dana. Rollout email drafts Thursday.
-
-STATS
-Messages: 15u / 16a
-Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2/4 · Scroll=move · Unavailable</div></div>
-    <div class="sg" aria-hidden="true"><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
-    <div class="hud-cap">A refused Continue names the reason and points at Fork</div>
-  </div>
-
-  <p style="font-size:.95rem">The refusal is spelled out in the footer rather than implied by a greyed word. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
-  <p style="font-size:.95rem">The menu only appears for a session whose provider COS has a write path for, which today means <strong>Claude</strong>, <strong>Codex</strong>, and <strong>Cursor</strong>. Any other provider leaves the page exactly as it reads, with no menu at all, rather than offering an action that cannot run.</p>
 
   <div class="ring-lesson" id="tasks-ring" data-ring-lesson="tasks">
     <h3>Tasks: a cursor move is not a command.</h3>
@@ -1569,6 +1416,25 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
   <p style="max-width:74ch;margin-top:22px">If the live catalog is unreachable, COS falls back to the local catalog cache, then lets the CLI pick its own current default. It never pins a stale model, and economy or hidden variants are excluded from the slots. The <strong>CLI DEBUG</strong> card in Settings always shows the exact model that served the last message.</p>
   <h3 style="margin-top:30px">Reasoning effort</h3>
   <p style="max-width:74ch">Four levels ride along with every message: <span class="g-key">High (default)</span> <span class="g-key">Extra High</span> <span class="g-key">Max</span> <span class="g-key">Ultracode</span>. Higher effort means deeper reasoning with slower, costlier answers. On GPT models that advertise support, Max stays Max and Ultracode maps to Codex Ultra; older models clamp safely to what they can do.</p>
+  <div class="ring-lesson" id="models-ring" data-ring-lesson="models" aria-label="Model and reasoning effort ring lesson">
+    <h3>Change the model. Then set its effort.</h3>
+    <p>Follow the ring from <strong>Opus + High</strong> to <strong>Sonnet + Max</strong>. Open the left-sliding shortcut window, choose Model, then move through the two full-HUD pickers. Scroll highlights; a single tap selects. These are simulated settings, not changes to your account.</p>
+    <p class="rl-fallback">Tap and release, then quickly press and hold. Scroll to Model and tap. In the model list, scroll to Sonnet and tap; that saves the model and opens effort. Scroll to Max and tap to apply it and return to your original page. The &gt; cursor is the highlighted row; * marks the current choice.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3>Just changing effort?</h3>
+      <p>Open Model and tap the already-starred model. That opens its effort picker without changing the model. <strong>X-High</strong> is Extra High; <strong>Ultra</strong> is Ultracode.</p>
+    </div>
+    <div class="card">
+      <h3>Back out deliberately</h3>
+      <p>Scroll up to the first row, then once more to leave a picker. Leaving the model list without tapping keeps the model unchanged. Leaving effort keeps the previous effort, but does <strong>not</strong> undo the model you already chose. These pickers do not use the Tasks footer&rsquo;s rolling wrap.</p>
+    </div>
+    <div class="card">
+      <h3>For your next message</h3>
+      <p>A model tap saves the model; an effort tap applies the effort and returns to where you started. Neither switches an in-flight answer. This example has seven models with Cursor ready; Cursor and Ollama availability can change the rows and count on your device.</p>
+    </div>
+  </div>
   <h3 id="ollama" style="margin-top:30px">Local models via Ollama</h3>
   <p style="max-width:74ch">Server 6.39.0 adds <strong>Ollama</strong> as a fourth model family beside Claude, Codex, and Cursor. The model runs entirely on your Mac, so a query never leaves the machine. Install Ollama (the Mac app from ollama.com, or Homebrew) and pull at least one model:</p>
   <div class="cmd"><span class="p">$</span><code>brew install ollama &amp;&amp; brew services start ollama</code><button type="button">Copy</button></div>
@@ -1859,10 +1725,9 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
 })();
 </script>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="../control/assets/session-command/session-deck.js?v=2"></script>
 <script src="../assets/ring-3d.js?v=8"></script>
-<script src="../assets/docs-hud.js?v=5"></script>
-<script src="../assets/ring-lessons.js?v=1"></script>
+<script src="../assets/docs-hud.js?v=6"></script>
+<script src="../assets/ring-lessons.js?v=3"></script>
 <script>
 (function(){
   // shared motion guard
@@ -1994,57 +1859,6 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
 
   // Ring to Lens is shared across the introduction and context lessons.
 
-  // Session demonstrations preserve the reader. Only the footer changes until recording opens.
-  var REST_FOOT = window.CosDocsHud ? window.CosDocsHud.frames.session.footer : '';
-  var MENU_FOOT = function(label, pos, enabled){ return '\u25B6 ' + label + ' \u00B7 ' + pos + '/4 \u00B7 ' + (enabled ? 'Scroll=move Tap=select' : 'Scroll=move \u00B7 Unavailable'); };
-  var STORIES = {
-    choice: { loop: 8800, beats: [
-      { at: 0,    frame: 'read', foot: REST_FOOT },
-      { at: 1500, chip: 0, frame: 'menu', cursor: 0, foot: MENU_FOOT('Back to list', 1, true) },
-      { at: 3400, chip: 1, cursor: 1, foot: MENU_FOOT('Continue', 2, true) },
-      { at: 5300, chip: 2, frame: 'mic', foot: 'Continue: say your next message' }
-    ]},
-    refusal: { loop: 7600, beats: [
-      { at: 0,    frame: 'menu', cursor: 1, foot: MENU_FOOT('Continue (unavailable)', 2, false) },
-      { at: 2200, chip: 0, cursor: 2, foot: MENU_FOOT('Fork', 3, true) },
-      { at: 4200, chip: 1, frame: 'mic', foot: 'Fork: say what the copy should start with' }
-    ]}
-  };
-  function lensStory(root, story){
-    var hud = root.querySelector('.hud');
-    var chips = [].slice.call(root.querySelectorAll('.sg .g-key'));
-    function apply(b){
-      if (b.at === 0) chips.forEach(function(c){ c.classList.remove('lit'); });
-      if (b.chip != null && chips[b.chip]) chips[b.chip].classList.add('lit');
-      if (b.frame) hud.innerHTML = window.CosDocsHud.html(b.frame === 'mic' ? 'sessionMic' : 'session');
-      var foot = hud.querySelector('.lens-footer');
-      if (b.foot != null && foot) foot.innerHTML = window.CosDocsHud.footerHtml(b.foot);
-    }
-    var tl = AN.createTimeline({ loop: true, autoplay: false, defaults: { ease: 'outQuad' } });
-    story.beats.forEach(function(b){
-      tl.add(hud, { opacity: [1, 1], duration: 1, onBegin: function(){ apply(b); } }, b.at);
-      if (b.chip != null && chips[b.chip]) tl.add(chips[b.chip], { scale: [1, 1.12, 1], duration: 380, ease: 'outBack(2)' }, b.at);
-    });
-    tl.add(hud, { opacity: [1, 1], duration: 1 }, story.loop - 1);
-
-    var inView = false, hover = false;
-    function sync(){ if (inView && !hover && !document.hidden && !rmq.matches) tl.play(); else tl.pause(); }
-    new IntersectionObserver(function(es){ es.forEach(function(e){ inView = e.isIntersecting; sync(); }); }, { threshold: .3 }).observe(root);
-    hud.addEventListener('mouseenter', function(){ hover = true;  sync(); });
-    hud.addEventListener('mouseleave', function(){ hover = false; sync(); });
-    hud.addEventListener('focusin',    function(){ hover = true;  sync(); });
-    hud.addEventListener('focusout',   function(){ hover = false; sync(); });
-    document.addEventListener('visibilitychange', sync);
-    if (rmq.addEventListener) rmq.addEventListener('change', sync);
-    root.__cosStage = tl;   // QA hook: a headless render pauses this and seeks to a beat
-  }
-  var rmq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (window.CosDocsHud && animeOK && !rm && ('IntersectionObserver' in window)) {
-    [].forEach.call(document.querySelectorAll('.exhibit[data-story]'), function(root){
-      var story = STORIES[root.getAttribute('data-story')];
-      if (story && root.querySelector('.hud')) lensStory(root, story);
-    });
-  }
 
   // ── #how arch: blocks stagger in, then connectors slide in after (one-shot) ──
   var arch = document.querySelector('#how .arch');

@@ -17,7 +17,39 @@
   var taskFixture = {title:'Prepare the Friday pilot checklist',column:'inbox',stage:'planning',doneWhen:'Checklist includes the owner, rollout date, and a tested rollback.'};
   var task = {nav:f.home.nav,body:taskFixture.title+'\n\nDONE WHEN\n'+taskFixture.doneWhen+'\n\nSTAGE\nPLANNING',footer:f.home.footer,thumb:true};
   function menu(base, rows, index) { return Object.assign({},base,{scroll:true,footer:'▶ '+rows[index]+' · '+(index+1)+'/'+rows.length+' · Scroll=move Tap=select'}); }
+  // Public sample: Cursor ready, Ollama not configured. The native picker shows
+  // five rows at once; its counter counts every available slot, not the window.
+  var modelRows = ['Opus','Fable','Sonnet','GPT Max','GPT Bal','Grok','Composer'];
+  var effortRows = ['High','X-High','Max','Ultra'];
+  function picker(kind, index) {
+    var models=kind==='model', rows=models?modelRows:effortRows;
+    var start=Math.max(0,Math.min(rows.length-5,index-2));
+    return {
+      nav:'COS ['+(models?'O':'S')+'] '+(models?'Model':'Effort')+' 9:16 AM 9/4/26',
+      body:rows.slice(start,start+5).map(function(label,i){var row=start+i;return (row===index?'>':' ')+(row===0?'*':' ')+label;}).join('\n'),
+      footer:(models?'Opus':'Sonnet')+'  '+(index+1)+'/'+rows.length+'  next msg  demo1234  82%',
+      layout:'picker'
+    };
+  }
+  // The footer still identifies the viewed message's original model. Only the
+  // active model in the nav changes; never relabel an old answer as Sonnet.
+  var modelHome=frame('home',{nav:f.home.nav.replace('[O]','[S]')});
+  var askTranscript='Summarize the pilot thread.';
+  var askDraft=frame('sessionMic',{body:'Listening...\n\n'+askTranscript,footer:'Opus  Tap to finish  demo1234  82%'});
   var lessons = {
+    models: [
+      step('Start with the current model','idle',f.home,'This example starts on Home with Opus and High effort. The same shortcut can be opened over the page you are reading. Nothing here changes your real settings or runs a model.'),
+      step('Tap, then press and hold','hold',frame('home',{menu:true,menuIndex:1}),'Tap and release, then quickly press again and keep holding. The shortcut window slides in from the left over Home. Ask COS is the first COS choice.'),
+      step('Scroll past Start Meeting','swipe-down',frame('home',{menu:true,menuIndex:2}),'One downward scroll moves one row. Highlighting Start Meeting does not start a recording; keep scrolling to Model.'),
+      step('Find Model: Opus','swipe-down',frame('home',{menu:true,menuIndex:3}),'Model shows the active choice. Highlight it, then make one deliberate tap to open the picker. This is not a double-tap.'),
+      step('Open the model picker','tap',picker('model',0),'The overlay closes and the model list takes over the HUD. > marks the row a tap will choose; * marks the current model. Both start on Opus. Five rows are visible, but the footer counts all seven available models in this example.'),
+      step('Move the cursor, not the setting','swipe-down',picker('model',1),'Scroll down to Fable. Opus keeps its * because scrolling only highlights a choice. No model has changed yet.'),
+      step('Highlight Sonnet','swipe-down',picker('model',2),'Scroll once more to Sonnet, 3 of 7. The ring moves the list selection, not a footer action menu. Read the > row before confirming.'),
+      step('Choose the model; open effort','tap',picker('effort',0),'Tap saves Sonnet immediately and opens the effort picker. The nav changes to [S]. High is still starred: choosing a model does not automatically raise its effort. The four lens labels are High, X-High, Max, and Ultra.'),
+      step('Move to X-High','swipe-down',picker('effort',1),'One scroll highlights X-High, called Extra High in phone Settings. High remains the current * until you tap a new level.'),
+      step('Highlight Max','swipe-down',picker('effort',2),'Scroll to Max, 3 of 4. Ultra is the lens label for Ultracode, one row below. Actual effort support depends on the chosen model; a larger setting is not a promise of a different model.'),
+      step('Confirm and return to your page','tap',modelHome,'Tap applies Max and returns to the page where you opened Model—Home here. [S] is the active model for your next message. The footer may still say Opus because it describes the existing message, not the new setting. A running answer is not switched mid-flight.')
+    ],
     messages: [
       step('Open a message','tap',f.reader,'A tap on a selected Messages row opens its prompt and answer. The Messages list and the open reader do not share the same double-tap action.'),
       step('Read to the bottom','swipe-down',f.continued,'Finish the body before choosing what to do next. The nav and footer stay fixed. You can open footer actions before reaching the bottom, too; this is not an unlock gesture.'),
@@ -33,7 +65,7 @@
       step('Keep your context','idle',f.reader,'Ask COS starts a new prompt. Reply continues the open message. Choose the route based on whether the answer should reference what you are reading.'),
       step('Tap, then press and hold','hold',frame('reader',{menu:true,menuIndex:1}),'Tap and release, then quickly press again and keep holding. The shortcut window slides over the current HUD. It is a separate layer, not a new message page.'),
       step('Choose Ask COS','tap',frame('sessionMic',{footer:'Opus  Tap to finish  demo1234  82%'}),'Select Ask COS for a fresh transcription. The recording view has no “Referencing #411” line because this is not a reply.'),
-      step('Protect the draft','double-tap',frame('sessionMic',{footer:'Opus  Tap to finish  demo1234  82%'}),'During voice-prompt capture, a double-tap does not send or discard the draft. Tap once to finish recording, then read the transcript and confirm Send.'),
+      step('Protect the draft','double-tap',askDraft,'This sample now has live transcript text. Double-tap while recording: Listening and the words stay on the lens. That unchanged draft is the protection, not a frozen screen. Tap once to finish recording, then read the transcript and confirm Send.'),
       step('After review and send','idle',f.job,'This example resumes after you have reviewed and sent the prompt. The job log shows the work in progress. No example on this page opens a real microphone or runs a model.'),
       step('Arm cancellation','double-tap',frame('job',{footer:'Double-tap again to cancel'}),'During an active run, the first double-tap arms cancellation. It does not immediately stop the job. The footer tells you to double-tap again within three seconds.'),
       step('Let the confirmation expire','idle',f.job,'If you do not confirm within three seconds, the run continues. A second double-tap inside that window would cancel and pause queued work. Read the footer before repeating a gesture.')
@@ -69,7 +101,38 @@
   lessons.ask[6].before=lessons.ask[5].frame;lessons.ask[6].settleAfter=3000;
   lessons.tasks[9].before=lessons.tasks[8].frame;lessons.tasks[9].settleAfter=3000;
   lessons.messages[8].before=f.reader;lessons.messages[8].settleAfter=650;
-  root.CosRingLessons = {lessons:lessons,taskFixture:taskFixture,task:task,sessionRows:sessionRows,taskRows:taskRows};
+  lessons.ask[1].resultText='Shortcut window open over the message';
+  lessons.ask[2].resultText='Ask COS selected · microphone view open';
+  lessons.ask[3].before=askDraft;
+  lessons.ask[3].transitionText='Double-tap during capture…';
+  lessons.ask[3].resultText='Draft protected · recording continues · nothing sent';
+  lessons.sessions[6].transitionText='Ask COS · 4 of 4 · scroll down…';
+  lessons.sessions[6].resultText='Back to list · 1 of 4 · wrapped without running an action';
+  // A chapter click is a replay, even when it jumps across steps. Establish its
+  // actual starting HUD first, then show the ring input and commit the result.
+  // Explicit timers make rapid clicks cancellable and testable without a DOM.
+  function playScene(s, previous, options) {
+    var cancelled=false,timers=[],schedule=options.schedule||setTimeout,unschedule=options.unschedule||clearTimeout;
+    function later(fn,ms){timers.push(schedule(function(){if(!cancelled)fn();},ms));}
+    function status(text){if(options.status)options.status(text);}
+    function final(){options.paint(s.frame,{animate:true});status(s.resultText||(s.settleAfter===3000?'Confirmation expired · normal footer restored':''));}
+    if(options.animate===false||options.reduced){options.paint(s.frame,{animate:false});status(s.resultText||'');}
+    else if(s.gesture==='hold'){
+      options.paint(s.before||previous||s.frame,{animate:false});
+      options.paint(s.frame,{hold:true,replay:true,animate:true});
+      status('Tap · release · press and hold…');
+      later(function(){status(s.resultText||'Shortcut window open');},1540);
+    } else {
+      var wait=s.settleAfter||({tap:320,'double-tap':650,'swipe-down':520,'swipe-up':520}[s.gesture]||0);
+      if(wait){
+        options.paint(s.before||previous||s.frame,{animate:false});
+        status(s.transitionText||(s.settleAfter===3000?'No input · waiting 3 seconds…':'Gesture in progress…'));
+        later(final,wait);
+      }else final();
+    }
+    return function(){cancelled=true;timers.forEach(unschedule);};
+  }
+  root.CosRingLessons = {lessons:lessons,taskFixture:taskFixture,task:task,sessionRows:sessionRows,taskRows:taskRows,modelRows:modelRows,effortRows:effortRows,picker:picker,playScene:playScene,askTranscript:askTranscript};
   if (typeof document === 'undefined') return;
   var main = document.querySelector('[data-ring-path]');
   if (!main) return;
@@ -97,7 +160,7 @@
     var screen=stage.querySelector('.rp-screen'),shell=stage.querySelector('.rp-ring-shell'),canvas=stage.querySelector('canvas');
     var reset=stage.querySelector('.rp-orbit-hint button'),gesture=stage.querySelector('.rp-gesture');
     var controls=stage.querySelector('.rp-stage-foot'),prev=controls.querySelector('button:first-child'),next=controls.querySelector('button:last-child');
-    var progress=stage.querySelector('.rp-progress'),index=0,ring=null,manual=false,timers=[];
+    var progress=stage.querySelector('.rp-progress'),index=0,ring=null,manual=false,timers=[],cancelScene=function(){};
     screen.id='ring-lesson-screen-'+(++sequence);
     buttons.forEach(function(b){b.setAttribute('aria-controls',screen.id);});
     var replay=document.createElement('button');replay.type='button';replay.className='rl-replay';replay.textContent='Replay gesture';
@@ -105,20 +168,22 @@
     var caption=document.createElement('p');caption.className='rl-caption';
     if(compact)stage.insertBefore(caption,controls);
     var status=document.createElement('span');status.className='rl-status';status.setAttribute('role','status');
-    stage.insertBefore(status,controls);
+    stage.querySelector('.rp-lens').after(status);
     var phase=document.createElement('div');phase.className='rl-contact';phase.setAttribute('aria-hidden','true');
     phase.innerHTML='<span>Tap</span><span>Release</span><span>Press + hold</span>';stage.querySelector('.rp-ring-zone').appendChild(phase);
     try {if(root.CosRing3D) ring=root.CosRing3D.create(canvas,{shell:shell,resetButton:reset});} catch (error) { /* Static ring and written instructions remain. */ }
     if(ring) stage.querySelector('.rp-orbit-hint').hidden=false;
     function render(n,replaying,animate) {
-      timers.forEach(clearTimeout);timers=[];
+      cancelScene();timers.forEach(clearTimeout);timers=[];
       index=Math.max(0,Math.min(states.length-1,n));var s=states[index];
       host.setAttribute('data-lesson-index',String(index));
       var reduced=root.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var waiting=!!s.settleAfter&&!reduced&&animate!==false;
-      hud.paint(screen,waiting?s.before:s.frame,{hold:s.gesture==='hold',replay:replaying,animate:animate});
-      status.textContent=waiting&&s.settleAfter===3000?'No input · waiting 3 seconds…':'';
-      if(waiting)timers.push(setTimeout(function(){hud.paint(screen,s.frame,{animate:true});status.textContent=s.settleAfter===3000?'Confirmation expired · normal footer restored':'';},s.settleAfter));
+      if(compact)cancelScene=playScene(s,index>0?states[index-1].frame:s.frame,{
+        animate:animate,reduced:reduced,
+        paint:function(view,options){hud.paint(screen,view,options);},
+        status:function(text){status.textContent=text;}
+      });
+      else hud.paint(screen,s.frame,{hold:s.gesture==='hold',replay:replaying,animate:animate});
       shell.setAttribute('data-gesture',s.gesture);gesture.setAttribute('data-gesture',s.gesture);gesture.textContent=labels[s.gesture];
       if(ring) ring.setGesture(s.gesture,labels[s.gesture]);
       phase.hidden=s.gesture!=='hold';

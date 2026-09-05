@@ -31,8 +31,9 @@
   var menuIdle = ['Display off', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Home', 'Brightness', 'Close'];
   var menuRecording = ['Display off', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Home', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function bodyHtml(body) {
+  function bodyHtml(body, layout) {
     return body.split('\n').map(function(line,i){
+      if (layout === 'picker') return line.charAt(0) === '>' ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
       var homeTitle = line.match(/^(Chief of Staff)( v[\d.]+)$/);
       if (homeTitle) return '<span class="lens-bright">'+escape(homeTitle[1])+'</span><span class="lens-dim">'+escape(homeTitle[2])+'</span>';
       return i === 0 || line.indexOf('▶') === 0 ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
@@ -45,7 +46,7 @@
   function html(frame) {
     var f = typeof frame === 'string' ? frames[frame] : frame;
     if (!f) throw new Error('Unknown Docs HUD frame');
-    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
+    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body, f.layout) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
     if (f.menu) {
       var items = f.recording ? menuRecording : menuIdle;
       var selected = f.menuIndex == null ? 1 : f.menuIndex;
@@ -90,6 +91,11 @@
       text.style.transform = 'translateY(' + end + 'px)';
       if (sameBody && !!old.scroll !== !!f.scroll) animate(text, {translateY:[old.scroll ? -Math.max(0,text.scrollHeight-body.clientHeight) : 0,end],duration:580,ease:'inOutCubic'});
       if (sameBody && old.footer !== f.footer) animate(el.querySelector('.lens-footer'), {opacity:[.5,1],duration:280,ease:'outQuad'});
+      if (f.layout === 'picker') {
+        var cursor = text.querySelector('.lens-bright');
+        if (cursor) cursor.style.opacity = '1';
+        if (!sameBody) animate(cursor, {opacity:[.55,1],duration:180,ease:'outQuad'});
+      }
       if (f.menu) {
         var box = document.createElement('div'); box.innerHTML = html(f);
         var panel = box.querySelector('.lens-host-menu'); el.appendChild(panel);

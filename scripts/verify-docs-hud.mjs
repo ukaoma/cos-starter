@@ -42,6 +42,8 @@ const activity = await source('src/lib/job-activity.ts');
 const readerMenu = await source('src/lib/reader-action-menu.ts');
 const tasks = await source('src/lib/task-menu.ts');
 const queryStatus = await source('src/lib/query-status.ts');
+const modelPicker = await source('src/lib/hub-model-picker.ts');
+const effortPicker = await source('src/lib/hub-effort-picker.ts');
 const f = hud.frames;
 
 for (const [recording, fixture] of [[false, hud.menuIdle], [true, hud.menuRecording]]) {
@@ -111,6 +113,36 @@ eq(f.job.footer, footer('Running · double-tap to cancel'), 'Job elapsed footer'
 // Menus with all rows visible clamp; one-row footer menus wrap. Exercise the
 // exported app functions, not their comments (one task comment is obsolete).
 const l = ringLessons.lessons;
+// The lesson uses the actual full-HUD picker body and footer, not the native
+// context menu's alternative model rows or the text-only fallback headings.
+state.pendingReference=null;state.isQueryStreaming=false;state.currentPage='model-picker';
+const modelSlots=modelPicker.hubModelPickerSlots(true,false);
+const effortSlots=effortPicker.hubEffortPickerSlots();
+eq(JSON.stringify(ringLessons.modelRows),JSON.stringify(modelSlots.map(model.modelShortLabel)),'Available model labels');
+eq(JSON.stringify(ringLessons.effortRows),JSON.stringify(effortSlots.map(effortPicker.effortShortLabel)),'Lens effort labels');
+for(let i=0;i<modelSlots.length;i++){
+  const view=ringLessons.picker('model',i);
+  eq(view.body,modelPicker.formatHubModelPickerBody(modelSlots,i,'opus'),'Model window/cursor/current '+i);
+  eq(view.footer,footer(modelPicker.hubModelPickerFooterLabel(modelSlots,i)),'Model next-message footer '+i);
+  eq(view.nav,pages.composeLensNavLine('COS [O] Model','9:16 AM',now),'Model header '+i);
+}
+state.modelPreference='sonnet';state.currentPage='effort-picker';
+for(let i=0;i<effortSlots.length;i++){
+  const view=ringLessons.picker('effort',i);
+  eq(view.body,effortPicker.formatHubEffortPickerBody(effortSlots,i,'high'),'Effort cursor/current '+i);
+  eq(view.footer,footer(effortPicker.hubEffortPickerFooterLabel(effortSlots,i)),'Effort next-message footer '+i);
+  eq(view.nav,pages.composeLensNavLine('COS [S] Effort','9:16 AM',now),'Effort header '+i);
+}
+state.currentPage='welcome';state.currentMsgIndex=2;
+eq(l.models[10].frame.nav,pages.composeLensNavLine('COS [S]','9:16 AM',now,['3msg','2m']),'Returned Home active model');
+eq(l.models[10].frame.footer,footer(),'Returned Home retains old message attribution');
+eq(l.models[10].frame.body,f.home.body,'Return does not rewrite the existing Home body');
+eq(modelPicker.hubModelPickerSlots(false,false).length,5,'Unavailable Cursor/Ollama are absent');
+eq(modelPicker.hubModelPickerSlots(true,true).length,8,'Ready Ollama adds a slot');
+for(const s of l.models){
+  const rendered=hud.html(s.frame).match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1];
+  eq(rendered.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&gt;/g,'>'),s.frame.body,'Model lesson preserves native body characters');
+}
 const photoActions = readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:false});
 for (const [step,index] of [[2,0],[3,1],[4,2],[5,2],[6,1]]) {
   eq(l.messages[step].frame.footer,readerMenu.formatQueryResultActionFooter(index,photoActions),'Reader menu selection '+step);
@@ -136,6 +168,8 @@ eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last t
 eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
 eq(l.ask[5].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
 eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
+eq(l.ask[3].frame.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Protected draft retains real live-transcript format');
+eq(l.ask[3].before.body,l.ask[3].frame.body,'Double-tap preserves the captured words');
 eq(l.messages[7].frame.body,l.messages[8].frame.body,'Confirmed Reply and express Reply reference same message');
 
 // Evaluate only the actual isolated routing function with harmless spies. No
@@ -182,7 +216,12 @@ for (const match of html.matchAll(/<div\b[^>]*data-hud="([^"]+)"[^>]*>/g)) {
 }
 eq(hud.ringFrames.length,8,'Eight gesture states');
 eq([...html.matchAll(/data-rp-step="\d+"/g)].length,8,'Eight matching walkthrough steps');
-eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,4,'Four reusable context lessons');
+eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,5,'Five reusable context lessons');
+assert.ok(!html.includes('data-session-deck'),'Desktop session deck is not a glasses lesson');checks++;
+assert.ok(!html.includes('data-story="choice"'),'Sessions uses the shared ring, not an independent autoplay HUD');checks++;
+const sessionsSection=html.match(/<section[^>]+id="sessions">([\s\S]*?)<\/section>/)?.[1];
+assert.ok(sessionsSection?.includes('data-ring-lesson="sessions"'),'Sessions owns its top-level ring lesson');checks++;
+eq([...html.matchAll(/href="#sessions">Sessions<\/a>/g)].length,2,'Desktop and mobile navigation expose Sessions');
 assert.ok(!html.includes('double-tap anywhere in the list'),'No stale list recording instruction');checks++;
 assert.ok(html.includes('Task-menu wrapping requires glasses 6.9.455'),'Task wrap version is qualified');checks++;
 for (const [context,steps] of Object.entries(l)) for (const step of steps) {

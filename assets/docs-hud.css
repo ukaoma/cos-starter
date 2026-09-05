@@ -59,7 +59,7 @@ section.light .rl-choices [data-active] button{color:var(--ink-on-cream)}
 .ring-lesson button:focus-visible,.rl-links a:focus-visible,.rl-replay:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .rl-reference{margin-top:32px}.rl-reference summary{cursor:pointer;font-weight:600;padding:14px 0}
 .rl-caption{display:none}
-.rl-status{display:block;font:400 .64rem/1.4 var(--mono);color:var(--gold);padding:0 18px 12px}
+.rl-status{display:block;font:400 .64rem/1.4 var(--mono);color:var(--gold);padding:8px 0 0;min-height:2.8em}
 .rl-status:empty{display:none}
 @media(max-width:860px){.rl-grid{grid-template-columns:1fr}.rl-grid .rp-stage{position:relative;top:auto;max-width:620px;width:100%;margin-inline:auto}.rl-choices{max-width:620px;width:100%;margin-inline:auto}.ring-lesson .rl-caption,section.light .ring-lesson .rl-caption{display:block;color:var(--muted);font:.83rem/1.5 var(--body);padding:0 16px 16px;margin:0}}
 @media(prefers-reduced-motion:reduce){.lens-host-menu{will-change:auto}.rl-choices *{transition:none}}
