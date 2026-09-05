@@ -20,6 +20,18 @@ permissions:
   contents: read
 
 jobs:
+  ring-renderer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Ring geometry, gesture execution, and reduced-motion regressions
+        run: node --test tests/ring-3d.test.cjs
+
   kokoro-python:
     runs-on: ubuntu-latest
     steps:

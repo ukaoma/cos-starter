@@ -2,7 +2,7 @@
   'use strict';
 
   var TAU = Math.PI * 2;
-  var BASE_POSE = {x:-0.34,y:0.28,z:-0.08};
+  var BASE_POSE = {x:-0.46,y:0.24,z:-0.08};
 
   function clamp(value, min, max){ return Math.max(min, Math.min(max, value)); }
   function lerp(a, b, amount){ return a + (b - a) * amount; }
@@ -53,26 +53,31 @@
     this.motionQuery=global.matchMedia ? global.matchMedia('(prefers-reduced-motion: reduce)') : null;
     this.reduced=!!(this.motionQuery && this.motionQuery.matches);
     this.light=normalize({x:-0.42,y:-0.66,z:0.9});
-    this.innerRadius=1.12;
-    this.outerRadius=1.36;
-    this.uSegments=72;
+    this.innerRadius=1.03;
+    this.outerRadius=1.37;
+    this.crownHeight=1.39;
+    this.crownHalfAngle=.30;
+    this.shoulderEnd=.67;
+    this.uSegments=96;
+    // Axial width and radial wall are independent dimensions. The broad ceramic
+    // band surrounds a round bore; only the outside has the flat crown/shoulders.
     this.profile=[
-      {r:1.18,z:-0.21,mat:'steel'},
-      {r:1.28,z:-0.21,mat:'body'},
-      {r:1.33,z:-0.18,mat:'body'},
-      {r:1.36,z:-0.11,mat:'body'},
-      {r:1.37,z:-0.04,mat:'body'},
-      {r:1.37,z:0.04,mat:'body'},
-      {r:1.36,z:0.11,mat:'body'},
-      {r:1.33,z:0.18,mat:'body'},
-      {r:1.28,z:0.21,mat:'body'},
-      {r:1.18,z:0.21,mat:'steel'},
-      {r:1.125,z:0.18,mat:'steel'},
-      {r:1.1,z:0.12,mat:'steel'},
-      {r:1.1,z:0.04,mat:'steel'},
-      {r:1.1,z:-0.04,mat:'steel'},
-      {r:1.1,z:-0.12,mat:'steel'},
-      {r:1.125,z:-0.18,mat:'steel'}
+      {r:1.11,z:-0.33,mat:'steel'},
+      {r:1.26,z:-0.33,mat:'body'},
+      {r:1.33,z:-0.30,mat:'body'},
+      {r:1.365,z:-0.26,mat:'body'},
+      {r:1.37,z:-0.21,mat:'body'},
+      {r:1.37,z:0.21,mat:'body'},
+      {r:1.365,z:0.26,mat:'body'},
+      {r:1.33,z:0.30,mat:'body'},
+      {r:1.26,z:0.33,mat:'body'},
+      {r:1.11,z:0.33,mat:'steel'},
+      {r:1.055,z:0.29,mat:'steel'},
+      {r:1.03,z:0.21,mat:'steel'},
+      {r:1.03,z:0.07,mat:'steel'},
+      {r:1.03,z:-0.07,mat:'steel'},
+      {r:1.03,z:-0.21,mat:'steel'},
+      {r:1.055,z:-0.29,mat:'steel'}
     ];
     this.vSegments=this.profile.length;
     this.vertices=[];
@@ -106,16 +111,9 @@
   RingRenderer.prototype.buildMesh=function(){
     for(var u=0;u<this.uSegments;u++){
       var ua=TAU*u/this.uSegments;
-      var cu=Math.cos(ua), su=Math.sin(ua);
       for(var v=0;v<this.vSegments;v++){
         var section=this.profile[v];
-        var crownWeight=section.mat==='body' && section.r>1.27 ? this.crownField(ua)*((section.r-1.27)/.1) : 0;
-        var radius=section.r+crownWeight;
-        this.vertices.push({
-          x:radius*cu,
-          y:radius*su,
-          z:section.z
-        });
+        this.vertices.push(this.surfacePoint(ua,section.z,section.r));
       }
     }
     for(var ui=0;ui<this.uSegments;ui++){
@@ -131,14 +129,16 @@
     }
   };
 
-  RingRenderer.prototype.crownField=function(angle){
+  RingRenderer.prototype.outerContour=function(angle){
     var delta=Math.abs(normalizeAngle(angle-this.crownAngle));
-    var plateau=.202;
-    var shoulder=.291;
-    if(delta<=plateau) return .05;
-    if(delta>=plateau+shoulder) return 0;
-    var t=(delta-plateau)/shoulder;
-    return .05*(1-t*t*(3-2*t));
+    if(delta>=this.shoulderEnd) return this.outerRadius;
+    // A plane, not a constant-radius bulge: every point on the crown has y=-h.
+    if(delta<=this.crownHalfAngle) return this.crownHeight/Math.cos(delta);
+    var x0=this.crownHeight*Math.tan(this.crownHalfAngle);
+    var x1=this.outerRadius*Math.sin(this.shoulderEnd);
+    var y1=-this.outerRadius*Math.cos(this.shoulderEnd);
+    var slope=(y1+this.crownHeight)/(x1-x0);
+    return (this.crownHeight+slope*x0)/(Math.cos(delta)+slope*Math.sin(delta));
   };
 
   RingRenderer.prototype.bind=function(){
@@ -297,8 +297,8 @@
     this.gestureStarted=performance.now();
     var poses={
       'idle':BASE_POSE,
-      'swipe-up':{x:-0.66,y:-0.18,z:-0.13},
-      'swipe-down':{x:-0.5,y:0.08,z:0.1},
+      'swipe-up':{x:-0.8,y:-0.28,z:-0.14},
+      'swipe-down':{x:-0.8,y:-0.28,z:0.06},
       'tap':{x:-1.12,y:0.32,z:-0.11},
       'double-tap':{x:-0.76,y:-0.18,z:0.13}
     };
@@ -323,8 +323,8 @@
   RingRenderer.prototype.frame=function(now){
     this.frameId=0;
     if(this.destroyed || !this.inView || !this.pageVisible) return;
-    if(!this.lastFrame || now-this.lastFrame>=18){
-      var frameScale=this.lastFrame ? clamp((now-this.lastFrame)/16.67,0.5,2) : 1;
+    {
+      var frameScale=this.lastFrame ? clamp((now-this.lastFrame)/16.67,0.1,2) : 1;
       this.lastFrame=now;
       if(!this.dragging && !this.reduced){
         this.target.x+=this.velocity.x*frameScale;
@@ -356,7 +356,69 @@
   };
 
   RingRenderer.prototype.surfacePoint=function(angle,z,radius){
-    return {x:Math.cos(angle)*radius,y:Math.sin(angle)*radius,z:z};
+    var shape=clamp((radius-1.11)/(this.outerRadius-1.11),0,1);
+    var r=radius+shape*(this.outerContour(angle)-this.outerRadius);
+    return {x:Math.cos(angle)*r,y:Math.sin(angle)*r,z:z};
+  };
+
+  // The software depth buffer gives surface details the same occlusion as the
+  // shell. A rear sensor or logo must never be composited over the near wall.
+  RingRenderer.prototype.rasterTriangle=function(a,b,c,visit){
+    var den=(b.y-c.y)*(a.x-c.x)+(c.x-b.x)*(a.y-c.y);
+    if(Math.abs(den)<.00001) return;
+    var left=Math.max(0,Math.floor(Math.min(a.x,b.x,c.x)));
+    var right=Math.min(this.depthWidth-1,Math.ceil(Math.max(a.x,b.x,c.x)));
+    var top=Math.max(0,Math.floor(Math.min(a.y,b.y,c.y)));
+    var bottom=Math.min(this.depthHeight-1,Math.ceil(Math.max(a.y,b.y,c.y)));
+    for(var y=top;y<=bottom;y++) for(var x=left;x<=right;x++){
+      var u=((b.y-c.y)*(x+.5-c.x)+(c.x-b.x)*(y+.5-c.y))/den;
+      var v=((c.y-a.y)*(x+.5-c.x)+(a.x-c.x)*(y+.5-c.y))/den;
+      if(u>=-.0001 && v>=-.0001 && u+v<=1.0001){
+        visit(y*this.depthWidth+x,u*a.scale+v*b.scale+(1-u-v)*c.scale);
+      }
+    }
+  };
+
+  RingRenderer.prototype.visiblePoint=function(point){
+    var x=Math.floor(point.x),y=Math.floor(point.y);
+    return x>=0 && x<this.depthWidth && y>=0 && y<this.depthHeight &&
+      point.scale+.002>=this.depth[y*this.depthWidth+x];
+  };
+
+  RingRenderer.prototype.strokeSurface=function(ctx,path,closed){
+    ctx.beginPath();
+    for(var i=0;i<path.length-(closed?0:1);i++){
+      var a=path[i],b=path[(i+1)%path.length];
+      if(this.visiblePoint(a) && this.visiblePoint(b)){
+        ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      }
+    }
+    ctx.stroke();
+  };
+
+  RingRenderer.prototype.clipSurface=function(ctx,polygon){
+    var self=this,mask=this.detailMask;
+    mask.fill(0);
+    for(var i=1;i<polygon.length-1;i++){
+      this.rasterTriangle(polygon[0],polygon[i],polygon[i+1],function(index,depth){
+        if(depth+.002>=self.depth[index]) mask[index]=1;
+      });
+    }
+    var xs=polygon.map(function(p){return p.x;}),ys=polygon.map(function(p){return p.y;});
+    var left=Math.max(0,Math.floor(Math.min.apply(null,xs))-1);
+    var right=Math.min(this.depthWidth-1,Math.ceil(Math.max.apply(null,xs))+1);
+    var top=Math.max(0,Math.floor(Math.min.apply(null,ys))-1);
+    var bottom=Math.min(this.depthHeight-1,Math.ceil(Math.max.apply(null,ys))+1);
+    ctx.beginPath();
+    for(var y=top;y<=bottom;y++){
+      var start=-1;
+      for(var x=left;x<=right+1;x++){
+        var visible=x<=right && mask[y*this.depthWidth+x];
+        if(visible && start<0) start=x;
+        if(!visible && start>=0){ctx.rect(start,y,x-start,1);start=-1;}
+      }
+    }
+    ctx.clip();
   };
 
   RingRenderer.prototype.draw=function(now){
@@ -367,8 +429,8 @@
     ctx.clearRect(0,0,this.width,this.height);
 
     var glow=ctx.createRadialGradient(this.width*.5,this.height*.47,0,this.width*.5,this.height*.47,Math.min(this.width,this.height)*.52);
-    glow.addColorStop(0,'rgba(77,213,138,.13)');
-    glow.addColorStop(.42,'rgba(31,111,71,.055)');
+    glow.addColorStop(0,'rgba(77,213,138,.035)');
+    glow.addColorStop(.42,'rgba(31,111,71,.045)');
     glow.addColorStop(1,'rgba(7,16,10,0)');
     ctx.fillStyle=glow;
     ctx.fillRect(0,0,this.width,this.height);
@@ -380,45 +442,53 @@
     }
 
     var faces=[];
+    this.depthWidth=Math.ceil(this.width);this.depthHeight=Math.ceil(this.height);
+    var depthSize=this.depthWidth*this.depthHeight;
+    if(!this.depth || this.depth.length!==depthSize){
+      this.depth=new Float32Array(depthSize);this.detailMask=new Uint8Array(depthSize);
+    }else this.depth.fill(0);
+    var self=this;
     for(var f=0;f<this.faces.length;f++){
       var face=this.faces[f];
       var p0=points[face.indices[0]],p1=points[face.indices[1]],p2=points[face.indices[2]],p3=points[face.indices[3]];
       var normal=normalize(cross(subtract(p1,p0),subtract(p3,p0)));
-      faces.push({p:[p0,p1,p2,p3],n:normal,z:(p0.z+p1.z+p2.z+p3.z)/4,index:f,mat:face.mat});
+      var center={x:(p0.x+p1.x+p2.x+p3.x)/4,y:(p0.y+p1.y+p2.y+p3.y)/4,z:(p0.z+p1.z+p2.z+p3.z)/4};
+      if(dot(normal,subtract({x:0,y:0,z:5.4},center))<=0) continue;
+      var projected=[p0,p1,p2,p3].map(function(p){return self.project(p);});
+      var writeDepth=function(index,value){if(value>self.depth[index]) self.depth[index]=value;};
+      this.rasterTriangle(projected[0],projected[1],projected[2],writeDepth);
+      this.rasterTriangle(projected[0],projected[2],projected[3],writeDepth);
+      faces.push({p:projected,n:normal,z:center.z,index:f,mat:face.mat});
     }
     faces.sort(function(a,b){ return a.z-b.z; });
 
     ctx.lineJoin='round';
     for(var fi=0;fi<faces.length;fi++){
       var item=faces[fi];
-      var a=this.project(item.p[0]),b=this.project(item.p[1]),c=this.project(item.p[2]),d=this.project(item.p[3]);
+      var a=item.p[0],b=item.p[1],c=item.p[2],d=item.p[3];
       var area=(b.x-a.x)*(d.y-a.y)-(b.y-a.y)*(d.x-a.x);
       if(Math.abs(area)<0.015) continue;
       var diffuse=Math.max(0,dot(item.n,this.light));
       var facing=Math.abs(item.n.z);
-      var rim=1-Math.abs(item.n.z);
       var spec=Math.pow(Math.max(0,diffuse*.76+facing*.24),11);
-      var back=item.n.z<0;
       var steel=item.mat==='steel';
-      var grain=((item.index*19)%13-6)*.45;
-      var red=steel ? 72+diffuse*66+spec*102+grain : 10+diffuse*25+spec*80+grain;
-      var green=steel ? 154+diffuse*55+spec*46+grain : 51+diffuse*77+spec*95+grain;
-      var blue=steel ? 108+diffuse*65+spec*80 : 32+diffuse*54+spec*70;
-      var alpha=(steel ? .4 : .23)+(rim*(steel?.22:.2))+(spec*(steel?.35:.3));
-      if(back) alpha*=steel?.52:.45;
-      ctx.fillStyle='rgba('+Math.round(clamp(red,0,238))+','+Math.round(clamp(green,0,255))+','+Math.round(clamp(blue,0,242))+','+clamp(alpha,.06,.9).toFixed(3)+')';
+      var grain=((item.index*19)%13-6)*.12;
+      var red=steel ? 34+diffuse*52+spec*72+grain : 7+diffuse*9+spec*25+grain;
+      var green=steel ? 98+diffuse*84+spec*53+grain : 33+diffuse*30+spec*75+grain;
+      var blue=steel ? 65+diffuse*65+spec*60 : 22+diffuse*20+spec*48;
+      ctx.fillStyle='rgb('+Math.round(clamp(red,0,238))+','+Math.round(clamp(green,0,255))+','+Math.round(clamp(blue,0,242))+')';
       ctx.beginPath();
       ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(c.x,c.y);ctx.lineTo(d.x,d.y);ctx.closePath();ctx.fill();
+      ctx.strokeStyle=ctx.fillStyle;ctx.lineWidth=.35;ctx.stroke();
     }
     this.drawSeams(ctx,points);
     this.drawCrown(ctx,now);
     this.drawSensorStack(ctx,now);
-    this.drawScan(ctx);
   };
 
   RingRenderer.prototype.drawSeams=function(ctx,points){
     var self=this;
-    var indices=[0,1,4,5,8,9,10,14,15];
+    var indices=[1,3,6,8,10,15];
     ctx.save();
     ctx.lineCap='round';
     indices.forEach(function(vIndex,band){
@@ -427,26 +497,13 @@
         var a3=points[u*self.vSegments+vIndex];
         var b3=points[next*self.vSegments+vIndex];
         var a=self.project(a3),b=self.project(b3);
-        var angle=TAU*(u+.5)/self.uSegments;
-        var radial=rotate({x:Math.cos(angle),y:Math.sin(angle),z:0},self.pose);
-        var visible=radial.z>.02;
-        var alpha=visible ? (band===0||band===indices.length-1?.46:.29) : .075;
-        ctx.strokeStyle='rgba(77,213,138,'+alpha+')';
-        ctx.lineWidth=visible ? .9 : .55;
-        if(visible){ctx.shadowColor='rgba(77,213,138,.45)';ctx.shadowBlur=2.5;}else ctx.shadowBlur=0;
-        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        ctx.strokeStyle='rgba(108,236,163,'+(band<4?.58:.72)+')';
+        ctx.lineWidth=.65;
+        ctx.shadowColor='rgba(77,213,138,.4)';ctx.shadowBlur=2;
+        self.strokeSurface(ctx,[a,b]);
       }
     });
     ctx.restore();
-  };
-
-  RingRenderer.prototype.patchPoints=function(angle,angleHalf,zHalf,radius){
-    return [
-      this.project(rotate(this.surfacePoint(angle-angleHalf,-zHalf,radius),this.pose)),
-      this.project(rotate(this.surfacePoint(angle+angleHalf,-zHalf,radius),this.pose)),
-      this.project(rotate(this.surfacePoint(angle+angleHalf,zHalf,radius),this.pose)),
-      this.project(rotate(this.surfacePoint(angle-angleHalf,zHalf,radius),this.pose))
-    ];
   };
 
   RingRenderer.prototype.tracePatch=function(ctx,points){
@@ -457,31 +514,27 @@
   };
 
   RingRenderer.prototype.drawCrown=function(ctx,now){
-    var radius=this.outerRadius+this.crownField(this.crownAngle)+.035;
-    var normal=rotate({x:Math.cos(this.crownAngle),y:Math.sin(this.crownAngle),z:0},this.pose);
-    var visibility=clamp((normal.z+.25)/.75,.16,1);
-    var panel=this.patchPoints(this.crownAngle,.245,.12,radius);
-    var inset=this.patchPoints(this.crownAngle,.225,.106,radius+.006);
-    var mark=this.patchPoints(this.crownAngle,.123,.088,radius+.012);
-    ctx.save();
-    ctx.globalAlpha=visibility;
-    ctx.shadowColor='rgba(77,213,138,.4)';ctx.shadowBlur=6;
-    this.tracePatch(ctx,panel);ctx.fillStyle='rgba(9,38,25,.5)';ctx.fill();ctx.strokeStyle='rgba(121,244,178,.58)';ctx.lineWidth=.8;ctx.stroke();
-    ctx.shadowBlur=0;
-    this.tracePatch(ctx,inset);ctx.strokeStyle='rgba(77,213,138,.36)';ctx.lineWidth=.55;ctx.stroke();
-    ctx.restore();
-
-    this.drawEvenMark(ctx,mark,visibility);
+    var self=this;
+    var normal=rotate({x:0,y:-1,z:0},this.pose);
+    var center=rotate({x:0,y:-this.crownHeight,z:0},this.pose);
+    if(dot(normal,subtract({x:0,y:0,z:5.4},center))>0){
+      // Original 1.20:1 Even vector, flush on the actual flat crown plane.
+      var mark=[{x:-.18,z:-.15},{x:.18,z:-.15},{x:.18,z:.15},{x:-.18,z:.15}].map(function(p){
+        return self.project(rotate({x:p.x,y:-self.crownHeight-.006,z:p.z},self.pose));
+      });
+      ctx.save();this.clipSurface(ctx,mark);this.drawEvenMark(ctx,mark,1);ctx.restore();
+    }
 
     var railAngle=(this.touchRailStart+this.touchRailEnd)/2;
     var railNormal=rotate({x:Math.cos(railAngle),y:Math.sin(railAngle),z:0},this.pose);
-    var railVisibility=clamp((railNormal.z+.08)/.55,0,1);
-    var railRadius=this.outerRadius+.026;
+    var railCenter=rotate(this.surfacePoint(railAngle,0,this.outerRadius),this.pose);
+    var railVisibility=clamp(dot(railNormal,normalize(subtract({x:0,y:0,z:5.4},railCenter)))/.35,0,1);
+    var railRadius=this.outerRadius+.009;
     ctx.save();ctx.globalAlpha=railVisibility;ctx.fillStyle='rgba(178,255,211,.72)';ctx.shadowColor='rgba(77,213,138,.85)';ctx.shadowBlur=4;
     for(var i=0;i<5;i++){
       var theta=lerp(this.touchRailStart,this.touchRailEnd,i/4);
       var p=this.project(rotate(this.surfacePoint(theta,0,railRadius),this.pose));
-      ctx.fillRect(p.x-1.1,p.y-1.1,2.2,2.2);
+      if(this.visiblePoint(p)) ctx.fillRect(p.x-.85,p.y-.85,1.7,1.7);
     }
     ctx.restore();
     this.drawGesture(ctx,now,railVisibility,railRadius,this.touchRailStart,this.touchRailEnd);
@@ -497,7 +550,7 @@
     ctx.globalAlpha=visibility;
     ctx.transform(a,b,c,d,e,f);
     ctx.fillStyle='rgba(222,255,235,.96)';
-    ctx.shadowColor='rgba(152,255,200,.84)';ctx.shadowBlur=4/Math.max(Math.abs(a),Math.abs(d),.01);
+    ctx.shadowColor='rgba(152,255,200,.65)';ctx.shadowBlur=1/Math.max(Math.abs(a),Math.abs(d),.01);
     if(this.evenMarkPaths){
       ctx.fill(this.evenMarkPaths[0]);
       ctx.fill(this.evenMarkPaths[1],'evenodd');
@@ -511,28 +564,30 @@
   };
 
   RingRenderer.prototype.drawSensorStack=function(ctx,now){
-    var radial={x:Math.cos(this.sensorAngle),y:Math.sin(this.sensorAngle),z:0};
-    var normal=rotate({x:-radial.x,y:-radial.y,z:0},this.pose);
-    var visibility=clamp((normal.z+.18)/.62,.18,1);
-    var radius=this.innerRadius-.018;
-    var panel=this.patchPoints(this.sensorAngle,.4,.145,radius);
-    ctx.save();
-    ctx.globalAlpha=visibility;
-    ctx.shadowColor='rgba(159,250,187,.8)';ctx.shadowBlur=9;
-    this.tracePatch(ctx,panel);ctx.fillStyle='rgba(4,24,15,.82)';ctx.fill();ctx.strokeStyle='rgba(207,255,226,.72)';ctx.lineWidth=1.1;ctx.stroke();
-    ctx.shadowBlur=0;
-    var offsets=[-.245,-.12,0,.12,.245];
+    var radius=this.innerRadius-.007;
+    var offsets=[-.58,-.30,0,.30,.58];
     for(var i=0;i<offsets.length;i++){
-      var segment=this.patchPoints(this.sensorAngle+offsets[i],.042,i===2?.088:.072,radius-.012);
+      var angle=this.sensorAngle+offsets[i];
+      var normal=rotate({x:-Math.cos(angle),y:-Math.sin(angle),z:0},this.pose);
+      var center=rotate(this.surfacePoint(angle,0,radius),this.pose);
+      if(dot(normal,subtract({x:0,y:0,z:5.4},center))<=0) continue;
+      var wide=i===2?.13:(i===0||i===4?.062:.10);
+      var segment=[];
+      // Rounded, individual flush windows; there is no floating controller plate.
+      for(var j=0;j<32;j++){
+        var phase=TAU*j/32,cs=Math.cos(phase),sn=Math.sin(phase);
+        var da=Math.sign(cs)*Math.pow(Math.abs(cs),.45)*wide;
+        var z=Math.sign(sn)*Math.pow(Math.abs(sn),.45)*.125;
+        segment.push(this.project(rotate(this.surfacePoint(angle+da,z,radius),this.pose)));
+      }
+      ctx.save();this.clipSurface(ctx,segment);
       this.tracePatch(ctx,segment);
-      ctx.fillStyle=i===2?'rgba(188,255,214,.42)':'rgba(91,225,151,.2)';ctx.fill();
-      ctx.strokeStyle='rgba(221,255,234,.82)';ctx.lineWidth=.8;ctx.stroke();
+      ctx.fillStyle=i===2?'rgba(15,61,39,.92)':'rgba(40,110,72,.88)';ctx.fill();
+      ctx.restore();
+      ctx.save();ctx.strokeStyle='rgba(204,255,224,.82)';ctx.lineWidth=.8;
+      ctx.shadowColor='rgba(159,250,187,.5)';ctx.shadowBlur=3;
+      this.strokeSurface(ctx,segment,true);ctx.restore();
     }
-    [-.46,.46].forEach(function(offset){
-      var pocket=this.patchPoints(this.sensorAngle+offset,.055,.09,radius-.006);
-      this.tracePatch(ctx,pocket);ctx.fillStyle='rgba(18,85,52,.35)';ctx.fill();ctx.strokeStyle='rgba(121,244,178,.46)';ctx.stroke();
-    },this);
-    ctx.restore();
   };
 
   RingRenderer.prototype.surfaceLoop=function(angle,radius,angleHalf,zHalf){
@@ -573,25 +628,33 @@
       var fade=local<1050 ? 1 : clamp(1-(local-1050)/700,.22,1);
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*fade;
       ctx.strokeStyle='rgba(159,250,187,.24)';ctx.lineWidth=this.width<230 ? 2.2 : 1.7;ctx.lineCap='round';ctx.lineJoin='round';
-      ctx.beginPath();ctx.moveTo(guideStart.x,guideStart.y);ctx.lineTo(guideEnd.x,guideEnd.y);ctx.stroke();
-      ctx.fillStyle='rgba(159,250,187,.52)';ctx.beginPath();ctx.moveTo(guideEnd.x,guideEnd.y);ctx.lineTo(guideEnd.x-ux*arrowSize-uy*arrowSize*.58,guideEnd.y-uy*arrowSize+ux*arrowSize*.58);ctx.lineTo(guideEnd.x-ux*arrowSize+uy*arrowSize*.58,guideEnd.y-uy*arrowSize-ux*arrowSize*.58);ctx.closePath();ctx.fill();
+      var guide=[];
+      for(var g=0;g<=18;g++) guide.push(this.project(rotate(this.surfacePoint(lerp(from,to,g/18),0,radius+.014),this.pose)));
+      this.strokeSurface(ctx,guide);
+      if(this.visiblePoint(guideEnd)){
+        ctx.fillStyle='rgba(159,250,187,.52)';ctx.beginPath();ctx.moveTo(guideEnd.x,guideEnd.y);ctx.lineTo(guideEnd.x-ux*arrowSize-uy*arrowSize*.58,guideEnd.y-uy*arrowSize+ux*arrowSize*.58);ctx.lineTo(guideEnd.x-ux*arrowSize+uy*arrowSize*.58,guideEnd.y-uy*arrowSize-ux*arrowSize*.58);ctx.closePath();ctx.fill();
+      }
       ctx.strokeStyle='rgba(159,250,187,.94)';ctx.lineWidth=this.width<230 ? 3.3 : 2.5;
       ctx.shadowColor='rgba(70,232,120,.95)';ctx.shadowBlur=9;
-      ctx.beginPath();path.forEach(function(p,index){if(!index)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y);});ctx.stroke();
-      var head=path[path.length-1];ctx.fillStyle='rgba(159,250,187,1)';ctx.beginPath();ctx.arc(head.x,head.y,(this.width<230 ? 4.6 : 3.6)*head.scale,0,TAU);ctx.fill();
+      this.strokeSurface(ctx,path);
+      var head=path[path.length-1];
+      if(this.visiblePoint(head)){
+        ctx.fillStyle='rgba(159,250,187,1)';ctx.beginPath();ctx.arc(head.x,head.y,(this.width<230 ? 4.6 : 3.6)*head.scale,0,TAU);ctx.fill();
+      }
       ctx.restore();
       return;
     }
 
     var centerAngle=(railStart+railEnd)/2;
     var center=this.project(rotate(this.surfacePoint(centerAngle,0,radius+.022),this.pose));
+    if(!this.visiblePoint(center)) return;
     if(this.reduced){
       var staticRings=this.gesture==='double-tap' ? [.055,.12] : [.09];
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha;
       ctx.strokeStyle='rgba(159,250,187,.9)';ctx.lineWidth=1.7;ctx.shadowColor='rgba(70,232,120,.82)';ctx.shadowBlur=8;
       staticRings.forEach(function(spread){
         var loop=this.surfaceLoop(centerAngle,radius+.024,spread,spread*.7);
-        ctx.beginPath();loop.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
+        this.strokeSurface(ctx,loop);
       },this);
       ctx.fillStyle='rgba(159,250,187,.95)';ctx.beginPath();ctx.arc(center.x,center.y,2.5*center.scale,0,TAU);ctx.fill();ctx.restore();
       return;
@@ -599,7 +662,7 @@
     ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*.32;
     ctx.strokeStyle='rgba(159,250,187,.92)';ctx.lineWidth=1.4;ctx.shadowColor='rgba(70,232,120,.7)';ctx.shadowBlur=6;
     var resting=this.surfaceLoop(centerAngle,radius+.024,this.gesture==='double-tap'?.075:.06,this.gesture==='double-tap'?.052:.042);
-    ctx.beginPath();resting.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
+    this.strokeSurface(ctx,resting);
     ctx.fillStyle='rgba(159,250,187,.9)';ctx.beginPath();ctx.arc(center.x,center.y,2.2*center.scale,0,TAU);ctx.fill();ctx.restore();
     var pulses=this.gesture==='double-tap' ? [0,340] : [0];
     pulses.forEach(function(offset){
@@ -610,9 +673,9 @@
       ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=1.6;ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=10;
       var spread=.03+p*.14;
       var pulse=this.surfaceLoop(centerAngle,radius+.026,spread,spread*.7);
-      ctx.beginPath();pulse.forEach(function(point,index){if(!index)ctx.moveTo(point.x,point.y);else ctx.lineTo(point.x,point.y);});ctx.stroke();
+      this.strokeSurface(ctx,pulse);
       ctx.fillStyle='rgba(159,250,187,.95)';ctx.beginPath();ctx.arc(center.x,center.y,(2.8-p)*center.scale,0,TAU);ctx.fill();ctx.restore();
-    });
+    },this);
   };
 
   RingRenderer.prototype.drawCollar=function(ctx,now){
@@ -620,18 +683,13 @@
     var active=this.gesture!=='idle';
     var elapsed=now-this.gestureStarted;
     ctx.save();ctx.lineCap='round';
-    ctx.strokeStyle='rgba(77,213,138,'+(active?.15:.065)+')';ctx.lineWidth=1;
+    ctx.strokeStyle='rgba(77,213,138,'+(active?.035:.015)+')';ctx.lineWidth=1;
     ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.stroke();
     if(active){
-      var cycle=this.gesture.indexOf('swipe')===0?2400:2200;
-      var t=(elapsed%cycle)/cycle;
       ctx.shadowColor='rgba(77,213,138,.78)';ctx.shadowBlur=7;
-      ctx.strokeStyle='rgba(77,213,138,.72)';ctx.lineWidth=1.8;
-      if(this.gesture.indexOf('swipe')===0){
-        var start=this.gesture==='swipe-up' ? Math.PI*.72 : -Math.PI*.28;
-        var sweep=Math.PI*.72*easeOut(clamp(t*2.2,0,1));
-        ctx.beginPath();ctx.arc(cx,cy,r,start,start+(this.gesture==='swipe-up'?-sweep:sweep),this.gesture==='swipe-up');ctx.stroke();
-      }else{
+      ctx.strokeStyle='rgba(77,213,138,.12)';ctx.lineWidth=1;
+      // Swipe belongs on the hardware rail, not a second screen-space track.
+      if(this.gesture.indexOf('swipe')!==0){
         var pulse=(elapsed%900)/900;
         var pr=r*(.76+pulse*.24);
         ctx.globalAlpha=(1-pulse)*.8;
@@ -643,14 +701,6 @@
         }
       }
     }
-    ctx.restore();
-  };
-
-  RingRenderer.prototype.drawScan=function(ctx){
-    ctx.save();
-    ctx.globalCompositeOperation='screen';
-    ctx.fillStyle='rgba(77,213,138,.025)';
-    for(var y=2;y<this.height;y+=4) ctx.fillRect(this.width*.17,y,this.width*.66,.55);
     ctx.restore();
   };
 
