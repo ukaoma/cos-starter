@@ -93,12 +93,12 @@
       if (f.menu) {
         var box = document.createElement('div'); box.innerHTML = html(f);
         var panel = box.querySelector('.lens-host-menu'); el.appendChild(panel);
-        if (!old || !old.menu || options.replay) animate(panel, {translateX:['110%','0%'],opacity:[.2,1],delay:options.hold ? 1100 : 0,duration:440,ease:'outCubic'});
+        if (!old || !old.menu || options.replay) animate(panel, {translateX:['-110%','0%'],opacity:[.2,1],delay:options.hold ? 1100 : 0,duration:440,ease:'outCubic'});
       }
     }
     paints.set(el, {frame:f,cancel:function(){ cancelled=true; animations.forEach(function(a){a.pause();}); }});
     var panel = el.querySelector('.lens-host-menu');
-    if (panel && old && old.menu && !f.menu && motion) animate(panel, {translateX:['0%','110%'],opacity:[1,.2],duration:260,ease:'inCubic',onComplete:commit});
+    if (panel && old && old.menu && !f.menu && motion) animate(panel, {translateX:['0%','-110%'],opacity:[1,.2],duration:260,ease:'inCubic',onComplete:commit});
     else commit();
   }
   root.CosDocsHud = { frames: frames, html: html, paint: paint, footerHtml: footerHtml, ringFrames: ringFrames, menuIdle: menuIdle, menuRecording: menuRecording };

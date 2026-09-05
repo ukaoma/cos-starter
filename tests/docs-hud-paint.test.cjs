@@ -33,19 +33,28 @@ function harness({reduced=false,anime=true}={}){
   return {hud:context.CosDocsHud,screen:new Box(),animations};
 }
 
-test('shortcut window sits over retained HUD nodes and slides independently',()=>{
+test('shortcut window slides in and out from the left over retained HUD nodes',()=>{
   const {hud,screen,animations}=harness();
   hud.paint(screen,'reader',{animate:false});const body=screen.querySelector('.lens-text');
   hud.paint(screen,{...hud.frames.reader,menu:true},{hold:true});
   assert.equal(screen.querySelector('.lens-text'),body,'opening menu must preserve the actual underlying body');
   assert.ok(screen.querySelector('.lens-host-menu'));
   assert.equal(animations.at(-1).props.delay,1100);
-  assert.deepEqual(Array.from(animations.at(-1).props.translateX),['110%','0%']);
+  assert.deepEqual(Array.from(animations.at(-1).props.translateX),['-110%','0%']);
   hud.paint(screen,'reader');const exit=animations.at(-1);
+  assert.deepEqual(Array.from(exit.props.translateX),['0%','-110%']);
   assert.ok(screen.querySelector('.lens-host-menu'),'exit holds old layer until slide finishes');
   exit.props.onComplete();
   assert.equal(screen.querySelector('.lens-host-menu'),null);
   assert.equal(screen.querySelector('.lens-text'),body,'Close does not replace the reading surface');
+});
+
+test('shortcut window is anchored left with its shadow toward the exposed HUD',()=>{
+  const css=fs.readFileSync(path.join(__dirname,'../assets/docs-hud.css'),'utf8');
+  const rule=css.match(/\.lens-host-menu\{([^}]+)\}/)[1];
+  assert.match(rule,/(?:^|;)left:4cqw;/);
+  assert.doesNotMatch(rule,/(?:^|;)right:/);
+  assert.match(rule,/(?:^|;)box-shadow:2cqw 0 /);
 });
 
 test('fast step changes cannot commit a stale outgoing overlay result',()=>{

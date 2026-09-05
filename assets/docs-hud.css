@@ -17,7 +17,7 @@
 .lens-hud .lens-scrolled .lens-text{transform:translateY(-19cqw)}
 .lens-thumb{position:absolute;right:0;top:2%;width:.25cqw;height:28%;border-radius:2px;background:var(--hud);opacity:.4}
 .lens-scrolled .lens-thumb{top:68%}
-.lens-host-menu{position:absolute;top:4cqw;bottom:4cqw;right:4cqw;width:63%;z-index:4;background:rgba(7,22,13,.97);color:rgba(70,232,120,.66);border:1px solid rgba(70,232,120,.35);border-radius:2cqw;box-shadow:-2cqw 0 5cqw rgba(0,0,0,.7),inset 0 0 3cqw rgba(70,232,120,.035);padding:3cqw 2cqw;font:400 2.7cqw/6.2cqw var(--mono);text-shadow:none;will-change:transform}
+.lens-host-menu{position:absolute;top:4cqw;bottom:4cqw;left:4cqw;width:63%;z-index:4;background:rgba(7,22,13,.97);color:rgba(70,232,120,.66);border:1px solid rgba(70,232,120,.35);border-radius:2cqw;box-shadow:2cqw 0 5cqw rgba(0,0,0,.7),inset 0 0 3cqw rgba(70,232,120,.035);padding:3cqw 2cqw;font:400 2.7cqw/6.2cqw var(--mono);text-shadow:none;will-change:transform}
 .lens-menu-row{white-space:pre;border-radius:.9cqw;padding:0 1.2cqw;line-height:6.2cqw}
 .lens-menu-row.selected{color:var(--hud-hi);background:rgba(70,232,120,.075);text-shadow:0 0 8px rgba(70,232,120,.3)}
 .lens-menu-position{position:absolute;bottom:2.8cqw;right:4.5cqw;font-size:1.9cqw;line-height:1.4;color:rgba(70,232,120,.55)}
