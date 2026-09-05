@@ -21,11 +21,13 @@
     reader: { nav: 'COS [O] #411 Pg 1/1 9:16 AM 9/4/26', body: replyBody, footer: 'Opus  #411 Pg 1/1  demo1234:2  34m  82%', thumb: true },
     continued: { nav: 'COS [O] #411 Pg 1/1 9:16 AM 9/4/26', body: replyBody, footer: 'Opus  #411 Pg 1/1  demo1234:2  34m  82%', scroll: true, thumb: true },
     reply: { nav: '■□□□ LISTEN · COS [O●] Msg Tap to finish', body: 'Listening...\nReferencing #411.\n\nSpeak your message.', footer: '↺#411  Opus  Tap to finish  demo1234  82%' },
+    review: { nav: 'COS [O] Msg Msg 1/1  Tap=Send  ↓ No 9:16 AM 9/4/26', body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  demo1234  82%' },
+    replyReview: { nav: 'COS [O] Msg Msg 1/1  Tap=Send  ↓ No 9:16 AM 9/4/26', body: 'Summarize the design review changes.', footer: '↺#411  Opus  Msg 1/1  Tap=Send  ↓ No  demo1234  82%' },
     sessionMic: { nav: '■□□□ LISTEN · COS [O●] Msg Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
-    session: { nav: 'COS [O] Sess 1/3 9:16 AM 9/4/26', body: sessionBody, footer: 'Opus  1/3 · Tap: actions  demo1234  82%' },
+    session: { nav: 'COS [O] Sess 1/3 9:16 AM 9/4/26', body: sessionBody, footer: 'Opus  1/3 · Tap: actions  demo1234  82%', thumb: true },
     sessionMenu: { nav: 'COS [O] Sess 1/3 9:16 AM 9/4/26', body: sessionBody, footer: '▶ Back to list · 1/4 · Scroll=move Tap=select' },
     sessionRefusal: { nav: 'COS [O] Sess 1/3 9:16 AM 9/4/26', body: sessionBody, footer: '▶ Continue (unavailable) · 2/4 · Scroll=move · Unavailable' },
-    job: { nav: 'COS [O] Thinking 66s 9/4/26 82%', body: '00:00 ASK  summarize the pilot thread\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: 'Opus  Running · double-tap to cancel  66.0s  demo1234  82%', layout: 'list' },
+    job: { nav: 'COS [O] Thinking 66s 9/4/26 82%', body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: 'Opus  Running · double-tap to cancel  66.0s  demo1234  82%', layout: 'list' },
     meeting: { nav: '■■□□ REC 12:08  ★1  82%', body: '[maya] we can ship the pilot friday\n[sam] blocking item is the data import, one day of work\n[maya] then friday holds', footer: '◆ 2 nudges  ↓ history  ↑↑ home' }
   };
   var menuIdle = ['Display off', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Home', 'Brightness', 'Close'];
@@ -55,7 +57,7 @@
     }
     return out;
   }
-  var ringFrames = ['home', Object.assign({}, home, {menu:true,menuIndex:1}), Object.assign({}, home, {menu:true,menuIndex:4}), 'messages', 'selected', 'reader', 'continued', 'reply'];
+  var ringFrames = ['home', Object.assign({}, home, {menu:true,menuIndex:1}), Object.assign({}, home, {menu:true,menuIndex:4}), 'messages', 'selected', 'reader', 'continued', 'reply', 'replyReview'];
   // One painter for every lesson. Only the changed layer moves: native body
   // scroll, footer selection, or the firmware-owned window above the page.
   var paints = new WeakMap();
@@ -70,7 +72,7 @@
     var old = previous && previous.frame;
     // Compare the painted DOM, not just the requested state: a user may step
     // again while the outgoing window is still moving and cancel its commit.
-    var sameBody = old && el.querySelector('.lens-text') && el.querySelector('.lens-text').textContent === f.body && el.querySelector('.lens-nav').textContent === f.nav && old.layout === f.layout;
+    var sameBody = old && el.querySelector('.lens-text') && el.querySelector('.lens-text').textContent === f.body && el.querySelector('.lens-nav').textContent === f.nav && old.layout === f.layout && !!old.thumb === !!f.thumb;
     function animate(target, props) {
       if (!target || !motion) return;
       animations.push(root.anime.animate(target, props));

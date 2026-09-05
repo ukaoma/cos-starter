@@ -22,6 +22,7 @@ class Box {
       if(name==='lens-text' && match?.[1].includes('class="lens-bright"'))node.nodes['.lens-bright']=new Box();
     }
     if(value.includes('lens-host-menu'))this.appendChild(Object.assign(new Box(),{panel:true}));
+    if(value.includes('lens-thumb'))this.nodes['.lens-thumb']=new Box();
   }
   querySelector(selector){return this.nodes[selector]||null;}
   appendChild(node){node.parent=this;this.nodes['.lens-host-menu']=node;}
@@ -35,7 +36,7 @@ function harness({reduced=false,anime=true}={}){
   return {hud:context.CosDocsHud,screen:new Box(),animations};
 }
 
-test('model lesson separates overlay, cursor, saved choice, and original message attribution',()=>{
+test('model lesson separates overlay, cursor, and saved choice with a consistent completion footer',()=>{
   const context={};
   vm.runInNewContext(source,context);
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/ring-lessons.js'),'utf8'),context);
@@ -48,7 +49,10 @@ test('model lesson separates overlay, cursor, saved choice, and original message
   assert.match(steps[7].frame.nav,/\[S\] Effort/);
   assert.equal(steps[9].frame.body,' *High\n  X-High\n> Max\n  Ultra');
   assert.match(steps[10].frame.nav,/\[S\]/);
-  assert.equal(steps[10].frame.footer,hud.frames.home.footer,'Do not relabel old Opus answer');
+  assert.equal(steps[10].frame.footer,'Sonnet  3/3  #412  demo1234:3  2m  82%','Completed lesson reflects selected Sonnet');
+  assert.equal(steps[0].frame.footer,hud.frames.home.footer,'Completion must not mutate the starting fixture');
+  assert.match(hud.frames.home.footer,/^Opus\b/);
+  assert.doesNotMatch(steps[10].description,/footer may still say Opus/);
   for(const [kind,count] of [['model',7],['effort',4]])for(let i=0;i<count;i++){
     const frame=picker(kind,i),markup=hud.html(frame);
     const body=markup.match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1];
@@ -70,6 +74,18 @@ function lessonHarness(){
   return {...context.CosRingLessons,hud,screen,queued,statuses,options,flush};
 }
 
+test('model confirmation paints Sonnet and restarting restores Opus without leaking state',()=>{
+  const h=lessonHarness(),steps=h.lessons.models;
+  h.playScene(steps[10],steps[9].frame,h.options);h.flush();
+  assert.match(h.screen.querySelector('.lens-nav').textContent,/\[S\]/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^Sonnet\b/);
+  h.playScene(steps[0],steps[10].frame,h.options);h.flush();
+  assert.match(h.screen.querySelector('.lens-nav').textContent,/\[O\]/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^Opus\b/);
+  h.playScene(steps[10],steps[0].frame,h.options);h.flush();
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^Sonnet\b/,'Direct navigation to completion also reflects Sonnet');
+});
+
 test('every chapter, including out-of-order Ask clicks, reaches its actual HUD result',()=>{
   const h=lessonHarness();
   for(const [name,steps] of Object.entries(h.lessons))for(const i of Array.from(steps.keys()).reverse()){
@@ -81,7 +97,7 @@ test('every chapter, including out-of-order Ask clicks, reaches its actual HUD r
   }
 });
 
-test('Ask shows message, left overlay, recording, then a visibly protected transcript',()=>{
+test('Ask shows capture, unsent review, protected review, choices, then the exact submitted prompt',()=>{
   const h=lessonHarness(),steps=h.lessons.ask;
   h.playScene(steps[1],steps[0].frame,h.options);
   assert.equal(h.screen.querySelector('.lens-text').textContent,h.hud.frames.reader.body);
@@ -93,14 +109,72 @@ test('Ask shows message, left overlay, recording, then a visibly protected trans
   assert.equal(h.screen.querySelector('.lens-host-menu'),null);
   assert.equal(h.screen.querySelector('.lens-text').textContent,h.hud.frames.sessionMic.body);
   h.playScene(steps[3],steps[2].frame,h.options);
-  const before=h.screen.querySelector('.lens-text').textContent;h.flush();
-  assert.ok(before.includes(h.askTranscript));
-  assert.equal(h.screen.querySelector('.lens-text').textContent,before,'A double-tap does not discard speech');
-  assert.match(h.statuses.at(-1),/recording continues · nothing sent/);
+  assert.match(h.screen.querySelector('.lens-text').textContent,/Listening.*\n\nSummarize the pilot thread\./s);
+  assert.equal(steps[3].gesture,'tap');h.flush();
+  assert.equal(h.screen.querySelector('.lens-text').textContent,'Summarize the pilot thread.');
+  assert.doesNotMatch(h.screen.querySelector('.lens-nav').textContent,/LISTEN|●/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Msg 1\/1  Tap=Send/);
+  assert.match(h.statuses.at(-1),/nothing sent/);
+  h.playScene(steps[4],steps[3].frame,h.options);h.flush();
+  assert.equal(steps[4].gesture,'double-tap');
+  assert.equal(h.screen.querySelector('.lens-text').textContent,'Summarize the pilot thread.','Double-tap preserves reviewed words');
+  assert.match(h.statuses.at(-1),/Review protected.*nothing sent/);
+  for(const [index,choice] of [[5,'Send original (Opus)'],[6,'Edit'],[7,'Send original (Opus)']]){
+    h.playScene(steps[index],steps[index-1].frame,h.options);h.flush();
+    assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n').find(line=>line.startsWith('▶')),'▶ '+choice);
+    assert.match(h.screen.querySelector('.lens-footer').textContent,/Tap=Select/);
+  }
+  h.playScene(steps[8],steps[7].frame,h.options);
+  assert.match(h.screen.querySelector('.lens-text').textContent,/▶ Send original/,'Prompt is not running before tap settles');
+  assert.equal(steps[8].gesture,'tap');h.flush();
+  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'00:00 ASK  Summarize the pilot thread.');
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Running/);
+});
+
+test('Messages opens the selected row and finishes on an unsent referenced review',()=>{
+  const h=lessonHarness(),steps=h.lessons.messages;
+  h.playScene(steps[0],steps[0].frame,h.options);
+  assert.match(h.screen.querySelector('.lens-text').textContent,/▶ #411/);
+  assert.doesNotMatch(h.screen.querySelector('.lens-nav').textContent,/#411/);
+  h.flush();assert.match(h.screen.querySelector('.lens-nav').textContent,/#411 Pg/);
+  h.playScene(steps[9],steps[8].frame,h.options);h.flush();
+  assert.equal(h.screen.querySelector('.lens-text').textContent,'Summarize the design review changes.');
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^↺#411.*Tap=Send/);
+});
+
+test('main walkthrough builds real frames and delays the selected-row and reply results',()=>{
+  const h=lessonHarness(),html=fs.readFileSync(path.join(__dirname,'../docs/index.html'),'utf8');
+  const items=[...html.matchAll(/class="rp-step"[^>]*data-gesture="([^"]+)"[\s\S]*?<strong>([^<]+)<\/strong>/g)];
+  const steps=h.mainSteps(items.map(m=>m[2]),items.map(m=>m[1]));
+  assert.equal(steps.length,9);
+  for(const [index,before,after,delay] of [[5,'▶ #411','? What changed',320],[7,'? What changed','Listening...',650]]){
+    h.playScene(steps[index],steps[index-1].frame,h.options);
+    assert.ok(h.screen.querySelector('.lens-text').textContent.includes(before));
+    assert.equal(h.queued.at(-1).ms,delay);h.flush();
+    assert.ok(h.screen.querySelector('.lens-text').textContent.includes(after));
+  }
+  h.playScene(steps[8],steps[7].frame,h.options);h.flush();
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^↺#411.*Tap=Send/);
+});
+
+test('changing scroll-indicator presence updates the rendered node and restores the body position',()=>{
+  const {hud,screen}=harness();
+  hud.paint(screen,'home',{animate:false});assert.equal(screen.querySelector('.lens-thumb'),null);
+  hud.paint(screen,{...hud.frames.home,thumb:true,scroll:true},{animate:false});
+  assert.ok(screen.querySelector('.lens-thumb'));
+  assert.equal(screen.querySelector('.lens-text').style.transform,'translateY(-100px)');
+  hud.paint(screen,'home',{animate:false});assert.equal(screen.querySelector('.lens-thumb'),null);
+  assert.equal(screen.querySelector('.lens-text').style.transform,'translateY(0px)');
 });
 
 test('Sessions replays 4 of 4 before scrolling to 1 of 4 with body retained',()=>{
   const h=lessonHarness(),steps=h.lessons.sessions;
+  h.playScene(steps[1],steps[0].frame,h.options);h.flush();
+  const readingBody=h.screen.querySelector('.lens-text');
+  assert.ok(h.screen.querySelector('.lens-thumb'));
+  h.playScene(steps[2],steps[1].frame,h.options);h.flush();
+  assert.equal(h.screen.querySelector('.lens-text'),readingBody,'Opening footer actions retains reading surface');
+  assert.ok(h.screen.querySelector('.lens-thumb'),'Opening actions retains the scroll indicator');
   h.playScene(steps[6],steps[5].frame,h.options);
   assert.match(h.screen.querySelector('.lens-footer').textContent,/Ask COS · 4\/4/);
   const body=h.screen.querySelector('.lens-text');h.flush();
@@ -111,7 +185,7 @@ test('Sessions replays 4 of 4 before scrolling to 1 of 4 with body retained',()=
 
 test('new selection cancels an older scene, including timeout and hold status',()=>{
   const h=lessonHarness(),steps=h.lessons.ask;
-  for(const i of [1,2,6]){
+  for(const i of [1,2,3,8,10]){
     const cancel=h.playScene(steps[i],steps[Math.max(0,i-1)].frame,h.options);
     const stale=h.queued.map(t=>t.fn);cancel();
     h.playScene(steps[0],null,h.options);stale.forEach(fn=>fn());h.flush();

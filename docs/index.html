@@ -735,7 +735,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       </div>
       <div class="rp-stage-foot">
         <button type="button" id="rpPrev" aria-label="Show previous gesture">Previous</button>
-        <span class="rp-progress" id="rpProgress">1 of 8 &middot; Home</span>
+        <span class="rp-progress" id="rpProgress">1 of 9 &middot; Home</span>
         <button type="button" id="rpNext" aria-label="Show next gesture">Next</button>
       </div>
     </div>
@@ -787,6 +787,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">08</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
           <p>Double-tap starts a voice follow-up to the open message. Nothing sends until you finish and confirm it.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="8" data-gesture="tap">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">09</span><strong>Finish and review the reply</strong><span class="rp-action">Tap</span>
+          <p>Tap once to finish recording. After transcription, your words appear with Tap=Send in the footer and the #411 reference intact. Read before sending. Scroll down for review options instead.</p>
         </button>
       </li>
     </ol>
@@ -933,7 +939,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <h3 id="session-menu">Read first. Act from the footer.</h3>
   <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
-  <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
+  <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap selects the highlighted row. This guards against occasional phantom ring touches. <strong>Continue</strong> and <strong>Fork</strong> open dictation; a real model turn starts only after you finish, review, and send that prompt.</p>
   <div class="ring-lesson" id="sessions-ring" data-ring-lesson="sessions">
     <h3>Sessions: one footer, a rolling menu.</h3>
     <p>Tap to open, scroll through Back to list, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
@@ -1003,7 +1009,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 <section class="wrap ring-lesson" id="ask-ring" data-ring-lesson="ask" aria-label="Ask COS ring lesson">
   <h3>Ask COS: start fresh or reply with context.</h3>
   <p>Use the hold shortcut to start a fresh prompt from wherever you are. Double-tap an open, idle message for a referenced reply instead. Finish the recording, read the transcript, and confirm Send; a recording is not an automatic submission.</p>
-  <p class="rl-fallback">Tap, release, then press and hold to bring the shortcut window above the HUD. Select Ask COS. During capture, double-tap protects the draft. During an active run, cancellation is two separate double-taps: arm, then confirm within three seconds. Waiting lets the confirmation expire.</p>
+  <p class="rl-fallback">Tap, release, then press and hold to bring the shortcut window above the HUD. Select Ask COS. Tap once to finish recording and read the transcribed prompt. Tap=Send confirms it; scroll down from the final transcript page to open review choices instead. Double-tap during capture or review leaves the draft intact. During an active run, cancellation is two separate double-taps: arm, then confirm within three seconds. Waiting lets the confirmation expire.</p>
 </section>
 
 <!-- ── 04 RICH MEDIA ── -->
@@ -1201,7 +1207,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="cards mixed">
     <div>
-      <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">COS [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  summarize the pilot thread</span>
+      <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">COS [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  Summarize the pilot thread.</span>
 00:09 TOOL Searching web...
 00:21 OUT  5 results · vendor pricing
 00:34 TOOL Reading page...
@@ -1726,8 +1732,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../assets/ring-3d.js?v=8"></script>
-<script src="../assets/docs-hud.js?v=6"></script>
-<script src="../assets/ring-lessons.js?v=3"></script>
+<script src="../assets/docs-hud.js?v=7"></script>
+<script src="../assets/ring-lessons.js?v=5"></script>
 <script>
 (function(){
   // shared motion guard

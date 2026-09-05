@@ -44,6 +44,7 @@ const tasks = await source('src/lib/task-menu.ts');
 const queryStatus = await source('src/lib/query-status.ts');
 const modelPicker = await source('src/lib/hub-model-picker.ts');
 const effortPicker = await source('src/lib/hub-effort-picker.ts');
+const voiceFlow = await source('src/lib/voice-prompt-flow.ts');
 const f = hud.frames;
 
 for (const [recording, fixture] of [[false, hud.menuIdle], [true, hud.menuRecording]]) {
@@ -78,7 +79,7 @@ eq(f.sessionRefusal.footer, session.buildSessionThreadMenuFooter(actions,1), 'Di
 eq(f.sessionMenu.body, f.session.body, 'Menu preserves session body');
 eq(f.sessionRefusal.body, f.session.body, 'Unavailable action preserves session body');
 eq(f.session.body, pages.formatSessionDetailBody({provider:'claude',domain:'personal',device_id:'mac',display_label:'Friday pilot rollout',slug:'friday-pilot',duration_minutes:14,message_count:31,user_message_count:15,assistant_message_count:16,git_branch:'main',total_input_tokens:0,total_output_tokens:0,file_size_bytes:0,first_prompt:'Import owner is Dana. Rollout email drafts Thursday.'}), 'Native session body');
-eq(f.job.body, activity.formatJobActivityWithPrompt('summarize the pilot thread',[
+eq(f.job.body, activity.formatJobActivityWithPrompt(f.review.body,[
   {at:0,kind:'sent',text:'summarize the pilot thread'},
   {at:9000,kind:'tool',text:'Searching web...'},
   {at:21000,kind:'output',text:'5 results · vendor pricing'},
@@ -135,7 +136,11 @@ for(let i=0;i<effortSlots.length;i++){
 }
 state.currentPage='welcome';state.currentMsgIndex=2;
 eq(l.models[10].frame.nav,pages.composeLensNavLine('COS [S]','9:16 AM',now,['3msg','2m']),'Returned Home active model');
-eq(l.models[10].frame.footer,footer(),'Returned Home retains old message attribution');
+// Keep the native attribution contract independently verified. The Docs lesson
+// intentionally presents the selected model on completion, per product direction;
+// this display-only override must not be mistaken for a native formatter change.
+eq(f.home.footer,footer(),'Native Home still attributes the existing Opus message');
+eq(l.models[10].frame.footer,model.modelShortLabel(state.modelPreference)+footer().slice('Opus'.length),'Lesson completion displays selected model, retaining native footer metadata');
 eq(l.models[10].frame.body,f.home.body,'Return does not rewrite the existing Home body');
 eq(modelPicker.hubModelPickerSlots(false,false).length,5,'Unavailable Cursor/Ollama are absent');
 eq(modelPicker.hubModelPickerSlots(true,true).length,8,'Ready Ollama adds a slot');
@@ -166,11 +171,51 @@ for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,0]]) {
 }
 eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last to first');
 eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
-eq(l.ask[5].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
+eq(l.ask[9].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
 eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
-eq(l.ask[3].frame.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Protected draft retains real live-transcript format');
-eq(l.ask[3].before.body,l.ask[3].frame.body,'Double-tap preserves the captured words');
+eq(l.ask[3].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Finish starts from captured words');
+eq(l.ask[3].frame.body,ringLessons.askTranscript,'Review preserves the captured words');
+eq(l.ask[4].frame.body,l.ask[3].frame.body,'Double-tap preserves the reviewed draft');
 eq(l.messages[7].frame.body,l.messages[8].frame.body,'Confirmed Reply and express Reply reference same message');
+
+// Execute the real confirmation renderer with a capture-only viewport, never
+// import the app entry point or connect a microphone. Derive nav/footer using
+// the actual formatter functions instead of inventing REVIEW chrome.
+const mainText=fs.readFileSync(path.join(app,'src/main.ts'),'utf8');
+const mainAst=ts.createSourceFile('main.ts',mainText,ts.ScriptTarget.Latest,true);
+const confirmFn=mainAst.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='showVoicePromptConfirmation');
+const headerFn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='glassesHeader');
+assert.ok(confirmFn && headerFn,'Native confirmation and nav formatters must exist');
+state.modelPreference='opus';state.currentPage='voice-prompt';state.isQueryStreaming=false;
+state.micEnabled=false;state.voiceDraftChunkIndex=0;state.queuePromptReviewTarget=null;
+const headerContext={state,Date:SampleDate,exports:{},...model,...pages,...meeting};
+vm.runInNewContext(ts.transpileModule(headerFn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,headerContext);
+const confirmContext={state,exports:{},...voiceFlow,pushVoicePromptViewport:(_bridge,title,body,position)=>{
+  state.currentMsgCounter=position;confirmContext.result={title,body,position};
+}};
+vm.runInNewContext(ts.transpileModule(confirmFn.getText(mainAst),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,confirmContext);
+for(const [view,pending] of [[f.review,null],[f.replyReview,ref]]){
+  state.pendingReference=pending;state.voiceDraftChunks=[];state.voiceDraftText=view.body;state.voiceDraftChunkIndex=0;
+  await confirmContext.showVoicePromptConfirmation(null);
+  eq(confirmContext.result.title,'REVIEW','Native prompt confirmation title');
+  eq(view.body,confirmContext.result.body,'Native confirmation displays exact transcript');
+  eq(view.footer,footer(confirmContext.result.position),'Native review footer and reference');
+  eq(view.nav,headerContext.glassesHeader(),'Native review nav, no microphone meter');
+  eq(state.voicePromptPhase,'confirming','Review is not a running query');
+}
+state.pendingReference=null;
+const voiceActions=voiceFlow.voicePromptReviewActions(false,'cos');
+for(const [stepIndex,cursor] of [[5,2],[6,3],[7,2]]){
+  const view=l.ask[stepIndex].frame;
+  eq(view.body,voiceFlow.buildVoiceReviewMenuBody(voiceActions,cursor,false,'opus'),'Native review choices '+cursor);
+  eq(view.footer,footer(voiceFlow.buildVoiceReviewMenuFooter()),'Native review-options footer');
+  state.currentMsgCounter=voiceFlow.buildVoiceReviewMenuFooter();
+  eq(view.nav,headerContext.glassesHeader(),'Native review-options nav');
+  assert.ok(view.body.split('\n').length<=voiceFlow.VOICE_REVIEW_MENU_MAX_BODY_LINES,'Review menu stays within firmware line budget');checks++;
+}
+eq(voiceFlow.defaultVoicePromptReviewActionIndex(false,'cos'),2,'Review defaults to Send original');
+eq(l.messages[0].before,f.selected,'Message-opening tap starts from selected list');
+eq(l.messages[9].frame,f.replyReview,'Message lesson finishes on referenced review');
 
 // Evaluate only the actual isolated routing function with harmless spies. No
 // Main import, no bridge, no microphone, no server, and no app state writes.
@@ -214,8 +259,8 @@ for (const match of html.matchAll(/<div\b[^>]*data-hud="([^"]+)"[^>]*>/g)) {
   for (let tag; (tag=tags.exec(html));) { depth += tag[0].startsWith('</') ? -1 : 1; if (!depth) {end=tag.index;break;} }
   eq(html.slice(match.index+match[0].length,end),hud.html(match[1]), `${match[1]} no-JS fallback`);
 }
-eq(hud.ringFrames.length,8,'Eight gesture states');
-eq([...html.matchAll(/data-rp-step="\d+"/g)].length,8,'Eight matching walkthrough steps');
+eq(hud.ringFrames.length,9,'Nine gesture states including prompt review');
+eq([...html.matchAll(/data-rp-step="\d+"/g)].length,9,'Nine matching walkthrough steps');
 eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,5,'Five reusable context lessons');
 assert.ok(!html.includes('data-session-deck'),'Desktop session deck is not a glasses lesson');checks++;
 assert.ok(!html.includes('data-story="choice"'),'Sessions uses the shared ring, not an independent autoplay HUD');checks++;
