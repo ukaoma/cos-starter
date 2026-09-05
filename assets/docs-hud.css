@@ -1,0 +1,30 @@
+/* Hub-themed presentation, as requested in the approved screenshot.
+   Content follows the app; spacing, mono type and phosphor frame are illustrative. */
+.lens-hud{--lens-inset:6.7%;position:relative;container-type:inline-size;aspect-ratio:2/1;width:100%;padding:0!important;border:1px solid rgba(70,232,120,.24)!important;border-radius:clamp(15px,3vw,34px)!important;background:radial-gradient(100% 130% at 50% 0%,rgba(70,232,120,.065),transparent 65%),#07100a!important;box-shadow:inset 0 0 50px rgba(70,232,120,.025),0 22px 48px -28px rgba(0,0,0,.92)!important;overflow:hidden;color:var(--hud);font-family:var(--mono)!important;font-weight:400;text-shadow:0 0 8px rgba(70,232,120,.24)}
+.lens-hud::before{content:"";display:block!important;position:absolute;inset:2.2cqw;border:1px solid rgba(70,232,120,.09);border-radius:clamp(10px,2.2vw,24px);pointer-events:none;z-index:3}
+.lens-hud::after{display:none!important}
+.rp-lens{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+.rp-lens::before{display:none}
+.lens-hud .lens-nav,.lens-hud .lens-body,.lens-hud .lens-footer{position:absolute;box-sizing:border-box;margin:0;left:var(--lens-inset);width:calc(100% - 2 * var(--lens-inset));font-family:var(--mono);font-weight:400;letter-spacing:0;text-align:left;overflow:hidden}
+.lens-hud .lens-nav{top:7%;height:8%;padding:0;font-size:2cqw;line-height:3cqw;color:rgba(70,232,120,.58);white-space:pre;text-shadow:none}
+.lens-hud .lens-body{top:19%;height:55%;padding:0;border:0;border-radius:0;font-size:2.7cqw;line-height:3.8cqw;color:rgba(70,232,120,.66)}
+.lens-text{white-space:pre-wrap;overflow-wrap:break-word}
+.lens-bright{color:var(--hud-hi);text-shadow:0 0 9px rgba(70,232,120,.3)}
+.lens-dim{color:rgba(70,232,120,.5);text-shadow:none}
+.lens-hud .lens-footer{top:77%;height:15%;padding:2.4cqw 0 0;border-top:1px solid rgba(70,232,120,.14);font-size:1.9cqw;line-height:2.85cqw;color:rgba(70,232,120,.55);white-space:pre;text-shadow:none;display:flex;justify-content:space-between;gap:0}
+.lens-hud .lens-footer>span{min-width:0}
+.lens-battery{flex-shrink:0}
+.lens-hud .lens-scrolled .lens-text{transform:translateY(-19cqw)}
+.lens-thumb{position:absolute;right:0;top:2%;width:.25cqw;height:28%;border-radius:2px;background:var(--hud);opacity:.4}
+.lens-scrolled .lens-thumb{top:68%}
+.lens-host-menu{position:absolute;inset:2.2cqw;z-index:2;background:#07100a;color:rgba(70,232,120,.66);border-radius:clamp(10px,2.2vw,24px);padding:4.8cqw 4.5cqw;font:400 2.7cqw/6.2cqw var(--mono);text-shadow:none}
+.lens-menu-row{white-space:pre;border-radius:.9cqw;padding:0 1.2cqw;line-height:6.2cqw}
+.lens-menu-row.selected{color:var(--hud-hi);background:rgba(70,232,120,.075);text-shadow:0 0 8px rgba(70,232,120,.3)}
+.lens-menu-position{position:absolute;bottom:2.8cqw;right:4.5cqw;font-size:1.9cqw;line-height:1.4;color:rgba(70,232,120,.55)}
+.hud-note{font-size:.8rem;line-height:1.5;color:var(--muted);margin:12px 0 0}
+.hold-menu-guide{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+.hold-menu-guide ul{padding-left:1.2rem;margin:12px 0}
+.hold-menu-guide li{margin:7px 0}
+@media(max-width:720px){.hold-menu-guide{grid-template-columns:1fr;gap:22px}}
+/* A full-width tablet stage can be taller than the viewport; let its controls scroll into view. */
+@media(min-width:561px) and (max-width:860px) and (max-height:900px){.rp-stage{position:relative;top:auto}}

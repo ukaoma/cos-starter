@@ -300,6 +300,7 @@
       'swipe-up':{x:-0.8,y:-0.28,z:-0.14},
       'swipe-down':{x:-0.8,y:-0.28,z:0.06},
       'tap':{x:-1.12,y:0.32,z:-0.11},
+      'hold':{x:-1.12,y:0.32,z:-0.11},
       'double-tap':{x:-0.76,y:-0.18,z:0.13}
     };
     var pose=poses[this.gesture] || BASE_POSE;
@@ -648,6 +649,16 @@
     var centerAngle=(railStart+railEnd)/2;
     var center=this.project(rotate(this.surfacePoint(centerAngle,0,radius+.022),this.pose));
     if(!this.visiblePoint(center)) return;
+    // A hold keeps contact on the same physical rail; it is not repeated taps.
+    if(this.gesture==='hold'){
+      var strength=this.reduced ? 1 : .78+.22*Math.sin(elapsed/500);
+      ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*strength;
+      ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=2;
+      ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=12;
+      this.strokeSurface(ctx,this.surfaceLoop(centerAngle,radius+.026,.1,.07));
+      ctx.fillStyle='rgba(159,250,187,1)';ctx.beginPath();ctx.arc(center.x,center.y,3.5*center.scale,0,TAU);ctx.fill();ctx.restore();
+      return;
+    }
     if(this.reduced){
       var staticRings=this.gesture==='double-tap' ? [.055,.12] : [.09];
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha;
@@ -689,7 +700,7 @@
       ctx.shadowColor='rgba(77,213,138,.78)';ctx.shadowBlur=7;
       ctx.strokeStyle='rgba(77,213,138,.12)';ctx.lineWidth=1;
       // Swipe belongs on the hardware rail, not a second screen-space track.
-      if(this.gesture.indexOf('swipe')!==0){
+      if(this.gesture.indexOf('swipe')!==0 && this.gesture!=='hold'){
         var pulse=(elapsed%900)/900;
         var pr=r*(.76+pulse*.24);
         ctx.globalAlpha=(1-pulse)*.8;

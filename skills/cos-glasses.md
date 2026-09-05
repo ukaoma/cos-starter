@@ -65,6 +65,17 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
    - App: update separately from the Even Hub on your iPhone. History and settings carry over; you don't re-pair.
    - App and server upgrade independently. A brief version-skew window is handled gracefully: normal Q&A keeps working, and the app just nudges you to rerun the server when a new capability needs it.
 
+## First-use gesture training
+
+Once connection and voice are verified, teach **tap-and-hold on the R1 touch surface**. It opens the Even SDK context menu without a trip back to Home. Scroll to a row, then tap to select.
+
+- **Ask COS** opens a voice prompt. **Model** shows the current model and opens model selection, followed by reasoning effort.
+- **Start Meeting** begins Meeting AI. During recording, **Resume Meeting** and **Stop Meeting** lead the menu.
+- **Messages**, **Sessions**, **Tasks**, and **Home** are direct navigation shortcuts. Tasks is omitted from the hold menu while recording to fit the menu limit; it remains in Quick Actions.
+- Even supplies **Display off**, **Brightness**, and **Close** around the COS rows. A user's saved row order may differ.
+- Distinguish this SDK 0.0.14 context menu from **single-tap reader-footer actions** and the **Quick Actions page**. Older companion builds can have fewer shortcuts; verify their app version rather than promising every row.
+- Use the [gesture walkthrough](https://www.gotcos.com/docs/#ring-path) and [hold-menu reference](https://www.gotcos.com/docs/#hold-menu). Do not start a meeting or submit a prompt merely to demonstrate a menu without the user's approval.
+
 ## Rules
 - Never start a second server instance or kill unrelated processes -- one server owns ports 3141/3143.
 - Never use `sudo npm`, `sudo npx`, or recursively change npm/cache ownership. Use the isolated COS cache recovery command instead.

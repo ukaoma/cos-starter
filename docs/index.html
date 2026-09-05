@@ -272,7 +272,7 @@ section.light td strong{color:var(--ink-on-cream)}
 .anim-on .qf{opacity:0}
 .anim-on .pf-th{opacity:0}
 .anim-on .pf-menu{opacity:0}
-.anim-on .lf-body span{opacity:0}
+.anim-on .lf .lens-text{opacity:0}
 @media(max-width:860px){.macpair{grid-template-columns:1fr}}
 /* Query-a-meeting flow. Three ordered steps, because the order IS the information:
    a saved meeting only becomes conversational after it has been processed. */
@@ -349,9 +349,9 @@ section.light .lf-top,section.light .lf-foot{color:rgba(201,169,110,.82)}
 .pf-mi svg{width:12px;height:12px;flex:none;stroke:#f6f4ef;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .pf-ask{position:relative;display:flex;gap:5px;align-items:stretch}
 .pf-in{flex:1;background:#dedbd4;border-radius:8px;padding:7px 8px;font-size:.55rem;color:rgba(36,23,8,.74);display:flex;align-items:center;min-height:30px}
-.pf-in span,.lf-body span{transition:opacity .34s ease}
-.duo.swap .pf-in span,.duo.swap .lf-body span{opacity:0}
-@media(prefers-reduced-motion:reduce){.pf-in span,.lf-body span{transition:none}.duo.swap .pf-in span,.duo.swap .lf-body span{opacity:1}}
+.pf-in span,.lf .lens-text{transition:opacity .34s ease}
+.duo.swap .pf-in span,.duo.swap .lf .lens-text{opacity:0}
+@media(prefers-reduced-motion:reduce){.pf-in span,.lf .lens-text{transition:none}.duo.swap .pf-in span,.duo.swap .lf .lens-text{opacity:1}}
 .pf-cam,.pf-go{border-radius:8px;font-family:var(--mono);font-size:.46rem;letter-spacing:.06em;padding:0 8px;display:flex;align-items:center;justify-content:center}
 .pf-cam{background:#fff;border:1px solid rgba(36,23,8,.22)}
 .pf-cam svg{width:12px;height:12px;stroke:rgba(36,23,8,.75);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -575,6 +575,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
+<link rel="stylesheet" href="../assets/docs-hud.css?v=2">
 </head>
 <body>
 
@@ -695,13 +696,13 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="g2-stage" aria-hidden="true">
-    <div class="hud">
-      <div><span class="hi">Chief of Staff</span> <span class="dim">6.9.453</span></div>
-      <div>MSG <span class="hi">#4</span> <span class="dim">· 2m ago</span></div>
-      <div><span class="dim">72° Clear · Sat Jul 11</span></div>
-      <div><span class="dim">10:00 Design review</span></div>
-      <div class="foot"><span>Tap=Latest&nbsp;&nbsp;↓ Menu&nbsp;&nbsp;↑ Messages</span></div>
-    </div>
+    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.455</span>
+
+72° Clear • Austin
+→ in 44m: Design review
+
+Tap=Latest  ↓ Menu  ↑ Messages
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  demo1234:3  2m</span><span class="lens-battery">  82%</span></div></div>
     <img class="g2-img" src="../assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
   </div>
 </header>
@@ -714,7 +715,7 @@ footer .links a:hover{color:var(--gold)}
     <a class="chapcard" href="#setup"><span class="chap-ix">02</span><span class="chap-t">Setup</span><span class="chap-d">Server, app, and one paste to connect.</span></a>
     <a class="chapcard" href="#ask"><span class="chap-ix">03</span><span class="chap-t">Ask</span><span class="chap-d">Voice a question, read the streamed answer.</span></a>
     <a class="chapcard" href="#photos"><span class="chap-ix">04</span><span class="chap-t">Rich media</span><span class="chap-d">Send photos, documents, PDFs, and recorded videos.</span></a>
-    <a class="chapcard" href="#lens"><span class="chap-ix">05</span><span class="chap-t">The Lens</span><span class="chap-d">Four screens driven by three simple gestures.</span></a>
+    <a class="chapcard" href="#lens"><span class="chap-ix">05</span><span class="chap-t">The Lens</span><span class="chap-d">Navigation, readers, and the tap-and-hold menu.</span></a>
     <a class="chapcard" href="#jobs"><span class="chap-ix">06</span><span class="chap-t">Jobs</span><span class="chap-d">Jobs run on your Mac and survive the app closing.</span></a>
     <a class="chapcard" href="#recall"><span class="chap-ix">07</span><span class="chap-t">Recall</span><span class="chap-d">Stable short numbers over a complete archive.</span></a>
     <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Live transcription with offline-safe audio.</span></a>
@@ -730,21 +731,21 @@ footer .links a:hover{color:var(--gold)}
 <!-- ── RING CONTROLS ── -->
 <section class="wrap ring-path" id="ring-path" data-ring-path>
   <div class="sec-head">
-    <h2>Five gestures. <span class="it goldt">One continuous path.</span></h2>
-    <p class="lead">Scroll the steps and watch the ring change the HUD. This is the shortest useful route through COS: Home to Messages, into a reply, without taking out the phone.</p>
+    <h2>Your ring. <span class="it goldt">The HUD in context.</span></h2>
+    <p class="lead">Tap and hold for shortcuts, scroll to Messages, then read and reply without taking out your phone. Follow the steps to see which part of the HUD changes.</p>
   </div>
   <div class="rp-grid">
     <div class="rp-stage" tabindex="0" aria-label="Interactive ring and HUD walkthrough. Use Previous and Next, or the left and right arrow keys, to change steps.">
       <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
       <div class="rp-demo">
         <div class="rp-lens" aria-label="Simulated COS heads-up display">
-          <div class="rp-screen" id="rpScreen" aria-live="polite">
-            <div class="rp-title">Chief of Staff <span class="rp-dim">6.9.453</span></div>
-            <div>MSG <span class="rp-title">#412</span> <span class="rp-dim">&middot; 2m ago</span></div>
-            <div class="rp-dim">72&deg; Clear &middot; Fri Sep 4</div>
-            <div class="rp-dim">10:00 Design review</div>
-            <div class="rp-foot"><span>Tap=Latest &middot; scroll=move</span><span>82%</span></div>
-          </div>
+          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.455</span>
+
+72° Clear • Austin
+→ in 44m: Design review
+
+Tap=Latest  ↓ Menu  ↑ Messages
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  demo1234:3  2m</span><span class="lens-battery">  82%</span></div></div>
         </div>
         <div class="rp-ring-zone">
           <div class="rp-ring-shell" data-gesture="idle">
@@ -760,7 +761,7 @@ footer .links a:hover{color:var(--gold)}
       </div>
       <div class="rp-stage-foot">
         <button type="button" id="rpPrev" aria-label="Show previous gesture">Previous</button>
-        <span class="rp-progress" id="rpProgress">1 of 6 &middot; Home</span>
+        <span class="rp-progress" id="rpProgress">1 of 8 &middot; Home</span>
         <button type="button" id="rpNext" aria-label="Show next gesture">Next</button>
       </div>
     </div>
@@ -769,40 +770,71 @@ footer .links a:hover{color:var(--gold)}
       <li class="rp-step" data-rp-step="0" data-gesture="idle" aria-current="step">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">01</span><strong>Begin on Home</strong><span class="rp-action">Ready</span>
-          <p>The latest reply, weather, and next meeting are already in view. The footer tells you which move is live.</p>
+          <p>The top line holds COS, your model, the clock, and today's date. The bordered body holds the page. The bottom line keeps message, session, and battery status.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="1" data-gesture="swipe-up">
+      <li class="rp-step" data-rp-step="1" data-gesture="hold">
         <button type="button" aria-controls="rpScreen">
-          <span class="rp-step-num">02</span><strong>Show Messages</strong><span class="rp-action">Swipe up</span>
-          <p>One upward swipe opens the recent message list. The newest item is highlighted and ready.</p>
+          <span class="rp-step-num">02</span><strong>Open the quick menu</strong><span class="rp-action">Tap and hold</span>
+          <p>Keep contact on the ring's touch surface to open Even's context menu. COS adds Ask COS, meeting controls, Model, Messages, Sessions, Tasks, and Home.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="2" data-gesture="swipe-down">
         <button type="button" aria-controls="rpScreen">
-          <span class="rp-step-num">03</span><strong>Move one row</strong><span class="rp-action">Swipe down</span>
-          <p>Scroll moves the highlight without opening anything. The footer keeps the current position visible.</p>
+          <span class="rp-step-num">03</span><strong>Find Messages</strong><span class="rp-action">Scroll down</span>
+          <p>Scroll past the meeting and model shortcuts to Messages. This step shows the destination after several scrolls, not a single-swipe jump.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="3" data-gesture="tap">
         <button type="button" aria-controls="rpScreen">
-          <span class="rp-step-num">04</span><strong>Open the message</strong><span class="rp-action">Tap</span>
-          <p>A tap selects the highlighted row. The reader keeps the answer continuous rather than splitting it into pages.</p>
+          <span class="rp-step-num">04</span><strong>Open Messages</strong><span class="rp-action">Tap</span>
+          <p>Select Messages to close the overlay and open the list. Record Message stays at the top; the footer includes the selected reply's page count.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="4" data-gesture="swipe-down">
         <button type="button" aria-controls="rpScreen">
-          <span class="rp-step-num">05</span><strong>Keep reading</strong><span class="rp-action">Swipe down</span>
-          <p>The same ring motion scrolls the reader. A small cue shows that more text remains.</p>
+          <span class="rp-step-num">05</span><strong>Move one row</strong><span class="rp-action">Swipe down</span>
+          <p>Move the cursor to the next message without opening it. The list position changes from 1/3 to 2/3.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="5" data-gesture="double-tap">
+      <li class="rp-step" data-rp-step="5" data-gesture="tap">
         <button type="button" aria-controls="rpScreen">
-          <span class="rp-step-num">06</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
+          <span class="rp-step-num">06</span><strong>Open the message</strong><span class="rp-action">Tap</span>
+          <p>The prompt and answer live in the scrolling body. The nav and footer stay in their own regions. Pg 1/1 means one reader chunk, not one screenful.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="6" data-gesture="swipe-down">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">07</span><strong>Keep reading</strong><span class="rp-action">Swipe down</span>
+          <p>Scroll within the same body. The clock, model, message number, and Pg counter stay put. Long replies can span several chunks; their counter changes at a chunk boundary.</p>
+        </button>
+      </li>
+      <li class="rp-step" data-rp-step="7" data-gesture="double-tap">
+        <button type="button" aria-controls="rpScreen">
+          <span class="rp-step-num">08</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
           <p>Double-tap starts a voice follow-up to the open message. Nothing sends until you finish and confirm it.</p>
         </button>
       </li>
     </ol>
+  </div>
+  <p class="hud-note">Hub-themed preview with fictional data, based on COS Glasses 6.9.455. Navigation, body content, footer labels, and gesture behavior follow the app. The green frame, typography, spacing, and system-menu appearance are illustrative, not an optical capture.</p>
+  <div class="hold-menu-guide" id="hold-menu">
+    <div>
+      <h3>Tap and hold. Your shortcuts, wherever you are.</h3>
+      <p>Hold the R1 touch surface to open the SDK context menu. Scroll to a row, then tap to select it. You do not have to return Home first.</p>
+      <ul>
+        <li><strong>Ask COS</strong> opens a new voice prompt.</li>
+        <li><strong>Model: Opus</strong> shows the current model. Choose a model, then its reasoning effort.</li>
+        <li><strong>Start Meeting</strong> begins Meeting AI. While recording, <strong>Resume Meeting</strong> and <strong>Stop Meeting</strong> take its place.</li>
+        <li><strong>Messages</strong>, <strong>Sessions</strong>, <strong>Tasks</strong>, and <strong>Home</strong> jump straight to that view.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What changes while recording</h3>
+      <p>The menu has room for seven COS rows. Resume and Stop lead while a meeting is active, so <strong>Tasks is omitted from the hold menu during recording</strong>. It remains available in Quick Actions.</p>
+      <p>Even also supplies <strong>Display off</strong> above the COS rows, with <strong>Brightness</strong> and <strong>Close</strong> below. Those system controls are separate from COS. Your saved menu order may differ from this default example.</p>
+      <p class="hud-note">The SDK 0.0.14 context menu is distinct from a single tap's reader-footer actions and from the Quick Actions page reached by scrolling down on Home.</p>
+    </div>
   </div>
 </section>
 
@@ -1032,18 +1064,17 @@ footer .links a:hover{color:var(--gold)}
     <p class="ch-sub">Voice in. <span class="it goldt">Context out.</span></p>
     <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
   </div>
-  <p style="max-width:70ch">Answers stream to the lens and read as <strong>one continuous message</strong>, scrolled natively by the glasses like a news feed. No pages. No chunk-tapping. The footer keeps the receipts: model, message number, elapsed time, session date, battery.</p>
+  <p style="max-width:70ch">Answers scroll natively inside the bordered body. The navigation and footer stay in place. Long replies are split into reader chunks: <strong>Pg 1/2</strong> identifies the chunk, not the visible screenful. At a chunk boundary, the next scroll advances it. The footer keeps the model, message number, chunk count, session reference, message age, and battery.</p>
   
 <div class="cards mixed">
     <div>
-      <div class="hud" aria-hidden="true">
-        <div><span class="dim">MSG</span> <span class="hi">#4</span></div>
-        <div>Your Friday pilot is on track. Two</div>
-        <div>items need a decision before</div>
-        <div>Thursday: the data import owner</div>
-        <div>and the rollout email. <span class="dim">▾</span></div>
-        <div class="foot"><span>opus · #4 · jul 11</span><span>82%</span></div>
-      </div>
+      <div class="hud lens-hud" data-hud="reader" aria-label="Sample message reader"><div class="lens-nav">COS [O] #411 Pg 1/1 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
+─────
+→ The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.
+
+The open decision is whether the setup path stays inside Docs or moves into the guided wizard.
+
+Dana owns the navigation review. Sam will confirm the final setup copy before the meeting.</div><i class="lens-thumb" aria-hidden="true"></i></div><div class="lens-footer"><span>Opus  #411 Pg 1/1  demo1234:2  34m</span><span class="lens-battery">  82%</span></div></div>
       <div class="hud-cap">The reader · scroll to read, tap for the footer menu</div>
     </div>
 
@@ -1053,6 +1084,7 @@ footer .links a:hover{color:var(--gold)}
         <tr><td><span class="g-key">↑</span> <span class="g-key">↓</span></td><td>Scroll the message. The glasses handle it natively, so it feels like the firmware because it is.</td></tr>
         <tr><td><span class="g-key">Tap</span></td><td>Opens the footer menu: <strong>Messages | Reply</strong>. Tap again to confirm the highlighted choice; scroll to switch between them.</td></tr>
         <tr><td><span class="g-key">Double-tap</span></td><td>Reply straight away: dictate a voice follow-up to the open message.</td></tr>
+        <tr><td><span class="g-key">Tap and hold</span></td><td>Open the <a href="#hold-menu">context menu</a> for model, meeting, Ask COS, and navigation shortcuts without first leaving the reader.</td></tr>
       </table></div>
       <p style="font-size:.9rem">The two-tap footer menu is deliberate. G2 firmware occasionally reports phantom ring taps, and the confirmation step means a stray tap never throws you out of a message.</p>
     </div>
@@ -1112,10 +1144,12 @@ footer .links a:hover{color:var(--gold)}
         </div>
       </div>
     </div>
-    <div class="lf">
-      <div class="lf-top"><span>MSG #128</span><span>OPUS</span></div>
-      <p class="lf-body"><span data-a>Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. It will survive Texas heat in morning sun with afternoon shade, but it wilts daily above 95 and needs deep water twice a week.</span></p>
-      <div class="lf-foot"><span>&#9660; history</span><span>&#9650;&#9650; home</span></div>
+    <div class="lf lens-hud">
+      <div class="lens-nav">COS [O] #128 Pg 1/1 ■1 9:16 AM 9/4/26</div>
+      <div class="lens-body"><div class="lens-text">? <span class="lens-bright" data-lens-q>What is this plant?</span>
+─────
+→ <span data-a>Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. It will survive Texas heat in morning sun with afternoon shade, but it wilts daily above 95 and needs deep water twice a week.</span></div></div>
+      <div class="lens-footer"><span>Opus  #128 Pg 1/1 ■1  demo5678:1  2m</span><span class="lens-battery">  82%</span></div>
     </div>
   </div>
   <p class="duo-cap">Capture on the phone. Read the answer on the lens.</p>
@@ -1125,8 +1159,8 @@ footer .links a:hover{color:var(--gold)}
      tab is hidden, and honours prefers-reduced-motion by never starting. */
   (function(){
     var duo=document.querySelector('.duo'); if(!duo) return;
-    var q=duo.querySelector('[data-q]'), a=duo.querySelector('[data-a]');
-    if(!q||!a) return;
+    var q=duo.querySelector('[data-q]'), a=duo.querySelector('[data-a]'), lensQ=duo.querySelector('[data-lens-q]');
+    if(!q||!a||!lensQ) return;
     var pairs=[
       ['What is this plant?',
        'Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. Morning sun with afternoon shade survives a Texas summer, but it wilts daily above 95 and wants deep water twice a week.'],
@@ -1145,7 +1179,7 @@ footer .links a:hover{color:var(--gold)}
       i=(i+1)%pairs.length;
       duo.classList.add('swap');
       setTimeout(function(){
-        q.textContent=pairs[i][0]; a.textContent=pairs[i][1];
+        q.textContent=pairs[i][0]; lensQ.textContent=pairs[i][0]; a.textContent=pairs[i][1];
         duo.classList.remove('swap');
       },360);
     }
@@ -1181,8 +1215,8 @@ footer .links a:hover{color:var(--gold)}
 <section class="wrap reveal light" id="lens">
   <div class="sec-head">
     <h2 class="ch"><span class="num">5.</span> The lens</h2>
-    <p class="ch-sub">Four screens. Three gestures.</p>
-    <p class="lead">Everything runs on tap, double-tap, and scroll. Each screen prints its own hint line, so the lens always tells you what is live.</p>
+    <p class="ch-sub">Tap, double-tap, scroll, and tap-and-hold.</p>
+    <p class="lead">Tap selects. Scroll moves a cursor or reads the body. Double-tap depends on the page. <strong>Tap and hold</strong> opens the <a href="#hold-menu">SDK context menu</a> for direct access to your model, meeting controls, Ask COS, and navigation. The footer changes with the active action.</p>
   </div>
   <h3>Home</h3>
   <p style="font-size:.95rem">Shows the version, your latest message number and age, weather, and your next calendar event. Hint line: <span class="g-key">Tap=Latest&nbsp; ↓ Menu&nbsp; ↑ Messages</span></p>
@@ -1219,29 +1253,15 @@ footer .links a:hover{color:var(--gold)}
   <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
 
   <div class="exhibit" data-story="choice">
-    <div class="hud smenu" aria-hidden="true">
-      <div class="sfrs">
-        <div class="sfr" data-frame="read">
-          <div><span class="hi">Friday pilot rollout</span></div>
-          <div><span class="dim">[ANT] 14m &#8226; 31msg &#8226; mac</span></div>
-          <div>Latest: Import owner is Dana. Rollout</div>
-          <div>email drafts Thursday. <span class="dim">&#9662;</span></div>
-        </div>
-        <div class="sfr show" data-frame="menu">
-          <div class="srow on" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
-          <div class="srow" data-label="Continue"><span class="scur">&#9654;</span> Continue</div>
-          <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
-          <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
-        </div>
-        <div class="sfr" data-frame="mic">
-          <div><span class="hi">MESSAGE</span></div>
-          <div>Listening...</div>
-          <div>&nbsp;</div>
-          <div>Speak your message.</div>
-        </div>
-      </div>
-      <div class="foot"><span class="sfoot">&#9654; Back to list &#183; 1/4 &#183; Scroll=move Tap=select</span></div>
-    </div>
+    <div class="hud lens-hud" data-hud="sessionMenu" aria-label="Session reader with footer action menu"><div class="lens-nav">COS [O] Sess 1/3 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Friday pilot rollout</span>
+[ANT] 14m • 31msg • mac
+
+DISCUSSION
+Import owner is Dana. Rollout email drafts Thursday.
+
+STATS
+Messages: 15u / 16a
+Branch: main</div></div><div class="lens-footer">▶ Back to list · 1/4 · Scroll=move Tap=select</div></div>
     <div class="sg" aria-hidden="true"><span class="g-key">Tap</span><i></i><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
     <div class="hud-cap">Two taps &#183; the first opens the menu, the second opens the mic</div>
   </div>
@@ -1265,33 +1285,23 @@ footer .links a:hover{color:var(--gold)}
   </table></div>
 
   <h3 id="continue-unavailable" style="margin-top:34px">When Continue is unavailable</h3>
-  <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The row says so in words, the reason prints under the list, and the footer stops advertising a tap.</p>
+  <p style="font-size:.95rem">COS asks the server whether the thread is free before it offers to write into it, and it <strong>fails closed</strong>. Anything short of a clear yes disables Continue rather than guessing: a check that has not run yet, a reply it cannot read, or another process already holding the thread. The footer marks Continue as unavailable. Selecting it shows the reason in the footer without replacing the reader body.</p>
 
   <div class="exhibit" data-story="refusal">
-    <div class="hud smenu" aria-hidden="true" style="--lines:6">
-      <div class="sfrs">
-        <div class="sfr show" data-frame="menu">
-          <div class="srow" data-label="Back to list"><span class="scur">&#9654;</span> Back to list</div>
-          <div class="srow on" data-label="Continue (unavailable)"><span class="scur">&#9654;</span> Continue (unavailable)</div>
-          <div class="srow" data-label="Fork"><span class="scur">&#9654;</span> Fork</div>
-          <div class="srow" data-label="Ask COS"><span class="scur">&#9654;</span> Ask COS</div>
-          <div><span class="dim">COS has not checked whether this thread is</span></div>
-          <div><span class="dim">free yet. Fork it instead.</span></div>
-        </div>
-        <div class="sfr" data-frame="mic">
-          <div><span class="hi">MESSAGE</span></div>
-          <div>Listening...</div>
-          <div>&nbsp;</div>
-          <div>Speak your message.</div>
-        </div>
-      </div>
-      <div class="foot"><span class="sfoot">&#9654; Continue (unavailable) &#183; 2/4 &#183; Scroll=move &#183; Unavailable</span></div>
-    </div>
+    <div class="hud lens-hud" data-hud="sessionRefusal" aria-label="Session reader with unavailable Continue in the footer"><div class="lens-nav">COS [O] Sess 1/3 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Friday pilot rollout</span>
+[ANT] 14m • 31msg • mac
+
+DISCUSSION
+Import owner is Dana. Rollout email drafts Thursday.
+
+STATS
+Messages: 15u / 16a
+Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2/4 · Scroll=move · Unavailable</div></div>
     <div class="sg" aria-hidden="true"><span class="g-key">&#8595;</span><i></i><span class="g-key">Tap</span></div>
     <div class="hud-cap">A refused Continue names the reason and points at Fork</div>
   </div>
 
-  <p style="font-size:.95rem">A greyed word with no explanation is indistinguishable from a rendering glitch on a monochrome lens, so the refusal is spelled out rather than implied. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
+  <p style="font-size:.95rem">The refusal is spelled out in the footer rather than implied by a greyed word. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
   <p style="font-size:.95rem">The menu only appears for a session whose provider COS has a write path for, which today means <strong>Claude</strong>, <strong>Codex</strong>, and <strong>Cursor</strong>. Any other provider leaves the page exactly as it reads, with no menu at all, rather than offering an action that cannot run.</p>
 
 </section>
@@ -1305,15 +1315,12 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="cards mixed">
     <div>
-      <div class="hud" aria-hidden="true">
-        <div><span class="dim">00:02</span> <span class="tag">SENT</span> summarize the pilot thread</div>
-        <div><span class="dim">00:09</span> <span class="tag">TOOL</span> Searching web...</div>
-        <div><span class="dim">00:21</span> <span class="tag">OUT</span> 5 results · vendor pricing</div>
-        <div><span class="dim">00:34</span> <span class="tag">TOOL</span> Reading page...</div>
-        <div><span class="dim">01:05</span> <span class="tag">LIVE</span> The pilot is on track. Two</div>
-        <div><span class="dim">01:06</span> <span class="tag">LIVE</span> items need a decision…</div>
-        <div class="foot"><span>Running · double-tap to cancel</span></div>
-      </div>
+      <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">COS [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  summarize the pilot thread</span>
+00:09 TOOL Searching web...
+00:21 OUT  5 results · vendor pricing
+00:34 TOOL Reading page...
+01:05 LIVE The pilot is on track. Two
+01:06 LIVE items need a decision…</div></div><div class="lens-footer lens-footer-list"><span>Opus  Running · double-tap to cancel  66.0s  demo1234</span><span class="lens-battery">  82%</span></div></div>
       <div class="hud-cap">The job activity page · newest seven lines, scroll back anytime</div>
     </div>
     <div>
@@ -1377,14 +1384,9 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
     <div class="exhibit">
-    <div class="hud" aria-hidden="true">
-        <div><span class="hi">★ Bookmarked</span></div>
-        <div><span class="dim">[maya]</span> we can ship the pilot friday</div>
-        <div><span class="dim">[sam]</span> blocking item is the data</div>
-        <div>import, one day of work</div>
-        <div><span class="dim">[maya]</span> then friday holds</div>
-        <div class="foot"><span>◆ 2 nudges&nbsp;&nbsp;↓ history&nbsp;&nbsp;↑↑ home</span></div>
-      </div>
+    <div class="hud lens-hud" data-hud="meeting" aria-label="Sample live meeting with recording meter"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[maya] we can ship the pilot friday</span>
+[sam] blocking item is the data import, one day of work
+[maya] then friday holds</div></div><div class="lens-footer">◆ 2 nudges  ↓ history  ↑↑ home</div></div>
       <div class="hud-cap">Live meeting HUD · fictional example</div>
   </div>
 <div class="cards mixed">
@@ -1819,7 +1821,8 @@ footer .links a:hover{color:var(--gold)}
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
-<script src="../assets/ring-3d.js?v=6"></script>
+<script src="../assets/ring-3d.js?v=7"></script>
+<script src="../assets/docs-hud.js?v=2"></script>
 <script>
 (function(){
   // shared motion guard
@@ -1923,16 +1926,11 @@ footer .links a:hover{color:var(--gold)}
     if (!animeOK || rm || !('IntersectionObserver' in window)) {
       hudKids().forEach(function(d){ d.style.opacity = 1; });   // static first state (no-anim / reduced-motion / no-IO)
     } else {
-      var hudStates = [
-        hud.innerHTML,   // state A = the documented Home HUD, exactly as it renders today
-        '<div><span class="dim">00:02</span> <span class="tag">SENT</span> gpt frontier</div>'
-        + '<div><span class="dim">00:09</span> <span class="tag">TOOL</span> calendar.read</div>'
-        + '<div><span class="dim">00:18</span> <span class="tag">OUT</span> drafting your reply</div>'
-        + '<div><span class="hi">◆ #412 DONE</span> <span class="dim">· 41s</span></div>'
-        + '<div class="foot"><span>Running&nbsp;·&nbsp;double-tap to cancel</span></div>'
-      ];
+      var hudStates = window.CosDocsHud
+        ? [window.CosDocsHud.html('home'), window.CosDocsHud.html('job')]
+        : [hud.innerHTML];
       var hudCur = 0, hudHover = false, hudInView = false, hudBooted = false;
-      function hudStaggerIn(){ AN.animate(hudKids(), {opacity:[0,1], translateY:[4,0], duration:340, delay:AN.stagger(80), ease:'outQuad'}); }
+      function hudStaggerIn(){ AN.animate(hudKids(), {opacity:[0,1], duration:340, delay:AN.stagger(80), ease:'outQuad'}); }
       function hudSwap(){
         if (hudHover || document.hidden || !hudInView) return;
         AN.animate(hud, {opacity:[1,0], translateY:[0,-3], duration:260, ease:'outQuad', onComplete:function(){
@@ -1956,7 +1954,7 @@ footer .links a:hover{color:var(--gold)}
 
   // ── ring-to-lens path: scrolling or manual controls drive one shared stage ──
   var ringPath = document.querySelector('[data-ring-path]');
-  if (ringPath) {
+  if (ringPath && window.CosDocsHud) {
     var rpScreen = document.getElementById('rpScreen');
     var rpRing = ringPath.querySelector('.rp-ring-shell');
     var rpRingCanvas = document.getElementById('rpRingCanvas');
@@ -1974,33 +1972,14 @@ footer .links a:hover{color:var(--gold)}
     var rpNext = document.getElementById('rpNext');
     var rpStage = ringPath.querySelector('.rp-stage');
     var rpSteps = Array.prototype.slice.call(ringPath.querySelectorAll('[data-rp-step]'));
-    var rpStates = [
-      {
-        html:'<div class="rp-title">Chief of Staff <span class="rp-dim">6.9.453</span></div><div>MSG <span class="rp-title">#412</span> <span class="rp-dim">&middot; 2m ago</span></div><div class="rp-dim">72&deg; Clear &middot; Fri Sep 4</div><div class="rp-dim">10:00 Design review</div><div class="rp-foot"><span>Tap=Latest &middot; scroll=move</span><span>82%</span></div>'
-      },
-      {
-        html:'<div class="rp-title">Messages</div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#412 09:14 Friday pilot</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>1/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
-      },
-      {
-        html:'<div class="rp-title">Messages</div><div class="rp-row"><span class="rp-cursor"></span><span>#412 09:14 Friday pilot</span></div><div class="rp-row on"><span class="rp-cursor">&#9654;</span><span>#411 08:42 Design review</span></div><div class="rp-row"><span class="rp-cursor"></span><span>#410 Thu Team brief</span></div><div class="rp-foot"><span>2/3 &middot; Scroll=move &middot; Tap=open</span><span>82%</span></div>'
-      },
-      {
-        html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; 08:42</span></div><div class="rp-copy">The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.</div><div class="rp-dim">More below &#9662;</div><div class="rp-foot"><span>1/2 &middot; Scroll=read</span><span>Opus &middot; 82%</span></div>'
-      },
-      {
-        html:'<div class="rp-title">MSG #411 <span class="rp-dim">&middot; continued</span></div><div class="rp-copy">The open decision is whether the setup path stays inside Docs or moves into the guided wizard.</div><div class="rp-dim">End of message</div><div class="rp-foot"><span>2/2 &middot; Double-tap=reply</span><span>Opus &middot; 82%</span></div>'
-      },
-      {
-        html:'<div class="rp-title">REPLY TO #411</div><div>Listening...</div><div>&nbsp;</div><div class="rp-copy">Speak your follow-up.</div><div class="rp-foot"><span>Tap=finish &middot; Double-tap=cancel</span><span>Mic live</span></div>'
-      }
-    ];
+    var rpStates = window.CosDocsHud.ringFrames.map(function(frame){ return {html:window.CosDocsHud.html(frame)}; });
     rpStates.forEach(function(state,i){
       var step=rpSteps[i];
       state.name=step.querySelector('strong').textContent.trim();
       state.label=step.querySelector('.rp-action').textContent.trim();
       state.gesture=step.getAttribute('data-gesture') || 'idle';
     });
-    var rpDisplayLabels = {'idle':'Ring','swipe-up':'Swipe up','swipe-down':'Swipe down','tap':'Tap','double-tap':'Double tap'};
+    var rpDisplayLabels = {'idle':'Ring','hold':'Tap and hold','swipe-up':'Swipe up','swipe-down':'Scroll down','tap':'Tap','double-tap':'Double tap'};
     var rpIndex = 0;
     var rpManualLock = false;
     function renderRingPath(nextIndex, replay) {
@@ -2049,19 +2028,8 @@ footer .links a:hover{color:var(--gold)}
     renderRingPath(0, false);
   }
 
-  // ── lens stories: one looping timeline per exhibit, DOM swaps at the seams ──
-  // Static HTML renders each exhibit's key frame with a matching footer, so no-JS,
-  // no-anime, and reduced-motion readers get a complete frame and nothing below runs.
-  // The rig is the Harness engine-evolution plate: createTimeline({loop}) with absolute
-  // offsets (never stagger({start}), a no-op in this bundle; same fix as 9f16c00), a child
-  // onBegin at every seam (re-fires each iteration; verified against 4.5.0 in node: the
-  // callback order is ABCL ABCL ABCL), and one sync() that owns play/pause from in-view,
-  // tab visibility, hover/focus, and a live reduced-motion toggle. Lens content CUTS and
-  // blooms because the G2 does not tween; only the gesture chips get the house outBack
-  // pulse, because they are site chrome rather than lens content. Every string the lens
-  // shows below is the glasses app's own (session-thread-actions.ts, gesture-handlers.ts,
-  // reference-hint.ts, display-pages.ts), not a paraphrase.
-  var REST_FOOT = "1/3 \u00b7 Tap: actions";
+  // Session demonstrations preserve the reader. Only the footer changes until recording opens.
+  var REST_FOOT = window.CosDocsHud ? window.CosDocsHud.frames.session.footer : '';
   var MENU_FOOT = function(label, pos, enabled){ return '\u25B6 ' + label + ' \u00B7 ' + pos + '/4 \u00B7 ' + (enabled ? 'Scroll=move Tap=select' : 'Scroll=move \u00B7 Unavailable'); };
   var STORIES = {
     choice: { loop: 8800, beats: [
@@ -2077,29 +2045,21 @@ footer .links a:hover{color:var(--gold)}
     ]}
   };
   function lensStory(root, story){
-    var hud = root.querySelector('.hud'), foot = root.querySelector('.sfoot');
-    var rows = [].slice.call(hud.querySelectorAll('.srow'));
+    var hud = root.querySelector('.hud');
     var chips = [].slice.call(root.querySelectorAll('.sg .g-key'));
-    var frames = {};
-    [].forEach.call(hud.querySelectorAll('.sfr'), function(f){ frames[f.getAttribute('data-frame')] = f; });
     function apply(b){
       if (b.at === 0) chips.forEach(function(c){ c.classList.remove('lit'); });
       if (b.chip != null && chips[b.chip]) chips[b.chip].classList.add('lit');
-      if (b.frame) for (var k in frames) frames[k].classList.toggle('show', k === b.frame);
-      if (b.cursor != null) rows.forEach(function(r, i){ r.classList.toggle('on', i === b.cursor); });
-      if (b.foot != null && foot) foot.textContent = b.foot;
+      if (b.frame) hud.innerHTML = window.CosDocsHud.html(b.frame === 'mic' ? 'sessionMic' : 'session');
+      var foot = hud.querySelector('.lens-footer');
+      if (b.foot != null && foot) foot.innerHTML = window.CosDocsHud.footerHtml(b.foot);
     }
     var tl = AN.createTimeline({ loop: true, autoplay: false, defaults: { ease: 'outQuad' } });
     story.beats.forEach(function(b){
-      var seam = function(){ apply(b); };
-      if (b.at === 0) { tl.add(hud, { opacity: [0, 1], duration: 320, onBegin: seam }, 0); return; }
-      // the seam: swap the DOM, then whatever changed blooms in like a phosphor redraw
-      if (b.frame) tl.add(frames[b.frame], { opacity: [.25, 1], duration: 260, onBegin: seam }, b.at);
-      else if (b.cursor != null) tl.add(rows[b.cursor], { opacity: [.25, 1], translateX: [-4, 0], duration: 260, onBegin: seam }, b.at);
-      if (foot) tl.add(foot, { opacity: [.25, 1], duration: 240 }, b.at);
+      tl.add(hud, { opacity: [1, 1], duration: 1, onBegin: function(){ apply(b); } }, b.at);
       if (b.chip != null && chips[b.chip]) tl.add(chips[b.chip], { scale: [1, 1.12, 1], duration: 380, ease: 'outBack(2)' }, b.at);
     });
-    tl.add(hud, { opacity: [1, 0], duration: 300, ease: 'inQuad' }, story.loop - 300);
+    tl.add(hud, { opacity: [1, 1], duration: 1 }, story.loop - 1);
 
     var inView = false, hover = false;
     function sync(){ if (inView && !hover && !document.hidden && !rmq.matches) tl.play(); else tl.pause(); }
@@ -2113,7 +2073,7 @@ footer .links a:hover{color:var(--gold)}
     root.__cosStage = tl;   // QA hook: a headless render pauses this and seeks to a beat
   }
   var rmq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (animeOK && !rm && ('IntersectionObserver' in window)) {
+  if (window.CosDocsHud && animeOK && !rm && ('IntersectionObserver' in window)) {
     [].forEach.call(document.querySelectorAll('.exhibit[data-story]'), function(root){
       var story = STORIES[root.getAttribute('data-story')];
       if (story && root.querySelector('.hud')) lensStory(root, story);
@@ -2148,7 +2108,7 @@ footer .links a:hover{color:var(--gold)}
   // ── exhibits: control panel, photo staging, meeting query flow ──────────
   // Same contract as the arch reveal above: no anime / reduced motion / no IO all
   // fall back to showing everything at rest, and each runs once on first sight.
-  var animTargets = ['.ccp-row','.ccp-acts span','.qf','.pf-th','.pf-menu','.lf-body span'];
+  var animTargets = ['.ccp-row','.ccp-acts span','.qf','.pf-th','.pf-menu','.lf .lens-text'];
   function restAll(){
     animTargets.forEach(function(sel){
       Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function(el){
@@ -2185,7 +2145,7 @@ footer .links a:hover{color:var(--gold)}
       var tl = AN.createTimeline({defaults:{ease:'outQuad'}});
       tl.add(duo.querySelectorAll('.pf-th'), {opacity:[0,1], scale:[.86,1], duration:420, delay:AN.stagger(90)}, 0);
       tl.add(duo.querySelector('.pf-menu'), {opacity:[0,1], translateY:[-8,0], duration:380}, 320);
-      tl.add(duo.querySelector('.lf-body span'), {opacity:[0,1], duration:520}, 640);
+      tl.add(duo.querySelector('.lf .lens-text'), {opacity:[0,1], duration:520}, 640);
     });
 
     // 8: the three query steps land in order, because the order is the point.
