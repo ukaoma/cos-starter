@@ -15,7 +15,9 @@ const source = async name => import(pathToFileURL(path.join(app, name)).href);
 const read = name => fs.readFileSync(path.join(site, name), 'utf8');
 const ctx = {};
 vm.runInNewContext(read('assets/docs-hud.js'), ctx);
+vm.runInNewContext(read('assets/ring-lessons.js'), ctx);
 const hud = ctx.CosDocsHud;
+const ringLessons = ctx.CosRingLessons;
 let checks = 0;
 const eq = (actual, expected, label) => { assert.equal(actual, expected, label); checks++; };
 const NativeDate = Date;
@@ -37,6 +39,9 @@ const session = await source('src/lib/session-thread-actions.ts');
 const menu = await source('src/lib/hub-context-menu.ts');
 const model = await source('shared/model-preference.ts');
 const activity = await source('src/lib/job-activity.ts');
+const readerMenu = await source('src/lib/reader-action-menu.ts');
+const tasks = await source('src/lib/task-menu.ts');
+const queryStatus = await source('src/lib/query-status.ts');
 const f = hud.frames;
 
 for (const [recording, fixture] of [[false, hud.menuIdle], [true, hud.menuRecording]]) {
@@ -103,6 +108,51 @@ eq(f.reply.footer, footer('Tap to finish'), 'Voice reference footer');
 state.pendingReference=null; state.isQueryStreaming=true; state.streamingStartTime=now.getTime()-66000;
 eq(f.job.footer, footer('Running · double-tap to cancel'), 'Job elapsed footer');
 
+// Menus with all rows visible clamp; one-row footer menus wrap. Exercise the
+// exported app functions, not their comments (one task comment is obsolete).
+const l = ringLessons.lessons;
+const photoActions = readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:false});
+for (const [step,index] of [[2,0],[3,1],[4,2],[5,2],[6,1]]) {
+  eq(l.messages[step].frame.footer,readerMenu.formatQueryResultActionFooter(index,photoActions),'Reader menu selection '+step);
+}
+eq(readerMenu.moveQueryResultAction(2,'forward',photoActions),2,'Reader does not wrap');
+eq(readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:true}).length,2,'No photo row during critical capture');
+eq(readerMenu.queryResultActionsFor({hasAttachments:false,imagePreviewEnabled:true,meetingCritical:false}).length,2,'No photo row without attachment');
+const taskActions = tasks.taskMenuActions(ringLessons.taskFixture);
+eq(JSON.stringify(taskActions.map(a=>a.label)),JSON.stringify(ringLessons.taskRows),'Task rows follow this fixture state');
+eq(ringLessons.task.body,pages.formatTaskDetailBody(ringLessons.taskFixture),'Task body');
+for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,5],[8,0]]) {
+  eq(l.tasks[step].frame.footer,tasks.buildTaskMenuFooter(taskActions,index),'Task menu '+step);
+  eq(l.tasks[step].frame.body,ringLessons.task.body,'Task action preserves body '+step);
+}
+eq(tasks.moveTaskMenuAction(5,'forward',taskActions),0,'Task last to first');
+eq(tasks.moveTaskMenuAction(0,'back',taskActions),5,'Task first to last');
+const sessionActions = ringLessons.sessionRows.map(label=>({label,enabled:true}));
+for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,0]]) {
+  eq(l.sessions[step].frame.footer,session.buildSessionThreadMenuFooter(sessionActions,index),'Session menu '+step);
+  eq(l.sessions[step].frame.body,f.session.body,'Session action preserves body '+step);
+}
+eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last to first');
+eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
+eq(l.ask[5].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
+eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
+eq(l.messages[7].frame.body,l.messages[8].frame.body,'Confirmed Reply and express Reply reference same message');
+
+// Evaluate only the actual isolated routing function with harmless spies. No
+// Main import, no bridge, no microphone, no server, and no app state writes.
+const gestures = fs.readFileSync(path.join(app,'src/gesture-handlers.ts'),'utf8');
+const gestureAst = ts.createSourceFile('gestures.ts',gestures,ts.ScriptTarget.Latest,true);
+const routeFn = gestureAst.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='handleNonHomeDoubleTap');
+assert.ok(routeFn,'Actual context routing must exist');
+const routeContext = {state:{}, logEvent:()=>{}, resetQueryResultActionMenuState:()=>{}, clearQueryResultActionMenu:()=>{},
+  showQuickActions:()=>routeContext.result='hub',replyToCurrentMessage:()=>routeContext.result='reply',showQueryList:()=>{},
+  startPromptRecording:()=>routeContext.result='record',confirmDoubleTapReturnToHub:()=>routeContext.result='confirm-hub'};
+vm.runInNewContext(ts.transpileModule(routeFn.getText(gestureAst),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,routeContext);
+for (const [page,expected] of [['query-list','hub'],['query-result','reply'],['quick-actions','record'],['task-detail','hub'],['session-detail','confirm-hub'],['voice-prompt','none']]) {
+  routeContext.state={currentPage:page,pendingReadyMessageNo:null,isQueryStreaming:false};routeContext.result='none';
+  await routeContext.handleNonHomeDoubleTap({});eq(routeContext.result,expected,'Native double-tap: '+page);
+}
+
 // The user explicitly replaced device-coordinate styling with the Hub mockup.
 // Keep all native-content assertions above; test that presentation never drops text.
 const plain = markup => markup.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
@@ -123,7 +173,7 @@ eq(f.home.body.split('\n')[0], 'Chief of Staff v'+documentedApp, 'HUD fixture fo
 for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
   if (!/\bsrc=|application\/ld\+json/.test(match[1])) new vm.Script(match[2]);
 }
-for (const file of ['assets/docs-hud.js','assets/ring-3d.js']) new vm.Script(read(file));
+for (const file of ['assets/docs-hud.js','assets/ring-3d.js','assets/ring-lessons.js']) new vm.Script(read(file));
 checks++;
 for (const match of html.matchAll(/<div\b[^>]*data-hud="([^"]+)"[^>]*>/g)) {
   const tags = /<\/?div\b[^>]*>/g; tags.lastIndex=match.index; let depth=0, end;
@@ -132,6 +182,13 @@ for (const match of html.matchAll(/<div\b[^>]*data-hud="([^"]+)"[^>]*>/g)) {
 }
 eq(hud.ringFrames.length,8,'Eight gesture states');
 eq([...html.matchAll(/data-rp-step="\d+"/g)].length,8,'Eight matching walkthrough steps');
+eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,4,'Four reusable context lessons');
+assert.ok(!html.includes('double-tap anywhere in the list'),'No stale list recording instruction');checks++;
+assert.ok(html.includes('Task-menu wrapping requires glasses 6.9.455'),'Task wrap version is qualified');checks++;
+for (const [context,steps] of Object.entries(l)) for (const step of steps) {
+  assert.ok(['idle','tap','hold','swipe-up','swipe-down','double-tap'].includes(step.gesture),context+' known ring gesture');checks++;
+  assert.ok(hud.html(step.frame).includes('lens-footer'),context+' valid HUD frame');checks++;
+}
 assert.ok(!hud.html({nav:'<img>',body:'<script>',footer:'&'}).includes('<script>'),'Fixture text is escaped'); checks++;
 globalThis.Date=NativeDate;
 console.log(`PASS: ${checks} Docs HUD source-contract checks. Browser/optical fidelity is a separate visual check.`);

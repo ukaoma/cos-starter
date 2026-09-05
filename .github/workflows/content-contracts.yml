@@ -30,7 +30,7 @@ jobs:
           node-version: '22'
 
       - name: Ring geometry, gesture execution, and reduced-motion regressions
-        run: node --test tests/ring-3d.test.cjs
+        run: node --test tests/ring-3d.test.cjs tests/docs-hud-paint.test.cjs
 
   kokoro-python:
     runs-on: ubuntu-latest

@@ -575,7 +575,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
-<link rel="stylesheet" href="../assets/docs-hud.css?v=2">
+<link rel="stylesheet" href="../assets/docs-hud.css?v=3">
 </head>
 <body>
 
@@ -733,6 +733,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="sec-head">
     <h2>Your ring. <span class="it goldt">The HUD in context.</span></h2>
     <p class="lead">Tap and hold for shortcuts, scroll to Messages, then read and reply without taking out your phone. Follow the steps to see which part of the HUD changes.</p>
+    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a></nav>
   </div>
   <div class="rp-grid">
     <div class="rp-stage" tabindex="0" aria-label="Interactive ring and HUD walkthrough. Use Previous and Next, or the left and right arrow keys, to change steps.">
@@ -776,7 +777,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <li class="rp-step" data-rp-step="1" data-gesture="hold">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">02</span><strong>Open the quick menu</strong><span class="rp-action">Tap and hold</span>
-          <p>Keep contact on the ring's touch surface to open Even's context menu. COS adds Ask COS, meeting controls, Model, Messages, Sessions, Tasks, and Home.</p>
+          <p>Tap and release, then quickly press again and keep holding. The shortcut window slides over the current HUD. Your page stays underneath it; selecting Close brings it back.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="2" data-gesture="swipe-down">
@@ -821,7 +822,8 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="hold-menu-guide" id="hold-menu">
     <div>
       <h3>Tap and hold. Your shortcuts, wherever you are.</h3>
-      <p>Hold the R1 touch surface to open the SDK context menu. Scroll to a row, then tap to select it. You do not have to return Home first.</p>
+      <p><strong>Tap, release, then press and hold.</strong> Keep the second contact down until the shortcut window appears above the HUD. Scroll to a row, then tap to select it. Choose Close to reveal the same page underneath. You do not have to return Home first.</p>
+      <p class="hud-note">The animation slows down the contact phases for teaching. It is not a stopwatch for the firmware's recognition threshold.</p>
       <ul>
         <li><strong>Ask COS</strong> opens a new voice prompt.</li>
         <li><strong>Model: Opus</strong> shows the current model. Choose a model, then its reasoning effort.</li>
@@ -1091,6 +1093,12 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
 </section>
 
+<section class="wrap ring-lesson" id="ask-ring" data-ring-lesson="ask" aria-label="Ask COS ring lesson">
+  <h3>Ask COS: start fresh or reply with context.</h3>
+  <p>Use the hold shortcut to start a fresh prompt from wherever you are. Double-tap an open, idle message for a referenced reply instead. Finish the recording, read the transcript, and confirm Send; a recording is not an automatic submission.</p>
+  <p class="rl-fallback">Tap, release, then press and hold to bring the shortcut window above the HUD. Select Ask COS. During capture, double-tap protects the draft. During an active run, cancellation is two separate double-taps: arm, then confirm within three seconds. Waiting lets the confirmation expire.</p>
+</section>
+
 <!-- ── 04 RICH MEDIA ── -->
 <section class="wrap reveal light" id="photos">
   <div class="sec-head">
@@ -1240,17 +1248,27 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <tr><td><strong>Sessions</strong></td><td>Claude, Codex, and Cursor chats from this Mac. Updated and Opened look back 7 days. Pinned lists ChatGPT pins, Cursor sidebar pins, and Claude Desktop stars at any age. On 6.8.360, list rows and the first detail page show a DISCUSSION gist when the server sends <code>discussion_summary</code>. Opening a session gives you the action menu below.</td></tr>
     <tr><td><strong>Network</strong></td><td>Connection status.</td></tr>
   </table></div>
-  <h3 style="margin-top:30px">Messages list</h3>
+  <h3 id="messages" style="margin-top:30px">Messages list</h3>
   <p style="font-size:.95rem">Rows read <span class="g-key">▶ #4 09:14 what did we decide…</span> with the newest activity on top.</p>
   <div class="tw"><table>
     <tr><td><span class="g-key">Tap</span></td><td>Open the highlighted message in the reader. Tapping <span class="g-key">✉ Record Message</span> at the top starts a new dictation.</td></tr>
     <tr><td><span class="g-key">↑</span> <span class="g-key">↓</span></td><td>Move through the list.</td></tr>
-    <tr><td><span class="g-key">Double-tap</span></td><td>Start dictating a new prompt from anywhere in the list.</td></tr>
+    <tr><td><span class="g-key">Double-tap</span></td><td>Return to Quick Actions. To start a new transcription here, select <strong>Record Message</strong>. Inside an open message, double-tap instead starts a referenced reply.</td></tr>
   </table></div>
   <p style="font-size:.95rem">Running, queued, and <span class="g-key">✓ Done</span> rows appear in this list while jobs work. Jobs covers those.</p>
+  <div class="ring-lesson" id="messages-ring" data-ring-lesson="messages">
+    <h3>Messages: read, choose, then confirm.</h3>
+    <p>Finish reading the body, tap to open the footer, scroll to a choice, then tap again to select. Those are two deliberate single taps separated by reading the menu, not the quick double-tap that starts a reply.</p>
+    <p class="rl-fallback">Messages and Reply are always in the idle reader menu. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. The reader menu stops at its ends; it does not wrap. A tap can open it before you reach the bottom, too.</p>
+  </div>
   <h3 id="session-menu" style="margin-top:34px">Session detail</h3>
   <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
   <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap runs the highlighted row. That is deliberate, not friction: the ring reports the occasional phantom touch, and both <strong>Continue</strong> and <strong>Fork</strong> start a real model turn on your machine.</p>
+  <div class="ring-lesson" id="sessions-ring" data-ring-lesson="sessions">
+    <h3>Sessions: one footer, a rolling menu.</h3>
+    <p>Tap to open, scroll through Back to list, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
+    <p class="rl-fallback">The body stays at its reading position. Menu input resets a three-second timeout; waiting dismisses the footer actions. Double-tap instead asks for confirmation to leave for Quick Actions. The hold menu is a separate window above the page.</p>
+  </div>
 
   <div class="exhibit" data-story="choice">
     <div class="hud lens-hud" data-hud="sessionMenu" aria-label="Session reader with footer action menu"><div class="lens-nav">COS [O] Sess 1/3 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Friday pilot rollout</span>
@@ -1303,6 +1321,27 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
 
   <p style="font-size:.95rem">The refusal is spelled out in the footer rather than implied by a greyed word. If the thread is merely busy rather than refused, the row instead reads <strong>Continue (queue)</strong>: COS takes the dictation now and sends it when the thread frees.</p>
   <p style="font-size:.95rem">The menu only appears for a session whose provider COS has a write path for, which today means <strong>Claude</strong>, <strong>Codex</strong>, and <strong>Cursor</strong>. Any other provider leaves the page exactly as it reads, with no menu at all, rather than offering an action that cannot run.</p>
+
+  <div class="ring-lesson" id="tasks-ring" data-ring-lesson="tasks">
+    <h3>Tasks: a cursor move is not a command.</h3>
+    <p>Read the task and its finish line. Tap to open its actions, scroll to the row you want, and make a separate confirming tap. The safe first row is Back to list. Task and run state determine which other rows appear.</p>
+    <p class="rl-fallback">The example shows six choices for a ready Inbox task: Back to list, Ask COS, Done, Today, To active, and To review. Nothing runs when you simply highlight a row. The menu times out after three seconds without input.</p>
+    <p class="hud-note">Task-menu wrapping requires glasses 6.9.455 or later. On an older build, scroll upward from the last row to return. This lesson shows the newer interaction without changing the public release package listed above.</p>
+  </div>
+
+  <details class="rl-reference"><summary>Same ring, different context: the quick reference</summary>
+    <div class="tw"><table>
+      <tr><th>Where you are</th><th>Double-tap when idle</th></tr>
+      <tr><td>Home</td><td>Request the system exit dialog, not a new recording.</td></tr>
+      <tr><td>Messages list</td><td>Go to Quick Actions. Tap Record Message for a fresh transcription.</td></tr>
+      <tr><td>Open message</td><td>Start a reply referencing that message.</td></tr>
+      <tr><td>Quick Actions</td><td>Start recording a new command.</td></tr>
+      <tr><td>Session detail</td><td>Ask to leave; double-tap again within three seconds for Quick Actions.</td></tr>
+      <tr><td>Task detail</td><td>Go to Quick Actions. Single tap owns the task action menu.</td></tr>
+      <tr><td>Voice prompt</td><td>Protect the draft. A double-tap does not send or discard it.</td></tr>
+    </table></div>
+    <p>While a query is running, cancellation takes priority: double-tap to arm, then double-tap again to cancel. A watched job that explicitly says a reply is ready can instead open that reply. Image preview, saved meetings, memory, and threads also have context-specific actions. Read the active footer before repeating an input.</p>
+  </details>
 
 </section>
 
@@ -1456,7 +1495,7 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
   <ol class="steps">
     <li>
       <h3>Record</h3>
-      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list (or double-tap anywhere in the list). The lens shows <span class="g-key">Listening...</span> and fills with warm transcript text while you speak. Moonshine reruns over the still-open phrase, so words may revise as more audio arrives. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
+      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list, or choose Ask COS from the hold shortcuts. Double-tap in an open message starts a referenced reply; in the Messages list it returns to Quick Actions. The lens shows <span class="g-key">Listening...</span> and fills with warm transcript text while you speak. Moonshine reruns over the still-open phrase, so words may revise as more audio arrives. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
     </li>
     <li>
       <h3>Review</h3>
@@ -1821,8 +1860,9 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../control/assets/session-command/session-deck.js?v=2"></script>
-<script src="../assets/ring-3d.js?v=7"></script>
-<script src="../assets/docs-hud.js?v=3"></script>
+<script src="../assets/ring-3d.js?v=8"></script>
+<script src="../assets/docs-hud.js?v=4"></script>
+<script src="../assets/ring-lessons.js?v=1"></script>
 <script>
 (function(){
   // shared motion guard
@@ -1952,81 +1992,7 @@ Branch: main</div></div><div class="lens-footer">▶ Continue (unavailable) · 2
     }
   }
 
-  // ── ring-to-lens path: scrolling or manual controls drive one shared stage ──
-  var ringPath = document.querySelector('[data-ring-path]');
-  if (ringPath && window.CosDocsHud) {
-    var rpScreen = document.getElementById('rpScreen');
-    var rpRing = ringPath.querySelector('.rp-ring-shell');
-    var rpRingCanvas = document.getElementById('rpRingCanvas');
-    var rpRingReset = document.getElementById('rpRingReset');
-    var rpOrbitHint = document.getElementById('rpOrbitHint');
-    var rpRing3D = null;
-    if (window.CosRing3D) {
-      try { rpRing3D = window.CosRing3D.create(rpRingCanvas, {shell:rpRing,resetButton:rpRingReset}); }
-      catch (ringError) { rpRing3D = null; }
-    }
-    if (rpRing3D && rpOrbitHint) rpOrbitHint.hidden = false;
-    var rpGesture = document.getElementById('rpGesture');
-    var rpProgress = document.getElementById('rpProgress');
-    var rpPrev = document.getElementById('rpPrev');
-    var rpNext = document.getElementById('rpNext');
-    var rpStage = ringPath.querySelector('.rp-stage');
-    var rpSteps = Array.prototype.slice.call(ringPath.querySelectorAll('[data-rp-step]'));
-    var rpStates = window.CosDocsHud.ringFrames.map(function(frame){ return {html:window.CosDocsHud.html(frame)}; });
-    rpStates.forEach(function(state,i){
-      var step=rpSteps[i];
-      state.name=step.querySelector('strong').textContent.trim();
-      state.label=step.querySelector('.rp-action').textContent.trim();
-      state.gesture=step.getAttribute('data-gesture') || 'idle';
-    });
-    var rpDisplayLabels = {'idle':'Ring','hold':'Tap and hold','swipe-up':'Swipe up','swipe-down':'Scroll down','tap':'Tap','double-tap':'Double tap'};
-    var rpIndex = 0;
-    var rpManualLock = false;
-    function renderRingPath(nextIndex, replay) {
-      rpIndex = Math.max(0, Math.min(rpStates.length - 1, nextIndex));
-      var state = rpStates[rpIndex];
-      rpScreen.classList.remove('rp-redraw');
-      rpScreen.innerHTML = state.html;
-      void rpScreen.offsetWidth;
-      rpScreen.classList.add('rp-redraw');
-      rpRing.setAttribute('data-gesture', state.gesture);
-      if (rpRing3D) rpRing3D.setGesture(state.gesture, state.label);
-      rpGesture.textContent = rpDisplayLabels[state.gesture] || state.label;
-      rpGesture.setAttribute('data-gesture', state.gesture);
-      rpProgress.textContent = (rpIndex + 1) + ' of ' + rpStates.length + ' \u00b7 ' + state.name;
-      rpSteps.forEach(function(step, i){
-        if (i === rpIndex) step.setAttribute('aria-current','step');
-        else step.removeAttribute('aria-current');
-      });
-      rpPrev.disabled = rpIndex === 0;
-      rpNext.disabled = rpIndex === rpStates.length - 1;
-    }
-    rpSteps.forEach(function(step, i){
-      var button = step.querySelector('button');
-      if (button) button.addEventListener('click', function(){ rpManualLock = true; renderRingPath(i, false); });
-    });
-    rpPrev.addEventListener('click', function(){ rpManualLock = true; renderRingPath(rpIndex - 1, true); });
-    rpNext.addEventListener('click', function(){ rpManualLock = true; renderRingPath(rpIndex + 1, true); });
-    rpStage.addEventListener('keydown', function(ev){
-      if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); rpManualLock = true; renderRingPath(rpIndex + 1, false); }
-      else if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); rpManualLock = true; renderRingPath(rpIndex - 1, false); }
-    });
-    function releaseManualRingPath(){ rpManualLock = false; }
-    window.addEventListener('wheel', releaseManualRingPath, {passive:true});
-    window.addEventListener('touchmove', releaseManualRingPath, {passive:true});
-    document.addEventListener('keydown', function(ev){
-      if (!rpStage.contains(ev.target) && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].indexOf(ev.key) !== -1) releaseManualRingPath();
-    }, true);
-    if ('IntersectionObserver' in window) {
-      var rpObserver = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting && !rpManualLock) renderRingPath(parseInt(entry.target.getAttribute('data-rp-step'),10), false);
-        });
-      }, {rootMargin:'-30% 0px -48% 0px', threshold:.15});
-      rpSteps.forEach(function(step){ rpObserver.observe(step); });
-    }
-    renderRingPath(0, false);
-  }
+  // Ring to Lens is shared across the introduction and context lessons.
 
   // Session demonstrations preserve the reader. Only the footer changes until recording opens.
   var REST_FOOT = window.CosDocsHud ? window.CosDocsHud.frames.session.footer : '';

@@ -649,13 +649,19 @@
     var centerAngle=(railStart+railEnd)/2;
     var center=this.project(rotate(this.surfacePoint(centerAngle,0,radius+.022),this.pose));
     if(!this.visiblePoint(center)) return;
-    // A hold keeps contact on the same physical rail; it is not repeated taps.
+    // R1 sequence demonstrated by Miles: tap, release, then press and HOLD.
+    // Illustrative pacing, not a claim about the firmware recognition threshold.
+    // Run once; retaining contact is the lesson, not an endless double-tap loop.
     if(this.gesture==='hold'){
-      var strength=this.reduced ? 1 : .78+.22*Math.sin(elapsed/500);
+      var firstTap=elapsed<150, release=elapsed>=150 && elapsed<300;
+      if(!this.reduced && release) return;
+      var press=this.reduced ? 1 : clamp((elapsed-300)/150,0,1);
+      var strength=this.reduced ? 1 : firstTap ? 1 : .85+.15*Math.sin(elapsed/500);
+      var spread=this.reduced ? .085 : firstTap ? lerp(.045,.12,elapsed/150) : lerp(.13,.07,press);
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*strength;
       ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=2;
       ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=12;
-      this.strokeSurface(ctx,this.surfaceLoop(centerAngle,radius+.026,.1,.07));
+      this.strokeSurface(ctx,this.surfaceLoop(centerAngle,radius+.026,spread,spread*.7));
       ctx.fillStyle='rgba(159,250,187,1)';ctx.beginPath();ctx.arc(center.x,center.y,3.5*center.scale,0,TAU);ctx.fill();ctx.restore();
       return;
     }

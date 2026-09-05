@@ -67,7 +67,7 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
 
 ## First-use gesture training
 
-Once connection and voice are verified, teach **tap-and-hold on the R1 touch surface**. It opens the Even SDK context menu without a trip back to Home. Scroll to a row, then tap to select.
+Once connection and voice are verified, teach **tap, release, then quickly press and hold on the R1 touch surface**. Keep the second contact down until the Even SDK shortcut window slides above the current HUD. The page stays underneath; choosing Close returns to it. Scroll to a row, then tap to select. Demonstration timing is illustrative, not a firmware threshold.
 
 - **Ask COS** opens a voice prompt. **Model** shows the current model and opens model selection, followed by reasoning effort.
 - **Start Meeting** begins Meeting AI. During recording, **Resume Meeting** and **Stop Meeting** lead the menu.
@@ -75,6 +75,15 @@ Once connection and voice are verified, teach **tap-and-hold on the R1 touch sur
 - Even supplies **Display off**, **Brightness**, and **Close** around the COS rows. A user's saved row order may differ.
 - Distinguish this SDK 0.0.14 context menu from **single-tap reader-footer actions** and the **Quick Actions page**. Older companion builds can have fewer shortcuts; verify their app version rather than promising every row.
 - Use the [gesture walkthrough](https://www.gotcos.com/docs/#ring-path) and [hold-menu reference](https://www.gotcos.com/docs/#hold-menu). Do not start a meeting or submit a prompt merely to demonstrate a menu without the user's approval.
+
+### Teach the context, not a universal gesture
+
+- [Messages](https://www.gotcos.com/docs/#messages-ring): double-tap in the **open, idle reader** starts a referenced reply. In the **Messages list**, it goes to Quick Actions; select Record Message for a fresh transcription. Double-tap at Quick Actions starts a new command. Home double-tap requests system exit.
+- **Tap confirmation is not a double-tap:** tap once to open the footer, read the choice, scroll if needed, then make a separate confirming tap. Keep this false-touch safeguard in every demonstration. Opening actions does not require reaching the bottom of the body first; show the reading path without inventing a bottom-of-viewport gate.
+- The reader offers Messages and Reply; View image requires an attachment, lens preview enabled, and no meeting-critical capture. Its choices **stop at the ends**, unlike the wrapping one-row menus in [Sessions](https://www.gotcos.com/docs/#sessions-ring) and [Tasks](https://www.gotcos.com/docs/#tasks-ring).
+- Tasks wrap from the last action to the first on **glasses 6.9.455+**. Verify the user's version. On older builds, scroll upward to return. Task actions depend on task/run state; a missing finish line disables Ask COS.
+- Footer menus expire after three seconds without input. Reopen with a tap and read the selected row before confirming. Session detail double-tap instead asks for a second double-tap to leave for Quick Actions.
+- [Ask COS](https://www.gotcos.com/docs/#ask-ring): starting dictation is not sending. Tap to finish, review the full transcript, then confirm Send. During capture a double-tap protects the draft. During an active run, cancellation normally takes two double-taps: arm, then confirm within three seconds. Read the footer; a watched job can explicitly advertise a ready reply instead.
 
 ## Rules
 - Never start a second server instance or kill unrelated processes -- one server owns ports 3141/3143.

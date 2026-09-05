@@ -64,7 +64,7 @@ function harness({ reduced = false, width = 300, height = 236 } = {}) {
   };
   const renderer = window.CosRing3D.create(canvas, {});
   return {
-    renderer, frames, attributes,
+    renderer, frames, attributes, ctx,
     assertBalanced() {
       assert.equal(stack.length, 0, 'a rendered frame must balance Canvas save/restore');
       assert.equal(ctx.globalAlpha, 1, 'a rendered frame must restore alpha');
@@ -111,6 +111,20 @@ test('every gesture draws through its active pulses and restores Canvas state', 
     }
     r.destroy();
   }
+});
+
+test('hold is tap, release, press and retained contact, not a repeating double-tap', () => {
+  const h=harness(), r=h.renderer;
+  r.setGesture('hold');r.pose={...r.target};r.visiblePoint=()=>true;
+  let loops=0;
+  r.strokeSurface=()=>loops++;
+  function sample(ms){const before=loops;r.drawGesture(h.ctx,r.gestureStarted+ms,1,r.outerRadius,0,.4);h.assertBalanced();return loops-before;}
+  assert.equal(sample(60),1,'first quick tap contacts the rail');
+  assert.equal(sample(210),0,'release has no contact mark');
+  assert.equal(sample(420),1,'second contact presses in');
+  assert.equal(sample(1500),1,'hold keeps contact');
+  assert.equal(sample(4610),1,'contact does not enter a repeating release cycle');
+  r.destroy();
 });
 
 test('the outside crown is flat with continuous shoulders and a circular bore', () => {

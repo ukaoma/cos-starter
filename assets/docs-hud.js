@@ -50,11 +50,57 @@
       var items = f.recording ? menuRecording : menuIdle;
       var selected = f.menuIndex == null ? 1 : f.menuIndex;
       var start = Math.max(0, Math.min(items.length - 5, selected - 2));
-      out += '<div class="lens-host-menu"><div class="lens-menu-window">' + items.slice(start, start + 5).map(function (name, i) { return '<div class="lens-menu-row' + (start + i === selected ? ' selected' : '') + '">' + escape((start + i === selected ? '▶ ' : '  ') + name) + '</div>'; }).join('') + '</div><div class="lens-menu-position">' + (selected + 1) + '/' + items.length + '</div></div>';
+      out += '<div class="lens-host-menu" role="group" aria-label="Simulated Even shortcut overlay"><div class="lens-menu-window">' + items.slice(start, start + 5).map(function (name, i) { return '<div class="lens-menu-row' + (start + i === selected ? ' selected' : '') + '">' + escape((start + i === selected ? '▶ ' : '  ') + name) + '</div>'; }).join('') + '</div><div class="lens-menu-position">' + (selected + 1) + '/' + items.length + '</div></div>';
     }
     return out;
   }
   var ringFrames = ['home', Object.assign({}, home, {menu:true,menuIndex:1}), Object.assign({}, home, {menu:true,menuIndex:4}), 'messages', 'selected', 'reader', 'continued', 'reply'];
-  root.CosDocsHud = { frames: frames, html: html, footerHtml: footerHtml, ringFrames: ringFrames, menuIdle: menuIdle, menuRecording: menuRecording };
+  // One painter for every lesson. Only the changed layer moves: native body
+  // scroll, footer selection, or the firmware-owned window above the page.
+  var paints = new WeakMap();
+  function paint(el, frame, options) {
+    options = options || {};
+    var f = typeof frame === 'string' ? frames[frame] : frame;
+    var previous = paints.get(el);
+    if (previous) previous.cancel();
+    var reduced = root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var motion = !reduced && options.animate !== false && root.anime && root.anime.animate;
+    var animations = [], cancelled = false;
+    var old = previous && previous.frame;
+    // Compare the painted DOM, not just the requested state: a user may step
+    // again while the outgoing window is still moving and cancel its commit.
+    var sameBody = old && el.querySelector('.lens-text') && el.querySelector('.lens-text').textContent === f.body && el.querySelector('.lens-nav').textContent === f.nav && old.layout === f.layout;
+    function animate(target, props) {
+      if (!target || !motion) return;
+      animations.push(root.anime.animate(target, props));
+    }
+    function commit() {
+      if (cancelled) return;
+      var base = Object.assign({}, f, {menu:false});
+      var oldPanel = el.querySelector('.lens-host-menu');
+      if (!sameBody) el.innerHTML = html(base);
+      else {
+        el.querySelector('.lens-footer').innerHTML = footerHtml(f.footer);
+        el.querySelector('.lens-body').classList.toggle('lens-scrolled', !!f.scroll);
+        if (oldPanel) oldPanel.remove();
+      }
+      var body = el.querySelector('.lens-body'), text = el.querySelector('.lens-text');
+      el.querySelector('.lens-footer').style.opacity = '1';
+      var end = f.scroll ? -Math.max(0, text.scrollHeight - body.clientHeight) : 0;
+      text.style.transform = 'translateY(' + end + 'px)';
+      if (sameBody && !!old.scroll !== !!f.scroll) animate(text, {translateY:[old.scroll ? -Math.max(0,text.scrollHeight-body.clientHeight) : 0,end],duration:580,ease:'inOutCubic'});
+      if (sameBody && old.footer !== f.footer) animate(el.querySelector('.lens-footer'), {opacity:[.5,1],duration:280,ease:'outQuad'});
+      if (f.menu) {
+        var box = document.createElement('div'); box.innerHTML = html(f);
+        var panel = box.querySelector('.lens-host-menu'); el.appendChild(panel);
+        if (!old || !old.menu || options.replay) animate(panel, {translateX:['110%','0%'],opacity:[.2,1],delay:options.hold ? 1100 : 0,duration:440,ease:'outCubic'});
+      }
+    }
+    paints.set(el, {frame:f,cancel:function(){ cancelled=true; animations.forEach(function(a){a.pause();}); }});
+    var panel = el.querySelector('.lens-host-menu');
+    if (panel && old && old.menu && !f.menu && motion) animate(panel, {translateX:['0%','110%'],opacity:[1,.2],duration:260,ease:'inCubic',onComplete:commit});
+    else commit();
+  }
+  root.CosDocsHud = { frames: frames, html: html, paint: paint, footerHtml: footerHtml, ringFrames: ringFrames, menuIdle: menuIdle, menuRecording: menuRecording };
   if (typeof document !== 'undefined') document.querySelectorAll('[data-hud]').forEach(function (el) { el.innerHTML = html(el.getAttribute('data-hud')); });
 })(typeof window !== 'undefined' ? window : globalThis);
