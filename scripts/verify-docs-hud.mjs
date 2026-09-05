@@ -117,6 +117,9 @@ for (const token of ['font-family:var(--mono)', 'aspect-ratio:2/1', '.lens-hud::
 }
 
 const html = read('docs/index.html');
+const documentedApp = html.match(/Covers COS Glasses (\d+\.\d+\.\d+)/)?.[1];
+assert.ok(documentedApp, 'The published app coverage label must exist');
+eq(f.home.body.split('\n')[0], 'Chief of Staff v'+documentedApp, 'HUD fixture follows the documented release, not the audited development source');
 for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
   if (!/\bsrc=|application\/ld\+json/.test(match[1])) new vm.Script(match[2]);
 }

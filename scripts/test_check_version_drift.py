@@ -87,6 +87,21 @@ def run(**kwargs):
 
 
 class VersionDriftTests(unittest.TestCase):
+    def test_hub_theme_checks_each_repeated_hud(self):
+        old = '<span class="hi">Chief of Staff</span> <span class="dim">6.8.437</span>'
+        current = '<span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.8.437</span>'
+        themed = DOCS.replace(old, current + '\n' + current)
+        fail, _ = run(docs=themed)
+        self.assertEqual(fail, [], fail)
+        for index in (0, 1):
+            with self.subTest(instance=index):
+                copies = [current, current]
+                copies[index] = current.replace('6.8.437', '6.8.999')
+                fail, _ = run(docs=DOCS.replace(old, '\n'.join(copies)))
+                self.assertTrue(any('G2 HUD app version says 6.8.999' in f for f in fail), fail)
+        fail, _ = run(docs=DOCS.replace(old, ''))
+        self.assertTrue(any('G2 HUD app version is gone' in f for f in fail), fail)
+
     def test_happy_path_entity_mocks(self):
         fail, note = run()
         self.assertEqual(fail, [], fail)

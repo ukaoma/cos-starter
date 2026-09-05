@@ -99,7 +99,7 @@ test('every gesture draws through its active pulses and restores Canvas state', 
     let sensorPasses = 0;
     const drawSensors = r.drawSensorStack;
     r.drawSensorStack = function (...args) { sensorPasses++; return drawSensors.apply(this, args); };
-    for (const gesture of ['idle', 'swipe-up', 'swipe-down', 'tap', 'double-tap']) {
+    for (const gesture of ['idle', 'swipe-up', 'swipe-down', 'tap', 'hold', 'double-tap']) {
       r.setGesture(gesture);
       r.pose = { ...r.target };
       for (const elapsed of [0, 100, 339, 350, 560, 700, 900, 1200, 2199, 2401]) {
@@ -171,7 +171,7 @@ test('the depth buffer hides inside sensors behind the near side wall', () => {
 
 test('reduced motion renders each gesture once and leaves no animation scheduled', () => {
   const h = harness({ reduced: true });
-  for (const gesture of ['idle', 'swipe-up', 'swipe-down', 'tap', 'double-tap']) {
+  for (const gesture of ['idle', 'swipe-up', 'swipe-down', 'tap', 'hold', 'double-tap']) {
     h.renderer.setGesture(gesture);
     h.renderer.velocity = { x: .2, y: -.1, z: .3 };
     assert.ok(h.frames.size, 'a changed gesture should request its static frame');

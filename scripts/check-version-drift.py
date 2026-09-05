@@ -65,7 +65,8 @@ HERO_APP_CHIP_RE = re.compile(
 HERO_SERVER_CHIP_RE = re.compile(r'<span class="chip">Server <b>(\d+\.\d+\.\d+)</b></span>')
 HERO_CONTROL_CHIP_RE = re.compile(r'<span class="chip">Control <b>(\d+\.\d+\.\d+)</b></span>')
 PHONE_MOCK_APP_RE = re.compile(
-    r'<span class="hi">Chief of Staff</span> <span class="dim">(\d+\.\d+\.\d+)</span>'
+    r'<span class="(?:hi|lens-bright)">Chief of Staff</span>\s*'
+    r'<span class="(?:dim|lens-dim)">\s*v?(\d+\.\d+\.\d+)</span>'
 )
 PHONE_COMPANION_APP_RE = re.compile(
     r'<div class="pf-app"><b>COS GLASSES</b><i>v(\d+\.\d+\.\d+) &#183; Live on G2</i></div>'
@@ -261,12 +262,13 @@ def evaluate(
             _require("docs hero App build", hero_build, docs_build, fail)
         _require("docs hero Server chip", _one(HERO_SERVER_CHIP_RE, docs, "docs hero Server chip", fail), docs_server, fail)
         _require("docs hero Control chip", _one(HERO_CONTROL_CHIP_RE, docs, "docs hero Control chip", fail), docs_control, fail)
-        _require(
-            "docs G2 HUD app version",
-            _one(PHONE_MOCK_APP_RE, docs, "docs G2 HUD app version", fail),
-            docs_app,
-            fail,
-        )
+        # Home is rendered in both the hero and ring walkthrough. Require at
+        # least one visible version and validate EVERY instance, not just one.
+        hud_versions = PHONE_MOCK_APP_RE.findall(docs)
+        if not hud_versions:
+            fail.append("docs G2 HUD app version is gone; restore it rather than deleting it")
+        for hud_version in hud_versions:
+            _require("docs G2 HUD app version", hud_version, docs_app, fail)
         _require(
             "docs phone companion app version",
             _one(PHONE_COMPANION_APP_RE, docs, "docs phone companion app version", fail),

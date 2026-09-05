@@ -7,7 +7,7 @@
   'use strict';
   var home = {
     nav: 'COS [O] 9:16 AM 9/4/26 3msg 2m',
-    body: 'Chief of Staff v6.9.455\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff v6.9.453\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  demo1234:3  2m  82%',
     layout: 'list'
   };
