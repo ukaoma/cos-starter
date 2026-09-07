@@ -3,6 +3,29 @@
 
   var TAU = Math.PI * 2;
   var BASE_POSE = {x:-0.46,y:0.24,z:-0.08};
+  // Gesture timeline in ms on the contact clock. ILLUSTRATIVE pacing for
+  // teaching, not a firmware recognition threshold. ring-lessons.js reads this
+  // object so the HUD reacts after the drawn contact instead of on a guess, and
+  // the tests import it instead of restating the numbers.
+  var TIMING = Object.freeze({
+    lead: 260,                       // camera turn before the contact clock starts; the pose settles ~95% in 17 frames
+    tapCycle: 2200, swipeCycle: 2400, // one cycle per step; Replay restarts it
+    tapPulse: 560, tapVisible: 760, doubleTapGap: 340,
+    swipeStroke: 820, swipeFadeStart: 1050, swipeFadeEnd: 1750,
+    holdTap: 150, holdRelease: 300, holdPress: 450,
+    collarRipple: 900
+  });
+  // Camera poses. The tap/hold pose keeps the touch rail facing the viewer
+  // (rail visibility .92, searched numerically); the shipped pose turned it
+  // 58% away, so every tap drew at less than half the brightness of a swipe.
+  var POSES = {
+    'idle':BASE_POSE,
+    'swipe-up':{x:-0.8,y:-0.28,z:-0.14},
+    'swipe-down':{x:-0.8,y:-0.28,z:0.06},
+    'tap':{x:-1.15,y:0.15,z:-0.10},
+    'hold':{x:-1.15,y:0.15,z:-0.10},
+    'double-tap':{x:-0.76,y:-0.18,z:0.13}
+  };
 
   function clamp(value, min, max){ return Math.max(min, Math.min(max, value)); }
   function lerp(a, b, amount){ return a + (b - a) * amount; }
@@ -149,7 +172,7 @@
     this.onLostPointerCapture=function(event){ self.pointerUp(event); };
     this.onKeyDown=function(event){ self.keyDown(event); };
     this.onMotionChange=function(event){ self.reduced=event.matches; self.velocity={x:0,y:0,z:0}; self.gestureStarted=performance.now(); self.start(); };
-    this.onVisibilityChange=function(){ self.pageVisible=!global.document.hidden; if(self.pageVisible) self.start(); else self.stop(); };
+    this.onVisibilityChange=function(){ self.pageVisible=!global.document.hidden; if(self.pageVisible){ self.resumeGesture(); self.start(); } else self.stop(); };
     this.onContextMenu=function(event){ event.preventDefault(); };
     this.onDoubleClick=function(){ self.reset(); };
     this.onResetClick=function(){ self.reset(); self.canvas.focus({preventScroll:true}); };
@@ -178,7 +201,7 @@
       this.viewObserver=new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           self.inView=entry.isIntersecting;
-          if(self.inView) self.start(); else self.stop();
+          if(self.inView){ self.resumeGesture(); self.start(); } else self.stop();
         });
       },{threshold:0.02});
       this.viewObserver.observe(this.canvas);
@@ -292,22 +315,41 @@
     this.start();
   };
 
+  // Returns the lead-in in ms: the contact clock starts only after the camera
+  // has turned to the new pose, so the first contact is never drawn mid-turn or
+  // at the old rail position. A same-pose change starts at once.
   RingRenderer.prototype.setGesture=function(gesture, label){
     this.gesture=gesture || 'idle';
-    this.gestureStarted=performance.now();
-    var poses={
-      'idle':BASE_POSE,
-      'swipe-up':{x:-0.8,y:-0.28,z:-0.14},
-      'swipe-down':{x:-0.8,y:-0.28,z:0.06},
-      'tap':{x:-1.12,y:0.32,z:-0.11},
-      'hold':{x:-1.12,y:0.32,z:-0.11},
-      'double-tap':{x:-0.76,y:-0.18,z:0.13}
-    };
-    var pose=poses[this.gesture] || BASE_POSE;
+    var pose=POSES[this.gesture] || BASE_POSE;
+    var turn=Math.abs(this.pose.x-pose.x)+Math.abs(this.pose.y-pose.y)+Math.abs(this.pose.z-pose.z);
+    var lead=this.reduced || this.gesture==='idle' || turn<0.05 ? 0 : TIMING.lead;
+    this.gestureLead=lead;
+    this.gestureStarted=performance.now()+lead;
     this.target={x:pose.x,y:pose.y,z:pose.z};
     this.velocity={x:0,y:0,z:0};
     this.canvas.setAttribute('aria-label','Interactive 3D COS ring. Current demonstration: '+(label || this.gesture)+'. Drag to rotate. Shift-drag or use two fingers to roll. Arrow keys rotate; Q and E roll; Space resets.');
     this.start();
+    return lead;
+  };
+
+  RingRenderer.prototype.gestureCycle=function(){
+    return this.gesture.indexOf('swipe')===0 ? TIMING.swipeCycle : TIMING.tapCycle;
+  };
+
+  // True while the one-shot gesture still has frames to draw. Hold keeps a
+  // slow glow forever; tap, double-tap and swipe stop after one cycle and rest.
+  RingRenderer.prototype.gestureLive=function(now){
+    if(this.gesture==='idle' || this.reduced) return false;
+    if(this.gesture==='hold') return true;
+    return now-this.gestureStarted < this.gestureCycle()+60;
+  };
+
+  // A ring that was paused mid-gesture (tab hidden, scrolled away) replays the
+  // contact from the top when it comes back, instead of resuming at an
+  // arbitrary point of a cycle it never showed.
+  RingRenderer.prototype.resumeGesture=function(){
+    var now=performance.now();
+    if(this.gesture!=='idle' && now-this.gestureStarted < this.gestureCycle()) this.gestureStarted=now;
   };
 
   RingRenderer.prototype.start=function(){
@@ -345,8 +387,7 @@
     }
     var poseMoving=Math.abs(this.pose.x-this.target.x)>0.0005 || Math.abs(this.pose.y-this.target.y)>0.0005 || Math.abs(this.pose.z-this.target.z)>0.0005;
     var hasVelocity=Math.abs(this.velocity.x)>0.0004 || Math.abs(this.velocity.y)>0.0004 || Math.abs(this.velocity.z)>0.0004;
-    var gestureAnimating=!this.reduced && this.gesture!=='idle';
-    if(this.dragging || poseMoving || hasVelocity || gestureAnimating) this.start();
+    if(this.dragging || poseMoving || hasVelocity || this.gestureLive(now)) this.start();
   };
 
   RingRenderer.prototype.project=function(point){
@@ -604,13 +645,17 @@
   RingRenderer.prototype.drawGesture=function(ctx,now,visibility,radius,railStart,railEnd){
     if(this.gesture==='idle') return;
     var elapsed=now-this.gestureStarted;
-    var cycle=this.gesture.indexOf('swipe')===0 ? 2400 : 2200;
-    var local=elapsed%cycle;
+    // Nothing is drawn during the lead-in: the camera is still turning.
+    if(elapsed<0 && !this.reduced) return;
+    var cycle=this.gestureCycle();
+    // One cycle per step, then rest. Replay restarts the clock. The rail
+    // contact and the collar ripple share this clock.
+    var local=Math.min(Math.max(elapsed,0),cycle);
     var visibilityAlpha=clamp((visibility+.08)/.5,0,1);
     if(this.reduced && this.gesture.indexOf('swipe')===0) local=cycle*.22;
 
     if(this.gesture==='swipe-up' || this.gesture==='swipe-down'){
-      var progress=easeOut(local/820);
+      var progress=easeOut(local/TIMING.swipeStroke);
       var from=this.gesture==='swipe-up' ? railEnd : railStart;
       var to=this.gesture==='swipe-up' ? railStart : railEnd;
       var current=lerp(from,to,progress);
@@ -626,7 +671,7 @@
       var guideLength=Math.sqrt(guideDx*guideDx+guideDy*guideDy) || 1;
       var ux=guideDx/guideLength,uy=guideDy/guideLength;
       var arrowSize=this.width<230 ? 6.5 : 5.5;
-      var fade=local<1050 ? 1 : clamp(1-(local-1050)/700,.22,1);
+      var fade=local<TIMING.swipeFadeStart ? 1 : clamp(1-(local-TIMING.swipeFadeStart)/(TIMING.swipeFadeEnd-TIMING.swipeFadeStart),.22,1);
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*fade;
       ctx.strokeStyle='rgba(159,250,187,.24)';ctx.lineWidth=this.width<230 ? 2.2 : 1.7;ctx.lineCap='round';ctx.lineJoin='round';
       var guide=[];
@@ -653,11 +698,11 @@
     // Illustrative pacing, not a claim about the firmware recognition threshold.
     // Run once; retaining contact is the lesson, not an endless double-tap loop.
     if(this.gesture==='hold'){
-      var firstTap=elapsed<150, release=elapsed>=150 && elapsed<300;
+      var firstTap=elapsed<TIMING.holdTap, release=elapsed>=TIMING.holdTap && elapsed<TIMING.holdRelease;
       if(!this.reduced && release) return;
-      var press=this.reduced ? 1 : clamp((elapsed-300)/150,0,1);
+      var press=this.reduced ? 1 : clamp((elapsed-TIMING.holdRelease)/(TIMING.holdPress-TIMING.holdRelease),0,1);
       var strength=this.reduced ? 1 : firstTap ? 1 : .85+.15*Math.sin(elapsed/500);
-      var spread=this.reduced ? .085 : firstTap ? lerp(.045,.12,elapsed/150) : lerp(.13,.07,press);
+      var spread=this.reduced ? .085 : firstTap ? lerp(.045,.12,elapsed/TIMING.holdTap) : lerp(.13,.07,press);
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*strength;
       ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=2;
       ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=12;
@@ -681,10 +726,10 @@
     var resting=this.surfaceLoop(centerAngle,radius+.024,this.gesture==='double-tap'?.075:.06,this.gesture==='double-tap'?.052:.042);
     this.strokeSurface(ctx,resting);
     ctx.fillStyle='rgba(159,250,187,.9)';ctx.beginPath();ctx.arc(center.x,center.y,2.2*center.scale,0,TAU);ctx.fill();ctx.restore();
-    var pulses=this.gesture==='double-tap' ? [0,340] : [0];
+    var pulses=this.gesture==='double-tap' ? [0,TIMING.doubleTapGap] : [0];
     pulses.forEach(function(offset){
-      var p=clamp((local-offset)/560,0,1);
-      if(local<offset || local>offset+760) return;
+      var p=clamp((local-offset)/TIMING.tapPulse,0,1);
+      if(local<offset || local>offset+TIMING.tapVisible) return;
       var alpha=(1-p)*visibility*visibilityAlpha;
       ctx.save();ctx.globalAlpha=alpha;
       ctx.strokeStyle='rgba(159,250,187,.95)';ctx.lineWidth=1.6;ctx.shadowColor='rgba(70,232,120,.9)';ctx.shadowBlur=10;
@@ -702,19 +747,20 @@
     ctx.save();ctx.lineCap='round';
     ctx.strokeStyle='rgba(77,213,138,'+(active?.035:.015)+')';ctx.lineWidth=1;
     ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.stroke();
-    if(active){
+    if(active && elapsed>=0 && !this.reduced){
       ctx.shadowColor='rgba(77,213,138,.78)';ctx.shadowBlur=7;
       ctx.strokeStyle='rgba(77,213,138,.12)';ctx.lineWidth=1;
-      // Swipe belongs on the hardware rail, not a second screen-space track.
-      if(this.gesture.indexOf('swipe')!==0 && this.gesture!=='hold'){
-        var pulse=(elapsed%900)/900;
-        var pr=r*(.76+pulse*.24);
-        ctx.globalAlpha=(1-pulse)*.8;
-        ctx.beginPath();ctx.arc(cx,cy,pr,0,TAU);ctx.stroke();
-        if(this.gesture==='double-tap'){
-          var p2=clamp((pulse-.34)/.66,0,1);
-          ctx.globalAlpha=(1-p2)*.55;
-          ctx.beginPath();ctx.arc(cx,cy,r*(.76+p2*.24),0,TAU);ctx.stroke();
+      // Swipe and hold belong on the hardware rail, not a second screen-space
+      // track. Each collar ripple rides the SAME contact clock as its rail
+      // pulse (0, and 0 + doubleTapGap), so the ring never ripples without a
+      // contact or contacts without a ripple.
+      if(this.gesture==='tap' || this.gesture==='double-tap'){
+        var offsets=this.gesture==='double-tap' ? [0,TIMING.doubleTapGap] : [0];
+        for(var ri=0;ri<offsets.length;ri++){
+          var pulse=(elapsed-offsets[ri])/TIMING.collarRipple;
+          if(pulse<0 || pulse>1) continue;
+          ctx.globalAlpha=(1-pulse)*(ri===0 ? .8 : .55);
+          ctx.beginPath();ctx.arc(cx,cy,r*(.76+pulse*.24),0,TAU);ctx.stroke();
         }
       }
     }
@@ -743,6 +789,8 @@
   };
 
   global.CosRing3D={
+    TIMING:TIMING,
+    POSES:POSES,
     create:function(canvas,options){
       if(!canvas || !canvas.getContext) return null;
       var renderer=new RingRenderer(canvas,options || {});

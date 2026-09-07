@@ -68,7 +68,8 @@ eq(f.continued.body, f.reader.body, 'Native scroll retains same body');
 eq(f.continued.nav, f.reader.nav, 'Native scroll retains nav');
 eq(f.continued.footer, f.reader.footer, 'Native scroll retains chunk counter');
 const ref = {targetIndex:411,query:question,response:answer};
-eq(f.reply.body, prompt.buildPromptLiveBody('','recording',reference.promptReferenceRecordingLine(ref)), 'Referenced voice body');
+eq(f.reply.body, prompt.buildPromptLiveBody('','recording'), 'A prompt started by Reply or double-tap has no reference line: those gestures never arm one');
+eq(typeof reference.promptReferenceRecordingLine(ref), 'string', 'The Referencing line exists only for the spoken reference command');
 eq(f.sessionMic.body, prompt.buildPromptLiveBody('','recording'), 'Session voice has no message reference');
 eq(f.reply.nav, headers.composePrefixedHeader(pages.composeLensNavLine('COS [O●] Msg Tap to finish','9:16 AM',now),'■□□□ LISTEN',40), 'Voice meter nav');
 eq(f.meeting.nav, meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82}), 'Meeting REC meter');
@@ -87,6 +88,11 @@ eq(f.job.body, activity.formatJobActivityWithPrompt(f.review.body,[
   {at:65000,kind:'live',text:'The pilot is on track. Two'},
   {at:66000,kind:'live',text:'items need a decision…'},
 ]).join('\n'), 'Job immutable ASK and activity format');
+eq(f.receipt.body,'\u25B6 "'+f.review.body+'"\n\nSending...','Send receipt echoes the exact prompt');
+eq(f.receipt.footer,queryStatus.runStartFooterHint(),'Send receipt footer is the raw run-start hint');
+eq(f.receipt.nav,pages.composeLensNavLine('COS [O] Thinking 1s','',now,['82%']),'Send receipt header');
+eq(queryStatus.tapOpensJobWatch({isQueryStreaming:true,activeQueueItemId:'q1',currentPage:'welcome',navigatedDuringRun:false,cancelConfirmPending:false}),true,'A tap on the parked receipt opens the job log');
+eq(queryStatus.tapOpensJobWatch({isQueryStreaming:true,activeQueueItemId:'q1',currentPage:'job-activity',navigatedDuringRun:false,cancelConfirmPending:false}),false,'Not from the job log itself');
 
 // Extract the actual private footer formatter without loading display-manager's
 // runtime imports. Its dependencies remain the app's exported pure helpers.
@@ -106,8 +112,8 @@ eq(f.selected.footer, footer(positions.queryListFooterPosition(1,3,1)), 'Selecte
 state.currentPage='query-result'; state.currentMsgIndex=1;
 eq(f.reader.footer, footer(), 'Reader status formatter');
 eq(f.session.footer, footer('1/3 · Tap: actions'), 'Session status formatter');
-state.pendingReference=ref;
-eq(f.reply.footer, footer('Tap to finish'), 'Voice reference footer');
+state.pendingReference=null;
+eq(f.reply.footer, footer('Tap to finish'), 'Reader-started prompt footer carries no reference');
 state.pendingReference=null; state.isQueryStreaming=true; state.streamingStartTime=now.getTime()-66000;
 eq(f.job.footer, footer('Running · double-tap to cancel'), 'Job elapsed footer');
 
@@ -149,10 +155,11 @@ for(const s of l.models){
   eq(rendered.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&gt;/g,'>'),s.frame.body,'Model lesson preserves native body characters');
 }
 const photoActions = readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:false});
-for (const [step,index] of [[2,0],[3,1],[4,2],[5,2],[6,1]]) {
+for (const [step,index] of [[3,0],[4,1],[5,2],[6,0],[7,1]]) {
   eq(l.messages[step].frame.footer,readerMenu.formatQueryResultActionFooter(index,photoActions),'Reader menu selection '+step);
 }
-eq(readerMenu.moveQueryResultAction(2,'forward',photoActions),2,'Reader does not wrap');
+eq(readerMenu.moveQueryResultAction(2,'forward',photoActions),0,'Reader wraps forward to Messages');
+eq(readerMenu.moveQueryResultAction(0,'back',photoActions),2,'Reader wraps back to the last row');
 eq(readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:true}).length,2,'No photo row during critical capture');
 eq(readerMenu.queryResultActionsFor({hasAttachments:false,imagePreviewEnabled:true,meetingCritical:false}).length,2,'No photo row without attachment');
 const taskActions = tasks.taskMenuActions(ringLessons.taskFixture);
@@ -171,12 +178,15 @@ for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,0]]) {
 }
 eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last to first');
 eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
-eq(l.ask[9].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
+eq(l.ask[10].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
+eq(l.ask[8].frame,f.receipt,'Confirming Send lands on the receipt, not the job log');
+eq(l.ask[9].frame,f.job,'The job log is one more tap');
+for(const i of [5,6,7]){eq((hud.html(l.ask[i].frame).match(/lens-bright/g)||[]).length,1,'Review menu highlights exactly one row '+i);}
 eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
 eq(l.ask[3].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Finish starts from captured words');
 eq(l.ask[3].frame.body,ringLessons.askTranscript,'Review preserves the captured words');
 eq(l.ask[4].frame.body,l.ask[3].frame.body,'Double-tap preserves the reviewed draft');
-eq(l.messages[7].frame.body,l.messages[8].frame.body,'Confirmed Reply and express Reply reference same message');
+eq(l.messages[8].frame.body,l.messages[9].frame.body,'Confirmed Reply and express double-tap open the same microphone');
 
 // Execute the real confirmation renderer with a capture-only viewport, never
 // import the app entry point or connect a microphone. Derive nav/footer using
@@ -194,7 +204,7 @@ const confirmContext={state,exports:{},...voiceFlow,pushVoicePromptViewport:(_br
   state.currentMsgCounter=position;confirmContext.result={title,body,position};
 }};
 vm.runInNewContext(ts.transpileModule(confirmFn.getText(mainAst),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,confirmContext);
-for(const [view,pending] of [[f.review,null],[f.replyReview,ref]]){
+for(const [view,pending] of [[f.review,null],[f.replyReview,null]]){
   state.pendingReference=pending;state.voiceDraftChunks=[];state.voiceDraftText=view.body;state.voiceDraftChunkIndex=0;
   await confirmContext.showVoicePromptConfirmation(null);
   eq(confirmContext.result.title,'REVIEW','Native prompt confirmation title');
@@ -214,8 +224,9 @@ for(const [stepIndex,cursor] of [[5,2],[6,3],[7,2]]){
   assert.ok(view.body.split('\n').length<=voiceFlow.VOICE_REVIEW_MENU_MAX_BODY_LINES,'Review menu stays within firmware line budget');checks++;
 }
 eq(voiceFlow.defaultVoicePromptReviewActionIndex(false,'cos'),2,'Review defaults to Send original');
-eq(l.messages[0].before,f.selected,'Message-opening tap starts from selected list');
-eq(l.messages[9].frame,f.replyReview,'Message lesson finishes on referenced review');
+eq(l.messages[0].frame,f.selected,'Messages lesson starts idle on the selected list');
+eq(l.messages[1].before,f.selected,'Message-opening tap starts from the selected list');
+eq(l.messages[10].frame,f.replyReview,'Message lesson finishes on an unsent review');
 
 // Evaluate only the actual isolated routing function with harmless spies. No
 // Main import, no bridge, no microphone, no server, and no app state writes.
@@ -269,6 +280,7 @@ assert.ok(sessionsSection?.includes('data-ring-lesson="sessions"'),'Sessions own
 eq([...html.matchAll(/href="#sessions">Sessions<\/a>/g)].length,2,'Desktop and mobile navigation expose Sessions');
 assert.ok(!html.includes('double-tap anywhere in the list'),'No stale list recording instruction');checks++;
 assert.ok(html.includes('Task-menu wrapping requires glasses 6.9.455'),'Task wrap version is qualified');checks++;
+assert.ok(html.includes('Reader-menu wrapping ships in the glasses build after 6.9.455'),'Reader wrap version is qualified');checks++;
 for (const [context,steps] of Object.entries(l)) for (const step of steps) {
   assert.ok(['idle','tap','hold','swipe-up','swipe-down','double-tap'].includes(step.gesture),context+' known ring gesture');checks++;
   assert.ok(hud.html(step.frame).includes('lens-footer'),context+' valid HUD frame');checks++;

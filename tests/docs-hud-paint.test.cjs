@@ -8,8 +8,12 @@ const decode=s=>s.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&#39;/g
 
 // Minimal paint-only DOM. Browser QA owns layout/pixels; this harness owns
 // layer retention and cancellation ordering, without a browser dependency.
+// classList is real enough for the painter's DOM reads: the same-body check
+// asks whether the painted body carries lens-body-list, so a stub that cannot
+// answer would force a full repaint on every list frame and hide that path.
+function classList(){const set=new Set();return {set,add(c){set.add(c);},remove(c){set.delete(c);},contains(c){return set.has(c);},toggle(c,force){if(force===undefined)force=!set.has(c);if(force)set.add(c);else set.delete(c);return force;}};}
 class Box {
-  constructor(){this.nodes={};this.style={};this.clientHeight=50;this.scrollHeight=150;this.classList={toggle(){}};}
+  constructor(){this.nodes={};this.style={};this.clientHeight=50;this.scrollHeight=150;this.classList=classList();}
   set innerHTML(value){
     this.markup=value;
     this.textContent=decode(value);
@@ -17,9 +21,10 @@ class Box {
     this.nodes={};
     for(const name of ['lens-nav','lens-body','lens-text','lens-footer']){
       const node=new Box();
-      const match=value.match(new RegExp('<div class="'+name+'[^\"]*">([\\s\\S]*?)</div>'));
-      node.textContent=decode(match?.[1]||'');this.nodes['.'+name]=node;
-      if(name==='lens-text' && match?.[1].includes('class="lens-bright"'))node.nodes['.lens-bright']=new Box();
+      const match=value.match(new RegExp('<div class="('+name+'[^\"]*)">([\\s\\S]*?)</div>'));
+      for(const cls of (match?.[1]||'').split(' '))if(cls)node.classList.add(cls);
+      node.textContent=decode(match?.[2]||'');this.nodes['.'+name]=node;
+      if(name==='lens-text' && match?.[2].includes('class="lens-bright"'))node.nodes['.lens-bright']=new Box();
     }
     if(value.includes('lens-host-menu'))this.appendChild(Object.assign(new Box(),{panel:true}));
     if(value.includes('lens-thumb'))this.nodes['.lens-thumb']=new Box();
@@ -127,19 +132,52 @@ test('Ask shows capture, unsent review, protected review, choices, then the exac
   h.playScene(steps[8],steps[7].frame,h.options);
   assert.match(h.screen.querySelector('.lens-text').textContent,/▶ Send original/,'Prompt is not running before tap settles');
   assert.equal(steps[8].gesture,'tap');h.flush();
+  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'▶ "Summarize the pilot thread."','Confirming Send shows the receipt first');
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Tap to watch/);
+  h.playScene(steps[9],steps[8].frame,h.options);
+  assert.equal(steps[9].gesture,'tap');h.flush();
   assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'00:00 ASK  Summarize the pilot thread.');
   assert.match(h.screen.querySelector('.lens-footer').textContent,/Running/);
 });
 
-test('Messages opens the selected row and finishes on an unsent referenced review',()=>{
+test('the status line waits for the outgoing shortcut window to finish leaving',()=>{
+  const h=lessonHarness(),steps=h.lessons.ask;
+  h.playScene(steps[1],steps[0].frame,h.options);h.flush();
+  h.playScene(steps[2],steps[1].frame,h.options);
+  h.queued.splice(0).forEach(t=>t.fn());
+  assert.ok(h.screen.querySelector('.lens-host-menu'),'window is still sliding out');
+  assert.equal(h.statuses.at(-1),'Gesture in progress…','no result announced before the HUD changes');
+  h.flush();
+  assert.equal(h.screen.querySelector('.lens-host-menu'),null);
+  assert.equal(h.statuses.at(-1),'Ask COS selected · microphone view open');
+});
+
+test('menus brighten exactly one row and every wait step names its own outcome',()=>{
+  const h=lessonHarness();
+  for(const i of [5,6,7])assert.equal((h.hud.html(h.lessons.ask[i].frame).match(/lens-bright/g)||[]).length,1,'ask review menu '+i);
+  assert.equal(h.endStatus(h.lessons.tasks[9]),'No input for three seconds · action menu closed');
+  assert.equal(h.endStatus(h.lessons.ask[11]),'Confirmation expired · normal footer restored');
+  assert.equal(h.endStatus(h.lessons.messages[6]),'Messages · 1 of 3 · wrapped without running an action');
+  assert.equal(h.endStatus(h.lessons.tasks[8]),'Back to list · 1 of 6 · wrapped without running an action');
+  for(const [name,steps] of Object.entries(h.lessons))for(const [i,s] of steps.entries()){
+    if(s.gesture==='hold'||s.settleAfter||(i>0&&JSON.stringify(s.frame)===JSON.stringify(steps[i-1].frame)))assert.ok(h.endStatus(s),name+' '+i+' explains a step whose HUD holds still');
+  }
+});
+
+test('Messages opens the selected row and finishes on an unsent review',()=>{
   const h=lessonHarness(),steps=h.lessons.messages;
-  h.playScene(steps[0],steps[0].frame,h.options);
+  assert.equal(steps[0].gesture,'idle','the lesson opens at rest, on the list');
+  h.playScene(steps[1],steps[0].frame,h.options);
   assert.match(h.screen.querySelector('.lens-text').textContent,/▶ #411/);
   assert.doesNotMatch(h.screen.querySelector('.lens-nav').textContent,/#411/);
   h.flush();assert.match(h.screen.querySelector('.lens-nav').textContent,/#411 Pg/);
-  h.playScene(steps[9],steps[8].frame,h.options);h.flush();
+  h.playScene(steps[6],steps[5].frame,h.options);h.flush();
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^▶ Messages/,'scrolling past View image wraps to Messages');
+  h.playScene(steps[8],steps[7].frame,h.options);h.flush();
+  assert.doesNotMatch(h.screen.querySelector('.lens-text').textContent,/Referencing/,'Reply never shows a reference line');
+  h.playScene(steps[10],steps[9].frame,h.options);h.flush();
   assert.equal(h.screen.querySelector('.lens-text').textContent,'Summarize the design review changes.');
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/^↺#411.*Tap=Send/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^Opus  Msg 1\/1  Tap=Send/);
 });
 
 test('main walkthrough builds real frames and delays the selected-row and reply results',()=>{
@@ -147,14 +185,14 @@ test('main walkthrough builds real frames and delays the selected-row and reply 
   const items=[...html.matchAll(/class="rp-step"[^>]*data-gesture="([^"]+)"[\s\S]*?<strong>([^<]+)<\/strong>/g)];
   const steps=h.mainSteps(items.map(m=>m[2]),items.map(m=>m[1]));
   assert.equal(steps.length,9);
-  for(const [index,before,after,delay] of [[5,'▶ #411','? What changed',320],[7,'? What changed','Listening...',650]]){
+  for(const [index,before,after,delay] of [[5,'▶ #411','? What changed',h.waitFor('tap')],[7,'? What changed','Listening...',h.waitFor('double-tap')]]){
     h.playScene(steps[index],steps[index-1].frame,h.options);
     assert.ok(h.screen.querySelector('.lens-text').textContent.includes(before));
     assert.equal(h.queued.at(-1).ms,delay);h.flush();
     assert.ok(h.screen.querySelector('.lens-text').textContent.includes(after));
   }
   h.playScene(steps[8],steps[7].frame,h.options);h.flush();
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/^↺#411.*Tap=Send/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/^Opus  Msg 1\/1  Tap=Send/);
 });
 
 test('changing scroll-indicator presence updates the rendered node and restores the body position',()=>{
@@ -221,12 +259,13 @@ test('picker replay restores a partially faded cursor; reduced motion skips the 
     const {hud,screen,animations}=harness({reduced});
     const target={nav:'Model',body:' *Opus\n> Fable',footer:'Opus  2/7  next msg',layout:'picker'};
     hud.paint(screen,target);
-    assert.equal(animations.length,reduced?0:1);
     const cursor=screen.querySelector('.lens-text').querySelector('.lens-bright');
+    const cursorFades=()=>animations.filter(a=>a.target===cursor);
+    assert.equal(cursorFades().length,reduced?0:1);
     cursor.style.opacity='.6';
     hud.paint(screen,target,{replay:true});
     assert.equal(cursor.style.opacity,'1');
-    if(!reduced)assert.equal(animations[0].paused,true);
+    if(!reduced){assert.equal(cursorFades()[0].paused,true,'the interrupted fade is cancelled');assert.equal(cursorFades().length,2,'a replay fades the cursor again');}
   }
 });
 
@@ -236,7 +275,7 @@ test('shortcut window slides in and out from the left over retained HUD nodes',(
   hud.paint(screen,{...hud.frames.reader,menu:true},{hold:true});
   assert.equal(screen.querySelector('.lens-text'),body,'opening menu must preserve the actual underlying body');
   assert.ok(screen.querySelector('.lens-host-menu'));
-  assert.equal(animations.at(-1).props.delay,1100);
+  assert.equal(animations.at(-1).props.delay,hud.timing.holdMenuDelay);
   assert.deepEqual(Array.from(animations.at(-1).props.translateX),['-110%','0%']);
   hud.paint(screen,'reader');const exit=animations.at(-1);
   assert.deepEqual(Array.from(exit.props.translateX),['0%','-110%']);
@@ -257,12 +296,12 @@ test('shortcut window is anchored left with its shadow toward the exposed HUD',(
 test('fast step changes cannot commit a stale outgoing overlay result',()=>{
   const {hud,screen,animations}=harness();
   hud.paint(screen,{...hud.frames.home,menu:true},{animate:false});
-  hud.paint(screen,'messages');const stale=animations.at(-1);
-  hud.paint(screen,'reader');const newest=animations.at(-1);
+  hud.paint(screen,'messages');const stale=animations.find(a=>a.props.onComplete);
+  assert.ok(stale,'leaving a menu frame slides the window out before committing');
+  hud.paint(screen,'reader');
   assert.equal(stale.paused,true);
   stale.props.onComplete();
-  newest.props.onComplete();
-  assert.equal(screen.querySelector('.lens-text').textContent,hud.frames.reader.body);
+  assert.equal(screen.querySelector('.lens-text').textContent,hud.frames.reader.body,'the stale exit cannot commit its old result');
   assert.equal(screen.querySelector('.lens-host-menu'),null);
 });
 

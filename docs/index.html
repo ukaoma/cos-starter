@@ -168,15 +168,6 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 .rp-lens{position:relative;aspect-ratio:2/1;border:1px solid rgba(70,232,120,.24);border-radius:18px;background:radial-gradient(100% 130% at 50% 0%,rgba(70,232,120,.09),transparent 65%),#07100a;box-shadow:inset 0 0 50px rgba(70,232,120,.025),0 22px 48px -28px rgba(0,0,0,.92);overflow:hidden}
 .rp-lens::before{content:"";position:absolute;inset:9px;border:1px solid rgba(70,232,120,.08);border-radius:12px;pointer-events:none}
 .rp-screen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,3vw,28px);font:400 clamp(.62rem,1.2vw,.78rem)/1.55 var(--mono);color:var(--hud);text-shadow:0 0 8px rgba(70,232,120,.38)}
-.rp-screen.rp-redraw{animation:rpRedraw .34s ease-out both}
-@keyframes rpRedraw{0%{opacity:.66;transform:translateY(2px)}100%{opacity:1;transform:none}}
-.rp-screen .rp-title{color:var(--hud-hi);margin-bottom:3px}
-.rp-screen .rp-dim{color:rgba(70,232,120,.5);text-shadow:none}
-.rp-screen .rp-row{display:flex;gap:9px;color:rgba(70,232,120,.64);text-shadow:none;padding:2px 6px;border-radius:5px}
-.rp-screen .rp-row.on{color:var(--hud-hi);background:rgba(70,232,120,.075);text-shadow:0 0 8px rgba(70,232,120,.38)}
-.rp-screen .rp-cursor{width:1ch;color:var(--hud-hi)}
-.rp-screen .rp-copy{max-width:46ch}
-.rp-screen .rp-foot{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:9px;border-top:1px solid rgba(70,232,120,.14);font-size:.78em;color:rgba(70,232,120,.55);text-shadow:none}
 .rp-ring-zone{position:relative;min-height:292px;display:grid;justify-items:center;align-content:center;padding:8px 0 4px;background:radial-gradient(circle at 50% 42%,rgba(77,213,138,.06),transparent 48%)}
 .rp-ring-shell{position:relative;width:min(300px,96%);height:236px;isolation:isolate;filter:drop-shadow(0 0 9px rgba(77,213,138,.22)) drop-shadow(0 0 25px rgba(77,213,138,.09))}
 .rp-ring-canvas{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;opacity:0;pointer-events:none;touch-action:none;cursor:default;transition:opacity .28s ease}
@@ -215,7 +206,7 @@ section.light .hud-cap{color:rgba(46,31,16,.45)}
 @media(max-width:860px){.rp-grid{display:block}.rp-stage{top:55px;z-index:8}.rp-steps{padding:18vh 0 18vh}.rp-step{min-height:50vh;max-width:600px;margin-inline:auto}}
 @media(max-width:560px){.rp-stage{border-radius:18px}.rp-stage-head{padding:10px 12px}.rp-demo{padding:10px 12px 4px}.rp-ring-zone{min-height:204px;padding:2px 0}.rp-ring-shell{width:222px;height:166px}.rp-ring-fallback{width:118px;height:106px}.rp-ring-fallback .rp-band{inset:15px 6px;border-width:6px}.rp-ring-fallback .rp-band::before{inset:-6px}.rp-ring-fallback .rp-touch{bottom:22px;transform:translateX(-50%) scale(.72)}.rp-even-mark{top:10px;transform:translateX(-50%) scale(.72)}.rp-orbit-hint{flex-direction:column;gap:3px;font-size:.5rem;line-height:1.35}.rp-gesture{margin-top:5px;font-size:.62rem}.rp-lens{border-radius:13px}.rp-screen{font-size:.55rem;padding:15px}.rp-stage-foot{gap:8px;padding:8px 10px}.rp-stage-foot button{padding:7px 10px}.rp-step button{padding:17px}}
 @media(max-height:600px) and (orientation:landscape){.rp-stage{position:relative;top:auto}.rp-demo{padding:10px 14px 4px}.rp-ring-zone{min-height:174px;padding:0}.rp-ring-shell{width:222px;height:166px}.rp-orbit-hint{font-size:.5rem}.rp-stage-foot{padding:8px 12px}.rp-steps{padding:12vh 0}.rp-step{min-height:70vh}}
-@media(prefers-reduced-motion:reduce){.rp-screen.rp-redraw{animation:none}.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.rp-ring-canvas,.rp-ring-fallback,.rp-step button,.rp-stage-foot button{transition:none}.rp-step button:hover{transform:none}}
 
 /* ── hero ────────────────────────────────────────────── */
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
@@ -264,15 +255,82 @@ section.light td strong{color:var(--ink-on-cream)}
 .ccp-row b.dim{color:var(--muted);font-family:var(--mono);font-size:.68rem;font-weight:400}
 .ccp-acts{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:11px 12px 12px}
 .ccp-acts span{text-align:center;border:1px solid var(--line-2);border-radius:9px;padding:8px 6px;font-size:.76rem;color:var(--muted)}
-.macpair{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-top:24px}
-.macpair .cards{margin-top:0}
-.macpair .duo-cap{margin-bottom:0}
+/* ── COS Control exhibit: a sticky panel that the chapters drive ─ */
+.ccx{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:24px}
+.ccx-stage{position:sticky;top:84px}
+.ccx-stage .duo-cap{margin-top:12px;min-height:2.6em}
+.ccx .ccp{position:relative;max-width:none}
+.ccp-row{transition:background-color .35s ease}
+.ccp-row.lit{background:rgba(120,206,146,.07)}
+.ccp-row.lit span{color:var(--fg)}
+.ccp-notice{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0;padding:10px 14px;border-bottom:1px solid var(--line-2);background:rgba(201,169,110,.07);font-size:.8rem;line-height:1.4;color:var(--fg)}
+.ccp-notice b{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.ccp-notice i{font-style:normal;color:var(--ghost);font-size:1rem;line-height:1}
+.ccp-notice[hidden],.ccp-foot[hidden],.ccp-card[hidden],.cc-ledger[hidden]{display:none}
+.ccp-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cc-btn{display:inline-block;border:1px solid rgba(201,169,110,.45);border-radius:9px;padding:7px 12px;font-family:var(--body);font-size:.76rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--gold);background:rgba(201,169,110,.06)}
+.ccp-card{position:absolute;left:6px;right:6px;bottom:6px;z-index:3;border:1px solid var(--line);border-radius:12px;background:rgba(15,10,6,.985);box-shadow:0 30px 60px -22px rgba(0,0,0,.85);padding:14px 16px 16px}
+.ccp-card h4{font-family:var(--mono);font-weight:500;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+.cc-list{display:grid;gap:6px}
+.cc-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:9px;font-size:.8rem;color:var(--fg)}
+.cc-item small{color:var(--muted);font-size:.7rem;white-space:nowrap}
+.cc-item small:last-child{margin-left:auto}
+.cc-item .cc-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-item .cc-no{font-family:var(--mono)}
+.cc-chip{flex-shrink:0;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,.5);border-radius:5px;padding:2px 6px}
+.cc-chip.task{color:rgba(120,206,146,.95);border-color:rgba(120,206,146,.5)}
+.cc-lanes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.cc-lane{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:4px 9px}
+.cc-lane b{color:var(--fg);font-weight:600}
+.cc-task{display:grid;gap:4px;padding:10px 12px;border:1px solid var(--line-2);border-radius:9px}
+.cc-task b{font-size:.84rem;color:var(--fg)}
+.cc-task span{font-size:.74rem;color:var(--muted);line-height:1.4}
+.ccp-card .cc-btn{margin-top:10px}
+.cc-ledger{display:flex;align-items:center;gap:12px;margin-top:10px;padding:9px 14px;border:1px solid var(--line-2);border-radius:999px;background:linear-gradient(158deg,var(--panel),transparent);font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cc-ledger i{display:flex;flex:1;gap:3px;height:5px}
+.cc-ledger i b{display:block;border-radius:3px;transform-origin:left center}
+.cc-ledger i b.running{background:var(--green);box-shadow:0 0 8px rgba(127,169,138,.6)}
+.cc-ledger i b.waiting{background:var(--warm)}
+.cc-ledger i b.done{background:var(--gold)}
+.cc-ledger span{white-space:nowrap}
+.ccx-chapters{display:grid;gap:clamp(26px,3.6vw,48px);padding:1vh 0 8vh}
+.ccx-chapter{padding-top:22px;border-top:1px solid var(--line-2);scroll-margin-top:92px;transition:border-color .3s ease}
+.ccx-chapter h3{font-size:1.12rem;line-height:1.3;margin-bottom:3px;cursor:pointer}
+.ccx-chapter h3:hover{color:var(--gold)}
+.ccx-dek{font-family:var(--display);font-style:italic;font-size:1rem;color:var(--gold);margin:0 0 12px;opacity:.85}
+.ccx-chapter ul{margin:0;padding-left:1.15rem}
+.ccx-chapter li{margin:8px 0;font-size:.93rem;line-height:1.55;color:var(--muted)}
+.ccx-chapter li strong{color:var(--fg);font-weight:600}
+.ccx-chapter[data-active]{border-top-color:var(--gold)}
+.ccx-chapter[data-active] h3{color:var(--gold)}
+.ccx-notes{margin-top:34px}
+.version-notes{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 18px;font-size:.88rem;margin:6px 0 14px}
+.version-notes dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--gold);padding-top:3px;white-space:nowrap}
+.version-notes dd{margin:0;color:var(--muted);line-height:1.5}
+/* Setup: release package and tier table read as a list, not a wall */
+.release-list{margin:12px 0 0 1.1rem;padding:0}
+.release-list li{margin:8px 0;font-size:.93rem;line-height:1.55}
+.release-detail{margin-top:12px}
+.release-detail summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;padding:6px 0;color:var(--ink-on-cream)}
+.release-detail summary::-webkit-details-marker{display:none}
+.release-detail summary::after{content:"+";font-family:var(--mono);color:#7a5c2c;transition:transform .2s}
+.release-detail[open] summary::after{transform:rotate(45deg)}
+.release-detail dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:7px 16px;font-size:.88rem;margin:8px 0 10px}
+.release-detail dt{font-family:var(--mono);font-size:.66rem;color:#7a5c2c;white-space:nowrap;padding-top:3px}
+.release-detail dd{margin:0;color:var(--muted-on-cream);line-height:1.5}
+.release-detail>p{font-size:.86rem;margin:0}
+.steps ul{margin:10px 0 0 1.1rem;padding:0;font-size:.93rem}
+.steps ul li{margin:6px 0;line-height:1.55}
+.steps .tw{margin:12px 0}
+.steps .tw td,.steps .tw th{padding-left:10px;padding-right:10px}
+@media(max-width:860px){.ccx{grid-template-columns:1fr}.ccx-stage{position:relative;top:auto;max-width:480px}.ccx-chapters{padding-top:0}}
+@media(max-width:560px){.version-notes,.release-detail dl{grid-template-columns:1fr;gap:2px 0}.version-notes dd,.release-detail dd{margin-bottom:8px}}
+@media(prefers-reduced-motion:reduce){.ccp-row,.ccx-chapter,.release-detail summary::after{transition:none}}
 .anim-on .ccp-row,.anim-on .ccp-acts span{opacity:0}
 .anim-on .qf{opacity:0}
 .anim-on .pf-th{opacity:0}
 .anim-on .pf-menu{opacity:0}
 .anim-on .lf .lens-text{opacity:0}
-@media(max-width:860px){.macpair{grid-template-columns:1fr}}
 /* Query-a-meeting flow. Three ordered steps, because the order IS the information:
    a saved meeting only becomes conversational after it has been processed. */
 .qflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:24px 0 6px;counter-reset:qf}
@@ -286,6 +344,8 @@ section.light td strong{color:var(--ink-on-cream)}
 .card{border:1px solid var(--line);border-radius:16px;padding:20px;background:linear-gradient(158deg,var(--panel),transparent)}
 .card p{font-size:.92rem}
 section.light .card{border-color:var(--line-on-cream);background:rgba(255,255,255,.5)}
+.card ul,.tight{margin:10px 0 0 1.1rem;padding:0;font-size:.92rem}
+.card ul li,.tight li{margin:6px 0;line-height:1.5}
 .card .lbl{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--gold);border:1px solid var(--line);border-radius:7px;padding:4px 10px;margin-bottom:12px;background:rgba(201,169,110,.06)}
 section.light .card .lbl{color:#7a5c2c;border-color:rgba(46,31,16,.2);background:rgba(122,92,44,.07)}
 .steps{list-style:none;counter-reset:st;margin-top:8px}
@@ -548,7 +608,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
-<link rel="stylesheet" href="../assets/docs-hud.css?v=5">
+<link rel="stylesheet" href="../assets/docs-hud.css?v=6">
 </head>
 <body>
 
@@ -786,18 +846,18 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <li class="rp-step" data-rp-step="7" data-gesture="double-tap">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">08</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
-          <p>Double-tap starts a voice follow-up to the open message. Nothing sends until you finish and confirm it.</p>
+          <p>Double-tap starts a voice prompt from the open message, in the same session. Nothing sends until you finish and confirm it. To attach a specific message as context, say &ldquo;reference message 411&rdquo; as a voice command first.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="8" data-gesture="tap">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">09</span><strong>Finish and review the reply</strong><span class="rp-action">Tap</span>
-          <p>Tap once to finish recording. After transcription, your words appear with Tap=Send in the footer and the #411 reference intact. Read before sending. Scroll down for review options instead.</p>
+          <p>Tap once to finish recording. After transcription, your words appear with Tap=Send in the footer. Nothing has been sent. Read before sending, or scroll down for review options instead.</p>
         </button>
       </li>
     </ol>
   </div>
-  <p class="hud-note">Hub-themed preview with fictional data. Navigation, body content, footer labels, and gesture behavior follow the app. The green frame, typography, spacing, and system-menu appearance are illustrative, not an optical capture.</p>
+  <p class="hud-note">Hub-themed preview with fictional data. Navigation, body content, footer labels, and gesture behavior follow the app. The green frame, typography, spacing, animation timing, and system-menu appearance are illustrative, not an optical capture. The three-second waits are the app&rsquo;s real timeouts. Each ring gesture plays once per step; use Replay gesture to watch it again.</p>
   <div class="hold-menu-guide" id="hold-menu">
     <div>
       <h3>Tap and hold. Your shortcuts, wherever you are.</h3>
@@ -849,7 +909,18 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <li>
       <h3>Start the server</h3>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code><button type="button">Copy</button></div>
-      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts. Server <strong>6.27.2</strong> provides two Mac transcription tiers. Balanced (recommended) uses Small.en only for provisional prompt text, Large-v3-Turbo for the authoritative live transcript, and Large-v3 for saved-work polish. Max uses Large-v3-Turbo for low-latency provisional preview while Large-v3 remains authoritative for live commit and saved-work polish. Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo. Interrupted model downloads retain their partial file and resume on the next Guided Setup run instead of restarting from zero. <strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and have about 6 GB free. Phone-local Moonshine Tiny or Base is optional and downloads its own model on the iPhone. It can now provide rolling provisional text for both Messages and Meetings; Mac Whisper remains authoritative for speaker-attributed meeting transcription and saved-work polish. <strong>Optional local spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code>; Python 3.11 or 3.12 is supported. The first normal start provisions the pinned private Kokoro environment asynchronously. Text chat works without either voice dependency.</p>
+      <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts.</p>
+      <p><strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and keep about 6 GB free. An interrupted model download keeps its partial file and resumes on the next Guided Setup run.</p>
+      <div class="tw"><table>
+        <tr><th>Tier</th><th>Preview while dictating</th><th>Live transcript</th><th>Polish on save</th></tr>
+        <tr><td><strong>Balanced</strong> (recommended)</td><td>Small.en</td><td>Large-v3-Turbo</td><td>Large-v3</td></tr>
+        <tr><td><strong>Max</strong></td><td>Large-v3-Turbo</td><td>Large-v3</td><td>Large-v3</td></tr>
+      </table></div>
+      <ul>
+        <li>Canonical transcription preempts cosmetic preview instead of competing for Metal. Missing Max weights fall back visibly to Turbo.</li>
+        <li>Phone-local Moonshine Tiny or Base is optional and downloads on the iPhone. It gives rolling provisional text in Messages and Meetings; Mac Whisper stays authoritative for speaker-attributed meetings and saved-work polish.</li>
+        <li><strong>Optional spoken replies on Apple silicon:</strong> run <code>brew install python@3.12 ffmpeg espeak-ng</code> (Python 3.11 or 3.12). The first normal start provisions the private Kokoro environment in the background. Text chat works without either voice dependency.</li>
+      </ul>
       <p><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill from the <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">Starter Kit</a> and your agent will start the server, confirm it's healthy, keep it on the latest release, and troubleshoot connection issues on request &mdash; so you never babysit the terminal. Pair it with <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md"><code>/glasses-day</code></a> to pull a day of glasses questions and answers into your desk session and pick up what was top of mind.</p>
     </li>
     <li>
@@ -864,8 +935,30 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="note">
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
-  <div class="note">
-    <p><strong>Latest release package: Control 0.5.189, glasses 6.9.453, server 6.44.4.</strong> COS Control 0.5.189 is the public Mac download. Capture a task, schedule it, and Run now from a seventh Activity pane; the Mac runs it read-only. COS Glasses 6.9.448 adds a TASKS page on the lens, a WORK tab on the phone, and Tasks on the hold menu. COS Glasses 6.9.449 turns WORK into a full board with Inbox, Today, Scheduled, Running, and Done lanes, live counts, and visible empty lanes. COS Glasses 6.9.450 reads ROUTINES from the routine ledger rather than the task one, so an enabled morning brief shows its schedule, last fire, and next fire instead of appearing only while a run is in flight. COS Glasses 6.9.453 makes the board writable: tap a task for Ask COS, Done, Today, To inbox, Unschedule, Reopen, or Open run, where Ask COS starts a restricted session for that task on the same durable path as the morning brief. COS Control 0.5.189 shows every open task rather than only what is due, and both surfaces read the domains your COS actually has, from server 6.44.4, instead of a list baked into the app. Every message row now says where it came from: with server 6.43.4 a run the Mac started (the scheduled morning brief today, agent tasks next) carries a ROUTINE or TASK label in the Messages list and on the detail line, with the model that answered beside it and the routine or task named in the hover; nothing is inferred from a row that carries no label. COS Glasses 6.9.447 shows the same label as a chip on the phone and a star mark after the number on the lens, and a G2 stamp now survives a reload. The brief card shows why the last brief failed, on its own line. Update Server proves any installed provider (Claude, Codex, and Cursor when its agent is present) and commits when one real query passes, so a vendor session limit is recorded as a skip instead of rolling the update back (server 6.43.3 returns the reason as a code; older servers are classified from the error sentence). Its Morning brief card shows what is behind each source: meetings stored, memories and threads, events on today&#8217;s calendar, open tasks, whether the named skill exists, and how the last brief came back, section by section. The morning brief waits in the inbox before you ask for it. Since server 6.43.0 a start-of-day brief runs on a schedule inside the server and drops it in your messages as an ordinary numbered reply: weekdays at 07:00 in your Mac&#8217;s timezone by default, with Calendar, decisions and deadlines from recent meetings, tasks due this week, and what is waiting on you. Turn on more sources (knowledge graph, reflection, health, an opening reading, a metrics pulse, one of your own skills such as <code>/good-morning</code>, or a custom section), reorder them, and set their windows from the <strong>Morning brief</strong> card in COS Control 0.5.185 or from Settings &rarr; AI in COS Glasses 6.9.447. One run a day; a Mac asleep at the slot still fires within three hours; Run now is capped at five a day; nothing runs while Background jobs are off. On the glasses, a brief that landed while COS was closed shows on the boot and return splash as <em>#NNN Morning brief</em> until you open the inbox. COS Glasses 6.9.453 is the current companion pack: every message says where it came from (a ROUTINE or TASK chip on the phone beside the G2 chip, a star mark after the number on the lens, the Done row of a watched brief marked too), a G2 stamp survives a reload, and everything since 6.9.443: a run the Mac started shows as a running row in the queue with a live job log you can open, a reply this phone did not ask for shows once under one number, a brief that lands while COS is open appears without a relaunch, the brief&#8217;s number can no longer be handed to your next prompt, and Settings &rarr; AI &rarr; Morning brief shows what is behind each source. It carries the 6.9.443 inbox splash and the 6.9.442 display-stream ticket hardening; the newest build is available by sideload, and Even Hub still lists 6.8.353. Server identity is 6.44.4: every job the server starts carries an origin label (routine or task) on its exchange, on the display bus, and on the today and archive views, with the request fingerprint pinned to its sixteen identity keys so journals hydrate across the upgrade and back; since 6.43.3 the update proof returns a failure code (a vendor limit is <code>provider_quota</code>), Cursor is a proof provider, the Claude proof names its empty MCP config explicitly, numbers held by a still-running brief count toward the message counter, and <code>GET /api/morning-brief</code> reports per-source coverage and per-run section outcomes. Task titles strip Markdown before truncation and cut on a word boundary.</p>
+  <div class="note release" id="release-package">
+    <p><strong>Latest release package: Control 0.5.189, glasses 6.9.453, server 6.44.4.</strong> COS Control 0.5.189 is the public Mac download. COS Glasses 6.9.453 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.8.353. Server identity is 6.44.4, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <ul class="release-list">
+      <li><strong>Tasks with a finish line.</strong> Capture a task, schedule it, and Run now from Activity in COS Control; the Mac runs it read-only. On the glasses: a TASKS page on the lens, a WORK board on the phone, and Tasks on the hold menu. Nothing runs until a task says what finished looks like.</li>
+      <li><strong>A morning brief that waits in your inbox.</strong> A scheduled start-of-day brief lands in Messages as an ordinary numbered reply, weekdays at 07:00 by default. Choose its sources and timing from the Morning brief card in COS Control or Settings &rarr; AI on the glasses.</li>
+      <li><strong>Every message says where it came from.</strong> A run the Mac started carries a ROUTINE or TASK label in COS Control, a chip on the phone, and a star after the number on the lens. A row without a label is never guessed.</li>
+      <li><strong>Updates prove themselves.</strong> Update Server tries one real query on each installed provider before it commits, and records a vendor session limit as a skip instead of rolling back.</li>
+    </ul>
+    <details class="release-detail">
+      <summary>Version by version</summary>
+      <dl>
+        <dt>Control 0.5.189</dt><dd>Every open task shows, not only what is due. Domains come from your server, not a list baked into the app. Run now from a seventh Activity pane.</dd>
+        <dt>Control 0.5.185</dt><dd>Morning brief card: sources, order, windows, time, and days. ROUTINE or TASK label on Activity rows and detail lines, with the model that answered.</dd>
+        <dt>Glasses 6.9.453</dt><dd>The WORK board is writable: tap a task for Ask COS, Done, Today, To inbox, Unschedule, Reopen, or Open run. Ask COS starts a restricted session for that task on the same durable path as the morning brief.</dd>
+        <dt>Glasses 6.9.450</dt><dd>ROUTINES reads the routine ledger, so an enabled brief shows its schedule, last fire, and next fire.</dd>
+        <dt>Glasses 6.9.449</dt><dd>WORK becomes a full board: Inbox, Today, Scheduled, Running, and Done lanes with live counts and visible empty lanes.</dd>
+        <dt>Glasses 6.9.448</dt><dd>TASKS page on the lens, WORK tab on the phone, Tasks on the hold menu.</dd>
+        <dt>Glasses 6.9.447</dt><dd>Origin label as a chip on the phone and a star mark on the lens. A G2 stamp survives a reload. Settings &rarr; AI &rarr; Morning brief shows what is behind each source.</dd>
+        <dt>Glasses 6.9.443 to 6.9.446</dt><dd>A run the Mac started shows as a running row with a live job log. A reply this phone did not ask for shows once under one number. A brief that lands while COS is open appears without a relaunch; one that lands while COS is closed shows on the splash as <em>#NNN Morning brief</em>. Inbox splash and display-stream ticket hardening.</dd>
+        <dt>Server 6.44.4</dt><dd>Every job carries an origin label on its exchange, the display bus, and the today and archive views. Request fingerprints are pinned to sixteen identity keys, so journals hydrate across the upgrade and back. Task titles strip Markdown and cut on a word boundary.</dd>
+        <dt>Server 6.43.0 to 6.43.4</dt><dd>Scheduled morning brief (6.43.0). Per-source coverage and section outcomes on <code>GET /api/morning-brief</code> (6.43.1). Update proof returns a failure code, a vendor limit is <code>provider_quota</code>, and Cursor is a proof provider (6.43.3). Origin stamps at submission (6.43.4).</dd>
+      </dl>
+      <p>Full notes: the <a href="https://github.com/ukaoma/cos-glasses-server/blob/main/CHANGELOG.md" rel="noopener">server changelog</a> and the <a href="https://github.com/ukaoma/cos-control-macos/blob/main/CHANGELOG.md" rel="noopener">COS Control changelog</a> on GitHub.</p>
+    </details>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
 </section>
@@ -874,58 +967,146 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="sec-head">
     <h2 class="ch"><span class="num">2A.</span> COS Control for Mac</h2>
     <p class="ch-sub">The server, without the terminal babysitting.</p>
-    <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, shows the effective Balanced or Max tier plus each transcription model, reports real Agent CLI versions, runs Doctor, and performs safe updates, restarts, and rollbacks.</p>
+    <p class="lead">COS Control is a native menu bar companion for the same public npm server. It starts COS at login, keeps one server owner, shows which Whisper model is doing what, and runs updates, restarts, and rollbacks that prove themselves first. Read the chapters on the right; the panel shows each one.</p>
   </div>
 
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
-  <div class="macpair">
-    <div>
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.44.4, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely.">
-    <div class="ccp-in">
-      <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-      <div class="ccp-row"><span>Server</span><b>Managed &#183; 6.44.4</b></div>
-      <div class="ccp-row"><span>Ownership</span><b>Verified direct PID</b></div>
-      <div class="ccp-row"><span>Recovery</span><b>Scheduled</b></div>
-      <div class="ccp-row"><span>Local Whisper</span><b>Ready</b></div>
-      <div class="ccp-row"><span>Background jobs</span><b>Allowed</b></div>
-      <div class="ccp-row"><span>Meeting preview</span><b>Turbo &#183; On</b></div>
-      <div class="ccp-row"><span>Adaptive replay</span><b>Off &#183; raw preserved</b></div>
-      <div class="ccp-row"><span>Transcription tier</span><b>Max</b></div>
-      <div class="ccp-row"><span>Preview, while dictating</span><b>Large-v3-Turbo</b></div>
-      <div class="ccp-row"><span>Commit, live meeting</span><b>Large-v3</b></div>
-      <div class="ccp-row"><span>Polish, on save</span><b>Large-v3</b></div>
-      <div class="ccp-row"><span>Meeting sync</span><b>Idle</b></div>
-      <div class="ccp-row"><span>Agent CLIs</span><b>Claude &#183; Codex &#183; Cursor</b></div>
-      <div class="ccp-row"><span>Work folder</span><b class="dim">~/Documents/COS</b></div>
-      <div class="ccp-acts"><span>Open COS</span><span>Open Cursor</span><span>Run Doctor</span><span>Restart Safely</span></div>
+  <div class="ccx" data-control-exhibit>
+    <div class="ccx-stage">
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.44.4, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+        <div class="ccp-in">
+          <div class="ccp-notice" data-cc-notice hidden></div>
+          <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.44.4</b></div>
+          <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
+          <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
+          <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
+          <div class="ccp-row" data-cc-row="jobs"><span>Background jobs</span><b>Allowed</b></div>
+          <div class="ccp-row" data-cc-row="preview"><span>Meeting preview</span><b>Turbo &#183; On</b></div>
+          <div class="ccp-row" data-cc-row="replay"><span>Adaptive replay</span><b>Off &#183; raw preserved</b></div>
+          <div class="ccp-row" data-cc-row="tier"><span>Transcription tier</span><b>Max</b></div>
+          <div class="ccp-row" data-cc-row="dictate"><span>Preview, while dictating</span><b>Large-v3-Turbo</b></div>
+          <div class="ccp-row" data-cc-row="commit"><span>Commit, live meeting</span><b>Large-v3</b></div>
+          <div class="ccp-row" data-cc-row="polish"><span>Polish, on save</span><b>Large-v3</b></div>
+          <div class="ccp-row" data-cc-row="sync"><span>Meeting sync</span><b>Idle</b></div>
+          <div class="ccp-row" data-cc-row="clis"><span>Agent CLIs</span><b>Claude &#183; Codex &#183; Cursor</b></div>
+          <div class="ccp-row" data-cc-row="folder"><span>Work folder</span><b class="dim">~/Documents/COS</b></div>
+          <div class="ccp-acts"><span>Open COS</span><span>Open Cursor</span><span>Run Doctor</span><span>Restart Safely</span></div>
+          <div class="ccp-foot" data-cc-foot hidden></div>
+        </div>
+        <div class="ccp-card" data-cc-card hidden></div>
+      </div>
+      <div class="cc-ledger" data-cc-ledger hidden></div>
+      <p class="duo-cap" data-cc-caption>See what is actually running, not what you hope is running.</p>
+    </div>
+
+    <div class="ccx-chapters">
+      <article class="ccx-chapter" data-cc-scene="status">
+        <h3>See what is actually running.</h3>
+        <p class="ccx-dek">One panel. One server owner.</p>
+        <ul>
+          <li>Starts COS at login and holds the managed LaunchAgent. Control refuses to replace a process it does not recognize, so the port never has two owners.</li>
+          <li>Reports the real agent CLI versions and the effective transcription tier, with the Whisper model behind each stage.</li>
+          <li><strong>Run Doctor</strong> is one coordinated check. <strong>Restart Safely</strong> waits for meetings and jobs to finish.</li>
+          <li>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token stay compatible.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="update">
+        <h3>Updates prove themselves before they switch.</h3>
+        <p class="ccx-dek">Staged, proven, then live.</p>
+        <ul>
+          <li><strong>Check for updates</strong> sits in the panel footer, so you never wait for the periodic check.</li>
+          <li>An update stages a complete new generation, runs one real query on each installed provider (Claude, Codex, and Cursor when its agent is present), and only then commits. A vendor session limit is recorded as a skip, not a rollback.</li>
+          <li>A short notice at the top of the panel says when a new capability lands, whether or not an update is waiting. Dismiss it once and it stays gone.</li>
+          <li>Restart and update are blocked while a meeting or job is active. Rollback is verified the same way.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="brief">
+        <h3>Your morning brief waits in the inbox.</h3>
+        <p class="ccx-dek">Scheduled inside the server. Delivered as a message.</p>
+        <ul>
+          <li>Weekdays at 07:00 in your Mac&rsquo;s timezone by default: calendar, decisions and deadlines from recent meetings, tasks due this week, and what is waiting on you. It lands in Messages as an ordinary numbered reply.</li>
+          <li>Turn on more sources (knowledge graph, reflection, health, an opening reading, a metrics pulse, or your own skill such as <code>/good-morning</code>), reorder them, and set their windows from the <strong>Morning brief</strong> card.</li>
+          <li><strong>Run now</strong> fires one immediately, capped at five a day. A Mac asleep at the slot still fires within three hours. Nothing runs while Background jobs are off.</li>
+          <li>The card shows what is behind each source and why the last brief failed, on its own line. The brief is read-only by contract.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="origin">
+        <h3>Every message says where it came from.</h3>
+        <p class="ccx-dek">A stamp, never a guess.</p>
+        <ul>
+          <li>A run the Mac started is stamped at submission: <strong>ROUTINE</strong> for the scheduled brief, <strong>TASK</strong> for agent tasks.</li>
+          <li>Activity &rarr; Messages shows the label on the row and on the detail line, with the model that answered and the routine or task named in the hover.</li>
+          <li>The glasses show the same label as a chip on the phone and a star after the number on the lens. Rows from a server before 6.43.4 carry no label, and nothing is inferred from a bare row.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="tasks">
+        <h3>Tasks with a finish line.</h3>
+        <p class="ccx-dek">Capture, schedule, run now. Read-only on the Mac.</p>
+        <ul>
+          <li>Activity &rarr; Tasks shows every open task, not only what is due, across Inbox, Today, Scheduled, Running, and Done.</li>
+          <li>Each task carries a <strong>Done when</strong> line. Run now is refused until the task says what finished looks like.</li>
+          <li>Domains come from the COS you actually run, not a list baked into the app. The same board is on the glasses and the phone.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="meetings">
+        <h3>Meetings, previews, and replay.</h3>
+        <p class="ccx-dek">Fast text first. The canonical record wins.</p>
+        <ul>
+          <li><strong>Balanced</strong> or <strong>Max</strong> decides which Whisper model previews while you dictate, commits the live meeting, and polishes on save. The panel names all three.</li>
+          <li><strong>Fast meeting preview</strong> shows Turbo text before the speaker-attributed Large-v3 chunk lands and replaces it. On by default; Control owns the machine-wide switch.</li>
+          <li><strong>Adaptive replay</strong> is a default-off canary. Play may build a cleaned copy for review; the raw WAV stays authoritative and one click away.</li>
+          <li><strong>Meetings Library</strong> points Control at the folder you already use, months of <code>YYYY-MM/*.md</code>. COS browses it in place and never moves or rewrites a file. Activity &rarr; Meetings adds a day calendar, transcript, summary, and keyword plus meaning search.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="sessions">
+        <h3>Sessions, memory, and the archive.</h3>
+        <p class="ccx-dek">The threads on this Mac, readable and writable.</p>
+        <ul>
+          <li>Activity &rarr; Sessions lists Claude, Codex, and Cursor chats from the last 7 days, plus pinned ones at any age. Click a row to read the transcript; type under it and the reply lands in the real thread.</li>
+          <li>A thread that is mid-turn refuses politely and offers <strong>Retry</strong> or <strong>Fork with this message</strong>. Cursor sessions accept messages but do not fork.</li>
+          <li><strong>Recent / Archive</strong> lists every stored day and searches months of history by text. It is a real scan on your server, not a filter.</li>
+          <li><strong>COS Data</strong> connects Memory and Threads through the authenticated bridge and never creates, moves, or rewrites your stored data. A message carrying video, photos, or files says so before you open it.</li>
+        </ul>
+      </article>
+
+      <article class="ccx-chapter" data-cc-scene="pet">
+        <h3>The session pet is the live map.</h3>
+        <p class="ccx-dek">Running, waiting, done, at a glance.</p>
+        <ul>
+          <li>Running and Waiting sessions stay on the desktop as a figure when Activity is closed. The ledger under it turns amber for waiting, green for running, and gold for finished work.</li>
+          <li><strong>Open in platform</strong> jumps to Cursor, Claude Desktop, or ChatGPT. Choose a bundled character, a gallery pet, or your own sprites.</li>
+          <li>Sprite packs, sizes, speeds, and the Accessibility grant are covered on the <a href="/control/#session-command">COS Control page</a>.</li>
+        </ul>
+      </article>
     </div>
   </div>
-      <p class="duo-cap">See what is actually running, not what you hope is running.</p>
-    </div>
-    <div class="cards mixed">
-    <div><h3>Your morning brief waits in the inbox</h3><p>Since server 6.43.0 a start-of-day brief runs on a schedule inside the server and lands in your messages as a numbered reply, no prompt needed. Choose the sources, their order, their windows, the time, and the days from the <strong>Morning brief</strong> card in COS Control 0.5.185 or from Settings &rarr; AI in COS Glasses 6.9.447; Run now fires one immediately, and the running brief shows as a queue row you can watch. Since server 6.43.1 the card also shows what is behind each source and which sections the last brief delivered. One run a day, off while Background jobs are off, and the brief is read-only by contract. Enable the <em>Workspace skill</em> source with your own <code>/good-morning</code> to make that skill the whole brief.</p></div>
-    <div><h3>Every message says where it came from</h3><p>Since server 6.43.4 a run your Mac started is stamped at submission: the scheduled morning brief today, agent tasks next. COS Control 0.5.185 shows a <strong>ROUTINE</strong> or <strong>TASK</strong> label on the row in the Activity window Messages list and on the detail line, with the model that answered beside it and the routine or task named in the hover. COS Glasses 6.9.447 shows the same label as a chip on the phone, next to the G2 chip a glasses prompt already gets, and one star mark after the number on the lens; the Done row of a watched brief carries the mark too. The label is a stamp, never a guess: on a server before 6.43.4 rows simply carry none, and nothing is inferred from a bare row.</p></div>
-    <div><h3>One server owner</h3><p>The managed LaunchAgent prevents split port ownership. COS Control refuses to replace an unknown process.</p></div>
-    <div><h3>Check for updates</h3><p>Since COS Control 0.5.67 the panel footer carries a <strong>Check for updates</strong> button, so you no longer have to wait for the periodic check to notice a new release.</p></div>
-    <div><h3>Notices from the publisher</h3><p>Since COS Control 0.5.71 a short notice can appear at the top of the panel when a new capability lands, so something you can now do does not go unnoticed. It shows <strong>whether or not an update is waiting</strong> &#8212; the moment you finish updating is exactly when it is worth reading. Dismiss it with the &times; and it does not come back; a later notice still appears.</p></div>
-    <div><h3>Browse and search your archive</h3><p>Since COS Control 0.5.72 and server 6.38.0, Activity &rarr; Messages has a <strong>Recent / Archive</strong> switch. Archive lists every stored day with its chat and message counts and searches months of history by text &mdash; results point at a day with the wording around each match. Search runs when you press return; it is a real scan on your server, not a filter.</p></div>
-    <div><h3>Your archive will shrink &mdash; that is the fix working</h3><p>Server 6.38.1 fixed a long-standing bug where the daily archive quietly stored the same conversations repeatedly (one real install held 1.2&nbsp;GB that was 99% duplicates). After updating, day files dedupe themselves as they are touched, and archive sizes and search counts drop sharply. Nothing real is lost &mdash; duplicates are collapsed to the most complete copy. A bundled repair tool (<code>npx tsx server/scripts/repair-archive-duplicates.ts</code>, dry-run by default) clears any days the server no longer touches.</p></div>
-    <div><h3>Local models via Ollama</h3><p>Server 6.39.0 adds <strong>Ollama</strong> as a fourth model family. It appears in the pickers only when a local daemon answers on <code>127.0.0.1:11434</code> with at least one pulled model, and hides again when it does not; a saved Ollama choice with the daemon down safely resets to Opus. Loopback only. Since server 6.40.1 a local model can use three read-only COS tools (search meetings, search memories, read a meeting) when the pulled tag advertises tool support and COS_SCRIPTS_DIR is set; still no vision, Continue/Fork, or Live Cues on local models. Pin one with <code>COS_OLLAMA_MODEL</code>; Control 0.5.73 and newer keeps that setting (and <code>COS_OLLAMA_HOST</code>) across server updates. Since Control 0.5.74 the About view shows an <strong>Ollama</strong> row with the live model whenever the daemon is ready, and Doctor prints a matching line; no row simply means no local daemon. Setup steps live under <a href="#ollama">Models</a>.</p></div>
-    <div><h3>Recording-safe controls</h3><p>Restart is blocked while meetings or jobs are active. Updates stage a complete new generation before switching.</p></div>
-    <div><h3>Fast meeting preview</h3><p>Provisional Turbo text appears before the canonical speaker-attributed Large-v3 chunk lands. Introduced default-off in 6.21.7, this is <strong>on by default since server 6.21.22</strong> and app 6.8.315; the committed Large-v3 transcript stays authoritative and still atomically replaces the provisional line. Control owns the machine-wide switch and applies it with verified restart and rollback.</p></div>
-    <div><h3>Adaptive review audio</h3><p>Control 0.5.11 and server 6.21.32 add a default-off canary for retained playback. Pressing Play may create a temporary cleaned replay while the immutable raw WAV remains authoritative and available through an exact bypass. Cleanup never enters live capture, transcription, speaker attribution, save, HQ polish, or meeting sync. Live work preempts it, a busy or failed worker returns raw immediately, and Control rolls back if activation proof fails.</p></div>
-    <div><h3>Use the meetings you already have</h3><p>Control 0.5.41 and server 6.27.6 keep the common case one click: choose the folder that already contains <code>YYYY-MM/*.md</code>. COS browses it in place. If you already keep several libraries, choose their parent; every child name is customizable and only needs <code>meetings/YYYY-MM/*.md</code> inside. Control explains an incomplete selection and lets setup continue without one. Activity → Meetings adds a day calendar, transcript, summary, copy, and keyword plus meaning search across stored calls. Lookup Recency next to Domain sorts Newest (default), Oldest, or Best match.</p></div>
-    <div><h3>Connect Memory and Threads</h3><p>Update to Control 0.5.41 and server 6.27.6. In COS Control, click <strong>COS Data</strong> and choose your full COS workspace or its <code>operations/scripts</code> folder. This is separate from Work Folder and Meetings Library. Control verifies <code>cos_api_bridge.py</code>, the workspace Python environment, bridge protocol 1, and the authenticated server response before saving the LaunchAgent change. Memory needs an existing local Qdrant <code>cos_memory</code> collection. Threads use the workspace thread cache and manual-thread store. Control reports an existing empty store as healthy, while a missing collection, degraded dependency, or outdated workspace is shown as setup-needed. It never creates, moves, or rewrites your stored data. Memories and Threads lookup share the same Recency control as Meetings and Sessions.</p></div>
-    <div><h3>Sessions from this Mac</h3><p>Activity → Sessions is a sixth view alongside Messages, Speakers, Meetings, Memories, and Threads. Updated and Opened look back 7 days across Claude, Codex, and Cursor. Pinned is its own clock: ChatGPT/Codex <code>pinned-thread-ids</code>, Cursor sidebar pins, and Claude Desktop stars stay listed at any age, including Desktop-only chats with no local jsonl. Keep-warm <code>ready</code> rows stay out. Search matches sidebar titles and recent transcript bodies; Recency sorts Newest, Oldest, or Best match. Click a row to read the transcript; Copy session puts a redacted kickstart brief on the clipboard. On glasses 6.8.360, Sessions list a DISCUSSION gist when the running server returns <code>discussion_summary</code>.</p></div>
-    <div><h3>Live sessions on the desktop</h3><p>Since COS Control 0.5.87 Running and Waiting sessions stay on the desktop as a COS figure when Activity is closed. Since 0.5.88 <strong>Open in platform</strong> on the session jumps to Cursor, Claude Desktop, or ChatGPT; the waveform still opens Activity. <strong>Choose sprite</strong> copies a PNG into Application Support without resampling, so a 32x32 figure stays blocky. Since 0.5.126 character scale defaults to 300%, reaches 600%, and fits the active display without changing the saved preference. Since 0.5.139 Miles's idle state declares its own 2x pack scale; the stable viewport, combat states, and saved global scale do not change. Since 0.5.142 stock idle used 3x scale, an additional 1.5x. Since 0.5.149 the stock idle is normalized to the approved 1.30x to match combat character size. Non-stock pose scales stay intact. Character speed is a separate saved control below Character size, ranging from 25% to 200% with a 100% authored default. It scales the complete playback clock, including patrol rest beats, without resizing the character or card. macOS Reduced Motion still freezes animation. Use COS figure switches to the drawn figure; choose Miles under Characters to restore the animated Jedi. Since COS Control 0.5.150 the fully quiet pet keeps its IDLE capsule on hover, and the session lists, terminal hint and notices share the ledger's blur material.</p></div>
-    <div><h3>Accessibility that survives updates</h3><p>Since COS Control 0.5.107 the app signs with a stable identity, so the macOS Accessibility grant you make once keeps working across updates. Earlier builds lost the grant on every update while System Settings still showed it enabled. If a session jump cannot use Accessibility, the pet now opens that Settings pane and says the fix: toggle COS Control off and on, then reopen it.</p></div>
-    <div><h3>A sprite pack that escalates with session count</h3><p>Since COS Control 0.5.109 the session pet can use a different sprite for each live state. Install sprite pack maps a folder of strips onto Idle, Waiting, Running, Success, Error, Attention, patrol, a droid duel, a three-droid cluster, and a five-droid swarm. Since 0.5.127 the gallery combines bundled animated characters and OpenPets stills in one searchable count; Miles Windu is bundled character 301. Since 0.5.129 the gallery contains four bundled Jedi and 300 OpenPets characters, advanced animation packs carry a badge, and the settings live behind compact disclosures. Since 0.5.135 Miles's V15 pack uses reviewed 2x masters for four directed stories. Since 0.5.139 V15.1 replaces those active-session strips with the approved 16-, 12-, 13-, and 16-frame stories for one, two, three, and four-plus sessions. Droid positions persist until a visible hit removes them, the saber stays attached except during the visible rotating hand toss, and every story closes on its opening composition. Since 0.5.134 Nia Solari, Elara Vale and Rowan Vale each carry their own combat animation for the two, three and four-plus session states. Since 0.5.139 Elara V1.1 removes the oversized white background matte around the green saber without changing her source blade geometry or choreography. The V15-to-V15.1 and Elara V1-to-V1.1 migrations require an exact stock byte/state match; custom packs are never overwritten. Since 0.5.142 Miles V15.2 has 16-, 17-, 13-, and 23-frame stories, including the rightward jump-roll, three defensive opening blocks, counterclockwise spin into a visible back-thrust, and Force pull into a chest strike. The frame limit is 32 so the longer stories retain exact cell boundaries. Recognized stock V15 and V15.1 installs receive V15.2 automatically; custom artwork stays untouched. Since 0.5.143 Miles V15.3 replaces only the four-plus-session story with 25 approved frames: a clockwise spin, continuous reverse-grip contact and breakup, then a visible saber release, flip, and catch. The one-, two-, and three-session strips stay byte-identical. Exact stock V15.2 and earlier installs upgrade automatically; custom artwork and pose scales stay intact. Since 0.5.149 Miles V15.4 uses 26 swarm frames, with a rear-facing block, underhand rising-cut preparation, slash follow-through, staged Force lift and chest thrust, and believable blaster travel. Exact-stock V15.3 and earlier packs migrate automatically; the other three session strips are unchanged. Since 0.5.130 installing a pack replaces the whole character instead of layering over the last one, so switching back to a legacy pack works and every state still draws. An enabled pet remains idle with no active sessions, keeps one collapsed viewport across every state, and since 0.5.142 carries a ledger bar under the character — amber for waiting, a breathing green for running, gold for finished — whose hover pills — shown whenever a session is live or finished work is waiting — pin the live and finished session lists; a double-click on the character still opens the live list. Choose sprite is still your own PNG. Since COS Control 0.5.151 Nia Solari, Elara Vale and Rowan Vale now have eight-frame idle loops and four distinct combat stories each, totaling 223 new authored frames. Nia uses compact parries and Force counters; Elara uses agile redirects; Rowan uses grounded two-handed strikes. Their one-, two-, three- and four-plus-session counts are 12/16/14/19, 16/16/16/24 and 12/12/18/24 respectively. Each idle plays in 1.92 seconds at 100% speed and is scaled to its own combat art. In 0.5.151, patrol and waiting still used the old static fallback. Control 0.5.153 replaced those static fallbacks with the eight-frame idle loop. Since Control 0.5.154 all four Jedi have walking animations. Nia Solari, Elara Vale and Rowan Vale each gain a separate eight-frame walk (1.12 seconds at 100% speed), while Miles retains his original walk. Nia also gains an eight-frame seated meditation loop (1.92 seconds) while waiting, with breathing and a rising electric aura. Elara and Rowan keep their animated idle while waiting. The 32 new frames match each character's existing scale; original idle and combat artwork is unchanged. Distinct idle and meditation clips remain walking rests without duplicate playlist entries. Success, error and attention retain their still fallbacks. Exact-stock still, four-frame and V1/V1.1 Jedi packs upgrade automatically; custom art, pose timing or scale, selected character, and global size/speed preferences stay intact.</p></div>
-    <div><h3>Chat into a session from the Mac</h3><p>Since COS Control 0.5.75 a text composer sits under every Claude, Codex, and Cursor session detail. Open <strong>Activity</strong>, choose <strong>Sessions</strong>, pick a session, and type. Your message lands in the real thread on this Mac, and the reply comes back in the same pane. A long turn keeps running even with the window closed; reopen the session and the newest reply is there. Text only, by design. The <strong>Continue agent threads</strong> toggle in Settings gates the feature and is on by default.</p></div>
-    <div><h3>See what is attached, and open it</h3><p>Since COS Control 0.5.85 a message carrying rich media says so before you open it. The message icon wears a filled type mark on its corner &mdash; a camcorder for video, a framed peak for photos, a folded page for files, stacked cards when a turn holds more than one kind &mdash; and the row badge repeats the type with a count. Opening the message shows a video&rsquo;s poster frame with its length; clicking hands the file to QuickTime or Preview. Before 0.5.85 a video was dropped silently at four separate layers and never appeared at all. Timestamps in the same list carry their day in 12-hour time, so a list spanning several days is readable at a glance.</p></div>
-    <div><h3>Busy thread? Retry, or fork it</h3><p>Since COS Control 0.5.76 a thread that is mid-turn refuses politely and offers <strong>Retry</strong> and <strong>Fork with this message</strong>. The fork runs your message in a copy of the thread, seeded with its history, while the original stays untouched. The new thread appears at the top of the Sessions list. Cursor sessions accept messages but do not fork, and say so in the server&rsquo;s own words.</p></div>
-    <div><h3>Same data and token</h3><p>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token remain compatible.</p></div>
-  </div>
-  </div>
+
+  <details class="rl-reference ccx-notes">
+    <summary>Version notes for this section</summary>
+    <dl class="version-notes">
+      <dt>Control 0.5.189</dt><dd>Every open task shows, not only what is due. Domains come from server 6.44.4. Run now from a seventh Activity pane, read-only on the Mac.</dd>
+      <dt>Control 0.5.185 · server 6.43.4</dt><dd>Morning brief card with sources, order, windows, time, and days. ROUTINE or TASK label on Activity rows and detail lines, with the model that answered.</dd>
+      <dt>Server 6.43.0 to 6.43.3</dt><dd>Scheduled start-of-day brief. Per-source coverage on the card. Update proof returns a failure code; a vendor limit is <code>provider_quota</code>; Cursor is a proof provider.</dd>
+      <dt>Control 0.5.107</dt><dd>Signed with a stable identity, so the macOS Accessibility grant survives updates. If a session jump cannot use Accessibility, the pet opens that Settings pane and says the fix.</dd>
+      <dt>Control 0.5.87 to 0.5.154</dt><dd>Desktop session pet: live states, Open in platform, custom sprites, character size and speed, bundled Jedi with idle, walk, and combat animations. Exact-stock packs upgrade automatically; custom art stays intact.</dd>
+      <dt>Control 0.5.85</dt><dd>Rich media in messages: a type mark on the icon, a row badge with a count, a poster frame for video, and a hand-off to QuickTime or Preview.</dd>
+      <dt>Control 0.5.75 and 0.5.76</dt><dd>Text composer under every session detail, gated by the Continue agent threads toggle. Busy threads offer Retry or Fork with this message.</dd>
+      <dt>Control 0.5.73 and 0.5.74 · server 6.39.0 to 6.40.1</dt><dd>Ollama as a fourth model family, loopback only, with read-only COS tools when the pulled tag advertises tool support. Control keeps <code>COS_OLLAMA_MODEL</code> and <code>COS_OLLAMA_HOST</code> across updates and shows an Ollama row in About. Setup steps live under <a href="#ollama">Models</a>.</dd>
+      <dt>Control 0.5.72 · server 6.38.0 and 6.38.1</dt><dd>Recent / Archive switch with text search across stored days. 6.38.1 dedupes the daily archive in place; one install held 1.2 GB that was 99% duplicates. A bundled repair tool, <code>npx tsx server/scripts/repair-archive-duplicates.ts</code>, is dry-run by default.</dd>
+      <dt>Control 0.5.67 and 0.5.71</dt><dd>Check for updates in the panel footer. Short publisher notices at the top of the panel.</dd>
+      <dt>Control 0.5.41 · server 6.27.6</dt><dd>Meetings Library and COS Data folder pickers. Control verifies the bridge, the workspace Python environment, and the authenticated server response before saving. Lookup Recency sorts Newest, Oldest, or Best match across Meetings, Memories, Threads, and Sessions.</dd>
+      <dt>Control 0.5.11 · server 6.21.32</dt><dd>Adaptive review audio, default off. Cleanup never enters live capture, transcription, speaker attribution, save, HQ polish, or meeting sync.</dd>
+      <dt>Server 6.21.22 · app 6.8.315</dt><dd>Fast meeting preview on by default. Introduced default-off in 6.21.7.</dd>
+    </dl>
+    <p>Full notes: the <a href="https://github.com/ukaoma/cos-control-macos/blob/main/CHANGELOG.md" rel="noopener">COS Control changelog</a> and the <a href="https://github.com/ukaoma/cos-glasses-server/blob/main/CHANGELOG.md" rel="noopener">server changelog</a> on GitHub.</p>
+  </details>
 
   <div class="note"><p><strong>Migrating from Terminal?</strong> Stop the foreground server with Control-C first. Then install COS Control and run Guided Setup. You can return to the npx command later without converting your data.</p></div>
   <div class="btns"><a class="btn primary" href="/control/">Download COS Control</a><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server">Use npm instead</a></div>
@@ -1172,7 +1353,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="ring-lesson" id="messages-ring" data-ring-lesson="messages">
     <h3>Messages: read, choose, then confirm.</h3>
     <p>Finish reading the body, tap to open the footer, scroll to a choice, then tap again to select. Those are two deliberate single taps separated by reading the menu, not the quick double-tap that starts a reply.</p>
-    <p class="rl-fallback">Messages and Reply are always in the idle reader menu. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. The reader menu stops at its ends; it does not wrap. A tap can open it before you reach the bottom, too.</p>
+    <p class="rl-fallback">Messages and Reply are always in the idle reader menu. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. Scrolling past the last row returns to Messages, and scrolling up from Messages reaches the last row. A tap can open the menu before you reach the bottom, too. Double-tap in an open, idle message starts the same prompt without opening the menu. After you finish recording, the transcript waits for review; nothing is sent until you confirm.</p>
+    <p class="hud-note">Reader-menu wrapping ships in the glasses build after 6.9.455. Older builds stop at the last row; scroll upward to return.</p>
   </div>
 
   <div class="ring-lesson" id="tasks-ring" data-ring-lesson="tasks">
@@ -1333,7 +1515,12 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.453 plus server 6.44.4 is the current companion pair; Even Hub still lists 6.8.353. Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket; 6.8.441 and 6.9.442 do, so older glasses builds receive lifecycle events only on the display while meeting capture and sync keep working. Phone-local Moonshine remains opt-in; Mac Whisper remains the default. Enabling Tiny or Base adds rolling provisional text to Messages and Meetings without changing canonical meeting capture, speaker attribution, save, HQ polish, recovery, or sync. Core queries, rich media, display, queues, Memory, Threads, and Sessions preserve their established contracts. Memory and Threads still require a compatible full-COS workspace bridge; standalone installs keep all core glasses features and show those two surfaces as unavailable. Older persisted meeting references remain valid.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.453 plus server 6.44.4 is the current companion pair; Even Hub still lists 6.8.353.</p>
+      <ul class="tight">
+        <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
+        <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
+        <li>Memory and Threads need a compatible full-COS workspace bridge. Standalone installs keep every core glasses feature and show those two surfaces as unavailable. Older persisted meeting references remain valid.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1343,7 +1530,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="sec-head">
     <h2 class="ch"><span class="num">9.</span> Dictation</h2>
     <p class="ch-sub">Long prompts, hands free or phone local.</p>
-    <p class="lead">Dictate a sentence or a page. Mac Whisper remains the default. Build 336 lets English Moonshine Tiny or Base form and revise text on the iPhone while you speak in both Messages and Meetings. Nothing sends until you approve a Message transcript, and Meeting preview never becomes the canonical record. Long on-device dictations no longer freeze. Moonshine yields the main thread now, so the footer progress bar fills and audio capture keeps up on long recordings. Video uploads no longer stall behind meeting audio: a stuck meeting transfer could starve media uploads indefinitely, now capped at 20 seconds. Adds rolled-up upload timing and a dictation finalize breadcrumb so the next issue is measurable instead of invisible. Requires server 6.27.4.</p>
+    <p class="lead">Dictate a sentence or a page. Mac Whisper remains the default. English Moonshine Tiny or Base can form and revise text on the iPhone while you speak, in both Messages and Meetings. Nothing sends until you approve a Message transcript, and Meeting preview never becomes the canonical record. Requires server 6.27.4.</p>
   </div>
   <ol class="steps">
     <li>
@@ -1434,7 +1621,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Back out deliberately</h3>
-      <p>Scroll up to the first row, then once more to leave a picker. Leaving the model list without tapping keeps the model unchanged. Leaving effort keeps the previous effort, but does <strong>not</strong> undo the model you already chose. These pickers do not use the Tasks footer&rsquo;s rolling wrap.</p>
+      <p>Scroll up to the first row, then once more to leave a picker. Leaving the model list without tapping keeps the model unchanged. Leaving effort keeps the previous effort, but does <strong>not</strong> undo the model you already chose. These pickers do not wrap the way the footer menus do.</p>
     </div>
     <div class="card">
       <h3>For your next message</h3>
@@ -1447,7 +1634,12 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="cmd"><span class="p">$</span><code>ollama pull qwen2.5-coder</code><button type="button">Copy</button></div>
   <p style="max-width:74ch">That is the whole setup. When the daemon answers on <code>127.0.0.1:11434</code> with at least one pulled model, <strong>Ollama</strong> appears in the glasses and companion pickers. When the daemon is down, the slot hides again, and a saved Ollama choice safely resets to Opus. Since server 6.40.1 a local model can search your meetings and memories and read one meeting, read-only, when the pulled tag advertises tool support and the COS pipeline is configured. Writes, Bash, MCP, web search and web fetch are not on this path. Still no vision, no Continue or Fork, no Live Cues.</p>
   <p style="max-width:74ch">Two optional keys in <code>~/.cos-glasses/.env</code>: <code>COS_OLLAMA_MODEL</code> pins the model COS uses, and <code>COS_OLLAMA_HOST</code> points at an alternate loopback address (LAN addresses and <code>0.0.0.0</code> are refused). COS Control 0.5.73 and newer preserves both keys across server updates, so Update Server never drops your local-model settings. Since Control 0.5.74 the About view shows an <strong>Ollama</strong> row with the live model when the daemon is ready, and Doctor prints a matching line; no row is the correct render for a Mac without a local daemon.</p>
-  <p style="max-width:74ch">Requires server <strong>6.39.0</strong> or newer. <strong>6.40.1</strong> or newer is strongly recommended: 6.39.1 fixed durable Ollama jobs forgetting their engine, and since 6.40.0 hidden thinking follows the effort you ask for: the default effort keeps local turns instant (a thinking chain once turned a 2-second answer into 98 seconds), while xhigh and max raise the thinking budget with them. In a controlled flag test a thinking local Qwen matched an Opus 5 reference at 10/10 where the same model without thinking scored 6 to 7. <code>COS_OLLAMA_THINK</code> pins the behavior in either direction (1/0 or a budget: low, medium, high, max), and Control 0.5.79 adds a Local model picker in Settings that pins <code>COS_OLLAMA_MODEL</code>, so pulling a new model no longer silently repoints selection.</p>
+  <p style="max-width:74ch">Requires server <strong>6.39.0</strong> or newer; <strong>6.40.1</strong> or newer is strongly recommended.</p>
+  <ul class="tight" style="max-width:74ch">
+    <li>6.39.1 fixed durable Ollama jobs forgetting their engine.</li>
+    <li>Since 6.40.0 hidden thinking follows the effort you ask for. The default effort keeps local turns instant; xhigh and max raise the thinking budget. In a controlled test a thinking local Qwen matched an Opus 5 reference at 10/10 where the same model without thinking scored 6 to 7.</li>
+    <li><code>COS_OLLAMA_THINK</code> pins the behavior either way (1/0, or a budget: low, medium, high, max). Control 0.5.79 adds a Local model picker in Settings that pins <code>COS_OLLAMA_MODEL</code>, so pulling a new model no longer silently repoints selection.</li>
+  </ul>
 </section>
 
 <!-- ── 11 PRIVACY ── -->
@@ -1624,7 +1816,13 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.189</strong>, server <strong>6.44.4</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.453</strong> for the newest companion build; Even Hub still lists 6.8.353. Rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. For immediate feature rollback, select <strong>Mac Whisper</strong> under Dictation + live preview or turn off Final polish. The package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.44.4. That pair is lifecycle-only on the display: 6.8.353 predates the display-stream ticket, so answers and live transcript do not reach the lens until you sideload 6.9.453, while meetings still capture and sync. Do not roll back to 6.8.334 because that build contains the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</p>
+      <p>Current supported versions are COS Control <strong>0.5.189</strong>, server <strong>6.44.4</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.453</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
+      <ul>
+        <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
+        <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.44.4. That pair is lifecycle-only on the display: 6.8.353 predates the display-stream ticket, so answers and live transcript do not reach the lens until you sideload 6.9.453, while meetings still capture and sync.</li>
+        <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1732,9 +1930,10 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 })();
 </script>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="../assets/ring-3d.js?v=8"></script>
-<script src="../assets/docs-hud.js?v=7"></script>
-<script src="../assets/ring-lessons.js?v=5"></script>
+<script src="../assets/ring-3d.js?v=9"></script>
+<script src="../assets/docs-hud.js?v=8"></script>
+<script src="../assets/ring-lessons.js?v=6"></script>
+<script src="../assets/docs-control.js?v=1"></script>
 <script>
 (function(){
   // shared motion guard

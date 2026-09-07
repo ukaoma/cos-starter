@@ -30,7 +30,10 @@ jobs:
           node-version: '22'
 
       - name: Ring geometry, gesture execution, and reduced-motion regressions
-        run: node --test tests/ring-3d.test.cjs tests/docs-hud-paint.test.cjs
+        run: node --test tests/ring-3d.test.cjs tests/docs-hud-paint.test.cjs tests/ring-sync.test.cjs tests/docs-control.test.cjs
+
+      - name: Lesson and sync tests must be able to fail (in-memory mutations)
+        run: node scripts/verify-docs-lesson-mutations.cjs
 
   kokoro-python:
     runs-on: ubuntu-latest

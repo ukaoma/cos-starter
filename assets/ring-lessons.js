@@ -1,12 +1,35 @@
 /* Reusable, local-only Ring to Lens lessons. Fictional fixtures; no mic or API.
- * Gesture contracts audited against cos-glasses-app 72c0f67. Task wrap: 6.9.455.
+ * Gesture contracts audited against cos-glasses-app 72c0f67 (6.9.455) plus the
+ * reader-menu-wrap branch. Task wrap: 6.9.455. Reader wrap: the build after it.
  * Keep source-derived menu differences here, not in independent page scripts.
+ *
+ * Timing contract. Every number below is ILLUSTRATIVE teaching pace except the
+ * two 3000ms waits, which are the app's real HOME_CONFIRM_MS and
+ * CANCEL_ARM_WINDOW_MS. The ring's contact clock lives in ring-3d.js (TIMING),
+ * the HUD motion in docs-hud.js (timing); this file derives from both and
+ * restates neither, so the HUD reacts after the drawn contact.
  */
 (function (root) {
   'use strict';
   var hud = root.CosDocsHud;
   if (!hud) return;
-  var f = hud.frames;
+  var f = hud.frames, motion = hud.timing;
+  var contact = (root.CosRing3D && root.CosRing3D.TIMING) || { lead: 0, doubleTapGap: 340, holdTap: 150, holdRelease: 300, holdPress: 450 };
+  // HUD reaction after the drawn contact: a tap lands at 0 on the contact
+  // clock, the second tap of a double-tap at doubleTapGap, a swipe stroke is
+  // nearly complete at the swipe wait. The two waits are firmware timeouts.
+  var react = Object.freeze({ tap: 320, doubleTap: 310, swipe: 520, timeout: 3000 });
+  function waitFor(gesture, settleAfter, lead) {
+    if (settleAfter) return settleAfter;
+    lead = lead || 0;
+    if (gesture === 'tap') return lead + react.tap;
+    if (gesture === 'double-tap') return lead + contact.doubleTapGap + react.doubleTap;
+    if (gesture === 'swipe-down' || gesture === 'swipe-up') return lead + react.swipe;
+    return 0;
+  }
+  function holdPhases(lead) { lead = lead || 0; return [lead + contact.holdTap, lead + contact.holdRelease]; }
+  function holdStatusAt(lead) { return (lead || 0) + motion.holdMenuDelay + motion.menuSlide; }
+  function endStatus(s) { return s.resultText || (s.gesture === 'hold' ? 'Shortcut window open' : ''); }
   function frame(name, changes) { return Object.assign({}, f[name], changes); }
   function step(title, gesture, view, description) { return {title:title,gesture:gesture,frame:view,description:description}; }
   function reader(index) {
@@ -15,6 +38,8 @@
   var sessionRows = ['Back to list','Continue','Fork','Ask COS'];
   var taskRows = ['Back to list','Ask COS','Done','Today','To active','To review'];
   var taskFixture = {title:'Prepare the Friday pilot checklist',column:'inbox',stage:'planning',doneWhen:'Checklist includes the owner, rollout date, and a tested rollback.'};
+  // Task detail is a detail viewport: glassesHeader() with no page label and
+  // buildStatusLine() with no position, so its chrome reads like Home.
   var task = {nav:f.home.nav,body:taskFixture.title+'\n\nDONE WHEN\n'+taskFixture.doneWhen+'\n\nSTAGE\nPLANNING',footer:f.home.footer,thumb:true};
   function menu(base, rows, index) { return Object.assign({},base,{scroll:true,footer:'▶ '+rows[index]+' · '+(index+1)+'/'+rows.length+' · Scroll=move Tap=select'}); }
   // Public sample: Cursor ready, Ollama not configured. The native picker shows
@@ -35,10 +60,10 @@
   // Override only this fictional frame; other message-attribution examples stay intact.
   var modelHome=frame('home',{nav:f.home.nav.replace('[O]','[S]'),footer:f.home.footer.replace(/^Opus\b/,'Sonnet')});
   var askTranscript=f.review.body;
-  var askDraft=frame('sessionMic',{body:'Listening...\n\n'+askTranscript,footer:'Opus  Tap to finish  demo1234  82%'});
+  var askDraft=frame('reply',{body:'Listening...\n\n'+askTranscript});
   var reviewRows=['Re-record','Cancel','Send original (Opus)','Edit','Preview','Change Model'];
   function reviewMenu(index) {
-    return {nav:'COS [O] Msg Tap=Select 9:16 AM 9/4/26',body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  demo1234  82%',layout:'list'};
+    return {nav:'COS [O] Msg Tap=Select 9:16 AM 9/4/26',body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  demo1234  82%',layout:'menu'};
   }
   var lessons = {
     models: [
@@ -55,27 +80,29 @@
       step('Confirm and return to your page','tap',modelHome,'Tap applies Max and returns to the page where you opened Model, Home in this example. The simulator now shows Sonnet in the footer and [S] in the nav: Sonnet + Max is selected for your next message. A running answer is not switched mid-flight.')
     ],
     messages: [
-      step('Open a message','tap',f.reader,'A tap on a selected Messages row opens its prompt and answer. The Messages list and the open reader do not share the same double-tap action.'),
+      step('Start on a selected row','idle',f.selected,'The Messages list, newest first. ▶ marks the row a tap will open; the footer counts the list position. Nothing has been opened yet.'),
+      step('Open a message','tap',f.reader,'A tap on the selected row opens its prompt and answer. The Messages list and the open reader do not share the same double-tap action.'),
       step('Read to the bottom','swipe-down',f.continued,'Finish the body before choosing what to do next. The nav and footer stay fixed. You can open footer actions before reaching the bottom, too; this is not an unlock gesture.'),
       step('Open footer actions','tap',reader(0),'One deliberate tap opens Messages, Reply, and, when available, View image. It does not run the selected action. The body stays at your reading position.'),
       step('Choose Reply','swipe-down',reader(1),'With the menu open, a scroll changes the footer selection instead of scrolling the message. This is the pause between the two deliberate taps, not a double-tap.'),
       step('Find the photo action','swipe-down',reader(2),'View image appears only for an attached photo with lens image preview enabled and no meeting-critical capture active. This example assumes those conditions are met.'),
-      step('This menu stops at the end','swipe-down',reader(2),'Another downward scroll stays on View image. Unlike the one-row Tasks and Sessions menus, the reader menu does not wrap.'),
-      step('Scroll back, then confirm','swipe-up',reader(1),'Move back to Reply. Read the highlighted choice before tapping again; that second deliberate tap is the false-touch confirmation.'),
-      step('Start the reply','tap',f.reply,'The confirming tap starts dictation referencing #411. Review the transcript after finishing; starting a recording is not the same as sending it.'),
-      step('Or use the express gesture','double-tap',f.reply,'Alternative from the open, idle message reader: two quick taps start the same referenced reply without opening the footer menu. From the Messages list, double-tap goes to Quick Actions instead.'),
-      step('Finish and review the reply','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation. The footer keeps the #411 reference and changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.')
+      step('Wrap back to Messages','swipe-down',reader(0),'Another downward scroll wraps from View image, 3 of 3, back to Messages. Every footer cursor on the lens wraps the same way, in both directions. Nothing runs when the cursor wraps.'),
+      step('Return to Reply, then confirm','swipe-down',reader(1),'One more scroll highlights Reply. Read the highlighted choice before tapping again; that second deliberate tap is the false-touch confirmation.'),
+      step('Start the prompt','tap',f.reply,'The confirming tap opens the microphone for a new prompt from this message, in the same session. Review the transcript after finishing; starting a recording is not the same as sending it. To attach a specific message as context, say “reference message 411” as a voice command first.'),
+      step('Or use the express gesture','double-tap',f.reply,'Alternative from the open, idle message reader: two quick taps open the same microphone without opening the footer menu. From the Messages list, double-tap goes to Quick Actions instead.'),
+      step('Finish and review','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation and the footer changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.')
     ],
     ask: [
-      step('Keep your context','idle',f.reader,'Ask COS starts a new prompt. Reply continues the open message. Choose the route based on whether the answer should reference what you are reading.'),
+      step('Keep your context','idle',f.reader,'Ask COS starts a new prompt. Reply continues from the open message. Choose the route based on whether the answer should follow what you are reading.'),
       step('Tap, then press and hold','hold',frame('reader',{menu:true,menuIndex:1}),'Tap and release, then quickly press again and keep holding. The shortcut window slides over the current HUD. It is a separate layer, not a new message page.'),
-      step('Choose Ask COS','tap',frame('sessionMic',{footer:'Opus  Tap to finish  demo1234  82%'}),'Select Ask COS for a fresh transcription. The recording view has no “Referencing #411” line because this is not a reply. A double-tap during capture does not submit or discard the draft.'),
+      step('Choose Ask COS','tap',f.reply,'Select Ask COS for a fresh transcription. The recording view is the same microphone the reader opens; a spoken “reference message 411” command is what adds a Referencing line. A double-tap during capture does not submit or discard the draft.'),
       step('Finish and review the prompt','tap',f.review,'Tap once to stop recording. After transcription finishes, the microphone indicator disappears and your words replace Listening. The footer reads Tap=Send. Read the prompt before confirming; finishing a recording has not sent it.'),
       step('Protect the reviewed draft','double-tap',f.review,'Two quick taps do not leave this review or submit your prompt. The transcript and Tap=Send stay visible. This is draft protection, not the separate deliberate tap that sends it.'),
       step('Open review choices','swipe-down',reviewMenu(2),'From the final transcript page, scroll down instead of sending. The six review options replace the transcript. Send original is highlighted by default; opening this menu does not send.'),
       step('Highlight Edit','swipe-down',reviewMenu(3),'One downward scroll highlights Edit. The prompt is still unsent. A separate tap would start recording an edit; scrolling alone does not change the draft.'),
       step('Return to Send original','swipe-up',reviewMenu(2),'Scroll back up to Send original (Opus). Check the highlighted action before tapping. Preview lets you read the transcript again; Cancel discards it only when selected.'),
-      step('Confirm Send original','tap',f.job,'One deliberate tap confirms the reviewed prompt. The HUD advances to the job log, shown here 66 seconds into the example run. No example on this page opens a real microphone or runs a model.'),
+      step('Confirm Send original','tap',f.receipt,'One deliberate tap confirms the reviewed prompt. The HUD shows the send receipt: your prompt echoed while the run starts, with Tap to watch and the two-step double-tap cancel in the footer. No example on this page opens a real microphone or runs a model.'),
+      step('Watch the run','tap',f.job,'One tap on the receipt opens the live job log, shown here 66 seconds into the example run. Leave the receipt any other way and a tap goes back to being navigation.'),
       step('Arm cancellation','double-tap',frame('job',{footer:'Double-tap again to cancel'}),'During an active run, the first double-tap arms cancellation. It does not immediately stop the job. The footer tells you to double-tap again within three seconds.'),
       step('Let the confirmation expire','idle',f.job,'If you do not confirm within three seconds, the run continues. A second double-tap inside that window would cancel and pause queued work. Read the footer before repeating a gesture.')
     ],
@@ -88,7 +115,7 @@
       step('Reach the final choice','swipe-down',menu(f.session,sessionRows,3),'Ask COS is 4 of 4 in this supported Claude example. Providers and availability can change the choices; read the row label and counter.'),
       step('Wrap back to the beginning','swipe-down',menu(f.session,sessionRows,0),'One more downward scroll wraps from 4 of 4 to 1 of 4. Scrolling up from the first row wraps to the last. No action runs just because the cursor wraps.'),
       step('Arm return to Quick Actions','double-tap',frame('session',{scroll:true,footer:'Double-tap again for Quick Actions'}),'From session detail, double-tap closes the footer menu and asks for confirmation. You are still in the session. Double-tap again within three seconds to leave. If you wait, the normal footer returns.'),
-      step('Open shortcuts in place','hold',frame('session',{scroll:true,menu:true,menuIndex:1}),'Tap and release, then quickly press and hold. The shortcut window slides over this session without replacing it or returning Home.'),
+      step('Open shortcuts in place','hold',frame('session',{scroll:true,menu:true,menuIndex:1}),'Once the confirmation has expired, tap and release, then quickly press and hold. The shortcut window slides over this session without replacing it or returning Home.'),
       step('Find Close in the shortcuts','swipe-down',frame('session',{scroll:true,menu:true,menuIndex:9}),'Keep scrolling through the system menu to Close at the bottom. This example skips ahead to that final selection; one scroll normally moves one row.'),
       step('Return to the same page','tap',frame('session',{scroll:true}),'Selecting Close slides the shortcut window away. The session and reading position are still underneath.')
     ],
@@ -101,57 +128,77 @@
       step('Move through Today','swipe-down',menu(task,taskRows,3),'Scroll moves the footer cursor, not the body, while the action menu is open.'),
       step('Highlight To active','swipe-down',menu(task,taskRows,4),'This scroll only highlights To active. A separate tap would move the task out of planning. Other stages, completed tasks, and running tasks have different action sets.'),
       step('Reach the last row','swipe-down',menu(task,taskRows,5),'To review is 6 of 6. The counter tells you where you are even though only one action is visible.'),
-      step('Keep scrolling to wrap','swipe-down',menu(task,taskRows,0),'On glasses 6.9.455 and later, another downward scroll wraps to Back to list, 1 of 6. Older builds may stop at the last row; scroll upward to return.'),
+      step('Keep scrolling to wrap','swipe-down',menu(task,taskRows,0),'On glasses 6.9.455 and later, another downward scroll wraps to Back to list, 1 of 6, and scrolling up from the first row wraps to the last. Older builds stop at the last row; scroll upward to return.'),
       step('Wait to dismiss','idle',Object.assign({},task,{scroll:true}),'After three seconds without menu input, the menu closes and the normal footer returns. Reopen with one tap; do not assume the previous action is still selected.')
     ]
   };
   // Teach actual waiting without auto-advancing the lesson. A new selection
   // cancels the pending result; reduced motion shows the final state directly.
-  lessons.ask[10].before=lessons.ask[9].frame;lessons.ask[10].settleAfter=3000;
-  lessons.tasks[9].before=lessons.tasks[8].frame;lessons.tasks[9].settleAfter=3000;
-  lessons.messages[8].before=f.reader;lessons.messages[8].settleAfter=650;
-  lessons.messages[0].before=f.selected;
+  lessons.ask[11].before=lessons.ask[10].frame;lessons.ask[11].settleAfter=react.timeout;
+  lessons.ask[11].resultText='Confirmation expired · normal footer restored';
+  lessons.tasks[9].before=lessons.tasks[8].frame;lessons.tasks[9].settleAfter=react.timeout;
+  lessons.tasks[9].resultText='No input for three seconds · action menu closed';
+  lessons.messages[9].before=f.reader;
+  lessons.messages[9].resultText='Microphone open · same prompt, no footer menu';
+  lessons.messages[1].before=f.selected;
+  lessons.models[1].resultText='Shortcut window open over Home';
+  lessons.models[4].resultText='Model picker open · Opus still current';
+  lessons.models[7].resultText='Sonnet saved · effort picker open';
+  lessons.models[10].resultText='Sonnet + Max saved · back on Home';
   lessons.ask[1].resultText='Shortcut window open over the message';
   lessons.ask[2].resultText='Ask COS selected · microphone view open';
   lessons.ask[3].before=askDraft;
   lessons.ask[3].transitionText='Recording finished · transcribing…';
   lessons.ask[3].resultText='Review your prompt · nothing sent · Tap=Send';
   lessons.ask[4].resultText='Review protected · prompt unchanged · nothing sent';
-  lessons.messages[9].before=frame('reply',{body:'Listening...\nReferencing #411.\n\n'+f.replyReview.body});
-  lessons.messages[9].resultText='Review your reply to #411 · nothing sent · Tap=Send';
+  lessons.ask[8].resultText='Sent · receipt shown · Tap to watch';
+  lessons.messages[6].transitionText='View image · 3 of 3 · scroll down…';
+  lessons.messages[6].resultText='Messages · 1 of 3 · wrapped without running an action';
+  lessons.messages[10].before=frame('reply',{body:'Listening...\n\n'+f.replyReview.body});
+  lessons.messages[10].transitionText='Recording finished · transcribing…';
+  lessons.messages[10].resultText='Review your prompt · nothing sent · Tap=Send';
   lessons.sessions[6].transitionText='Ask COS · 4 of 4 · scroll down…';
   lessons.sessions[6].resultText='Back to list · 1 of 4 · wrapped without running an action';
+  lessons.sessions[8].before=frame('session',{scroll:true});
+  lessons.sessions[8].resultText='Shortcut window open over the session';
+  lessons.sessions[9].resultText='Skipped ahead to Close · 10 of 10';
+  lessons.sessions[10].resultText='Shortcut window closed · same session, same position';
+  lessons.tasks[8].transitionText='To review · 6 of 6 · scroll down…';
+  lessons.tasks[8].resultText='Back to list · 1 of 6 · wrapped without running an action';
   // A chapter click is a replay, even when it jumps across steps. Establish its
-  // actual starting HUD first, then show the ring input and commit the result.
+  // actual starting HUD first, then show the ring input and commit the result
+  // after the drawn contact (options.lead is the ring's camera turn).
   // Explicit timers make rapid clicks cancellable and testable without a DOM.
   function playScene(s, previous, options) {
-    var cancelled=false,timers=[],schedule=options.schedule||setTimeout,unschedule=options.unschedule||clearTimeout;
+    var cancelled=false,timers=[],schedule=options.schedule||setTimeout,unschedule=options.unschedule||clearTimeout,lead=options.lead||0;
     function later(fn,ms){timers.push(schedule(function(){if(!cancelled)fn();},ms));}
     function status(text){if(options.status)options.status(text);}
-    function final(){options.paint(s.frame,{animate:true});status(s.resultText||(s.settleAfter===3000?'Confirmation expired · normal footer restored':''));}
-    if(options.animate===false||options.reduced){options.paint(s.frame,{animate:false});status(s.resultText||'');}
+    // The result line waits for the HUD commit, so a menu sliding out never
+    // hears the status announce a screen that has not changed yet.
+    function final(){options.paint(s.frame,{animate:true,replay:!!options.replay,onCommit:function(){status(endStatus(s));}});}
+    if(options.animate===false||options.reduced){options.paint(s.frame,{animate:false});status(endStatus(s));}
     else if(s.gesture==='hold'){
       options.paint(s.before||previous||s.frame,{animate:false});
-      options.paint(s.frame,{hold:true,replay:true,animate:true});
+      options.paint(s.frame,{hold:true,replay:true,animate:true,delay:lead});
       status('Tap · release · press and hold…');
-      later(function(){status(s.resultText||'Shortcut window open');},1540);
+      if(options.motion===false)status(endStatus(s));else later(function(){status(endStatus(s));},holdStatusAt(lead));
     } else {
-      var wait=s.settleAfter||({tap:320,'double-tap':650,'swipe-down':520,'swipe-up':520}[s.gesture]||0);
+      var wait=waitFor(s.gesture,s.settleAfter,lead);
       if(wait){
         options.paint(s.before||previous||s.frame,{animate:false});
-        status(s.transitionText||(s.settleAfter===3000?'No input · waiting 3 seconds…':'Gesture in progress…'));
+        status(s.transitionText||(s.settleAfter?'No input · waiting '+Math.round(s.settleAfter/1000)+' seconds…':'Gesture in progress…'));
         later(final,wait);
       }else final();
     }
     return function(){cancelled=true;timers.forEach(unschedule);};
   }
   function mainSteps(titles,gestures){return hud.ringFrames.map(function(view,i){return step(titles[i],gestures[i],typeof view==='string'?f[view]:view,'');});}
-  root.CosRingLessons = {lessons:lessons,taskFixture:taskFixture,task:task,sessionRows:sessionRows,taskRows:taskRows,modelRows:modelRows,effortRows:effortRows,picker:picker,reviewMenu:reviewMenu,playScene:playScene,mainSteps:mainSteps,askTranscript:askTranscript};
+  root.CosRingLessons = {lessons:lessons,taskFixture:taskFixture,task:task,sessionRows:sessionRows,taskRows:taskRows,modelRows:modelRows,effortRows:effortRows,picker:picker,reviewMenu:reviewMenu,playScene:playScene,mainSteps:mainSteps,askTranscript:askTranscript,react:react,waitFor:waitFor,holdPhases:holdPhases,holdStatusAt:holdStatusAt,endStatus:endStatus};
   if (typeof document === 'undefined') return;
   var main = document.querySelector('[data-ring-path]');
   if (!main) return;
   var template = main.querySelector('.rp-stage').cloneNode(true);
-  var sequence = 0;
+  var sequence = 0, warned = false;
   var labels = {idle:'Ring',tap:'Tap',hold:'Tap · press · hold','double-tap':'Double-tap','swipe-down':'Scroll down','swipe-up':'Scroll up'};
   function mount(host, states, compact) {
     var stage, buttons;
@@ -160,6 +207,8 @@
       stage.querySelectorAll('[id]').forEach(function(el){el.removeAttribute('id');});
       stage.querySelectorAll('[aria-describedby]').forEach(function(el){el.removeAttribute('aria-describedby');});
       stage.querySelector('[data-hud]').removeAttribute('data-hud');
+      // One live region per stage is enough: the status line announces results.
+      stage.querySelector('.rp-screen').setAttribute('aria-live','off');
       var grid = document.createElement('div'); grid.className = 'rl-grid';
       var choices = document.createElement('ol'); choices.className='rl-choices';
       states.forEach(function(s){
@@ -174,13 +223,13 @@
     var screen=stage.querySelector('.rp-screen'),shell=stage.querySelector('.rp-ring-shell'),canvas=stage.querySelector('canvas');
     var reset=stage.querySelector('.rp-orbit-hint button'),gesture=stage.querySelector('.rp-gesture');
     var controls=stage.querySelector('.rp-stage-foot'),prev=controls.querySelector('button:first-child'),next=controls.querySelector('button:last-child');
-    var progress=stage.querySelector('.rp-progress'),index=0,ring=null,manual=false,timers=[],cancelScene=function(){};
+    var progress=stage.querySelector('.rp-progress'),index=0,ring=null,manual=false,clickedAt=0,timers=[],cancelScene=function(){};
     screen.id='ring-lesson-screen-'+(++sequence);
     buttons.forEach(function(b){b.setAttribute('aria-controls',screen.id);});
     var replay=document.createElement('button');replay.type='button';replay.className='rl-replay';replay.textContent='Replay gesture';
     stage.querySelector('.rp-ring-zone').appendChild(replay);
-    var caption=document.createElement('p');caption.className='rl-caption';
-    if(compact)stage.insertBefore(caption,controls);
+    var caption=null;
+    if(compact){caption=document.createElement('p');caption.className='rl-caption';stage.insertBefore(caption,controls);}
     var status=document.createElement('span');status.className='rl-status';status.setAttribute('role','status');
     stage.querySelector('.rp-lens').after(status);
     var phase=document.createElement('div');phase.className='rl-contact';phase.setAttribute('aria-hidden','true');
@@ -188,31 +237,45 @@
     function initRing(){
       try {if(root.CosRing3D) ring=root.CosRing3D.create(canvas,{shell:shell,resetButton:reset});} catch (error) { /* Static ring and written instructions remain. */ }
       if(ring){stage.querySelector('.rp-orbit-hint').hidden=false;ring.setGesture(states[index].gesture,labels[states[index].gesture]);}
+      else {
+        // Say so, once. A silent fallback narrated contact phases nobody could see.
+        stage.setAttribute('data-ring-fallback','1');phase.hidden=true;
+        if(!warned && root.console && root.console.warn){warned=true;root.console.warn('COS Docs: the 3D ring could not start; the static ring and written steps remain.');}
+      }
     }
     if(compact&&'IntersectionObserver' in root){
       var ringObserver=new IntersectionObserver(function(entries){if(entries.some(function(e){return e.isIntersecting;})){ringObserver.disconnect();initRing();}},{rootMargin:'400px'});
       ringObserver.observe(stage);
     }else initRing();
     function render(n,replaying,animate) {
+      var target=Math.max(0,Math.min(states.length-1,n));
+      // Past either end without an explicit replay is a no-op; the disabled
+      // Next button and the arrow key now agree.
+      if(!replaying && target!==n) return;
       cancelScene();timers.forEach(clearTimeout);timers=[];
-      index=Math.max(0,Math.min(states.length-1,n));var s=states[index];
+      index=target;var s=states[index];
       host.setAttribute('data-lesson-index',String(index));
       var reduced=root.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var motionOK=!reduced && !!(root.anime && root.anime.animate);
+      // The ring turns first and reports its lead-in; the HUD waits for it.
+      var lead=ring && animate!==false ? ring.setGesture(s.gesture,labels[s.gesture]) : 0;
+      if(ring && animate===false) ring.setGesture(s.gesture,labels[s.gesture]);
       cancelScene=playScene(s,index>0?states[index-1].frame:s.frame,{
-        animate:animate,reduced:reduced,
+        animate:animate,reduced:reduced,motion:motionOK,lead:lead,replay:replaying,
         paint:function(view,options){hud.paint(screen,view,options);},
         status:function(text){status.textContent=text;}
       });
-      shell.setAttribute('data-gesture',s.gesture);gesture.setAttribute('data-gesture',s.gesture);gesture.textContent=labels[s.gesture];
-      if(ring) ring.setGesture(s.gesture,labels[s.gesture]);
-      phase.hidden=s.gesture!=='hold';
+      shell.setAttribute('data-gesture',s.gesture);gesture.setAttribute('data-gesture',s.gesture);
+      gesture.textContent=s.gesture==='idle'&&s.settleAfter?'Wait':labels[s.gesture];
+      phase.hidden=s.gesture!=='hold'||stage.hasAttribute('data-ring-fallback');
       phase.setAttribute('data-phase',reduced?'all':'tap');
       if(s.gesture==='hold'&&!reduced) {
-        timers.push(setTimeout(function(){phase.setAttribute('data-phase','release');},150));
-        timers.push(setTimeout(function(){phase.setAttribute('data-phase','hold');},300));
+        var phases=holdPhases(lead);
+        timers.push(setTimeout(function(){phase.setAttribute('data-phase','release');},phases[0]));
+        timers.push(setTimeout(function(){phase.setAttribute('data-phase','hold');},phases[1]));
       }
       progress.textContent=(index+1)+' of '+states.length+' · '+s.title;
-      caption.textContent=s.description;
+      if(caption)caption.textContent=s.description;
       buttons.forEach(function(b,i){
         b.parentElement.toggleAttribute('data-active',i===index);
         if(i===index)b.parentElement.setAttribute('aria-current','step');else b.parentElement.removeAttribute('aria-current');
@@ -221,28 +284,31 @@
       prev.disabled=index===0;next.disabled=index===states.length-1;
     }
     function alignMobile(){if(compact&&root.matchMedia('(max-width: 860px)').matches)stage.scrollIntoView({block:'start',behavior:'auto'});}
-    buttons.forEach(function(b,i){b.addEventListener('click',function(){
-      manual=true;render(i,true,true);
-      alignMobile();
-    });});
-    prev.addEventListener('click',function(){manual=true;render(index-1,false,true);alignMobile();});
-    next.addEventListener('click',function(){manual=true;render(index+1,false,true);alignMobile();});
-    replay.addEventListener('click',function(){manual=true;render(index,true,true);alignMobile();});
-    stage.addEventListener('keydown',function(ev){
-      // Ring orbit keys must never also advance the lesson.
-      if(ev.target===canvas)return;
-      if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){ev.preventDefault();manual=true;render(index+(ev.key==='ArrowRight'?1:-1),false,true);}
+    function pick(n,replaying){manual=true;clickedAt=Date.now();render(n,replaying,true);alignMobile();}
+    buttons.forEach(function(b,i){b.addEventListener('click',function(){pick(i,true);});});
+    prev.addEventListener('click',function(){pick(index-1,false);});
+    next.addEventListener('click',function(){pick(index+1,false);});
+    replay.addEventListener('click',function(){pick(index,true);});
+    host.addEventListener('keydown',function(ev){
+      // Ring orbit keys must never also advance the lesson; typing fields keep their arrows.
+      if(ev.target===canvas||/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+      if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){ev.preventDefault();pick(index+(ev.key==='ArrowRight'?1:-1),false);}
     });
     if(!compact && 'IntersectionObserver' in root){
-      root.addEventListener('wheel',function(){manual=false;},{passive:true});
-      root.addEventListener('touchmove',function(){manual=false;},{passive:true});
+      // Reading on past a clicked card hands control back to the scroll
+      // position; the programmatic scroll a click causes does not.
+      function userScroll(){if(Date.now()-clickedAt>900)manual=false;}
+      root.addEventListener('wheel',userScroll,{passive:true});
+      root.addEventListener('touchmove',userScroll,{passive:true});
+      root.addEventListener('scroll',userScroll,{passive:true});
       var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!manual)render(buttons.indexOf(e.target.querySelector('button')),false,true);});},{rootMargin:'-30% 0px -48% 0px',threshold:.15});
       buttons.forEach(function(b){observer.observe(b.parentElement);});
     }
     render(0,false,false);
     if('ResizeObserver' in root){
       var width=screen.clientWidth;
-      var resize=new ResizeObserver(function(){if(width!==screen.clientWidth){width=screen.clientWidth;hud.paint(screen,states[index].frame,{animate:false});}});
+      // A width change repaints what is on screen now, not the step's result.
+      var resize=new ResizeObserver(function(){if(width!==screen.clientWidth){width=screen.clientWidth;hud.paint(screen,hud.current(screen)||states[index].frame,{animate:false});}});
       resize.observe(screen);
     }
     // Lesson layout is present before fragment navigation; only the 3D ring is lazy.
@@ -250,7 +316,7 @@
   }
   var mainItems=Array.from(main.querySelectorAll('.rp-step'));
   var mainStates=mainSteps(mainItems.map(function(el){return el.querySelector('strong').textContent;}),mainItems.map(function(el){return el.getAttribute('data-gesture');}));
-  mainStates[8].before=lessons.messages[9].before;mainStates[8].resultText=lessons.messages[9].resultText;
+  mainStates[8].before=lessons.messages[10].before;mainStates[8].transitionText=lessons.messages[10].transitionText;mainStates[8].resultText=lessons.messages[10].resultText;
   mount(main,mainStates,false);
   document.querySelectorAll('[data-ring-lesson]').forEach(function(host){
     mount(host,lessons[host.getAttribute('data-ring-lesson')],true);

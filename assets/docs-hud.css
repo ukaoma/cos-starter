@@ -15,7 +15,7 @@
 .lens-hud .lens-footer>span{min-width:0}
 .lens-battery{flex-shrink:0}
 .lens-hud .lens-scrolled .lens-text{transform:translateY(-19cqw)}
-.lens-thumb{position:absolute;right:0;top:2%;width:.25cqw;height:28%;border-radius:2px;background:var(--hud);opacity:.4}
+.lens-thumb{position:absolute;right:0;top:2%;width:.25cqw;height:28%;border-radius:2px;background:var(--hud);opacity:.4;transition:top .58s cubic-bezier(.65,0,.35,1)}
 .lens-scrolled .lens-thumb{top:68%}
 .lens-host-menu{position:absolute;top:4cqw;bottom:4cqw;left:4cqw;width:63%;z-index:4;background:rgba(7,22,13,.97);color:rgba(70,232,120,.66);border:1px solid rgba(70,232,120,.35);border-radius:2cqw;box-shadow:2cqw 0 5cqw rgba(0,0,0,.7),inset 0 0 3cqw rgba(70,232,120,.035);padding:3cqw 2cqw;font:400 2.7cqw/6.2cqw var(--mono);text-shadow:none;will-change:transform}
 .lens-menu-row{white-space:pre;border-radius:.9cqw;padding:0 1.2cqw;line-height:6.2cqw}
@@ -54,12 +54,14 @@ section.light .rl-choices [data-active] button{color:var(--ink-on-cream)}
 .rl-grid .rp-stage-head{font-size:.58rem}
 .rl-replay{border:0;border-bottom:1px solid var(--line);color:var(--gold);background:none;cursor:pointer;font:400 .6rem var(--mono);padding:4px 0;margin-top:12px}
 .rl-contact{display:flex;gap:12px;justify-content:center;margin:10px 0 0;font:400 .55rem var(--mono);color:var(--ghost);min-height:12px}
-.rl-contact[hidden]{display:none}
+/* Reserved on every step: toggling it moved the ring 22px on hold steps. */
+.rl-contact[hidden]{display:flex;visibility:hidden}
 .rl-contact[data-phase="tap"] span:first-child,.rl-contact[data-phase="release"] span:nth-child(2),.rl-contact[data-phase="hold"] span:last-child,.rl-contact[data-phase="all"] span{color:var(--hud-hi)}
 .ring-lesson button:focus-visible,.rl-links a:focus-visible,.rl-replay:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .rl-reference{margin-top:32px}.rl-reference summary{cursor:pointer;font-weight:600;padding:14px 0}
 .rl-caption{display:none}
+/* Always reserves its height. Collapsing on :empty moved the ring 29px at the
+   exact instant the HUD committed, on every step without a result line. */
 .rl-status{display:block;font:400 .64rem/1.4 var(--mono);color:var(--gold);padding:8px 0 0;min-height:2.8em}
-.rl-status:empty{display:none}
-@media(max-width:860px){.rl-grid{grid-template-columns:1fr}.rl-grid .rp-stage{position:relative;top:auto;max-width:620px;width:100%;margin-inline:auto}.rl-choices{max-width:620px;width:100%;margin-inline:auto}.ring-lesson .rl-caption,section.light .ring-lesson .rl-caption{display:block;color:var(--muted);font:.83rem/1.5 var(--body);padding:0 16px 16px;margin:0}}
-@media(prefers-reduced-motion:reduce){.lens-host-menu{will-change:auto}.rl-choices *{transition:none}}
+@media(max-width:860px){.rl-grid{grid-template-columns:1fr}.rl-grid .rp-stage{position:relative;top:auto;max-width:620px;width:100%;margin-inline:auto}.rl-choices{max-width:620px;width:100%;margin-inline:auto}.ring-lesson .rl-caption,section.light .ring-lesson .rl-caption{display:block;color:var(--muted);font:.83rem/1.5 var(--body);padding:0 16px 16px;margin:0}.rl-choices [data-active] p{display:none}}
+@media(prefers-reduced-motion:reduce){.lens-host-menu{will-change:auto}.rl-choices *,.lens-thumb{transition:none}}
