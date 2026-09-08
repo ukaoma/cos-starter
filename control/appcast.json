@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.189",
-      "build": 227,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.189.zip",
-      "sha256": "ab58f083c5dd4a702e6735b787bac42a848df92b83cc5332fd249f712357ad27",
+      "version": "0.5.206",
+      "build": 244,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.206.zip",
+      "sha256": "d7afc9dbab014444b15f961a9f4a07a47464ff2f6f6e96e25256b41caf4bd416",
       "minMacOS": "14.0",
-      "serverTarget": "6.44.4",
-      "publishedAt": "2026-09-04T12:30:00Z",
-      "notes": "A task now says what finished looks like, and nothing runs until it does. Every task detail carries a finish line, and Run now is refused while it is empty, because an agent sent at a task with no definition of done cannot succeed at it and cannot be judged to have failed either. Tasks also move between three stages, Planning, Active and Review, and the detail shows the stage and moves between them. A task with no marker reads as Planning, so nothing needed migrating. Needs server 6.44.4."
+      "serverTarget": "6.44.16",
+      "publishedAt": "2026-09-08T17:55:32Z",
+      "notes": "A Memories tab: what COS learned, what is waiting for review, and your knowledge graph on your own data. Focus on any entity, ask the graph in plain language and get entity cards back, accept or prune a captured memory, set your own guardrails, and merge duplicate people from the Manage sheet with the owner Mac's preview, a worker and a receipt; a Possible duplicates list only proposes. Set up Knowledge from zero with your own embedding choice and extraction tier, and Index now with live progress. Speakers names the meetings it cannot review and why. Pairs with server 6.44.16."
     }
   },
   "killSwitch": {

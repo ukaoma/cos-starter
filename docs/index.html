@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.453 (build 453, Hub pin 6.8.353) · server @gotcos/glasses-server 6.44.4 · COS Control 0.5.189.
+   Covers COS Glasses 6.9.456 (build 456, Hub pin 6.8.353) · server @gotcos/glasses-server 6.44.16 · COS Control 0.5.206.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -676,7 +676,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">6.9.453</span>
+    <span class="sb-ver">6.9.456</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -717,9 +717,9 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>6.9.453</b> · build 453</span>
-      <span class="chip">Server <b>6.44.4</b></span>
-      <span class="chip">Control <b>0.5.189</b></span>
+      <span class="chip">App <b>6.9.456</b> · build 456</span>
+      <span class="chip">Server <b>6.44.16</b></span>
+      <span class="chip">Control <b>0.5.206</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -936,24 +936,31 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p><strong>Same Wi-Fi or anywhere.</strong> On the same network, use the <code>http://192.168.x.x:3141</code> address the server prints. To use COS away from home, install Tailscale on the Mac and iPhone with the same account and use the <code>http://100.x.x.x:3141</code> address instead. The server rejects any request that does not come from your private network or mesh; it never answers the public internet.</p>
   </div>
   <div class="note release" id="release-package">
-    <p><strong>Latest release package: Control 0.5.189, glasses 6.9.453, server 6.44.4.</strong> COS Control 0.5.189 is the public Mac download. COS Glasses 6.9.453 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.8.353. Server identity is 6.44.4, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.206, glasses 6.9.456, server 6.44.16.</strong> COS Control 0.5.206 is the public Mac download. COS Glasses 6.9.456 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.8.353. Server identity is 6.44.16, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
-      <li><strong>Tasks with a finish line.</strong> Capture a task, schedule it, and Run now from Activity in COS Control; the Mac runs it read-only. On the glasses: a TASKS page on the lens, a WORK board on the phone, and Tasks on the hold menu. Nothing runs until a task says what finished looks like.</li>
-      <li><strong>A morning brief that waits in your inbox.</strong> A scheduled start-of-day brief lands in Messages as an ordinary numbered reply, weekdays at 07:00 by default. Choose its sources and timing from the Morning brief card in COS Control or Settings &rarr; AI on the glasses.</li>
-      <li><strong>Every message says where it came from.</strong> A run the Mac started carries a ROUTINE or TASK label in COS Control, a chip on the phone, and a star after the number on the lens. A row without a label is never guessed.</li>
-      <li><strong>Updates prove themselves.</strong> Update Server tries one real query on each installed provider before it commits, and records a vendor session limit as a skip instead of rolling back.</li>
+      <li><strong>Meetings survive the phone&rsquo;s storage layer.</strong> Glasses 6.9.456 reads the real storage error instead of a bare &ldquo;transaction failed&rdquo;, so a full disk stops the mic with its reason instead of retrying forever; chunks are pruned during the meeting, a stuck transaction times out instead of hanging Stop, and a meeting that loses the network keeps every chunk and saves without gaps once it returns.</li>
+      <li><strong>Memories and Knowledge in COS Control.</strong> A Memories tab with what COS learned, what is waiting for review, and your knowledge graph: focus on any entity, ask the graph in plain language, accept or prune a captured memory, set your own guardrails, merge duplicate people from a preview, and set up the graph from zero with your own embedding choice.</li>
+      <li><strong>Voice profiles and speaker review are honest.</strong> Server 6.44.15 repairs a profile that was named after a spoken sentence into a placeholder you can rename; 6.44.16 keeps a recording&rsquo;s session id when its sidecar lives only in the server&rsquo;s recordings folder, and Control 0.5.206 names the meetings it cannot review and why.</li>
+      <li><strong>Tasks with a finish line, and a morning brief in your inbox.</strong> Capture a task, schedule it, and Run now from Activity; a scheduled start-of-day brief lands in Messages as an ordinary numbered reply. Every run the Mac started says where it came from.</li>
     </ul>
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Control 0.5.206</dt><dd>The Speakers empty state names the meetings it cannot review and why: how many came from Fireflies or another source, and any G2 recording saved without its speaker sidecar, by title and date.</dd>
+        <dt>Control 0.5.191 to 0.5.205</dt><dd>The Memories tab: recent learning, a review queue, and the knowledge graph explorer on your own data. Set up Knowledge from zero (sources, owner, sample, embedding choice, extraction tier, schedule), Index now with live progress, ask the graph in plain language with entity cards, accept or prune a memory, guardrails that prune nonsense for you, and Merge from the Manage sheet with the owner Mac&rsquo;s preview plus a Possible duplicates list that only proposes.</dd>
         <dt>Control 0.5.189</dt><dd>Every open task shows, not only what is due. Domains come from your server, not a list baked into the app. Run now from a seventh Activity pane.</dd>
         <dt>Control 0.5.185</dt><dd>Morning brief card: sources, order, windows, time, and days. ROUTINE or TASK label on Activity rows and detail lines, with the model that answered.</dd>
+        <dt>Glasses 6.9.456</dt><dd>The local-first meeting store reads the real IndexedDB error, retries briefly and logs each recovery, times out a stuck transaction instead of hanging Stop, prunes confirmed chunks during the meeting, renews the upload lease, and keeps every chunk through a lost connection until it can save without gaps.</dd>
+        <dt>Glasses 6.9.454 and 6.9.455</dt><dd>The board is reachable on the glasses; the task action menu wraps at both ends.</dd>
         <dt>Glasses 6.9.453</dt><dd>The WORK board is writable: tap a task for Ask COS, Done, Today, To inbox, Unschedule, Reopen, or Open run. Ask COS starts a restricted session for that task on the same durable path as the morning brief.</dd>
         <dt>Glasses 6.9.450</dt><dd>ROUTINES reads the routine ledger, so an enabled brief shows its schedule, last fire, and next fire.</dd>
         <dt>Glasses 6.9.449</dt><dd>WORK becomes a full board: Inbox, Today, Scheduled, Running, and Done lanes with live counts and visible empty lanes.</dd>
         <dt>Glasses 6.9.448</dt><dd>TASKS page on the lens, WORK tab on the phone, Tasks on the hold menu.</dd>
         <dt>Glasses 6.9.447</dt><dd>Origin label as a chip on the phone and a star mark on the lens. A G2 stamp survives a reload. Settings &rarr; AI &rarr; Morning brief shows what is behind each source.</dd>
         <dt>Glasses 6.9.443 to 6.9.446</dt><dd>A run the Mac started shows as a running row with a live job log. A reply this phone did not ask for shows once under one number. A brief that lands while COS is open appears without a relaunch; one that lands while COS is closed shows on the splash as <em>#NNN Morning brief</em>. Inbox splash and display-stream ticket hardening.</dd>
+        <dt>Server 6.44.16</dt><dd>A G2 recording keeps its session id when its sidecar lives only in the server&rsquo;s recordings folder.</dd>
+        <dt>Server 6.44.15</dt><dd>A voice profile named after a spoken sentence is renamed at load with its training kept and flagged for rename.</dd>
+        <dt>Server 6.44.5 to 6.44.14</dt><dd>The learning, knowledge and curation routes behind COS Control&rsquo;s Memories tab: review decisions, graph status, search, entity, passages, index build, bounded ingest with progress, the Knowledge setup path, embedding and extraction choices, memory review and guardrails, ask the graph, and merge with a preview, a worker and a receipt.</dd>
         <dt>Server 6.44.4</dt><dd>Every job carries an origin label on its exchange, the display bus, and the today and archive views. Request fingerprints are pinned to sixteen identity keys, so journals hydrate across the upgrade and back. Task titles strip Markdown and cut on a word boundary.</dd>
         <dt>Server 6.43.0 to 6.43.4</dt><dd>Scheduled morning brief (6.43.0). Per-source coverage and section outcomes on <code>GET /api/morning-brief</code> (6.43.1). Update proof returns a failure code, a vendor limit is <code>provider_quota</code>, and Cursor is a proof provider (6.43.3). Origin stamps at submission (6.43.4).</dd>
       </dl>
@@ -973,11 +980,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.44.4, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.44.16, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.44.4</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.44.16</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1091,6 +1098,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <details class="rl-reference ccx-notes">
     <summary>Version notes for this section</summary>
     <dl class="version-notes">
+      <dt>Control 0.5.206 · server 6.44.16</dt><dd>Speakers names the meetings it cannot review and why. A recording&rsquo;s session id survives when its sidecar lives only in the recordings folder.</dd>
       <dt>Control 0.5.189</dt><dd>Every open task shows, not only what is due. Domains come from server 6.44.4. Run now from a seventh Activity pane, read-only on the Mac.</dd>
       <dt>Control 0.5.185 · server 6.43.4</dt><dd>Morning brief card with sources, order, windows, time, and days. ROUTINE or TASK label on Activity rows and detail lines, with the model that answered.</dd>
       <dt>Server 6.43.0 to 6.43.3</dt><dd>Scheduled start-of-day brief. Per-source coverage on the card. Update proof returns a failure code; a vendor limit is <code>provider_quota</code>; Cursor is a proof provider.</dd>
@@ -1208,7 +1216,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
         <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
-          <div class="pf-app"><b>COS GLASSES</b><i>v6.9.453 &#183; Live on G2</i></div>
+          <div class="pf-app"><b>COS GLASSES</b><i>v6.9.456 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
@@ -1515,7 +1523,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.453 plus server 6.44.4 is the current companion pair; Even Hub still lists 6.8.353.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.456 plus server 6.44.16 is the current companion pair; Even Hub still lists 6.8.353.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -1816,11 +1824,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.189</strong>, server <strong>6.44.4</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.453</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
+      <p>Current supported versions are COS Control <strong>0.5.206</strong>, server <strong>6.44.16</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.456</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.44.4. That pair is lifecycle-only on the display: 6.8.353 predates the display-stream ticket, so answers and live transcript do not reach the lens until you sideload 6.9.453, while meetings still capture and sync.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.44.16. That pair is lifecycle-only on the display: 6.8.353 predates the display-stream ticket, so answers and live transcript do not reach the lens until you sideload 6.9.456, while meetings still capture and sync.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
     </div>
@@ -1836,7 +1844,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.453 (Even Hub still lists 6.8.353) and server 6.44.4; COS Control 0.5.189 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.456 (Even Hub still lists 6.8.353) and server 6.44.16; COS Control 0.5.206 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2001,7 +2009,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.453 / Control 0.5.189 / server 6.44.4, 2026-09-03)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.456 / Control 0.5.206 / server 6.44.16, 2026-09-08)
   var BADGES = { 'ring-path':'NEW', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
