@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.456 (build 456, Hub pin 6.8.353) · server @gotcos/glasses-server 6.45.1 · COS Control 0.5.208.
+   Covers COS Glasses 6.9.456 (build 456, Hub pin 6.8.353) · server @gotcos/glasses-server 6.45.1 · COS Control 0.5.209.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -719,7 +719,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.456</b> · build 456</span>
       <span class="chip">Server <b>6.45.1</b></span>
-      <span class="chip">Control <b>0.5.208</b></span>
+      <span class="chip">Control <b>0.5.209</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -937,7 +937,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.208, glasses 6.9.456, server 6.45.1.</strong> COS Control 0.5.208 is the public Mac download. COS Glasses 6.9.456 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.8.353. Server identity is 6.45.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.209, glasses 6.9.456, server 6.45.1.</strong> COS Control 0.5.209 is the public Mac download. COS Glasses 6.9.456 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.8.353. Server identity is 6.45.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
       <li><strong>Ask first, explore next.</strong> Memories follows the Mac&rsquo;s light or dark appearance. Knowledge opens with Ask the graph, then a populated overview. When a compatible model pipeline is connected, your question selects validated points and hops; manual controls remain under Advanced investigation. A late answer cannot replace your intervening canvas edits.</li>
       <li><strong>Choose who COS is for.</strong> Enter your name during onboarding and edit it later in Memory settings. This profile name is separate from the Mac that indexes knowledge or holds memory write authority.</li>
@@ -953,6 +953,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Control 0.5.209 · server 6.45.1</dt><dd>Fixes blocked internal command output so a healthy managed server is correctly recognized and can be updated.</dd>
         <dt>Control 0.5.208 · server 6.45.1</dt><dd>Native appearance in Memories, Ask the graph first, a preloaded overview, optional advanced controls, editable owner identity, and accurate retained-capture states without duplicate Save actions.</dd>
         <dt>Control 0.5.207 · server 6.45.0</dt><dd>Versioned memory review, multi-hop investigations, identity separation and explicit fork transcript mapping. Optional owner-local runtime; no claim of observed long-term error reduction.</dd>
         <dt>Control 0.5.206</dt><dd>The Speakers empty state names the meetings it cannot review and why: how many came from Fireflies or another source, and any G2 recording saved without its speaker sidecar, by title and date.</dd>
@@ -1833,7 +1834,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.208</strong>, server <strong>6.45.1</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.456</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
+      <p>Current supported versions are COS Control <strong>0.5.209</strong>, server <strong>6.45.1</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub. Sideload <strong>6.9.456</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
@@ -1853,7 +1854,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.456 (Even Hub still lists 6.8.353) and server 6.45.1; COS Control 0.5.208 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.456 (Even Hub still lists 6.8.353) and server 6.45.1; COS Control 0.5.209 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only and download on demand to the iPhone. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2018,7 +2019,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.456 / Control 0.5.208 / server 6.45.1, 2026-09-09)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.456 / Control 0.5.209 / server 6.45.1, 2026-09-09)
   var BADGES = { 'ring-path':'NEW', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

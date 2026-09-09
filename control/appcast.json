@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.208",
-      "build": 246,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.208.zip",
-      "sha256": "7b2f9710673b160650fe13cceb162f9af1d469d1084e51b959bfc522ecb6be62",
+      "version": "0.5.209",
+      "build": 247,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.209.zip",
+      "sha256": "b44214f5cf8e0418135831ed45410de387b8c1f162768a4ea8e275430bedac67",
       "minMacOS": "14.0",
       "serverTarget": "6.45.1",
-      "publishedAt": "2026-09-09T17:30:02.739176Z",
-      "notes": "Memories follows light and dark appearance. Ask the graph leads with a preloaded overview and optional advanced controls. Set owner identity during setup or in Memory settings. Retained captures show usable-transcript state with one Save action. Pair with server 6.45.1."
+      "publishedAt": "2026-09-09T18:53:35.067899Z",
+      "notes": "Fixes internal command-output blocking that could misidentify a healthy managed server and prevent updates. Includes adaptive Memories appearance, Ask the graph with a preloaded overview, advanced investigations, editable owner identity and accurate retained-capture states. Pair with server 6.45.1."
     }
   },
   "killSwitch": {
@@ -17,8 +17,8 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-knowledge-capture-20260909",
-    "minBuild": 246,
+    "id": "control-managed-update-20260909",
+    "minBuild": 247,
     "title": "Ask your knowledge",
     "body": "Ask the graph now comes first, with a preloaded graph and optional Advanced investigation controls. Memories follows your Mac appearance. Update Server to 6.45.1 for editable owner identity and accurate retained-capture states."
   }
