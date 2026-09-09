@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.209",
-      "build": 247,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.209.zip",
-      "sha256": "b44214f5cf8e0418135831ed45410de387b8c1f162768a4ea8e275430bedac67",
+      "version": "0.5.210",
+      "build": 248,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.210.zip",
+      "sha256": "298958c77fb71293cdf320a3208ffb3b276a0817c3ecf3e832e45c3d6ea617fe",
       "minMacOS": "14.0",
       "serverTarget": "6.45.1",
-      "publishedAt": "2026-09-09T18:53:35.067899Z",
-      "notes": "Fixes internal command-output blocking that could misidentify a healthy managed server and prevent updates. Includes adaptive Memories appearance, Ask the graph with a preloaded overview, advanced investigations, editable owner identity and accurate retained-capture states. Pair with server 6.45.1."
+      "publishedAt": "2026-09-09T22:15:23.503893Z",
+      "notes": "Ask the graph now shows elapsed status while it runs. Graph rail labels stay readable. Meeting sync names library save and live recording instead of Idle, and Update/Restart stay blocked until that work finishes. Pair with server 6.45.1."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-managed-update-20260909",
-    "minBuild": 247,
-    "title": "Ask your knowledge",
-    "body": "Ask the graph now comes first, with a preloaded graph and optional Advanced investigation controls. Memories follows your Mac appearance. Update Server to 6.45.1 for editable owner identity and accurate retained-capture states."
+    "id": "control-ask-progress-20260909",
+    "minBuild": 248,
+    "title": "Ask progress, truthful Meeting sync",
+    "body": "Ask the graph now shows elapsed status while it runs. Graph rail labels no longer ghost. Meeting sync names library save and live recording instead of Idle, and Update/Restart stay blocked until that work finishes. Pair with server 6.45.1."
   }
 }
