@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.206",
-      "build": 244,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.206.zip",
-      "sha256": "d7afc9dbab014444b15f961a9f4a07a47464ff2f6f6e96e25256b41caf4bd416",
+      "version": "0.5.207",
+      "build": 245,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.207.zip",
+      "sha256": "aa52f80012d24171618aa7b5e92c55d99c4dc418333a40dd6d5bd45b7143782b",
       "minMacOS": "14.0",
-      "serverTarget": "6.44.16",
-      "publishedAt": "2026-09-08T17:55:32Z",
-      "notes": "A Memories tab: what COS learned, what is waiting for review, and your knowledge graph on your own data. Focus on any entity, ask the graph in plain language and get entity cards back, accept or prune a captured memory, set your own guardrails, and merge duplicate people from the Manage sheet with the owner Mac's preview, a worker and a receipt; a Possible duplicates list only proposes. Set up Knowledge from zero with your own embedding choice and extraction tier, and Index now with live progress. Speakers names the meetings it cannot review and why. Pairs with server 6.44.16."
+      "serverTarget": "6.45.0",
+      "publishedAt": "2026-09-09T16:10:20.805621Z",
+      "notes": "Fixes background CPU growth after helper timeouts. Adds reviewed memory records, multi-hop connections with waypoints and saved investigations, and explicit fork transcript identity. Pair with server 6.45.0; owner-local memory setup remains optional."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "accessibility-regrant-2026-08",
-    "minBuild": 1,
-    "title": "One last Accessibility toggle",
-    "body": "This update changes how COS Control is signed so macOS keeps your Accessibility permission across future updates. macOS drops the old grant one final time: open System Settings, Privacy & Security, Accessibility, toggle COS Control off and on, then reopen COS Control. You will not need to do this again."
+    "id": "control-memory-resource-20260909",
+    "minBuild": 245,
+    "title": "Memory and session updates",
+    "body": "Control now cleans up timed-out helper requests to prevent background CPU growth. Update Server to 6.45.0 for the matching memory and session features. Open Memories to review learning or investigate connections with anchors and waypoints."
   }
 }
