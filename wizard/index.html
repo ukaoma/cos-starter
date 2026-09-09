@@ -499,9 +499,9 @@
   <!-- Step 3: Identity -->
   <div class="step" data-step="Step 3 · Identity">
     <h2>Who is it working for?</h2>
-    <p class="sub">This grounds the COS so it knows your job. Lives in your config, never in the code.</p>
+    <p class="sub">Set the name of the person COS serves. It personalizes answers and the Knowledge graph’s starting point. You can change it in COS Control → Memories → Memory settings → Owner name. This is separate from the Mac that indexes your documents.</p>
     <div class="field-row">
-      <div class="field"><label>Name</label><input id="f-name" type="text" placeholder="Miles Ukaoma" autocomplete="off"></div>
+      <div class="field"><label for="f-name">Who is COS for?</label><input id="f-name" type="text" placeholder="Your full name" autocomplete="name" maxlength="120" required></div>
       <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
     </div>
     <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
@@ -1067,7 +1067,7 @@
   }
 
   ['f-name', 'f-role', 'f-company', 'f-vocab'].forEach(function (id) {
-    $('#' + id).addEventListener('input', render);
+    $('#' + id).addEventListener('input', function(){this.setCustomValidity('');render();});
   });
 
   function syncContextUI() {
@@ -1121,7 +1121,7 @@
     if (company) ctxBits.push('at ' + company);
     if (ucs.length) ctxBits.push('Focus: ' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', '));
     var idLines = ['<span class="c"># ~/.cos-glasses/.cos-profile.json</span>', '{'];
-    idLines.push('  "owner_name": ' + (name ? '<span class="g">' + esc(JSON.stringify(name)) + '</span>' : '"User"') + ',');
+    idLines.push('  "owner_name": ' + (name ? '<span class="g">' + esc(JSON.stringify(name)) + '</span>' : '"YOUR FULL NAME — set above before copying"') + ',');
     idLines.push('  "vocabulary": ' + (vocabulary.length ? '<span class="g">' + esc(JSON.stringify(vocabulary)) + '</span>' : '[]') + ',');
     idLines.push('  "system_prompt_context": ' + (ctxBits.length ? '<span class="g">' + esc(JSON.stringify(ctxBits.join(' '))) + '</span>' : '""'));
     idLines.push('}');
@@ -1189,6 +1189,10 @@
   };
 
   window.copyCmd = function (el) {
+    if(el.querySelector('#r-identity') && (!document.querySelector('#f-name').value.trim() || ['user','owner','me','your name','wearer'].includes(document.querySelector('#f-name').value.trim().toLowerCase()))){
+      var field=document.querySelector('#f-name');field.focus();field.setCustomValidity('Enter the name of the person COS serves.');field.reportValidity();return;
+    }
+
     var clone = el.cloneNode(true);
     var hintEl = clone.querySelector('.copy-hint'); if (hintEl) hintEl.remove();
     var text = clone.textContent.replace(/^\s*\$\s/, '').trim();

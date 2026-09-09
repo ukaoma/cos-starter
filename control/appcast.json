@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.207",
-      "build": 245,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.207.zip",
-      "sha256": "aa52f80012d24171618aa7b5e92c55d99c4dc418333a40dd6d5bd45b7143782b",
+      "version": "0.5.208",
+      "build": 246,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.208.zip",
+      "sha256": "7b2f9710673b160650fe13cceb162f9af1d469d1084e51b959bfc522ecb6be62",
       "minMacOS": "14.0",
-      "serverTarget": "6.45.0",
-      "publishedAt": "2026-09-09T16:10:20.805621Z",
-      "notes": "Fixes background CPU growth after helper timeouts. Adds reviewed memory records, multi-hop connections with waypoints and saved investigations, and explicit fork transcript identity. Pair with server 6.45.0; owner-local memory setup remains optional."
+      "serverTarget": "6.45.1",
+      "publishedAt": "2026-09-09T17:30:02.739176Z",
+      "notes": "Memories follows light and dark appearance. Ask the graph leads with a preloaded overview and optional advanced controls. Set owner identity during setup or in Memory settings. Retained captures show usable-transcript state with one Save action. Pair with server 6.45.1."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-memory-resource-20260909",
-    "minBuild": 245,
-    "title": "Memory and session updates",
-    "body": "Control now cleans up timed-out helper requests to prevent background CPU growth. Update Server to 6.45.0 for the matching memory and session features. Open Memories to review learning or investigate connections with anchors and waypoints."
+    "id": "control-knowledge-capture-20260909",
+    "minBuild": 246,
+    "title": "Ask your knowledge",
+    "body": "Ask the graph now comes first, with a preloaded graph and optional Advanced investigation controls. Memories follows your Mac appearance. Update Server to 6.45.1 for editable owner identity and accurate retained-capture states."
   }
 }
