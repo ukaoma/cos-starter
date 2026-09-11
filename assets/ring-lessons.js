@@ -61,6 +61,13 @@
   var modelHome=frame('home',{nav:f.home.nav.replace('[O]','[S]'),footer:f.home.footer.replace(/^Opus\b/,'Sonnet')});
   var askTranscript=f.review.body;
   var askDraft=frame('reply',{body:'Listening...\n\n'+askTranscript});
+  // Messages: send the reviewed reply, then arm and confirm a cancel. Chrome is
+  // native: the receipt footer is runStartFooterHint(), the armed footer is
+  // cancelArmFooterPrompt() (nav-confirm 90 outranks streaming 50), and a confirmed
+  // cancel from the receipt returns Home under composePrefixedHeader's flash.
+  var replyReceipt=frame('receipt',{body:'▶ "'+f.replyReview.body+'"\n\nSending...'});
+  var replyArmed=frame('receipt',{body:replyReceipt.body,footer:'Double-tap again to cancel'});
+  var replyCancelled=frame('home',{nav:'× Cancelled · COS [O] 9:16 AM 9/4/26'});
   var reviewRows=['Re-record','Cancel','Send original (Opus)','Edit','Preview','Change Model'];
   function reviewMenu(index) {
     return {nav:'COS [O] Msg Tap=Select 9:16 AM 9/4/26',body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  demo1234  82%',layout:'menu'};
@@ -90,7 +97,10 @@
       step('Return to Reply, then confirm','swipe-down',reader(1),'One more scroll highlights Reply. Read the highlighted choice before tapping again; that second deliberate tap is the false-touch confirmation.'),
       step('Start the prompt','tap',f.reply,'The confirming tap opens the microphone for a new prompt from this message, in the same session. Review the transcript after finishing; starting a recording is not the same as sending it. To attach a specific message as context, say “reference message 411” as a voice command first.'),
       step('Or use the express gesture','double-tap',f.reply,'Alternative from the open, idle message reader: two quick taps open the same microphone without opening the footer menu. From the Messages list, double-tap goes to Quick Actions instead.'),
-      step('Finish and review','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation and the footer changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.')
+      step('Finish and review','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation and the footer changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.'),
+      step('Send the reply','tap',replyReceipt,'One deliberate tap on Tap=Send sends the reviewed reply. The lens shows the send receipt, and the footer names your two options while it runs: tap to watch the job, or double-tap to cancel it.'),
+      step('Arm cancellation','double-tap',replyArmed,'Changed your mind? While the reply is running, the first double-tap only arms cancellation. The job keeps going, and the footer asks you to double-tap again within three seconds.'),
+      step('Confirm the cancel','double-tap',replyCancelled,'A second double-tap inside that window stops the run. × Cancelled flashes in the header and the lens returns Home, because you never left the receipt. Let the three seconds pass instead and the reply keeps running.')
     ],
     ask: [
       step('Keep your context','idle',f.reader,'Ask COS starts a new prompt. Reply continues from the open message. Choose the route based on whether the answer should follow what you are reading.'),
@@ -157,6 +167,10 @@
   lessons.messages[10].before=frame('reply',{body:'Listening...\n\n'+f.replyReview.body});
   lessons.messages[10].transitionText='Recording finished · transcribing…';
   lessons.messages[10].resultText='Review your prompt · nothing sent · Tap=Send';
+  lessons.messages[11].resultText='Sent · receipt shown · Tap to watch';
+  lessons.messages[12].resultText='Cancel armed · double-tap again within three seconds';
+  lessons.messages[13].transitionText='Second double-tap · cancelling…';
+  lessons.messages[13].resultText='× Cancelled · run stopped · back on Home';
   lessons.sessions[6].transitionText='Ask COS · 4 of 4 · scroll down…';
   lessons.sessions[6].resultText='Back to list · 1 of 4 · wrapped without running an action';
   lessons.sessions[8].before=frame('session',{scroll:true});

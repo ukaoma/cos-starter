@@ -187,6 +187,24 @@ eq(l.ask[3].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'re
 eq(l.ask[3].frame.body,ringLessons.askTranscript,'Review preserves the captured words');
 eq(l.ask[4].frame.body,l.ask[3].frame.body,'Double-tap preserves the reviewed draft');
 eq(l.messages[8].frame.body,l.messages[9].frame.body,'Confirmed Reply and express double-tap open the same microphone');
+// Messages ring: both double-tap meanings stay demonstrated, in order. Idle reader:
+// double-tap opens the microphone. Running reply: the first arms, the second cancels.
+// Every chrome string is derived from the app, not restated.
+eq(l.messages[9].gesture,'double-tap','Messages ring shows double-tap to start recording');
+eq(l.messages[9].frame.body,f.reply.body,'Express double-tap opens the microphone');
+eq(l.messages[10].frame.body,f.replyReview.body,'Recording finishes into the reviewable transcript');
+eq(l.messages[11].gesture,'tap','Send is a deliberate single tap');
+eq(l.messages[11].frame.footer,queryStatus.runStartFooterHint(),'Reply receipt footer names watch and cancel');
+assert.ok(l.messages[11].frame.body.includes(f.replyReview.body),'Receipt echoes the reviewed reply');checks++;
+eq(l.messages[12].gesture,'double-tap','Messages ring shows the arming double-tap');
+eq(l.messages[12].frame.footer,queryStatus.cancelArmFooterPrompt(),'Messages cancel arm copy');
+eq(l.messages[13].gesture,'double-tap','Messages ring shows the confirming double-tap');
+const cancelSrc = fs.readFileSync(path.join(app,'src/gesture-handlers.ts'),'utf8');
+assert.ok(cancelSrc.includes("setHeaderStatus(state.activeBridge, '\\u00D7 Cancelled', 'flash')"),'Native cancel flash literal');checks++;
+eq(l.messages[13].frame.nav,headers.composePrefixedHeader(f.home.nav,'× Cancelled',40),'Confirmed cancel flashes over the Home nav');
+eq(l.messages[13].frame.body,f.home.body,'Cancel from the receipt returns Home');
+eq(l.messages[13].frame.footer,f.home.footer,'Cancel clears the streaming and confirm footers');
+eq(l.messages.length,14,'Messages lesson ends on the confirmed cancel');
 
 // Execute the real confirmation renderer with a capture-only viewport, never
 // import the app entry point or connect a microphone. Derive nav/footer using
