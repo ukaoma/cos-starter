@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.210",
-      "build": 248,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.210.zip",
-      "sha256": "298958c77fb71293cdf320a3208ffb3b276a0817c3ecf3e832e45c3d6ea617fe",
+      "version": "0.5.218",
+      "build": 256,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.218.zip",
+      "sha256": "cda09647e5fcc662c93ec668c23f89cf5ece4c2b875582a7b6db33b3d00da827",
       "minMacOS": "14.0",
-      "serverTarget": "6.45.1",
-      "publishedAt": "2026-09-09T22:15:23.503893Z",
-      "notes": "Ask the graph now shows elapsed status while it runs. Graph rail labels stay readable. Meeting sync names library save and live recording instead of Idle, and Update/Restart stay blocked until that work finishes. Pair with server 6.45.1."
+      "serverTarget": "6.45.3",
+      "publishedAt": "2026-09-12T12:48:35.651556Z",
+      "notes": "Listen to a held voice before naming it: each session in Add a voice has play, sample k of N, and previous or next. Pair with server 6.45.3, which also makes Recent a rolling window of the newest 30 turns and files the archive at every day rollover."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-ask-progress-20260909",
-    "minBuild": 248,
-    "title": "Ask progress, truthful Meeting sync",
-    "body": "Ask the graph now shows elapsed status while it runs. Graph rail labels no longer ghost. Meeting sync names library save and live recording instead of Idle, and Update/Restart stay blocked until that work finishes. Pair with server 6.45.1."
+    "id": "control-listen-held-voice-20260912",
+    "minBuild": 256,
+    "title": "Listen before you name a voice",
+    "body": "Listen to a held voice before naming it: each session in Add a voice has play, sample k of N, and previous or next. Pair with server 6.45.3, which also makes Recent a rolling window of the newest 30 turns and files the archive at every day rollover."
   }
 }
