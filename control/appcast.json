@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.221",
-      "build": 259,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.221.zip",
-      "sha256": "a6a1a49a90438eeaaa37f7fbab59c6badd6ed3dfc430acb57f196bec868080dc",
+      "version": "0.5.222",
+      "build": 260,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.222.zip",
+      "sha256": "db6b981a492cf787e4bafc87804f421d689b86218e8e53c70ed0eefd6629d38e",
       "minMacOS": "14.0",
       "serverTarget": "6.45.4",
-      "publishedAt": "2026-09-13T13:30:07.766743Z",
-      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.221: the card uses the COS theme in light and dark, with gold and quiet buttons in place of the blue links and a round play button for Listen. Since 0.5.220, naming is off on a Mac without the speaker model. Pair with server 6.45.4."
+      "publishedAt": "2026-09-13T15:14:15.573556Z",
+      "notes": "Speakers has three views: Meetings to review, Samples to review, and Voices. Voices lists every enrolled speaker with their sample count and confidence: the share of their scored speech the server matched confidently, with the average match under it. Samples to review is the Add a voice card on its own, and the toolbar and breadcrumbs stay on screen however long a list gets. Pair with server 6.45.4."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-add-voice-theme-20260913",
-    "minBuild": 259,
-    "title": "Add a voice, in the COS theme",
-    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.221: the card uses the COS theme in light and dark, with gold and quiet buttons in place of the blue links and a round play button for Listen. Since 0.5.220, naming is off on a Mac without the speaker model. Pair with server 6.45.4."
+    "id": "control-speakers-views-20260913",
+    "minBuild": 260,
+    "title": "Speakers, in three views",
+    "body": "Speakers has three views: Meetings to review, Samples to review, and Voices. Voices lists every enrolled speaker with their sample count and confidence: the share of their scored speech the server matched confidently, with the average match under it. Samples to review is the Add a voice card on its own, and the toolbar and breadcrumbs stay on screen however long a list gets. Pair with server 6.45.4."
   }
 }

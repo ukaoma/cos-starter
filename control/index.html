@@ -40,8 +40,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.221",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.221.zip",
+  "softwareVersion": "0.5.222",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.222.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -489,10 +489,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses remember. <em>This is where you read it.</em></h1>
       <p class="hero-lead">COS Control is the Mac companion to your glasses. Every question you asked, every voice it learned, every call it saved, and the threads running through all of it, in one window. <strong>It also runs the server: one owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.221.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.222.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.5.221 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.222 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
     <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.45.4 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
@@ -778,7 +778,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>One Activity workspace</h3><p>Messages, Speakers, Meetings, Memories, Threads, and Sessions open together in a resizable window. Messages keeps a Recent and an Archive view, so older stored days stay browsable and searchable. Speakers starts on Meetings to review: unnamed first, hide reviewed, and Next to name. Meetings has a day calendar, transcript, summary, and copy, plus keyword and meaning search across stored calls. Lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match next to Domain. Peer tabs, Home, Back, and scoped breadcrumbs keep your place clear. Closing Activity stops voice playback, and a late server response cannot replace the newer record you selected.</p></div>
           <div class="part reveal"><h3>Sessions from Claude, Codex, and Cursor</h3><p>Sessions lists chats from this Mac. Updated and Opened look back 7 days. Pinned is its own clock: ChatGPT/Codex pins, Claude Desktop stars, and Cursor sidebar pins stay listed at any age, including Desktop-only Claude chats. Keep-warm <code>ready</code> rows stay out. Search matches sidebar titles and recent transcript bodies. Click a row for the transcript and a composer: a message you type lands in the real thread, and the reply comes back in the pane. Long turns keep running after the window closes. Busy threads offer Retry or Fork with this message. Copy session puts a redacted kickstart brief on the clipboard.</p></div>
           <div class="part reveal"><h3>GOT COS, once the panel is open</h3><p>The menu bar still uses eyeglasses for a running or offline glance. Open Control or Activity and the GOT COS lockup is the brand. Headings use Fraunces, UI copy uses DM Sans, and chrome numbers use JetBrains Mono &mdash; the same trio as this site.</p></div>
-          <div class="part reveal"><h3>A Voice Directory with evidence</h3><p>Browse every enrolled voice with training-sample provenance, attributed and review segments, meeting count, last seen, and a segment-weighted observed match. Open a person to see recent meeting appearances. Unidentified voices stay grouped by meeting and are never combined into a false global identity.</p></div>
+          <div class="part reveal"><h3>A Voice Directory with evidence</h3><p>Browse every enrolled voice with training-sample provenance, attributed and review segments, meeting count, last seen, a sample count, and a confidence figure: the share of scored speech matched confidently, over the segment-weighted average match. Open a person to see recent meeting appearances. Unidentified voices stay grouped by meeting and are never combined into a false global identity.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root: the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Your existing meeting library</h3><p>Choose the folder you already use for meetings. The recommended path directly contains <code>YYYY-MM/*.md</code>. If you already maintain several libraries, choose their parent; every folder name is customizable and only needs <code>meetings/YYYY-MM/*.md</code> inside. Direct libraries stay read-only, while existing operations pipelines keep enrichment and writes.</p></div>
@@ -806,12 +806,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.221.zip" download>Download v0.5.221</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.222.zip" download>Download v0.5.222</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.221.zip</code></div>
-            <p class="sha">SHA-256<br>a6a1a49a90438eeaaa37f7fbab59c6badd6ed3dfc430acb57f196bec868080dc</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.222.zip</code></div>
+            <p class="sha">SHA-256<br>db6b981a492cf787e4bafc87804f421d689b86218e8e53c70ed0eefd6629d38e</p>
           </details>
         </div>
         <div class="path reveal">
@@ -860,10 +860,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.221.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.222.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.221 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.222 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>
