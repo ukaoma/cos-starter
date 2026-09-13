@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.219",
-      "build": 257,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.219.zip",
-      "sha256": "9649fea25f3ee6a7804235e6a3036bfa1f89fc5a412883be178a16e53e106672",
+      "version": "0.5.220",
+      "build": 258,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.220.zip",
+      "sha256": "5c262a2d4a6e00379eef3f3e516b7343b98c8c5ae4153a341e6834529096ea72",
       "minMacOS": "14.0",
       "serverTarget": "6.45.4",
-      "publishedAt": "2026-09-13T02:13:46.076198Z",
-      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard; loose samples that match no voice can be named one at a time or thrown out. Pair with server 6.45.4, which also drops a closing sentence the decoder invented from a dictated prompt and keeps a real one."
+      "publishedAt": "2026-09-13T12:39:25.441987Z",
+      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.220: on a Mac without the speaker model, naming is turned off and the panel says why, instead of offering buttons the server refuses. Pair with server 6.45.4."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-held-voice-groups-20260912",
-    "minBuild": 257,
+    "id": "control-held-voice-model-20260913",
+    "minBuild": 258,
     "title": "Held voices, grouped",
-    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard; loose samples that match no voice can be named one at a time or thrown out. Pair with server 6.45.4, which also drops a closing sentence the decoder invented from a dictated prompt and keeps a real one."
+    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.220: on a Mac without the speaker model, naming is turned off and the panel says why, instead of offering buttons the server refuses. Pair with server 6.45.4."
   }
 }
