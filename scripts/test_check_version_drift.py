@@ -102,6 +102,22 @@ class VersionDriftTests(unittest.TestCase):
         fail, _ = run(docs=DOCS.replace(old, ''))
         self.assertTrue(any('G2 HUD app version is gone' in f for f in fail), fail)
 
+    def test_hub_pin_reads_without_still_once_the_hub_is_current(self):
+        # 2026-09-13: Even Hub caught up with the sideload build, so the pages say
+        # "Even Hub lists X". The pin must still be read and compared, not skipped.
+        current = DOCS.replace("Even Hub still lists", "Even Hub lists")
+        self.assertNotIn("still lists", current)
+        self.assertEqual(run(docs=current)[0], [])
+        drifted = current.replace("current companion pair; Even Hub lists 6.8.353", "current companion pair; Even Hub lists 6.8.999")
+        self.assertTrue(any("Hub" in item or "hub" in item for item in run(docs=drifted)[0]))
+
+    def test_rollback_may_be_older_than_the_hub_pin_but_never_newer(self):
+        older = DOCS.replace("rollback is COS Glasses <strong>6.8.353</strong>", "rollback is COS Glasses <strong>6.8.352</strong>")
+        self.assertNotEqual(older, DOCS)
+        self.assertEqual(run(docs=older)[0], [])
+        newer = DOCS.replace("rollback is COS Glasses <strong>6.8.353</strong>", "rollback is COS Glasses <strong>6.8.354</strong>")
+        self.assertTrue(any("rollback" in item for item in run(docs=newer)[0]))
+
     def test_happy_path_entity_mocks(self):
         fail, note = run()
         self.assertEqual(fail, [], fail)

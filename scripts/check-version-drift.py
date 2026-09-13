@@ -79,22 +79,22 @@ CURRENT_COMPANION_PACK_RE = re.compile(
     r"COS Glasses (\d+\.\d+\.\d+) is the current companion pack"
 )
 LATEST_HUB_PIN_RE = re.compile(
-    r"COS Glasses \d+\.\d+\.\d+ is the current companion pack:.*?Even Hub still lists "
+    r"COS Glasses \d+\.\d+\.\d+ is the current companion pack:.*?Even Hub (?:still )?lists "
     r"(\d+\.\d+\.\d+)\. Server identity",
     re.S,
 )
 SERVER_IDENTITY_RE = re.compile(r"Server identity is (\d+\.\d+\.\d+)")
 COMPANION_PAIR_RE = re.compile(
     r"glasses (\d+\.\d+\.\d+) plus server (\d+\.\d+\.\d+) is the current companion pair; "
-    r"Even Hub still lists (\d+\.\d+\.\d+)"
+    r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
 )
 SIDELOAD_RE = re.compile(
     r"Sideload <strong>(\d+\.\d+\.\d+)</strong> for the newest companion build; "
-    r"Even Hub still lists (\d+\.\d+\.\d+)"
+    r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
 )
 FAQ_PAIR_RE = re.compile(
     r"The current supported pair is COS Glasses (\d+\.\d+\.\d+) "
-    r"\(Even Hub still lists (\d+\.\d+\.\d+)\) "
+    r"\(Even Hub (?:still )?lists (\d+\.\d+\.\d+)\) "
     r"and server (\d+\.\d+\.\d+); COS Control (\d+\.\d+\.\d+) is recommended"
 )
 BADGE_GROUNDING_RE = re.compile(
@@ -169,6 +169,10 @@ def _one_groups(
         fail.append(f"{label} matched {len(matches)} times; keep it a unique current-claim")
         return None
     return matches[0].groups()
+
+
+def _version_key(version: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in version.split("."))
 
 
 def _require(label: str, got: str | None, expected: str, fail: list[str]) -> None:
@@ -310,7 +314,12 @@ def evaluate(
         rollback = _one_groups(ROLLBACK_PAIR_RE, docs, "docs rollback pair", fail)
         if rollback:
             rollback_app, rollback_server = rollback
-            _require("docs rollback glasses", rollback_app, docs_hub, fail)
+            # A rollback is a real, installable build no newer than the Even Hub pin. It
+            # used to have to EQUAL the pin, which held while the Hub trailed the sideload
+            # build; once Even Hub listed the newest build (6.9.470, 2026-09-13) the honest
+            # rollback became the build before it.
+            if docs_hub and _version_key(rollback_app) > _version_key(docs_hub):
+                fail.append(f"docs rollback glasses {rollback_app} is newer than the Even Hub pin {docs_hub}")
             _require("docs rollback same-server", rollback_server, docs_server, fail)
 
         _require(
