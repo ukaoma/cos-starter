@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.220",
-      "build": 258,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.220.zip",
-      "sha256": "5c262a2d4a6e00379eef3f3e516b7343b98c8c5ae4153a341e6834529096ea72",
+      "version": "0.5.221",
+      "build": 259,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.221.zip",
+      "sha256": "a6a1a49a90438eeaaa37f7fbab59c6badd6ed3dfc430acb57f196bec868080dc",
       "minMacOS": "14.0",
       "serverTarget": "6.45.4",
-      "publishedAt": "2026-09-13T12:39:25.441987Z",
-      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.220: on a Mac without the speaker model, naming is turned off and the panel says why, instead of offering buttons the server refuses. Pair with server 6.45.4."
+      "publishedAt": "2026-09-13T13:30:07.766743Z",
+      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.221: the card uses the COS theme in light and dark, with gold and quiet buttons in place of the blue links and a round play button for Listen. Since 0.5.220, naming is off on a Mac without the speaker model. Pair with server 6.45.4."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-held-voice-model-20260913",
-    "minBuild": 258,
-    "title": "Held voices, grouped",
-    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.220: on a Mac without the speaker model, naming is turned off and the panel says why, instead of offering buttons the server refuses. Pair with server 6.45.4."
+    "id": "control-add-voice-theme-20260913",
+    "minBuild": 259,
+    "title": "Add a voice, in the COS theme",
+    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, Add to that person, Name, and Discard. New in 0.5.221: the card uses the COS theme in light and dark, with gold and quiet buttons in place of the blue links and a round play button for Listen. Since 0.5.220, naming is off on a Mac without the speaker model. Pair with server 6.45.4."
   }
 }
