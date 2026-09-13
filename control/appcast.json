@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.218",
-      "build": 256,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.218.zip",
-      "sha256": "cda09647e5fcc662c93ec668c23f89cf5ece4c2b875582a7b6db33b3d00da827",
+      "version": "0.5.219",
+      "build": 257,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.219.zip",
+      "sha256": "9649fea25f3ee6a7804235e6a3036bfa1f89fc5a412883be178a16e53e106672",
       "minMacOS": "14.0",
       "serverTarget": "6.45.3",
-      "publishedAt": "2026-09-12T12:48:35.651556Z",
-      "notes": "Listen to a held voice before naming it: each session in Add a voice has play, sample k of N, and previous or next. Pair with server 6.45.3, which also makes Recent a rolling window of the newest 30 turns and files the archive at every day rollover."
+      "publishedAt": "2026-09-13T02:13:46.076198Z",
+      "notes": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, one-click Add to that person, Name, and Discard; loose samples that match no voice can be named one at a time or thrown out. Needs server 6.45.4 for the grouped view; on 6.45.3 the panel keeps the per-session rows."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-listen-held-voice-20260912",
-    "minBuild": 256,
-    "title": "Listen before you name a voice",
-    "body": "Listen to a held voice before naming it: each session in Add a voice has play, sample k of N, and previous or next. Pair with server 6.45.3, which also makes Recent a rolling window of the newest 30 turns and files the archive at every day rollover."
+    "id": "control-held-voice-groups-20260912",
+    "minBuild": 257,
+    "title": "Held voices, grouped",
+    "body": "Add a voice lists voices, not sessions: held samples grouped by who they sound like across meetings, with Listen, a suggested name where an enrolled profile vouches for the group, one-click Add to that person, Name, and Discard; loose samples that match no voice can be named one at a time or thrown out. Needs server 6.45.4 for the grouped view; on 6.45.3 the panel keeps the per-session rows."
   }
 }
