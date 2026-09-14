@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.227",
-      "build": 265,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.227.zip",
-      "sha256": "ad10425aa2c920320a0d10fa5bf9e8c1bc691e227782cf957846b3f96854d613",
+      "version": "0.5.228",
+      "build": 266,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.228.zip",
+      "sha256": "b5ac39a0fc00fb0ec335308dd9fb9495285d137fef79d58cfd67769370b8cce6",
       "minMacOS": "14.0",
       "serverTarget": "6.46.0",
-      "publishedAt": "2026-09-14T18:18:50.242709Z",
-      "notes": "Meeting audio alert: COS Control notifies you when a G2 meeting's audio stops reaching this Mac while the phone still says it is recording, and shows a Meeting audio row in the panel. Naming held voices still needs server 6.46.0."
+      "publishedAt": "2026-09-14T19:40:54.919846Z",
+      "notes": "Meeting audio alert, fewer false alarms: COS Control notifies only when the phone kept running after its audio stopped, says why a recording paused, and shows in the panel when notifications are off. Naming held voices still needs server 6.46.0."
     }
   },
   "killSwitch": {
