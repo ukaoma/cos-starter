@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.473 (build 473, Hub pin 6.9.470) · server @gotcos/glasses-server 6.46.0 · COS Control 0.5.226.
+   Covers COS Glasses 6.9.473 (build 473, Hub pin 6.9.470) · server @gotcos/glasses-server 6.46.0 · COS Control 0.5.227.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -719,7 +719,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.473</b> · build 473</span>
       <span class="chip">Server <b>6.46.0</b></span>
-      <span class="chip">Control <b>0.5.226</b></span>
+      <span class="chip">Control <b>0.5.227</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -937,11 +937,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.226, glasses 6.9.473, server 6.46.0.</strong> COS Control 0.5.226 is the public Mac download. COS Glasses 6.9.473 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.46.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.227, glasses 6.9.473, server 6.46.0.</strong> COS Control 0.5.227 is the public Mac download. COS Glasses 6.9.473 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.46.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
       <li><strong>Session names match your Claude tabs.</strong> Control 0.5.226 names each Claude session on the Session Pet and in Sessions with the title Claude Desktop shows on its tab, and an idle pet row says idle.</li>
       <li><strong>The Session Pet shows what Claude sessions are doing.</strong> Control 0.5.225 reads each live Claude session from its newest message: working while a turn or a subagent runs, waiting when Claude asks you something or a turn stalls, and idle the moment a turn ends. Since 0.5.214 the pet could read idle a few minutes after Activity last refreshed the Sessions list.</li>
       <li><strong>Name held voice samples, then apply the meeting labels.</strong> Control 0.5.223 and server 6.46.0 add individual sample suggestions, a preview before every Apply, and Undo. Preview separates samples used for training from transcript positions, shows wider matches only within each sample&rsquo;s meeting, and asks you to listen when a large match needs review. Results keep per-sample and per-meeting outcomes; interrupted naming waits for your decision.</li>
+      <li><strong>COS Control tells you when meeting audio stops reaching the Mac.</strong> Control 0.5.227 checks every 12 seconds while a G2 meeting records. When the phone still says it is recording but no audio has reached the Mac for 60 seconds, it posts a macOS notification and the panel shows Meeting audio: Stopped. A phone storage pause posts its own notice. A phone that has gone quiet, for example recording offline, never notifies.</li>
       <li><strong>Meeting audio that stops at a phone lock is logged.</strong> Glasses 6.9.473 records within about 20 seconds when meeting audio stops reaching the phone, what the Even bridge answered and whether the glasses were connected. It is a diagnostic: nothing new appears on the glasses, and audio missed during a drop is not recovered. Until an alert exists, if the lens freezes during a meeting, unlock the phone and open COS.</li>
       <li><strong>Tiny proves itself, and meeting audio counts as saved only when it is.</strong> Glasses 6.9.472 reads Tiny ready only after it transcribes a short test clip on the phone. A meeting chunk the phone could not store is held and retried while the app stays open, never counted as saved. Stop retries the same audio, says plainly if any is lost, and ends with the microphone off even if the phone comes back to the foreground during it.</li>
       <li><strong>Continue, Fork and Ask COS on the phone.</strong> Glasses 6.9.471 ends a session&rsquo;s detail in Views, Sessions with the lens&rsquo;s own actions, and the Sessions and Archive lists scroll up and down only. An action chosen on the phone never captures a question spoken on the glasses.</li>
@@ -961,6 +962,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Control 0.5.227</dt><dd>A Meeting audio row and a macOS notification when a live meeting has received no audio chunk for 60 seconds while the phone's newest heartbeat (under 90 seconds old) says it is recording with the microphone on. One notification per drop. It reads the glasses data folder, so it needs no server change. On 2026-09-14 two phone locks stopped meeting audio for 8 and 9 minutes while the Mac kept receiving heartbeats.</dd>
         <dt>Control 0.5.226</dt><dd>The Session Pet and the Sessions tab name each Claude session with its Claude Desktop tab title, read from the transcript and the Desktop session index. The pet showed a derived name such as mu-chief-staff-bc for sessions started after Sessions last refreshed, and Sessions showed the first prompt for newer sessions. An idle pet row without a summary says idle instead of working.</dd>
         <dt>Control 0.5.225</dt><dd>The Session Pet reads each live Claude session from its transcript&rsquo;s newest user or assistant message, the timestamp rule the server uses for the phone&rsquo;s Sessions list, so it tracks work without Activity open. A finished or interrupted turn reads idle at once. A running tool call or subagent reads working. A pending question or plan approval reads waiting, and so does a turn with no new record for fifteen minutes, which is usually a permission prompt. Local commands and bookkeeping writes do not read as work. A session that appeared after Activity last refreshed no longer counts a false finish, and Activity&rsquo;s Sessions list reads the same records.</dd>
         <dt>Control 0.5.223 · server 6.46.0</dt><dd>Samples to review gives each loose sample its own row and can suggest an existing voice with a score. Name and Add to a person open a preview before Apply. It lists the samples, each meeting&rsquo;s label changes and wider matches, and any listening or owner acknowledgment needed. Apply refuses a changed meeting and reports each sample and copy. Undo restores this batch&rsquo;s labels while keeping enrolled voice samples and deleted audio deleted. An interrupted naming remains available to resume from a fresh preview or revert explicitly.</dd>
@@ -1857,7 +1859,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.226</strong>, server <strong>6.46.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.473</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.227</strong>, server <strong>6.46.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.473</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
@@ -1878,7 +1880,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.473 (Even Hub still lists 6.9.470) and server 6.46.0; COS Control 0.5.226 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.473 (Even Hub still lists 6.9.470) and server 6.46.0; COS Control 0.5.227 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2043,7 +2045,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.473 / Control 0.5.226 / server 6.46.0, 2026-09-14)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.473 / Control 0.5.227 / server 6.46.0, 2026-09-14)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

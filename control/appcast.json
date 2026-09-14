@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.226",
-      "build": 264,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.226.zip",
-      "sha256": "d3c3ecc369d113138d23f45f2753e93119de082fce14add0ac05b1c54e4dffbf",
+      "version": "0.5.227",
+      "build": 265,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.227.zip",
+      "sha256": "ad10425aa2c920320a0d10fa5bf9e8c1bc691e227782cf957846b3f96854d613",
       "minMacOS": "14.0",
       "serverTarget": "6.46.0",
-      "publishedAt": "2026-09-14T15:36:25.206561Z",
-      "notes": "Session names match your Claude tabs: the Session Pet and Sessions show the title Claude Desktop gives each session, and an idle pet row says idle. Naming held voices still needs server 6.46.0."
+      "publishedAt": "2026-09-14T18:18:50.242709Z",
+      "notes": "Meeting audio alert: COS Control notifies you when a G2 meeting's audio stops reaching this Mac while the phone still says it is recording, and shows a Meeting audio row in the panel. Naming held voices still needs server 6.46.0."
     }
   },
   "killSwitch": {
