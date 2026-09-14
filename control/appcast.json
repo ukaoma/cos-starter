@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.223",
-      "build": 261,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.223.zip",
-      "sha256": "6a2a1a06303a55fb6aa1fec930ee2546ede4bf3ab5709c1a0d1d6324cb57d6a6",
+      "version": "0.5.225",
+      "build": 263,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.225.zip",
+      "sha256": "af3095f2030603f7ab616e0d1452fd7b8848d2591066938086dae94b70227872",
       "minMacOS": "14.0",
       "serverTarget": "6.46.0",
-      "publishedAt": "2026-09-14T02:24:16.350668Z",
-      "notes": "Samples to review names held voice samples with a preview. Each loose sample can suggest an existing voice with its score. Name and Add to a person show the meeting labels a name would change before Apply; Apply reports each sample and meeting copy, and Undo restores the labels while keeping the enrolled voice samples. Interrupted naming waits for your review and never resumes on its own. Naming needs server 6.46.0; older servers keep listening and discard."
+      "publishedAt": "2026-09-14T04:24:38.976471Z",
+      "notes": "The Session Pet shows what Claude sessions are doing: working while a turn or subagent runs, waiting when Claude asks you something, and idle the moment a turn ends. Naming held voices still needs server 6.46.0."
     }
   },
   "killSwitch": {

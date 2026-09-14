@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.472 (build 472, Hub pin 6.9.470) · server @gotcos/glasses-server 6.46.0 · COS Control 0.5.223.
+   Covers COS Glasses 6.9.472 (build 472, Hub pin 6.9.470) · server @gotcos/glasses-server 6.46.0 · COS Control 0.5.225.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -719,7 +719,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.472</b> · build 472</span>
       <span class="chip">Server <b>6.46.0</b></span>
-      <span class="chip">Control <b>0.5.223</b></span>
+      <span class="chip">Control <b>0.5.225</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -937,8 +937,9 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.223, glasses 6.9.472, server 6.46.0.</strong> COS Control 0.5.223 is the public Mac download. COS Glasses 6.9.472 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.46.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.225, glasses 6.9.472, server 6.46.0.</strong> COS Control 0.5.225 is the public Mac download. COS Glasses 6.9.472 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.46.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
+      <li><strong>The Session Pet shows what Claude sessions are doing.</strong> Control 0.5.225 reads each live Claude session from its newest message: working while a turn or a subagent runs, waiting when Claude asks you something or a turn stalls, and idle the moment a turn ends. Since 0.5.214 the pet could read idle a few minutes after Activity last refreshed the Sessions list.</li>
       <li><strong>Name held voice samples, then apply the meeting labels.</strong> Control 0.5.223 and server 6.46.0 add individual sample suggestions, a preview before every Apply, and Undo. Preview separates samples used for training from transcript positions, shows wider matches only within each sample&rsquo;s meeting, and asks you to listen when a large match needs review. Results keep per-sample and per-meeting outcomes; interrupted naming waits for your decision.</li>
       <li><strong>Tiny proves itself, and meeting audio counts as saved only when it is.</strong> Glasses 6.9.472 reads Tiny ready only after it transcribes a short test clip on the phone. A meeting chunk the phone could not store is held and retried while the app stays open, never counted as saved. Stop retries the same audio, says plainly if any is lost, and ends with the microphone off even if the phone comes back to the foreground during it.</li>
       <li><strong>Continue, Fork and Ask COS on the phone.</strong> Glasses 6.9.471 ends a session&rsquo;s detail in Views, Sessions with the lens&rsquo;s own actions, and the Sessions and Archive lists scroll up and down only. An action chosen on the phone never captures a question spoken on the glasses.</li>
@@ -958,6 +959,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Control 0.5.225</dt><dd>The Session Pet reads each live Claude session from its transcript&rsquo;s newest user or assistant message, the timestamp rule the server uses for the phone&rsquo;s Sessions list, so it tracks work without Activity open. A finished or interrupted turn reads idle at once. A running tool call or subagent reads working. A pending question or plan approval reads waiting, and so does a turn with no new record for fifteen minutes, which is usually a permission prompt. Local commands and bookkeeping writes do not read as work. A session that appeared after Activity last refreshed no longer counts a false finish, and Activity&rsquo;s Sessions list reads the same records.</dd>
         <dt>Control 0.5.223 · server 6.46.0</dt><dd>Samples to review gives each loose sample its own row and can suggest an existing voice with a score. Name and Add to a person open a preview before Apply. It lists the samples, each meeting&rsquo;s label changes and wider matches, and any listening or owner acknowledgment needed. Apply refuses a changed meeting and reports each sample and copy. Undo restores this batch&rsquo;s labels while keeping enrolled voice samples and deleted audio deleted. An interrupted naming remains available to resume from a fresh preview or revert explicitly.</dd>
         <dt>Glasses 6.9.472</dt><dd>Tiny reads ready only after it transcribes a bundled test clip on the phone, and a readiness failure says why instead of Download failed. A meeting chunk counts as saved only when the phone store confirms it. Held audio is capped, and capture pauses before the cap. A foreground return seals the audio received before it. Stop runs once at a time, retries the same audio, gives it up with a report only after repeated refusals, and ends with the microphone off. A start the phone store cannot admit is refused instead of recording upload-first.</dd>
         <dt>Glasses 6.9.471</dt><dd>Views, Sessions on the phone: a session&rsquo;s detail ends with Continue, Fork and Ask COS, with the lens&rsquo;s labels, order and enabled state. Lists scroll vertically only and wrap long tokens; summaries read as plain text. The phone passes its own target, so it cannot capture a question spoken on the glasses. Continue needs server 6.29.0 or newer with thread attach on (default since 6.37.0).</dd>
@@ -1851,7 +1853,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.223</strong>, server <strong>6.46.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.472</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.225</strong>, server <strong>6.46.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.472</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
@@ -1872,7 +1874,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.472 (Even Hub still lists 6.9.470) and server 6.46.0; COS Control 0.5.223 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.472 (Even Hub still lists 6.9.470) and server 6.46.0; COS Control 0.5.225 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2037,7 +2039,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.472 / Control 0.5.223 / server 6.46.0, 2026-09-13)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.472 / Control 0.5.225 / server 6.46.0, 2026-09-13)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
