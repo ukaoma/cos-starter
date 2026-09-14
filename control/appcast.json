@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.228",
-      "build": 266,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.228.zip",
-      "sha256": "b5ac39a0fc00fb0ec335308dd9fb9495285d137fef79d58cfd67769370b8cce6",
+      "version": "0.5.229",
+      "build": 267,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.229.zip",
+      "sha256": "42b1297592743df14e829f73d3861907992d1de3eccc96ef353f8f88e146f688",
       "minMacOS": "14.0",
       "serverTarget": "6.46.0",
-      "publishedAt": "2026-09-14T19:40:54.919846Z",
-      "notes": "Meeting audio alert, fewer false alarms: COS Control notifies only when the phone kept running after its audio stopped, says why a recording paused, and shows in the panel when notifications are off. Naming held voices still needs server 6.46.0."
+      "publishedAt": "2026-09-14T21:38:35.311484Z",
+      "notes": "Scheduled jobs: the Claude runs COS starts itself, such as the meeting watcher's, show in the Session Pet and Sessions as scheduled jobs instead of blank sessions, and meeting audio alert logs are readable. Naming held voices still needs server 6.46.0."
     }
   },
   "killSwitch": {
