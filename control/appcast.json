@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.225",
-      "build": 263,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.225.zip",
-      "sha256": "af3095f2030603f7ab616e0d1452fd7b8848d2591066938086dae94b70227872",
+      "version": "0.5.226",
+      "build": 264,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.226.zip",
+      "sha256": "d3c3ecc369d113138d23f45f2753e93119de082fce14add0ac05b1c54e4dffbf",
       "minMacOS": "14.0",
       "serverTarget": "6.46.0",
-      "publishedAt": "2026-09-14T04:24:38.976471Z",
-      "notes": "The Session Pet shows what Claude sessions are doing: working while a turn or subagent runs, waiting when Claude asks you something, and idle the moment a turn ends. Naming held voices still needs server 6.46.0."
+      "publishedAt": "2026-09-14T15:36:25.206561Z",
+      "notes": "Session names match your Claude tabs: the Session Pet and Sessions show the title Claude Desktop gives each session, and an idle pet row says idle. Naming held voices still needs server 6.46.0."
     }
   },
   "killSwitch": {
