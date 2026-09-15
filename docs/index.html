@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.474 (build 474, Hub pin 6.9.470) · server @gotcos/glasses-server 6.47.0 · COS Control 0.5.230.
+   Covers COS Glasses 6.9.474 (build 474, Hub pin 6.9.470) · server @gotcos/glasses-server 6.47.0 · COS Control 0.5.231.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -719,7 +719,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.474</b> · build 474</span>
       <span class="chip">Server <b>6.47.0</b></span>
-      <span class="chip">Control <b>0.5.230</b></span>
+      <span class="chip">Control <b>0.5.231</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -937,8 +937,9 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.230, glasses 6.9.474, server 6.47.0.</strong> COS Control 0.5.230 is the public Mac download. COS Glasses 6.9.474 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.47.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.231, glasses 6.9.474, server 6.47.0.</strong> COS Control 0.5.231 is the public Mac download. COS Glasses 6.9.474 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.47.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
+      <li><strong>Threads open with their full context.</strong> Control 0.5.231 shows a thread&rsquo;s stakeholders, meetings, milestones and sources in thread detail, and Copy as Context copies all of it.</li>
       <li><strong>Session names match your Claude tabs.</strong> Control 0.5.226 names each Claude session on the Session Pet and in Sessions with the title Claude Desktop shows on its tab, and an idle pet row says idle.</li>
       <li><strong>The Session Pet shows what Claude sessions are doing.</strong> Control 0.5.225 reads each live Claude session from its newest message: working while a turn or a subagent runs, waiting when Claude asks you something or a turn stalls, and idle the moment a turn ends. Since 0.5.214 the pet could read idle a few minutes after Activity last refreshed the Sessions list.</li>
       <li><strong>Name held voice samples, then apply the meeting labels.</strong> Control 0.5.223 and server 6.46.0 add individual sample suggestions, a preview before every Apply, and Undo. Preview separates samples used for training from transcript positions, shows wider matches only within each sample&rsquo;s meeting, and asks you to listen when a large match needs review. Results keep per-sample and per-meeting outcomes; interrupted naming waits for your decision.</li>
@@ -968,6 +969,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <summary>Version by version</summary>
       <dl>
         <dt>Server 6.47.0</dt><dd>Fireflies imports arrive through the API only, never from the desktop app&rsquo;s files, with a 7, 30 or 90 day backfill that resumes across the plan&rsquo;s daily limit, a 6 hour poll that uses at most half of a day&rsquo;s budget, and a ledger that reconciles what the vendor listed against what was written. The merge engine runs on a worker thread: it pairs on shared unique three-word phrases at a consistent time offset, refuses a pairing whose clocks disagree by more than 15 minutes, collapses duplicate recordings of one meeting, and groups every G2 recording of a meeting into one merged record. No language model is involved in import, pairing, alignment, splitting or merging. Lists, detail, search, day counts and speaker review understand imported and merged records; both are read only for speaker mutations and neither trains a voice profile. On a Mac with the COS pipeline the mode starts at advise and is switched in COS Control. The contract is in <code>docs/meeting-merge-contract.md</code>.</dd>
+        <dt>Control 0.5.231</dt><dd>Thread detail shows every section the server sends for a thread: its note, target date, topics, stakeholders, meetings, milestones and sources. Copy as Context copies all of it. Through 0.5.230 the pane showed only the first note. The server sends up to 30 sources and 30 milestones per thread.</dd>
         <dt>Control 0.5.230</dt><dd>An Import meetings card holds the Fireflies key, the backfill window, keep importing, and a line for every import state, including one that says to update the COS server to 6.47.0 when the routes are missing. Suggested merges lists both meetings with their start, length and source and how many phrases they share, with Merge or Not the same meeting; on a pipeline Mac in advise mode it lists what would merge automatically and keeps your answers. A merged meeting offers Undo and a split piece offers Revert, each showing the preview first, and a failed action offers Retry and Copy diagnostics. An engine status row shows the mode, the first run&rsquo;s progress and counts, and the last run.</dd>
         <dt>Glasses 6.9.474</dt><dd>Ref is the third row of the reader&rsquo;s footer menu on today&rsquo;s messages, behind Messages and Reply. Choosing it attaches the message you are reading to your next spoken prompt, and the recorder shows that message&rsquo;s number. On Message History one tap opens Chats, Ref and View image starting on Chats and a second tap selects, so the footer hint reads Tap: actions and a photo needs the second tap. A refusal names its reason: no message on screen, a row with no number, a reply that never finished, a message past the durable query caps, or something already attached. Imported and merged meetings from server 6.47.0 are understood as meeting sources. Gestures are otherwise unchanged since 6.9.458.</dd>
         <dt>Server 6.46.1</dt><dd>On a multi-folder library (<code>COS_OPERATIONS_DIR</code>), <code>GET /api/meetings</code> lists the server&rsquo;s own G2 recordings with their months and day counts when no COS pipeline can file them: no <code>COS_SCRIPTS_DIR</code>, or no venv Python or <code>sync_meetings.py</code> in it. An operations copy with the same session id wins and is counted once. With a working pipeline the response is unchanged.</dd>
@@ -1880,7 +1882,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.230</strong>, server <strong>6.47.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.474</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.231</strong>, server <strong>6.47.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.474</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
@@ -1901,7 +1903,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.474 (Even Hub still lists 6.9.470) and server 6.47.0; COS Control 0.5.230 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.474 (Even Hub still lists 6.9.470) and server 6.47.0; COS Control 0.5.231 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2066,7 +2068,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.474 / Control 0.5.230 / server 6.47.0, 2026-09-15)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.474 / Control 0.5.231 / server 6.47.0, 2026-09-15)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
