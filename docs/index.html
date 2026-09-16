@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.474 (build 474, Hub pin 6.9.470) · server @gotcos/glasses-server 6.48.1 · COS Control 0.5.231.
+   Covers COS Glasses 6.9.474 (build 474, Hub pin 6.9.470) · server @gotcos/glasses-server 6.48.2 · COS Control 0.5.231.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -718,7 +718,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.9.474</b> · build 474</span>
-      <span class="chip">Server <b>6.48.1</b></span>
+      <span class="chip">Server <b>6.48.2</b></span>
       <span class="chip">Control <b>0.5.231</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
@@ -937,8 +937,9 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.231, glasses 6.9.474, server 6.48.1.</strong> COS Control 0.5.231 is the public Mac download. COS Glasses 6.9.474 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.48.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
+    <p><strong>Latest release package: Control 0.5.231, glasses 6.9.474, server 6.48.2.</strong> COS Control 0.5.231 is the public Mac download. COS Glasses 6.9.474 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.48.2, which <code>npx --yes @gotcos/glasses-server@latest</code> installs.</p>
     <ul class="release-list">
+      <li><strong>Continue works on every session again.</strong> Server 6.48.2 fixes Continue and Fork on a session whose transcript opens with a large first prompt, such as one with pasted screenshots: the server read a fixed slice of the transcript for the session&rsquo;s working directory and found none there, so the lens and the phone said the session could not be continued. It now reads as far as it needs to, and a session whose shell moved into a subfolder mid-turn is no longer treated as two workspaces.</li>
       <li><strong>A queued follow-up lands the moment Claude finishes, and the live feed says what every row says.</strong> Server 6.48.1 delivers a follow-up queued at a busy Claude session when the engine closes the turn: its Stop hook has fired and every Stop hook has returned, which the server reads from Claude&rsquo;s own process registry, so a follow-up never lands inside a turn or while a prompt you typed at the desk is still queued (before, it waited for a 30 second idle window, 35 seconds or more). The session stream carries the same state the session rows carry on every status line, a Continue you start from the glasses streams as working for as long as it runs, and a reconnect replays what it missed instead of starting over. Nothing changes on the phone, the lens or COS Control until their next builds read the new fields.</li>
       <li><strong>Session state comes from Claude Code itself.</strong> Server 6.48.0 installs Claude Code&rsquo;s own hooks with <code>npx --yes @gotcos/glasses-server@latest --hooks install</code>: every session started after the install reports its start, prompts, turn ends and permission prompts through a file spool, and every session row carries one derived state with its source (<code>agent_state</code>, <code>state_source</code>, <code>state_since</code>, the waiting kind and detail, the last reply). A permission prompt shows as waiting within a second instead of after fifteen minutes. Nothing changes on the phone, the lens or COS Control until their next builds read the new fields; <code>--hooks status</code> and <code>--hooks uninstall</code> report and remove the hooks, and removing the package does not remove them.</li>
       <li><strong>Threads open with their full context.</strong> Control 0.5.231 shows a thread&rsquo;s stakeholders, meetings, milestones and sources in thread detail, and Copy as Context copies all of it.</li>
@@ -970,6 +971,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Server 6.48.2</dt><dd>The attach route reads a session&rsquo;s working directory from the head of its transcript. It read a fixed 512 KiB; a first prompt with three pasted screenshots is one row of about 1 MB, so the window held only bookkeeping rows and every Continue and Fork on that session was refused as unresolvable. The read now widens up to 16 MiB while the window keeps ending inside a row with no directory seen, and the first recorded directory is the workspace: a shell that moved into a subfolder inside a turn used to count as a disagreement and refuse. On the release Mac 738 of 758 transcripts resolve; the rest are scratch sessions whose temporary directory no longer exists.</dd>
         <dt>Server 6.48.1</dt><dd>The end of a Claude turn is the engine&rsquo;s own: the Stop hook followed by the process registry flipping idle at or after it, which happens only when every Stop hook has returned; a prompt typed during the hooks is queued by Claude and dequeues first. The follow-up queue drains on that signal through one in-flight guard shared with the 20 second sweep, so a burst of turn ends folds into one pass and nothing is delivered twice; the attach gate reads the same signal, so a Desktop session whose turn just ended accepts a Continue at once. Where the hooks did not see a session, the transcript decides: a terminal stop reason with no tool awaiting its result, read from a 512 KiB tail so a large bookkeeping row after the reply cannot hide it, and positive evidence that a turn is open holds ahead of the idle backstop. Every status line on the session stream carries <code>agent_state</code>, its source and time, the waiting kind and detail, and on an idle state the last reply; a change of state is a line of its own; a COS Continue outranks the hooks while it writes. Each streamed session keeps a ring of its last 500 events with a cursor and the server&rsquo;s epoch, so a reconnect with <code>?after=</code> replays what it missed and seeds afresh when there is nothing to replay. Session rows and peers carry <code>queued_turns</code>; run listings carry the registry&rsquo;s entrypoint and remember it across a restart. <code>COS_SESSION_HOOK_SSE=0</code> omits the extra stream fields.</dd>
         <dt>Server 6.48.0</dt><dd>A POSIX sh hook script writes one file per Claude Code event into <code>~/.cos-glasses/data/hook-spool</code> and exits 0 on every path; it never talks to the server except for a permission request after the desk has been idle, which on this release is refused and shows the native dialog as before. The server drains the spool, keeps a projected ledger, and reduces the events into one record per session: hook events win, the process registry answers next, the transcript last, and a dead registry pid on two scans five seconds apart ends the row. Fifteen subscriptions are merged into the user-level <code>~/.claude/settings.json</code> with every foreign hook block and key preserved, a backup of the file, and an atomic write; the same install and uninstall are on the API for COS Control. <code>/api/health</code> gains <code>sessionHooks</code>. Off with <code>COS_SESSION_HOOKS=0</code>, which still drains the spool and leaves every row as 6.47.0 wrote it.</dd>
         <dt>Server 6.47.0</dt><dd>Fireflies imports arrive through the API only, never from the desktop app&rsquo;s files, with a 7, 30 or 90 day backfill that resumes across the plan&rsquo;s daily limit, a 6 hour poll that uses at most half of a day&rsquo;s budget, and a ledger that reconciles what the vendor listed against what was written. The merge engine runs on a worker thread: it pairs on shared unique three-word phrases at a consistent time offset, refuses a pairing whose clocks disagree by more than 15 minutes, collapses duplicate recordings of one meeting, and groups every G2 recording of a meeting into one merged record. No language model is involved in import, pairing, alignment, splitting or merging. Lists, detail, search, day counts and speaker review understand imported and merged records; both are read only for speaker mutations and neither trains a voice profile. On a Mac with the COS pipeline the mode starts at advise and is switched in COS Control. The contract is in <code>docs/meeting-merge-contract.md</code>.</dd>
@@ -1030,11 +1032,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.48.1, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.48.2, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.48.1</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.48.2</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1585,7 +1587,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.474 plus server 6.48.1 is the current companion pair; Even Hub still lists 6.9.470.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.474 plus server 6.48.2 is the current companion pair; Even Hub still lists 6.9.470.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -1886,11 +1888,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.231</strong>, server <strong>6.48.1</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.474</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.231</strong>, server <strong>6.48.2</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.474</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.48.1, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.48.2, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -1907,7 +1909,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.474 (Even Hub still lists 6.9.470) and server 6.48.1; COS Control 0.5.231 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.474 (Even Hub still lists 6.9.470) and server 6.48.2; COS Control 0.5.231 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2072,7 +2074,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.474 / Control 0.5.231 / server 6.48.1, 2026-09-15)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.474 / Control 0.5.231 / server 6.48.2, 2026-09-15)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

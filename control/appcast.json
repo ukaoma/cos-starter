@@ -7,7 +7,7 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.231.zip",
       "sha256": "71b6d4836baa4792b69386c9038000269b79e60936ca64bddc97f753461b27f6",
       "minMacOS": "14.0",
-      "serverTarget": "6.48.1",
+      "serverTarget": "6.48.2",
       "publishedAt": "2026-09-15T16:57:34.590391Z",
       "notes": "Threads open with their full context. Thread detail shows a thread's note, target date, topics, stakeholders, meetings, milestones and sources, and Copy as Context copies all of it. Includes 0.5.230: import meetings from Fireflies and review merges, which need server 6.47.0."
     }
