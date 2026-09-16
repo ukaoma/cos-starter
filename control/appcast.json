@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.232",
-      "build": 270,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.232.zip",
-      "sha256": "92ff5b0f6a524c9c69368709af4ca125b8e9c647b7f0a8f5062f212721377427",
+      "version": "0.5.233",
+      "build": 271,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.233.zip",
+      "sha256": "4f2ffea043c79f1c2a4ef3845cbdf44b98468bf6b7b468ee2ac9a7ad45176723",
       "minMacOS": "14.0",
       "serverTarget": "6.48.2",
-      "publishedAt": "2026-09-16T04:43:52.501801Z",
-      "notes": "Meetings, threads, memories and Claude replies read as documents instead of raw Markdown, actions on a pane come in three weights with Copy as context first, and Sessions reads the state the COS server derives from Claude Code's own hooks (waiting with its kind, failed, queued follow-ups) on server 6.48.0 and later. Includes 0.5.231: threads open with their full context."
+      "publishedAt": "2026-09-16T12:40:13.664117Z",
+      "notes": "A Claude session pane shows what it is doing right now: the state with a clock, the prompt, the last eight tool lines, live from the COS server (6.48.1 and later), with a bounded reconnect and an honest fallback to the stored turns. The composer names the fork mode and the queued follow-ups. Sessions offers Install hooks when the server reports them missing or drifted, Update Server before 6.48.0. Includes 0.5.232: panes read as documents, actions by weight, Sessions reads the server's state."
     }
   },
   "killSwitch": {

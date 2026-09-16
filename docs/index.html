@@ -31,7 +31,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.475 (build 475, Hub pin 6.9.470) · server @gotcos/glasses-server 6.48.2 · COS Control 0.5.232.
+   Covers COS Glasses 6.9.475 (build 475, Hub pin 6.9.470) · server @gotcos/glasses-server 6.48.2 · COS Control 0.5.233.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -719,7 +719,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.475</b> · build 475</span>
       <span class="chip">Server <b>6.48.2</b></span>
-      <span class="chip">Control <b>0.5.232</b></span>
+      <span class="chip">Control <b>0.5.233</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -937,8 +937,9 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.232, glasses 6.9.475, server 6.48.2.</strong> COS Control 0.5.232 is the public Mac download. COS Glasses 6.9.475 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.48.2, which <code>npx --yes @gotcos/glasses-server@latest</code> installs. Builds 6.9.476 to 6.9.483 are in the Hub repo as versioned packs ahead of the companion pack; the version list below says what each adds.</p>
+    <p><strong>Latest release package: Control 0.5.233, glasses 6.9.475, server 6.48.2.</strong> COS Control 0.5.233 is the public Mac download. COS Glasses 6.9.475 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.48.2, which <code>npx --yes @gotcos/glasses-server@latest</code> installs. Builds 6.9.476 to 6.9.483 are in the Hub repo as versioned packs ahead of the companion pack; the version list below says what each adds.</p>
     <ul class="release-list">
+      <li><strong>A Claude session shows what it is doing right now.</strong> Control 0.5.233 opens a session with a live Activity block above the stored turns: the state with a clock (Working 4m 12s, Waiting &middot; Permission: Bash git push, Failed &middot; rate limit), the prompt it is on, and the last eight things it did as one line each, streamed from the COS server (6.48.1 and later) the moment the hooks see them. A dropped connection reconnects three times and asks for only what was missed; a server that cannot stream leaves the stored turns in charge and says so in one line. The composer says a reply to a session another app holds lands in the transcript, and counts the follow-ups queued behind the current turn. When the server reports Claude Code&rsquo;s hooks missing or drifted, Sessions offers Install hooks from a banner; before server 6.48.0 it offers Update Server.</li>
       <li><strong>Hold to talk on the glasses.</strong> Glasses 6.9.474 to 6.9.483: set Settings, Voice, Glasses dictation to hold and a long press on the ring starts a message while letting go opens the review; a tap then sends. It listens in Messages, in an open message and in Message History; hold on a meeting, thread, memory or session to ask COS about that record in one motion, and the recorder says Ask COS or Continue so you know which it is. Home stays a reading screen: tap opens the latest message and a hold there does nothing. The message status line reads Tap: actions and Hold: ask so both gestures are always in view, and the session id it used to show is off unless you turn it back on. Tap to start, tap to finish remains the default.</li>
       <li><strong>Live captions are back in Meetings on the glasses.</strong> Glasses 6.9.480 removes the iPhone WhisperKit beta option, which never transcribed on the phone and quietly took every meeting off the live preview lane; a phone that still had it selected is switched back on its first open, and 6.9.479 logs which capture path every meeting start takes.</li>
       <li><strong>Meetings, threads and replies read as documents, and Sessions reads the server&rsquo;s state.</strong> Control 0.5.232 renders a meeting, a thread, a memory and a Claude reply as a document instead of raw Markdown: headings with a rule, the metadata table, lists, task items, code, and the transcript as a disclosure that names its speakers. The pane&rsquo;s actions come in three weights, with Copy as context first and filled. On server 6.48.0 and later the Sessions list and the pet read the state the server derives from Claude Code&rsquo;s own hooks: a permission prompt shows as waiting with its command the second it appears, a rate limit shows as failed, and a queued follow-up is counted on the row.</li>
@@ -975,6 +976,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <summary>Version by version</summary>
       <dl>
         <dt>Glasses 6.9.483</dt><dd>While a hold is down the recorder reads <code>Release: review</code>, and <code>Tap: review</code> in tap mode, with the intent still in front (<code>Ask COS &#183; Release: review</code>); the nav row shows the control alone behind the LISTEN meter instead of a cut-off <code>Release to</code>. A click while the ring is still held no longer ends the recording: on 6.9.482 a phantom click mid-hold moved the recorder to review under your finger, so letting go found nothing to finish and a second tap was needed. The hold owns the stop now. Every stop names its cause in the diagnostics.</dd>
+        <dt>Control 0.5.233</dt><dd>The session pane&rsquo;s live Activity block reads the server&rsquo;s event stream through a new helper command (<code>session-stream</code>), one process per open pane, cancelled when the pane closes; reconnect is bounded to three tries with backoff and resumes from the last event id; a 404, a full server or a dead socket falls back to the polled turns with one line saying which. The composer shows the queued follow-up count and names the fork mode. <code>session-hooks-status</code> and <code>session-hooks-install</code> back the Sessions banner, and installed is the server&rsquo;s word after the merge, not the app&rsquo;s guess.</dd>
         <dt>Control 0.5.232</dt><dd>One Markdown renderer for the meeting, thread, memory and session panes: ATX headings, pipe tables, bullet and numbered lists with nesting, task items, fenced code, quotes, rules, details blocks and the scribe&rsquo;s speaker lines, in Control&rsquo;s own type. The meeting file is the pane body once; the title in the header is not repeated, and Copy summary, Copy transcript and Copy as context still copy the stored Markdown. Three action weights: one filled primary per pane (Copy as context, ⌘C), quiet outlines for the rest, and a featured outline with a NEW pill for Review voices while a meeting is new. The helper carries the server&rsquo;s eight derived state fields on every session projection and lets a hook- or registry-sourced state decide the row; the chip reads the waiting kind and detail, Failed with its reason, and the queued count; a failed turn sits in the pet&rsquo;s WAITING ON YOU section. Against a server older than 6.48.0 nothing changes.</dd>
         <dt>Server 6.48.2</dt><dd>The attach route reads a session&rsquo;s working directory from the head of its transcript. It read a fixed 512 KiB; a first prompt with three pasted screenshots is one row of about 1 MB, so the window held only bookkeeping rows and every Continue and Fork on that session was refused as unresolvable. The read now widens up to 16 MiB while the window keeps ending inside a row with no directory seen, and the first recorded directory is the workspace: a shell that moved into a subfolder inside a turn used to count as a disagreement and refuse. On the release Mac 738 of 758 transcripts resolve; the rest are scratch sessions whose temporary directory no longer exists.</dd>
         <dt>Glasses 6.9.481 and 6.9.482</dt><dd>The home screen leaves the hold-to-talk allowlist: a hold there refuses with <code>Hold off here. Tap: messages</code> once per visit, and tap opens the latest message. The session id leaves the lens status line by default; its slot reads the gesture hints instead, <code>Tap: actions &#183; Hold: ask</code> when Glasses dictation is set to hold and <code>Tap: actions</code> otherwise, the same words a session page shows, fitted to the line so the battery never leaves the right edge. Settings, System, Session ID brings the id back and survives a close.</dd>
@@ -1139,6 +1141,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
           <li>Activity &rarr; Sessions lists Claude, Codex, and Cursor chats from the last 7 days, plus pinned ones at any age. Click a row to read the transcript; type under it and the reply lands in the real thread.</li>
           <li>A Claude thread that is mid-turn queues your message and delivers it the moment the engine closes its turn (server 6.48.1 and later); before that it refused and offered <strong>Retry</strong> or <strong>Fork with this message</strong>. Cursor sessions accept messages but do not fork.</li>
           <li>With server 6.48.0 and later, Control 0.5.232 reads the state Claude Code reports itself: a permission prompt reads Waiting with its command the second it appears, a question or plan approval reads Waiting with its kind, a rate limit reads Failed, and a queued follow-up is counted on the row.</li>
+          <li>Since Control 0.5.233 an open session shows a live Activity block above its turns: the state with a clock, the prompt, the last eight tool lines (Read, Edited, Ran, Searched, Delegated), a <em>missed N</em> chip when frames were lost and a <em>queued</em> chip while a follow-up waits. It streams from server 6.48.1 and later; against an older server the block says so and the stored turns stand.</li>
           <li><strong>Recent / Archive</strong> lists every stored day and searches months of history by text. It is a real scan on your server, not a filter.</li>
           <li><strong>COS Data</strong> connects Memory and Threads through the authenticated bridge and never creates, moves, or rewrites your stored data. A message carrying video, photos, or files says so before you open it.</li>
         </ul>
@@ -1899,7 +1902,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.232</strong>, server <strong>6.48.2</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.233</strong>, server <strong>6.48.2</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac Whisper</strong> under Dictation + live preview, or turn off Final polish.</li>
@@ -1920,7 +1923,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.48.2; COS Control 0.5.232 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.48.2; COS Control 0.5.233 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2085,7 +2088,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.232 / server 6.48.2, 2026-09-16)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.233 / server 6.48.2, 2026-09-16)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
