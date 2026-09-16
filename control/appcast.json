@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.231",
-      "build": 269,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.231.zip",
-      "sha256": "71b6d4836baa4792b69386c9038000269b79e60936ca64bddc97f753461b27f6",
+      "version": "0.5.232",
+      "build": 270,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.232.zip",
+      "sha256": "92ff5b0f6a524c9c69368709af4ca125b8e9c647b7f0a8f5062f212721377427",
       "minMacOS": "14.0",
       "serverTarget": "6.48.2",
-      "publishedAt": "2026-09-15T16:57:34.590391Z",
-      "notes": "Threads open with their full context. Thread detail shows a thread's note, target date, topics, stakeholders, meetings, milestones and sources, and Copy as Context copies all of it. Includes 0.5.230: import meetings from Fireflies and review merges, which need server 6.47.0."
+      "publishedAt": "2026-09-16T04:43:52.501801Z",
+      "notes": "Meetings, threads, memories and Claude replies read as documents instead of raw Markdown, actions on a pane come in three weights with Copy as context first, and Sessions reads the state the COS server derives from Claude Code's own hooks (waiting with its kind, failed, queued follow-ups) on server 6.48.0 and later. Includes 0.5.231: threads open with their full context."
     }
   },
   "killSwitch": {
