@@ -1078,11 +1078,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.49.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.50.1, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.49.0</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.50.1</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1640,7 +1640,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.475 plus server 6.49.0 is the current companion pair; Even Hub still lists 6.9.470.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.475 plus server 6.50.1 is the current companion pair; Even Hub still lists 6.9.470.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -1959,11 +1959,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.233</strong>, server <strong>6.49.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.233</strong>, server <strong>6.50.1</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.49.0, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.50.1, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -1980,7 +1980,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.49.0; COS Control 0.5.233 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.50.1; COS Control 0.5.233 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2161,7 +2161,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.233 / server 6.49.0, 2026-09-16; Hub packs to 6.9.485)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.233 / server 6.50.1, 2026-09-16; Hub packs to 6.9.496)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
