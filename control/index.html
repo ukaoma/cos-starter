@@ -40,8 +40,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.233",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.233.zip",
+  "softwareVersion": "0.5.234",
+  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.234.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -322,7 +322,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .vchip::before{content:"";width:22px;height:16px;border-radius:3px;flex:none;
   background:linear-gradient(135deg,rgba(201,169,110,.5),rgba(135,168,189,.35))}
 .vday{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ghost);padding:2px 12px 9px}
-.vtime{font-family:var(--mono);font-size:.72rem;color:var(--gold);width:44px;flex:none}
+.vtime{font-family:var(--mono);font-size:.72rem;color:var(--gold);width:62px;flex:none}
 .vkind{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ghost);width:78px;flex:none}
 .vprov{font-family:var(--mono);font-size:.66rem;width:52px;flex:none;color:var(--blue)}
 .vprov.cx{color:var(--green)}.vprov.cu{color:var(--warm)}
@@ -365,7 +365,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-ledger{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 24px);min-height:34px;margin:auto 12px 14px;padding:8px 10px;border:1px solid var(--line2);border-radius:999px;text-align:center;font:500 .57rem var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
 .pet-ledger::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(127,169,138,.62)}
 .pet-card:first-child .pet-ledger::before{background:var(--gold);box-shadow:none}
-.pet-options{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:18px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
+.pet-options{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:18px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
 .pet-option{background:var(--ink);padding:22px 24px;min-width:0}
 .pet-option b{display:block;font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--fg)}
 .pet-option span{display:block;margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.55}
@@ -488,10 +488,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h1>Your glasses remember. <em>This is where you read it.</em></h1>
       <p class="hero-lead">COS Control is the Mac companion to your glasses. Every question you asked, every voice it learned, every call it saved, and the threads running through all of it, in one window. <strong>It also runs the server: one owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.233.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.234.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
       </div>
-      <p class="byline">v0.5.233 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.234 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
     <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.50.1 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
@@ -557,12 +557,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-meetings" aria-labelledby="vt-meetings" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Your calls, by the day they happened.</h3><p>A month calendar, then the day. Open a call for the transcript, the summary, and who spoke, laid out as a document with Copy as context as the one gold button. Search everything stored by keyword, or by meaning when you cannot remember the title. Meetings another recorder made come in too: paste a Fireflies key and COS pairs its transcript with your own recording of the same call, merges the two into one record, and keeps Undo beside it.</p><p class="vnote">TRANSCRIPT &middot; SUMMARY &middot; COPY AS CONTEXT &middot; FIREFLIES</p></div>
+          <div class="vcopy reveal"><h3>Your calls, by the day they happened.</h3><p>A month calendar, then the day. Open a call for the transcript, the summary, and who spoke, laid out as a document with Copy as context as the one gold button. Search everything stored by keyword, or by meaning when you cannot remember the title. Meetings another recorder made come in too: paste a Fireflies key and COS pairs its transcript with your own recording of the same call, merges the two into one record, and keeps Undo beside it. Times read 1:02 PM; the 24-hour clock is one pick away under Settings, Advanced.</p><p class="vnote">TRANSCRIPT &middot; SUMMARY &middot; COPY AS CONTEXT &middot; FIREFLIES &middot; 12- OR 24-HOUR</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Meetings</b><span class="vspace"></span>August</div>
    <div class="vmock-body"><p class="vday">Thursday, August 14</p>
-   <div class="vrow"><span class="vtime">09:00</span><span class="vname">Pipeline review</span><span class="vspace"></span><span class="vmeta">42m &middot; 4 speakers</span></div>
-   <div class="vrow lit"><span class="vtime">11:30</span><span class="vname">Parity walkthrough, Rain POS</span><span class="vspace"></span><span class="vmeta">58m &middot; 3 speakers</span></div>
-   <div class="vrow"><span class="vtime">15:00</span><span class="vname">Northwind renewal</span><span class="vspace"></span><span class="vmeta">27m &middot; 2 speakers</span></div></div></div>
+   <div class="vrow"><span class="vtime">9:00 AM</span><span class="vname">Pipeline review</span><span class="vspace"></span><span class="vmeta">42m &middot; 4 speakers</span></div>
+   <div class="vrow lit"><span class="vtime">11:30 AM</span><span class="vname">Parity walkthrough, Rain POS</span><span class="vspace"></span><span class="vmeta">58m &middot; 3 speakers</span></div>
+   <div class="vrow"><span class="vtime">3:00 PM</span><span class="vname">Northwind renewal</span><span class="vspace"></span><span class="vmeta">27m &middot; 2 speakers</span></div></div></div>
         </div>
       </div>
       <div class="vpanel" role="tabpanel" id="vp-memories" aria-labelledby="vt-memories" data-open="false">
@@ -587,7 +587,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-sessions" aria-labelledby="vt-sessions" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Claude, Codex, and Cursor, in one list.</h3><p>Every agent chat on this Mac, whichever tool started it. Pinned threads stay listed at any age. Open one to read the transcript, or copy a redacted brief to pick the work up somewhere else.</p><p>Open a Claude session and an Activity block above the turns says what it is doing right now: Working with a clock, Waiting on a permission, Failed, or Idle with its last reply, plus the last eight things it did. A composer sits under every session. Type a message and it lands in the real thread on your Mac, with the reply back in the pane. Long turns keep running after you close the window. A busy thread offers Retry, or a Fork with this message button that runs your message in a copy while the original stays untouched.</p><p class="vnote">TEXT IN, REPLY BACK &middot; PINNED KEEPS ITS OWN CLOCK</p></div>
+          <div class="vcopy reveal"><h3>Claude, Codex, and Cursor, in one list.</h3><p>Every agent chat on this Mac, whichever tool started it. Pinned threads stay listed at any age. Open one to read the transcript, or copy a redacted brief to pick the work up somewhere else.</p><p>Open a Claude session and an Activity block above the turns says what it is doing right now: Working with a clock, Waiting on a permission, Failed, or Idle with its last reply, plus the last eight things it did. A composer sits under every session, and on the session pet. Type a message and it lands in the real thread on your Mac, with the reply back in the pane. Long turns keep running after you close the window. A thread mid-turn queues your message and delivers it when the turn ends; where the queue cannot take it, Retry and a Fork with this message button that runs your message in a copy while the original stays untouched.</p><p class="vnote">TEXT IN, REPLY BACK &middot; PINNED KEEPS ITS OWN CLOCK</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Sessions</b><span class="vspace"></span>63 on disk</div>
    <div class="vmock-body">
    <div class="vrow lit"><span class="vprov">claude</span><span class="vname">Parity build, Rain POS</span><span class="vspace"></span><span class="vpill on">running</span><span class="vmeta">2m</span></div>
@@ -679,7 +679,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="pet-intro reveal">
           <div>
             <h3>Your session state, at a glance.</h3>
-            <p>The optional session pet, Miles Windu, switches animations as your workload changes: idle, one, two, three, or four-plus running sessions. When work finishes or needs you, the centered ledger beneath the pet changes to Done or Waiting, so you can read the state without reopening every agent. Choose a bundled character, use a gallery pet, or bring your own sprites and build a custom state pack.</p>
+            <p>The optional session pet, Miles Windu, switches animations as your workload changes: idle, one, two, three, or four-plus running sessions. When work finishes or needs you, the centered ledger beneath the pet changes to Done or Waiting, so you can read the state without reopening every agent. Open the RUNNING list and each live row carries a paperplane: a card names the session, you type, Return sends into the real thread. Choose a bundled character, use a gallery pet, or bring your own sprites and build a custom state pack.</p>
           </div>
           <button class="pet-pause" type="button" aria-pressed="false">Pause animations</button>
         </div>
@@ -713,6 +713,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         </div>
 
         <div class="pet-options reveal">
+          <div class="pet-option"><b>Message a session from the pet</b><span>Hover a live row and press the paperplane. The card names the session, so you always know where the message goes; Return sends it over the same routes the glasses use. A running Claude session takes it straight into its own window. A Codex or Cursor session, or any session mid-turn, queues it and it lands the moment the turn ends. The card says which happened, then closes itself.</span></div>
           <div class="pet-option"><b>Four advanced Jedi</b><span>Miles Windu, Nia Solari, Elara Vale, and Rowan Vale ship with authored idle, walking, and workload-specific stories.</span></div>
           <div class="pet-option"><b>300 variety pets</b><span>Choose from the OpenPets gallery. They stay still, but the live ledger, routing, and session controls remain fully available.</span></div>
           <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="#custom-pet-pack">Build a custom pet pack</a></div>
@@ -813,12 +814,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.233.zip" download>Download v0.5.233</a></div>
+          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.234.zip" download>Download v0.5.234</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.233.zip</code></div>
-            <p class="sha">SHA-256<br>4f2ffea043c79f1c2a4ef3845cbdf44b98468bf6b7b468ee2ac9a7ad45176723</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.234.zip</code></div>
+            <p class="sha">SHA-256<br>a1e12853e55a9a54a108fa7a5c3de97f8648b2eb85c4ede0eaa8e89665668625</p>
           </details>
         </div>
         <div class="path reveal">
@@ -867,10 +868,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.233.zip" download>Download for Mac</a>
+        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.234.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.233 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.234 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

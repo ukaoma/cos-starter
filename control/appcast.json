@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.233",
-      "build": 271,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.233.zip",
-      "sha256": "4f2ffea043c79f1c2a4ef3845cbdf44b98468bf6b7b468ee2ac9a7ad45176723",
+      "version": "0.5.234",
+      "build": 272,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.234.zip",
+      "sha256": "a1e12853e55a9a54a108fa7a5c3de97f8648b2eb85c4ede0eaa8e89665668625",
       "minMacOS": "14.0",
       "serverTarget": "6.50.1",
-      "publishedAt": "2026-09-16T12:40:13.664117Z",
-      "notes": "A Claude session pane shows what it is doing right now: the state with a clock, the prompt, the last eight tool lines, live from the COS server (6.48.1 and later), with a bounded reconnect and an honest fallback to the stored turns. The composer names the fork mode and the queued follow-ups. Sessions offers Install hooks when the server reports them missing or drifted, Update Server before 6.48.0. Includes 0.5.232: panes read as documents, actions by weight, Sessions reads the server's state."
+      "publishedAt": "2026-09-17T23:03:51.445456Z",
+      "notes": "Message a session from the Session Pet. A paperplane on each live row opens a card that names the session; Return sends into the real thread, the same routes the glasses use. A running Claude session takes it into its own window; a session mid-turn queues it and it lands when the turn ends, in the pet and in the Sessions pane. Meetings and Speakers read times as 1:02 PM; Settings, Advanced, Clock offers 24-hour."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-held-naming-20260913",
-    "minBuild": 261,
-    "title": "Name held voices, with a preview",
-    "body": "Samples to review names held voice samples with a preview. Each loose sample can suggest an existing voice with its score. Name and Add to a person show the meeting labels a name would change before Apply; Apply reports each sample and meeting copy, and Undo restores the labels while keeping the enrolled voice samples. Interrupted naming waits for your review and never resumes on its own. Naming needs server 6.46.0; older servers keep listening and discard."
+    "id": "control-pet-message-20260917",
+    "minBuild": 272,
+    "title": "Message a session from the pet",
+    "body": "Hover a live row in the pet's RUNNING list and press the paperplane. The card names the session; Return sends. A live Claude session takes the message into its own window; a Codex or Cursor session, or a session mid-turn, queues it and it lands when the turn ends. Meeting times now read 1:02 PM; the 24-hour clock is under Settings, Advanced, Clock."
   }
 }
