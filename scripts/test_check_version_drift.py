@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Fixtures for check-version-drift.py. Run: python3 scripts/test_check_version_drift.py"""
+"""Fixtures for check-version-drift.py. Run: python3 scripts/test_check_version_drift.py
+
+Every test runs on in-memory fixtures except one: ActivityViewTests.test_live_pages_pin_seven_activity_views
+reads the real index.html and control/index.html and pins the pane count, so an eighth pane fails here
+first, with a message that says what to update."""
 from __future__ import annotations
 
 import importlib.util
@@ -67,6 +71,22 @@ CONTROL = f"""
 <code>shasum -a 256 COS-Control-macOS-arm64-0.5.86.zip</code>
 <p class="sha">SHA-256<br>{SHA}</p>
 """
+
+
+VIEWS = ["messages", "speakers", "meetings", "memories", "threads", "sessions", "tasks"]
+
+
+def control_views(keys=VIEWS, word="Seven"):
+    tabs = "".join(f'<button class="vtab" role="tab" id="vt-{k}" aria-controls="vp-{k}" data-v="{k}">{k}</button>' for k in keys)
+    panels = "".join(f'<div class="vpanel" role="tabpanel" id="vp-{k}"></div>' for k in keys)
+    return f"<h2>{word} views into the work it already holds.</h2><div class=\"vtabs\">{tabs}</div>{panels}"
+
+
+def home_views(keys=VIEWS, word="Seven", rail_keys=None):
+    rail = "".join(f'<span class="ctl-tab{" on" if i == 0 else ""}" data-view="{k}">{k}</span>' for i, k in enumerate(rail_keys or keys))
+    tiles = "".join(f'<div class="ctl-tile" data-view="{k}" style="--d:0s"></div>' for k in keys)
+    return (f'<h2>One window. <span class="it g">{word} views into the work your COS already holds.</span></h2>'
+            f'<div class="ctl-rail">{rail}</div><p class="ctl-sub">{word} views into the work your COS already holds.</p>{tiles}')
 
 
 def run(**kwargs):
@@ -302,6 +322,99 @@ class VersionDriftTests(unittest.TestCase):
             with self.subTest(expected=expected):
                 fail, _ = run(**kwargs)
                 self.assertTrue(any(expected in f for f in fail), fail)
+
+
+class ActivityViewTests(unittest.TestCase):
+    """Check 11: a pane count is a feature claim with no version string attached."""
+
+    def test_views_are_not_checked_unless_the_homepage_is_passed(self):
+        fail, _ = run()
+        self.assertEqual(fail, [])
+
+    def test_matching_views_pass(self):
+        fail, _ = run(control=CONTROL + control_views(), home=home_views())
+        self.assertEqual(fail, [], fail)
+
+    def test_the_2026_09_defect_six_views_with_seven_tabs_fails(self):
+        fail, _ = run(control=CONTROL + control_views(word="Six"), home=home_views())
+        self.assertTrue(any("control heading says Six views" in f for f in fail), fail)
+
+    def test_a_tab_missing_from_the_homepage_fails(self):
+        six = VIEWS[:-1]
+        fail, _ = run(control=CONTROL + control_views(), home=home_views(keys=six, rail_keys=six))
+        self.assertTrue(any("home Activity tiles" in f for f in fail), fail)
+        self.assertTrue(any("home Activity rail" in f for f in fail), fail)
+
+    def test_homepage_rail_and_tiles_must_agree_with_each_other_and_control(self):
+        reordered = VIEWS[1:] + VIEWS[:1]
+        fail, _ = run(control=CONTROL + control_views(), home=home_views(rail_keys=reordered))
+        self.assertTrue(any("home Activity rail" in f for f in fail), fail)
+        self.assertFalse(any("home Activity tiles" in f for f in fail), fail)
+
+    def test_a_tab_without_a_panel_fails(self):
+        broken = control_views().replace('id="vp-tasks"', 'id="vp-task"')
+        fail, _ = run(control=CONTROL + broken, home=home_views())
+        self.assertTrue(any("has no panel" in f for f in fail), fail)
+
+    def test_stale_homepage_number_words_fail_independently(self):
+        fail, _ = run(control=CONTROL + control_views(), home=home_views().replace(
+            '<span class="it g">Seven views', '<span class="it g">Six views'))
+        self.assertTrue(any("home heading says Six" in f for f in fail), fail)
+        fail, _ = run(control=CONTROL + control_views(), home=home_views().replace(
+            '<p class="ctl-sub">Seven views', '<p class="ctl-sub">Six views'))
+        self.assertTrue(any("mock subtitle says Six" in f for f in fail), fail)
+
+    def test_missing_rail_is_a_failure_not_a_pass(self):
+        fail, _ = run(control=CONTROL, home=home_views())
+        self.assertTrue(any("control Activity view tabs are gone" in f for f in fail), fail)
+
+    def test_a_repeated_tab_key_fails_even_when_the_homepage_repeats_it_too(self):
+        keys = VIEWS + ["tasks"]
+        fail, _ = run(control=CONTROL + control_views(keys=keys, word="Eight"), home=home_views(keys=keys, word="Eight"))
+        self.assertTrue(any("repeat a key" in f for f in fail), fail)
+
+    def test_a_pane_count_outside_number_words_fails_loudly(self):
+        keys = VIEWS + ["a", "b", "c", "d"]
+        fail, _ = run(control=CONTROL + control_views(keys=keys, word="Eleven"), home=home_views(keys=keys, word="Eleven"))
+        self.assertTrue(any("NUMBER_WORDS needs that count" in f for f in fail), fail)
+
+    def test_homepage_tiles_gone_is_a_failure_not_a_pass(self):
+        stripped = home_views().replace('class="ctl-tile"', 'class="tile"')
+        fail, _ = run(control=CONTROL + control_views(), home=stripped)
+        self.assertTrue(any("home Activity view tiles are gone" in f for f in fail), fail)
+
+    def test_each_number_word_claim_must_exist(self):
+        for page, needle, label in (
+            ("control", "views into the work it already holds.</h2>", "control 'N views into the work' heading is gone"),
+            ("home", '<span class="it g">Seven views', "home 'N views into the work' heading is gone"),
+            ("home", '<p class="ctl-sub">Seven views', "home Activity mock subtitle is gone"),
+        ):
+            with self.subTest(label=label):
+                control, home = CONTROL + control_views(), home_views()
+                if page == "control":
+                    control = control.replace(needle, "views into the work.</h2>")
+                else:
+                    home = home.replace(needle, needle.replace("Seven views", "Seven vistas"))
+                fail, _ = run(control=control, home=home)
+                self.assertTrue(any(label in f for f in fail), fail)
+
+    def test_markup_attribute_order_and_extra_classes_do_not_read_as_a_missing_pane(self):
+        home = home_views().replace('<span class="ctl-tab on" data-view="messages">',
+                                   '<span class="ctl-tab on current" aria-current="true" data-view="messages">')
+        home = home.replace('<div class="ctl-tile" data-view="tasks" style="--d:0s">',
+                            '<div class="ctl-tile new" style="--d:0s" data-view="tasks">')
+        fail, _ = run(control=CONTROL + control_views(), home=home)
+        self.assertEqual(fail, [], fail)
+
+    def test_live_pages_pin_seven_activity_views(self):
+        control = (ROOT.parent / "control" / "index.html").read_text(encoding="utf-8")
+        home = (ROOT.parent / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(cvd.evaluate_views(control=control, home=home), [])
+        self.assertEqual(
+            len(cvd.CONTROL_VIEW_TAB_RE.findall(control)), 7,
+            "a new Activity pane: confirm it against the app's ActivitySection enum, then add its tab, "
+            "panel, tile and rail entry, move every number word, and update this pin",
+        )
 
 
 if __name__ == "__main__":

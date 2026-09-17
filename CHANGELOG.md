@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-09-17 - COS Control on the homepage, seven views on /control
+
+### Added
+- Homepage section `#control`: COS Control for Mac, with a mock of the
+  Activity window (rail and seven tiles quoting the app's own summaries) and
+  three fact rows: runs the server, reads the lens, writes back. No version
+  numbers on purpose, so it never needs a version sweep.
+- `scripts/check-version-drift.py` check 11: the Activity views the site
+  describes must agree with each other (the /control tab rail and its panels,
+  the homepage rail and tiles, and the number word in every "N views" heading).
+  Nine fixtures, one of which reads the live pages.
+
+### Changed
+- /control says Seven views and gains the Tasks tab and panel (Control 0.5.186
+  to 0.5.189). Sessions describes the live Activity block (0.5.232, 0.5.233),
+  Meetings describes Fireflies import with merge and Undo (0.5.230, server
+  6.47.0) and Copy as context, Threads describes the full-context open
+  (0.5.231), Memories describes Recent learning, To review and Knowledge
+  (0.5.190 to 0.5.205) instead of READ ONLY. Three label-above-heading kickers
+  removed from the session command section.
+- Docs list glasses 6.9.497 to 6.9.500 (versioned packs in the Hub repo; the
+  companion pack stays 6.9.475, Even Hub still lists 6.9.470). Control 0.5.233,
+  server 6.50.1 and the download set are unchanged.
+- `llms.txt` lists /control/.
+
 ## 2026-08-31 - COS Control 0.5.151 (build 189)
 
 ### Changed

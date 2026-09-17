@@ -259,7 +259,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 @media(max-width:760px){.paths{grid-template-columns:1fr}.cc-actions{grid-template-columns:1fr}.insteps li{grid-template-columns:44px 1fr;padding:20px 17px}}
 @media(max-width:430px){.cc.rig{padding:14px}.cc-row{gap:10px;padding:11px 12px}.cc-k{font-size:.56rem}.cc-v{font-size:.8rem}.rig-caption{padding-inline:2px}}
 
-/* ---------- Six views: one visual example per Activity tab ---------- */
+/* ---------- Seven views: one visual example per Activity tab ---------- */
 /* Mockups, not screenshots. A real capture would put actual meeting titles, speaker
    names and session names on a public page; every name below is invented, per the
    site's standing fictional-cast rule. */
@@ -333,7 +333,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .session-command{position:relative;background:var(--ink2);padding:0 0 clamp(76px,10vw,132px);overflow:hidden}
 .session-command::before{content:"";position:absolute;inset:0 -12% auto;height:760px;pointer-events:none;background:radial-gradient(circle at 28% 45%,rgba(240,182,52,.13),transparent 34%),radial-gradient(circle at 75% 45%,rgba(135,168,189,.11),transparent 32%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%)}
 .sc-head{position:relative;display:grid;grid-template-columns:minmax(0,.72fr) minmax(280px,.28fr);gap:clamp(28px,6vw,84px);align-items:end;padding-top:clamp(30px,5vw,70px);border-top:1px solid var(--line2)}
-.sc-kicker{display:block;font:500 .62rem var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:15px}
 .sc-head h2{font-size:clamp(2.55rem,5.2vw,4.85rem);line-height:.95;max-width:12ch}
 .sc-head h2 em{color:var(--gold);font-weight:400}
 .sc-head .lead{color:var(--muted);font-size:1.04rem;max-width:35ch;margin:0}
@@ -503,7 +502,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="cc-row"><span class="cc-k">Recovery</span><b class="cc-v ok">Scheduled</b></div>
         <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
         <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">Allowed</b></div>
-        <div class="cc-row"><span class="cc-k">Memory &amp; Threads</span><b class="cc-v ok">4,875 &middot; 64 threads</b></div>
+        <div class="cc-row"><span class="cc-k">Memory &amp; Threads</span><b class="cc-v ok">5,529 &middot; 64 threads</b></div>
         <div class="cc-row"><span class="cc-k">Meeting preview</span><b class="cc-v ok">Turbo &middot; On</b></div>
         <div class="cc-row"><span class="cc-k">Idle Metal HQ</span><b class="cc-v ok">On &middot; preemptible</b></div>
         <div class="cc-row"><span class="cc-k">Adaptive replay</span><b class="cc-v ok">Off &middot; raw preserved</b></div>
@@ -515,7 +514,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <div class="cc-row"><span class="cc-k">Early meeting sync</span><b class="cc-v ok">Final sync verified</b></div>
         <div class="cc-row"><span class="cc-k">HQ prefill</span><b class="cc-v ok">Max &middot; 6t</b></div>
         <div class="cc-row"><span class="cc-k">Agent CLIs</span><b class="cc-v ok">Claude &middot; Codex &middot; Cursor</b></div>
-        <div class="cc-row"><span class="cc-k">Project</span><b class="cc-v dir">~/Documents/COS</b></div>
+        <div class="cc-row"><span class="cc-k">Work folder</span><b class="cc-v dir">~/Documents/COS</b></div>
       </div>
       <div class="cc-actions" aria-hidden="true">
         <span class="cc-act">Open COS</span>
@@ -532,10 +531,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="views" id="views">
     <div class="wrap">
       <div class="vhead reveal">
-        <h2>Six views into the work it already holds.</h2>
+        <h2>Seven views into the work it already holds.</h2>
         <p class="dek">The companion is the part you actually open.</p>
       </div>
-      <div class="vtabs" role="tablist" aria-label="Activity views"><span class="vslide" aria-hidden="true"></span><button class="vtab" role="tab" id="vt-messages" aria-controls="vp-messages" aria-selected="true" data-v="messages"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.2A1.7 1.7 0 0 1 4.7 3.5h10.6A1.7 1.7 0 0 1 17 5.2v6.1a1.7 1.7 0 0 1-1.7 1.7H7.6L4 16.2v-3.2h-.3A.7.7 0 0 1 3 12.3z"/></svg>Messages</button><button class="vtab" role="tab" id="vt-speakers" aria-controls="vp-speakers" aria-selected="false" data-v="speakers"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8v4M7 5.5v9M10 3v14M13 6.5v7M16 9v2"/></svg>Speakers</button><button class="vtab" role="tab" id="vt-meetings" aria-controls="vp-meetings" aria-selected="false" data-v="meetings"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="14" height="12" rx="2"/><path d="M3 8.5h14M7 3v3M13 3v3"/></svg>Meetings</button><button class="vtab" role="tab" id="vt-memories" aria-controls="vp-memories" aria-selected="false" data-v="memories"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.4q1.3 5.3 6.6 6.6Q11.3 11.3 10 16.6 8.7 11.3 3.4 10 8.7 8.7 10 3.4Z"/></svg>Memories</button><button class="vtab" role="tab" id="vt-threads" aria-controls="vp-threads" aria-selected="false" data-v="threads"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v4.2a2 2 0 0 0 2 2h6a2 2 0 0 1 2 2v4.8"/><circle cx="5" cy="3.5" r="1.4"/><circle cx="15" cy="16.5" r="1.4"/></svg>Threads</button><button class="vtab" role="tab" id="vt-sessions" aria-controls="vp-sessions" aria-selected="false" data-v="sessions"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4" width="14.4" height="12" rx="2"/><path d="M6 8.6l2.4 2.2L6 13M10.6 13h3.6"/></svg>Sessions</button></div>
+      <div class="vtabs" role="tablist" aria-label="Activity views"><span class="vslide" aria-hidden="true"></span><button class="vtab" role="tab" id="vt-messages" aria-controls="vp-messages" aria-selected="true" data-v="messages"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.2A1.7 1.7 0 0 1 4.7 3.5h10.6A1.7 1.7 0 0 1 17 5.2v6.1a1.7 1.7 0 0 1-1.7 1.7H7.6L4 16.2v-3.2h-.3A.7.7 0 0 1 3 12.3z"/></svg>Messages</button><button class="vtab" role="tab" id="vt-speakers" aria-controls="vp-speakers" aria-selected="false" data-v="speakers"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8v4M7 5.5v9M10 3v14M13 6.5v7M16 9v2"/></svg>Speakers</button><button class="vtab" role="tab" id="vt-meetings" aria-controls="vp-meetings" aria-selected="false" data-v="meetings"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="14" height="12" rx="2"/><path d="M3 8.5h14M7 3v3M13 3v3"/></svg>Meetings</button><button class="vtab" role="tab" id="vt-memories" aria-controls="vp-memories" aria-selected="false" data-v="memories"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.4q1.3 5.3 6.6 6.6Q11.3 11.3 10 16.6 8.7 11.3 3.4 10 8.7 8.7 10 3.4Z"/></svg>Memories</button><button class="vtab" role="tab" id="vt-threads" aria-controls="vp-threads" aria-selected="false" data-v="threads"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v4.2a2 2 0 0 0 2 2h6a2 2 0 0 1 2 2v4.8"/><circle cx="5" cy="3.5" r="1.4"/><circle cx="15" cy="16.5" r="1.4"/></svg>Threads</button><button class="vtab" role="tab" id="vt-sessions" aria-controls="vp-sessions" aria-selected="false" data-v="sessions"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4" width="14.4" height="12" rx="2"/><path d="M6 8.6l2.4 2.2L6 13M10.6 13h3.6"/></svg>Sessions</button><button class="vtab" role="tab" id="vt-tasks" aria-controls="vp-tasks" aria-selected="false" data-v="tasks"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="3.2" width="13.6" height="13.6" rx="2.4"/><path d="M6.6 10.2l2.5 2.5 5-5.4"/></svg>Tasks</button></div>
       <div class="vpanels">
       <div class="vpanel" role="tabpanel" id="vp-messages" aria-labelledby="vt-messages" data-open="true">
         <div class="vgrid">
@@ -548,7 +547,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-speakers" aria-labelledby="vt-speakers" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Listen. Name. Review what changes.</h3><p>Speakers has Meetings to review, Samples to review, and Voices. Listen to a held sample, choose a name or a scored suggestion, then preview the labels it would change in that sample&rsquo;s own meeting. Apply is a separate action. Undo restores the labels while keeping the learned voice samples. Long lists scroll without hiding the toolbar.</p><p class="vnote">LISTEN &middot; PREVIEW &middot; APPLY &middot; UNDO</p></div>
+          <div class="vcopy reveal"><h3>Listen. Name. Review what changes.</h3><p>Speakers has Meetings to review, Samples to review, and Voices. Listen to held samples, grouped by who they sound like, choose a name or a scored suggestion, then preview the labels it would change in that sample&rsquo;s own meeting. Apply is a separate action. Undo restores the labels while keeping the learned voice samples. Long lists scroll without hiding the toolbar.</p><p class="vnote">LISTEN &middot; PREVIEW &middot; APPLY &middot; UNDO</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Meetings to review</b><span class="vspace"></span>14 recent</div>
    <div class="vmock-body">
    <div class="vrow lit"><span class="vname">Parity walkthrough, Rain POS</span><span class="vspace"></span><span class="vpill warn">3 to name</span></div>
@@ -558,7 +557,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-meetings" aria-labelledby="vt-meetings" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Your calls, by the day they happened.</h3><p>A month calendar, then the day. Open a call for the transcript, the summary, and who spoke. Search everything stored by keyword, or by meaning when you cannot remember the title.</p><p class="vnote">TRANSCRIPT &middot; SUMMARY &middot; COPY</p></div>
+          <div class="vcopy reveal"><h3>Your calls, by the day they happened.</h3><p>A month calendar, then the day. Open a call for the transcript, the summary, and who spoke, laid out as a document with Copy as context as the one gold button. Search everything stored by keyword, or by meaning when you cannot remember the title. Meetings another recorder made come in too: paste a Fireflies key and COS pairs its transcript with your own recording of the same call, merges the two into one record, and keeps Undo beside it.</p><p class="vnote">TRANSCRIPT &middot; SUMMARY &middot; COPY AS CONTEXT &middot; FIREFLIES</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Meetings</b><span class="vspace"></span>August</div>
    <div class="vmock-body"><p class="vday">Thursday, August 14</p>
    <div class="vrow"><span class="vtime">09:00</span><span class="vname">Pipeline review</span><span class="vspace"></span><span class="vmeta">42m &middot; 4 speakers</span></div>
@@ -568,7 +567,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-memories" aria-labelledby="vt-memories" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>The decisions, not the transcript.</h3><p>What was settled, what was corrected, and the context worth keeping. Markdown you drop into the folder becomes browsable alongside it. No vector database required to start.</p><p class="vnote">READ ONLY &middot; COPY AS CONTEXT</p></div>
+          <div class="vcopy reveal"><h3>The decisions, not the transcript.</h3><p>What was settled, what was corrected, and the context worth keeping. Recent learning shows what COS captured and used in the last 90 days; To review holds what it proposed until you keep or dismiss it, and a memory it captured can be accepted or pruned; Knowledge is a graph of your own data you can ask in plain language. Markdown you drop into the folder becomes browsable alongside it. No vector database required to start.</p><p class="vnote">RECENT LEARNING &middot; TO REVIEW &middot; KNOWLEDGE &middot; COPY AS CONTEXT</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Memories</b><span class="vspace"></span>5,529 stored</div>
    <div class="vmock-body">
    <div class="vrow lit"><span class="vkind">decision</span><span class="vname">Cutover moves to Q4</span><span class="vspace"></span><span class="vmeta">Jun 4</span></div>
@@ -578,7 +577,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-threads" aria-labelledby="vt-threads" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Work that develops across meetings.</h3><p>A thread is one piece of work seen across every call that touched it, so you can tell what is compounding from what has quietly stopped. The shape beside each one is its activity over the last seven weeks.</p><p class="vnote">64 TRACKED &middot; 11 ACTIVE</p></div>
+          <div class="vcopy reveal"><h3>Work that develops across meetings.</h3><p>A thread is one piece of work seen across every call that touched it, so you can tell what is compounding from what has quietly stopped. The shape beside each one is its activity over the last seven weeks. Open one and its note, target date, topics, stakeholders, linked meetings, milestones, and sources are on one page; Copy as context carries all of it.</p><p class="vnote">64 TRACKED &middot; 11 ACTIVE</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Threads</b><span class="vspace"></span>64 tracked</div>
    <div class="vmock-body">
    <div class="vrow lit"><span class="vname">Rain POS parity</span><span class="vspace"></span><span class="vspark "><i style="height:18%"></i><i style="height:30%"></i><i style="height:46%"></i><i style="height:62%"></i><i style="height:78%"></i><i style="height:96%"></i><i style="height:84%"></i></span><span class="vpill on">active</span></div>
@@ -588,13 +587,23 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <div class="vpanel" role="tabpanel" id="vp-sessions" aria-labelledby="vt-sessions" data-open="false">
         <div class="vgrid">
-          <div class="vcopy reveal"><h3>Claude, Codex, and Cursor, in one list.</h3><p>Every agent chat on this Mac, whichever tool started it. Pinned threads stay listed at any age. Open one to read the transcript, or copy a redacted brief to pick the work up somewhere else.</p><p>A composer sits under every session. Type a message and it lands in the real thread on your Mac, with the reply back in the pane. Long turns keep running after you close the window. A busy thread offers Retry, or a Fork with this message button that runs your message in a copy while the original stays untouched.</p><p class="vnote">TEXT IN, REPLY BACK &middot; PINNED KEEPS ITS OWN CLOCK</p></div>
+          <div class="vcopy reveal"><h3>Claude, Codex, and Cursor, in one list.</h3><p>Every agent chat on this Mac, whichever tool started it. Pinned threads stay listed at any age. Open one to read the transcript, or copy a redacted brief to pick the work up somewhere else.</p><p>Open a Claude session and an Activity block above the turns says what it is doing right now: Working with a clock, Waiting on a permission, Failed, or Idle with its last reply, plus the last eight things it did. A composer sits under every session. Type a message and it lands in the real thread on your Mac, with the reply back in the pane. Long turns keep running after you close the window. A busy thread offers Retry, or a Fork with this message button that runs your message in a copy while the original stays untouched.</p><p class="vnote">TEXT IN, REPLY BACK &middot; PINNED KEEPS ITS OWN CLOCK</p></div>
           <div class="vmock reveal"><div class="vmock-top"><b>Sessions</b><span class="vspace"></span>63 on disk</div>
    <div class="vmock-body">
    <div class="vrow lit"><span class="vprov">claude</span><span class="vname">Parity build, Rain POS</span><span class="vspace"></span><span class="vpill on">running</span><span class="vmeta">2m</span></div>
    <div class="vrow"><span class="vprov cx">codex</span><span class="vname">Migration script review</span><span class="vspace"></span><span class="vpill">idle</span><span class="vmeta">1h</span></div>
    <div class="vrow"><span class="vprov cu">cursor</span><span class="vname">Session search rework</span><span class="vspace"></span><span class="vpill">recent</span><span class="vmeta">yesterday</span></div>
-   <p class="va">Type into the composer and it posts into the real thread. The reply comes back here.</p></div></div>
+   <p class="va">Working &middot; 4m 12s &middot; Ran npm test, then git diff. Type into the composer and it posts into the real thread. The reply comes back here.</p></div></div>
+        </div>
+      </div>
+      <div class="vpanel" role="tabpanel" id="vp-tasks" aria-labelledby="vt-tasks" data-open="false">
+        <div class="vgrid">
+          <div class="vcopy reveal"><h3>The work sitting in tasks.md, with a Run button.</h3><p>Capture a task from the glasses or from this window, file it under one of your own domains, give it a finish line, then schedule it or run it now through the agent on this Mac. Open tasks show ranked so what failed, missed, or is due sits first. Open a row for the whole line, its source, lane, schedule, and agent state; edit the words, mark it done, or reopen it. Domains come from your server, not a list baked into the app.</p><p class="vnote">CAPTURE &middot; SCHEDULE &middot; RUN NOW &middot; DONE</p></div>
+          <div class="vmock reveal"><div class="vmock-top"><b>Tasks</b><span class="vspace"></span>17 open</div>
+   <div class="vmock-body">
+   <div class="vrow lit"><span class="vkind">running</span><span class="vname">Draft the Rain POS parity memo</span><span class="vspace"></span><span class="vpill on">agent</span><span class="vmeta">4m</span></div>
+   <div class="vrow"><span class="vkind">scheduled</span><span class="vname">Send Priya the cutover checklist</span><span class="vspace"></span><span class="vmeta">Thu 09:00</span></div>
+   <div class="vrow"><span class="vkind">captured</span><span class="vname">Ask Marcus for the Q4 pipeline model</span><span class="vspace"></span><span class="vmeta">from glasses</span></div></div></div>
         </div>
       </div>
       </div>
@@ -605,7 +614,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <div class="wrap">
       <div class="sc-head reveal">
         <div>
-          <span class="sc-kicker">Advanced session orchestration</span>
           <h2>The pet is not decoration. <em>It is the live map.</em></h2>
         </div>
         <p class="lead">When two, three, or four agents are working at once, remembering which window owns which task becomes work of its own. COS turns that sprawl into one visible ledger.</p>
@@ -655,7 +663,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           </div>
         </figure>
         <div class="sc-story reveal">
-          <span class="sc-kicker">One surface. The real threads.</span>
           <h3>See the work. Open the work. Write back into it.</h3>
           <p>The ledger combines the agent sessions on this Mac, shows what is running, finished, or waiting on you, and keeps the workspace visible. Click a row to use the strongest destination that platform exposes. Or open Activity, read the transcript, and send a follow-up into the actual thread without hunting for its window.</p>
           <div class="sc-platforms" aria-label="Supported agent and model routes">
@@ -671,9 +678,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="pet-chapter">
         <div class="pet-intro reveal">
           <div>
-            <span class="sc-kicker">Optional session pet · five live states</span>
             <h3>Your session state, at a glance.</h3>
-            <p>Miles switches animations as your workload changes: idle, one, two, three, or four-plus running sessions. When work finishes or needs you, the centered ledger beneath the pet changes to Done or Waiting—so you can read the state without reopening every agent. Choose a bundled character, use a gallery pet, or bring your own sprites and build a custom state pack.</p>
+            <p>The optional session pet, Miles Windu, switches animations as your workload changes: idle, one, two, three, or four-plus running sessions. When work finishes or needs you, the centered ledger beneath the pet changes to Done or Waiting, so you can read the state without reopening every agent. Choose a bundled character, use a gallery pet, or bring your own sprites and build a custom state pack.</p>
           </div>
           <button class="pet-pause" type="button" aria-pressed="false">Pause animations</button>
         </div>
@@ -775,16 +781,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div class="part reveal"><h3>Fast preview, authoritative transcript</h3><p>Choose Balanced or Max and see the effective model for every lane. A low-latency preview shows what COS hears while you dictate. The authoritative live commit replaces it, and saved meetings receive full local polish. Canonical work always gets priority over provisional preview.</p></div>
           <div class="part reveal"><h3>Meeting safety you can see</h3><p>Control reports active recordings, HQ polish, retained batches, and unsaved captures instead of hiding them behind a generic healthy light. Restarts stay locked while durable work is active, and recoverable captures remain visible before retention expires.</p></div>
           <div class="part reveal"><h3>Cleaner review audio, raw always preserved</h3><p>An optional, default-off Adaptive replay switch cleans retained audio only after you press Play. The immutable raw WAV stays authoritative and remains an exact bypass. Live recording and transcription preempt cleanup, and failed cleanup immediately falls back to raw playback.</p></div>
-          <div class="part reveal"><h3>One Activity workspace</h3><p>Messages, Speakers, Meetings, Memories, Threads, and Sessions open together in a resizable window. Messages keeps a Recent and an Archive view, so older stored days stay browsable and searchable. Speakers starts on Meetings to review: unnamed first, hide reviewed, and Next to name. Meetings has a day calendar, transcript, summary, and copy, plus keyword and meaning search across stored calls. Lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match next to Domain. Peer tabs, Home, Back, and scoped breadcrumbs keep your place clear. Closing Activity stops voice playback, and a late server response cannot replace the newer record you selected.</p></div>
+          <div class="part reveal"><h3>One Activity workspace</h3><p>Messages, Speakers, Meetings, Memories, Threads, Sessions, and Tasks open together in a resizable window. Messages keeps a Recent and an Archive view, so older stored days stay browsable and searchable. Speakers starts on Meetings to review: unnamed first, hide reviewed, and Next to name. Meetings has a day calendar, transcript, summary, and copy, plus keyword and meaning search across stored calls. Lookup on Meetings, Sessions, Memories, and Threads can sort Newest, Oldest, or Best match next to Domain. Peer tabs, Home, Back, and scoped breadcrumbs keep your place clear. Closing Activity stops voice playback, and a late server response cannot replace the newer record you selected.</p></div>
           <div class="part reveal"><h3>Sessions from Claude, Codex, and Cursor</h3><p>Sessions lists chats from this Mac. Updated and Opened look back 7 days. Pinned is its own clock: ChatGPT/Codex pins, Claude Desktop stars, and Cursor sidebar pins stay listed at any age, including Desktop-only Claude chats. Keep-warm <code>ready</code> rows stay out. Search matches sidebar titles and recent transcript bodies. Click a row for the transcript and a composer: a message you type lands in the real thread, and the reply comes back in the pane. Long turns keep running after the window closes. Busy threads offer Retry or Fork with this message. Copy session puts a redacted kickstart brief on the clipboard.</p></div>
-          <div class="part reveal"><h3>GOT COS, once the panel is open</h3><p>The menu bar still uses eyeglasses for a running or offline glance. Open Control or Activity and the GOT COS lockup is the brand. Headings use Fraunces, UI copy uses DM Sans, and chrome numbers use JetBrains Mono &mdash; the same trio as this site.</p></div>
+          <div class="part reveal"><h3>GOT COS, once the panel is open</h3><p>The menu bar still uses eyeglasses for a running or offline glance. Open Control or Activity and the GOT COS lockup is the brand. Headings use Fraunces, UI copy uses DM Sans, and chrome numbers use JetBrains Mono, the same trio as this site.</p></div>
           <div class="part reveal"><h3>Name held samples, with a preview</h3><p>Each loose sample can suggest an existing voice, with its score and a caution when it sounds close to the owner. Preview separates voice training from meeting labels and shows wider matches within the same meeting. Apply reports each sample and meeting copy. Undo restores this batch&rsquo;s labels, keeps enrolled samples, and never restores deleted audio. Interrupted naming stays visible for an explicit resume or revert. Requires server 6.46.0 or newer.</p></div>
           <div class="part reveal"><h3>A Voice Directory with evidence</h3><p>Browse every enrolled voice with training-sample provenance, attributed and review segments, meeting count, last seen, a sample count, and a confidence figure: the share of scored speech matched confidently, over the segment-weighted average match. Open a person to see recent meeting appearances. Unidentified voices stay grouped by meeting and are never combined into a false global identity.</p></div>
           <div class="part reveal"><h3>No lock-in</h3><p>The runtime is the same <code>@gotcos/glasses-server</code>. Already run your own? COS Control can manage it in place, with no reinstall and no re-pairing. Quit any time and go back to the plain <code>npx</code> command.</p></div>
           <div class="part reveal"><h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root: the workspace Claude, Codex, and Cursor search and edit. It does not move the managed server package. Each person&rsquo;s COS can live anywhere; pick the folder that matches yours. Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.</p></div>
           <div class="part reveal"><h3>Your existing meeting library</h3><p>Choose the folder you already use for meetings. The recommended path directly contains <code>YYYY-MM/*.md</code>. If you already maintain several libraries, choose their parent; every folder name is customizable and only needs <code>meetings/YYYY-MM/*.md</code> inside. Direct libraries stay read-only, while existing operations pipelines keep enrichment and writes.</p></div>
           <div class="part reveal"><h3>Ask your knowledge</h3><p>Open Memories in the Mac&rsquo;s light or dark appearance. <strong>Ask the graph</strong> comes first, with a populated graph below it and manual tools under <strong>Advanced investigation</strong>. A compatible model pipeline can select the points and hops for your question. Set your name during onboarding or edit it in Memory settings.</p></div>
-          <div class="part reveal"><h3>Memory and Threads, proved locally</h3><p>No vector database required. <strong>Create Folders</strong> makes <code>memory/</code> and <code>threads/</code> where COS already looks, and any markdown you drop in becomes browsable. The Activity workspace opens the same read-only Memory and Thread records your glasses show, with Copy as Context and Reveal in Finder for file-backed notes. <strong>COS Data</strong> still points at a full Python workspace when you have one, and Control verifies the bridge, protocol, and authenticated route before saving. The panel names the resolved folder, and a store that exists but is empty reads as healthy rather than broken.</p></div>
+          <div class="part reveal"><h3>Memory and Threads, proved locally</h3><p>No vector database required. <strong>Create Folders</strong> makes <code>memory/</code> and <code>threads/</code> where COS already looks, and any markdown you drop in becomes browsable. The Activity workspace opens the same Memory and Thread records your glasses show, with Copy as Context and Reveal in Finder for file-backed notes. <strong>COS Data</strong> still points at a full Python workspace when you have one, and Control verifies the bridge, protocol, and authenticated route before saving. The panel names the resolved folder, and a store that exists but is empty reads as healthy rather than broken.</p></div>
           <div class="part reveal"><h3>Today's glasses turns, with their photo context</h3><p><strong>Recent Glasses</strong> lists the last 30 turns from today, restores validated photo thumbnails, and opens a full local preview. Copy a text-only handoff, or explicitly choose <strong>Copy + images</strong> to bring up to five local images into another chat. Images remain on your Mac, and old privacy eras fail closed.</p></div>
           <div class="part reveal"><h3>Local models through Ollama</h3><p>COS can run replies on a local model through Ollama. When a local daemon is live with a pulled model, About shows an Ollama row naming the model and Doctor confirms it. A Mac without Ollama shows nothing, because nothing is missing.</p></div>
           <div class="part reveal"><h3>Live sessions on the desktop</h3><p>Running, Done, and Waiting sessions from Codex, Claude, Cursor, and local models stay visible when Activity is closed. The ledger shows what is active, finished, or waiting on you at a glance. Click a session to open the right thread or app, or send a follow-up directly from Activity. Choose one of four animated Jedi, any of 300 community pets, or install your own sprite pack. Pet size, scale, and speed are adjustable, while every character keeps the same session controls underneath.</p></div>
@@ -1023,7 +1029,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 </script>
 
 <script>
-/* Six-views tabs. Self-contained so a later rework of another script cannot delete it.
+/* Seven-views tabs. Self-contained so a later rework of another script cannot delete it.
    Same guarded shape as the harness rig: probe anime, keep a real no-anime path, prime
    values with utils.set so v4 has a readable start, and gate on in-view. */
 (function(){

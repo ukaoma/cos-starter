@@ -23,6 +23,13 @@ WHAT THIS CAN PROVE, and therefore what it checks:
      Historical 6.8.x introduction facts remain outside this comparison.
  10. Control JSON-LD, visible version labels, verify command, required latest
      alias, and both .sha256 sidecars agree with the appcast and staged bytes.
+ 11. The Activity views the site describes agree with each other: the /control
+     tab rail, its panels, the homepage rail and tiles, and the number word in
+     every "N views into the work" heading. /control said "Six views" for two
+     weeks after Control 0.5.186 added Tasks as a seventh pane, with every
+     version string current. A pane count is a feature claim with no version
+     number attached, so the version checks above could never see it. The
+     app's own ActivitySection enum is the external truth (confirm by hand).
 
 WHAT IT CANNOT PROVE, stated rather than silently skipped:
   - The COS Glasses app version. Its truth lives in another repo and there is no
@@ -111,6 +118,17 @@ ROLLBACK_PAIR_RE = re.compile(
 HUB_REMEDIATION_RE = re.compile(
     r"Install COS Glasses <strong>(\d+\.\d+\.\d+)</strong> from Even Hub"
 )
+CONTROL_VIEW_TAB_RE = re.compile(r'<button class="vtab"[^>]*\bdata-v="([a-z]+)"')
+CONTROL_VIEWS_H2_RE = re.compile(r"<h2>([A-Z][a-z]+) views into the work it already holds\.</h2>")
+HOME_VIEW_TILE_RE = re.compile(r'<div class="ctl-tile(?: [^"]*)?"[^>]*\bdata-view="([a-z]+)"')
+HOME_VIEW_RAIL_RE = re.compile(r'<span class="ctl-tab(?: [^"]*)?"[^>]*\bdata-view="([a-z]+)"')
+HOME_VIEWS_H2_RE = re.compile(
+    r'<span class="it g">([A-Z][a-z]+) views into the work (?:it|your COS) already holds\.</span>'
+)
+HOME_MOCK_SUB_RE = re.compile(
+    r'<p class="ctl-sub">([A-Z][a-z]+) views into the work your COS already holds\.</p>'
+)
+NUMBER_WORDS = {4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 JSONLD_VERSION_RE = re.compile(r'"softwareVersion": "(\d+\.\d+\.\d+)"')
 JSONLD_DOWNLOAD_RE = re.compile(
     r'"downloadUrl": "[^"]*COS-Control-macOS-arm64-(\d+\.\d+\.\d+)\.zip"'
@@ -211,10 +229,13 @@ def evaluate(
     npm: str | None,
     zip_missing: bool = False,
     latest_zip_missing: bool = False,
+    home: str | None = None,
 ) -> tuple[list[str], list[str]]:
     """Return (fail, note). Pure: no I/O. Tests call this with fixtures."""
     fail: list[str] = []
     note: list[str] = []
+    if home is not None:
+        fail.extend(evaluate_views(control=control, home=home))
 
     ac_version = stable["version"]
     ac_build = stable["build"]
@@ -451,7 +472,7 @@ def evaluate(
     if note_pairs and (target is None or set(note_pairs) != {target}):
         fail.append(f"appcast notes pair with server {sorted(set(note_pairs))}; serverTarget is {target}")
 
-    app_versions = set(re.findall(r"\b6\.8\.\d+\b", docs))
+    app_versions = set(re.findall(r"\b6\.[89]\.\d+\b", docs))
     note.append(
         f"COS Glasses app version(s) on /docs: {sorted(app_versions) or 'none'} (build {ac_build} Control). "
         "Current app/build/Hub-pin claims are internally checked, but the app repo and Even Hub listing "
@@ -460,9 +481,60 @@ def evaluate(
     return fail, note
 
 
+def evaluate_views(*, control: str, home: str) -> list[str]:
+    """Check 11. The Activity views are a feature claim, not a version string.
+
+    Truth order: the /control tab rail (one button per pane the app ships) is the
+    site's source; the homepage rail, the homepage tiles, the /control panels and
+    every number word must match it. The app's ActivitySection enum is confirmed
+    by hand at release; it is in another repo.
+    """
+    fail: list[str] = []
+    tabs = CONTROL_VIEW_TAB_RE.findall(control)
+    if not tabs:
+        fail.append("control Activity view tabs are gone; restore the tab rail rather than deleting it")
+        return fail
+    if len(set(tabs)) != len(tabs):
+        fail.append(f"control Activity view tabs repeat a key: {tabs}")
+    for key in tabs:
+        if f'id="vp-{key}"' not in control:
+            fail.append(f"control Activity tab '{key}' has no panel id=\"vp-{key}\"")
+    word = NUMBER_WORDS.get(len(tabs))
+    if word is None:
+        fail.append(f"control has {len(tabs)} Activity view tabs; NUMBER_WORDS needs that count")
+        return fail
+
+    h2 = _one(CONTROL_VIEWS_H2_RE, control, "control 'N views into the work' heading", fail)
+    if h2 is not None and h2 != word:
+        fail.append(f"control heading says {h2} views; the tab rail has {len(tabs)} ({word})")
+
+    tiles = HOME_VIEW_TILE_RE.findall(home)
+    if not tiles:
+        fail.append("home Activity view tiles are gone; restore the #control mock rather than deleting it")
+    elif tiles != tabs:
+        fail.append(
+            f"home Activity tiles {tiles} != control tabs {tabs} (same keys, same order; "
+            "or a tile no longer matches HOME_VIEW_TILE_RE)"
+        )
+    rail = HOME_VIEW_RAIL_RE.findall(home)
+    if rail != tabs:
+        fail.append(
+            f"home Activity rail {rail} != control tabs {tabs} (same keys, same order; "
+            "or a rail entry no longer matches HOME_VIEW_RAIL_RE)"
+        )
+    home_h2 = _one(HOME_VIEWS_H2_RE, home, "home 'N views into the work' heading", fail)
+    if home_h2 is not None and home_h2 != word:
+        fail.append(f"home heading says {home_h2} views; the tab rail has {len(tabs)} ({word})")
+    sub = _one(HOME_MOCK_SUB_RE, home, "home Activity mock subtitle", fail)
+    if sub is not None and sub != word:
+        fail.append(f"home Activity mock subtitle says {sub} views; the tab rail has {len(tabs)} ({word})")
+    return fail
+
+
 def main() -> int:
     docs = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     control = (ROOT / "control" / "index.html").read_text(encoding="utf-8")
+    home = (ROOT / "index.html").read_text(encoding="utf-8")
     appcast = json.loads((ROOT / "control" / "appcast.json").read_text(encoding="utf-8"))
     stable = appcast["channels"]["stable"]
     ac_version, ac_sha = stable["version"], stable["sha256"]
@@ -500,6 +572,7 @@ def main() -> int:
         npm=npm,
         zip_missing=zip_missing,
         latest_zip_missing=latest_zip_missing,
+        home=home,
     )
     note = note_prefix + note
 
@@ -510,6 +583,8 @@ def main() -> int:
         for f in fail:
             print(f"  - {f}", file=sys.stderr)
         return 1
+    views = CONTROL_VIEW_TAB_RE.findall(control)
+    print(f"  Activity views ({len(views)}): {', '.join(views)}; confirm against the app's ActivitySection enum by hand")
     if npm is None:
         print("  public pages agree with the appcast and staged artifacts; npm latest UNVERIFIED")
     else:

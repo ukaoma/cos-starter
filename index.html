@@ -480,6 +480,66 @@ section.light .dek{color:#7a5c2c}
   @keyframes hud-sweep{from{transform:translateY(-115%)}to{transform:translateY(115%)}}
   @media(prefers-reduced-motion:reduce){.gc .hud-frame::after{display:none}}
 
+  /* §10b COS Control: the Activity window, drawn in the app's own cream on the espresso ground.
+     A mockup, not a screenshot. Counts are plausible for one running COS; the names are invented. */
+  .ctl-top{display:grid;gap:clamp(26px,4vw,56px);align-items:end;margin-bottom:clamp(30px,4.5vw,46px)}
+  @media(min-width:980px){.ctl-top{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}}
+  .ctl-top .sec-head{max-width:54ch}
+  .ctl-facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .ctl-facts li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-2)}
+  .ctl-facts b{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .ctl-facts span{color:var(--muted);font-size:.9rem;line-height:1.55}
+  @media(max-width:520px){.ctl-facts li{grid-template-columns:1fr;gap:5px}}
+  .ctl-win{border:1px solid rgba(255,246,232,.14);border-radius:16px;overflow:hidden;background:var(--cream);color:var(--ink-on-cream);
+    box-shadow:0 44px 100px -40px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.35);font-family:var(--body)}
+  .ctl-bar{display:flex;align-items:center;justify-content:center;position:relative;height:38px;background:#efedf2;border-bottom:1px solid rgba(46,31,16,.1)}
+  .ctl-lights{position:absolute;left:14px;top:50%;transform:translateY(-50%);display:flex;gap:7px}
+  .ctl-lights i{width:11px;height:11px;border-radius:50%;background:#e0635b}
+  .ctl-lights i:nth-child(2){background:#e3b04b}.ctl-lights i:nth-child(3){background:#5bb869}
+  .ctl-title{font-weight:600;font-size:.82rem;color:#2b2320}
+  .ctl-tool{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#f7f4ee;border-bottom:1px solid rgba(46,31,16,.08);font-size:.8rem}
+  .ctl-lockup{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink-on-cream);letter-spacing:-.01em}
+  .ctl-lockup img{width:15px;height:auto;display:block}
+  .ctl-tb{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1px solid rgba(46,31,16,.16);border-radius:8px;background:#fff;font-weight:500;color:var(--ink-on-cream)}
+  .ctl-tb.dim{color:rgba(46,31,16,.38);border-color:rgba(46,31,16,.08)}
+  .ctl-tb svg{width:12px;height:12px}
+  .ctl-crumb{font-weight:600;color:var(--ink-on-cream);margin-left:4px}
+  .ctl-conn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.68rem;color:rgba(46,31,16,.55);white-space:nowrap}
+  .ctl-conn i{width:7px;height:7px;border-radius:50%;background:#4f9a5e;box-shadow:0 0 0 3px rgba(79,154,94,.16)}
+  .ctl-rail{display:flex;gap:2px;padding:4px 10px 0;background:#f7f4ee;border-bottom:1px solid rgba(46,31,16,.1)}
+  .ctl-tab{flex:1 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px 11px;font-size:.84rem;font-weight:500;color:rgba(46,31,16,.6);border-bottom:2px solid transparent;white-space:nowrap}
+  .ctl-tab svg,.ctl-tt svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .ctl-tab svg{width:14px;height:14px}
+  .ctl-body{padding:clamp(18px,3vw,30px) clamp(16px,3vw,30px) clamp(20px,3vw,30px);background:var(--cream)}
+  .ctl-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .ctl-head .ctl-lockup{font-size:1.35rem}.ctl-head .ctl-lockup img{width:20px}
+  .ctl-gotcos{font-family:var(--display);font-style:italic;font-size:.9rem;color:#a0783c}
+  .ctl-h{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3vw,2.2rem);line-height:1.05;letter-spacing:-.01em;color:var(--ink-on-cream);margin:18px 0 0}
+  .ctl-sub{font-family:var(--display);font-style:italic;font-size:.98rem;color:rgba(46,31,16,.6);margin:6px 0 0}
+  .ctl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+  @media(max-width:900px){.ctl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:440px){.ctl-grid{grid-template-columns:1fr}}
+  .ctl-tile{position:relative;display:flex;flex-direction:column;min-width:0;min-height:168px;padding:18px 17px 14px;border:1px solid rgba(46,31,16,.14);border-radius:13px;
+    background:radial-gradient(circle,rgba(46,31,16,.075) .9px,transparent 1.4px) 0 0/9px 9px,rgba(255,255,255,.66);box-shadow:0 1px 0 rgba(255,255,255,.7) inset;
+    transition:border-color .25s ease}
+  .ctl-tt{display:flex;align-items:center;gap:9px;min-width:0}
+  .ctl-tt svg{width:18px;height:18px;color:rgba(46,31,16,.72)}
+  .ctl-tt b{font-weight:600;font-size:1.02rem;color:var(--ink-on-cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ctl-n{margin-left:auto;font-family:var(--display);font-weight:500;font-size:1.6rem;line-height:1;color:var(--ink-on-cream);font-variant-numeric:tabular-nums}
+  .ctl-tile p{margin:10px 0 0;font-size:.84rem;line-height:1.48;color:rgba(46,31,16,.72)}
+  .ctl-tile i{display:block;margin-top:auto;padding-top:16px;font-family:var(--mono);font-style:normal;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(46,31,16,.58)}
+  @media(hover:hover) and (pointer:fine){.ctl-tile:hover{border-color:rgba(138,106,52,.55)}}
+  /* The tiles stagger in when the WINDOW enters the viewport (it carries its own .reveal), not when the section
+     does: the window sits ~600px below the section top, so a section-keyed stagger was over before it was seen. */
+  .js .ctl-tile{opacity:0}
+  .js .ctl-win.in .ctl-tile{animation:ctl-in .55s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+  @keyframes ctl-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  /* Under 900px seven tabs no longer fit one row (measured: Tasks hid behind the mask at 768); wrap instead of hiding */
+  @media(max-width:900px){.ctl-rail{flex-wrap:wrap;padding-bottom:2px}.ctl-tab{flex:1 1 auto;padding:9px 10px 10px;font-size:.8rem}}
+  @media(max-width:560px){.ctl-tb,.ctl-crumb{display:none}}
+  @media(prefers-reduced-motion:reduce){.js .ctl-tile,.js .ctl-win.in .ctl-tile,.ctl-tile{opacity:1;transform:none;animation:none}}
+  @media print{.ctl-tile{opacity:1!important;transform:none!important;animation:none!important}}
+
   /* ═══ v3: warm-ground rhythm — cream light sections on espresso (bond-cadence, COS brand) ═══ */
   section.light,.wrap.lightband{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
   .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
@@ -606,6 +666,9 @@ section.light .dek{color:#7a5c2c}
   <symbol id="i-spark" viewBox="0 0 20 20"><path d="M10 2.2l1.7 4.7 4.7 1.7-4.7 1.7L10 15l-1.7-4.7L3.6 8.6l4.7-1.7z"/></symbol>
   <symbol id="i-play" viewBox="0 0 20 20"><rect x="2.6" y="5.2" width="10.4" height="9.6" rx="2.2"/><path d="M13 8.4l4.2-2.2v7.6L13 11.6z"/></symbol>
   <symbol id="i-dollar" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.2"/><path d="M10 5.6v8.8M12.2 7.7c0-1.1-1-1.7-2.2-1.7s-2.2.7-2.2 1.8 1 1.5 2.2 1.7 2.2.6 2.2 1.8-1 1.7-2.2 1.7-2.2-.6-2.2-1.7"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 20 20"><path d="M4 8v4M7 5.5v9M10 3v14M13 6.5v7M16 9v2"/></symbol>
+  <symbol id="i-thread" viewBox="0 0 20 20"><path d="M5 3.5v4.2a2 2 0 0 0 2 2h6a2 2 0 0 1 2 2v4.8"/><circle cx="5" cy="3.5" r="1.4"/><circle cx="15" cy="16.5" r="1.4"/></symbol>
+  <symbol id="i-term" viewBox="0 0 20 20"><rect x="2.8" y="4" width="14.4" height="12" rx="2"/><path d="M6 8.6l2.4 2.2L6 13M10.6 13h3.6"/></symbol>
   <symbol id="i-folder" viewBox="0 0 20 20"><path d="M3 6.2a1.1 1.1 0 0 1 1.1-1.1h3.8l2 2h6a1.1 1.1 0 0 1 1.1 1.1v6.5a1.1 1.1 0 0 1-1.1 1.1H4.1A1.1 1.1 0 0 1 3 14.7z"/></symbol>
   <symbol id="b-slack" viewBox="0 0 24 24"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></symbol>
   <symbol id="b-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
@@ -1109,7 +1172,6 @@ section.light .dek{color:#7a5c2c}
       </div>
       <div class="hero-cta" style="margin-top:30px">
         <a href="wizard/" class="btn primary">Get Started</a>
-        <a href="/control/" class="btn ghost">Download for Mac</a>
         <a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" class="btn ghost">Get it on the Even Hub</a>
         <a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a>
       </div>
@@ -1133,6 +1195,56 @@ section.light .dek{color:#7a5c2c}
     <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: meeting takeaways and action items in green."></div><div class="tl">Meeting-aware</div><h3>It works while you talk</h3><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
     <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-1.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: time, weather, and next meeting at a glance in green."></div><div class="tl">Yours to run</div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
   </div>
+</section>
+
+<!-- ── 10b CONTROL ── -->
+<section class="wrap reveal" id="control">
+  <div class="ctl-top">
+    <div>
+      <div class="sec-head">        <h2>One window. <span class="it g">Seven views into the work your COS already holds.</span></h2>
+        <p class="dek">COS Control for Mac</p>
+        <p class="lead">The glasses capture it. Control is where you read it. A menu bar app that runs the same open-source server, keeps it running, and opens an Activity window with every message, voice, call, memory, thread, agent session, and task your COS holds.</p>
+      </div>
+      <div class="hero-cta" style="margin-top:30px">
+        <a href="/control/" class="btn primary">Download for Mac</a>
+        <a href="/control/#views" class="btn ghost">See every view</a>
+      </div>
+      <p style="margin-top:20px;color:var(--muted);font-size:.92rem">Setting it up? <a href="/docs/#mac-control" style="text-decoration:underline;text-underline-offset:3px">Read the Control chapter in the docs</a>.</p>
+    </div>
+    <ul class="ctl-facts">
+      <li><b>Runs the server</b><span>Starts COS at login and keeps it running, one server, one owner. An update stages a full new version, runs a real query on every installed provider, and switches once one proves. No terminal after setup.</span></li>
+      <li><b>Reads the lens</b><span>Every question you asked on the glasses, with the photo you were looking at. Every voice it learned, every call it saved, and what was decided across them.</span></li>
+      <li><b>Writes back</b><span>Type into a Claude, Codex, or Cursor session from its pane and the reply lands in the real thread. Run a task through the agent on this Mac.</span></li>
+    </ul>
+  </div>
+
+  <!-- data-view on the rail and tiles is read by scripts/check-version-drift.py (check 11): keep the keys and their order equal to the /control tab rail -->
+  <div class="ctl-win reveal" role="img" aria-label="The COS Control Activity window. Seven tiles: Messages, Speakers, Meetings, Memories, Threads, Sessions, and Tasks, each with a count of what it holds.">
+    <div class="ctl-bar"><span class="ctl-lights"><i></i><i></i><i></i></span><span class="ctl-title">COS Activity</span></div>
+    <div class="ctl-tool">
+      <span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="15" height="16" loading="lazy"><b>COS</b></span>
+      <span class="ctl-tb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 10 4l6.5 5.5M5 8.5V16h10V8.5"/></svg>Home</span>
+      <span class="ctl-tb dim"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg>Back</span>
+      <span class="ctl-crumb">COS Control</span>
+      <span class="ctl-conn"><i></i>Server connected</span>
+    </div>
+    <div class="ctl-rail"><span class="ctl-tab" data-view="messages"><svg aria-hidden="true"><use href="#i-chat"/></svg>Messages</span><span class="ctl-tab" data-view="speakers"><svg aria-hidden="true"><use href="#i-wave"/></svg>Speakers</span><span class="ctl-tab" data-view="meetings"><svg aria-hidden="true"><use href="#i-cal"/></svg>Meetings</span><span class="ctl-tab" data-view="memories"><svg aria-hidden="true"><use href="#i-spark"/></svg>Memories</span><span class="ctl-tab" data-view="threads"><svg aria-hidden="true"><use href="#i-thread"/></svg>Threads</span><span class="ctl-tab" data-view="sessions"><svg aria-hidden="true"><use href="#i-term"/></svg>Sessions</span><span class="ctl-tab" data-view="tasks"><svg aria-hidden="true"><use href="#i-task"/></svg>Tasks</span></div>
+    <div class="ctl-body">
+      <div class="ctl-head"><span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="20" height="22" loading="lazy"><b>COS</b></span><span class="ctl-gotcos">gotcos</span></div>
+      <p class="ctl-h">Activity</p>
+      <p class="ctl-sub">Seven views into the work your COS already holds.</p>
+      <div class="ctl-grid">
+      <div class="ctl-tile" data-view="messages" style="--d:0.06s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-chat"/></svg><b>Messages</b><span class="ctl-n">30</span></div><p>Questions, answers, and image context from your glasses.</p><i>Recent</i></div>
+      <div class="ctl-tile" data-view="speakers" style="--d:0.13s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-wave"/></svg><b>Speakers</b><span class="ctl-n">38</span></div><p>See enrolled voices, match quality, appearances, and meetings to review.</p><i>Enrolled</i></div>
+      <div class="ctl-tile" data-view="meetings" style="--d:0.20s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Meetings</b><span class="ctl-n">48</span></div><p>Browse saved calls by day, with transcript, summary, and copy.</p><i>This month</i></div>
+      <div class="ctl-tile" data-view="memories" style="--d:0.27s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-spark"/></svg><b>Memories</b><span class="ctl-n">4</span></div><p>Browse the durable context your COS can recall.</p><i>To review</i></div>
+      <div class="ctl-tile" data-view="threads" style="--d:0.34s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-thread"/></svg><b>Threads</b><span class="ctl-n">64</span></div><p>Follow work that develops across meetings and time.</p><i>Tracked</i></div>
+      <div class="ctl-tile" data-view="sessions" style="--d:0.41s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-term"/></svg><b>Sessions</b><span class="ctl-n">63</span></div><p>Claude, Codex, and Cursor sessions on this Mac.</p><i>On disk</i></div>
+      <div class="ctl-tile" data-view="tasks" style="--d:0.48s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-task"/></svg><b>Tasks</b><span class="ctl-n">17</span></div><p>Capture, schedule, and run the work sitting in tasks.md.</p><i>Open</i></div>
+      </div>
+    </div>
+  </div>
+  <p class="kg-cap">A mockup of the Activity window, not a screenshot. In the app, opening a tile moves the rail to that view.</p>
 </section>
 
 <div class="wrap"><div class="rule"></div></div>
