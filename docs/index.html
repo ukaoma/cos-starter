@@ -28,6 +28,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
+<script>(function(){var m='tap';try{m=localStorage.getItem('cos-docs-dictation')==='hold'?'hold':'tap'}catch(e){}document.documentElement.setAttribute('data-dictation',m);})();</script>
+<style>
+/* Glasses dictation setting chosen on the page: tap (the default) or hold. Every
+   gesture-dependent line carries both readings; the attribute on <html> picks one. */
+html[data-dictation="tap"] .dt-hold{display:none!important}
+html[data-dictation="hold"] .dt-tap{display:none!important}
+.dictation-switch{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:18px 0 6px;padding:14px 16px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.04)}
+.dictation-switch .ds-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
+.dictation-switch .ds-seg{display:inline-flex;border:1px solid rgba(255,255,255,.22);border-radius:999px;overflow:hidden}
+.dictation-switch .ds-seg button{appearance:none;border:0;background:transparent;color:inherit;font:inherit;font-size:.92rem;padding:8px 16px;cursor:pointer}
+.dictation-switch .ds-seg button[aria-pressed="true"]{background:rgba(159,250,187,.18);color:#d8fbe8}
+.dictation-switch .ds-seg button:focus-visible{outline:2px solid #9ffabb;outline-offset:-2px}
+.dictation-switch .ds-hint{flex-basis:100%;font-size:.9rem;line-height:1.5;opacity:.86;margin:0}
+.light .dictation-switch{border-color:rgba(0,0,0,.14);background:rgba(0,0,0,.03)}
+.light .dictation-switch .ds-seg{border-color:rgba(0,0,0,.22)}
+.light .dictation-switch .ds-seg button[aria-pressed="true"]{background:rgba(16,112,64,.14);color:#0b3d24}
+</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
@@ -766,6 +783,15 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="sec-head">
     <h2>Your ring. <span class="it goldt">The HUD in context.</span></h2>
     <p class="lead">Tap and hold for shortcuts, scroll to Messages, then read and reply without taking out your phone. Follow the steps to see which part of the HUD changes.</p>
+    <div class="dictation-switch" role="group" aria-label="Glasses dictation setting" id="dictation-switch">
+      <span class="ds-label">Your dictation setting</span>
+      <span class="ds-seg">
+        <button type="button" data-dictation-choice="tap" aria-pressed="true">Tap to talk</button>
+        <button type="button" data-dictation-choice="hold" aria-pressed="false">Hold to talk</button>
+      </span>
+      <p class="ds-hint dt-tap">The default. Tap starts a message, tap finishes it, tap sends it. The steps and tables on this page read that way.</p>
+      <p class="ds-hint dt-hold">Press and hold the ring to talk, let go to review, tap to send. Turn it on in the Even app under COS Glasses, Settings, Voice, <strong>Record a message: Hold to talk, release to finish</strong> (glasses 6.9.474 and later). The steps and tables on this page now read that way; <a href="#hold-to-talk">where a hold works</a> lists every page.</p>
+    </div>
     <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a><a href="#models-ring">Models &amp; effort</a></nav>
   </div>
   <div class="rp-grid">
@@ -843,16 +869,16 @@ Tap=Latest  ↓ Menu  ↑ Messages
           <p>Scroll within the same body. The clock, model, message number, and Pg counter stay put. Long replies can span several chunks; their counter changes at a chunk boundary.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="7" data-gesture="double-tap">
+      <li class="rp-step" data-rp-step="7" data-gesture="double-tap" data-gesture-tap="double-tap" data-gesture-hold="press" data-title-tap="Reply from the lens" data-title-hold="Hold to reply" data-action-tap="Double-tap" data-action-hold="Press and hold">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">08</span><strong>Reply from the lens</strong><span class="rp-action">Double-tap</span>
-          <p>Double-tap starts a voice prompt from the open message, in the same session. Nothing sends until you finish and confirm it. To attach a specific message as context, say &ldquo;reference message 411&rdquo; as a voice command first.</p>
+          <p><span class="dt-tap">Double-tap starts a voice prompt from the open message, in the same session. Nothing sends until you finish and confirm it.</span><span class="dt-hold">Press the ring and keep it down: after a 300 ms gate (so a brush starts nothing) the recorder opens on the open message, in the same session, and the footer reads <code>Release: review</code>. Speak while you hold. Nothing sends until you confirm it.</span> To attach a specific message as context, say &ldquo;reference message 411&rdquo; as a voice command first.</p>
         </button>
       </li>
-      <li class="rp-step" data-rp-step="8" data-gesture="tap">
+      <li class="rp-step" data-rp-step="8" data-gesture="tap" data-gesture-tap="tap" data-gesture-hold="release" data-title-tap="Finish and review the reply" data-title-hold="Let go and review the reply" data-action-tap="Tap" data-action-hold="Release">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">09</span><strong>Finish and review the reply</strong><span class="rp-action">Tap</span>
-          <p>Tap once to finish recording. After transcription, your words appear with Tap=Send in the footer. Nothing has been sent. Read before sending, or scroll down for review options instead.</p>
+          <p><span class="dt-tap">Tap once to finish recording.</span><span class="dt-hold">Let go of the ring to finish recording. (If the ring never reports the release, a tap while you hold reads <code>Tap again to finish</code> and a second tap ends it; a hold stops on its own at 90 seconds.)</span> After transcription, your words appear with Tap=Send in the footer. Nothing has been sent. Read before sending, or scroll down for review options instead.</p>
         </button>
       </li>
     </ol>
@@ -1214,7 +1240,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <tr><td><span class="g-key">&#8593;</span> <span class="g-key">&#8595;</span></td><td>Move the <span class="g-key">&#9654;</span> cursor. The list <strong>wraps</strong>, so scrolling past <strong>Ask COS</strong> returns to <strong>Back to list</strong> instead of dead-ending.</td></tr>
     <tr><td><span class="g-key">Double-tap</span></td><td>Leave for Quick Actions, behind a confirmation. The footer reads <span class="g-key">Double-tap again for Quick Actions</span> and you have three seconds. An open menu closes on the way out.</td></tr>
     <tr><td><span class="g-key">Wait</span></td><td>The menu retires itself after three seconds of no input and the normal footer returns.</td></tr>
-    <tr><td><span class="g-key">Hold</span></td><td>With Glasses dictation set to hold: press and hold on the session to ask COS about it in one motion, let go to review; the recorder says Ask COS (since 6.9.476, after a 300 ms gate that ignores a brush).</td></tr>
+    <tr><td><span class="g-key">Hold</span></td><td><span class="dt-tap">With Glasses dictation set to hold (see the switch at the top of the page): press and hold on the session to act on it in one motion.</span><span class="dt-hold">Press and hold on the session to act on it in one motion, let go to review. On a <strong>Claude</strong> session the hold is <strong>Continue</strong>: the footer reads <code>Tap: actions  Hold: continue</code>, the recorder says Continue, and if the session is busy your words are queued and land when it goes idle (glasses 6.9.486 and later). On a Codex or Cursor session the hold is <strong>Ask COS</strong> (<code>Hold: ask</code>, 6.9.476 and later). A 300 ms gate ignores a brush.</span></td></tr>
   </table></div>
 
   <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Continue</strong> sits exactly one scroll away.</p>
@@ -1631,17 +1657,33 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <ol class="steps">
     <li>
       <h3>Record</h3>
-      <p>Tap <span class="g-key">✉ Record Message</span> in the Messages list, or choose Ask COS from the hold shortcuts. Double-tap in an open message starts a referenced reply; in the Messages list it returns to Quick Actions. Since glasses 6.9.474, set <strong>Settings, Voice, Glasses dictation</strong> to hold and a long press on the ring starts the message wherever a message can start: Messages, an open message, Message History, or a meeting, thread, memory or session you are reading, which the hold picks up so the recorder says Ask COS. Home is tap-only (since 6.9.481): tap opens the latest message and a hold there does nothing. The lens shows <span class="g-key">Listening...</span> and fills with warm transcript text while you speak. Moonshine reruns over the still-open phrase, so words may revise as more audio arrives. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
+      <p><span class="dt-hold">Press and hold the ring on the Messages list, on an open message, on Message History, or on a meeting, thread, memory or session detail; the recorder opens while you hold (see <a href="#hold-to-talk">where a hold works</a>). Or tap</span><span class="dt-tap">Tap</span> <span class="g-key">✉ Record Message</span> in the Messages list, or choose Ask COS from the hold shortcuts. Double-tap in an open message starts a referenced reply; in the Messages list it returns to Quick Actions. Since glasses 6.9.474, set <strong>Settings, Voice, Glasses dictation</strong> to hold and a long press on the ring starts the message wherever a message can start: Messages, an open message, Message History, or a meeting, thread, memory or session you are reading, which the hold picks up so the recorder says Ask COS. Home is tap-only (since 6.9.481): tap opens the latest message and a hold there does nothing. The lens shows <span class="g-key">Listening...</span> and fills with warm transcript text while you speak. Moonshine reruns over the still-open phrase, so words may revise as more audio arrives. If COS is speaking an earlier reply, opening the microphone stops playback first so the old answer cannot overlap or enter the new prompt.</p>
     </li>
     <li>
       <h3>Review</h3>
-      <p>Tap to finish, or let go of the ring when Glasses dictation is set to hold; since 6.9.483 the footer reads <code>Release: review</code> while you hold and <code>Tap: review</code> otherwise; since 6.9.485 a tap while you hold reads <code>Tap again to finish</code> and a second tap ends the recording, so one stray click cannot end it and a release the ring never reported still can. COS runs one complete transcription, on the Mac while it answers or on the phone model when it does not (6.9.485; before that the phone model took every dictation), then reuses the same deterministic glossary and optional Haiku/Sonnet finalizer used by Mac dictation. The Transcribing footer names the route. The complete draft remains reviewable before anything is sent. Final polish is on by default and can be disabled under Voice. The recording remains recoverable on the phone, with a server backup when reachable.</p>
+      <p><span class="dt-tap">Tap to finish, or let go of the ring when Glasses dictation is set to hold;</span><span class="dt-hold">Let go of the ring to finish (tap to finish when you started from Record Message or a menu row);</span> since 6.9.483 the footer reads <code>Release: review</code> while you hold and <code>Tap: review</code> otherwise; since 6.9.485 a tap while you hold reads <code>Tap again to finish</code> and a second tap ends the recording, so one stray click cannot end it and a release the ring never reported still can. COS runs one complete transcription, on the Mac while it answers or on the phone model when it does not (6.9.485; before that the phone model took every dictation), then reuses the same deterministic glossary and optional Haiku/Sonnet finalizer used by Mac dictation. The Transcribing footer names the route. The complete draft remains reviewable before anything is sent. Final polish is on by default and can be disabled under Voice. The recording remains recoverable on the phone, with a server backup when reachable.</p>
     </li>
     <li>
       <h3>Send, edit, or redo</h3>
       <p>The cursor starts on <strong>Send</strong>, so sending as-is is one tap. Or choose <strong>Edit</strong> and speak the change (“make the second sentence shorter”), <strong>Re-record</strong>, or <strong>Cancel</strong>. After an edit you also get <strong>Send revised</strong> and <strong>Undo edit</strong>.</p>
     </li>
   </ol>
+
+  <h3 id="hold-to-talk" style="margin-top:34px">Hold to talk</h3>
+  <p style="font-size:.95rem"><strong>Turn it on.</strong> In the Even app open COS Glasses, then Settings, Voice, <strong>Record a message</strong>, and choose <strong>Hold to talk, release to finish</strong> (the default is <strong>Tap to start, tap to finish</strong>). The setting lives on the phone and takes effect on the next screen you open; the lens says which gesture is live in its footer hints. Glasses 6.9.474 and later. <span class="dt-tap">Flip the switch at the top of this page to read every step and table for hold.</span></p>
+  <p style="font-size:.95rem"><strong>What changes.</strong> A press held past 300 ms starts a message where a hold works; letting go opens the review and a tap sends. The double-tap and the footer menus keep working exactly as before, so nothing you already do is lost. The shortcut menu is a different gesture (tap, release, then press and hold) and is unchanged. While you hold, the footer reads <code>Release: review</code>; a tap while you hold reads <code>Tap again to finish</code> and a second tap ends the recording (for a ring that never reports the release); a hold stops on its own at 90 seconds.</p>
+  <div class="tw dt-hold"><table>
+    <tr><th>Where you hold</th><th>What starts</th><th>Footer hint</th></tr>
+    <tr><td>Messages list</td><td>A new message, recorded in place.</td><td>&mdash;</td></tr>
+    <tr><td>An open message</td><td>A reply into the same session (the reader&rsquo;s own Reply path).</td><td>&mdash;</td></tr>
+    <tr><td>Message History</td><td>A new message; the lens goes to Messages and records.</td><td>&mdash;</td></tr>
+    <tr><td>Meeting, thread or memory detail</td><td>Picks that record up and asks COS about it, one motion (6.9.476 and later).</td><td><code>Hold: ask</code></td></tr>
+    <tr><td>Session detail, Claude</td><td><strong>Continue</strong> the session in place; if it is busy your words are queued and land when it goes idle (6.9.486 and later).</td><td><code>Tap: actions  Hold: continue</code></td></tr>
+    <tr><td>Session detail, Codex or Cursor</td><td>Asks COS about the session (Continue on hold is Claude only for now).</td><td><code>Tap: actions  Hold: ask</code></td></tr>
+    <tr><td>Home</td><td>Nothing. Home is tap-only: tap opens the latest message, Messages is where the hold works (6.9.481 and later).</td><td><code>Hold off here. Tap: messages</code></td></tr>
+    <tr><td>Quick Actions, lists, pickers, an image, a live meeting</td><td>Nothing; a live meeting owns the microphone. Some pages say so once per visit, the rest stay quiet.</td><td>&mdash;</td></tr>
+    <tr><td>The review page</td><td>Nothing. A draft in front of you is never overwritten by a hold (edit it with the menu). A draft you left behind on another page no longer blocks a hold (6.9.490).</td><td>&mdash;</td></tr>
+  </table></div>
   <div class="cards mixed">
     <div class="card">
       <h3>Mac Whisper, default</h3>
@@ -2029,9 +2071,25 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 })();
 </script>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="../assets/ring-3d.js?v=9"></script>
-<script src="../assets/docs-hud.js?v=9"></script>
-<script src="../assets/ring-lessons.js?v=7"></script>
+<script src="../assets/ring-3d.js?v=10"></script>
+<script src="../assets/docs-hud.js?v=10"></script>
+<script src="../assets/ring-lessons.js?v=8"></script>
+<script>
+(function(){
+  var root=document.documentElement,group=document.getElementById('dictation-switch');
+  if(!group) return;
+  var buttons=Array.prototype.slice.call(group.querySelectorAll('[data-dictation-choice]'));
+  function apply(mode,persist){
+    mode=mode==='hold'?'hold':'tap';
+    root.setAttribute('data-dictation',mode);
+    buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-dictation-choice')===mode));});
+    if(persist){try{localStorage.setItem('cos-docs-dictation',mode);}catch(e){}}
+    if(window.CosRingLessons&&typeof window.CosRingLessons.setDictation==='function') window.CosRingLessons.setDictation(mode);
+  }
+  buttons.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-dictation-choice'),true);});});
+  apply(root.getAttribute('data-dictation'),false);
+})();
+</script>
 <script src="../assets/docs-control.js?v=1"></script>
 <script>
 (function(){

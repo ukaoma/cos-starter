@@ -24,6 +24,11 @@
     'swipe-down':{x:-0.8,y:-0.28,z:0.06},
     'tap':{x:-1.15,y:0.15,z:-0.10},
     'hold':{x:-1.15,y:0.15,z:-0.10},
+    // Hold to talk (the Glasses dictation setting): one press, kept down. Same
+    // camera as a tap; the drawing is the hold's third phase without its first tap.
+    'press':{x:-1.15,y:0.15,z:-0.10},
+    // Letting go: the ring at rest, the HUD does the moving.
+    'release':BASE_POSE,
     'double-tap':{x:-0.76,y:-0.18,z:0.13}
   };
 
@@ -339,8 +344,8 @@
   // True while the one-shot gesture still has frames to draw. Hold keeps a
   // slow glow forever; tap, double-tap and swipe stop after one cycle and rest.
   RingRenderer.prototype.gestureLive=function(now){
-    if(this.gesture==='idle' || this.reduced) return false;
-    if(this.gesture==='hold') return true;
+    if(this.gesture==='idle' || this.gesture==='release' || this.reduced) return false;
+    if(this.gesture==='hold' || this.gesture==='press') return true;
     return now-this.gestureStarted < this.gestureCycle()+60;
   };
 
@@ -643,7 +648,7 @@
   };
 
   RingRenderer.prototype.drawGesture=function(ctx,now,visibility,radius,railStart,railEnd){
-    if(this.gesture==='idle') return;
+    if(this.gesture==='idle' || this.gesture==='release') return;
     var elapsed=now-this.gestureStarted;
     // Nothing is drawn during the lead-in: the camera is still turning.
     if(elapsed<0 && !this.reduced) return;
@@ -697,10 +702,13 @@
     // R1 sequence demonstrated by Miles: tap, release, then press and HOLD.
     // Illustrative pacing, not a claim about the firmware recognition threshold.
     // Run once; retaining contact is the lesson, not an endless double-tap loop.
-    if(this.gesture==='hold'){
-      var firstTap=elapsed<TIMING.holdTap, release=elapsed>=TIMING.holdTap && elapsed<TIMING.holdRelease;
+    if(this.gesture==='hold' || this.gesture==='press'){
+      // 'press' is the hold-to-talk contact: no first tap, no release, straight to
+      // the held phase and kept there until the step changes.
+      var isPress=this.gesture==='press';
+      var firstTap=!isPress && elapsed<TIMING.holdTap, release=!isPress && elapsed>=TIMING.holdTap && elapsed<TIMING.holdRelease;
       if(!this.reduced && release) return;
-      var press=this.reduced ? 1 : clamp((elapsed-TIMING.holdRelease)/(TIMING.holdPress-TIMING.holdRelease),0,1);
+      var press=this.reduced ? 1 : isPress ? clamp(elapsed/(TIMING.holdPress-TIMING.holdRelease),0,1) : clamp((elapsed-TIMING.holdRelease)/(TIMING.holdPress-TIMING.holdRelease),0,1);
       var strength=this.reduced ? 1 : firstTap ? 1 : .85+.15*Math.sin(elapsed/500);
       var spread=this.reduced ? .085 : firstTap ? lerp(.045,.12,elapsed/TIMING.holdTap) : lerp(.13,.07,press);
       ctx.save();ctx.globalAlpha=visibility*visibilityAlpha*strength;

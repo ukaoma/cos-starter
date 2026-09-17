@@ -27,6 +27,9 @@
     // arms a "Referencing #N" line only from the spoken "reference message N"
     // command, never from these gestures, so the recording view is plain.
     reply: { nav: '■□□□ LISTEN · COS [O●] Msg Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  demo1234  82%' },
+    // The same recorder with Glasses dictation set to hold (6.9.483+): the footer
+    // reads the control that ends it, and letting go opens the review.
+    replyHold: { nav: '■□□□ LISTEN · COS [O●] Msg Release: review', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release: review  demo1234  82%' },
     review: { nav: 'COS [O] Msg Msg 1/1  Tap=Send  ↓ No 9:16 AM 9/4/26', body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  demo1234  82%' },
     replyReview: { nav: 'COS [O] Msg Msg 1/1  Tap=Send  ↓ No 9:16 AM 9/4/26', body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  demo1234  82%' },
     // The send receipt: the prompt is echoed while the run starts. One tap

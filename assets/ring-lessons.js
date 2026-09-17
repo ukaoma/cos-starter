@@ -25,6 +25,10 @@
     if (gesture === 'tap') return lead + react.tap;
     if (gesture === 'double-tap') return lead + contact.doubleTapGap + react.doubleTap;
     if (gesture === 'swipe-down' || gesture === 'swipe-up') return lead + react.swipe;
+    // Hold to talk: the recorder opens once the press outlasts the phantom gate
+    // (300 ms in the app) and the mic arms; letting go is a release, then the review.
+    if (gesture === 'press') return lead + 450;
+    if (gesture === 'release') return lead + react.tap;
     return 0;
   }
   function holdPhases(lead) { lead = lead || 0; return [lead + contact.holdTap, lead + contact.holdRelease]; }
@@ -213,7 +217,7 @@
   if (!main) return;
   var template = main.querySelector('.rp-stage').cloneNode(true);
   var sequence = 0, warned = false;
-  var labels = {idle:'Ring',tap:'Tap',hold:'Tap · press · hold','double-tap':'Double-tap','swipe-down':'Scroll down','swipe-up':'Scroll up'};
+  var labels = {idle:'Ring',tap:'Tap',hold:'Tap · press · hold',press:'Press and hold','release':'Let go','double-tap':'Double-tap','swipe-down':'Scroll down','swipe-up':'Scroll up'};
   function mount(host, states, compact) {
     var stage, buttons;
     if (compact) {
@@ -329,9 +333,33 @@
     return render;
   }
   var mainItems=Array.from(main.querySelectorAll('.rp-step'));
-  var mainStates=mainSteps(mainItems.map(function(el){return el.querySelector('strong').textContent;}),mainItems.map(function(el){return el.getAttribute('data-gesture');}));
-  mainStates[8].before=lessons.messages[10].before;mainStates[8].transitionText=lessons.messages[10].transitionText;mainStates[8].resultText=lessons.messages[10].resultText;
-  mount(main,mainStates,false);
+  // The Glasses dictation setting the reader has chosen on the page (the switch at the
+  // top of this section, persisted as `cos-docs-dictation`). Steps 08 and 09 carry a
+  // second gesture, title and action for hold mode on their own attributes; the frame
+  // for the recorder is the hold recorder (`Release: review`).
+  function dictationMode(){ return document.documentElement.getAttribute('data-dictation')==='hold' ? 'hold' : 'tap'; }
+  function buildMainStates(mode){
+    var titles=mainItems.map(function(el){var alt=el.getAttribute('data-title-'+mode);return alt||el.querySelector('strong').textContent;});
+    var gestures=mainItems.map(function(el){return el.getAttribute('data-gesture-'+mode)||el.getAttribute('data-gesture');});
+    var states=mainSteps(titles,gestures);
+    if(mode==='hold'){states[7].frame=f.replyHold;}
+    states[8].before=mode==='hold'?f.replyHold:lessons.messages[10].before;states[8].transitionText=lessons.messages[10].transitionText;states[8].resultText=lessons.messages[10].resultText;
+    return states;
+  }
+  var mainStates=buildMainStates(dictationMode());
+  var mainRender=mount(main,mainStates,false);
+  root.CosRingLessons.setDictation=function(mode){
+    var next=buildMainStates(mode==='hold'?'hold':'tap');
+    mainStates.splice.apply(mainStates,[0,mainStates.length].concat(next));
+    mainItems.forEach(function(el,i){
+      var strong=el.querySelector('strong'),action=el.querySelector('.rp-action');
+      if(strong&&el.hasAttribute('data-title-tap')) strong.textContent=next[i].title;
+      if(action&&el.hasAttribute('data-action-'+(mode==='hold'?'hold':'tap'))) action.textContent=el.getAttribute('data-action-'+(mode==='hold'?'hold':'tap'));
+      el.setAttribute('data-gesture',next[i].gesture);
+    });
+    var current=Number(main.getAttribute('data-lesson-index')||0);
+    if(typeof mainRender==='function') mainRender(current,true,false);
+  };
   document.querySelectorAll('[data-ring-lesson]').forEach(function(host){
     mount(host,lessons[host.getAttribute('data-ring-lesson')],true);
   });
