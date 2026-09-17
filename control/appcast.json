@@ -7,7 +7,7 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.233.zip",
       "sha256": "4f2ffea043c79f1c2a4ef3845cbdf44b98468bf6b7b468ee2ac9a7ad45176723",
       "minMacOS": "14.0",
-      "serverTarget": "6.49.1",
+      "serverTarget": "6.50.1",
       "publishedAt": "2026-09-16T12:40:13.664117Z",
       "notes": "A Claude session pane shows what it is doing right now: the state with a clock, the prompt, the last eight tool lines, live from the COS server (6.48.1 and later), with a bounded reconnect and an honest fallback to the stored turns. The composer names the fork mode and the queued follow-ups. Sessions offers Install hooks when the server reports them missing or drifted, Update Server before 6.48.0. Includes 0.5.232: panes read as documents, actions by weight, Sessions reads the server's state."
     }
