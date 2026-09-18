@@ -414,7 +414,7 @@
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; the command above also covers phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and transcription still work without it.</li>
     </ul>
     <div class="note"><strong>Came here from the Even Hub?</strong> You already have the app half &mdash; the server in Step 1 below is the missing piece.</div>
-    <div class="note"><strong>Optional desktop companion: COS Control 0.5.236.</strong> The Mac app includes four advanced Jedi in Session Pet settings, with visible gallery previews for all four. Nia Solari, Elara Vale and Rowan Vale each have four reviewed combat stories plus an eight-frame idle, with connected strikes, Force moves, visible defeats and recovery. Their idle scale matches their own combat art. Since Control 0.5.154 all four Jedi have walking animations. Nia Solari, Elara Vale and Rowan Vale each gain a separate eight-frame walk (1.12 seconds at 100% speed), while Miles retains his original walk. Nia also gains an eight-frame seated meditation loop (1.92 seconds) while waiting, with breathing and a rising electric aura. Elara and Rowan keep their animated idle while waiting. The 32 new frames match each character's existing scale; original idle and combat artwork is unchanged. Distinct idle and meditation clips remain walking rests without duplicate playlist entries. Miles Windu V15.4 retains his 16/17/13/26-frame combat stories and approved 1.30x idle. Choose 25% to 200% Character speed without resizing the figure; macOS Reduced Motion freezes animation. Untouched stock packs upgrade automatically. Custom art, timing, scale and saved preferences stay intact. <a href="/control/">Download COS Control</a> after the glasses are connected.</div>
+    <div class="note"><strong>Easiest path: COS Control.</strong> A menu bar app for the Mac that installs the server for you, keeps it running, launches at login, and updates and rolls back safely. No terminal to babysit. Step 1 below starts with it; the terminal command stays as the alternative. <a href="/control/">Download COS Control</a> (macOS 14 or later, Apple Silicon).</div>
   </div>
 
 
@@ -429,19 +429,26 @@
         <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
-      <p style="font-size:0.88rem;color:var(--text-muted);margin:0 0 0.7rem;">Prefer a menu bar app? <a href="/control/" style="color:var(--accent-green)">Download COS Control for Mac</a> for guided setup, launch at login, Doctor, safe updates, and rollback.</p>
-      <div class="res-label">1 &middot; On your Mac &mdash; start the server</div>
+      <div class="res-label">1 &middot; On your Mac &mdash; run the server</div>
+      <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
+      <ul class="enable">
+        <li><a href="/downloads/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li>On the first open macOS says it could not verify the developer. That is expected: COS Control is open source and not notarized yet. Open <b>System Settings</b>, <b>Privacy &amp; Security</b>, and click <b>Open Anyway</b>.</li>
+        <li>Run <b>Guided Setup</b>, choose <b>Balanced</b>, and click <b>Install Server</b> when it is offered. Control checks <code>whisper-cpp</code> and free disk space, provisions the local voice models, then starts the server as a background service.</li>
+        <li>Once the menu bar shows the server running, click <b>Copy Pairing Token</b>. That is the API token for Step 2 (it stays on the clipboard for 60 seconds).</li>
+      </ul>
+      <p style="font-size:0.88rem;color:var(--text-muted);margin:0.9rem 0 0.4rem;"><strong>Or the terminal.</strong> The same server, running in the foreground. Keep the window open while you use the glasses.</p>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">Keep the terminal open. The server prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The terminal prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
-        <li>Open it and enter the server URL + API token from your terminal (or tap <b>"I have a COS username"</b> and skip the typing).</li>
+        <li>Open it and enter the server URL and API token (or tap <b>"I have a COS username"</b> and skip the typing). The URL is <code>http://</code> your Mac&rsquo;s address <code>:3141</code>: the terminal prints it; with COS Control, use the Mac&rsquo;s Wi-Fi address from System Settings or its Tailscale address. The token is what the terminal printed, or what <b>Copy Pairing Token</b> put on the clipboard.</li>
         <li>Tap <b>Connect</b>.</li>
       </ul>
       <div class="res-label">3 &middot; Prove it</div>
       <ul class="enable">
-        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, run <code>brew install whisper-cpp</code>, stop COS with Ctrl-C, and rerun the server command before tapping the mic.</li>
+        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided Setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided Setup again in COS Control before tapping the mic.</li>
         <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
         <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
         <li><b>Learn tap-and-hold:</b> tap and release, then quickly press again and keep holding for the shortcut window above the HUD. Scroll to <b>Ask COS</b>, <b>Model</b>, <b>Start Meeting</b>, <b>Messages</b>, <b>Sessions</b>, <b>Tasks</b>, or <b>Home</b>, then tap to select. While recording, <b>Resume Meeting</b> and <b>Stop Meeting</b> lead; Tasks stays in Quick Actions instead. <a href="/docs/#hold-menu">Practice the hold gesture.</a></li>
@@ -454,6 +461,7 @@
       <div class="note"><strong>Pick up where the glasses left off.</strong> Add the <code>/glasses-day</code> skill and your COS pulls the day's glasses questions and answers into your desk session &mdash; so anything you asked on the go becomes something you can act on. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md">skills/glasses-day.md</a>.</div>
       <div class="actions">
         <a class="primary" href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE">Install on the Even Hub</a>
+        <a class="secondary" href="/control/">Download COS Control</a>
         <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
       </div>
       <p class="hosted">Want to tune model, context, and the lens? <a href="#tune" onclick="var t=document.getElementById('tune');t.open=true;t.scrollIntoView({behavior:'smooth'});return false;">Make it yours below.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
@@ -656,6 +664,7 @@
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
           <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Claude Desktop is not the CLI. For Opus/Fable/Sonnet, run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a>.</li>
           <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="opt"><strong>COS Control</strong> (recommended) &mdash; the Mac menu bar app that installs and runs the server for you, launches at login, and updates and rolls back safely. macOS 14 or later, Apple Silicon. <a href="/control/">Download</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
           <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
         </ul>
@@ -663,7 +672,9 @@
       </div>
 
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
-        <p class="sub">Runs on your own Mac. Keep the terminal open while you use the glasses.</p>
+        <p class="sub">Runs on your own Mac, as a background service under COS Control or in a terminal you keep open.</p>
+        <div class="note"><strong>No terminal: COS Control.</strong> <a href="/control/">Download COS Control</a>, move it into Applications, approve the first open under Privacy &amp; Security, then run <b>Guided Setup</b> and click <b>Install Server</b> when it is offered. It installs this same server, starts it, and keeps it running at login; Doctor, safe restart, update and rollback live in the menu bar. Skip the command below, and use <b>Copy Pairing Token</b> in step 4. Already running the server in a terminal? Stop it with Ctrl-C first; Control refuses to take over a process it does not own.</div>
+        <p class="sub">Or in the terminal:</p>
         <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
         <div class="note"><strong>Voice runs locally.</strong> Mac whisper.cpp remains the authoritative meeting engine and costs zero per minute. Install once: <code>brew install whisper-cpp</code>. Since COS Glasses 6.8.336, you can also choose on-phone Moonshine Tiny or Base for rolling Message and Meeting preview. Text forms and may revise while you speak; the shared glossary + AI finalizer cleans settled phrases, while speaker-attributed Large-v3 remains canonical for meetings. This requires server 6.27.2 or newer. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>
         <div class="note"><strong>Running the full COS?</strong> Add the <code>/cos-glasses</code> skill so your agent starts the server, health-checks it, keeps it on the latest release, and troubleshoots for you &mdash; ask your COS to <em>"add the /cos-glasses skill from the Starter Kit"</em> (<a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>).</div>
@@ -686,8 +697,8 @@
 
       <div class="step" data-step="4 · Connect"><h2>Connect and go</h2>
         <ul class="enable">
-          <li>Enter your Mac's Tailscale IP and paste the API token from the server terminal.</li>
-          <li>Leave the server terminal running, then tap <strong>Connect</strong>.</li>
+          <li>Enter your Mac's Tailscale IP and paste the API token: the server terminal prints it, or click <strong>Copy Pairing Token</strong> in COS Control (60 seconds on the clipboard).</li>
+          <li>Leave the server running, in the terminal or under COS Control, then tap <strong>Connect</strong>.</li>
         </ul>
         <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
         <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to GPT Frontier."</div>
@@ -695,7 +706,7 @@
 
       <div class="step" data-step="Help"><h2>Troubleshooting</h2>
         <ul class="enable">
-          <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server terminal is still running.</li>
+          <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server is still running (the terminal window, or the COS Control menu bar item).</li>
           <li><strong>"Claude not found"</strong> &mdash; Claude Desktop is not the terminal CLI. Run <code>npm install -g @anthropic-ai/claude-code</code> on one line without sudo, then run <code>claude</code> and finish sign-in. Verify with <code>claude --version</code>.</li>
           <li><strong>npm EACCES / root-owned cache</strong> &mdash; do not rerun with sudo or recursively change system ownership. Use <code>npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>. Server 6.12.2+ does not run a second install inside npm's temporary cache.</li>
           <li><strong><code>@latest</code> launched an older version</strong> &mdash; compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>, then restart with <code>npm_config_prefer_online=true npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>.</li>
