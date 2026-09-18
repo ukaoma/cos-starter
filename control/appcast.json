@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.234",
-      "build": 272,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.234.zip",
-      "sha256": "a1e12853e55a9a54a108fa7a5c3de97f8648b2eb85c4ede0eaa8e89665668625",
+      "version": "0.5.235",
+      "build": 273,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.235.zip",
+      "sha256": "f3a0144591bb2ea9dfeb53075ee2caece74111e9a8da0e3f48769f564d315e08",
       "minMacOS": "14.0",
       "serverTarget": "6.50.1",
-      "publishedAt": "2026-09-17T23:03:51.445456Z",
-      "notes": "Message a session from the Session Pet. A paperplane on each live row opens a card that names the session; Return sends into the real thread, the same routes the glasses use. A running Claude session takes it into its own window; a session mid-turn queues it and it lands when the turn ends, in the pet and in the Sessions pane. Meetings and Speakers read times as 1:02 PM; Settings, Advanced, Clock offers 24-hour."
+      "publishedAt": "2026-09-18T00:54:48.620931Z",
+      "notes": "See what is queued behind a session and cancel it: the pet card and the Sessions pane list each parked message with its place and text, with an \u00d7 or Cancel while it is still waiting; a message the session already has says so. Includes 0.5.234: message a session from the pet, queue-and-deliver behind a running turn, 12-hour meeting times with a 24-hour pick under Settings, Advanced."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-pet-message-20260917",
-    "minBuild": 272,
-    "title": "Message a session from the pet",
-    "body": "Hover a live row in the pet's RUNNING list and press the paperplane. The card names the session; Return sends. A live Claude session takes the message into its own window; a Codex or Cursor session, or a session mid-turn, queues it and it lands when the turn ends. Meeting times now read 1:02 PM; the 24-hour clock is under Settings, Advanced, Clock."
+    "id": "control-queue-list-20260917",
+    "minBuild": 273,
+    "title": "Queued messages, listed and cancellable",
+    "body": "Under the pet's message card and the Sessions composer, what is parked behind a session now shows with its place in line and its text. Press \u00d7 or Cancel while it is waiting. A message the session already has cannot be recalled; Control says so. Also since 0.5.234: message a session from the pet, and meeting times read 1:02 PM."
   }
 }
