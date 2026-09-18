@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.235",
-      "build": 273,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.235.zip",
-      "sha256": "f3a0144591bb2ea9dfeb53075ee2caece74111e9a8da0e3f48769f564d315e08",
+      "version": "0.5.236",
+      "build": 274,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.236.zip",
+      "sha256": "a3d04f961496e2fd41e359a117e9fd449b6a7d1c256dc7c47b927cc944e87995",
       "minMacOS": "14.0",
       "serverTarget": "6.50.1",
-      "publishedAt": "2026-09-18T00:54:48.620931Z",
-      "notes": "See what is queued behind a session and cancel it: the pet card and the Sessions pane list each parked message with its place and text, with an \u00d7 or Cancel while it is still waiting; a message the session already has says so. Includes 0.5.234: message a session from the pet, queue-and-deliver behind a running turn, 12-hour meeting times with a 24-hour pick under Settings, Advanced."
+      "publishedAt": "2026-09-18T02:40:18.490041Z",
+      "notes": "A queued message opens to its whole text on the pet card, and can be edited while it waits: Edit puts it in the field, Return replaces it, Escape keeps it as it was; the Sessions pane has Edit and Replace. A message the session already has cannot be replaced, and Control says so. Includes 0.5.235 (queue listed and cancellable) and 0.5.234 (message a session from the pet, queue-and-deliver, 12-hour meeting times)."
     }
   },
   "killSwitch": {
@@ -17,9 +17,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-queue-list-20260917",
-    "minBuild": 273,
-    "title": "Queued messages, listed and cancellable",
-    "body": "Under the pet's message card and the Sessions composer, what is parked behind a session now shows with its place in line and its text. Press \u00d7 or Cancel while it is waiting. A message the session already has cannot be recalled; Control says so. Also since 0.5.234: message a session from the pet, and meeting times read 1:02 PM."
+    "id": "control-queue-edit-20260917",
+    "minBuild": 274,
+    "title": "Queued messages open and edit",
+    "body": "Tap a queued row on the pet card to read the whole message. Edit puts it in the field; Return replaces it in the queue, Escape keeps it as it was. The Sessions composer has Edit and Replace. With more than one waiting, the edited message goes to the back of the line, and Control says so. A message the session already has cannot be recalled."
   }
 }
