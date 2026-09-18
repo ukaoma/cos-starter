@@ -7,7 +7,7 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.236.zip",
       "sha256": "a3d04f961496e2fd41e359a117e9fd449b6a7d1c256dc7c47b927cc944e87995",
       "minMacOS": "14.0",
-      "serverTarget": "6.50.1",
+      "serverTarget": "6.50.2",
       "publishedAt": "2026-09-18T02:40:18.490041Z",
       "notes": "A queued message opens to its whole text on the pet card, and can be edited while it waits: Edit puts it in the field, Return replaces it, Escape keeps it as it was; the Sessions pane has Edit and Replace. A message the session already has cannot be replaced, and Control says so. Includes 0.5.235 (queue listed and cancellable) and 0.5.234 (message a session from the pet, queue-and-deliver, 12-hour meeting times)."
     }
