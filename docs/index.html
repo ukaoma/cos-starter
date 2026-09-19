@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.475 (build 475, Hub pin 6.9.470) · server @gotcos/glasses-server 6.50.4 · COS Control 0.5.237.
+   Covers COS Glasses 6.9.475 (build 475, Hub pin 6.9.470) · server @gotcos/glasses-server 6.52.0 · COS Control 0.5.239.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -735,8 +735,8 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.9.475</b> · build 475</span>
-      <span class="chip">Server <b>6.50.4</b></span>
-      <span class="chip">Control <b>0.5.237</b></span>
+      <span class="chip">Server <b>6.52.0</b></span>
+      <span class="chip">Control <b>0.5.239</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -963,8 +963,13 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.237, glasses 6.9.475, server 6.50.4.</strong> COS Control 0.5.237 is the public Mac download. COS Glasses 6.9.475 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.50.4, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.476 to 6.9.506, and 6.9.510, are in the Hub repo as versioned packs ahead of the companion pack (6.9.507 to 6.9.509 were not released); the version list below says what each adds.</p>
+    <p><strong>Latest release package: Control 0.5.239, glasses 6.9.475, server 6.52.0.</strong> COS Control 0.5.239 is the public Mac download. COS Glasses 6.9.475 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.52.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.476 to 6.9.506, and 6.9.510 to 6.9.512, are in the Hub repo as versioned packs ahead of the companion pack (6.9.507 to 6.9.509 were not released); the version list below says what each adds.</p>
     <ul class="release-list">
+      <li><strong>Answer session questions and approvals from the glasses or phone.</strong> Server 6.52.0 with glasses 6.9.512: when a Claude session asks a question or requests a tool approval while you have been away from the Mac, COS can hold it for the worn glasses or visible phone. Read every option or the exact printable command, choose with a two-tap confirm, dictate Other text, or Leave for the Mac so its native dialog appears immediately. A stale card never sends, the first answer wins, and a retry reports what the server actually recorded.</li>
+      <li><strong>A running Messages reply stays readable.</strong> Server 6.52.0 with glasses 6.9.512: the running card and job page can show the agent&rsquo;s own words, short tool steps, and outcomes as one durable trail, with whole-word paging through the full run. Reconnect and retry rebuild the trail without gaps; Tool activity and Phone only still govern what appears, and secrets and local paths are redacted before the trail is stored.</li>
+      <li><strong>Codex writes appear while the session runs.</strong> Server 6.52.0 with glasses 6.9.512: a Codex session streams its new words, tool steps, and short reasoning status onto the session page instead of showing only a spinner until the turn ends. A reconnect resumes from the last event, and Claude and Cursor session streams keep their existing behavior.</li>
+      <li><strong>Continue reaches busy Claude, Codex, and Cursor work.</strong> Server 6.51.0 with glasses 6.9.511 and Control 0.5.238: a Continue that meets a busy thread is parked and delivered when the turn ends instead of being refused. Codex messages enter the Codex app&rsquo;s own visible queue, Cursor messages leave through that composer&rsquo;s Stop hook, and COS Control&rsquo;s Sessions pane and pet use the same queue contract. Right-click the pet for Full, Calm, or No motion, or hide it.</li>
+      <li><strong>Control keeps the server switches you set.</strong> Control 0.5.239 preserves the live Continue, Codex queue, session-hook, glasses question and approval, and Messages-trail switches through Update Server, repair, and adoption instead of replacing hand-set values with defaults.</li>
       <li><strong>Your Mac decides which COS window has the glasses, and a recording keeps them.</strong> Server 6.50.3 and 6.50.4 with glasses 6.9.510: the 6.9.505 check lived in the Even app&rsquo;s storage, and a hidden copy could stop answering it while it kept recording, so one meeting was still recorded twice. Now every copy checks in with your Mac, which picks one owner per phone. A window that is recording keeps the glasses: its check-ins say so, and every meeting chunk names the window that sent it. Reopening COS mid-meeting, reopening it while offline, or losing the network mid-meeting no longer stops the recording; a newer window waits and says so on the phone. If two windows really are both recording, the one that had the glasses keeps them and the other stops (saved). Offline, a recording window never steps aside, and the storage check is the fallback when the Mac is out of reach. Needs server 6.50.1; the Mac decides from 6.50.3, and the recording hold needs 6.50.4.</li>
       <li><strong>Meeting sync lists each meeting and where it is.</strong> Control 0.5.237: under Meeting sync, one line per meeting the Mac is polishing or saving, with its start time and its stage (HQ polish with a percent, saving to the library, or waiting with its length of audio), the one being worked on first. A long meeting polishing ahead of short ones no longer reads as a stuck sync. HQ prefill reads Ready between recordings instead of 0/0.</li>
       <li><strong>The Turbo preview comes back on its own.</strong> Server 6.50.2: one failed Turbo preview request (the Mac under load) used to switch the fast <code>~</code> line off until the server restarted; on 2026-09-17 it stayed off for 34 hours while Turbo itself answered in a quarter of a second. Now a failure is a 10 second pause and the next request tries again; five in a row restart the Turbo worker; a worker that exited is restarted with a backoff that grows to 15 minutes while restarts keep failing. A missing model or someone else&rsquo;s process on the preview port is never restarted, and nothing restarts it after the server shuts down. The committed transcript was never affected. The same release keeps coming back to a Claude Desktop tab from blocking a Continue for 30 seconds (the away summary Desktop writes on return is its own bookkeeping, not a turn).</li>
@@ -1015,6 +1020,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Glasses 6.9.512</dt><dd>Messages gains a readable running trail with whole-word paging, status and tool-activity controls, and gap-safe reconnects. Session questions and approvals appear as lens and phone cards only while the client is live; every choice takes two taps, Other can be dictated, Leave for the Mac hands the native dialog back immediately, and stale or expired cards cannot send. Codex sessions show their live words, steps, and short reasoning line. Requires server 6.52.0.</dd>
+        <dt>Glasses 6.9.511</dt><dd>A Continue that meets a busy thread after recording is parked under the same turn key and delivered when the turn ends instead of being refused. Hold on a Codex session is Continue and reaches the Codex app&rsquo;s queue; a Cursor composer mid-turn can take a queued message through its Stop hook. Requires server 6.51.0 for Codex and Cursor.</dd>
+        <dt>Control 0.5.239</dt><dd>Update Server, repair, and adoption preserve the hand-set launch switches for live Continue, the Codex queue, session hooks, glasses questions and approvals, and the Messages trail.</dd>
+        <dt>Control 0.5.238</dt><dd>The Session Pet discovers Codex threads the Activity cache has not listed and reads their current turn state, and it discovers active Cursor composers. The Sessions pane parks a message when its probe or attach finds a busy thread. Right-click the pet for Full, Calm, or No motion, or hide it.</dd>
+        <dt>Server 6.52.0</dt><dd>Messages jobs can publish an opt-in, redacted trail of prose, tool steps, and outcomes with its own reconnect cursor. Session questions and tool approvals can be held for an away user and answered from a live glasses or phone client, with idempotent answers and immediate hand-back to the desk. Codex session streams include new words, steps, and short reasoning status as the rollout writes them.</dd>
+        <dt>Server 6.51.0</dt><dd>Continue into a Codex thread held by the Codex app uses the app&rsquo;s own visible queue, and a queued Codex turn drains on the engine&rsquo;s completion marker. A Cursor composer that its hooks show mid-turn can take one queued follow-up through its Stop hook, and Cursor rows carry hook-grounded state.</dd>
         <dt>Glasses 6.9.510</dt><dd>Every claim to the Mac carries <code>recording</code> and every meeting chunk carries <code>?clientInstance=</code>, the id the window claims with; a recording window refuses a step-aside when the Mac says the owner is not recording (<code>captureLive: false</code>, logged as <code>instance.yield.refused</code>). Builds 6.9.507 to 6.9.509 were not released.</dd>
         <dt>Glasses 6.9.485</dt><dd>Mac first: with Transcription set to Mac + phone model, dictation and live meeting text go to the Mac while it answers and the phone model takes over when it does not, including a Mac that reads reachable but refuses the recording or a live-text chunk; Use the phone model: Always keeps the 6.9.484 behaviour. The per-hold Phone Tiny flash is replaced by the route on the Transcribing footer (<code>Tiny on phone</code>, <code>Mac fallback</code>). The inbox glance hands off after 2.5 seconds. A tap while the ring is held arms <code>Tap again to finish</code> and a second tap within two seconds ends the recording. With a meeting, memory, thread or session attached, the recorder footer shortens the title to the row&rsquo;s width so <code>Ask COS &#183; Release: review</code> stays on the one visible line. Under 0.4 seconds of audio, or an empty transcript, ends as No speech detected on the phone. <code>Tap: actions &#183; Hold: ask</code> shows only on a message; a hold on the dashboard says Hold to talk not available here. A reply starting while you record leaves the recorder&rsquo;s footer alone. Requires server 6.45.3.</dd>
         <dt>Glasses 6.9.484</dt><dd>While you record a plain message the footer reads the control (<code>Tap: review</code>, or <code>Release: review</code> while a hold is down) instead of the message reader&rsquo;s <code>Tap: actions &#183; Hold: ask</code>, which named two gestures the recorder does not have; it showed whenever a timed footer note cleared during a recording. A message still shows its own line. Requires server 6.45.3.</dd>
@@ -1095,11 +1106,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.50.4, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.52.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.50.4</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.52.0</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1670,7 +1681,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.475 plus server 6.50.4 is the current companion pair; Even Hub still lists 6.9.470.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.475 plus server 6.52.0 is the current companion pair; Even Hub still lists 6.9.470.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -1989,11 +2000,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.237</strong>, server <strong>6.50.4</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.239</strong>, server <strong>6.52.0</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.50.4, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.52.0, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -2010,7 +2021,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.50.4; COS Control 0.5.237 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.52.0; COS Control 0.5.239 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2191,7 +2202,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.237 / server 6.50.4, 2026-09-18; Hub packs to 6.9.510)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.239 / server 6.52.0, 2026-09-19; Hub packs to 6.9.512)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
