@@ -11,8 +11,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Is an AI Harness? Own Your AI Memory | GotCOS</title>
-<meta name="description" content="An AI harness surrounds a frontier model with memory, instructions, tools, permissions, and persistence. Learn why the harness is the part you can own.">
+<title>What Is an AI Harness? One AI Memory for Every Model | GotCOS</title>
+<meta name="description" content="An AI harness surrounds a frontier model with memory, tools, rules, and persistence. Keep one shared AI memory as a database you own, let any model query it, and switch engines without starting over.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://www.gotcos.com/harness/">
 <meta property="og:type" content="article">
@@ -39,9 +39,9 @@
     {
       "@type": "Article",
       "headline": "What Is an AI Harness? The Model Is Rented. The Harness Is Yours.",
-      "description": "A practical guide to AI harnesses, personal memory, tool use, model portability, and user-owned context.",
+      "description": "A practical guide to AI harnesses, shared AI memory as a database you own, tool use, model portability over MCP, and user-owned context.",
       "datePublished": "2026-07-10",
-      "dateModified": "2026-07-10",
+      "dateModified": "2026-09-20",
       "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
       "publisher": {"@type": "Organization", "name": "GotCOS", "url": "https://www.gotcos.com"},
       "mainEntityOfPage": "https://www.gotcos.com/harness/",
@@ -62,6 +62,10 @@
         {"@type": "Question", "name": "Is MCP an AI harness?", "acceptedAnswer": {"@type": "Answer", "text": "No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system."}},
         {"@type": "Question", "name": "Can one harness use Claude, GPT, and Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "A harness can support multiple models. COS supports Claude Code and Codex today; GPT, Gemini, and local models require additional adapters."}},
         {"@type": "Question", "name": "Does a local AI harness keep all data private?", "acceptedAnswer": {"@type": "Answer", "text": "A local-first harness can keep the durable corpus and outputs on devices you control. However, any context sent to a hosted model for inference is processed under that provider's terms and data controls. Local storage and local inference are separate choices."}},
+        {"@type": "Question", "name": "What is an AI memory layer?", "acceptedAnswer": {"@type": "Answer", "text": "The AI memory layer is the record of who you are, who you work with, what you decided, and what you corrected, kept separate from any single model or app. A model reads from it before it answers and writes back to it after. When the layer lives outside the assistant, as files and indexes you own, it becomes shared memory that any model can use."}},
+        {"@type": "Question", "name": "Can ChatGPT, Claude, Cursor, and the next assistant all query the same memory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, when the memory lives as a resource instead of inside one app's chat history. COS exposes your memory over MCP, so any MCP-capable host reads the same record. One connector, one memory, no re-explaining. The harness still decides what is exposed, what is retrieved, and what needs approval."}},
+        {"@type": "Question", "name": "Is Claude memory or ChatGPT memory portable?", "acceptedAnswer": {"@type": "Answer", "text": "Not on their own. Built-in memory features live inside that vendor's app and follow that vendor's rules. A harness inverts this: the memory sits outside every assistant, and each model connects to it. Switching engines keeps the record intact."}},
+        {"@type": "Question", "name": "What is a memory MCP server?", "acceptedAnswer": {"@type": "Answer", "text": "A memory MCP server exposes stored memory as resources and tools over the Model Context Protocol, so any MCP client can read from it and write to it. It makes one shared AI memory reachable from several assistants. It is not the whole harness: retrieval, policy, approvals, and persistence still need an owner."}},
         {"@type": "Question", "name": "Why does an AI harness matter for personal memory?", "acceptedAnswer": {"@type": "Answer", "text": "The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a model change."}}
       ]
     }
@@ -208,7 +212,15 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .build{background:var(--ink2)}.build-head{max-width:750px}.build h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.build .lead{color:var(--muted);margin-top:18px}.steps{display:grid;gap:1px;margin-top:42px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px;background:rgba(255,246,232,.025);border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.step .n{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1}.step h3{font-size:1.02rem;margin-bottom:5px}.step p{color:var(--muted);font-size:.9rem;max-width:72ch}
 .faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"−"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
 .sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#654919}
-.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
+.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}
+#shared-memory h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}
+#shared-memory h2 em{color:var(--gold);font-weight:400;font-style:italic}
+#shared-memory h3{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.2;margin:38px 0 4px;max-width:44ch}
+#shared-memory .lead{max-width:68ch}
+#shared-memory .lead+.lead{margin-top:16px}
+.memory-traits{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px;max-width:68ch}
+.memory-traits li{padding:2px 0 2px 18px;border-left:2px solid var(--gold);color:var(--muted);font-size:1rem;line-height:1.6}
+.memory-traits li b{color:var(--fg);font-weight:600}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
   .nav .links .nav-login{color:var(--ink-on-cream,#241708);font-weight:500}
   footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
   footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
@@ -313,12 +325,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <div class="hero-grid wrap">
     <div class="reveal">
       <h1>The model is rented. <em>The harness is yours.</em></h1>
-      <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, your tools, your rules, and a place to keep working. The system around the model is what turns rented intelligence into an AI that knows how you operate. Not one clever prompt. The operating layer underneath it.</p>
+      <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, your tools, your rules, and a place to keep working. The system around the model is what turns rented intelligence into an AI that knows how you operate. Not one clever prompt. The operating layer underneath it. One memory, held outside every assistant, that any model can query.</p>
       <div class="actions">
         <a class="btn primary" href="#definition">Understand the harness</a>
         <a class="btn ghost" href="#build">Build your own</a>
       </div>
-      <p class="byline">Miles Ukaoma · GotCOS field guide · August 2026</p>
+      <p class="byline">Miles Ukaoma · GotCOS field guide · August 2026 · updated September 2026</p>
     </div>
 
     <div class="rig reveal" aria-label="Interactive diagram showing a replaceable AI model inside a user-owned harness">
@@ -482,6 +494,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     </div>
   </section>
 
+  <section id="shared-memory">
+    <div class="wrap reveal">
+      <h2>One AI memory. <em>Every model.</em></h2>
+      <p class="dek">Shared memory is a database, not a chat history.</p>
+      <p class="lead">Every assistant wants to be the place you remember things. That is the trap. A new one ships every two weeks, and each one starts at zero. Re-explaining your world to software is a tax. I stopped paying it.</p>
+
+      <h3>The models are converging. Your memory is what separates them.</h3>
+      <p class="lead">Frontier models are landing in the same place. Same intelligence, same tool use, same tricks, a new leader every cycle and the gap closing right behind it. When every engine can do the job, the engine stops being the decision. What decides is what the engine knows about you, and how fast you can move that knowledge to the next one. Your people. Your decisions. Your corrections. The thing you said last Tuesday that changes the answer this Tuesday.</p>
+      <p class="lead">I can swap the top models under COS and get the same operator back. Same priorities, same instincts, same mistakes it already learned not to repeat. That is not the model being smart. That is the memory being mine, and the swap taking minutes instead of months.</p>
+
+      <h3>Treat AI memory as a database you own.</h3>
+      <p class="lead">A chat history is a receipt. A memory is a record. The difference is structure: people, decisions, tasks, meetings, and corrections stored as files and indexes on hardware you control, versioned, searchable, and written back to after every session. Agent memory should not belong to the agent. It should belong to you.</p>
+      <ul class="memory-traits">
+        <li><b>Owned.</b> Ordinary files and indexes you can read, back up, and move. Not a memory feature locked inside one vendor's app.</li>
+        <li><b>Structured.</b> Identity and decisions in readable files. Tasks and events in structured stores. Retrieval through search indexes.</li>
+        <li><b>Compounding.</b> Every correction lands in the record, so the next model inherits it on day one instead of relearning it on day ninety.</li>
+        <li><b>Queryable.</b> Any model that can reach the record can work from it. Persistent memory stops being a feature and becomes infrastructure.</li>
+      </ul>
+
+      <h3>Portable AI memory, one connection, any model.</h3>
+      <p class="lead">This is the part that changes the economics. Expose the memory over MCP and the same record answers Claude, Codex, Cursor, ChatGPT, and whatever ships next month. One connector. No migration. No onboarding conversation. The engine changes. The relationship does not.</p>
+      <p class="lead">The harness still runs the door. It decides what is retrievable, what needs approval, and what gets written back. Portability without policy is a leak. Portability with policy is a moat.</p>
+      <p class="lead">The model is the engine you rent by the month. The memory is the asset you keep. Build it once, keep it outside every assistant, and make every model earn the right to query it. <a href="#faq">How that works over MCP</a>.</p>
+    </div>
+  </section>
+
   <div class="burn down" aria-hidden="true"></div>
   <section class="fieldnotes" id="cos">
     <div class="field-grid wrap">
@@ -527,7 +565,11 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <details><summary>What is an AI harness?</summary><p>An AI harness is the operating system around a model. It holds your memory, your tools, the rules it follows, and the permissions and state that let it keep working. That structure is what turns a single answer into a system that does useful work again and again.</p></details>
       <details><summary>Is an AI harness the same as an AI agent?</summary><p>No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts and determines what survives between runs.</p></details>
       <details><summary>Is MCP an AI harness?</summary><p>No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system.</p></details>
-      <details><summary>Can one harness use Claude, GPT, and Gemini?</summary><p>A harness can support multiple models. COS supports Claude Code and Codex today; GPT, Gemini, and local models require additional adapters.</p></details>
+      <details><summary>Can one harness use Claude, GPT, and Gemini?</summary><p>A harness can support multiple models. COS runs on Claude Code and Codex today; GPT, Gemini, and local models require additional adapters. Running the harness and querying its memory are separate questions, and the second one is already open to every model.</p></details>
+      <details><summary>What is an AI memory layer?</summary><p>The AI memory layer is the record of who you are, who you work with, what you decided, and what you corrected, kept separate from any single model or app. A model reads from it before it answers and writes back to it after. When the layer lives outside the assistant, as files and indexes you own, it becomes shared memory that any model can use.</p></details>
+      <details><summary>Can ChatGPT, Claude, Cursor, and the next assistant all query the same memory?</summary><p>Yes, when the memory lives as a resource instead of inside one app's chat history. COS exposes your memory over MCP, so any MCP-capable host reads the same record: Claude, Cursor, Codex, ChatGPT, or whatever ships next. One connector, one memory, no re-explaining. The harness still decides what is exposed, what is retrieved for a given question, and what needs your approval.</p></details>
+      <details><summary>Is Claude memory or ChatGPT memory portable?</summary><p>Not on their own. Built-in memory features live inside that vendor's app and follow that vendor's rules. You cannot hand them to a different model. A harness inverts this: the memory sits outside every assistant, and each model connects to it. Switching engines keeps the record intact.</p></details>
+      <details><summary>What is a memory MCP server?</summary><p>A memory MCP server exposes stored memory as resources and tools over the Model Context Protocol, so any MCP client can read from it and write to it. It is the plumbing that makes one shared AI memory reachable from several assistants. It is not the whole harness: retrieval, policy, approvals, and persistence still need an owner.</p></details>
       <details><summary>Does a local AI harness keep all data private?</summary><p>Not automatically. A local-first harness can keep the durable corpus and outputs on devices you control. Any context sent to a hosted model for inference is still processed under that provider's terms and data controls. Local storage and local inference are separate choices.</p></details>
       <details><summary>Why does a harness matter for personal AI memory?</summary><p>The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a new model, interface, or device.</p></details>
 
