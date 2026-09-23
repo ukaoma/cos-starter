@@ -7,9 +7,9 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.239.zip",
       "sha256": "76ea9be3dd1486f54ff75f2df78c50c301f9713653d00e80b4124aebd6ed713a",
       "minMacOS": "14.0",
-      "serverTarget": "6.52.0",
+      "serverTarget": "6.53.4",
       "publishedAt": "2026-09-19T20:56:46.993920Z",
-      "notes": "Control keeps the server switches you set by hand through Update Server: live Continue, the Codex queue, session hooks, the glasses question and approval switches, and the Messages trail. Pairs with server 6.52.0, where Codex threads show what Codex writes and the glasses can answer session questions and approvals (with glasses 6.9.512)."
+      "notes": "Control keeps the server switches you set by hand through Update Server: live Continue, the Codex queue, session hooks, the glasses question and approval switches, and the Messages trail. Pairs with server 6.53.4, which adds Cancel run for a session’s current run from the glasses or phone (with glasses 6.9.529 or later); press Install hooks once after updating."
     }
   },
   "killSwitch": {
