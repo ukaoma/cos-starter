@@ -83,7 +83,7 @@
 
     /* ── Step cards ── */
     .step { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.9rem; margin-bottom: 1.4rem; backdrop-filter: blur(20px); position: relative; }
-    .step::before {
+    .step[data-step]::before {
       content: attr(data-step); position: absolute; top: -11px; left: 20px;
       background: var(--accent-rose); color: #2b1512; font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
@@ -142,7 +142,6 @@
 
     /* ── Result card ── */
     .result { background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(14,19,30,0.85)); border: 1px solid rgba(201,169,110,0.28); border-radius: 14px; padding: 2rem 1.9rem; margin-top: 2.4rem; position: relative; }
-    .result::before { content: 'Your build'; position: absolute; top: -11px; left: 20px; background: var(--accent-gold); color: #0b0f17; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
     .result h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.3rem; }
     .result h2 em { font-family: var(--font-display); font-style: italic; color: var(--accent-gold); font-weight: 400; }
     .result .config-line { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.3rem; min-height: 1.2em; }
@@ -398,17 +397,20 @@
 <div class="page">
 
   <div class="setup-seam" style="padding-top:3.2rem">
-    <div class="mkt-eyebrow" style="justify-content:center">COS Glasses &middot; Setup</div>
     <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Your glasses, live in <span style="font-style:italic;color:var(--accent-gold)">about 10 minutes.</span></h1>
-    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.7rem auto 0;">Three steps: run the server on your Mac, connect the app on your iPhone, say your first prompt. No decisions required up front &mdash; everything is tunable later.</p>
+    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.7rem auto 0;">About 10 minutes if you already have Homebrew, Node and Claude Code on your Mac. Otherwise plan about 30.</p>
+    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.5rem auto 0;">Three steps: start COS on your Mac, connect the app on your iPhone, then try your first three wins. No decisions required up front. You can tune everything later.</p>
   </div>
 
-  <div class="step" data-step="Before you start">
+  <div class="note" style="margin:1.8rem 0 1.8rem;"><strong>Not ready to set up a Mac?</strong> Open COS Glasses on your iPhone and tap <b>Start here</b>. It runs on your phone, no account needed. Connect a Mac later for Sessions, meetings and memory.</div>
+
+  <div class="step">
     <h2>Check these before you start</h2>
     <ul class="checklist">
+      <li class="req"><strong>Homebrew on your Mac</strong> (<a href="https://brew.sh">brew.sh</a>). The voice setup uses it.</li>
       <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
       <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; run <code>node -v</code> first; newer compatible major versions are fine, so do not install <code>node@20</code> beside one</li>
-      <li class="req"><strong>Claude Code and/or Codex CLI</strong> on that Mac &mdash; Claude Desktop is not the terminal CLI. Install Claude Code on one line with <code>npm install -g @anthropic-ai/claude-code</code> (<strong>never use sudo</strong>), then run <code>claude</code> and finish sign-in. <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started">Claude Code setup</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install both if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on that Mac. One is enough. Claude Desktop is not the terminal CLI. Install Claude Code on one line with <code>npm install -g @anthropic-ai/claude-code</code> (<strong>never use sudo</strong>), then run <code>claude</code> and finish sign-in. <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started">Claude Code setup</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install more than one if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
       <li class="opt"><strong>whisper.cpp and about 6 GB free for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once. The setup command verifies disk space before downloading anything. This is <strong>required for local voice</strong>; text chat works without it.</li>
       <li class="opt"><strong>Local spoken replies on Apple silicon</strong> &mdash; optional: run <code>brew install python@3.12 ffmpeg espeak-ng</code>. Python 3.11 or 3.12 is supported. The normal server start provisions Kokoro asynchronously; chat and transcription work while it prepares.</li>
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; the command above also covers phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and transcription still work without it.</li>
@@ -420,13 +422,12 @@
 
   <!-- QUICK START (default) -->
   <div id="path-quick">
-    <div class="step" data-step="Quick Start" style="margin-top:1.5rem;">
+    <div class="step" style="margin-top:1.5rem;">
       <h2>Three steps, smart defaults</h2>
       <p class="sub">Get the glasses live now; tune anything later in Settings. This setup is the same whether or not you already run a COS.</p>
       <div class="summary">
         <div class="row"><span class="k">Model</span><span class="v">Sonnet <small>(swap anytime)</small></span></div>
         <div class="row"><span class="k">Voice</span><span class="v">Balanced local <small>(Small preview &middot; Turbo commit &middot; Large-v3 HQ)</small></span></div>
-        <div class="row"><span class="k">On the lens</span><span class="v">Minimal <small>(clean default)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
       <div class="res-label">1 &middot; On your Mac &mdash; run the server</div>
@@ -446,12 +447,13 @@
         <li>Open it and enter the server URL and API token (or tap <b>"I have a COS username"</b> and skip the typing). The URL is <code>http://</code> your Mac&rsquo;s address <code>:3141</code>: the terminal prints it; with COS Control, use the Mac&rsquo;s Wi-Fi address from System Settings or its Tailscale address. The token is what the terminal printed, or what <b>Copy Pairing Token</b> put on the clipboard.</li>
         <li>Tap <b>Connect</b>.</li>
       </ul>
-      <div class="res-label">3 &middot; Prove it</div>
+      <div class="res-label">3 &middot; Your first three minutes</div>
       <ul class="enable">
-        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided Setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided Setup again in COS Control before tapping the mic.</li>
-        <li>Tap the mic and ask anything &mdash; try <b>"What should I focus on today?"</b></li>
-        <li>Watch the answer stream onto the lens in green. That's your COS, live on your face.</li>
+        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided Setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided Setup again in COS Control before your first voice prompt.</li>
         <li><b>Learn tap-and-hold:</b> tap and release, then quickly press again and keep holding for the shortcut window above the HUD. Scroll to <b>Ask COS</b>, <b>Model</b>, <b>Start Meeting</b>, <b>Messages</b>, <b>Sessions</b>, <b>Tasks</b>, or <b>Home</b>, then tap to select. While recording, <b>Resume Meeting</b> and <b>Stop Meeting</b> lead; Tasks stays in Quick Actions instead. <a href="/docs/#hold-menu">Practice the hold gesture.</a></li>
+        <li><b>Ask.</b> On the glasses, tap and hold, choose <b>Ask COS</b>, and say <b>"brief me"</b>. The answer lands on the lens.</li>
+        <li><b>Meeting.</b> Tap and hold, choose <b>Start Meeting</b>, talk for a minute, then <b>Stop</b>. Takeaways and action items appear.</li>
+        <li><b>Session.</b> Start a task in Claude Code on your Mac. On the glasses, tap and hold, choose <b>Sessions</b>. Watch it run, then <b>Continue</b> or <b>Cancel</b> from the ring.</li>
         <li><b>Practice the page-specific controls:</b> in a reader, tap once for footer choices, scroll, then tap again to confirm. This is not the quick double-tap that starts a referenced reply. Tasks and Sessions have rolling footer menus; task wrapping needs glasses 6.9.455+. <a href="/docs/#messages-ring">Try Messages</a>, <a href="/docs/#sessions-ring">Sessions</a>, <a href="/docs/#tasks-ring">Tasks</a>, and <a href="/docs/#ask-ring">Ask COS</a> with the simulated ring.</li>
         <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
       </ul>
@@ -464,13 +466,13 @@
         <a class="secondary" href="/control/">Download COS Control</a>
         <a class="secondary" href="https://github.com/ukaoma/cos-glasses-server">View on GitHub</a>
       </div>
-      <p class="hosted">Want to tune model, context, and the lens? <a href="#tune" onclick="var t=document.getElementById('tune');t.open=true;t.scrollIntoView({behavior:'smooth'});return false;">Make it yours below.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
+      <p class="hosted">Want to tune model, context, and voice? <a href="#tune" onclick="var t=document.getElementById('tune');t.open=true;t.scrollIntoView({behavior:'smooth'});return false;">Make it yours below.</a> Not technical? <a href="https://milesukaoma.com/schedule-a-call">Have me set it up.</a></p>
     </div>
   </div>
 
   <!-- MAKE IT YOURS: optional personalization (the old Build-it configurator) -->
   <details class="detailed-setup" id="tune">
-    <summary>Make it yours &mdash; model, context, lens (optional)</summary>
+    <summary>Make it yours: model, context, voice (optional)</summary>
     <div class="ds-body">
       <p class="sub" style="margin:0.8rem 0 0.4rem;">Nothing here blocks setup &mdash; the glasses run great on the defaults. Tune when you're ready; every pick renders a personalized checklist at the bottom.</p>
 
@@ -483,7 +485,7 @@
       <button type="button" class="opt" data-uc="capture"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">On the go</span><h3>Quick capture</h3><p>Voice to tasks and notes, hands-free.</p></button>
       <button type="button" class="opt" data-uc="assistant"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Always on</span><h3>Ask-anything assistant</h3><p>Glance-able answers on the lens, any moment.</p></button>
       <button type="button" class="opt" data-uc="comms"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Write</span><h3>Comms &amp; replies</h3><p>Dictate, review, send without your phone.</p></button>
-      <button type="button" class="opt" data-uc="dev"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Technical</span><h3>Dev &amp; debugging</h3><p>Codex on the lens for code and commands.</p></button>
+      <button type="button" class="opt" data-uc="dev"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Technical</span><h3>Dev &amp; debugging</h3><p>Follow Claude Code, Codex and Cursor sessions from the lens.</p></button>
       <button type="button" class="opt" data-uc="field"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Hands-free</span><h3>Field / moving</h3><p>A minimal HUD you can read at a glance.</p></button>
     </div>
   </div>
@@ -499,7 +501,7 @@
       <button type="button" class="opt" data-model="codex-frontier"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Strongest GPT</span><h3>GPT Frontier</h3><p>The most capable current GPT from your Codex catalog.</p></button>
       <button type="button" class="opt" data-model="codex-balanced"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Efficient GPT</span><h3>GPT Balanced</h3><p>The strong-and-efficient current GPT sibling.</p></button>
     </div>
-    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on the Claude Code and/or Codex plans you already have. Install both engines and all five brains stay available &mdash; the server uses whichever is present. Voice is separate; see Compute below.</div>
+    <div class="note"><strong>No per-token cost on chat.</strong> Chat runs on the Claude Code, Codex or Cursor plans you already have. Install more than one and every brain stays available. The server uses whichever is present. Voice is separate; see Compute below.</div>
     <div class="note"><strong>How much can it touch?</strong> On the Claude brains COS runs with full tool access by default. It can read and write files and run commands on the server Mac without prompting you. That is what makes the glasses useful for real work. Prefer a tighter posture? Set <code>COS_CLAUDE_TRUST_MODE=allowlist</code> in the server environment before you launch. The query keeps web search and read-only access to your workspace, while shell, edits, and writes are denied. Needs server 6.41.0 or newer. Earlier servers denied workspace reads too, so a hardened install answered "I don't have access to your workspace files." Either way COS instructs the model to treat web pages, files, and transcripts as data, never as instructions.</div>
     <div class="note"><strong>Want a local model too?</strong> Install <a href="https://ollama.com">Ollama</a> on the server Mac and pull a model. COS detects it and offers it automatically as a local option beside the brains above, and the model runs entirely on your Mac. Optional: with no Ollama installed there is nothing to configure.</div>
   </div>
@@ -510,10 +512,10 @@
     <p class="sub">Set the name of the person COS serves. It personalizes answers and the Knowledge graph’s starting point. You can change it in COS Control → Memories → Memory settings → Owner name. This is separate from the Mac that indexes your documents.</p>
     <div class="field-row">
       <div class="field"><label for="f-name">Who is COS for?</label><input id="f-name" type="text" placeholder="Your full name" autocomplete="name" maxlength="120" required></div>
-      <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="SVP Marketing" autocomplete="off"></div>
+      <div class="field"><label>Role</label><input id="f-role" type="text" placeholder="Head of Operations" autocomplete="off"></div>
     </div>
-    <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Quilt Software" autocomplete="off"></div>
-    <div class="field"><label>Names and specialist terms <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(comma separated)</span></label><input id="f-vocab" type="text" placeholder="Silas, tacrolimus, Ascension Seton" autocomplete="off"></div>
+    <div class="field"><label>Company / context <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(optional)</span></label><input id="f-company" type="text" placeholder="Acme Co" autocomplete="off"></div>
+    <div class="field"><label>Names and specialist terms <span style="text-transform:none;letter-spacing:0;color:var(--text-muted)">(comma separated)</span></label><input id="f-vocab" type="text" placeholder="Alex Rivera, tacrolimus, St. Mary's" autocomplete="off"></div>
     <div class="note"><strong>This directly improves transcription.</strong> COS feeds these spellings to the decoder. Factory examples are ignored, so an untouched profile can no longer bias Whisper toward literal placeholders such as NameOne or YourCompany.</div>
   </div>
 
@@ -586,18 +588,6 @@
     <div class="note"><strong>Balanced is the recommended setup.</strong> Small.en produces provisional prompt words quickly, Large-v3-Turbo commits the authoritative live transcript, and Large-v3 polishes saved work. Max is opt-in and reuses the existing Large-v3 worker for live commit. A missing Max model falls back visibly to Turbo instead of breaking transcription.</div>
     <div class="note"><strong>Phone to Mac:</strong> connect both over a secure mesh (Tailscale recommended) so the glasses reach your server from anywhere. The setup below covers it.</div>
     <div class="note"><strong>Photos stay local:</strong> install <code>ffmpeg</code> on the Mac for normalized phone uploads, private answer-image galleries, and exact 288&times;144 G2 previews. Images never need a COS-hosted cloud.</div>
-  </div>
-
-  <!-- Step 6: HUD -->
-  <div class="step" data-step="Step 7 · On the lens">
-    <h2>What shows on the lens?</h2>
-    <p class="sub">Your default layout. Adaptive switches it by context.</p>
-    <div class="opt-grid" id="hud">
-      <button type="button" class="opt" data-hud="minimal"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Clean</span><h3>Minimal</h3><p>Just the answer. Nothing else.</p></button>
-      <button type="button" class="opt" data-hud="meeting"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">In the room</span><h3>Meeting mode</h3><p>Live transcript plus surfaced actions.</p></button>
-      <button type="button" class="opt" data-hud="glance"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">At a glance</span><h3>Glance</h3><p>Time, next event, top tasks.</p></button>
-      <button type="button" class="opt" data-hud="adaptive"><span class="rec-badge">Recommended</span><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Smart</span><h3>Adaptive</h3><p>Switches by context: meeting, free, moving.</p></button>
-    </div>
     <div class="note"><strong>Lens images are manual and off by default.</strong> Turn them on from the phone companion. Photo messages end with a cover page; a deliberate two-tap confirmation opens the image. Meetings and microphone-critical states always win.</div>
   </div>
 
@@ -611,12 +601,13 @@
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
       <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
       <div class="row"><span class="k">Memory &amp; Threads</span><span class="v" id="r-memory">New folders</span></div>
-      <div class="row"><span class="k">On the lens</span><span class="v" id="r-hud">Minimal</span></div>
     </div>
 
-    <div class="res-label">1 · Start your server (self-host)</div>
+    <div class="res-label">1 · Start COS on your Mac</div>
+    <p style="font-size:0.88rem;margin:0 0 0.5rem;">Using COS Control? Open it, run <b>Guided Setup</b> and choose <b id="r-control-tier">Balanced</b>. Skip the command below.</p>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin:0.8rem 0 0;">Terminal instead:</p>
     <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span><span id="r-server-command">npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</span><span class="copy-hint">click to copy</span></div>
-    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone &mdash; covered in Step 2 of the setup above.</p>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The app half installs from the Even Hub on your iPhone. Step 2 of the setup above covers it.</p>
 
     <div class="res-label">2 · Set your identity (server profile)</div>
     <div class="cmd" onclick="copyCmd(this)"><span class="copy-hint">click to copy</span><span class="gen" id="r-identity"># ~/.cos-glasses/.cos-profile.json
@@ -659,10 +650,11 @@
     <summary>Detailed setup &amp; troubleshooting</summary>
     <div class="ds-body">
 
-      <div class="step" data-step="Requirements"><h2>What you need</h2>
+      <div class="step"><h2>What you need</h2>
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
-          <li class="req"><strong>Claude Code and/or Codex CLI</strong> on your Mac &mdash; install both if you can; the server uses whichever is present. Claude Desktop is not the CLI. For Opus/Fable/Sonnet, run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a>.</li>
+          <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on your Mac. One is enough. Install more than one if you can; the server uses whichever is present. Claude Desktop is not the CLI. For Opus/Fable/Sonnet, run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a>.</li>
+          <li class="req"><strong>Homebrew</strong> (<a href="https://brew.sh">brew.sh</a>). The voice setup uses it.</li>
           <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
           <li class="opt"><strong>COS Control</strong> (recommended) &mdash; the Mac menu bar app that installs and runs the server for you, launches at login, and updates and rolls back safely. macOS 14 or later, Apple Silicon. <a href="/control/">Download</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
@@ -704,7 +696,7 @@
         <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to GPT Frontier."</div>
       </div>
 
-      <div class="step" data-step="Help"><h2>Troubleshooting</h2>
+      <div class="step"><h2>Troubleshooting</h2>
         <ul class="enable">
           <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server is still running (the terminal window, or the COS Control menu bar item).</li>
           <li><strong>"Claude not found"</strong> &mdash; Claude Desktop is not the terminal CLI. Run <code>npm install -g @anthropic-ai/claude-code</code> on one line without sudo, then run <code>claude</code> and finish sign-in. Verify with <code>claude --version</code>.</li>
@@ -720,10 +712,6 @@
 
     </div>
   </details>
-
-  <div class="setup-seam" style="margin-top:4rem">
-    <div class="mkt-eyebrow" style="justify-content:center">What it feels like</div>
-  </div>
 </div>
 
 <!-- ════════ MARKETING BANDS (re-skin) ════════ -->
@@ -732,7 +720,6 @@
   <!-- HERO: editorial copy + HUD priority stack -->
   <section class="mkt-hero mkt-reveal">
     <div class="hero-copy">
-      <div class="mkt-eyebrow">COS Glasses · Personalize</div>
       <h1 class="mkt-h">Build <span class="g">your</span> COS Glasses.</h1>
       <p class="mkt-sub">Your Even G2, running as a chief of staff on the lens. The context you have already built, now it follows you off the screen.</p>
       <p class="new-beat">No slide deck. No black box. You own it, you do not rent it.</p>
@@ -780,7 +767,6 @@
   <section class="mkt-band mkt-reveal">
     <div class="cap-band">
       <div class="cap-copy">
-        <div class="mkt-eyebrow">Record a message</div>
         <h2 class="mkt-h">Say it once. <span class="g">Send it clean.</span></h2>
         <p class="mkt-sub">Dictate a long prompt or reply by voice. Moonshine Tiny or Base can form and revise the text on the lens as you speak; the shared finalizer cleans the settled draft before review. No keyboard required.</p>
       </div>
@@ -799,7 +785,6 @@
     <div class="cap-band">
       <div class="cap-ground" aria-hidden="true"><div class="pi"></div></div>
       <div class="cap-copy">
-        <div class="mkt-eyebrow">On the lens</div>
         <h2 class="mkt-h">In your <span class="g">control.</span></h2>
         <p class="mkt-sub">Confirm, edit, or send with a tap. The HUD is there when you need it and gone when you do not. Never a phone, never a screen between you and the room.</p>
       </div>
@@ -811,7 +796,7 @@
   <section class="tech-strip mkt-reveal">
     <div class="row">
       <span class="lbl">Runs on</span>
-      <span class="wm">EVEN G2</span><span class="wm">CLAUDE CODE</span><span class="wm">CODEX CLI</span><span class="wm">WHISPER.CPP</span><span class="wm">TAILSCALE</span>
+      <span class="wm">EVEN G2</span><span class="wm">CLAUDE CODE</span><span class="wm">CODEX CLI</span><span class="wm">CURSOR</span><span class="wm">WHISPER.CPP</span><span class="wm">TAILSCALE</span>
     </div>
   </section>
 
@@ -954,7 +939,6 @@
     // Blueprint is correct before anyone touches this step.
     memoryMode: 'files-new',
     memoryTouched: false,   // true once the user answers the memory question
-    hud: null               // null = use recommendation
   };
 
   var UC_LABEL = { meetings:'meetings', capture:'quick capture', assistant:'always-on', comms:'comms', dev:'dev', field:'field' };
@@ -966,15 +950,8 @@
     'bridge': 'COS workspace bridge <small>(vector store)</small>',
     'none': '<small>not set up yet</small>',
   };
-  var HUD_LABEL = { minimal:'Minimal', meeting:'Meeting mode', glance:'Glance', adaptive:'Adaptive' };
 
   function recModel() { return state.useCases.has('dev') ? 'codex-frontier' : 'sonnet'; }
-  function recHud() {
-    if (state.useCases.has('meetings')) return 'meeting';
-    if (state.useCases.has('field')) return 'glance';
-    if (state.useCases.has('assistant')) return 'adaptive';
-    return 'minimal';
-  }
   function recContext() {
     var s = new Set();
     if (state.useCases.has('meetings')) { s.add('calendar'); s.add('meetingtools'); s.add('vector'); }
@@ -1042,7 +1019,6 @@
   bindSingle('models', 'model', 'model');
   bindSingle('voice', 'voice', 'voice');
   bindSingle('transcription-tier', 'tier', 'transcriptionTier');
-  bindSingle('hud', 'hud', 'hud');
   bindSingle('memory', 'memory', 'memoryMode', function () { state.memoryTouched = true; syncMemoryPair('mode'); });
 
   // Memory mode and the Step 4 "Memory and Threads" source are ONE decision shown
@@ -1092,9 +1068,6 @@
     // model
     var rm = recModel();
     $all('#models .opt').forEach(function (b) { b.classList.toggle('recommended', !state.model && b.getAttribute('data-model') === rm); });
-    // hud
-    var rh = recHud();
-    $all('#hud .opt').forEach(function (b) { b.classList.toggle('recommended', !state.hud && b.getAttribute('data-hud') === rh); });
   }
 
   function esc(s) { return (s || '').replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }); }
@@ -1102,7 +1075,6 @@
   function render() {
     markRecommended();
     var model = state.model || recModel();
-    var hud = state.hud || recHud();
     var ucs = Array.from(state.useCases);
 
     // headline + config line
@@ -1117,9 +1089,9 @@
       ? 'OpenAI transcription <small>(your key)</small>'
       : (state.transcriptionTier === 'max' ? 'Local Max <small>(Large-v3 live)</small>' : 'Local Balanced <small>(recommended)</small>');
     $('#r-server-command').textContent = 'npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier ' + state.transcriptionTier;
+    $('#r-control-tier').textContent = state.transcriptionTier === 'max' ? 'Max' : 'Balanced';
     var ctx = Array.from(state.context);
     $('#r-context').innerHTML = ctx.length ? ctx.map(function (c) { return CTX_LABEL[c]; }).join(', ') : '<small>none yet</small>';
-    $('#r-hud').innerHTML = HUD_LABEL[hud] + (state.hud ? '' : ' <small>(recommended)</small>');
     $('#r-memory').innerHTML = MEMORY_LABEL[state.memoryMode] || MEMORY_LABEL['none'];
 
     // server profile fragment (~/.cos-glasses/.cos-profile.json — the file the server actually reads)
@@ -1150,7 +1122,7 @@
     // Per-mode Memory setup. The previous single line described the bridge tier only
     // — "select your operations/scripts folder", "needs a cos_memory Qdrant
     // collection" — which was the whole story before 6.22.0 and is now the LEAST
-    // common path. Queen followed it to the wrong control and got "Setup needed" for
+    // common path. A tester followed it to the wrong control and got "Setup needed" for
     // two folders that simply did not exist yet.
     if (state.memoryMode === 'files-new') {
       li.push('In <b>COS Control</b>, click <b>Create Folders</b>. It makes <code>memory/</code> and <code>threads/</code> where COS already looks, writes a README into each, and shows you the resolved path. Needs server <b>6.22.0</b> or newer; no database, no venv, nothing to install.');
@@ -1167,7 +1139,6 @@
     }
     if (!ctx.length && state.memoryMode === 'none') li.push('Add context sources anytime via MCP in your COS folder. Memory and Threads can be turned on later without redoing anything.');
     else if (!ctx.length) li.push('Add context sources anytime via MCP in your COS folder.');
-    li.push('Lens style: <b>' + HUD_LABEL[hud] + '</b> &mdash; the HUD adapts by context on its own; nothing to configure.');
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }
 
@@ -1182,7 +1153,7 @@
     if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
     if (role) fields.push({ name: 'jobtitle', value: role });
     if (co) fields.push({ name: 'company', value: co });
-    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; memory=' + state.memoryMode + '; hud=' + (state.hud || recHud()) + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
+    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; memory=' + state.memoryMode + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
     var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
