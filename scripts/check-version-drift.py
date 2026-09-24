@@ -96,7 +96,8 @@ COMPANION_PAIR_RE = re.compile(
     r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
 )
 SIDELOAD_RE = re.compile(
-    r"Sideload <strong>(\d+\.\d+\.\d+)</strong> for the newest companion build; "
+    # 6.9.538 (2026-09-24): the companion build is the Even Hub build, installed rather than sideloaded.
+    r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the newest companion build; "
     r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
 )
 FAQ_PAIR_RE = re.compile(

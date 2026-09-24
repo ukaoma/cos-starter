@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.475 (build 475, Hub pin 6.9.470) · server @gotcos/glasses-server 6.53.4 · COS Control 0.5.239.
+   Covers COS Glasses 6.9.538 (build 538, Hub pin 6.9.538) · server @gotcos/glasses-server 6.53.4 · COS Control 0.5.239.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -693,7 +693,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">6.9.475</span>
+    <span class="sb-ver">6.9.538</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -734,7 +734,7 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>6.9.475</b> · build 475</span>
+      <span class="chip">App <b>6.9.538</b> · build 538</span>
       <span class="chip">Server <b>6.53.4</b></span>
       <span class="chip">Control <b>0.5.239</b></span>
       <span class="chip">Even G2</span>
@@ -746,7 +746,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="g2-stage" aria-hidden="true">
-    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.475</span>
+    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.538</span>
 
 72° Clear • Austin
 → in 44m: Design review
@@ -799,7 +799,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
       <div class="rp-demo">
         <div class="rp-lens" aria-label="Simulated COS heads-up display">
-          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.475</span>
+          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.9.538</span>
 
 72° Clear • Austin
 → in 44m: Design review
@@ -963,10 +963,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.239, glasses 6.9.475, server 6.53.4.</strong> COS Control 0.5.239 is the public Mac download. COS Glasses 6.9.475 is the current companion pack: the newest build installs by sideload, and Even Hub still lists 6.9.470. Server identity is 6.53.4, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.476 to 6.9.506, 6.9.510 to 6.9.513, and 6.9.515 to 6.9.535 are in the Hub repo as versioned packs ahead of the companion pack (6.9.507 to 6.9.509 and 6.9.514 were not released); the version list below says what each adds.</p>
+    <p><strong>Latest release package: Control 0.5.239, glasses 6.9.538, server 6.53.4.</strong> COS Control 0.5.239 is the public Mac download. COS Glasses 6.9.538 is the current companion pack: it installs from the store, and Even Hub lists 6.9.538. Server identity is 6.53.4, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Build 6.9.539 is in the Hub repo as a versioned pack ahead of the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released); the version list below says what each adds.</p>
     <ul class="release-list">
+      <li><strong>Even Hub lists 6.9.538.</strong> The store build carries every build since 6.9.470. Its own additions: a new user&rsquo;s home says what to do and a tap does it; with no Mac, Sessions says Needs your Mac instead of reporting a broken server; a running session shows how long its turn has run (6.9.536); and the last eight sessions and meetings you opened open without the Mac (6.9.537). Sideload 6.9.539 from the Hub repo and Sessions opens at once from the list on your phone.</li>
       <li><strong>Cancel a run from the glasses or phone.</strong> Server 6.53.0 with glasses 6.9.529: a session&rsquo;s menu gains Cancel run while the Mac can name a run to stop, with a two-tap confirm on the lens and the same button on the phone. A turn COS started stops at once, a Claude run at the desk stops at its next tool call, and a Codex app or Cursor run says it has to be stopped where it runs. Server 6.53.4 is recommended: a cancel stops every process the run started, lands even while a message is being handed to a busy session, and a thread a cancel left locked unlocks itself once the stopped process is confirmed gone. After updating the server, press Install hooks in COS Control once, or run <code>npx --yes @gotcos/glasses-server@latest --hooks install</code>; until then <code>--hooks status</code> reads <code>script_outdated</code> with a line saying what to do.</li>
-      <li><strong>Sideload builds 6.9.513 to 6.9.534 harden the glasses.</strong> Lists fill the lens with seven rows and nothing is written that the lens cannot draw. The microphone opens the instant a hold starts, and one copy of COS answers the ring. First run leads with Start here before asking for a Mac. A large session opens on a weak connection and reopens instantly, a thread that moved on your Mac offers Send anyway, and the first question after a break shows the readable trail. The version list below has the detail.</li>
+      <li><strong>Builds 6.9.513 to 6.9.534 harden the glasses.</strong> Lists fill the lens with seven rows and nothing is written that the lens cannot draw. The microphone opens the instant a hold starts, and one copy of COS answers the ring. First run leads with Start here before asking for a Mac. A large session opens on a weak connection and reopens instantly, a thread that moved on your Mac offers Send anyway, and the first question after a break shows the readable trail. The version list below has the detail.</li>
       <li><strong>Answer session questions and approvals from the glasses or phone.</strong> Server 6.52.0 with glasses 6.9.512: when a Claude session asks a question or requests a tool approval while you have been away from the Mac, COS can hold it for the worn glasses or visible phone. Read every option or the exact printable command, choose with a two-tap confirm, dictate Other text, or Leave for the Mac so its native dialog appears immediately. A stale card never sends, the first answer wins, and a retry reports what the server actually recorded.</li>
       <li><strong>A running Messages reply stays readable.</strong> Server 6.52.0 with glasses 6.9.512: the running card and job page can show the agent&rsquo;s own words, short tool steps, and outcomes as one durable trail, with whole-word paging through the full run. Reconnect and retry rebuild the trail without gaps; Tool activity and Phone only still govern what appears, and secrets and local paths are redacted before the trail is stored. Glasses 6.9.535 makes this the one view while you watch: every running message draws the same view as Sessions, including runs the Mac sends no trail for, which show the answer&rsquo;s words as they stream. The old tool log appears only under Raw log, and a finished message shows the answer alone.</li>
       <li><strong>Codex writes appear while the session runs.</strong> Server 6.52.0 with glasses 6.9.512: a Codex session streams its new words, tool steps, and short reasoning status onto the session page instead of showing only a spinner until the turn ends. A reconnect resumes from the last event, and Claude and Cursor session streams keep their existing behavior.</li>
@@ -1022,6 +1023,10 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Glasses 6.9.539</dt><dd>Sideload. Sessions opens at once: the lens shows the list already on the phone, then refreshes it in place when the Mac answers, and the cursor stays on the session it was on. Until the Mac answers, a row saved more than 15 seconds earlier shows <code>?</code> instead of <code>&#9679;</code> or <code>&#9675;</code>; if the Mac does not answer, the footer says <code>Mac not answering. Saved list.</code> A disconnect or a different Mac empties the list. The first open ever still waits for the Mac. Server 6.53.4 recommended.</dd>
+        <dt>Glasses 6.9.538</dt><dd>Listed on Even Hub. First run ends at a first win: with no messages, home says <code>Tap: say something, see it here</code> (no Mac) or <code>Tap: ask your Mac, try &quot;brief me&quot;</code> (a Mac), and a tap records. Right after you connect a new Mac, home says <code>Connected. Tap: ask, try &quot;brief me&quot;</code> until your first question. With no Mac, Sessions says Needs your Mac and asks nothing of the network, Meetings shows your phone recordings, dictation uses the phone model or says it is still loading, and the review finishes with Done instead of Send. Empty lists say how to fill them. A tap on the setup screens does nothing. Setup explains Tiny (built in, offline right away) and Base (downloads 74 MB each time COS opens). Server 6.53.4 recommended.</dd>
+        <dt>Glasses 6.9.537</dt><dd>The last eight sessions and eight meetings you opened are saved on the phone, in the Even app&rsquo;s storage, and open with the Mac out of reach and after the app closes. A saved copy shows at once and says <code>Saved 14m</code> until the Mac&rsquo;s copy replaces it; if the Mac does not answer, it stays. The meetings list is saved too. Meetings keep their summary, decisions, action items, attendees and the first 6,000 characters of the transcript. Nothing is kept longer than seven days, and a disconnect or a different Mac wipes them. Server 6.53.4 recommended.</dd>
+        <dt>Glasses 6.9.536</dt><dd>A running session shows how long its current turn has run in the footer, for example <code>7/7 &#183; 12m 04s</code>, even when you open it mid-turn. It counts the turn, not the session, keeps counting through an approval, and stops when the turn ends. It needs Claude Code hooks installed; Codex and Cursor sessions keep the clock from the stream. Server 6.53.4 recommended.</dd>
         <dt>Glasses 6.9.535</dt><dd>A running message always draws the same view as Sessions: a status line, then the answer&rsquo;s full words as they arrive, and the steps when the Mac sends them. Runs the Mac sends no trail for (a hand-off pickup, a Mac not taking jobs, an older server) show the words and no steps instead of the tool log, which now appears only under Raw log. A finished message shows the answer alone: Completed activity trail is renamed Tool log on finished answers and is off by default, including for messages saved earlier. A retry starts clean, and a failed run with nothing written shows its reason. Server 6.53.4 recommended.</dd>
         <dt>Glasses 6.9.534</dt><dd>A request gets 10 seconds to start answering and 30 more to finish, so a large session on a weak connection opens instead of showing Detail unavailable. The last eight sessions you opened stay in memory: reopening one shows its last copy at once while the fresh one loads, and a failed refresh keeps the copy on screen. The first question of a session now runs as a Mac job and shows the readable trail. A session that moved on your Mac while you dictated offers Send anyway on the glasses and phone. Server 6.53.4 recommended.</dd>
         <dt>Glasses 6.9.533</dt><dd>Phone session controls, Cancel run included, stay visible and tappable in the iPhone&rsquo;s WebKit with the keyboard open or closed. An open session stops rebuilding its transcript while you read it. Past days is back on the phone. Opening COS never offers Start here to a phone that is already set up, local starter mode exits cleanly, and Meeting Stop finishes on the first press.</dd>
@@ -1271,6 +1276,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p class="lead">Open Sessions from Quick Actions or the hold menu, then tap a thread. Keep its context in view while the ring moves through Back to list, Continue, Fork, and Ask COS. The last row is not the end: another downward scroll takes 4 of 4 back to 1 of 4.</p>
   </div>
   <p style="font-size:.95rem"><strong>On the phone.</strong> Views, Sessions shows the same list and says what each session is doing: Working now, Open, Status unknown, or Idle, with its last activity and, while it is held, its last tool. Tap a session for a live detail that refreshes while it is open, with or without glasses. Last activity and the last tool need server 6.45.5. Since glasses 6.9.471 a session&rsquo;s detail ends with Continue, Fork and Ask COS, the same actions as the lens footer.</p>
+  <p style="font-size:.95rem"><strong>Clock, saved copies, no Mac.</strong> A running session shows how long its current turn has run in the footer, for example <span class="g-key">7/7 &#183; 12m 04s</span>, when Claude Code hooks are installed (glasses 6.9.536). The last eight sessions you opened are saved on the phone and open without the Mac, marked <span class="g-key">Saved 14m</span> until the Mac answers (6.9.537). With no Mac set up, Sessions says Needs your Mac instead of reporting an error (6.9.538). With 6.9.539, a sideload, the list opens at once from the phone and a row shows <span class="g-key">?</span> until the Mac confirms whether it is working.</p>
   <h3 id="session-menu">Read first. Act from the footer.</h3>
   <p style="font-size:.95rem">Open <strong>Sessions</strong> from Quick Actions and tap a row to read it. From the detail page, a single tap opens the <strong>action menu</strong>: the short list of things COS can do with that thread. It arrived in its current home in 6.8.364, when Continue and Fork moved off the list row and into the session itself, so you read the context before deciding to write into it.</p>
   <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap selects the highlighted row. This guards against occasional phantom ring touches. <strong>Continue</strong> and <strong>Fork</strong> open dictation; a real model turn starts only after you finish, review, and send that prompt.</p>
@@ -1374,7 +1380,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
         <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
-          <div class="pf-app"><b>COS GLASSES</b><i>v6.9.475 &#183; Live on G2</i></div>
+          <div class="pf-app"><b>COS GLASSES</b><i>v6.9.538 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
@@ -1487,7 +1493,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <p class="lead">Tap selects. Scroll moves a cursor or reads the body. Double-tap depends on the page. <strong>Tap and hold</strong> opens the <a href="#hold-menu">SDK context menu</a> for direct access to your model, meeting controls, Ask COS, and navigation. A bare <strong>hold</strong> is a different gesture: off by default, and with Settings, Voice, Glasses dictation set to hold it starts a message wherever one can start (glasses 6.9.474 and later). The footer changes with the active action.</p>
   </div>
   <h3>Home</h3>
-  <p style="font-size:.95rem">Shows the version, your latest message number and age, weather, and your next calendar event. Hint line: <span class="g-key">Tap=Latest&nbsp; ↓ Menu&nbsp; ↑ Messages</span></p>
+  <p style="font-size:.95rem">Shows the version, your latest message number and age, weather, and your next calendar event. Hint line: <span class="g-key">Tap=Latest&nbsp; ↓ Menu&nbsp; ↑ Messages</span>. Before your first message the hint says what to do instead, <span class="g-key">Tap: say something, see it here</span> with no Mac or <span class="g-key">Tap: ask your Mac, try &quot;brief me&quot;</span> with one, and a tap starts a recording (glasses 6.9.538). Right after you connect a new Mac, home says <span class="g-key">Connected. Tap: ask, try &quot;brief me&quot;</span> until your first question.</p>
   <div class="tw"><table>
     <tr><th>Gesture</th><th>What happens</th></tr>
     <tr><td><span class="g-key">Tap</span></td><td>Open the latest message.</td></tr>
@@ -1694,7 +1700,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.475 plus server 6.53.4 is the current companion pair; Even Hub still lists 6.9.470.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.9.538 plus server 6.53.4 is the current companion pair; Even Hub lists 6.9.538.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>Phone-local Moonshine stays opt-in and Mac Whisper stays the default. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -1962,7 +1968,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Phone dictation says <code>text/html</code> is not a valid JavaScript MIME type</h3>
-      <p>You are running build 334. Its bundled ONNX runtime asked the Even WKWebView for a relative JavaScript loader and received the EHPK document instead. Install COS Glasses <strong>6.9.470</strong> from Even Hub. Build 335 and newer pin the loader URL explicitly and reuse any verified Tiny or Base model already on the phone, so you do not need to redownload the model. Until you update, select <strong>Mac Whisper</strong> under Settings, Voice, Dictation + live preview.</p>
+      <p>You are running build 334. Its bundled ONNX runtime asked the Even WKWebView for a relative JavaScript loader and received the EHPK document instead. Install COS Glasses <strong>6.9.538</strong> from Even Hub. Build 335 and newer pin the loader URL explicitly and reuse any verified Tiny or Base model already on the phone, so you do not need to redownload the model. Until you update, select <strong>Mac Whisper</strong> under Settings, Voice, Dictation + live preview.</p>
     </div>
     <div class="card">
       <h3>Base is downloading</h3>
@@ -2014,11 +2020,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.239</strong>, server <strong>6.53.4</strong>, and COS Glasses <strong>6.9.470</strong> from Even Hub. Sideload <strong>6.9.475</strong> for the newest companion build; Even Hub still lists 6.9.470.</p>
+      <p>Current supported versions are COS Control <strong>0.5.239</strong>, server <strong>6.53.4</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub. Install <strong>6.9.538</strong> for the newest companion build; Even Hub lists 6.9.538, and 6.9.539 is a sideload from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.470</strong> with the same server 6.53.4, the build Even Hub lists. Sessions on the phone lose Continue, Fork and Ask COS, and meeting capture returns to the 6.9.470 storage handling.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.537</strong> with the same server 6.53.4, a sideload from the Hub repo. It lacks only what 6.9.538 added: the first-run home guide, Needs your Mac, and the no-Mac review.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -2035,7 +2041,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.475 (Even Hub still lists 6.9.470) and server 6.53.4; COS Control 0.5.239 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.538 (Even Hub lists 6.9.538) and server 6.53.4; COS Control 0.5.239 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2216,7 +2222,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.475 / Control 0.5.239 / server 6.53.4, 2026-09-23; Hub packs to 6.9.535)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.538 / Control 0.5.239 / server 6.53.4, 2026-09-24; Hub packs to 6.9.539)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
