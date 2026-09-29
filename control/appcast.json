@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.245",
-      "build": 283,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.245.zip",
-      "sha256": "23597723f22f05c42bab37f711ffe548d882eefc17079d9e8735cf9220793010",
+      "version": "0.5.246",
+      "build": 284,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.246.zip",
+      "sha256": "ae90d22baa7af0e30352fade95390b76c281413fd17504e6ec45ad50ef7cb195",
       "minMacOS": "14.0",
       "serverTarget": "6.57.1",
-      "publishedAt": "2026-09-29T13:15:40.470177Z",
-      "notes": "Start work is pinned beside Work's session row: with more session cards than fit, they fade and slide under it instead of being cut off, and the pinned column shows a soft edge only when cards run under it. Includes 0.5.244's Work dashboard. Pairs with server 6.57.1."
+      "publishedAt": "2026-09-29T14:27:00.489217Z",
+      "notes": "Work cards drag between columns and into the session row. A dropped card that meets every criterion (no earlier handoff, a certain destination, a session that is not busy) counts down, sends and opens its session; anything less asks first. A handoff COS lost track of can be continued in the same session after one confirm. Includes 0.5.244 and 0.5.245. Pairs with server 6.57.1."
     }
   },
   "killSwitch": {
