@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.244",
-      "build": 282,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.244.zip",
-      "sha256": "92eff43e3b6eda1de1b1969226ff52bcf0c8b23369f0b161c7be19659a566c29",
+      "version": "0.5.245",
+      "build": 283,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.245.zip",
+      "sha256": "23597723f22f05c42bab37f711ffe548d882eefc17079d9e8735cf9220793010",
       "minMacOS": "14.0",
       "serverTarget": "6.57.1",
-      "publishedAt": "2026-09-29T12:12:48.925040Z",
-      "notes": "Work becomes a dashboard: Board shows the sessions Work sent above the board (running, waiting on you, reply ready, needs attention) with Open session and Mark reviewed; Focus opens an item with its Agent workspace pinned beside it. Drag a card onto Start work and an overlay confirms where it goes before anything is sent. Finished replies can be marked reviewed, failures acknowledged with their reason kept, and a stuck unconfirmed delivery cleared after a check. Pairs with server 6.57.1."
+      "publishedAt": "2026-09-29T13:15:40.470177Z",
+      "notes": "Start work is pinned beside Work's session row: with more session cards than fit, they fade and slide under it instead of being cut off, and the pinned column shows a soft edge only when cards run under it. Includes 0.5.244's Work dashboard. Pairs with server 6.57.1."
     }
   },
   "killSwitch": {
