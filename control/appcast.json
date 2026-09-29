@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.246",
-      "build": 284,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.246.zip",
-      "sha256": "ae90d22baa7af0e30352fade95390b76c281413fd17504e6ec45ad50ef7cb195",
+      "version": "0.5.248",
+      "build": 286,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.248.zip",
+      "sha256": "a06ea02460b97290f3c3beaac9d4858d655722b4ac70c3a0db725255948a451d",
       "minMacOS": "14.0",
-      "serverTarget": "6.57.1",
-      "publishedAt": "2026-09-29T14:27:00.489217Z",
-      "notes": "Work cards drag between columns and into the session row. A dropped card that meets every criterion (no earlier handoff, a certain destination, a session that is not busy) counts down, sends and opens its session; anything less asks first. A handoff COS lost track of can be continued in the same session after one confirm. Includes 0.5.244 and 0.5.245. Pairs with server 6.57.1."
+      "serverTarget": "6.58.0",
+      "publishedAt": "2026-09-29T21:58:46.343250Z",
+      "notes": "Work follows every handoff: a session that has the work moves its card to Draft, and one that reports done with evidence moves it to QA, never to Complete. Every move can be undone. New sessions open as a tab in Claude, Codex or Cursor with the handoff filled in, so you can work in them beside COS; nothing sends until you press Send there. Includes 0.5.247. Pairs with server 6.58.0."
     }
   },
   "killSwitch": {
