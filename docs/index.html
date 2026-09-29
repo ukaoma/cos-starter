@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.9.538 (build 538, Hub pin 6.9.538) · server @gotcos/glasses-server 6.57.1 · COS Control 0.5.243.
+   Covers COS Glasses 6.9.538 (build 538, Hub pin 6.9.538) · server @gotcos/glasses-server 6.57.1 · COS Control 0.5.244.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -736,7 +736,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.9.538</b> · build 538</span>
       <span class="chip">Server <b>6.57.1</b></span>
-      <span class="chip">Control <b>0.5.243</b></span>
+      <span class="chip">Control <b>0.5.244</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.6+</span>
     </div>
@@ -963,12 +963,13 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.243, glasses 6.9.538, server 6.57.1.</strong> COS Control 0.5.243 is the public Mac download. COS Glasses 6.9.538 is the current companion pack: it installs from the store, and Even Hub lists 6.9.538. Server identity is 6.57.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Build 6.9.539 is in the Hub repo as a versioned pack ahead of the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released); the version list below says what each adds.</p>
+    <p><strong>Latest release package: Control 0.5.244, glasses 6.9.538, server 6.57.1.</strong> COS Control 0.5.244 is the public Mac download. COS Glasses 6.9.538 is the current companion pack: it installs from the store, and Even Hub lists 6.9.538. Server identity is 6.57.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Build 6.9.539 is in the Hub repo as a versioned pack ahead of the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released); the version list below says what each adds.</p>
     <ul class="release-list">
       <li><strong>Even Hub lists 6.9.538.</strong> The store build carries every build since 6.9.470. Its own additions: a new user&rsquo;s home says what to do and a tap does it; with no Mac, Sessions says Needs your Mac instead of reporting a broken server; a running session shows how long its turn has run (6.9.536); and the last eight sessions and meetings you opened open without the Mac (6.9.537). Sideload 6.9.539 from the Hub repo and Sessions opens at once from the list on your phone.</li>
       <li><strong>Work connects tasks, meetings and sessions.</strong> Control 0.5.240 with server 6.56.0 adds domain boards with Mentioned, Planned, Draft, Built, QA and Complete. Existing task IDs and checkboxes are preserved. Select a saved meeting for a manual follow-up review, then Continue, Fork or start a new agent session with the context you approve. Recorded handoffs link back to the work. This release does not automatically prepare or publish work. Fresh Mac installations use a packaged canonical task runtime; an existing configured COS task bridge remains authoritative. Work needs Python 3.10 or newer. If it is missing, install Python 3.12 with Homebrew (<code>brew install python@3.12</code>) and restart the server; COS Control keeps an explicit Python path through updates.</li>
       <li><strong>Intake, session suggestions and exact session links.</strong> Control 0.5.241 with server 6.57.0 adds an Intake view to Work: what your meetings produced that is not on the board yet (suggested meeting links, your items to review, and other people&rsquo;s asks), each answered in place. Tasks show who their source meetings involved. With a Jev (TypeSafe) key saved in Control Settings, the Agent workspace suggests whether to continue, fork or start a session; it only suggests, and nothing is selected or sent. Open in platform now opens the exact Claude Desktop session, and imports a finished session Work ran on the server as a Claude tab; a session started from Work links back to its item.</li>
       <li><strong>Fork to another platform, and suggestions for meeting reviews.</strong> Control 0.5.243 adds a Fork to choice in Work&rsquo;s Agent workspace. Same platform copies a Claude or Codex conversation as before. Picking Claude or Codex (OpenAI) instead starts a new session there with the context you reviewed and the conversation so far, read from the original session&rsquo;s transcript; the original session is unchanged. Claude, Codex and Cursor sessions can be the source. With server 6.57.1, a saved meeting under review also gets a suggestion to continue, fork or start a session, as tasks already did.</li>
+      <li><strong>Work becomes a dashboard, with drag to start.</strong> Control 0.5.244 adds Board and Focus layouts to Work and remembers your choice. Board shows the sessions Work sent above the board, each running, waiting on you, with a reply ready or needing attention, with the reply or the reason and Open session, Mark reviewed or Acknowledge. The counts open their work. Drag a card between columns to change its stage (Complete asks first), or onto Start work: nothing runs until an overlay confirms where it goes, in one click when a confident suggestion or a saved destination already says so. Focus opens an item with its Agent workspace pinned beside it. Finished replies can be marked reviewed, failures acknowledged with their reason kept, and a stuck unconfirmed delivery cleared after you check the session.</li>
       <li><strong>Cancel a run from the glasses or phone.</strong> Server 6.53.0 with glasses 6.9.529: a session&rsquo;s menu gains Cancel run while the Mac can name a run to stop, with a two-tap confirm on the lens and the same button on the phone. A turn COS started stops at once, a Claude run at the desk stops at its next tool call, and a Codex app or Cursor run says it has to be stopped where it runs. Server 6.53.4 is recommended: a cancel stops every process the run started, lands even while a message is being handed to a busy session, and a thread a cancel left locked unlocks itself once the stopped process is confirmed gone. After updating the server, press Install hooks in COS Control once, or run <code>npx --yes @gotcos/glasses-server@latest --hooks install</code>; until then <code>--hooks status</code> reads <code>script_outdated</code> with a line saying what to do.</li>
       <li><strong>Builds 6.9.513 to 6.9.534 harden the glasses.</strong> Lists fill the lens with seven rows and nothing is written that the lens cannot draw. The microphone opens the instant a hold starts, and one copy of COS answers the ring. First run leads with Start here before asking for a Mac. A large session opens on a weak connection and reopens instantly, a thread that moved on your Mac offers Send anyway, and the first question after a break shows the readable trail. The version list below has the detail.</li>
       <li><strong>Answer session questions and approvals from the glasses or phone.</strong> Server 6.52.0 with glasses 6.9.512: when a Claude session asks a question or requests a tool approval while you have been away from the Mac, COS can hold it for the worn glasses or visible phone. Read every option or the exact printable command, choose with a two-tap confirm, dictate Other text, or Leave for the Mac so its native dialog appears immediately. A stale card never sends, the first answer wins, and a retry reports what the server actually recorded.</li>
@@ -1203,6 +1204,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
         <p class="ccx-dek">The task, its source, and the session doing it.</p>
         <ul>
           <li>Activity &rarr; Work keeps your existing tasks and groups them by domain across Mentioned, Planned, Draft, Built, QA, and Complete. Scheduling and session activity remain separate from the work stage.</li>
+          <li>Board shows the sessions working on the board above it; Focus opens one item with its Agent workspace pinned beside it. Dragging a card onto Start work asks where it goes before anything is sent.</li>
           <li>Each task carries a <strong>Done when</strong> line. Run now is refused until the task says what finished looks like.</li>
           <li>Domains come from the COS you actually run, not a list baked into the app. Existing glasses and phone clients keep their Tasks view; the six-stage Work client is undergoing device acceptance before its public glasses release.</li>
         </ul>
@@ -2023,7 +2025,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.243</strong>, server <strong>6.57.1</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub. Install <strong>6.9.538</strong> for the newest companion build; Even Hub lists 6.9.538, and 6.9.539 is a sideload from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.244</strong>, server <strong>6.57.1</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub. Install <strong>6.9.538</strong> for the newest companion build; Even Hub lists 6.9.538, and 6.9.539 is a sideload from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2044,7 +2046,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.538 (Even Hub lists 6.9.538) and server 6.57.1; COS Control 0.5.243 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.6 or newer. The current supported pair is COS Glasses 6.9.538 (Even Hub lists 6.9.538) and server 6.57.1; COS Control 0.5.244 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2225,7 +2227,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.9.538 / Control 0.5.243 / server 6.57.1, 2026-09-24; Hub packs to 6.9.539)
+  // NEW / UPDATED badges (grounded vs glasses 6.9.538 / Control 0.5.244 / server 6.57.1, 2026-09-29; Hub packs to 6.9.539)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
