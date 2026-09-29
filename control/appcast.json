@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.241",
-      "build": 279,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.241.zip",
-      "sha256": "71a811e8f7c75871ef6588eb5dcb0b7adf7b059de0efd88e3b70671116763665",
+      "version": "0.5.242",
+      "build": 280,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.242.zip",
+      "sha256": "48003ac3726731291c5a9435873ecc6e0379235b7a4abc09efa6493bf208efe5",
       "minMacOS": "14.0",
       "serverTarget": "6.57.0",
-      "publishedAt": "2026-09-29T00:25:37.974586Z",
-      "notes": "Work gains an Intake view: what your meetings produced that is not on the board yet, with suggested meeting links, your items to review and other people's asks, each answered in place. Tasks show who their meetings involved. With a Jev (TypeSafe) key in Settings, Work suggests whether to continue, fork or start a session; it only suggests. Open in platform now opens the exact Claude session, including one Work ran on the server, and that session links back to its work. Pairs with server 6.57.0; run Update Server after updating."
+      "publishedAt": "2026-09-29T01:09:25.830891Z",
+      "notes": "The menu-bar panel opens straight into itself: the unstyled Open Work button above it is gone, and Work opens from its chip in the Activity section like every other view. Includes 0.5.241: Work's Intake view, people on source meetings, Jev session suggestions, and Open in platform that opens the exact Claude session. Pairs with server 6.57.0."
     }
   },
   "killSwitch": {
