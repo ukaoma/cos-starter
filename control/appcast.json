@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.242",
-      "build": 280,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.242.zip",
-      "sha256": "48003ac3726731291c5a9435873ecc6e0379235b7a4abc09efa6493bf208efe5",
+      "version": "0.5.243",
+      "build": 281,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.243.zip",
+      "sha256": "87ffa60241f5b23bc5904fa8569ad872c602af3f2e71f8cf0542f99a7bcc1e69",
       "minMacOS": "14.0",
-      "serverTarget": "6.57.0",
-      "publishedAt": "2026-09-29T01:09:25.830891Z",
-      "notes": "The menu-bar panel opens straight into itself: the unstyled Open Work button above it is gone, and Work opens from its chip in the Activity section like every other view. Includes 0.5.241: Work's Intake view, people on source meetings, Jev session suggestions, and Open in platform that opens the exact Claude session. Pairs with server 6.57.0."
+      "serverTarget": "6.57.1",
+      "publishedAt": "2026-09-29T04:28:47.689191Z",
+      "notes": "Fork a session to another platform: in Work's Agent workspace, Fork to Claude or Codex (OpenAI) starts a new session there with your reviewed context and the conversation so far, read from the original session's transcript. The original session is unchanged. Saved meetings under review now get a suggestion to continue, fork or start a session, as tasks do. Pairs with server 6.57.1."
     }
   },
   "killSwitch": {
