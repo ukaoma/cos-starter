@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.248",
-      "build": 286,
-      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.248.zip",
-      "sha256": "a06ea02460b97290f3c3beaac9d4858d655722b4ac70c3a0db725255948a451d",
+      "version": "0.5.252",
+      "build": 291,
+      "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.252.zip",
+      "sha256": "057a4f6bdfcf3ffd4e36ea0b8bb143384ea85c7ad67ebff095f4438c9b0ffb82",
       "minMacOS": "14.0",
-      "serverTarget": "6.58.1",
-      "publishedAt": "2026-09-29T21:58:46.343250Z",
-      "notes": "Work follows every handoff: a session that has the work moves its card to Draft, and one that reports done with evidence moves it to QA, never to Complete. Every move can be undone. New sessions open as a tab in Claude, Codex or Cursor with the handoff filled in, so you can work in them beside COS; nothing sends until you press Send there. Includes 0.5.247. Pairs with server 6.58.1."
+      "serverTarget": "6.59.0",
+      "publishedAt": "2026-09-30T22:03:21.104088Z",
+      "notes": "Start work, Reply by voice and Not done yet from the glasses now run on this Mac: COS Control picks up each request from the server, checks the task again, sends it with every guard the Agent workspace has, and tells the glasses what happened. A New session from the glasses stays in the background so the glasses can keep replying. New sessions from Work start on the server and open in Claude, Codex or Cursor once the first reply is done, and a Claude one is named after its task and linked while it runs. Every control wears the gotcos theme. Includes 0.5.249 to 0.5.251. Pairs with server 6.59.0."
     }
   },
   "killSwitch": {
