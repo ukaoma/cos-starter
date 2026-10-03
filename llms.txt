@@ -26,6 +26,10 @@
 
 Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belong to their publishers. Compiled 2026-07-15.
 
-## Dictation cleanup testing release — 2026-10-03
+## Dictation cleanup testing release, 2026-10-03
 
-COS Glasses 6.10.573 with server 6.61.5 offers Sonnet (default) and GPT-5.6 Luna Fast in Settings → Voice → Polish model. Sonnet uses Claude CLI sign-in; Luna uses Cursor CLI sign-in. Failed cleanup preserves transcription. This is a sideload testing release, not a newly approved marketplace build.
+COS Glasses 6.10.573 with server 6.61.5 offers Sonnet (default) and GPT-5.6 Luna Fast in Settings, Voice, Polish model. Sonnet uses Claude CLI sign-in; Luna uses Cursor CLI sign-in. Failed cleanup preserves transcription. This is a sideload testing release, not a newly approved marketplace build.
+
+Companion 6.10.571 sends straight to the job page. 6.10.572 keeps active time, cancellation and history + Ask in Messages and Sessions footers without repeating battery. 6.9.568 puts conversation history above live and preserves a long reader until a downward update. Live meetings retain down-for-history navigation. The [interactive HUD guide](https://www.gotcos.com/docs/#hud-states) illustrates these distinct states with fictional content.
+
+Server 6.61.4 fixes canonical merged G2 review lookup and adds revision-guarded task-name/finish-line writes. The corresponding new Control task editor and cache/resize hardening are not included in public Control 0.5.252. Shipped server behavior and unpublished Control work are documented separately.

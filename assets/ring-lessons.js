@@ -1,6 +1,6 @@
 /* Reusable, local-only Ring to Lens lessons. Fictional fixtures; no mic or API.
- * Gesture contracts audited against cos-glasses-app 72c0f67 (6.9.455) plus the
- * reader-menu-wrap branch. Task wrap: 6.9.455. Reader wrap: the build after it.
+ * Gesture contracts audited against cos-glasses-app 6.10.573.
+ * The Tasks lesson is the legacy Tasks view; Work is documented separately.
  * Keep source-derived menu differences here, not in independent page scripts.
  *
  * Timing contract. Every number below is ILLUSTRATIVE teaching pace except the
@@ -54,9 +54,9 @@
     var models=kind==='model', rows=models?modelRows:effortRows;
     var start=Math.max(0,Math.min(rows.length-5,index-2));
     return {
-      nav:'COS ['+(models?'O':'S')+'] '+(models?'Model':'Effort')+' 9:16 AM 9/4/26',
+      nav:'COS ['+(models?'O':'S')+'] '+(models?'Model':'Effort')+' 9:16a 9/4/26',
       body:rows.slice(start,start+5).map(function(label,i){var row=start+i;return (row===index?'>':' ')+(row===0?'*':' ')+label;}).join('\n'),
-      footer:(models?'Opus':'Sonnet')+'  '+(index+1)+'/'+rows.length+'  next msg  demo1234  82%',
+      footer:(models?'Opus':'Sonnet')+'  '+(index+1)+'/'+rows.length+'  next msg  82%',
       layout:'picker'
     };
   }
@@ -66,15 +66,15 @@
   var askTranscript=f.review.body;
   var askDraft=frame('reply',{body:'Listening...\n\n'+askTranscript});
   // Messages: send the reviewed reply, then arm and confirm a cancel. Chrome is
-  // native: the receipt footer is runStartFooterHint(), the armed footer is
+  // native: Send opens the job page, the armed footer is
   // cancelArmFooterPrompt() (nav-confirm 90 outranks streaming 50), and a confirmed
-  // cancel from the receipt returns Home under composePrefixedHeader's flash.
-  var replyReceipt=frame('receipt',{body:'▶ "'+f.replyReview.body+'"\n\nSending...'});
-  var replyArmed=frame('receipt',{body:replyReceipt.body,footer:'Double-tap again to cancel'});
-  var replyCancelled=frame('home',{nav:'× Cancelled · COS [O] 9:16 AM 9/4/26'});
+  // cancellation returns Home if the user has not browsed away.
+  var replyReceipt=frame('receipt',{body:f.receipt.body.replace(f.review.body,f.replyReview.body)});
+  var replyArmed=frame('receipt',{body:replyReceipt.body.replace('◌ SENDING','● RUNNING'),footer:'Double-tap again to cancel'});
+  var replyCancelled=frame('home',{nav:'× Cancelled · COS [O] 9:16a 9/4/26 3msg'});
   var reviewRows=['Re-record','Cancel','Send original (Opus)','Edit','Preview','Change Model'];
   function reviewMenu(index) {
-    return {nav:'COS [O] Msg Tap=Select 9:16 AM 9/4/26',body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  demo1234  82%',layout:'menu'};
+    return {nav:'COS [O] Tap=Select 9:16a 9/4/26',body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  82%',layout:'menu'};
   }
   var lessons = {
     models: [
@@ -102,9 +102,9 @@
       step('Start the prompt','tap',f.reply,'The confirming tap opens the microphone for a new prompt from this message, in the same session. Review the transcript after finishing; starting a recording is not the same as sending it. To attach a specific message as context, say “reference message 411” as a voice command first.'),
       step('Or use the express gesture','double-tap',f.reply,'Alternative from the open, idle message reader: two quick taps open the same microphone without opening the footer menu. From the Messages list, double-tap goes to Quick Actions instead.'),
       step('Finish and review','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation and the footer changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.'),
-      step('Send the reply','tap',replyReceipt,'One deliberate tap on Tap=Send sends the reviewed reply. The lens shows the send receipt, and the footer names your two options while it runs: tap to watch the job, or double-tap to cancel it.'),
+      step('Send the reply','tap',replyReceipt,'One deliberate tap on Tap=Send sends the reviewed reply. The lens opens this prompt’s job page immediately. SENDING lasts until the Mac acknowledges it; scroll up for the ask and history. Double-tap twice to cancel a running job.'),
       step('Arm cancellation','double-tap',replyArmed,'Changed your mind? While the reply is running, the first double-tap only arms cancellation. The job keeps going, and the footer asks you to double-tap again within three seconds.'),
-      step('Confirm the cancel','double-tap',replyCancelled,'A second double-tap inside that window stops the run. × Cancelled flashes in the header and the lens returns Home, because you never left the receipt. Let the three seconds pass instead and the reply keeps running.')
+      step('Confirm the cancel','double-tap',replyCancelled,'A second double-tap inside that window stops the run. × Cancelled flashes in the header and the lens returns Home when you have not browsed away from this run. Let the three seconds pass instead and the reply keeps running.')
     ],
     ask: [
       step('Keep your context','idle',f.reader,'Ask COS starts a new prompt. Reply continues from the open message. Choose the route based on whether the answer should follow what you are reading.'),
@@ -115,14 +115,14 @@
       step('Open review choices','swipe-down',reviewMenu(2),'From the final transcript page, scroll down instead of sending. The six review options replace the transcript. Send original is highlighted by default; opening this menu does not send.'),
       step('Highlight Edit','swipe-down',reviewMenu(3),'One downward scroll highlights Edit. The prompt is still unsent. A separate tap would start recording an edit; scrolling alone does not change the draft.'),
       step('Return to Send original','swipe-up',reviewMenu(2),'Scroll back up to Send original (Opus). Check the highlighted action before tapping. Preview lets you read the transcript again; Cancel discards it only when selected.'),
-      step('Confirm Send original','tap',f.receipt,'One deliberate tap confirms the reviewed prompt. The HUD shows the send receipt: your prompt echoed while the run starts, with Tap to watch and the two-step double-tap cancel in the footer. No example on this page opens a real microphone or runs a model.'),
-      step('Watch the run','tap',f.job,'One tap on the receipt opens the live job log, shown here 66 seconds into the example run. Leave the receipt any other way and a tap goes back to being navigation.'),
+      step('Confirm Send original','tap',f.receipt,'One deliberate tap confirms the reviewed prompt. The HUD opens the job page with the exact ask. SENDING means the Mac has not acknowledged it yet; accepted, held, queued and running states appear on this same page. No example on this page opens a real microphone or runs a model.'),
+      step('Watch the run','idle',f.job,'No second tap is needed. This example advances to 66 seconds into the run, with Raw log and safe output enabled. Scroll up for history and the ask; scroll down to return to live.'),
       step('Arm cancellation','double-tap',frame('job',{footer:'Double-tap again to cancel'}),'During an active run, the first double-tap arms cancellation. It does not immediately stop the job. The footer tells you to double-tap again within three seconds.'),
       step('Let the confirmation expire','idle',f.job,'If you do not confirm within three seconds, the run continues. A second double-tap inside that window would cancel and pause queued work. Read the footer before repeating a gesture.')
     ],
     sessions: [
-      step('Read the session','idle',f.session,'Start in the session detail. Reading and acting are separate: the discussion stays in the body while actions live in the footer.'),
-      step('Reach the footer','swipe-down',frame('session',{scroll:true,thumb:true}),'Scroll through the discussion and stats. A single tap can open actions at any reading position; scrolling first lets you finish the context.'),
+      step('Read the session','idle',f.session,'This example shows a saved session without a separate latest-reply page. A current session opens on its latest reply, with history above it. Tap opens footer actions while preserving the body.'),
+      step('Reach the footer','swipe-down',frame('session',{scroll:true,thumb:true}),'Scroll through this saved discussion and its stats. A single tap can open actions at any reading position; scrolling first lets you finish the context.'),
       step('Open the safe first choice','tap',menu(f.session,sessionRows,0),'The first tap opens Back to list, 1 of 4. It does not continue a session or start a model turn.'),
       step('Highlight Continue','swipe-down',menu(f.session,sessionRows,1),'One scroll highlights Continue. A separate confirming tap would start dictation into the original thread, subject to its availability and permissions.'),
       step('Highlight Fork','swipe-down',menu(f.session,sessionRows,2),'This scroll only highlights Fork. A separate tap opens dictation for a new thread from this context. Your follow-up does not write back into the original thread, and nothing sends before review and confirmation.'),
@@ -165,13 +165,14 @@
   lessons.ask[3].transitionText='Recording finished · transcribing…';
   lessons.ask[3].resultText='Review your prompt · nothing sent · Tap=Send';
   lessons.ask[4].resultText='Review protected · prompt unchanged · nothing sent';
-  lessons.ask[8].resultText='Sent · receipt shown · Tap to watch';
+  lessons.ask[8].resultText='Job page open · waiting for the Mac';
+  lessons.ask[9].resultText='Run in progress · no extra tap';
   lessons.messages[6].transitionText='View image · 3 of 3 · scroll down…';
   lessons.messages[6].resultText='Messages · 1 of 3 · wrapped without running an action';
   lessons.messages[10].before=frame('reply',{body:'Listening...\n\n'+f.replyReview.body});
   lessons.messages[10].transitionText='Recording finished · transcribing…';
   lessons.messages[10].resultText='Review your prompt · nothing sent · Tap=Send';
-  lessons.messages[11].resultText='Sent · receipt shown · Tap to watch';
+  lessons.messages[11].resultText='Job page open · waiting for the Mac';
   lessons.messages[12].resultText='Cancel armed · double-tap again within three seconds';
   lessons.messages[13].transitionText='Second double-tap · cancelling…';
   lessons.messages[13].resultText='× Cancelled · run stopped · back on Home';

@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-10-03T16:31:53Z",
+  "server": "6.61.5",
+  "control": {
+    "version": "0.5.252",
+    "build": 291,
+    "liveDownloadSha256": "057a4f6bdfcf3ffd4e36ea0b8bb143384ea85c7ad67ebff095f4438c9b0ffb82"
+  },
+  "glasses": {
+    "version": "6.10.573",
+    "publishedAliasEqualsVersionedPack": true,
+    "sha256": "c369ab7f190221d71d1f920051c82b61794e9b28bc4f80940499181db96e287b"
+  },
+  "marketplace": "6.9.538 last confirmed listing; not revalidated in this sweep",
+  "publishedControlBranch": "feat/0.5.252-glasses-requests",
+  "visibleControlViews": [
+    "Messages",
+    "Speakers",
+    "Meetings",
+    "Memories",
+    "Threads",
+    "Sessions",
+    "Work"
+  ]
+}

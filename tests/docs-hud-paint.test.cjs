@@ -54,7 +54,7 @@ test('model lesson separates overlay, cursor, and saved choice with a consistent
   assert.match(steps[7].frame.nav,/\[S\] Effort/);
   assert.equal(steps[9].frame.body,' *High\n  X-High\n> Max\n  Ultra');
   assert.match(steps[10].frame.nav,/\[S\]/);
-  assert.equal(steps[10].frame.footer,'Sonnet  3/3  #412  demo1234:3  2m  82%','Completed lesson reflects selected Sonnet');
+  assert.equal(steps[10].frame.footer,'Sonnet  3/3  #412  2m  82%','Completed lesson reflects selected Sonnet');
   assert.equal(steps[0].frame.footer,hud.frames.home.footer,'Completion must not mutate the starting fixture');
   assert.match(hud.frames.home.footer,/^Opus\b/);
   assert.doesNotMatch(steps[10].description,/footer may still say Opus/);
@@ -132,12 +132,14 @@ test('Ask shows capture, unsent review, protected review, choices, then the exac
   h.playScene(steps[8],steps[7].frame,h.options);
   assert.match(h.screen.querySelector('.lens-text').textContent,/▶ Send original/,'Prompt is not running before tap settles');
   assert.equal(steps[8].gesture,'tap');h.flush();
-  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'▶ "Summarize the pilot thread."','Confirming Send shows the receipt first');
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/Tap to watch/);
+  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'◌ SENDING','Send opens the job before acknowledgment');
+  assert.ok(h.screen.querySelector('.lens-text').textContent.includes('Summarize the pilot thread.'));
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/history \+ Ask/);
+  assert.doesNotMatch(h.screen.querySelector('.lens-footer').textContent,/Tap to watch|82%/);
   h.playScene(steps[9],steps[8].frame,h.options);
-  assert.equal(steps[9].gesture,'tap');h.flush();
+  assert.equal(steps[9].gesture,'idle');h.flush();
   assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'00:00 ASK  Summarize the pilot thread.');
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/Running/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/1m 06s.*double-tap to cancel.*history/);
 });
 
 test('the status line waits for the outgoing shortcut window to finish leaving',()=>{
@@ -323,4 +325,18 @@ for(const mode of [{reduced:true},{anime:false}])test('static fallback paints im
   assert.equal(screen.querySelector('.lens-host-menu'),null);
   assert.equal(screen.querySelector('.lens-text').textContent,hud.frames.messages.body);
   assert.equal(animations.length,0);
+});
+
+test('HUD release, conversation footers and Send landing stay current',()=>{
+  const {hud}=harness(),html=fs.readFileSync(path.join(__dirname,'../docs/index.html'),'utf8');
+  const version=html.match(/Covers COS Glasses ([\d.]+)/)[1];
+  assert.equal(hud.frames.home.body.split('\n')[0],'Chief of Staff v'+version);
+  for(const name of ['receipt','job','reader','continued','session','sending','live','history','sessionLive','sessionHistory']) {
+    assert.doesNotMatch(hud.frames[name].footer,/\d+%|demo1234|Tap to watch/,name+' spends conversation footer on controls');
+  }
+  assert.match(hud.frames.sending.body,/^◌ SENDING\n--- ask ---/);
+  assert.match(hud.frames.history.footer,/1 down to live/);
+  assert.match(hud.frames.sessionHistory.footer,/1 down to live/);
+  assert.match(hud.frames.live.footer,/history \+ Ask/);
+  assert.match(hud.frames.sessionLive.footer,/history \+ Ask/);
 });

@@ -625,7 +625,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
-<link rel="stylesheet" href="../assets/docs-hud.css?v=6">
+<link rel="stylesheet" href="../assets/docs-hud.css?v=573-6">
 </head>
 <body>
 
@@ -746,20 +746,20 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="g2-stage" aria-hidden="true">
-    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
+    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
 
 72° Clear • Austin
 → in 44m: Design review
 
 Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  demo1234:3  2m</span><span class="lens-battery">  82%</span></div></div>
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  2m</span><span class="lens-battery">  82%</span></div></div>
     <img class="g2-img" src="../assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
   </div>
 </header>
 
 <!-- ── CHAPTERS ── -->
 <section class="wrap" id="chapters" aria-label="Chapters">
-  <div class="chap-lead">The guide, chapter by chapter</div>
+
   <div class="chapgrid">
     <a class="chapcard" href="#ring-path"><span class="chap-ix">01</span><span class="chap-t">Ring controls</span><span class="chap-d">Watch each swipe and tap change the HUD.</span></a>
     <a class="chapcard" href="#setup"><span class="chap-ix">02</span><span class="chap-t">Setup</span><span class="chap-d">Server, app, and one paste to connect.</span></a>
@@ -771,7 +771,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <a class="chapcard" href="#meetings"><span class="chap-ix">08</span><span class="chap-t">Meetings</span><span class="chap-d">Live transcription with offline-safe audio.</span></a>
     <a class="chapcard" href="#dictation"><span class="chap-ix">09</span><span class="chap-t">Dictation</span><span class="chap-d">Use phone-local Moonshine or Mac Whisper, then review before sending.</span></a>
     <a class="chapcard" href="#models"><span class="chap-ix">10</span><span class="chap-t">Models</span><span class="chap-d">Seven always-current slots, plus local models via Ollama.</span></a>
-    <a class="chapcard" href="#privacy"><span class="chap-ix">11</span><span class="chap-t">Privacy</span><span class="chap-d">No cloud; history stays on your Mac.</span></a>
+    <a class="chapcard" href="#privacy"><span class="chap-ix">11</span><span class="chap-t">Privacy</span><span class="chap-d">Local history, with your chosen model provider.</span></a>
     <a class="chapcard" href="#settings"><span class="chap-ix">12</span><span class="chap-t">Settings</span><span class="chap-d">System, AI, and Voice controls in three tabs.</span></a>
     <a class="chapcard" href="#fixes"><span class="chap-ix">13</span><span class="chap-t">Fixes</span><span class="chap-d">Common issues and the fastest way back.</span></a>
     <a class="chapcard" href="#faq"><span class="chap-ix">14</span><span class="chap-t">FAQ</span><span class="chap-d">Short answers to the common questions.</span></a>
@@ -792,20 +792,21 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <p class="ds-hint dt-tap">The default. Tap starts a message, tap finishes it, tap sends it. The steps and tables on this page read that way.</p>
       <p class="ds-hint dt-hold">Press and hold the ring to talk, let go to review, tap to send. Turn it on in the Even app under COS Glasses, Settings, Voice, <strong>Record a message: Hold to talk, release to finish</strong> (glasses 6.9.474 and later). The steps and tables on this page now read that way; <a href="#hold-to-talk">where a hold works</a> lists every page.</p>
     </div>
-    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a><a href="#models-ring">Models &amp; effort</a></nav>
+    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a><a href="#models-ring">Models &amp; effort</a>
+      <a href="#hud-states">Live HUD states</a></nav>
   </div>
   <div class="rp-grid">
     <div class="rp-stage" tabindex="0" aria-label="Interactive ring and HUD walkthrough. Use Previous and Next, or the left and right arrow keys, to change steps.">
       <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
       <div class="rp-demo">
         <div class="rp-lens" aria-label="Simulated COS heads-up display">
-          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16 AM 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
+          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
 
 72° Clear • Austin
 → in 44m: Design review
 
 Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  demo1234:3  2m</span><span class="lens-battery">  82%</span></div></div>
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  2m</span><span class="lens-battery">  82%</span></div></div>
         </div>
         <div class="rp-ring-zone">
           <div class="rp-ring-shell" data-gesture="idle">
@@ -830,7 +831,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <li class="rp-step" data-rp-step="0" data-gesture="idle" aria-current="step">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">01</span><strong>Begin on Home</strong><span class="rp-action">Ready</span>
-          <p>The top line holds COS, your model, the clock, and today's date. The bordered body holds the page. The bottom line keeps message, session, and battery status.</p>
+          <p>The top line holds COS, your model, the clock, and today's date. The body holds the page. The bottom line keeps message, session, and battery status.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="1" data-gesture="hold">
@@ -883,7 +884,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       </li>
     </ol>
   </div>
-  <p class="hud-note">Hub-themed preview with fictional data. Navigation, body content, footer labels, and gesture behavior follow the app. The green frame, typography, spacing, animation timing, and system-menu appearance are illustrative, not an optical capture. The three-second waits are the app&rsquo;s real timeouts. Each ring gesture plays once per step; use Replay gesture to watch it again.</p>
+  <p class="hud-note">Illustrative HUD with fictional data. Navigation, body content, footer labels, and gesture behavior follow the app. The green frame, typography, spacing, animation timing, and system-menu appearance are illustrative, not an optical capture. The three-second waits are the app&rsquo;s real timeouts. Each ring gesture plays once per step; use Replay gesture to watch it again.</p>
   <div class="hold-menu-guide" id="hold-menu">
     <div>
       <h3>Tap and hold. Your shortcuts, wherever you are.</h3>
@@ -930,7 +931,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <ol class="steps">
     <li>
       <h3>Check the basics</h3>
-      <p>A Mac that stays on, with Node.js 20.11 or newer. Run <code>node -v</code> first; any newer compatible major version is fine, so do not install <code>node@20</code> beside it. At least one agent CLI must be signed in. Claude Desktop does not install the terminal CLI: run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. Or install Codex and run <code>codex login</code>. Your G2 must be paired to the Even Realities app, version 2.2.6 or newer.</p>
+      <p>A Mac that stays on, with Node.js 20.11 or newer. Run <code>node -v</code> first; any newer compatible major version is fine, so do not install <code>node@20</code> beside it. At least one agent CLI must be signed in. Claude Desktop does not install the terminal CLI: run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. Or install Codex and run <code>codex login</code>. For the current companion pack, pair your G2 to Even Realities app 2.2.9 or newer.</p>
     </li>
     <li>
       <h3>Start the server</h3>
@@ -966,6 +967,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p><strong>Latest release package: Control 0.5.252, glasses 6.10.573, server 6.61.5.</strong> COS Control 0.5.252 is the public Mac download. COS Glasses 6.10.573 is the current companion pack: the newest build installs by sideload from the Hub repo, and Even Hub still lists 6.9.538. Server identity is 6.61.5, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.9.560 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release); the version list below says what each adds.</p>
     <ul class="release-list">
       <li><strong>Choose Sonnet or Luna for final dictation polish.</strong> Glasses 6.10.573 with server 6.61.5 adds Settings, Voice, Polish model: Sonnet (default) or GPT-5.6 Luna Fast. Luna uses your Cursor CLI sign-in; Sonnet uses your Claude CLI sign-in. If cleanup is unavailable, the transcript remains available. Messages and Sessions also keep history and Ask in their footers instead of repeating battery; active timers and cancellation controls remain. This is a testing/sideload release. Physical acceptance is pending and this build has not been submitted to the marketplace; the listing version shown here is the last confirmed one.</li>
+      <li><strong>Send opens the job you just started.</strong> Glasses 6.10.571 opens the job page before the network answers. It distinguishes Sending, Not sent yet, Running, Queued and Held. Server 6.61.3 can hold an accepted prompt behind an earlier run; a held prompt has not started. Continue opens its session or queue and keeps the ask visible.</li>
+      <li><strong>Up for conversation history, down for the latest.</strong> Glasses 6.9.568 opens Sessions on the newest reply and Work cards on Progress, with older context above. Background changes wait while you read a long page; down at the last page brings in waiting text. Header and footer clocks do not reset the reader. Live meeting history retains its own controls: down for older transcript, up toward live.</li>
+      <li><strong>Offline status and saved turns.</strong> Glasses 6.9.563 marks an unreachable Mac, labels cached session data with its age, and saves a Continue turn on the phone when delivery cannot finish. Saved turns in Quick Actions lets you inspect or retry it. Reconnect drains turns in session order. A failed save keeps the draft visible. Since 6.9.570, an unreliable wearing flag no longer blocks dictation or question polling; real input supplies presence.</li>
+      <li><strong>Questions can wait for you while you are away.</strong> Server 6.60.0 with glasses 6.9.563 can hold a desk question for up to ten minutes when the desk is idle and the glasses or phone reported recent presence. Reinstall hooks in COS Control once after updating; a client that has not reported presence in thirty minutes does not gain this extended hold.</li>
+      <li><strong>Speaker names stay on the live lens.</strong> Glasses 6.9.567 with server 6.61.0 starts a new named line when the speaker changes inside a chunk. Glasses 6.9.569 gives committed speaker lines priority over a single provisional preview, keeping the live body within seven rows.</li>
+      <li><strong>Merged meetings keep their review identity.</strong> Server 6.61.4 resolves the merged meeting even if an older source file survives, and guards corrections against a changed revision. The task writer can save a name and finish line together without replacing its identity or links. The new Control editing UI and review/resize hardening are not part of public Control 0.5.252; they remain a separate release candidate.</li>
       <li><strong>Work on the glasses: progress, Working now, and Start work.</strong> Server 6.59.0 with glasses 6.9.561 and Control 0.5.252. A Work card on the lens and the phone opens with its progress: the stage and what the session reported, with the time, the session&rsquo;s own words (up to 280 characters, never the prompt or the result), what the session is doing now, and why the card last moved. When anything is open, Work starts with Working now: every open handoff across your cards, questions and blocked work first, in the order the Mac gives. Start work, Reply by voice and Not done yet leave a request on the server. COS Control on your Mac looks for requests every 30 seconds, checks the task again, sends each one exactly as its Agent workspace would, with every guard it has, and tells the glasses what happened. The server never runs an agent for a request, only COS Control on the Mac itself can claim one, and a request nobody claims expires after 10 minutes with nothing sent. On the lens, Start work appears on a card with no handoff yet, offers only your saved destination or a Continue or Fork that Jev picks with 60% confidence or more, and opens a confirm page that starts on Cancel; the phone lists Jev&rsquo;s pick, your saved destination, recent sessions and a new session per model. Reply by voice and Not done yet answer a session that asked a question or said it was done. A New session started from the glasses stays in the background on the Mac so the glasses can keep replying to it; Open in Claude or Codex in Work hands it to that app. Work progress needs server 6.59.0; Start work, Reply and Not done yet also need COS Control 0.5.252.</li>
       <li><strong>Only the ring starts hold to talk, and a hold turns into a tap sooner.</strong> Glasses 6.9.561: in Settings, Start hold to talk from is Ring only by default, so a stray temple long press does nothing from press to release, and its release no longer ends a ring dictation. Temple taps still confirm and stop. Ring or temple brings the temple hold back; a temple hold shows nothing until you speak or 1.5 seconds pass, and one that ends in silence before then is dropped. Settings, Glasses dictation, Switch a ring hold to tap after sets 10, 15, 20 or 30 seconds, 15 unless you change it (a fixed 30 from 6.9.554).</li>
       <li><strong>A copy that lost its audio lets the next one record.</strong> Glasses 6.9.560, server 6.58.1 recommended: a COS window whose meeting audio stops arriving while the glasses stay connected stops telling the Mac it is recording, so the window you open next is not told to stop. The silent copy steps aside and stops answering the ring; it saves its meeting once the new window records, and takes the ring back if its audio returns first.</li>
@@ -1385,16 +1392,16 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p class="lead">From Home, one tap opens your latest answer. Scroll up for the Messages list, tap <span class="g-key">✉ Record Message</span>, and talk.</p>
   </div>
   <p style="max-width:70ch">Answers scroll natively inside the bordered body. The navigation and footer stay in place. Long replies are split into reader chunks: <strong>Pg 1/2</strong> identifies the chunk, not the visible screenful. At a chunk boundary, the next scroll advances it. The footer keeps the model, message number, chunk count, session reference, message age, and battery.</p>
-  
+
 <div class="cards mixed">
     <div>
-      <div class="hud lens-hud" data-hud="reader" aria-label="Sample message reader"><div class="lens-nav">COS [O] #411 Pg 1/1 9:16 AM 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
+      <div class="hud lens-hud" data-hud="reader" aria-label="Sample message reader"><div class="lens-nav">COS [O] #411 Pg 1/1 9:16a 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
 ─────
 → The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.
 
 The open decision is whether the setup path stays inside Docs or moves into the guided wizard.
 
-Dana owns the navigation review. Sam will confirm the final setup copy before the meeting.</div><i class="lens-thumb" aria-hidden="true"></i></div><div class="lens-footer"><span>Opus  #411 Pg 1/1  demo1234:2  34m</span><span class="lens-battery">  82%</span></div></div>
+Dana owns the navigation review. Sam will confirm the final setup copy before the meeting.</div><i class="lens-thumb" aria-hidden="true"></i></div><div class="lens-footer">Opus  #411 Pg 1/1  Tap: actions  34m</div></div>
       <div class="hud-cap">The reader · scroll to read, tap for the footer menu</div>
     </div>
 
@@ -1472,11 +1479,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       </div>
     </div>
     <div class="lf lens-hud">
-      <div class="lens-nav">COS [O] #128 Pg 1/1 ■1 9:16 AM 9/4/26</div>
+      <div class="lens-nav">COS [O] #128 Pg 1/1 ■1 9:16a 9/4/26</div>
       <div class="lens-body"><div class="lens-text">? <span class="lens-bright" data-lens-q>What is this plant?</span>
 ─────
 → <span data-a>Bigleaf hydrangea. The blue flowers mean acidic soil, under about pH 6. It will survive Texas heat in morning sun with afternoon shade, but it wilts daily above 95 and needs deep water twice a week.</span></div></div>
-      <div class="lens-footer"><span>Opus  #128 Pg 1/1 ■1  demo5678:1  2m</span><span class="lens-battery">  82%</span></div>
+      <div class="lens-footer">Opus  #128 Pg 1/1 ■1  Tap: actions  2m</div>
     </div>
   </div>
   <p class="duo-cap">Capture on the phone. Read the answer on the lens.</p>
@@ -1585,8 +1592,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
 
   <div class="ring-lesson" id="tasks-ring" data-ring-lesson="tasks">
-    <h3>Tasks: a cursor move is not a command.</h3>
-    <p>Read the task and its finish line. Tap to open its actions, scroll to the row you want, and make a separate confirming tap. The safe first row is Back to list. Task and run state determine which other rows appear.</p>
+    <h3>Legacy Tasks: a cursor move is not a command.</h3>
+    <p>This lesson covers the legacy Tasks view used with older servers. Current servers open Work with domain boards and progress. In Tasks, read the task and its finish line. Tap to open its actions, scroll to the row you want, and make a separate confirming tap. The safe first row is Back to list. Task and run state determine which other rows appear.</p>
     <p class="rl-fallback">The example shows six choices for a ready Inbox task: Back to list, Ask COS, Done, Today, To active, and To review. Nothing runs when you simply highlight a row. The menu times out after three seconds without input.</p>
     <p class="hud-note">Task-menu wrapping requires glasses 6.9.455 or later. On an older build, scroll upward from the last row to return. This lesson shows the newer interaction without changing the public release package listed above.</p>
   </div>
@@ -1596,7 +1603,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       <tr><th>Where you are</th><th>Double-tap when idle</th></tr>
       <tr><td>Home</td><td>Request the system exit dialog, not a new recording.</td></tr>
       <tr><td>Messages list</td><td>Go to Quick Actions. Tap Record Message for a fresh transcription.</td></tr>
-      <tr><td>Open message</td><td>Start a reply referencing that message.</td></tr>
+      <tr><td>Open message</td><td>Start a reply in the same session. Say “reference message 411” first to attach that specific message as context.</td></tr>
       <tr><td>Quick Actions</td><td>Start recording a new command.</td></tr>
       <tr><td>Session detail</td><td>Ask to leave; double-tap again within three seconds for Quick Actions.</td></tr>
       <tr><td>Task detail</td><td>Go to Quick Actions. Single tap owns the task action menu.</td></tr>
@@ -1607,6 +1614,28 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 
 </section>
 
+<section class="wrap reveal" id="hud-states">
+  <h2>Read the live HUD.</h2>
+  <p class="lead">See what changes after Send, where your original ask lives, and how to get back to live. Each example uses fictional content and the current companion’s labels.</p>
+  <div class="hud-explorer" data-hud-explorer>
+    <div class="hud-state-choices" role="group" aria-label="HUD examples">
+      <button type="button" data-hud-state="sending" aria-pressed="true">After Send</button>
+      <button type="button" data-hud-state="live" aria-pressed="false">Messages live</button>
+      <button type="button" data-hud-state="history" aria-pressed="false">Messages history</button>
+      <button type="button" data-hud-state="sessionLive" aria-pressed="false">Sessions live</button>
+      <button type="button" data-hud-state="sessionHistory" aria-pressed="false">Sessions history</button>
+      <button type="button" data-hud-state="meeting" aria-pressed="false">Meeting preview</button>
+    </div>
+    <div class="hud-state-preview">
+      <div class="lens-hud" data-hud="sending" aria-label="Selected HUD example"><div class="lens-nav">COS [O] Thinking 1s 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">◌ SENDING</span>
+--- ask ---
+  &quot;Summarize the pilot thread.&quot;</div></div><div class="lens-footer">1s · double-tap to cancel · Scroll up: history + Ask</div></div>
+      <p class="hud-state-caption" aria-live="polite">Send opens the job page immediately. SENDING means the Mac has not acknowledged the prompt yet.</p>
+    </div>
+  </div>
+  <p class="hud-note">Illustrative screen, not an optical capture. Navigation, body and footer remain separate regions. Messages and Sessions put history above live; a live meeting uses down for older transcript and up to return. Use the buttons to compare without an automatic slideshow.</p>
+</section>
+
 <!-- ── 06 JOBS ── -->
 <section class="wrap reveal" id="jobs">
   <div class="sec-head">
@@ -1614,6 +1643,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <p class="ch-sub">Watch it <span class="it goldt">work.</span></p>
     <p class="lead">Every prompt is a job that lives on your Mac. Watch it, queue it, or cancel it, and once it starts it keeps running even if you close the app. Nothing ever hijacks your screen.</p>
   </div>
+  <p><strong>Send takes you here immediately.</strong> You do not need a second tap to watch. Scroll up to the original ask and history; scroll down to the newest page. While reading history the footer counts how many scrolls return to live. Messages and Sessions keep their active clock and controls in this row instead of repeating battery. A long clock may shorten the hint to <span class="g-key">▲ history + Ask</span>.</p>
   <div class="cards mixed">
     <div>
       <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">COS [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  Summarize the pilot thread.</span>
@@ -1621,13 +1651,13 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 00:21 OUT  5 results · vendor pricing
 00:34 TOOL Reading page...
 01:05 LIVE The pilot is on track. Two
-01:06 LIVE items need a decision…</div></div><div class="lens-footer lens-footer-list"><span>Opus  Running · double-tap to cancel  66.0s  demo1234</span><span class="lens-battery">  82%</span></div></div>
-      <div class="hud-cap">The job activity page · newest seven lines, scroll back anytime</div>
+01:06 LIVE items need a decision…</div></div><div class="lens-footer lens-footer-list">1m 06s · double-tap to cancel · Scroll up: history + Ask</div></div>
+      <div class="hud-cap">Optional Raw log · newest seven lines, scroll back anytime</div>
     </div>
     <div>
       <h3>Queue, watch, cancel</h3>
       <p style="font-size:.95rem">Ask while a reply is streaming and the new prompt <strong>queues</strong>: up to five wait in line, first in, first out. Rows in Messages show the state as <span class="g-key">… Queued 1/2</span>, <span class="g-key">Running · Searching web...</span>, and <span class="g-key">◆ Done #4 09:14 summarize the pilot</span>.</p>
-      <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The activity page is a terminal-style tail with mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events, all the way to the complete original request pinned at the top. If a reply finishes while you are watching, <strong>double-tap opens it</strong> before the two-step cancel gesture. Hidden phone-only or tool activity never shifts a history window you scrolled to by hand. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
+      <p style="font-size:.95rem"><strong>Tap a running row to watch.</strong> The default Trail view shows the status, full reply and available steps. The optional Raw log view, illustrated here, uses mm:ss stamps and SENT, TOOL, OUT, LIVE, DONE tags. The lens shows the newest seven lines; scroll back through the last 80 events, all the way to the complete original request pinned at the top. If a reply finishes while you are watching, <strong>double-tap opens it</strong> before the two-step cancel gesture. Hidden phone-only or tool activity never shifts a history window you scrolled to by hand. LIVE lines are the answer being written. OUT lines are bounded, redacted tool output, shown only if you opt in under Settings.</p>
     </div>
     <div>
       <h3>The job lives on your Mac</h3>
@@ -1685,9 +1715,10 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
   </div>
     <div class="exhibit">
-    <div class="hud lens-hud" data-hud="meeting" aria-label="Sample live meeting with recording meter"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[maya] we can ship the pilot friday</span>
-[sam] blocking item is the data import, one day of work
-[maya] then friday holds</div></div><div class="lens-footer">◆ 2 nudges  ↓ history  ↑↑ home</div></div>
+    <div class="hud lens-hud" data-hud="meeting" aria-label="Sample live meeting with recording meter"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[Maya] We can ship the pilot Friday.</span>
+[Sam] The data import needs one day.
+[Maya] Then Friday holds.
+~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↓ history  ↑↑ home</div></div>
       <div class="hud-cap">Live meeting HUD · fictional example</div>
   </div>
 <div class="cards mixed">
@@ -1902,7 +1933,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="sec-head">
     <h2 class="ch"><span class="num">11.</span> Privacy</h2>
     <p class="ch-sub">Private by architecture.</p>
-    <p class="lead">There is no COS cloud. Prompts run through the CLIs you already trust, and the history stays on your Mac.</p>
+    <p class="lead">This self-hosted setup keeps COS history on your Mac. Signed-in Claude, Codex and Cursor CLIs send model requests to their providers; an Ollama model runs locally. Hosted COS is a separate service.</p>
   </div>
   <div class="cards">
     <div class="card">
@@ -1946,7 +1977,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <tr><th>Control</th><th>Options</th><th>Default</th></tr>
     <tr><td><strong>Tool activity</strong></td><td>Off / Status only / Status + safe output</td><td>Status only</td></tr>
     <tr><td><strong>Live response lines</strong></td><td>On / Off</td><td>On</td></tr>
-    <tr><td><strong>Completed activity trail</strong></td><td>On / Off</td><td>On</td></tr>
+    <tr><td>Tool log on finished answers</td><td>On / Off</td><td>Off</td></tr>
     <tr><td><strong>Detailed output location</strong></td><td>Phone + G2 / Phone only</td><td>Phone + G2</td></tr>
   </table></div>
   <p style="font-size:.95rem">From glasses 6.9.535, Completed activity trail is named <strong>Tool log on finished answers</strong> and defaults to Off: a finished message shows the answer alone, and the running trail is for watching a run. An On you set earlier is kept.</p>
@@ -1968,9 +1999,9 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <tr><td><strong>SYSTEM · CLI DEBUG</strong></td><td>Claude CLI and Codex CLI each show support, last-run status, and whether action is needed. <span class="g-key">Last run OK</span> describes the most recent run; it is not a live login guarantee. Diagnostic responses are metadata-only: no prompts, answers, tool output, paths, commands, raw session IDs, tokens, or credentials are returned to the phone. Sign-in and credential updates happen on the Mac with <code>claude auth login</code> or <code>codex login</code>.</td></tr>
     <tr><td><strong>AI · ACTIVITY VISIBILITY</strong></td><td>The four job-detail controls: Tool activity, Live response lines, Completed activity trail, Detailed output location. From 6.9.535 the third is Tool log on finished answers, off by default.</td></tr>
     <tr><td><strong>VOICE · TRANSCRIPTION</strong></td><td>Named Dictation + live preview before 6.9.464. <strong>Mac + phone model &#183; Tiny</strong> is the default and favors speed and <strong>Mac + phone model &#183; Base</strong> favors accuracy; both are English-only. Tiny ships inside the app; Base downloads verified model assets while the phone is online. Since 6.9.485 a phone model means Mac first: the Mac transcribes dictation and live meeting text while it answers and the phone takes over when it does not; the <strong>Use the phone model</strong> choice under it, When the Mac is unreachable (default) or Always, keeps the phone on every dictation if you want the on-phone latency or audio that never leaves the phone. Local setup or inference failure falls back visibly. Phone-local Message dictation keeps its audio on the iPhone.</td></tr>
-    <tr><td><strong>VOICE · FINAL POLISH (AI)</strong></td><td>On by default. Reuses the existing dictionary and selected finalizer only after a Message or Meeting phrase settles. In glasses 6.10.573, Polish model offers Sonnet (default, Claude CLI sign-in) and GPT-5.6 Luna Fast (Cursor CLI sign-in, server 6.61.5 or newer). Both use subscription CLIs. An unavailable model keeps the transcript; it does not switch models silently. Live preview stays fast; failures keep the raw transcript. Turn this off for verbatim settled Moonshine text.</td></tr>
+    <tr><td><strong>VOICE · FINAL POLISH (AI)</strong></td><td>On by default. Reuses the existing dictionary and selected finalizer only after a Message or Meeting phrase settles. In glasses 6.10.573, Polish model offers Sonnet (default, Claude CLI sign-in) and GPT-5.6 Luna Fast (Cursor CLI sign-in, server 6.61.5 or newer). Both use subscription CLIs. An unavailable model keeps the transcript; it does not switch models silently. Live preview stays fast; failures keep the transcript. Turn this off to skip the AI cleanup pass.</td></tr>
     <tr><td><strong>VOICE · LIVE MEETING ASR</strong></td><td>Server Whisper remains canonical for Meetings. Balanced uses Small.en for provisional server text, Large-v3-Turbo for committed live text, and Large-v3 for polish. Max uses Large-v3-Turbo for provisional server preview and Large-v3 for authoritative commit and polish. Phone Moonshine preview may appear earlier, but canonical work always replaces it. Add the names, companies, acronyms, and specialist terms you say often in <code>~/.cos-glasses/.cos-profile.json</code>; factory placeholders are ignored.</td></tr>
-    <tr><td><strong>VOICE · GLASSES DICTATION</strong></td><td>Tap to start, tap to finish is the default. Hold: a long press on the ring starts a message and letting go opens the review (glasses 6.9.474 and later). The recorder footer reads Release: review while you hold; a tap while you hold reads Tap again to finish and a second tap ends the recording (6.9.485). On a message the status line reads Tap: actions and Hold: ask. Since 6.9.561, <strong>Start hold to talk from</strong> is Ring only (the default) or Ring or temple, and <strong>Switch a ring hold to tap after</strong> is 10, 15, 20 or 30 seconds, 15 by default.</td></tr>
+    <tr><td><strong>VOICE · GLASSES DICTATION</strong></td><td>Tap to start, tap to finish is the default. Hold: a long press on the ring starts a message and letting go opens the review (glasses 6.9.474 and later). Before the hold switches, its control counts the time held against the switch time, for example Release to confirm 4/15s (since 6.9.562). At the switch, let go and continue speaking; tap to finish. The docked recorder puts this control in the header, while the classic recorder uses the footer. On a message the status line reads Tap: actions and Hold: ask. Since 6.9.561, <strong>Start hold to talk from</strong> is Ring only (the default) or Ring or temple, and <strong>Switch a ring hold to tap after</strong> is 10, 15, 20 or 30 seconds, 15 by default.</td></tr>
     <tr><td><strong>VOICE · VOICE (TTS)</strong></td><td>Choose Local, Local-first, or OpenAI. Local uses on-Mac Kokoro and fails closed; Local-first may fall back only after a local failure and only when OpenAI is configured. The voice picker is engine-aware, persists through reinstall, and includes a test button. Connect Bluetooth audio to hear playback.</td></tr>
     <tr><td><strong>VOICE · OPENAI KEY</strong></td><td>Optional server-side key for administrators who deliberately enable cloud transcription fallback. A key by itself does not upload audio. Server 6.12.0 also requires <code>COS_OPENAI_WHISPER_FALLBACK=1</code>; otherwise transcription stays local. The key is never returned to the phone.</td></tr>
     <tr><td><strong>AI · LIVE CUES</strong></td><td>Off unless you set <code>COS_LIVE_CUES=1</code>. Every cue is a model call on <strong>your own agent quota</strong>, not a free local pass. Bounded at <strong>8 cue pipelines per meeting</strong>, <strong>one start per 60 seconds</strong>, and a <strong>30-second cooldown</strong> after a cue fires. Runs on Cursor Composer; any other model fails closed rather than quietly billing one you did not choose.</td></tr>
@@ -2078,7 +2109,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.538</strong> with the same server 6.61.5, the build Even Hub lists. It lacks what 6.9.539 to 6.9.561 added, among them Work on the phone and the lens, the prompt box over the page you were reading, and a ring hold that turns into a tap.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.9.538</strong> with the same server 6.61.5, the build Even Hub lists. Choose Sonnet before downgrading: the older picker does not understand the Luna preference. Let Saved turns drain before going below 6.9.563. The store build lacks Work, the prompt overlay, later reader fixes and the current footer controls.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -2190,8 +2221,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 </script>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="../assets/ring-3d.js?v=10"></script>
-<script src="../assets/docs-hud.js?v=10"></script>
-<script src="../assets/ring-lessons.js?v=8"></script>
+<script src="../assets/docs-hud.js?v=11"></script>
+<script src="../assets/ring-lessons.js?v=573-8"></script>
 <script>
 (function(){
   var root=document.documentElement,group=document.getElementById('dictation-switch');
@@ -2276,7 +2307,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.573 / Control 0.5.252 / server 6.61.5, 2026-09-30; Hub packs to 6.9.561)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.573 / Control 0.5.252 / server 6.61.5, 2026-10-03; Hub packs to 6.10.573)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

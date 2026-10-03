@@ -58,9 +58,9 @@ const listItems = [
 for (const [name, index] of [['messages',0],['selected',1]]) {
   eq(f[name].body, pages.formatQueryList(listItems,index).replace(/^MESSAGES\n\n?/,'').trim(), `${name} native list`);
 }
-eq(f.home.nav, pages.composeLensNavLine('COS [O]','9:16 AM',now,['3msg','2m']), 'Home nav');
-eq(f.reader.nav, pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16 AM',now), 'Reader nav');
-eq(f.session.nav, pages.composeLensNavLine('COS [O] Sess 1/3','9:16 AM',now), 'Session nav');
+eq(f.home.nav, pages.composeLensNavLine('COS [O]','9:16a',now,['3msg','2m']), 'Home nav');
+eq(f.reader.nav, pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16a',now), 'Reader nav');
+eq(f.session.nav, pages.composeLensNavLine('COS [O] Sess 1/3','9:16a',now), 'Session nav');
 eq(f.job.nav, pages.composeLensNavLine('COS [O] Thinking 66s','',now,['82%']), 'Job nav');
 const [question, answer] = f.reader.body.replace(/^\? /,'').split('\n─────\n→ ');
 eq(f.reader.body, chat.buildChatViewportChunks({query:question,text:answer})[0], 'Reader prompt/answer formatting');
@@ -71,7 +71,7 @@ const ref = {targetIndex:411,query:question,response:answer};
 eq(f.reply.body, prompt.buildPromptLiveBody('','recording'), 'A prompt started by Reply or double-tap has no reference line: those gestures never arm one');
 eq(typeof reference.promptReferenceRecordingLine(ref), 'string', 'The Referencing line exists only for the spoken reference command');
 eq(f.sessionMic.body, prompt.buildPromptLiveBody('','recording'), 'Session voice has no message reference');
-eq(f.reply.nav, headers.composePrefixedHeader(pages.composeLensNavLine('COS [O●] Msg Tap to finish','9:16 AM',now),'■□□□ LISTEN',40), 'Voice meter nav');
+eq(f.reply.nav, headers.composePrefixedHeader(pages.composeLensNavLine('COS [O●] Msg Tap to finish','9:16a',now),'■□□□ LISTEN',40), 'Voice meter nav');
 eq(f.meeting.nav, meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82}), 'Meeting REC meter');
 const actions = ['Back to list','Continue','Fork','Ask COS'].map(label => ({label,enabled:true}));
 eq(f.sessionMenu.footer, session.buildSessionThreadMenuFooter(actions,0), 'Session footer-only menu');
@@ -88,11 +88,25 @@ eq(f.job.body, activity.formatJobActivityWithPrompt(f.review.body,[
   {at:65000,kind:'live',text:'The pilot is on track. Two'},
   {at:66000,kind:'live',text:'items need a decision…'},
 ]).join('\n'), 'Job immutable ASK and activity format');
-eq(f.receipt.body,'\u25B6 "'+f.review.body+'"\n\nSending...','Send receipt echoes the exact prompt');
-eq(f.receipt.footer,queryStatus.runStartFooterHint(),'Send receipt footer is the raw run-start hint');
-eq(f.receipt.nav,pages.composeLensNavLine('COS [O] Thinking 1s','',now,['82%']),'Send receipt header');
-eq(queryStatus.tapOpensJobWatch({isQueryStreaming:true,activeQueueItemId:'q1',currentPage:'welcome',navigatedDuringRun:false,cancelConfirmPending:false}),true,'A tap on the parked receipt opens the job log');
-eq(queryStatus.tapOpensJobWatch({isQueryStreaming:true,activeQueueItemId:'q1',currentPage:'job-activity',navigatedDuringRun:false,cancelConfirmPending:false}),false,'Not from the job log itself');
+const jobs = await source('src/lib/job-trail-view.ts');
+const jobFooter = await source('src/lib/messages-job-footer.ts');
+const sessionFooter = await source('src/lib/session-trail-view.ts');
+let run = jobs.emptyJobTrailRun('demo');
+const input = {run,prompt:f.review.body,jobStatus:'running',toolMode:'status',now:66000};
+const sending = jobs.buildJobTrailLensPages({...input,statusWord:'◌ SENDING'});
+eq(f.receipt.body,sending.pages.at(-1),'Send opens the real job page before acknowledgment');
+eq(f.sending.body,f.receipt.body,'Explorer and Send lesson agree');
+run=jobs.applyJobTrailEntry(run,1,65000,{kind:'prose',text:'The pilot is on track. Dana owns the import. Sam is checking the rollout notes.'}).run;
+const live=jobs.buildJobTrailLensPages({...input,run});
+eq(f.live.body,live.pages.at(-1),'Live trail uses the native seven-row builder');
+eq(f.history.body,live.pages[0],'Original ask is above live');
+for (const [name,elapsed,history] of [['receipt','1s',null],['sending','1s',null],['live','1m 06s',null],['job','1m 06s',null],['history','1m 06s',{index:0,total:2,offset:1}]]) {
+  eq(f[name].footer,jobFooter.messagesJobFooter({status:'running',cancelArmed:false,history,elapsed,hasAsk:true}),name+' native job footer');
+}
+for (const [name,index] of [['sessionLive',1],['sessionHistory',0]]) {
+  eq(f[name].footer,sessionFooter.sessionTrailFooter({chunkIndex:index,liveIndex:1,total:2,sourceNote:'stream',missed:0,elapsed:'1m 06s',hasAsk:true,gestureHint:'Tap: actions  Hold: continue'}),name+' native session footer');
+}
+for(const name of ['sending','live','sessionLive']) {assert.ok(jobs.countLensLines(f[name].body)<=7,name+' fits seven native rows');checks++;}
 
 // Extract the actual private footer formatter without loading display-manager's
 // runtime imports. Its dependencies remain the app's exported pure helpers.
@@ -103,7 +117,10 @@ const ast = ts.createSourceFile('display-manager.ts',dm,ts.ScriptTarget.Latest,t
 const fn = ast.statements.find(n => ts.isFunctionDeclaration(n) && n.name?.text === 'buildStatusLine');
 assert.ok(fn,'Native buildStatusLine must exist');
 const state = {modelPreference:'opus',messages:[...listItems].reverse().map(x => ({...x,sessionId:'demo1234',modelPreference:'opus'})),currentMsgIndex:2,currentPage:'welcome',sessionId:'demo1234',lastBatteryLevel:82,chatChunks:['sample'],chatChunkIndex:0,isQueryStreaming:false};
-const footerContext = {state,Date:SampleDate,...model,...positions,...reference,...chat};
+const footerContext = {state,Date:SampleDate,...model,...positions,...reference,...chat,
+  ...await source('src/lib/hud-session-id.ts'),...await source('src/lib/status-line-fit.ts'),
+  readHudSessionIdPref:()=>false,readPromptGesture:()=> 'tap',heldBodyHintShowing:()=>false,
+  STATUS_LINE_JOIN:'  ',MESSAGE_ACTIONS_HINT:'Tap: actions',REFERENCE_HOLD_HINT:'Hold: ask'};
 vm.runInNewContext(ts.transpileModule(fn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,footerContext);
 const footer = footerContext.buildStatusLine;
 eq(f.home.footer, footer(), 'Home status formatter');
@@ -111,11 +128,12 @@ eq(f.messages.footer, footer(positions.queryListFooterPosition(0,3,1)), 'Message
 eq(f.selected.footer, footer(positions.queryListFooterPosition(1,3,1)), 'Selected message footer');
 state.currentPage='query-result'; state.currentMsgIndex=1;
 eq(f.reader.footer, footer(), 'Reader status formatter');
+state.currentPage='session-detail';
 eq(f.session.footer, footer('1/3 · Tap: actions'), 'Session status formatter');
-state.pendingReference=null;
+state.pendingReference=null;state.currentPage='voice-prompt';
 eq(f.reply.footer, footer('Tap to finish'), 'Reader-started prompt footer carries no reference');
 state.pendingReference=null; state.isQueryStreaming=true; state.streamingStartTime=now.getTime()-66000;
-eq(f.job.footer, footer('Running · double-tap to cancel'), 'Job elapsed footer');
+// Job footer is verified directly with messagesJobFooter above.
 
 // Menus with all rows visible clamp; one-row footer menus wrap. Exercise the
 // exported app functions, not their comments (one task comment is obsolete).
@@ -131,17 +149,17 @@ for(let i=0;i<modelSlots.length;i++){
   const view=ringLessons.picker('model',i);
   eq(view.body,modelPicker.formatHubModelPickerBody(modelSlots,i,'opus'),'Model window/cursor/current '+i);
   eq(view.footer,footer(modelPicker.hubModelPickerFooterLabel(modelSlots,i)),'Model next-message footer '+i);
-  eq(view.nav,pages.composeLensNavLine('COS [O] Model','9:16 AM',now),'Model header '+i);
+  eq(view.nav,pages.composeLensNavLine('COS [O] Model','9:16a',now),'Model header '+i);
 }
 state.modelPreference='sonnet';state.currentPage='effort-picker';
 for(let i=0;i<effortSlots.length;i++){
   const view=ringLessons.picker('effort',i);
   eq(view.body,effortPicker.formatHubEffortPickerBody(effortSlots,i,'high'),'Effort cursor/current '+i);
   eq(view.footer,footer(effortPicker.hubEffortPickerFooterLabel(effortSlots,i)),'Effort next-message footer '+i);
-  eq(view.nav,pages.composeLensNavLine('COS [S] Effort','9:16 AM',now),'Effort header '+i);
+  eq(view.nav,pages.composeLensNavLine('COS [S] Effort','9:16a',now),'Effort header '+i);
 }
 state.currentPage='welcome';state.currentMsgIndex=2;
-eq(l.models[10].frame.nav,pages.composeLensNavLine('COS [S]','9:16 AM',now,['3msg','2m']),'Returned Home active model');
+eq(l.models[10].frame.nav,pages.composeLensNavLine('COS [S]','9:16a',now,['3msg','2m']),'Returned Home active model');
 // Keep the native attribution contract independently verified. The Docs lesson
 // intentionally presents the selected model on completion, per product direction;
 // this display-only override must not be mistaken for a native formatter change.
@@ -179,8 +197,8 @@ for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,0]]) {
 eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last to first');
 eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
 eq(l.ask[10].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
-eq(l.ask[8].frame,f.receipt,'Confirming Send lands on the receipt, not the job log');
-eq(l.ask[9].frame,f.job,'The job log is one more tap');
+eq(l.ask[8].frame,f.receipt,'Confirming Send lands directly on its job');
+eq(l.ask[9].frame,f.job,'The later Log example keeps the same job');
 for(const i of [5,6,7]){eq((hud.html(l.ask[i].frame).match(/lens-bright/g)||[]).length,1,'Review menu highlights exactly one row '+i);}
 eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
 eq(l.ask[3].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Finish starts from captured words');
@@ -194,7 +212,7 @@ eq(l.messages[9].gesture,'double-tap','Messages ring shows double-tap to start r
 eq(l.messages[9].frame.body,f.reply.body,'Express double-tap opens the microphone');
 eq(l.messages[10].frame.body,f.replyReview.body,'Recording finishes into the reviewable transcript');
 eq(l.messages[11].gesture,'tap','Send is a deliberate single tap');
-eq(l.messages[11].frame.footer,queryStatus.runStartFooterHint(),'Reply receipt footer names watch and cancel');
+eq(l.messages[11].frame.footer,f.receipt.footer,'Reply lands on its job with history and cancel');
 assert.ok(l.messages[11].frame.body.includes(f.replyReview.body),'Receipt echoes the reviewed reply');checks++;
 eq(l.messages[12].gesture,'double-tap','Messages ring shows the arming double-tap');
 eq(l.messages[12].frame.footer,queryStatus.cancelArmFooterPrompt(),'Messages cancel arm copy');
@@ -202,7 +220,7 @@ eq(l.messages[13].gesture,'double-tap','Messages ring shows the confirming doubl
 const cancelSrc = fs.readFileSync(path.join(app,'src/gesture-handlers.ts'),'utf8');
 assert.ok(cancelSrc.includes("setHeaderStatus(state.activeBridge, '\\u00D7 Cancelled', 'flash')"),'Native cancel flash literal');checks++;
 eq(l.messages[13].frame.nav,headers.composePrefixedHeader(f.home.nav,'× Cancelled',40),'Confirmed cancel flashes over the Home nav');
-eq(l.messages[13].frame.body,f.home.body,'Cancel from the receipt returns Home');
+eq(l.messages[13].frame.body,f.home.body,'Cancel without browsing away returns Home');
 eq(l.messages[13].frame.footer,f.home.footer,'Cancel clears the streaming and confirm footers');
 eq(l.messages.length,14,'Messages lesson ends on the confirmed cancel');
 
@@ -214,11 +232,11 @@ const mainAst=ts.createSourceFile('main.ts',mainText,ts.ScriptTarget.Latest,true
 const confirmFn=mainAst.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='showVoicePromptConfirmation');
 const headerFn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='glassesHeader');
 assert.ok(confirmFn && headerFn,'Native confirmation and nav formatters must exist');
-state.modelPreference='opus';state.currentPage='voice-prompt';state.isQueryStreaming=false;
+state.questionReclaim={answerable:[],waiting:[]};state.modelPreference='opus';state.currentPage='voice-prompt';state.isQueryStreaming=false;
 state.micEnabled=false;state.voiceDraftChunkIndex=0;state.queuePromptReviewTarget=null;
-const headerContext={state,Date:SampleDate,exports:{},...model,...pages,...meeting};
+const headerContext={state,Date:SampleDate,exports:{},...model,...pages,...meeting,...headers,...await source('src/lib/lens-clock.ts'),needsYouMark:()=>'',macOfflineMark:()=>'',dockedOverlayOnLens:()=>false,overlayHeaderStatus:()=>null,G2_NAV_LINE_MAX:40};
 vm.runInNewContext(ts.transpileModule(headerFn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,headerContext);
-const confirmContext={state,exports:{},...voiceFlow,pushVoicePromptViewport:(_bridge,title,body,position)=>{
+const confirmContext={state,exports:{},questionAnswerCaptureActive:()=>false,workNoteCaptureActive:()=>false,macLinkNow:()=> "ready",...voiceFlow,pushVoicePromptViewport:(_bridge,title,body,position)=>{
   state.currentMsgCounter=position;confirmContext.result={title,body,position};
 }};
 vm.runInNewContext(ts.transpileModule(confirmFn.getText(mainAst),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,confirmContext);
@@ -252,7 +270,7 @@ const gestures = fs.readFileSync(path.join(app,'src/gesture-handlers.ts'),'utf8'
 const gestureAst = ts.createSourceFile('gestures.ts',gestures,ts.ScriptTarget.Latest,true);
 const routeFn = gestureAst.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='handleNonHomeDoubleTap');
 assert.ok(routeFn,'Actual context routing must exist');
-const routeContext = {state:{}, logEvent:()=>{}, resetQueryResultActionMenuState:()=>{}, clearQueryResultActionMenu:()=>{},
+const routeContext = {state:{},closeArchiveChatActionMenuBeforeLeaving:async()=>{},archiveChatMenuEffects:()=>({}), logEvent:()=>{}, resetQueryResultActionMenuState:()=>{}, clearQueryResultActionMenu:()=>{},
   showQuickActions:()=>routeContext.result='hub',replyToCurrentMessage:()=>routeContext.result='reply',showQueryList:()=>{},
   startPromptRecording:()=>routeContext.result='record',confirmDoubleTapReturnToHub:()=>routeContext.result='confirm-hub'};
 vm.runInNewContext(ts.transpileModule(routeFn.getText(gestureAst),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,routeContext);
