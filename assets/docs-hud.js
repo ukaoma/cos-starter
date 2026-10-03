@@ -1,5 +1,5 @@
 /* Public, fictional fixtures for the COS lens. No device/server connection.
- * Labels audited against the published 6.10.576 companion pack.
+ * Labels audited against the 6.10.577 companion pack.
  * See scripts/verify-docs-hud.mjs for source-content parity checks.
  * The Hub-themed frame and typography intentionally follow the supplied mockup.
  */
@@ -10,7 +10,7 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.576\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff v6.10.577\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  2m  82%',
     layout: 'list'
   };
@@ -37,8 +37,8 @@
     receipt: {"nav": "◈ Msg [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},
     sessionMic: { nav: "↔ Sess ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
     session: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
-    sessionMenu: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/5 · Scroll=move Tap=select' },
-    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 3/5 · Scroll=move · Unavailable' },
+    sessionMenu: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/6 · Scroll=move Tap=select' },
+    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 4/6 · Scroll=move · Unavailable' },
     job: { nav: "◈ Msg [O] Thinking 66s 9/4/26 82%", body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: '1m 06s · double-tap to cancel · Scroll up: history + Ask', layout: 'list' },
     meeting: { nav: "■■□□ REC 12:08  ★1  82%", body: '[Maya] We can ship the pilot Friday.\n[Sam] The data import needs one day.\n[Maya] Then Friday holds.\n~ I will check the final rollout notes', footer: '◆ 2 nudges  ↑ history  Tap: actions' }
   };

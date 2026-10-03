@@ -39,7 +39,7 @@
   function reader(index) {
     return frame('continued', {footer:['Messages','Home','Reply','Ref','View image'].map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('  ')});
   }
-  var sessionRows = ['Back to list','Home','Continue','Fork','Ask COS'];
+  var sessionRows = ['Back to list','Home','Queue','Continue','Fork','Ask COS'];
   var taskRows = ['Back to list','Ask COS','Done','Today','To active','To review'];
   var taskFixture = {title:'Prepare the Friday pilot checklist',column:'inbox',stage:'planning',doneWhen:'Checklist includes the owner, rollout date, and a tested rollback.'};
   // Task detail is a detail viewport: glassesHeader() with no page label and
@@ -128,12 +128,13 @@
     sessions: [
       step('Read the session','idle',f.session,'This example shows a saved session without a separate latest-reply page. A current session opens on its latest reply, with history above it. Tap opens footer actions while preserving the body.'),
       step('Reach the footer','swipe-down',frame('session',{scroll:true,thumb:true}),'Scroll through this saved discussion and its stats. A single tap can open actions at any reading position; scrolling first lets you finish the context.'),
-      step('Open the safe first choice','tap',menu(f.session,sessionRows,0),'The first tap opens Back to list, 1 of 5. It does not continue a session or start a model turn.'),
+      step('Open the safe first choice','tap',menu(f.session,sessionRows,0),'The first tap opens Back to list, 1 of 6. It does not continue a session or start a model turn.'),
       step('Highlight Home','swipe-down',menu(f.session,sessionRows,1),'Home is adjacent to Back to list. A confirming tap returns Home without cancelling a running session.'),
-      step('Highlight Continue','swipe-down',menu(f.session,sessionRows,2),'One scroll highlights Continue. A separate confirming tap would start dictation into the original thread, subject to its availability and permissions.'),
-      step('Highlight Fork','swipe-down',menu(f.session,sessionRows,3),'This scroll only highlights Fork. A separate tap opens dictation for a new thread from this context. Your follow-up does not write back into the original thread, and nothing sends before review and confirmation.'),
-      step('Reach the final choice','swipe-down',menu(f.session,sessionRows,4),'Ask COS is 5 of 5 in this supported Claude example. Providers and availability can change the choices; read the row label and counter.'),
-      step('Wrap back to the beginning','swipe-down',menu(f.session,sessionRows,0),'One more downward scroll wraps from 5 of 5 to 1 of 5. Scrolling up from the first row wraps to the last. No action runs just because the cursor wraps.'),
+      step('Highlight Queue','swipe-down',menu(f.session,sessionRows,2),'Queue shows messages waiting behind this session. Tap to read, edit or cancel a waiting message; highlighting this row sends nothing.'),
+      step('Highlight Continue','swipe-down',menu(f.session,sessionRows,3),'One scroll highlights Continue. A separate confirming tap would start dictation into the original thread, subject to its availability and permissions.'),
+      step('Highlight Fork','swipe-down',menu(f.session,sessionRows,4),'This scroll only highlights Fork. A separate tap opens dictation for a new thread from this context. Your follow-up does not write back into the original thread, and nothing sends before review and confirmation.'),
+      step('Reach the final choice','swipe-down',menu(f.session,sessionRows,5),'Ask COS is 6 of 6 in this supported Claude example. Providers and availability can change the choices; read the row label and counter.'),
+      step('Wrap back to the beginning','swipe-down',menu(f.session,sessionRows,0),'One more downward scroll wraps from 6 of 6 to 1 of 6. Scrolling up from the first row wraps to the last. No action runs just because the cursor wraps.'),
       step('Arm return to Quick Actions','double-tap',frame('session',{scroll:true,footer:'Double-tap again for Quick Actions'}),'From session detail, double-tap closes the footer menu and asks for confirmation. You are still in the session. Double-tap again within three seconds to leave. If you wait, the normal footer returns.'),
       step('Open shortcuts in place','hold',frame('session',{scroll:true,menu:true,menuIndex:1}),'Once the confirmation has expired, tap and release, then quickly press and hold. The shortcut window slides over this session without replacing it or returning Home.'),
       step('Find Close in the shortcuts','swipe-down',frame('session',{scroll:true,menu:true,menuIndex:9}),'Keep scrolling through the system menu to Close at the bottom. This example skips ahead to that final selection; one scroll normally moves one row.'),
@@ -190,12 +191,12 @@
   lessons.messages[15].resultText='Cancel armed · double-tap again within three seconds';
   lessons.messages[16].transitionText='Second double-tap · cancelling…';
   lessons.messages[16].resultText='× Cancelled · run stopped · back on Home';
-  lessons.sessions[7].transitionText='Ask COS · 5 of 5 · scroll down…';
-  lessons.sessions[7].resultText='Back to list · 1 of 5 · wrapped without running an action';
-  lessons.sessions[9].before=frame('session',{scroll:true});
-  lessons.sessions[9].resultText='Shortcut window open over the session';
-  lessons.sessions[10].resultText='Skipped ahead to Close · 10 of 10';
-  lessons.sessions[11].resultText='Shortcut window closed · same session, same position';
+  lessons.sessions[8].transitionText='Ask COS · 6 of 6 · scroll down…';
+  lessons.sessions[8].resultText='Back to list · 1 of 6 · wrapped without running an action';
+  lessons.sessions[10].before=frame('session',{scroll:true});
+  lessons.sessions[10].resultText='Shortcut window open over the session';
+  lessons.sessions[11].resultText='Skipped ahead to Close · 10 of 10';
+  lessons.sessions[12].resultText='Shortcut window closed · same session, same position';
   lessons.tasks[8].transitionText='To review · 6 of 6 · scroll down…';
   lessons.tasks[8].resultText='Back to list · 1 of 6 · wrapped without running an action';
   // A chapter click is a replay, even when it jumps across steps. Establish its

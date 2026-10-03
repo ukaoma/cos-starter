@@ -81,10 +81,10 @@ eq(typeof reference.promptReferenceRecordingLine(ref), 'string', 'The Referencin
 eq(f.sessionMic.body, prompt.buildPromptLiveBody('','recording'), 'Session voice has no message reference');
 // Recorder headers are checked through the current glassesHeader below.
 eq(f.meeting.nav, meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82}), 'Meeting REC meter');
-const actions = ['Back to list','Home','Continue','Fork','Ask COS'].map(label => ({label,enabled:true}));
+const actions = session.sessionThreadActions({ featureEnabled:true, provider:'claude', attachability:{ attachable:true, reason:null, reasonCopy:'', ownerCount:0 } });
 eq(f.sessionMenu.footer, session.buildSessionThreadMenuFooter(actions,0), 'Session footer-only menu');
-actions[2] = {label:'Continue (unavailable)',enabled:false};
-eq(f.sessionRefusal.footer, session.buildSessionThreadMenuFooter(actions,2), 'Disabled menu label');
+actions[3] = {...actions[3],label:'Continue (unavailable)',enabled:false};
+eq(f.sessionRefusal.footer, session.buildSessionThreadMenuFooter(actions,3), 'Disabled menu label');
 eq(f.sessionMenu.body, f.session.body, 'Menu preserves session body');
 eq(f.sessionRefusal.body, f.session.body, 'Unavailable action preserves session body');
 eq(f.session.body, pages.formatSessionDetailBody({provider:'claude',domain:'personal',device_id:'mac',display_label:'Friday pilot rollout',slug:'friday-pilot',duration_minutes:14,message_count:31,user_message_count:15,assistant_message_count:16,git_branch:'main',total_input_tokens:0,total_output_tokens:0,file_size_bytes:0,first_prompt:'Import owner is Dana. Rollout email drafts Thursday.'}), 'Native session body');
@@ -198,12 +198,12 @@ for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,5],[8,0]]) {
 eq(tasks.moveTaskMenuAction(5,'forward',taskActions),0,'Task last to first');
 eq(tasks.moveTaskMenuAction(0,'back',taskActions),5,'Task first to last');
 const sessionActions = ringLessons.sessionRows.map(label=>({label,enabled:true}));
-for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,0]]) {
+for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,5],[8,0]]) {
   eq(l.sessions[step].frame.footer,session.buildSessionThreadMenuFooter(sessionActions,index),'Session menu '+step);
   eq(l.sessions[step].frame.body,f.session.body,'Session action preserves body '+step);
 }
-eq(session.moveSessionThreadAction(4,'forward',sessionActions),0,'Session last to first');
-eq(session.moveSessionThreadAction(0,'back',sessionActions),4,'Session first to last');
+eq(session.moveSessionThreadAction(5,'forward',sessionActions),0,'Session last to first');
+eq(session.moveSessionThreadAction(0,'back',sessionActions),5,'Session first to last');
 eq(l.ask[11].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
 eq(l.ask[9].frame,f.receipt,'Confirming Send lands directly on its job');
 eq(l.ask[10].frame,f.job,'The later Log example keeps the same job');

@@ -207,7 +207,7 @@ test('changing scroll-indicator presence updates the rendered node and restores 
   assert.equal(screen.querySelector('.lens-text').style.transform,'translateY(0px)');
 });
 
-test('Sessions replays 5 of 5 before scrolling to 1 of 5 with body retained',()=>{
+test('Sessions replays 6 of 6 before scrolling to 1 of 6 with body retained',()=>{
   const h=lessonHarness(),steps=h.lessons.sessions;
   h.playScene(steps[1],steps[0].frame,h.options);h.flush();
   const readingBody=h.screen.querySelector('.lens-text');
@@ -215,10 +215,10 @@ test('Sessions replays 5 of 5 before scrolling to 1 of 5 with body retained',()=
   h.playScene(steps[2],steps[1].frame,h.options);h.flush();
   assert.equal(h.screen.querySelector('.lens-text'),readingBody,'Opening footer actions retains reading surface');
   assert.ok(h.screen.querySelector('.lens-thumb'),'Opening actions retains the scroll indicator');
-  h.playScene(steps[7],steps[6].frame,h.options);
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/Ask COS · 5\/5/);
+  h.playScene(steps[8],steps[7].frame,h.options);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Ask COS · 6\/6/);
   const body=h.screen.querySelector('.lens-text');h.flush();
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/Back to list · 1\/5/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Back to list · 1\/6/);
   assert.equal(h.screen.querySelector('.lens-text'),body);
   assert.match(h.statuses.at(-1),/wrapped without running an action/);
 });
