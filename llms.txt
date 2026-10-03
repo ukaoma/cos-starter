@@ -25,3 +25,7 @@
 - [eurostat-country-series.csv](https://www.gotcos.com/ai-adoption/data/eurostat-country-series.csv): annual share of enterprises using AI, 2021-2025, 35 European geographies (Eurostat)
 
 Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belong to their publishers. Compiled 2026-07-15.
+
+## Dictation cleanup testing release — 2026-10-03
+
+COS Glasses 6.10.573 with server 6.61.5 offers Sonnet (default) and GPT-5.6 Luna Fast in Settings → Voice → Polish model. Sonnet uses Claude CLI sign-in; Luna uses Cursor CLI sign-in. Failed cleanup preserves transcription. This is a sideload testing release, not a newly approved marketplace build.
