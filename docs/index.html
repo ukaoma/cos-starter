@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.573 (build 573, Hub pin 6.9.538) · server @gotcos/glasses-server 6.61.5 · COS Control 0.5.252.
+   Covers COS Glasses 6.10.576 (build 576, Hub pin 6.9.538) · server @gotcos/glasses-server 6.61.5 · COS Control 0.5.252.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -693,7 +693,7 @@ footer .links a:hover{color:var(--gold)}
 <aside class="docs-side" aria-label="Guide navigation">
   <div class="sb-eyebrow">
     <span class="sb-kicker">User Guide</span>
-    <span class="sb-ver">6.10.573</span>
+    <span class="sb-ver">6.10.576</span>
   </div>
   <div class="search-wrap">
     <input class="search-in" type="search" id="docSearch" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchPanel" aria-autocomplete="list">
@@ -734,7 +734,7 @@ footer .links a:hover{color:var(--gold)}
     <h1>Everything the lenses do, <span class="it goldt">on one page.</span></h1>
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
-      <span class="chip">App <b>6.10.573</b> · build 573</span>
+      <span class="chip">App <b>6.10.576</b> · build 576</span>
       <span class="chip">Server <b>6.61.5</b></span>
       <span class="chip">Control <b>0.5.252</b></span>
       <span class="chip">Even G2</span>
@@ -746,7 +746,7 @@ footer .links a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="g2-stage" aria-hidden="true">
-    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
+    <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.576</span>
 
 72° Clear • Austin
 → in 44m: Design review
@@ -792,7 +792,8 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <p class="ds-hint dt-tap">The default. Tap starts a message, tap finishes it, tap sends it. The steps and tables on this page read that way.</p>
       <p class="ds-hint dt-hold">Press and hold the ring to talk, let go to review, tap to send. Turn it on in the Even app under COS Glasses, Settings, Voice, <strong>Record a message: Hold to talk, release to finish</strong> (glasses 6.9.474 and later). The steps and tables on this page now read that way; <a href="#hold-to-talk">where a hold works</a> lists every page.</p>
     </div>
-    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a><a href="#models-ring">Models &amp; effort</a>
+    <nav class="rl-links" aria-label="Context-specific ring lessons"><a href="#messages-ring">Messages</a><a href="#ask-ring">Ask COS</a><a href="#sessions-ring">Sessions</a><a href="#tasks-ring">Tasks</a>
+        <a href="#meetings-ring">Meetings</a><a href="#models-ring">Models &amp; effort</a>
       <a href="#hud-states">Live HUD states</a></nav>
   </div>
   <div class="rp-grid">
@@ -800,7 +801,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
       <div class="rp-demo">
         <div class="rp-lens" aria-label="Simulated COS heads-up display">
-          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.573</span>
+          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.576</span>
 
 72° Clear • Austin
 → in 44m: Design review
@@ -831,13 +832,13 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <li class="rp-step" data-rp-step="0" data-gesture="idle" aria-current="step">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">01</span><strong>Begin on Home</strong><span class="rp-action">Ready</span>
-          <p>The top line holds COS, your model, the clock, and today's date. The body holds the page. The bottom line keeps message, session, and battery status.</p>
+          <p>Navigation identifies the page and shows your model and known battery percentage. Clock and date appear when space allows. The body holds the page; the footer holds its controls and progress.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="1" data-gesture="hold">
         <button type="button" aria-controls="rpScreen">
           <span class="rp-step-num">02</span><strong>Open the quick menu</strong><span class="rp-action">Tap and hold</span>
-          <p>Tap and release, then quickly press again and keep holding. The shortcut window slides over the current HUD. Your page stays underneath it; selecting Close brings it back.</p>
+          <p>Tap and release, then quickly press again and keep holding. The shortcut window slides over the current HUD. Home is the first COS choice in the default order, below Display off. Your page stays underneath; selecting Close brings it back.</p>
         </button>
       </li>
       <li class="rp-step" data-rp-step="2" data-gesture="swipe-down">
@@ -891,6 +892,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <p><strong>Tap, release, then press and hold.</strong> Keep the second contact down until the shortcut window appears above the HUD. Scroll to a row, then tap to select it. Choose Close to reveal the same page underneath. You do not have to return Home first.</p>
       <p class="hud-note">The animation slows down the contact phases for teaching. It is not a stopwatch for the firmware's recognition threshold.</p>
       <ul>
+        <li><strong>Home</strong> is first in the default COS menu and returns Home while recording and jobs continue.</li>
         <li><strong>Ask COS</strong> opens a new voice prompt.</li>
         <li><strong>Model: Opus</strong> shows the current model. Choose a model, then its reasoning effort. <a href="#models-ring">Practice the two-stage picker.</a></li>
         <li><strong>Start Meeting</strong> begins Meeting AI. While recording, <strong>Resume Meeting</strong> and <strong>Stop Meeting</strong> take its place.</li>
@@ -899,7 +901,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     </div>
     <div>
       <h3>What changes while recording</h3>
-      <p>The menu has room for seven COS rows. Resume and Stop lead while a meeting is active, so <strong>Tasks is omitted from the hold menu during recording</strong>. It remains available in Quick Actions.</p>
+      <p>The menu has room for seven COS rows. Home, Resume and Stop lead in the default order while a meeting is active, so <strong>Tasks is omitted from the hold menu during recording</strong>. It remains available in Quick Actions.</p>
       <p>Even also supplies <strong>Display off</strong> above the COS rows, with <strong>Brightness</strong> and <strong>Close</strong> below. Those system controls are separate from COS. Your saved menu order may differ from this default example.</p>
       <p class="hud-note">The SDK 0.0.14 context menu is distinct from a single tap's reader-footer actions and from the Quick Actions page reached by scrolling down on Home.</p>
     </div>
@@ -964,11 +966,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.252, glasses 6.10.573, server 6.61.5.</strong> COS Control 0.5.252 is the public Mac download. COS Glasses 6.10.573 is the current companion pack: the newest build installs by sideload from the Hub repo, and Even Hub still lists 6.9.538. Server identity is 6.61.5, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.9.560 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release); the version list below says what each adds.</p>
+    <p><strong>Latest release package: Control 0.5.252, glasses 6.10.576, server 6.61.5.</strong> COS Control 0.5.252 is the public Mac download. COS Glasses 6.10.576 is the current companion pack: the newest build installs by sideload from the Hub repo, and Even Hub still lists 6.9.538. Server identity is 6.61.5, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.9.560 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release); the version list below says what each adds.</p>
     <ul class="release-list">
+      <li><strong>One direction for history; Home within reach.</strong> Glasses 6.10.576 aligns live Meetings with Messages and Sessions: up for older content, down toward live. Tap opens footer actions with the parent list first and Home next; scroll to select, then tap to confirm. Meeting actions retain Bookmark or Nudges. The default tap-then-hold side menu starts with Home, below Even’s Display off; recording also keeps Resume Meeting and Stop Meeting. Custom menu arrangements stay intact. Home leaves recording and jobs running. Navigation shows known battery percentage alongside <code>◈ Msg</code> or <code>↔ Sess</code>; full recording controls take priority in a crowded header.</li>
       <li><strong>Choose Sonnet or Luna for final dictation polish.</strong> Glasses 6.10.573 with server 6.61.5 adds Settings, Voice, Polish model: Sonnet (default) or GPT-5.6 Luna Fast. Luna uses your Cursor CLI sign-in; Sonnet uses your Claude CLI sign-in. If cleanup is unavailable, the transcript remains available. Messages and Sessions also keep history and Ask in their footers instead of repeating battery; active timers and cancellation controls remain. This is a testing/sideload release. Physical acceptance is pending and this build has not been submitted to the marketplace; the listing version shown here is the last confirmed one.</li>
       <li><strong>Send opens the job you just started.</strong> Glasses 6.10.571 opens the job page before the network answers. It distinguishes Sending, Not sent yet, Running, Queued and Held. Server 6.61.3 can hold an accepted prompt behind an earlier run; a held prompt has not started. Continue opens its session or queue and keeps the ask visible.</li>
-      <li><strong>Up for conversation history, down for the latest.</strong> Glasses 6.9.568 opens Sessions on the newest reply and Work cards on Progress, with older context above. Background changes wait while you read a long page; down at the last page brings in waiting text. Header and footer clocks do not reset the reader. Live meeting history retains its own controls: down for older transcript, up toward live.</li>
+      <li><strong>Up for conversation history, down for the latest.</strong> Glasses 6.9.568 opens Sessions on the newest reply and Work cards on Progress, with older context above. Background changes wait while you read a long page; down at the last page brings in waiting text. Header and footer clocks do not reset the reader. Since glasses 6.10.576, live Meetings uses the same direction: up for earlier transcript, down toward live. Saved documents open at the beginning.</li>
       <li><strong>Offline status and saved turns.</strong> Glasses 6.9.563 marks an unreachable Mac, labels cached session data with its age, and saves a Continue turn on the phone when delivery cannot finish. Saved turns in Quick Actions lets you inspect or retry it. Reconnect drains turns in session order. A failed save keeps the draft visible. Since 6.9.570, an unreliable wearing flag no longer blocks dictation or question polling; real input supplies presence.</li>
       <li><strong>Questions can wait for you while you are away.</strong> Server 6.60.0 with glasses 6.9.563 can hold a desk question for up to ten minutes when the desk is idle and the glasses or phone reported recent presence. Reinstall hooks in COS Control once after updating; a client that has not reported presence in thirty minutes does not gain this extended hold.</li>
       <li><strong>Speaker names stay on the live lens.</strong> Glasses 6.9.567 with server 6.61.0 starts a new named line when the speaker changes inside a chunk. Glasses 6.9.569 gives committed speaker lines priority over a single provisional preview, keeping the live body within seven rows.</li>
@@ -1049,7 +1052,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <summary>Version by version</summary>
       <dl>
         <dt>Control 0.5.252</dt><dd>Takes Work requests from the glasses through the server&rsquo;s inbox: lists them every 30 seconds (every 5 while it holds one), claims each once, reads the task, its sessions and the model catalog again, and refuses with the reason (a task gone, complete or changed, a list it could not read, a session or model not on this Mac, a request type it does not know) before anything is sent. A Start sends the task&rsquo;s own prompt with the note under it, never a half-typed Mac draft. Reply by voice and Not done yet go back to the session that asked or reported done. A New session from the glasses stays in the background. Results reach the server even across a relaunch. Includes 0.5.249 to 0.5.251, none of which was a public download on its own, with 0.5.251&rsquo;s controls after their QA round: the open dropdown is a card under its face, and switches, checkboxes and chips take Space. Pairs with server 6.59.0; with an older server nothing changes and nothing is shown.</dd>
-        <dt>Glasses 6.10.573 and server 6.61.5</dt><dd>Sideload testing pair. Adds Sonnet and GPT-5.6 Luna Fast final dictation choices, with Sonnet default and explicit old-server compatibility handling. Includes build 572’s history/Ask footer changes and server 6.61.4’s merged-review identity and revision-guarded task editing support. Task-name editing in Control still requires the corresponding Control build; this release does not update Control.</dd>
+        <dt>Glasses 6.10.576 and server 6.61.5</dt><dd>Sideload testing pair. Adds consistent meeting history direction, Home in reader actions and first in default shortcuts, navigation battery, and distinct Messages/Sessions marks. Includes Sonnet and GPT-5.6 Luna Fast final dictation choices, with Sonnet default and explicit old-server compatibility handling. Includes build 572’s history/Ask footer changes and server 6.61.4’s merged-review identity and revision-guarded task editing support. Task-name editing in Control still requires the corresponding Control build; this release does not update Control.</dd>
         <dt>Glasses 6.9.561</dt><dd>The companion pack, a sideload. Work shows progress on a card (the stage, the report and its time, the session&rsquo;s words, its live state, the last move) and starts with Working now. Start work on the phone and, with a sure destination and a confirm that starts on Cancel, on the lens; Reply by voice and Not done yet; Mark complete asks first on the lens. The phone&rsquo;s Work tab uses words with a rule instead of pill rows. Settings gain Start hold to talk from (Ring only, the default, or Ring or temple) and Switch a ring hold to tap after (10, 15, 20 or 30 seconds, 15 by default). Work progress needs server 6.59.0; Start work, Reply and Not done yet also need COS Control 0.5.252. Requires server 6.55.0.</dd>
         <dt>Server 6.59.0</dt><dd>Work progress for the glasses on <code>/api/work-board/activity</code> (the report, evidence up to 280 characters, the last move, the live flags, the task&rsquo;s revision, the saved destination), <code>/api/work-board/activity/open</code> for Working now, and the handoff request inbox <code>/api/work-board/handoff-requests</code>: the glasses leave a request, COS Control lists, claims and reports it (those routes answer only on the Mac itself), and the server never runs a provider for it. One request per card, 40 a day, and a request not claimed in 10 minutes expires.</dd>
         <dt>Control 0.5.251</dt><dd>Every stock macOS control wears the gotcos theme: 28 pickers become dropdowns and view switches, 23 toggles become switches, checkboxes and chips, and fields, buttons, menus, steppers, progress and disclosure follow. A Claude session from Work is named after the task&rsquo;s whole title. Shipped inside 0.5.252.</dd>
@@ -1332,8 +1335,8 @@ Tap=Latest  ↓ Menu  ↑ Messages
 <section class="wrap" id="sessions">
   <div class="sec-head">
     <h2 class="ch"><span class="num">2B.</span> Sessions on the lens</h2>
-    <p class="ch-sub">One thread. Four choices. A rolling footer.</p>
-    <p class="lead">Open Sessions from Quick Actions or the hold menu, then tap a thread. Keep its context in view while the ring moves through Back to list, Continue, Fork, and Ask COS. The last row is not the end: another downward scroll takes 4 of 4 back to 1 of 4.</p>
+    <p class="ch-sub">One thread. Home within reach. A rolling footer.</p>
+    <p class="lead">Open Sessions from Quick Actions or the hold menu, then tap a thread. Keep its context in view while the ring moves through Back to list, Home, Continue, Fork, and Ask COS. The last row is not the end: another downward scroll takes 5 of 5 back to 1 of 5 in this idle example.</p>
   </div>
   <p style="font-size:.95rem"><strong>On the phone.</strong> Views, Sessions shows the same list and says what each session is doing: Working now, Open, Status unknown, or Idle, with its last activity and, while it is held, its last tool. Tap a session for a live detail that refreshes while it is open, with or without glasses. Last activity and the last tool need server 6.45.5. Since glasses 6.9.471 a session&rsquo;s detail ends with Continue, Fork and Ask COS, the same actions as the lens footer.</p>
   <p style="font-size:.95rem"><strong>Clock, saved copies, no Mac.</strong> A running session shows how long its current turn has run in the footer, for example <span class="g-key">7/7 &#183; 12m 04s</span>, when Claude Code hooks are installed (glasses 6.9.536). The last eight sessions you opened are saved on the phone and open without the Mac, marked <span class="g-key">Saved 14m</span> until the Mac answers (6.9.537). With no Mac set up, Sessions says Needs your Mac instead of reporting an error (6.9.538). With 6.9.539, a sideload, the list opens at once from the phone and a row shows <span class="g-key">?</span> until the Mac confirms whether it is working.</p>
@@ -1342,7 +1345,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p style="font-size:.95rem"><strong>Two taps, never one.</strong> The first tap opens the menu. The second tap selects the highlighted row. This guards against occasional phantom ring touches. <strong>Continue</strong> and <strong>Fork</strong> open dictation; a real model turn starts only after you finish, review, and send that prompt.</p>
   <div class="ring-lesson" id="sessions-ring" data-ring-lesson="sessions">
     <h3>Sessions: one footer, a rolling menu.</h3>
-    <p>Tap to open, scroll through Back to list, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
+    <p>Tap to open, scroll through Back to list, Home, Continue, Fork, and Ask COS, then tap to confirm. Scroll past the last row and the cursor returns to the first; scrolling up from the first returns to the last.</p>
     <p class="rl-fallback">The body stays at its reading position. Menu input resets a three-second timeout; waiting dismisses the footer actions. Double-tap instead asks for confirmation to leave for Quick Actions. The hold menu is a separate window above the page.</p>
   </div>
 
@@ -1355,11 +1358,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <tr><td><span class="g-key">Hold</span></td><td><span class="dt-tap">With Glasses dictation set to hold (see the switch at the top of the page): press and hold on the session to act on it in one motion.</span><span class="dt-hold">Press and hold on the session to act on it in one motion, let go to review. On a <strong>Claude</strong> session the hold is <strong>Continue</strong>: the footer reads <code>Tap: actions  Hold: continue</code>, the recorder says Continue, and if the session is busy your words are queued and land when it goes idle (glasses 6.9.486 and later). On a Codex or Cursor session the hold is <strong>Ask COS</strong> (<code>Hold: ask</code>, 6.9.476 and later). A 300 ms gate ignores a brush.</span></td></tr>
   </table></div>
 
-  <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Continue</strong> sits exactly one scroll away.</p>
+  <p style="font-size:.95rem">The cursor opens on <strong>Back to list</strong>, the one row that cannot change anything, so a phantom double touch lands somewhere harmless. <strong>Home</strong> is one scroll away; <strong>Continue</strong> is two. Selecting Home leaves a running job active.</p>
 
   <div class="tw"><table>
     <tr><th>Row</th><th>What it does</th></tr>
     <tr><td><strong>Back to list</strong></td><td>Return to Sessions. Nothing is written, and it is always present, so the menu can never trap you.</td></tr>
+    <tr><td><strong>Home</strong></td><td>Return Home while the session keeps running.</td></tr>
     <tr><td><strong>Continue</strong></td><td>Attach to the original thread and start recording a turn. Selecting it only opens the microphone. Nothing enters the conversation until you send, which is its own confirmed step.</td></tr>
     <tr><td><strong>Fork</strong></td><td>Record against a copy of the thread and leave the original untouched. This is what every refusal points you to.</td></tr>
     <tr><td><strong>Ask COS</strong></td><td>Ask a question about the session without writing into it at all.</td></tr>
@@ -1395,7 +1399,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
 
 <div class="cards mixed">
     <div>
-      <div class="hud lens-hud" data-hud="reader" aria-label="Sample message reader"><div class="lens-nav">COS [O] #411 Pg 1/1 9:16a 9/4/26</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
+      <div class="hud lens-hud" data-hud="reader" aria-label="Sample message reader"><div class="lens-nav">◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
 ─────
 → The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.
 
@@ -1440,7 +1444,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
         <div class="pf-status"><span>10:22</span><i><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5l2-2.4a3 3 0 00-4 0zM8 6a5.5 5.5 0 013.9 1.6l1.3-1.5A7.6 7.6 0 008 4a7.6 7.6 0 00-5.2 2.1l1.3 1.5A5.5 5.5 0 018 6z"/></svg><svg viewBox="0 0 26 12" aria-hidden="true"><rect x=".6" y="1.4" width="21" height="9.2" rx="2.6" fill="none" stroke="#1c1a17" stroke-width="1.1"/><rect x="2.2" y="3" width="13" height="6" rx="1.4"/><path d="M23.2 4.6v2.8a2.2 2.2 0 000-2.8z"/></svg>69%</i></div>
         <div class="pf-nav"><span>&#8689;</span><span>COS Glasses</span><span>&#8943;</span></div>
         <div class="pf-body">
-          <div class="pf-app"><b>COS GLASSES</b><i>v6.10.573 &#183; Live on G2</i></div>
+          <div class="pf-app"><b>COS GLASSES</b><i>v6.10.576 &#183; Live on G2</i></div>
           <div class="pf-sid"><u>SID 3a16e56e</u><span>30 msgs</span></div>
           <div class="pf-tabs"><span class="on">CHAT 30</span><span>VIEWS</span><span>G2</span></div>
           <div class="pf-ask">
@@ -1587,7 +1591,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="ring-lesson" id="messages-ring" data-ring-lesson="messages">
     <h3>Messages: read, choose, then confirm.</h3>
     <p>Finish reading the body, tap to open the footer, scroll to a choice, then tap again to select. Those are two deliberate single taps separated by reading the menu, not the quick double-tap that starts a reply.</p>
-    <p class="rl-fallback">Messages and Reply are always in the idle reader menu. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. Scrolling past the last row returns to Messages, and scrolling up from Messages reaches the last row. A tap can open the menu before you reach the bottom, too. Double-tap in an open, idle message starts the same prompt without opening the menu. After you finish recording, the transcript waits for review; nothing is sent until you confirm. Once a reply is running, double-tap to arm cancellation, then double-tap again within three seconds to cancel it.</p>
+    <p class="rl-fallback">Messages, Home and Reply are always in the idle reader menu; Ref appears for numbered messages. View image is conditional on an attachment, enabled lens preview, and no meeting-critical capture. Scrolling past the last row returns to Messages, and scrolling up from Messages reaches the last row. A tap can open the menu before you reach the bottom, too. Double-tap in an open, idle message starts the same prompt without opening the menu. After you finish recording, the transcript waits for review; nothing is sent until you confirm. Once a reply is running, double-tap to arm cancellation, then double-tap again within three seconds to cancel it.</p>
     <p class="hud-note">Reader-menu wrapping ships in the glasses build after 6.9.455. Older builds stop at the last row; scroll upward to return.</p>
   </div>
 
@@ -1614,6 +1618,14 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 
 </section>
 
+<section class="wrap reveal" id="meetings-ring">
+  <div class="ring-lesson" data-ring-lesson="meetings">
+    <h2>Meetings: the same path through history.</h2>
+    <p>Scroll up for earlier speech, down toward live. Tap for actions, scroll to Home, then tap to select. Recording continues when you go Home.</p>
+    <p class="rl-fallback">The footer starts on Meetings, with Home next. Nudges is available when Live Cues is on; otherwise choose Bookmark. The tap-then-hold side menu also puts Home first in its default COS order, followed by Resume Meeting and Stop Meeting. Custom arrangements are preserved.</p>
+  </div>
+</section>
+
 <section class="wrap reveal" id="hud-states">
   <h2>Read the live HUD.</h2>
   <p class="lead">See what changes after Send, where your original ask lives, and how to get back to live. Each example uses fictional content and the current companion’s labels.</p>
@@ -1624,16 +1636,18 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       <button type="button" data-hud-state="history" aria-pressed="false">Messages history</button>
       <button type="button" data-hud-state="sessionLive" aria-pressed="false">Sessions live</button>
       <button type="button" data-hud-state="sessionHistory" aria-pressed="false">Sessions history</button>
-      <button type="button" data-hud-state="meeting" aria-pressed="false">Meeting preview</button>
+      <button type="button" data-hud-state="meeting" aria-pressed="false">Meeting live</button>
+      <button type="button" data-hud-state="meetingHistory" aria-pressed="false">Meeting history</button>
+      <button type="button" data-hud-state="meetingHome" aria-pressed="false">Meeting Home action</button>
     </div>
     <div class="hud-state-preview">
-      <div class="lens-hud" data-hud="sending" aria-label="Selected HUD example"><div class="lens-nav">COS [O] Thinking 1s 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">◌ SENDING</span>
+      <div class="lens-hud" data-hud="sending" aria-label="Selected HUD example"><div class="lens-nav">◈ Msg [O] Thinking 1s 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">◌ SENDING</span>
 --- ask ---
   &quot;Summarize the pilot thread.&quot;</div></div><div class="lens-footer">1s · double-tap to cancel · Scroll up: history + Ask</div></div>
       <p class="hud-state-caption" aria-live="polite">Send opens the job page immediately. SENDING means the Mac has not acknowledged the prompt yet.</p>
     </div>
   </div>
-  <p class="hud-note">Illustrative screen, not an optical capture. Navigation, body and footer remain separate regions. Messages and Sessions put history above live; a live meeting uses down for older transcript and up to return. Use the buttons to compare without an automatic slideshow.</p>
+  <p class="hud-note">Illustrative screen, not an optical capture. Navigation, body and footer remain separate regions. Messages, Sessions and live Meetings put history above live: scroll up for older content and down for newer content. Tap opens footer actions; Home is beside the parent list and leaves recording or jobs active. Use the buttons to compare without an automatic slideshow.</p>
 </section>
 
 <!-- ── 06 JOBS ── -->
@@ -1646,7 +1660,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <p><strong>Send takes you here immediately.</strong> You do not need a second tap to watch. Scroll up to the original ask and history; scroll down to the newest page. While reading history the footer counts how many scrolls return to live. Messages and Sessions keep their active clock and controls in this row instead of repeating battery. A long clock may shorten the hint to <span class="g-key">▲ history + Ask</span>.</p>
   <div class="cards mixed">
     <div>
-      <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">COS [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  Summarize the pilot thread.</span>
+      <div class="hud lens-hud" data-hud="job" aria-label="Sample job activity with navigation and footer"><div class="lens-nav">◈ Msg [O] Thinking 66s 9/4/26 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">00:00 ASK  Summarize the pilot thread.</span>
 00:09 TOOL Searching web...
 00:21 OUT  5 results · vendor pricing
 00:34 TOOL Reading page...
@@ -1718,15 +1732,16 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="hud lens-hud" data-hud="meeting" aria-label="Sample live meeting with recording meter"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[Maya] We can ship the pilot Friday.</span>
 [Sam] The data import needs one day.
 [Maya] Then Friday holds.
-~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↓ history  ↑↑ home</div></div>
+~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↑ history  Tap: actions</div></div>
       <div class="hud-cap">Live meeting HUD · fictional example</div>
   </div>
 <div class="cards mixed">
     <div>
       <div class="tw"><table>
-        <tr><td><span class="g-key">Tap</span></td><td>Bookmark the moment. The lens flashes <span class="g-key">★ Bookmarked</span> and stamps the elapsed time.</td></tr>
-        <tr><td><span class="g-key">↓</span></td><td>Scroll back through the transcript history.</td></tr>
-        <tr><td><span class="g-key">↑↑</span></td><td>Back to Home. Recording keeps going; a REC timer stays in the header while you browse anywhere else.</td></tr>
+        <tr><td><span class="g-key">Tap</span></td><td>Open footer actions: Meetings, Home, then Nudges if Live Cues is on, otherwise Bookmark. Scroll to choose and tap to confirm. Bookmark flashes ★ Bookmarked and stamps the elapsed time.</td></tr>
+        <tr><td><span class="g-key">↑</span></td><td>Read earlier transcript history. New speech continues recording while this page stays still.</td></tr>
+        <tr><td><span class="g-key">↓</span></td><td>Move toward newer transcript and live. The footer counts the remaining steps to live.</td></tr>
+        <tr><td><strong>Home</strong></td><td>Tap for footer actions, scroll once to Home, then tap. Or select Home in the tap-then-hold side menu. Recording continues; the REC indicator remains in navigation.</td></tr>
       </table></div>
       <p style="font-size:.95rem"><strong>Stop Meeting AI</strong> ends the session. <strong>Review Meetings</strong> then holds the transcript, summary, topics, decisions, and action items, readable right on the glasses.</p>
       <p style="font-size:.95rem"><strong>Connection dropped? Keep talking.</strong> Every audio chunk enters a local write-ahead log before upload. Each meeting is pinned to the Mac that admitted it, and raw audio receipt, transcription completion, and the final canonical transcript are tracked separately &mdash; so a silent stretch counts as complete without being mistaken for transcript text, and a delivered-but-not-yet-transcribed chunk stays retryable. When the server returns, COS reconciles those ledgers, sends only the ranges that are missing, and keeps the phone copy until the Mac has durably stored both the audio and its received-range record. A retryable server response never discards the local chunk.</p>
@@ -1784,7 +1799,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.573 plus server 6.61.5 is the current companion pair; Even Hub still lists 6.9.538.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.576 plus server 6.61.5 is the current companion pair; Even Hub still lists 6.9.538.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>The default Tiny configuration uses Mac Whisper while the Mac answers and the built-in phone model when it does not. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -2105,7 +2120,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.252</strong>, server <strong>6.61.5</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub. Sideload <strong>6.10.573</strong> for the newest companion build; Even Hub still lists 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.252</strong>, server <strong>6.61.5</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub. Sideload <strong>6.10.576</strong> for the newest companion build; Even Hub still lists 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2126,7 +2141,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.573. The current supported pair is COS Glasses 6.10.573 (Even Hub still lists 6.9.538) and server 6.61.5; COS Control 0.5.252 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.576. The current supported pair is COS Glasses 6.10.576 (Even Hub still lists 6.9.538) and server 6.61.5; COS Control 0.5.252 is recommended on Apple silicon. The server side needs Node.js 20.11 or newer on macOS, Windows, or Linux. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2307,7 +2322,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.573 / Control 0.5.252 / server 6.61.5, 2026-10-03; Hub packs to 6.10.573)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.576 / Control 0.5.252 / server 6.61.5, 2026-10-03; Hub packs to 6.10.576)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

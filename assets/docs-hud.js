@@ -1,5 +1,5 @@
 /* Public, fictional fixtures for the COS lens. No device/server connection.
- * Labels audited against the published 6.10.573 companion pack.
+ * Labels audited against the published 6.10.576 companion pack.
  * See scripts/verify-docs-hud.mjs for source-content parity checks.
  * The Hub-themed frame and typography intentionally follow the supplied mockup.
  */
@@ -9,8 +9,8 @@
   // ring-lessons.js so the status line and the ring never restate these.
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
-    nav: 'COS [O] 9:16a 9/4/26 3msg 2m',
-    body: 'Chief of Staff v6.10.573\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
+    body: 'Chief of Staff v6.10.576\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  2m  82%',
     layout: 'list'
   };
@@ -19,58 +19,61 @@
   var sessionBody = 'Friday pilot rollout\n[ANT] 14m • 31msg • mac\n\nDISCUSSION\nImport owner is Dana. Rollout email drafts Thursday.\n\nSTATS\nMessages: 15u / 16a\nBranch: main';
   var frames = {
     home: home,
-    messages: { nav: 'COS [O] 9:16a 9/4/26 3msg 2m', body: listBody, footer: 'Opus  1/3 Pg 1  82%', layout: 'list' },
-    selected: { nav: 'COS [O] 9:16a 9/4/26 3msg 2m', body: listBody.replace('▶ #412', '  #412').replace('  #411', '▶ #411'), footer: 'Opus  2/3 Pg 1  82%', layout: 'list' },
-    reader: { nav: 'COS [O] #411 Pg 1/1 9:16a 9/4/26', body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', thumb: true },
-    continued: { nav: 'COS [O] #411 Pg 1/1 9:16a 9/4/26', body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', scroll: true, thumb: true },
+    messages: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody, footer: 'Opus  1/3 Pg 1  82%', layout: 'list' },
+    selected: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody.replace('▶ #412', '  #412').replace('  #411', '▶ #411'), footer: 'Opus  2/3 Pg 1  82%', layout: 'list' },
+    reader: { nav: "◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%", body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', thumb: true },
+    continued: { nav: "◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%", body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', scroll: true, thumb: true },
     // A prompt started from the open reader by Reply or by double-tap. The app
     // arms a "Referencing #N" line only from the spoken "reference message N"
     // command, never from these gestures, so the recording view is plain.
-    reply: { nav: '■□□□ LISTEN · COS [O●] Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  82%' },
+    reply: { nav: "◈ Msg ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  82%' },
     // The same recorder with Glasses dictation set to hold (6.9.483+): the footer
     // reads the control that ends it, and letting go opens the review.
-    replyHold: { nav: '■□□□ LISTEN · COS [O●] 9:16a 9/4/26', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release to confirm 4/15s  82%' },
-    review: { nav: 'COS [O] 9:16a 9/4/26', body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
-    replyReview: { nav: 'COS [O] 9:16a 9/4/26', body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
+    replyHold: { nav: "◈ Msg ■□□□ LISTEN · [O●] 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release to confirm 4/15s  82%' },
+    review: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
+    replyReview: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
     // Send opens the job page immediately, before the Mac acknowledges it.
     // SENDING is not a claim that the provider has started.
-    receipt: {"nav": "COS [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},
-    sessionMic: { nav: '■□□□ LISTEN · COS [O●] Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
-    session: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
-    sessionMenu: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: '▶ Back to list · 1/4 · Scroll=move Tap=select' },
-    sessionRefusal: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: '▶ Continue (unavailable) · 2/4 · Scroll=move · Unavailable' },
-    job: { nav: 'COS [O] Thinking 66s 9/4/26 82%', body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: '1m 06s · double-tap to cancel · Scroll up: history + Ask', layout: 'list' },
-    meeting: { nav: '■■□□ REC 12:08  ★1  82%', body: '[Maya] We can ship the pilot Friday.\n[Sam] The data import needs one day.\n[Maya] Then Friday holds.\n~ I will check the final rollout notes', footer: '◆ 2 nudges  ↓ history  ↑↑ home' }
+    receipt: {"nav": "◈ Msg [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},
+    sessionMic: { nav: "↔ Sess ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
+    session: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
+    sessionMenu: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/5 · Scroll=move Tap=select' },
+    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 3/5 · Scroll=move · Unavailable' },
+    job: { nav: "◈ Msg [O] Thinking 66s 9/4/26 82%", body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: '1m 06s · double-tap to cancel · Scroll up: history + Ask', layout: 'list' },
+    meeting: { nav: "■■□□ REC 12:08  ★1  82%", body: '[Maya] We can ship the pilot Friday.\n[Sam] The data import needs one day.\n[Maya] Then Friday holds.\n~ I will check the final rollout notes', footer: '◆ 2 nudges  ↑ history  Tap: actions' }
   };
   Object.assign(frames, {
   "sending": {
-    "nav": "COS [O] Thinking 1s 9/4/26 82%",
+    "nav": "◈ Msg [O] Thinking 1s 9/4/26 82%",
     "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"",
     "footer": "1s · double-tap to cancel · Scroll up: history + Ask"
   },
   "live": {
-    "nav": "COS [O] Thinking 66s 9/4/26 82%",
+    "nav": "◈ Msg [O] Thinking 66s 9/4/26 82%",
     "body": "● RUNNING  1 step · 1s ago\nThe pilot is on track. Dana owns the import. Sam is checking\nthe rollout notes.",
     "footer": "1m 06s · double-tap to cancel · Scroll up: history + Ask"
   },
   "history": {
-    "nav": "COS [O] Thinking 66s 9/4/26 82%",
+    "nav": "◈ Msg [hist] [O] Thinking 66s 9/4/26 82%",
     "body": "--- ask ---\nSummarize the pilot thread.",
     "footer": "1/2 · 1m 06s · 1 down to live"
   },
   "sessionLive": {
-    "nav": "COS [O] FRIDAY PILOT 9:16a 9/4/26",
+    "nav": "↔ Sess [O] FRIDAY PILOT 9:16a 9/4/26 82%",
     "body": "● RUNNING  1 step · 1s ago\nThe pilot is on track. Dana owns the import. Sam is checking\nthe rollout notes.",
     "footer": "Hold: continue · 1m 06s · Scroll up: history + Ask"
   },
   "sessionHistory": {
-    "nav": "COS [O] HISTORY FRIDAY PILOT 9:16a 9/4/26",
+    "nav": "↔ Sess [hist] [O] HISTORY FRIDAY 82%",
     "body": "--- ask ---\nSummarize the pilot thread.",
     "footer": "1/2 · 1m 06s · 1 down to live"
   }
 });
-  var menuIdle = ['Display off', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Home', 'Brightness', 'Close'];
-  var menuRecording = ['Display off', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Home', 'Brightness', 'Close'];
+  frames.meetingHistory = {nav:'[hist] ■■□□ REC 12:08  ★1  82%',body:'[Maya] Before we set the date, what is left?\n[Sam] The data import needs one day.',footer:'1/1  ↑ older  1 down to live'};
+  frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/3 · Scroll=move Tap=select'});
+  frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 2/3 · Tap=select'});
+  var menuIdle = ['Display off', 'Home', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Brightness', 'Close'];
+  var menuRecording = ['Display off', 'Home', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function bodyHtml(body, layout) {
     return body.split('\n').map(function(line,i){
@@ -99,7 +102,7 @@
     }
     return out;
   }
-  var ringFrames = ['home', Object.assign({}, home, {menu:true,menuIndex:1}), Object.assign({}, home, {menu:true,menuIndex:4}), 'messages', 'selected', 'reader', 'continued', 'reply', 'replyReview'];
+  var ringFrames = ['home', Object.assign({}, home, {menu:true,menuIndex:1}), Object.assign({}, home, {menu:true,menuIndex:5}), 'messages', 'selected', 'reader', 'continued', 'reply', 'replyReview'];
   // One painter for every lesson. When nav and body are unchanged only the
   // changed layer moves: native body scroll, footer selection, or the
   // firmware-owned window above the page. A nav or body change replaces the
@@ -175,7 +178,9 @@
     history: 'Scroll up to see the original ask. The footer says 1 down to live, so one downward scroll returns to the newest page.',
     sessionLive: 'Sessions uses the same history + Ask language. Hold continues this session; tap opens its actions. The clock belongs to the active turn.',
     sessionHistory: 'Older context is above the latest reply. The page counter and distance to live stay visible while you read.',
-    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Live meeting history is different: down for older transcript, up toward live.'
+    meetingHistory: 'One upward scroll enters older transcript. The live recording continues; one downward scroll returns to live.',
+    meetingHome: 'Tap for actions, scroll once to Home, then tap to confirm. Recording continues when you leave this page.',
+    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, Home and Nudges. Home keeps recording active.'
   };
   document.querySelectorAll('[data-hud-explorer]').forEach(function (root) {
     var screen = root.querySelector('[data-hud]'), caption = root.querySelector('.hud-state-caption');

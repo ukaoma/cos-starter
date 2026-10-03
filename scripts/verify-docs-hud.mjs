@@ -45,7 +45,15 @@ const queryStatus = await source('src/lib/query-status.ts');
 const modelPicker = await source('src/lib/hub-model-picker.ts');
 const effortPicker = await source('src/lib/hub-effort-picker.ts');
 const voiceFlow = await source('src/lib/voice-prompt-flow.ts');
+const identity = await source('src/lib/surface-identity.ts');
+const chrome=(canonical,surface=null,status=null,history=false)=>identity.surfaceIdentityHeader({canonical,surface,status,history,max:40,batteryLevel:82});
 const f = hud.frames;
+const readingNav=await source('src/lib/reading-navigation.ts');
+const meetingRows=readingNav.readingNavigationRows('live-meeting',true,true);
+eq(f.meetingActions.footer,readingNav.readingNavigationFooter(meetingRows,0),'Meeting parent action');
+eq(f.meetingHome.footer,readingNav.readingNavigationFooter(meetingRows,1),'Meeting Home retains capture notice');
+eq(f.meetingHistory.nav,meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82,history:true}),'Meeting history header');
+
 
 for (const [recording, fixture] of [[false, hud.menuIdle], [true, hud.menuRecording]]) {
   eq(JSON.stringify(fixture), JSON.stringify(['Display off', ...menu.buildHubMenu({meetingActive:recording, modelShort:'Opus'}).map(x => x.itemName), 'Brightness', 'Close']), 'Firmware/COS row order');
@@ -58,10 +66,10 @@ const listItems = [
 for (const [name, index] of [['messages',0],['selected',1]]) {
   eq(f[name].body, pages.formatQueryList(listItems,index).replace(/^MESSAGES\n\n?/,'').trim(), `${name} native list`);
 }
-eq(f.home.nav, pages.composeLensNavLine('COS [O]','9:16a',now,['3msg','2m']), 'Home nav');
-eq(f.reader.nav, pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16a',now), 'Reader nav');
-eq(f.session.nav, pages.composeLensNavLine('COS [O] Sess 1/3','9:16a',now), 'Session nav');
-eq(f.job.nav, pages.composeLensNavLine('COS [O] Thinking 66s','',now,['82%']), 'Job nav');
+eq(f.home.nav, chrome(pages.composeLensNavLine('COS [O]','9:16a',now,['3msg','2m']),null), 'Home nav');
+eq(f.reader.nav, chrome(pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16a',now),'messages'), 'Reader nav');
+eq(f.session.nav, chrome(pages.composeLensNavLine('COS [O] Sess 1/3','9:16a',now),'sessions'), 'Session nav');
+eq(f.job.nav, chrome(pages.composeLensNavLine('COS [O] Thinking 66s','',now,['82%']),'messages'), 'Job nav');
 const [question, answer] = f.reader.body.replace(/^\? /,'').split('\n─────\n→ ');
 eq(f.reader.body, chat.buildChatViewportChunks({query:question,text:answer})[0], 'Reader prompt/answer formatting');
 eq(f.continued.body, f.reader.body, 'Native scroll retains same body');
@@ -73,10 +81,10 @@ eq(typeof reference.promptReferenceRecordingLine(ref), 'string', 'The Referencin
 eq(f.sessionMic.body, prompt.buildPromptLiveBody('','recording'), 'Session voice has no message reference');
 // Recorder headers are checked through the current glassesHeader below.
 eq(f.meeting.nav, meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82}), 'Meeting REC meter');
-const actions = ['Back to list','Continue','Fork','Ask COS'].map(label => ({label,enabled:true}));
+const actions = ['Back to list','Home','Continue','Fork','Ask COS'].map(label => ({label,enabled:true}));
 eq(f.sessionMenu.footer, session.buildSessionThreadMenuFooter(actions,0), 'Session footer-only menu');
-actions[1] = {label:'Continue (unavailable)',enabled:false};
-eq(f.sessionRefusal.footer, session.buildSessionThreadMenuFooter(actions,1), 'Disabled menu label');
+actions[2] = {label:'Continue (unavailable)',enabled:false};
+eq(f.sessionRefusal.footer, session.buildSessionThreadMenuFooter(actions,2), 'Disabled menu label');
 eq(f.sessionMenu.body, f.session.body, 'Menu preserves session body');
 eq(f.sessionRefusal.body, f.session.body, 'Unavailable action preserves session body');
 eq(f.session.body, pages.formatSessionDetailBody({provider:'claude',domain:'personal',device_id:'mac',display_label:'Friday pilot rollout',slug:'friday-pilot',duration_minutes:14,message_count:31,user_message_count:15,assistant_message_count:16,git_branch:'main',total_input_tokens:0,total_output_tokens:0,file_size_bytes:0,first_prompt:'Import owner is Dana. Rollout email drafts Thursday.'}), 'Native session body');
@@ -149,37 +157,37 @@ for(let i=0;i<modelSlots.length;i++){
   const view=ringLessons.picker('model',i);
   eq(view.body,modelPicker.formatHubModelPickerBody(modelSlots,i,'opus'),'Model window/cursor/current '+i);
   eq(view.footer,footer(modelPicker.hubModelPickerFooterLabel(modelSlots,i)),'Model next-message footer '+i);
-  eq(view.nav,pages.composeLensNavLine('COS [O] Model','9:16a',now),'Model header '+i);
+  eq(view.nav,chrome(pages.composeLensNavLine('COS [O] Model','9:16a',now),null),'Model header '+i);
 }
 state.modelPreference='sonnet';state.currentPage='effort-picker';
 for(let i=0;i<effortSlots.length;i++){
   const view=ringLessons.picker('effort',i);
   eq(view.body,effortPicker.formatHubEffortPickerBody(effortSlots,i,'high'),'Effort cursor/current '+i);
   eq(view.footer,footer(effortPicker.hubEffortPickerFooterLabel(effortSlots,i)),'Effort next-message footer '+i);
-  eq(view.nav,pages.composeLensNavLine('COS [S] Effort','9:16a',now),'Effort header '+i);
+  eq(view.nav,chrome(pages.composeLensNavLine('COS [S] Effort','9:16a',now),null),'Effort header '+i);
 }
 state.currentPage='welcome';state.currentMsgIndex=2;
-eq(l.models[10].frame.nav,pages.composeLensNavLine('COS [S]','9:16a',now,['3msg','2m']),'Returned Home active model');
+eq(l.models[11].frame.nav,chrome(pages.composeLensNavLine('COS [S]','9:16a',now,['3msg','2m']),null),'Returned Home active model');
 // Keep the native attribution contract independently verified. The Docs lesson
 // intentionally presents the selected model on completion, per product direction;
 // this display-only override must not be mistaken for a native formatter change.
 eq(f.home.footer,footer(),'Native Home still attributes the existing Opus message');
-eq(l.models[10].frame.footer,model.modelShortLabel(state.modelPreference)+footer().slice('Opus'.length),'Lesson completion displays selected model, retaining native footer metadata');
-eq(l.models[10].frame.body,f.home.body,'Return does not rewrite the existing Home body');
+eq(l.models[11].frame.footer,model.modelShortLabel(state.modelPreference)+footer().slice('Opus'.length),'Lesson completion displays selected model, retaining native footer metadata');
+eq(l.models[11].frame.body,f.home.body,'Return does not rewrite the existing Home body');
 eq(modelPicker.hubModelPickerSlots(false,false).length,5,'Unavailable Cursor/Ollama are absent');
 eq(modelPicker.hubModelPickerSlots(true,true).length,8,'Ready Ollama adds a slot');
 for(const s of l.models){
   const rendered=hud.html(s.frame).match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1];
   eq(rendered.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&gt;/g,'>'),s.frame.body,'Model lesson preserves native body characters');
 }
-const photoActions = readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:false});
-for (const [step,index] of [[3,0],[4,1],[5,2],[6,0],[7,1]]) {
+const photoActions = readerMenu.queryResultActionsFor({canReference:true,hasAttachments:true,imagePreviewEnabled:true,meetingCritical:false});
+for (const [step,index] of [[3,0],[4,1],[5,2],[6,3],[7,4],[8,0],[9,1],[10,2]]) {
   eq(l.messages[step].frame.footer,readerMenu.formatQueryResultActionFooter(index,photoActions),'Reader menu selection '+step);
 }
-eq(readerMenu.moveQueryResultAction(2,'forward',photoActions),0,'Reader wraps forward to Messages');
-eq(readerMenu.moveQueryResultAction(0,'back',photoActions),2,'Reader wraps back to the last row');
-eq(readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:true}).length,2,'No photo row during critical capture');
-eq(readerMenu.queryResultActionsFor({hasAttachments:false,imagePreviewEnabled:true,meetingCritical:false}).length,2,'No photo row without attachment');
+eq(readerMenu.moveQueryResultAction(4,'forward',photoActions),0,'Reader wraps forward to Messages');
+eq(readerMenu.moveQueryResultAction(0,'back',photoActions),4,'Reader wraps back to the last row');
+eq(readerMenu.queryResultActionsFor({hasAttachments:true,imagePreviewEnabled:true,meetingCritical:true}).length,3,'No photo row during critical capture');
+eq(readerMenu.queryResultActionsFor({hasAttachments:false,imagePreviewEnabled:true,meetingCritical:false}).length,3,'No photo row without attachment');
 const taskActions = tasks.taskMenuActions(ringLessons.taskFixture);
 eq(JSON.stringify(taskActions.map(a=>a.label)),JSON.stringify(ringLessons.taskRows),'Task rows follow this fixture state');
 eq(ringLessons.task.body,pages.formatTaskDetailBody(ringLessons.taskFixture),'Task body');
@@ -190,39 +198,39 @@ for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,5],[8,0]]) {
 eq(tasks.moveTaskMenuAction(5,'forward',taskActions),0,'Task last to first');
 eq(tasks.moveTaskMenuAction(0,'back',taskActions),5,'Task first to last');
 const sessionActions = ringLessons.sessionRows.map(label=>({label,enabled:true}));
-for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,0]]) {
+for (const [step,index] of [[2,0],[3,1],[4,2],[5,3],[6,4],[7,0]]) {
   eq(l.sessions[step].frame.footer,session.buildSessionThreadMenuFooter(sessionActions,index),'Session menu '+step);
   eq(l.sessions[step].frame.body,f.session.body,'Session action preserves body '+step);
 }
-eq(session.moveSessionThreadAction(3,'forward',sessionActions),0,'Session last to first');
-eq(session.moveSessionThreadAction(0,'back',sessionActions),3,'Session first to last');
-eq(l.ask[10].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
-eq(l.ask[8].frame,f.receipt,'Confirming Send lands directly on its job');
-eq(l.ask[9].frame,f.job,'The later Log example keeps the same job');
-for(const i of [5,6,7]){eq((hud.html(l.ask[i].frame).match(/lens-bright/g)||[]).length,1,'Review menu highlights exactly one row '+i);}
-eq(l.ask[2].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
-eq(l.ask[3].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Finish starts from captured words');
-eq(l.ask[3].frame.body,ringLessons.askTranscript,'Review preserves the captured words');
-eq(l.ask[4].frame.body,l.ask[3].frame.body,'Double-tap preserves the reviewed draft');
-eq(l.messages[8].frame.body,l.messages[9].frame.body,'Confirmed Reply and express double-tap open the same microphone');
+eq(session.moveSessionThreadAction(4,'forward',sessionActions),0,'Session last to first');
+eq(session.moveSessionThreadAction(0,'back',sessionActions),4,'Session first to last');
+eq(l.ask[11].frame.footer,queryStatus.cancelArmFooterPrompt(),'Cancellation arm copy');
+eq(l.ask[9].frame,f.receipt,'Confirming Send lands directly on its job');
+eq(l.ask[10].frame,f.job,'The later Log example keeps the same job');
+for(const i of [6,7,8]){eq((hud.html(l.ask[i].frame).match(/lens-bright/g)||[]).length,1,'Review menu highlights exactly one row '+i);}
+eq(l.ask[3].frame.body,prompt.buildPromptLiveBody('','recording'),'Fresh Ask has no reference');
+eq(l.ask[4].before.body,prompt.buildPromptLiveBody(ringLessons.askTranscript,'recording'),'Finish starts from captured words');
+eq(l.ask[4].frame.body,ringLessons.askTranscript,'Review preserves the captured words');
+eq(l.ask[5].frame.body,l.ask[4].frame.body,'Double-tap preserves the reviewed draft');
+eq(l.messages[11].frame.body,l.messages[12].frame.body,'Confirmed Reply and express double-tap open the same microphone');
 // Messages ring: both double-tap meanings stay demonstrated, in order. Idle reader:
 // double-tap opens the microphone. Running reply: the first arms, the second cancels.
 // Every chrome string is derived from the app, not restated.
-eq(l.messages[9].gesture,'double-tap','Messages ring shows double-tap to start recording');
-eq(l.messages[9].frame.body,f.reply.body,'Express double-tap opens the microphone');
-eq(l.messages[10].frame.body,f.replyReview.body,'Recording finishes into the reviewable transcript');
-eq(l.messages[11].gesture,'tap','Send is a deliberate single tap');
-eq(l.messages[11].frame.footer,f.receipt.footer,'Reply lands on its job with history and cancel');
-assert.ok(l.messages[11].frame.body.includes(f.replyReview.body),'Receipt echoes the reviewed reply');checks++;
-eq(l.messages[12].gesture,'double-tap','Messages ring shows the arming double-tap');
-eq(l.messages[12].frame.footer,queryStatus.cancelArmFooterPrompt(),'Messages cancel arm copy');
-eq(l.messages[13].gesture,'double-tap','Messages ring shows the confirming double-tap');
+eq(l.messages[12].gesture,'double-tap','Messages ring shows double-tap to start recording');
+eq(l.messages[12].frame.body,f.reply.body,'Express double-tap opens the microphone');
+eq(l.messages[13].frame.body,f.replyReview.body,'Recording finishes into the reviewable transcript');
+eq(l.messages[14].gesture,'tap','Send is a deliberate single tap');
+eq(l.messages[14].frame.footer,f.receipt.footer,'Reply lands on its job with history and cancel');
+assert.ok(l.messages[14].frame.body.includes(f.replyReview.body),'Receipt echoes the reviewed reply');checks++;
+eq(l.messages[15].gesture,'double-tap','Messages ring shows the arming double-tap');
+eq(l.messages[15].frame.footer,queryStatus.cancelArmFooterPrompt(),'Messages cancel arm copy');
+eq(l.messages[16].gesture,'double-tap','Messages ring shows the confirming double-tap');
 const cancelSrc = fs.readFileSync(path.join(app,'src/gesture-handlers.ts'),'utf8');
 assert.ok(cancelSrc.includes("setHeaderStatus(state.activeBridge, '\\u00D7 Cancelled', 'flash')"),'Native cancel flash literal');checks++;
-eq(l.messages[13].frame.nav,headers.composePrefixedHeader(f.home.nav,'× Cancelled',40),'Confirmed cancel flashes over the Home nav');
-eq(l.messages[13].frame.body,f.home.body,'Cancel without browsing away returns Home');
-eq(l.messages[13].frame.footer,f.home.footer,'Cancel clears the streaming and confirm footers');
-eq(l.messages.length,14,'Messages lesson ends on the confirmed cancel');
+eq(l.messages[16].frame.nav,chrome(pages.composeLensNavLine('COS [O]','9:16a',now,['3msg','2m']),null,'× Cancelled'),'Confirmed cancel flashes over the Home nav');
+eq(l.messages[16].frame.body,f.home.body,'Cancel without browsing away returns Home');
+eq(l.messages[16].frame.footer,f.home.footer,'Cancel clears the streaming and confirm footers');
+eq(l.messages.length,17,'Messages lesson ends on the confirmed cancel');
 
 // Execute the real confirmation renderer with a capture-only viewport, never
 // import the app entry point or connect a microphone. Derive nav/footer using
@@ -246,31 +254,31 @@ for(const [view,pending] of [[f.review,null],[f.replyReview,null]]){
   eq(confirmContext.result.title,'REVIEW','Native prompt confirmation title');
   eq(view.body,confirmContext.result.body,'Native confirmation displays exact transcript');
   eq(view.footer,footer(confirmContext.result.position),'Native review footer and reference');
-  eq(view.nav,headerContext.glassesHeader(),'Native review nav, no microphone meter');
+  eq(view.nav,chrome(headerContext.glassesHeader(),'messages'),'Native review nav, no microphone meter');
   eq(state.voicePromptPhase,'confirming','Review is not a running query');
 }
 const hold = await source('src/lib/hold-where.ts');
 const holdControl = hold.holdControlText({heldMs:4000,switchMs:15000,switchPlanned:true,noSwitch:null,capMs:90000});
 state.currentMsgCounter=holdControl;state.micEnabled=true;state.audioPipeline={getState:()=>'recording_prompt_draft'};
 eq(f.replyHold.footer,footer(holdControl),'Hold recorder shows seconds held against switch time');
-eq(f.replyHold.nav,headers.composePrefixedHeader(headerContext.glassesHeader(),'■□□□ LISTEN',40),'Hold recorder meter and current header');
+eq(f.replyHold.nav,chrome(headerContext.glassesHeader(),'messages','■□□□ LISTEN'),'Hold recorder meter and current header');
 state.currentMsgCounter='Tap to finish';
-eq(f.reply.nav,headers.composePrefixedHeader(headerContext.glassesHeader(),'■□□□ LISTEN',40),'Tap recorder uses the current header');
+eq(f.reply.nav,chrome(headerContext.glassesHeader(),'messages','■□□□ LISTEN'),'Tap recorder uses the current header');
 state.micEnabled=false;state.audioPipeline=null;
 state.pendingReference=null;
 const voiceActions=voiceFlow.voicePromptReviewActions(false,'cos');
-for(const [stepIndex,cursor] of [[5,2],[6,3],[7,2]]){
+for(const [stepIndex,cursor] of [[6,2],[7,3],[8,2]]){
   const view=l.ask[stepIndex].frame;
   eq(view.body,voiceFlow.buildVoiceReviewMenuBody(voiceActions,cursor,false,'opus'),'Native review choices '+cursor);
   eq(view.footer,footer(voiceFlow.buildVoiceReviewMenuFooter()),'Native review-options footer');
   state.currentMsgCounter=voiceFlow.buildVoiceReviewMenuFooter();
-  eq(view.nav,headerContext.glassesHeader(),'Native review-options nav');
+  eq(view.nav,chrome(headerContext.glassesHeader(),'messages'),'Native review-options nav');
   assert.ok(view.body.split('\n').length<=voiceFlow.VOICE_REVIEW_MENU_MAX_BODY_LINES,'Review menu stays within firmware line budget');checks++;
 }
 eq(voiceFlow.defaultVoicePromptReviewActionIndex(false,'cos'),2,'Review defaults to Send original');
 eq(l.messages[0].frame,f.selected,'Messages lesson starts idle on the selected list');
 eq(l.messages[1].before,f.selected,'Message-opening tap starts from the selected list');
-eq(l.messages[10].frame,f.replyReview,'Message lesson finishes on an unsent review');
+eq(l.messages[13].frame,f.replyReview,'Message lesson finishes on an unsent review');
 
 // Evaluate only the actual isolated routing function with harmless spies. No
 // Main import, no bridge, no microphone, no server, and no app state writes.
@@ -316,7 +324,7 @@ for (const match of html.matchAll(/<div\b[^>]*data-hud="([^"]+)"[^>]*>/g)) {
 }
 eq(hud.ringFrames.length,9,'Nine gesture states including prompt review');
 eq([...html.matchAll(/data-rp-step="\d+"/g)].length,9,'Nine matching walkthrough steps');
-eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,5,'Five reusable context lessons');
+eq([...html.matchAll(/data-ring-lesson="[^"]+"/g)].length,6,'Six reusable context lessons');
 assert.ok(!html.includes('data-session-deck'),'Desktop session deck is not a glasses lesson');checks++;
 assert.ok(!html.includes('data-story="choice"'),'Sessions uses the shared ring, not an independent autoplay HUD');checks++;
 const sessionsSection=html.match(/<section[^>]+id="sessions">([\s\S]*?)<\/section>/)?.[1];
