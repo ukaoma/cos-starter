@@ -26,16 +26,16 @@
     // A prompt started from the open reader by Reply or by double-tap. The app
     // arms a "Referencing #N" line only from the spoken "reference message N"
     // command, never from these gestures, so the recording view is plain.
-    reply: { nav: '■□□□ LISTEN · COS [O●] Msg Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  82%' },
+    reply: { nav: '■□□□ LISTEN · COS [O●] Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  82%' },
     // The same recorder with Glasses dictation set to hold (6.9.483+): the footer
     // reads the control that ends it, and letting go opens the review.
-    replyHold: { nav: '■□□□ LISTEN · COS [O●] Msg Release: review', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release: review  82%' },
+    replyHold: { nav: '■□□□ LISTEN · COS [O●] 9:16a 9/4/26', body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release to confirm 4/15s  82%' },
     review: { nav: 'COS [O] 9:16a 9/4/26', body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
     replyReview: { nav: 'COS [O] 9:16a 9/4/26', body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
     // Send opens the job page immediately, before the Mac acknowledges it.
     // SENDING is not a claim that the provider has started.
     receipt: {"nav": "COS [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},
-    sessionMic: { nav: '■□□□ LISTEN · COS [O●] Msg Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
+    sessionMic: { nav: '■□□□ LISTEN · COS [O●] Tap to finish', body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
     session: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
     sessionMenu: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: '▶ Back to list · 1/4 · Scroll=move Tap=select' },
     sessionRefusal: { nav: 'COS [O] Sess 1/3 9:16a 9/4/26', body: sessionBody, footer: '▶ Continue (unavailable) · 2/4 · Scroll=move · Unavailable' },

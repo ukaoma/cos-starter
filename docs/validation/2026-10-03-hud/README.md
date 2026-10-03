@@ -16,7 +16,7 @@ The artifact receipt in `artifacts.json` pins server 6.61.5, the published EHPK 
 
 ## Validation
 
-- 374 app-source HUD checks: native formatters, review/gesture paths, menus, current footers, seven-row live bodies, and no-JavaScript parity.
+- 376 app-source HUD checks: native formatters, review/gesture paths, menus, current footers, seven-row live bodies, and no-JavaScript parity.
 - 35 renderer/lesson/Control tests and 37 version-drift fixtures pass.
 - All 12 injected lesson defects caught by the mutation gate.
 - Four HTML pages balanced; appcast JSON valid; version-drift check agrees with registry and artifacts.

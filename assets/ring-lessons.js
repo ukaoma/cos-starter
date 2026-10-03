@@ -337,7 +337,7 @@
   // The Glasses dictation setting the reader has chosen on the page (the switch at the
   // top of this section, persisted as `cos-docs-dictation`). Steps 08 and 09 carry a
   // second gesture, title and action for hold mode on their own attributes; the frame
-  // for the recorder is the hold recorder (`Release: review`).
+  // for the recorder is the hold recorder (`Release to confirm 4/15s`).
   function dictationMode(){ return document.documentElement.getAttribute('data-dictation')==='hold' ? 'hold' : 'tap'; }
   function buildMainStates(mode){
     var titles=mainItems.map(function(el){var alt=el.getAttribute('data-title-'+mode);return alt||el.querySelector('strong').textContent;});

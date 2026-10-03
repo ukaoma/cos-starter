@@ -71,7 +71,7 @@ const ref = {targetIndex:411,query:question,response:answer};
 eq(f.reply.body, prompt.buildPromptLiveBody('','recording'), 'A prompt started by Reply or double-tap has no reference line: those gestures never arm one');
 eq(typeof reference.promptReferenceRecordingLine(ref), 'string', 'The Referencing line exists only for the spoken reference command');
 eq(f.sessionMic.body, prompt.buildPromptLiveBody('','recording'), 'Session voice has no message reference');
-eq(f.reply.nav, headers.composePrefixedHeader(pages.composeLensNavLine('COS [O●] Msg Tap to finish','9:16a',now),'■□□□ LISTEN',40), 'Voice meter nav');
+// Recorder headers are checked through the current glassesHeader below.
 eq(f.meeting.nav, meeting.formatMeetingMeterHeader({meterSquares:'■■□□',timer:'12:08',bookmarkCount:1,batteryLevel:82}), 'Meeting REC meter');
 const actions = ['Back to list','Continue','Fork','Ask COS'].map(label => ({label,enabled:true}));
 eq(f.sessionMenu.footer, session.buildSessionThreadMenuFooter(actions,0), 'Session footer-only menu');
@@ -249,6 +249,14 @@ for(const [view,pending] of [[f.review,null],[f.replyReview,null]]){
   eq(view.nav,headerContext.glassesHeader(),'Native review nav, no microphone meter');
   eq(state.voicePromptPhase,'confirming','Review is not a running query');
 }
+const hold = await source('src/lib/hold-where.ts');
+const holdControl = hold.holdControlText({heldMs:4000,switchMs:15000,switchPlanned:true,noSwitch:null,capMs:90000});
+state.currentMsgCounter=holdControl;state.micEnabled=true;state.audioPipeline={getState:()=>'recording_prompt_draft'};
+eq(f.replyHold.footer,footer(holdControl),'Hold recorder shows seconds held against switch time');
+eq(f.replyHold.nav,headers.composePrefixedHeader(headerContext.glassesHeader(),'■□□□ LISTEN',40),'Hold recorder meter and current header');
+state.currentMsgCounter='Tap to finish';
+eq(f.reply.nav,headers.composePrefixedHeader(headerContext.glassesHeader(),'■□□□ LISTEN',40),'Tap recorder uses the current header');
+state.micEnabled=false;state.audioPipeline=null;
 state.pendingReference=null;
 const voiceActions=voiceFlow.voicePromptReviewActions(false,'cos');
 for(const [stepIndex,cursor] of [[5,2],[6,3],[7,2]]){
