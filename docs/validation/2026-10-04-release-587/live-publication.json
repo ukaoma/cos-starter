@@ -1,0 +1,73 @@
+{
+  "verifiedAt": "2026-10-04T20:23:41.003361+00:00",
+  "websiteCommit": "77a106408470273c616cb69f4160743292bb4dee",
+  "deployment": "https://github.com/ukaoma/cos-starter/actions/runs/37231451290",
+  "deploymentConclusion": "success",
+  "ci": "https://github.com/ukaoma/cos-starter/actions/runs/37231451668",
+  "ciConclusion": "success",
+  "liveFiles": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "6d4dd16ace2a7be2eda5f0a75669a72d5e1b518160b93ef91f42d39e9747d5cc",
+      "expected": "6d4dd16ace2a7be2eda5f0a75669a72d5e1b518160b93ef91f42d39e9747d5cc",
+      "match": true
+    },
+    {
+      "path": "docs/index.html",
+      "status": 200,
+      "sha256": "c90585e054436b7e61e0b45fa4d8d3fae6be77363b2ad989e56975f8d33c96e1",
+      "expected": "c90585e054436b7e61e0b45fa4d8d3fae6be77363b2ad989e56975f8d33c96e1",
+      "match": true
+    },
+    {
+      "path": "wizard/index.html",
+      "status": 200,
+      "sha256": "19c3812f2b93991f0004caf54d2ca22f02d670632c75f98529e2554136dbb9cd",
+      "expected": "19c3812f2b93991f0004caf54d2ca22f02d670632c75f98529e2554136dbb9cd",
+      "match": true
+    },
+    {
+      "path": "control/index.html",
+      "status": 200,
+      "sha256": "0acce40de8d0e1636b05ef63b3e229625f3ce416a9384714efc4950c900b4bac",
+      "expected": "0acce40de8d0e1636b05ef63b3e229625f3ce416a9384714efc4950c900b4bac",
+      "match": true
+    },
+    {
+      "path": "llms.txt",
+      "status": 200,
+      "sha256": "723232140e54032416dd6950fb0af017be752bd0f9c882f0c4d2a4656652cfeb",
+      "expected": "723232140e54032416dd6950fb0af017be752bd0f9c882f0c4d2a4656652cfeb",
+      "match": true
+    },
+    {
+      "path": "assets/docs-hud.js",
+      "status": 200,
+      "sha256": "391a40d0b2bb6e42080592e6f8afa46d8d6a087a7767c5db8c2bff9c4fac59d4",
+      "expected": "391a40d0b2bb6e42080592e6f8afa46d8d6a087a7767c5db8c2bff9c4fac59d4",
+      "match": true
+    },
+    {
+      "path": "assets/docs-hud.css",
+      "status": 200,
+      "sha256": "bb22ed914013325e4bc2f7e5918af4f409ff1992039a3ee99f1de81719eaf8e9",
+      "expected": "bb22ed914013325e4bc2f7e5918af4f409ff1992039a3ee99f1de81719eaf8e9",
+      "match": true
+    },
+    {
+      "path": "assets/docs-signals.js",
+      "status": 200,
+      "sha256": "145aa48c9f6567b1738e88e2f5a9418284ecc0a2a033d39e746fe948b45c3ea5",
+      "expected": "145aa48c9f6567b1738e88e2f5a9418284ecc0a2a033d39e746fe948b45c3ea5",
+      "match": true
+    },
+    {
+      "path": "assets/docs-signal-data.js",
+      "status": 200,
+      "sha256": "4d2ef155c5de560c2890809e54f95b0ff2099c69ff17c9a0d6141d6d21a39956",
+      "expected": "4d2ef155c5de560c2890809e54f95b0ff2099c69ff17c9a0d6141d6d21a39956",
+      "match": true
+    }
+  ]
+}
