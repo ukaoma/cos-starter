@@ -4,6 +4,7 @@ const fs=require('node:fs');
 const vm=require('node:vm');
 const path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'../assets/docs-hud.js'),'utf8');
+const visibleBody=f=>f.signal && f.signalPosition !== 'nav' ? f.body.replace(/^[●○◌√!?] /,'') : f.body;
 const decode=s=>s.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
 
 // Minimal paint-only DOM. Browser QA owns layout/pixels; this harness owns
@@ -96,7 +97,7 @@ test('every chapter, including out-of-order Ask clicks, reaches its actual HUD r
   for(const [name,steps] of Object.entries(h.lessons))for(const i of Array.from(steps.keys()).reverse()){
     const s=steps[i];h.playScene(s,steps[Math.max(0,i-1)].frame,h.options);h.flush();
     assert.equal(h.screen.querySelector('.lens-nav').textContent,s.frame.nav,name+' nav '+i);
-    assert.equal(h.screen.querySelector('.lens-text').textContent,s.frame.body,name+' body '+i);
+    assert.equal(h.screen.querySelector('.lens-text').textContent,visibleBody(s.frame),name+' body '+i);
     assert.equal(h.screen.querySelector('.lens-footer').textContent,s.frame.footer,name+' footer '+i);
     assert.equal(!!h.screen.querySelector('.lens-host-menu'),!!s.frame.menu,name+' overlay '+i);
   }
@@ -132,7 +133,7 @@ test('Ask shows capture, unsent review, protected review, choices, then the exac
   h.playScene(steps[9],steps[8].frame,h.options);
   assert.match(h.screen.querySelector('.lens-text').textContent,/▶ Send original/,'Prompt is not running before tap settles');
   assert.equal(steps[9].gesture,'tap');h.flush();
-  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'◌ SENDING','Send opens the job before acknowledgment');
+  assert.equal(h.screen.querySelector('.lens-text').textContent.split('\n')[0],'SENDING','Send opens the job before acknowledgment');
   assert.ok(h.screen.querySelector('.lens-text').textContent.includes('Summarize the pilot thread.'));
   assert.match(h.screen.querySelector('.lens-footer').textContent,/history \+ Ask/);
   assert.doesNotMatch(h.screen.querySelector('.lens-footer').textContent,/Tap to watch|82%/);
@@ -240,7 +241,7 @@ test('reduced motion and initial paint show final scenes without timers',()=>{
     for(const steps of Object.values(h.lessons))for(const s of steps){
       h.playScene(s,null,{...h.options,...mode});
       assert.equal(h.queued.length,0);
-      assert.equal(h.screen.querySelector('.lens-text').textContent,s.frame.body);
+      assert.equal(h.screen.querySelector('.lens-text').textContent,visibleBody(s.frame));
     }
   }
 });

@@ -80,3 +80,33 @@ section.light .rl-choices [data-active] button{color:var(--ink-on-cream)}
 .lens-hud .lens-footer{font-size:2.1cqw;color:rgba(70,232,120,.85);padding-top:1.6cqw}
 .lens-bright{ text-shadow:none }
 @media(max-width:720px){.hud-explorer{grid-template-columns:1fr;gap:18px}.hud-state-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.hud-state-choices button{font-size:.83rem;padding:10px 12px}.hud-state-caption{min-height:7em}}
+
+/* 587 status graphics retain one native row. Shapes come from the app raster. */
+.lens-run{display:inline-flex;align-items:center;gap:1cqw;max-width:100%;height:3.9cqw;vertical-align:top;color:var(--hud-hi,#9ffabb)}
+.lens-run canvas{width:4.17cqw;height:4.17cqw;flex:none;image-rendering:pixelated}
+.lens-nav-signal{position:absolute;right:3%;top:3%;width:4.17cqw;height:4.17cqw;image-rendering:pixelated}
+.hud-state-preview [data-hud-motion]{margin-top:18px;background:transparent;color:var(--fg);border:1px solid var(--line);padding:10px 16px;border-radius:8px;font:500 .88rem var(--body);cursor:pointer;min-height:44px}
+.hud-state-preview [data-hud-motion]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.hud-state-choices{max-height:570px;overflow:auto;padding:3px}
+@media(max-width:720px){.hud-state-choices{max-height:235px}}
+/* Phone companion, deliberately neutral inside the site's warm page chrome. */
+.phone-review-guide{display:grid;grid-template-columns:minmax(260px,390px) minmax(0,1fr);gap:clamp(28px,5vw,64px);margin:32px 0;align-items:start}
+.phone-review-sample{background:#eee;color:#232323;border:1px solid #d9d9d9;border-radius:18px;padding:22px;font:400 15px/1.55 system-ui,sans-serif;box-shadow:0 18px 50px #0002}
+.phone-review-top{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.04em;border-bottom:1px solid #ccc;padding-bottom:16px}
+.phone-review-sample h3,.phone-review-sample h4{font-family:inherit;color:#232323;letter-spacing:0;margin:12px 0 8px}
+.phone-review-sample h3{font-size:23px}.phone-review-sample h4{font-size:18px}
+.phone-review-sample p{font:inherit;color:#444;margin:8px 0}
+.phone-review-sample .phone-review-back{font-size:11px;margin-top:16px}
+.phone-voice-card{background:#fff;border:1px solid #d9d9d9;border-radius:8px;padding:18px;margin-top:18px}
+.phone-suggestion{border-left:3px solid #888;padding-left:12px;margin:18px 0}
+.phone-review-sample blockquote{border-left:2px solid #aaa;margin:12px 0;padding:0 0 0 12px}
+.phone-review-sample .phone-sample-note{font-size:12px;color:#555}
+.phone-search-sample{border:1px solid #777;background:#fff;border-radius:6px;padding:12px}
+.phone-profile-sample{display:flex;justify-content:space-between;gap:10px;border:1px solid #ddd;border-radius:6px;padding:12px;margin:10px 0;font-size:13px}
+.phone-review-steps{margin:0;padding-left:22px}.phone-review-steps li{padding:0 0 18px 10px}.phone-review-steps h3{margin-bottom:10px}
+@media(max-width:720px){.phone-review-guide{grid-template-columns:1fr}.phone-review-sample{max-width:390px;width:100%;box-sizing:border-box;margin:auto}}
+.home-lens{--hud:#46e878;--hud-hi:#9ffabb;max-width:560px;margin:0 auto 20px}
+.gc .lens-hud{margin-bottom:20px;--hud:#46e878;--hud-hi:#9ffabb}
+.phone-review-sample strong,.phone-review-sample b,.phone-review-sample label{color:#232323}
+
+.tcard .lens-hud,.hud-frame.lens-hud{--mono:"Courier New",monospace;--green:#46e878;--green-dim:#288249;width:100%;margin-bottom:1.1rem}

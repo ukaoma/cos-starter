@@ -364,6 +364,7 @@
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
+<link rel="stylesheet" href="/assets/docs-hud.css?v=587-1">
 </head>
 <body>
 <div class="atmos" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div></div>
@@ -681,7 +682,7 @@
         <div class="note"><strong>Same WiFi?</strong> You can use your Mac's local IP instead &mdash; Tailscale is just more reliable across networks.</div>
       </div>
 
-      <div class="step" data-step="3 · Install"><h2>Install COS Glasses on the Even Hub</h2>
+      <div class="step" data-step="3 · Install"><h2>Install COS Glasses on the Even Hub</h2><p><strong>587 is submitted for marketplace review.</strong> The <a href="../docs/#release-587">587 guide</a> describes the submitted package; availability in the store may still lag. Before field use, read the <a href="../docs/#offline-field">offline storage limits</a>. In the companion, Views then Review meetings on phone opens <a href="../docs/#phone-review">meeting and speaker review</a>.</p>
         <ul class="enable">
           <li>Open the <strong>Even Realities</strong> app on your iPhone.</li>
           <li>Go to <strong>Even Hub</strong>, search <strong>"COS Glasses"</strong>, install, and open it.</li>
@@ -747,18 +748,29 @@
     <h2 class="mkt-h">It works the way you <span class="g">do.</span></h2>
     <div class="trio">
       <article class="tcard">
-        <div class="hud-frame"><img src="../assets/hud/slide-3.png" width="576" height="288" loading="lazy" alt="COS Glasses reader: a full pre-call briefing scrolling in green on the lens."></div>
+        <div class="lens-hud" data-hud="reader" aria-label="Illustrative Message reader"><div class="lens-nav">◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">? What changed for the design review?</span>
+─────
+→ The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.
+
+The open decision is whether the setup path stays inside Docs or moves into the guided wizard.
+
+Dana owns the navigation review. Sam will confirm the final setup copy before the meeting.</div><i class="lens-thumb" aria-hidden="true"></i></div><div class="lens-footer">Opus  #411 Pg 1/1  Tap: actions  34m</div></div>
         <h3>Brief me before the call.</h3>
         <details class="more"><summary>How it works</summary><p>Numbered, ranked, on the lens. Walk in already knowing the three things that matter, read straight from your meetings and tasks.</p></details>
       </article>
       <article class="tcard">
-        <div class="hud-frame"><img src="../assets/hud/slide-4.png" width="576" height="288" loading="lazy" alt="COS Glasses dictation: a long message captured hands-free in green on the lens."></div>
+        <div class="lens-hud" data-hud="reply" aria-label="Illustrative Voice recording"><div class="lens-nav">◈ Msg ■□□□ LISTEN · [O●] Tap to 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Listening...</span>
+
+Speak your message.</div></div><div class="lens-footer"><span>Opus  Tap to finish</span><span class="lens-battery">  82%</span></div></div>
         <h3>Say it once, hands-free.</h3>
         <details class="more"><summary>How it works</summary><p>Dictate a long prompt or reply by voice. With on-phone Moonshine, text forms and revises while you speak, then the existing finalizer cleans the settled draft. Review it, edit by voice, or re-record before a single word is sent.</p></details>
       </article>
       <article class="tcard">
-        <div class="hud-frame"><img src="../assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses meeting review: takeaways and action items in green on the lens."></div>
-        <h3>Every meeting, captured.</h3>
+        <div class="lens-hud" data-hud="meeting" aria-label="Illustrative Live meeting transcript"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[Maya] We can ship the pilot Friday.</span>
+[Sam] The data import needs one day.
+[Maya] Then Friday holds.
+~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↑ history  Tap: actions</div></div>
+        <h3>Follow the meeting live.</h3>
         <details class="more"><summary>How it works</summary><p>Fast Moonshine preview can appear while you speak, then speaker-attributed Large-v3 replaces it as the canonical transcript. Takeaways and action items wait for you afterward, right from the glasses.</p></details>
       </article>
     </div>
@@ -789,7 +801,7 @@
         <h2 class="mkt-h">In your <span class="g">control.</span></h2>
         <p class="mkt-sub">Confirm, edit, or send with a tap. The HUD is there when you need it and gone when you do not. Never a phone, never a screen between you and the room.</p>
       </div>
-      <div class="hud-frame"><img src="../assets/hud/slide-5.png" width="576" height="288" loading="lazy" alt="COS Glasses review screen: send, edit, or re-record options in green on the lens."></div>
+      <div class="lens-hud" data-hud="review" aria-label="Illustrative Review before sending"><div class="lens-nav">◈ Msg [O] 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">Summarize the pilot thread.</span></div></div><div class="lens-footer"><span>Opus  Msg 1/1  Tap=Send  ↓ No</span><span class="lens-battery">  82%</span></div></div>
     </div>
   </section>
 
@@ -1253,5 +1265,6 @@
   }, 3400);
 })();
 </script>
+<script src="/assets/docs-hud.js?v=587-1"></script>
 </body>
 </html>

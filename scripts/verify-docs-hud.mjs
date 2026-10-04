@@ -68,7 +68,7 @@ for (const [name, index] of [['messages',0],['selected',1]]) {
 }
 eq(f.home.nav, chrome(pages.composeLensNavLine('COS [O]','9:16a',now,['3msg','2m']),null), 'Home nav');
 eq(f.reader.nav, chrome(pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16a',now),'messages'), 'Reader nav');
-eq(f.session.nav, chrome(pages.composeLensNavLine('COS [O] Sess 1/3','9:16a',now),'sessions'), 'Session nav');
+eq(f.session.nav, chrome(pages.composeLensNavLine('COS [CL] Sess 1/3','9:16a',now),'sessions'), 'Session nav');
 eq(f.job.nav, chrome(pages.composeLensNavLine('COS [O] Thinking 66s','',now,['82%']),'messages'), 'Job nav');
 const [question, answer] = f.reader.body.replace(/^\? /,'').split('\n─────\n→ ');
 eq(f.reader.body, chat.buildChatViewportChunks({query:question,text:answer})[0], 'Reader prompt/answer formatting');
@@ -125,7 +125,10 @@ const ast = ts.createSourceFile('display-manager.ts',dm,ts.ScriptTarget.Latest,t
 const fn = ast.statements.find(n => ts.isFunctionDeclaration(n) && n.name?.text === 'buildStatusLine');
 assert.ok(fn,'Native buildStatusLine must exist');
 const state = {modelPreference:'opus',messages:[...listItems].reverse().map(x => ({...x,sessionId:'demo1234',modelPreference:'opus'})),currentMsgIndex:2,currentPage:'welcome',sessionId:'demo1234',lastBatteryLevel:82,chatChunks:['sample'],chatChunkIndex:0,isQueryStreaming:false};
-const footerContext = {state,Date:SampleDate,...model,...positions,...reference,...chat,
+const sessionIdentity = await source('src/lib/session-model-identity.ts');
+state.selectedSession={provider:'claude',session_id:'fixture'}; state.savedTurnsItems=[]; state.savedTurnsIndex=0;
+const currentSessionChromeIdentity=()=>sessionIdentity.sessionChromeIdentity({page:state.currentPage,selected:state.selectedSession,queue:state.threadQueueSession,saved:state.savedTurnsItems[state.savedTurnsIndex],dispatch:state.threadDispatchTarget});
+const footerContext = {state,currentSessionChromeIdentity,Date:SampleDate,...model,...positions,...reference,...chat,
   ...await source('src/lib/hud-session-id.ts'),...await source('src/lib/status-line-fit.ts'),
   readHudSessionIdPref:()=>false,readPromptGesture:()=> 'tap',heldBodyHintShowing:()=>false,
   STATUS_LINE_JOIN:'  ',MESSAGE_ACTIONS_HINT:'Tap: actions',REFERENCE_HOLD_HINT:'Hold: ask'};
@@ -243,7 +246,7 @@ const headerFn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text=
 assert.ok(confirmFn && headerFn,'Native confirmation and nav formatters must exist');
 state.questionReclaim={answerable:[],waiting:[]};state.modelPreference='opus';state.currentPage='voice-prompt';state.isQueryStreaming=false;
 state.micEnabled=false;state.voiceDraftChunkIndex=0;state.queuePromptReviewTarget=null;
-const headerContext={state,Date:SampleDate,exports:{},...model,...pages,...meeting,...headers,...await source('src/lib/lens-clock.ts'),needsYouMark:()=>'',macOfflineMark:()=>'',dockedOverlayOnLens:()=>false,overlayHeaderStatus:()=>null,G2_NAV_LINE_MAX:40};
+const headerContext={state,currentSessionChromeIdentity,Date:SampleDate,exports:{},...model,...pages,...meeting,...headers,...await source('src/lib/lens-clock.ts'),needsYouMark:()=>'',macOfflineMark:()=>'',dockedOverlayOnLens:()=>false,overlayHeaderStatus:()=>null,G2_NAV_LINE_MAX:40};
 vm.runInNewContext(ts.transpileModule(headerFn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,headerContext);
 const confirmContext={state,exports:{},questionAnswerCaptureActive:()=>false,workNoteCaptureActive:()=>false,macLinkNow:()=> "ready",...voiceFlow,pushVoicePromptViewport:(_bridge,title,body,position)=>{
   state.currentMsgCounter=position;confirmContext.result={title,body,position};
@@ -301,7 +304,7 @@ for (const [page,expected] of [['query-list','hub'],['query-result','reply'],['q
 const plain = markup => markup.replace(/<[^>]+>/g,'').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
 for (const [name, frame] of Object.entries(f)) {
   const markup = hud.html(frame);
-  eq(plain(markup.match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1]), frame.body, name+' themed body retains every character');
+  eq(plain(markup.match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1]), frame.signal && frame.signalPosition !== 'nav' ? frame.body.replace(/^[●○◌√!?] /,'') : frame.body, name+' themed body retains every character');
   eq(plain(hud.footerHtml(frame.footer)), frame.footer, name+' themed footer retains every character');
 }
 const css = read('assets/docs-hud.css');

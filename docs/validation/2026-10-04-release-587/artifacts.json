@@ -1,0 +1,35 @@
+{
+  "glasses": {
+    "version": "6.10.587",
+    "sha256": "828afd770e1126c9b67ccc8d20ad446036080b1bcce884b8a1776f1ead08d882",
+    "hubCommit": "add84d0980af860eeee35c79f87e66cf0dfef332",
+    "sourceCommit": "67de87e2a7278403c1995b804a1e99c216544b8d"
+  },
+  "marketplace": {
+    "versionSubmitted": "6.10.587",
+    "state": "submitted for production review",
+    "source": "Miles confirmation in this chat, 2026-10-04",
+    "lastConfirmedListing": "6.9.538",
+    "currentListingIndependentlyVerified": false
+  },
+  "server": {
+    "version": "6.61.6",
+    "integrity": "sha512-pRgDyQbdT4Z7bHasolgPrsQ3XOp01GCXjIgM/IN3vfwaY8EH0Zhlsj5DHHm7a+0AUFeIAai5J0PnTHL4R6T2fg=="
+  },
+  "control": {
+    "version": "0.5.252",
+    "build": 291,
+    "sha256": "057a4f6bdfcf3ffd4e36ea0b8bb143384ea85c7ad67ebff095f4438c9b0ffb82",
+    "liveDownloadVerified": true,
+    "installed": "0.5.254",
+    "sourceBranch": "feat/0.5.252-glasses-requests"
+  },
+  "resubmissionCandidate": {
+    "version": "6.10.588",
+    "sourceCommit": "23fe51b",
+    "hubCommit": "052566d78c2ad11a83c273fe715d1fc8ad76f2fd",
+    "sha256": "e066d05ff408f7e60cc6f2a7be24bffad3d6f7e746092fd516e42be6424352f7",
+    "bytes": 24211658,
+    "marketplaceSubmitted": false
+  }
+}

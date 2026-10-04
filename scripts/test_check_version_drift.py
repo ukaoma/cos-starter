@@ -131,11 +131,11 @@ class VersionDriftTests(unittest.TestCase):
         drifted = current.replace("current companion pair; Even Hub lists 6.8.353", "current companion pair; Even Hub lists 6.8.999")
         self.assertTrue(any("Hub" in item or "hub" in item for item in run(docs=drifted)[0]))
 
-    def test_rollback_may_be_older_than_the_hub_pin_but_never_newer(self):
+    def test_rollback_must_precede_current_app(self):
         older = DOCS.replace("rollback is COS Glasses <strong>6.8.353</strong>", "rollback is COS Glasses <strong>6.8.352</strong>")
         self.assertNotEqual(older, DOCS)
         self.assertEqual(run(docs=older)[0], [])
-        newer = DOCS.replace("rollback is COS Glasses <strong>6.8.353</strong>", "rollback is COS Glasses <strong>6.8.354</strong>")
+        newer = DOCS.replace("rollback is COS Glasses <strong>6.8.353</strong>", "rollback is COS Glasses <strong>6.8.999</strong>")
         self.assertTrue(any("rollback" in item for item in run(docs=newer)[0]))
 
     def test_happy_path_entity_mocks(self):

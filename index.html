@@ -443,7 +443,7 @@ section.light .dek{color:#7a5c2c}
   /* §10 glasses pairing stage: animated lens HUD floating above the G2 frame */
   .g2-top{display:grid;gap:clamp(28px,5vw,56px);align-items:center;margin-bottom:clamp(30px,5vw,52px)}
   @media(min-width:980px){.g2-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
-  .g2-stage{position:relative;display:flex;flex-direction:column;align-items:center;max-width:520px;margin-inline:auto;pointer-events:none}
+  .g2-stage{width:100%;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;max-width:520px;margin-inline:auto;pointer-events:none}
   .g2-img{display:block;width:min(440px,88%);height:auto;margin-top:-10px;filter:drop-shadow(0 30px 54px rgba(0,0,0,.6))}
   .glhud{position:relative;z-index:1;width:min(430px,100%);border-radius:14px;background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.6),rgba(7,9,15,.95));box-shadow:0 34px 80px -38px rgba(0,0,0,.9),inset 0 0 0 1px rgba(201,169,110,.10);padding:13px 15px 11px;display:flex;flex-direction:column;gap:7px;font-family:var(--mono);color:#46e878;text-shadow:0 0 9px rgba(70,232,120,.4),0 0 2px rgba(70,232,120,.85);text-align:left}
   .glhud .gt-head{font-size:.72rem;color:#7df0a3;display:flex;align-items:center;gap:7px;white-space:nowrap}
@@ -650,6 +650,7 @@ section.light .dek{color:#7a5c2c}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
+<link rel="stylesheet" href="assets/docs-hud.css?v=587-1">
 </head>
 <body>
 
@@ -1175,26 +1176,34 @@ section.light .dek{color:#7a5c2c}
         <a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" class="btn ghost">Get it on the Even Hub</a>
         <a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a>
       </div>
+      <p style="margin-top:20px;color:var(--muted)"><strong>587 is submitted for marketplace review.</strong> The updated guide shows the new status signals, protected saved turns and monochrome phone review. <a href="/docs/#release-587">Read what is included and what still needs validation</a>.</p>
       <p style="margin-top:20px;color:var(--muted);font-size:.92rem">New to the lens? <a href="/docs/" style="text-decoration:underline;text-underline-offset:3px">Read the complete guide</a>.</p>
     </div>
     <div class="g2-stage" aria-hidden="true">
-      <div class="glhud">
-        <div class="gt-head"><span class="gt-meter"><i></i><i></i><i></i><i></i></span> <span>REC</span> <span class="gt-time">12:47</span>  &#9733;2  100%</div>
-        <div class="gt-body">
-          <p class="gt-line"><span class="gt-spk">[Priya]</span> if we shift budget to the comparison pages we can hold CPA under target.</p>
-          <p class="gt-line"><span class="gt-spk">[You]</span> Lock that in. Flag it in the recap as a decision.</p>
-          <p class="gt-line"><span class="gt-spk">[Marcus]</span> I will have the brief ready Thursday.<span class="gt-cur"></span></p>
-        </div>
-        <div class="gt-foot">Double-tap &#9733; bookmark   &#8595; end</div>
-      </div>
+      <div class="lens-hud home-lens" data-hud="meeting"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[Maya] We can ship the pilot Friday.</span>
+[Sam] The data import needs one day.
+[Maya] Then Friday holds.
+~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↑ history  Tap: actions</div></div>
       <img class="g2-img" src="assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
     </div>
   </div>
   <div class="glass-grid">
-    <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-2.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: an answer streaming in green on the heads-up display."></div><h3>Talk &amp; listen</h3><p>On-lens chat through Claude, Codex, Cursor, or a local model. Review voice dictation before Send, then follow the run on the lens. Read the <a href="docs/#hud-states">current HUD guide</a>.</p></div>
-    <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-8.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: meeting takeaways and action items in green."></div><div class="tl">Meeting-aware</div><h3>It works while you talk</h3><p>Live meeting capture transcribed locally, with speaker labels. Tasks, calendar, and people on the HUD.</p></div>
-    <div class="gc"><div class="hud-frame"><img src="assets/hud/slide-1.png" width="576" height="288" loading="lazy" alt="COS Glasses lens: time, weather, and next meeting at a glance in green."></div><div class="tl">Yours to run</div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
+    <div class="gc"><div class="lens-hud" data-hud="live" aria-label="Illustrative Messages activity in 587"><div class="lens-nav">◈ Msg [O] Thinking 66s 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-run"><canvas width="24" height="24" data-cos-signal="working" aria-hidden="true"></canvas><span>RUNNING  1 step · 1s ago</span></span>
+The pilot is on track. Dana owns the import. Sam is checking
+the rollout notes.</div></div><div class="lens-footer">1m 06s · double-tap to cancel · Scroll up: history + Ask</div></div><h3>Talk &amp; listen</h3><p>On-lens chat through Claude, Codex, Cursor, or a local model. Review voice dictation before Send, then follow the run on the lens. Read the <a href="docs/#hud-states">current HUD guide</a>.</p></div>
+    <div class="gc"><div class="lens-hud" data-hud="sessionLive" aria-label="Illustrative native session in 587"><div class="lens-nav">↔ Sess [CL] FRIDAY PILOT 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-run"><canvas width="24" height="24" data-cos-signal="working" aria-hidden="true"></canvas><span>RUNNING  1 step · 1s ago</span></span>
+The pilot is on track. Dana owns the import. Sam is checking
+the rollout notes.</div></div><div class="lens-footer">Hold: continue · 1m 06s · Scroll up: history + Ask</div></div><h3>Keep your session with you</h3><p>Read Claude, Codex or Cursor activity from the lens. Continue in the same thread, inspect its queue, and keep older context above the latest reply.</p></div>
+    <div class="gc"><div class="lens-hud" data-hud="home" aria-label="Illustrative Home in 587"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.587</span>
+
+72° Clear • Austin
+→ in 44m: Design review
+
+Tap=Latest  ↓ Menu  ↑ Messages
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list"><span>Opus  3/3  #412  2m</span><span class="lens-battery">  82%</span></div></div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
   </div>
+  <p class="kg-cap">Illustrative 587 HUDs with fictional content and source-generated COS signals. Green frame and timing are illustrative. <button type="button" class="btn ghost" data-cos-motion aria-pressed="false">Pause HUD animation</button></p>
+  <p><a href="/docs/#phone-review">Review meetings and voices on your phone</a> · <a href="/docs/#offline-field">Know what is saved offline</a></p>
 </section>
 
 <!-- ── 10b CONTROL ── -->
@@ -1699,5 +1708,8 @@ function doCopyKit(){
   });
 })();
 </script>
+<script src="assets/docs-signal-data.js?v=587-1"></script>
+<script src="assets/docs-signals.js?v=587-1"></script>
+<script src="assets/docs-hud.js?v=587-1"></script>
 </body>
 </html>

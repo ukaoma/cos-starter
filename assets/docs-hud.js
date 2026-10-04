@@ -1,5 +1,5 @@
 /* Public, fictional fixtures for the COS lens. No device/server connection.
- * Labels audited against the 6.10.578 companion pack.
+ * Labels audited against the submitted 6.10.587 companion pack.
  * See scripts/verify-docs-hud.mjs for source-content parity checks.
  * The Hub-themed frame and typography intentionally follow the supplied mockup.
  */
@@ -10,13 +10,13 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.578\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff v6.10.587\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  2m  82%',
     layout: 'list'
   };
   var listBody = '● Record Message\n▶ #412  9:14a  Friday pilot\n  #411  8:42a  Design review\n  #410  9/3    Team brief';
   var replyBody = '? What changed for the design review?\n─────\n→ The design review moved to 10:00. Bring the revised control states and the mobile navigation pass.\n\nThe open decision is whether the setup path stays inside Docs or moves into the guided wizard.\n\nDana owns the navigation review. Sam will confirm the final setup copy before the meeting.';
-  var sessionBody = 'Friday pilot rollout\n[ANT] 14m • 31msg • mac\n\nDISCUSSION\nImport owner is Dana. Rollout email drafts Thursday.\n\nSTATS\nMessages: 15u / 16a\nBranch: main';
+  var sessionBody = 'Friday pilot rollout\n[ANT] 14m • 31msg • mac\n\nDISCUSSION\nImport owner is Dana. Rollout email drafts Thursday.\n\nPlatform: Claude\nModel: not reported by this session\nContinue uses this Claude session\'s settings.\nMessages model does not change this session.\n\nSTATS\nMessages: 15u / 16a\nBranch: main';
   var frames = {
     home: home,
     messages: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody, footer: 'Opus  1/3 Pg 1  82%', layout: 'list' },
@@ -35,10 +35,10 @@
     // Send opens the job page immediately, before the Mac acknowledges it.
     // SENDING is not a claim that the provider has started.
     receipt: {"nav": "◈ Msg [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},
-    sessionMic: { nav: "↔ Sess ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
-    session: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
-    sessionMenu: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/6 · Scroll=move Tap=select' },
-    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 3/6 · Scroll=move · Unavailable' },
+    sessionMic: { nav: "↔ Sess ■□□□ LISTEN · [CL●] 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
+    session: { nav: "↔ Sess [CL] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: 'Claude  1/3 · Tap: actions', thumb: true },
+    sessionMenu: { nav: "↔ Sess [CL] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/6 · Scroll=move Tap=select' },
+    sessionRefusal: { nav: "↔ Sess [CL] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 3/6 · Scroll=move · Unavailable' },
     job: { nav: "◈ Msg [O] Thinking 66s 9/4/26 82%", body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: '1m 06s · double-tap to cancel · Scroll up: history + Ask', layout: 'list' },
     meeting: { nav: "■■□□ REC 12:08  ★1  82%", body: '[Maya] We can ship the pilot Friday.\n[Sam] The data import needs one day.\n[Maya] Then Friday holds.\n~ I will check the final rollout notes', footer: '◆ 2 nudges  ↑ history  Tap: actions' }
   };
@@ -59,24 +59,37 @@
     "footer": "1/2 · 1m 06s · 1 down to live"
   },
   "sessionLive": {
-    "nav": "↔ Sess [O] FRIDAY PILOT 9:16a 9/4/26 82%",
+    "nav": "↔ Sess [CL] FRIDAY PILOT 9:16a 9/4/26 82%",
     "body": "● RUNNING  1 step · 1s ago\nThe pilot is on track. Dana owns the import. Sam is checking\nthe rollout notes.",
     "footer": "Hold: continue · 1m 06s · Scroll up: history + Ask"
   },
   "sessionHistory": {
-    "nav": "↔ Sess [hist] [O] HISTORY FRIDAY 82%",
+    "nav": "↔ Sess [hist] [CL] HISTORY FRIDAY 82%",
     "body": "--- ask ---\nSummarize the pilot thread.",
     "footer": "1/2 · 1m 06s · 1 down to live"
   }
 });
+  ['receipt','sending'].forEach(function(name){frames[name].signal='sending';});
+  ['live','sessionLive'].forEach(function(name){frames[name].signal='working';});
+  frames.codexLive=Object.assign({},frames.sessionLive,{nav:'↔ Sess [CDX] FRIDAY PILOT 9:16a 82%',footer:frames.sessionLive.footer});
+  frames.complete=Object.assign({},frames.live,{signal:'complete',body:'DONE\nThe pilot checklist is ready for review.',footer:'Tap: actions'});
+  frames.offline=Object.assign({},frames.sessionLive,{signal:'offline',body:'LAST SEEN WORKING\nThe Mac is out of reach. Status may have changed.',footer:'Last seen · reconnect to refresh'});
+  frames.waiting=Object.assign({},frames.sessionLive,{signal:'waiting',body:'WAITING\nThe session is waiting for input on the Mac.',footer:'Tap: actions'});
+  frames.queued=Object.assign({},frames.codexLive,{signal:'queued',signalPosition:'nav',body:'○ QUEUED ON THE MAC\nContinue this session.\n--- reply ---\nNo reply yet. Starts when the thread is free.',footer:'Tap: actions'});
+  frames.saved=Object.assign({},frames.codexLive,{signal:'saved',signalPosition:'nav',body:'◌ SAVED ON PHONE\nNot sent yet. Reconnect to continue.',footer:'Tap: actions'});
+  frames.question=Object.assign({},frames.codexLive,{signal:'question',signalPosition:'nav',body:'QUESTION\nWhich rollout date should I use?\nFriday or Monday?',footer:'Tap: answer'});
+  frames.approval=Object.assign({},frames.codexLive,{signal:'approval',signalPosition:'nav',body:'APPROVAL REQUESTED\nThe session needs your permission to continue.',footer:'Tap: review'});
+  frames.stopped=Object.assign({},frames.live,{signal:'stopped',body:'STOPPED\nThe run was cancelled.',footer:'Tap: actions'});
+  frames.failed=Object.assign({},frames.live,{signal:'failed',body:'FAILED\nThe run reported an error. Read its details.',footer:'Tap: actions'});
   frames.meetingHistory = {nav:'[hist] ■■□□ REC 12:08  ★1  82%',body:'[Maya] Before we set the date, what is left?\n[Sam] The data import needs one day.',footer:'1/1  ↑ older  1 down to live'};
   frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/3 · Scroll=move Tap=select'});
   frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 3/3 · Tap=select'});
   var menuIdle = ['Display off', 'Home', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Brightness', 'Close'];
   var menuRecording = ['Display off', 'Home', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function bodyHtml(body, layout) {
+  function bodyHtml(body, layout, signal) {
     return body.split('\n').map(function(line,i){
+      if(i===0&&signal)return '<span class="lens-run"><canvas width="24" height="24" data-cos-signal="'+escape(signal)+'" aria-hidden="true"></canvas><span>'+escape(line.replace(/^[●○◌√!?] /,''))+'</span></span>';
       // Pickers brighten the > cursor row; menus brighten the ▶ row. Neither
       // treats line 0 as a title, so a menu never shows two highlighted rows.
       if (layout === 'picker') return line.charAt(0) === '>' ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
@@ -93,7 +106,8 @@
   function html(frame) {
     var f = typeof frame === 'string' ? frames[frame] : frame;
     if (!f) throw new Error('Unknown Docs HUD frame');
-    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body, f.layout) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
+    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body, f.layout, f.signalPosition==='nav'?null:f.signal) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
+    if(f.signalPosition==='nav')out+='<canvas class="lens-nav-signal" width="24" height="24" data-cos-signal="'+escape(f.signal)+'" aria-hidden="true"></canvas>';
     if (f.menu) {
       var items = f.recording ? menuRecording : menuIdle;
       var selected = f.menuIndex == null ? 1 : f.menuIndex;
@@ -158,6 +172,7 @@
         var panel = box.querySelector('.lens-host-menu'); el.appendChild(panel);
         if (!old || !old.menu || options.replay) animate(panel, {translateX:['-110%','0%'],opacity:[.2,1],delay:(options.hold ? timing.holdMenuDelay : 0) + (options.delay || 0),duration:timing.menuSlide,ease:'outCubic'});
       }
+      if(root.CosDocsSignals)root.CosDocsSignals.mount(el,options.signalMotion!==false);
       if (options.onCommit) options.onCommit();
     }
     paints.set(el, {frame:f,cancel:function(){ cancelled=true; animations.forEach(function(a){a.pause();}); }});
@@ -167,7 +182,7 @@
   }
   function current(el) { var p = paints.get(el); return p ? p.frame : null; }
   root.CosDocsHud = { frames: frames, html: html, paint: paint, current: current, footerHtml: footerHtml, ringFrames: ringFrames, menuIdle: menuIdle, menuRecording: menuRecording, timing: timing };
-  if (typeof document !== 'undefined') document.querySelectorAll('[data-hud]').forEach(function (el) { el.innerHTML = html(el.getAttribute('data-hud')); });
+  if (typeof document !== 'undefined') document.querySelectorAll('[data-hud]').forEach(function (el) { el.innerHTML = html(el.getAttribute('data-hud')); if(root.CosDocsSignals)root.CosDocsSignals.mount(el); });
 })(typeof window !== 'undefined' ? window : globalThis);
 // Direct state comparison; does not connect to devices or invoke a provider.
 (function () {
@@ -180,15 +195,27 @@
     sessionHistory: 'Older context is above the latest reply. The page counter and distance to live stay visible while you read.',
     meetingHistory: 'One upward scroll enters older transcript. The live recording continues; one downward scroll returns to live.',
     meetingHome: 'Tap for actions, scroll up once to wrap to Home, then tap to confirm. Recording continues when you leave this page.',
+    codexLive: 'This is a Codex session. Its native platform owns Continue; the Messages model does not change it.',
+    complete: 'A filled circle means explicitly completed. Working animates the connected COS nodes instead.',
+    offline: 'Separated dots pulse when contact is lost. Last seen working is not proof the job has stopped or finished.',
+    waiting: 'Pause bars mean waiting. This is distinct from the moving Working signal.',
+    queued: 'The Mac has queued this turn. In 587 normal polling clears this page after delivery, without opening Queue. Delivery is not model completion.',
+    saved: 'The tray means saved on the phone. The turn has not reached the Mac yet.',
+    question: 'A speech bubble with a question mark asks for an answer. Open it to inspect the choices.',
+    approval: 'A hollow shield with a keyhole requests permission. It does not mean permission has been granted.',
+    stopped: 'A solid square means stopped. It is distinct from the filled completion circle.',
+    failed: 'A cross marks a reported failure. Read the accompanying explanation before retrying.',
     meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, Nudges and Home. Home keeps recording active.'
   };
   document.querySelectorAll('[data-hud-explorer]').forEach(function (root) {
     var screen = root.querySelector('[data-hud]'), caption = root.querySelector('.hud-state-caption');
+    var paused=false,selected='sending',motion=root.querySelector('[data-hud-motion]');
+    if(motion)motion.addEventListener('click',function(){paused=!paused;motion.setAttribute('aria-pressed',String(paused));motion.textContent=paused?'Play animation':'Pause animation';window.CosDocsSignals.mount(screen,!paused);});
     root.querySelectorAll('[data-hud-state]').forEach(function (button) {
       button.addEventListener('click', function () {
         root.querySelectorAll('[data-hud-state]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === button)); });
-        var name = button.getAttribute('data-hud-state');
-        window.CosDocsHud.paint(screen, name, {onCommit:function () {caption.textContent=captions[name];}});
+        var name = button.getAttribute('data-hud-state');selected=name;
+        window.CosDocsHud.paint(screen, name, {signalMotion:!paused,onCommit:function () {caption.textContent=captions[name];}});
       });
     });
   });

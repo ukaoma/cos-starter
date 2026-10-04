@@ -63,7 +63,7 @@ COVERS_RE = re.compile(
 SUPPORTED_RE = re.compile(
     r"Current supported versions are COS Control <strong>(\d+\.\d+\.\d+)</strong>, "
     r"server <strong>(\d+\.\d+\.\d+)</strong>, and COS Glasses "
-    r"<strong>(\d+\.\d+\.\d+)</strong> from Even Hub",
+    r"<strong>(\d+\.\d+\.\d+)</strong>(?: or newer)? from Even Hub",
 )
 SIDEBAR_APP_RE = re.compile(r'<span class="sb-ver">(\d+\.\d+\.\d+)</span>')
 HERO_APP_CHIP_RE = re.compile(
@@ -86,23 +86,23 @@ CURRENT_COMPANION_PACK_RE = re.compile(
     r"COS Glasses (\d+\.\d+\.\d+) is the current companion pack"
 )
 LATEST_HUB_PIN_RE = re.compile(
-    r"COS Glasses \d+\.\d+\.\d+ is the current companion pack:.*?Even Hub (?:still )?lists "
+    r"COS Glasses \d+\.\d+\.\d+ is the current companion pack:.*?(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )"
     r"(\d+\.\d+\.\d+)\. Server identity",
     re.S,
 )
 SERVER_IDENTITY_RE = re.compile(r"Server identity is (\d+\.\d+\.\d+)")
 COMPANION_PAIR_RE = re.compile(
     r"glasses (\d+\.\d+\.\d+) plus server (\d+\.\d+\.\d+) is the current companion pair; "
-    r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
+    r"(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)"
 )
 SIDELOAD_RE = re.compile(
     # 6.9.538 (2026-09-24): the companion build is the Even Hub build, installed rather than sideloaded.
     r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the newest companion build; "
-    r"Even Hub (?:still )?lists (\d+\.\d+\.\d+)"
+    r"(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)"
 )
 FAQ_PAIR_RE = re.compile(
     r"The current supported pair is COS Glasses (\d+\.\d+\.\d+) "
-    r"\(Even Hub (?:still )?lists (\d+\.\d+\.\d+)\) "
+    r"\((?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)\) "
     r"and server (\d+\.\d+\.\d+); COS Control (\d+\.\d+\.\d+) is recommended"
 )
 BADGE_GROUNDING_RE = re.compile(
@@ -117,7 +117,7 @@ ROLLBACK_PAIR_RE = re.compile(
     r"with the same server (\d+\.\d+\.\d+)"
 )
 HUB_REMEDIATION_RE = re.compile(
-    r"Install COS Glasses <strong>(\d+\.\d+\.\d+)</strong> from Even Hub"
+    r"Install COS Glasses <strong>(\d+\.\d+\.\d+)</strong>(?: or newer)? from Even Hub"
 )
 CONTROL_VIEW_TAB_RE = re.compile(r'<button class="vtab"[^>]*\bdata-v="([a-z]+)"')
 CONTROL_VIEWS_H2_RE = re.compile(r"<h2>([A-Z][a-z]+) views into the work it already holds\.</h2>")
@@ -336,12 +336,10 @@ def evaluate(
         rollback = _one_groups(ROLLBACK_PAIR_RE, docs, "docs rollback pair", fail)
         if rollback:
             rollback_app, rollback_server = rollback
-            # A rollback is a real, installable build no newer than the Even Hub pin. It
-            # used to have to EQUAL the pin, which held while the Hub trailed the sideload
-            # build; once Even Hub listed the newest build (6.9.470, 2026-09-13) the honest
-            # rollback became the build before it.
-            if docs_hub and _version_key(rollback_app) > _version_key(docs_hub):
-                fail.append(f"docs rollback glasses {rollback_app} is newer than the Even Hub pin {docs_hub}")
+            # A rollback may be a preserved sideload newer than the historical
+            # marketplace pin, but must precede the documented current app.
+            if docs_app and _version_key(rollback_app) >= _version_key(docs_app):
+                fail.append(f"docs rollback glasses {rollback_app} must be older than current app {docs_app}")
             _require("docs rollback same-server", rollback_server, docs_server, fail)
 
         _require(
