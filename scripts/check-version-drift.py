@@ -79,14 +79,14 @@ PHONE_COMPANION_APP_RE = re.compile(
     r'<div class="pf-app"><b>COS GLASSES</b><i>v(\d+\.\d+\.\d+) &#183; Live on G2</i></div>'
 )
 LATEST_RELEASE_RE = re.compile(
-    r"Latest release package: Control (\d+\.\d+\.\d+), glasses (\d+\.\d+\.\d+)"
+    r"(?:Latest|Submitted) release package: Control (\d+\.\d+\.\d+), glasses (\d+\.\d+\.\d+)"
 )
 PUBLIC_DOWNLOAD_RE = re.compile(r"COS Control (\d+\.\d+\.\d+) is the public Mac download")
 CURRENT_COMPANION_PACK_RE = re.compile(
-    r"COS Glasses (\d+\.\d+\.\d+) is the current companion pack"
+    r"COS Glasses (\d+\.\d+\.\d+) is the (?:current|submitted) companion pack"
 )
 LATEST_HUB_PIN_RE = re.compile(
-    r"COS Glasses \d+\.\d+\.\d+ is the current companion pack:.*?(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )"
+    r"COS Glasses \d+\.\d+\.\d+ is the (?:current|submitted) companion pack:.*?(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )"
     r"(\d+\.\d+\.\d+)\. Server identity",
     re.S,
 )
@@ -97,7 +97,7 @@ COMPANION_PAIR_RE = re.compile(
 )
 SIDELOAD_RE = re.compile(
     # 6.9.538 (2026-09-24): the companion build is the Even Hub build, installed rather than sideloaded.
-    r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the newest companion build; "
+    r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the (?:newest|submitted) companion build; "
     r"(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)"
 )
 FAQ_PAIR_RE = re.compile(
