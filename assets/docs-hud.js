@@ -1,5 +1,5 @@
 /* Public, fictional fixtures for the COS lens. No device/server connection.
- * Labels audited against the 6.10.577 companion pack.
+ * Labels audited against the 6.10.578 companion pack.
  * See scripts/verify-docs-hud.mjs for source-content parity checks.
  * The Hub-themed frame and typography intentionally follow the supplied mockup.
  */
@@ -10,7 +10,7 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.577\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff v6.10.578\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  2m  82%',
     layout: 'list'
   };
@@ -38,7 +38,7 @@
     sessionMic: { nav: "↔ Sess ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Continue: say your next message' },
     session: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: 'Opus  1/3 · Tap: actions', thumb: true },
     sessionMenu: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Back to list · 1/6 · Scroll=move Tap=select' },
-    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 4/6 · Scroll=move · Unavailable' },
+    sessionRefusal: { nav: "↔ Sess [O] 1/3 9:16a 9/4/26 82%", body: sessionBody, footer: '▶ Continue (unavailable) · 3/6 · Scroll=move · Unavailable' },
     job: { nav: "◈ Msg [O] Thinking 66s 9/4/26 82%", body: '00:00 ASK  Summarize the pilot thread.\n00:09 TOOL Searching web...\n00:21 OUT  5 results · vendor pricing\n00:34 TOOL Reading page...\n01:05 LIVE The pilot is on track. Two\n01:06 LIVE items need a decision…', footer: '1m 06s · double-tap to cancel · Scroll up: history + Ask', layout: 'list' },
     meeting: { nav: "■■□□ REC 12:08  ★1  82%", body: '[Maya] We can ship the pilot Friday.\n[Sam] The data import needs one day.\n[Maya] Then Friday holds.\n~ I will check the final rollout notes', footer: '◆ 2 nudges  ↑ history  Tap: actions' }
   };
@@ -71,7 +71,7 @@
 });
   frames.meetingHistory = {nav:'[hist] ■■□□ REC 12:08  ★1  82%',body:'[Maya] Before we set the date, what is left?\n[Sam] The data import needs one day.',footer:'1/1  ↑ older  1 down to live'};
   frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/3 · Scroll=move Tap=select'});
-  frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 2/3 · Tap=select'});
+  frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 3/3 · Tap=select'});
   var menuIdle = ['Display off', 'Home', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Brightness', 'Close'];
   var menuRecording = ['Display off', 'Home', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -179,8 +179,8 @@
     sessionLive: 'Sessions uses the same history + Ask language. Hold continues this session; tap opens its actions. The clock belongs to the active turn.',
     sessionHistory: 'Older context is above the latest reply. The page counter and distance to live stay visible while you read.',
     meetingHistory: 'One upward scroll enters older transcript. The live recording continues; one downward scroll returns to live.',
-    meetingHome: 'Tap for actions, scroll once to Home, then tap to confirm. Recording continues when you leave this page.',
-    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, Home and Nudges. Home keeps recording active.'
+    meetingHome: 'Tap for actions, scroll up once to wrap to Home, then tap to confirm. Recording continues when you leave this page.',
+    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, Nudges and Home. Home keeps recording active.'
   };
   document.querySelectorAll('[data-hud-explorer]').forEach(function (root) {
     var screen = root.querySelector('[data-hud]'), caption = root.querySelector('.hud-state-caption');

@@ -37,9 +37,9 @@
   function frame(name, changes) { return Object.assign({}, f[name], changes); }
   function step(title, gesture, view, description) { return {title:title,gesture:gesture,frame:view,description:description}; }
   function reader(index) {
-    return frame('continued', {footer:['Messages','Home','Reply','Ref','View image'].map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('  ')});
+    return frame('continued', {footer:['Messages','Reply','Ref','View image','Home'].map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('  ')});
   }
-  var sessionRows = ['Back to list','Home','Queue','Continue','Fork','Ask COS'];
+  var sessionRows = ['Back to list','Queue','Continue','Fork','Ask COS','Home'];
   var taskRows = ['Back to list','Ask COS','Done','Today','To active','To review'];
   var taskFixture = {title:'Prepare the Friday pilot checklist',column:'inbox',stage:'planning',doneWhen:'Checklist includes the owner, rollout date, and a tested rollback.'};
   // Task detail is a detail viewport: glassesHeader() with no page label and
@@ -95,14 +95,14 @@
       step('Start on a selected row','idle',f.selected,'The Messages list, newest first. ▶ marks the row a tap will open; the footer counts the list position. Nothing has been opened yet.'),
       step('Open a message','tap',f.reader,'A tap on the selected row opens its prompt and answer. The Messages list and the open reader do not share the same double-tap action.'),
       step('Read to the bottom','swipe-down',f.continued,'Finish the body before choosing what to do next. The nav and footer stay fixed. You can open footer actions before reaching the bottom, too; this is not an unlock gesture.'),
-      step('Open footer actions','tap',reader(0),'One deliberate tap opens Messages, Home, Reply, Ref for a numbered message and, when available, View image. It does not run the selected action. The body stays at your reading position.'),
-      step('Highlight Home','swipe-down',reader(1),'Home is one scroll from the parent list. A confirming tap returns Home while any running job continues.'),
-      step('Choose Reply','swipe-down',reader(2),'With the menu open, a scroll changes the footer selection instead of scrolling the message. This is the pause between the two deliberate taps, not a double-tap.'),
-      step('Highlight Ref','swipe-down',reader(3),'Ref attaches this numbered message to your next spoken prompt. Highlighting it changes nothing.'),
-      step('Find the photo action','swipe-down',reader(4),'View image appears only for an attached photo with lens image preview enabled and no meeting-critical capture active. This example assumes those conditions are met.'),
-      step('Wrap back to Messages','swipe-down',reader(0),'Another downward scroll wraps from View image, 5 of 5, back to Messages. Every footer cursor on the lens wraps the same way, in both directions. Nothing runs when the cursor wraps.'),
-      step('Pass Home again','swipe-down',reader(1),'The cursor is on Home. Scroll once more for Reply.'),
-      step('Return to Reply, then confirm','swipe-down',reader(2),'The next scroll highlights Reply. Read the highlighted choice before tapping again; that second deliberate tap is the false-touch confirmation.'),
+      step('Open footer actions','tap',reader(0),'One deliberate tap opens Messages, Reply, conditional Ref and View image, then Home. It does not run the selected action. The body stays at your reading position.'),
+      step('Choose Reply','swipe-down',reader(1),'One downward scroll selects Reply. A separate tap would open the microphone; highlighting sends nothing.'),
+      step('Highlight Ref','swipe-down',reader(2),'Ref attaches this numbered message to your next spoken prompt. Highlighting it changes nothing.'),
+      step('Find the photo action','swipe-down',reader(3),'View image appears only for an attached photo with lens image preview enabled and no meeting-critical capture active.'),
+      step('Home is the final choice','swipe-down',reader(4),'Home follows the available page actions. You can also reach it by scrolling up once from Messages. A confirming tap returns Home while running jobs continue.'),
+      step('Wrap back to Messages','swipe-down',reader(0),'Another downward scroll wraps from Home, 5 of 5, back to Messages. Nothing runs when the cursor wraps.'),
+      step('Return to Reply','swipe-down',reader(1),'One downward scroll from Messages selects Reply.'),
+      step('Read the selection before confirming','idle',reader(1),'Reply stays selected. The next deliberate tap opens the microphone; pausing does not send anything.'),
       step('Start the prompt','tap',f.reply,'The confirming tap opens the microphone for a new prompt from this message, in the same session. Review the transcript after finishing; starting a recording is not the same as sending it. To attach a specific message as context, say “reference message 411” as a voice command first.'),
       step('Or use the express gesture','double-tap',f.reply,'Alternative from the open, idle message reader: two quick taps open the same microphone without opening the footer menu. From the Messages list, double-tap goes to Quick Actions instead.'),
       step('Finish and review','tap',f.replyReview,'Tap once to stop recording. After transcription finishes, the lens shows your words for confirmation and the footer changes to Tap=Send. Nothing has been sent yet. Scroll down for review options instead of sending.'),
@@ -129,11 +129,11 @@
       step('Read the session','idle',f.session,'This example shows a saved session without a separate latest-reply page. A current session opens on its latest reply, with history above it. Tap opens footer actions while preserving the body.'),
       step('Reach the footer','swipe-down',frame('session',{scroll:true,thumb:true}),'Scroll through this saved discussion and its stats. A single tap can open actions at any reading position; scrolling first lets you finish the context.'),
       step('Open the safe first choice','tap',menu(f.session,sessionRows,0),'The first tap opens Back to list, 1 of 6. It does not continue a session or start a model turn.'),
-      step('Highlight Home','swipe-down',menu(f.session,sessionRows,1),'Home is adjacent to Back to list. A confirming tap returns Home without cancelling a running session.'),
-      step('Highlight Queue','swipe-down',menu(f.session,sessionRows,2),'Queue shows messages waiting behind this session. Tap to read, edit or cancel a waiting message; highlighting this row sends nothing.'),
-      step('Highlight Continue','swipe-down',menu(f.session,sessionRows,3),'One scroll highlights Continue. A separate confirming tap would start dictation into the original thread, subject to its availability and permissions.'),
-      step('Highlight Fork','swipe-down',menu(f.session,sessionRows,4),'This scroll only highlights Fork. A separate tap opens dictation for a new thread from this context. Your follow-up does not write back into the original thread, and nothing sends before review and confirmation.'),
-      step('Reach the final choice','swipe-down',menu(f.session,sessionRows,5),'Ask COS is 6 of 6 in this supported Claude example. Providers and availability can change the choices; read the row label and counter.'),
+      step('Highlight Queue','swipe-down',menu(f.session,sessionRows,1),'Queue shows messages waiting behind this session. Tap to read, edit or cancel a waiting message; highlighting sends nothing.'),
+      step('Highlight Continue','swipe-down',menu(f.session,sessionRows,2),'A separate confirming tap starts dictation into the original thread, subject to availability and permissions.'),
+      step('Highlight Fork','swipe-down',menu(f.session,sessionRows,3),'A separate tap opens dictation for a new thread from this context. Nothing sends before review and confirmation.'),
+      step('Highlight Ask COS','swipe-down',menu(f.session,sessionRows,4),'Ask COS comes before Home. Providers and availability can change the choices; read the row label and counter.'),
+      step('Home is the final choice','swipe-down',menu(f.session,sessionRows,5),'Home is 6 of 6 in this idle example. When Cancel run is available it appears before Home and still requires confirmation. Scrolling up once from Back to list also reaches Home.'),
       step('Wrap back to the beginning','swipe-down',menu(f.session,sessionRows,0),'One more downward scroll wraps from 6 of 6 to 1 of 6. Scrolling up from the first row wraps to the last. No action runs just because the cursor wraps.'),
       step('Arm return to Quick Actions','double-tap',frame('session',{scroll:true,footer:'Double-tap again for Quick Actions'}),'From session detail, double-tap closes the footer menu and asks for confirmation. You are still in the session. Double-tap again within three seconds to leave. If you wait, the normal footer returns.'),
       step('Open shortcuts in place','hold',frame('session',{scroll:true,menu:true,menuIndex:1}),'Once the confirmation has expired, tap and release, then quickly press and hold. The shortcut window slides over this session without replacing it or returning Home.'),
@@ -145,7 +145,7 @@
       step('Up for earlier history','swipe-up',f.meetingHistory,'Scroll up into earlier transcript. Recording continues and this history page stays still while new speech arrives.'),
       step('Down toward live','swipe-down',f.meeting,'One down returns to live in this example. The latest committed words and provisional preview return together.'),
       step('Tap for actions','tap',f.meetingActions,'Meetings is the parent list and starts selected. The body stays put; the first tap does not leave.'),
-      step('Choose Home','swipe-down',f.meetingHome,'One scroll selects Home. Tap to confirm; recording continues. Nudges is the next action when Live Cues is on; otherwise Bookmark is available.'),
+      step('Choose Home','swipe-up',f.meetingHome,'Scroll up once from Meetings to wrap to Home, the final action. Tap to confirm; recording continues. Scrolling down instead selects Nudges when Live Cues is on, otherwise Bookmark.'),
       step('Or use the side menu','hold',frame('meeting',{menu:true,recording:true,menuIndex:1}),'Tap and release, then press and hold for the side menu. Home is first in the default COS order. Resume Meeting and Stop Meeting follow; Home does not stop capture.')
     ],
     tasks: [
@@ -182,8 +182,9 @@
   lessons.ask[5].resultText='Review protected · prompt unchanged · nothing sent';
   lessons.ask[9].resultText='Job page open · waiting for the Mac';
   lessons.ask[10].resultText='Run in progress · no extra tap';
-  lessons.messages[8].transitionText='View image · 5 of 5 · scroll down…';
+  lessons.messages[8].transitionText='Home · 5 of 5 · scroll down…';
   lessons.messages[8].resultText='Messages · 1 of 5 · wrapped without running an action';
+  lessons.messages[10].resultText='Reply selected · tap to open the microphone';
   lessons.messages[13].before=frame('reply',{body:'Listening...\n\n'+f.replyReview.body});
   lessons.messages[13].transitionText='Recording finished · transcribing…';
   lessons.messages[13].resultText='Review your prompt · nothing sent · Tap=Send';
@@ -191,7 +192,7 @@
   lessons.messages[15].resultText='Cancel armed · double-tap again within three seconds';
   lessons.messages[16].transitionText='Second double-tap · cancelling…';
   lessons.messages[16].resultText='× Cancelled · run stopped · back on Home';
-  lessons.sessions[8].transitionText='Ask COS · 6 of 6 · scroll down…';
+  lessons.sessions[8].transitionText='Home · 6 of 6 · scroll down…';
   lessons.sessions[8].resultText='Back to list · 1 of 6 · wrapped without running an action';
   lessons.sessions[10].before=frame('session',{scroll:true});
   lessons.sessions[10].resultText='Shortcut window open over the session';

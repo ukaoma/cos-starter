@@ -216,7 +216,7 @@ test('Sessions replays 6 of 6 before scrolling to 1 of 6 with body retained',()=
   assert.equal(h.screen.querySelector('.lens-text'),readingBody,'Opening footer actions retains reading surface');
   assert.ok(h.screen.querySelector('.lens-thumb'),'Opening actions retains the scroll indicator');
   h.playScene(steps[8],steps[7].frame,h.options);
-  assert.match(h.screen.querySelector('.lens-footer').textContent,/Ask COS · 6\/6/);
+  assert.match(h.screen.querySelector('.lens-footer').textContent,/Home · 6\/6/);
   const body=h.screen.querySelector('.lens-text');h.flush();
   assert.match(h.screen.querySelector('.lens-footer').textContent,/Back to list · 1\/6/);
   assert.equal(h.screen.querySelector('.lens-text'),body);
