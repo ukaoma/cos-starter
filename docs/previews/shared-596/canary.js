@@ -3232,7 +3232,7 @@ ${v2.rest}`, v2.home ? "welcome:" : surface.value === "message" ? "job-activity:
   document.querySelector("#status").textContent = v2.text;
   document.querySelector("#trail").textContent = v2.rest;
   document.querySelector("#head").textContent = v2.home ? "COS [S] 5:30p 10/4/26 \xB7 73%" : surface.value === "message" ? "\u25C7 Messages \xB7 Sonnet \xB7 73%" : "\u2194 Sessions \xB7 Codex \xB7 73%";
-  const footer = v2.home ? "Sonnet \xB7 v6.10.596 \xB7 73%" : "Codex \xB7 20m 24s \xB7 Scroll up for history";
+  const footer = v2.home ? "Sonnet \xB7 v6.10.596 \xB7 73%" : `${surface.value === "message" ? "Sonnet" : "Codex"} \xB7 20m 24s \xB7 Scroll up for history`;
   document.querySelector("#footer").textContent = footer;
   document.querySelector("#phone-footer").textContent = footer;
   const row = document.querySelector(".phone-running-row");

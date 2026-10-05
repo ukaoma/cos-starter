@@ -22,7 +22,7 @@ function refresh() {
  document.querySelector('#status')!.textContent=v.text
  document.querySelector('#trail')!.textContent=v.rest
  document.querySelector('#head')!.textContent=v.home?'COS [S] 5:30p 10/4/26 · 73%':surface.value==='message'?'◇ Messages · Sonnet · 73%':'↔ Sessions · Codex · 73%'
- const footer=v.home?'Sonnet · v6.10.596 · 73%':'Codex · 20m 24s · Scroll up for history'
+ const footer=v.home?'Sonnet · v6.10.596 · 73%':`${surface.value==='message'?'Sonnet':'Codex'} · 20m 24s · Scroll up for history`
  document.querySelector('#footer')!.textContent=footer
  document.querySelector('#phone-footer')!.textContent=footer
  const row=document.querySelector('.phone-running-row')
