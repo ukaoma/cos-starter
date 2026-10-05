@@ -7,9 +7,9 @@
       "url": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.252.zip",
       "sha256": "057a4f6bdfcf3ffd4e36ea0b8bb143384ea85c7ad67ebff095f4438c9b0ffb82",
       "minMacOS": "14.0",
-      "serverTarget": "6.61.7",
+      "serverTarget": "6.62.1",
       "publishedAt": "2026-09-30T22:03:21.104088Z",
-      "notes": "Start work, Reply by voice and Not done yet from the glasses now run on this Mac: COS Control picks up each request from the server, checks the task again, sends it with every guard the Agent workspace has, and tells the glasses what happened. A New session from the glasses stays in the background so the glasses can keep replying. New sessions from Work start on the server and open in Claude, Codex or Cursor once the first reply is done, and a Claude one is named after its task and linked while it runs. Every control wears the gotcos theme. Includes 0.5.249 to 0.5.251. Pairs with server 6.61.7."
+      "notes": "Start work, Reply by voice and Not done yet from the glasses now run on this Mac: COS Control picks up each request from the server, checks the task again, sends it with every guard the Agent workspace has, and tells the glasses what happened. A New session from the glasses stays in the background so the glasses can keep replying. New sessions from Work start on the server and open in Claude, Codex or Cursor once the first reply is done, and a Claude one is named after its task and linked while it runs. Every control wears the gotcos theme. Includes 0.5.249 to 0.5.251. Pairs with server 6.62.1."
     }
   },
   "killSwitch": {
