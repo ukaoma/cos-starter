@@ -28,7 +28,7 @@ Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belo
 
 ## COS Glasses 587, submitted for marketplace review
 
-COS Glasses 6.10.587 was submitted for production marketplace review on October 4, 2026. Approval is pending. The versioned package and canonical alias are published in the Glasses Hub repository. The last confirmed marketplace listing is 6.9.538; this is not an independent verification of today's listing. Published server is 6.61.6. Public COS Control remains 0.5.252; a newer local build is not a public release.
+COS Glasses 6.10.587 was submitted for production marketplace review on October 4, 2026. Approval is pending. The versioned package and canonical alias are published in the Glasses Hub repository. The last confirmed marketplace listing is 6.9.538; this is not an independent verification of today's listing. Published server is 6.61.7. Public COS Control remains 0.5.252; a newer local build is not a public release.
 
 [HUD and signal guide](https://www.gotcos.com/docs/#hud-states): Messages uses ◈ Msg; Sessions uses ↔ Sess and its native Claude, Codex or Cursor identity. Continue uses that session's settings, independent of Messages. A model name is shown only when the session reports it. Messages, Sessions and live Meetings use up for history and down toward live. Home is last in footer actions and first in default COS side shortcuts, beneath Display off. Returning Home leaves recording and jobs active. Known battery is in navigation; live footers keep elapsed time, cancellation and history + Ask.
 
@@ -42,4 +42,4 @@ Final dictation cleanup offers Sonnet (default) through Claude CLI and GPT-5.6 L
 
 Server 6.61.4 fixes canonical merged G2 review lookup and adds revision-guarded task-name/finish-line writes. The corresponding new Control task editor and cache/resize hardening are not included in public Control 0.5.252. Work 579 is a separate unpublished candidate and is not part of 587.
 
-A separate COS Glasses 6.10.588 candidate is available in Glasses Hub for resubmission. It restores total elapsed runtime when opening a working session mid-run, using the current prompt timestamp when available. 587 remains the submitted marketplace build; approval is pending.
+The current private COS Glasses candidate in Glasses Hub is 6.10.597. It carries the 588 total elapsed runtime repair, 590 agent activity, and the compact Home running-session count. In 597 a row with the COS mark carries words only, a Session’s mark follows live work rather than finished child agents, and background polls never move the reader. 597 has not been uploaded or submitted for marketplace review, and device acceptance is pending. It pairs with server 6.61.7. 587 remains the submitted marketplace build; approval is pending.
