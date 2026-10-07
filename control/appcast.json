@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.265",
-      "build": 318,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.265/COS-Control-macOS-arm64-0.5.265.zip",
-      "sha256": "8b6feba4753d5e6544d435f4251498fa952cbce38bf11c37feda356a6d8d49e4",
+      "version": "0.5.266",
+      "build": 319,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.266/COS-Control-macOS-arm64-0.5.266.zip",
+      "sha256": "83df0c0815aef295338c0d7899429833774686bfab3d73c4b40747c49afb9e47",
       "minMacOS": "14.0",
       "serverTarget": "6.65.0",
-      "publishedAt": "2026-10-07T16:12:00Z",
+      "publishedAt": "2026-10-07T19:28:54Z",
       "notes": "Developer ID signed and Apple notarized. Core setup bundles Node/npm and starts the server from the welcome window without Homebrew or a separate npm installation. Includes responsive branded task editing and protected drafts. Voice setup remains separate. Pairs with server 6.65.0. New users start with Cloud Puff, bundled for offline use; existing pet choices are preserved. Open in platform now shows actionable failures in Sessions; queued follow-ups show recorded hold reasons. Link a meeting to an existing task from Meetings or Speakers without creating duplicate work."
     }
   },
