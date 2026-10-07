@@ -1,5 +1,7 @@
 # Prepared release: Control 0.5.261 / build 314
 
+**Superseded candidate, October 7:** the simple COS robot default is implemented in Control 0.5.262 / build 315. Its build is waiting for native Keychain signing approval. The pet copy in this branch describes that incoming behavior; links, appcast and checksums still refer to the frozen 0.5.261 preview. Before publishing, finish and verify 0.5.262, then advance every current version/download/hash claim together. Do not publish this intermediate draft.
+
 **Not published. Do not merge this branch to main until the two interactive gates below pass.** The public website still offers 0.5.252. This branch describes the integrated, notarized 0.5.261 candidate and reserves its future public release URLs.
 
 The homepage hero and navigation lead to the Mac download and installation steps. Control, wizard, docs, llms.txt, and the public server skill distinguish bundled core setup from optional voice dependencies. Current download/version claims advance together; historical introductions remain unchanged.
