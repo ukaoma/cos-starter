@@ -1,5 +1,7 @@
 # Prepared release: Control 0.5.263 / build 316
 
+Superseded by the unpublished 0.5.264 candidate (see ONBOARDING_RELEASE_0264.md). This receipt preserves the frozen 0.5.263 evidence.
+
 Not published. Do not merge this branch to main until clean-Mac onboarding and an interactive upgrade from the old local signer pass. The website and appcast now reserve the 0.5.263 asset URLs; those assets have not been uploaded.
 
 ## Candidate

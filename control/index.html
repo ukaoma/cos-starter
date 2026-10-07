@@ -40,8 +40,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.263",
-  "downloadUrl": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip",
+  "softwareVersion": "0.5.264",
+  "downloadUrl": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-0.5.264.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -392,6 +392,16 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-pack ol{padding-left:1.4em;margin:18px 0;max-width:78ch;color:var(--muted)}
 .pet-pack p{max-width:78ch;color:var(--muted)}
 .pet-pack pre{max-width:100%;overflow-x:auto;padding:18px 0;font:.75rem/1.7 var(--mono)}
+
+.hero h1{font-size:clamp(2.7rem,5vw,4.6rem);max-width:14ch;line-height:1.04}
+.hero-grid{align-items:start}
+.first-session-card h2{font-family:var(--display);font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;margin:24px 0 16px}
+.first-session-card p,.first-session-card li{color:var(--muted);font-size:.95rem;line-height:1.65}
+.first-session-card blockquote{margin:20px 0;padding:20px;border-left:3px solid var(--gold);background:var(--ink2);color:var(--fg);font-size:1.1rem;line-height:1.6}
+.first-session-card ol{padding-left:22px;display:grid;gap:14px}.first-session-card strong{color:var(--fg)}
+.setup-extra{max-width:900px;margin:18px auto;border-top:1px solid var(--paper-line);padding-top:18px;color:var(--paper-ink)}
+.setup-extra summary{cursor:pointer;font-weight:600}.setup-extra p{padding:12px 0;color:var(--paper-muted);line-height:1.65}
+#install{scroll-margin-top:115px}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
 <script src="assets/session-command/session-deck.js?v=3" defer></script>
@@ -441,6 +451,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a></div>
     <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
     <div class="links" id="navLinks">
+      <a href="/control/" class="nav-mac">Mac companion</a>
       <div class="nd">
         <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
         <div class="nd-menu">
@@ -458,10 +469,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <div class="nd">
         <button class="nd-btn" type="button" aria-expanded="false">Getting Started <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
         <div class="nd-menu">
-          <a href="/#start">Quick Start <small>5 minutes, one paste</small></a>
+          <a href="/#start">Quick Start <small>Start with the Mac app</small></a>
           <a href="/harness/">AI Harness <small>Understand the layer you own</small></a>
           <a href="/docs/">Glasses Docs <small>The complete user guide</small></a>
-          <a href="/control/">COS Control <small>Run the Mac server from your menu bar</small></a>
+          <a href="/control/">Mac setup guide <small>Install, connect your AI, start a session</small></a>
           <a href="/#tiers">The 4 Tiers <small>How it deepens</small></a>
           <a href="/blueprint/">COS Blueprint <small>12 questions, free score</small></a>
           <a href="/#faq">FAQ <small>The centaur test</small></a>
@@ -485,49 +496,53 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap">
     <div class="reveal">
-      <h1>Your work, together. <em>Start on your Mac.</em></h1>
-      <p class="hero-lead">Bring your AI sessions, meetings and tasks into one Mac app. <strong>Download, open, and choose Get started.</strong> COS prepares and runs its server for you. No Homebrew, Node, npm or npx installation for core setup. Connect your glasses when you are ready.</p>
+      <h1>Your AI sessions. <em>One calm place.</em></h1>
+      <p class="hero-lead">Meet COS Control, your Mac companion for Claude, Codex and Cursor. See what is running, catch the next reply, and return to the right session. <strong>Start with one useful task.</strong> Add meetings, memory and glasses when you are ready.</p>
       <div class="actions">
-        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip" download>Download for Mac</a>
-        <a class="btn ghost" href="#install">See the installation steps</a>
+        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-0.5.264.zip" download>Download for Mac</a>
+        <a class="btn ghost" href="#install">Get running in a few steps</a>
       </div>
-      <p class="byline">v0.5.263 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.264 &middot; macOS 14+ &middot; Apple Silicon<br>Developer ID signed. Notarized by Apple. No Homebrew or npm needed for core setup.</p>
     </div>
 
-    <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.65.0 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
-      <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
-      <div class="cc-panel">
-        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Managed &middot; 6.65.0</b></div>
-        <div class="cc-row"><span class="cc-k">Ownership</span><b class="cc-v ok">Verified direct PID</b></div>
-        <div class="cc-row"><span class="cc-k">Recovery</span><b class="cc-v ok">Scheduled</b></div>
-        <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
-        <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">Allowed</b></div>
-        <div class="cc-row"><span class="cc-k">Memory &amp; Threads</span><b class="cc-v ok">5,529 &middot; 64 threads</b></div>
-        <div class="cc-row"><span class="cc-k">Meeting preview</span><b class="cc-v ok">Turbo &middot; On</b></div>
-        <div class="cc-row"><span class="cc-k">Idle Metal HQ</span><b class="cc-v ok">On &middot; preemptible</b></div>
-        <div class="cc-row"><span class="cc-k">Adaptive replay</span><b class="cc-v ok">Off &middot; raw preserved</b></div>
-        <div class="cc-row"><span class="cc-k">Transcription tier</span><b class="cc-v ok">Max</b></div>
-        <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Large-v3-Turbo</b></div>
-        <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3</b></div>
-        <div class="cc-row"><span class="cc-k">Polish, on save</span><b class="cc-v ok">Large-v3</b></div>
-        <div class="cc-row"><span class="cc-k">Meeting sync</span><b class="cc-v ok">Idle &middot; 1 retained batch</b></div>
-        <div class="cc-row"><span class="cc-k">Early meeting sync</span><b class="cc-v ok">Final sync verified</b></div>
-        <div class="cc-row"><span class="cc-k">HQ prefill</span><b class="cc-v ok">Ready &middot; Max &middot; 6t</b></div>
-        <div class="cc-row"><span class="cc-k">Agent CLIs</span><b class="cc-v ok">Claude &middot; Codex &middot; Cursor</b></div>
-        <div class="cc-row"><span class="cc-k">Work folder</span><b class="cc-v dir">~/Documents/COS</b></div>
-      </div>
-      <div class="cc-actions" aria-hidden="true">
-        <span class="cc-act">Open COS</span>
-        <span class="cc-act">Open Cursor</span>
-        <span class="cc-act">Run Doctor</span>
-        <span class="cc-act">Restart Safely</span>
-      </div>
-      <p class="rig-caption">See what is actually running. <strong>Models, jobs, recordings, recovery, and agent CLIs.</strong> Browse today's glasses turns, message any agent session, and copy a handoff into any chat.</p>
+    <div class="rig cc reveal first-session-card">
+
+      <h2>Turn a loose thought into a plan.</h2>
+      <p>Open your usual AI app and send a small task:</p>
+      <blockquote>Help me plan tomorrow. Ask what matters most, then turn my answer into three clear priorities.</blockquote>
+      <ol>
+        <li><strong>See it in Sessions.</strong> Find that conversation in COS Control.</li>
+        <li><strong>Follow the reply.</strong> Read its progress while you work elsewhere.</li>
+        <li><strong>Go back when it needs you.</strong> Open the same session in its AI app.</li>
+      </ol>
+      <p class="rig-caption">Already use Claude, Codex or Cursor? Start with a session you already have. No glasses or voice setup required.</p>
     </div>
   </div>
 </header>
 
 <main>
+  <div class="burn down" aria-hidden="true"></div>
+  <section class="paper" id="install">
+    <div class="wrap">
+      <div class="reveal" style="max-width:750px">
+        <h2>Get running. Then try one task.</h2>
+        <p class="dek">Three setup steps, then your first useful session. COS installs and runs its server for you.</p>
+        <p><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-0.5.264.zip">Download for Mac</a></p>
+      </div>
+      <ol class="insteps">
+        <li class="reveal"><span class="n">1</span><div><h3>Download and move to Applications.</h3><p>Unzip the download and drag COS Control into your Applications folder.</p></div></li>
+        <li class="reveal"><span class="n">2</span><div><h3>Open COS Control.</h3><p>Open it from Applications. This download is signed with Developer ID and notarized by Apple. A normal downloaded-app confirmation may appear.</p></div></li>
+        <li class="reveal"><span class="n">3</span><div><h3>Connect your AI, then Get started.</h3><p>Use a signed-in Codex app, Claude Code, or Cursor Agent. If none is found, the welcome window helps you connect one. Choose <strong>Get started</strong>; COS downloads and starts its server using the runtime included with the app. Leave the window open while setup finishes. If the connection fails, choose Try again.</p></div></li>
+        <li class="reveal"><span class="n">4</span><div><h3>Try your first task.</h3><p>When COS says it is ready, choose <strong>Open Sessions</strong>. Send the planning prompt above in your AI app, then find the conversation here. Follow its reply and use <strong>Open in platform</strong> to return to it. Existing installations keep their current controls and data.</p></div></li>
+        </ol>
+      <details class="setup-extra"><summary>Add meetings, memory, glasses or voice later</summary><p>Choose your Work Folder and Meetings Library, or <a href="/wizard/">connect your glasses</a>. Set up local voice separately when you need it. macOS asks for microphone, files, notifications or Accessibility access when the feature needs it; Accessibility is used for the pet&rsquo;s session jump.</p></details>
+      <div class="pnote reveal"><b>What you need.</b> Apple silicon, macOS 14 or later, internet access, and one supported AI provider signed in. Core setup includes its own Node/npm runtime. Local voice transcription still needs whisper.cpp and model storage; optional spoken replies and image features have additional dependencies.</div>
+      <details class="setup-extra"><summary>Updating an older copy?</summary><p> The move from the old local signature to Developer ID may require granting feature permissions again in System Settings. If macOS blocks this current download as unverified, download it again and check the checksum; do not remove its quarantine flag.</p></details>
+      <details class="setup-extra"><summary>Already running COS in Terminal?</summary><p> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</p></details>
+    </div>
+      <div class="wrap"><details class="setup-extra"><summary>Stuck during setup?</summary><p>If your AI is not detected, open it and sign in, then choose <strong>Check again</strong> in COS. If server setup fails, choose <strong>Try again</strong>. Use <strong>Doctor</strong> in the menu bar for the failing check. <a href="/wizard/">Follow the full setup guide</a> for provider and optional glasses steps.</p></details></div>
+  </section>
+  <div class="burn up" aria-hidden="true"></div>
   <section class="views" id="views">
     <div class="wrap">
       <div class="vhead reveal">
@@ -802,6 +817,38 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   </section>
   <div class="burn up" aria-hidden="true"></div>
 
+  <section class="dark-section"><div class="wrap"><details><summary>See an example of the server status panel</summary>
+    <div class="rig cc" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.65.0 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
+      <div class="rig-top"><b>COS Control</b><span><i class="lamp"></i>running</span></div>
+      <div class="cc-panel">
+        <div class="cc-row"><span class="cc-k">Server</span><b class="cc-v ok">Managed &middot; 6.65.0</b></div>
+        <div class="cc-row"><span class="cc-k">Ownership</span><b class="cc-v ok">Verified direct PID</b></div>
+        <div class="cc-row"><span class="cc-k">Recovery</span><b class="cc-v ok">Scheduled</b></div>
+        <div class="cc-row"><span class="cc-k">Local Whisper</span><b class="cc-v ok">Ready</b></div>
+        <div class="cc-row"><span class="cc-k">Background jobs</span><b class="cc-v ok">Allowed</b></div>
+        <div class="cc-row"><span class="cc-k">Memory &amp; Threads</span><b class="cc-v ok">5,529 &middot; 64 threads</b></div>
+        <div class="cc-row"><span class="cc-k">Meeting preview</span><b class="cc-v ok">Turbo &middot; On</b></div>
+        <div class="cc-row"><span class="cc-k">Idle Metal HQ</span><b class="cc-v ok">On &middot; preemptible</b></div>
+        <div class="cc-row"><span class="cc-k">Adaptive replay</span><b class="cc-v ok">Off &middot; raw preserved</b></div>
+        <div class="cc-row"><span class="cc-k">Transcription tier</span><b class="cc-v ok">Max</b></div>
+        <div class="cc-row"><span class="cc-k">Preview, while dictating</span><b class="cc-v ok">Large-v3-Turbo</b></div>
+        <div class="cc-row"><span class="cc-k">Commit, live meeting</span><b class="cc-v ok">Large-v3</b></div>
+        <div class="cc-row"><span class="cc-k">Polish, on save</span><b class="cc-v ok">Large-v3</b></div>
+        <div class="cc-row"><span class="cc-k">Meeting sync</span><b class="cc-v ok">Idle &middot; 1 retained batch</b></div>
+        <div class="cc-row"><span class="cc-k">Early meeting sync</span><b class="cc-v ok">Final sync verified</b></div>
+        <div class="cc-row"><span class="cc-k">HQ prefill</span><b class="cc-v ok">Ready &middot; Max &middot; 6t</b></div>
+        <div class="cc-row"><span class="cc-k">Agent CLIs</span><b class="cc-v ok">Claude &middot; Codex &middot; Cursor</b></div>
+        <div class="cc-row"><span class="cc-k">Work folder</span><b class="cc-v dir">~/Documents/COS</b></div>
+      </div>
+      <div class="cc-actions" aria-hidden="true">
+        <span class="cc-act">Open COS</span>
+        <span class="cc-act">Open Cursor</span>
+        <span class="cc-act">Run Doctor</span>
+        <span class="cc-act">Restart Safely</span>
+      </div>
+      <p class="rig-caption">See what is actually running. <strong>Models, jobs, recordings, recovery, and agent CLIs.</strong> Browse today's glasses turns, message any agent session, and copy a handoff into any chat.</p>
+    </div>
+</details></div></section>
   <section class="dark-section" id="run">
     <div class="wrap">
       <div class="reveal">
@@ -814,12 +861,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip" download>Download v0.5.263</a></div>
+          <div class="actions"><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-0.5.264.zip" download>Download v0.5.264</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.263.zip</code></div>
-            <p class="sha">SHA-256<br>fbe92d34989ced8fb14b1fcb56e3bad5935523089b052c9897589852e89bcf64</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.264.zip</code></div>
+            <p class="sha">SHA-256<br>3bf9693fd41e6ec560c43ad7ab89d95cfc4927c39395f7178ef10e6052a6e4ee</p>
           </details>
         </div>
         <div class="path reveal">
@@ -833,25 +880,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   </section>
 
   <div class="burn down" aria-hidden="true"></div>
-  <section class="paper" id="install">
-    <div class="wrap">
-      <div class="reveal" style="max-width:750px">
-        <h2>From download to your first session.</h2>
-        <p class="dek">Apple Developer ID signed and notarized. Server setup happens inside the app.</p>
-        <p><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip">Download for Mac</a></p>
-      </div>
-      <ol class="insteps">
-        <li class="reveal"><span class="n">1</span><div><h3>Download and move to Applications.</h3><p>Unzip the download and drag COS Control into your Applications folder.</p></div></li>
-        <li class="reveal"><span class="n">2</span><div><h3>Open COS Control.</h3><p>Open it from Applications. This download is signed with Developer ID and notarized by Apple. A normal downloaded-app confirmation may appear.</p></div></li>
-        <li class="reveal"><span class="n">3</span><div><h3>Connect your AI, then Get started.</h3><p>Use a signed-in Codex app, Claude Code, or Cursor Agent. If none is found, the welcome window helps you connect one. Choose <strong>Get started</strong>; COS downloads and starts its server using the runtime included with the app. Leave the window open while setup finishes. If the connection fails, choose Try again.</p></div></li>
-        <li class="reveal"><span class="n">4</span><div><h3>Open Sessions.</h3><p>When COS says it is ready, choose <strong>Open Sessions</strong>. Start a task in your AI app and follow it here. Existing COS installations keep their current controls and data.</p></div></li>
-        <li class="reveal"><span class="n">5</span><div><h3>Add what you need next.</h3><p>Choose your Work Folder and Meetings Library, or <a href="/wizard/">connect your glasses</a>. Set up local voice separately when you need it. macOS asks for microphone, files, notifications or Accessibility access when the feature needs it; Accessibility is used for the pet&rsquo;s session jump.</p></div></li>
-      </ol>
-      <div class="pnote reveal"><b>What you need.</b> Apple silicon, macOS 14 or later, internet access, and one supported AI provider signed in. Core setup includes its own Node/npm runtime. Local voice transcription still needs whisper.cpp and model storage; optional spoken replies and image features have additional dependencies.</div>
-      <div class="pnote reveal"><b>Updating an older copy?</b> The move from the old local signature to Developer ID may require granting feature permissions again in System Settings. If macOS blocks this current download as unverified, download it again and check the checksum; do not remove its quarantine flag.</div>
-      <div class="pnote reveal"><b>Already running COS in Terminal?</b> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</div>
-    </div>
-  </section>
   <div class="burn up" aria-hidden="true"></div>
 
   <section class="closing" id="download">
@@ -859,10 +887,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip" download>Download for Mac</a>
+        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-0.5.264.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.263 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.264 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

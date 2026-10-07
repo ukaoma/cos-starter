@@ -359,7 +359,8 @@
     .hud-rec.navin { animation: hr-navin .6s cubic-bezier(.2,.7,.2,1); }
     @keyframes hr-navin { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) { .hud-rec.navin { animation: none; } .hud-rec .hr-cur { animation: none; opacity: 0; } }
-  </style>
+  .setup-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;margin-bottom:28px;font-size:.85rem}.setup-nav a{color:var(--accent-gold);padding:8px 0}.setup-nav [aria-current]{color:var(--text-primary)}
+</style>
   <script>document.documentElement.classList.add('js');</script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
@@ -396,6 +397,7 @@
 
 
 <div class="page">
+<nav class="setup-nav" aria-label="Setup navigation"><a href="/control/">Mac companion</a><a href="/wizard/" aria-current="page">Setup guide</a><a href="/docs/">Docs</a></nav>
 
   <div class="setup-seam" style="padding-top:3.2rem">
     <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Start with <span style="font-style:italic;color:var(--accent-gold)">the Mac app.</span></h1>
@@ -437,7 +439,7 @@
       <div class="res-label">1 &middot; Open COS Control on your Mac</div>
       <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
       <ul class="enable">
-        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.264/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
         <li>Open COS Control from Applications. The current download is Developer ID signed and notarized by Apple.</li>
         <li>Sign in to a supported AI provider if prompted, then choose <b>Get started</b>. COS prepares and starts the server. When it is ready, choose <b>Open Sessions</b>. Add local voice separately before testing voice prompts or meetings.</li>
 
