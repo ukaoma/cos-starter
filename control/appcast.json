@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.261",
-      "build": 314,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip",
-      "sha256": "506281b757b931ca2067d58d2c2a11fa54052dbe37c1eaad14ac5284e2d02c59",
+      "version": "0.5.263",
+      "build": 316,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.263/COS-Control-macOS-arm64-0.5.263.zip",
+      "sha256": "fbe92d34989ced8fb14b1fcb56e3bad5935523089b052c9897589852e89bcf64",
       "minMacOS": "14.0",
       "serverTarget": "6.65.0",
       "publishedAt": "2026-10-07T16:12:00Z",
-      "notes": "Developer ID signed and Apple notarized. Core setup bundles Node/npm and starts the server from the welcome window without Homebrew or a separate npm installation. Includes responsive branded task editing and protected drafts. Voice setup remains separate. Pairs with server 6.65.0."
+      "notes": "Developer ID signed and Apple notarized. Core setup bundles Node/npm and starts the server from the welcome window without Homebrew or a separate npm installation. Includes responsive branded task editing and protected drafts. Voice setup remains separate. Pairs with server 6.65.0. New users start with Cloud Puff, bundled for offline use; existing pet choices are preserved."
     }
   },
   "killSwitch": {
