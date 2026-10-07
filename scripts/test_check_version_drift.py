@@ -417,5 +417,28 @@ class ActivityViewTests(unittest.TestCase):
         )
 
 
+class ReleaseAssetTests(unittest.TestCase):
+    def test_only_release_asset_urls_are_fetched(self):
+        from unittest.mock import patch, MagicMock
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = b"artifact"
+        url = "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip"
+        with patch.object(cvd.urllib.request, "urlopen", return_value=response) as fetch:
+            self.assertEqual(cvd.release_asset_bytes(url), b"artifact")
+            fetch.assert_called_once()
+        for invalid in ("https://example.com/file.zip", url.replace("ukaoma/", "attacker/"), url + "?redirect=1", url.replace(".zip", "/../../secret")):
+            with patch.object(cvd.urllib.request, "urlopen") as fetch:
+                with self.assertRaises(ValueError):
+                    cvd.release_asset_bytes(invalid)
+                fetch.assert_not_called()
+
+    def test_failed_asset_download_is_not_a_pass(self):
+        from unittest.mock import patch
+        url = "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-latest.zip.sha256"
+        with patch.object(cvd.urllib.request, "urlopen", side_effect=OSError("missing asset")):
+            with self.assertRaises(OSError):
+                cvd.release_asset_bytes(url)
+
+
 if __name__ == "__main__":
     unittest.main()

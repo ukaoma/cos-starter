@@ -40,8 +40,8 @@
   "name": "COS Control",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "macOS 14 or later, Apple Silicon",
-  "softwareVersion": "0.5.252",
-  "downloadUrl": "https://www.gotcos.com/downloads/COS-Control-macOS-arm64-0.5.252.zip",
+  "softwareVersion": "0.5.261",
+  "downloadUrl": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip",
   "url": "https://www.gotcos.com/control/",
   "description": "A native macOS menu-bar controller for the open-source COS Glasses server. Monitor local transcription, background replies, meeting recovery, safe updates, rollback, and diagnostics.",
   "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
@@ -477,7 +477,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       </div>
       <a href="/#teams">For Teams</a>
       <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
-      <a href="https://app.gotcos.com/" class="cta" rel="noopener">Sign up</a>
+      <a href="/control/#install" class="cta">Download for Mac</a>
     </div>
   </div>
 </nav>
@@ -485,13 +485,13 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <header class="hero">
   <div class="hero-grid wrap">
     <div class="reveal">
-      <h1>Your glasses remember. <em>This is where you read it.</em></h1>
-      <p class="hero-lead">COS Control is the Mac companion to your glasses. Every question you asked, every voice it learned, every call it saved, and the threads running through all of it, in one window. <strong>It also runs the server: one owner, one durable configuration, no terminal after setup.</strong> The runtime is still the same open-source npm server.</p>
+      <h1>Your work, together. <em>Start on your Mac.</em></h1>
+      <p class="hero-lead">Bring your AI sessions, meetings and tasks into one Mac app. <strong>Download, open, and choose Get started.</strong> COS prepares and runs its server for you. No Homebrew, Node, npm or npx installation for core setup. Connect your glasses when you are ready.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.252.zip" download>Download for Mac</a>
-        <a class="btn ghost" href="/docs/#mac-control">Read the setup guide</a>
+        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip" download>Download for Mac</a>
+        <a class="btn ghost" href="#install">See the installation steps</a>
       </div>
-      <p class="byline">v0.5.252 &middot; macOS 14+ &middot; Apple Silicon</p>
+      <p class="byline">v0.5.261 &middot; macOS 14+ &middot; Apple Silicon</p>
     </div>
 
     <div class="rig cc reveal" role="img" aria-label="COS Control menu-bar panel: managed server healthy on 6.65.0 with verified ownership, Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.">
@@ -814,12 +814,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <span class="ptag">Recommended</span>
           <h3>COS Control</h3>
           <p>Best for daily use. Guided setup once, automatic launch at login, menu-bar status, Doctor, safe restart, update, and rollback. Already run your own server? It can adopt and manage that in place, with no reinstall and no re-pairing.</p>
-          <div class="actions"><a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.252.zip" download>Download v0.5.252</a></div>
+          <div class="actions"><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip" download>Download v0.5.261</a></div>
           <details class="verify">
             <summary>Verify this download</summary>
             <p>Confirm the file matches before you run it:</p>
-            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.252.zip</code></div>
-            <p class="sha">SHA-256<br>057a4f6bdfcf3ffd4e36ea0b8bb143384ea85c7ad67ebff095f4438c9b0ffb82</p>
+            <div class="cmd"><span class="p">$</span><code>shasum -a 256 COS-Control-macOS-arm64-0.5.261.zip</code></div>
+            <p class="sha">SHA-256<br>506281b757b931ca2067d58d2c2a11fa54052dbe37c1eaad14ac5284e2d02c59</p>
           </details>
         </div>
         <div class="path reveal">
@@ -836,28 +836,19 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
   <section class="paper" id="install">
     <div class="wrap">
       <div class="reveal" style="max-width:750px">
-        <h2>Install in five moves.</h2>
-        <p class="dek">Download, approve once, guided setup, point your folders, and let the pet jump.</p>
+        <h2>From download to your first session.</h2>
+        <p class="dek">Apple Developer ID signed and notarized. Server setup happens inside the app.</p>
+        <p><a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip">Download for Mac</a></p>
       </div>
       <ol class="insteps">
-        <li class="reveal"><span class="n">1</span><div><h3>Download and unzip.</h3><p>Move COS Control into your Applications folder.</p></div></li>
-        <li class="reveal"><span class="n">2</span><div><h3>Approve the first launch.</h3><p>COS Control is open source but not notarized yet, so macOS flags it as an unidentified developer. Clear the download flag once in Terminal, then open it normally: <code>xattr -dr com.apple.quarantine "/Applications/COS Control.app"</code> Prefer clicks? Open the app, then in System Settings under Privacy &amp; Security click <strong>Open Anyway</strong>.</p></div></li>
-        <li class="reveal"><span class="n">3</span><div><h3>Run Guided Setup.</h3><p>Choose Balanced (recommended) or Max. COS Control checks <code>whisper.cpp</code>, verifies free disk space, and provisions the selected local models without interrupting the running server. When it finishes, Install or Update Server if offered, then Apply the tier for a verified restart. Then use the <a href="/wizard/#tune">setup wizard profile step</a> to add names and specialist terms; factory placeholders are ignored.</p></div></li>
-        <li class="reveal"><span class="n">4</span><div><h3>Point COS at your folders.</h3><p>Set <strong>Work Folder</strong> to your agent workspace. For <strong>Meetings Library</strong>, choose the folder that already contains your <code>YYYY-MM/*.md</code> meeting folders. That is the recommended setup. If you keep several custom-named libraries, select their parent instead. Control detects both layouts and lets you skip if you only want new standalone recordings.</p></div></li>
-        <li class="reveal"><span class="n">5</span><div><h3>Only if you want the pet: allow Accessibility.</h3><p>The desktop pet can jump you straight into the session you clicked, in Claude, Codex, or Cursor. macOS treats moving another app's window as automation, so that one feature needs Accessibility. Turn the pet on in Settings and COS Control asks for it and opens the right pane for you; approve it there and you are done. If a jump ever reports it could not select the session, the grant was dropped: toggle <strong>COS Control</strong> off and on under System Settings, Privacy &amp; Security, Accessibility, then reopen COS Control.</p><p><strong>Skipping this costs you nothing else.</strong> Accessibility gates the pet's jump and nothing more. Meetings, transcription, the server, Activity, and search all work without it, so leave it off if you do not use the pet.</p></div></li>
+        <li class="reveal"><span class="n">1</span><div><h3>Download and move to Applications.</h3><p>Unzip the download and drag COS Control into your Applications folder.</p></div></li>
+        <li class="reveal"><span class="n">2</span><div><h3>Open COS Control.</h3><p>Open it from Applications. This download is signed with Developer ID and notarized by Apple. A normal downloaded-app confirmation may appear.</p></div></li>
+        <li class="reveal"><span class="n">3</span><div><h3>Connect your AI, then Get started.</h3><p>Use a signed-in Codex app, Claude Code, or Cursor Agent. If none is found, the welcome window helps you connect one. Choose <strong>Get started</strong>; COS downloads and starts its server using the runtime included with the app. Leave the window open while setup finishes. If the connection fails, choose Try again.</p></div></li>
+        <li class="reveal"><span class="n">4</span><div><h3>Open Sessions.</h3><p>When COS says it is ready, choose <strong>Open Sessions</strong>. Start a task in your AI app and follow it here. Existing COS installations keep their current controls and data.</p></div></li>
+        <li class="reveal"><span class="n">5</span><div><h3>Add what you need next.</h3><p>Choose your Work Folder and Meetings Library, or <a href="/wizard/">connect your glasses</a>. Set up local voice separately when you need it. macOS asks for microphone, files, notifications or Accessibility access when the feature needs it; Accessibility is used for the pet&rsquo;s session jump.</p></div></li>
       </ol>
-      <div class="pnote reveal"><b>&ldquo;Apple could not verify&rdquo; on first open?</b> Expected, and safe. COS Control is not notarized yet, so macOS treats it as an unidentified developer. The step 2 command (or System Settings, Privacy &amp; Security, Open Anyway) clears it in one move. Notarization is on the way.</div>
-      <figure class="gk reveal">
-        <div class="gk-win" role="img" aria-label="System Settings, Privacy and Security. A Security section shows Allow applications from set to App Store and Known Developers, a row reading COS Control was blocked to protect your Mac with an Open Anyway button, and a note that Apple could not verify the app.">
-          <div class="gk-bar"><span class="gk-nav">&#8249;&#8250;</span> <b>Privacy &amp; Security</b></div>
-          <div class="gk-sec">Security</div>
-          <div class="gk-row"><span>Allow applications from</span><span class="gk-pop">App Store &amp; Known Developers &#9663;</span></div>
-          <div class="gk-row gk-block"><span>&ldquo;COS Control&rdquo; was blocked to protect your Mac.</span><span class="gk-btn">Open Anyway</span></div>
-          <div class="gk-note">Apple could not verify &ldquo;COS Control&rdquo; is free of malware that may harm your Mac or compromise your privacy.</div>
-        </div>
-        <figcaption>Open System Settings, go to Privacy &amp; Security, scroll to Security, and click Open Anyway.</figcaption>
-      </figure>
-      <div class="pnote reveal"><b>What you need.</b> macOS 14 or later on Apple Silicon, Node.js 20.11 or later, <code>whisper.cpp</code> plus about 6 GB free for adaptive local transcription, and at least one harness: <strong>Claude Code</strong>, <strong>Codex CLI</strong>, or <strong>Cursor Agent</strong> (<code>agent</code>). One harness is enough. Doctor checks all three and tells you which are ready.</div>
+      <div class="pnote reveal"><b>What you need.</b> Apple silicon, macOS 14 or later, internet access, and one supported AI provider signed in. Core setup includes its own Node/npm runtime. Local voice transcription still needs whisper.cpp and model storage; optional spoken replies and image features have additional dependencies.</div>
+      <div class="pnote reveal"><b>Updating an older copy?</b> The move from the old local signature to Developer ID may require granting feature permissions again in System Settings. If macOS blocks this current download as unverified, download it again and check the checksum; do not remove its quarantine flag.</div>
       <div class="pnote reveal"><b>Already running COS in Terminal?</b> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</div>
     </div>
   </section>
@@ -868,10 +859,10 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <h2>Take the terminal <em>out of the loop.</em></h2>
       <p>Install once and the server just runs. Update, diagnose, and recover from the menu bar, with the same open-source runtime underneath.</p>
       <div class="actions">
-        <a class="btn primary" href="/downloads/COS-Control-macOS-arm64-0.5.252.zip" download>Download for Mac</a>
+        <a class="btn primary" href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-0.5.261.zip" download>Download for Mac</a>
         <a class="btn ghost" href="/docs/">Read the docs</a>
       </div>
-      <p class="byline">v0.5.252 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
+      <p class="byline">v0.5.261 &middot; macOS 14+ &middot; Apple Silicon &middot; open source</p>
     </div>
   </section>
 </main>

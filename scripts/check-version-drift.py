@@ -43,6 +43,7 @@ workflow re-runs the checker; it does not write docs.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import html as html_lib
 import json
@@ -530,7 +531,19 @@ def evaluate_views(*, control: str, home: str) -> list[str]:
     return fail
 
 
+def release_asset_bytes(url: str) -> bytes:
+    """Only the release repository may host artifacts; never fetch arbitrary appcast URLs."""
+    if not re.fullmatch(r"https://github\.com/ukaoma/cos-starter/releases/download/control-v[0-9.]+/COS-Control-macOS-arm64-(?:[0-9.]+|latest)\.zip(?:\.sha256)?", url):
+        raise ValueError("Unexpected release-asset URL")
+    with urllib.request.urlopen(url, timeout=120) as response:
+        return response.read()
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--artifact-dir", type=pathlib.Path,
+                        help="Validate unpublished candidate files here; does not prove publication")
+    args = parser.parse_args()
     docs = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     control = (ROOT / "control" / "index.html").read_text(encoding="utf-8")
     home = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -543,22 +556,35 @@ def main() -> int:
     if npm_note:
         note_prefix.append(npm_note)
 
-    zip_path = ROOT / "downloads" / f"COS-Control-macOS-arm64-{ac_version}.zip"
-    zip_missing = not zip_path.exists()
-    zip_sha = None if zip_missing else hashlib.sha256(zip_path.read_bytes()).hexdigest()
-    versioned_sidecar_path = zip_path.with_suffix(zip_path.suffix + ".sha256")
-    versioned_sidecar = (
-        versioned_sidecar_path.read_text(encoding="utf-8") if versioned_sidecar_path.exists() else None
-    )
-    latest_zip = ROOT / "downloads" / "COS-Control-macOS-arm64-latest.zip"
-    latest_zip_missing = not latest_zip.exists()
-    latest_zip_sha = (
-        None if latest_zip_missing else hashlib.sha256(latest_zip.read_bytes()).hexdigest()
-    )
-    latest_sidecar_path = latest_zip.with_suffix(latest_zip.suffix + ".sha256")
-    latest_sidecar = (
-        latest_sidecar_path.read_text(encoding="utf-8") if latest_sidecar_path.exists() else None
-    )
+    versioned_name = f"COS-Control-macOS-arm64-{ac_version}.zip"
+    latest_name = "COS-Control-macOS-arm64-latest.zip"
+    if args.artifact_dir:
+        note_prefix.append("LOCAL CANDIDATE ONLY: public download availability is not verified")
+        artifact_root = args.artifact_dir
+    else:
+        artifact_root = ROOT / "downloads"
+    try:
+        if not args.artifact_dir and stable["url"].startswith("https://github.com/"):
+            base = stable["url"].rsplit("/", 1)[0] + "/"
+            zip_bytes = release_asset_bytes(stable["url"])
+            latest_bytes = release_asset_bytes(base + latest_name)
+            versioned_sidecar = release_asset_bytes(stable["url"] + ".sha256").decode("utf-8")
+            latest_sidecar = release_asset_bytes(base + latest_name + ".sha256").decode("utf-8")
+        else:
+            def read(name):
+                p = artifact_root / name
+                return p.read_bytes() if p.exists() else None
+            zip_bytes, latest_bytes = read(versioned_name), read(latest_name)
+            def sidecar(name):
+                data = read(name + ".sha256")
+                return data.decode("utf-8") if data is not None else None
+            versioned_sidecar, latest_sidecar = sidecar(versioned_name), sidecar(latest_name)
+    except (OSError, ValueError, UnicodeError) as error:
+        print(f"Public artifact verification failed: {error}", file=sys.stderr)
+        return 1
+    zip_missing, latest_zip_missing = zip_bytes is None, latest_bytes is None
+    zip_sha = None if zip_missing else hashlib.sha256(zip_bytes).hexdigest()
+    latest_zip_sha = None if latest_zip_missing else hashlib.sha256(latest_bytes).hexdigest()
 
     fail, note = evaluate(
         docs=docs,
@@ -584,7 +610,9 @@ def main() -> int:
         return 1
     views = CONTROL_VIEW_TAB_RE.findall(control)
     print(f"  Activity views ({len(views)}): {', '.join(views)}; confirm against the app's ActivitySection enum by hand")
-    if npm is None:
+    if args.artifact_dir:
+        print("  candidate pages agree with local artifacts; publication remains unverified")
+    elif npm is None:
         print("  public pages agree with the appcast and staged artifacts; npm latest UNVERIFIED")
     else:
         print("  public pages agree with the appcast, the staged artifacts, and npm latest")

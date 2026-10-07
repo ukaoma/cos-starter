@@ -398,8 +398,9 @@
 <div class="page">
 
   <div class="setup-seam" style="padding-top:3.2rem">
-    <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Your glasses, live in <span style="font-style:italic;color:var(--accent-gold)">about 10 minutes.</span></h1>
-    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.7rem auto 0;">About 10 minutes if you already have Homebrew, Node and Claude Code on your Mac. Otherwise plan about 30.</p>
+    <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Start with <span style="font-style:italic;color:var(--accent-gold)">the Mac app.</span></h1>
+    <p style="color:var(--text-muted);line-height:1.6">Download COS Control, move it to Applications, open it and choose Get started. Core server setup needs no Homebrew, Node, npm or npx installation.</p>
+    <p><a class="primary" href="/control/#install">Download for Mac</a></p>
     <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.5rem auto 0;">Three steps: start COS on your Mac, connect the app on your iPhone, then try your first three wins. No decisions required up front. You can tune everything later.</p>
   </div>
 
@@ -408,10 +409,10 @@
   <div class="step">
     <h2>Check these before you start</h2>
     <ul class="checklist">
-      <li class="req"><strong>Homebrew on your Mac</strong> (<a href="https://brew.sh">brew.sh</a>). The voice setup uses it.</li>
+      <li class="req"><strong>COS Control on an Apple silicon Mac</strong> with macOS 14 or later and an internet connection.</li>
       <li class="req"><strong>Even G2 glasses</strong> paired with the Even Realities app on your iPhone</li>
-      <li class="req"><strong>A Mac that stays on</strong> with <a href="https://nodejs.org">Node.js 20.11+</a> &mdash; run <code>node -v</code> first; newer compatible major versions are fine, so do not install <code>node@20</code> beside one</li>
-      <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on that Mac. One is enough. Claude Desktop is not the terminal CLI. Install Claude Code on one line with <code>npm install -g @anthropic-ai/claude-code</code> (<strong>never use sudo</strong>), then run <code>claude</code> and finish sign-in. <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started">Claude Code setup</a> powers Opus, Fable, and Sonnet; <a href="https://developers.openai.com/codex/">Codex CLI</a> powers GPT Frontier and GPT Balanced. <strong>Install more than one if you can:</strong> the server detects and uses whichever you have, and you can switch per query.</li>
+      <li class="req"><strong>Keep your Mac awake</strong> while using its server from your glasses.</li>
+      <li class="req"><strong>One signed-in AI provider:</strong> the Codex Mac app, Claude Code, or Cursor Agent. COS helps you find a provider during setup. Claude Desktop alone does not supply Claude Code.</li>
       <li class="opt"><strong>whisper.cpp and about 6 GB free for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once. The setup command verifies disk space before downloading anything. This is <strong>required for local voice</strong>; text chat works without it.</li>
       <li class="opt"><strong>Local spoken replies on Apple silicon</strong> &mdash; optional: run <code>brew install python@3.12 ffmpeg espeak-ng</code>. Python 3.11 or 3.12 is supported. The normal server start provisions Kokoro asynchronously; chat and transcription work while it prepares.</li>
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; the command above also covers phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and transcription still work without it.</li>
@@ -431,17 +432,19 @@
         <div class="row"><span class="k">Voice</span><span class="v">Balanced local <small>(Small preview &middot; Turbo commit &middot; Large-v3 HQ)</small></span></div>
         <div class="row"><span class="k">Context</span><span class="v">Inherits your COS <small>(if you run one)</small></span></div>
       </div>
-      <div class="res-label">1 &middot; On your Mac &mdash; run the server</div>
+      <div class="res-label">1 &middot; Open COS Control on your Mac</div>
       <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
       <ul class="enable">
-        <li><a href="/downloads/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
-        <li>On the first open macOS says it could not verify the developer. That is expected: COS Control is open source and not notarized yet. Open <b>System Settings</b>, <b>Privacy &amp; Security</b>, and click <b>Open Anyway</b>.</li>
-        <li>Run <b>Guided Setup</b>, choose <b>Balanced</b>, and click <b>Install Server</b> when it is offered. Control checks <code>whisper-cpp</code> and free disk space, provisions the local voice models, then starts the server as a background service.</li>
+        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.261/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li>Open COS Control from Applications. The current download is Developer ID signed and notarized by Apple.</li>
+        <li>Sign in to a supported AI provider if prompted, then choose <b>Get started</b>. COS prepares and starts the server. When it is ready, choose <b>Open Sessions</b>. Add local voice separately before testing voice prompts or meetings.</li>
         <li>Once the menu bar shows the server running, click <b>Copy Pairing Token</b>. That is the API token for Step 2 (it stays on the clipboard for 60 seconds).</li>
       </ul>
+      <details><summary>Developer alternative: run the server in Terminal</summary>
       <p style="font-size:0.88rem;color:var(--text-muted);margin:0.9rem 0 0.4rem;"><strong>Or the terminal.</strong> The same server, running in the foreground. Keep the window open while you use the glasses.</p>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced<span class="copy-hint">click to copy</span></div>
       <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The terminal prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll paste those into the app in Step 2. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
+      </details>
       <div class="res-label">2 &middot; On your iPhone &mdash; install and connect</div>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
@@ -656,8 +659,8 @@
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
           <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on your Mac. One is enough. Install more than one if you can; the server uses whichever is present. Claude Desktop is not the CLI. For Opus/Fable/Sonnet, run <code>npm install -g @anthropic-ai/claude-code</code> without sudo, then run <code>claude</code> and finish sign-in. GPT Frontier/Balanced need <a href="https://developers.openai.com/codex/">Codex</a>.</li>
-          <li class="req"><strong>Homebrew</strong> (<a href="https://brew.sh">brew.sh</a>). The voice setup uses it.</li>
-          <li class="req"><strong>Node.js 20.11+</strong> &mdash; <a href="https://nodejs.org">nodejs.org</a></li>
+          <li class="opt"><strong>Homebrew for optional local voice and media dependencies.</strong> It is not needed to install the COS server through Control.</li>
+          <li class="opt"><strong>Node.js 20.11+</strong> is needed only for the manual terminal installation below. Control includes its own runtime.</li>
           <li class="opt"><strong>COS Control</strong> (recommended) &mdash; the Mac menu bar app that installs and runs the server for you, launches at login, and updates and rolls back safely. macOS 14 or later, Apple Silicon. <a href="/control/">Download</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
           <li class="opt"><strong>Tailscale</strong> (recommended) &mdash; a secure mesh so your phone reaches the server on your Mac. <a href="https://tailscale.com/download">Download</a></li>
@@ -667,7 +670,7 @@
 
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
         <p class="sub">Runs on your own Mac, as a background service under COS Control or in a terminal you keep open.</p>
-        <div class="note"><strong>No terminal: COS Control.</strong> <a href="/control/">Download COS Control</a>, move it into Applications, approve the first open under Privacy &amp; Security, then run <b>Guided Setup</b> and click <b>Install Server</b> when it is offered. It installs this same server, starts it, and keeps it running at login; Doctor, safe restart, update and rollback live in the menu bar. Skip the command below, and use <b>Copy Pairing Token</b> in step 4. Already running the server in a terminal? Stop it with Ctrl-C first; Control refuses to take over a process it does not own.</div>
+        <div class="note"><strong>No terminal: COS Control.</strong> <a href="/control/">Download COS Control</a>, move it into Applications, open it, connect your AI provider and choose <b>Get started</b>. It installs this same server, starts it, and keeps it running at login; Doctor, safe restart, update and rollback live in the menu bar. Skip the command below, and use <b>Copy Pairing Token</b> in step 4. Already running the server in a terminal? Stop it with Ctrl-C first; Control refuses to take over a process it does not own.</div>
         <p class="sub">Or in the terminal:</p>
         <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
         <div class="note"><strong>Voice runs locally.</strong> Mac whisper.cpp remains the authoritative meeting engine and costs zero per minute. Install once: <code>brew install whisper-cpp</code>. Since COS Glasses 6.8.336, you can also choose on-phone Moonshine Tiny or Base for rolling Message and Meeting preview. Text forms and may revise while you speak; the shared glossary + AI finalizer cleans settled phrases, while speaker-attributed Large-v3 remains canonical for meetings. This requires server 6.27.2 or newer. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>

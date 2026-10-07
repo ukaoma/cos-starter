@@ -14,6 +14,16 @@ Runs the COS Glasses server on your Mac, confirms it came up healthy, keeps it o
 ## Why a skill (not just the command)
 `npx --yes @gotcos/glasses-server@latest` starts the server, but it doesn't tell you whether the server is actually healthy, why the phone can't reach it, or whether npm served stale cached metadata. This skill wraps the command with a health check, a registry-version comparison, a symptom-to-fix table, and the update path.
 
+## Recommended Mac setup
+
+For Apple silicon and macOS 14+, start with [COS Control](https://www.gotcos.com/control/). The current download is Developer ID signed and notarized by Apple. Move it to Applications, open it, sign into a supported AI provider if prompted, then choose Get started. Control includes its own Node/npm runtime and installs the managed server; do not require Homebrew, npm or npx for this path. Open Sessions when ready. Add local voice and media dependencies separately.
+
+When Control owns the server, use its Update Server, Doctor and Repair actions. Do not launch a second npx server or replace its LaunchAgent. macOS feature permissions still require user consent. An unexpected Gatekeeper rejection should be diagnosed; do not remove quarantine as a normal installation step.
+
+## Manual terminal alternative
+
+The steps below apply only when the user explicitly chooses to manage the server in Terminal. This route requires a compatible Node/npm installation.
+
 ## Steps
 
 1. **Start it -- from your COS folder if you have one.**
