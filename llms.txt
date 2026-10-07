@@ -28,7 +28,7 @@ Compilation CC BY 4.0 (cite "GotCOS AI Adoption Index"); underlying figures belo
 
 ## COS Glasses 587, submitted for marketplace review
 
-COS Glasses 6.10.587 was submitted for production marketplace review on October 4, 2026. Approval is pending. The versioned package and canonical alias are published in the Glasses Hub repository. The last confirmed marketplace listing is 6.9.538; this is not an independent verification of today's listing. Published server is 6.63.1. Public COS Control remains 0.5.252; a newer local build is not a public release.
+COS Glasses 6.10.587 was submitted for production marketplace review on October 4, 2026. Approval is pending. The versioned package and canonical alias are published in the Glasses Hub repository. The last confirmed marketplace listing is 6.9.538; this is not an independent verification of today's listing. Published server is 6.65.0. Public COS Control remains 0.5.252; a newer local build is not a public release.
 
 [HUD and signal guide](https://www.gotcos.com/docs/#hud-states): Messages uses ◈ Msg; Sessions uses ↔ Sess and its native Claude, Codex or Cursor identity. Continue uses that session's settings, independent of Messages. A model name is shown only when the session reports it. Messages, Sessions and live Meetings use up for history and down toward live. Home is last in footer actions and first in default COS side shortcuts, beneath Display off. Returning Home leaves recording and jobs active. Known battery is in navigation; live footers keep elapsed time, cancellation and history + Ask.
 
