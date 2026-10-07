@@ -16,6 +16,14 @@ Not published. Do not merge this branch to main until clean-Mac onboarding and a
 
 The native first-run fixture passed: exact bundled Cloud Puff on first load and reload, preservation of the selected robot, all four Jedi and custom artwork, explicit default restoration, and retry after missing bundled artwork. Light/dark rendering passed. ModelsContract passed; 39 website checker unit tests passed; local final-archive/version/hash checks passed.
 
+## Mac-first wizard and stronger installation evidence
+
+The homepage primary hero/nav action is Download for Mac, with web COS kept as an alternative. The wizard opens with the Mac download, provider connection and Open Sessions. Glasses, voice and terminal setup are collapsed options. The default rendered flow shows zero terminal command blocks. A direct Codex Mac download link avoids requiring npm merely to get an AI provider. The optional personalization output separates Get started from voice-specific Guided Setup.
+
+A new 0.5.263 archive test used a fresh home/cache and a macOS sandbox denying reads of /opt/homebrew, /usr/local and the real user's home. No global node/npm/npx/brew was on PATH. The bundled runtime installed published server 6.65.0, its CLI started, and the managed server answered authenticated loopback health. The test server was terminated afterward; the live installation was untouched. This proves core package installation and startup without hidden global tool discovery. It does not test launchd at login, provider authentication, Gatekeeper's first-open UI or TCC permissions.
+
+Evidence: MU-Chief-Staff/operations/personal/wk41_2026/mac_first_onboarding/. Website verification: 39 Python checker tests and 39 browser/demo tests passed, balanced HTML, local final-artifact/version/hash verification and rendered wizard review passed.
+
 ## Publication
 
 Use the publication order in ONBOARDING_RELEASE_0261.md with version 0.5.263 and tag control-v0.5.263. Preserve every older frozen archive. Upload the versioned ZIP, byte-identical latest alias, and both basename-correct SHA sidecars as GitHub Release assets. Set publishedAt to the actual publication time. Verify hosted bytes using scripts/check-version-drift.py without local overrides before publishing Pages. Local --artifact-dir checks do not prove public availability.
