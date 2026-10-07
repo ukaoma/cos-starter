@@ -1,5 +1,7 @@
 # Prepared release: Control 0.5.264 / build 317
 
+Superseded by the unpublished 0.5.265 candidate; see ONBOARDING_RELEASE_0265.md. This receipt preserves the frozen 0.5.264 evidence.
+
 Not published. This branch prepares the Mac-first website and candidate appcast. Download URLs are reserved, not uploaded. Do not merge to main until clean-Mac first launch and the interactive upgrade from the old local signer pass, then host and verify the artifacts. Replace the appcast's placeholder `publishedAt` with the actual publication time.
 
 ## Frozen Mac candidate
