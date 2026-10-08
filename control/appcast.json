@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.267",
-      "build": 320,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.267/COS-Control-macOS-arm64-0.5.267.zip",
-      "sha256": "dc5b7eb3306888e9292412dd94a7731ca81266992a2e81af316cc36dfb5fe925",
+      "version": "0.5.268",
+      "build": 321,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.268/COS-Control-macOS-arm64-0.5.268.zip",
+      "sha256": "7290d4fdc497912fcaa273097520e8810b11cda8fc6a21916ddd51c4bd3166c4",
       "minMacOS": "14.0",
       "serverTarget": "6.65.0",
-      "publishedAt": "2026-10-08T02:39:28Z",
-      "notes": "Fix release for 0.5.266. Developer ID signed and Apple notarized. Jump to your session works again: COS Control can bring your Claude, Cursor or Terminal session to the front (macOS asks once per app), and Guided Setup's Terminal step works. Speaker ID works with the bundled Node runtime. If a session jump stops after an update, use Reset and add again in Settings > Session pet. Pairs with server 6.65.0."
+      "publishedAt": "2026-10-08T12:41:59Z",
+      "notes": "Fix release for 0.5.267. Developer ID signed and Apple notarized. COS Control now finds Codex on a Mac that has only the ChatGPT app, so Get started no longer says Connect an AI app first there. It looks in the same places as the COS server. Pairs with server 6.65.0."
     }
   },
   "killSwitch": {
