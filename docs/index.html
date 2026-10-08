@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.587 (build 587, Hub pin 6.9.538) · server @gotcos/glasses-server 6.65.0 · COS Control 0.5.268.
+   Covers COS Glasses 6.10.587 (build 587, Hub pin 6.9.538) · server @gotcos/glasses-server 6.65.0 · COS Control 0.5.269.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -736,7 +736,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.587</b> · build 587</span>
       <span class="chip">Server <b>6.65.0</b></span>
-      <span class="chip">Control <b>0.5.268</b></span>
+      <span class="chip">Control <b>0.5.269</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.9+</span>
     </div>
@@ -989,7 +989,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Submitted release package: Control 0.5.268, glasses 6.10.587, server 6.61.6.</strong> COS Control 0.5.268 is the public Mac download. COS Glasses 6.10.587 is the submitted companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.9.538. Server identity is 6.65.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.10.586 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release; 6.9.565, 6.9.567, 6.10.572, 6.10.579 and 6.10.581 are not in the Hub repo). Private candidates 6.10.588 to 6.10.618 follow the companion pack (6.10.612 and 6.10.613 are not in the Hub repo, 6.10.615 replaces the withdrawn 6.10.614, and 6.10.608 was a device test that 6.10.609 replaces). The version list below describes the user-visible changes among them.</p>
+    <p><strong>Submitted release package: Control 0.5.269, glasses 6.10.587, server 6.61.6.</strong> COS Control 0.5.269 is the public Mac download. COS Glasses 6.10.587 is the submitted companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.9.538. Server identity is 6.65.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.10.586 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release; 6.9.565, 6.9.567, 6.10.572, 6.10.579 and 6.10.581 are not in the Hub repo). Private candidates 6.10.588 to 6.10.618 follow the companion pack (6.10.612 and 6.10.613 are not in the Hub repo, 6.10.615 replaces the withdrawn 6.10.614, and 6.10.608 was a device test that 6.10.609 replaces). The version list below describes the user-visible changes among them.</p>
     <ul class="release-list">
       <li><strong>587: queued does not cover an existing reply.</strong> Normal Sessions polling checks the Mac receipt for queued turns. Once delivery is confirmed, its temporary queued page clears without opening Queue first. Delivery is not model completion; missing receipts remain pending and history keeps its reading position.</li>
       <li><strong>586: phone review matches the companion.</strong> Meeting notes and speaker review use the Even app's monochrome theme. Open Views, then Review meetings on phone. Read formatted notes, play retained evidence, search saved voices and explicitly confirm a correction.</li>
@@ -1079,6 +1079,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="release-detail">
       <summary>Version by version</summary>
       <dl>
+        <dt>Control 0.5.269</dt><dd>The Mac download opens again. Since 0.5.263, opening the downloaded zip with a double-click added three small files inside the app, and macOS then said COS Control "is damaged". The download is now packed so nothing is added. If you saw that message, delete that copy and download again. Updates from inside COS Control were not affected.</dd>
         <dt>Control 0.5.268</dt><dd>Fix release for 0.5.267. COS Control now finds Codex on a Mac that has only the ChatGPT app, so Get started no longer says "Connect an AI app first" there. It looks in the same places as the COS server, including a ChatGPT app in your own Applications folder.</dd>
         <dt>Control 0.5.267</dt><dd>Fix release for 0.5.266. Jump to your session works again: COS Control can bring your Claude, Cursor or Terminal session to the front, and macOS asks once per app. Speaker ID works with the bundled Node runtime. If a session jump stops after an update, <b>Reset and add again</b> in Settings &gt; Session pet re-adds COS Control to Accessibility.</dd>
         <dt>Control 0.5.266</dt><dd>Includes the GOTCOS-styled completed-task filter. Link a saved meeting to an existing task directly from Meetings or Speakers. Search across domains, keep the task and its earlier links, and carry the new meeting reference and attached files into the next handoff. Linking does not message a running session.</dd>
@@ -2209,7 +2210,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.268</strong>, server <strong>6.65.0</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.587</strong> for the submitted companion build; the last confirmed Even Hub listing is 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.269</strong>, server <strong>6.65.0</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.587</strong> for the submitted companion build; the last confirmed Even Hub listing is 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2230,7 +2231,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.587. The current supported pair is COS Glasses 6.10.587 (the last confirmed Even Hub listing is 6.9.538) and server 6.65.0; COS Control 0.5.268 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.587. The current supported pair is COS Glasses 6.10.587 (the last confirmed Even Hub listing is 6.9.538) and server 6.65.0; COS Control 0.5.269 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2413,7 +2414,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.587 / Control 0.5.268 / server 6.65.0, 2026-10-07; Hub packs to 6.10.618)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.587 / Control 0.5.269 / server 6.65.0, 2026-10-07; Hub packs to 6.10.618)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

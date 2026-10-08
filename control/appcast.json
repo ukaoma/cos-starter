@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.268",
-      "build": 321,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.268/COS-Control-macOS-arm64-0.5.268.zip",
-      "sha256": "7290d4fdc497912fcaa273097520e8810b11cda8fc6a21916ddd51c4bd3166c4",
+      "version": "0.5.269",
+      "build": 322,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.269/COS-Control-macOS-arm64-0.5.269.zip",
+      "sha256": "379c273029bb4aca72e1f095a97241524100d00effb3804026d396d6fed4102c",
       "minMacOS": "14.0",
       "serverTarget": "6.65.0",
-      "publishedAt": "2026-10-08T12:41:59Z",
-      "notes": "Fix release for 0.5.267. Developer ID signed and Apple notarized. COS Control now finds Codex on a Mac that has only the ChatGPT app, so Get started no longer says Connect an AI app first there. It looks in the same places as the COS server. Pairs with server 6.65.0."
+      "publishedAt": "2026-10-08T13:39:44Z",
+      "notes": "Fixes the Mac download: opening the zip with a double-click no longer makes macOS say COS Control is damaged. Developer ID signed and Apple notarized. Includes 0.5.268 (Codex inside the ChatGPT app). Pairs with server 6.65.0."
     }
   },
   "killSwitch": {
