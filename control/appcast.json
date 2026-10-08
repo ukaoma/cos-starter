@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.269",
-      "build": 322,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.269/COS-Control-macOS-arm64-0.5.269.zip",
-      "sha256": "379c273029bb4aca72e1f095a97241524100d00effb3804026d396d6fed4102c",
+      "version": "0.5.273",
+      "build": 326,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.273/COS-Control-macOS-arm64-0.5.273.zip",
+      "sha256": "fd378e6fc1973ee2e81c70b1e942b0c2dcab58e295c7be4d56625ab5676fbb70",
       "minMacOS": "14.0",
-      "serverTarget": "6.65.0",
-      "publishedAt": "2026-10-08T13:39:44Z",
-      "notes": "Fixes the Mac download: opening the zip with a double-click no longer makes macOS say COS Control is damaged. Developer ID signed and Apple notarized. Includes 0.5.268 (Codex inside the ChatGPT app). Pairs with server 6.65.0."
+      "serverTarget": "6.66.0",
+      "publishedAt": "2026-10-08T18:56:35Z",
+      "notes": "Full Settings inside Activity, clearer resumable setup, and verified local voice downloads without Homebrew. Voice setup benchmarks this Mac and preserves an existing transcription choice. Developer ID signed and Apple notarized. Pairs with server 6.66.0."
     }
   },
   "killSwitch": {

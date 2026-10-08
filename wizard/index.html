@@ -439,7 +439,7 @@
       <div class="res-label">1 &middot; Open COS Control on your Mac</div>
       <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
       <ul class="enable">
-        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.269/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.273/COS-Control-macOS-arm64-latest.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
         <li>Open COS Control from Applications. The current download is Developer ID signed and notarized by Apple.</li>
         <li>Sign in to a supported AI provider if prompted, then choose <b>Get started</b>. COS prepares and starts the server. When it is ready, choose <b>Open Sessions</b>. Add local voice separately before testing voice prompts or meetings.</li>
 
@@ -677,7 +677,7 @@
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app</li>
           <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on your Mac. One is enough. The <a href="https://developers.openai.com/codex/app/">Codex Mac app</a> is a direct-download starting point. Sign in, return to COS and choose Check again. Claude Desktop alone is not Claude Code.</li>
-          <li class="opt"><strong>Homebrew for optional local voice and media dependencies.</strong> It is not needed to install the COS server through Control.</li>
+          <li class="opt"><strong>Local voice sets up inside COS Control.</strong> Open Activity, Settings, Setup guide, then Local voice. COS downloads and verifies its own Whisper tools and models without Homebrew. An existing transcription tier is preserved. Separate optional media features may need additional dependencies.</li>
           <li class="opt"><strong>Node.js 20.11+</strong> is needed only for the manual terminal installation below. Control includes its own runtime.</li>
           <li class="opt"><strong>COS Control</strong> (recommended) &mdash; the Mac menu bar app that installs and runs the server for you, launches at login, and updates and rolls back safely. macOS 14 or later, Apple Silicon. <a href="/control/">Download</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
