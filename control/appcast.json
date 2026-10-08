@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.266",
-      "build": 319,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.266/COS-Control-macOS-arm64-0.5.266.zip",
-      "sha256": "83df0c0815aef295338c0d7899429833774686bfab3d73c4b40747c49afb9e47",
+      "version": "0.5.267",
+      "build": 320,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.267/COS-Control-macOS-arm64-0.5.267.zip",
+      "sha256": "dc5b7eb3306888e9292412dd94a7731ca81266992a2e81af316cc36dfb5fe925",
       "minMacOS": "14.0",
       "serverTarget": "6.65.0",
-      "publishedAt": "2026-10-07T19:28:54Z",
-      "notes": "Developer ID signed and Apple notarized. Core setup bundles Node/npm and starts the server from the welcome window without Homebrew or a separate npm installation. Includes responsive branded task editing and protected drafts. Voice setup remains separate. Pairs with server 6.65.0. New users start with Cloud Puff, bundled for offline use; existing pet choices are preserved. Open in platform now shows actionable failures in Sessions; queued follow-ups show recorded hold reasons. Link a meeting to an existing task from Meetings or Speakers without creating duplicate work."
+      "publishedAt": "2026-10-08T02:39:28Z",
+      "notes": "Fix release for 0.5.266. Developer ID signed and Apple notarized. Jump to your session works again: COS Control can bring your Claude, Cursor or Terminal session to the front (macOS asks once per app), and Guided Setup's Terminal step works. Speaker ID works with the bundled Node runtime. If a session jump stops after an update, use Reset and add again in Settings > Session pet. Pairs with server 6.65.0."
     }
   },
   "killSwitch": {
