@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.273",
-      "build": 326,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.273/COS-Control-macOS-arm64-0.5.273.zip",
-      "sha256": "fd378e6fc1973ee2e81c70b1e942b0c2dcab58e295c7be4d56625ab5676fbb70",
+      "version": "0.5.274",
+      "build": 327,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.274/COS-Control-macOS-arm64-0.5.274.zip",
+      "sha256": "d5b6edcd488a28f03c666ccf56958b3d061fc159a9214a8e50e93f7cf43708c2",
       "minMacOS": "14.0",
-      "serverTarget": "6.66.0",
-      "publishedAt": "2026-10-08T18:56:35Z",
-      "notes": "Full Settings inside Activity, clearer resumable setup, and verified local voice downloads without Homebrew. Voice setup benchmarks this Mac and preserves an existing transcription choice. Developer ID signed and Apple notarized. Pairs with server 6.66.0."
+      "serverTarget": "6.67.0",
+      "publishedAt": "2026-10-09T18:02:04Z",
+      "notes": "Connect your glasses in one scan: Setup guide > Glasses checks Tailscale on your Mac and iPhone, shows a pairing code for COS Glasses 6.10.621, and pairs after you tap Allow. When an update is ready the menu-bar glasses turn gold with an Update available banner. Developer ID signed and Apple notarized. Pairs with server 6.67.0."
     }
   },
   "killSwitch": {
