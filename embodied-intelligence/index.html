@@ -109,8 +109,14 @@
   .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
   .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
   .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
-  .nav .links .cta{font-family:var(--body);font-weight:500;color:var(--cream);background:var(--ink);padding:9px 18px;border-radius:999px;margin-left:8px;transition:transform .2s,box-shadow .25s,background .2s;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
-  .nav .links .cta:hover{color:var(--cream);background:#2a1c10;transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(23,15,9,.65)}
+  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+  .nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;flex:0 0 auto;border-radius:999px;line-height:1;white-space:nowrap;transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease}
+  .nav .links .nav-actions .nav-login{flex-basis:var(--login-w,auto);color:var(--cream);font-weight:500;padding:8px 14px}
+  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#1a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
+  .nav .links .nav-actions[data-mode="login"] .nav-login{flex-basis:var(--nav-actions-inner,100%)}
+  .nav .links .nav-actions[data-mode="login"] .cta{flex-basis:0;opacity:0;padding:0;pointer-events:none}
+  .nav .links .nav-actions[data-mode="download"] .cta{flex-basis:var(--nav-actions-inner,100%)}
+  .nav .links .nav-actions[data-mode="download"] .nav-login{flex-basis:0;opacity:0;padding:0;pointer-events:none}
   .nd{position:relative}
   .nd-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.85rem;color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
   .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
@@ -135,9 +141,9 @@
     .nav .links.open{opacity:1;visibility:visible;transform:none}
     .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
     .nd[data-open] .nd-menu{display:block}
-    .nav .links .cta{margin:10px 0 0;text-align:center}
+    .nav .links .nav-actions{margin:12px 0 0;width:100%}
   }
-  @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg{transition:none}}
+  @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{transition:none}}
 
   /* ── Burn dividers ── */
   .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
@@ -175,7 +181,6 @@
   .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
 
   /* ── Footer ── */
-    .nav .links .nav-login{color:var(--ink-on-cream,#241708);font-weight:500}
   footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
   footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
   footer .foot-app a{color:var(--gold,#c9a96e);opacity:.9;transition:opacity .2s}
@@ -468,8 +473,10 @@ footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70p
         </div>
       </div>
       <a href="/#teams">For Teams</a>
-      <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
-      <a href="https://app.gotcos.com/" class="cta" rel="noopener">Sign up</a>
+      <div class="nav-actions">
+        <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
+        <a href="/control/#install" class="cta">Download for Mac</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -830,6 +837,141 @@ footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70p
   } else {reveals.forEach(function(el){el.classList.add('in');});}
 
   var nav=document.querySelector('.nav'); if(!nav) return;
+  (function(){
+    var groups=nav.querySelectorAll('.nav-actions');
+    if(!groups.length) return;
+    function measureOne(el, api){
+      var live=el.getAttribute('data-mode');
+      if(api&&(el.matches(':hover')||live==='login'||live==='download')){ el._pillStale=true; return; }
+      var login=el.querySelector('.nav-login'), cta=el.querySelector('.cta');
+      if(!login||!cta) return;
+      if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
+      var eL=parseFloat(el.style.getPropertyValue('--login-w'))||0, eC=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
+      if((eL||eC)&&(Math.abs(login.getBoundingClientRect().width-eL)>1||Math.abs(cta.getBoundingClientRect().width-eC)>1)){ el._pillStale=true; return; }
+      var narrow=window.matchMedia('(max-width:900px)').matches;
+      var w0=el.style.getPropertyValue('--nav-actions-w');
+      var l0=el.style.getPropertyValue('--login-w');
+      var p0=el.style.getPropertyValue('--pill-w');
+      el.style.setProperty('--nav-actions-w',narrow?'100%':'max-content');
+      el.style.setProperty('--login-w','auto');
+      el.style.setProperty('--pill-w','auto');
+      var lw=login.getBoundingClientRect().width;
+      var gw=el.getBoundingClientRect().width;
+      if(gw<20||lw<=0){
+        el.style.setProperty('--nav-actions-w',w0);
+        el.style.setProperty('--login-w',l0);
+        el.style.setProperty('--pill-w',p0);
+        el._pillStale=true;
+        return;
+      }
+      var inner=Math.max(0, gw-6);
+      var cw=Math.max(0, inner-lw);
+      el.style.setProperty('--login-w',lw.toFixed(2)+'px');
+      el.style.setProperty('--pill-w',cw.toFixed(2)+'px');
+      el.style.setProperty('--nav-actions-inner',inner.toFixed(2)+'px');
+      el.style.setProperty('--nav-actions-w',narrow?'100%':gw.toFixed(2)+'px');
+      el._pillStale=false;
+      if(api) api.sync();
+    }
+    function boot(el){
+      var login=el.querySelector('.nav-login'), cta=el.querySelector('.cta');
+      var metrics={login:0,pill:0,inner:0};
+      var mode='split';
+      var lastX=null, lastY=null, scrollQueued=false;
+      function read(){
+        metrics.login=parseFloat(el.style.getPropertyValue('--login-w'))||0;
+        metrics.pill=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
+        metrics.inner=parseFloat(el.style.getPropertyValue('--nav-actions-inner'))||0;
+      }
+      function go(next){
+        if(!metrics.inner||next===mode) return;
+        mode=next;
+        el.setAttribute('data-mode',next);
+      }
+      function pointerInside(x,y){
+        if(x==null||y==null) return false;
+        var hit=document.elementFromPoint(x,y);
+        return !!(hit&&(hit===el||el.contains(hit)));
+      }
+      function zone(clientX){
+        var rect=el.getBoundingClientRect();
+        var t=(clientX-rect.left)/rect.width;
+        if(t<0) t=0; if(t>1) t=1;
+        var L=metrics.inner?metrics.login/metrics.inner:0.3;
+        var loginCut=L*0.5;
+        var downloadCut=L+(1-L)*0.5;
+        if(mode==='login') loginCut+=0.05;
+        if(mode==='download') downloadCut-=0.05;
+        if(t<=loginCut) return 'login';
+        if(t>=downloadCut) return 'download';
+        return 'split';
+      }
+      function maybeRecalibrate(){
+        if(el._pillStale){ el._pillStale=false; measure(); }
+      }
+      el.addEventListener('pointermove',function(e){
+        if(e.pointerType==='touch') return;
+        lastX=e.clientX; lastY=e.clientY;
+        go(zone(e.clientX));
+      });
+      el.addEventListener('pointerleave',function(e){
+        if(e.pointerType==='touch') return;
+        var x=(e.clientX==null?lastX:e.clientX), y=(e.clientY==null?lastY:e.clientY);
+        if(pointerInside(x,y)) return;
+        lastX=null; lastY=null;
+        var f=document.activeElement;
+        if(f===login){ go('login'); return; }
+        if(f===cta){ go('download'); return; }
+        go('split');
+        maybeRecalibrate();
+      });
+      window.addEventListener('scroll',function(){
+        if(lastX==null||scrollQueued) return;
+        scrollQueued=true;
+        requestAnimationFrame(function(){
+          scrollQueued=false;
+          if(lastX==null) return;
+          if(pointerInside(lastX,lastY)) go(zone(lastX));
+          else { lastX=null; lastY=null; go('split'); }
+        });
+      },{passive:true});
+      login.addEventListener('focus',function(){ go('login'); });
+      cta.addEventListener('focus',function(){ go('download'); });
+      el.addEventListener('focusout',function(e){
+        if(e.relatedTarget&&el.contains(e.relatedTarget)) return;
+        if(lastX!=null&&el.matches(':hover')){ go(zone(lastX)); return; }
+        go('split');
+        maybeRecalibrate();
+      });
+      el.addEventListener('transitionend',function(e){
+        if(e.propertyName!=='flex-basis') return;
+        if(e.target!==login&&e.target!==cta) return;
+        maybeRecalibrate();
+      });
+      return {sync:read};
+    }
+    function measure(){
+      groups.forEach(function(el){
+        var api=el._pillApi;
+        measureOne(el, api);
+      });
+    }
+    groups.forEach(function(el){ measureOne(el, null); });
+    function arm(){
+      groups.forEach(function(el){
+        if(el._pillApi) return;
+        el._pillApi=boot(el);
+        measureOne(el, el._pillApi);
+      });
+    }
+    measure();
+    arm();
+    window.addEventListener('load',arm);
+    window.addEventListener('resize',measure);
+    window.addEventListener('pageshow',measure);
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden) measure(); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+  })();
   var burger=nav.querySelector('.nav-burger'),links=nav.querySelector('.links');
   function closeAll(except){nav.querySelectorAll('.nd[data-open]').forEach(function(d){if(d!==except){d.removeAttribute('data-open');d.querySelector('.nd-btn').setAttribute('aria-expanded','false');}});}
   nav.querySelectorAll('.nd-btn').forEach(function(btn){btn.addEventListener('click',function(e){e.stopPropagation();var d=btn.closest('.nd'),open=d.hasAttribute('data-open');closeAll(d);if(open){d.removeAttribute('data-open');btn.setAttribute('aria-expanded','false');}else{d.setAttribute('data-open','');btn.setAttribute('aria-expanded','true');}});});
