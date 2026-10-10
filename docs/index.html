@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.587 (build 587, Hub pin 6.9.538) · server @gotcos/glasses-server 6.67.0 · COS Control 0.5.276.
+   Covers COS Glasses 6.10.587 (build 587, Hub pin 6.9.538) · server @gotcos/glasses-server 6.67.0 · COS Control 0.5.277.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -736,7 +736,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.587</b> · build 587</span>
       <span class="chip">Server <b>6.67.0</b></span>
-      <span class="chip">Control <b>0.5.276</b></span>
+      <span class="chip">Control <b>0.5.277</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.9+</span>
     </div>
@@ -752,6 +752,7 @@ footer .links a:hover{color:var(--gold)}
     <section class="note" id="candidate-606"><h3>Private candidate 606: a ring for the Home hold</h3><p>Build 6.10.606 shows the Home hold filling: while you hold the ring on Home, the COS mark becomes a ring that fills clockwise over the hold, and Sessions opens when it is full. Letting go early brings the mark back. The footer countdown stays, the hold is still 3 seconds by default (2, 3 or 4 in Settings), and it is still ring only. Same servers as 605. Rollback is build 605 with the same server.</p></section>
     <section class="note" id="candidate-605"><h3>Private candidate 605: offline dictation keeps your words</h3><p>Build 6.10.605 no longer throws away words you already saw: when the phone&rsquo;s final text of an offline dictation comes back empty, the live preview is used if it is believable (two or more words, not a silence phrase, covering the recording), and the review says Preview text so you check it first. Silence still says No speech. With the Mac already gone as a dictation starts, the phone takes over after 1.5 seconds instead of 10. Same servers as 604. Rollback is build 604 with the same server.</p></section>
     <section class="note" id="candidate-604"><h3>Private candidate 604: dictation works offline</h3><p>Build 6.10.604 transcribes dictation on the phone when the Mac is unreachable, also with Transcription set to Mac only: the phone&rsquo;s built-in Tiny takes over instead of the audio waiting for the Mac, and a reachable Mac still transcribes. After a hold switches to a tap recording, the recorder&rsquo;s top line keeps the pulsing Let go, tap to confirm whole, and the battery moves to the footer until you let go. The Home hold that opens Sessions now takes 3 seconds, and Settings offers 2, 3 or 4. Same servers as 603. Rollback is build 603 with the same server.</p></section>
+    <section class="note" id="control-277"><h3>Control 0.5.277: a tidier panel</h3><p>The standing version card is gone from the menu-bar panel; updates still arrive as the gold Update available banner. The refresh button at the top right refreshes status and checks for updates, and the line under Control says Checking for updates, then Up to date or Couldn&rsquo;t check for updates. The version shows next to Control, and Settings in Activity has the same refresh and check button.</p></section>
     <section class="note" id="control-276"><h3>Control 0.5.276: Messages answers are formatted</h3><p>COS answers in Messages (Recent, archived chats and session chat replies) now render bold, lists, headings, quotes, code and links instead of raw Markdown, the same way Meetings does. Row previews show clean text. Copy turn and Copy + images still copy the original text. Only web links are clickable in any pane that renders Markdown, and italic text now draws as italic.</p></section>
     <section class="note" id="control-275"><h3>Control 0.5.275: What&rsquo;s New before you update</h3><p>When an update is ready, Update in the menu-bar panel (or Check for updates) opens a What&rsquo;s New window with the release, a summary and what changed. Download and install shows each step, and COS Control quits and reopens by itself while the glasses server keeps running. After an update, What&rsquo;s New opens once on its own. An update that cannot be staged now stays open and says why, instead of closing COS Control.</p></section>
     <section class="note" id="control-274"><h3>Control 0.5.274: connect your glasses in one scan</h3><p>Setup guide, Glasses: COS checks Tailscale on your Mac and on your iPhone, then shows a pairing code. In COS Glasses 6.10.621 tap Scan code on your Mac, photograph the code (or use a screenshot, or type it), then tap Allow on the Mac. Codes last 5 minutes and work once, and the Allow card names the device and warns when it is not on your Tailscale account. Pairing on home Wi-Fi is an opt-in 10-minute switch. When a new COS Control is ready, the menu-bar glasses turn gold and the panel opens with an Update available banner.</p><p>Server 6.67.0 adds the pairing routes. Pasting the pairing token still works everywhere.</p></section>
@@ -994,7 +995,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Submitted release package: Control 0.5.276, glasses 6.10.587, server 6.61.6.</strong> COS Control 0.5.276 is the public Mac download. COS Glasses 6.10.587 is the submitted companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.9.538. Server identity is 6.67.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.10.586 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release; 6.9.565, 6.9.567, 6.10.572, 6.10.579 and 6.10.581 are not in the Hub repo). Private candidates 6.10.588 to 6.10.618 follow the companion pack (6.10.612 and 6.10.613 are not in the Hub repo, 6.10.615 replaces the withdrawn 6.10.614, and 6.10.608 was a device test that 6.10.609 replaces). The version list below describes the user-visible changes among them.</p>
+    <p><strong>Submitted release package: Control 0.5.277, glasses 6.10.587, server 6.61.6.</strong> COS Control 0.5.277 is the public Mac download. COS Glasses 6.10.587 is the submitted companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.9.538. Server identity is 6.67.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in. Builds 6.9.539 to 6.10.586 are in the Hub repo as versioned packs between the Even Hub build and the companion pack, beside the earlier sideload builds from 6.9.476 on (6.9.507 to 6.9.509 and 6.9.514 were not released; 6.9.542 replaces 6.9.541 and 6.9.544 replaces 6.9.543; of the two 6.9.554 packs, tap-at-30 is the release; 6.9.565, 6.9.567, 6.10.572, 6.10.579 and 6.10.581 are not in the Hub repo). Private candidates 6.10.588 to 6.10.618 follow the companion pack (6.10.612 and 6.10.613 are not in the Hub repo, 6.10.615 replaces the withdrawn 6.10.614, and 6.10.608 was a device test that 6.10.609 replaces). The version list below describes the user-visible changes among them.</p>
     <ul class="release-list">
       <li><strong>587: queued does not cover an existing reply.</strong> Normal Sessions polling checks the Mac receipt for queued turns. Once delivery is confirmed, its temporary queued page clears without opening Queue first. Delivery is not model completion; missing receipts remain pending and history keeps its reading position.</li>
       <li><strong>586: phone review matches the companion.</strong> Meeting notes and speaker review use the Even app's monochrome theme. Open Views, then Review meetings on phone. Read formatted notes, play retained evidence, search saved voices and explicitly confirm a correction.</li>
@@ -1270,7 +1271,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
         <h3>Updates prove themselves before they switch.</h3>
         <p class="ccx-dek">Staged, proven, then live.</p>
         <ul>
-          <li><strong>Check for updates</strong> sits in the panel footer, so you never wait for the periodic check.</li>
+          <li>The <strong>refresh button</strong> at the top of the panel also checks for updates, so you never wait for the periodic check.</li>
           <li>An update stages a complete new generation, runs one real query on each installed provider (Claude, Codex, and Cursor when its agent is present), and only then commits. A vendor session limit is recorded as a skip, not a rollback.</li>
           <li>A short notice at the top of the panel says when a new capability lands, whether or not an update is waiting. Dismiss it once and it stays gone.</li>
           <li>Restart and update are blocked while a meeting or job is active. Rollback is verified the same way.</li>
@@ -2215,7 +2216,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Updating</h3>
-      <p>Current supported versions are COS Control <strong>0.5.276</strong>, server <strong>6.67.0</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.587</strong> for the submitted companion build; the last confirmed Even Hub listing is 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.277</strong>, server <strong>6.67.0</strong>, and COS Glasses <strong>6.9.538</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.587</strong> for the submitted companion build; the last confirmed Even Hub listing is 6.9.538, and 6.9.539 to 6.9.560 are earlier sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2236,7 +2237,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.587. The current supported pair is COS Glasses 6.10.587 (the last confirmed Even Hub listing is 6.9.538) and server 6.67.0; COS Control 0.5.276 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.9 or newer for build 6.10.587. The current supported pair is COS Glasses 6.10.587 (the last confirmed Even Hub listing is 6.9.538) and server 6.67.0; COS Control 0.5.277 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2419,7 +2420,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.587 / Control 0.5.276 / server 6.67.0, 2026-10-09; Hub packs to 6.10.619)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.587 / Control 0.5.277 / server 6.67.0, 2026-10-09; Hub packs to 6.10.619)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

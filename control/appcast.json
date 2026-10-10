@@ -2,31 +2,25 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.276",
-      "build": 329,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.276/COS-Control-macOS-arm64-0.5.276.zip",
-      "sha256": "a3a096da2c3d3274c7db42a5f7383b3593734f0c649ce6382ac2a423c3857fd1",
+      "version": "0.5.277",
+      "build": 330,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.277/COS-Control-macOS-arm64-0.5.277.zip",
+      "sha256": "bc7f047d5f914a8d0e5904eede403d189983cec041be198affedea360e6bde91",
       "minMacOS": "14.0",
       "serverTarget": "6.67.0",
-      "publishedAt": "2026-10-10T02:21:49Z",
-      "notes": "Messages answers are formatted: bold, lists, headings, quotes, code and links render instead of raw Markdown in Recent, archived chats and session replies. Copy still copies the original text. Only web links are clickable in Markdown panes, and italic now draws as italic. Developer ID signed and Apple notarized. Pairs with server 6.67.0.",
+      "publishedAt": "2026-10-10T17:23:47Z",
+      "notes": "A tidier menu-bar panel: the version card is gone, the refresh button at the top right also checks for updates, and the version shows next to Control. Updates still arrive as the gold banner. Developer ID signed and Apple notarized. Pairs with server 6.67.0.",
       "whatsNew": {
-        "summary": "Messages answers now read like Meetings. Bold, lists, headings, code and links render as formatted text instead of raw Markdown, in Recent, archived chats and session replies. Copy still copies the original text.",
+        "summary": "A tidier menu-bar panel. The version card is gone, so Activity sits right under the header. The refresh button at the top right now also checks for updates, and the version shows next to Control.",
         "sections": [
           {
-            "title": "Messages, formatted",
+            "title": "A tidier panel",
             "items": [
-              "COS answers in Messages show bold, numbered and bulleted lists, headings, quotes and code blocks.",
-              "Web links are clickable and open in your browser. Other link types show as plain text, here and in Meetings, Threads and Work.",
-              "Row previews show clean text without Markdown symbols.",
-              "Search still highlights matches inside formatted answers.",
-              "Copy turn and Copy + images still copy the original text."
-            ]
-          },
-          {
-            "title": "Fixed",
-            "items": [
-              "Italic text now draws as italic in every pane. Before, it showed upright."
+              "The version card at the top of the panel is gone. Updates still arrive as the gold Update available banner.",
+              "The refresh button at the top right refreshes status and checks for updates in one click.",
+              "While it checks, the line under Control says Checking for updates, then Up to date, or Couldn't check for updates if it could not reach the update server.",
+              "The version shows next to Control, so you can see it without scrolling.",
+              "Settings in Activity has the same refresh and check button."
             ]
           }
         ]
