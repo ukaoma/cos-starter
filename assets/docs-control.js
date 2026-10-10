@@ -9,8 +9,7 @@
   var scenes = {
     status: {caption:'See what is actually running, not what you hope is running.', lit:['server','ownership','recovery','clis']},
     update: {caption:'Staged, proven with a real query, then switched.', lit:['server','recovery'],
-      notice:{title:'New in COS Control', body:'Tasks carry a finish line. Run now waits for it.'},
-      foot:{left:'Checked today', button:'Check for updates'},
+      notice:{title:'New in COS Control', body:'Follow a live meeting on your Mac. Open Live now in Meetings.'},
       server:['Staging the next generation','Proving Claude · Codex · Cursor']},
     brief: {caption:'A numbered reply, delivered on schedule.', lit:['jobs'],
       card:{title:'Morning brief', rows:[['Schedule','Weekdays · 07:00'],['Last brief','Today · delivered'],['Calendar','3 events'],['Meetings','4 stored'],['Tasks','2 due this week'],['Waiting on you','1 reply']], button:'Run now'}},

@@ -2,25 +2,32 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.277",
-      "build": 330,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.277/COS-Control-macOS-arm64-0.5.277.zip",
-      "sha256": "bc7f047d5f914a8d0e5904eede403d189983cec041be198affedea360e6bde91",
+      "version": "0.5.278",
+      "build": 331,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.278/COS-Control-macOS-arm64-0.5.278.zip",
+      "sha256": "27e92149bdca01f3437cdb11787b507b8c2cc641a56258798069a458b9c01e7a",
       "minMacOS": "14.0",
       "serverTarget": "6.67.0",
-      "publishedAt": "2026-10-10T17:23:47Z",
-      "notes": "A tidier menu-bar panel: the version card is gone, the refresh button at the top right also checks for updates, and the version shows next to Control. Updates still arrive as the gold banner. Developer ID signed and Apple notarized. Pairs with server 6.67.0.",
+      "publishedAt": "2026-10-10T17:26:14.911542Z",
+      "notes": "Follow a live G2 meeting in Meetings with Live now, Jump to live and Copy transcript. Saving opens the saved meeting; live text and speaker matches remain preliminary. The top-right refresh button refreshes status and checks for updates. Developer ID signed and Apple notarized. Pairs with server 6.67.0.",
       "whatsNew": {
-        "summary": "A tidier menu-bar panel. The version card is gone, so Activity sits right under the header. The refresh button at the top right now also checks for updates, and the version shows next to Control.",
+        "summary": "Watch a glasses meeting as it happens. While a meeting records on your G2, Meetings shows a Live now row with the transcript streaming in, and Copy transcript copies everything said so far.",
         "sections": [
           {
-            "title": "A tidier panel",
+            "title": "Live meeting transcript",
             "items": [
-              "The version card at the top of the panel is gone. Updates still arrive as the gold Update available banner.",
-              "The refresh button at the top right refreshes status and checks for updates in one click.",
-              "While it checks, the line under Control says Checking for updates, then Up to date, or Couldn't check for updates if it could not reach the update server.",
-              "The version shows next to Control, so you can see it without scrolling.",
-              "Settings in Activity has the same refresh and check button."
+              "While a meeting records on your glasses, a Live now row sits at the top of Meetings with a red dot.",
+              "Open it to watch the transcript arrive, a few seconds behind the conversation. It follows the newest line until you scroll up, and Jump to live brings you back.",
+              "Copy transcript copies everything so far, one line per speaker turn with its time.",
+              "The live text is preliminary. When you save the meeting, the saved version opens in its place, and its text can change as it is finalized.",
+              "Speaker names are voice matches, not certainties. A voice nobody has named shows as Speaker.",
+              "The transcript only opens when you click it. Turn it off in Settings with Show live meeting transcript."
+            ]
+          },
+          {
+            "title": "From 0.5.277",
+            "items": [
+              "The version card is gone. The refresh button at the top right also checks for updates, and the version shows next to Control."
             ]
           }
         ]
