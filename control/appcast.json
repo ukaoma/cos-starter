@@ -2,32 +2,50 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.278",
-      "build": 331,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.278/COS-Control-macOS-arm64-0.5.278.zip",
-      "sha256": "27e92149bdca01f3437cdb11787b507b8c2cc641a56258798069a458b9c01e7a",
+      "version": "0.5.282",
+      "build": 335,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.282/COS-Control-macOS-arm64-0.5.282.zip",
+      "sha256": "418dc08c720516c32e1e355d47e6f9a47a982772b20ab7319b7cf6049dd9872f",
       "minMacOS": "14.0",
-      "serverTarget": "6.67.0",
-      "publishedAt": "2026-10-10T17:26:14.911542Z",
-      "notes": "Follow a live G2 meeting in Meetings with Live now, Jump to live and Copy transcript. Saving opens the saved meeting; live text and speaker matches remain preliminary. The top-right refresh button refreshes status and checks for updates. Developer ID signed and Apple notarized. Pairs with server 6.67.0.",
+      "serverTarget": "6.70.0",
+      "publishedAt": "2026-10-11T13:06:48Z",
+      "notes": "Ask about a live meeting. Live COS Ask sits beside the live transcript with presets and your own questions, keeps every question and answer with the meeting, reads files and screenshots you share, and lets you pick the meeting assistant model under the Ask box or in Settings. The menu bar and Dock show when a meeting records. Developer ID signed and Apple notarized. Pairs with server 6.70.0.",
       "whatsNew": {
-        "summary": "Watch a glasses meeting as it happens. While a meeting records on your G2, Meetings shows a Live now row with the transcript streaming in, and Copy transcript copies everything said so far.",
+        "summary": "Ask about a meeting while it records. Live COS Ask sits beside the live transcript, keeps every question and answer with the meeting, and lets you switch the meeting assistant model right under the Ask box. Pairs with server 6.70.0.",
         "sections": [
           {
-            "title": "Live meeting transcript",
+            "title": "Ask while it records",
             "items": [
-              "While a meeting records on your glasses, a Live now row sits at the top of Meetings with a red dot.",
-              "Open it to watch the transcript arrive, a few seconds behind the conversation. It follows the newest line until you scroll up, and Jump to live brings you back.",
-              "Copy transcript copies everything so far, one line per speaker turn with its time.",
-              "The live text is preliminary. When you save the meeting, the saved version opens in its place, and its text can change as it is finalized.",
-              "Speaker names are voice matches, not certainties. A voice nobody has named shows as Speaker.",
-              "The transcript only opens when you click it. Turn it off in Settings with Show live meeting transcript."
+              "The menu-bar icon and a REC badge in the Dock show when a meeting is recording, even with the Meetings window closed.",
+              "Open the live transcript from the menu-bar panel, the Dock menu, a Dock click, or Command-Shift-L while COS Control is active.",
+              "Live COS Ask sits beside the live transcript with Catch me up, Summarize so far, Suggest questions, Action items and a question box. A model runs only when you ask.",
+              "Answers start from the current meeting and cite the lines they used. A question you type can also look in COS memory and earlier meetings."
             ]
           },
           {
-            "title": "From 0.5.277",
+            "title": "Ask keeps its history",
             "items": [
-              "The version card is gone. The refresh button at the top right also checks for updates, and the version shows next to Control."
+              "Questions, answers and sources stay with the meeting after you switch meetings, save it or restart COS Control.",
+              "Unsent questions are saved too. Stop or retry an answer yourself, and nothing reruns on its own.",
+              "Saved meetings show their Ask history. Sources open the transcript line, earlier meeting, memory, file or web page they came from."
+            ]
+          },
+          {
+            "title": "Files, models and copy",
+            "items": [
+              "Add files while a meeting records, or drop or paste a screenshot on the Ask box. Their text is read on this Mac and shared with Ask, and files it cannot safely read are labeled instead.",
+              "Pick the Meeting assistant model under the Ask box or in Settings. Haiku stays the default, and other chats keep their own models.",
+              "Copy full context adds every answer, its sources and file text to the transcript. Copy transcript on a saved meeting copies only the transcript.",
+              "Drag the divider to resize the Ask panel. The preset buttons line up on the left."
+            ]
+          },
+          {
+            "title": "Fixes",
+            "items": [
+              "Ask keeps saving while the Mac is locked during a meeting. It no longer shows a false Check free disk space error.",
+              "A live transcript that keeps failing after a recording ends stops retrying after five minutes.",
+              "An older server shows an update message for Ask. The live transcript keeps working.",
+              "Ordinary public questions like who is or look up can search the web, with server 6.70.0. Only the words you typed go into a search, never your meeting details."
             ]
           }
         ]

@@ -10,7 +10,7 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.587\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff v6.10.624\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
     footer: 'Opus  3/3  #412  2m  82%',
     layout: 'list'
   };
@@ -82,8 +82,8 @@
   frames.stopped=Object.assign({},frames.live,{signal:'stopped',body:'STOPPED\nThe run was cancelled.',footer:'Tap: actions'});
   frames.failed=Object.assign({},frames.live,{signal:'failed',body:'FAILED\nThe run reported an error. Read its details.',footer:'Tap: actions'});
   frames.meetingHistory = {nav:'[hist] ■■□□ REC 12:08  ★1  82%',body:'[Maya] Before we set the date, what is left?\n[Sam] The data import needs one day.',footer:'1/1  ↑ older  1 down to live'};
-  frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/3 · Scroll=move Tap=select'});
-  frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 3/3 · Tap=select'});
+  frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/8 · Scroll=move Tap=select'});
+  frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 8/8 · Tap=select'});
   var menuIdle = ['Display off', 'Home', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Brightness', 'Close'];
   var menuRecording = ['Display off', 'Home', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
