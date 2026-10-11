@@ -8,7 +8,7 @@
       "sha256": "5dd189f9ce9f7b49a404327a8bf5087de814fc765035122b95a8ed1756173696",
       "minMacOS": "14.0",
       "serverTarget": "6.71.5",
-      "publishedAt": "2026-10-11T22:25:14.687292Z",
+      "publishedAt": "2026-10-11T22:36:05.826268Z",
       "notes": "Meeting answers show evidence confidence. Optional Jev setup no longer keeps Finish setup open; unavailable model details start collapsed. Pairs with server 6.71.5, which lets new saved-meeting questions read accepted finalized passages while preserving earlier answer quotes. Developer ID signed and Apple notarized. With explicit public-topic consent, Meeting Ask can retrieve public claims and cost benchmarks; private transcript details are withheld. Companion 628 exposes this optional setting and remains a private device-test candidate.",
       "whatsNew": {
         "summary": "Meeting Ask explains evidence confidence, settings stay compact, and optional setup no longer holds the reminder open. Pairs with server 6.71.5.",
