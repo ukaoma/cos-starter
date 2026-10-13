@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-10-12 - Meeting Ask v2 sweep: COS Glasses 6.10.635, server 6.71.12, COS Control 0.5.287
+
+### Changed
+- `/docs`: Meeting Ask v2 (625 to 635) note, release-list and version entries;
+  current behavior for the Home hold (603), hold-to-talk fill (622), lens preset
+  names, Quick Actions order, reader footer menu, Cancel run, Restart, scan-to-pair
+  and the 616 polish default. Two since-facts that the 0.5.287 sweep had walked
+  forward (0.5.285 / 6.71.5) are restored.
+- Homepage, wizard, `/control`, `llms.txt`, skills, README and getting started now
+  name the 635 companion pack and the last observed Public listing, 629.
+- Appcast notes, the 635 release note and the phone test script: spaced version
+  numbers, no internal names or approval notes.
+
+### Added
+- Lens frames for the MEETING ASK reader and the 635 Home, a Meeting Ask ring
+  lesson, a phone Meeting Ask mock, a live meeting scene in the Control exhibit,
+  and a Meeting Ask card on the homepage. `scripts/verify-docs-hud.mjs` derives
+  every new frame string from the 635 source.
+- `scripts/check-version-drift.py` reads the Home version from the footer.
+
+### Fixed
+- Dead links: two milesukaoma.com field guides, the Even Realities product page,
+  gotcos.com/philosophy, and the getting-started kit and issues URLs.
+
 ## 2026-09-17 - COS Control on the homepage, seven views on /control
 
 ### Added
