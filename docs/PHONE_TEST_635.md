@@ -33,13 +33,23 @@ Matched release: server 6.71.12, COS Control 0.5.287 (340), companion 6.10.635. 
 5. Ask a saved-meeting follow-up. Save one answer as a follow-up and confirm it enters Work Review linked to this meeting; it must not silently create an accepted task.
 
 ## 5. Summary and reported quantities (2 minutes)
-1. In a fresh short recording, say: “Swaroop migrated the site content by replacing module IDs. He also changed icons and background images. The page count is unclear. He mentioned about three hundred hours of manual labor, but we have not confirmed whether that means effort or time saved.”
+1. In a fresh short recording, say: “Dana migrated the site content by replacing module IDs. He also changed icons and background images. The page count is unclear. He mentioned about three hundred hours of manual labor, but we have not confirmed whether that means effort or time saved.”
 2. Ask **“Summarize.”** Expect the supported migration gist with citations, rather than a generic inability to answer because passages were selected.
-3. Ask **“What did Swaroop do that saved 300 hours?”** Expect the method and a clear distinction between the reported labor figure and independently verified time savings. It must not invent 150 pages or attribute the whole figure solely to changing images.
+3. Ask **“What did Dana do that saved 300 hours?”** Expect the method and a clear distinction between the reported labor figure and independently verified time savings. It must not invent 150 pages or attribute the whole figure solely to changing images.
 4. Repeat each once. Record the answers and response time; each must arrive within 30 seconds.
+
+## 6. Fast search, next question and source health (2 minutes)
+1. Open Memories and type a distinctive word from a memory you already know is saved. Results should narrow while typing; tap the result and confirm the right record opens. Change the query quickly and confirm an older response cannot replace the newest results. Clear it and confirm the ordinary list returns.
+2. While the Birch meeting is available, ask **“What is one useful question I should ask next?”** Expect one short, relevant question rather than another lengthy summary. This is explicitly requested; automatic cues stay disabled.
+3. Open the meeting source/context information. Connected memory/thread availability and confirmed domain should reflect your actual setup. Missing or unknown sync information must be labeled rather than invented. Confirm a domain, ask again, and ensure the answer still treats transcript/file citations as the factual evidence.
+
+## 7. Android (separate device gate)
+1. Confirm companion 635, server 6.71.12 and Even app 2.2.10 or newer in About. An Android phone still on companion 629 with server 6.71.5 does not validate these fixes.
+2. With Tailscale on, open the Mac address displayed by Control followed by **/api/health** in Chrome on the phone. Record JSON versus failure. Try local Wi-Fi separately. Then pair/reconnect in Even using the same reachable address; do not reset or delete existing data. Record the exact error if Chrome succeeds but Even fails.
+3. Reopen Even and check chat/history/drafts remain. Repeat the correction question and a photo/file upload. Passing iPhone or Mac browser tests does not pass Android.
 
 ## Report back
 
-Send: installed versions; Tiny Ready yes/no; correction answer yes/no; T/W/F citation taps yes/no; Checking COS/scroll stability yes/no; Fact check source/verdict; benchmark usefulness; photo/file Ready/use; saved history and follow-up. Include screenshots or exported context for any failure. Android remains a separate Manoj/Even/Tailscale field gate; browser checks on this Mac do not prove Android behavior.
+Send: installed versions; Tiny Ready yes/no; correction answer yes/no; T/W/F citation taps yes/no; Checking COS/scroll stability yes/no; Fact check source/verdict; benchmark usefulness; photo/file Ready/use; saved history and follow-up; memory search, next-question usefulness and source health. Include screenshots or exported context for any failure. Android remains a separate Android, Even app and Tailscale field gate; browser checks on this Mac do not prove Android behavior.
 
-Public publication was explicitly approved by Miles. This script clears the remaining device acceptance gates and records any failures; it does not claim they already passed. No experimental transcription or cue flag is enabled by this test. Automated replay: 26/26 completed under 30 seconds (median 7.128 seconds, maximum 19.459); 25/26 were reviewed useful. The roof average comparison remains the one usefulness gap.
+This script clears the remaining device acceptance gates and records any failures; it does not claim they already passed. No experimental transcription or cue flag is enabled by this test. Automated replay: 26/26 completed under 30 seconds (median 7.128 seconds, maximum 19.459); 25/26 were reviewed useful. The roof average comparison remains the one usefulness gap.
