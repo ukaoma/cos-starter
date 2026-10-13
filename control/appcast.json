@@ -2,39 +2,39 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.285",
-      "build": 338,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.285/COS-Control-macOS-arm64-0.5.285.zip",
-      "sha256": "5dd189f9ce9f7b49a404327a8bf5087de814fc765035122b95a8ed1756173696",
+      "version": "0.5.287",
+      "build": 340,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.287/COS-Control-macOS-arm64-0.5.287.zip",
+      "sha256": "f82df88de2a6b2caafd33c4c13d1d72ff5d555744765731d01c55ce7e3875fa1",
       "minMacOS": "14.0",
-      "serverTarget": "6.71.5",
-      "publishedAt": "2026-10-11T22:36:05.826268Z",
-      "notes": "Meeting answers show evidence confidence. Optional Jev setup no longer keeps Finish setup open; unavailable model details start collapsed. Pairs with server 6.71.5, which lets new saved-meeting questions read accepted finalized passages while preserving earlier answer quotes. Developer ID signed and Apple notarized. With explicit public-topic consent, Meeting Ask can retrieve public claims and cost benchmarks; private transcript details are withheld. Companion 628 exposes this optional setting and remains a private device-test candidate.",
+      "serverTarget": "6.71.12",
+      "publishedAt": "2026-10-13T02:26:16.975332+00:00",
+      "notes": "Saved-meeting follow-ups, reviewed Work follow-ups and clickable evidence. Sonnet defaults for fresh Meeting Ask settings; existing choices preserved. Fact check checks public claims with readable sources under explicit public-topic consent. Matched complete companion635 includes Tiny/ORT, local memory search and stable status layout. Experimental transcription and automatic cues remain off. Roof-cost comparison usefulness is limited; physical phone/Android acceptance remains pending. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Meeting Ask explains evidence confidence, settings stay compact, and optional setup no longer holds the reminder open. Pairs with server 6.71.5.",
+        "summary": "Shorter, grounded Meeting Ask answers and a Fact check button. Pairs with server6.71.12 and complete companion6.10.635.",
         "sections": [
           {
-            "title": "Clearer meeting answers",
+            "title": "Ask during or after a meeting",
             "items": [
-              "Answers show labeled rows and an evidence-confidence note. Meeting Ask accounts for incomplete G2 transcription and distinguishes corrections, proposals and commitments.",
-              "With server 6.71.5, new questions about saved recordings read accepted finalized passages alongside live evidence. Previous answer quotes remain unchanged.",
-              "Confirm a meeting domain and calendar match on compatible companion builds to guide COS lookup; calendar details do not prove what was said.",
-              "With explicit public-topic consent, server 6.71.5 retrieves the discussed public claim and cost benchmarks, cites sources and explains comparison limits. This optional choice is exposed by private companion 628."
+              "Ask follow-ups on saved meetings and review an answer as linked Work with its source.",
+              "Fresh settings default to Sonnet; existing explicit model choices survive. Draft and grounding review use the selected model.",
+              "Answers preserve useful summary context and distinguish reported labor from verified time saved."
             ]
           },
           {
-            "title": "Compact settings and setup",
+            "title": "Check a public claim",
             "items": [
-              "Meeting assistant settings keep unavailable model details collapsed until you expand them. The model control under live Ask keeps the same setting.",
-              "Optional Jev keys no longer keep Finish setup open. You can still configure Jev in the guide.",
-              "Includes labeled Meeting Ask answers and the COS-styled What\u2019s New view from 0.5.283."
+              "Fact check seeks a readable source under the existing public-topic opt-in. Private meeting details stay out of public queries.",
+              "Inline citations open their evidence. A source that was not read cannot establish a verified claim.",
+              "Roof-cost comparison usefulness remains limited; no invented average or overpricing ratio."
             ]
           },
           {
-            "title": "Transcript limits",
+            "title": "Complete companion635",
             "items": [
-              "Live words remain preliminary. Timestamp and progressive-refinement canaries stay disabled; this release does not promise improved raw transcription accuracy.",
-              "Existing questions, sources, files, model selection and recording remain available. No new glasses sideload is required for the server and Control update."
+              "635 includes Moonshine Tiny/ORT, phone file/image-text context, local memory keyword search, stable meeting status layout and Android pairing hardening.",
+              "Experimental transcription and automatic cue flags stay disabled. Stable transcription is unchanged.",
+              "Physical phone/G2/Android acceptance remains pending; no improved raw transcription claim."
             ]
           }
         ]

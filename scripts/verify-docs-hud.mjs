@@ -124,17 +124,21 @@ const dm = fs.readFileSync(path.join(app,'src/display-manager.ts'),'utf8');
 const ast = ts.createSourceFile('display-manager.ts',dm,ts.ScriptTarget.Latest,true);
 const fn = ast.statements.find(n => ts.isFunctionDeclaration(n) && n.name?.text === 'buildStatusLine');
 assert.ok(fn,'Native buildStatusLine must exist');
-const state = {modelPreference:'opus',messages:[...listItems].reverse().map(x => ({...x,sessionId:'demo1234',modelPreference:'opus'})),currentMsgIndex:2,currentPage:'welcome',sessionId:'demo1234',lastBatteryLevel:82,chatChunks:['sample'],chatChunkIndex:0,isQueryStreaming:false};
+const state = {modelPreference:'opus',messages:[...listItems].reverse().map(x => ({...x,sessionId:'demo1234',modelPreference:'opus'})),currentMsgIndex:2,currentPage:'welcome',detailChunks:[],currentMsgCounter:'',sessionId:'demo1234',lastBatteryLevel:82,chatChunks:['sample'],chatChunkIndex:0,isQueryStreaming:false};
 const sessionIdentity = await source('src/lib/session-model-identity.ts');
 state.selectedSession={provider:'claude',session_id:'fixture'}; state.savedTurnsItems=[]; state.savedTurnsIndex=0;
 const currentSessionChromeIdentity=()=>sessionIdentity.sessionChromeIdentity({page:state.currentPage,selected:state.selectedSession,queue:state.threadQueueSession,saved:state.savedTurnsItems[state.savedTurnsIndex],dispatch:state.threadDispatchTarget});
-const footerContext = {state,currentSessionChromeIdentity,Date:SampleDate,...model,...positions,...reference,...chat,
-  ...await source('src/lib/hud-session-id.ts'),...await source('src/lib/status-line-fit.ts'),
-  readHudSessionIdPref:()=>false,readPromptGesture:()=> 'tap',heldBodyHintShowing:()=>false,
+const footerContext = {state,currentSessionChromeIdentity,Date:SampleDate,...model,...positions,...reference,...chat,...await source('src/lib/version.ts'),
+  ...await source('src/lib/meeting-ask-lens.ts'),...await source('src/lib/hold-to-talk.ts'),...await source('src/lib/hud-session-id.ts'),...await source('src/lib/status-line-fit.ts'),
+  overlayHeaderStatus:()=>null,dockedOverlayOnLens:()=>false,readHudSessionIdPref:()=>false,readPromptGesture:()=> 'tap',heldBodyHintShowing:()=>false,
   STATUS_LINE_JOIN:'  ',MESSAGE_ACTIONS_HINT:'Tap: actions',REFERENCE_HOLD_HINT:'Hold: ask'};
+const navFn = ast.statements.find(n => ts.isFunctionDeclaration(n) && n.name?.text === 'navHoldsRecorderControl');
+assert.ok(navFn,'Native recorder navigation condition must exist');
+vm.runInNewContext(ts.transpileModule(navFn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,footerContext);
 vm.runInNewContext(ts.transpileModule(fn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,footerContext);
 const footer = footerContext.buildStatusLine;
 eq(f.home.footer, footer(), 'Home status formatter');
+state.currentPage='query-list';
 eq(f.messages.footer, footer(positions.queryListFooterPosition(0,3,1)), 'Message list footer');
 eq(f.selected.footer, footer(positions.queryListFooterPosition(1,3,1)), 'Selected message footer');
 state.currentPage='query-result'; state.currentMsgIndex=1;

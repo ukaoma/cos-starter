@@ -56,7 +56,7 @@
     return {
       nav:'COS ['+(models?'O':'S')+'] '+(models?'Model':'Effort')+' 9:16a 9/4/26 82%',
       body:rows.slice(start,start+5).map(function(label,i){var row=start+i;return (row===index?'>':' ')+(row===0?'*':' ')+label;}).join('\n'),
-      footer:(models?'Opus':'Sonnet')+'  '+(index+1)+'/'+rows.length+'  next msg  82%',
+      footer:(models?'Opus':'Sonnet')+'  '+(index+1)+'/'+rows.length+'  next msg',
       layout:'picker'
     };
   }
@@ -74,7 +74,7 @@
   var replyCancelled=frame('home',{nav:"× Cancelled · COS [O] 3msg 82%"});
   var reviewRows=['Re-record','Cancel','Send original (Opus)','Edit','Preview','Change Model'];
   function reviewMenu(index) {
-    return {nav:"◈ Msg [O] Tap=Select 9:16a 9/4/26 82%",body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select  82%',layout:'menu'};
+    return {nav:"◈ Msg [O] Tap=Select 9:16a 9/4/26 82%",body:reviewRows.map(function(label,i){return (i===index?'▶':' ')+' '+label;}).join('\n'),footer:'Opus  Tap=Select',layout:'menu'};
   }
   var lessons = {
     models: [

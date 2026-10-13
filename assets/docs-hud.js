@@ -10,8 +10,8 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.624\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
-    footer: 'Opus  3/3  #412  2m  82%',
+    body: 'Chief of Staff v6.10.635\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    footer: 'Opus  v6.10.635  3/3  #412  2m',
     layout: 'list'
   };
   var listBody = '● Record Message\n▶ #412  9:14a  Friday pilot\n  #411  8:42a  Design review\n  #410  9/3    Team brief';
@@ -19,19 +19,19 @@
   var sessionBody = 'Friday pilot rollout\n[ANT] 14m • 31msg • mac\n\nDISCUSSION\nImport owner is Dana. Rollout email drafts Thursday.\n\nPlatform: Claude\nModel: not reported by this session\nContinue uses this Claude session\'s settings.\nMessages model does not change this session.\n\nSTATS\nMessages: 15u / 16a\nBranch: main';
   var frames = {
     home: home,
-    messages: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody, footer: 'Opus  1/3 Pg 1  82%', layout: 'list' },
-    selected: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody.replace('▶ #412', '  #412').replace('  #411', '▶ #411'), footer: 'Opus  2/3 Pg 1  82%', layout: 'list' },
+    messages: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody, footer: 'Opus  1/3 Pg 1', layout: 'list' },
+    selected: { nav: "◈ Msg [O] 9:16a 9/4/26 3msg 2m 82%", body: listBody.replace('▶ #412', '  #412').replace('  #411', '▶ #411'), footer: 'Opus  2/3 Pg 1', layout: 'list' },
     reader: { nav: "◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%", body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', thumb: true },
     continued: { nav: "◈ Msg [O] #411 Pg 1/1 9:16a 9/4/26 82%", body: replyBody, footer: 'Opus  #411 Pg 1/1  Tap: actions  34m', scroll: true, thumb: true },
     // A prompt started from the open reader by Reply or by double-tap. The app
     // arms a "Referencing #N" line only from the spoken "reference message N"
     // command, never from these gestures, so the recording view is plain.
-    reply: { nav: "◈ Msg ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish  82%' },
+    reply: { nav: "◈ Msg ■□□□ LISTEN · [O●] Tap to 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Tap to finish' },
     // The same recorder with Glasses dictation set to hold (6.9.483+): the footer
     // reads the control that ends it, and letting go opens the review.
-    replyHold: { nav: "◈ Msg ■□□□ LISTEN · [O●] 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release to confirm 4/15s  82%' },
-    review: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
-    replyReview: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No  82%' },
+    replyHold: { nav: "◈ Msg ■□□□ LISTEN · [O●] 82%", body: 'Listening...\n\nSpeak your message.', footer: 'Opus  Release to confirm 4/15s' },
+    review: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the pilot thread.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No' },
+    replyReview: { nav: "◈ Msg [O] 9:16a 9/4/26 82%", body: 'Summarize the design review changes.', footer: 'Opus  Msg 1/1  Tap=Send  ↓ No' },
     // Send opens the job page immediately, before the Mac acknowledges it.
     // SENDING is not a claim that the provider has started.
     receipt: {"nav": "◈ Msg [O] Thinking 1s 9/4/26 82%", "body": "◌ SENDING\n--- ask ---\n  \"Summarize the pilot thread.\"", "footer": "1s · double-tap to cancel · Scroll up: history + Ask"},

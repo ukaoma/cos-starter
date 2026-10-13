@@ -55,7 +55,7 @@ test('model lesson separates overlay, cursor, and saved choice with a consistent
   assert.match(steps[8].frame.nav,/\[S\] Effort/);
   assert.equal(steps[10].frame.body,' *High\n  X-High\n> Max\n  Ultra');
   assert.match(steps[11].frame.nav,/\[S\]/);
-  assert.equal(steps[11].frame.footer,'Sonnet  3/3  #412  2m  82%','Completed lesson reflects selected Sonnet');
+  assert.equal(steps[11].frame.footer,'Sonnet  v6.10.635  3/3  #412  2m','Completed lesson reflects selected Sonnet');
   assert.equal(steps[0].frame.footer,hud.frames.home.footer,'Completion must not mutate the starting fixture');
   assert.match(hud.frames.home.footer,/^Opus\b/);
   assert.doesNotMatch(steps[11].description,/footer may still say Opus/);
