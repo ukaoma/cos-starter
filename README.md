@@ -45,7 +45,7 @@ This repo gives you the scaffolding to build that.
 
 ## Quick Start
 
-**Prerequisites:** [Claude Code CLI](https://claude.ai/claude-code) installed. Claude Max or Team subscription.
+**Prerequisites:** [Claude Code](https://claude.ai/claude-code) or [Codex CLI](https://developers.openai.com/codex), signed in. Want the Mac app and glasses too? Start with [COS Control for Mac](https://www.gotcos.com/control/): download it, open it, connect your AI and choose Get started.
 
 ### Step 1: Create your COS directory
 
@@ -69,7 +69,7 @@ Then tell Claude:
 
 > "Read cos-starter.md and run the interactive setup."
 
-Answer the questions. It builds your `CLAUDE.md`, creates your context files, and installs starter skills.
+Answer the questions. It builds your `AGENTS.md` brain (with `CLAUDE.md` pointing Claude Code at it), creates your context files, and installs starter skills. In Codex CLI, give it the same instruction.
 
 **5 minutes to a working COS.**
 
@@ -81,7 +81,8 @@ After setup, your directory looks like this:
 
 ```
 my-cos/
-├── CLAUDE.md                 # Your COS brain (auto-generated)
+├── AGENTS.md                 # Your COS brain (auto-generated)
+├── CLAUDE.md                 # Points Claude Code at AGENTS.md
 ├── context/
 │   └── people.md             # Your team profiles
 ├── .claude/

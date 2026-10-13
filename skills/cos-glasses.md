@@ -36,7 +36,7 @@ The steps below apply only when the user explicitly chooses to manage the server
      ```
      npx --yes @gotcos/glasses-server@latest
      ```
-   - Keep the terminal open. On boot the server prints your **server URL** (Wi-Fi and, if present, Tailscale/mesh addresses, labeled) and your **API token**. The token is written to `~/.cos-glasses/.env`, so it is stable across restarts -- you paste it into the phone app only once.
+   - Keep the terminal open. On boot the server prints your **server URL** (Wi-Fi and, if present, Tailscale/mesh addresses, labeled) and your **API token**. The token is written to `~/.cos-glasses/.env`, so it is stable across restarts -- you paste it into the phone app only once. With COS Control, pair by scanning instead: Control's Setup guide shows a code in its Glasses section, COS Glasses taps **Scan code on your Mac**, and **Allow** on the Mac finishes it (server 6.67.0 or newer). A code lasts 5 minutes and works once.
    - Seed `~/.cos-glasses/.cos-profile.json` with the user's real name plus the people, companies, products, acronyms, and specialist terms they say often. Server 6.20.0+ ignores old factory placeholders and reports the real term count in health.
    - Compare the running `server_version` with `npm view @gotcos/glasses-server dist-tags.latest`. If they differ, stop the old server and rerun with fresh registry metadata:
      ```
@@ -81,7 +81,7 @@ Once connection and voice are verified, teach **tap, release, then quickly press
 
 - **Ask COS** opens a voice prompt. **Model** shows the current model and opens model selection, followed by reasoning effort.
 - **Model → effort:** Scroll highlights a row; one tap selects it. `>` is the cursor, `*` is the current setting. A model tap saves that model immediately and opens effort; an effort tap applies the level and returns to the page where you started. Tap the already-starred model to change effort only. Lens labels `X-High` and `Ultra` correspond to Extra High and Ultracode. Scroll up beyond the first row to leave; leaving effort does not undo an already-chosen model. Settings apply to your next message, not an in-flight answer. [Practice the model and effort picker](https://www.gotcos.com/docs/#models-ring).
-- **Start Meeting** begins Meeting AI. During recording, **Resume Meeting** and **Stop Meeting** lead the menu.
+- **Start Meeting** begins Meeting AI. During recording, **Resume Meeting** and **Stop Meeting** lead the menu. While it records, a tap on the live transcript offers **Catch me up**, **Summarize**, **Action items** and **What to ask**, and Quick Actions ends with **Meeting Ask** (server 6.69.0 or newer). Asking never uses the microphone and never starts or stops a recording.
 - **Messages**, **Sessions**, **Tasks**, and **Home** are direct navigation shortcuts. Tasks is omitted from the hold menu while recording to fit the menu limit; it remains in Quick Actions.
 - Even supplies **Display off**, **Brightness**, and **Close** around the COS rows. A user's saved row order may differ.
 - Distinguish this SDK 0.0.14 context menu from **single-tap reader-footer actions** and the **Quick Actions page**. Older companion builds can have fewer shortcuts; verify their app version rather than promising every row.

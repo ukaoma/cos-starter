@@ -8,8 +8,7 @@ A detailed walkthrough for setting up your first COS instance.
 
 | Requirement | Why |
 |------------|-----|
-| **Claude Code CLI** | COS runs inside Claude Code, not the web chat |
-| **Claude Max or Team subscription** | Extended context + tool use required |
+| **Claude Code or Codex CLI, signed in** | COS runs inside a local coding agent, not a web chat. Either engine works, and you can switch later |
 | **A terminal** | macOS Terminal, iTerm2, Warp, or VS Code terminal |
 | **Git** | Version control for your COS (recommended, not required) |
 
@@ -54,7 +53,7 @@ cp /path/to/cos-starter/cos-starter.md .
 Or download it directly:
 
 ```bash
-curl -O https://raw.githubusercontent.com/milesukaoma/cos-starter/main/cos-starter.md
+curl -O https://raw.githubusercontent.com/ukaoma/cos-starter/main/cos-starter.md
 ```
 
 ### 3. Launch Claude Code
@@ -80,11 +79,13 @@ Claude will ask you a series of questions:
 
 From your answers, it generates:
 
-- `CLAUDE.md` — Your COS configuration file
+- `AGENTS.md` — Your COS brain, including your top 3 priorities. Claude Code and Codex both load it
+- `CLAUDE.md` — One line that points Claude Code at `AGENTS.md`
 - `context/people.md` — Team profiles
-- `context/priorities.md` — Current quarter focus
-- `skills/` — Four starter slash commands
-- `operations/tasks.md` — Empty task tracker
+- `operations/<domain>/tasks.md` — A task tracker for each area you run
+- Starter skills in `.claude/commands/` (Claude Code) and `~/.codex/prompts/` (Codex): `/start`, `/learn`, `/prep` and `/morning-brief`, plus one custom skill built from your answers
+
+Want COS on your Mac and glasses too? Start with [COS Control for Mac](https://www.gotcos.com/control/).
 
 ### 5. Verify it worked
 
@@ -148,18 +149,18 @@ Your COS searches across meetings, tasks, and people context to find connections
 
 ### "Claude doesn't seem to know my context"
 
-**Cause:** You're not in the right directory. Claude Code loads `CLAUDE.md` from the current working directory.
+**Cause:** You're not in the right directory. Claude Code loads `CLAUDE.md`, and through it `AGENTS.md`, from the current working directory.
 
 **Fix:** `cd` into your COS directory before launching `claude`.
 
 ### "The skills don't work"
 
-**Cause:** Skills need to be in a `skills/` directory (or `.claude/skills/` depending on your Claude Code version).
+**Cause:** Claude Code reads skills from `.claude/commands/` in your COS folder; Codex reads them from `~/.codex/prompts/`.
 
 **Fix:** Check that your skill files exist:
 
 ```bash
-ls skills/
+ls .claude/commands/ ~/.codex/prompts/
 ```
 
 If they're missing, re-run the setup or copy from `cos-starter/skills/`.
@@ -170,7 +171,7 @@ If they're missing, re-run the setup or copy from `cos-starter/skills/`.
 
 ### "How do I update my context?"
 
-Edit the files directly. `CLAUDE.md`, `context/people.md`, `context/priorities.md` — they're all Markdown. Update them as your role evolves.
+Edit the files directly. `AGENTS.md` and `context/people.md` are both Markdown. Update them as your role evolves.
 
 ---
 
@@ -180,13 +181,13 @@ Edit the files directly. `CLAUDE.md`, `context/people.md`, `context/priorities.m
 |----------|---------|
 | **1 week** | Review your `corrections.md`. Run `/learn` to promote patterns. |
 | **2 weeks** | Add your first integration (calendar or Slack). |
-| **1 month** | Look at the [coverage gap assessment](../assess/coverage-gap.md). Score yourself. Build toward gaps. |
-| **Ongoing** | Every quarter, update `context/priorities.md`. Add new people as your team changes. |
+| **1 month** | Look at the [coverage gap assessment](../assess/coverage-gap-framework.md). Score yourself. Build toward gaps. |
+| **Ongoing** | Every quarter, update the priorities in `AGENTS.md`. Add new people as your team changes. |
 
 ---
 
 ## Need Help?
 
-- **Issues:** [github.com/milesukaoma/cos-starter/issues](https://github.com/milesukaoma/cos-starter/issues)
+- **Issues:** [github.com/ukaoma/cos-starter/issues](https://github.com/ukaoma/cos-starter/issues)
 - **Enterprise deployment:** [hermitcrabs.io](https://hermitcrabs.io)
 - **Learn more:** [milesukaoma.com/cos](https://milesukaoma.com/cos)
