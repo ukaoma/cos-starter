@@ -2,37 +2,36 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.288",
-      "build": 341,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.288/COS-Control-macOS-arm64-0.5.288.zip",
-      "sha256": "700f2e01100f3304da258f450cea4fb2882de0cb4885471217ddf1a92966aded",
+      "version": "0.5.289",
+      "build": 342,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.289/COS-Control-macOS-arm64-0.5.289.zip",
+      "sha256": "ba33e6b6756c3f9eec76e36ebd7ad7dae12f0b91ac0c4a07c0cf223ff8a5efde",
       "minMacOS": "14.0",
-      "serverTarget": "6.71.13",
-      "publishedAt": "2026-10-13T14:40:28.842648+00:00",
-      "notes": "Set a Home city in Settings so Meeting Ask fact checks start from the right place. A meeting the server already finished no longer shows as Live now with hours of No audio. Pairs with server 6.71.13, which checks the whole meeting first and then only new content. Matched complete companion 637 adds the phone layout fixes, lens Fact check and the phone Home city setting. Experimental transcription and automatic cues remain off; physical phone and Android acceptance remains pending. Signed and notarized by Apple.",
+      "serverTarget": "6.72.0",
+      "publishedAt": "2026-10-13T22:02:39.951536+00:00",
+      "notes": "Choose the live preview model (Whisper Turbo or Parakeet Ultra) and the HQ model from Settings, and install Parakeet. Pairs with server 6.72.0: timestamped Large-v3 HQ, highpass front end and a speech-detector quiet gate. Parakeet Ultra preview measured 10.7% fewer errors than Turbo on silver; Turbo stays the default. Matched companion 6.10.639 adds the phone switcher. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Home city for fact checks, and no more stale Live now rows. Pairs with server 6.71.13 and complete companion 6.10.637.",
+        "summary": "Choose your transcription models and install Parakeet Ultra. Pairs with server 6.72.0 and companion 6.10.639.",
         "sections": [
           {
-            "title": "Home city",
+            "title": "Transcription models",
             "items": [
-              "Settings, Meeting assistant card: set your Home city, like Austin, TX. Fact checks use it only when a claim leaves its starting point implicit, like flying from here, and say so.",
-              "City and state only, no street address. Leave it blank to use your phone's area. Needs server 6.71.13; older servers hide the field."
+              "Settings has a Transcription card. Pick Whisper Turbo or Parakeet Ultra for the live preview and the HQ model for saved meetings, and see which engine is actually running.",
+              "Preview changes apply to the next live chunk and HQ changes to the next saved meeting. Nothing switches in the middle of a meeting."
             ]
           },
           {
-            "title": "Live now",
+            "title": "Parakeet Ultra",
             "items": [
-              "A meeting the server already finished no longer shows as Live now with hours of No audio.",
-              "A session quiet longer than the server's 4 hour retention never reads Live now or Recording ended without saving."
+              "Install Parakeet from the card: about 654 MB, every file checked, runs offline on the Neural Engine.",
+              "On our silver set Parakeet Ultra as the live preview had 10.7% fewer errors than Whisper Turbo. Turbo stays the default."
             ]
           },
           {
-            "title": "Server 6.71.13 and companion 637",
+            "title": "Server 6.72.0",
             "items": [
-              "The first Fact check covers the whole meeting; later ones cover only what is new, and the answer says which.",
-              "Companion 637 lines Views up with the tab bar on every phone, removes the empty status strip, adds Fact check on the lens and a phone Home city field.",
-              "Experimental transcription and automatic cue flags stay disabled. Stable transcription is unchanged."
+              "Saved meetings use timestamped Large-v3 with correct word times, a highpass-only front end, and a speech detector for quiet chunks.",
+              "Older phones keep Turbo previews. Dictation is unchanged."
             ]
           }
         ]

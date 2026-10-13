@@ -10,8 +10,8 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.637\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
-    footer: 'Opus  v6.10.637  3/3  #412  2m',
+    body: 'Chief of Staff v6.10.639\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    footer: 'Opus  v6.10.639  3/3  #412  2m',
     layout: 'list'
   };
   var listBody = '● Record Message\n▶ #412  9:14a  Friday pilot\n  #411  8:42a  Design review\n  #410  9/3    Team brief';
