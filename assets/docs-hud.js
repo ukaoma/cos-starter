@@ -1,5 +1,6 @@
 /* Public, fictional fixtures for the COS lens. No device/server connection.
- * Labels audited against the submitted 6.10.587 companion pack.
+ * Labels audited against the 6.10.635 companion pack source; the status signal
+ * frames are generated from 587 (docs-signal-data.js).
  * See scripts/verify-docs-hud.mjs for source-content parity checks.
  * The Hub-themed frame and typography intentionally follow the supplied mockup.
  */
@@ -10,7 +11,7 @@
   var timing = Object.freeze({ holdMenuDelay: 800, menuSlide: 440, menuExit: 260, scroll: 580, footerFade: 280, cursorFade: 180, crossFade: 220 });
   var home = {
     nav: "COS [O] 9:16a 9/4/26 3msg 2m 82%",
-    body: 'Chief of Staff v6.10.635\n\n72° Clear • Austin\n→ in 44m: Design review\n\nTap=Latest  ↓ Menu  ↑ Messages\n"reference message 104" • "review meetings"',
+    body: 'Chief of Staff · 3 running\n\n72° Clear • Austin\nNext: Design review · in 44m\n\nTap=Latest  ↑ Messages  ↓ Menu  Hold: sessions',
     footer: 'Opus  v6.10.635  3/3  #412  2m',
     layout: 'list'
   };
@@ -84,18 +85,28 @@
   frames.meetingHistory = {nav:'[hist] ■■□□ REC 12:08  ★1  82%',body:'[Maya] Before we set the date, what is left?\n[Sam] The data import needs one day.',footer:'1/1  ↑ older  1 down to live'};
   frames.meetingActions = Object.assign({},frames.meeting,{footer:'▶ Meetings · 1/8 · Scroll=move Tap=select'});
   frames.meetingHome = Object.assign({},frames.meeting,{footer:'▶ Home · recording continues · 8/8 · Tap=select'});
+  // 6.10.625 MEETING ASK reader: labeled rows, newest answer first, at most six rows a page.
+  // Strings come from meetingAskLensPages, glassesHeader and buildStatusLine (verify-docs-hud.mjs).
+  // 6.10.622 hold to talk: the nav fills a circle (holdArmHeaderLabel) before the recorder opens.
+  frames.readerHoldArm = Object.assign({},frames.reader,{nav:'◈ Msg ◐ Keep holding · [O] #411 82%'});
+  frames.meetingNudges = Object.assign({},frames.meeting,{footer:'▶ Nudges · 2/8 · Scroll=move Tap=select'});
+  frames.meetingAskPick = Object.assign({},frames.meeting,{footer:'▶ Catch me up · 3/8 · Scroll=move Tap=select'});
+  frames.meetingAsk = {nav:'COS [O] Catch me up 9:16a 9/4/26 82%',body:'So what: Friday holds if the data import lands Thursday.\nDecided: Ship the pilot Friday.\nOpen: Who checks the final rollout notes.\nYou owe: Check the final rollout notes.\nYou asked: Catch me up',footer:'Claude Sonnet  1/2',layout:'ask',labels:['So what:','Decided:','Open:','You owe:','You asked:']};
+  frames.meetingAskWorking = Object.assign({},frames.meetingAsk,{body:'Status: Working on it. It shows here when ready, and in Recent\nanswers. Recording continues.\nYou asked: Catch me up',labels:['Status:','','You asked:']});
+  frames.meetingAskOlder = {nav:'COS [O] Action items 9:16a 9/4/26 82%',body:'So what: Two owners, one open item.\nYou owe: Check the final rollout notes.\nOthers owe: Sam finishes the data import by Thursday.\nYou asked: Action items',footer:'Claude Sonnet  2/2',layout:'ask',labels:['So what:','You owe:','Others owe:','You asked:']};
+  frames.meetingAskReturn = Object.assign({},frames.meetingAskOlder,{footer:'Tap again: live transcript'});
   var menuIdle = ['Display off', 'Home', 'Ask COS', 'Start Meeting', 'Model: Opus', 'Messages', 'Sessions', 'Tasks', 'Brightness', 'Close'];
   var menuRecording = ['Display off', 'Home', 'Resume Meeting', 'Stop Meeting', 'Ask COS', 'Model: Opus', 'Messages', 'Sessions', 'Brightness', 'Close'];
   function escape(text) { return String(text).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function bodyHtml(body, layout, signal) {
+  function bodyHtml(body, layout, signal, labels) {
     return body.split('\n').map(function(line,i){
       if(i===0&&signal)return '<span class="lens-run"><canvas width="24" height="24" data-cos-signal="'+escape(signal)+'" aria-hidden="true"></canvas><span>'+escape(line.replace(/^[●○◌√!?] /,''))+'</span></span>';
       // Pickers brighten the > cursor row; menus brighten the ▶ row. Neither
       // treats line 0 as a title, so a menu never shows two highlighted rows.
       if (layout === 'picker') return line.charAt(0) === '>' ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
       if (layout === 'menu') return line.indexOf('▶') === 0 ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
-      var homeTitle = line.match(/^(Chief of Staff)( v[\d.]+)$/);
-      if (homeTitle) return '<span class="lens-bright">'+escape(homeTitle[1])+'</span><span class="lens-dim">'+escape(homeTitle[2])+'</span>';
+      // Meeting Ask answers draw only each row's label bright (the app's synthetic-bold label layer).
+      if (layout === 'ask') { var label = labels && labels[i]; return label && line.indexOf(label) === 0 ? '<span class="lens-bright">'+escape(label)+'</span>'+escape(line.slice(label.length)) : escape(line); }
       return i === 0 || line.indexOf('▶') === 0 ? '<span class="lens-bright">'+escape(line)+'</span>' : escape(line);
     }).join('\n');
   }
@@ -106,7 +117,7 @@
   function html(frame) {
     var f = typeof frame === 'string' ? frames[frame] : frame;
     if (!f) throw new Error('Unknown Docs HUD frame');
-    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body, f.layout, f.signalPosition==='nav'?null:f.signal) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
+    var out = '<div class="lens-nav">' + escape(f.nav) + '</div><div class="lens-body' + (f.layout === 'list' ? ' lens-body-list' : '') + (f.scroll ? ' lens-scrolled' : '') + '"><div class="lens-text">' + bodyHtml(f.body, f.layout, f.signalPosition==='nav'?null:f.signal, f.labels) + '</div>' + (f.thumb ? '<i class="lens-thumb" aria-hidden="true"></i>' : '') + '</div><div class="lens-footer' + (f.layout === 'list' ? ' lens-footer-list' : '') + '">' + footerHtml(f.footer) + '</div>';
     if(f.signalPosition==='nav')out+='<canvas class="lens-nav-signal" width="24" height="24" data-cos-signal="'+escape(f.signal)+'" aria-hidden="true"></canvas>';
     if (f.menu) {
       var items = f.recording ? menuRecording : menuIdle;
@@ -205,7 +216,7 @@
     approval: 'A hollow shield with a keyhole requests permission. It does not mean permission has been granted.',
     stopped: 'A solid square means stopped. It is distinct from the filled completion circle.',
     failed: 'A cross marks a reported failure. Read the accompanying explanation before retrying.',
-    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, Nudges and Home. Home keeps recording active.'
+    meeting: 'Committed speaker lines stay visible above one provisional preview marked ~. Scroll up for earlier transcript and down toward live, the same direction as Messages and Sessions. Tap opens Meetings, then Nudges when Live Cues is on (otherwise Bookmark), the four Meeting Ask presets, Recent answers and Home. Home keeps recording active.'
   };
   document.querySelectorAll('[data-hud-explorer]').forEach(function (root) {
     var screen = root.querySelector('[data-hud]'), caption = root.querySelector('.hud-state-caption');

@@ -18,7 +18,11 @@
     tasks: {caption:'Nothing runs until the task says what finished looks like.', lit:['jobs'],
       card:{title:'Activity · Tasks', lanes:[['Inbox',3],['Today',1],['Scheduled',2],['Running',1],['Done',4]], task:{title:'Prepare the Friday pilot checklist', done:'Done when: checklist includes the owner, rollout date, and a tested rollback.'}, button:'Run now'}},
     meetings: {caption:'Fast text first. The canonical record wins.', lit:['preview','replay','tier','dictate','commit','polish'],
-      tier:{tier:'Balanced', dictate:'Small.en', commit:'Large-v3-Turbo', polish:'Large-v3'}},
+      tier:{tier:'Balanced', dictate:'Small.en', commit:'Large-v3-Turbo', polish:'Large-v3'},
+      // While a meeting records the panel says so under its header (Control 0.5.278/0.5.279). The card is
+      // Activity, Meetings: the pinned Live now row and a 0.5.285 labeled Live COS Ask answer, So what first.
+      recording:{label:'Meeting recording', button:'View live transcript'}, cardAfter:3700,
+      card:{title:'Activity · Meetings', live:{text:'Friday pilot', meta:'24m'}, rows:[['So what','Friday holds if the data import lands Thursday.'],['Decided','Ship the pilot Friday.'],['You owe','Check the final rollout notes.']]}},
     sessions: {caption:'The threads on this Mac, readable and writable.', lit:['clis'],
       row:{label:'Memory & Threads', value:'4,875 · 64 threads'},
       card:{title:'Activity · Sessions', list:[{chip:'Codex',text:'Release checks',meta:'running · 16s'},{chip:'Claude',text:'Docs launch',meta:'done'},{chip:'Cursor',text:'Agent routing',meta:'waiting on you'}]}},
@@ -28,6 +32,7 @@
     var s = scenes[name], c = s && s.card;
     if (!c) return '';
     var out = '<h4>' + esc(c.title) + '</h4>';
+    if (c.live) out += '<div class="cc-list cc-live"><div class="cc-item"><span class="cc-chip live">Live now</span><span class="cc-text">' + esc(c.live.text) + '</span><small>' + esc(c.live.meta) + '</small></div></div>';
     if (c.lanes) out += '<div class="cc-lanes">' + c.lanes.map(function (l) { return '<span class="cc-lane"><b>' + esc(l[1]) + '</b> ' + esc(l[0]) + '</span>'; }).join('') + '</div>';
     if (c.rows) out += '<div class="cc-list">' + c.rows.map(function (r) { return '<div class="cc-item"><small>' + esc(r[0]) + '</small><span>' + esc(r[1]) + '</span></div>'; }).join('') + '</div>';
     if (c.list) out += '<div class="cc-list">' + c.list.map(function (m) {
@@ -65,6 +70,12 @@
       if (extra) { extra.remove(); extra = null; }
       [notice, foot, card, ledger].forEach(function (el) { if (el) { el.hidden = true; el.innerHTML = ''; el.style.opacity = ''; el.style.transform = ''; } });
     }
+    function showCard(name) {
+      card.innerHTML = cardHtml(name); card.hidden = false;
+      animate(card, {opacity:[0,1], translateY:[18,0], duration:460, ease:'outCubic'});
+      animate(card.querySelectorAll('.cc-chip'), {scale:[.6,1], opacity:[0,1], duration:380, delay:function (el, i) { return 420 + i * 110; }, ease:'outBack(1.6)'});
+      animate(card.querySelectorAll('.cc-item, .cc-task, .cc-lane'), {opacity:[0,1], translateY:[6,0], duration:320, delay:function (el, i) { return 160 + i * 70; }, ease:'outQuad'});
+    }
     function apply(name) {
       var s = scenes[name];
       if (!s) return;
@@ -90,6 +101,13 @@
         later(function () { keys.forEach(function (k) { var v = value(k); if (v) { v.textContent = s.tier[k]; animate(v, {opacity:[.35,1], duration:260, ease:'outQuad'}); } }); }, 900);
         later(function () { keys.forEach(function (k) { var v = value(k); if (v) { v.textContent = rows[k].value; animate(v, {opacity:[.35,1], duration:260, ease:'outQuad'}); } }); }, 3400);
       }
+      if (s.recording) {
+        extra = document.createElement('div'); extra.className = 'ccp-rec';
+        extra.innerHTML = '<b><i aria-hidden="true"></i>' + esc(s.recording.label) + '</b><span class="cc-btn">' + esc(s.recording.button) + '</span>';
+        var top = panel.querySelector('.ccp-top');
+        if (top && top.parentNode) top.parentNode.insertBefore(extra, top.nextSibling); else panel.querySelector('.ccp-in').appendChild(extra);
+        animate(extra, {opacity:[0,1], translateY:[-6,0], duration:360, ease:'outQuad'});
+      }
       if (s.row) {
         extra = document.createElement('div'); extra.className = 'ccp-row lit'; extra.style.opacity = '1';
         extra.innerHTML = '<span>' + esc(s.row.label) + '</span><b>' + esc(s.row.value) + '</b>';
@@ -97,12 +115,9 @@
         if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(extra, anchor.nextSibling); else panel.querySelector('.ccp-in').appendChild(extra);
         animate(extra, {opacity:[0,1], translateY:[-6,0], duration:360, ease:'outQuad'});
       }
-      if (s.card && card) {
-        card.innerHTML = cardHtml(name); card.hidden = false;
-        animate(card, {opacity:[0,1], translateY:[18,0], duration:460, ease:'outCubic'});
-        animate(card.querySelectorAll('.cc-chip'), {scale:[.6,1], opacity:[0,1], duration:380, delay:function (el, i) { return 420 + i * 110; }, ease:'outBack(1.6)'});
-        animate(card.querySelectorAll('.cc-item, .cc-task, .cc-lane'), {opacity:[0,1], translateY:[6,0], duration:320, delay:function (el, i) { return 160 + i * 70; }, ease:'outQuad'});
-      }
+      // A scene that first demonstrates rows (meetings) shows its card after that demo, so it covers nothing mid-demo.
+      if (s.card && card && s.cardAfter && motion) later(function () { showCard(name); }, s.cardAfter);
+      else if (s.card && card) showCard(name);
       if (s.ledger && ledger) {
         ledger.innerHTML = ledgerHtml(name); ledger.hidden = false;
         animate(ledger, {opacity:[0,1], translateY:[8,0], duration:420, ease:'outQuad'});

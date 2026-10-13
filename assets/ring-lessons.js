@@ -4,8 +4,8 @@
  * Keep source-derived menu differences here, not in independent page scripts.
  *
  * Timing contract. Every number below is ILLUSTRATIVE teaching pace except the
- * two 3000ms waits, which are the app's real HOME_CONFIRM_MS and
- * CANCEL_ARM_WINDOW_MS. The ring's contact clock lives in ring-3d.js (TIMING),
+ * 3000ms waits, which are the app's real HOME_CONFIRM_MS, CANCEL_ARM_WINDOW_MS
+ * and the MEETING ASK reader's LENS_ASK_WATCH_MS check. The ring's contact clock lives in ring-3d.js (TIMING),
  * the HUD motion in docs-hud.js (timing); this file derives from both and
  * restates neither, so the HUD reacts after the drawn contact.
  */
@@ -25,9 +25,9 @@
     if (gesture === 'tap') return lead + react.tap;
     if (gesture === 'double-tap') return lead + contact.doubleTapGap + react.doubleTap;
     if (gesture === 'swipe-down' || gesture === 'swipe-up') return lead + react.swipe;
-    // Hold to talk: the recorder opens once the press outlasts the phantom gate
-    // (300 ms in the app) and the mic arms; letting go is a release, then the review.
-    if (gesture === 'press') return lead + 450;
+    // Hold to talk: since 6.10.622 the nav fills a circle (0.5 s by default) and the
+    // recorder opens when it is full; letting go is a release, then the review.
+    if (gesture === 'press') return lead + 650;
     if (gesture === 'release') return lead + react.tap;
     return 0;
   }
@@ -145,6 +145,14 @@
       step('Up for earlier history','swipe-up',f.meetingHistory,'Scroll up into earlier transcript. Recording continues and this history page stays still while new speech arrives.'),
       step('Down toward live','swipe-down',f.meeting,'One down returns to live in this example. The latest committed words and provisional preview return together.'),
       step('Tap for actions','tap',f.meetingActions,'Meetings is the parent list and starts selected. The body stays put; the first tap does not leave.'),
+      step('Pass Nudges','swipe-down',f.meetingNudges,'One downward scroll moves one row. Nudges is second when Live Cues is on; otherwise this row is Bookmark. Highlighting it changes nothing.'),
+      step('Highlight Catch me up','swipe-down',f.meetingAskPick,'Catch me up is 3 of 8. Summarize, Action items, What to ask and Recent answers follow, then Home. Nothing is asked until you tap.'),
+      step('Ask without the microphone','tap',f.meetingAskWorking,'The tap asks COS about this meeting and opens the MEETING ASK reader. The header names what you asked. The microphone stays closed and recording continues.'),
+      step('The answer lands on this page','idle',f.meetingAsk,'Stay on the first page. The lens checks every 3 seconds, for up to 2 minutes, and shows the answer here when it is ready. In this example it is ready at the first check. So what comes first, then the labeled rows, then You asked.'),
+      step('Older answers are below','swipe-down',f.meetingAskOlder,'Scroll down for the next page. Each answer starts its own page, newest first, up to 10. The footer names the model that wrote the answer on this page.'),
+      step('Arm the way back','tap',f.meetingAskReturn,'One tap does not leave. The footer asks for a second tap to return to the live transcript.'),
+      step('Back to the transcript','tap',f.meeting,'The second tap returns to the live transcript. Type your own questions, read the full history or change the model on the phone.'),
+      step('Tap for actions again','tap',f.meetingActions,'Meetings starts selected again. The next step wraps to Home.'),
       step('Choose Home','swipe-up',f.meetingHome,'Scroll up once from Meetings to wrap to Home, the final action. Tap to confirm; recording continues. Scrolling down instead selects Nudges when Live Cues is on, otherwise Bookmark.'),
       step('Or use the side menu','hold',frame('meeting',{menu:true,recording:true,menuIndex:1}),'Tap and release, then press and hold for the side menu. Home is first in the default COS order. Resume Meeting and Stop Meeting follow; Home does not stop capture.')
     ],
@@ -170,6 +178,10 @@
   lessons.messages[12].before=f.reader;
   lessons.messages[12].resultText='Microphone open · same prompt, no footer menu';
   lessons.messages[1].before=f.selected;
+  lessons.meetings[6].resultText='Asked · Working on it · recording continues';
+  lessons.meetings[7].before=f.meetingAskWorking;lessons.meetings[7].settleAfter=react.timeout;
+  lessons.meetings[7].resultText='Answer ready · newest first';
+  lessons.meetings[9].resultText='Tap again: live transcript';
   lessons.models[1].resultText='Shortcut window open over Home';
   lessons.models[5].resultText='Model picker open · Opus still current';
   lessons.models[8].resultText='Sonnet saved · effort picker open';
@@ -359,7 +371,7 @@
     var titles=mainItems.map(function(el){var alt=el.getAttribute('data-title-'+mode);return alt||el.querySelector('strong').textContent;});
     var gestures=mainItems.map(function(el){return el.getAttribute('data-gesture-'+mode)||el.getAttribute('data-gesture');});
     var states=mainSteps(titles,gestures);
-    if(mode==='hold'){states[7].frame=f.replyHold;}
+    if(mode==='hold'){states[7].frame=f.replyHold;states[7].before=f.readerHoldArm;states[7].transitionText='◐ Keep holding · recording starts when the circle is full';}
     states[8].before=mode==='hold'?f.replyHold:lessons.messages[13].before;states[8].transitionText=lessons.messages[13].transitionText;states[8].resultText=lessons.messages[13].resultText;
     return states;
   }

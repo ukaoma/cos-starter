@@ -296,6 +296,12 @@ section.light td strong{color:var(--ink-on-cream)}
 .cc-item .cc-no{font-family:var(--mono)}
 .cc-chip{flex-shrink:0;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,110,.5);border-radius:5px;padding:2px 6px}
 .cc-chip.task{color:rgba(120,206,146,.95);border-color:rgba(120,206,146,.5)}
+.cc-chip.live{color:#e2735f;border-color:rgba(226,115,95,.55)}
+.ccp-rec{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-top:1px solid var(--line-2)}
+.ccp-rec b{display:flex;align-items:center;gap:7px;color:#e2735f;font-size:.8rem;font-weight:600}
+.ccp-rec b i{width:8px;height:8px;border-radius:50%;background:#e2735f}
+.ccp-rec .cc-btn{padding:4px 9px}
+.cc-live{margin-bottom:6px}
 .cc-lanes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .cc-lane{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:4px 9px}
 .cc-lane b{color:var(--fg);font-weight:600}
@@ -625,7 +631,7 @@ footer .links a:hover{color:var(--gold)}
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
-<link rel="stylesheet" href="../assets/docs-hud.css?v=587-1">
+<link rel="stylesheet" href="../assets/docs-hud.css?v=635-1">
 </head>
 <body>
 
@@ -780,13 +786,12 @@ footer .links a:hover{color:var(--gold)}
   </div>
   <div class="g2-stage" aria-hidden="true">
 
-  <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.635</span>
+  <div class="hud lens-hud" data-hud="home" ><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff · 3 running</span>
 
 72° Clear • Austin
-→ in 44m: Design review
+Next: Design review · in 44m
 
-Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list">Opus  v6.10.635  3/3  #412  2m</div></div>
+Tap=Latest  ↑ Messages  ↓ Menu  Hold: sessions</div></div><div class="lens-footer lens-footer-list">Opus  v6.10.635  3/3  #412  2m</div></div>
     <img class="g2-img" src="../assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
   </div>
 </header>
@@ -835,13 +840,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <div class="rp-stage-head"><b>Ring to lens</b><span>Even G2 &middot; simulated</span></div>
       <div class="rp-demo">
         <div class="rp-lens" aria-label="Simulated COS heads-up display">
-          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.10.635</span>
+          <div class="rp-screen lens-hud" id="rpScreen" data-hud="home" aria-live="polite"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff · 3 running</span>
 
 72° Clear • Austin
-→ in 44m: Design review
+Next: Design review · in 44m
 
-Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list">Opus  v6.10.635  3/3  #412  2m</div></div>
+Tap=Latest  ↑ Messages  ↓ Menu  Hold: sessions</div></div><div class="lens-footer lens-footer-list">Opus  v6.10.635  3/3  #412  2m</div></div>
         </div>
         <div class="rp-ring-zone">
           <div class="rp-ring-shell" data-gesture="idle">
@@ -1688,8 +1692,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 <section class="wrap reveal" id="meetings-ring">
   <div class="ring-lesson" data-ring-lesson="meetings">
     <h2>Meetings: the same path through history.</h2>
-    <p>Scroll up for earlier speech, down toward live. Tap for actions, scroll to Home, then tap to select. Recording continues when you go Home.</p>
-    <p class="rl-fallback">The footer starts on Meetings, with Home last. Scroll up once from Meetings to wrap to Home. Nudges is available when Live Cues is on; otherwise choose Bookmark. The tap-then-hold side menu also puts Home first in its default COS order, followed by Resume Meeting and Stop Meeting. Custom arrangements are preserved.</p>
+    <p>Scroll up for earlier speech, down toward live. Tap for actions, scroll to a Meeting Ask row or to Home, then tap to select. Recording continues while you ask and when you go Home.</p>
+    <p class="rl-fallback">The footer starts on Meetings, with Home last. Nudges is second when Live Cues is on; otherwise Bookmark. Catch me up, Summarize, Action items, What to ask and Recent answers come next. Choosing one asks COS without the microphone and opens the MEETING ASK reader; tap, then tap again, to return to the live transcript. Scroll up once from Meetings to wrap to Home. The tap-then-hold side menu also puts Home first in its default COS order, followed by Resume Meeting and Stop Meeting. Custom arrangements are preserved.</p>
   </div>
 </section>
 
@@ -1826,7 +1830,16 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div>
       <h3 id="meeting-ask-lens">Ask about the meeting while it runs</h3>
-      <p style="font-size:.95rem">Tap the live transcript and pick a preset, or open Meeting Ask at the end of Quick Actions. COS answers from this meeting first and opens the <strong>MEETING ASK</strong> reader on the newest answer. The header names what you asked, such as Catch me up or Action items. Since 6.10.625 each answer reads as labeled rows, So what first; a From row appears only when the answer used something outside this meeting, and the footer names the model that answered. A question asked from the lens shows Working on it, then the answer appears on that page when it is ready. Recent answers keeps up to 10. Ask on the lens never uses the microphone, and Meeting AI still only starts and stops recording. Type your own questions, read the full history and switch the model on the phone. Since 6.10.625 the phone shows a live meeting first on Views with a red LIVE NOW card, and the VIEWS tab carries a red dot while it records. The meeting opens with Ask and Transcript tabs and a composer docked at the bottom, and answers read as labeled rows whose sources open inline. You can ask about a meeting after it ends, add a PDF or text file with + (server 6.71.4), confirm the meeting&rsquo;s domain and calendar, save an answer to Work for review (server 6.71.11), and check a recent public claim with Fact check (server 6.71.12). Needs glasses 6.10.623 or newer and server 6.69.0 or newer. <a href="#meeting-ask">More on Meeting Ask</a>.</p>
+      <p style="font-size:.95rem">Tap the live transcript and pick a preset, or open Meeting Ask at the end of Quick Actions. COS answers from this meeting first and opens the <strong>MEETING ASK</strong> reader on the newest answer. The header names what you asked, such as Catch me up or Action items. Since 6.10.625 each answer reads as labeled rows, So what first; a From row appears only when the answer used something outside this meeting, and the footer names the model that answered. A question asked from the lens shows Working on it, then the answer appears on that page when it is ready. Recent answers keeps up to 10. Ask on the lens never uses the microphone, and Meeting AI still only starts and stops recording. Type your own questions, read the full history and switch the model on the phone. Needs glasses 6.10.623 or newer and server 6.69.0 or newer. <a href="#meeting-ask">More on Meeting Ask</a>.</p>
+      <p style="font-size:.95rem">Since 6.10.625 the phone shows a live meeting first on Views with a red LIVE NOW card, and the VIEWS tab carries a red dot while it records. The meeting opens with Ask and Transcript tabs and a composer docked at the bottom, and answers read as labeled rows whose sources open inline. You can ask about a meeting after it ends, add a PDF or text file with + (server 6.71.4), confirm the meeting&rsquo;s domain and calendar, save an answer to Work for review (server 6.71.11), and check a recent public claim with Fact check (server 6.71.12). <a href="#phone-meeting-ask">See it on the phone</a>.</p>
+      <div class="exhibit">
+        <div class="hud lens-hud" data-hud="meetingAsk" aria-label="Sample Meeting Ask answer on the lens: labeled rows with So what first"><div class="lens-nav">COS [O] Catch me up 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">So what:</span> Friday holds if the data import lands Thursday.
+<span class="lens-bright">Decided:</span> Ship the pilot Friday.
+<span class="lens-bright">Open:</span> Who checks the final rollout notes.
+<span class="lens-bright">You owe:</span> Check the final rollout notes.
+<span class="lens-bright">You asked:</span> Catch me up</div></div><div class="lens-footer">Claude Sonnet  1/2</div></div>
+        <div class="hud-cap">MEETING ASK reader · fictional example</div>
+      </div>
       <h3>Turn a saved meeting into a question</h3>
       <p style="font-size:.95rem">A saved meeting is also the starting point for a new question. Open it in <strong>Review Meetings</strong> and double-tap an idle meeting to record a voice follow-up with that exact meeting attached as context. A compact <span class="g-key">Meeting context attached</span> indicator replaces the usual message-reference label, and the finished answer is stamped with the meeting so you can see what it was grounded in, both on the lens and in phone message review.</p>
       <p style="font-size:.95rem">The grounding is the real record, not a summary. The paired server hands the Mac agent a bounded, UTF-8-safe copy of the canonical meeting so it can read the full transcript for decisions, outcomes, sentiment, details, or related topics. This needs server <strong>6.12.7</strong>: an older server fails closed for this one action with a truthful update-server message, and COS never silently sends an ungrounded meeting question. A follow-up you queue or recover re-fetches the exact meeting before it runs, and survives the automatic post-meeting rename.</p>
@@ -1913,7 +1926,38 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       <li><h3>Review, then confirm.</h3><p>Corrections stay pending until you select <strong>Confirm and apply</strong>. <strong>Keep pending</strong> makes no server change. Changed evidence and uncertain responses require review; reconnect does not silently apply a correction.</p></li>
     </ol>
   </div>
-  <p class="hud-note">The phone companion uses black, white and neutral gray. COS Control on the Mac keeps its separate cream-and-gold theme. Standalone phone voice-profile recording is not included in 587.</p>
+  <h3 id="phone-meeting-ask" style="margin-top:34px">Ask about a meeting from your phone.</h3>
+  <p style="font-size:.95rem">Since 6.10.625 a meeting that is recording sits first in Views. Open it for Meeting Ask: Ask and Transcript tabs, with the composer docked at the bottom.</p>
+  <div class="phone-review-guide">
+    <div class="phone-review-sample" role="img" aria-label="Illustrative monochrome phone Meeting Ask with fictional data: the live meeting card on Views, then a Catch me up answer as labeled rows above the docked composer">
+      <div class="phone-live-card"><span class="phone-live-dot"></span><div><p class="phone-live-status">LIVE NOW, 24 MIN</p><h4>Friday pilot</h4><p>Ask, catch up or read the transcript</p></div><b>OPEN</b></div>
+      <div class="phone-ask-head"><h3>Friday pilot</h3><p><span class="phone-live-dot"></span>Live &nbsp;24 min, 3 speakers</p></div>
+      <div class="phone-ask-tabs"><span class="on">Ask</span><span>Transcript</span></div>
+      <div class="phone-ask-q">Catch me up</div>
+      <div class="phone-voice-card phone-ask-answer">
+        <p><strong>Catch me up:</strong> whole meeting, 0:00 to 24:10</p>
+        <p><strong>So what:</strong> Friday holds if the data import lands Thursday.</p>
+        <p><strong>Decided:</strong> Ship the pilot Friday.</p>
+        <p><strong>Open:</strong> Who checks the final rollout notes.</p>
+        <p><strong>You owe:</strong> Check the final rollout notes.</p>
+        <p class="phone-sample-note">Details and 2 sources &#183; Claude Sonnet</p>
+      </div>
+      <div class="phone-ask-composer">
+        <div class="phone-ask-presets"><span>Catch me up</span><span>Summarize</span><span>Action items</span><span>What to ask</span></div>
+        <div class="phone-ask-input"><b>+</b><span class="phone-ask-field">Ask a question</span><b>ASK</b></div>
+        <div class="phone-ask-model"><span>Claude &#183; sonnet</span><span>Fact check</span></div>
+      </div>
+      <p class="phone-sample-note">Illustration only. Nothing is asked from this website.</p>
+    </div>
+    <ol class="phone-review-steps">
+      <li><h3>Open the live meeting from Views.</h3><p>While a meeting records, it sits first in Views with a red dot, LIVE NOW, its minutes and OPEN, and the VIEWS tab carries a red dot from every tab. If COS stops answering, the card stays and says when COS was last seen.</p></li>
+      <li><h3>Pick a preset or type a question.</h3><p>Catch me up, Summarize, Action items and What to ask sit in one row above the question box. + adds a PDF or text file from the phone (server 6.71.4 or newer). The model button applies to the next question and is saved on your Mac.</p></li>
+      <li><h3>Read labeled answers.</h3><p>Each answer is a card of labeled rows, So what first. Details opens its sources, grouped as In this meeting, From COS, From the web and Files. A transcript source opens the Transcript tab at that turn.</p></li>
+      <li><h3>Follow the transcript.</h3><p>Turns are grouped by speaker with the time, and on a live meeting the line still being spoken is grey. Scroll up to read earlier turns; <strong>Jump to now</strong> returns to the newest.</p></li>
+      <li><h3>Keep asking after it ends.</h3><p>Ask follow-ups about the saved meeting and save an answer to Work for review (server 6.71.11). <strong>Fact check</strong> checks a recent public claim when the public-topic setting is on; it needs server 6.71.12, and an older server hides it.</p></li>
+    </ol>
+  </div>
+  <p class="hud-note">The phone companion uses black, white and neutral gray, with a red dot for a meeting that is recording. COS Control on the Mac keeps its separate cream-and-gold theme. Standalone phone voice-profile recording is not included in 587.</p>
 </section>
 <section class="wrap reveal" id="offline-field">
   <h2>When the connection drops.</h2>
@@ -2358,8 +2402,8 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
 <script src="../assets/ring-3d.js?v=10"></script>
 <script src="../assets/docs-signal-data.js?v=587-1"></script>
 <script src="../assets/docs-signals.js?v=587-1"></script>
-<script src="../assets/docs-hud.js?v=587-1"></script>
-<script src="../assets/ring-lessons.js?v=578-1"></script>
+<script src="../assets/docs-hud.js?v=635-1"></script>
+<script src="../assets/ring-lessons.js?v=635-1"></script>
 <script>
 (function(){
   var root=document.documentElement,group=document.getElementById('dictation-switch');
@@ -2376,7 +2420,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   apply(root.getAttribute('data-dictation'),false);
 })();
 </script>
-<script src="../assets/docs-control.js?v=1"></script>
+<script src="../assets/docs-control.js?v=635-1"></script>
 <script>
 (function(){
   // shared motion guard

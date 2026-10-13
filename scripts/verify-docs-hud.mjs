@@ -319,7 +319,7 @@ for (const token of ['font-family:var(--mono)', 'aspect-ratio:2/1', '.lens-hud::
 const html = read('docs/index.html');
 const documentedApp = html.match(/Covers COS Glasses (\d+\.\d+\.\d+)/)?.[1];
 assert.ok(documentedApp, 'The published app coverage label must exist');
-eq(f.home.body.split('\n')[0], 'Chief of Staff v'+documentedApp, 'HUD fixture follows the documented release, not the audited development source');
+eq(f.home.footer.split('  ')[1], 'v'+documentedApp, 'HUD fixture follows the documented release, not the audited development source');
 for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
   if (!/\bsrc=|application\/ld\+json/.test(match[1])) new vm.Script(match[2]);
 }
@@ -346,5 +346,43 @@ for (const [context,steps] of Object.entries(l)) for (const step of steps) {
   assert.ok(hud.html(step.frame).includes('lens-footer'),context+' valid HUD frame');checks++;
 }
 assert.ok(!hud.html({nav:'<img>',body:'<script>',footer:'&'}).includes('<script>'),'Fixture text is escaped'); checks++;
+
+// 6.10.635 Home: the running count on the title row, Next: line and Hold: sessions hint; the version is
+// in the footer (6.10.592). Same composition as display-manager getWelcomeContent.
+const firstWin = await source('src/lib/first-win.ts');
+const homeActivity = await source('src/lib/home-session-activity.ts');
+eq(f.home.body, [homeActivity.homeActivityTitle({text:'3 sessions running',providers:'',animate:true,signal:'working'}), '', '72° Clear • Austin',
+  pages.formatWelcomeNextEventLine({title:'Design review',time:'',inMinutes:44}), '', ...firstWin.welcomeGuideLines({messageCount:3,latestNo:412,mac:'configured'})].join('\n'), 'Home body follows the 635 welcome builders');
+
+// 6.10.625 MEETING ASK reader: pages, labels, header and footer from the app's own builders.
+const askLens = await source('src/lib/meeting-ask-lens.ts');
+const pageConfirm = await source('src/lib/page-confirm-model.ts');
+const askExchange = (requestId,action,question,sections) => ({requestId,sessionId:'g2-docs',serverInstanceId:'docs',action,question,status:'completed',createdAt:'',updatedAt:'',
+  selectedModel:{engine:'claude',model:'sonnet'},model:'claude-sonnet-5-5',sections:sections.map(([label,text])=>({label,text,sources:['T1']})),sources:[],notices:[],throughMs:0,files:[]});
+const askOlder = askExchange('docs-ask-1','actions','Action items',[['So what','Two owners, one open item.'],['You owe','Check the final rollout notes.'],['Others owe','Sam finishes the data import by Thursday.']]);
+const askNewest = askExchange('docs-ask-2','catch_up','Catch me up',[['So what','Friday holds if the data import lands Thursday.'],['Decided','Ship the pilot Friday.'],['Open','Who checks the final rollout notes.'],['You owe','Check the final rollout notes.']]);
+const askSelected = {engine:'claude',model:'sonnet'};
+const askDone = askLens.meetingAskLensPages([askOlder,askNewest],{notice:'',selected:askSelected});
+const askWork = askLens.meetingAskLensPages([askOlder,{...askNewest,status:'running',sections:undefined,model:undefined}],{notice:'',selected:askSelected});
+const askLabels = l => [...Array(l.drop).fill(''), ...l.content.split('\n')];
+Object.assign(headerContext, askLens, {formatTimerRemaining:ms=>{const s=Math.ceil(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`}});
+Object.assign(state,{micEnabled:false,meetingMeterSquares:'■■□□',meetingCaptureStoragePaused:false,audioPipeline:{getState:()=>'recording_continuous',getElapsedMs:()=>728000},currentPage:'meeting-ask-detail',detailSourceKey:'meeting-ask:g2-docs'});
+for (const [name,pagesOf,index] of [['meetingAsk',askDone,0],['meetingAskOlder',askDone,1],['meetingAskWorking',askWork,0]]) {
+  state.detailChunks=pagesOf.chunks; state.detailChunkIndex=index; state.currentMsgCounter=`${index+1}/${pagesOf.chunks.length}`;
+  state.meetingAskLensFooter={sourceKey:'meeting-ask:g2-docs',models:pagesOf.models,labels:pagesOf.labels,titles:pagesOf.titles};
+  eq(f[name].body, pagesOf.chunks[index], name+' body from meetingAskLensPages');
+  eq(JSON.stringify([...f[name].labels]), JSON.stringify(askLabels(pagesOf.labels[index])), name+' label layer');
+  assert.ok(f[name].body.split('\n').length <= askLens.ASK_LENS_ROWS, name+' fits the reader rows'); checks++;
+  eq(f[name].nav, chrome(headerContext.glassesHeader(),null), name+' header names what was asked');
+  eq(f[name].footer, footer(state.currentMsgCounter), name+' footer names the answering model and page');
+}
+eq(f.meetingAskReturn.body, f.meetingAskOlder.body, 'Return confirm keeps the page');
+const holdArm = await source('src/lib/hold-arm-fill.ts');
+eq(f.readerHoldArm.nav, chrome(pages.composeLensNavLine('COS [O] #411 Pg 1/1','9:16a',now),'messages',holdArm.holdArmHeaderLabel(0.5)), 'Hold to talk fills a circle in the nav first');
+eq(f.readerHoldArm.body, f.reader.body, 'Arming leaves the page as it was');
+eq(f.meetingAskReturn.footer, pageConfirm.getDetailConfirmLayout('meeting-ask-detail').confirmCopy, 'Return confirm copy');
+eq(f.meetingNudges.footer, readingNav.readingNavigationFooter(meetingRows,1), 'Meeting second action');
+eq(f.meetingAskPick.footer, readingNav.readingNavigationFooter(meetingRows,meetingRows.findIndex(a=>a.label==='Catch me up')), 'Meeting Ask preset row');
+Object.assign(state,{audioPipeline:null,currentPage:'welcome',detailChunks:[],currentMsgCounter:'',meetingAskLensFooter:null});
 globalThis.Date=NativeDate;
 console.log(`PASS: ${checks} Docs HUD source-contract checks. Browser/optical fidelity is a separate visual check.`);

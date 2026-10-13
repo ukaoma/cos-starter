@@ -108,5 +108,22 @@ section.light .rl-choices [data-active] button{color:var(--ink-on-cream)}
 .home-lens{--hud:#46e878;--hud-hi:#9ffabb;max-width:560px;margin:0 auto 20px}
 .gc .lens-hud{margin-bottom:20px;--hud:#46e878;--hud-hi:#9ffabb}
 .phone-review-sample strong,.phone-review-sample b,.phone-review-sample label{color:#232323}
+/* 6.10.625 Meeting Ask on the phone: static, monochrome, with the app's red recording dot. */
+.phone-live-card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #d9d9d9;border-radius:8px;padding:14px}
+.phone-live-card h4{margin:2px 0!important;font-size:16px!important}.phone-live-card p{margin:0!important;font-size:12px}
+.phone-live-card>div{flex:1;min-width:0}.phone-live-card b{font-size:12px;letter-spacing:.06em}
+.phone-live-status{font-weight:600;letter-spacing:.06em;color:#232323!important}
+.phone-live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#d33;flex:none;margin-right:6px;vertical-align:middle}
+.phone-ask-head{border-top:1px solid #ccc;margin-top:18px;padding-top:6px}.phone-ask-head p{font-size:13px}
+.phone-ask-tabs{display:flex;gap:22px;border-bottom:1px solid #ccc;font-size:14px;margin-top:8px}
+.phone-ask-tabs span{padding:6px 0}.phone-ask-tabs .on{border-bottom:2px solid #232323;font-weight:600}
+.phone-ask-q{background:#232323;color:#fff;border-radius:14px;padding:8px 12px;margin:14px 0 0 auto;width:max-content;max-width:80%;font-size:14px}
+.phone-ask-answer{padding:12px 14px!important;margin-top:10px!important}.phone-ask-answer p{margin:4px 0!important;font-size:14px}
+.phone-ask-composer{border-top:1px solid #ccc;margin-top:14px;padding-top:10px;font-size:12px}
+.phone-ask-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.phone-ask-presets span{border:1px solid #bbb;border-radius:6px;padding:6px 2px;line-height:1.2}
+.phone-ask-input{display:flex;align-items:center;gap:8px;margin-top:8px}
+.phone-ask-field{flex:1;border:1px solid #bbb;border-radius:8px;background:#fff;padding:7px 10px;color:#777}
+.phone-ask-model{display:flex;gap:8px;margin-top:8px}.phone-ask-model span{border:1px solid #bbb;border-radius:6px;padding:5px 9px}
 
 .tcard .lens-hud,.hud-frame.lens-hud{--mono:"Courier New",monospace;--green:#46e878;--green-dim:#288249;width:100%;margin-bottom:1.1rem}

@@ -122,6 +122,15 @@ class VersionDriftTests(unittest.TestCase):
         fail, _ = run(docs=DOCS.replace(old, ''))
         self.assertTrue(any('G2 HUD app version is gone' in f for f in fail), fail)
 
+    def test_home_footer_version_is_checked_on_every_instance(self):
+        # 6.10.592: the Home version lives in the footer, not beside Chief of Staff.
+        old = '<span class="hi">Chief of Staff</span> <span class="dim">6.8.437</span>'
+        footer = '<div class="lens-footer lens-footer-list">Opus  v6.8.437  3/3  #412  2m</div>'
+        fail, _ = run(docs=DOCS.replace(old, footer + '\n' + footer))
+        self.assertEqual(fail, [], fail)
+        fail, _ = run(docs=DOCS.replace(old, footer + '\n' + footer.replace('6.8.437', '6.8.999')))
+        self.assertTrue(any('G2 HUD app version says 6.8.999' in f for f in fail), fail)
+
     def test_hub_pin_reads_without_still_once_the_hub_is_current(self):
         # 2026-09-13: Even Hub caught up with the sideload build, so the pages say
         # "Even Hub lists X". The pin must still be read and compared, not skipped.

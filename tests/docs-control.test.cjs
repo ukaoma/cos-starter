@@ -24,6 +24,8 @@ test('every row a scene lights or rewrites exists in the panel markup',()=>{
     for(const key of Object.keys(scene.tier||{}))assert.ok(rows.has(key),name+' rewrites a real row: '+key);
     if(scene.server)assert.ok(rows.has('server'),name+' needs the server row');
     if(scene.row)assert.ok(rows.has('jobs'),name+' inserts after the jobs row');
+    if(scene.recording)assert.ok(html.includes('class="ccp-top"'),name+' inserts its recording line under the panel header');
+    assert.ok(!(scene.row&&scene.recording),name+' uses one inserted panel line');
   }
   assert.ok(rows.has('server')&&rows.has('tier')&&rows.has('dictate')&&rows.has('commit')&&rows.has('polish'));
 });
@@ -38,6 +40,7 @@ test('cards, notices, footers and ledgers render their scene text and escape mar
       for(const item of scene.card.list||[])assert.ok(decode(card).includes(item.text),name+' lists '+item.text);
       for(const row of scene.card.rows||[])assert.ok(decode(card).includes(row[1]),name+' shows '+row[1]);
       for(const lane of scene.card.lanes||[])assert.ok(decode(card).includes(lane[0]),name+' shows lane '+lane[0]);
+      if(scene.card.live)assert.ok(decode(card).includes('Live now'+scene.card.live.text),name+' shows the Live now row');
     }
     assert.equal(!!control.noticeHtml(name),!!scene.notice,name+' notice presence');
     assert.equal(!!control.footHtml(name),!!scene.foot,name+' footer presence');

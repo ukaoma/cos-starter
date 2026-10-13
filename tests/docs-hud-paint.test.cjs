@@ -331,7 +331,9 @@ for(const mode of [{reduced:true},{anime:false}])test('static fallback paints im
 test('HUD release, conversation footers and Send landing stay current',()=>{
   const {hud}=harness(),html=fs.readFileSync(path.join(__dirname,'../docs/index.html'),'utf8');
   const version=html.match(/Covers COS Glasses ([\d.]+)/)[1];
-  assert.equal(hud.frames.home.body.split('\n')[0],'Chief of Staff v'+version);
+  // 6.10.592: the version sits in the Home footer; the title row is Chief of Staff and the running count.
+  assert.equal(hud.frames.home.footer.split('  ')[1],'v'+version);
+  assert.match(hud.frames.home.body.split('\n')[0],/^Chief of Staff( · |$)/);
   for(const name of ['receipt','job','reader','continued','session','sending','live','history','sessionLive','sessionHistory']) {
     assert.doesNotMatch(hud.frames[name].footer,/\d+%|demo1234|Tap to watch/,name+' spends conversation footer on controls');
   }
@@ -340,4 +342,16 @@ test('HUD release, conversation footers and Send landing stay current',()=>{
   assert.match(hud.frames.sessionHistory.footer,/1 down to live/);
   assert.match(hud.frames.live.footer,/history \+ Ask/);
   assert.match(hud.frames.sessionLive.footer,/history \+ Ask/);
+});
+
+test('Meeting Ask answers brighten each row label only and keep every character',()=>{
+  const {hud}=harness();
+  for(const name of ['meetingAsk','meetingAskWorking','meetingAskOlder','meetingAskReturn']){
+    const f=hud.frames[name], text=hud.html(f).match(/<div class="lens-text">([\s\S]*?)<\/div>/)[1];
+    assert.equal(decode(text),f.body,name+' keeps every character');
+    const bright=[...text.matchAll(/<span class="lens-bright">([^<]*)<\/span>/g)].map(m=>m[1]);
+    assert.equal(JSON.stringify(bright),JSON.stringify([...f.labels].filter(Boolean)),name+' brightens exactly its labels');
+    assert.ok(f.body.split('\n').length<=6,name+' fits the six-row reader');
+  }
+  assert.match(hud.frames.meetingAsk.body,/^So what: /);
 });

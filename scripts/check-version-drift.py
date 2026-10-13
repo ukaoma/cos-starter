@@ -76,6 +76,10 @@ PHONE_MOCK_APP_RE = re.compile(
     r'<span class="(?:hi|lens-bright)">Chief of Staff</span>\s*'
     r'<span class="(?:dim|lens-dim)">\s*v?(\d+\.\d+\.\d+)</span>'
 )
+# 6.10.592 moved the Home version from the title row to the footer (`Opus  v6.10.635  3/3 ...`).
+HOME_FOOTER_APP_RE = re.compile(
+    r'<div class="lens-footer lens-footer-list">[A-Za-z][\w.-]*  v(\d+\.\d+\.\d+)  '
+)
 PHONE_COMPANION_APP_RE = re.compile(
     r'<div class="pf-app"><b>COS GLASSES</b><i>v(\d+\.\d+\.\d+) &#183; Live on G2</i></div>'
 )
@@ -291,7 +295,7 @@ def evaluate(
         _require("docs hero Control chip", _one(HERO_CONTROL_CHIP_RE, docs, "docs hero Control chip", fail), docs_control, fail)
         # Home is rendered in both the hero and ring walkthrough. Require at
         # least one visible version and validate EVERY instance, not just one.
-        hud_versions = PHONE_MOCK_APP_RE.findall(docs)
+        hud_versions = PHONE_MOCK_APP_RE.findall(docs) + HOME_FOOTER_APP_RE.findall(docs)
         if not hud_versions:
             fail.append("docs G2 HUD app version is gone; restore it rather than deleting it")
         for hud_version in hud_versions:
