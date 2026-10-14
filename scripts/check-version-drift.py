@@ -531,6 +531,15 @@ def evaluate_views(*, control: str, home: str) -> list[str]:
     return fail
 
 
+def evaluate_wizard(wizard: str, stable: dict) -> list[str]:
+    """The onboarding download must deliver the same release as the appcast."""
+    links = re.findall(r'href=[\"\']([^\"\']*COS-Control-macOS-arm64-[^\"\']*\.zip)[\"\']', wizard)
+    if not links:
+        return ["wizard has no direct Control download to verify"]
+    return [f"wizard Control download differs from appcast: {link}"
+            for link in links if html_lib.unescape(link) != stable["url"]]
+
+
 def release_asset_bytes(url: str) -> bytes:
     """Only the release repository may host artifacts; never fetch arbitrary appcast URLs."""
     if not re.fullmatch(r"https://github\.com/ukaoma/cos-starter/releases/download/control-v[0-9.]+/COS-Control-macOS-arm64-(?:[0-9.]+|latest)\.zip(?:\.sha256)?", url):
@@ -599,6 +608,7 @@ def main() -> int:
         latest_zip_missing=latest_zip_missing,
         home=home,
     )
+    fail.extend(evaluate_wizard((ROOT / "wizard/index.html").read_text(encoding="utf-8"), stable))
     note = note_prefix + note
 
     for n in note:

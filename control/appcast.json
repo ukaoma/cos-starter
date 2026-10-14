@@ -7,11 +7,11 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.289/COS-Control-macOS-arm64-0.5.289.zip",
       "sha256": "ba33e6b6756c3f9eec76e36ebd7ad7dae12f0b91ac0c4a07c0cf223ff8a5efde",
       "minMacOS": "14.0",
-      "serverTarget": "6.72.0",
+      "serverTarget": "6.73.1",
       "publishedAt": "2026-10-13T22:02:39.951536+00:00",
-      "notes": "Choose the live preview model (Whisper Turbo or Parakeet Ultra) and the HQ model from Settings, and install Parakeet. Pairs with server 6.72.0: timestamped Large-v3 HQ, highpass front end and a speech-detector quiet gate. Parakeet Ultra preview measured 10.7% fewer errors than Turbo on silver; Turbo stays the default. Matched companion 6.10.639 adds the phone switcher. Signed and notarized by Apple.",
+      "notes": "Choose the live preview model (Whisper Turbo or Parakeet Ultra) and the HQ model from Settings, and install Parakeet. Pairs with server 6.73.1: timestamped Large-v3 HQ, highpass front end and a speech-detector quiet gate. Parakeet Ultra preview measured 10.7% fewer errors than Turbo on silver; Turbo stays the default. Matched companion 6.10.639 adds the phone switcher. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Choose your transcription models and install Parakeet Ultra. Pairs with server 6.72.0 and companion 6.10.639.",
+        "summary": "Choose your transcription models and install Parakeet Ultra. Pairs with server 6.73.1 and companion 6.10.639.",
         "sections": [
           {
             "title": "Transcription models",

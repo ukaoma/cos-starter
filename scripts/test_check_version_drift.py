@@ -27,6 +27,17 @@ STABLE = {
 
 SHA = "aa" * 32
 
+class WizardDownloadTests(unittest.TestCase):
+    def test_same_release_as_appcast(self):
+        self.assertEqual(cvd.evaluate_wizard(f'<a href="{STABLE["url"]}">Download</a>', STABLE), [])
+
+    def test_older_version_and_alias_are_rejected(self):
+        for url in [STABLE['url'].replace('0.5.86', '0.5.85'), STABLE['url'].replace('0.5.86.zip', 'latest.zip')]:
+            self.assertTrue(cvd.evaluate_wizard(f'<a href="{url}">Download</a>', STABLE))
+
+    def test_missing_link_is_not_a_silent_pass(self):
+        self.assertTrue(cvd.evaluate_wizard('<a href="/control/">Details</a>', STABLE))
+
 COVERS = (
     "Covers COS Glasses 6.8.437 (build 437, Hub pin 6.8.353) "
     "· server @gotcos/glasses-server 6.40.2 · COS Control 0.5.86."
