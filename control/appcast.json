@@ -2,17 +2,24 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.313",
-      "build": 366,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.313/COS-Control-macOS-arm64-0.5.313.zip",
-      "sha256": "adfd9d758d978cf5b2fecfe0b6ced6e634b9978b596bdefb940df5ccd6db0241",
+      "version": "0.5.314",
+      "build": 367,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.314/COS-Control-macOS-arm64-0.5.314.zip",
+      "sha256": "116ead49a355f007698d1c206a8a61f66d3077b7339d4dd9820e369bfec47caf",
       "minMacOS": "14.0",
       "serverTarget": "6.73.14",
-      "publishedAt": "2026-10-16T13:05:35.894563+00:00",
-      "notes": "Dictation keeps listening while you click and drag, and a dictation cut short is still transcribed and copied. When Zoom, Teams or Google Meet takes the microphone, the pet offers Record: one click records all Mac audio, and saved Mac recordings appear in Meetings with server 6.73.14. Work chat shows what each assignment will send before you send it, and the Work tab uses much less CPU. Signed and notarized by Apple.",
+      "publishedAt": "2026-10-16T15:05:32.205831+00:00",
+      "notes": "Fixes a crash in 0.5.313 when a dictation start or stop sound finished. While a meeting records, the pet shows REC; click it to open the live meeting. Includes everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording with saved recordings in Meetings, and a lighter Work tab. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Dictation that keeps listening while you click, Mac recordings that start in one click when a meeting begins and show up in Meetings, and a lighter Work tab.",
+        "summary": "Fixes a crash when a dictation sound finished, and the pet shows REC while a meeting records. Plus everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "0.5.314",
+            "items": [
+              "Fixed: COS Control quit as soon as a dictation start or stop sound finished playing (0.5.313).",
+              "While a meeting records, on this Mac or the glasses, the pet shows a REC pill. Click it to open the live meeting."
+            ]
+          },
           {
             "title": "Fix dictation faster",
             "items": [
