@@ -2,17 +2,24 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.314",
-      "build": 367,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.314/COS-Control-macOS-arm64-0.5.314.zip",
-      "sha256": "116ead49a355f007698d1c206a8a61f66d3077b7339d4dd9820e369bfec47caf",
+      "version": "0.5.315",
+      "build": 368,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.315/COS-Control-macOS-arm64-0.5.315.zip",
+      "sha256": "89b4ad7095fe6511e2246d357bf80e59145df0aa64f763515937a5db16c7d4a2",
       "minMacOS": "14.0",
       "serverTarget": "6.73.14",
-      "publishedAt": "2026-10-16T15:05:32.205831+00:00",
-      "notes": "Fixes a crash in 0.5.313 when a dictation start or stop sound finished. While a meeting records, the pet shows REC; click it to open the live meeting. Includes everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording with saved recordings in Meetings, and a lighter Work tab. Signed and notarized by Apple.",
+      "publishedAt": "2026-10-16T19:15:21.798324+00:00",
+      "notes": "Mute other apps now silences other audio while you dictate (0.5.313 and 0.5.314 set it up without starting it). New dictation sound: Miles Windu saber, the default for the Jedi Miles Windu pet. Includes everything in 0.5.314: the dictation sound crash fix and the pet's REC pill. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Fixes a crash when a dictation sound finished, and the pet shows REC while a meeting records. Plus everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
+        "summary": "Mute other apps now really silences other audio while you dictate, and the Miles Windu pet gets its own saber sound. Plus everything in 0.5.314: the dictation sound crash fix and the pet's REC pill.",
         "sections": [
+          {
+            "title": "0.5.315",
+            "items": [
+              "Fixed: Mute other apps now silences Spotify and other audio while you hold the dictation key. 0.5.313 and 0.5.314 set the mute up but never started it. If it cannot start, COS lowers the volume instead and Settings says why.",
+              "New dictation sound: Miles Windu saber. It is the default for the Jedi Miles Windu pet."
+            ]
+          },
           {
             "title": "0.5.314",
             "items": [
