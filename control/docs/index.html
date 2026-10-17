@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.317 (build 370) · server @gotcos/glasses-server 6.74.0.
-  Every claim is grounded in the 0.5.317 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.318 (build 371) · server @gotcos/glasses-server 6.74.0.
+  Every claim is grounded in the 0.5.317 and 0.5.318 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.317",
+    "softwareVersion": "0.5.318",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -416,7 +416,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.317</span>
+    <span class="sb-ver">Control 0.5.318</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -445,7 +445,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.317</b> · build 370</span>
+    <span class="chip">Control <b>0.5.318</b> · build 371</span>
     <span class="chip">Server <b>6.74.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -543,7 +543,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <tbody>
         <tr><td data-label="Permission"><strong>Accessibility</strong></td><td data-label="What it switches on">Jumping straight to a Claude or Cursor session and bringing its window forward. Dictation typing into other apps. Fn and single-key dictation shortcuts. Spotting a Google Meet call in a browser by its tab title.</td><td data-label="When COS asks">From Permissions, the pet's session jump, or <strong>Allow insertion into other apps…</strong> under dictation.</td></tr>
         <tr><td data-label="Permission"><strong>Microphone</strong></td><td data-label="What it switches on">Dictation. Mac meeting recording never records the microphone.</td><td data-label="When COS asks">On your first dictation.</td></tr>
-        <tr><td data-label="Permission"><strong>Screen &amp; System Audio Recording</strong></td><td data-label="What it switches on">Mac meeting recording, and <strong>Mute other apps</strong> while you dictate. COS Control appears under <strong>System Audio Recording Only</strong>.</td><td data-label="When COS asks">Once, when you start your first Mac recording.</td></tr>
+        <tr><td data-label="Permission"><strong>Screen &amp; System Audio Recording</strong></td><td data-label="What it switches on">Mac meeting recording, and <strong>Mute other apps</strong> while you dictate. COS Control appears under <strong>System Audio Recording Only</strong>.</td><td data-label="When COS asks">When you start a Mac recording or turn on Mute other apps (0.5.318; 0.5.317 asked only at the first recording).</td></tr>
         <tr><td data-label="Permission"><strong>Notifications</strong></td><td data-label="What it switches on">Telling you when meeting audio stops reaching this Mac and when Work needs you.</td><td data-label="When COS asks">When a feature first needs it.</td></tr>
         <tr><td data-label="Permission"><strong>Automation</strong></td><td data-label="What it switches on">Typing the install and sign-in commands into Terminal or iTerm for you during setup.</td><td data-label="When COS asks">The first time COS opens Terminal for you. Without it, the command goes on the clipboard.</td></tr>
         <tr><td data-label="Permission"><strong>Full Disk Access</strong></td><td data-label="What it switches on">Listed for background jobs and the glasses server when your setup needs it.</td><td data-label="When COS asks">From Permissions.</td></tr>
@@ -564,7 +564,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>In COS Control: <strong>Settings, Session pet, Reset and add again</strong>, or the <strong>Already on? Reset and add again</strong> link on the Permissions row. It removes COS Control's old entry, asks macOS again and opens the list. Then switch COS Control on.</li>
       <li>By hand: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select COS Control, click the minus button, then click plus, choose COS Control in Applications and switch it on.</li>
     </ul>
-    <p>Switching the toggle off and on is often not enough. The <strong>Allow…</strong> button on a dictation card only shows the macOS prompt; it does not remove an old entry.</p>
+    <p>Switching the toggle off and on is often not enough. Since COS Control 0.5.318 the dictation card offers <strong>Reset</strong> beside <strong>Allow…</strong>, which does the same as Reset and add again.</p>
   </div>
 
   <div class="note"><p><strong>Updating from an older copy?</strong> The move from the old local signature to Developer ID may require granting feature permissions again in System Settings.</p></div>
@@ -768,7 +768,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <table>
         <thead><tr><th>Card</th><th>What to do</th></tr></thead>
         <tbody>
-          <tr><td data-label="Card"><strong>COPIED · ALLOW ACCESSIBILITY</strong></td><td data-label="What to do">Allow COS Control in Accessibility (<strong>Allow…</strong>). For now, click where you want the text and press <kbd>⌘V</kbd>. If Accessibility already shows on, see <a href="#fix-accessibility">this fix</a>.</td></tr>
+          <tr><td data-label="Card"><strong>COPIED · ALLOW ACCESSIBILITY</strong></td><td data-label="What to do"><strong>Allow…</strong> opens the Accessibility page with the COS bar to drag COS Control in, and the card closes once it works. Already on? <strong>Reset</strong> removes the old entry and asks macOS again (0.5.318; see <a href="#fix-accessibility">this fix</a>). For now, click where you want the text and press <kbd>⌘V</kbd>.</td></tr>
           <tr><td data-label="Card"><strong>NO TEXT BOX · COPIED</strong></td><td data-label="What to do">Click where you want it, then press <kbd>⌘V</kbd>.</td></tr>
           <tr><td data-label="Card"><strong>PASSWORD FIELD · COPIED</strong></td><td data-label="What to do">COS never types into a password field. Paste it yourself if you mean to.</td></tr>
           <tr><td data-label="Card"><strong>SECURE INPUT ON · COPIED</strong></td><td data-label="What to do">Another app is holding secure keyboard input. Click where you want it and press <kbd>⌘V</kbd>.</td></tr>
@@ -812,15 +812,15 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="dictation-quiet">
     <h3>While dictating: mute other apps</h3>
-    <p><strong>While dictating</strong> has <strong>Mute other apps</strong> (the default), <strong>Lower other audio</strong> and <strong>Off</strong>. Muting needs Screen &amp; System Audio Recording for COS Control; until it is allowed, COS lowers your Mac's volume while you dictate and puts it back after, and Settings says so with <strong>Open Screen &amp; System Audio Recording…</strong>. Music and video are muted, not paused, and nothing is muted during a Mac recording.</p>
+    <p><strong>While dictating</strong> has <strong>Mute other apps</strong> (the default), <strong>Lower other audio</strong> and <strong>Off</strong>. Muting needs Screen &amp; System Audio Recording for COS Control; until it is allowed, COS lowers your Mac's volume while you dictate and puts it back after. Since 0.5.318, <strong>Allow System Audio Recording…</strong> in Settings asks macOS, and if macOS was already answered the COS bar opens the page to drag COS Control in. Music and video are muted, not paused, and nothing is muted during a Mac recording.</p>
   </div>
 
   <div class="sub" id="dictation-sounds">
     <h3>Sounds</h3>
     <p>Under <strong>Sound</strong>, set the <strong>Start</strong> and <strong>Stop</strong> sounds separately, each with <strong>Preview</strong>.</p>
     <ul>
-      <li><strong>Pet's sound</strong> is the default and follows your pet: Miles Windu saber for the Jedi Miles Windu pet, Unstable saber for the other Jedi, Droid chirp for droids and Soft chime for everyone else.</li>
-      <li>Any pet can use any library sound: Miles Windu saber, Unstable saber, Unstable saber (bright), Dark saber, Saber, full ignition, Saber ignite, Saber, soft, Droid chirp or Soft chime.</li>
+      <li><strong>Pet's sound</strong> is the default and follows your pet: Miles Windu lightsaber for every Jedi (since 0.5.318; in 0.5.317 it was named Miles Windu saber and only the Jedi Miles Windu pet used it), Droid chirp for droids and Soft chime for everyone else. A sound you picked yourself stays as it is.</li>
+      <li>Any pet can use any library sound: Miles Windu lightsaber, Unstable saber, Unstable saber (bright), Dark saber, Saber, full ignition, Saber ignite, Saber, soft, Droid chirp or Soft chime.</li>
       <li><strong>Your own file…</strong> imports a sound up to 20 MB and trims it to 3 seconds. For the stop sound you can use the end of the file.</li>
       <li><strong>Volume</strong> defaults to 60%; at 0 sounds are off. <strong>Pitch</strong> goes from minus 12 to plus 6 semitones.</li>
       <li>No sound plays while a COS recording is capturing.</li>
@@ -1105,7 +1105,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card" id="fix-voice-no-speech">
       <h3>Voice says “No speech detected” but the engine test passed</h3>
-      <p>In COS Control 0.5.317 the Voice row's check can report no speech even though your microphone is fine: its test clip repeats one sentence, and the server discards repeated text. If <strong>Dictation engine</strong> below it shows a passing test, dictation works. A fix is coming in the next Control update.</p>
+      <p>In COS Control 0.5.317 the Voice row's check can report no speech even though your microphone is fine: its test clip repeats one sentence, and the server discards repeated text. COS Control 0.5.318 fixes it; update, then choose <strong>Test again</strong>.</p>
     </div>
     <div class="card">
       <h3>Your AI is not detected</h3>
@@ -1208,6 +1208,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-318"><h3>Control 0.5.318 / server 6.74.0</h3><p>Fixes from the first Macs on 0.5.317. <strong>Allow</strong> on a dictation card opens the exact Accessibility page with the COS bar to drag COS Control in, and the card closes once it works; if Accessibility already reads on but dictation only copies, <strong>Reset and add again</strong> removes the old entry and asks macOS again. COS asks macOS for <strong>System Audio Recording</strong> when you turn on Mute other apps or start a Mac recording, so COS Control appears in that list. The setup guide&rsquo;s Voice check no longer says &ldquo;No speech detected&rdquo; on a Mac where dictation works, and with the session pet off the setup list asks for Accessibility when dictation is on. <strong>Miles Windu lightsaber</strong> is the dictation sound for every Jedi pet. The full Mac guide is at <a href="/control/docs/">COS Control Docs</a>.</p></section>
     <section class="note" id="release-317"><h3>Control 0.5.317 / server 6.74.0</h3><p><strong>Mac dictation works for every user.</strong> Settings, Transcription, Dictation engine: <strong>Automatic</strong> uses Parakeet Ultra when it is installed and ready, and local Whisper otherwise; dictation never uses the cloud. <strong>Install Parakeet</strong> (654 MB) from the menu bar, Settings or a dictation card, with no Terminal step. The setup guide tests each installed engine on this Mac, and a dictation that fails says why with one action that fixes it. <strong>Fix a word</strong> now updates Heard and the pasted text, and Replace works in Claude and Slack; spoken lists become lists; <strong>Learn from my edits</strong> saves your corrections; COS Activity has a <strong>Dictation</strong> tab. In Work chat, a send that earlier work would hold now <strong>queues</strong> and sends by itself once that work is done, reviewed or answered (Settings, Work: Queue it or Ask each time, which adds Send in parallel). Sessions can be linked to a task as a <strong>reference</strong>, never sent to from it. The board has a <strong>Complete</strong> column again, cards with many sessions say they are loading, and a card no longer stays blocked after you reviewed its earlier handoff.</p></section>
     <section class="note" id="release-315"><h3>Control 0.5.315 / server 6.73.14</h3><p><strong>Mute other apps</strong> now silences other audio while you hold the dictation key; 0.5.313 and 0.5.314 set the mute up without starting it. If the mute cannot start, COS lowers the volume instead and Settings says why. New dictation sound: <strong>Miles Windu saber</strong>, the default for the Jedi Miles Windu pet.</p></section>
     <section class="note" id="release-314"><h3>Control 0.5.314 / server 6.73.14</h3><p>Fixes a crash in 0.5.313 when a dictation start or stop sound finished. While a meeting records, on this Mac or the glasses, the pet shows a <strong>REC</strong> pill; click it to open the live meeting.</p></section>
