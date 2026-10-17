@@ -1428,7 +1428,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     if(!groups.length) return;
     function measureOne(el, api){
       var live=el.getAttribute('data-mode');
-      if(api&&(el.matches(':hover')||live==='login'||live==='download')){ el._pillStale=true; return; }
+      if(api&&(live==='login'||live==='download')){ el._pillStale=true; return; }
       var login=el.querySelector('.nav-login'), cta=el.querySelector('.cta');
       if(!login||!cta) return;
       if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
@@ -1479,18 +1479,12 @@ Tap=Latest  ↓ Menu  ↑ Messages
         var hit=document.elementFromPoint(x,y);
         return !!(hit&&(hit===el||el.contains(hit)));
       }
-      function zone(clientX){
+      // Like okta.com: entering either button expands it at once, and that
+      // choice holds until the pointer leaves the pill. The split point is the
+      // divider between the two buttons at rest (3px is the pill's padding).
+      function side(clientX){
         var rect=el.getBoundingClientRect();
-        var t=(clientX-rect.left)/rect.width;
-        if(t<0) t=0; if(t>1) t=1;
-        var L=metrics.inner?metrics.login/metrics.inner:0.3;
-        var loginCut=L*0.5;
-        var downloadCut=L+(1-L)*0.5;
-        if(mode==='login') loginCut+=0.05;
-        if(mode==='download') downloadCut-=0.05;
-        if(t<=loginCut) return 'login';
-        if(t>=downloadCut) return 'download';
-        return 'split';
+        return clientX<rect.left+3+metrics.login?'login':'download';
       }
       function maybeRecalibrate(){
         if(el._pillStale){ el._pillStale=false; measure(); }
@@ -1498,7 +1492,8 @@ Tap=Latest  ↓ Menu  ↑ Messages
       el.addEventListener('pointermove',function(e){
         if(e.pointerType==='touch') return;
         lastX=e.clientX; lastY=e.clientY;
-        go(zone(e.clientX));
+        if(!metrics.inner) maybeRecalibrate();
+        if(mode==='split') go(side(e.clientX));
       });
       el.addEventListener('pointerleave',function(e){
         if(e.pointerType==='touch') return;
@@ -1517,7 +1512,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
         requestAnimationFrame(function(){
           scrollQueued=false;
           if(lastX==null) return;
-          if(pointerInside(lastX,lastY)) go(zone(lastX));
+          if(pointerInside(lastX,lastY)){ if(mode==='split') go(side(lastX)); }
           else { lastX=null; lastY=null; go('split'); }
         });
       },{passive:true});
@@ -1525,7 +1520,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       cta.addEventListener('focus',function(){ go('download'); });
       el.addEventListener('focusout',function(e){
         if(e.relatedTarget&&el.contains(e.relatedTarget)) return;
-        if(lastX!=null&&el.matches(':hover')){ go(zone(lastX)); return; }
+        if(lastX!=null&&el.matches(':hover')){ if(mode==='split') go(side(lastX)); return; }
         go('split');
         maybeRecalibrate();
       });
