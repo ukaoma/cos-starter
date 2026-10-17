@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.317",
-      "build": 370,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.317/COS-Control-macOS-arm64-0.5.317.zip",
-      "sha256": "f1324d675a65b4fe121d347453c282395ea9e61267753d154fd7d3d27a91e7fc",
+      "version": "0.5.318",
+      "build": 371,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.318/COS-Control-macOS-arm64-0.5.318.zip",
+      "sha256": "04d86967b11425a9e0eee278d0a83c0b3e4412affb4d855f9ebfaf76df952431",
       "minMacOS": "14.0",
       "serverTarget": "6.74.0",
-      "publishedAt": "2026-10-17T13:07:52+00:00",
-      "notes": "Mac dictation works for every user: Automatic uses Parakeet Ultra when ready and local Whisper otherwise, never the cloud, and Install Parakeet (654 MB) is one click. Work chat queues a send behind earlier work instead of stopping, sessions can be linked as references, and the board has a Complete column again. Fix a word now fixes the dictation itself, including in Claude and Slack. Needs server 6.74.0 for Whisper dictation and the Parakeet install. Signed and notarized by Apple.",
+      "publishedAt": "2026-10-17T15:49:39+00:00",
+      "notes": "Allow on a dictation card opens the drag-in helper, with Reset and add again when Accessibility already reads on. COS asks macOS for System Audio Recording, so it appears in that list. The setup guide's Voice check no longer says no speech was detected when dictation works, and Miles Windu lightsaber is every Jedi pet's dictation sound. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
+        "summary": "Fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "0.5.318",
+            "items": [
+              "Allow in a dictation card opens the exact Accessibility page with the COS bar to drag COS Control in, and the card closes once it works. Already on but not working? Reset and add again removes the old entry and asks macOS again.",
+              "Mute other apps, Mac recording and the quiet-mode note ask macOS for System Audio Recording, so COS Control appears in that list. If it was refused before, the COS bar opens the page to drag it in. Until it is allowed, COS lowers the volume instead and recording carries on.",
+              "The setup guide's Voice check no longer reports \"No speech detected\" on a working Mac. Its test clip repeated one sentence, which the server discards as a loop; it now sends one sentence.",
+              "Miles Windu lightsaber is the dictation sound for every Jedi pet, not only Jedi Miles Windu. A sound you picked yourself stays as it is."
+            ]
+          },
           {
             "title": "Dictation for everyone",
             "items": [
