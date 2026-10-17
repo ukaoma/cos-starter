@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.319",
-      "build": 372,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.319/COS-Control-macOS-arm64-0.5.319.zip",
-      "sha256": "e129dc2490a776305feadfff9c27df50183264c34564e401a1a4fa933d661830",
+      "version": "0.5.320",
+      "build": 373,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.320/COS-Control-macOS-arm64-0.5.320.zip",
+      "sha256": "f8731af5f283444c4153fee101a2a8ca8f6b5e44a1b705e16336bb091cf7dbe7",
       "minMacOS": "14.0",
-      "serverTarget": "6.74.0",
-      "publishedAt": "2026-10-17T20:57:33+00:00",
-      "notes": "Download and install shows the megabytes and the time left, and Installing says it usually takes under a minute. Installing can no longer hang: if COS Control has not closed after 75 seconds, the window says why nothing was installed and offers Try again. Slower connections no longer fail the download. Signed and notarized by Apple.",
+      "serverTarget": "6.75.0",
+      "publishedAt": "2026-10-17T22:24:32+00:00",
+      "notes": "Download and install now finishes: COS Control quits, installs and reopens by itself. Updating to this version from an older one can still stall once; if Installing has not finished after a minute, Force Quit COS Control and the update installs and reopens it. Old update downloads are cleaned up. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
+        "summary": "Download and install now finishes: COS Control closes, installs and reopens by itself. Before, its own quit could stall, so the window sat on Installing. Updating to this version from an older one can still stall once: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now cleaned up. Plus everything in 0.5.319: updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "0.5.320",
+            "items": [
+              "Download and install finishes on its own. COS Control asked itself to quit in a way that could stall forever, so the window sat on Installing while a normal quit worked. It now quits, installs and reopens.",
+              "Updating to 0.5.320 from an older version can still stall once, because the old version runs the install. If Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape): the update then installs and reopens it.",
+              "Quit in the menu bar panel uses the same reliable path.",
+              "Old update downloads are removed when a new one starts, so the updates folder keeps only the one being installed."
+            ]
+          },
           {
             "title": "0.5.319",
             "items": [
