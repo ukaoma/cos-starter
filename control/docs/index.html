@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8RE3VYJHF7');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COS Control Docs · Mac User Guide</title>
+<meta name="description" content="The COS Control user guide for Mac: install and first run, permissions, the menu bar and session pet, the eight Activity views, dictation, Mac meeting recording, Work, Sessions, the managed server, updates and troubleshooting.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.gotcos.com/control/docs/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.gotcos.com/control/docs/">
+<meta property="og:title" content="COS Control Docs · Mac User Guide">
+<meta property="og:description" content="How to set up, use and troubleshoot COS Control, the Mac companion for Claude, Codex and Cursor sessions, dictation, meetings and Work.">
+<meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="COS. Open-source AI chief of staff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="COS Control Docs · Mac User Guide">
+<meta name="twitter:description" content="How to set up, use and troubleshoot COS Control, the Mac companion for Claude, Codex and Cursor sessions, dictation, meetings and Work.">
+<meta name="twitter:image" content="https://www.gotcos.com/assets/banner.png?v=2">
+<meta name="theme-color" content="#170f09">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<!--
+  gotcos.com/control/docs · COS Control user guide for Mac.
+  Covers COS Control 0.5.317 (build 370) · server @gotcos/glasses-server 6.74.0.
+  Every claim is grounded in the 0.5.317 app source, its CHANGELOG and What's New,
+  or copy already published on /control, /docs and /wizard.
+  The release notes chapter is copied byte for byte from /docs.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "COS Control Docs: Mac User Guide",
+  "description": "How to install, use and troubleshoot COS Control, the macOS companion for the open-source COS server.",
+  "url": "https://www.gotcos.com/control/docs/",
+  "mainEntityOfPage": "https://www.gotcos.com/control/docs/",
+  "inLanguage": "en",
+  "dateModified": "2026-10-17",
+  "proficiencyLevel": "Beginner",
+  "image": "https://www.gotcos.com/assets/banner.png?v=2",
+  "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
+  "publisher": {"@type": "Organization", "name": "COS", "url": "https://www.gotcos.com/"},
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "COS Control",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "macOS 14 or later, Apple Silicon",
+    "softwareVersion": "0.5.317",
+    "url": "https://www.gotcos.com/control/"
+  }
+}
+</script>
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
+  --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
+  --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+  --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
+  --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
+  --maxw:1140px; --gut:clamp(16px,5vw,72px);
+  --navh:112px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html,body{overflow-x:clip}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6}
+::selection{background:rgba(201,169,110,.32);color:#fff}
+a{color:var(--gold);text-decoration:none}
+p a,li a,td a,.lead a{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn:focus-visible,.nav .cta:focus-visible{outline-offset:2px}
+.skip{position:absolute;left:12px;top:-60px;z-index:40;background:var(--gold);color:#1a1206;padding:10px 16px;border-radius:9px;font-weight:600}
+.skip:focus{top:12px}
+.it{font-style:italic}
+.goldt{color:var(--gold)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);position:relative}
+
+/* ── page ────────────────────────────────────────────── */
+.cd-page{padding-top:var(--navh)}
+section.chapter,header.hero{padding-block:clamp(48px,7vw,96px);position:relative;scroll-margin-top:calc(var(--navh) + 12px)}
+[id]{scroll-margin-top:calc(var(--navh) + 12px)}
+section.light{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
+section.light h2,section.light h3,section.light h4,section.light p strong,section.light li strong,section.light summary,section.light td strong{color:var(--ink-on-cream)}
+section.light .lead,section.light p,section.light li,section.light td{color:var(--muted-on-cream)}
+section.light a,section.light code{color:#7a5c2c}
+section.light .ch .num{opacity:.45}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.05;letter-spacing:-.015em;text-wrap:balance;margin-bottom:14px}
+h2 .num{font-style:italic;color:var(--gold);opacity:.8}
+h3{font-family:var(--body);font-weight:600;font-size:1.05rem;line-height:1.35;margin:0 0 8px}
+h4{font-family:var(--body);font-weight:600;font-size:.95rem;margin:16px 0 6px;color:var(--fg)}
+.ch-sub{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2vw,1.32rem);line-height:1.35;opacity:.78;margin:0 0 14px}
+.lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.65;max-width:62ch}
+p{color:var(--muted)}
+p+p{margin-top:10px}
+p strong,li strong,td strong{color:var(--fg);font-weight:600}
+.sec-head{max-width:820px;margin-bottom:clamp(22px,3.4vw,38px)}
+code{font-family:var(--mono);font-size:.85em;color:var(--gold);overflow-wrap:anywhere}
+kbd{font-family:var(--mono);font-size:.78em;padding:1px 6px;border:1px solid var(--line);border-radius:6px;background:rgba(255,246,232,.04);color:var(--fg);white-space:nowrap}
+section.light kbd{border-color:rgba(46,31,16,.24);background:rgba(46,31,16,.05);color:var(--ink-on-cream)}
+.sub{margin-top:clamp(30px,4vw,46px);max-width:860px}
+.sub>h3{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.2vw,1.6rem);line-height:1.2;margin-bottom:10px}
+.sub p{max-width:70ch}
+.sub ul,.sub ol{margin:10px 0 0 1.15rem;max-width:70ch}
+.sub li{margin:7px 0;line-height:1.55;color:var(--muted)}
+
+/* ── chips, buttons ──────────────────────────────────── */
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+.badges .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:linear-gradient(158deg,var(--panel),transparent)}
+.badges .chip b{color:var(--rose);font-weight:500}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 34px -14px rgba(201,169,110,.55)}
+.btn.ghost{border-color:var(--line-2);color:var(--fg)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── guide cross-links ───────────────────────────────── */
+.xlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin-top:26px;max-width:760px}
+.xlink{display:block;border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:linear-gradient(158deg,var(--panel),transparent);transition:border-color .18s ease}
+.xlink:hover{border-color:var(--gold)}
+.xlink b{display:block;font-weight:600;color:var(--fg);font-size:.98rem}
+.xlink span{display:block;font-size:.86rem;color:var(--muted);line-height:1.45;margin-top:3px}
+
+/* ── command blocks ──────────────────────────────────── */
+.cmd{display:flex;align-items:center;gap:12px;background:#0d0906;border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:12px 0;font-family:var(--mono);font-size:.82rem;color:var(--fg);max-width:100%}
+.cmd .p{color:var(--gold);user-select:none}
+.cmd code{color:var(--fg);flex:1;min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;overflow-wrap:normal}
+
+/* ── tables ──────────────────────────────────────────── */
+.tw{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);text-align:left;padding:0 14px 10px}
+td{padding:12px 14px;border-top:1px solid var(--line-2);color:var(--muted);vertical-align:top}
+td:first-child{min-width:9.5em}
+section.light th{color:rgba(46,31,16,.5)}
+section.light td{border-top-color:var(--line-on-cream)}
+
+/* ── cards, steps, faq, notes ────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:20px}
+.card{border:1px solid var(--line);border-radius:16px;padding:20px;background:linear-gradient(158deg,var(--panel),transparent);min-width:0}
+.card p,.card li{font-size:.93rem}
+.card ul,.card ol{margin:10px 0 0 1.1rem}
+.card li{margin:6px 0;line-height:1.5;color:var(--muted)}
+section.light .card{border-color:var(--line-on-cream);background:rgba(255,255,255,.5)}
+section.light .card li{color:var(--muted-on-cream)}
+.steps{list-style:none;counter-reset:st;margin-top:8px;max-width:860px}
+.steps>li{counter-increment:st;position:relative;padding:20px 0 20px 58px;border-top:1px solid var(--line-2)}
+.steps>li:first-child{border-top:0}
+.steps>li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:22px;font-family:var(--mono);font-size:.8rem;color:var(--gold)}
+section.light .steps>li{border-top-color:var(--line-on-cream)}
+section.light .steps>li::before{color:#7a5c2c}
+.steps p{font-size:.96rem}
+.steps ul{margin:8px 0 0 1.1rem}
+.steps ul li{margin:5px 0;font-size:.94rem;line-height:1.5}
+.faq{max-width:860px}
+.faq details{border-top:1px solid var(--line-2);padding:4px 0}
+.faq details:last-child{border-bottom:1px solid var(--line-2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;font-weight:600;font-size:1.02rem;color:var(--fg)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--gold);font-size:1.1rem;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 2px 18px;max-width:70ch}
+section.light .faq details{border-color:var(--line-on-cream)}
+section.light .faq summary::after{color:#7a5c2c}
+.note{border-left:2px solid var(--gold);padding:4px 0 4px 18px;margin-top:22px;max-width:860px}
+.note p,.note li{font-size:.94rem}
+section.light .note{border-left-color:#7a5c2c}
+.views-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;margin:18px 0 0;list-style:none;max-width:860px}
+.views-list a{display:block;border:1px solid var(--line-2);border-radius:11px;padding:10px 13px;color:var(--fg);font-weight:500;font-size:.92rem}
+.views-list a:hover{border-color:var(--gold);color:var(--gold)}
+.views-list small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;line-height:1.35;margin-top:2px}
+
+/* release notes: the sections are copied byte for byte from /docs */
+#release-notes .note h3{margin-bottom:6px}
+#release-notes .note+.note{margin-top:26px}
+
+/* ── contents grid ───────────────────────────────────── */
+#chapters{padding-block:clamp(10px,2vw,24px) clamp(30px,4vw,48px)}
+.chapgrid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.chapgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.chapgrid{grid-template-columns:repeat(3,1fr)}}
+.chapcard{display:block;border:1px solid var(--line-2);border-radius:14px;padding:15px 17px;background:linear-gradient(158deg,var(--panel),transparent);transition:transform .18s ease,border-color .18s ease}
+.chapcard:hover{transform:translateY(-2px);border-color:rgba(201,169,110,.45)}
+.chap-t{display:block;font-weight:600;font-size:.98rem;color:var(--fg);margin-bottom:3px}
+.chap-t .n{font-family:var(--mono);font-weight:400;font-size:.8rem;color:var(--gold);margin-right:8px}
+.chap-d{display:block;font-size:.85rem;color:var(--muted);line-height:1.45}
+
+/* ── docs shell (>=1100px): contents rail + content ──── */
+.docs-side{display:none}
+@media(min-width:1100px){
+  .docs-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(28px,3.5vw,52px);width:min(1280px,calc(100% - 2 * var(--gut)));margin-inline:auto}
+  .docs-main{min-width:0}
+  .docs-main .wrap{max-width:none;margin:0;padding-inline:0}
+  .docs-shell section.light{box-shadow:none;clip-path:none;border:1px solid rgba(40,27,17,.12);border-radius:18px;padding-inline:clamp(24px,3vw,42px);margin-block:clamp(14px,1.6vw,24px)}
+  .docs-side{display:block;position:sticky;top:calc(var(--navh) + 8px);align-self:start;max-height:calc(100vh - var(--navh) - 16px);overflow-y:auto;padding:30px 0 28px;scrollbar-width:thin}
+  .sb-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .sb-title{font-family:var(--display);font-style:italic;font-weight:500;font-size:.95rem;color:var(--gold)}
+  .sb-ver{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
+  .sb-nav{position:relative;padding-left:15px;display:flex;flex-direction:column}
+  .sb-nav::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:2px;background:var(--line-2);border-radius:2px}
+  .sb-nav a{position:relative;font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.35;transition:color .18s ease}
+  .sb-nav a:hover{color:var(--fg)}
+  .sb-nav a[aria-current="true"]{color:var(--gold)}
+  .sb-nav a[aria-current="true"]::before{content:"";position:absolute;left:-15px;top:6px;bottom:6px;width:2px;background:var(--gold);border-radius:2px}
+  .sb-x{display:block;margin-top:22px;padding:13px 14px;border:1px solid var(--line-2);border-radius:12px;font-size:.82rem;color:var(--muted);line-height:1.4}
+  .sb-x b{display:block;color:var(--fg);font-weight:600;margin-bottom:2px}
+  .sb-x:hover{border-color:var(--gold)}
+  .sb-x+.sb-x{margin-top:10px}
+}
+
+/* ── footer (homepage) ───────────────────────────────── */
+footer{position:relative;z-index:2;text-align:center;padding:64px var(--gut) 70px;border-top:1px solid var(--line-2);margin-top:clamp(30px,5vw,60px)}
+footer .q{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:18px}
+footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer .links a{color:var(--muted)}
+footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}footer .foot-nav a[aria-current=page]{color:var(--gold)}
+footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--faint)}
+footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint);margin-right:2px}
+footer .foot-app a{color:var(--gold);opacity:.9;transition:opacity .2s}
+footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.foot-mark{text-align:center;opacity:.045;margin-top:26px;user-select:none;pointer-events:none}
+.foot-mark svg{width:clamp(110px,16vw,220px);height:auto;fill:var(--fg)}
+
+@media(max-width:900px){:root{--navh:82px}}
+@media(max-width:640px){
+  body{font-size:16px}
+  .steps>li{padding-left:44px}
+  /* tables stack into one block per row, each cell under its column name */
+  .tw table,.tw tbody,.tw tr,.tw td{display:block;width:100%}
+  .tw thead{display:none}
+  .tw tr{border-top:1px solid var(--line-2);padding:12px 0}
+  section.light .tw tr{border-top-color:var(--line-on-cream)}
+  .tw td{border-top:0;padding:3px 0;min-width:0}
+  .tw td:first-child{min-width:0;font-size:1rem}
+  .tw td+td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost);margin-top:6px}
+  section.light .tw td+td::before{color:rgba(46,31,16,.5)}
+}
+@media(max-width:480px){:root{--gut:16px}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.chapcard,.xlink,.sb-nav a,.faq summary::after{transition:none}
+  .btn:hover,.chapcard:hover{transform:none}
+}
+@media print{
+  .nav,.docs-side{display:none!important}
+  .cd-page{padding-top:0}
+  .faq details>*{display:block!important}
+}
+
+  /* ── Nav — full-width dark strip + contained light card (marktpos pattern) ── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
+  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+  .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
+  .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nt-links{display:flex;gap:20px;flex-shrink:0}
+  .nt-links a{color:var(--muted);transition:color .2s}
+  .nt-links a:hover{color:var(--gold)}
+  .nav-main{pointer-events:auto;width:min(var(--maxw),calc(100% - 28px));margin:12px auto 0;padding:9px 12px 9px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(252,249,243,.94);backdrop-filter:blur(16px) saturate(1.15);border:1px solid rgba(46,31,16,.14);border-radius:16px;box-shadow:0 22px 54px -26px rgba(0,0,0,.6),0 4px 18px -8px rgba(46,31,16,.22)}
+  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-on-cream)}
+  .nav .brand b{font-style:normal;font-weight:600}
+  .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
+  .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+  .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+  .nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;flex:0 0 auto;border-radius:999px;line-height:1;white-space:nowrap;transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease}
+  .nav .links .nav-actions .nav-login{flex-basis:var(--login-w,auto);color:var(--cream);font-weight:500;padding:8px 14px}
+  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#1a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
+  .nav .links .nav-actions[data-mode="login"] .nav-login{flex-basis:var(--nav-actions-inner,100%)}
+  .nav .links .nav-actions[data-mode="login"] .cta{flex-basis:0;opacity:0;padding:0;pointer-events:none}
+  .nav .links .nav-actions[data-mode="download"] .cta{flex-basis:var(--nav-actions-inner,100%)}
+  .nav .links .nav-actions[data-mode="download"] .nav-login{flex-basis:0;opacity:0;padding:0;pointer-events:none}
+  /* dropdown groups */
+  .nd{position:relative}
+  .nd-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.85rem;color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
+  .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
+  .nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+  .nd[data-open] .nd-btn svg{transform:rotate(180deg)}
+  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+  .nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
+  @media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
+  .nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
+  .nd-menu a:hover{background:rgba(201,169,110,.18)}
+  .nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
+  /* burger + mobile panel */
+  .nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
+  .nav-burger span{display:block;width:16px;height:1.6px;background:var(--ink-on-cream);margin:2.4px auto;border-radius:2px;transition:transform .25s,opacity .2s}
+  .nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+  .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
+  @media(max-width:900px){
+    .nav-top{display:none}
+    .nav-main{margin-top:10px}
+    .nav-burger{display:grid}
+    .nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;background:rgba(248,243,233,.98);border:1px solid rgba(46,31,16,.1);border-radius:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .25s,visibility .25s}
+    .nav .links.open{opacity:1;visibility:visible;transform:none}
+    .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+    .nd[data-open] .nd-menu{display:block}
+    .nav .links .nav-actions{margin:12px 0 0;width:100%}
+  }
+  @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{transition:none}}
+
+</style>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
+<!-- End of HubSpot Embed Code -->
+</head>
+<body>
+<a class="skip" href="#content">Skip to the guide</a>
+<nav class="nav" aria-label="Main">
+  <div class="nav-top">
+    <div class="nt-in">
+      <span class="nt-tag">Open-source AI chief of staff &middot; 350+ COS Glasses users</span>
+      <div class="nt-links">
+        <a href="/docs/">Docs</a>
+        <a href="/control/">COS Control</a>
+        <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
+        <a href="https://www.npmjs.com/package/@gotcos/glasses-server" rel="noopener">npm</a>
+        <a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" rel="noopener">Even Hub</a>
+        <a href="/connect/">Book a session</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-main">
+    <div class="brand"><a href="/" aria-label="COS" style="color:inherit;text-decoration:none"><svg viewBox="1004 821 1944 517" fill="currentColor" aria-hidden="true" style="height:1.22em;width:auto;vertical-align:-19%"><circle cx="1240.6" cy="889.0" r="68"/><circle cx="1072.0" cy="984.2" r="68"/><circle cx="1072.0" cy="1174.6" r="68"/><path d="M 1023.9 1032.3 C 1057.2 1065.6 1057.2 1093.2 1023.9 1126.5 A 68 68 0 1 0 1120.1 1126.5 C 1086.8 1093.2 1086.8 1065.6 1120.1 1032.3 A 68 68 0 1 0 1023.9 1032.3 Z"/><circle cx="1407.2" cy="984.2" r="68"/><circle cx="1240.6" cy="1079.4" r="68"/><path d="M 1341.6 966.3 C 1329.0 1012.5 1304.7 1026.4 1258.5 1013.8 A 68 68 0 1 0 1306.2 1097.3 C 1318.8 1051.1 1343.2 1037.2 1389.3 1049.8 A 68 68 0 1 0 1341.6 966.3 Z"/><circle cx="1407.2" cy="1174.6" r="68"/><circle cx="1240.6" cy="1269.8" r="68"/><path d="M 1341.6 1156.7 C 1329.0 1202.9 1304.7 1216.8 1258.5 1204.2 A 68 68 0 1 0 1306.2 1287.7 C 1318.8 1241.5 1343.2 1227.6 1389.3 1240.2 A 68 68 0 1 0 1341.6 1156.7 Z"/><g transform="translate(1690,1330) scale(1,-1)"><path d="M1057 473 c-10 0 -28 -3 -39 -6 -29 -8 -55 -24 -71 -44 -16 -19 -23
+-41 -24 -71 -1 -48 14 -82 48 -110 25 -20 53 -34 102 -51 25 -8 33 -12 46 -18
+23 -11 40 -26 47 -40 10 -20 10 -43 2 -61 -5 -10 -17 -22 -28 -27 -12 -6 -22
+-7 -39 -7 -16 0 -26 1 -41 8 -39 16 -72 49 -107 109 -4 7 -8 14 -9 14 -3 2 -5
+-1 -5 -5 0 -6 21 -126 23 -129 1 -2 3 -4 4 -5 3 -1 4 -1 8 1 3 2 12 7 19 12
+17 11 22 14 25 14 1 0 6 -3 12 -6 12 -7 30 -16 42 -19 26 -8 63 -6 93 3 41 13
+74 45 84 83 9 30 7 66 -5 94 -16 36 -53 66 -106 84 -6 2 -20 7 -30 10 -44 13
+-70 26 -86 42 -14 14 -19 28 -19 50 0 15 2 25 8 35 13 21 35 31 68 31 42 0 76
+-16 107 -50 19 -21 38 -50 57 -86 4 -7 5 -9 7 -9 6 0 6 -1 -8 78 -12 64 -14
+74 -16 75 -1 1 -3 2 -3 2 -3 0 -9 -3 -23 -9 -22 -10 -24 -11 -28 -13 -6 -2 -7
+-1 -19 4 -12 6 -28 12 -40 14 -13 3 -36 4 -56 3z"/><path d="M224 472 c-51 -4 -94 -24 -129 -59 -35 -35 -57 -81 -65 -135 -2 -17
+-2 -59 0 -77 7 -46 21 -82 46 -112 30 -35 73 -56 125 -61 57 -5 111 12 148 46
+24 24 41 53 51 91 3 14 4 18 2 20 -2 1 -4 -2 -7 -12 -6 -18 -15 -32 -27 -43
+-14 -14 -38 -25 -63 -29 -13 -1 -37 -1 -49 1 -60 10 -102 63 -114 144 -4 25
+-4 69 -1 96 4 32 14 63 28 84 2 4 8 12 13 17 15 14 31 21 52 21 18 0 31 -5 43
+-17 7 -7 11 -14 14 -25 2 -7 2 -11 3 -41 1 -26 1 -35 2 -39 6 -21 19 -33 38
+-38 8 -2 25 -3 32 0 19 4 33 19 38 40 1 6 1 10 1 19 -1 20 -6 34 -16 50 -14
+20 -35 36 -63 47 -27 10 -67 15 -102 12z"/><path d="M642 472 c-81 -6 -147 -50 -181 -119 -10 -21 -16 -40 -20 -65 -2 -16
+-2 -64 0 -81 3 -14 8 -35 12 -46 13 -35 38 -69 67 -91 30 -23 68 -38 108 -42
+14 -1 46 -1 61 0 44 6 84 22 116 48 9 7 25 23 32 32 23 30 38 66 44 106 2 15
+2 51 0 66 -9 71 -44 128 -102 162 -38 23 -87 34 -137 30z m16 -10 c38 -8 68
+-49 87 -118 13 -51 22 -128 19 -176 -2 -41 -10 -73 -21 -93 -16 -27 -36 -40
+-63 -40 -21 0 -38 8 -55 26 -32 33 -54 96 -63 184 -1 10 -2 25 -3 32 -1 18 -1
+56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a></div>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="links" id="navLinks">
+      <a href="/control/" class="nav-mac">Mac companion</a>
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">The System <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/harness/">AI Harness <small>The model is rented. The harness is yours</small></a>
+          <a href="/context-engineering-vs-prompt-engineering/">Context Engineering <small>vs prompt engineering, the real shift</small></a>
+          <a href="/embodied-intelligence/">Embodied Intelligence <small>from wearables to robots, cited</small></a>
+          <a href="/ai-adoption/">AI Adoption Index <small>who actually uses AI, cited</small></a>
+          <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff <small>vs a human one, what changes</small></a>
+          <a href="/#graph">Context Graph <small>Every source, one graph</small></a>
+          <a href="/#realgraph">Knowledge Graph <small>Watch it compound</small></a>
+          <a href="/#get">What You Get <small>The directory that is the system</small></a>
+          <a href="/#integrations">Integrations <small>Slack, Google, MCP</small></a>
+        </div>
+      </div>
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">Getting Started <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/#start">Quick Start <small>Download the Mac app, then add your context</small></a>
+          <a href="/harness/">AI Harness <small>Understand the layer you own</small></a>
+          <a href="/docs/">Glasses Docs <small>The complete user guide</small></a>
+          <a href="/control/">Mac setup guide <small>Install, connect your AI, start a session</small></a>
+          <a href="/#tiers">The 4 Tiers <small>How it deepens</small></a>
+          <a href="/blueprint/">COS Blueprint <small>12 questions, free score</small></a>
+          <a href="/#faq">FAQ <small>The centaur test</small></a>
+        </div>
+      </div>
+      <div class="nd">
+        <button class="nd-btn" type="button" aria-expanded="false">Glasses <svg viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1.5l4 4 4-4"/></svg></button>
+        <div class="nd-menu">
+          <a href="/#glasses">On the Lens <small>The same COS, now on your glasses</small></a>
+          <a href="/control/">Mac Companion <small>Start, update, and diagnose the server</small></a>
+          <a href="/docs/">Docs <small>The complete user guide</small></a>
+        </div>
+      </div>
+      <a href="/#teams">For Teams</a>
+      <div class="nav-actions">
+        <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
+        <a href="/control/#install" class="cta">Download for Mac</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="cd-page" id="content">
+<div class="docs-shell">
+
+<aside class="docs-side" aria-label="Guide contents">
+  <div class="sb-head">
+    <span class="sb-title">Mac user guide</span>
+    <span class="sb-ver">Control 0.5.317</span>
+  </div>
+  <nav class="sb-nav" aria-label="Chapters">
+    <a href="#top">Start</a>
+    <a href="#install">Install and first run</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#menu-bar">Menu bar, Dock and pet</a>
+    <a href="#activity">Activity: the eight views</a>
+    <a href="#dictation">Dictation</a>
+    <a href="#recording">Mac meeting recording</a>
+    <a href="#work">Work</a>
+    <a href="#sessions">Sessions</a>
+    <a href="#transcription">Transcription settings</a>
+    <a href="#server">The managed server</a>
+    <a href="#updates">Updating and rollback</a>
+    <a href="#fixes">Troubleshooting</a>
+    <a href="#faq">FAQ</a>
+    <a href="#release-notes">Release notes</a>
+  </nav>
+  <a class="sb-x" href="/docs/"><b>COS Glasses guide</b>The lens, the ring and the phone companion.</a>
+  <a class="sb-x" href="/control/"><b>COS Control overview</b>What it does, and the download.</a>
+</aside>
+
+<div class="docs-main">
+
+<header class="hero wrap" id="top">
+  <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
+  <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
+  <div class="badges">
+    <span class="chip">Control <b>0.5.317</b> · build 370</span>
+    <span class="chip">Server <b>6.74.0</b></span>
+    <span class="chip">macOS 14+</span>
+    <span class="chip">Apple silicon</span>
+  </div>
+  <div class="xlinks">
+    <a class="xlink" href="/control/"><b>COS Control overview and download</b><span>What the Mac app does, and the latest signed build.</span></a>
+    <a class="xlink" href="/docs/"><b>COS Glasses guide</b><span>Using COS on Even Realities G2 glasses and the phone companion.</span></a>
+  </div>
+</header>
+
+<section class="wrap" id="chapters" aria-label="Chapters">
+  <div class="chapgrid">
+    <a class="chapcard" href="#install"><span class="chap-t"><span class="n">01</span>Install and first run</span><span class="chap-d">Download, connect your AI, finish the setup guide.</span></a>
+    <a class="chapcard" href="#permissions"><span class="chap-t"><span class="n">02</span>Permissions</span><span class="chap-d">What each macOS permission switches on, and how to repair one.</span></a>
+    <a class="chapcard" href="#menu-bar"><span class="chap-t"><span class="n">03</span>Menu bar, Dock and pet</span><span class="chap-d">The panel, the Dock menu and the session pet's pills.</span></a>
+    <a class="chapcard" href="#activity"><span class="chap-t"><span class="n">04</span>Activity</span><span class="chap-d">Eight views: Messages to Dictation.</span></a>
+    <a class="chapcard" href="#dictation"><span class="chap-t"><span class="n">05</span>Dictation</span><span class="chap-d">Hold a key, talk, and the text lands where you type.</span></a>
+    <a class="chapcard" href="#recording"><span class="chap-t"><span class="n">06</span>Mac meeting recording</span><span class="chap-d">Record a call, follow it live, ask about it.</span></a>
+    <a class="chapcard" href="#work"><span class="chap-t"><span class="n">07</span>Work</span><span class="chap-d">The board, Work chat and the sessions doing the work.</span></a>
+    <a class="chapcard" href="#sessions"><span class="chap-t"><span class="n">08</span>Sessions</span><span class="chap-d">Read and continue Claude, Codex and Cursor chats.</span></a>
+    <a class="chapcard" href="#transcription"><span class="chap-t"><span class="n">09</span>Transcription settings</span><span class="chap-d">Engines, models and the meeting assistant.</span></a>
+    <a class="chapcard" href="#server"><span class="chap-t"><span class="n">10</span>The managed server</span><span class="chap-d">What Control runs, health, Doctor and tools.</span></a>
+    <a class="chapcard" href="#updates"><span class="chap-t"><span class="n">11</span>Updating and rollback</span><span class="chap-d">App updates, server updates and going back.</span></a>
+    <a class="chapcard" href="#fixes"><span class="chap-t"><span class="n">12</span>Troubleshooting</span><span class="chap-d">Fixes for the common Mac problems.</span></a>
+    <a class="chapcard" href="#faq"><span class="chap-t"><span class="n">13</span>FAQ</span><span class="chap-d">Short answers.</span></a>
+    <a class="chapcard" href="#release-notes"><span class="chap-t"><span class="n">14</span>Release notes</span><span class="chap-d">What changed in recent COS Control releases.</span></a>
+  </div>
+</section>
+
+<!-- ── 01 INSTALL ── -->
+<section class="wrap chapter light" id="install">
+  <div class="sec-head">
+    <h2><span class="num">1.</span> Install and first run</h2>
+    <p class="ch-sub">Download, connect one AI, and COS sets up the rest.</p>
+    <p class="lead">You need no Homebrew, npm or Terminal for core setup. COS Control brings its own runtime, downloads the COS server and starts it for you.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>Download and move to Applications</h3><p><a href="/control/#install">Download COS Control</a>, unzip it and drag COS Control into your Applications folder. Updating by hand? Quit the old Control first, then choose Replace. Keep any rollback copy outside Applications. To check the file before you open it, compare its SHA-256 with the value under <a href="/control/#run">Verify this download</a>.</p></li>
+    <li><h3>Open COS Control</h3><p>Open it from Applications. The download is signed with Developer ID and notarized by Apple, so a normal downloaded-app confirmation may appear. If macOS says it cannot verify the app, download it again and check the checksum. Do not remove its quarantine flag.</p></li>
+    <li><h3>Welcome to COS</h3><p>The welcome window opens by itself the first time. Choose <strong>Just my Mac</strong> or <strong>My Mac and glasses</strong>, then <strong>Get started</strong>. The window walks through Welcome, Connect your AI, Choose access, Connect glasses (only if you chose glasses) and Make yourself at home. Closing it never cancels the install.</p></li>
+    <li><h3>Connect your AI</h3><p>COS works with the AI you already use, and its subscription and usage limits still apply. The list shows <strong>Claude</strong> (Claude Code), <strong>ChatGPT</strong> (Codex), <strong>Cursor</strong> (Cursor Agent) and <strong>Ollama</strong> (optional), each with a status such as Not installed, Installed, not signed in, or Signed in. The list updates by itself.</p>
+      <ul>
+        <li><strong>Not installed:</strong> COS shows the install command, which needs no administrator password, with <strong>Copy</strong>. Claude Desktop alone is not Claude Code.</li>
+        <li><strong>Not signed in:</strong> choose <strong>Sign in</strong>, or <strong>Skip for now</strong>. COS types the command into Terminal; if macOS has not allowed that under Privacy &amp; Security, Automation, the command is on the clipboard instead.</li>
+        <li>After 15 minutes COS stops waiting for a sign-in. Choose <strong>Check again</strong> when you are done.</li>
+      </ul>
+      <p><strong>Get started</strong> needs at least one AI installed. Signing in never blocks it.</p></li>
+    <li><h3>Let COS get ready</h3><p>COS checks your Mac, downloads its components, checks the download, starts the server and checks your AI connection. You can close the window while it works and reopen <strong>Setup guide</strong> from the COS menu later. If a step fails, choose <strong>Try again</strong>. An internet connection is needed for setup.</p></li>
+    <li><h3>Choose access</h3><p>Each permission switches on one feature, and macOS asks before anything changes. Skip any of them: COS starts without them, and <strong>Permissions</strong> in the menu bar panel brings the list back. See <a href="#permissions">Permissions</a>.</p></li>
+    <li><h3>Connect glasses (optional)</h3><p>COS checks <strong>Tailscale on this Mac</strong> and <strong>Tailscale on your iPhone</strong>, then shows a pairing code to scan with COS Glasses. Pairing needs server 6.67 or newer. <strong>Allow pairing on this Wi-Fi (home only)</strong> is an opt-in alternative to Tailscale. Choose <strong>Set up later</strong> or <strong>Use just my Mac</strong> to skip. The <a href="/docs/">COS Glasses guide</a> covers the phone side.</p></li>
+    <li><h3>Make yourself at home</h3><p>The last step introduces Work, Sessions and Meetings, and the session pet, with Keep, Calm or Hide. Choose <strong>Finish setup</strong>.</p></li>
+  </ol>
+
+  <div class="sub" id="setup-guide">
+    <h3>The setup guide</h3>
+    <p>The setup guide stays available after first run. Open it from the Dock menu (<strong>Setup guide…</strong>), the app menu or Help menu, the pet's right-click menu, <strong>Setup guide</strong> in the Activity header, or the <strong>Setup guide</strong> row in the menu bar panel. It remembers where you stopped and shows <strong>Finish setup · N of M</strong> with the next step and <strong>Continue setup</strong>. Every row has <strong>Skip for now</strong> or <strong>Set up now</strong>.</p>
+    <ul>
+      <li><strong>Your devices</strong> and <strong>Your AI</strong>: the same choices as first run.</li>
+      <li><strong>On this Mac</strong>: Ollama, <strong>Voice (local transcription)</strong> and <strong>Dictation engine</strong>.</li>
+      <li><strong>Settings for your AI</strong>: Show your AI sessions, Continue agent threads, Jev (TypeSafe) and Permissions.</li>
+      <li><strong>Glasses</strong>: pairing, as above.</li>
+    </ul>
+    <h4>Voice</h4>
+    <p><strong>Set up and test voice</strong> downloads a verified, signed Whisper runtime and its models without Homebrew, benchmarks this Mac and keeps an existing Balanced or Max choice. Allow several GB for models. If a download is missing you see <strong>Models not downloaded</strong> with a Download button, and <strong>Needs more disk space</strong> when the disk is too full. The Voice row turns green only after a real dictation works. Until then it reads <strong>Checking dictation…</strong>, <strong>Not tested yet</strong> with Test dictation, or <strong>Dictation needs attention</strong> with Test again.</p>
+    <h4>Dictation engine</h4>
+    <p>This step comes after Voice. Pick <strong>Automatic</strong>, <strong>Parakeet Ultra</strong> or <strong>Whisper</strong>, install Parakeet if you want it, and choose <strong>Test on this Mac</strong>. The test dictates a 30-second sample with each installed engine and shows how long it took and how many words it got wrong. It is a quick check of this Mac, not a full accuracy test. Picking Automatic while Parakeet is missing installs it in the background, and dictation uses Whisper until it is ready. Parakeet Ultra is recommended on Apple silicon unless the Mac has less than 8 GB of memory or the test says otherwise.</p>
+  </div>
+
+  <div class="sub" id="requirements">
+    <h3>What you need</h3>
+    <ul>
+      <li>Apple silicon and macOS 14 or later. Mac meeting recording needs macOS 14.2 or later.</li>
+      <li>Internet access for setup, and one supported AI provider installed.</li>
+      <li>Space for voice models: several GB. Parakeet Ultra is a 654 MB download and needs 1.5 GB free.</li>
+      <li>Server 6.74.0 for Whisper dictation, the Parakeet install and the engine test. COS Control installs and updates the server for you.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="from-terminal">
+    <h3>Already running COS in Terminal?</h3>
+    <p>Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe. When it finds a server it recognizes, the panel offers <strong>Adopt Safely</strong>: <strong>Manage in place</strong> keeps your server, and <strong>Install managed server</strong> replaces it. When it cannot identify the process on the COS ports, it says <strong>Ownership conflict detected</strong> and will not stop or replace it. You can always go back to the plain <code>npx</code> command later.</p>
+  </div>
+</section>
+
+<!-- ── 02 PERMISSIONS ── -->
+<section class="wrap chapter" id="permissions">
+  <div class="sec-head">
+    <h2><span class="num">2.</span> Permissions</h2>
+    <p class="ch-sub">Each one switches on a feature. COS works without any of them.</p>
+    <p class="lead">macOS asks before COS gets any access. Open <strong>Permissions</strong> in the menu bar panel to see each one as <strong>Allowed</strong>, <strong>Needs you</strong> or <strong>Not needed yet</strong>.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Permission</th><th>What it switches on</th><th>When COS asks</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Permission"><strong>Accessibility</strong></td><td data-label="What it switches on">Jumping straight to a Claude or Cursor session and bringing its window forward. Dictation typing into other apps. Fn and single-key dictation shortcuts. Spotting a Google Meet call in a browser by its tab title.</td><td data-label="When COS asks">From Permissions, the pet's session jump, or <strong>Allow insertion into other apps…</strong> under dictation.</td></tr>
+        <tr><td data-label="Permission"><strong>Microphone</strong></td><td data-label="What it switches on">Dictation. Mac meeting recording never records the microphone.</td><td data-label="When COS asks">On your first dictation.</td></tr>
+        <tr><td data-label="Permission"><strong>Screen &amp; System Audio Recording</strong></td><td data-label="What it switches on">Mac meeting recording, and <strong>Mute other apps</strong> while you dictate. COS Control appears under <strong>System Audio Recording Only</strong>.</td><td data-label="When COS asks">Once, when you start your first Mac recording.</td></tr>
+        <tr><td data-label="Permission"><strong>Notifications</strong></td><td data-label="What it switches on">Telling you when meeting audio stops reaching this Mac and when Work needs you.</td><td data-label="When COS asks">When a feature first needs it.</td></tr>
+        <tr><td data-label="Permission"><strong>Automation</strong></td><td data-label="What it switches on">Typing the install and sign-in commands into Terminal or iTerm for you during setup.</td><td data-label="When COS asks">The first time COS opens Terminal for you. Without it, the command goes on the clipboard.</td></tr>
+        <tr><td data-label="Permission"><strong>Full Disk Access</strong></td><td data-label="What it switches on">Listed for background jobs and the glasses server when your setup needs it.</td><td data-label="When COS asks">From Permissions.</td></tr>
+        <tr><td data-label="Permission"><strong>Open at login</strong></td><td data-label="What it switches on">Starting COS Control when you log in. The switch is <strong>Launch COS Control at login</strong> in Settings.</td><td data-label="When COS asks">From Permissions or Settings.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub" id="drag-bar">
+    <h3>The drag bar for Accessibility and Full Disk Access</h3>
+    <p>For these two, COS opens the exact pane in System Settings and pins a small bar under it: <strong>Drag COS Control to the list above</strong>, or click plus and choose COS Control. COS shows <strong>Allowed</strong> only after it has really checked the grant, then the bar hands you back to COS. If nothing works after two minutes, the bar offers <strong>Having trouble?</strong> with <strong>Reset and add again</strong>. For Full Disk Access it also offers <strong>Check now</strong> and <strong>Reveal in Finder</strong>.</p>
+  </div>
+
+  <div class="sub" id="reset-accessibility">
+    <h3>When Accessibility is on but does not count</h3>
+    <p>macOS keys the Accessibility switch to the app's signature. After an update the list can keep an old entry that no longer matches the installed app, so the switch looks on while COS still cannot use it. COS says so on the Permissions row: <strong>An update changed COS Control's signature, so the old switch no longer counts.</strong></p>
+    <ul>
+      <li>In COS Control: <strong>Settings, Session pet, Reset and add again</strong>, or the <strong>Already on? Reset and add again</strong> link on the Permissions row. It removes COS Control's old entry, asks macOS again and opens the list. Then switch COS Control on.</li>
+      <li>By hand: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select COS Control, click the minus button, then click plus, choose COS Control in Applications and switch it on.</li>
+    </ul>
+    <p>Switching the toggle off and on is often not enough. The <strong>Allow…</strong> button on a dictation card only shows the macOS prompt; it does not remove an old entry.</p>
+  </div>
+
+  <div class="note"><p><strong>Updating from an older copy?</strong> The move from the old local signature to Developer ID may require granting feature permissions again in System Settings.</p></div>
+</section>
+
+<!-- ── 03 MENU BAR ── -->
+<section class="wrap chapter light" id="menu-bar">
+  <div class="sec-head">
+    <h2><span class="num">3.</span> Menu bar, Dock and the session pet</h2>
+    <p class="ch-sub">Three ways in, one app.</p>
+    <p class="lead">The menu bar icon opens the panel, the Dock icon opens Activity, and the session pet keeps your running work on the desktop.</p>
+  </div>
+
+  <div class="sub" id="menu-bar-icon">
+    <h3>The menu bar icon</h3>
+    <p>The icon is a pair of glasses while the server runs and crossed-out glasses while it does not. It turns gold with a dot when a COS Control update is ready, and shows a red dot while a meeting records.</p>
+  </div>
+
+  <div class="sub" id="panel">
+    <h3>The panel</h3>
+    <p>Click the icon to open the panel. From the top:</p>
+    <ul>
+      <li><strong>Update available</strong>, only when an update is ready. See <a href="#updates">Updating</a>.</li>
+      <li>The header: <strong>Control</strong> with its version, and a refresh button that refreshes status and checks for updates. The line under it reads Checking for updates…, Up to date or Couldn't check for updates.</li>
+      <li>While anything records: a recording card with <strong>View live transcript</strong>.</li>
+      <li><strong>Finish setup</strong>, until the setup guide is done.</li>
+      <li><strong>Activity</strong> with <strong>Open</strong>, and a chip for each view. A number means it needs you; a dot means something is new since you last looked.</li>
+      <li><strong>Your move</strong>: Work items waiting on you.</li>
+      <li>The status card and server controls: <strong>Restart</strong>, <strong>Stop</strong>, <strong>Start</strong>, <strong>Update Server</strong> or <strong>Install Server</strong>. See <a href="#server">The managed server</a>.</li>
+      <li><strong>Setup guide</strong>, <strong>Permissions</strong>, and a <strong>Dictation</strong> row while dictation is on and Parakeet is not installed.</li>
+      <li>The rest of Settings, then a footer with the Control and server versions and <strong>Quit</strong>.</li>
+    </ul>
+    <p>The panel and <strong>Settings</strong> in Activity show the same controls and the same saved preferences.</p>
+  </div>
+
+  <div class="sub" id="dock">
+    <h3>The Dock and the app menus</h3>
+    <ul>
+      <li>Click the Dock icon to open Activity. Before COS is set up it opens the welcome window, and while a meeting records it opens the live transcript.</li>
+      <li>Right-click it for <strong>Open Activity</strong>, <strong>Setup guide…</strong> and <strong>Settings…</strong>, plus <strong>View live transcript</strong> while a meeting records. The Dock icon carries a <strong>REC</strong> badge while recording.</li>
+      <li>The app's <strong>Meetings</strong> menu has <strong>Record on Mac…</strong>, <strong>Stop Mac recording and save</strong> and <strong>View live transcript</strong> (<kbd>⌘⇧L</kbd>). The <strong>Dictation</strong> menu has Stop dictation, Cancel dictation, Dictionary…, History… and Microphone and shortcuts…. <strong>Help</strong> has Setup guide… and COS Control help.</li>
+      <li>Prefer no Dock icon? Turn on <strong>Show in menu bar only</strong> in Settings. The app menus, including the live transcript shortcut, are then not available.</li>
+      <li><strong>Open Activity with</strong> in Settings sets a keyboard shortcut that opens Activity from anywhere.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="pet">
+    <h3>The session pet</h3>
+    <p>The pet is a small character by your windows that shows the agent sessions on this Mac. The line under it reads, for example, <code>2 WAITING · 1 RUNNING · 3 DONE</code>, or <code>IDLE</code>. Hover it to see its pills. Each pill shows only when it has something:</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Pill</th><th>When it shows</th><th>Click it to</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Pill"><strong>REC</strong></td><td data-label="When it shows">While a meeting records on this Mac or on your glasses. It comes first, with a count when more than one records.</td><td data-label="Click it to">Open the live meeting.</td></tr>
+          <tr><td data-label="Pill"><strong>RUNNING</strong></td><td data-label="When it shows">Always, with the number of sessions at work.</td><td data-label="Click it to">Open the list of live sessions.</td></tr>
+          <tr><td data-label="Pill"><strong>DONE</strong></td><td data-label="When it shows">While a finished session is listed.</td><td data-label="Click it to">Open the finished sessions.</td></tr>
+          <tr><td data-label="Pill"><strong>WAITING</strong></td><td data-label="When it shows">Only while a session waits on you, for a permission, a question or a plan approval.</td><td data-label="Click it to">Jump to it in its app. With several waiting, open the list.</td></tr>
+          <tr><td data-label="Pill"><strong>DICTATIONS</strong></td><td data-label="When it shows">Once you have dictated anything. It never shows a count.</td><td data-label="Click it to">See your latest 10 dictations, copy one or fix a word.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>The list</strong> groups sessions under RUNNING, WAITING ON YOU and IDLE. Each row has <strong>Open in platform</strong>, a button that opens the session view in COS Control, a paperplane to message the session, and × to drop it from the list.</li>
+      <li><strong>Message a session</strong>: the paperplane opens a card that names the session. Type and press Return to send it into the real thread; Option-Return starts a new line and Escape closes. A busy session queues the message, and the card lists what is queued with <strong>Edit</strong> and ×.</li>
+      <li><strong>The figure</strong>: click it to open the focused session in its app, double-click it for the session list, right-click it for <strong>Full motion</strong>, <strong>Calm motion</strong>, <strong>No motion</strong>, <strong>Hide pet</strong>, <strong>Settings…</strong> and <strong>Setup guide…</strong>.</li>
+      <li><strong>Open in platform</strong> opens the session in Claude, Codex or Cursor. A session still on its first reply opens in COS Control until that reply is done. Jumping to a window needs Accessibility.</li>
+    </ul>
+    <h4>Characters and pet settings</h4>
+    <p><strong>Cloud Puff</strong> is the default. Under Settings, Session pet you can choose one of four animated Jedi (<strong>Jedi Miles Windu</strong>, <strong>Jedi Nia Solari</strong>, <strong>Jedi Elara Vale</strong>, <strong>Jedi Rowan Vale</strong>), a community pet from openpets.dev, or your own art with <strong>Install sprite pack</strong> or <strong>Choose sprite</strong>. <strong>Use Cloud Puff</strong> goes back. The <a href="/control/#custom-pet-pack">custom pet pack format</a> is on the overview page.</p>
+    <ul>
+      <li><strong>Session pet</strong> switches the pet on or off. It is on by default.</li>
+      <li>Pet size (Small, Medium, Large or Custom), <strong>Character size</strong> (default 300%), <strong>Character speed</strong> (default 100%, which matches the pack) and <strong>Motion</strong> (Full, Calm or None). macOS Reduce Motion freezes animated strips.</li>
+      <li><strong>Jump to session needs Accessibility</strong>, with <strong>Grant</strong> and <strong>Reset and add again</strong>.</li>
+      <li>Dictation start and stop sounds follow the pet unless you choose others. See <a href="#dictation-sounds">Sounds</a>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 04 ACTIVITY ── -->
+<section class="wrap chapter" id="activity">
+  <div class="sec-head">
+    <h2><span class="num">4.</span> Activity: the eight views</h2>
+    <p class="ch-sub">Everything COS holds, in one resizable window.</p>
+    <p class="lead">Open Activity from the Dock, from <strong>Open</strong> in the panel, or with your Open Activity shortcut. The tabs across the top are the eight views, in this order.</p>
+  </div>
+  <ul class="views-list">
+    <li><a href="#view-messages">Messages<small>Every glasses turn and its answer</small></a></li>
+    <li><a href="#view-speakers">Speakers<small>Name voices, review labels</small></a></li>
+    <li><a href="#view-meetings">Meetings<small>Calendar, transcripts, live meetings</small></a></li>
+    <li><a href="#view-memories">Memories<small>What COS learned</small></a></li>
+    <li><a href="#view-threads">Threads<small>Work across many meetings</small></a></li>
+    <li><a href="#sessions">Sessions<small>Claude, Codex and Cursor chats</small></a></li>
+    <li><a href="#work">Work<small>Tasks, board and Work chat</small></a></li>
+    <li><a href="#dictation-tab">Dictation<small>History, corrections, dictionary</small></a></li>
+  </ul>
+
+  <div class="sub" id="activity-nav">
+    <h3>Finding your way</h3>
+    <ul>
+      <li><kbd>⌘1</kbd> to <kbd>⌘8</kbd> open the eight views in order.</li>
+      <li><strong>Home</strong> (<kbd>⇧⌘H</kbd>) goes to the Activity home. <strong>Back</strong> (Command and the Left Arrow key, or Escape) goes back one step.</li>
+      <li>The breadcrumb shows where you are, for example COS Control, Meetings, then the meeting.</li>
+      <li><strong>Recency</strong> sorts Meetings, Sessions, Memories and Threads by Newest, Oldest or Best match. <strong>Domain</strong> narrows Meetings and Work.</li>
+      <li>The gear opens <strong>Settings</strong>, and the header shows <strong>Server connected</strong> or <strong>Server offline</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="view-messages">
+    <h3>Messages</h3>
+    <p>Every turn your glasses took, with the answer and any photo you were looking at. <strong>Message view</strong> switches between <strong>Recent</strong> and <strong>Archive</strong>, which lists every older day the server has stored. Search covers both; the <strong>Meaning</strong> switch searches by meaning and uses your Claude usage, up to 25 searches a day. Open a turn to <strong>Copy turn</strong>, or <strong>Copy + images</strong> to bring its pictures along. <strong>Copy handoff</strong> copies a text handoff of recent messages. A <strong>ROUTINE</strong> or <strong>TASK</strong> label marks a run your Mac started, such as the morning brief.</p>
+  </div>
+
+  <div class="sub" id="view-speakers">
+    <h3>Speakers</h3>
+    <p>Three lists: <strong>Meetings to review</strong>, <strong>Samples to review</strong> and <strong>Voices</strong>, the voice directory. Held voice samples are kept 72 hours. Listen to a sample, choose a name or a scored suggestion with <strong>Add to</strong>, then <strong>Preview</strong> the labels it would change in that sample's meeting. <strong>Apply</strong> is a separate step, and <strong>Undo labels</strong> puts the labels back while keeping the learned voice. Previewing, applying and undoing meeting labels needs server 6.46.0 or newer. Voice names are suggestions, never certainties.</p>
+  </div>
+
+  <div class="sub" id="view-meetings">
+    <h3>Meetings</h3>
+    <p>A month calendar, then the day. Open a meeting for its transcript, summary and speakers, with <strong>Copy full context</strong> (<kbd>⌘C</kbd>), <strong>Copy summary</strong>, <strong>Copy transcript</strong>, <strong>Reveal in Finder</strong> and <strong>Review voices</strong>. <strong>Create task</strong>, <strong>Link to existing task</strong> and <strong>Review follow-up in Work</strong> connect it to <a href="#work">Work</a>.</p>
+    <ul>
+      <li>Search topics and ideas. Each result says whether it matched by <strong>Keyword</strong>, <strong>Meaning</strong> or both. Meaning search needs the COS meeting index; without it, search is keyword only.</li>
+      <li><strong>Import meetings</strong> brings in Fireflies recordings: paste your Fireflies API key, choose <strong>Check</strong>, then <strong>Import now</strong> or <strong>Keep bringing in new meetings</strong>. The key is stored on this Mac and never shown again. <strong>Suggested merges</strong> pairs a Fireflies call with your own recording of the same call.</li>
+      <li><strong>Dictionary</strong> opens the one dictionary that meetings and dictation share. See <a href="#dictionary">Dictionary</a>.</li>
+      <li>Times read 1:02 PM. Choose the 24-hour clock under Settings, Advanced, <strong>Clock</strong>.</li>
+      <li>Recording on this Mac, live meetings and Live COS Ask are in <a href="#recording">Mac meeting recording</a>.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="view-memories">
+    <h3>Memories</h3>
+    <p>What COS learned, not the transcript. Its sections are <strong>Recent learning</strong>, <strong>Applied this week</strong>, <strong>All memories</strong>, <strong>To review</strong>, which holds what COS proposed until you keep or dismiss it, and <strong>Knowledge</strong>, a graph of your own data you can ask in plain language. A lesson offers <strong>Open sources</strong>, <strong>Explore in graph</strong> and <strong>Copy context</strong>. Memories reads the folder set under <strong>COS Data</strong>; any Markdown you drop into its memory folder becomes browsable.</p>
+  </div>
+
+  <div class="sub" id="view-threads">
+    <h3>Threads</h3>
+    <p>A thread is one piece of work followed across every meeting that touched it. Search topics and ideas, sort by Recency, and open a thread for its note, linked meetings and sources, with <strong>Copy as Context</strong> (<kbd>⌘C</kbd>) and <strong>Reveal in Finder</strong>. If the list is empty, choose <strong>COS Data</strong> in the panel to connect your library, or <strong>Create Folders</strong> to start one.</p>
+  </div>
+
+  <div class="sub" id="dictation-tab">
+    <h3>Dictation</h3>
+    <p>The last tab holds your dictations and what COS learned from them:</p>
+    <ul>
+      <li><strong>Suggested from your edits</strong>, with Add all and Dismiss. Suggestions are kept for seven days.</li>
+      <li><strong>Learned from your edits</strong> and <strong>Recent corrections</strong>, each with Undo.</li>
+      <li><strong>Latest dictations</strong>, then <strong>All dictations</strong>. Each row shows the time, the word count, how it was delivered (inserted, pasted, sent or copied) and the app.</li>
+      <li><strong>History</strong> opens the full, searchable list, with Copy, Fix a word and Delete on each row, and the engine that transcribed it. <strong>Clear history…</strong> asks first.</li>
+      <li><strong>Dictionary</strong> opens the shared dictionary.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 05 DICTATION ── -->
+<section class="wrap chapter light" id="dictation">
+  <div class="sec-head">
+    <h2><span class="num">5.</span> Dictation</h2>
+    <p class="ch-sub">Hold a key, talk, and the text lands where you were typing.</p>
+    <p class="lead">Dictation runs on this Mac with your COS dictionary, never the cloud. Glasses are optional. It uses your microphone; Mac meeting recording is separate and captures what the Mac plays.</p>
+  </div>
+
+  <div class="sub" id="dictation-on">
+    <h3>Turn it on and pick a shortcut</h3>
+    <p>In Settings, switch on <strong>Dictate into Mac apps</strong>. It is off by default. Then choose a <strong>Microphone</strong> (System default or a specific input; <strong>Refresh microphones</strong> finds a new one) and set a shortcut. Choose <strong>Allow insertion into other apps…</strong> so COS can type for you.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Shortcut</th><th>What it does</th><th>Default</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Shortcut"><strong>Push to talk</strong></td><td data-label="What it does">Listens while you hold the key and transcribes when you let go.</td><td data-label="Default">Off until you set it</td></tr>
+          <tr><td data-label="Shortcut"><strong>Start / stop</strong></td><td data-label="What it does">One press starts, the next press stops.</td><td data-label="Default">Off until you set it</td></tr>
+          <tr><td data-label="Shortcut"><strong>Fix last dictation</strong></td><td data-label="What it does">Opens Fix a word on your most recent dictation.</td><td data-label="Default"><kbd>⌃⌥F</kbd></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>Choose <strong>Change</strong>, then press the shortcut. It can be a modifier plus a key (with Command, Control or Option), a function key F1 to F20, or one modifier key by itself, such as <strong>Fn</strong> or <strong>Right ⌘</strong>. Fn and single-key shortcuts need Accessibility.</li>
+      <li>Using Fn? In System Settings, Keyboard, set <strong>Press 🌐 key to</strong> Do Nothing, and move any other dictation app off Fn.</li>
+      <li>While you hold Push to talk you can click and drag freely: the text lands where the cursor ends up. A click right after you press the key counts as a modifier-click and does not start dictation.</li>
+      <li>A dictation stops by itself after two minutes.</li>
+      <li>Pressing another key combination while talking, or the Mac sleeping, cuts a dictation short. A second or more of audio is still transcribed and copied, never typed, unless you copied something else meanwhile.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="dictation-engines">
+    <h3>Engines: Automatic, Parakeet Ultra and Whisper</h3>
+    <p>Choose the engine in Settings, Transcription, <strong>Dictation engine</strong>. <strong>Automatic</strong> (recommended) uses Parakeet Ultra when it is installed and ready, and Whisper on this Mac otherwise. A line under the picker says what dictation uses right now. The picker needs server 6.74.0; an older server dictates with Parakeet Ultra only and says to update.</p>
+    <p><strong>Install Parakeet (654 MB)</strong> appears in Settings, Transcription, in a Dictation row of the menu bar panel, on a dictation card and in the setup guide. COS Control includes the speech tool Parakeet needs, so there is no Terminal step. Progress and <strong>Cancel</strong> show while it downloads, every file is checked before it is installed, and dictation keeps using Whisper meanwhile. Cancel keeps nothing partial. Parakeet needs 1.5 GB free, and installs after any recording ends.</p>
+  </div>
+
+  <div class="sub" id="dictation-delivery">
+    <h3>Where the text goes</h3>
+    <p>While you talk, the pet's line becomes a listening pill with a level meter and a timer; with the pet hidden it floats near the bottom of the screen. When you stop, COS types into the text box you are focused on, then checks that the box really changed. If it did not, COS pastes once with <kbd>⌘V</kbd>. COS never presses Return or Send.</p>
+    <ul>
+      <li><strong>✓ INSERTED</strong> means COS saw the text land. <strong>PASTED · ⌘V SENT</strong> means it pasted but could not confirm.</li>
+      <li>Terminals (Terminal, iTerm2, Warp, Ghostty, kitty, Alacritty and WezTerm) always get a paste, with line breaks turned into spaces.</li>
+      <li>Claude, Slack and other Electron or Chromium apps are asked to expose their text boxes first; if COS still finds none, it pastes.</li>
+      <li><strong>Restore my clipboard after pasting</strong> is on by default: after a paste COS puts back what you had copied.</li>
+      <li><strong>Format spoken lists</strong> is on by default. Say “number one, number two” or “bullet, next bullet” and COS writes a numbered or bulleted list, one item per line. Ordinary sentences with numbers stay as they are.</li>
+    </ul>
+    <p>When COS cannot type, a card on the pet keeps the text on the clipboard and says why:</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Card</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Card"><strong>COPIED · ALLOW ACCESSIBILITY</strong></td><td data-label="What to do">Allow COS Control in Accessibility (<strong>Allow…</strong>). For now, click where you want the text and press <kbd>⌘V</kbd>. If Accessibility already shows on, see <a href="#fix-accessibility">this fix</a>.</td></tr>
+          <tr><td data-label="Card"><strong>NO TEXT BOX · COPIED</strong></td><td data-label="What to do">Click where you want it, then press <kbd>⌘V</kbd>.</td></tr>
+          <tr><td data-label="Card"><strong>PASSWORD FIELD · COPIED</strong></td><td data-label="What to do">COS never types into a password field. Paste it yourself if you mean to.</td></tr>
+          <tr><td data-label="Card"><strong>SECURE INPUT ON · COPIED</strong></td><td data-label="What to do">Another app is holding secure keyboard input. Click where you want it and press <kbd>⌘V</kbd>.</td></tr>
+          <tr><td data-label="Card"><strong>INTERRUPTED · COPIED</strong></td><td data-label="What to do">The dictation was cut short; what was said is on the clipboard.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A card folds away after 20 seconds, and hovering pauses it. The text stays in Recent dictations.</p>
+  </div>
+
+  <div class="sub" id="dictation-errors">
+    <h3>When a dictation cannot be transcribed</h3>
+    <p>The card reads <strong>NOTHING INSERTED</strong> with the reason and the one action that fixes it:</p>
+    <ul>
+      <li><strong>Install Parakeet (654 MB)</strong> when Parakeet is not installed. It installs in the background and keeps your audio.</li>
+      <li><strong>Use Whisper</strong> when Parakeet cannot run but Whisper can. COS switches the engine and retries the same audio.</li>
+      <li><strong>Retry</strong>, only while the audio is held and a retry can work, for example while an engine is warming up.</li>
+      <li><strong>Open Transcription settings</strong> when no engine is set up or a retry cannot succeed.</li>
+      <li><strong>Open Settings</strong> when the microphone is not allowed. It opens the macOS Microphone list.</li>
+      <li><strong>No speech detected</strong> has no button: check your selected microphone and try again.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="fix-a-word">
+    <h3>Fix a word</h3>
+    <p>After each dictation the pill shows <strong>FIX</strong> for 5 seconds. Fix a word is also on the cards, in the pet's dictation list, in history and on <kbd>⌃⌥F</kbd>. Tap the word COS got wrong (tap another to widen to a phrase), type the spelling under <strong>Always write it as</strong>, then <strong>Save to dictionary</strong>. <strong>Heard</strong> shows your spelling at once, and COS writes it that way from the next sentence.</p>
+    <p><strong>Replace it in</strong> the app puts the corrected words back, including in Claude, Slack and other Electron apps, by pasting over exactly the text COS typed. When COS cannot prove that text is still there, or in a terminal, it copies the fix and tells you what to do. Saving corrections from here needs server 6.73.12.</p>
+  </div>
+
+  <div class="sub" id="dictionary">
+    <h3>The dictionary and Learn from my edits</h3>
+    <p>COS keeps one dictionary for glasses meetings, Mac recordings and dictation. A word you add or fix applies from the next sentence. Open it from Activity, Meetings, <strong>Dictionary</strong>, or from the Dictation tab. It lists Recent corrections with Undo, your Vocabulary and every Correction.</p>
+    <p><strong>Learn from my edits</strong> (Settings) has three choices:</p>
+    <ul>
+      <li><strong>Save automatically</strong> (the default): when you fix a word COS just typed, in that same field, COS learns it. It watches until you leave the field, three minutes at most. Undo is in Recent corrections.</li>
+      <li><strong>Suggest only</strong>: suggestions wait a week in Activity, Dictation, for you to add in a batch.</li>
+      <li><strong>Off</strong>.</li>
+    </ul>
+    <p>It works in native apps for now; Claude, Slack and other Electron apps are measured first. It never runs in terminals or password fields.</p>
+  </div>
+
+  <div class="sub" id="dictation-quiet">
+    <h3>While dictating: mute other apps</h3>
+    <p><strong>While dictating</strong> has <strong>Mute other apps</strong> (the default), <strong>Lower other audio</strong> and <strong>Off</strong>. Muting needs Screen &amp; System Audio Recording for COS Control; until it is allowed, COS lowers your Mac's volume while you dictate and puts it back after, and Settings says so with <strong>Open Screen &amp; System Audio Recording…</strong>. Music and video are muted, not paused, and nothing is muted during a Mac recording.</p>
+  </div>
+
+  <div class="sub" id="dictation-sounds">
+    <h3>Sounds</h3>
+    <p>Under <strong>Sound</strong>, set the <strong>Start</strong> and <strong>Stop</strong> sounds separately, each with <strong>Preview</strong>.</p>
+    <ul>
+      <li><strong>Pet's sound</strong> is the default and follows your pet: Miles Windu saber for the Jedi Miles Windu pet, Unstable saber for the other Jedi, Droid chirp for droids and Soft chime for everyone else.</li>
+      <li>Any pet can use any library sound: Miles Windu saber, Unstable saber, Unstable saber (bright), Dark saber, Saber, full ignition, Saber ignite, Saber, soft, Droid chirp or Soft chime.</li>
+      <li><strong>Your own file…</strong> imports a sound up to 20 MB and trims it to 3 seconds. For the stop sound you can use the end of the file.</li>
+      <li><strong>Volume</strong> defaults to 60%; at 0 sounds are off. <strong>Pitch</strong> goes from minus 12 to plus 6 semitones.</li>
+      <li>No sound plays while a COS recording is capturing.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="dictation-history">
+    <h3>History</h3>
+    <p>The <strong>DICTATIONS</strong> pill on the pet shows your latest 10, each with Copy, and links to <strong>All dictations</strong>. The full history is in the <a href="#dictation-tab">Dictation tab</a>. <strong>Keep dictations for</strong> sets how long it lasts: 7 days, 30 days (the default), 90 days, Forever or Don't keep. COS keeps at most 5,000, and <strong>Clear dictation history</strong> asks before deleting.</p>
+  </div>
+</section>
+
+<!-- ── 06 RECORDING ── -->
+<section class="wrap chapter" id="recording">
+  <div class="sec-head">
+    <h2><span class="num">6.</span> Mac meeting recording and live meetings</h2>
+    <p class="ch-sub">Record what the Mac plays, follow it live, ask about it.</p>
+    <p class="lead">COS records the audio this Mac plays, from every app or one you pick, and transcribes it live. Your microphone is not recorded. Glasses are optional. Mac recording needs macOS 14.2 or later and the Screen &amp; System Audio Recording permission.</p>
+  </div>
+
+  <div class="sub" id="record-start">
+    <h3>Start a recording</h3>
+    <ul>
+      <li>In Activity, <strong>Meetings</strong>, choose <strong>Record</strong> under Record on Mac. Or use <strong>Record on Mac…</strong> in the app's Meetings menu. There is no Record button in the menu bar panel or the Dock menu.</li>
+      <li>The first time, COS shows a notice, <strong>Record this Mac's audio</strong>, with Record and Not now. Let people know you are recording. macOS then asks once to allow System Audio Recording for COS Control.</li>
+      <li><strong>Options</strong> (collapsed) holds the title, which is automatic if you leave it empty, and <strong>Audio source</strong>: <strong>All Mac audio (recommended)</strong> or one app only. <strong>Refresh apps</strong> updates the list.</li>
+      <li>If no sound reaches COS for 12 seconds, the panel says so. With one app chosen, it suggests recording All Mac audio instead.</li>
+    </ul>
+    <h4>Meeting detected</h4>
+    <p>When Zoom, Microsoft Teams or Google Meet has held the microphone for 10 seconds, the pet offers <strong>Meeting detected</strong> with <strong>Record</strong>, <strong>Not now</strong> and <strong>Never for</strong> that app. Record is one click and records All Mac audio. The offer comes once per meeting, never while a Mac recording runs, and waits until a dictation ends. When the app has been off the microphone for a minute, COS asks <strong>Meeting ended?</strong> with <strong>Stop and save</strong> and <strong>Keep recording</strong>. It never stops a recording on its own.</p>
+    <p>In Settings, <strong>Suggest recording when a meeting starts</strong> (on by default) has a switch per app, the Never list with Remove, and <strong>Show the recording notice again</strong>. Seeing a Google Meet tab in a browser needs Accessibility; until then COS watches Zoom and Teams only.</p>
+  </div>
+
+  <div class="sub" id="record-live">
+    <h3>While it records</h3>
+    <ul>
+      <li>The menu bar icon shows a red dot, the Dock icon a <strong>REC</strong> badge, and the pet a <strong>REC</strong> pill. The panel shows <strong>Recording · let people know</strong> with <strong>View live transcript</strong> and <strong>Stop and save</strong>.</li>
+      <li>The live meeting opens in Activity, Meetings: the transcript a few seconds behind the conversation. It follows the newest line until you scroll up; <strong>Jump to live</strong> catches up. <strong>Copy transcript</strong> copies the text so far, and <strong>Copy full context</strong> adds the Ask answers, their sources and file text. Live text and speaker names are preliminary and may change when saved.</li>
+      <li>When a glasses meeting and a Mac recording run at once, <strong>Showing</strong> switches between them.</li>
+      <li><strong>Files shared in this meeting</strong> takes screenshots, slides or files: drop them, <strong>Paste screenshot</strong> or <strong>Add files…</strong>. Their text is read on your Mac and shared with Ask. A file that looks like it holds credentials is held back.</li>
+      <li><strong>Show live meeting transcript</strong> in Settings (on by default) turns the live view off.</li>
+    </ul>
+    <h4>Live COS Ask</h4>
+    <p>Choose <strong>Live COS Ask</strong> beside the transcript. Presets: <strong>Catch me up</strong>, <strong>Summarize so far</strong>, <strong>What to ask</strong> and <strong>Action items</strong>, plus <strong>Fact check</strong> when the server offers it. Or type in <strong>Ask about this meeting</strong>. A model runs only when you ask. Each answer cites the lines it used and says how far into the meeting it read and which model answered; <strong>Stop</strong> ends one, and <strong>Retry</strong>, <strong>Copy</strong> and <strong>Save as follow-up</strong> sit under it. Nothing reruns on its own. Questions and answers stay with the meeting after you save it. Choose the model with <strong>Model</strong> beside Ask, the same setting as the Meeting assistant card. Ask needs server 6.69.0 or newer; on an older server the live transcript keeps working.</p>
+  </div>
+
+  <div class="sub" id="record-end">
+    <h3>End and save</h3>
+    <ul>
+      <li>Choose <strong>Stop and save</strong>. Audio stays on this Mac until the saved meeting is verified, then the meeting opens in Meetings. Saved Mac recordings appear in Meetings with server 6.73.14 or newer.</li>
+      <li>A Live now row that has been quiet for two minutes shows <strong>No audio for</strong> the time. A glasses meeting there offers <strong>End and save</strong>, confirmed first. A stopped Mac capture still uploading shows <strong>Finish saving</strong>.</li>
+      <li>If delivery pauses on an error, the audio is kept. <strong>Retry saving retained audio</strong> does not restart recording; <strong>Keep audio for later</strong> leaves it on the Mac.</li>
+      <li>A capture that never saved appears under <strong>Unsaved captures</strong> with <strong>Recover</strong>, <strong>Recover all</strong> and <strong>Save</strong>. Reopening COS Control never resumes a capture.</li>
+    </ul>
+    <h4>Limits</h4>
+    <ul>
+      <li>A Mac recording stops at two hours. Everything up to then is kept and saves as usual; start a new recording if the meeting is still going.</li>
+      <li>It also stops when the Mac sleeps or the user session changes, after 15 seconds with no audio arriving, or when less than 512 MB of disk is free.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 07 WORK ── -->
+<section class="wrap chapter light" id="work">
+  <div class="sec-head">
+    <h2><span class="num">7.</span> Work</h2>
+    <p class="ch-sub">Your decisions, connected to the work.</p>
+    <p class="lead">Work keeps your existing tasks, links them to the meetings they came from and the agent sessions doing them, and lets you plan and send work to those sessions. Moving a card never runs an agent or publishes anything.</p>
+  </div>
+
+  <div class="sub" id="work-layout">
+    <h3>Layout</h3>
+    <ul>
+      <li>The header has <strong>Add task</strong>, <strong>Review a meeting</strong> and refresh.</li>
+      <li>Tabs: <strong>Your move</strong> (what needs your review, the default), <strong>Board</strong>, <strong>History</strong> and <strong>More</strong>, which holds <strong>Focus view</strong>, Intake and <strong>Waiting on</strong>. COS remembers your choice.</li>
+      <li>Filter with <strong>Search work</strong> (<kbd>⌘F</kbd>), <strong>Domain</strong> and <strong>Scope</strong>: All work, Needs attention, In progress or Completed.</li>
+      <li><strong>Your move</strong> rows offer the next step, such as Check delivery, Answer question, Review result or Open session, and <strong>Hide notice</strong>. Hiding a notice leaves its task stage unchanged.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="work-board">
+    <h3>The board</h3>
+    <p>Stages, in order: <strong>Mentioned</strong> (captured for consideration, a list above the board), <strong>Planned</strong>, <strong>Draft</strong>, <strong>Built</strong>, <strong>QA</strong> and <strong>Complete</strong>. Stages reflect your decisions.</p>
+    <ul>
+      <li>Drag a card between columns to change its stage. Dropping it on <strong>Complete</strong> asks once; drag it out of Complete to reopen it. Complete shows the latest completions first.</li>
+      <li><strong>Order</strong> sorts by Board order, Recent activity, Newest or Oldest.</li>
+      <li>A card shows its title, status, source meeting, a stage menu, <strong>Start work</strong> and its files. Right-click for Start work…, Copy task ID, Copy context and Move to.</li>
+      <li>When a session reports done, its card can move by itself, with a line such as <strong>Moved here at 9:52: the session reported done.</strong> and <strong>Undo</strong>. Cards move up to QA, never to Complete.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="work-card">
+    <h3>A card, its finish line and its sessions</h3>
+    <ul>
+      <li><strong>Edit task</strong> sets the name and <strong>Done when</strong>: what finished looks like.</li>
+      <li><strong>Start work</strong> asks where the work goes before anything is sent: a new session, an existing one, or a fork. When COS is sure, it counts down a few seconds with <strong>Change where it goes</strong>, <strong>Cancel</strong> and <strong>Start now</strong>. Nothing is published, and the card stays in its column.</li>
+      <li><strong>Sessions</strong> lists the sessions on the card. A card with many says <strong>Loading N sessions…</strong> first. Each has View progress, Open, Copy session ID and <strong>Unlink</strong>, which keeps the session and its history.</li>
+      <li><strong>Link existing session</strong> finds a session by title, provider or ID. Choose <strong>Link as reference</strong> to use what a session did, even one working on another task. References sit in their own group with Open and Unlink. COS uses their summary, outputs and changes as context, never sends to them from this task, and they never change its stage. Linking sends no prompt.</li>
+      <li>When a handoff needs your review, <strong>Mark reviewed</strong> clears it (<strong>Acknowledge</strong> for a failed or refused one).</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="work-chat">
+    <h3>Work chat</h3>
+    <p>Work chat sits under the card. Describe the outcome; COS explains its plan and drafts an assignment for each linked session, each carrying only its own context. Drop or paste images, video and files; attachments stay with the task.</p>
+    <ul>
+      <li><strong>Plan with</strong> picks Sonnet or Opus (Opus by default) and <strong>Effort</strong> Low, Medium or High (High by default), when the server offers them.</li>
+      <li><strong>Plan</strong> (<kbd>⌘Return</kbd>) stops at <strong>Ready to send</strong>. Each assignment has <strong>Send</strong>, <strong>Edit</strong> and <strong>Skip</strong>; the round has <strong>Send all</strong> and <strong>Not now</strong>, which keeps them as drafts. Nothing is sent until you press Send, and every send re-checks the task first.</li>
+      <li><strong>Plan and send</strong> plans and sends through the same checks. The first time, it asks whether to send plans without review; <strong>Send plans without review</strong> in Settings, Work is off by default.</li>
+      <li>A round reads <strong>Dispatched</strong> only when an assignment reached its session; otherwise it says why, such as Not delivered or Delivery uncertain. If the task changed since planning, it reads <strong>Needs a new plan</strong>.</li>
+      <li>Each round shows how much context it sends, and each linked session how full its context is. <strong>Show, preview or trim</strong> lets you remove or add items before sending.</li>
+    </ul>
+    <h4>When earlier work is still open</h4>
+    <p>A send that earlier work would hold now <strong>queues</strong>. The card says <strong>Queued behind</strong> the session it waits for, with <strong>Cancel</strong> and <strong>Send in parallel</strong>, and it sends by itself once that work is done, reviewed or answered, after the same checks. Queued work sends while COS Control is open and waits while it is closed. In Settings, Work, <strong>When earlier work is still open</strong> is <strong>Queue it</strong> (the default) or <strong>Ask each time</strong>, which offers Queue it, Send in parallel or Check first. This needs server 6.73.15; an older server checks first, under <strong>Earlier handoffs need a check first</strong>.</p>
+  </div>
+
+  <div class="sub" id="work-intake">
+    <h3>Intake and Waiting on</h3>
+    <p>Intake shows what your meetings produced that is not on the board yet: suggested meeting links, your items to review, and other people's asks. Keep or Drop each one, or Decide later. Each item under <strong>Waiting on</strong> has Done, Still waiting and Drop, and dropped cards can be restored. Both need a server that offers them.</p>
+  </div>
+
+  <div class="sub" id="work-settings">
+    <h3>Work settings</h3>
+    <ul>
+      <li><strong>Work notifications</strong> (on) tells you when a session needs you.</li>
+      <li><strong>Open new sessions in the app</strong> (on): a new session starts on this Mac and opens in its own app once its first reply is done.</li>
+      <li><strong>Decision models</strong> with a <strong>Jev key</strong> lets Work suggest whether to continue, fork or start a session. It only suggests.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 08 SESSIONS ── -->
+<section class="wrap chapter" id="sessions">
+  <div class="sec-head">
+    <h2><span class="num">8.</span> Sessions</h2>
+    <p class="ch-sub">Claude, Codex and Cursor chats on this Mac, in one list.</p>
+    <p class="lead">Read any agent session on this Mac and send a message into the real thread, whichever tool started it.</p>
+  </div>
+  <div class="note"><p><strong>Sessions is off until you turn it on.</strong> In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>, or use <strong>Show your AI sessions</strong> in the setup guide. It is off by default because it reads another product's private state folder and serves session names, workspaces and times (not conversation content) over your local network. Leave it off on an untrusted network.</p></div>
+
+  <div class="sub" id="sessions-list">
+    <h3>The list</h3>
+    <ul>
+      <li><strong>Clock</strong> picks <strong>Updated</strong> or <strong>Opened</strong> in the last 7 days, or <strong>Pinned</strong> at any age: Codex pins, Claude Desktop stars and Cursor sidebar pins.</li>
+      <li>Search matches titles and recent transcripts. Recency sorts Newest, Oldest or Best match.</li>
+      <li>Open a session to read its transcript. An <strong>Activity</strong> block above the turns says what it is doing now: <strong>Working</strong> with a clock, <strong>Waiting</strong> on a permission, a question or a plan approval, <strong>Failed</strong>, <strong>Done</strong> or <strong>Idle</strong>, with its last tool steps.</li>
+      <li><strong>Open in platform</strong> opens it in its own app. <strong>Copy session</strong> copies a short brief to pick the work up in another agent.</li>
+      <li>A session Work started shows <strong>From Work</strong> with <strong>Open in Work</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="sessions-composer">
+    <h3>Write into a session</h3>
+    <p>Type under the transcript and press <strong>Send</strong> (<kbd>⌘Return</kbd>). The message lands in the real thread and the reply comes back in the pane. Long turns keep running after you close the window. This needs <strong>Continue agent threads</strong> in Settings, which is on by default.</p>
+    <ul>
+      <li>A session in the middle of a turn queues your message and sends it when the session is ready. The queue is listed under the composer with each message's place and text. While a message waits, <strong>Edit</strong> puts it back in the composer (Send then reads <strong>Replace</strong>) and <strong>Cancel</strong> removes it. A message the session already took cannot be recalled.</li>
+      <li>Where a message cannot be queued, <strong>Retry</strong> tries again and <strong>Fork with this message</strong> runs it in a copy of the thread; the original is untouched.</li>
+      <li><strong>Cursor</strong>: a message goes into a Cursor chat only while it is mid-turn, when its turn ends. Otherwise send it from Cursor. Open in platform raises Cursor's Agents window; pick the chat there if COS cannot find it.</li>
+      <li>You can also message a session from the pet. See <a href="#pet">The session pet</a>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 09 TRANSCRIPTION ── -->
+<section class="wrap chapter light" id="transcription">
+  <div class="sec-head">
+    <h2><span class="num">9.</span> Transcription settings</h2>
+    <p class="ch-sub">Which engine hears what, on this Mac.</p>
+    <p class="lead">Everything here runs locally. Cloud transcription stays off unless a server administrator deliberately turns it on.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Setting</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Setting"><strong>Dictation engine</strong></td><td data-label="What it does">Automatic (recommended), Parakeet Ultra or Whisper, for Mac dictation. Server 6.74.0.</td></tr>
+        <tr><td data-label="Setting"><strong>Preview model</strong></td><td data-label="What it does">The engine for live meeting preview text, such as Whisper Turbo or Parakeet Ultra. Applies to the next live chunk.</td></tr>
+        <tr><td data-label="Setting"><strong>HQ model</strong></td><td data-label="What it does">The engine for saved meetings. Applies to the next saved meeting.</td></tr>
+        <tr><td data-label="Setting"><strong>Second opinion</strong> and <strong>Refine with second opinion</strong></td><td data-label="What it does">An optional second engine to refine the transcript.</td></tr>
+        <tr><td data-label="Setting"><strong>Install Parakeet (654 MB)</strong></td><td data-label="What it does">Installs Parakeet Ultra for dictation and as the second opinion. <strong>Licenses</strong> names its model and tool licenses.</td></tr>
+        <tr><td data-label="Setting"><strong>Advanced</strong></td><td data-label="What it does">Front end and Quiet detection.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The Transcription card appears with server 6.72.0 or newer. The engine names in Preview, HQ and Second opinion come from the server.</p>
+
+  <div class="sub" id="transcription-tier">
+    <h3>Tier, preview and replay (under Tools)</h3>
+    <ul>
+      <li><strong>Transcription</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>. Balanced is recommended: Small.en for live text, Large-v3-Turbo to commit, Large-v3 to polish. Max keeps Large-v3 resident and may use much more memory. The status card names the model behind each stage.</li>
+      <li><strong>Meeting Turbo preview</strong> shows fast provisional meeting text, then replaces it with the speaker-attributed transcript. Turn it off for an immediate rollback.</li>
+      <li><strong>Adaptive audio cleanup</strong> is off by default. It cleans retained audio only when you press Play; the raw recording is never changed.</li>
+      <li><strong>Idle Metal HQ</strong> is for powerful Macs: it uses Metal for post-meeting HQ while the Mac is idle.</li>
+      <li><strong>Repair Whisper</strong> restarts local Whisper.</li>
+    </ul>
+  </div>
+
+  <div class="sub" id="meeting-assistant">
+    <h3>Meeting assistant</h3>
+    <p>The <strong>Model</strong> used only when you ask during a meeting. Sonnet is the default for fresh settings; other chats keep their own models. <strong>Refresh connected models</strong> rereads what your AI offers. <strong>Home city</strong> is used only when a fact check needs a starting point: city and state, no street address. Leave it blank to use your phone's area.</p>
+  </div>
+</section>
+
+<!-- ── 10 SERVER ── -->
+<section class="wrap chapter" id="server">
+  <div class="sec-head">
+    <h2><span class="num">10.</span> The managed server</h2>
+    <p class="ch-sub">The same open-source server, without the terminal.</p>
+    <p class="lead">COS Control runs the public <code>@gotcos/glasses-server</code> for you, with its own Node runtime. It starts at login, keeps one verified owner, and refuses to replace a process it does not recognize.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3>What it runs</h3>
+      <ul>
+        <li>A LaunchAgent that is the only owner of the server.</li>
+        <li>A recovery agent that checks the server every minute and brings it back without creating a second owner.</li>
+        <li>Its files under <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/runtime/</code>, one folder per server generation.</li>
+        <li>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings and messages stay compatible.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Health at a glance</h3>
+      <p>The status card shows the server state (for example <strong>Running · managed</strong>), <strong>Ownership</strong> (<strong>Verified direct PID</strong> when all is well), Recovery, local transcription, Background jobs, the transcription tier and its models, meeting sync, the agent CLIs it found, and your Work folder and Meetings library.</p>
+    </div>
+    <div class="card">
+      <h3>Safe restarts</h3>
+      <p><strong>Restart</strong>, <strong>Stop</strong> and <strong>Start</strong> sit under the status card. Restart and Update Server are locked while a job or recording is active, and the card says why. <strong>Background jobs</strong> (on by default) keeps replies running when the phone closes; it changes only once active work is done.</p>
+    </div>
+  </div>
+
+  <div class="sub" id="doctor">
+    <h3>Doctor and tools</h3>
+    <p><strong>Run Doctor</strong> (under Tools) checks COS Control, Node.js, npm, the Claude, Codex and Cursor CLIs, Whisper, ffmpeg, runtime ownership, Memory and Threads, the AI provider bridge, a real query, runtime integrity, update recovery and private config, and shows the results under <strong>DOCTOR</strong>.</p>
+    <ul>
+      <li><strong>Guided Setup</strong> asks you to choose a transcription setup, Balanced (recommended) or Max, then runs it.</li>
+      <li><strong>Repair Managed Runtime</strong> and <strong>Repair Whisper</strong> fix the runtime or local Whisper.</li>
+      <li><strong>Work Folder</strong> is your COS project root, where Claude, Codex and Cursor search and edit. <strong>Meetings Library</strong> is the folder you already use for meetings, containing <code>YYYY-MM/*.md</code>. <strong>COS Data</strong> connects Memory and Threads; <strong>Create Folders</strong> makes them.</li>
+      <li><strong>Copy Pairing Token</strong> copies the token the glasses use. <strong>Copy Report</strong> copies a support report. <strong>Open Logs</strong> opens <code>~/Library/Logs/COS&nbsp;Glasses</code>. <strong>Health</strong> opens the server's health page.</li>
+      <li><strong>Local model</strong> picks an Ollama model when a local Ollama daemon is running, or Automatic for the newest pull.</li>
+      <li><strong>Launch COS Control at login</strong>, <strong>Show in menu bar only</strong> and <strong>Open Activity with</strong> are at the end.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 11 UPDATES ── -->
+<section class="wrap chapter light" id="updates">
+  <div class="sec-head">
+    <h2><span class="num">11.</span> Updating and rollback</h2>
+    <p class="ch-sub">Updates prove themselves before they switch.</p>
+  </div>
+  <div class="sub" id="app-updates">
+    <h3>Updating COS Control</h3>
+    <ol>
+      <li>COS Control checks for updates at launch and every six hours. The refresh button in the panel checks now.</li>
+      <li>When one is ready the menu bar glasses turn gold and the panel shows <strong>Update available</strong>. Choose <strong>Update</strong>.</li>
+      <li><strong>What's New in COS Control</strong> opens with a summary and what changed. Choose <strong>Download and install</strong>, or Cancel. Return never installs.</li>
+      <li>COS downloads, checks the file's SHA-256 and the app's signature, then quits and reopens by itself. The glasses server keeps running. After an update, What's New opens once on its own.</li>
+    </ol>
+    <p>An update waits until a meeting and any video upload finish. If it cannot be installed, nothing changes and the banner says why, with <strong>Try again</strong>. The previous copy is kept outside Applications, at <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/updates/previous/</code>, so macOS does not register it as your login app. There is no restore button for it in the app.</p>
+    <p><strong>Updating by hand:</strong> quit the old Control, replace <code>/Applications/COS&nbsp;Control.app</code>, then open that installed copy. Updating Control does not restart the server.</p>
+  </div>
+  <div class="sub" id="server-updates">
+    <h3>Updating the server</h3>
+    <p><strong>Update Server</strong> downloads the new release and verifies it, stages it as a new generation and switches to it. It then waits for health and a real query on at least one installed AI provider. If that proof fails, it restores the previous generation and tells you. <strong>Rollback Server</strong>, under Settings, Advanced, goes back to a retained earlier generation (up to two are kept) and verifies it.</p>
+  </div>
+</section>
+
+<!-- ── 12 TROUBLESHOOTING ── -->
+<section class="wrap chapter" id="fixes">
+  <div class="sec-head">
+    <h2><span class="num">12.</span> Troubleshooting</h2>
+    <p class="ch-sub">When something looks stuck.</p>
+    <p class="lead">Start with <strong>Run Doctor</strong> under Tools: it names the failing check. These are the fixes people need most.</p>
+  </div>
+  <div class="cards">
+    <div class="card" id="fix-accessibility">
+      <h3>Accessibility is on, but dictation only copies the text</h3>
+      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose COS Control in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
+    </div>
+    <div class="card" id="fix-system-audio">
+      <h3>COS Control is missing from Screen &amp; System Audio Recording</h3>
+      <p>macOS lists an app there only after the app asks. Start one Mac recording with <strong>All Mac audio</strong> and choose <strong>Allow</strong> when macOS asks. Or open <strong>System Settings, Privacy &amp; Security, Screen &amp; System Audio Recording</strong>, click plus under <strong>System Audio Recording Only</strong>, and choose COS Control. It is needed for Mac meeting recording and for Mute other apps while you dictate; without it COS lowers the volume instead.</p>
+    </div>
+    <div class="card" id="fix-voice-no-speech">
+      <h3>Voice says “No speech detected” but the engine test passed</h3>
+      <p>In COS Control 0.5.317 the Voice row's check can report no speech even though your microphone is fine: its test clip repeats one sentence, and the server discards repeated text. If <strong>Dictation engine</strong> below it shows a passing test, dictation works. A fix is coming in the next Control update.</p>
+    </div>
+    <div class="card">
+      <h3>Your AI is not detected</h3>
+      <p>Open your AI app and sign in, then choose <strong>Check again</strong> in COS. Claude Desktop alone is not Claude Code: install Claude Code (COS shows the command, with no administrator password and no sudo), run <code>claude</code> and finish the browser sign-in, or use Codex or Cursor Agent instead.</p>
+    </div>
+    <div class="card">
+      <h3>Claude or Codex needs sign-in</h3>
+      <p>Sign-in always happens on the Mac. Run <code>claude auth login</code> or <code>codex login</code> in Terminal, finish the provider sign-in, then choose <strong>Check again</strong> in COS. GPT models need the Codex CLI on this Mac; check it with <code>codex --version</code>.</p>
+    </div>
+    <div class="card">
+      <h3>Server setup fails</h3>
+      <p>Choose <strong>Try again</strong>. Setup needs an internet connection. If it keeps failing, use <strong>Run Doctor</strong> for the failing check, then <strong>Repair Managed Runtime</strong>. If the panel says <strong>Ownership conflict detected</strong>, another server owns the COS ports: stop the server you started in Terminal with Control-C, then try again.</p>
+    </div>
+    <div class="card">
+      <h3>Dictation does nothing when I press the shortcut</h3>
+      <ul>
+        <li>Check that <strong>Dictate into Mac apps</strong> is on and the shortcut is set. Push to talk and Start / stop are off until you choose a key.</li>
+        <li>Fn and single-key shortcuts need Accessibility. Allow it, then turn dictation off and on.</li>
+        <li>If COS says another app may already use the shortcut, choose another one.</li>
+        <li>Using Fn: set <strong>Press 🌐 key to</strong> Do Nothing in System Settings, Keyboard.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>A dictation says Nothing inserted</h3>
+      <p>Use the one button on the card. <strong>Install Parakeet</strong> or <strong>Use Whisper</strong> fixes a missing engine, <strong>Retry</strong> appears while an engine warms up, and <strong>Open Transcription settings</strong> means no engine is set up yet. Whisper dictation needs server 6.74.0; update the server if Settings says the server dictates with Parakeet Ultra only. See <a href="#dictation-errors">error cards</a>.</p>
+    </div>
+    <div class="card">
+      <h3>Parakeet will not install</h3>
+      <p>Parakeet needs 1.5 GB free; free some space, then choose <strong>Check again</strong>. It installs only after a recording ends. A failed install offers <strong>Try again</strong>, and <strong>Use Whisper</strong> keeps dictation working meanwhile.</p>
+    </div>
+    <div class="card">
+      <h3>A Mac recording hears nothing</h3>
+      <p>Make sure the call plays through this Mac and is not muted. If you picked one app, stop and record <strong>All Mac audio</strong> instead. Check that COS Control is allowed under System Audio Recording Only. Remember that Mac recording never records your microphone.</p>
+    </div>
+    <div class="card">
+      <h3>A saved Mac recording is not in Meetings</h3>
+      <p>Saved Mac recordings appear in Meetings with server 6.73.14 or newer; update the server. If the meeting says <strong>Saved meeting not found yet</strong>, wait for finalizing and choose <strong>Refresh</strong>. Audio that did not save stays on the Mac under <strong>Unsaved captures</strong>, with <strong>Recover</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Sessions is empty</h3>
+      <p>Sessions is off by default. In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>. To write into a session, <strong>Continue agent threads</strong> must also be on.</p>
+    </div>
+    <div class="card">
+      <h3>Jump to session does not bring the window forward</h3>
+      <p>Jumping needs Accessibility. Choose <strong>Grant</strong> under Settings, Session pet; if it is already on, use <strong>Reset and add again</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Restart or Update Server is greyed out</h3>
+      <p>A job or recording is active, and COS will not interrupt it. The status card says what holds it. Save or end the meeting, let jobs finish, and the buttons come back.</p>
+    </div>
+    <div class="card">
+      <h3>An update did not install</h3>
+      <p>The banner says why and offers <strong>Try again</strong>. Nothing was changed: an update that cannot be checked or staged is discarded, and the glasses server was not touched. Finish any meeting or video upload first. If macOS blocks a downloaded copy as unverified, download it again and check its checksum; do not remove its quarantine flag.</p>
+    </div>
+    <div class="card">
+      <h3>Message numbers are in the thousands</h3>
+      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (the route is token-gated, so a plain <code>curl</code> returns 401; copy the token with <strong>Copy Pairing Token</strong>):</p>
+      <p><code>curl -H "X-Cos-Token: YOUR-TOKEN" http://YOUR-SERVER-IP:3141/api/message-counter</code></p>
+      <p>A healthy install returns both a <code>max</code> and an <code>era</code>. If <code>era</code> is missing, update to server <strong>6.16.9 or newer</strong>, then start a fresh era once, from inside the installed package (for a managed install, <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/runtime/generations/&lt;version&gt;-&lt;hash&gt;/node_modules/@gotcos/glasses-server/</code>):</p>
+      <p><code>npx --yes tsx server/scripts/reset-message-era.ts --confirm</code></p>
+      <p>Restart the server and reconnect the phone. Your archives are not deleted; only the short numbering restarts at #1.</p>
+    </div>
+  </div>
+
+  <div class="sub" id="fixes-terminal">
+    <h3>If you run the server in Terminal instead</h3>
+    <ul>
+      <li><strong>npm reports EACCES or a root-owned cache:</strong> do not use sudo or recursively change ownership. Start COS with a private cache: <code>npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>.</li>
+      <li><strong>@latest started an older server:</strong> compare <code>server_version</code> in <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. If they differ, stop the old process and rerun with <code>npm_config_prefer_online=true</code> added to the command above.</li>
+      <li><strong>Local Whisper is unavailable:</strong> run <code>brew install whisper-cpp</code>, stop COS with Control-C and start it again. COS Control users get Whisper from the setup guide's Voice step instead.</li>
+    </ul>
+  </div>
+  <p class="note">Still stuck? Choose <strong>Copy Report</strong> under Tools and email it to <a href="mailto:dev@gotcos.com">dev@gotcos.com</a>, or open an issue on <a href="https://github.com/ukaoma/cos-starter">GitHub</a>.</p>
+</section>
+
+<!-- ── 13 FAQ ── -->
+<section class="wrap chapter light" id="faq">
+  <div class="sec-head">
+    <h2><span class="num">13.</span> FAQ</h2>
+    <p class="ch-sub">The short answers.</p>
+  </div>
+  <div class="faq">
+    <details><summary>Do I need COS Glasses?</summary><p>No. Choose <strong>Just my Mac</strong> at first run. Sessions, Work, dictation and Mac meeting recording all work without glasses. You can connect glasses later from the setup guide.</p></details>
+    <details><summary>Do I need Homebrew, npm or Terminal?</summary><p>Not for core setup. COS Control brings its own runtime and downloads the server and voice tools for you. You may use Terminal once to install or sign in to your AI's command-line tool; COS shows the exact command.</p></details>
+    <details><summary>Which AI do I need?</summary><p>One is enough: Claude Code, Codex or Cursor Agent, signed in on this Mac. Ollama is optional for local models. Your AI's subscription and usage limits still apply.</p></details>
+    <details><summary>What does it cost?</summary><p>COS Control and the server are free and open source. Prompts bill to the AI subscription you already use. Local Whisper and Parakeet transcription are free.</p></details>
+    <details><summary>Does dictation or recording send audio to the cloud?</summary><p>No. Dictation never uses the cloud, and meetings are transcribed on this Mac. Cloud transcription stays off unless a server administrator deliberately enables it with their own key.</p></details>
+    <details><summary>Does Mac recording record my microphone?</summary><p>No. It records what the Mac plays: every app, or one you choose. Let people know you are recording.</p></details>
+    <details><summary>Does it run on an Intel Mac?</summary><p>No. COS Control needs Apple silicon and macOS 14 or later.</p></details>
+    <details><summary>Can I go back to running the server in Terminal?</summary><p>Yes. The runtime is the same <code>@gotcos/glasses-server</code>. Quit COS Control any time and go back to the plain <code>npx</code> command; your data does not change.</p></details>
+    <details><summary>Where is my data?</summary><p>On this Mac. The server keeps its configuration, recordings, meetings and messages in <code>~/.cos-glasses</code>; COS Control keeps its runtime and app data in <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/</code>. There is no COS-hosted copy.</p></details>
+    <details><summary>Where do I get help?</summary><p>Email <a href="mailto:dev@gotcos.com">dev@gotcos.com</a>, open an issue on <a href="https://github.com/ukaoma/cos-starter">GitHub</a>, or <a href="/connect/">book a working session</a>.</p></details>
+  </div>
+</section>
+
+<!-- ── 14 RELEASE NOTES ── -->
+<section class="wrap chapter" id="release-notes">
+  <div class="sec-head">
+    <h2><span class="num">14.</span> Release notes</h2>
+    <p class="ch-sub">Recent COS Control releases, newest first.</p>
+    <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
+  </div>
+    <section class="note" id="release-317"><h3>Control 0.5.317 / server 6.74.0</h3><p><strong>Mac dictation works for every user.</strong> Settings, Transcription, Dictation engine: <strong>Automatic</strong> uses Parakeet Ultra when it is installed and ready, and local Whisper otherwise; dictation never uses the cloud. <strong>Install Parakeet</strong> (654 MB) from the menu bar, Settings or a dictation card, with no Terminal step. The setup guide tests each installed engine on this Mac, and a dictation that fails says why with one action that fixes it. <strong>Fix a word</strong> now updates Heard and the pasted text, and Replace works in Claude and Slack; spoken lists become lists; <strong>Learn from my edits</strong> saves your corrections; COS Activity has a <strong>Dictation</strong> tab. In Work chat, a send that earlier work would hold now <strong>queues</strong> and sends by itself once that work is done, reviewed or answered (Settings, Work: Queue it or Ask each time, which adds Send in parallel). Sessions can be linked to a task as a <strong>reference</strong>, never sent to from it. The board has a <strong>Complete</strong> column again, cards with many sessions say they are loading, and a card no longer stays blocked after you reviewed its earlier handoff.</p></section>
+    <section class="note" id="release-315"><h3>Control 0.5.315 / server 6.73.14</h3><p><strong>Mute other apps</strong> now silences other audio while you hold the dictation key; 0.5.313 and 0.5.314 set the mute up without starting it. If the mute cannot start, COS lowers the volume instead and Settings says why. New dictation sound: <strong>Miles Windu saber</strong>, the default for the Jedi Miles Windu pet.</p></section>
+    <section class="note" id="release-314"><h3>Control 0.5.314 / server 6.73.14</h3><p>Fixes a crash in 0.5.313 when a dictation start or stop sound finished. While a meeting records, on this Mac or the glasses, the pet shows a <strong>REC</strong> pill; click it to open the live meeting.</p></section>
+    <section class="note" id="release-313"><h3>Control 0.5.313 / server 6.73.14</h3><p>Dictation keeps listening while you click and drag with the hold key down, and the text lands where your cursor ends up. A dictation cut short is still transcribed and copied, unless you copied something meanwhile. Fix a dictation from the pill for 5 seconds. When Zoom, Teams or Google Meet takes the microphone, the pet offers <strong>Record</strong>: one click records all Mac audio. Saved Mac recordings appear in Meetings with server 6.73.14. Work chat shows what each assignment will send before you send it, and the Work tab uses much less CPU.</p></section>
+    <section class="note" id="meeting-evidence-285"><h3>Control 0.5.287 and server 6.71.12: meeting evidence and compact setup</h3><p>Meeting answers include a qualitative confidence note with a reason. COS accounts for incomplete G2 transcription, keeps evidenced test scenarios separate from real commitments, and distinguishes a clear correction from an unresolved contradiction. New questions about saved meetings can read accepted finalized passages; previous answers retain their original quotations. Model qualification details are collapsed until expanded. Optional Jev setup no longer holds the setup reminder open. Labeled answers and the COS-styled What’s New view from Control 0.5.283 are included.</p><p>Meeting context on compatible companion builds lets you confirm a domain and calendar suggestion for COS lookup. Calendar metadata does not prove what was said. Timestamp and progressive-refinement canaries remain disabled; no raw-ASR accuracy or 30-second refinement claim is made. With explicit public-topic consent, server 6.71.12 can retrieve a claim from the recent transcript and a cost benchmark, cite linked evidence, and distinguish an average from a comparable project. The setting defaults off. Companion 628 exposes that choice and a native bridge error-loop fix; it remains a private device-test candidate. Public companion 624 stays supported.</p></section>
+    <section class="note" id="control-282"><h3>Control 0.5.282 and server 6.70.0: ask about a live meeting</h3><p>The menu-bar icon and a REC badge in the Dock show when a meeting records. Open the live transcript from the menu-bar panel, the Dock menu, a Dock click or Command-Shift-L. <strong>Live COS Ask</strong> sits beside it with Catch me up, Summarize so far, Suggest questions, Action items and a question box. A model runs only when you ask. Answers start from the current meeting and cite the lines they used; a question you type can also look in COS memory and earlier meetings, and with server 6.70.0 a plain public question can search the web using only the words you typed.</p><p>Questions, answers and sources are saved with the meeting, and unsent questions are saved too. Stop or retry an answer yourself; nothing reruns on its own. Saved meetings show their Ask history, and sources open where they came from: the transcript line, an earlier meeting, a memory, the file or the web page. Add files under <strong>Files shared in this meeting</strong>, or drop or paste a screenshot on the Ask box: text is read on your Mac and shared with Ask, and files that look like they hold credentials are held back. Pick the <strong>Meeting assistant</strong> model under the Ask box or in Settings; Sonnet is the default for fresh settings; explicit saved choices are preserved. <strong>Copy full context</strong> adds every answer, its sources and file text to the transcript, and Copy transcript on a saved meeting copies only the transcript. Ask keeps saving while the Mac is locked during a meeting.</p><p>Ask needs server 6.69.0 or newer. On an older server, Ask and Settings say to update the COS server, and the live transcript keeps working. Includes the 0.5.278 Live now transcript and the 0.5.277 panel changes. Pairs with server 6.70.0.</p></section>
+    <section class="note" id="control-278"><h3>Control 0.5.278: follow a live meeting on your Mac</h3><p>While a G2 meeting records, Meetings pins a <strong>Live now</strong> row with a red dot and elapsed time. Open it to read the transcript a few seconds behind the conversation. It follows the newest line until you scroll up; <strong>Jump to live</strong> catches up, and <strong>Copy transcript</strong> copies all text so far with speaker names and times.</p><p>Live text is preliminary, and speaker names are voice matches rather than certainties. Saving opens the saved meeting, whose text can change as it is finalized. Discarding shows that the meeting ended without saving. A hidden window stops checking for new text. <strong>Show live meeting transcript</strong> in Settings turns the view off. Pairs with server 6.67.0.</p><p>The menu-bar panel also includes the 0.5.277 changes: the standing version card is gone, the version appears beside Control, and the top-right refresh button refreshes status and checks for updates. Available updates open What&rsquo;s New before you choose Download and install.</p></section>
+    <section class="note" id="control-277"><h3>Control 0.5.277: a tidier panel</h3><p>The standing version card is gone from the menu-bar panel; updates still arrive as the gold Update available banner. The refresh button at the top right refreshes status and checks for updates, and the line under Control says Checking for updates, then Up to date or Couldn&rsquo;t check for updates. The version shows next to Control, and Settings in Activity has the same refresh and check button.</p></section>
+    <section class="note" id="control-276"><h3>Control 0.5.276: Messages answers are formatted</h3><p>COS answers in Messages (Recent, archived chats and session chat replies) now render bold, lists, headings, quotes, code and links instead of raw Markdown, the same way Meetings does. Row previews show clean text. Copy turn and Copy + images still copy the original text. Only web links are clickable in any pane that renders Markdown, and italic text now draws as italic.</p></section>
+    <section class="note" id="control-275"><h3>Control 0.5.275: What&rsquo;s New before you update</h3><p>When an update is ready, Update in the menu-bar panel (or Check for updates) opens a What&rsquo;s New window with the release, a summary and what changed. Download and install shows each step, and COS Control quits and reopens by itself while the glasses server keeps running. After an update, What&rsquo;s New opens once on its own. An update that cannot be staged now stays open and says why, instead of closing COS Control.</p></section>
+    <section class="note" id="control-274"><h3>Control 0.5.274: connect your glasses in one scan</h3><p>Setup guide, Glasses: COS checks Tailscale on your Mac and on your iPhone, then shows a pairing code. In COS Glasses 6.10.621 tap Scan code on your Mac, photograph the code (or use a screenshot, or type it), then tap Allow on the Mac. Codes last 5 minutes and work once, and the Allow card names the device and warns when it is not on your Tailscale account. Pairing on home Wi-Fi is an opt-in 10-minute switch. When a new COS Control is ready, the menu-bar glasses turn gold and the panel opens with an Update available banner.</p><p>Server 6.67.0 adds the pairing routes. Pasting the pairing token still works everywhere.</p></section>
+    <section class="note" id="control-273"><h3>Control 0.5.273: setup and Settings in Activity</h3><p>Open COS Control from the Dock and choose Settings in Activity. It shares the menu-bar controls and saved preferences. The setup guide distinguishes missing AI tools from tools that need sign-in, guides macOS permissions, and resumes where you left off. Local voice downloads a checksum-verified, Developer ID signed and Apple-notarized Whisper runtime without Homebrew. It benchmarks your Mac and keeps an existing Balanced or Max choice. Recommendations for smaller Macs remain provisional.</p><p>Server 6.66.0 adds the managed Whisper path and reliable Claude detection outside your shell. Haiku is the server default for final dictation polish when the client does not send an explicit choice; saved client selections still win. This is separate from your local Whisper transcription tier.</p></section>
+</section>
+
+</div>
+</div>
+</main>
+
+
+<footer>
+  <div class="q">The prompt was never the problem.</div>
+  <div class="foot-app">
+    <span class="fa-label">The app</span>
+    <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
+    <a href="https://app.gotcos.com/" rel="noopener">Sign up</a> &middot;
+    <a href="https://app.gotcos.com/dashboard" rel="noopener">Dashboard</a>
+  </div>
+  <nav class="foot-nav" aria-label="Pages">
+    <a href="/challenge/">Glasses Challenge</a>
+    <a href="/blueprint/">COS Blueprint</a>
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/ai-adoption/">AI Adoption</a>
+    <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
+    <a href="/embodied-intelligence/">Embodied Intelligence</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/docs/">Docs</a>
+  </nav>
+  <div class="links">
+    <a href="https://milesukaoma.com">Created by Miles Ukaoma</a> ·
+    <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·
+    <a href="/privacy/">Privacy</a> ·
+    <a href="/terms/">Terms</a> ·
+    <a href="/LICENSE">MIT License</a>
+  </div>
+  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 693 760" xmlns="http://www.w3.org/2000/svg"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg></div>
+</footer>
+
+<script src="/assets/anime.umd.min.js"></script>
+<script>
+// Nav: dropdown groups + mobile burger — namespaced to .nav
+(function(){
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  (function(){
+    var groups=nav.querySelectorAll('.nav-actions');
+    if(!groups.length) return;
+    function measureOne(el, api){
+      var live=el.getAttribute('data-mode');
+      if(api&&(live==='login'||live==='download')){ el._pillStale=true; return; }
+      var login=el.querySelector('.nav-login'), cta=el.querySelector('.cta');
+      if(!login||!cta) return;
+      if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
+      var eL=parseFloat(el.style.getPropertyValue('--login-w'))||0, eC=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
+      if((eL||eC)&&(Math.abs(login.getBoundingClientRect().width-eL)>1||Math.abs(cta.getBoundingClientRect().width-eC)>1)){ el._pillStale=true; return; }
+      var narrow=window.matchMedia('(max-width:900px)').matches;
+      var w0=el.style.getPropertyValue('--nav-actions-w');
+      var l0=el.style.getPropertyValue('--login-w');
+      var p0=el.style.getPropertyValue('--pill-w');
+      el.style.setProperty('--nav-actions-w',narrow?'100%':'max-content');
+      el.style.setProperty('--login-w','auto');
+      el.style.setProperty('--pill-w','auto');
+      var lw=login.getBoundingClientRect().width;
+      var gw=el.getBoundingClientRect().width;
+      if(gw<20||lw<=0){
+        el.style.setProperty('--nav-actions-w',w0);
+        el.style.setProperty('--login-w',l0);
+        el.style.setProperty('--pill-w',p0);
+        el._pillStale=true;
+        return;
+      }
+      var inner=Math.max(0, gw-6);
+      var cw=Math.max(0, inner-lw);
+      el.style.setProperty('--login-w',lw.toFixed(2)+'px');
+      el.style.setProperty('--pill-w',cw.toFixed(2)+'px');
+      el.style.setProperty('--nav-actions-inner',inner.toFixed(2)+'px');
+      el.style.setProperty('--nav-actions-w',narrow?'100%':gw.toFixed(2)+'px');
+      el._pillStale=false;
+      if(api) api.sync();
+    }
+    function boot(el){
+      var login=el.querySelector('.nav-login'), cta=el.querySelector('.cta');
+      var metrics={login:0,pill:0,inner:0};
+      var mode='split';
+      var lastX=null, lastY=null, scrollQueued=false;
+      function read(){
+        metrics.login=parseFloat(el.style.getPropertyValue('--login-w'))||0;
+        metrics.pill=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
+        metrics.inner=parseFloat(el.style.getPropertyValue('--nav-actions-inner'))||0;
+      }
+      function go(next){
+        if(!metrics.inner||next===mode) return;
+        mode=next;
+        el.setAttribute('data-mode',next);
+      }
+      function pointerInside(x,y){
+        if(x==null||y==null) return false;
+        var hit=document.elementFromPoint(x,y);
+        return !!(hit&&(hit===el||el.contains(hit)));
+      }
+      // Like okta.com: entering either button expands it at once, and that
+      // choice holds until the pointer leaves the pill. The split point is the
+      // divider between the two buttons at rest (3px is the pill's padding).
+      function side(clientX){
+        var rect=el.getBoundingClientRect();
+        return clientX<rect.left+3+metrics.login?'login':'download';
+      }
+      function maybeRecalibrate(){
+        if(el._pillStale){ el._pillStale=false; measure(); }
+      }
+      el.addEventListener('pointermove',function(e){
+        if(e.pointerType==='touch') return;
+        lastX=e.clientX; lastY=e.clientY;
+        if(!metrics.inner) maybeRecalibrate();
+        if(mode==='split') go(side(e.clientX));
+      });
+      el.addEventListener('pointerleave',function(e){
+        if(e.pointerType==='touch') return;
+        var x=(e.clientX==null?lastX:e.clientX), y=(e.clientY==null?lastY:e.clientY);
+        if(pointerInside(x,y)) return;
+        lastX=null; lastY=null;
+        var f=document.activeElement;
+        if(f===login){ go('login'); return; }
+        if(f===cta){ go('download'); return; }
+        go('split');
+        maybeRecalibrate();
+      });
+      window.addEventListener('scroll',function(){
+        if(lastX==null||scrollQueued) return;
+        scrollQueued=true;
+        requestAnimationFrame(function(){
+          scrollQueued=false;
+          if(lastX==null) return;
+          if(pointerInside(lastX,lastY)){ if(mode==='split') go(side(lastX)); }
+          else { lastX=null; lastY=null; go('split'); }
+        });
+      },{passive:true});
+      login.addEventListener('focus',function(){ go('login'); });
+      cta.addEventListener('focus',function(){ go('download'); });
+      el.addEventListener('focusout',function(e){
+        if(e.relatedTarget&&el.contains(e.relatedTarget)) return;
+        if(lastX!=null&&el.matches(':hover')){ if(mode==='split') go(side(lastX)); return; }
+        go('split');
+        maybeRecalibrate();
+      });
+      el.addEventListener('transitionend',function(e){
+        if(e.propertyName!=='flex-basis') return;
+        if(e.target!==login&&e.target!==cta) return;
+        maybeRecalibrate();
+      });
+      return {sync:read};
+    }
+    function measure(){
+      groups.forEach(function(el){
+        var api=el._pillApi;
+        measureOne(el, api);
+      });
+    }
+    groups.forEach(function(el){ measureOne(el, null); });
+    function arm(){
+      groups.forEach(function(el){
+        if(el._pillApi) return;
+        el._pillApi=boot(el);
+        measureOne(el, el._pillApi);
+      });
+    }
+    measure();
+    arm();
+    window.addEventListener('load',arm);
+    window.addEventListener('resize',measure);
+    window.addEventListener('pageshow',measure);
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden) measure(); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+  })();
+  var burger=nav.querySelector('.nav-burger'), links=nav.querySelector('.links');
+  function closeAll(except){
+    nav.querySelectorAll('.nd[data-open]').forEach(function(d){ if(d!==except){ d.removeAttribute('data-open'); d.querySelector('.nd-btn').setAttribute('aria-expanded','false'); } });
+  }
+  nav.querySelectorAll('.nd-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var d=btn.closest('.nd'), open=d.hasAttribute('data-open');
+      closeAll(d);
+      if(open){ d.removeAttribute('data-open'); btn.setAttribute('aria-expanded','false'); }
+      else { d.setAttribute('data-open',''); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  if(burger){
+    burger.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      burger.setAttribute('aria-expanded',open?'true':'false');
+      burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+      if(!open) closeAll();
+    });
+  }
+  links.addEventListener('click',function(e){
+    if(e.target.closest('a')){ links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); closeAll(); }
+  });
+  document.addEventListener('click',function(e){ if(!nav.contains(e.target)) { closeAll(); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAll(); links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); } });
+})();
+</script>
+<script>
+// Logo on load: each section draws its outline, then the ink fills in (svg.createDrawable)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
+  var svgEl = document.querySelector('svg[viewBox="1004 821 1944 517"]');
+  if (!svgEl) return;
+  var markEls = [].slice.call(svgEl.querySelectorAll(':scope > circle, :scope > path'));
+  var letters = [].slice.call(svgEl.querySelectorAll('g path'));
+  if (markEls.length < 10 || !letters.length) return;
+  // potrace emits letter paths in scan order (S first); left-to-right = C, O, S
+  try { letters.sort(function(a,b){ return a.getBBox().x - b.getBBox().x; }); } catch(e){ return; }
+  // the mark's four sections by markup order, then each letter
+  var sections = [
+    [markEls[0]],
+    [markEls[1], markEls[2], markEls[3]],
+    [markEls[4], markEls[5], markEls[6]],
+    [markEls[7], markEls[8], markEls[9]],
+    [letters[0]], [letters[1]], [letters[2]]
+  ];
+  var all = markEls.concat(letters);
+  var drawableOf = new Map();
+  all.forEach(function(el){
+    el.style.fillOpacity = '0';
+    el.style.stroke = 'currentColor';
+    el.style.strokeWidth = '26';
+    el.style.strokeLinecap = 'round';
+    el.style.strokeLinejoin = 'round';
+    var d = AN.svg.createDrawable(el)[0];
+    AN.utils.set(d, { draw: '0 0' });
+    drawableOf.set(el, d);
+  });
+  var tl = AN.createTimeline();
+  sections.forEach(function(els, i){
+    var at = i < 4 ? (20 + i * 130) : (600 + (i - 4) * 190);
+    var dur = i < 4 ? 420 : 480;
+    els.forEach(function(el){
+      tl.add(drawableOf.get(el), { draw: '0 1', duration: dur, ease: 'inOutQuad' }, at);
+    });
+    tl.add(els, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + dur - 130);
+    tl.add(els, { strokeOpacity: [1, 0], duration: 230, ease: 'outQuad' }, at + dur - 40);
+  });
+  // background-tab safety: whatever happens to the engine, land the inked logo
+  setTimeout(function(){
+    AN.utils.set(all, { fillOpacity: 1, strokeOpacity: 0 });
+  }, 3400);
+})();
+</script>
+<script>
+// Footer watermark: draws itself in brighter, then recedes into the paper (svg.createDrawable)
+(function(){
+  var AN = window.anime;
+  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  if (!AN || !AN.createTimeline || !AN.utils || !AN.svg || !AN.svg.createDrawable || rm.matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var fm = document.querySelector('.foot-mark');
+  var svgEl = fm ? fm.querySelector('svg') : null;
+  if (!svgEl) return;
+  var shapes = [].slice.call(svgEl.querySelectorAll('circle, path'));
+  if (!shapes.length) return;
+  var played = false;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting && !played){
+        played = true; io.disconnect();
+        fm.style.opacity = '0.14';
+        var dmap = [];
+        shapes.forEach(function(s2){
+          s2.style.fillOpacity = '0';
+          s2.style.stroke = 'currentColor';
+          s2.style.strokeWidth = '7';
+          s2.style.strokeLinecap = 'round';
+          var d = AN.svg.createDrawable(s2)[0];
+          AN.utils.set(d, { draw: '0 0' });
+          dmap.push(d);
+        });
+        var tl = AN.createTimeline();
+        shapes.forEach(function(s2, i){
+          var at = i * 110;
+          tl.add(dmap[i], { draw: '0 1', duration: 620, ease: 'inOutSine' }, at);
+          tl.add(s2, { fillOpacity: [0, 1], duration: 260, ease: 'outQuad' }, at + 470);
+          tl.add(s2, { strokeOpacity: [1, 0], duration: 240, ease: 'outQuad' }, at + 540);
+        });
+        tl.add(fm, { opacity: [0.14, 0.045], duration: 900, ease: 'inOutQuad' }, '+=120');
+      }
+    });
+  }, { threshold: 0.2 });
+  io.observe(svgEl);
+})();
+</script>
+<script>
+// Contents rail: mark the chapter in view. No motion, so nothing to gate on reduced motion.
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.sb-nav a[href^="#"]'));
+  if(!links.length||!('IntersectionObserver' in window)) return;
+  var byId={};
+  links.forEach(function(a){ byId[a.getAttribute('href').slice(1)]=a; });
+  var targets=Object.keys(byId).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var visible={};
+  function mark(){
+    var best=null;
+    targets.forEach(function(t){ if(visible[t.id]&&(!best||t.offsetTop<best.offsetTop)) best=t; });
+    if(!best) return;
+    links.forEach(function(a){ a.removeAttribute('aria-current'); });
+    byId[best.id].setAttribute('aria-current','true');
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ visible[e.target.id]=e.isIntersecting; });
+    mark();
+  },{rootMargin:'-20% 0px -55% 0px'});
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+</body>
+</html>
