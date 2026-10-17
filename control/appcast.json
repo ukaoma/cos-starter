@@ -2,22 +2,56 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.315",
-      "build": 368,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.315/COS-Control-macOS-arm64-0.5.315.zip",
-      "sha256": "89b4ad7095fe6511e2246d357bf80e59145df0aa64f763515937a5db16c7d4a2",
+      "version": "0.5.317",
+      "build": 370,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.317/COS-Control-macOS-arm64-0.5.317.zip",
+      "sha256": "f1324d675a65b4fe121d347453c282395ea9e61267753d154fd7d3d27a91e7fc",
       "minMacOS": "14.0",
-      "serverTarget": "6.73.14",
-      "publishedAt": "2026-10-16T19:15:21.798324+00:00",
-      "notes": "Mute other apps now silences other audio while you dictate (0.5.313 and 0.5.314 set it up without starting it). New dictation sound: Miles Windu saber, the default for the Jedi Miles Windu pet. Includes everything in 0.5.314: the dictation sound crash fix and the pet's REC pill. Signed and notarized by Apple.",
+      "serverTarget": "6.74.0",
+      "publishedAt": "2026-10-17T13:07:52+00:00",
+      "notes": "Mac dictation works for every user: Automatic uses Parakeet Ultra when ready and local Whisper otherwise, never the cloud, and Install Parakeet (654 MB) is one click. Work chat queues a send behind earlier work instead of stopping, sessions can be linked as references, and the board has a Complete column again. Fix a word now fixes the dictation itself, including in Claude and Slack. Needs server 6.74.0 for Whisper dictation and the Parakeet install. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Mute other apps now really silences other audio while you dictate, and the Miles Windu pet gets its own saber sound. Plus everything in 0.5.314: the dictation sound crash fix and the pet's REC pill.",
+        "summary": "Dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "Dictation for everyone",
+            "items": [
+              "Dictation works with Whisper too. Settings, Transcription, Dictation engine: Automatic (recommended), Parakeet Ultra or Whisper. Automatic uses Parakeet Ultra when it is installed and ready, and Whisper on this Mac otherwise. Dictation never uses the cloud.",
+              "Install Parakeet (654 MB) from Settings, the menu bar or a dictation card. COS Control now includes the speech tool Parakeet needs, so there is no Terminal step. Progress and Cancel show while it downloads, every file is checked, and dictation keeps working with Whisper meanwhile.",
+              "When a dictation cannot be transcribed, the card says why and offers the one thing that fixes it: Install Parakeet, Use Whisper, Retry, or Open Transcription settings. Retry appears only when it can work.",
+              "The setup guide has a Dictation engine step after Voice. Test on this Mac dictates a 30 second sample with each installed engine and shows its speed and how many words it got wrong. It is a quick check, not a full accuracy test. Voice turns green only once a real test dictation works.",
+              "Dictation history shows which engine transcribed each dictation.",
+              "Whisper dictation and the Parakeet install need server 6.74.0. An older server keeps Parakeet-only dictation, as before."
+            ]
+          },
+          {
+            "title": "0.5.317",
+            "items": [
+              "Work chat no longer stops at \"Earlier handoffs need a check first\". COS plans anyway, and when you send, the round queues behind the earlier work and sends by itself once that work is done, reviewed, or answered. The card says what it waits for, with Cancel.",
+              "Settings, Work, When earlier work is still open: Queue it (the default) or Ask each time. Ask each time offers Queue it, Send in parallel (free sessions now; a busy session gets its part after its own work) or Check first.",
+              "Plan and send queues too; it never skips the check. Queued work sends while COS Control is open, and waits while it is closed. Needs server 6.73.15; an older server keeps the check first.",
+              "Fixed: a card could keep saying Earlier handoffs need a check first, with Check again greyed out, while COS wrote its update summary. Check again, Plan and Send now stay available, and a message you send goes right after that summary.",
+              "The Work board has a Complete column again, after QA. Drop a card there to mark it complete (COS asks once), or drag it out to reopen it. The latest completions come first.",
+              "Opening a card with many sessions now says Loading 8 sessions, and Work chat shows its history as soon as it can, instead of looking empty for a few seconds.",
+              "Link a session to other tasks as a reference: in Link existing session, choose Link as reference, even for a session already working on another task. References sit in their own group on the card with Open and Unlink. COS uses their summary, outputs and changes as context there, never sends to them from that task, and they never change its stage.",
+              "Fix a word now fixes the dictation itself: Heard shows your spelling as soon as you save. Replace it in now works in Claude, Slack and other Electron apps, by pasting the corrected words over exactly the text COS typed. When COS can't prove that text is still there, it copies the fix and tells you what to do.",
+              "Format spoken lists (Settings, Dictation, on by default): say \"number one, number two\" or \"bullet, next bullet\" and COS writes a numbered or bulleted list, one item per line. Ordinary sentences with numbers in them stay as they are.",
+              "Learn from my edits (Settings, Dictation): when you fix a word COS just typed, in that same field, COS learns it. Save automatically is the default, with Undo in Recent corrections. Suggest only keeps suggestions for a week so you can add them in a batch. Native apps for now; Claude, Slack and other Electron apps are measured first. Never in terminals or password fields.",
+              "COS Activity has a new Dictation tab: suggested and learned corrections with Undo, recent corrections, your latest dictations, the full history and the dictionary."
+            ]
+          },
+          {
+            "title": "0.5.316",
+            "items": [
+              "Miles Windu moves more naturally: faster droid entrances, no frozen stance, smoother deflections."
+            ]
+          },
           {
             "title": "0.5.315",
             "items": [
-              "Fixed: Mute other apps now silences Spotify and other audio while you hold the dictation key. 0.5.313 and 0.5.314 set the mute up but never started it. If it cannot start, COS lowers the volume instead and Settings says why.",
-              "New dictation sound: Miles Windu saber. It is the default for the Jedi Miles Windu pet."
+              "Fixed: While dictating, Mute other apps left music and video playing (0.5.313 and 0.5.314). COS's own start and stop sounds still play.",
+              "If COS can't mute, it lowers the volume instead, and Settings says so under While dictating.",
+              "New dictation sound: Miles Windu saber. It's the default for the Jedi Miles Windu pet."
             ]
           },
           {
