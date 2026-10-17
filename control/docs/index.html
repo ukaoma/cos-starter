@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.318 (build 371) · server @gotcos/glasses-server 6.74.0.
-  Every claim is grounded in the 0.5.317 and 0.5.318 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.319 (build 372) · server @gotcos/glasses-server 6.74.0.
+  Every claim is grounded in the 0.5.317, 0.5.318 and 0.5.319 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.318",
+    "softwareVersion": "0.5.319",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -416,7 +416,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.318</span>
+    <span class="sb-ver">Control 0.5.319</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -445,7 +445,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.318</b> · build 371</span>
+    <span class="chip">Control <b>0.5.319</b> · build 372</span>
     <span class="chip">Server <b>6.74.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -1076,9 +1076,9 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>COS Control checks for updates at launch and every six hours. The refresh button in the panel checks now.</li>
       <li>When one is ready the menu bar glasses turn gold and the panel shows <strong>Update available</strong>. Choose <strong>Update</strong>.</li>
       <li><strong>What's New in COS Control</strong> opens with a summary and what changed. Choose <strong>Download and install</strong>, or Cancel. Return never installs.</li>
-      <li>COS downloads, checks the file's SHA-256 and the app's signature, then quits and reopens by itself. The glasses server keeps running. After an update, What's New opens once on its own.</li>
+      <li>COS downloads, showing the megabytes and the time left, then checks the file's SHA-256 and the app's signature. It quits and reopens by itself, usually within a minute. The glasses server keeps running. After an update, What's New opens once on its own.</li>
     </ol>
-    <p>An update waits until a meeting and any video upload finish. If it cannot be installed, nothing changes and the banner says why, with <strong>Try again</strong>. The previous copy is kept outside Applications, at <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/updates/previous/</code>, so macOS does not register it as your login app. There is no restore button for it in the app.</p>
+    <p>An update waits until a meeting and any video upload finish. If it cannot be installed, nothing changes and the banner says why, with <strong>Try again</strong>. Since 0.5.319, if COS Control has not closed 75 seconds after you choose Download and install, the window says why nothing was installed instead of staying on Installing. The previous copy is kept outside Applications, at <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/updates/previous/</code>, so macOS does not register it as your login app. There is no restore button for it in the app.</p>
     <p><strong>Updating by hand:</strong> quit the old Control, replace <code>/Applications/COS&nbsp;Control.app</code>, then open that installed copy. Updating Control does not restart the server.</p>
   </div>
   <div class="sub" id="server-updates">
@@ -1095,6 +1095,10 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="lead">Start with <strong>Run Doctor</strong> under Tools: it names the failing check. These are the fixes people need most.</p>
   </div>
   <div class="cards">
+    <div class="card" id="fix-update-installing">
+      <h3>An update sits on Installing</h3>
+      <p>COS Control closes and reopens to install, usually within a minute. If it stays on Installing, a meeting may still be recording or saving. Finish or stop it, then quit COS Control, choosing <strong>Force Quit</strong> if it does not close within 30 seconds. Open COS Control again. If it reopens on the new version, the update finished. If it reopens on the old version, choose <strong>Update</strong>, then <strong>Download and install</strong>. From 0.5.319 on, the window stops waiting after 75 seconds, says why and offers <strong>Try again</strong>.</p>
+    </div>
     <div class="card" id="fix-accessibility">
       <h3>Accessibility is on, but dictation only copies the text</h3>
       <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose COS Control in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
