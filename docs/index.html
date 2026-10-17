@@ -2155,6 +2155,18 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="cards">
     <div class="card">
+      <h3>Accessibility is on, but dictation only copies the text</h3>
+      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose <strong>COS Control</strong> in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
+    </div>
+    <div class="card">
+      <h3>COS Control is missing from Screen &amp; System Audio Recording</h3>
+      <p>macOS lists an app there only after the app asks. Start one Mac recording with <strong>All Mac audio</strong> and choose <strong>Allow</strong> when macOS asks. Or open <strong>System Settings, Privacy &amp; Security, Screen &amp; System Audio Recording</strong>, click plus under <strong>System Audio Recording Only</strong>, and choose COS Control. It is needed for Mac meeting recording and for <strong>Mute other apps</strong> while you dictate; without it COS lowers the volume instead.</p>
+    </div>
+    <div class="card">
+      <h3>Voice says “No speech detected” but the engine test passed</h3>
+      <p>In COS Control 0.5.317 the Voice row’s check can report no speech even though your microphone is fine: its test clip repeats one sentence, and the server discards repeated text. If <strong>Dictation engine</strong> below it shows a passing test, dictation works. A fix is coming in the next Control update.</p>
+    </div>
+    <div class="card">
       <h3>A capture that recorded only silence</h3>
       <p>Server 6.37.3 records a silent capture as <code>no_speech</code> and clears it, instead of re-attempting recovery on every pass; earlier builds could retry the same empty capture indefinitely. <strong>The audio is not deleted</strong> &#8212; it stays in the unsaved-audio store until the normal retention clock removes it, so it is still available to enrol a voice from.</p>
     </div>

@@ -721,6 +721,8 @@
 
       <div class="step"><h2>Troubleshooting</h2>
         <ul class="enable">
+          <li><strong>Dictation only copies, though Accessibility shows COS Control on</strong>: macOS kept an old entry. In System Settings, Privacy &amp; Security, Accessibility, select COS Control, remove it with the minus button, then add it back with plus and switch it on. COS Control Settings, Session pet, <strong>Reset and add again</strong> does the same.</li>
+          <li><strong>COS Control missing from Screen &amp; System Audio Recording</strong>: macOS lists it only after COS asks. Start one Mac recording with All Mac audio and choose Allow, or click plus under System Audio Recording Only and choose COS Control.</li>
           <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server is still running (the terminal window, or the COS Control menu bar item).</li>
           <li><strong>"Claude not found"</strong> &mdash; Claude Desktop alone is not Claude Code. Follow the <a href="https://code.claude.com/docs/en/setup">official Claude Code installation guide</a> and sign in, or install <a href="https://developers.openai.com/codex/app/">Codex for Mac</a>. Return to COS Control and choose Check again.</li>
           <li><strong>npm EACCES / root-owned cache</strong> &mdash; do not rerun with sudo or recursively change system ownership. Use <code>npm_config_cache="$HOME/.cos-glasses/npm-cache" npx --yes @gotcos/glasses-server@latest</code>. Server 6.12.2+ does not run a second install inside npm's temporary cache.</li>
