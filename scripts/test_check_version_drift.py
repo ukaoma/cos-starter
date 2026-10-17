@@ -417,12 +417,13 @@ class ActivityViewTests(unittest.TestCase):
         fail, _ = run(control=CONTROL + control_views(), home=home)
         self.assertEqual(fail, [], fail)
 
-    def test_live_pages_pin_seven_activity_views(self):
+    def test_live_pages_pin_eight_activity_views(self):
+        # Eight since Control 0.5.317: Dictation joined the app's ActivitySection.visibleSections.
         control = (ROOT.parent / "control" / "index.html").read_text(encoding="utf-8")
         home = (ROOT.parent / "index.html").read_text(encoding="utf-8")
         self.assertEqual(cvd.evaluate_views(control=control, home=home), [])
         self.assertEqual(
-            len(cvd.CONTROL_VIEW_TAB_RE.findall(control)), 7,
+            len(cvd.CONTROL_VIEW_TAB_RE.findall(control)), 8,
             "a new Activity pane: confirm it against the app's ActivitySection enum, then add its tab, "
             "panel, tile and rail entry, move every number word, and update this pin",
         )
