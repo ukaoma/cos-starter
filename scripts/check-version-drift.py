@@ -540,6 +540,38 @@ def evaluate_wizard(wizard: str, stable: dict) -> list[str]:
             for link in links if html_lib.unescape(link) != stable["url"]]
 
 
+CONTROL_DOCS_CLAIMS = (
+    ("control docs Covers line", re.compile(r"Covers COS Control (\d+\.\d+\.\d+) \(build (\d+)\) · server @gotcos/glasses-server (\d+\.\d+\.\d+)\.")),
+    ("control docs Control chip", re.compile(r'<span class="chip">Control <b>(\d+\.\d+\.\d+)</b> · build (\d+)</span>')),
+    ("control docs Server chip", re.compile(r'<span class="chip">Server <b>(\d+\.\d+\.\d+)</b></span>')),
+    ("control docs sidebar version", re.compile(r'<span class="sb-ver">Control (\d+\.\d+\.\d+)</span>')),
+    ("control docs JSON-LD softwareVersion", JSONLD_VERSION_RE),
+)
+
+
+def evaluate_control_docs(page: str, stable: dict) -> list[str]:
+    """The Mac guide (/control/docs/, 2026-10-17) names the current Control and server: each claim once, matching the appcast."""
+    want = {"version": stable["version"], "build": str(stable["build"]), "server": stable["serverTarget"]}
+    fail: list[str] = []
+    for label, pattern in CONTROL_DOCS_CLAIMS:
+        found = pattern.findall(page)
+        if len(found) != 1:
+            fail.append(f"{label}: expected exactly one, found {len(found)}")
+            continue
+        got = found[0] if isinstance(found[0], tuple) else (found[0],)
+        if label.endswith("Server chip"):
+            expected = (want["server"],)
+        elif label.endswith("Covers line"):
+            expected = (want["version"], want["build"], want["server"])
+        elif label.endswith("Control chip"):
+            expected = (want["version"], want["build"])
+        else:
+            expected = (want["version"],)
+        if tuple(got) != expected:
+            fail.append(f"{label} says {' / '.join(got)}; appcast says {' / '.join(expected)}")
+    return fail
+
+
 def release_asset_bytes(url: str) -> bytes:
     """Only the release repository may host artifacts; never fetch arbitrary appcast URLs."""
     if not re.fullmatch(r"https://github\.com/ukaoma/cos-starter/releases/download/control-v[0-9.]+/COS-Control-macOS-arm64-(?:[0-9.]+|latest)\.zip(?:\.sha256)?", url):
@@ -609,6 +641,11 @@ def main() -> int:
         home=home,
     )
     fail.extend(evaluate_wizard((ROOT / "wizard/index.html").read_text(encoding="utf-8"), stable))
+    control_docs = ROOT / "control" / "docs" / "index.html"
+    if control_docs.exists():
+        fail.extend(evaluate_control_docs(control_docs.read_text(encoding="utf-8"), stable))
+    else:
+        fail.append("control/docs/index.html (the Mac guide) is missing")
     note = note_prefix + note
 
     for n in note:

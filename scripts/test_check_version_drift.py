@@ -38,6 +38,37 @@ class WizardDownloadTests(unittest.TestCase):
     def test_missing_link_is_not_a_silent_pass(self):
         self.assertTrue(cvd.evaluate_wizard('<a href="/control/">Details</a>', STABLE))
 
+CONTROL_DOCS = (
+    "  Covers COS Control 0.5.86 (build 124) · server @gotcos/glasses-server 6.40.2.\n"
+    '"softwareVersion": "0.5.86",\n<span class="sb-ver">Control 0.5.86</span>\n'
+    '<span class="chip">Control <b>0.5.86</b> · build 124</span>\n<span class="chip">Server <b>6.40.2</b></span>\n'
+)
+
+
+class ControlDocsTests(unittest.TestCase):
+    def test_guide_matching_the_appcast_passes(self):
+        self.assertEqual(cvd.evaluate_control_docs(CONTROL_DOCS, STABLE), [])
+
+    def test_each_stale_claim_fails_on_its_own(self):
+        for old, new in [("Covers COS Control 0.5.86", "Covers COS Control 0.5.85"), ("(build 124)", "(build 123)"),
+                         ("glasses-server 6.40.2.", "glasses-server 6.40.1."), ('"softwareVersion": "0.5.86"', '"softwareVersion": "0.5.85"'),
+                         ("sb-ver\">Control 0.5.86", "sb-ver\">Control 0.5.85"), ("<b>0.5.86</b> · build 124", "<b>0.5.86</b> · build 123"),
+                         ("Server <b>6.40.2</b>", "Server <b>6.40.1</b>")]:
+            page = CONTROL_DOCS.replace(old, new)
+            self.assertNotEqual(page, CONTROL_DOCS, old)
+            self.assertTrue(cvd.evaluate_control_docs(page, STABLE), old)
+
+    def test_a_missing_or_doubled_claim_fails(self):
+        self.assertTrue(cvd.evaluate_control_docs(CONTROL_DOCS.replace('<span class="chip">Server <b>6.40.2</b></span>', ""), STABLE))
+        self.assertTrue(cvd.evaluate_control_docs(CONTROL_DOCS + '<span class="sb-ver">Control 0.5.86</span>', STABLE))
+
+    def test_live_guide_matches_the_live_appcast(self):
+        import json as _json
+        stable = _json.loads((ROOT.parent / "control" / "appcast.json").read_text(encoding="utf-8"))["channels"]["stable"]
+        page = (ROOT.parent / "control" / "docs" / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(cvd.evaluate_control_docs(page, stable), [])
+
+
 COVERS = (
     "Covers COS Glasses 6.8.437 (build 437, Hub pin 6.8.353) "
     "· server @gotcos/glasses-server 6.40.2 · COS Control 0.5.86."

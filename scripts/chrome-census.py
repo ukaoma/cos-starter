@@ -26,12 +26,13 @@ CHECKS = {
 }
 
 def main() -> int:
-    pages = [ROOT / "index.html"] + sorted(ROOT.glob("*/index.html"))
+    # Two levels: /control/docs/ is a content page under /control/ (2026-10-17).
+    pages = [ROOT / "index.html"] + sorted(ROOT.glob("*/index.html")) + sorted(ROOT.glob("*/*/index.html"))
     bad = []
     print(f"{'page':56s} strip pill linedraw footnav hubspot")
     for f in pages:
         p = f.read_text(encoding="utf-8")
-        name = f.parent.name if f.parent != ROOT else "(home)"
+        name = f.parent.relative_to(ROOT).as_posix() if f.parent != ROOT else "(home)"
         r = {k: fn(p) for k, fn in CHECKS.items()}
         exempt = name in EXEMPT_NAV
         need_nav = not exempt
