@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.639 (build 639, Hub pin 6.10.629) · server @gotcos/glasses-server 6.76.1 · COS Control 0.5.322.
+   Covers COS Glasses 6.10.639 (build 639, Hub pin 6.10.629) · server @gotcos/glasses-server 6.76.1 · COS Control 0.5.323.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -782,13 +782,14 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.639</b> · build 639</span>
       <span class="chip">Server <b>6.76.1</b></span>
-      <span class="chip">Control <b>0.5.322</b></span>
+      <span class="chip">Control <b>0.5.323</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
+        <li><a href="#release-323"><b>Mac app 0.5.323</b><span>Dictation spells words the way the text box has them.</span></a></li>
         <li><a href="#release-322"><b>Mac app 0.5.322</b><span>Updates never get stuck on Installing, and a Live cues switch.</span></a></li>
         <li><a href="#release-321"><b>Mac app 0.5.321</b><span>Stop and save a live glasses meeting from COS Control.</span></a></li>
         <li><a href="#release-320"><b>Mac app 0.5.320</b><span>Download and install quits, installs and reopens COS Control by itself.</span></a></li>
@@ -1027,7 +1028,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.322, glasses 6.10.639, server 6.76.1.</strong> COS Control 0.5.322 is the public Mac download. COS Glasses 6.10.639 is the current companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.10.629. Server identity is 6.76.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.323, glasses 6.10.639, server 6.76.1.</strong> COS Control 0.5.323 is the public Mac download. COS Glasses 6.10.639 is the current companion pack: it installs by sideload from the Hub repo, and the last confirmed Even Hub listing is 6.10.629. Server identity is 6.76.1, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -2048,7 +2049,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.322</strong>, server <strong>6.76.1</strong>, and COS Glasses <strong>6.10.629</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.639</strong> for the newest companion build; the last confirmed Even Hub listing is 6.10.629; 635 is delivered through the Hub repo and has not been confirmed Public in the marketplace. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.323</strong>, server <strong>6.76.1</strong>, and COS Glasses <strong>6.10.629</strong> from Even Hub (last confirmed listing). Sideload <strong>6.10.639</strong> for the newest companion build; the last confirmed Even Hub listing is 6.10.629; 635 is delivered through the Hub repo and has not been confirmed Public in the marketplace. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2069,7 +2070,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.639. The current supported pair is COS Glasses 6.10.639 (the last confirmed Even Hub listing is 6.10.629) and server 6.76.1; COS Control 0.5.322 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.639. The current supported pair is COS Glasses 6.10.639 (the last confirmed Even Hub listing is 6.10.629) and server 6.76.1; COS Control 0.5.323 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2106,6 +2107,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Mac app</h3>
+      <details class="release-detail rn" id="release-323"><summary><span class="rn-t">Control 0.5.323 / server 6.76.1</span><span class="rn-g">Dictation spells words the way the text box has them.</span></summary><div class="rn-b"><p><strong>Dictation reads the text box it types into.</strong> A name or term already written there comes out spelled the same way: if the box says Ukaoma, a dictated Ukoma is typed as Ukaoma. When you fix a dictated word to a spelling the same box already has, such as a name in a prompt you pasted, Learn from my edits takes it even when it sounds less alike, and the suggestion says &ldquo;Also in the text around your dictation&rdquo;. COS keeps that text only for the one dictation and never saves or sends it; never in terminals or password fields. Turn it off in Settings, Dictation: &ldquo;Spell words the way the text box has them&rdquo;.</p></div></details>
       <details class="release-detail rn" id="release-322"><summary><span class="rn-t">Control 0.5.322 / server 6.76.1</span><span class="rn-g">Updates never get stuck on Installing, and a Live cues switch.</span></summary><div class="rn-b"><p><strong>Updates can no longer get stuck on Installing.</strong> If COS Control does not close by itself within 20 seconds, the update closes it and reopens the new version. A Mac recording is never cut off: the update stops, says &ldquo;Finish the Mac recording, then choose Try again&rdquo;, and installs nothing until you do. If an update was interrupted, the next launch offers <strong>Finish installing</strong>, with nothing to download again. This protects updates installed from 0.5.322 on. <strong>Live cues switch:</strong> Settings, Meeting assistant now turns live cues on or off and says what cues use or what is missing, such as &ldquo;Needs a Jev or SubQ key&rdquo; with a button to the key fields. It needs server 6.76.2 or later.</p></div></details>
       <details class="release-detail rn" id="release-321"><summary><span class="rn-t">Control 0.5.321 / server 6.76.1 / glasses 6.10.644</span><span class="rn-g">Stop and save a live glasses meeting from COS Control.</span></summary><div class="rn-b"><p><strong>Stop and save</strong> a live glasses meeting from COS Control: on the live meeting, the Live now row in Meetings, or the menu bar recording card, confirm and COS asks the glasses to stop. They stop and save with their own Stop, so the meeting is never split; the lens shows &ldquo;Stopping: asked on the Mac&rdquo;. If the glasses do not answer, COS says so and nothing stops. Server 6.76.1 also tells Live COS Ask whose COS it is and looks in your COS first for questions about a person. The full Mac guide is at <a href="/control/docs/">COS Control Docs</a>.</p></div></details>
       <details class="release-detail rn" id="release-320"><summary><span class="rn-t">Control 0.5.320 / server 6.75.0</span><span class="rn-g">Download and install now finishes: COS Control quits, installs and reopens by itself.</span></summary><div class="rn-b"><p><strong>Download and install</strong> now finishes: COS Control quits, installs and reopens by itself. Before, the way it asked itself to quit could stall, so the window sat on Installing while a normal quit worked. Updating to 0.5.320 from an older version can still stall once, because the old version runs the install: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now removed when a new one starts. The full Mac guide is at <a href="/control/docs/">COS Control Docs</a>.</p></div></details>
@@ -2535,7 +2537,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.639 / Control 0.5.322 / server 6.76.1, 2026-10-18; Hub packs to 6.10.639)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.639 / Control 0.5.323 / server 6.76.1, 2026-10-18; Hub packs to 6.10.639)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
