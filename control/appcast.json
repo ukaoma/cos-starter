@@ -2,17 +2,31 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.321",
-      "build": 374,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.321/COS-Control-macOS-arm64-0.5.321.zip",
-      "sha256": "65eafbeef2a7797f98a1c259f44266d2d2f1a785b4e6f58127f81c7c148d5a63",
+      "version": "0.5.322",
+      "build": 375,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.322/COS-Control-macOS-arm64-0.5.322.zip",
+      "sha256": "62950dee1db12388ec06c63b0f669ca6ee717a4ea7e01bb8d4d4c159c66e8492",
       "minMacOS": "14.0",
       "serverTarget": "6.76.1",
-      "publishedAt": "2026-10-18T02:01:17+00:00",
-      "notes": "Stop and save a live glasses meeting from the Mac: COS asks the glasses to stop, and they save it with their own Stop, so the meeting is never split. Needs server 6.76.1 and COS Glasses 6.10.644. The copied Meeting Ask context now says where in the meeting each answer was asked. Signed and notarized by Apple.",
+      "publishedAt": "2026-10-18T07:02:22+00:00",
+      "notes": "Updates can no longer get stuck on Installing: if COS Control does not close by itself, the update closes it and reopens the new version, never during a Mac recording. A Live cues switch in Settings turns live cues on or off and says what is missing. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Stop and save a glasses meeting from COS Control: in the live meeting and the panel, confirm, and the glasses stop and save it themselves. If the glasses do not answer, COS says so and nothing stops. Plus everything in 0.5.320: download and install now finishes: COS Control closes, installs and reopens by itself. Before, its own quit could stall, so the window sat on Installing. Updating to this version from an older one can still stall once: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now cleaned up. Plus everything in 0.5.319: updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
+        "summary": "Updates can no longer get stuck on Installing. If COS Control does not close by itself, the update closes it for you and reopens the new version, except while a Mac recording runs: then it says so, and you choose Try again when the recording is done. If an update was interrupted, COS Control offers to finish installing it, with nothing to download again. Also new: a Live cues switch in Settings, in the Meeting assistant card: turn live cues on or off without editing the server's files. One line under it says what cues use, or what stops them and what to do, such as Needs a Jev or SubQ key with a button to the key fields. Cues also need Live Cues on in the glasses app. Plus everything in 0.5.321: stop and save a glasses meeting from COS Control: in the live meeting and the panel, confirm, and the glasses stop and save it themselves. If the glasses do not answer, COS says so and nothing stops. Plus everything in 0.5.320: download and install now finishes: COS Control closes, installs and reopens by itself. Before, its own quit could stall, so the window sat on Installing. Updating to this version from an older one can still stall once: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now cleaned up. Plus everything in 0.5.319: updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "0.5.322",
+            "items": [
+              "If COS Control does not close for an update within 20 seconds, the update closes it and reopens the new version. You no longer need Force Quit.",
+              "A Mac recording is never cut off: the update stops, says \"Finish the Mac recording, then choose Try again\", and installs nothing until you do.",
+              "While it installs, the window says \"Closing COS Control…\", then the new version opens.",
+              "If an update could not close COS Control, the next launch offers Finish installing, with nothing to download again.",
+              "A Live cues switch in Settings, in the Meeting assistant card under Home city. Turn live cues on or off here; nobody edits the server's files by hand.",
+              "The line under the switch says what cues use, like On. Cues use Claude Sonnet 5.5, SubQ, and your notes. Or what stops them, in words, and what to do.",
+              "Needs a Jev or SubQ key comes with Add a Jev or SubQ key, which opens Decision models where the key fields are.",
+              "Turned on in the server's environment shows the switch on and held. An older server says Needs server 6.76.2, and an unreachable server says so instead of showing the last answer.",
+              "Cues also need Live Cues on in the glasses app. Needs server 6.76.2 and COS Glasses 6.10.644."
+            ]
+          },
           {
             "title": "0.5.321",
             "items": [

@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.321 (build 374) · server @gotcos/glasses-server 6.76.1.
-  Every claim is grounded in the 0.5.317 to 0.5.321 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.322 (build 375) · server @gotcos/glasses-server 6.76.1.
+  Every claim is grounded in the 0.5.317 to 0.5.322 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.321",
+    "softwareVersion": "0.5.322",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.321</span>
+    <span class="sb-ver">Control 0.5.322</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,7 +447,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.321</b> · build 374</span>
+    <span class="chip">Control <b>0.5.322</b> · build 375</span>
     <span class="chip">Server <b>6.76.1</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -1214,6 +1214,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-322"><h3>Control 0.5.322 / server 6.76.1</h3><p><strong>Updates can no longer get stuck on Installing.</strong> If COS Control does not close by itself within 20 seconds, the update closes it and reopens the new version. A Mac recording is never cut off: the update stops, says &ldquo;Finish the Mac recording, then choose Try again&rdquo;, and installs nothing until you do. If an update was interrupted, the next launch offers <strong>Finish installing</strong>, with nothing to download again. This protects updates installed from 0.5.322 on. <strong>Live cues switch:</strong> Settings, Meeting assistant now turns live cues on or off and says what cues use or what is missing, such as &ldquo;Needs a Jev or SubQ key&rdquo; with a button to the key fields. It needs server 6.76.2 or later.</p></section>
     <section class="note" id="release-321"><h3>Control 0.5.321 / server 6.76.1</h3><p><strong>Stop and save</strong> a live glasses meeting from the Mac: on the live meeting pane, the Live now row in Meetings, or the menu bar recording card, confirm and COS asks the glasses to stop and save with their own Stop. If they do not answer within a few seconds, COS says the glasses are not connected and nothing stops. It needs server 6.76.1 and COS Glasses 6.10.644. The copied Meeting Ask context now says where in the meeting each answer was asked (&ldquo;Through 3:30&rdquo;).</p></section>
   <section class="note" id="release-320"><h3>Control 0.5.320 / server 6.75.0</h3><p><strong>Download and install</strong> finishes: COS Control quits, installs and reopens by itself, and old update downloads are removed when a new one starts. Updating to 0.5.320 from an older version can still stall once: if Installing has not finished after a minute, Force Quit COS Control and the update installs and reopens it. 0.5.319 added the download progress with the time left, and a clear reason with <strong>Try again</strong> when an update cannot install.</p></section>
   <section class="note" id="release-318"><h3>Control 0.5.318 / server 6.74.0</h3><p>Fixes from the first Macs on 0.5.317. <strong>Allow</strong> on a dictation card opens the exact Accessibility page with the COS bar to drag COS Control in, and the card closes once it works; if Accessibility already reads on but dictation only copies, <strong>Reset and add again</strong> removes the old entry and asks macOS again. COS asks macOS for <strong>System Audio Recording</strong> when you turn on Mute other apps or start a Mac recording, so COS Control appears in that list. The setup guide&rsquo;s Voice check no longer says &ldquo;No speech detected&rdquo; on a Mac where dictation works, and with the session pet off the setup list asks for Accessibility when dictation is on. <strong>Miles Windu lightsaber</strong> is the dictation sound for every Jedi pet. The full Mac guide is at <a href="/control/docs/">COS Control Docs</a>.</p></section>
