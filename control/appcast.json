@@ -2,17 +2,27 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.320",
-      "build": 373,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.320/COS-Control-macOS-arm64-0.5.320.zip",
-      "sha256": "f8731af5f283444c4153fee101a2a8ca8f6b5e44a1b705e16336bb091cf7dbe7",
+      "version": "0.5.321",
+      "build": 374,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.321/COS-Control-macOS-arm64-0.5.321.zip",
+      "sha256": "65eafbeef2a7797f98a1c259f44266d2d2f1a785b4e6f58127f81c7c148d5a63",
       "minMacOS": "14.0",
-      "serverTarget": "6.75.0",
-      "publishedAt": "2026-10-17T22:24:32+00:00",
-      "notes": "Download and install now finishes: COS Control quits, installs and reopens by itself. Updating to this version from an older one can still stall once; if Installing has not finished after a minute, Force Quit COS Control and the update installs and reopens it. Old update downloads are cleaned up. Signed and notarized by Apple.",
+      "serverTarget": "6.76.1",
+      "publishedAt": "2026-10-18T02:01:17+00:00",
+      "notes": "Stop and save a live glasses meeting from the Mac: COS asks the glasses to stop, and they save it with their own Stop, so the meeting is never split. Needs server 6.76.1 and COS Glasses 6.10.644. The copied Meeting Ask context now says where in the meeting each answer was asked. Signed and notarized by Apple.",
       "whatsNew": {
-        "summary": "Download and install now finishes: COS Control closes, installs and reopens by itself. Before, its own quit could stall, so the window sat on Installing. Updating to this version from an older one can still stall once: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now cleaned up. Plus everything in 0.5.319: updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
+        "summary": "Stop and save a glasses meeting from COS Control: in the live meeting and the panel, confirm, and the glasses stop and save it themselves. If the glasses do not answer, COS says so and nothing stops. Plus everything in 0.5.320: download and install now finishes: COS Control closes, installs and reopens by itself. Before, its own quit could stall, so the window sat on Installing. Updating to this version from an older one can still stall once: if Installing has not finished after a minute, Force Quit COS Control (Option-Command-Escape) and the update installs and reopens it. Old update downloads are now cleaned up. Plus everything in 0.5.319: updates say how long they take: Download and install shows the megabytes and the time left, installing says it usually takes under a minute, and the window can no longer sit on Installing forever. If COS Control cannot close for the update, you see why and can try again. Plus everything in 0.5.318: fixes from the first Macs on 0.5.317: Allow in a dictation card now opens the drag-in helper, with Reset and add again when Accessibility already reads on; COS asks macOS for System Audio Recording, so it can appear in that list; the setup guide no longer says no speech was detected when dictation works; and the Miles Windu lightsaber is every Jedi pet's dictation sound. Plus everything in 0.5.317: dictation for everyone: dictate with Whisper or Parakeet Ultra, and install Parakeet right from COS. Work chat keeps taking ideas while earlier work runs: a send it would hold now queues, or goes in parallel. Dictation fixes a word right where you typed it, writes spoken lists and learns from your edits, with a new Dictation tab in Activity. Plus 0.5.316 (Miles Windu moves more naturally), 0.5.315 (Mute other apps while dictating now mutes them), 0.5.314 (a crash fix when a dictation sound finished, and REC on the pet while a meeting records) and everything in 0.5.313: dictation that keeps listening while you click, one-click Mac meeting recording, and a lighter Work tab.",
         "sections": [
+          {
+            "title": "0.5.321",
+            "items": [
+              "Stop and save a glasses meeting from COS Control. It is in the live meeting header, and in the panel when one glasses meeting is recording. Confirm, and COS asks the glasses to stop.",
+              "The glasses stop and save the meeting themselves, so the lens shows Saving and Saved and no audio is split into a second meeting.",
+              "COS says what happened: Saving the meeting, then Saved with its name. If the glasses are not connected, the server is unreachable or the meeting already stopped, it says so and nothing stops.",
+              "Meeting Ask’s copied context shows where in the meeting each answer reached, as Through 3:30, and how long the answer took when the server measured it, as Answer time: 6.4 s. It no longer prints a meeting position in milliseconds that read like a wait.",
+              "Needs COS Glasses 6.10.644 and server 6.76.1."
+            ]
+          },
           {
             "title": "0.5.320",
             "items": [

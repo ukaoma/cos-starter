@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.320 (build 373) · server @gotcos/glasses-server 6.75.0.
-  Every claim is grounded in the 0.5.317 to 0.5.320 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.321 (build 374) · server @gotcos/glasses-server 6.76.1.
+  Every claim is grounded in the 0.5.317 to 0.5.321 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.320",
+    "softwareVersion": "0.5.321",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.320</span>
+    <span class="sb-ver">Control 0.5.321</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,8 +447,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.320</b> · build 373</span>
-    <span class="chip">Server <b>6.75.0</b></span>
+    <span class="chip">Control <b>0.5.321</b> · build 374</span>
+    <span class="chip">Server <b>6.76.1</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
@@ -1214,7 +1214,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
-    <section class="note" id="release-320"><h3>Control 0.5.320 / server 6.75.0</h3><p><strong>Download and install</strong> finishes: COS Control quits, installs and reopens by itself, and old update downloads are removed when a new one starts. Updating to 0.5.320 from an older version can still stall once: if Installing has not finished after a minute, Force Quit COS Control and the update installs and reopens it. 0.5.319 added the download progress with the time left, and a clear reason with <strong>Try again</strong> when an update cannot install.</p></section>
+    <section class="note" id="release-321"><h3>Control 0.5.321 / server 6.76.1</h3><p><strong>Stop and save</strong> a live glasses meeting from the Mac: on the live meeting pane, the Live now row in Meetings, or the menu bar recording card, confirm and COS asks the glasses to stop and save with their own Stop. If they do not answer within a few seconds, COS says the glasses are not connected and nothing stops. It needs server 6.76.1 and COS Glasses 6.10.644. The copied Meeting Ask context now says where in the meeting each answer was asked (&ldquo;Through 3:30&rdquo;).</p></section>
+  <section class="note" id="release-320"><h3>Control 0.5.320 / server 6.75.0</h3><p><strong>Download and install</strong> finishes: COS Control quits, installs and reopens by itself, and old update downloads are removed when a new one starts. Updating to 0.5.320 from an older version can still stall once: if Installing has not finished after a minute, Force Quit COS Control and the update installs and reopens it. 0.5.319 added the download progress with the time left, and a clear reason with <strong>Try again</strong> when an update cannot install.</p></section>
   <section class="note" id="release-318"><h3>Control 0.5.318 / server 6.74.0</h3><p>Fixes from the first Macs on 0.5.317. <strong>Allow</strong> on a dictation card opens the exact Accessibility page with the COS bar to drag COS Control in, and the card closes once it works; if Accessibility already reads on but dictation only copies, <strong>Reset and add again</strong> removes the old entry and asks macOS again. COS asks macOS for <strong>System Audio Recording</strong> when you turn on Mute other apps or start a Mac recording, so COS Control appears in that list. The setup guide&rsquo;s Voice check no longer says &ldquo;No speech detected&rdquo; on a Mac where dictation works, and with the session pet off the setup list asks for Accessibility when dictation is on. <strong>Miles Windu lightsaber</strong> is the dictation sound for every Jedi pet. The full Mac guide is at <a href="/control/docs/">COS Control Docs</a>.</p></section>
     <section class="note" id="release-317"><h3>Control 0.5.317 / server 6.74.0</h3><p><strong>Mac dictation works for every user.</strong> Settings, Transcription, Dictation engine: <strong>Automatic</strong> uses Parakeet Ultra when it is installed and ready, and local Whisper otherwise; dictation never uses the cloud. <strong>Install Parakeet</strong> (654 MB) from the menu bar, Settings or a dictation card, with no Terminal step. The setup guide tests each installed engine on this Mac, and a dictation that fails says why with one action that fixes it. <strong>Fix a word</strong> now updates Heard and the pasted text, and Replace works in Claude and Slack; spoken lists become lists; <strong>Learn from my edits</strong> saves your corrections; COS Activity has a <strong>Dictation</strong> tab. In Work chat, a send that earlier work would hold now <strong>queues</strong> and sends by itself once that work is done, reviewed or answered (Settings, Work: Queue it or Ask each time, which adds Send in parallel). Sessions can be linked to a task as a <strong>reference</strong>, never sent to from it. The board has a <strong>Complete</strong> column again, cards with many sessions say they are loading, and a card no longer stays blocked after you reviewed its earlier handoff.</p></section>
     <section class="note" id="release-315"><h3>Control 0.5.315 / server 6.73.14</h3><p><strong>Mute other apps</strong> now silences other audio while you hold the dictation key; 0.5.313 and 0.5.314 set the mute up without starting it. If the mute cannot start, COS lowers the volume instead and Settings says why. New dictation sound: <strong>Miles Windu saber</strong>, the default for the Jedi Miles Windu pet.</p></section>
