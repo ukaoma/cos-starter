@@ -282,9 +282,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-pet-menu-20260919",
-    "minBuild": 276,
-    "title": "Right-click the pet",
-    "body": "Right-click the pet for Full motion, Calm motion or No motion, or to hide it. Hidden, it comes back from COS Control in the menu bar, under Session pet. The pet also shows Codex threads while they work and Cursor chats mid-turn."
+    "id": "control-update-stall-20261017",
+    "minBuild": 350,
+    "title": "If an update sits on Installing",
+    "body": "COS Control 0.5.319 and earlier can stall while installing an update. When the window says Installing, Force Quit COS Control (Option-Command-Escape) right away, within a minute. The update then installs and COS Control reopens on the new version. Your meetings and the glasses server are not affected. From 0.5.320 on, updates install by themselves."
   }
 }
