@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.325 (build 378) · server @gotcos/glasses-server 6.78.1.
-  Every claim is grounded in the 0.5.317 to 0.5.325 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.326 (build 379) · server @gotcos/glasses-server 6.78.1.
+  Every claim is grounded in the 0.5.317 to 0.5.326 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.325",
+    "softwareVersion": "0.5.326",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.325</span>
+    <span class="sb-ver">Control 0.5.326</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,7 +447,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.325</b> · build 378</span>
+    <span class="chip">Control <b>0.5.326</b> · build 379</span>
     <span class="chip">Server <b>6.78.1</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -1214,7 +1214,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
-    <section class="note" id="release-325"><h3>Control 0.5.325 / server 6.78.1</h3><p><strong>AI polish for dictation, off by default.</strong> Choose Claude Haiku or Claude Sonnet in Settings, Dictation, and Claude cleans filler, punctuation, doubled words and your dictionary&rsquo;s spellings before COS pastes. If Claude takes longer than 5 seconds (Haiku) or 9 seconds (Sonnet), or is unavailable, COS pastes what it heard. History marks a polished dictation and keeps what was heard. It does not reliably fix words that only sound alike. <strong>Miles Windu joins the shuffled combat casts:</strong> two, three and four sessions bring changing opponents, as for Nia, Elara and Rowan. A stock Miles Windu upgrades in place; customized art stays yours. A stray Return can no longer replace your pet: Use on a shipped character takes a click. Server 6.78.1 delivers glasses messages to open Claude sessions again.</p></section>
+    <section class="note" id="release-326"><h3>Control 0.5.326 / server 6.78.1</h3><p><strong>Dictation keeps your last word.</strong> After you let go of the dictation key, COS keeps listening for 300 milliseconds before it closes the microphone, so the end of what you said is no longer cut off. The pill keeps showing LISTENING for that moment and the stop sound plays only after the microphone closes. Each dictation also adds one line of numbers to dictation-timing.jsonl (never your words or audio), the place to look if a dictation ever seems cut off.</p></section>
+  <section class="note" id="release-325"><h3>Control 0.5.325 / server 6.78.1</h3><p><strong>AI polish for dictation, off by default.</strong> Choose Claude Haiku or Claude Sonnet in Settings, Dictation, and Claude cleans filler, punctuation, doubled words and your dictionary&rsquo;s spellings before COS pastes. If Claude takes longer than 5 seconds (Haiku) or 9 seconds (Sonnet), or is unavailable, COS pastes what it heard. History marks a polished dictation and keeps what was heard. It does not reliably fix words that only sound alike. <strong>Miles Windu joins the shuffled combat casts:</strong> two, three and four sessions bring changing opponents, as for Nia, Elara and Rowan. A stock Miles Windu upgrades in place; customized art stays yours. A stray Return can no longer replace your pet: Use on a shipped character takes a click. Server 6.78.1 delivers glasses messages to open Claude sessions again.</p></section>
   <section class="note" id="release-324"><h3>Control 0.5.324 / server 6.77.0</h3><p><strong>Jedi combat, refined.</strong> Nia, Elara and Rowan defend with their sabers before striking; opponents react after contact, and each returns to guard more smoothly. Two-, three- and four-session encounters shuffle three opponent casts without an immediate repeat, grounded opponents stay on the floor, and flight-capable droids make the aerial approaches. Stock Jedi packs upgrade in place; customized art and timing stay yours.</p></section>
   <section class="note" id="release-323"><h3>Control 0.5.323 / server 6.76.1</h3><p><strong>Dictation reads the text box it types into.</strong> A name or term already written there comes out spelled the same way: if the box says Ukaoma, a dictated Ukoma is typed as Ukaoma. When you fix a dictated word to a spelling the same box already has, such as a name in a prompt you pasted, Learn from my edits takes it even when it sounds less alike, and the suggestion says &ldquo;Also in the text around your dictation&rdquo;. COS keeps that text only for the one dictation and never saves or sends it; never in terminals or password fields. Turn it off in Settings, Dictation: &ldquo;Spell words the way the text box has them&rdquo;.</p></section>
     <section class="note" id="release-322"><h3>Control 0.5.322 / server 6.76.1</h3><p><strong>Updates can no longer get stuck on Installing.</strong> If COS Control does not close by itself within 20 seconds, the update closes it and reopens the new version. A Mac recording is never cut off: the update stops, says &ldquo;Finish the Mac recording, then choose Try again&rdquo;, and installs nothing until you do. If an update was interrupted, the next launch offers <strong>Finish installing</strong>, with nothing to download again. This protects updates installed from 0.5.322 on. <strong>Live cues switch:</strong> Settings, Meeting assistant now turns live cues on or off and says what cues use or what is missing, such as &ldquo;Needs a Jev or SubQ key&rdquo; with a button to the key fields. It needs server 6.76.2 or later.</p></section>
