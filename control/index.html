@@ -359,7 +359,18 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-intro p{color:var(--muted);max-width:62ch;margin-top:14px}
 .pet-pause{appearance:none;flex:none;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--fg);font:500 .64rem var(--mono);letter-spacing:.09em;text-transform:uppercase;padding:10px 15px;cursor:pointer}
 .pet-pause:hover{border-color:var(--gold);color:var(--gold)}
-.pet-dock{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:32px}
+.pet-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,290px);margin-top:32px;border:1px solid var(--line2);border-radius:18px;background:linear-gradient(155deg,rgba(255,246,232,.055),rgba(8,5,3,.3));overflow:hidden}
+.pet-feature .pet-stage{aspect-ratio:auto;min-height:clamp(260px,40vw,500px);padding:clamp(10px,2vw,22px);background:radial-gradient(ellipse at 50% 60%,rgba(196,115,110,.13),transparent 58%)}
+.pet-feature .pet-stage canvas{aspect-ratio:auto}
+.pet-feature-copy{display:flex;flex-direction:column;gap:14px;padding:24px 22px 18px;border-left:1px solid var(--line2)}
+.pet-feature-copy .pet-state{font-size:1.5rem}
+.pet-feature-copy p{color:var(--muted);font-size:.86rem;line-height:1.55}
+.pet-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:var(--line2)}
+.pet-facts div{background:rgba(8,5,3,.35);padding:10px 12px}
+.pet-facts dt{font:400 .52rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ghost)}
+.pet-facts dd{margin-top:4px;font:500 .74rem var(--mono);color:var(--gold);white-space:nowrap}
+.pet-feature .pet-ledger{width:100%;margin:auto 0 0}
+.pet-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
 .pet-card{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line2);border-radius:18px;background:linear-gradient(155deg,rgba(255,246,232,.055),rgba(8,5,3,.3));overflow:hidden;transition:transform .22s,border-color .22s,background .22s}
 .pet-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.34);background:linear-gradient(155deg,rgba(201,169,110,.095),rgba(8,5,3,.32))}
 .pet-card figcaption{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:84px;padding:14px 15px;border-top:1px solid var(--line2)}
@@ -387,7 +398,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-sample:hover{background:rgba(201,169,110,.09);transform:translateY(-3px)}
 .pet-sample img{display:block;width:min(88px,86%);height:94px;object-fit:contain;filter:drop-shadow(0 9px 8px rgba(0,0,0,.32));image-rendering:auto}
 .pet-sample span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ghost);font:500 .53rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
-@media(max-width:980px){.sc-head{grid-template-columns:1fr}.sc-proof{flex-direction:column}.sc-head h2{max-width:15ch}.sc-head .lead{max-width:58ch}.sc-deck{width:100%;max-width:780px}.pet-dock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-card{flex:0 0 min(300px,78vw);scroll-snap-align:start}}
+@media(max-width:980px){.sc-head{grid-template-columns:1fr}.sc-proof{flex-direction:column}.sc-head h2{max-width:15ch}.sc-head .lead{max-width:58ch}.sc-deck{width:100%;max-width:780px}.pet-feature{grid-template-columns:1fr}.pet-feature .pet-stage{min-height:0;aspect-ratio:6/5}.pet-feature-copy{border-left:0;border-top:1px solid var(--line2)}.pet-dock{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-card{flex:0 0 min(300px,78vw);scroll-snap-align:start}}
 @media(max-width:820px){.pet-community{grid-template-columns:1fr}.pet-community-copy{border-right:0;border-bottom:1px solid var(--line2)}.pet-community-copy strong{font-size:4.8rem}.pet-community-copy p{max-width:55ch}}
 @media(max-width:700px){.sc-platform{grid-template-columns:72px minmax(0,1fr)}.sc-platform i{grid-column:2}.pet-chapter{margin-top:112px;padding-top:32px}.pet-intro{display:block}.pet-pause{display:block;margin:22px auto 0}.pet-options{grid-template-columns:1fr}.pet-shelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}.pet-sample{flex:0 0 126px;scroll-snap-align:start;border-bottom:0}.pet-sample:nth-child(5n+1){border-left:1px solid var(--line2)}.pet-sample:first-child{border-left:0}.session-command::before{display:none}}
 @media(prefers-reduced-motion:reduce){.pet-card,.pet-sample{transition:none}.pet-card:hover,.pet-sample:hover{transform:none}}
@@ -409,7 +420,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 #install{scroll-margin-top:115px}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="assets/session-command/session-deck.js?v=3" defer></script>
+<script src="assets/session-command/pet-cast.js?v=1" defer></script>
+<script src="assets/session-command/session-deck.js?v=4" defer></script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
@@ -689,7 +701,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
                 </div>
               </div>
             </div>
-            <div class="sd-pet-stage" data-pet-caption="Live workload" aria-hidden="true"><canvas data-session-pet data-src="/control/assets/session-command/miles-four-plus.png" data-frames="26" data-interval=".22"></canvas></div>
+            <div class="sd-pet-stage" data-pet-caption="Live workload" aria-hidden="true"><canvas data-session-pet></canvas></div>
             </div>
             <div class="sd-statuses" role="tablist" aria-label="Preview session state">
               <button class="sd-status running" type="button" role="tab" aria-selected="true" data-deck-state="running"><i aria-hidden="true"></i><b>Running 4</b></button>
@@ -716,41 +728,50 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <div>
             <h3>Your session state, at a glance.</h3>
             <p>The bundled Cloud Puff is the simple default for new users. Existing pet choices stay yours. The centered ledger beneath any pet changes to Running, Done, or Waiting, so you can read the state without reopening every agent. Open the RUNNING list and each live row carries a paperplane: a card names the session, you type, Return sends into the real thread. For more animation, choose Miles Windu or another character in Characters. You can also use a gallery pet or bring your own sprites.</p>
+            <p>Miles Windu Version 15, below, is re-rendered from 2x art, and every running state shuffles its opponents: four casts with one session, three each with two, three, and four or more.</p>
           </div>
           <button class="pet-pause" type="button" aria-pressed="false">Pause animations</button>
         </div>
 
-        <div class="pet-dock" aria-label="Miles Windu session animation states">
+        <figure class="pet-feature reveal">
+          <div class="pet-stage"><canvas data-pet-pose="swarm" role="img" aria-label="Miles Windu Version 15 fighting four or more opponents. The opponent cast changes every loop."></canvas></div>
+          <figcaption class="pet-feature-copy">
+            <span class="pet-state">4+ sessions<small>Shown with four or more running</small></span>
+            <p>Every loop ends with the next squad walking in while the last one falls. Three opponent casts, shuffled so the same fight never plays twice in a row.</p>
+            <dl class="pet-facts">
+              <div><dt>Frames</dt><dd>64</dd></div>
+              <div><dt>Now playing</dt><dd data-cast-label>Cast 1 of 3</dd></div>
+            </dl>
+            <div class="pet-ledger">Running 4+</div>
+          </figcaption>
+        </figure>
+
+        <div class="pet-dock" aria-label="Miles Windu Version 15 session animation states">
           <figure class="pet-card reveal">
-            <div class="pet-stage"><canvas width="640" height="420" data-pet-src="assets/session-command/miles-idle.png" data-frames="8" data-interval="0.24" data-scale="1.3" role="img" aria-label="Miles Windu idle animation"></canvas></div>
+            <div class="pet-stage"><canvas data-pet-pose="idle" role="img" aria-label="Miles Windu idle animation"></canvas></div>
             <figcaption><span class="pet-state">Idle<small>Shown with no sessions running</small></span><span class="pet-count">8F</span></figcaption>
             <div class="pet-ledger">Ready</div>
           </figure>
           <figure class="pet-card reveal">
-            <div class="pet-stage"><canvas width="640" height="420" data-pet-src="assets/session-command/miles-one.png" data-frames="16" data-interval="0.10" role="img" aria-label="Miles Windu one-session animation"></canvas></div>
-            <figcaption><span class="pet-state">1 session<small>Shown with one session running</small></span><span class="pet-count">16F</span></figcaption>
+            <div class="pet-stage"><canvas data-pet-pose="working" role="img" aria-label="Miles Windu one-session animation, rotating four opponent casts"></canvas></div>
+            <figcaption><span class="pet-state">1 session<small>Shown with one session running</small></span><span class="pet-count">46F · 4 casts</span></figcaption>
             <div class="pet-ledger">Running 1</div>
           </figure>
           <figure class="pet-card reveal">
-            <div class="pet-stage"><canvas width="640" height="420" data-pet-src="assets/session-command/miles-two.png" data-frames="17" data-interval="0.11" role="img" aria-label="Miles Windu two-session animation"></canvas></div>
-            <figcaption><span class="pet-state">2 sessions<small>Shown with two sessions running</small></span><span class="pet-count">17F</span></figcaption>
+            <div class="pet-stage"><canvas data-pet-pose="duel" role="img" aria-label="Miles Windu two-session animation, rotating three opponent casts"></canvas></div>
+            <figcaption><span class="pet-state">2 sessions<small>Shown with two sessions running</small></span><span class="pet-count">37F · 3 casts</span></figcaption>
             <div class="pet-ledger">Running 2</div>
           </figure>
           <figure class="pet-card reveal">
-            <div class="pet-stage"><canvas width="640" height="420" data-pet-src="assets/session-command/miles-three.png" data-frames="13" data-interval="0.22" role="img" aria-label="Miles Windu three-session animation"></canvas></div>
-            <figcaption><span class="pet-state">3 sessions<small>Shown with three sessions running</small></span><span class="pet-count">13F</span></figcaption>
+            <div class="pet-stage"><canvas data-pet-pose="trio" role="img" aria-label="Miles Windu three-session animation, rotating three opponent casts"></canvas></div>
+            <figcaption><span class="pet-state">3 sessions<small>Shown with three sessions running</small></span><span class="pet-count">43F · 3 casts</span></figcaption>
             <div class="pet-ledger">Running 3</div>
-          </figure>
-          <figure class="pet-card reveal">
-            <div class="pet-stage"><canvas width="640" height="420" data-pet-src="assets/session-command/miles-four-plus.png" data-frames="26" data-interval="0.22" role="img" aria-label="Miles Windu four-or-more-session animation"></canvas></div>
-            <figcaption><span class="pet-state">4+ sessions<small>Shown with four or more running</small></span><span class="pet-count">26F</span></figcaption>
-            <div class="pet-ledger">Running 4+</div>
           </figure>
         </div>
 
         <div class="pet-options reveal">
           <div class="pet-option"><b>Message a session from the pet</b><span>Hover a live row and press the paperplane. The card names the session, so you always know where the message goes; Return sends it over the same routes the glasses use. A running Claude session takes it straight into its own window. Supported busy sessions can queue the message until they are ready. A queued message is still waiting to be sent; recorded hold reasons remain visible in Sessions. The card says which happened, then closes itself. What is queued shows under the field with its place in line and its text; tap a row to read the whole message, Edit to change it while it still waits, × and it will not be sent.</span></div>
-          <div class="pet-option"><b>Four optional advanced Jedi</b><span>Start with Cloud Puff, then choose Miles Windu, Nia Solari, Elara Vale, or Rowan Vale for authored idle, walking, and workload-specific stories.</span></div>
+          <div class="pet-option"><b>Four optional advanced Jedi</b><span>Start with Cloud Puff, then choose Miles Windu, Nia Solari, Elara Vale, or Rowan Vale for authored idle, walking, and workload-specific stories. All four rotate shuffled opponent casts, so a long run does not replay one fight.</span></div>
           <div class="pet-option"><b>300 variety pets</b><span>Choose from the OpenPets gallery. They stay still, but the live ledger, routing, and session controls remain fully available.</span></div>
           <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="#custom-pet-pack">Build a custom pet pack</a></div>
         </div>
@@ -1303,57 +1324,27 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-/* Production sprite strips, drawn one authored frame at a time. Canvas lets the five
-   timelines keep their real, unequal cell widths without stretching the character or
-   shipping a second video representation. Reduced Motion lands on frame zero. */
-(function(){
-  var canvases=[].slice.call(document.querySelectorAll('canvas[data-pet-src]'));
-  if(!canvases.length) return;
-  var button=document.querySelector('.pet-pause');
-  var reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var paused=reduced;
-  var loops=[];
-
-  function draw(item){
-    var c=item.canvas, ctx=c.getContext('2d');
-    var frameW=item.image.naturalWidth/item.frames, frameH=item.image.naturalHeight;
-    var pad=18, maxW=c.width-pad*2, maxH=c.height-pad*2;
-    var fit=Math.min(maxW/frameW,maxH/frameH)*item.scale;
-    var dw=frameW*fit, dh=frameH*fit;
-    ctx.clearRect(0,0,c.width,c.height);
-    ctx.imageSmoothingEnabled=true;
-    ctx.imageSmoothingQuality='high';
-    ctx.drawImage(item.image,item.index*frameW,0,frameW,frameH,(c.width-dw)/2,(c.height-dh)/2,dw,dh);
-    c.dataset.frame=String(item.index);
-  }
-
-  canvases.forEach(function(canvas){
-    var item={canvas:canvas,image:new Image(),frames:Number(canvas.dataset.frames)||1,
-      interval:(Number(canvas.dataset.interval)||.2)*1000,scale:Number(canvas.dataset.scale)||1,index:0,last:0};
-    item.image.onload=function(){draw(item);loops.push(item);};
-    item.image.src=canvas.dataset.petSrc;
+/* Miles Windu Version 15, from the COS Control pack. pet-cast.js (deferred, so it is
+   ready by DOMContentLoaded) streams each state's cropped rows, rotates the shuffled
+   opponent casts the way the app does, and holds frame zero under Reduced Motion. */
+document.addEventListener('DOMContentLoaded',function(){
+  var api=window.COSPetCast;
+  if(!api) return;
+  [].slice.call(document.querySelectorAll('canvas[data-pet-pose]')).forEach(function(canvas){
+    var figure=canvas.closest('figure');
+    var label=figure&&figure.querySelector('[data-cast-label]');
+    api.attach(canvas,{onCast:label?function(i,n){label.textContent='Cast '+(i+1)+' of '+n;}:null}).setPose(canvas.dataset.petPose);
   });
-
-  function tick(now){
-    loops.forEach(function(item){
-      if(!paused && now-item.last>=item.interval){
-        item.index=(item.index+1)%item.frames;item.last=now;draw(item);
-      }
-    });
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  if(button){
-    if(reduced){button.textContent='Reduced motion';button.disabled=true;button.setAttribute('aria-pressed','true');}
-    else button.addEventListener('click',function(){
-      paused=!paused;
-      button.setAttribute('aria-pressed',String(paused));
-      button.textContent=paused?'Play animations':'Pause animations';
-      if(!paused){var now=performance.now();loops.forEach(function(item){item.last=now;});}
-    });
-  }
-})();
+  var button=document.querySelector('.pet-pause');
+  if(!button) return;
+  if(api.reduced){button.textContent='Reduced motion';button.disabled=true;button.setAttribute('aria-pressed','true');return;}
+  button.addEventListener('click',function(){
+    var paused=!api.isPaused();
+    api.setPaused(paused);
+    button.setAttribute('aria-pressed',String(paused));
+    button.textContent=paused?'Play animations':'Pause animations';
+  });
+});
 </script>
 </body>
 </html>

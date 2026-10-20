@@ -7,12 +7,11 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var AN = window.anime;
   var animeOK = !!(AN && AN.animate && AN.utils);
-  var assetRoot = '/control/assets/session-command/';
 
   var states = {
     running:{
       top:'4 agents · live', title:'Running 4', context:'All systems', caption:'Live workload',
-      pet:{src:assetRoot + 'miles-four-plus.png',frames:26,interval:.22,scale:1},
+      pet:{pose:'swarm'},
       rows:[
         {provider:'codex',label:'Codex',task:'Release checks',detail:'mu-chief-staff · building',meta:'16s',start:16},
         {provider:'claude',label:'Claude',task:'Control motion',detail:'cos-control · refining',meta:'21s',start:21},
@@ -22,7 +21,7 @@
     },
     done:{
       top:'3 turns · complete', title:'Done 3', context:'Finished turns', caption:'Work complete',
-      pet:{src:assetRoot + 'miles-one.png',frames:16,interval:.10,scale:1},
+      pet:{pose:'done'},
       rows:[
         {provider:'codex',label:'Codex',task:'Codex session audit',detail:'Finished · transcript ready',meta:'Open'},
         {provider:'claude',label:'Claude',task:'Sprocket Rocket copy',detail:'Finished · transcript ready',meta:'Open'},
@@ -31,75 +30,21 @@
     },
     waiting:{
       top:'1 thread · needs you', title:'Waiting 1', context:'Needs you', caption:'Awaiting reply',
-      pet:{src:assetRoot + 'miles-idle.png',frames:8,interval:.24,scale:1.3},
+      pet:{pose:'waiting'},
       rows:[
         {provider:'claude',label:'Claude',task:'Sprocket Rocket plan',detail:'Needs your reply',meta:'Open'}
       ]
     }
   };
 
-  function drawPet(canvas,state){
-    var ctx = canvas.getContext('2d');
-    if (!ctx || !state.image || !state.image.naturalWidth) return;
-    var dpr = Math.min(window.devicePixelRatio || 1,2);
-    var bounds = canvas.getBoundingClientRect();
-    var width = Math.max(1,Math.round(bounds.width * dpr));
-    var height = Math.max(1,Math.round(bounds.height * dpr));
-    if (canvas.width !== width || canvas.height !== height){
-      canvas.width = width;
-      canvas.height = height;
-    }
-    var sw = state.image.naturalWidth / state.frames;
-    var sh = state.image.naturalHeight;
-    var scale = Math.min(width / sw,height / sh) * .92 * state.scale;
-    var dw = sw * scale;
-    var dh = sh * scale;
-    var dx = (width - dw) / 2;
-    var dy = (height - dh) / 2;
-    ctx.clearRect(0,0,width,height);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(state.image,state.frame * sw,0,sw,sh,dx,dy,dw,dh);
-    canvas.dataset.frame = String(state.frame);
-  }
-
+  /* The pet is Miles Windu Version 15 from the COS Control pack, played by pet-cast.js:
+     Running is the four-plus swarm with its shuffled opponent casts, Done and Waiting
+     are the app's own done and waiting poses (PetSpritePose.resolve). */
   function createPetController(canvas){
-    var generation = 0;
-    var state = {image:null,frames:1,interval:220,scale:1,frame:0,running:!reduced};
-
-    function setSprite(config){
-      generation += 1;
-      var request = generation;
-      var image = new Image();
-      image.decoding = 'async';
-      image.onload = function(){
-        if (request !== generation) return;
-        state.image = image;
-        state.frames = Math.max(1,parseInt(config.frames || 1,10));
-        state.interval = Math.max(.04,parseFloat(config.interval || .22)) * 1000;
-        state.scale = Math.max(.1,parseFloat(config.scale || 1));
-        state.frame = 0;
-        state.last = 0;
-        canvas.dataset.src = config.src;
-        canvas.dataset.frames = String(state.frames);
-        canvas.dataset.interval = String(config.interval);
-        canvas.dataset.scale = String(state.scale);
-        drawPet(canvas,state);
-      };
-      image.src = config.src;
-    }
-
-    function tick(){
-      if (state.running && state.image){
-        state.frame = (state.frame + 1) % state.frames;
-        drawPet(canvas,state);
-      }
-      if (!reduced) window.setTimeout(tick,state.interval);
-    }
-
-    window.addEventListener('resize',function(){ drawPet(canvas,state); },{passive:true});
-    if (!reduced) window.setTimeout(tick,300);
-    return {setSprite:setSprite};
+    var api = window.COSPetCast;
+    if (!api) return null;
+    var player = api.attach(canvas,{inset:.04});
+    return {setSprite:function(config){ player.setPose(config.pose,config.zoom); }};
   }
 
   function initializeDeck(deck){

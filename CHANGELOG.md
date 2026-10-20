@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-10-20 - Miles Windu Version 15 on /control, 2x art and shuffled casts
+
+### Changed
+- The /control pet section plays Miles Windu Version 15 from the Control 0.5.332
+  DefaultPet pack (session-pet-states.json sha256 af4fc61d...) instead of the
+  older single-cast strips. Four or more sessions is a large featured card;
+  idle, one, two and three sessions sit below it. Every running state rotates
+  its opponent casts the way the app does: four with one session, three each
+  with two, three and four or more, never the same cast twice in a row. The
+  featured card shows which cast is playing.
+- The session deck's Done and Waiting tabs play the app's own done and waiting
+  poses (PetSpritePose.resolve), not the one-session and idle strips.
+- Retina screens get the pack's 2x art, other screens 1x. The Control app
+  itself still plays 1x strips on every display (0.5.330 note), and the page
+  says only that Version 15 is re-rendered from 2x art.
+
+### Added
+- `scripts/build-windu-cast-atlases.py`: cuts each cast layer to the frames it
+  is drawn on, crops to the union alpha box and writes WebP rows (at most
+  8192 px and 2.5 MP each) plus `manifest.json`.
+- `control/assets/session-command/pet-cast.js`: the player. It fetches and
+  decodes only the rows about to play and gives decoded rows back when a canvas
+  leaves the viewport. Measured headless at 1440 px on a 2x display: 16 to 38 MB
+  decoded per card, against 40 to 90 MB for one whole 2x cast. A row still
+  decoding holds the current frame. Reduced Motion holds frame zero.
+- `tests/pet-cast.test.cjs` (in content contracts): manifest against the page,
+  every row's WebP size against its crop box, the shuffle, and the tail layer
+  order. Five mutants of the player, each killed, from a green baseline.
+
+### Removed
+- `control/assets/session-command/miles-{idle,one,two,three,four-plus}.png`.
+
 ## 2026-09-17 - COS Control on the homepage, seven views on /control
 
 ### Added
