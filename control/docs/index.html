@@ -607,7 +607,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <ul>
       <li>Click the Dock icon to open Activity. Before COS is set up it opens the welcome window, and while a meeting records it opens the live transcript.</li>
       <li>Right-click it for <strong>Open Activity</strong>, <strong>Setup guide…</strong> and <strong>Settings…</strong>, plus <strong>View live transcript</strong> while a meeting records. The Dock icon carries a <strong>REC</strong> badge while recording.</li>
-      <li>The app's <strong>Meetings</strong> menu has <strong>Record on Mac…</strong>, <strong>Stop Mac recording and save</strong> and <strong>View live transcript</strong> (<kbd>⌘⇧L</kbd>). The <strong>Dictation</strong> menu has Stop dictation, Cancel dictation, Dictionary…, History… and Microphone and shortcuts…. <strong>Help</strong> has Setup guide… and COS Control help.</li>
+      <li>The app's <strong>Meetings</strong> menu has <strong>Record on Mac…</strong>, <strong>Stop Mac recording and save</strong> and <strong>View live transcript</strong> (<kbd>⌘⇧L</kbd>). The <strong>Dictation</strong> menu has Stop dictation, Cancel dictation, Dictionary…, History… and Settings…, which opens Activity, Dictation, Settings. <strong>Help</strong> has Setup guide… and COS Control help.</li>
       <li>Prefer no Dock icon? Turn on <strong>Show in menu bar only</strong> in Settings. The app menus, including the live transcript shortcut, are then not available.</li>
       <li><strong>Open Activity with</strong> in Settings sets a keyboard shortcut that opens Activity from anywhere.</li>
     </ul>
@@ -692,13 +692,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Import meetings</strong> brings in Fireflies recordings: paste your Fireflies API key, choose <strong>Check</strong>, then <strong>Import now</strong> or <strong>Keep bringing in new meetings</strong>. The key is stored on this Mac and never shown again. <strong>Suggested merges</strong> pairs a Fireflies call with your own recording of the same call.</li>
       <li><strong>Dictionary</strong> opens the one dictionary that meetings and dictation share. See <a href="#dictionary">Dictionary</a>.</li>
       <li>Times read 1:02 PM. Choose the 24-hour clock under Settings, Advanced, <strong>Clock</strong>.</li>
-      <li>Recording on this Mac, live meetings and Live COS Ask are in <a href="#recording">Mac meeting recording</a>.</li>
+      <li>Recording on this Mac, live meetings and Live COS Ask are in <a href="#recording">Mac meeting recording</a>. Beside Live COS Ask, <strong>Cues</strong> lists the meeting&rsquo;s live cues, newest first, each with the same five verdicts (server 6.79.0).</li>
     </ul>
   </div>
 
   <div class="sub" id="view-memories">
     <h3>Memories</h3>
-    <p>What COS learned, not the transcript. Its sections are <strong>Recent learning</strong>, <strong>Applied this week</strong>, <strong>All memories</strong>, <strong>To review</strong>, which holds what COS proposed until you keep or dismiss it, and <strong>Knowledge</strong>, a graph of your own data you can ask in plain language. A lesson offers <strong>Open source record</strong>, <strong>Explore in graph</strong> and <strong>Copy context</strong>. Memories reads the folder set under <strong>COS Data</strong>; any Markdown you drop into its memory folder becomes browsable.</p>
+    <p>What COS learned, not the transcript. Its sections are <strong>Recent learning</strong>, <strong>Applied this week</strong>, <strong>All memories</strong>, <strong>To review</strong>, which holds what COS proposed until you keep or dismiss it, and <strong>Knowledge</strong>, a graph of your own data you can ask in plain language. With server 6.79.0, <strong>Cues to rate</strong> shows the last 7 days of unrated live cues one at a time, oldest first, with what was said just before each: rate it Useful, Late, Repeat, Wrong or Obvious (keys 1 to 5), add a note with N, or Skip with S. <strong>Rated cues</strong> lists what you rated; pick another verdict to change one, or Clear to send it back. A lesson offers <strong>Open source record</strong>, <strong>Explore in graph</strong> and <strong>Copy context</strong>. Memories reads the folder set under <strong>COS Data</strong>; any Markdown you drop into its memory folder becomes browsable.</p>
   </div>
 
   <div class="sub" id="view-threads">
@@ -715,6 +715,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Latest dictations</strong>, then <strong>All dictations</strong>. Each row shows the time, the word count, how it was delivered (inserted, pasted, sent or copied) and the app.</li>
       <li><strong>History</strong> opens the full, searchable list, with Copy, Fix a word and Delete on each row, and the engine that transcribed it. <strong>Clear history…</strong> asks first.</li>
       <li><strong>Dictionary</strong> opens the shared dictionary.</li>
+      <li><strong>Settings</strong>, beside History and Dictionary, holds every dictation setting: the switch, the microphone, the shortcuts and the engine. Back returns to the tab. The menu-bar panel keeps the same settings.</li>
     </ul>
   </div>
 </section>
@@ -729,7 +730,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="dictation-on">
     <h3>Turn it on and pick a shortcut</h3>
-    <p>In Settings, switch on <strong>Dictate into Mac apps</strong>. It is off by default. Then choose a <strong>Microphone</strong> (System default or a specific input; <strong>Refresh microphones</strong> finds a new one) and set a shortcut. Choose <strong>Allow insertion into other apps…</strong> so COS can type for you.</p>
+    <p>In Activity, Dictation, <strong>Settings</strong> (or Settings in the menu-bar panel), switch on <strong>Dictate into Mac apps</strong>. It is off by default. Then choose a <strong>Microphone</strong> (System default or a specific input; <strong>Refresh microphones</strong> finds a new one) and set a shortcut. Choose <strong>Allow insertion into other apps…</strong> so COS can type for you.</p>
     <div class="tw">
       <table>
         <thead><tr><th>Shortcut</th><th>What it does</th><th>Default</th></tr></thead>
@@ -742,10 +743,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <ul>
       <li>Choose <strong>Change</strong>, then press the shortcut. It can be a modifier plus a key (with Command, Control or Option), a function key F1 to F20, or one modifier key by itself, such as <strong>Fn</strong> or <strong>Right ⌘</strong>. Fn and single-key shortcuts need Accessibility.</li>
-      <li>Using Fn? In System Settings, Keyboard, set <strong>Press 🌐 key to</strong> Do Nothing, and move any other dictation app off Fn.</li>
+      <li>Using Fn? In System Settings, Keyboard, set <strong>Press 🌐 key to</strong> Do Nothing, and move any other dictation app off Fn. If the 🌐 key also has a job in macOS, COS tells you once and offers <strong>Open Keyboard settings</strong>, because that job can swallow the key&rsquo;s release.</li>
       <li>While you hold Push to talk you can click and drag freely: the text lands where the cursor ends up. A click right after you press the key counts as a modifier-click and does not start dictation.</li>
       <li>A dictation stops by itself after two minutes.</li>
       <li>Pressing another key combination while talking, or the Mac sleeping, cuts a dictation short. A second or more of audio is still transcribed and copied, never typed, unless you copied something else meanwhile.</li>
+      <li>If your Mac misses the moment you let go of the dictation key, COS notices and finishes the dictation normally, typing the text instead of copying it.</li>
+      <li>Switching to a microphone with a different audio format, like the Studio Display Microphone, no longer quits COS Control.</li>
+      <li>A press while the last dictation is still finishing shows <strong>STILL FINISHING</strong> and the message &ldquo;Still finishing the last dictation.&rdquo; Nothing is queued; press again once the text lands.</li>
     </ul>
   </div>
 
@@ -757,7 +761,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="dictation-delivery">
     <h3>Where the text goes</h3>
-    <p>While you talk, the pet's line becomes a listening pill with a level meter and a timer; with the pet hidden it floats near the bottom of the screen. When you stop, COS types into the text box you are focused on, then checks that the box really changed. If it did not, COS pastes once with <kbd>⌘V</kbd>. COS never presses Return or Send.</p>
+    <p>The pill says <strong>STARTING</strong> until your microphone is really hearing you, then <strong>LISTENING</strong> and the start sound come together. While you talk, the pet's line becomes a listening pill with a level meter and a timer; with the pet hidden it floats near the bottom of the screen. When you stop, COS types into the text box you are focused on, then checks that the box really changed. If it did not, COS pastes once with <kbd>⌘V</kbd>. COS never presses Return or Send.</p>
     <ul>
       <li><strong>✓ INSERTED</strong> means COS saw the text land. <strong>PASTED · ⌘V SENT</strong> means it pasted but could not confirm.</li>
       <li>Terminals (Terminal, iTerm2, Warp, Ghostty, kitty, Alacritty and WezTerm) always get a paste, with line breaks turned into spaces.</li>
@@ -1064,6 +1068,20 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Launch COS Control at login</strong>, <strong>Show in menu bar only</strong> and <strong>Open Activity with</strong> are at the end.</li>
     </ul>
   </div>
+
+  <div class="sub" id="own-key">
+    <h3>Answer with your own key</h3>
+    <p>Your Claude, ChatGPT or Cursor plan stays the default. <strong>Answer with your own key</strong> in Settings lets answers run on your own key instead. It is off by default, it appears only with COS server 6.80.0 or later (on the npm <code>next</code> tag for now), and nothing changes for anyone who never turns it on. A new install offers an optional <strong>Add your own key</strong> step at the end of setup; Skip is the default and sends nothing.</p>
+    <ul>
+      <li>Turn the row on, choose <strong>Paste key</strong> and save an OpenRouter or Anthropic key. Keys go in by paste only, never by voice. COS clears the clipboard after the paste and shows only the key&rsquo;s kind and last four characters.</li>
+      <li>Pick Claude Sonnet 5.5 or Claude Haiku 5.5 (Claude Code must be installed), and set the daily cap. It starts at $1.</li>
+      <li>Your key is saved on this Mac. Apps and agents that run on this Mac as you can read it. Your provider&rsquo;s spending limit is the real stop.</li>
+      <li>The cap can be exceeded by the last reply in progress. Your provider limit is the hard stop.</li>
+      <li><strong>Reset pause</strong> clears a key paused after three failures, <strong>Use for answers</strong> turns its profile on or off, and <strong>Remove</strong> and <strong>Remove all keys</strong> take keys out. Each asks first.</li>
+      <li>A session that ran on a key is never continued, forked or opened in its app from Control, so it never resumes on your plan.</li>
+      <li>Going back to an older server? Remove saved keys first. Control will not install a server older than 6.80.0 while keys are saved, and <strong>Remove saved keys</strong> stays in Settings even after a rollback.</li>
+    </ul>
+  </div>
 </section>
 
 <!-- ── 11 UPDATES ── -->
@@ -1196,8 +1214,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <div class="faq">
     <details><summary>Do I need COS Glasses?</summary><p>No. Choose <strong>Just my Mac</strong> at first run. Sessions, Work, dictation and Mac meeting recording all work without glasses. You can connect glasses later from the setup guide.</p></details>
     <details><summary>Do I need Homebrew, npm or Terminal?</summary><p>Not for core setup. COS Control brings its own runtime and downloads the server and voice tools for you. You may use Terminal once to install or sign in to your AI's command-line tool; COS shows the exact command.</p></details>
-    <details><summary>Which AI do I need?</summary><p>One is enough: Claude Code, Codex or Cursor Agent, signed in on this Mac. Ollama is optional for local models. Your AI's subscription and usage limits still apply.</p></details>
-    <details><summary>What does it cost?</summary><p>COS Control and the server are free and open source. Prompts bill to the AI subscription you already use. Local Whisper and Parakeet transcription are free.</p></details>
+    <details><summary>Which AI do I need?</summary><p>One is enough: Claude Code, Codex or Cursor Agent, signed in on this Mac. Ollama is optional for local models. Your AI's subscription and usage limits still apply. With server 6.80.0 you can also <a href="#own-key">answer with your own key</a>, off by default.</p></details>
+    <details><summary>What does it cost?</summary><p>COS Control and the server are free and open source. Prompts bill to the AI subscription you already use, or to your own key if you turn on <a href="#own-key">Answer with your own key</a>. Local Whisper and Parakeet transcription are free.</p></details>
     <details><summary>Does dictation or recording send audio to the cloud?</summary><p>No. Dictation never uses the cloud, and meetings are transcribed on this Mac. Cloud transcription stays off unless a server administrator deliberately enables it with their own key.</p></details>
     <details><summary>Does Mac recording record my microphone?</summary><p>No. It records what the Mac plays: every app, or one you choose. Let people know you are recording.</p></details>
     <details><summary>Does it run on an Intel Mac?</summary><p>No. COS Control needs Apple silicon and macOS 14 or later.</p></details>
@@ -1214,7 +1232,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
-    <section class="note" id="release-326"><h3>Control 0.5.326 / server 6.78.1</h3><p><strong>Dictation keeps your last word.</strong> After you let go of the dictation key, COS keeps listening for 300 milliseconds before it closes the microphone, so the end of what you said is no longer cut off. The pill keeps showing LISTENING for that moment and the stop sound plays only after the microphone closes. Each dictation also adds one line of numbers to dictation-timing.jsonl (never your words or audio), the place to look if a dictation ever seems cut off.</p></section>
+    <section class="note" id="release-329"><h3>Control 0.5.329 / server __SERVER_TARGET__</h3><p><strong>Answer with your own key, off by default.</strong> With COS server 6.80.0 or later, Settings has <strong>Answer with your own key</strong>. Turn it on, paste an OpenRouter or Anthropic key, pick Claude Sonnet 5.5 or Claude Haiku 5.5, and set a daily cap ($1 to start). Nothing changes for anyone who never turns it on. Keys go in by paste only, never by voice, and Control shows only the key&rsquo;s kind and last four characters. Your key is saved on this Mac. Apps and agents that run on this Mac as you can read it. Your provider&rsquo;s spending limit is the real stop. The cap can be exceeded by the last reply in progress. Your provider limit is the hard stop. Reset pause, Use for answers, Remove and Remove all keys are buttons, each confirmed first. A session that ran on a key is never continued or forked on your plan. Server 6.80.0 is on the npm <code>next</code> tag for now. Remove saved keys before installing an older server; Control will not install one while keys are saved. <strong>Dictation finishes when your Mac misses the release.</strong> If your Mac misses the moment you let go of the dictation key, COS now notices and finishes the dictation normally, typing the text instead of copying it. If the 🌐 key also has a job in macOS, COS tells you and opens Keyboard settings. A press while the last dictation is still finishing now says so. Dictation settings now live in Activity, Dictation, Settings. Dictation no longer quits COS Control when you switch to a microphone with a different audio format, like the Studio Display Microphone. <strong>Also new since 0.5.326:</strong> the pill says STARTING until your microphone is really hearing you, then LISTENING and the start sound come together, so your first words are not cut off; the pet and the pill stay smooth while dictation starts; a dictation that caught no speech says so instead of offering a Retry that cannot help; and Memories has Cues to rate and Rated cues, with a Cues view beside Live COS Ask, so you can mark each live cue Useful, Late, Repeat, Wrong or Obvious (needs server 6.79.0).</p></section>
+  <section class="note" id="release-326"><h3>Control 0.5.326 / server 6.78.1</h3><p><strong>Dictation keeps your last word.</strong> After you let go of the dictation key, COS keeps listening for 300 milliseconds before it closes the microphone, so the end of what you said is no longer cut off. The pill keeps showing LISTENING for that moment and the stop sound plays only after the microphone closes. Each dictation also adds one line of numbers to dictation-timing.jsonl (never your words or audio), the place to look if a dictation ever seems cut off.</p></section>
   <section class="note" id="release-325"><h3>Control 0.5.325 / server 6.78.1</h3><p><strong>AI polish for dictation, off by default.</strong> Choose Claude Haiku or Claude Sonnet in Settings, Dictation, and Claude cleans filler, punctuation, doubled words and your dictionary&rsquo;s spellings before COS pastes. If Claude takes longer than 5 seconds (Haiku) or 9 seconds (Sonnet), or is unavailable, COS pastes what it heard. History marks a polished dictation and keeps what was heard. It does not reliably fix words that only sound alike. <strong>Miles Windu joins the shuffled combat casts:</strong> two, three and four sessions bring changing opponents, as for Nia, Elara and Rowan. A stock Miles Windu upgrades in place; customized art stays yours. A stray Return can no longer replace your pet: Use on a shipped character takes a click. Server 6.78.1 delivers glasses messages to open Claude sessions again.</p></section>
   <section class="note" id="release-324"><h3>Control 0.5.324 / server 6.77.0</h3><p><strong>Jedi combat, refined.</strong> Nia, Elara and Rowan defend with their sabers before striking; opponents react after contact, and each returns to guard more smoothly. Two-, three- and four-session encounters shuffle three opponent casts without an immediate repeat, grounded opponents stay on the floor, and flight-capable droids make the aerial approaches. Stock Jedi packs upgrade in place; customized art and timing stay yours.</p></section>
   <section class="note" id="release-323"><h3>Control 0.5.323 / server 6.76.1</h3><p><strong>Dictation reads the text box it types into.</strong> A name or term already written there comes out spelled the same way: if the box says Ukaoma, a dictated Ukoma is typed as Ukaoma. When you fix a dictated word to a spelling the same box already has, such as a name in a prompt you pasted, Learn from my edits takes it even when it sounds less alike, and the suggestion says &ldquo;Also in the text around your dictation&rdquo;. COS keeps that text only for the one dictation and never saves or sends it; never in terminals or password fields. Turn it off in Settings, Dictation: &ldquo;Spell words the way the text box has them&rdquo;.</p></section>
