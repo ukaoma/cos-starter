@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.646 (build 646, Hub pin 6.10.646) · server @gotcos/glasses-server 6.80.0 · COS Control 0.5.329.
+   Covers COS Glasses 6.10.646 (build 646, Hub pin 6.10.646) · server @gotcos/glasses-server 6.80.0 · COS Control 0.5.330.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -782,13 +782,14 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.646</b> · build 646</span>
       <span class="chip">Server <b>6.80.0</b></span>
-      <span class="chip">Control <b>0.5.329</b></span>
+      <span class="chip">Control <b>0.5.330</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
+        <li><a href="#release-330"><b>Mac app 0.5.330</b><span>Miles Windu Version 15, live cue limits in Settings, AI polish starts when you press.</span></a></li>
         <li><a href="#release-329"><b>Mac app 0.5.329</b><span>Answer with your own key, off by default; dictation finishes a missed key release.</span></a></li>
         <li><a href="#release-647"><b>Glasses 6.10.647</b><span>Key profiles in the model picker, with the cost in the footer.</span></a></li>
         <li><a href="#release-326"><b>Mac app 0.5.326</b><span>Dictation keeps your last word.</span></a></li>
@@ -796,7 +797,6 @@ footer .links a:hover{color:var(--gold)}
         <li><a href="#release-324"><b>Mac app 0.5.324</b><span>Refined Jedi combat with shuffled opponent casts.</span></a></li>
         <li><a href="#release-323"><b>Mac app 0.5.323</b><span>Dictation spells words the way the text box has them.</span></a></li>
         <li><a href="#release-322"><b>Mac app 0.5.322</b><span>Updates never get stuck on Installing, and a Live cues switch.</span></a></li>
-        <li><a href="#release-321"><b>Mac app 0.5.321</b><span>Stop and save a live glasses meeting from COS Control.</span></a></li>
         <li><a href="#release-646"><b>Glasses 6.10.646</b><span>Live cues get a panel with a countdown; Retry and Resume after a restart.</span></a></li>
         <li><a href="#release-639"><b>Glasses 6.10.639</b><span>Choose the live preview engine: Whisper Turbo or Parakeet Ultra.</span></a></li>
       </ul>
@@ -1032,7 +1032,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.329, glasses 6.10.646, server 6.80.0.</strong> COS Control 0.5.329 is the public Mac download. COS Glasses 6.10.646 is the current companion pack: it is the canonical alias in the Hub repo, and since October 18, 2026 Even Hub lists 6.10.646. Server identity is 6.80.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.330, glasses 6.10.646, server 6.80.0.</strong> COS Control 0.5.330 is the public Mac download. COS Glasses 6.10.646 is the current companion pack: it is the canonical alias in the Hub repo, and since October 18, 2026 Even Hub lists 6.10.646. Server identity is 6.80.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -2057,7 +2057,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.329</strong>, server <strong>6.80.0</strong>, and COS Glasses <strong>6.10.646</strong> from Even Hub (Public October 18, 2026). Install <strong>6.10.646</strong> for the newest companion build; Even Hub lists 6.10.646, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.330</strong>, server <strong>6.80.0</strong>, and COS Glasses <strong>6.10.646</strong> from Even Hub (Public October 18, 2026). Install <strong>6.10.646</strong> for the newest companion build; Even Hub lists 6.10.646, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2078,7 +2078,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.646. The current supported pair is COS Glasses 6.10.646 (Even Hub lists 6.10.646) and server 6.80.0; COS Control 0.5.329 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.646. The current supported pair is COS Glasses 6.10.646 (Even Hub lists 6.10.646) and server 6.80.0; COS Control 0.5.330 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2115,6 +2115,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Mac app</h3>
+      <details class="release-detail rn" id="release-330"><summary><span class="rn-t">Control 0.5.330 / server 6.80.0</span><span class="rn-g">Miles Windu Version 15, live cue limits in Settings, AI polish starts when you press.</span></summary><div class="rn-b"><p><strong>Miles Windu Version 15 is the default Jedi.</strong> He is re-rendered from a 2x source. Session 1 now rotates four opponents, blaster bolts travel instead of hanging still, the left droid walks instead of sliding, and the white specks and the violet ghost are gone. Attention and done have new drawn bridge frames, so those loops run about a third of a second longer. This release plays the standard strips on every display, Retina included. A stock V14 pet moves to Version 15 on first launch; a pet you tuned is left alone. <strong>Live cue limits in Settings.</strong> With server 6.79.2 or later, Settings, Meeting assistant has the cue bar, cues per meeting (1 to 25), the shortest gap between cues and a daily writer limit, plus today&rsquo;s count of cues, writer calls and tokens. A limit set in the server&rsquo;s .env shows as Set in .env and stays put. <strong>AI polish starts when you press.</strong> With AI polish on and server 6.79.2 or later, COS starts Claude the moment the dictation key goes down, which took about 0.9 seconds off a Haiku polish on our test Mac. None of your text is sent early. Everything in 0.5.329 is included.</p></div></details>
       <details class="release-detail rn" id="release-329"><summary><span class="rn-t">Control 0.5.329 / server 6.78.2</span><span class="rn-g">Answer with your own key, off by default; dictation finishes when your Mac misses the release.</span></summary><div class="rn-b"><p><strong>Answer with your own key, off by default.</strong> With COS server 6.80.0 or later, Settings has <strong>Answer with your own key</strong>. Turn it on, paste an OpenRouter or Anthropic key, pick Claude Sonnet 5.5 or Claude Haiku 5.5, and set a daily cap ($1 to start). Nothing changes for anyone who never turns it on. Keys go in by paste only, never by voice, and Control shows only the key&rsquo;s kind and last four characters. Your key is saved on this Mac. Apps and agents that run on this Mac as you can read it. Your provider&rsquo;s spending limit is the real stop. The cap can be exceeded by the last reply in progress. Your provider limit is the hard stop. Reset pause, Use for answers, Remove and Remove all keys are buttons, each confirmed first. A session that ran on a key is never continued or forked on your plan. Remove saved keys before installing an older server; Control will not install one while keys are saved. <strong>Dictation finishes when your Mac misses the release.</strong> If your Mac misses the moment you let go of the dictation key, COS now notices and finishes the dictation normally, typing the text instead of copying it. If the 🌐 key also has a job in macOS, COS tells you and opens Keyboard settings. A press while the last dictation is still finishing now says so. Dictation settings now live in Activity, Dictation, Settings. Dictation no longer quits COS Control when you switch to a microphone with a different audio format, like the Studio Display Microphone. <strong>Also new since 0.5.326:</strong> the pill says STARTING until your microphone is really hearing you, then LISTENING and the start sound come together, so your first words are not cut off; the pet and the pill stay smooth while dictation starts; a dictation that caught no speech says so instead of offering a Retry that cannot help; and Memories has Cues to rate and Rated cues, with a Cues view beside Live COS Ask, so you can mark each live cue Useful, Late, Repeat, Wrong or Obvious (needs server 6.79.0).</p></div></details>
       <details class="release-detail rn" id="release-647"><summary><span class="rn-t">Glasses 6.10.647 / server 6.80.0</span><span class="rn-g">Key profiles in the model picker, marked ◈, with the cost in the footer.</span></summary><div class="rn-b"><p><strong>Answer with your own key, on the lens.</strong> When a key is set up in COS Control 0.5.329 on a Mac running server 6.80.0, the lens model picker, the voice picker and the phone&rsquo;s model button list your key profiles after the usual models, marked ◈. A keyed answer&rsquo;s footer reads <code>◈ Key | Sonnet 5.5 | $0.004</code>. The first keyed answer opens on a short page saying what runs on your key, what it costs and what leaves the Mac; scroll on to the answer. A thread on a key stays on it and never falls back to your plan without a word. When your plan hits its limit and a key profile exists, the footer offers <strong>Tap: run this one on your key</strong>; only that tap runs that one turn on the key. Keys only by paste, on the Mac, never by voice. Without a key profile, or with an older server, the app behaves exactly as 6.10.646. Gestures and the hold menu are unchanged. Physical G2 acceptance is still to do, and the Even Hub context menu&rsquo;s model list does not show key profiles yet (the lens picker does).</p></div></details>
       <details class="release-detail rn" id="release-646"><summary><span class="rn-t">Glasses 6.10.646 / server 6.78.1</span><span class="rn-g">Live cues get a panel with a countdown; Retry and Resume after a restart.</span></summary><div class="rn-b"><p><strong>Live cues get a panel.</strong> On the meeting page a cue now opens a panel below the newest lines of the meeting: the kind of cue, its headline, two lines of the cue and the meeting it came from. A ring drains as its time runs out (12 seconds by default, 8 to 30 in Settings) and the footer counts down the seconds. Hold while it is up to read the whole cue, then tap twice to return to the live meeting. Tap works as before. Needs server 6.75.0 or newer with live cues v2 on. Also since 6.10.645: an answer cut off by a server restart says so and offers Retry, or Resume this ask when it was changing files, and a desk-session message the server turned away can be sent again (server 6.78.0 or newer).</p><p>COS Glasses 6.10.646 is Public on the Even Hub (October 18, 2026) and is the canonical alias in the Glasses Hub repo.</p></div></details>
@@ -2551,7 +2552,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.646 / Control 0.5.329 / server 6.80.0, 2026-10-19; Hub packs to 6.10.646)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.646 / Control 0.5.330 / server 6.80.0, 2026-10-20; Hub packs to 6.10.646)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
