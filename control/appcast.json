@@ -7,7 +7,7 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.329/COS-Control-macOS-arm64-0.5.329.zip",
       "sha256": "e21db7ada848a5ae69df7a1c8a4ffcaadfe8f8ed2e77293044967d463f537613",
       "minMacOS": "14.0",
-      "serverTarget": "6.78.2",
+      "serverTarget": "6.80.0",
       "publishedAt": "2026-10-20T04:08:15+00:00",
       "notes": "Answer with your own key, off by default: with server 6.80.0, paste an OpenRouter or Anthropic key and set a daily cap. Nothing changes if you never turn it on. Dictation now finishes when your Mac misses the key release, and switching to a microphone like the Studio Display Microphone no longer quits COS Control. Signed and notarized by Apple.",
       "whatsNew": {
@@ -16,7 +16,7 @@
           {
             "title": "0.5.329",
             "items": [
-              "Answer with your own key, off by default. With COS server 6.80.0 or later (npm next for now), Settings has Answer with your own key. Turn it on, paste an OpenRouter or Anthropic key, pick Claude Sonnet 5.5 or Claude Haiku 5.5, and set a daily cap ($1 to start). Nothing changes for anyone who never turns it on.",
+              "Answer with your own key, off by default. With COS server 6.80.0 or later, Settings has Answer with your own key. Turn it on, paste an OpenRouter or Anthropic key, pick Claude Sonnet 5.5 or Claude Haiku 5.5, and set a daily cap ($1 to start). Nothing changes for anyone who never turns it on.",
               "Keys go in by paste only, never by voice, and Control shows only the key's kind and last four characters. Your key is saved on this Mac, and apps and agents that run on this Mac as you can read it. Your provider's spending limit is the hard stop; the last reply in progress can pass the daily cap.",
               "Reset pause, Use for answers, Remove and Remove all keys are buttons, each confirmed first. A session that ran on a key is never continued or forked on your plan. Remove saved keys before installing an older server; Control will not install one while keys are saved.",
               "Dictation finishes when your Mac misses the release. If your Mac misses the moment you let go of the dictation key, COS notices and finishes the dictation normally, typing the text instead of copying it. If the 🌐 key also has a job in macOS, COS tells you and opens Keyboard settings.",
