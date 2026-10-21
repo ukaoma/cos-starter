@@ -7,7 +7,7 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.332/COS-Control-macOS-arm64-0.5.332.zip",
       "sha256": "af5b6720496b7c634fc97f569a8a95789698d691ae191c7a58547f6600f170c1",
       "minMacOS": "14.0",
-      "serverTarget": "6.80.0",
+      "serverTarget": "6.82.0",
       "publishedAt": "2026-10-20T16:28:31+00:00",
       "notes": "Dictation pastes into Google Slides, Docs and Sheets in Comet, and swapping in Claude's polished version is safer in apps that take a paste. Signed and notarized by Apple.",
       "whatsNew": {
