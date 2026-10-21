@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.333 (build 386) · server @gotcos/glasses-server 6.83.0.
-  Every claim is grounded in the 0.5.317 to 0.5.333 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.334 (build 387) · server @gotcos/glasses-server 6.84.0.
+  Every claim is grounded in the 0.5.317 to 0.5.334 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   The release notes chapter is copied byte for byte from /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.333",
+    "softwareVersion": "0.5.334",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.333</span>
+    <span class="sb-ver">Control 0.5.334</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,8 +447,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.333</b> · build 386</span>
-    <span class="chip">Server <b>6.83.0</b></span>
+    <span class="chip">Control <b>0.5.334</b> · build 387</span>
+    <span class="chip">Server <b>6.84.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
@@ -1232,6 +1232,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-334"><h3>Control 0.5.334 / server 6.84.0</h3><p><strong>Dictation keeps paths</strong>: saying forward slash pricing writes /pricing, Fix a word accepts a link, email or path as a correction, and Learn from my edits keeps the leading /. AI polish uses the server&rsquo;s new v3 prompt, and if the server refuses a polished answer because it holds a link you never said, COS pastes what it heard. <strong>Record on Mac stops when it can&rsquo;t hear your Mac</strong>: if All Mac audio gets only digital silence while an app is playing, it stops within about 12 seconds and offers Open System Settings and Try again. A quiet meeting keeps recording. <strong>Discard replaces the dead ends</strong>: a recording with no sound offers Discard, with a confirm, instead of buttons that could not work. Its audio moves to a dated folder on the Mac; nothing is deleted. Needs COS server 6.84.0. Everything in 0.5.333 is included.</p></section>
     <section class="note" id="release-333"><h3>Control 0.5.333 / server 6.83.0</h3><p><strong>The Work chat finds every session on a card</strong>: the ones the card started, the ones you linked, and the ones that report on it. Before it plans, it reads where each session stopped and how much Claude and Codex usage you have left, so it avoids stale sessions and platforms that are nearly out, and it can start a new session or fork one. <strong>Auto-send per card</strong>, off unless you turn it on: the plan goes out without the review click, and every running step has a Stop. <strong>Plans from your glasses</strong> appear in the card&rsquo;s Work chat marked From glasses, and the glasses can send them after a two-step confirm. Needs COS server 6.83.0. Everything in 0.5.332 is included.</p></section>
     <section class="note" id="release-332"><h3>Control 0.5.332 / server 6.80.0</h3><p><strong>Dictation pastes into Google Slides, Docs and Sheets in Comet.</strong> Comet is now treated like Chrome, so it no longer says No text box. In Slides, Docs and Sheets, COS can&rsquo;t see where the text lands, so with AI polish on it waits for Claude there and pastes once. <strong>Swapping in Claude&rsquo;s version is safer</strong> in apps that take a paste, like Claude, Slack and Chrome: COS replaces the whole dictation, checks the text box again right before it pastes, and skips if you typed, sent or moved. If a swap may not have landed cleanly, the pill says Check and the app name, and Activity, Dictation shows what you said and Claude&rsquo;s version. Everything in 0.5.331 is included.</p></section>
     <section class="note" id="release-331"><h3>Control 0.5.331 / server 6.80.0</h3><p><strong>Dictation with AI polish is faster.</strong> COS now types what it heard about a second after you let go of the key. When Claude&rsquo;s version is ready, COS swaps it in at the same spot. It swaps only when it can prove the text there is still what it typed. In apps that take a paste, like Chrome, Slack and Claude, it swaps only while you are still in that text box, and it never brings an app forward or moves you. If COS can&rsquo;t swap, your text stays as typed and the pill says so; open Activity, Dictation and choose Apply polished. To turn it off: Settings, Dictation, Paste right away, then polish in place. Off works as before. Everything in 0.5.330 is included.</p></section>
