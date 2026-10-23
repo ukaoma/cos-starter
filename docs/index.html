@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.646 (build 646, Hub pin 6.10.646) · server @gotcos/glasses-server 6.86.0 · COS Control 0.5.338.
+   Covers COS Glasses 6.10.646 (build 646, Hub pin 6.10.646) · server @gotcos/glasses-server 6.87.0 · COS Control 0.5.339.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -781,21 +781,21 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.10.646</b> · build 646</span>
-      <span class="chip">Server <b>6.86.0</b></span>
-      <span class="chip">Control <b>0.5.338</b></span>
+      <span class="chip">Server <b>6.87.0</b></span>
+      <span class="chip">Control <b>0.5.339</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
+        <li><a href="#release-339"><b>Mac app 0.5.339</b><span>One place for files in the live meeting; an audio level strip for glasses meetings.</span></a></li>
         <li><a href="#release-338"><b>Mac app 0.5.338</b><span>Live meeting window; Dismiss on Today; learn from your edits in Claude; lighter and steadier.</span></a></li>
         <li><a href="#release-335"><b>Mac app 0.5.335</b><span>A Today home for Activity (opt-in); your own AI polish instructions.</span></a></li>
         <li><a href="#release-334"><b>Mac app 0.5.334</b><span>Dictation keeps /pricing; Record on Mac stops when it can't hear your Mac; Discard for silent recordings.</span></a></li>
         <li><a href="#release-333"><b>Mac app 0.5.333</b><span>Work chat finds every session on a card, Auto-send per card, plans from your glasses.</span></a></li>
         <li><a href="#release-332"><b>Mac app 0.5.332</b><span>Dictation pastes into Google Slides, Docs and Sheets in Comet; safer polish swaps.</span></a></li>
         <li><a href="#release-331"><b>Mac app 0.5.331</b><span>Dictation with AI polish types right away, then swaps in the polished text.</span></a></li>
-        <li><a href="#release-330"><b>Mac app 0.5.330</b><span>Miles Windu Version 15, live cue limits in Settings, AI polish starts when you press.</span></a></li>
         
         <li><a href="#release-647"><b>Glasses 6.10.647</b><span>Key profiles in the model picker, with the cost in the footer.</span></a></li>
         <li><a href="#release-646"><b>Glasses 6.10.646</b><span>Live cues get a panel with a countdown; Retry and Resume after a restart.</span></a></li>
@@ -1034,7 +1034,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.338, glasses 6.10.646, server 6.86.0.</strong> COS Control 0.5.338 is the public Mac download. COS Glasses 6.10.646 is the current companion pack: it is the canonical alias in the Hub repo, and since October 18, 2026 Even Hub lists 6.10.646. Server identity is 6.86.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.339, glasses 6.10.646, server 6.87.0.</strong> COS Control 0.5.339 is the public Mac download. COS Glasses 6.10.646 is the current companion pack: it is the canonical alias in the Hub repo, and since October 18, 2026 Even Hub lists 6.10.646. Server identity is 6.87.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -1050,11 +1050,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.86.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.87.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.86.0</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.87.0</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1681,7 +1681,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.646 plus server 6.86.0 is the current companion pair; Even Hub lists 6.10.646.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.646 plus server 6.87.0 is the current companion pair; Even Hub lists 6.10.646.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>The default Tiny configuration uses Mac Whisper while the Mac answers and the built-in phone model when it does not. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -2059,11 +2059,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.338</strong>, server <strong>6.86.0</strong>, and COS Glasses <strong>6.10.646</strong> from Even Hub (Public October 18, 2026). Install <strong>6.10.646</strong> for the newest companion build; Even Hub lists 6.10.646, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.339</strong>, server <strong>6.87.0</strong>, and COS Glasses <strong>6.10.646</strong> from Even Hub (Public October 18, 2026). Install <strong>6.10.646</strong> for the newest companion build; Even Hub lists 6.10.646, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.10.629</strong> with the same server 6.86.0. Server 6.67.0 is retained separately for runtime rollback; with it, Meeting Ask on the phone, the lens and the Mac shows an update message and recording keeps working. The complete versioned629 EHPK is preserved in the Hub repository, and on Even App 2.2.9, 607 is the newest build that installs. Builds 580 and earlier cannot read the protected v2 Sessions queue or pending speaker edits. Resolve pending work before an older downgrade; do not clear app storage to downgrade. Choose Sonnet before downgrading: the older picker does not understand the Luna preference. Let Saved turns drain before going below 6.9.563. That older store build lacks Work, the prompt overlay, later reader fixes and the current footer controls.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.10.629</strong> with the same server 6.87.0. Server 6.67.0 is retained separately for runtime rollback; with it, Meeting Ask on the phone, the lens and the Mac shows an update message and recording keeps working. The complete versioned629 EHPK is preserved in the Hub repository, and on Even App 2.2.9, 607 is the newest build that installs. Builds 580 and earlier cannot read the protected v2 Sessions queue or pending speaker edits. Resolve pending work before an older downgrade; do not clear app storage to downgrade. Choose Sonnet before downgrading: the older picker does not understand the Luna preference. Let Saved turns drain before going below 6.9.563. That older store build lacks Work, the prompt overlay, later reader fixes and the current footer controls.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -2080,7 +2080,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.646. The current supported pair is COS Glasses 6.10.646 (Even Hub lists 6.10.646) and server 6.86.0; COS Control 0.5.338 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.646. The current supported pair is COS Glasses 6.10.646 (Even Hub lists 6.10.646) and server 6.87.0; COS Control 0.5.339 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2117,6 +2117,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Mac app</h3>
+      <details class="release-detail rn" id="release-339"><summary><span class="rn-t">Control 0.5.339 / server 6.87.0</span><span class="rn-g">One place for files in the live meeting; an audio level strip for glasses meetings.</span></summary><div class="rn-b"><p><strong>One place for files in the live meeting</strong>: drag a screenshot or file anywhere onto the meeting, or use Add file beside Stop (Paste screenshot or Choose files). Files collapse to one Files row under the title, so the transcript gets more room. <strong>A level strip for glasses meetings</strong>: with COS server 6.87.0 a glasses meeting shows a rough audio level in the bar, a few seconds behind the room. Everything in 0.5.338 is included.</p></div></details>
       <details class="release-detail rn" id="release-338"><summary><span class="rn-t">Control 0.5.336 to 0.5.338 / server 6.86.0</span><span class="rn-g">Live meeting window; Dismiss on Today; learn from your edits in Claude; lighter and steadier.</span></summary><div class="rn-b"><p><strong>A live meeting window.</strong> The meeting&rsquo;s real title, the voices heard so far, and a bar with the time and Stop (Command-Shift-R stops a Mac recording). Mac recordings show a live audio level. With COS server 6.86.0, each cue sits under the part of the conversation it belongs to, the header counts decisions, promises and follow-ups, the words still being transcribed show in grey, and live cues work on Mac recordings too. <strong>Dismiss a suggestion</strong> that is not a real task: each row in Today&rsquo;s From today&rsquo;s meetings has a quiet Dismiss. A dismissed suggestion never comes back and does not move to Work at midnight. <strong>Learn from my edits works in Claude</strong> and in COS&rsquo;s own text boxes: fix a misheard name in the text COS just typed and COS adds it to your dictionary, with Undo on the pill. Slack, Cursor, ChatGPT and rich text boxes in Chrome and Comet are measured first; Settings names them. <strong>Steadier and lighter:</strong> Work&rsquo;s board shows queued work and plans from your glasses, runs started from Today can be opened and stopped, live cues say which limit stopped them, Fix a word stays on screen, and COS Control uses less of your Mac while idle and while you resize windows.</p></div></details>
       <details class="release-detail rn" id="release-335"><summary><span class="rn-t">Control 0.5.335 / server 6.85.0</span><span class="rn-g">A Today home for Activity (opt-in); your own AI polish instructions.</span></summary><div class="rn-b"><p><strong>A Today home for Activity</strong>, off until you turn on Settings, New Today home: what is waiting on you first, with your sessions&rsquo; questions in their own words and one Open each; what every agent is running across Terminal, Claude, Codex, Cursor, Work, the glasses and routines; your next meeting with Prep me; and today&rsquo;s suggestions from your meetings with Create task. A rail beside every Activity tab shows each section in one line. <strong>Your polish instructions</strong>, in Settings, Dictation, under AI polish: tell AI polish how you like your text, up to 1,000 characters. COS&rsquo;s built-in rules still come first, so your words never change meaning, links, numbers or names. Needs COS server 6.85.0 for polish instructions and glasses questions on Today. Everything in 0.5.334 is included.</p></div></details>
       <details class="release-detail rn" id="release-334"><summary><span class="rn-t">Control 0.5.334 / server 6.84.0</span><span class="rn-g">Dictation keeps /pricing; Record on Mac stops when it can't hear your Mac; Discard for silent recordings.</span></summary><div class="rn-b"><p><strong>Dictation keeps paths</strong>: saying forward slash pricing writes /pricing, Fix a word accepts a link, email or path as a correction, and Learn from my edits keeps the leading /. AI polish uses the server&rsquo;s new v3 prompt, and if the server refuses a polished answer because it holds a link you never said, COS pastes what it heard. <strong>Record on Mac stops when it can&rsquo;t hear your Mac</strong>: if All Mac audio gets only digital silence while an app is playing, it stops within about 12 seconds and offers Open System Settings and Try again. A quiet meeting keeps recording. <strong>Discard replaces the dead ends</strong>: a recording with no sound offers Discard, with a confirm, instead of buttons that could not work. Its audio moves to a dated folder on the Mac; nothing is deleted. Needs COS server 6.84.0. Everything in 0.5.333 is included.</p></div></details>
@@ -2560,7 +2561,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.646 / Control 0.5.338 / server 6.86.0, 2026-10-20; Hub packs to 6.10.646)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.646 / Control 0.5.339 / server 6.87.0, 2026-10-20; Hub packs to 6.10.646)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
