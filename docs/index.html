@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.653 (build 653, Hub pin 6.10.653) · server @gotcos/glasses-server 6.90.0 · COS Control 0.5.339.
+   Covers COS Glasses 6.10.653 (build 653, Hub pin 6.10.653) · server @gotcos/glasses-server 6.90.0 · COS Control 0.5.341.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -782,14 +782,14 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.653</b> · build 653</span>
       <span class="chip">Server <b>6.90.0</b></span>
-      <span class="chip">Control <b>0.5.339</b></span>
+      <span class="chip">Control <b>0.5.341</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
-        <li><a href="#release-339"><b>Mac app 0.5.339</b><span>One place for files in the live meeting; an audio level strip for glasses meetings.</span></a></li>
+        <li><a href="#release-341"><b>Mac app 0.5.341</b><span>Distinct Jedi combat and shuffled opponents; Mac Voice N labels, text-only renaming and Slack edit learning.</span></a></li>
         <li><a href="#release-338"><b>Mac app 0.5.338</b><span>Live meeting window; Dismiss on Today; learn from your edits in Claude; lighter and steadier.</span></a></li>
         <li><a href="#release-335"><b>Mac app 0.5.335</b><span>A Today home for Activity (opt-in); your own AI polish instructions.</span></a></li>
         <li><a href="#release-334"><b>Mac app 0.5.334</b><span>Dictation keeps /pricing; Record on Mac stops when it can't hear your Mac; Discard for silent recordings.</span></a></li>
@@ -1034,7 +1034,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.339, glasses 6.10.653, server 6.90.0.</strong> COS Control 0.5.339 is the public Mac download. COS Glasses 6.10.653 is the current companion pack: it is the canonical alias in the Hub repo, and since October 24, 2026 Even Hub lists 6.10.653. Server identity is 6.90.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.341, glasses 6.10.653, server 6.90.0.</strong> COS Control 0.5.341 is the public Mac download. COS Glasses 6.10.653 is the current companion pack: it is the canonical alias in the Hub repo, and since October 24, 2026 Even Hub lists 6.10.653. Server identity is 6.90.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -2059,7 +2059,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.339</strong>, server <strong>6.90.0</strong>, and COS Glasses <strong>6.10.653</strong> from Even Hub (Public October 24, 2026). Install <strong>6.10.653</strong> for the newest companion build; Even Hub lists 6.10.653, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.341</strong>, server <strong>6.90.0</strong>, and COS Glasses <strong>6.10.653</strong> from Even Hub (Public October 24, 2026). Install <strong>6.10.653</strong> for the newest companion build; Even Hub lists 6.10.653, and the same build is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2080,7 +2080,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.653. The current supported pair is COS Glasses 6.10.653 (Even Hub lists 6.10.653) and server 6.90.0; COS Control 0.5.339 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.653. The current supported pair is COS Glasses 6.10.653 (Even Hub lists 6.10.653) and server 6.90.0; COS Control 0.5.341 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2117,6 +2117,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Mac app</h3>
+      <details class="release-detail rn" id="release-341"><summary><span class="rn-t">Control 0.5.341 / server 6.90.0</span><span class="rn-g">Jedi 360 animation and stock upgrades; Mac voice labels and Slack edit learning.</span></summary><div class="rn-b"><p>Nia, Elara and Rowan have distinct Session 2 and 3 choreography, full-turn Session 4 attacks, three opponent casts with no immediate repeats, and sharper Retina rendering. Nia’s boots and free-hand guard are corrected. Unmodified stock Jedi selections update automatically; custom art and Miles Windu remain intact.</p><p>Includes 0.5.340: saved Mac recordings use Voice 1, Voice 2 and later labels, with Rename voice opening Speakers to name that voice in the meeting. This is text only and never trains from Mac audio. Uncertain voices retain Ext. Learn from my edits works in Slack as well as Claude and native apps.</p></div></details>
       <details class="release-detail rn" id="release-339"><summary><span class="rn-t">Control 0.5.339 / server 6.87.0</span><span class="rn-g">One place for files in the live meeting; an audio level strip for glasses meetings.</span></summary><div class="rn-b"><p><strong>One place for files in the live meeting</strong>: drag a screenshot or file anywhere onto the meeting, or use Add file beside Stop (Paste screenshot or Choose files). Files collapse to one Files row under the title, so the transcript gets more room. <strong>A level strip for glasses meetings</strong>: with COS server 6.87.0 a glasses meeting shows a rough audio level in the bar, a few seconds behind the room. Everything in 0.5.338 is included.</p></div></details>
       <details class="release-detail rn" id="release-338"><summary><span class="rn-t">Control 0.5.336 to 0.5.338 / server 6.86.0</span><span class="rn-g">Live meeting window; Dismiss on Today; learn from your edits in Claude; lighter and steadier.</span></summary><div class="rn-b"><p><strong>A live meeting window.</strong> The meeting&rsquo;s real title, the voices heard so far, and a bar with the time and Stop (Command-Shift-R stops a Mac recording). Mac recordings show a live audio level. With COS server 6.86.0, each cue sits under the part of the conversation it belongs to, the header counts decisions, promises and follow-ups, the words still being transcribed show in grey, and live cues work on Mac recordings too. <strong>Dismiss a suggestion</strong> that is not a real task: each row in Today&rsquo;s From today&rsquo;s meetings has a quiet Dismiss. A dismissed suggestion never comes back and does not move to Work at midnight. <strong>Learn from my edits works in Claude</strong> and in COS&rsquo;s own text boxes: fix a misheard name in the text COS just typed and COS adds it to your dictionary, with Undo on the pill. Slack, Cursor, ChatGPT and rich text boxes in Chrome and Comet are measured first; Settings names them. <strong>Steadier and lighter:</strong> Work&rsquo;s board shows queued work and plans from your glasses, runs started from Today can be opened and stopped, live cues say which limit stopped them, Fix a word stays on screen, and COS Control uses less of your Mac while idle and while you resize windows.</p></div></details>
       <details class="release-detail rn" id="release-335"><summary><span class="rn-t">Control 0.5.335 / server 6.85.0</span><span class="rn-g">A Today home for Activity (opt-in); your own AI polish instructions.</span></summary><div class="rn-b"><p><strong>A Today home for Activity</strong>, off until you turn on Settings, New Today home: what is waiting on you first, with your sessions&rsquo; questions in their own words and one Open each; what every agent is running across Terminal, Claude, Codex, Cursor, Work, the glasses and routines; your next meeting with Prep me; and today&rsquo;s suggestions from your meetings with Create task. A rail beside every Activity tab shows each section in one line. <strong>Your polish instructions</strong>, in Settings, Dictation, under AI polish: tell AI polish how you like your text, up to 1,000 characters. COS&rsquo;s built-in rules still come first, so your words never change meaning, links, numbers or names. Needs COS server 6.85.0 for polish instructions and glasses questions on Today. Everything in 0.5.334 is included.</p></div></details>
@@ -2565,7 +2566,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.653 / Control 0.5.339 / server 6.90.0, 2026-10-24; Hub packs to 6.10.653)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.653 / Control 0.5.341 / server 6.90.0, 2026-10-24; Hub packs to 6.10.653)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
