@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.341 (build 395) · server @gotcos/glasses-server 6.90.0.
-  Every claim is grounded in the 0.5.317 to 0.5.341 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.342 (build 396) · server @gotcos/glasses-server 6.90.0.
+  Every claim is grounded in the 0.5.317 to 0.5.342 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.341",
+    "softwareVersion": "0.5.342",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.341</span>
+    <span class="sb-ver">Control 0.5.342</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,7 +447,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.341</b> · build 395</span>
+    <span class="chip">Control <b>0.5.342</b> · build 396</span>
     <span class="chip">Server <b>6.90.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -814,6 +814,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Suggest only</strong>: suggestions wait a week in Activity, Dictation, for you to add in a batch.</li>
       <li><strong>Off</strong>.</li>
     </ul>
+    <p>Since 0.5.342, COS confirms your edit: when you change words COS just typed, the pill says Edit saved, with View, and the dictation card shows what was sent, with removed words struck through, added words underlined, and one line on whether a word went to your dictionary. Show original puts back exactly what COS typed. When your only edit removed a short filler like &ldquo;kind of&rdquo;, one tap on Always drop adds it to your polish instructions; nothing is added unless you tap.</p>
     <p>It works in native apps, Claude and Slack. Cursor, ChatGPT and rich text boxes in Chrome and Comet are still measured first. It never runs in terminals or password fields.</p>
   </div>
 
@@ -1233,6 +1234,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-342"><h3>Control 0.5.342 / server 6.90.0</h3><p>When you edit text COS just typed, the pill says Edit saved, with View, or Edit saved and Learned, with Undo, when COS also learned a word. The dictation card shows your final text with removed words struck through and added words underlined, an Edited in tag, the number of edits, and whether anything went to your dictionary. Show original puts back exactly what COS typed, and Copy copies whichever you are looking at. A one-tap Always drop adds a removed filler to your polish instructions. Only edits inside the text COS typed count, in the apps where Learn from my edits works; an edit in the last moment before you send can be missed. Also fixed: a build number with a dot no longer offers an older version as an update.</p></section>
     <section class="note" id="release-341"><h3>Control 0.5.341 / server 6.90.0</h3><p>Nia, Elara and Rowan gain distinct Jedi combat, full-turn Session 4 attacks, three shuffled casts, sharper Retina artwork and smoother entrances and recovery. Nia has corrected boots and a guard that keeps her free hand clear of the blade. Existing stock packs update safely, preserving custom art and Miles Windu.</p><p>This includes 0.5.340: saved Mac recordings label distinct voices Voice 1, Voice 2 and so on. Rename voice opens that voice in Speakers to name; this changes text in that meeting and never creates or trains a voice profile from Mac audio. Calls with too many or uncertain voices keep Ext. Learn from my edits also works in Slack.</p></section>
     <section class="note" id="release-339"><h3>Control 0.5.339 / server 6.87.0</h3><p><strong>One place for files in the live meeting</strong>: drag a screenshot or file anywhere onto the meeting, or use Add file beside Stop (Paste screenshot or Choose files). Files collapse to one Files row under the title, so the transcript gets more room. <strong>A level strip for glasses meetings</strong>: with COS server 6.87.0 a glasses meeting shows a rough audio level in the bar, a few seconds behind the room. Everything in 0.5.338 is included.</p></section>
     <section class="note" id="release-338"><h3>Control 0.5.336 to 0.5.338 / server 6.86.0</h3><p><strong>A live meeting window.</strong> The meeting&rsquo;s real title, the voices heard so far, and a bar with the time and Stop (Command-Shift-R stops a Mac recording). Mac recordings show a live audio level. With COS server 6.86.0, each cue sits under the part of the conversation it belongs to, the header counts decisions, promises and follow-ups, the words still being transcribed show in grey, and live cues work on Mac recordings too. <strong>Dismiss a suggestion</strong> that is not a real task: each row in Today&rsquo;s From today&rsquo;s meetings has a quiet Dismiss. A dismissed suggestion never comes back and does not move to Work at midnight. <strong>Learn from my edits works in Claude</strong> and in COS&rsquo;s own text boxes: fix a misheard name in the text COS just typed and COS adds it to your dictionary, with Undo on the pill. Slack, Cursor, ChatGPT and rich text boxes in Chrome and Comet are measured first; Settings names them. <strong>Steadier and lighter:</strong> Work&rsquo;s board shows queued work and plans from your glasses, runs started from Today can be opened and stopped, live cues say which limit stopped them, Fix a word stays on screen, and COS Control uses less of your Mac while idle and while you resize windows.</p></section>
