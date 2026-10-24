@@ -7,7 +7,7 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.339/COS-Control-macOS-arm64-0.5.339.zip",
       "sha256": "f8fe4b8c83c58442bd3e9876c6eb2d10a8d3e0d646a698b9b67ef4921dc52205",
       "minMacOS": "14.0",
-      "serverTarget": "6.87.0",
+      "serverTarget": "6.88.0",
       "publishedAt": "2026-10-23T21:54:14+00:00",
       "notes": "One place for files in the live meeting window, and an audio level strip for glasses meetings. Needs COS server 6.87.0 for the level strip. Signed and notarized by Apple.",
       "whatsNew": {
