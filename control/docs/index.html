@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.342 (build 396) · server @gotcos/glasses-server 6.90.0.
-  Every claim is grounded in the 0.5.317 to 0.5.342 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.343 (build 397) · server @gotcos/glasses-server 6.90.0.
+  Every claim is grounded in the 0.5.317 to 0.5.343 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.342",
+    "softwareVersion": "0.5.343",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.342</span>
+    <span class="sb-ver">Control 0.5.343</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,7 +447,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.342</b> · build 396</span>
+    <span class="chip">Control <b>0.5.343</b> · build 397</span>
     <span class="chip">Server <b>6.90.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -673,6 +673,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Recency</strong> sorts Meetings, Sessions, Memories and Threads by Newest, Oldest or Best match. <strong>Domain</strong> narrows Meetings and Work.</li>
       <li>The gear opens <strong>Settings</strong>, and the header shows <strong>Server connected</strong> or <strong>Server offline</strong>.</li>
     </ul>
+    <p>Since 0.5.343, a view that is loading draws the outline of its rows where the rows will sit, then fills in with your data instead of a spinner. This covers Meetings, Sessions, Tasks, Memories, Threads, Speakers, Messages, a meeting&rsquo;s page, a session, and Today&rsquo;s Needs you and Running cards; a Meeting Ask answer draws its outline in the line where it will appear. Your data shows the moment it arrives, readable and ready to click, and nothing changes size. Fast loads and views you already opened this session show directly. Errors and empty results show at once with the same message and buttons, and after a few seconds the usual loading words show. Reduce Motion turns the outline off.</p>
   </div>
 
   <div class="sub" id="view-messages">
@@ -1234,6 +1235,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-343"><h3>Control 0.5.343 / server 6.90.0</h3><p>Meetings, Sessions, Tasks, Memories, Threads, Speakers, Messages, a meeting&rsquo;s page, a session, and Today&rsquo;s Needs you and Running cards draw the outline of their rows where the rows will sit while they load, then fill in with your data instead of a spinner. A Meeting Ask answer draws its outline in the line where it will appear. Your data shows the moment it arrives, readable and ready to click. Loads that finish quickly show directly, and a view you already opened this session updates as before. Nothing changes size while a view loads. Errors and empty results show at once, with the same message and buttons as before, and if a load takes more than a few seconds the usual loading words show. Reduce Motion turns the outline off, and VoiceOver hears what is loading. Includes 0.5.342 and 0.5.341.</p></section>
     <section class="note" id="release-342"><h3>Control 0.5.342 / server 6.90.0</h3><p>When you edit text COS just typed, the pill says Edit saved, with View, or Edit saved and Learned, with Undo, when COS also learned a word. The dictation card shows your final text with removed words struck through and added words underlined, an Edited in tag, the number of edits, and whether anything went to your dictionary. Show original puts back exactly what COS typed, and Copy copies whichever you are looking at. A one-tap Always drop adds a removed filler to your polish instructions. Only edits inside the text COS typed count, in the apps where Learn from my edits works; an edit in the last moment before you send can be missed. Also fixed: a build number with a dot no longer offers an older version as an update.</p></section>
     <section class="note" id="release-341"><h3>Control 0.5.341 / server 6.90.0</h3><p>Nia, Elara and Rowan gain distinct Jedi combat, full-turn Session 4 attacks, three shuffled casts, sharper Retina artwork and smoother entrances and recovery. Nia has corrected boots and a guard that keeps her free hand clear of the blade. Existing stock packs update safely, preserving custom art and Miles Windu.</p><p>This includes 0.5.340: saved Mac recordings label distinct voices Voice 1, Voice 2 and so on. Rename voice opens that voice in Speakers to name; this changes text in that meeting and never creates or trains a voice profile from Mac audio. Calls with too many or uncertain voices keep Ext. Learn from my edits also works in Slack.</p></section>
     <section class="note" id="release-339"><h3>Control 0.5.339 / server 6.87.0</h3><p><strong>One place for files in the live meeting</strong>: drag a screenshot or file anywhere onto the meeting, or use Add file beside Stop (Paste screenshot or Choose files). Files collapse to one Files row under the title, so the transcript gets more room. <strong>A level strip for glasses meetings</strong>: with COS server 6.87.0 a glasses meeting shows a rough audio level in the bar, a few seconds behind the room. Everything in 0.5.338 is included.</p></section>
