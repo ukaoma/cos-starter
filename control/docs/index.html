@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.343 (build 397) · server @gotcos/glasses-server 6.90.0.
-  Every claim is grounded in the 0.5.317 to 0.5.343 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.344 (build 398) · server @gotcos/glasses-server 6.91.1.
+  Every claim is grounded in the 0.5.317 to 0.5.344 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.343",
+    "softwareVersion": "0.5.344",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.343</span>
+    <span class="sb-ver">Control 0.5.344</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,8 +447,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.343</b> · build 397</span>
-    <span class="chip">Server <b>6.90.0</b></span>
+    <span class="chip">Control <b>0.5.344</b> · build 398</span>
+    <span class="chip">Server <b>6.91.1</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
@@ -816,7 +816,23 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Off</strong>.</li>
     </ul>
     <p>Since 0.5.342, COS confirms your edit: when you change words COS just typed, the pill says Edit saved, with View, and the dictation card shows what was sent, with removed words struck through, added words underlined, and one line on whether a word went to your dictionary. Show original puts back exactly what COS typed. When your only edit removed a short filler like &ldquo;kind of&rdquo;, one tap on Always drop adds it to your polish instructions; nothing is added unless you tap.</p>
+    <p>Since 0.5.344, while COS watches your edit it tries to read the text box again when you press Return or Enter, with or without Shift or Command, or click in that app, and it checks sooner after you stop typing. Return never ends the watch: sending the text or leaving the field does. COS counts Return, clicks and other key presses in that app, never which keys, and this needs a single-key dictation shortcut such as Fn. If your last change may not have been read before the text was sent or cleared, nothing is saved, never an older version. Your dictionary still learns a word only after a longer pause.</p>
     <p>It works in native apps, Claude and Slack. Cursor, ChatGPT and rich text boxes in Chrome and Comet are still measured first. It never runs in terminals or password fields.</p>
+  </div>
+
+  <div class="sub" id="your-style">
+    <h3>Your style</h3>
+    <p>Since 0.5.344, with AI polish on Claude Sonnet and COS server 6.91.0, COS can learn two style habits from the changes you make to text it typed: dropping a filler phrase from a fixed list, such as &ldquo;honestly&rdquo; or &ldquo;to be honest&rdquo;, and using or writing out contractions. A habit becomes a rule after you make the same change in two dictations. When COS adds one, the pill says <strong>Learned your style</strong>, with Undo, once for each rule.</p>
+    <p>Settings, Dictation, <strong>Your style</strong> sits under your polish instructions:</p>
+    <ul>
+      <li><strong>Learn my style from edits</strong> is the switch. Off keeps your rules and stops applying them, on this Mac and on G2.</li>
+      <li>Your rules, each with how many dictations showed it and <strong>Remove</strong>. Suggested rules have Add and Dismiss, and a rule seen once says seen 1 of 2.</li>
+      <li><strong>Add a rule</strong> picks from the same fixed choices, and the rule starts at once.</li>
+      <li><strong>Reset learned style</strong> clears the rules after you confirm.</li>
+      <li><strong>Previous polish (v3)</strong> goes back to the earlier polish prompt on every model. Your style rules apply only with the new one.</li>
+    </ul>
+    <p>Your style rules apply when AI polish uses Sonnet with the new polish (v4). On Haiku, with Previous polish, or with the switch off, Settings lists them under Not used or Paused, and COS learns nothing new. Learning also needs Learn from my edits set to Save automatically or Suggest only, and a single-key dictation shortcut such as Fn. Suggest only proposes rules and never turns them on. Your COS server adds the rules, never your text, to each Sonnet polish, on G2 too when it polishes with Sonnet. This Mac keeps only codes and counts for them, and Clear dictation history clears what COS learned; rules you added stay. On an older server the rules stay on this Mac and are not used.</p>
+    <p>With server 6.91.0, Sonnet uses the new polish (v4). It is better at self-corrections such as &ldquo;five, actually six&rdquo; and &ldquo;never mind&rdquo;, and it is told never to add an em dash or an arrow. A meaning guard keeps the text as heard when polish would lose a number, a date, a name or a negation, and the card says so, for example <strong>Kept as heard: polish changed a number</strong>. The card names the prompt, for example <strong>Polished &middot; Sonnet &middot; v4</strong>. Haiku, Luna and other models keep the earlier polish.</p>
   </div>
 
   <div class="sub" id="dictation-quiet">
@@ -1235,6 +1251,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-344"><h3>Control 0.5.344 / server 6.91.1</h3><p><strong>Learn from my edits looks again when you act.</strong> While COS watches a dictation, it tries to read that text box again when you press Return or Enter, or click in that app, and sooner after you stop typing. It counts key presses and clicks in that app, never which keys, and needs a single-key dictation shortcut such as Fn. If your last change may not have been read before the text was sent or cleared, nothing is saved, never an older version. A polish that gives your words back unchanged now reads as unchanged, not as a failure. <strong>Your style</strong>, with AI polish on Sonnet and COS server 6.91.0: COS can learn to drop a filler phrase from a fixed list after you delete it in two dictations, and to follow your contraction habit. The pill says Learned your style, with Undo. Settings, Dictation, Your style has Add a rule, Reset learned style, the Learn my style from edits switch and Previous polish (v3) to go back. Your style rules apply only to Sonnet polish. <strong>Polish v4 on Sonnet</strong> is better at self-corrections such as &ldquo;five, actually six&rdquo; and &ldquo;never mind&rdquo;, is told never to add an em dash or an arrow, and has a meaning guard that keeps the text as heard when polish would lose a number, a date, a name or a negation. G2 messages that polish with Sonnet get v4 and the meaning guard too. Polish on Haiku, Luna or any other model is unchanged, on the Mac and on G2, and so are meeting lines. Includes 0.5.343 and 0.5.342.</p></section>
     <section class="note" id="release-343"><h3>Control 0.5.343 / server 6.90.0</h3><p>Meetings, Sessions, Tasks, Memories, Threads, Speakers, Messages, a meeting&rsquo;s page, a session, and Today&rsquo;s Needs you and Running cards draw the outline of their rows where the rows will sit while they load, then fill in with your data instead of a spinner. A Meeting Ask answer draws its outline in the line where it will appear. Your data shows the moment it arrives, readable and ready to click. Loads that finish quickly show directly, and a view you already opened this session updates as before. Nothing changes size while a view loads. Errors and empty results show at once, with the same message and buttons as before, and if a load takes more than a few seconds the usual loading words show. Reduce Motion turns the outline off, and VoiceOver hears what is loading. Includes 0.5.342 and 0.5.341.</p></section>
     <section class="note" id="release-342"><h3>Control 0.5.342 / server 6.90.0</h3><p>When you edit text COS just typed, the pill says Edit saved, with View, or Edit saved and Learned, with Undo, when COS also learned a word. The dictation card shows your final text with removed words struck through and added words underlined, an Edited in tag, the number of edits, and whether anything went to your dictionary. Show original puts back exactly what COS typed, and Copy copies whichever you are looking at. A one-tap Always drop adds a removed filler to your polish instructions. Only edits inside the text COS typed count, in the apps where Learn from my edits works; an edit in the last moment before you send can be missed. Also fixed: a build number with a dot no longer offers an older version as an update.</p></section>
     <section class="note" id="release-341"><h3>Control 0.5.341 / server 6.90.0</h3><p>Nia, Elara and Rowan gain distinct Jedi combat, full-turn Session 4 attacks, three shuffled casts, sharper Retina artwork and smoother entrances and recovery. Nia has corrected boots and a guard that keeps her free hand clear of the blade. Existing stock packs update safely, preserving custom art and Miles Windu.</p><p>This includes 0.5.340: saved Mac recordings label distinct voices Voice 1, Voice 2 and so on. Rename voice opens that voice in Speakers to name; this changes text in that meeting and never creates or trains a voice profile from Mac audio. Calls with too many or uncertain voices keep Ext. Learn from my edits also works in Slack.</p></section>
