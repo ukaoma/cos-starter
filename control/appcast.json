@@ -5,10 +5,10 @@
       "version": "0.5.345",
       "build": 399,
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.345/COS-Control-macOS-arm64-0.5.345.zip",
-      "sha256": "__SHA345__",
+      "sha256": "4e71243e22c1b37dd9006ebdbc0430f2e731bb1bcd9e66ce95ad9c260952926d",
       "minMacOS": "14.0",
       "serverTarget": "6.92.0",
-      "publishedAt": "__PUBLISHED345__",
+      "publishedAt": "2026-10-26T03:49:34+00:00",
       "notes": "COS no longer types um and uh on their own, a dictation starts with a capital, Claude's polish swaps in more often, and Undo polish puts back what COS typed. Pairs with COS server 6.92.0.",
       "whatsNew": {
         "summary": "COS no longer types um and uh on their own, and a dictation at the start of a text box or sentence starts with a capital. When Claude's polish is ready, a ⌘ or ⌃ you are still holding no longer cancels the swap, and Undo polish puts back what COS typed. Under AI polish, Settings says which polish your COS server runs for the model you chose. If your microphone fails to start, COS tries one that worked before and says which, and a stuck sound or mute no longer holds up dictation. When you fix something polish had already fixed, the card says so and what happens next time. Plus everything in 0.5.344: COS reads your change once more when you press Return or click, and with Sonnet learns style habits from your edits.",
