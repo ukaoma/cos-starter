@@ -2,17 +2,28 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.348",
-      "build": 402,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.348/COS-Control-macOS-arm64-0.5.348.zip",
-      "sha256": "82e8c29ee58fcb29e2110513428d059e971bb5d5c978890c233dda516893dbfe",
+      "version": "0.5.349",
+      "build": 403,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.349/COS-Control-macOS-arm64-0.5.349.zip",
+      "sha256": "c5218361c78369daa0eae56a10db3c6a87f465e9bdb53107dff2fac19e4e42ff",
       "minMacOS": "14.0",
       "serverTarget": "6.92.0",
-      "publishedAt": "2026-10-26T07:05:54.244229+00:00",
-      "notes": "Sessions Usage and historical model activity, plus illustrated Miles Windu. Pairs with COS server 6.92.0.",
+      "publishedAt": "2026-10-26T14:56:27.458053+00:00",
+      "notes": "Illustrated Windu idle states and clearer Usage comparisons with period breakdowns. Pairs with COS server 6.92.0.",
       "whatsNew": {
-        "summary": "Sessions now includes Usage: tokens by model and provider, daily charts, monthly history and estimated API value. COS reads the session records already on this Mac and keeps a local history. Choose All history for totals across the available records. Jedi Miles Windu gains thirteen illustrated combat casts, with existing custom packs preserved. Plus everything in 0.5.345: dictation fillers, sentence capitals, Undo polish and learning from edits.",
+        "summary": "Explore Usage with bar breakdowns, weekend comparisons and clearer token shares. Windu gains illustrated idle states. Plus everything in 0.5.348: historical Sessions Usage, illustrated combat casts and the previous dictation fixes.",
         "sections": [
+          {
+            "title": "0.5.349",
+            "items": [
+              "Hover a Usage bar to see its period and model breakdown. Click to keep it open, or use Inspect period and Previous/Next with the keyboard.",
+              "Compare Last weekend or Last 7 days. Selection share and Within provider show their token denominators; neither is your subscription allowance.",
+              "Exclude repeated cache reads from token comparisons. Estimated API value stays separate and unknown prices remain visible.",
+              "Windu turns his head while idle and moves through meditation poses with a violet power-up aura, alongside illustrated patrol frames.",
+              "The thirteen combat casts keep their artwork, timing and handoffs. Previous artwork remains available for rollback.",
+              "Exact stock packs update automatically. Custom artwork, timing and scale stay intact. Sessions Usage remains available under Sessions."
+            ]
+          },
           {
             "title": "0.5.348",
             "items": [
