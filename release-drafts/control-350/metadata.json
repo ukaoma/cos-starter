@@ -1,22 +1,21 @@
 {
   "version": "0.5.350",
   "build": 404,
-  "serverTarget": "6.92.1",
+  "serverTarget": "6.92.0",
   "url": null,
   "sha256": null,
   "publishedAt": null,
-  "notes": "Usage date ranges and provider trends, conditional live Mac voice numbers, and Windu cadence/recovery. Pairs with COS server 6.92.1.",
+  "notes": "Usage date ranges and provider trends, plus Windu cadence and failed-load recovery. Pairs with COS server 6.92.0.",
   "whatsNew": {
-    "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Mac meetings keep distinct anonymous voice labels when the server has enough evidence. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",
+    "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",
     "sections": [
       {
         "title": "0.5.350",
         "items": [
-          "Usage opens on Last 30 days. Choose 7/30/90 calendar days or inclusive custom dates, with provider/model lines or stacked bars.",
-          "Inspect provider totals, model shares, token categories and daily records. Unknown costs and coverage remain explicit; this is not a subscription allowance or bill.",
-          "With COS server 6.92.1, clean repeated audio can receive anonymous Voice 1, Voice 2 and later labels while a Mac recording runs. Uncertain audio stays unidentified. Voice numbers are not identities, and Mac renames do not train profiles.",
-          "Windu one-session run bursts have matching cadence and a shorter raised-saber pause. A failed cast load can retry on a later refresh; healthy art is retained and custom timing/art stays yours.",
-          "The reported repeated-lineup behavior was not reproduced; the failed-load recovery test does not establish its historical cause."
+          "Compare Last 7, 30 or 90 days, a completed weekend, custom dates or all history. Charts and totals follow the same filters.",
+          "Choose provider or model series, lines or stacked bars. Inspect a period for its breakdown, and compare provider totals, token categories and daily records.",
+          "Usage records are not sessions. Token share and estimated API value do not measure your subscription allowance; missing prices and coverage remain visible.",
+          "Windu uses a consistent cadence for both running bursts before his strike. Failed combat-art loads can retry on a later refresh. Custom artwork and settings stay intact."
         ]
       }
     ]

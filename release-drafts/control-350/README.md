@@ -1,48 +1,82 @@
-# Draft only: Control 0.5.350 / build 404 + server 6.92.1
+# Draft only: Control 0.5.350 / build 404 + existing server 6.92.0
 
-Do not publish this branch yet. It prepares the next release; it does not establish that its app or server artifacts are public. Base site: `origin/main` at `1ae2d5a0a957ec465ce31205596ee656128347b3`.
+Do not publish this branch yet. The selected release is **Usage and Windu only**.
+Live speaker changes and the phone candidate remain separate follow-up work.
+This draft requires no server publish. The release owner will independently verify
+that 6.92.0 remains the current public server before applying final metadata.
+Base site: `origin/main` at `1ae2d5a0a957ec465ce31205596ee656128347b3`.
 
 ## Prepared surfaces
 
-- `control/index.html`: Usage's 7/30/90-day calendar windows and inclusive custom dates, provider/model lines or stacked bars, provider/token/day breakdowns and limitations; anonymous Mac voice numbers and text-only renaming; native Windu one-session cadence and failed-load retry.
-- `control/docs/index.html`: the same user paths with source/fallback details, the two-observation anonymous voice requirement, conservative finalization, no Mac profile training, pricing/coverage limitations and failed-load recovery boundary.
-- `llms.txt`: the Sessions feature summary. Its old **current** `Public COS Control is 0.5.345` sentence is corrected only by the final metadata patch below. Historical 0.5.345 facts remain.
-- `patches.json`: 35 reviewed unique anchors for the remaining Control/docs/wizard/llms current-version fields, current byline and release-note insertions. Every historical 349/348/345 release block and older minimum/since fact stays intact. The final release body is shared between the main docs and Mac guide.
-- `metadata.json`: future stable appcast fields and the new What's New section. Applying prepends it to the unchanged historical sections from the pinned appcast. **URL, SHA-256 and publishedAt are null.** No notice is removed.
-- `apply.py`: validates anchors without writing by default. `--apply` requires all final metadata and four matching local artifacts; this is local preparation only and cannot publish or verify public availability.
+- `control/index.html`: Usage 7/30/90-day calendar windows and inclusive custom
+  dates; provider/model lines or stacked bars and detailed breakdowns; Windu
+  one-session cadence and failed-load retry. Existing Speakers copy is preserved.
+- `control/docs/index.html`: the same Usage paths, truthful pricing/coverage
+  limitations and the bounded Windu retry behavior. No new live-voice section.
+- `llms.txt`: the Sessions Usage feature summary. Its stale current 0.5.345
+  sentence changes only in the final patch; historical introduction facts stay.
+- `patches.json`: 27 reviewed unique anchors for final Control/docs/wizard/llms
+  metadata and release notes. Server mocks, compatibility and rollback stay at
+  6.92.0. Historical 349/348/345 bodies and older since-facts stay intact.
+- `metadata.json`: 350/404 paired with 6.92.0. Summary and the new section mirror
+  the selected Control `Resources/WhatsNew.json` exactly. **URL, SHA-256 and
+  publishedAt remain null**. Applying prepends the section to unchanged appcast
+  history; no notice is removed.
+- `apply.py`: validates anchors by default. Local `--apply` requires final metadata
+  and four matching ZIP/sidecar artifacts; it cannot publish or prove availability.
 
-The existing current download, JSON-LD, displayed SHA, appcast, release coverage, managed mocks and wizard links still advertise 0.5.349 / build 403 + server 6.92.0. Do not treat that deliberately unchanged metadata as qualification of the new feature copy. Publish only after the release owner finalizes and validates the complete set.
+Current download links, JSON-LD, displayed SHA, appcast, release coverage and
+wizard metadata remain 0.5.349/build403 + server6.92.0 until final application.
+Glasses6.10.654/build654, Even Hub pin6.10.653, marketplace/history facts and the
+website's existing pet art are unchanged. A branch edit is not a shipped claim.
 
-## Source grounding
+## Grounding and limits
 
-Frozen release sources reported by the release owner: Control `/Users/ukaoma/cos-worktrees/ctl-350-recording-usage` at `626ed86b16d53302d5e2b51d8d9639ddcb6242c8`, server `/Users/ukaoma/Documents/GitHub/cos-glasses-server` at `3542ea48c3f59a6e0bbb7e65ae4741c60681b6e0`. Feature review began at Control `e52c32d6da6e98589d1b228ff8ddfe2e88533c2e` and server `a359fc8`; version/artifact verification remains a separate gate. The owner reports synthetic same-voice positive cases passed, while archived natural short audio stayed Ext. No claim promises that every speaker receives a number.
+Usage source: `Sources/SessionUsageCore.swift` and `Sources/SessionUsageView.swift`
+in `/Users/ukaoma/cos-worktrees/ctl-350-recording-usage`; its
+`docs/usage-refinement-20261026.md` records the source contracts and validation.
+Calendar windows include today in the reporting timezone; custom endpoints are
+inclusive. No rolling24h, subscription balance, distinct-session count or billing
+claim is added. Unknown cost/coverage remain visible.
 
-The draft What's New summary matches Control's final `Resources/WhatsNew.json`, including its 0.5.349 summary chain. The release owner reports the final server suite passed: 599 files, 9,203 tests, 14 skipped, plus typecheck and an audit with zero vulnerabilities. The server source includes the body-parser 2.4.0 security fix. These are owner-reported source checks; artifact fields remain unset and artifact qualification is still required.
-
-- `Sources/SessionUsageCore.swift:122` selects inclusive reporting-zone calendar dates; `Sources/SessionUsageView.swift:41` defaults to Last 30 days, `:142` supplies ranges, `:159` distinguishes them from rolling 24h, `:261` describes unknown-price omissions, `:289` explains absent balances/reset/environment/session counts. `docs/usage-refinement-20261026.md` records source contracts and bounded/offscreen validation.
-- `server/lib/mac-live-voices.ts:33` requires separate raw chunks and audio hashes before confirmation, with conservative capture-local matching; `server/lib/nemotron-live.ts:186` requires sufficiently long/exclusive speech. `server/routes/transcribe-stream.ts:2551` owns Mac-only continuity; strict named recognition and no-training guards remain. `server/lib/nemotron-final.ts:1136` withholds contradictory crosswalks. `docs/meeting-speaker-policy.md` states these are not acoustic calibration guarantees.
-- `Sources/LiveTranscript.swift:777` retains Voice N as distinct anonymous participant chips. `Sources/Models.swift:5869` describes Mac rename as text only, without enrollment/training.
-- `docs/qa/windu-motion-350.md`: matching .48s Session 1 run bursts and shorter raised-saber hold; failed async load becomes eligible to retry after 5s on a later refresh; healthy art does not reload. The existing running app's reported repeated lineup was **not reproduced**. The recovery test demonstrates a plausible failure path, not its historical diagnosis; integrated actual-app repeat acceptance remains the release owner's gate.
-- `Sources/ActivityWindow.swift:329` exposes eight Activity views (Work occupies the old Tasks slot). Homepage tiles, Control tabs and prose retain the same eight views. No pane was added for Usage.
-
-Phone microphone candidate `4487b7db` is excluded. No phone meeting-microphone, native iOS, call capture, system-audio or voice-training feature is advertised here. Glasses companion 6.10.654/build 654, Even Hub pin 6.10.653 and all marketplace/history facts remain untouched. The website's existing pet artwork is not replaced or offered as evidence of native loader recovery.
+`docs/qa/windu-motion-350.md` grounds matching Session1 run cadence, shorter
+raised-saber hold and retry eligibility five seconds after an async load failure
+on a later refresh. Healthy art is retained. The reported repeated lineup was not
+reproduced; retry evidence does not establish its historical cause. Actual-app
+acceptance remains the release owner's gate. No new speaker/ASR/training behavior
+is advertised in this release; existing display-only safeguards are not new engine
+capability claims. The eight Activity views remain the same.
 
 ## Final artifact fields and release-owner steps
 
-1. Finish integrated Control/server release QA, signing/notarization/stapling/Gatekeeper checks and the actual-app gates. Confirm target versions 0.5.350/build 404 and 6.92.1 from the resulting artifacts; source labels alone are insufficient.
-2. Fill `metadata.json` with the final versioned release `url`, final stapled ZIP `sha256`, and timezone-qualified `publishedAt`. Keep the reviewed tuple; reconcile this draft if it changes.
-3. Supply a directory containing `COS-Control-macOS-arm64-0.5.350.zip`, its `.sha256`, `COS-Control-macOS-arm64-latest.zip`, and its `.sha256`. The aliases must have byte-identical ZIP contents. Each sidecar must name its own download filename exactly.
-4. Review `python3 release-drafts/control-350/apply.py --check`. Once artifact gates pass, run `python3 release-drafts/control-350/apply.py --apply --artifact-dir /absolute/final-artifact-directory`. The script validates all anchors and artifact metadata before writing; changed appcast contents require reconciliation, preserving any newer notice/history. No network, Git push or publication occurs.
-5. Re-run `python3 scripts/test_check_version_drift.py`, applicable Node site tests and HTML checks. Run the complete `scripts/check-version-drift.py --artifact-dir ...` against the final local set (npm must agree with the release state). After authorized artifact/site publication, run the normal public-byte drift checker and verify live pages with cache-busting URLs. Both public ZIP aliases and sidecars must pass HTTPS checks. This draft does not waive or replace those gates.
+1. Finish selected Control QA, signing/notarization/stapling/Gatekeeper and actual
+   app gates. Confirm 0.5.350/build404 from the final app and public server6.92.0.
+2. Fill final versioned HTTPS `url`, stapled ZIP `sha256`, and timezone-qualified
+   `publishedAt`; leave the reviewed pair unchanged.
+3. Provide `COS-Control-macOS-arm64-0.5.350.zip`, its `.sha256`, the byte-identical
+   `COS-Control-macOS-arm64-latest.zip` and its correctly named `.sha256`.
+4. Run `python3 release-drafts/control-350/apply.py --check`, then after artifact
+   gates run `--apply --artifact-dir /absolute/final-artifact-directory`. Changed
+   appcast bytes require reconciliation so history and notice stay intact.
+5. Run full drift with final local artifacts, then after separately authorized
+   publication verify public HTTPS ZIP/sidecar bytes and live pages with cache
+   busting. This draft neither performs nor waives those gates.
 
-Any new release note must avoid promising acoustic accuracy, named recognition of every voice, Mac playback enrollment/training, fixed repeated-lineup behavior, rolling 24h/account billing/plan utilization or unsupported phone recording. Keep server 6.92.0/older introduction facts at their true historical versions.
+## Bounded draft checks
 
+Run `python3 release-drafts/control-350/check.py` for exact summary/scope, anchors,
+in-memory future drift, historical-body preservation and synthetic artifact
+accept/refusal checks. Also run the version-drift fixtures and six Node site suites.
+These use no browser/native app. Current appcast remains unchanged. Public-byte
+checks, signing, actual-app acceptance and live publication are still outstanding.
 
-## Bounded verification of this draft
-
-- `scripts/test_check_version_drift.py`: 46 tests passed.
-- Six Node site suites (`ring-3d`, `docs-hud-paint`, `ring-sync`, `docs-control`, `docs-signals`, `pet-cast`): 43 tests passed. These are source/fixture checks and do not open a browser or native app.
-- All 35 final-patch anchors validate sequentially. In-memory future-page rendering passed the checker's current-claim, pane, wizard and Mac-guide consistency functions with synthetic metadata. This does not establish the future artifact's existence, signatures or public availability.
-- Synthetic local artifact fixtures accepted matching ZIP/alias/sidecar bytes and rejected a wrong hash and a different alias. No real app archive was read, installed or launched.
-- Historical 349/348/345 release bodies remain byte-identical in the future rendering. Draft and future HTML parser stacks match their baseline; JSON and whitespace checks passed. Current appcast stayed at 349/403 + server 6.92.0.
-- No public-byte drift check, live render, publication, native compilation, UI/CUA or desktop input automation was performed. Real artifact/hash/signing/public HTTPS/live-page gates remain for the release owner.
+Verified this narrowed draft: 27 anchor/render/scope/history/artifact-fixture checks,
+46 drift fixtures and 43 tests across six Node site suites passed. Receipt:
+`/tmp/site-control-350-usage-windu-checks.json` (18.447 seconds). Metadata summary
+and 350 section match the selected Control What's New exactly. Current appcast,
+homepage, main docs and wizard bytes remain identical to the pinned baseline;
+appcast SHA-256 is
+`6789ac10a92093cda4b7aa114957e318bc444d7f787a4eb904364ee068565d37`.
+No real artifact, public-byte, live-render or npm verification was run by this
+site preparation lane; the release owner owns those final checks. No native,
+UI/CUA, publish or push occurred.

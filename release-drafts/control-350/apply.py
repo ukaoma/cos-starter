@@ -46,7 +46,7 @@ def render(root: Path, plan: dict, release: dict | None = None) -> dict[str, str
 
 
 def verify_artifacts(directory: Path, release: dict) -> None:
-    expected = ('0.5.350', 404, '6.92.1')
+    expected = ('0.5.350', 404, '6.92.0')
     actual = (release.get('version'), release.get('build'), release.get('serverTarget'))
     if actual != expected:
         raise ValueError(f'Release tuple {actual!r} does not match reviewed draft {expected!r}')
