@@ -2,17 +2,30 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.345",
-      "build": 399,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.345/COS-Control-macOS-arm64-0.5.345.zip",
-      "sha256": "4e71243e22c1b37dd9006ebdbc0430f2e731bb1bcd9e66ce95ad9c260952926d",
+      "version": "0.5.348",
+      "build": 402,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.348/COS-Control-macOS-arm64-0.5.348.zip",
+      "sha256": "82e8c29ee58fcb29e2110513428d059e971bb5d5c978890c233dda516893dbfe",
       "minMacOS": "14.0",
       "serverTarget": "6.92.0",
-      "publishedAt": "2026-10-26T03:49:34+00:00",
-      "notes": "COS no longer types um and uh on their own, a dictation starts with a capital, Claude's polish swaps in more often, and Undo polish puts back what COS typed. Pairs with COS server 6.92.0.",
+      "publishedAt": "2026-10-26T07:05:54.244229+00:00",
+      "notes": "Sessions Usage and historical model activity, plus illustrated Miles Windu. Pairs with COS server 6.92.0.",
       "whatsNew": {
-        "summary": "COS no longer types um and uh on their own, and a dictation at the start of a text box or sentence starts with a capital. When Claude's polish is ready, a ⌘ or ⌃ you are still holding no longer cancels the swap, and Undo polish puts back what COS typed. Under AI polish, Settings says which polish your COS server runs for the model you chose. If your microphone fails to start, COS tries one that worked before and says which, and a stuck sound or mute no longer holds up dictation. When you fix something polish had already fixed, the card says so and what happens next time. Plus everything in 0.5.344: COS reads your change once more when you press Return or click, and with Sonnet learns style habits from your edits.",
+        "summary": "Sessions now includes Usage: tokens by model and provider, daily charts, monthly history and estimated API value. COS reads the session records already on this Mac and keeps a local history. Choose All history for totals across the available records. Jedi Miles Windu gains thirteen illustrated combat casts, with existing custom packs preserved. Plus everything in 0.5.345: dictation fillers, sentence capitals, Undo polish and learning from edits.",
         "sections": [
+          {
+            "title": "0.5.348",
+            "items": [
+              "Open Sessions, then Usage. Compare a month or All history by provider and model, with input, output and cache tokens shown separately.",
+              "Switch between daily usage and monthly history, and between tokens and estimated API value. The model table shows which models account for the most tokens.",
+              "COS backfills Claude Code and Codex session records stored on this Mac, including archived Codex sessions and subagents. Large histories import in bounded passes; partial totals and coverage gaps are shown.",
+              "Usage history stays on this Mac and survives deletion of previously imported session logs. Pause tracking at any time. COS stores counts and model names, not conversation text.",
+              "Cost is a standard API-equivalent estimate, not your subscription bill. It applies the October 25 rate snapshot to all dates. Unknown prices stay unavailable; browser-only sessions, Cursor and other Macs are not included.",
+              "Longer custom pet animations retain their approved timing, including 256-frame casts. Your installed artwork is preserved.",
+              "Includes 0.5.345 dictation improvements and its fix for learning edits to capitalized dictations.",
+              "Jedi Miles Windu gains thirteen illustrated combat casts across Sessions 1–4. Exact stock packs update; custom artwork and playback settings stay yours."
+            ]
+          },
           {
             "title": "0.5.345",
             "items": [
