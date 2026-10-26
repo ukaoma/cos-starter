@@ -7,7 +7,7 @@
   "publishedAt": null,
   "notes": "Usage date ranges and provider trends, conditional live Mac voice numbers, and Windu cadence/recovery. Pairs with COS server 6.92.1.",
   "whatsNew": {
-    "summary": "Usage date ranges and provider trends; conditional live Mac voice numbers; Windu running cadence and failed-load recovery.",
+    "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Mac meetings keep distinct anonymous voice labels when the server has enough evidence. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",
     "sections": [
       {
         "title": "0.5.350",
