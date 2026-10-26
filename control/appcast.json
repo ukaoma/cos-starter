@@ -2,17 +2,32 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.350",
-      "build": 404,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.350/COS-Control-macOS-arm64-0.5.350.zip",
-      "sha256": "aaca599809b5acc950a0d2ba8e9f334a28d8f7f9d3f1f48fe6a38b82c4953cf9",
+      "version": "0.5.351",
+      "build": 405,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.351/COS-Control-macOS-arm64-0.5.351.zip",
+      "sha256": "__SHA351__",
       "minMacOS": "14.0",
-      "serverTarget": "6.92.0",
-      "publishedAt": "2026-10-26T18:59:24Z",
-      "notes": "Usage date ranges and provider trends, plus Windu cadence and failed-load recovery. Pairs with COS server 6.92.0.",
+      "serverTarget": "6.93.0",
+      "publishedAt": "__PUBLISHED351__",
+      "notes": "Quick save, capture stall recovery and iPhone microphone meetings. Pairs with COS server 6.93.0.",
       "whatsNew": {
-        "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",
+        "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio is restarted, and Recover checks the server first. You can record meetings from your iPhone microphone once your server enables it, and stop them on the iPhone. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
         "sections": [
+          {
+            "title": "0.5.351",
+            "items": [
+              "Stopping a Mac recording shows Saving, then Saved. The chunk counter, the retained-recording warning and Retry no longer appear during an ordinary save, which takes about 5 seconds.",
+              "If a save runs past 20 seconds, the panel says how far it got. If COS misses a beat right after Stop, Control tries again quietly for about a minute. Only then does it say Not saved yet, Audio is safe on this Mac, and offer Retry.",
+              "Before Meetings offers to recover a retained Mac recording, Control asks the server whether it already saved it. If it did, the row goes away and the local copy is marked saved. If the server cannot answer, the row stays.",
+              "A grayed-out Recover button now says why, such as Recover is available after this recording, or once this recording is saved.",
+              "If a Mac recording stops receiving audio for about 30 seconds, the panel says so and Control restarts the capture once. If that fails, Stop and save keeps everything up to then.",
+              "Audio is written to disk on its own thread, so a busy or frozen Control window no longer drops the recording. Quitting Control with a termination signal during a recording keeps every saved chunk, and the recording shows up ready to save on the next launch.",
+              "Meetings recorded from your iPhone microphone appear in Live now, Meetings and Today as iPhone microphone. You stop them on the iPhone, where Control shows Stop on iPhone instead of a stop button.",
+              "Every line from an iPhone recording reads Speaker. Naming, merging, Save all and speaker settings are off for these recordings.",
+              "iPhone recording is off until you turn it on in your server settings and use a COS Glasses companion that offers it. It records the iPhone microphone only, not audio playing on the phone such as Zoom, YouTube or calls.",
+              "Pairs with COS server 6.93.0. Live Voice 1 and Voice 2 labels while a Mac recording runs are an opt-in server setting, off by default."
+            ]
+          },
           {
             "title": "0.5.350",
             "items": [

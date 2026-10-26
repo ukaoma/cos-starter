@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.350 (build 404) · server @gotcos/glasses-server 6.92.0.
-  Every claim is grounded in the 0.5.317 to 0.5.350 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.351 (build 405) · server @gotcos/glasses-server 6.93.0.
+  Every claim is grounded in the 0.5.317 to 0.5.351 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.350",
+    "softwareVersion": "0.5.351",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -418,7 +418,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.350</span>
+    <span class="sb-ver">Control 0.5.351</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -447,8 +447,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.350</b> · build 404</span>
-    <span class="chip">Server <b>6.92.0</b></span>
+    <span class="chip">Control <b>0.5.351</b> · build 405</span>
+    <span class="chip">Server <b>6.93.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
@@ -914,17 +914,38 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <div class="sub" id="record-end">
     <h3>End and save</h3>
     <ul>
-      <li>Choose <strong>Stop and save</strong>. Audio stays on this Mac until the saved meeting is verified, then the meeting opens in Meetings. Saved Mac recordings appear in Meetings with server 6.73.14 or newer.</li>
+      <li>Choose <strong>Stop and save</strong>. The panel shows Saving, then Saved, usually within about five seconds. <!-- verify-against-0.5.351 --> Audio stays on this Mac until the saved meeting is verified, then the meeting opens in Meetings. Saved Mac recordings appear in Meetings with server 6.73.14 or newer.</li>
       <li>A Live now row that has been quiet for two minutes shows <strong>No audio for</strong> the time. A glasses meeting there offers <strong>End and save</strong>, confirmed first. A stopped Mac capture still uploading shows <strong>Finish saving</strong>.</li>
-      <li>If delivery pauses on an error, the audio is kept. <strong>Retry saving retained audio</strong> does not restart recording; <strong>Keep audio for later</strong> leaves it on the Mac.</li>
-      <li>A capture that never saved appears under <strong>Unsaved captures</strong> with <strong>Recover</strong>, <strong>Recover all</strong> and <strong>Save</strong>. Reopening COS Control never resumes a capture.</li>
+      <li>If COS misses a beat right after Stop, Control tries again quietly for about a minute. <!-- verify-against-0.5.351 --> If delivery then pauses on an error, the panel says Not saved yet and the audio is kept. <strong>Retry saving retained audio</strong> does not restart recording; <strong>Keep audio for later</strong> leaves it on the Mac.</li>
+      <li>A capture that never saved appears under <strong>Unsaved captures</strong> with <strong>Recover</strong>, <strong>Recover all</strong> and <strong>Save</strong>. Reopening COS Control never resumes a capture. Before offering Recover, Control asks the server whether it already saved that recording, and a grayed-out Recover says why. <!-- verify-against-0.5.351 --></li>
     </ul>
     <h4>Limits</h4>
     <ul>
       <li>A Mac recording stops at two hours. Everything up to then is kept and saves as usual; start a new recording if the meeting is still going.</li>
-      <li>It also stops when the Mac sleeps or the user session changes, after 15 seconds with no audio arriving, or when less than 512 MB of disk is free.</li>
+      <li>It also stops when the Mac sleeps or the user session changes, or when less than 512 MB of disk is free. If audio stops arriving for about 30 seconds, the panel says so and Control restarts the capture once; if that fails, Stop and save keeps everything up to then. <!-- verify-against-0.5.351 --></li>
     </ul>
   </div>
+  <div class="sub" id="record-voices">
+    <h3>Live voice labels (opt-in)</h3>
+    <ul>
+      <li>A live Mac recording shows Voice 1 and Voice 2 as anonymous chips. A Voice N is never a name, is never enrolled and never trains a voice profile. Speech COS is unsure about stays Speaker.</li>
+      <li>Server 6.93.0 can keep a voice's number across 6-second chunk boundaries. It is off by default. To turn it on, add <code>COS_MAC_LIVE_VOICES=window</code> to <code>~/.cos-glasses/.env</code>, then restart the server when nothing is recording. Remove the line to turn it off.</li>
+      <li>A voice that stays silent for more than 30 seconds can come back as Speaker or a new number until you save. The saved meeting is relabeled by the whole-meeting pass as before.</li>
+      <li>Server 6.93.0 also lets a live chunk read Voice N after two clean agreeing observations. This is on by default; <code>COS_MAC_VOICE_LABELS=0</code> turns it off. <!-- verify-against-0.5.351 --></li>
+    </ul>
+  </div>
+
+  <div class="sub" id="record-iphone">
+    <h3>Record from your iPhone microphone (off by default)</h3>
+    <ul>
+      <li>Control shows a meeting recorded from the iPhone microphone as <strong>iPhone microphone</strong> in Live now, Meetings and Today. Stop it on the iPhone: Control shows <strong>Stop on iPhone</strong> instead of a stop button.</li>
+      <li>Every line reads Speaker. Naming, merging, Save all and speaker settings are off for these recordings, and no voice profile is read or trained.</li>
+      <li>It records the iPhone microphone only. It does not record iOS system audio, so Zoom, YouTube, FaceTime and calls playing on the phone are not captured.</li>
+      <li>To turn it on, add <code>COS_IPHONE_MICROPHONE_MEETINGS=1</code> to <code>~/.cos-glasses/.env</code>, set the HQ transcription engine to Parakeet Ultra, and restart the server when nothing is recording. Keep Control at 0.5.351 or newer first. <!-- verify-against-0.5.351 --></li>
+      <li>In the COS Glasses companion, Views then <strong>Meeting microphone</strong> offers Glasses microphone or iPhone microphone. Glasses microphone stays the default. <!-- verify-against-0.5.351 --></li>
+    </ul>
+  </div>
+
 </section>
 
 <!-- ── 07 WORK ── -->
@@ -1276,6 +1297,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-351"><h3>Control 0.5.351 / server 6.93.0</h3><p><strong>Quick save.</strong> Stopping a Mac recording shows Saving, then Saved, with no chunk counter, retained-recording warning or Retry during an ordinary save, which takes about five seconds. <!-- verify-against-0.5.351 --> If a save runs past 20 seconds the panel says how far it got, and a short COS hiccup right after Stop is retried quietly for about a minute before the panel says Not saved yet and offers Retry. <!-- verify-against-0.5.351 --></p><p><strong>Recover and stalled captures.</strong> Before Meetings offers to recover a retained Mac recording, Control asks the server whether it already saved it; if it did, the row goes away. A grayed-out Recover now says why. <!-- verify-against-0.5.351 --> A Mac recording that stops receiving audio for about 30 seconds says so and restarts once; if that fails, Stop and save keeps everything up to then. Audio is written on its own thread, and quitting Control with a termination signal keeps every saved chunk for the next launch. <!-- verify-against-0.5.351 --></p><p><strong>iPhone microphone, off by default.</strong> Control shows meetings recorded from the iPhone microphone as iPhone microphone and offers Stop on iPhone. Every line reads Speaker, and naming, merging and speaker settings are off for these recordings. It records the iPhone microphone only, not iOS system audio, so Zoom, YouTube and calls playing on the phone are not captured. To turn it on, add <code>COS_IPHONE_MICROPHONE_MEETINGS=1</code> to <code>~/.cos-glasses/.env</code>, set the HQ transcription engine to Parakeet Ultra, and restart the server when nothing is recording. The COS Glasses companion then offers iPhone microphone under Meeting microphone. <!-- verify-against-0.5.351 --></p><p><strong>Live Voice 1 and Voice 2, opt-in.</strong> Server 6.93.0 can keep a voice's number across chunk boundaries while a Mac recording runs. It is off by default. To turn it on, add <code>COS_MAC_LIVE_VOICES=window</code> to <code>~/.cos-glasses/.env</code> and restart the server when nothing is recording. A Voice N is never a name and never trains a voice profile, and speech COS is unsure about stays Speaker. Server 6.93.0 also lets a live Mac chunk read Voice N after two clean agreeing observations; <code>COS_MAC_VOICE_LABELS=0</code> turns that off. <!-- verify-against-0.5.351 --></p></section>
     <section class="note" id="release-350"><h3>Control 0.5.350 / server 6.92.0</h3><p><strong>Usage, by date and provider.</strong> Last 30 days is the default, with 7/30/90-day calendar windows, inclusive custom dates and monthly views of the same selection. Compare provider or model lines and stacked bars; inspect provider totals, model shares, token categories and daily records. Unknown prices and incomplete coverage stay explicit. API value is an estimate, not a subscription bill or plan balance.</p><p><strong>Windu cadence and recovery.</strong> One-session run bursts have matching cadence and a shorter raised-saber pause. A failed cast load can retry on a later refresh. Exact stock packs update; custom artwork, timing and scale stay yours. This release does not establish the cause of the reported repeated-lineup behavior.</p></section>
     <section class="note" id="release-349"><h3>Control 0.5.349 / server 6.92.0</h3><p><strong>Illustrated Windu idle states.</strong> Windu turns his head while idle and moves through meditation poses with a violet power-up aura, alongside illustrated patrol frames. The thirteen combat casts keep their artwork, timing and handoffs. Exact stock packs update automatically; custom artwork, timing and scale stay intact. Previous artwork remains available for rollback. Usage gains hover and keyboard period breakdowns, weekend comparisons and clearer token shares within each provider. Token shares are not subscription allowance; API values remain estimates. Includes the previous dictation fixes; server 6.92.0 and its settings are unchanged.</p></section>
     <section class="note" id="release-348"><h3>Control 0.5.348 / server 6.92.0</h3><p><strong>Sessions Usage.</strong> Compare tokens by provider and model, choose a month or All history, and view daily or monthly trends. COS backfills available Claude Code and Codex records into a private local ledger. Input, output and cache tokens are separate. Estimated standard API value uses the October 25 snapshot, not your subscription bill; unknown prices and missing history remain visible. Pause tracking from Usage; manual Refresh imports available records.</p><p><strong>Illustrated Miles Windu.</strong> Thirteen combat casts across Sessions 1–4, with shuffled opponents and continuous handoffs. Exact stock packs update; custom artwork and playback settings remain chosen, and prior V15 assets are retained. Includes the validated 0.5.345 dictation changes. Pairs with server 6.92.0; no server feature flags change.</p></section>
