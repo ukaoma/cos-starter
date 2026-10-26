@@ -2,9 +2,9 @@
   "version": "0.5.350",
   "build": 404,
   "serverTarget": "6.92.0",
-  "url": null,
-  "sha256": null,
-  "publishedAt": null,
+  "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.350/COS-Control-macOS-arm64-0.5.350.zip",
+  "sha256": "aaca599809b5acc950a0d2ba8e9f334a28d8f7f9d3f1f48fe6a38b82c4953cf9",
+  "publishedAt": "2026-10-26T18:59:24Z",
   "notes": "Usage date ranges and provider trends, plus Windu cadence and failed-load recovery. Pairs with COS server 6.92.0.",
   "whatsNew": {
     "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",

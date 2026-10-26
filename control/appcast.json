@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.349",
-      "build": 403,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.349/COS-Control-macOS-arm64-0.5.349.zip",
-      "sha256": "c5218361c78369daa0eae56a10db3c6a87f465e9bdb53107dff2fac19e4e42ff",
+      "version": "0.5.350",
+      "build": 404,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.350/COS-Control-macOS-arm64-0.5.350.zip",
+      "sha256": "aaca599809b5acc950a0d2ba8e9f334a28d8f7f9d3f1f48fe6a38b82c4953cf9",
       "minMacOS": "14.0",
       "serverTarget": "6.92.0",
-      "publishedAt": "2026-10-26T14:56:27.458053+00:00",
-      "notes": "Illustrated Windu idle states and clearer Usage comparisons with period breakdowns. Pairs with COS server 6.92.0.",
+      "publishedAt": "2026-10-26T18:59:24Z",
+      "notes": "Usage date ranges and provider trends, plus Windu cadence and failed-load recovery. Pairs with COS server 6.92.0.",
       "whatsNew": {
-        "summary": "Explore Usage with bar breakdowns, weekend comparisons and clearer token shares. Windu gains illustrated idle states. Plus everything in 0.5.348: historical Sessions Usage, illustrated combat casts and the previous dictation fixes.",
+        "summary": "Explore Usage with date ranges, provider trends and daily breakdowns. Windu gets smoother running and recovery from failed cast loads. Plus everything in 0.5.349: Usage tooltips, cache-aware comparisons and Windu idle motion.",
         "sections": [
+          {
+            "title": "0.5.350",
+            "items": [
+              "Compare Last 7, 30 or 90 days, a completed weekend, custom dates or all history. Charts and totals follow the same filters.",
+              "Choose provider or model series, lines or stacked bars. Inspect a period for its breakdown, and compare provider totals, token categories and daily records.",
+              "Usage records are not sessions. Token share and estimated API value do not measure your subscription allowance; missing prices and coverage remain visible.",
+              "Windu uses a consistent cadence for both running bursts before his strike. Failed combat-art loads can retry on a later refresh. Custom artwork and settings stay intact."
+            ]
+          },
           {
             "title": "0.5.349",
             "items": [
