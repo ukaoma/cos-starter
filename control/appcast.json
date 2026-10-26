@@ -39,7 +39,7 @@
               "Your style rules apply only to Sonnet polish with the new prompt. On Haiku, with Previous polish, or with learning off, Settings lists them as Not used or Paused, and COS learns nothing new.",
               "When COS adds a rule, the pill says Learned your style, with Undo, once for each rule. Settings, Dictation, Your style lists your rules with Remove, lets you add one or reset them, and has a switch to stop learning. Suggest only proposes rules instead of adding them.",
               "Your COS server adds your style rules (never your text) to each Sonnet polish, on G2 too when it polishes with Sonnet. On your Mac, COS keeps only codes and counts for them, and clearing your dictation history clears what it learned.",
-              "A dictation the server kept as heard, because polish changed a number, a date, a name, a link or a negation, says so on its card."
+              "When the meaning check refuses Claude's version, because polish changed a number, a date, a name, a link or a negation, COS keeps its own cleaned text, and the card says so."
             ]
           },
           {
@@ -56,7 +56,7 @@
             "title": "0.5.342",
             "items": [
               "When you change words COS just typed, the pill says Edit saved, with View. If COS also learned a word, it says Edit saved and Learned, with Undo.",
-              "The dictation card shows what was sent: removed words struck through, added words underlined, and how many edits you made. Show original puts back exactly what COS typed, and Copy copies whichever you are looking at.",
+              "The dictation card shows what was sent: removed words struck through, added words underlined, and how many edits you made. Show original shows exactly what COS typed, and Copy copies whichever you are looking at.",
               "One line on the card says whether your edit went to your dictionary, and why not when it did not: COS learns names and terms, not everyday words.",
               "When your only edit was removing a short filler like \"kind of\", one tap on Always drop adds it to your polish instructions, so AI polish leaves it out next time. Undo takes it back out. Nothing is added unless you tap.",
               "Only edits inside the text COS typed count, in the apps where Learn from my edits works. Your edited text stays on this Mac with the dictation."
