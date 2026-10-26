@@ -9,9 +9,9 @@
       "minMacOS": "14.0",
       "serverTarget": "6.93.0",
       "publishedAt": "__PUBLISHED351__",
-      "notes": "Quick save, capture stall recovery and iPhone microphone meetings. Pairs with COS server 6.93.0.",
+      "notes": "Quick save, capture stall recovery, speaker ID on by default for Mac recordings, and iPhone microphone meetings. Pairs with COS server 6.93.0.",
       "whatsNew": {
-        "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio is restarted, and Recover checks the server first. You can record meetings from your iPhone microphone once your server enables it, and stop them on the iPhone. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
+        "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio is restarted, and Recover checks the server first. Speaker ID is on by default for Mac recordings, and you can assign a Voice to a person in your voice profiles. You can record meetings from your iPhone microphone once your server enables it. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
         "sections": [
           {
             "title": "0.5.351",
@@ -25,7 +25,9 @@
               "Meetings recorded from your iPhone microphone appear in Live now, Meetings and Today as iPhone microphone. You stop them on the iPhone, where Control shows Stop on iPhone instead of a stop button.",
               "Every line from an iPhone recording reads Speaker. Naming, merging, Save all and speaker settings are off for these recordings.",
               "iPhone recording is off until you turn it on in your server settings and use a COS Glasses companion that offers it. It records the iPhone microphone only, not audio playing on the phone such as Zoom, YouTube or calls.",
-              "Pairs with COS server 6.93.0. Live Voice 1 and Voice 2 labels while a Mac recording runs are an opt-in server setting, off by default."
+              "On a Mac recording, pick a person already in your voice profiles for a Voice and Control previews how many voice samples it would add to that profile. The samples are added only when you press Save. A typed name still renames text only.",
+              "Pairs with COS server 6.93.0. Speaker ID is on by default for Mac recordings: Voice 1 and Voice 2 appear as you record. Set COS_MAC_LIVE_VOICES=off on the server to turn it off.",
+              "Known limit: when one person hands over to another exactly at a chunk boundary, the new speaker can be given the previous speaker's number. A Voice is a number, never a name."
             ]
           },
           {
