@@ -5,10 +5,10 @@
       "version": "0.5.351",
       "build": 405,
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.351/COS-Control-macOS-arm64-0.5.351.zip",
-      "sha256": "__SHA351__",
+      "sha256": "51f2456cd594195554f5389209088f55ff1248cce71e534fe2f21a1432ba7b1e",
       "minMacOS": "14.0",
       "serverTarget": "6.93.0",
-      "publishedAt": "__PUBLISHED351__",
+      "publishedAt": "2026-10-27T11:50:36Z",
       "notes": "Quick save, capture stall recovery, speaker ID on by default for Mac recordings, and iPhone microphone meetings. Pairs with COS server 6.93.0.",
       "whatsNew": {
         "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio says when, and Control tries one restart. Recover checks the server first. Speaker ID is on by default for Mac recordings, and you can assign a Voice to a person in your voice profiles. You can record meetings from your iPhone microphone once your server enables it. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
