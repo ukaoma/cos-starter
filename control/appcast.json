@@ -25,9 +25,9 @@
               "Meetings recorded from your iPhone microphone appear in Live now, Meetings and Today as iPhone microphone. You stop them on the iPhone, where Control shows Stop on iPhone instead of a stop button.",
               "Every line from an iPhone recording reads Speaker. Naming, merging, Save all and speaker settings are off for these recordings.",
               "iPhone recording is off until you turn it on in your server settings and use a COS Glasses companion that offers it. It records the iPhone microphone only, not audio playing on the phone such as Zoom, YouTube or calls.",
-              "On a Mac recording, pick a person already in your voice profiles for a Voice and Control previews how many voice samples it would add to that profile. The samples are added only when you press Save. A typed name still renames text only.",
+              "On a Mac recording, pick a person already in your voice profiles for a Voice and Control previews how many voice samples it would add and how well the voice matches. If it does not match, holds more than one voice or has too little audio, Save is replaced by Rename only, the default, and a separate Add anyway that asks once more. Your own profile is not offered, and samples added this way are capped at 10 per person. A typed name still renames text only.",
               "Pairs with COS server 6.93.0. Speaker ID is on by default for Mac recordings: Voice 1 and Voice 2 appear as you record. Set COS_MAC_LIVE_VOICES=off on the server to turn it off.",
-              "Known limit: when one person hands over to another exactly at a chunk boundary, the new speaker can be given the previous speaker's number. A Voice is a number, never a name."
+              "Known limit: when one person hands over to another exactly at a chunk boundary, the new speaker can be given the previous speaker's number, and the saved meeting keeps the live numbers. A Voice is a number, never a name, until you assign it."
             ]
           },
           {
