@@ -11,17 +11,17 @@
       "publishedAt": "__PUBLISHED351__",
       "notes": "Quick save, capture stall recovery, speaker ID on by default for Mac recordings, and iPhone microphone meetings. Pairs with COS server 6.93.0.",
       "whatsNew": {
-        "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio is restarted, and Recover checks the server first. Speaker ID is on by default for Mac recordings, and you can assign a Voice to a person in your voice profiles. You can record meetings from your iPhone microphone once your server enables it. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
+        "summary": "Stopping a Mac recording now shows Saving, then Saved, and a short COS hiccup is retried for you. A recording that stops receiving audio says when, and Control tries one restart. Recover checks the server first. Speaker ID is on by default for Mac recordings, and you can assign a Voice to a person in your voice profiles. You can record meetings from your iPhone microphone once your server enables it. Plus everything in 0.5.350: Usage date ranges and provider trends, and smoother Windu running.",
         "sections": [
           {
             "title": "0.5.351",
             "items": [
               "Stopping a Mac recording shows Saving, then Saved. The chunk counter, the retained-recording warning and Retry no longer appear during an ordinary save, which takes about 5 seconds.",
-              "If a save runs past 20 seconds, the panel says how far it got. If COS misses a beat right after Stop, Control tries again quietly for about a minute. Only then does it say Not saved yet, Audio is safe on this Mac, and offer Retry.",
+              "If a save runs past 20 seconds, the panel says how far it got. If COS misses a beat right after Stop, Control tries again quietly for about a minute and a quarter. If that is taking long, you can keep the audio for later or try again at once, and Record is free again. Otherwise it says Not saved yet, Audio is safe on this Mac, and offers Retry.",
               "Before Meetings offers to recover a retained Mac recording, Control asks the server whether it already saved it. If it did, the row goes away and the local copy is marked saved. If the server cannot answer, the row stays.",
               "A grayed-out Recover button now says why, such as Recover is available after this recording, or once this recording is saved.",
-              "If a Mac recording stops receiving audio for about 30 seconds, the panel says so and Control restarts the capture once. If that fails, Stop and save keeps everything up to then.",
-              "Audio is written to disk on its own thread, so a busy or frozen Control window no longer drops the recording. Quitting Control with a termination signal during a recording keeps every saved chunk, and the recording shows up ready to save on the next launch.",
+              "If a recording stops receiving audio for 30 seconds, the panel says when it stopped and COS tries once to restart it. If that does not help, a notification says so. Stop and save keeps everything up to then.",
+              "Audio is written to disk on its own thread, so a busy or frozen Control window no longer drops the recording. Quitting Control with a termination signal during a recording keeps every chunk already saved, and the recording shows up ready to save on the next launch.",
               "Meetings recorded from your iPhone microphone appear in Live now, Meetings and Today as iPhone microphone. You stop them on the iPhone, where Control shows Stop on iPhone instead of a stop button.",
               "Every line from an iPhone recording reads Speaker. Naming, merging, Save all and speaker settings are off for these recordings.",
               "iPhone recording is off until you turn it on in your server settings and use a COS Glasses companion that offers it. It records the iPhone microphone only, not audio playing on the phone such as Zoom, YouTube or calls.",
