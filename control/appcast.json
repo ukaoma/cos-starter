@@ -604,9 +604,9 @@
     "reason": ""
   },
   "notice": {
-    "id": "control-update-stall-20261023",
-    "minBuild": 328,
-    "title": "If an update sits on Downloading or Installing",
-    "body": "COS Control 0.5.318 and earlier can stop partway through downloading an update, because the update is now about 400 MB. If Downloading has not finished after two minutes, download COS Control from gotcos.com/control, unzip it and move it into Applications, replacing the old copy. COS Control 0.5.319 and earlier can also stall while installing: when the window says Installing, Force Quit COS Control (Option-Command-Escape) within a minute, and the update installs and reopens. Your meetings and the glasses server are not affected. From 0.5.320 on, updates install by themselves."
+    "id": "control-update-timeout-20261027",
+    "minBuild": 109,
+    "title": "If an update says Download timed out",
+    "body": "COS Control 0.5.318 and earlier give an update about two minutes to download, and the update is now about 1.3 GB. If Install says Download timed out, or Downloading does not finish, go to gotcos.com/control/#unstuck. Download COS Control there, unzip it and move it into Applications, replacing the old copy. Or press Unstuck to have your AI app do it for you, after it checks nothing is recording. COS Control 0.5.319 and earlier can also stall on Installing: Force Quit COS Control (Option-Command-Escape) within a minute, and the update installs and reopens. Your meetings and the glasses server are not affected. From 0.5.320 on, updates download and install by themselves."
   }
 }
