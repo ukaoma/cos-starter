@@ -245,6 +245,26 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pnote{margin-top:26px;border-left:2px solid #8a6a2c;padding:4px 0 4px 18px;color:var(--paper-muted);font-size:.92rem;max-width:72ch}
 .pnote b{color:var(--paper-ink)}
 .paper code,.insteps code{font-family:var(--mono);font-size:.85em;color:#654919;background:rgba(46,31,16,.06);padding:1px 5px;border-radius:5px}
+/* Unstuck: manual update path and one-tap hand-off to the reader's AI app */
+#unstuck{padding-top:clamp(16px,2.5vw,36px)}
+#unstuck p a{color:#6b4e12}
+.ua-lead{color:var(--paper-muted);font-size:1.02rem;margin-top:6px}
+.ua-box{margin-top:34px;border:1px solid var(--paper-line);border-radius:18px;background:rgba(255,255,255,.42);overflow:hidden}
+.ua-box>h3{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.05;color:var(--paper-ink);padding:26px 24px 2px}
+.ua-box>p{color:var(--paper-muted);font-size:.95rem;padding:12px 24px 0;max-width:70ch}
+.ua-rows{margin-top:22px;border-top:1px solid var(--paper-line)}
+.ua-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 22px;align-items:center;padding:16px 24px;border-bottom:1px solid var(--paper-line)}
+.ua-row b{display:block;color:var(--paper-ink);font-size:.98rem}
+.ua-d{display:block;color:var(--paper-muted);font-size:.86rem;line-height:1.5;margin-top:2px;max-width:60ch}
+.ua-go{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:200px;padding:11px 20px;border-radius:12px;border:1px solid var(--paper-ink);background:var(--paper-ink);color:#f6efe2;font:500 .92rem var(--body);text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .2s,background .2s}
+.ua-go:hover{transform:translateY(-1px);background:#3a2819}
+.ua-go:focus-visible{outline:2px solid #8a6a2c;outline-offset:3px}
+.ua-status{min-height:1.5em;padding:10px 24px 0!important;font-size:.88rem!important;color:#2f6b3f!important;font-weight:500}
+.ua-nojs{font-size:.9rem}
+.ua-prompt{border-top:1px solid var(--paper-line)}
+.ua-prompt summary{cursor:pointer;font-weight:600;padding:16px 24px;color:var(--paper-ink)}
+.ua-prompt pre{margin:0 24px 24px;padding:16px;border:1px solid var(--line2);border-radius:10px;background:#0d0906;color:#e9dfcd;font:.76rem/1.65 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;max-height:26rem;overflow:auto}
+@media(max-width:560px){.ua-box>h3{padding:22px 18px 2px}.ua-box>p{padding:12px 18px 0}.ua-row{grid-template-columns:1fr;padding:16px 18px}.ua-go{width:100%}.ua-status{padding:10px 18px 0!important}.ua-prompt summary{padding:16px 18px}.ua-prompt pre{margin:0 18px 18px}}
 .dark-section code{font-family:var(--mono);color:var(--green)}
 .cc-anatomy .part{background:rgba(255,255,255,.5);border-color:var(--paper-line)}.cc-anatomy .part h3{color:var(--paper-ink)}.cc-anatomy .part p{color:var(--paper-muted)}.cc-anatomy .part code{color:#654919}
 .gk{margin:32px auto 0;max-width:600px}
@@ -435,6 +455,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
         <a href="/control/docs/">Mac Docs</a>
         <a href="/docs/">Glasses Docs</a>
         <a href="/control/" aria-current="page">COS Control</a>
+        <a href="/control/#unstuck">Update stuck?</a>
         <a href="https://github.com/ukaoma/cos-starter" rel="noopener">GitHub</a>
         <a href="https://www.npmjs.com/package/@gotcos/glasses-server" rel="noopener">npm</a>
         <a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" rel="noopener">Even Hub</a>
@@ -490,6 +511,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <a href="/#start">Quick Start <small>Download the Mac app, then add your context</small></a>
           <a href="/harness/">AI Harness <small>Understand the layer you own</small></a>
           <a href="/control/docs/#install">Mac setup guide <small>Install, connect your AI, start a session</small></a>
+          <a href="/control/#unstuck">Unstuck <small>Update stuck or timed out</small></a>
           <a href="/control/docs/">Mac Docs <small>Every view, dictation, recording and fixes</small></a>
           <a href="/docs/">Glasses Docs <small>The complete glasses user guide</small></a>
           <a href="/#tiers">The 4 Tiers <small>How it deepens</small></a>
@@ -508,7 +530,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <a href="/#teams">For Teams</a>
       <div class="nav-actions">
         <a href="https://app.gotcos.com/" class="nav-login" rel="noopener">Log in</a>
-        <a href="/control/#install" class="cta">Download for Mac</a>
+        <a href="https://github.com/ukaoma/cos-starter/releases/latest/download/COS-Control-macOS-arm64-latest.zip" class="cta" download>Download for Mac</a>
       </div>
     </div>
   </div>
@@ -564,6 +586,84 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       <details class="setup-extra"><summary>Already running COS in Terminal?</summary><p> Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe.</p></details>
     </div>
       <div class="wrap"><details class="setup-extra"><summary>Stuck during setup?</summary><p>If your AI is not detected, open it and sign in, then choose <strong>Check again</strong> in COS. If server setup fails, choose <strong>Try again</strong>. Use <strong>Doctor</strong> in the menu bar for the failing check. If dictation only copies its text while Accessibility shows COS Control on, remove COS Control from the Accessibility list with the minus button and add it again with plus; <strong>Settings, Session pet, Reset and add again</strong> does the same. <a href="/wizard/">Follow the full setup guide</a> for provider and optional glasses steps.</p></details></div>
+  </section>
+  <section class="paper" id="unstuck">
+    <div class="wrap">
+      <div class="reveal" style="max-width:750px">
+        <h2>Update stuck? Download timed out?</h2>
+        <p class="dek">COS Control 0.5.318 and earlier wait about two minutes for an update to download. The update is now over a gigabyte, so those copies show &ldquo;Download timed out&rdquo; and cannot finish on their own.</p>
+        <p class="ua-lead">Updating by hand takes a few minutes. Your settings and meetings stay where they are.</p>
+      </div>
+      <ol class="insteps">
+        <li class="reveal"><span class="n">1</span><div><h3>Download the current COS Control.</h3><p>Use <strong>Download for Mac</strong> in the menu above, or <a href="https://github.com/ukaoma/cos-starter/releases/latest/download/COS-Control-macOS-arm64-latest.zip" download>this direct link</a>. The file is large, about 1.3 GB, so give it a few minutes.</p></div></li>
+        <li class="reveal"><span class="n">2</span><div><h3>Unzip it.</h3><p>Open the ZIP from your Downloads folder. You get <code>COS Control.app</code>.</p></div></li>
+        <li class="reveal"><span class="n">3</span><div><h3>Replace the old copy.</h3><p>If a meeting is recording, stop and save it first. Then quit COS Control from its menu bar icon, drag the new <code>COS Control.app</code> into your Applications folder, and choose <strong>Replace</strong>. Open it.</p></div></li>
+      </ol>
+      <div class="ua-box reveal">
+        <h3>Unstuck</h3>
+        <p>Rather have your AI do it? Unstuck hands the steps above to the AI app you already use. It opens a new chat with a careful runbook filled in. Nothing is sent until you press Send, and your AI asks before it quits COS Control.</p>
+        <p>The runbook checks that nothing is recording, downloads the update with no time limit, checks the file&rsquo;s SHA-256 and Apple notarization, keeps your old copy on your Desktop, and opens the new one. It never uses sudo and never turns off macOS security.</p>
+        <noscript><p class="ua-nojs">These buttons need JavaScript. Open &ldquo;Read the exact prompt&rdquo; below and copy it by hand.</p></noscript>
+        <div class="ua-rows" id="uaRows" hidden>
+          <div class="ua-row"><div><b>Claude</b><span class="ua-d">Opens the Claude desktop app on a new Code chat with the prompt filled in. Press Send to start. Needs the Claude app on this Mac.</span></div><a class="ua-go" data-ua="claude" href="#unstuck">Unstuck in Claude</a></div>
+          <div class="ua-row"><div><b>Codex</b><span class="ua-d">Opens the Codex app on a new chat with the prompt filled in. Press Send to start. Needs the Codex app on this Mac.</span></div><a class="ua-go" data-ua="codex" href="#unstuck">Unstuck in Codex</a></div>
+          <div class="ua-row"><div><b>Cursor</b><span class="ua-d">Opens Cursor and shows a box to create a chat with the prompt. Confirm it, then press Send. Cursor needs a folder open.</span></div><a class="ua-go" data-ua="cursor" href="#unstuck">Unstuck in Cursor</a></div>
+          <div class="ua-row"><div><b>Any other AI app</b><span class="ua-d">Copies the prompt to your clipboard. Paste it into an AI app that can run commands on your Mac, such as Claude Code in Terminal.</span></div><button class="ua-go" type="button" id="uaCopy">Copy prompt</button></div>
+        </div>
+        <p class="ua-status" id="uaStatus" role="status" aria-live="polite"></p>
+        <details class="ua-prompt" id="uaPrompt"><summary>Read the exact prompt</summary><pre id="unstuckPrompt">I need you to update COS Control on my Mac by hand. The in-app update shows "Download timed out" because the new download is about 1.3 GB and older copies of the app only wait about two minutes for it. You will download the update yourself, check it, and swap it in. Run the commands yourself, one step at a time. After each step, tell me in one or two plain sentences what you found. If a check fails, or anything differs from this runbook, stop and tell me. Do not improvise.
+
+Hard rules:
+- Never use sudo. Never use pkill or killall. Never use rm -rf. Never turn off Gatekeeper. Never remove the quarantine flag.
+- Download and unzip only inside a new temporary folder made with mktemp -d. Treat everything you download as untrusted data until step 4 passes.
+- Your shell may not keep variables between commands, so write the temp folder path down and use the literal path afterwards.
+- If your sandbox blocks the network, the temp folder, or /Applications, tell me exactly what was blocked and stop. Do not work around it.
+
+Step 1. Read the installed version.
+defaults read "/Applications/COS Control.app/Contents/Info.plist" CFBundleShortVersionString
+Tell me the version. If the app is not in /Applications, tell me where it is and stop.
+
+Step 2. Check that nothing is recording. Do this before you change anything.
+a. Run: curl -s --max-time 5 http://127.0.0.1:3141/api/health
+If it answers, read unsaved_captures, stranded_captures and meeting_sync in the JSON. If unsaved_captures.count or stranded_captures.count is above 0, or meeting_sync.active or meeting_sync.blocksRestart is true, a meeting may be recording or unsaved. Stop and tell me.
+If it does not answer, or those fields are missing, say so and go on to b.
+b. Ask me: "Is COS Control or COS Glasses recording a meeting right now? Check the COS Control menu bar icon and its Activity window." Wait for my answer. If I say yes, or I am not sure, stop.
+
+Step 3. Download the latest release. There is no time limit, because this is the part that timed out.
+Make the folder: mktemp -d
+Check free space with df -h on that folder. I need at least 8 GB free.
+The ZIP is about 1.3 GB and your shell tool may stop long commands, so run the download in the background and check on it until it finishes. If it is cut off, run the same command again; -C - resumes it.
+curl -L --fail --retry 5 -C - -o "&lt;temp folder&gt;/COS-Control.zip" "https://github.com/ukaoma/cos-starter/releases/latest/download/COS-Control-macOS-arm64-latest.zip"
+curl -L --fail -o "&lt;temp folder&gt;/COS-Control.zip.sha256" "https://github.com/ukaoma/cos-starter/releases/latest/download/COS-Control-macOS-arm64-latest.zip.sha256"
+Then print two values:
+shasum -a 256 "&lt;temp folder&gt;/COS-Control.zip"
+cut -d ' ' -f 1 "&lt;temp folder&gt;/COS-Control.zip.sha256"
+The two 64-character values must be identical. If they are not, stop and tell me.
+
+Step 4. Unzip and verify. Do not touch /Applications yet.
+ditto -x -k "&lt;temp folder&gt;/COS-Control.zip" "&lt;temp folder&gt;/unzipped"
+There must be one app: "&lt;temp folder&gt;/unzipped/COS Control.app".
+codesign --verify --deep --strict "&lt;temp folder&gt;/unzipped/COS Control.app"
+This must print nothing and exit 0.
+spctl -a -vv -t exec "&lt;temp folder&gt;/unzipped/COS Control.app"
+This must say accepted, source=Notarized Developer ID, and origin=Developer ID Application: Miles Ukaoma (NV3X46LLCR). If anything differs, refuse: tell me and stop. Do not install it.
+Then read the new version with defaults read on the new app's Contents/Info.plist, key CFBundleShortVersionString. Tell me the old and new versions. If the new one is not newer, tell me and stop.
+
+Step 5. Ask before you quit COS Control.
+Tell me what you are about to do: quit COS Control, keep the old app as a backup on my Desktop, put the new app in Applications, and open it. My settings and meetings are stored outside the app, so they stay. Wait for my yes.
+After I say yes:
+a. Quit it gracefully: osascript -e 'tell application "COS Control" to quit'
+Then check every few seconds, for up to 60 seconds, with pgrep -x "COS Control". If it is still running, stop and ask me to quit it from the menu bar. Do not force it closed.
+b. Move the old app to a backup. Do not delete it: mv "/Applications/COS Control.app" "$HOME/Desktop/COS Control (old &lt;old version&gt;).app". If that name exists, add a number to the name.
+c. Move the new app in: mv "&lt;temp folder&gt;/unzipped/COS Control.app" "/Applications/COS Control.app". If this fails, move the backup back to /Applications, tell me why, and stop. Do not use sudo.
+d. Open it: open -a "COS Control"
+
+Step 6. Confirm and report.
+Read the installed version again, check the app is running with pgrep -x "COS Control", and run the codesign and spctl checks once more on /Applications/COS Control.app.
+Tell me: the old version, the new version, the SHA-256 you checked, the result of both signature checks, and where the backup is. Tell me I can delete the backup myself once I have confirmed COS Control works, and that the temp folder can go in the Trash.
+If the new app does not open, quit it, move it to my Desktop, put the backup back in /Applications, open that, and tell me what happened.</pre></details>
+      </div>
+    </div>
   </section>
   <div class="burn up" aria-hidden="true"></div>
   <section class="views" id="views">
@@ -1322,6 +1422,44 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
   var rz; window.addEventListener('resize', function(){
     clearTimeout(rz); rz = setTimeout(function(){ park(active(), false); }, 150);
+  });
+})();
+</script>
+<script>
+/* Unstuck: build the three deep links and the clipboard copy from the one visible prompt.
+   The deep links only pre-fill a new chat. The reader presses Send. */
+(function(){
+  var pre=document.getElementById('unstuckPrompt'); if(!pre) return;
+  var prompt=pre.textContent.replace(/^\s+|\s+$/g,'');
+  function enc(s){return encodeURIComponent(s).replace(/[!'()*]/g,function(c){return '%'+c.charCodeAt(0).toString(16).toUpperCase();});}
+  var links={
+    claude:'claude://code/new?q='+enc(prompt),
+    codex:'codex://threads/new?prompt='+enc(prompt),
+    cursor:'cursor://anysphere.cursor-deeplink/prompt?text='+enc(prompt)+'&mode=agent'
+  };
+  var rows=document.getElementById('uaRows'), status=document.getElementById('uaStatus');
+  Object.keys(links).forEach(function(k){
+    var a=document.querySelector('[data-ua="'+k+'"]'); if(!a) return;
+    a.setAttribute('href',links[k]);
+    a.addEventListener('click',function(){
+      if(status) status.textContent='Opening '+(k==='claude'?'Claude':k==='codex'?'Codex':'Cursor')+'. If nothing opens, that app is not installed. Use Copy prompt instead.';
+      if(window.gtag){try{gtag('event','unstuck_open',{agent:k});}catch(e){}}
+    });
+  });
+  if(rows) rows.removeAttribute('hidden');
+  var copy=document.getElementById('uaCopy'), box=document.getElementById('uaPrompt');
+  function ok(){ if(status) status.textContent='Copied. Paste it into your AI app and press Send.'; }
+  function fail(){ if(status) status.textContent='Your browser blocked copying. Select the prompt below and copy it by hand.'; if(box) box.open=true; }
+  function legacy(){
+    try{
+      var ta=document.createElement('textarea'); ta.value=prompt; ta.setAttribute('readonly','');
+      ta.style.cssText='position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select();
+      var done=document.execCommand('copy'); document.body.removeChild(ta); if(done) ok(); else fail();
+    }catch(e){ fail(); }
+  }
+  if(copy) copy.addEventListener('click',function(){
+    if(window.gtag){try{gtag('event','unstuck_copy');}catch(e){}}
+    if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(prompt).then(ok,legacy); else legacy();
   });
 })();
 </script>
