@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.351 (build 405) · server @gotcos/glasses-server 6.93.0.
-  Every claim is grounded in the 0.5.317 to 0.5.351 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.352 (build 406) · server @gotcos/glasses-server 6.93.0.
+  Every claim is grounded in the 0.5.317 to 0.5.352 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.351",
+    "softwareVersion": "0.5.352",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -188,6 +188,17 @@ section.light .note{border-left-color:#7a5c2c}
 .views-list a{display:block;border:1px solid var(--line-2);border-radius:11px;padding:10px 13px;color:var(--fg);font-weight:500;font-size:.92rem}
 .views-list a:hover{border-color:var(--gold);color:var(--gold)}
 .views-list small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;line-height:1.35;margin-top:2px}
+
+/* What's new in the hero: the /docs pattern, four lines that link to their notes */
+.whatsnew{margin-top:26px;border-left:2px solid var(--gold);padding:2px 0 2px 18px;max-width:62ch}
+.whatsnew h2{font-family:var(--body);font-size:1rem;font-weight:600;letter-spacing:0;margin:0 0 6px;color:var(--fg)}
+.wn-list{list-style:none;margin:0;padding:0}
+.wn-list a{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:4px 14px;padding:8px 0;border-top:1px solid var(--line-2);color:var(--muted);text-decoration:none;font-size:.93rem;line-height:1.45}
+.wn-list li:first-child a{border-top:0}
+.wn-list a b{color:var(--fg);font-weight:600}
+.wn-list a:hover span,.wn-list a:focus-visible span{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+.wn-more{font-size:.86rem;margin-top:10px;color:var(--muted)}
+@media(max-width:560px){.wn-list a{grid-template-columns:1fr;gap:0}}
 
 /* release notes: the sections are copied byte for byte from /docs */
 #release-notes .note h3{margin-bottom:6px}
@@ -420,7 +431,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.351</span>
+    <span class="sb-ver">Control 0.5.352</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -449,10 +460,20 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.351</b> · build 405</span>
+    <span class="chip">Control <b>0.5.352</b> · build 406</span>
     <span class="chip">Server <b>6.93.0</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
+  </div>
+  <div class="whatsnew" aria-labelledby="wn-h">
+    <h2 id="wn-h">What&rsquo;s new</h2>
+    <ul class="wn-list">
+      <li><a href="#release-352"><b>0.5.352</b><span>Settings in categories with search and an On this page list, shorter labels, and pet dragging that works on macOS 27.2.</span></a></li>
+      <li><a href="#release-351"><b>0.5.351</b><span>Quick save, stalled-capture restart, Recover that checks the server, speaker ID on by default for Mac recordings, and opt-in iPhone microphone meetings.</span></a></li>
+      <li><a href="#release-350"><b>0.5.350</b><span>Usage date ranges and provider trends; Windu running cadence and failed-load recovery.</span></a></li>
+      <li><a href="#release-349"><b>0.5.349</b><span>Usage comparisons, period breakdowns and illustrated Windu idle animations.</span></a></li>
+    </ul>
+    <p class="wn-more"><a href="#release-notes">All release notes</a></p>
   </div>
   <div class="xlinks">
     <a class="xlink" href="/control/"><b>COS Control overview and download</b><span>What the Mac app does, and the latest signed build.</span></a>
@@ -471,7 +492,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <a class="chapcard" href="#work"><span class="chap-t"><span class="n">07</span>Work</span><span class="chap-d">The board, Work chat and the sessions doing the work.</span></a>
     <a class="chapcard" href="#sessions"><span class="chap-t"><span class="n">08</span>Sessions</span><span class="chap-d">Read and continue Claude, Codex and Cursor chats.</span></a>
     <a class="chapcard" href="#transcription"><span class="chap-t"><span class="n">09</span>Transcription settings</span><span class="chap-d">Engines, models and the meeting assistant.</span></a>
-    <a class="chapcard" href="#server"><span class="chap-t"><span class="n">10</span>The managed server</span><span class="chap-d">What Control runs, health, Doctor and tools.</span></a>
+    <a class="chapcard" href="#server"><span class="chap-t"><span class="n">10</span>The managed server</span><span class="chap-d">What Control runs, health, checks and repair.</span></a>
     <a class="chapcard" href="#updates"><span class="chap-t"><span class="n">11</span>Updating and rollback</span><span class="chap-d">App updates, server updates and going back.</span></a>
     <a class="chapcard" href="#fixes"><span class="chap-t"><span class="n">12</span>Troubleshooting</span><span class="chap-d">Fixes for the common Mac problems.</span></a>
     <a class="chapcard" href="#faq"><span class="chap-t"><span class="n">13</span>FAQ</span><span class="chap-d">Short answers.</span></a>
@@ -530,7 +551,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="from-terminal">
     <h3>Already running COS in Terminal?</h3>
-    <p>Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe. When it finds a server it recognizes, the panel offers <strong>Adopt Safely</strong>: <strong>Manage in place</strong> keeps your server, and <strong>Install managed server</strong> replaces it. When it cannot identify the process on the COS ports, it says <strong>Ownership conflict detected</strong> and will not stop or replace it. You can always go back to the plain <code>npx</code> command later.</p>
+    <p>Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe. When it finds a server it recognizes, the panel offers <strong>Adopt server</strong> for a stopped one. For a running one, <strong>Manage in place</strong> keeps it and <strong>Replace server</strong> replaces it. When it cannot identify the process on the COS ports, it says <strong>Ownership conflict detected</strong> and will not stop or replace it. You can always go back to the plain <code>npx</code> command later.</p>
   </div>
 </section>
 
@@ -545,13 +566,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <table>
       <thead><tr><th>Permission</th><th>What it switches on</th><th>When COS asks</th></tr></thead>
       <tbody>
-        <tr><td data-label="Permission"><strong>Accessibility</strong></td><td data-label="What it switches on">Jumping straight to a Claude or Cursor session and bringing its window forward. Dictation typing into other apps. Fn and single-key dictation shortcuts. Spotting a Google Meet call in a browser by its tab title.</td><td data-label="When COS asks">From Permissions, the pet's session jump, or <strong>Allow insertion into other apps…</strong> under dictation.</td></tr>
+        <tr><td data-label="Permission"><strong>Accessibility</strong></td><td data-label="What it switches on">Jumping straight to a Claude or Cursor session and bringing its window forward. Dictation typing into other apps. Fn and single-key dictation shortcuts. Spotting a Google Meet call in a browser by its tab title.</td><td data-label="When COS asks">From Permissions, the pet's session jump, or <strong>Allow typing in apps…</strong> under dictation.</td></tr>
         <tr><td data-label="Permission"><strong>Microphone</strong></td><td data-label="What it switches on">Dictation. Mac meeting recording never records the microphone.</td><td data-label="When COS asks">On your first dictation.</td></tr>
         <tr><td data-label="Permission"><strong>Screen &amp; System Audio Recording</strong></td><td data-label="What it switches on">Mac meeting recording, and <strong>Mute other apps</strong> while you dictate. COS Control appears under <strong>System Audio Recording Only</strong>.</td><td data-label="When COS asks">When you start a Mac recording or turn on Mute other apps (0.5.318; 0.5.317 asked only at the first recording).</td></tr>
         <tr><td data-label="Permission"><strong>Notifications</strong></td><td data-label="What it switches on">Telling you when meeting audio stops reaching this Mac and when Work needs you.</td><td data-label="When COS asks">When a feature first needs it.</td></tr>
         <tr><td data-label="Permission"><strong>Automation</strong></td><td data-label="What it switches on">Typing the install and sign-in commands into Terminal or iTerm for you during setup.</td><td data-label="When COS asks">The first time COS opens Terminal for you. Without it, the command goes on the clipboard.</td></tr>
         <tr><td data-label="Permission"><strong>Full Disk Access</strong></td><td data-label="What it switches on">Listed for background jobs and the glasses server when your setup needs it.</td><td data-label="When COS asks">From Permissions.</td></tr>
-        <tr><td data-label="Permission"><strong>Open at login</strong></td><td data-label="What it switches on">Starting COS Control when you log in. The switch is <strong>Launch COS Control at login</strong> in Settings.</td><td data-label="When COS asks">From Permissions or Settings.</td></tr>
+        <tr><td data-label="Permission"><strong>Open at login</strong></td><td data-label="What it switches on">Starting COS Control when you log in. The switch is <strong>Open at login</strong> in Settings, General.</td><td data-label="When COS asks">From Permissions or Settings.</td></tr>
       </tbody>
     </table>
   </div>
@@ -565,7 +586,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>When Accessibility is on but does not count</h3>
     <p>macOS keys the Accessibility switch to the app's signature. After an update the list can keep an old entry that no longer matches the installed app, so the switch looks on while COS still cannot use it. COS says so on the Permissions row: <strong>An update changed COS Control's signature, so the old switch no longer counts.</strong></p>
     <ul>
-      <li>In COS Control: <strong>Settings, Session pet, Reset and add again</strong>, or the <strong>Already on? Reset and add again</strong> link on the Permissions row. It removes COS Control's old entry, asks macOS again and opens the list. Then switch COS Control on.</li>
+      <li>In COS Control: <strong>Settings, Pet and appearance, Reset and add again</strong>, or the <strong>Already on? Reset and add again</strong> link on the Permissions row. It removes COS Control's old entry, asks macOS again and opens the list. Then switch COS Control on.</li>
       <li>By hand: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select COS Control, click the minus button, then click plus, choose COS Control in Applications and switch it on.</li>
     </ul>
     <p>Switching the toggle off and on is often not enough. Since COS Control 0.5.318 the dictation card offers <strong>Reset</strong> beside <strong>Allow…</strong>, which does the same as Reset and add again.</p>
@@ -597,11 +618,23 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Finish setup</strong>, until the setup guide is done.</li>
       <li><strong>Activity</strong> with <strong>Open</strong>, and a chip for each view. A number means it needs you; a dot means something is new since you last looked.</li>
       <li><strong>Your move</strong>: Work items waiting on you.</li>
-      <li>The status card and server controls: <strong>Restart</strong>, <strong>Stop</strong>, <strong>Start</strong>, <strong>Update Server</strong> or <strong>Install Server</strong>. See <a href="#server">The managed server</a>.</li>
+      <li>The status card and server controls: <strong>Restart</strong>, <strong>Stop</strong>, <strong>Start</strong>, <strong>Update Server</strong> or <strong>Install server</strong>. See <a href="#server">The managed server</a>.</li>
       <li><strong>Setup guide</strong>, <strong>Permissions</strong>, and a <strong>Dictation</strong> row while dictation is on and Parakeet is not installed.</li>
       <li>The rest of Settings, then a footer with the Control and server versions and <strong>Quit</strong>.</li>
     </ul>
     <p>The panel and <strong>Settings</strong> in Activity show the same controls and the same saved preferences.</p>
+  </div>
+
+  <div class="sub" id="settings">
+    <h3>Settings</h3>
+    <p>Since 0.5.352, Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses and iPhone; Meetings; Dictation; Transcription and voice; Work and agents; Privacy and permissions; Pet and appearance; System and updates.</p>
+    <ul>
+      <li>Each category is a set of cards. Settings you rarely need sit under <strong>Advanced</strong> in each card.</li>
+      <li><strong>On this page</strong> lists the cards in the category you are in. Click one to jump to it.</li>
+      <li><strong>Search settings</strong> (<kbd>⌘F</kbd>) finds a setting by name and says where it is. A setting renamed in 0.5.352 is still found by its old name.</li>
+      <li><kbd>⌘,</kbd>, the Dock menu, the pet, the welcome window and links from other views all open Settings here.</li>
+      <li>Prefer the old single page? Turn on <strong>Use classic Settings</strong> in General, Advanced. <strong>Use new Settings</strong>, at the top of the classic page, switches back.</li>
+    </ul>
   </div>
 
   <div class="sub" id="dock">
@@ -610,8 +643,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>Click the Dock icon to open Activity. Before COS is set up it opens the welcome window, and while a meeting records it opens the live transcript.</li>
       <li>Right-click it for <strong>Open Activity</strong>, <strong>Setup guide…</strong> and <strong>Settings…</strong>, plus <strong>View live transcript</strong> while a meeting records. The Dock icon carries a <strong>REC</strong> badge while recording.</li>
       <li>The app's <strong>Meetings</strong> menu has <strong>Record on Mac…</strong>, <strong>Stop Mac recording and save</strong> and <strong>View live transcript</strong> (<kbd>⌘⇧L</kbd>). The <strong>Dictation</strong> menu has Stop dictation, Cancel dictation, Dictionary…, History… and Settings…, which opens Activity, Dictation, Settings. <strong>Help</strong> has Setup guide… and COS Control help.</li>
-      <li>Prefer no Dock icon? Turn on <strong>Show in menu bar only</strong> in Settings. The app menus, including the live transcript shortcut, are then not available.</li>
-      <li><strong>Open Activity with</strong> in Settings sets a keyboard shortcut that opens Activity from anywhere.</li>
+      <li>Prefer no Dock icon? Turn on <strong>Menu bar only</strong> in Settings, General. The app menus, including the live transcript shortcut, are then not available.</li>
+      <li><strong>Activity shortcut</strong> in Settings, General, sets a keyboard shortcut that opens Activity from anywhere.</li>
     </ul>
   </div>
 
@@ -634,12 +667,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>The list</strong> groups sessions under RUNNING, WAITING ON YOU and IDLE. Each row has <strong>Open in platform</strong>, a button that opens the session view in COS Control, a paperplane to message the session, and × to drop it from the list.</li>
       <li><strong>Message a session</strong>: the paperplane opens a card that names the session. Type and press Return to send it into the real thread; Option-Return starts a new line and Escape closes. A busy session queues the message, and the card lists what is queued with <strong>Edit</strong> and ×.</li>
       <li><strong>The figure</strong>: click it to open the focused session in its app, double-click it for the session list, right-click it for <strong>Full motion</strong>, <strong>Calm motion</strong>, <strong>No motion</strong>, <strong>Hide pet</strong>, <strong>Settings…</strong> and <strong>Setup guide…</strong>.</li>
+      <li><strong>Move the pet</strong> by dragging the figure or the line under it. Since 0.5.352 this works on macOS 27.2, and a pet dropped partly off a screen moves back inside it.</li>
       <li><strong>Open in platform</strong> opens the session in Claude, Codex or Cursor. A session still on its first reply opens in COS Control until that reply is done. Jumping to a window needs Accessibility.</li>
     </ul>
     <h4>Characters and pet settings</h4>
     <p>Windu&rsquo;s one-session running bursts now have matching cadence, with a shorter raised-saber pause. A failed cast load becomes eligible to retry on a later refresh after a five-second wait, rather than keeping the failed request latched. Healthy artwork is retained. This recovery fix does not establish why the reported running app repeated a lineup; that behavior was not reproduced. Exact stock packs update; custom artwork, timing and scale stay yours.</p>
     <p>Since 0.5.341, Nia, Elara and Rowan each have distinct Session 2 and 3 choreography and a 360 attack with four or more working sessions. Three opponent casts shuffle without immediate repeats. Sharper Retina artwork, saber contact, blaster deflections and recovery transitions carry through each encounter. Unmodified stock Jedi packs update automatically; custom artwork, timing, scale and Miles Windu are preserved.</p>
-    <p><strong>Cloud Puff</strong> is the default. Under Settings, Session pet you can choose one of four animated Jedi (<strong>Jedi Miles Windu</strong>, <strong>Jedi Nia Solari</strong>, <strong>Jedi Elara Vale</strong>, <strong>Jedi Rowan Vale</strong>), a community pet from openpets.dev, or your own art with <strong>Install sprite pack</strong> or <strong>Choose sprite</strong>. <strong>Use Cloud Puff</strong> goes back. The <a href="/control/#custom-pet-pack">custom pet pack format</a> is on the overview page.</p>
+    <p><strong>Cloud Puff</strong> is the default. Under Settings, Pet and appearance you can choose one of four animated Jedi (<strong>Jedi Miles Windu</strong>, <strong>Jedi Nia Solari</strong>, <strong>Jedi Elara Vale</strong>, <strong>Jedi Rowan Vale</strong>), a community pet from openpets.dev, or your own art with <strong>Install sprite pack</strong> or <strong>Choose sprite</strong>. <strong>Use Cloud Puff</strong> goes back. The <a href="/control/#custom-pet-pack">custom pet pack format</a> is on the overview page.</p>
     <ul>
       <li><strong>Session pet</strong> switches the pet on or off. It is on by default.</li>
       <li>Pet size (Small, Medium, Large or Custom), <strong>Character size</strong> (default 300%), <strong>Character speed</strong> (default 100%, which matches the pack) and <strong>Motion</strong> (Full, Calm or None). macOS Reduce Motion freezes animated strips.</li>
@@ -696,19 +730,19 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>Search topics and ideas. Each result says whether it matched by <strong>Keyword</strong>, <strong>Meaning</strong> or both. Meaning search needs the COS meeting index; without it, search is keyword only.</li>
       <li><strong>Import meetings</strong> brings in Fireflies recordings: paste your Fireflies API key, choose <strong>Check</strong>, then <strong>Import now</strong> or <strong>Keep bringing in new meetings</strong>. The key is stored on this Mac and never shown again. <strong>Suggested merges</strong> pairs a Fireflies call with your own recording of the same call.</li>
       <li><strong>Dictionary</strong> opens the one dictionary that meetings and dictation share. See <a href="#dictionary">Dictionary</a>.</li>
-      <li>Times read 1:02 PM. Choose the 24-hour clock under Settings, Advanced, <strong>Clock</strong>.</li>
+      <li>Times read 1:02 PM. Choose 24-hour under Settings, General, <strong>Time format</strong>.</li>
       <li>Recording on this Mac, live meetings and Live COS Ask are in <a href="#recording">Mac meeting recording</a>. Beside Live COS Ask, <strong>Cues</strong> lists the meeting&rsquo;s live cues, newest first, each with the same five verdicts (server 6.79.0).</li>
     </ul>
   </div>
 
   <div class="sub" id="view-memories">
     <h3>Memories</h3>
-    <p>What COS learned, not the transcript. Its sections are <strong>Recent learning</strong>, <strong>Applied this week</strong>, <strong>All memories</strong>, <strong>To review</strong>, which holds what COS proposed until you keep or dismiss it, and <strong>Knowledge</strong>, a graph of your own data you can ask in plain language. With server 6.79.0, <strong>Cues to rate</strong> shows the last 7 days of unrated live cues one at a time, oldest first, with what was said just before each: rate it Useful, Late, Repeat, Wrong or Obvious (keys 1 to 5), add a note with N, or Skip with S. <strong>Rated cues</strong> lists what you rated; pick another verdict to change one, or Clear to send it back. A lesson offers <strong>Open source record</strong>, <strong>Explore in graph</strong> and <strong>Copy context</strong>. Memories reads the folder set under <strong>COS Data</strong>; any Markdown you drop into its memory folder becomes browsable.</p>
+    <p>What COS learned, not the transcript. Its sections are <strong>Recent learning</strong>, <strong>Applied this week</strong>, <strong>All memories</strong>, <strong>To review</strong>, which holds what COS proposed until you keep or dismiss it, and <strong>Knowledge</strong>, a graph of your own data you can ask in plain language. With server 6.79.0, <strong>Cues to rate</strong> shows the last 7 days of unrated live cues one at a time, oldest first, with what was said just before each: rate it Useful, Late, Repeat, Wrong or Obvious (keys 1 to 5), add a note with N, or Skip with S. <strong>Rated cues</strong> lists what you rated; pick another verdict to change one, or Clear to send it back. A lesson offers <strong>Open source record</strong>, <strong>Explore in graph</strong> and <strong>Copy context</strong>. Memories reads the folder set under <strong>Notes folder</strong>; any Markdown you drop into its memory folder becomes browsable.</p>
   </div>
 
   <div class="sub" id="view-threads">
     <h3>Threads</h3>
-    <p>A thread is one piece of work followed across every meeting that touched it. Search topics and ideas, sort by Recency, and open a thread for its note, linked meetings and sources, with <strong>Copy as Context</strong> (<kbd>⌘C</kbd>) and <strong>Reveal in Finder</strong>. If the list is empty, choose <strong>COS Data</strong> in the panel to connect your library, or <strong>Create Folders</strong> to start one.</p>
+    <p>A thread is one piece of work followed across every meeting that touched it. Search topics and ideas, sort by Recency, and open a thread for its note, linked meetings and sources, with <strong>Copy as Context</strong> (<kbd>⌘C</kbd>) and <strong>Reveal in Finder</strong>. If the list is empty, choose <strong>Notes folder</strong> in Settings, Work and agents, to connect your library, or <strong>Create Folders</strong> to start one.</p>
   </div>
 
   <div class="sub" id="dictation-tab">
@@ -735,13 +769,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="dictation-on">
     <h3>Turn it on and pick a shortcut</h3>
-    <p>In Activity, Dictation, <strong>Settings</strong> (or Settings in the menu-bar panel), switch on <strong>Dictate into Mac apps</strong>. It is off by default. Then choose a <strong>Microphone</strong> (System default or a specific input; <strong>Refresh microphones</strong> finds a new one) and set a shortcut. Choose <strong>Allow insertion into other apps…</strong> so COS can type for you.</p>
+    <p>In Activity, Dictation, <strong>Settings</strong> (or Settings in the menu-bar panel), switch on <strong>Dictate into Mac apps</strong>. It is off by default. Then choose a <strong>Microphone</strong> (System default or a specific input; <strong>Refresh microphones</strong> finds a new one) and set a shortcut. Choose <strong>Allow typing in apps…</strong> so COS can type for you.</p>
     <div class="tw">
       <table>
         <thead><tr><th>Shortcut</th><th>What it does</th><th>Default</th></tr></thead>
         <tbody>
           <tr><td data-label="Shortcut"><strong>Push to talk</strong></td><td data-label="What it does">Listens while you hold the key and transcribes when you let go.</td><td data-label="Default">Off until you set it</td></tr>
-          <tr><td data-label="Shortcut"><strong>Start / stop</strong></td><td data-label="What it does">One press starts, the next press stops.</td><td data-label="Default">Off until you set it</td></tr>
+          <tr><td data-label="Shortcut"><strong>Start and stop</strong></td><td data-label="What it does">One press starts, the next press stops.</td><td data-label="Default">Off until you set it</td></tr>
           <tr><td data-label="Shortcut"><strong>Fix last dictation</strong></td><td data-label="What it does">Opens Fix a word on your most recent dictation.</td><td data-label="Default"><kbd>⌃⌥F</kbd></td></tr>
         </tbody>
       </table>
@@ -760,8 +794,8 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="dictation-engines">
     <h3>Engines: Automatic, Parakeet Ultra and Whisper</h3>
-    <p>Choose the engine in Settings, Transcription, <strong>Dictation engine</strong>. <strong>Automatic</strong> (recommended) uses Parakeet Ultra when it is installed and ready, and Whisper on this Mac otherwise. A line under the picker says what dictation uses right now. The picker needs server 6.74.0; an older server dictates with Parakeet Ultra only and says to update.</p>
-    <p><strong>Install Parakeet (654 MB)</strong> appears in Settings, Transcription, in a Dictation row of the menu bar panel, on a dictation card and in the setup guide. COS Control includes the speech tool Parakeet needs, so there is no Terminal step. Progress and <strong>Cancel</strong> show while it downloads, every file is checked before it is installed, and dictation keeps using Whisper meanwhile. Cancel keeps nothing partial. Parakeet needs 1.5 GB free, and installs after any recording ends.</p>
+    <p>Choose the engine in Settings, Dictation, <strong>Dictation engine</strong>. <strong>Automatic</strong> (recommended) uses Parakeet Ultra when it is installed and ready, and Whisper on this Mac otherwise. A line under the picker says what dictation uses right now. The picker needs server 6.74.0; an older server dictates with Parakeet Ultra only and says to update.</p>
+    <p><strong>Install Parakeet (654 MB)</strong> appears in Settings, Transcription and voice, in a Dictation row of the menu bar panel, on a dictation card and in the setup guide. COS Control includes the speech tool Parakeet needs, so there is no Terminal step. Progress and <strong>Cancel</strong> show while it downloads, every file is checked before it is installed, and dictation keeps using Whisper meanwhile. Cancel keeps nothing partial. Parakeet needs 1.5 GB free, and installs after any recording ends.</p>
   </div>
 
   <div class="sub" id="dictation-delivery">
@@ -771,7 +805,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>✓ INSERTED</strong> means COS saw the text land. <strong>PASTED · ⌘V SENT</strong> means it pasted but could not confirm.</li>
       <li>Terminals (Terminal, iTerm2, Warp, Ghostty, kitty, Alacritty and WezTerm) always get a paste, with line breaks turned into spaces.</li>
       <li>Claude, Slack and other Electron or Chromium apps are asked to expose their text boxes first; if COS still finds none, it pastes.</li>
-      <li><strong>Restore my clipboard after pasting</strong> is on by default: after a paste COS puts back what you had copied.</li>
+      <li><strong>Restore clipboard</strong> is on by default: after a paste COS puts back what you had copied.</li>
       <li><strong>Format spoken lists</strong> is on by default. Say “number one, number two” or “bullet, next bullet” and COS writes a numbered or bulleted list, one item per line. Ordinary sentences with numbers stay as they are.</li>
     </ul>
     <p>When COS cannot type, a card on the pet keeps the text on the clipboard and says why:</p>
@@ -800,14 +834,14 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Open Transcription settings</strong> when no engine is set up or a retry cannot succeed.</li>
       <li><strong>Open Settings</strong> when the microphone is not allowed. It opens the macOS Microphone list.</li>
       <li><strong>No speech detected</strong> has no button: check your selected microphone and try again.</li>
-      <li>Since 0.5.345, with System default, if your microphone fails to start, COS tries one that has delivered sound on this Mac before: never Bluetooth, an iPhone, a virtual or aggregate device, the one that just failed, or the built-in microphone while the lid is closed. It keeps that microphone only if its first 300 milliseconds carry sound. COS starts remembering microphones after you update, so the first fault after the update may have nothing to try. Settings, Dictation, then says which it used, for example &ldquo;Last time macOS couldn&rsquo;t start Studio Display Microphone, so COS used MacBook Pro Microphone.&rdquo; When nothing works, the card says &ldquo;macOS audio isn&rsquo;t responding. Try again, or restart the Mac.&rdquo;, or that an iPhone Continuity microphone may be stuck, never a raw error number. <strong>If the microphone fails, try another one</strong> in Settings, Dictation, is on by default.</li>
+      <li>Since 0.5.345, with System default, if your microphone fails to start, COS tries one that has delivered sound on this Mac before: never Bluetooth, an iPhone, a virtual or aggregate device, the one that just failed, or the built-in microphone while the lid is closed. It keeps that microphone only if its first 300 milliseconds carry sound. COS starts remembering microphones after you update, so the first fault after the update may have nothing to try. Settings, Dictation, then says which it used, for example &ldquo;Last time macOS couldn&rsquo;t start Studio Display Microphone, so COS used MacBook Pro Microphone.&rdquo; When nothing works, the card says &ldquo;macOS audio isn&rsquo;t responding. Try again, or restart the Mac.&rdquo;, or that an iPhone Continuity microphone may be stuck, never a raw error number. <strong>Microphone fallback</strong> in Settings, Dictation, is on by default.</li>
     </ul>
   </div>
 
   <div class="sub" id="before-typing">
     <h3>Before COS types: um, uh and a capital</h3>
-    <p>Since 0.5.345, COS leaves out um, uh, er and hmm said on their own before it types or copies, with AI polish on or off. It does this only when the dictation is mostly English, so &ldquo;um 5 Uhr&rdquo; or &ldquo;um carro&rdquo; keep their words, and a filler that is part of a path, a file name or a handle, such as src/um.txt, um.py or @uh, stays. What was heard on the dictation card keeps the raw words, AI polish still gets them, and Mac recordings are not changed. <strong>Remove filler sounds (um, uh) before typing</strong> in Settings, Dictation, is on by default. Because COS removes them itself, the card no longer offers Always drop for um or uh.</p>
-    <p>A dictation at the start of a text box, in an empty one, or after a full stop, question mark or new line starts with a capital when COS can read the text box. It never capitalizes after an ellipsis, an abbreviation such as e.g. or Dr., or a code fence line, in terminals or password fields, or for words like iPhone, @handles, paths, command words such as npm, or a lowercase word in your dictionary, and it leaves the text alone when your polish instructions ask for lowercase. A swapped-in polish gets the same capital. <strong>Capitalize the start of a sentence</strong> in Settings, Dictation, is on by default.</p>
+    <p>Since 0.5.345, COS leaves out um, uh, er and hmm said on their own before it types or copies, with AI polish on or off. It does this only when the dictation is mostly English, so &ldquo;um 5 Uhr&rdquo; or &ldquo;um carro&rdquo; keep their words, and a filler that is part of a path, a file name or a handle, such as src/um.txt, um.py or @uh, stays. What was heard on the dictation card keeps the raw words, AI polish still gets them, and Mac recordings are not changed. <strong>Remove um and uh</strong> in Settings, Dictation, is on by default. Because COS removes them itself, the card no longer offers Always drop for um or uh.</p>
+    <p>A dictation at the start of a text box, in an empty one, or after a full stop, question mark or new line starts with a capital when COS can read the text box. It never capitalizes after an ellipsis, an abbreviation such as e.g. or Dr., or a code fence line, in terminals or password fields, or for words like iPhone, @handles, paths, command words such as npm, or a lowercase word in your dictionary, and it leaves the text alone when your polish instructions ask for lowercase. A swapped-in polish gets the same capital. <strong>Capitalize sentences</strong> in Settings, Dictation, is on by default.</p>
   </div>
 
   <div class="sub" id="ai-polish">
@@ -844,7 +878,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p>In 0.5.344, COS learned a style habit only from dictations where Claude&rsquo;s polished version was swapped in. Since 0.5.345 it also learns from dictations where it was not: COS compares your edit with the Claude version that was waiting.</p>
     <p>Settings, Dictation, <strong>Your style</strong> sits under your polish instructions:</p>
     <ul>
-      <li><strong>Learn my style from edits</strong> is the switch. Off keeps your rules and stops applying them, on this Mac and on G2.</li>
+      <li><strong>Learn my style</strong> is the switch. Off keeps your rules and stops applying them, on this Mac and on the glasses.</li>
       <li>Your rules, each with how many dictations showed it and <strong>Remove</strong>. Suggested rules have Add and Dismiss, and a rule seen once says seen 1 of 2.</li>
       <li><strong>Add a rule</strong> picks from the same fixed choices, and the rule starts at once.</li>
       <li><strong>Reset learned style</strong> clears the rules after you confirm.</li>
@@ -897,7 +931,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </ul>
     <h4>Meeting detected</h4>
     <p>When Zoom, Microsoft Teams or Google Meet has held the microphone for 10 seconds, the pet offers <strong>Meeting detected</strong> with <strong>Record</strong>, <strong>Not now</strong> and <strong>Never for</strong> that app. Record is one click and records All Mac audio. The offer comes once per meeting, never while a Mac recording runs, and waits until a dictation ends. When the app has been off the microphone for a minute, COS asks <strong>Meeting ended?</strong> with <strong>Stop and save</strong> and <strong>Keep recording</strong>. It never stops a recording on its own.</p>
-    <p>In Settings, <strong>Suggest recording when a meeting starts</strong> (on by default) has a switch per app, the Never list with Remove, and <strong>Show the recording notice again</strong>. Seeing a Google Meet tab in a browser needs Accessibility; until then COS watches Zoom and Teams only.</p>
+    <p>In Settings, Meetings, <strong>Suggest recording</strong> (on by default) has a switch per app, the Never list with Remove, and <strong>Show recording notice again</strong>. Seeing a Google Meet tab in a browser needs Accessibility; until then COS watches Zoom and Teams only.</p>
   </div>
 
   <div class="sub" id="record-live">
@@ -907,7 +941,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>The live meeting opens in Activity, Meetings: the transcript a few seconds behind the conversation. It follows the newest line until you scroll up; <strong>Jump to live</strong> catches up. <strong>Copy transcript</strong> copies the text so far, and <strong>Copy full context</strong> adds the Ask answers, their sources and file text. Live text and speaker names are preliminary and may change when saved.</li>
       <li>When a glasses meeting and a Mac recording run at once, <strong>Showing</strong> switches between them.</li>
       <li><strong>Files shared in this meeting</strong> takes screenshots, slides or files: drop them, <strong>Paste screenshot</strong> or <strong>Add files…</strong>. Their text is read on your Mac and shared with Ask. A file that looks like it holds credentials is held back.</li>
-      <li><strong>Show live meeting transcript</strong> in Settings (on by default) turns the live view off.</li>
+      <li><strong>Live transcript</strong> in Settings, Meetings (on by default) turns the live view off.</li>
     </ul>
     <h4>Live COS Ask</h4>
     <p>Choose <strong>Live COS Ask</strong> beside the transcript. Presets: <strong>Catch me up</strong>, <strong>Summarize so far</strong>, <strong>What to ask</strong> and <strong>Action items</strong>, plus <strong>Fact check</strong> when the server offers it. Or type in <strong>Ask about this meeting</strong>. A model runs only when you ask. Each answer cites the lines it used and says how far into the meeting it read and which model answered; <strong>Stop</strong> ends one, and <strong>Retry</strong>, <strong>Copy</strong> and <strong>Save as follow-up</strong> sit under it. Nothing reruns on its own. Questions and answers stay with the meeting after you save it. Choose the model with <strong>Model</strong> beside Ask, the same setting as the Meeting assistant card. Ask needs server 6.69.0 or newer; on an older server the live transcript keeps working.</p>
@@ -998,12 +1032,12 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <ul>
       <li><strong>Plan with</strong> picks Sonnet or Opus (Opus by default) and <strong>Effort</strong> Low, Medium or High (High by default), when the server offers them.</li>
       <li><strong>Plan</strong> (<kbd>⌘Return</kbd>) stops at <strong>Ready to send</strong>. Each assignment has <strong>Send</strong>, <strong>Edit</strong> and <strong>Skip</strong>; the round has <strong>Send all</strong> and <strong>Not now</strong>, which keeps them as drafts. Nothing is sent until you press Send, and every send re-checks the task first.</li>
-      <li><strong>Plan and send</strong> plans and sends through the same checks. The first time, it asks whether to send plans without review; <strong>Send plans without review</strong> in Settings, Work is off by default.</li>
+      <li><strong>Plan and send</strong> plans and sends through the same checks. The first time, it asks whether to send plans without review; <strong>Send plans without review</strong> in Settings, Work and agents, is off by default.</li>
       <li>A round reads <strong>Dispatched</strong> only when an assignment reached its session; otherwise it says why, such as Not delivered or Delivery uncertain. If the task changed since planning, it reads <strong>Needs a new plan</strong>.</li>
       <li>Each round shows how much context it sends, and each linked session how full its context is. <strong>Show, preview or trim</strong> lets you remove or add items before sending.</li>
     </ul>
-    <h4>When earlier work is still open</h4>
-    <p>A send that earlier work would hold now <strong>queues</strong>. The card says <strong>Queued behind</strong> the session it waits for, with <strong>Cancel</strong> and <strong>Send in parallel</strong>, and it sends by itself once that work is done, reviewed or answered, after the same checks. Queued work sends while COS Control is open and waits while it is closed. In Settings, Work, <strong>When earlier work is still open</strong> is <strong>Queue it</strong> (the default) or <strong>Ask each time</strong>, which offers Queue it, Send in parallel or Check first. This needs server 6.73.15; an older server checks first, under <strong>Earlier handoffs need a check first</strong>.</p>
+    <h4>When work is open</h4>
+    <p>A send that earlier work would hold now <strong>queues</strong>. The card says <strong>Queued behind</strong> the session it waits for, with <strong>Cancel</strong> and <strong>Send in parallel</strong>, and it sends by itself once that work is done, reviewed or answered, after the same checks. Queued work sends while COS Control is open and waits while it is closed. In Settings, Work and agents, <strong>When work is open</strong> is <strong>Queue it</strong> (the default) or <strong>Ask each time</strong>, which offers Queue it, Send in parallel or Check first. This needs server 6.73.15; an older server checks first, under <strong>Earlier handoffs need a check first</strong>.</p>
   </div>
 
   <div class="sub" id="work-intake">
@@ -1015,7 +1049,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>Work settings</h3>
     <ul>
       <li><strong>Work notifications</strong> (on) tells you when a session needs you.</li>
-      <li><strong>Open new sessions in the app</strong> (on): a new session starts on this Mac and opens in its own app once its first reply is done.</li>
+      <li><strong>Open new sessions</strong> (on): a new session starts on this Mac and opens in its own app once its first reply is done.</li>
       <li><strong>Decision models</strong> with a <strong>Jev key</strong> lets Work suggest whether to continue, fork or start a session. It only suggests.</li>
     </ul>
   </div>
@@ -1034,7 +1068,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p><strong>Exclude cache reads</strong> removes only cache reads from token charts, rankings, the mix and shares; input, output and cache writes remain. The top All recorded tokens total stays inclusive. Estimated API value still includes all priced categories. Unpriced periods are omitted from the API-value plot; partial values show that unknown cost remains. Neither cache counts nor API-equivalent value measure subscription savings. Plan balances, reset times, environment filters and distinct session counts are unavailable from this ledger.</p>
     <p>Usage keeps counts and file checkpoints in a private local ledger, not prompts or replies, and uploads nothing. History remains after source files are removed, but records deleted before collection cannot be recovered. Cursor, browser-only chats, other Macs and calls without token records are not included. Prices use the October 25, 2026 standard API snapshot across all dates, not your subscription invoice; unknown prices and partial history are labelled.</p>
   </div>
-  <div class="note"><p><strong>Sessions is off until you turn it on.</strong> In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>, or use <strong>Show your AI sessions</strong> in the setup guide. It is off by default because it reads another product's private state folder and serves session names, workspaces and times (not conversation content) over your local network. Leave it off on an untrusted network.</p></div>
+  <div class="note"><p><strong>Sessions is off until you turn it on.</strong> In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>, or use <strong>Show your AI sessions</strong> in the setup guide. It is off by default because it reads another product's private state folder and serves session names, workspaces and times (not conversation content) over your local network. Leave it off on an untrusted network.</p></div>
 
   <div class="sub" id="sessions-list">
     <h3>The list</h3>
@@ -1049,7 +1083,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="sessions-composer">
     <h3>Write into a session</h3>
-    <p>Type under the transcript and press <strong>Send</strong> (<kbd>⌘Return</kbd>). The message lands in the real thread and the reply comes back in the pane. Long turns keep running after you close the window. This needs <strong>Continue agent threads</strong> in Settings, which is on by default.</p>
+    <p>Type under the transcript and press <strong>Send</strong> (<kbd>⌘Return</kbd>). The message lands in the real thread and the reply comes back in the pane. Long turns keep running after you close the window. This needs <strong>Continue sessions</strong> in Settings, Work and agents, which is on by default.</p>
     <ul>
       <li>A session in the middle of a turn queues your message and sends it when the session is ready. The queue is listed under the composer with each message's place and text. While a message waits, <strong>Edit</strong> puts it back in the composer (Send then reads <strong>Replace</strong>) and <strong>Cancel</strong> removes it. A message the session already took cannot be recalled.</li>
       <li>Where a message cannot be queued, <strong>Retry</strong> tries again and <strong>Fork with this message</strong> runs it in a copy of the thread; the original is untouched.</li>
@@ -1082,19 +1116,20 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <p>The Transcription card appears with server 6.72.0 or newer. The engine names in Preview, HQ and Second opinion come from the server.</p>
 
   <div class="sub" id="transcription-tier">
-    <h3>Tier, preview and replay (under Tools)</h3>
+    <h3>Tier, preview and playback cleanup</h3>
+    <p>These are in Settings, Transcription and voice, except Fast preview, which is in Settings, Meetings, Advanced.</p>
     <ul>
       <li><strong>Transcription</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>. Balanced is recommended: Small.en for live text, Large-v3-Turbo to commit, Large-v3 to polish. Max keeps Large-v3 resident and may use much more memory. The status card names the model behind each stage.</li>
-      <li><strong>Meeting Turbo preview</strong> shows fast provisional meeting text, then replaces it with the speaker-attributed transcript. Turn it off for an immediate rollback.</li>
-      <li><strong>Adaptive audio cleanup</strong> is off by default. It cleans retained audio only when you press Play; the raw recording is never changed.</li>
-      <li><strong>Idle Metal HQ</strong> is for powerful Macs: it uses Metal for post-meeting HQ while the Mac is idle.</li>
+      <li><strong>Fast preview</strong> shows fast provisional meeting text, then replaces it with the speaker-attributed transcript. Turn it off for an immediate rollback.</li>
+      <li><strong>Playback cleanup</strong> is off by default. It cleans retained audio only when you press Play; the original recording is never changed.</li>
+      <li><strong>GPU when idle</strong> is for powerful Macs: it uses the GPU for post-meeting HQ while the Mac is idle.</li>
       <li><strong>Repair Whisper</strong> restarts local Whisper.</li>
     </ul>
   </div>
 
   <div class="sub" id="meeting-assistant">
     <h3>Meeting assistant</h3>
-    <p>The <strong>Model</strong> used only when you ask during a meeting. Sonnet is the default for fresh settings; other chats keep their own models. <strong>Refresh connected models</strong> rereads what your AI offers. <strong>Home city</strong> is used only when a fact check needs a starting point: city and state, no street address. Leave it blank to use your phone's area.</p>
+    <p>The <strong>Model</strong> used only when you ask during a meeting. Sonnet is the default for fresh settings; other chats keep their own models. <strong>Refresh models</strong> rereads what your AI offers. <strong>Home city</strong> is used only when a fact check needs a starting point: city and state, no street address. Leave it blank to use your phone's area.</p>
   </div>
 </section>
 
@@ -1117,7 +1152,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Health at a glance</h3>
-      <p>The status card shows the server state (for example <strong>Running · managed</strong>), <strong>Ownership</strong> (<strong>Verified direct PID</strong> when all is well), Recovery, local transcription, Background jobs, the transcription tier and its models, meeting sync, the agent CLIs it found, and your Work folder and Meetings library.</p>
+      <p>The status card shows the server state (for example <strong>Running · managed</strong>), <strong>Ownership</strong> (<strong>Verified direct PID</strong> when all is well), Recovery, local transcription, Background jobs, the transcription tier and its models, meeting sync, the AI apps it found, and your work folder and meetings folder.</p>
     </div>
     <div class="card">
       <h3>Safe restarts</h3>
@@ -1126,15 +1161,15 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   </div>
 
   <div class="sub" id="doctor">
-    <h3>Doctor and tools</h3>
-    <p><strong>Run Doctor</strong> (under Tools) checks COS Control, Node.js, npm, the Claude, Codex and Cursor CLIs, Whisper, ffmpeg, runtime ownership, Memory and Threads, the AI provider bridge, a real query, runtime integrity, update recovery and private config, and shows the results under <strong>DOCTOR</strong>.</p>
+    <h3>Checks and tools</h3>
+    <p><strong>Run checks</strong> (Settings, System and updates) checks COS Control, Node.js, npm, the Claude, Codex and Cursor CLIs, Whisper, ffmpeg, runtime ownership, Memory and Threads, the AI provider bridge, a real query, runtime integrity, update recovery and private config, and shows the results under <strong>CHECKS</strong>.</p>
     <ul>
-      <li><strong>Guided Setup</strong> asks you to choose a transcription setup, Balanced (recommended) or Max, then runs it.</li>
-      <li><strong>Repair Managed Runtime</strong> and <strong>Repair Whisper</strong> fix the runtime or local Whisper.</li>
-      <li><strong>Work Folder</strong> is your COS project root, where Claude, Codex and Cursor search and edit. <strong>Meetings Library</strong> is the folder you already use for meetings, containing <code>YYYY-MM/*.md</code>. <strong>COS Data</strong> connects Memory and Threads; <strong>Create Folders</strong> makes them.</li>
-      <li><strong>Copy Pairing Token</strong> copies the token the glasses use. <strong>Copy Report</strong> copies a support report. <strong>Open Logs</strong> opens <code>~/Library/Logs/COS&nbsp;Glasses</code>. <strong>Health</strong> opens the server's health page.</li>
+      <li><strong>Guided setup</strong>, in Transcription and voice, Advanced, asks you to choose a transcription setup, Balanced (recommended) or Max, then runs it.</li>
+      <li><strong>Repair server</strong> and <strong>Repair Whisper</strong> fix the server or local Whisper.</li>
+      <li><strong>Work folder</strong>, in Work and agents, is your COS project root, where Claude, Codex and Cursor search and edit. <strong>Meetings folder</strong>, in Meetings, is the folder you already use for meetings, containing <code>YYYY-MM/*.md</code>. <strong>Notes folder</strong>, in Work and agents, connects Memory and Threads; <strong>Create Folders</strong> makes them.</li>
+      <li><strong>Copy pairing token</strong>, in Glasses and iPhone, Advanced, copies the token the glasses use. <strong>Copy report</strong> copies a support report. <strong>Open logs</strong> opens <code>~/Library/Logs/COS&nbsp;Glasses</code>. <strong>Health page</strong>, in System and updates, Advanced, opens the server's health page.</li>
       <li><strong>Local model</strong> picks an Ollama model when a local Ollama daemon is running, or Automatic for the newest pull.</li>
-      <li><strong>Launch COS Control at login</strong>, <strong>Show in menu bar only</strong> and <strong>Open Activity with</strong> are at the end.</li>
+      <li><strong>Open at login</strong>, <strong>Menu bar only</strong> and <strong>Activity shortcut</strong> are in General.</li>
     </ul>
   </div>
 
@@ -1172,7 +1207,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   </div>
   <div class="sub" id="server-updates">
     <h3>Updating the server</h3>
-    <p><strong>Update Server</strong> downloads the new release and verifies it, stages it as a new generation and switches to it. It then waits for health and a real query on at least one installed AI provider. If that proof fails, it restores the previous generation and tells you. <strong>Rollback Server</strong>, under Settings, Advanced, goes back to a retained earlier generation (up to two are kept) and verifies it.</p>
+    <p><strong>Update Server</strong> downloads the new release and verifies it, stages it as a new generation and switches to it. It then waits for health and a real query on at least one installed AI provider. If that proof fails, it restores the previous generation and tells you. <strong>Roll back server</strong>, in Settings, System and updates, Advanced, goes back to a retained earlier generation (up to two are kept) and verifies it. In Settings it asks first.</p>
   </div>
 </section>
 
@@ -1181,7 +1216,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <div class="sec-head">
     <h2><span class="num">12.</span> Troubleshooting</h2>
     <p class="ch-sub">When something looks stuck.</p>
-    <p class="lead">Start with <strong>Run Doctor</strong> under Tools: it names the failing check. These are the fixes people need most.</p>
+    <p class="lead">Start with <strong>Run checks</strong> in Settings, System and updates: it names the failing check. These are the fixes people need most.</p>
   </div>
   <div class="cards">
     <div class="card" id="fix-update-installing">
@@ -1190,7 +1225,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card" id="fix-accessibility">
       <h3>Accessibility is on, but dictation only copies the text</h3>
-      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose COS Control in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
+      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose COS Control in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Pet and appearance, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
     </div>
     <div class="card" id="fix-system-audio">
       <h3>COS Control is missing from Screen &amp; System Audio Recording</h3>
@@ -1210,12 +1245,12 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Server setup fails</h3>
-      <p>Choose <strong>Try again</strong>. Setup needs an internet connection. If it keeps failing, use <strong>Run Doctor</strong> for the failing check, then <strong>Repair Managed Runtime</strong>. If the panel says <strong>Ownership conflict detected</strong>, another server owns the COS ports: stop the server you started in Terminal with Control-C, then try again.</p>
+      <p>Choose <strong>Try again</strong>. Setup needs an internet connection. If it keeps failing, use <strong>Run checks</strong> for the failing check, then <strong>Repair server</strong>. If the panel says <strong>Ownership conflict detected</strong>, another server owns the COS ports: stop the server you started in Terminal with Control-C, then try again.</p>
     </div>
     <div class="card">
       <h3>Dictation does nothing when I press the shortcut</h3>
       <ul>
-        <li>Check that <strong>Dictate into Mac apps</strong> is on and the shortcut is set. Push to talk and Start / stop are off until you choose a key.</li>
+        <li>Check that <strong>Dictate into Mac apps</strong> is on and the shortcut is set. Push to talk and Start and stop are off until you choose a key.</li>
         <li>Fn and single-key shortcuts need Accessibility. Allow it, then turn dictation off and on.</li>
         <li>If COS says another app may already use the shortcut, choose another one.</li>
         <li>Using Fn: set <strong>Press 🌐 key to</strong> Do Nothing in System Settings, Keyboard.</li>
@@ -1239,11 +1274,11 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Sessions is empty</h3>
-      <p>Sessions is off by default. In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>. To write into a session, <strong>Continue agent threads</strong> must also be on.</p>
+      <p>Sessions is off by default. In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>. To write into a session, <strong>Continue sessions</strong> must also be on.</p>
     </div>
     <div class="card">
       <h3>Jump to session does not bring the window forward</h3>
-      <p>Jumping needs Accessibility. Choose <strong>Grant</strong> under Settings, Session pet; if it is already on, use <strong>Reset and add again</strong>.</p>
+      <p>Jumping needs Accessibility. Choose <strong>Grant</strong> under Settings, Pet and appearance; if it is already on, use <strong>Reset and add again</strong>.</p>
     </div>
     <div class="card">
       <h3>Restart or Update Server is greyed out</h3>
@@ -1255,7 +1290,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
-      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (the route is token-gated, so a plain <code>curl</code> returns 401; copy the token with <strong>Copy Pairing Token</strong>):</p>
+      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (the route is token-gated, so a plain <code>curl</code> returns 401; copy the token with <strong>Copy pairing token</strong>):</p>
       <p><code>curl -H "X-Cos-Token: YOUR-TOKEN" http://YOUR-SERVER-IP:3141/api/message-counter</code></p>
       <p>A healthy install returns both a <code>max</code> and an <code>era</code>. If <code>era</code> is missing, update to server <strong>6.16.9 or newer</strong>, then start a fresh era once, from inside the installed package (for a managed install, <code>~/Library/Application&nbsp;Support/COS&nbsp;Control/runtime/generations/&lt;version&gt;-&lt;hash&gt;/node_modules/@gotcos/glasses-server/</code>):</p>
       <p><code>npx --yes tsx server/scripts/reset-message-era.ts --confirm</code></p>
@@ -1271,7 +1306,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Local Whisper is unavailable:</strong> run <code>brew install whisper-cpp</code>, stop COS with Control-C and start it again. COS Control users get Whisper from the setup guide's Voice step instead.</li>
     </ul>
   </div>
-  <p class="note">Still stuck? Choose <strong>Copy Report</strong> under Tools and email it to <a href="mailto:dev@gotcos.com">dev@gotcos.com</a>, or open an issue on <a href="https://github.com/ukaoma/cos-starter">GitHub</a>.</p>
+  <p class="note">Still stuck? Choose <strong>Copy report</strong> in Settings, System and updates, and email it to <a href="mailto:dev@gotcos.com">dev@gotcos.com</a>, or open an issue on <a href="https://github.com/ukaoma/cos-starter">GitHub</a>.</p>
 </section>
 
 <!-- ── 13 FAQ ── -->
@@ -1301,6 +1336,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-352"><h3>Control 0.5.352 / server 6.93.0</h3><p><strong>Settings in categories.</strong> Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses and iPhone; Meetings; Dictation; Transcription and voice; Work and agents; Privacy and permissions; Pet and appearance; System and updates. Each category is a set of cards, and the settings you rarely need sit under Advanced in each card. On this page lists the cards in the category and jumps to the one you pick.</p><p><strong>Shorter labels, same settings.</strong> Many settings have clearer, shorter names, for example Run checks for Run Doctor, Notes folder for COS Data and Show AI sessions for Show Claude sessions. Search settings (<kbd>⌘F</kbd>) finds a setting by its new or its old name and says where it is. Your saved preferences do not change.</p><p><strong>Every way in opens it.</strong> <kbd>⌘,</kbd>, the Dock menu, the pet, the welcome window and links from other views open the new Settings at the right place. To go back, turn on <strong>Use classic Settings</strong> in General, Advanced: the old one-page Settings returns, and each opener goes where it did before. <strong>Use new Settings</strong>, at the top of that page, switches back.</p><p><strong>Roll back asks first.</strong> Roll back server, in System and updates, Advanced, now asks before it changes the server.</p><p><strong>Pet dragging on macOS 27.2.</strong> macOS 27.2 stopped the session pet from being dragged. COS Control now moves the pet itself, on every macOS version, and a pet dropped partly off a screen moves back inside it.</p></section>
     <section class="note" id="release-351"><h3>Control 0.5.351 / server 6.93.0</h3><p><strong>Quick save.</strong> Stopping a Mac recording shows Saving, then Saved, with no chunk counter, retained-recording warning or Retry during an ordinary save, which takes about five seconds. If a save runs past 20 seconds the panel says how far it got, and a short COS hiccup right after Stop is retried quietly for about a minute and a quarter before the panel says Not saved yet and offers Retry.</p><p><strong>Recover and stalled captures.</strong> Before Meetings offers to recover a retained Mac recording, Control asks the server whether it already saved it; if it did, the row goes away. A grayed-out Recover now says why. If a Mac recording stops receiving audio for 30 seconds, the panel says when it stopped and Control tries once to restart it; if that does not help, one notification says so, and Stop and save keeps everything up to then. Audio is written on its own thread, and quitting Control with a termination signal keeps every saved chunk for the next launch.</p><p><strong>iPhone microphone, off by default.</strong> Control shows meetings recorded from the iPhone microphone as iPhone microphone and offers Stop on iPhone. Every line reads Speaker, and naming, merging and speaker settings are off for these recordings. It records the iPhone microphone only, not iOS system audio, so Zoom, YouTube and calls playing on the phone are not captured. To turn it on, add <code>COS_IPHONE_MICROPHONE_MEETINGS=1</code> to <code>~/.cos-glasses/.env</code>, install Parakeet and set the HQ transcription engine to Parakeet Ultra, then restart the server when nothing is recording. It also needs a COS Glasses companion that offers iPhone microphone under Meeting microphone, which is not in the Glasses Hub yet.</p><p><strong>Speaker ID, on by default.</strong> Mac recordings now show anonymous Voice 1, Voice 2 and so on as you record, and each voice keeps its number across the 6-second chunks. The saved meeting keeps those live numbers. To turn it off, add <code>COS_MAC_LIVE_VOICES=off</code> to <code>~/.cos-glasses/.env</code> and restart the server when nothing is recording; that gives the 6.92.0 behavior exactly. A Voice is a number, never a name, until you assign it. Known limit: when one person hands over to another exactly at a chunk boundary, the new speaker can be given the previous speaker's number, and the saved meeting keeps it. Update COS Control to 0.5.351 before the server: 0.5.349 and 0.5.350 show each Voice as a named chip with the initial V.</p><p><strong>Assign a Voice to a person.</strong> On a Mac recording, pick a person already in your voice profiles for a Voice and Control previews how many voice samples it would add and how well the voice matches. If it does not match, holds more than one voice or has too little audio, Save is replaced by Rename only, the default, and a separate Add anyway that asks once more. Your own profile is not offered. Samples added this way are capped at 10, never exceed the person's other samples, and are the first to go when other samples need room. A typed name still renames text only.</p></section>
     <section class="note" id="release-350"><h3>Control 0.5.350 / server 6.92.0</h3><p><strong>Usage, by date and provider.</strong> Last 30 days is the default, with 7/30/90-day calendar windows, inclusive custom dates and monthly views of the same selection. Compare provider or model lines and stacked bars; inspect provider totals, model shares, token categories and daily records. Unknown prices and incomplete coverage stay explicit. API value is an estimate, not a subscription bill or plan balance.</p><p><strong>Windu cadence and recovery.</strong> One-session run bursts have matching cadence and a shorter raised-saber pause. A failed cast load can retry on a later refresh. Exact stock packs update; custom artwork, timing and scale stay yours. This release does not establish the cause of the reported repeated-lineup behavior.</p></section>
     <section class="note" id="release-349"><h3>Control 0.5.349 / server 6.92.0</h3><p><strong>Illustrated Windu idle states.</strong> Windu turns his head while idle and moves through meditation poses with a violet power-up aura, alongside illustrated patrol frames. The thirteen combat casts keep their artwork, timing and handoffs. Exact stock packs update automatically; custom artwork, timing and scale stay intact. Previous artwork remains available for rollback. Usage gains hover and keyboard period breakdowns, weekend comparisons and clearer token shares within each provider. Token shares are not subscription allowance; API values remain estimates. Includes the previous dictation fixes; server 6.92.0 and its settings are unchanged.</p></section>

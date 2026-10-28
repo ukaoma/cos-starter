@@ -599,6 +599,33 @@
       }
     }
   },
+  "nextStable": {
+    "version": "0.5.352",
+    "build": 406,
+    "url": "__URL__",
+    "sha256": "__SHA256__",
+    "minMacOS": "14.0",
+    "serverTarget": "6.93.0",
+    "publishedAt": "__PUBLISHED_AT__",
+    "notes": "Settings in ten categories with search and an On this page list, shorter labels, Use classic Settings, and pet dragging that works on macOS 27.2. Pairs with COS server 6.93.0.",
+    "whatsNew": {
+      "summary": "Settings is now sorted into ten categories, with search and an On this page list. Many settings have shorter, clearer names, and search still finds them by their old names. Use classic Settings, in General, Advanced, brings back the old page. Roll back server asks first, and the session pet can be dragged again on macOS 27.2. Plus everything in 0.5.351: quick save for Mac recordings, stalled-capture restart, a Recover that checks the server, and speaker ID on by default for Mac recordings.",
+      "sections": [
+        {
+          "title": "0.5.352",
+          "items": [
+            "Settings opens in Activity with ten categories on the left: General, AI and accounts, Glasses and iPhone, Meetings, Dictation, Transcription and voice, Work and agents, Privacy and permissions, Pet and appearance, and System and updates.",
+            "Each category is a set of cards. The settings you rarely need sit under Advanced in each card. On this page lists the cards in the category and jumps to the one you pick.",
+            "Many settings have clearer, shorter names, for example Run checks for Run Doctor and Notes folder for COS Data. Search settings (Command-F) finds a setting by its new or its old name and says where it is. Your saved preferences do not change.",
+            "Command-comma, the Dock menu, the pet, the welcome window and links from other views open the new Settings at the right place.",
+            "To go back, turn on Use classic Settings in General, Advanced. The old one-page Settings returns, and each opener goes where it did before. Use new Settings, at the top of that page, switches back.",
+            "Roll back server, in System and updates, Advanced, now asks before it changes the server.",
+            "macOS 27.2 stopped the session pet from being dragged. COS Control now moves the pet itself, on every macOS version, and a pet dropped partly off a screen moves back inside it."
+          ]
+        }
+      ]
+    }
+  },
   "killSwitch": {
     "disableAutoUpdate": false,
     "reason": ""

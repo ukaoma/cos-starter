@@ -20,7 +20,7 @@
     meetings: {caption:'Fast text first. The canonical record wins.', lit:['preview','replay','tier','dictate','commit','polish'],
       tier:{tier:'Balanced', dictate:'Small.en', commit:'Large-v3-Turbo', polish:'Large-v3'}},
     sessions: {caption:'The threads on this Mac, readable and writable.', lit:['clis'],
-      row:{label:'Memory & Threads', value:'4,875 · 64 threads'},
+      row:{label:'Memory and threads', value:'4,875 · 64 threads'},
       card:{title:'Activity · Sessions', list:[{chip:'Codex',text:'Release checks',meta:'running · 16s'},{chip:'Claude',text:'Docs launch',meta:'done'},{chip:'Cursor',text:'Agent routing',meta:'waiting on you'}]}},
     pet: {caption:'Running, waiting, done. Readable without opening a window.', ledger:[['running',2],['waiting',1],['done',4]]}
   };

@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.654 (build 654, Hub pin 6.10.653) · server @gotcos/glasses-server 6.93.0 · COS Control 0.5.351.
+   Covers COS Glasses 6.10.654 (build 654, Hub pin 6.10.653) · server @gotcos/glasses-server 6.93.0 · COS Control 0.5.352.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -782,13 +782,14 @@ footer .links a:hover{color:var(--gold)}
     <div class="badges">
       <span class="chip">App <b>6.10.654</b> · build 654</span>
       <span class="chip">Server <b>6.93.0</b></span>
-      <span class="chip">Control <b>0.5.351</b></span>
+      <span class="chip">Control <b>0.5.352</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
+        <li><a href="#release-352"><b>Mac app 0.5.352</b><span>Settings in categories with search and an On this page list, shorter labels, and pet dragging that works on macOS 27.2.</span></a></li>
         <li><a href="#release-351"><b>Mac app 0.5.351</b><span>Quick save, stalled-capture restart, Recover that checks the server, speaker ID on by default for Mac recordings, and opt-in iPhone microphone meetings.</span></a></li>
         <li><a href="#release-350"><b>Mac app 0.5.350</b><span>Usage date ranges and provider trends; Windu running cadence and failed-load recovery.</span></a></li>
         <li><a href="#release-349"><b>Mac app 0.5.349</b><span>Usage comparisons, period breakdowns and illustrated Windu idle animations.</span></a></li>
@@ -799,7 +800,6 @@ footer .links a:hover{color:var(--gold)}
         <li><a href="#release-342"><b>Mac app 0.5.342</b><span>Your edit, confirmed: the pill and dictation card show what you changed and what was learned.</span></a></li>
         <li><a href="#release-341"><b>Mac app 0.5.341</b><span>Distinct Jedi combat and shuffled opponents; Mac Voice N labels, text-only renaming and Slack edit learning.</span></a></li>
         <li><a href="#release-338"><b>Mac app 0.5.338</b><span>Live meeting window; Dismiss on Today; learn from your edits in Claude; lighter and steadier.</span></a></li>
-        <li><a href="#release-335"><b>Mac app 0.5.335</b><span>A Today home for Activity (opt-in); your own AI polish instructions.</span></a></li>
         
         <li><a href="#release-654"><b>Glasses 6.10.654</b><span>Phone lists and meeting answers build up in place while they load.</span></a></li>
         <li><a href="#release-653"><b>Glasses 6.10.653</b><span>Tailscale heals itself: fresh retries, and time for the Mac to repair the link.</span></a></li>
@@ -1006,11 +1006,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
     </li>
     <li>
       <h3>Choose Get started</h3>
-      <p>The welcome window checks for your AI provider, downloads the COS server and starts it automatically. No Homebrew, npm or npx installation is required for this step. When ready, choose Open Sessions. For glasses, use Copy Pairing Token and your Mac&rsquo;s network address in the next step.</p>
+      <p>The welcome window checks for your AI provider, downloads the COS server and starts it automatically. No Homebrew, npm or npx installation is required for this step. When ready, choose Open Sessions. For glasses, use Copy pairing token and your Mac&rsquo;s network address in the next step.</p>
       <details><summary>Developer alternative and optional local voice setup</summary>
       <div class="cmd"><span class="p">$</span><code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code><button type="button">Copy</button></div>
       <p>First run writes its config to <code>~/.cos-glasses/.env</code>, then prints your server URLs and an API token. The token is saved, so it stays the same across restarts.</p>
-      <p><strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and keep about 6 GB free. An interrupted model download keeps its partial file and resumes on the next Guided Setup run.</p>
+      <p><strong>Required for Mac voice transcription:</strong> run <code>brew install whisper-cpp</code> once and keep about 6 GB free. An interrupted model download keeps its partial file and resumes on the next Guided setup run.</p>
       <div class="tw"><table>
         <tr><th>Tier</th><th>Preview while dictating</th><th>Live transcript</th><th>Polish on save</th></tr>
         <tr><td><strong>Balanced</strong> (recommended)</td><td>Small.en</td><td>Large-v3-Turbo</td><td>Large-v3</td></tr>
@@ -1038,7 +1038,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.351, glasses 6.10.654, server 6.93.0.</strong> COS Control 0.5.351 is the public Mac download. COS Glasses 6.10.654 is the current companion pack: it is the canonical alias in the Hub repo, and since October 24, 2026 Even Hub lists 6.10.653. Server identity is 6.93.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.352, glasses 6.10.654, server 6.93.0.</strong> COS Control 0.5.352 is the public Mac download. COS Glasses 6.10.654 is the current companion pack: it is the canonical alias in the Hub repo, and since October 24, 2026 Even Hub lists 6.10.653. Server identity is 6.93.0, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -1054,7 +1054,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.93.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Meeting Turbo preview on, Adaptive replay off with raw preserved, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three agent CLIs detected. Buttons for Open COS, Open Cursor, Run Doctor, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.93.0, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Fast preview on, Playback cleanup off with the original kept, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three AI apps detected. Buttons for Open COS, Open Cursor, Run checks, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
@@ -1063,16 +1063,16 @@ Tap=Latest  ↓ Menu  ↑ Messages
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
           <div class="ccp-row" data-cc-row="jobs"><span>Background jobs</span><b>Allowed</b></div>
-          <div class="ccp-row" data-cc-row="preview"><span>Meeting preview</span><b>Turbo &#183; On</b></div>
-          <div class="ccp-row" data-cc-row="replay"><span>Adaptive replay</span><b>Off &#183; raw preserved</b></div>
+          <div class="ccp-row" data-cc-row="preview"><span>Fast preview</span><b>Turbo &#183; On</b></div>
+          <div class="ccp-row" data-cc-row="replay"><span>Playback cleanup</span><b>Original</b></div>
           <div class="ccp-row" data-cc-row="tier"><span>Transcription tier</span><b>Max</b></div>
           <div class="ccp-row" data-cc-row="dictate"><span>Preview, while dictating</span><b>Large-v3-Turbo</b></div>
           <div class="ccp-row" data-cc-row="commit"><span>Commit, live meeting</span><b>Large-v3</b></div>
           <div class="ccp-row" data-cc-row="polish"><span>Polish, on save</span><b>Large-v3</b></div>
           <div class="ccp-row" data-cc-row="sync"><span>Meeting sync</span><b>Idle</b></div>
-          <div class="ccp-row" data-cc-row="clis"><span>Agent CLIs</span><b>Claude &#183; Codex &#183; Cursor</b></div>
+          <div class="ccp-row" data-cc-row="clis"><span>AI apps</span><b>Claude &#183; Codex &#183; Cursor</b></div>
           <div class="ccp-row" data-cc-row="folder"><span>Work folder</span><b class="dim">~/Documents/COS</b></div>
-          <div class="ccp-acts"><span>Open COS</span><span>Open Cursor</span><span>Run Doctor</span><span>Restart Safely</span></div>
+          <div class="ccp-acts"><span>Open COS</span><span>Open Cursor</span><span>Run checks</span><span>Restart Safely</span></div>
           <div class="ccp-foot" data-cc-foot hidden></div>
         </div>
         <div class="ccp-card" data-cc-card hidden></div>
@@ -1088,7 +1088,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
         <ul>
           <li>Starts COS at login and holds the managed LaunchAgent. Control refuses to replace a process it does not recognize, so the port never has two owners.</li>
           <li>Reports the real agent CLI versions and the effective transcription tier, with the Whisper model behind each stage.</li>
-          <li><strong>Run Doctor</strong> is one coordinated check. <strong>Restart Safely</strong> waits for meetings and jobs to finish.</li>
+          <li><strong>Run checks</strong> is one coordinated check. <strong>Restart Safely</strong> waits for meetings and jobs to finish.</li>
           <li>Your existing <code>~/.cos-glasses</code> configuration, recordings, meetings, messages, and token stay compatible.</li>
         </ul>
       </article>
@@ -1143,10 +1143,10 @@ Tap=Latest  ↓ Menu  ↑ Messages
         <ul>
           <li><strong>Balanced</strong> or <strong>Max</strong> decides which Whisper model previews while you dictate, commits the live meeting, and polishes on save. The panel names all three.</li>
           <li><strong>Fast meeting preview</strong> shows Turbo text before the speaker-attributed Large-v3 chunk lands and replaces it. On by default; Control owns the machine-wide switch.</li>
-          <li><strong>Adaptive replay</strong> is a default-off canary. Play may build a cleaned copy for review; the raw WAV stays authoritative and one click away.</li>
-          <li><strong>Meetings Library</strong> points Control at the folder you already use, months of <code>YYYY-MM/*.md</code>. COS browses it in place and never moves or rewrites a file. Activity &rarr; Meetings adds a day calendar, transcript, summary, and keyword plus meaning search.</li>
+          <li><strong>Playback cleanup</strong> is off by default. Play may build a cleaned copy for review; the raw WAV stays authoritative and one click away.</li>
+          <li><strong>Meetings folder</strong> points Control at the folder you already use, months of <code>YYYY-MM/*.md</code>. COS browses it in place and never moves or rewrites a file. Activity, Meetings adds a day calendar, transcript, summary, and keyword plus meaning search.</li>
           <li>Since Control 0.5.232 a meeting, a thread, a memory and a Claude reply read as documents: headings, the metadata table, lists, task items, code, and the transcript as a disclosure that names its speakers. <strong>Copy as context</strong> is the one filled button on the pane and takes &#8984;C; every copy still copies the stored Markdown.</li>
-          <li>Since Control 0.5.234 meeting times read 1:02 PM in Meetings and in Speakers&rsquo; Meetings to review. The 24-hour clock is under Settings, Advanced, Clock. The server still sends 24-hour times; only the drawing changes.</li>
+          <li>Since Control 0.5.234 meeting times read 1:02 PM in Meetings and in Speakers&rsquo; Meetings to review. Choose 24-hour under Settings, General, Time format. The server still sends 24-hour times; only the drawing changes.</li>
           <li>Since Control 0.5.282, <strong>Live COS Ask</strong> sits beside the live transcript: presets, your own questions, files and screenshots shared in the meeting, and the <strong>Meeting assistant</strong> model under the Ask box or in Settings. Every question and answer is saved with the meeting. On a meeting the filled button is now <strong>Copy full context</strong> (&#8984;C on a saved meeting), which adds the answers, their sources and file text to the transcript. Needs server 6.69.0 or newer.</li>
         </ul>
       </article>
@@ -1160,7 +1160,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
           <li>With server 6.48.0 and later, Control 0.5.232 reads the state Claude Code reports itself: a permission prompt reads Waiting with its command the second it appears, a question or plan approval reads Waiting with its kind, a rate limit reads Failed, and a queued follow-up is counted on the row.</li>
           <li>Since Control 0.5.233 an open session shows a live Activity block above its turns: the state with a clock, the prompt, the last eight tool lines (Read, Edited, Ran, Searched, Delegated), a <em>missed N</em> chip when frames were lost and a <em>queued</em> chip while a follow-up waits. It streams from server 6.48.1 and later; against an older server the block says so and the stored turns stand.</li>
           <li><strong>Recent / Archive</strong> lists every stored day and searches months of history by text. It is a real scan on your server, not a filter.</li>
-          <li><strong>COS Data</strong> connects Memory and Threads through the authenticated bridge and never creates, moves, or rewrites your stored data. A message carrying video, photos, or files says so before you open it.</li>
+          <li><strong>Notes folder</strong> connects Memory and Threads through the authenticated bridge and never creates, moves, or rewrites your stored data. A message carrying video, photos, or files says so before you open it.</li>
         </ul>
       </article>
 
@@ -1198,7 +1198,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <p>Full notes: the <a href="https://github.com/ukaoma/cos-control-macos/blob/main/CHANGELOG.md" rel="noopener">COS Control changelog</a> and the <a href="https://github.com/ukaoma/cos-glasses-server/blob/main/CHANGELOG.md" rel="noopener">server changelog</a> on GitHub.</p>
   </details>
 
-  <div class="note"><p><strong>Migrating from Terminal?</strong> Stop the foreground server with Control-C first. Then install COS Control and run Guided Setup. You can return to the npx command later without converting your data.</p></div>
+  <div class="note"><p><strong>Migrating from Terminal?</strong> Stop the foreground server with Control-C first. Then install COS Control and run Guided setup. You can return to the npx command later without converting your data.</p></div>
   <div class="btns"><a class="btn primary" href="/control/">Download COS Control</a><a class="btn ghost" href="https://www.npmjs.com/package/@gotcos/glasses-server">Use npm instead</a></div>
 </section>
 
@@ -1637,9 +1637,9 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
       <p style="font-size:.95rem">A saved meeting is also the starting point for a new question. Open it in <strong>Review Meetings</strong> and double-tap an idle meeting to record a voice follow-up with that exact meeting attached as context. A compact <span class="g-key">Meeting context attached</span> indicator replaces the usual message-reference label, and the finished answer is stamped with the meeting so you can see what it was grounded in, both on the lens and in phone message review.</p>
       <p style="font-size:.95rem">The grounding is the real record, not a summary. The paired server hands the Mac agent a bounded, UTF-8-safe copy of the canonical meeting so it can read the full transcript for decisions, outcomes, sentiment, details, or related topics. This needs server <strong>6.12.7</strong>: an older server fails closed for this one action with a truthful update-server message, and COS never silently sends an ungrounded meeting question. A follow-up you queue or recover re-fetches the exact meeting before it runs, and survives the automatic post-meeting rename.</p>
       <h3>Connect an existing meeting library</h3>
-      <p style="font-size:.95rem">In COS Control, choose <strong>Meetings Library</strong>. The recommended choice is the folder you already use: its immediate children are months such as <code>2026-08</code>, containing Markdown meetings. COS browses it without moving, renaming, or rewriting anything. If you already organize meetings into several libraries, choose their parent instead; each custom-named folder only needs <code>meetings/YYYY-MM/*.md</code> inside.</p>
+      <p style="font-size:.95rem">In COS Control, choose <strong>Meetings folder</strong>. The recommended choice is the folder you already use: its immediate children are months such as <code>2026-08</code>, containing Markdown meetings. COS browses it without moving, renaming, or rewriting anything. If you already organize meetings into several libraries, choose their parent instead; each custom-named folder only needs <code>meetings/YYYY-MM/*.md</code> inside.</p>
       <p style="font-size:.95rem"><strong>Your COS role never determines these names.</strong> The same setup works for executives, marketers, engineers, product and people leaders, attorneys, chiefs of staff, clinicians, and other roles. The Blueprint adapts COS behavior to the person; your existing filesystem remains yours.</p>
-      <p style="font-size:.95rem">A direct library can coexist with a separate operations pipeline. Review Meetings merges direct, enriched, and standalone G2 records, then prefers the enriched writable copy when the same session exists more than once. Direct-only records show as read-only for speaker edits. If the picker finds an incomplete shape, it names both valid layouts and offers Choose Again or Skip for Now.</p>
+      <p style="font-size:.95rem">A direct library can coexist with a separate operations pipeline. Review Meetings merges direct, enriched, and standalone G2 records, then prefers the enriched writable copy when the same session exists more than once. Direct-only records show as read-only for speaker edits. If the picker finds an incomplete shape, it names both valid layouts and offers Choose again or Skip for now.</p>
     </div>
     <div>
       <h3>The lens catches up</h3>
@@ -1667,7 +1667,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Named speakers need the voiceprint model</h3>
       <p style="font-size:.95rem">Telling one voice from another uses a <strong>~26&nbsp;MB voiceprint model</strong> that is deliberately not bundled in the npm package. Server 6.37.3 fetches it during ordinary setup. Without it nothing breaks and nothing warns you on the glasses: every voice is simply recorded as <strong>Me</strong> or <strong>Ext</strong>.</p>
-      <p style="font-size:.95rem">If speakers are not being named, install it and restart the server: <code>npx --yes @gotcos/glasses-server@latest --setup-speaker-model</code>. Set <code>SKIP_SPEAKER_MODEL_DOWNLOAD=1</code> to opt out on a metered connection. COS Control (0.5.70 and newer) shows a banner on <strong>Review speakers</strong> with a Guided Setup button whenever the model is missing.</p>
+      <p style="font-size:.95rem">If speakers are not being named, install it and restart the server: <code>npx --yes @gotcos/glasses-server@latest --setup-speaker-model</code>. Set <code>SKIP_SPEAKER_MODEL_DOWNLOAD=1</code> to opt out on a metered connection. COS Control (0.5.70 and newer) shows a banner on <strong>Review speakers</strong> with a Run guided setup button whenever the model is missing.</p>
       <p style="font-size:.95rem"><strong>Name held audio or review a meeting.</strong> In <em>Activity window, Speakers, Samples to review</em>, listen to audio the server is still holding (72 hours), then choose a name or an existing voice suggestion. Since Control 0.5.223 with server 6.46.0, both Name and Add to a person open a preview before Apply. The preview separates samples used for training from transcript positions and shows matching segments only inside the samples&rsquo; own meetings. <em>Review speakers</em> still renames a voice inside a saved meeting; a new name with the &#8220;Just this meeting&#8221; scope also creates the profile.</p>
       <p style="font-size:.95rem"><strong>Review the result, and undo labels when needed.</strong> Apply reports each sample and meeting copy, including samples enrolled without a transcript position and any copy it could not safely change. Listen before applying a large set of matches, and acknowledge owner samples when asked. Undo restores this batch&rsquo;s labels; enrolled voice samples stay kept and deleted audio stays deleted. Interrupted naming offers a fresh preview or an explicit revert. A labels-newer-than-graph badge means the graph still needs to catch up; search refreshes at up to 10 meetings per sync.</p>
       <p style="font-size:.95rem"><strong>Enrolment does not reach back past the model install.</strong> Voice evidence is only banked while the model is loaded, so meetings recorded before you installed it can be relabeled but cannot produce a voice profile. Record a fresh meeting after setup, or enrol from held audio inside the 72-hour window.</p>
@@ -1864,7 +1864,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="cmd"><span class="p">$</span><code>brew install ollama &amp;&amp; brew services start ollama</code><button type="button">Copy</button></div>
   <div class="cmd"><span class="p">$</span><code>ollama pull qwen2.5-coder</code><button type="button">Copy</button></div>
   <p style="max-width:74ch">That is the whole setup. When the daemon answers on <code>127.0.0.1:11434</code> with at least one pulled model, <strong>Ollama</strong> appears in the glasses and companion pickers. When the daemon is down, the slot hides again, and a saved Ollama choice safely resets to Opus. Since server 6.40.1 a local model can search your meetings and memories and read one meeting, read-only, when the pulled tag advertises tool support and the COS pipeline is configured. Writes, Bash, MCP, web search and web fetch are not on this path. Still no vision, no Continue or Fork, no Live Cues.</p>
-  <p style="max-width:74ch">Two optional keys in <code>~/.cos-glasses/.env</code>: <code>COS_OLLAMA_MODEL</code> pins the model COS uses, and <code>COS_OLLAMA_HOST</code> points at an alternate loopback address (LAN addresses and <code>0.0.0.0</code> are refused). COS Control 0.5.73 and newer preserves both keys across server updates, so Update Server never drops your local-model settings. Since Control 0.5.74 the About view shows an <strong>Ollama</strong> row with the live model when the daemon is ready, and Doctor prints a matching line; no row is the correct render for a Mac without a local daemon.</p>
+  <p style="max-width:74ch">Two optional keys in <code>~/.cos-glasses/.env</code>: <code>COS_OLLAMA_MODEL</code> pins the model COS uses, and <code>COS_OLLAMA_HOST</code> points at an alternate loopback address (LAN addresses and <code>0.0.0.0</code> are refused). COS Control 0.5.73 and newer preserves both keys across server updates, so Update Server never drops your local-model settings. Since Control 0.5.74 the About view shows an <strong>Ollama</strong> row with the live model when the daemon is ready, and Run checks prints a matching line; no row is the correct render for a Mac without a local daemon.</p>
   <p style="max-width:74ch">Requires server <strong>6.39.0</strong> or newer; <strong>6.40.1</strong> or newer is strongly recommended.</p>
   <ul class="tight" style="max-width:74ch">
     <li>6.39.1 fixed durable Ollama jobs forgetting their engine.</li>
@@ -1966,7 +1966,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="cards">
     <div class="card">
       <h3>Accessibility is on, but dictation only copies the text</h3>
-      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose <strong>COS Control</strong> in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
+      <p>The card says <strong>Allow COS Control in Accessibility</strong> while System Settings shows COS Control switched on. macOS can keep an old entry that no longer matches the installed app, often after an update. Remove it and add it again: open <strong>System Settings, Privacy &amp; Security, Accessibility</strong>, select <strong>COS Control</strong>, click the minus button, then click plus, choose <strong>COS Control</strong> in Applications and switch it on. In COS Control you can do the same from <strong>Settings, Pet and appearance, Reset and add again</strong>. Switching the toggle off and on is often not enough.</p>
     </div>
     <div class="card">
       <h3>COS Control is missing from Screen &amp; System Audio Recording</h3>
@@ -2054,7 +2054,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     </div>
     <div class="card">
       <h3>Message numbers are in the thousands</h3>
-      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (this route is token-gated, so a plain <code>curl</code> returns 401 &mdash; copy the token from COS Control &rarr; <b>Copy Pairing Token</b>):</p>
+      <p>If replies come back numbered <code>#14820</code> instead of <code>#12</code>, your install predates message eras and is still counting from the whole archive. Check it with your pairing token (this route is token-gated, so a plain <code>curl</code> returns 401; copy the token with <b>Copy pairing token</b> in COS Control):</p>
       <p><code>curl -H "X-Cos-Token: YOUR-TOKEN" http://YOUR-SERVER-IP:3141/api/message-counter</code></p>
       <p>A healthy install returns both a <code>max</code> and an <code>era</code>. If <code>era</code> is missing, update to server <strong>6.16.9 or newer</strong>, then start a fresh era once:</p>
       <p><code>npx --yes tsx server/scripts/reset-message-era.ts --confirm</code></p>
@@ -2063,7 +2063,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.351</strong>, server <strong>6.93.0</strong>, and COS Glasses <strong>6.10.653</strong> from Even Hub (Public October 24, 2026) or 6.10.654 from the Hub repo. Install <strong>6.10.654</strong> for the newest companion build; Even Hub lists 6.10.653, and 6.10.654 is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.352</strong>, server <strong>6.93.0</strong>, and COS Glasses <strong>6.10.653</strong> from Even Hub (Public October 24, 2026) or 6.10.654 from the Hub repo. Install <strong>6.10.654</strong> for the newest companion build; Even Hub lists 6.10.653, and 6.10.654 is the canonical alias in the Hub repo. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2084,7 +2084,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.654. The current supported pair is COS Glasses 6.10.654 (Even Hub lists 6.10.653) and server 6.93.0; COS Control 0.5.351 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.654. The current supported pair is COS Glasses 6.10.654 (Even Hub lists 6.10.653) and server 6.93.0; COS Control 0.5.352 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2121,6 +2121,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Mac app</h3>
+      <details class="release-detail rn" id="release-352"><summary><span class="rn-t">Control 0.5.352 / server 6.93.0</span><span class="rn-g">Settings in ten categories with search and an On this page list, shorter labels, Use classic Settings, and pet dragging on macOS 27.2.</span></summary><div class="rn-b"><p><strong>Settings in categories.</strong> Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses and iPhone; Meetings; Dictation; Transcription and voice; Work and agents; Privacy and permissions; Pet and appearance; System and updates. Each category is a set of cards, and the settings you rarely need sit under Advanced in each card. On this page lists the cards in the category and jumps to the one you pick.</p><p><strong>Shorter labels, same settings.</strong> Many settings have clearer, shorter names, for example Run checks for Run Doctor, Notes folder for COS Data and Show AI sessions for Show Claude sessions. Search settings (<kbd>⌘F</kbd>) finds a setting by its new or its old name and says where it is. Your saved preferences do not change.</p><p><strong>Every way in opens it.</strong> <kbd>⌘,</kbd>, the Dock menu, the pet, the welcome window and links from other views open the new Settings at the right place. To go back, turn on <strong>Use classic Settings</strong> in General, Advanced: the old one-page Settings returns, and each opener goes where it did before. <strong>Use new Settings</strong>, at the top of that page, switches back.</p><p><strong>Roll back asks first.</strong> Roll back server, in System and updates, Advanced, now asks before it changes the server.</p><p><strong>Pet dragging on macOS 27.2.</strong> macOS 27.2 stopped the session pet from being dragged. COS Control now moves the pet itself, on every macOS version, and a pet dropped partly off a screen moves back inside it.</p></div></details>
       <details class="release-detail rn" id="release-351"><summary><span class="rn-t">Control 0.5.351 / server 6.93.0</span><span class="rn-g">Quick save, stalled-capture restart, Recover that checks the server, speaker ID on by default for Mac recordings, and opt-in iPhone microphone meetings.</span></summary><div class="rn-b"><p><strong>Quick save.</strong> Stopping a Mac recording shows Saving, then Saved, with no chunk counter, retained-recording warning or Retry during an ordinary save, which takes about five seconds. If a save runs past 20 seconds the panel says how far it got, and a short COS hiccup right after Stop is retried quietly for about a minute and a quarter before the panel says Not saved yet and offers Retry.</p><p><strong>Recover and stalled captures.</strong> Before Meetings offers to recover a retained Mac recording, Control asks the server whether it already saved it; if it did, the row goes away. A grayed-out Recover now says why. If a Mac recording stops receiving audio for 30 seconds, the panel says when it stopped and Control tries once to restart it; if that does not help, one notification says so, and Stop and save keeps everything up to then. Audio is written on its own thread, and quitting Control with a termination signal keeps every saved chunk for the next launch.</p><p><strong>iPhone microphone, off by default.</strong> Control shows meetings recorded from the iPhone microphone as iPhone microphone and offers Stop on iPhone. Every line reads Speaker, and naming, merging and speaker settings are off for these recordings. It records the iPhone microphone only, not iOS system audio, so Zoom, YouTube and calls playing on the phone are not captured. To turn it on, add <code>COS_IPHONE_MICROPHONE_MEETINGS=1</code> to <code>~/.cos-glasses/.env</code>, install Parakeet and set the HQ transcription engine to Parakeet Ultra, then restart the server when nothing is recording. It also needs a COS Glasses companion that offers iPhone microphone under Meeting microphone, which is not in the Glasses Hub yet.</p><p><strong>Speaker ID, on by default.</strong> Mac recordings now show anonymous Voice 1, Voice 2 and so on as you record, and each voice keeps its number across the 6-second chunks. The saved meeting keeps those live numbers. To turn it off, add <code>COS_MAC_LIVE_VOICES=off</code> to <code>~/.cos-glasses/.env</code> and restart the server when nothing is recording; that gives the 6.92.0 behavior exactly. A Voice is a number, never a name, until you assign it. Known limit: when one person hands over to another exactly at a chunk boundary, the new speaker can be given the previous speaker's number, and the saved meeting keeps it. Update COS Control to 0.5.351 before the server: 0.5.349 and 0.5.350 show each Voice as a named chip with the initial V.</p><p><strong>Assign a Voice to a person.</strong> On a Mac recording, pick a person already in your voice profiles for a Voice and Control previews how many voice samples it would add and how well the voice matches. If it does not match, holds more than one voice or has too little audio, Save is replaced by Rename only, the default, and a separate Add anyway that asks once more. Your own profile is not offered. Samples added this way are capped at 10, never exceed the person's other samples, and are the first to go when other samples need room. A typed name still renames text only.</p></div></details>
       <details class="release-detail rn" id="release-350"><summary><span class="rn-t">Control 0.5.350 / server 6.92.0</span><span class="rn-g">Usage date ranges and provider trends; Windu running cadence and failed-load recovery.</span></summary><div class="rn-b"><p><strong>Usage, by date and provider.</strong> Last 30 days is the default, with 7/30/90-day calendar windows, inclusive custom dates and monthly views of the same selection. Compare provider or model lines and stacked bars; inspect provider totals, model shares, token categories and daily records. Unknown prices and incomplete coverage stay explicit. API value is an estimate, not a subscription bill or plan balance.</p><p><strong>Windu cadence and recovery.</strong> One-session run bursts have matching cadence and a shorter raised-saber pause. A failed cast load can retry on a later refresh. Exact stock packs update; custom artwork, timing and scale stay yours. This release does not establish the cause of the reported repeated-lineup behavior.</p></div></details>
       <details class="release-detail rn" id="release-349"><summary><span class="rn-t">Control 0.5.349 / server 6.92.0</span><span class="rn-g">Usage comparisons and illustrated Windu idle states.</span></summary><div class="rn-b"><p><strong>Illustrated Windu idle states.</strong> Windu turns his head while idle and moves through meditation poses with a violet power-up aura, alongside illustrated patrol frames. The thirteen combat casts keep their artwork, timing and handoffs. Exact stock packs update automatically; custom artwork, timing and scale stay intact. Previous artwork remains available for rollback. Usage gains hover and keyboard period breakdowns, weekend comparisons and clearer token shares within each provider. Token shares are not subscription allowance; API values remain estimates. Includes the previous dictation fixes; server 6.92.0 and its settings are unchanged.</p></div></details>
@@ -2579,7 +2580,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.654 / Control 0.5.351 / server 6.93.0, 2026-10-26; Hub packs to 6.10.654)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.654 / Control 0.5.352 / server 6.93.0, 2026-10-28; Hub packs to 6.10.654)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

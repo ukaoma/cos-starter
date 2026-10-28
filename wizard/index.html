@@ -439,7 +439,7 @@
       <div class="res-label">1 &middot; Open COS Control on your Mac</div>
       <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
       <ul class="enable">
-        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.351/COS-Control-macOS-arm64-0.5.351.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.352/COS-Control-macOS-arm64-0.5.352.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
         <li>Open COS Control from Applications. The current download is Developer ID signed and notarized by Apple. When updating manually, quit the old Control first and choose Replace in Applications. Keep rollback copies outside Applications and open only the installed COS Control.app.</li>
         <li>Sign in to a supported AI provider if prompted, then choose <b>Get started</b>. COS prepares and starts the server. When it is ready, choose <b>Open Sessions</b>. Add local voice separately before testing voice prompts or meetings.</li>
 
@@ -453,24 +453,24 @@
       <ul class="enable">
         <li>Start a task in your signed-in AI app. In COS Control, choose <b>Open Sessions</b> to follow it and continue the conversation.</li>
         <li>Cloud Puff and its Running, Done and Waiting ledger help you follow active work. No glasses or voice downloads are needed for this step.</li>
-        <li>If setup cannot finish, check your internet connection and choose <b>Try again</b>. Use <b>Doctor</b> in the menu-bar app for a specific error.</li>
+        <li>If setup cannot finish, check your internet connection and choose <b>Try again</b>. Use <b>Run checks</b> in the menu-bar app for a specific error.</li>
       </ul>
       <div class="res-label">3 &middot; Add your work when you are ready</div>
       <ul class="enable">
-        <li>Choose your <b>Work Folder</b> and, if you have one, your <b>Meetings Library</b> in COS Control.</li>
+        <li>Choose your <b>Work folder</b> and, if you have one, your <b>Meetings folder</b> in COS Control.</li>
         <li>Keep using Sessions, or add glasses, voice and personal context below. These do not block core Mac setup.</li>
       </ul>
       <details id="glasses-setup"><summary>Add your glasses (optional)</summary>
       <div class="res-label">Connect the app on your iPhone</div>
-      <p>Once COS Control shows the server running, use <b>Copy Pairing Token</b>. The token stays on the clipboard for 60 seconds.</p>
+      <p>Once COS Control shows the server running, use <b>Copy pairing token</b>. The token stays on the clipboard for 60 seconds.</p>
       <ul class="enable">
         <li>Open the <b>Even Realities</b> app &rarr; <b>Even Hub</b> &rarr; install <b>COS Glasses</b>.</li>
-        <li>Open it and enter the server URL and API token (or tap <b>"I have a COS username"</b> and skip the typing). The URL is <code>http://</code> your Mac&rsquo;s address <code>:3141</code>: the terminal prints it; with COS Control, use the Mac&rsquo;s Wi-Fi address from System Settings or its Tailscale address. The token is what the terminal printed, or what <b>Copy Pairing Token</b> put on the clipboard.</li>
+        <li>Open it and enter the server URL and API token (or tap <b>"I have a COS username"</b> and skip the typing). The URL is <code>http://</code> your Mac&rsquo;s address <code>:3141</code>: the terminal prints it; with COS Control, use the Mac&rsquo;s Wi-Fi address from System Settings or its Tailscale address. The token is what the terminal printed, or what <b>Copy pairing token</b> put on the clipboard.</li>
         <li>Tap <b>Connect</b>.</li>
       </ul>
       <div class="res-label">Try the glasses</div>
       <ul class="enable">
-        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided Setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided Setup again in COS Control before your first voice prompt.</li>
+        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided setup again in COS Control before your first voice prompt.</li>
         <li><b>Learn tap-and-hold:</b> tap and release, then quickly press again and keep holding for the shortcut window above the HUD. The default COS order is <b>Home</b>, <b>Ask COS</b>, <b>Start Meeting</b>, <b>Model</b>, <b>Messages</b>, <b>Sessions</b>, then <b>Tasks</b>. Scroll and tap to select. While recording, <b>Home</b>, <b>Resume Meeting</b> and <b>Stop Meeting</b> lead; Tasks stays in Quick Actions instead. <a href="/docs/#hold-menu">Practice the hold gesture.</a></li>
         <li><b>Ask.</b> On the glasses, tap and hold, choose <b>Ask COS</b>, and say <b>"brief me"</b>. The answer lands on the lens.</li>
         <li><b>Meeting.</b> Tap and hold, choose <b>Start Meeting</b>, talk for a minute, then <b>Stop</b>. Takeaways and action items appear.</li>
@@ -479,8 +479,8 @@
         <li>Optional photo proof: tap the camera, stage one photo, ask <b>"What am I looking at?"</b>, then open its phone gallery. Turn on <b>Lens images</b> to test the manual G2 preview.</li>
       </ul>
       </details>
-      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Choose that folder as your <b>Work Folder</b> in COS Control. For a manual terminal installation, run the server command from that folder. New users can add the <a href="/cos-starter.md">optional Starter Kit</a> after their first session.</div>
-      <div class="note"><strong>Already have meeting files?</strong> After setup, open <a href="/control/">COS Control</a> and choose <strong>Meetings Library</strong>. The recommended path is simply the folder that already contains your <code>YYYY-MM/*.md</code> meeting folders. If you keep several libraries, choose their parent; each custom-named folder only needs <code>meetings/YYYY-MM/*.md</code> inside. The website does not change your Mac; the final folder choice happens in COS Control. You can also skip this step and use new standalone G2 recordings.</div>
+      <div class="note"><strong>Already run a COS from the Starter Kit?</strong> Choose that folder as your <b>Work folder</b> in COS Control. For a manual terminal installation, run the server command from that folder. New users can add the <a href="/cos-starter.md">optional Starter Kit</a> after their first session.</div>
+      <div class="note"><strong>Already have meeting files?</strong> After setup, open <a href="/control/">COS Control</a> and choose <strong>Meetings folder</strong>. The recommended path is simply the folder that already contains your <code>YYYY-MM/*.md</code> meeting folders. If you keep several libraries, choose their parent; each custom-named folder only needs <code>meetings/YYYY-MM/*.md</code> inside. The website does not change your Mac; the final folder choice happens in COS Control. You can also skip this step and use new standalone G2 recordings.</div>
       <div class="note"><strong>Never babysit the server again.</strong> Have your COS create a <code>/cos-glasses</code> skill &mdash; ask it: <em>"add the /cos-glasses skill from the Starter Kit."</em> Then <code>/cos-glasses</code> starts the server, health-checks it, keeps it on the latest release, and troubleshoots connection issues for you. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md">skills/cos-glasses.md</a>.</div>
       <div class="note"><strong>Pick up where the glasses left off.</strong> Add the <code>/glasses-day</code> skill and your COS pulls the day's glasses questions and answers into your desk session &mdash; so anything you asked on the go becomes something you can act on. Grab it at <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/glasses-day.md">skills/glasses-day.md</a>.</div>
       <div class="actions">
@@ -550,7 +550,7 @@
       <button type="button" class="opt" data-ctx="email"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Inbox</span><h3>Email</h3><p>Threads, follow-ups, drafts.</p></button>
       <button type="button" class="opt" data-ctx="slack"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Chat</span><h3>Slack</h3><p>Channels and DMs you track.</p></button>
       <button type="button" class="opt" data-ctx="meetingtools"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Recall</span><h3>Meeting tools</h3><p>Granola, Fireflies, Fathom transcripts.</p></button>
-      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">COS Data</span><h3>Memory and Threads</h3><p>What you decided, and what is still open. Set up in the next step.</p></button>
+      <button type="button" class="opt" data-ctx="vector"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Notes folder</span><h3>Memory and Threads</h3><p>What you decided, and what is still open. Set up in the next step.</p></button>
       <button type="button" class="opt" data-ctx="mcp"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Extend</span><h3>Custom MCPs</h3><p>Any tool with an MCP server. Bring your own.</p></button>
     </div>
     <div class="note"><strong>Your role is not your folder structure.</strong> Executive, marketer, engineer, product lead, people lead, attorney, chief of staff, clinician, or something else: the Blueprint personalizes how COS works, never what your folders must be called. For the easiest setup, choose the folder that directly contains <code>YYYY-MM/*.md</code>. Organize several libraries only if you already work that way; their names are entirely yours.</div>
@@ -623,11 +623,11 @@
       <div class="row"><span class="k">Model</span><span class="v" id="r-model">Sonnet <small>(default)</small></span></div>
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
       <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
-      <div class="row"><span class="k">Memory &amp; Threads</span><span class="v" id="r-memory">New folders</span></div>
+      <div class="row"><span class="k">Memory and threads</span><span class="v" id="r-memory">New folders</span></div>
     </div>
 
     <div class="res-label">1 · Start COS on your Mac</div>
-    <p style="font-size:0.88rem;margin:0 0 0.5rem;">Open <a href="/control/#install">COS Control</a>, connect your AI and choose <b>Get started</b>. For optional local voice afterward, run <b>Guided Setup</b> and choose <b id="r-control-tier">Balanced</b>.</p>
+    <p style="font-size:0.88rem;margin:0 0 0.5rem;">Open <a href="/control/#install">COS Control</a>, connect your AI and choose <b>Get started</b>. For optional local voice afterward, run <b>Guided setup</b> and choose <b id="r-control-tier">Balanced</b>.</p>
     <details><summary>Manual terminal alternative (requires Node.js)</summary>
     <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span><span id="r-server-command">npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</span><span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The glasses app installs from the Even Hub on your iPhone. See Add your glasses above.</p></details>
@@ -688,7 +688,7 @@
 
       <div class="step" data-step="1 · Server"><h2>Start the COS Glasses server</h2>
         <p class="sub">Runs on your own Mac, as a background service under COS Control or in a terminal you keep open.</p>
-        <div class="note"><strong>No terminal: COS Control.</strong> <a href="/control/">Download COS Control</a>, move it into Applications, open it, connect your AI provider and choose <b>Get started</b>. It installs this same server, starts it, and keeps it running at login; Doctor, safe restart, update and rollback live in the menu bar. Skip the command below, and use <b>Copy Pairing Token</b> in step 4. Already running the server in a terminal? Stop it with Ctrl-C first; Control refuses to take over a process it does not own.</div>
+        <div class="note"><strong>No terminal: COS Control.</strong> <a href="/control/">Download COS Control</a>, move it into Applications, open it, connect your AI provider and choose <b>Get started</b>. It installs this same server, starts it, and keeps it running at login; Checks, safe restart, update and rollback live in the menu bar. Skip the command below, and use <b>Copy pairing token</b> in step 4. Already running the server in a terminal? Stop it with Ctrl-C first; Control refuses to take over a process it does not own.</div>
         <p class="sub">Or in the terminal:</p>
         <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest<span class="copy-hint">click to copy</span></div>
         <div class="note"><strong>Voice runs locally.</strong> Mac whisper.cpp remains the authoritative meeting engine and costs zero per minute. Install once: <code>brew install whisper-cpp</code>. Since COS Glasses 6.8.336, you can also choose on-phone Moonshine Tiny or Base for rolling Message and Meeting preview. Text forms and may revise while you speak; the shared glossary + AI finalizer cleans settled phrases, while speaker-attributed Large-v3 remains canonical for meetings. This requires server 6.27.2 or newer. Cloud fallback stays off unless the server operator explicitly enables it with <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and configures a key.</div>
@@ -712,7 +712,7 @@
 
       <div class="step" data-step="4 · Connect"><h2>Connect and go</h2>
         <ul class="enable">
-          <li>Enter your Mac's Tailscale IP and paste the API token: the server terminal prints it, or click <strong>Copy Pairing Token</strong> in COS Control (60 seconds on the clipboard).</li>
+          <li>Enter your Mac's Tailscale IP and paste the API token: the server terminal prints it, or click <strong>Copy pairing token</strong> in COS Control (60 seconds on the clipboard).</li>
           <li>Leave the server running, in the terminal or under COS Control, then tap <strong>Connect</strong>.</li>
         </ul>
         <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" &mdash; your server details resolve automatically, no IP or token needed.</div>
@@ -722,7 +722,7 @@
       <div class="step"><h2>Troubleshooting</h2>
         <ul class="enable">
           <li><strong>Full Mac troubleshooting</strong>: every COS Control fix is in the <a href="/control/docs/#fixes">Mac guide</a>.</li>
-          <li><strong>Dictation only copies, though Accessibility shows COS Control on</strong>: macOS kept an old entry. In System Settings, Privacy &amp; Security, Accessibility, select COS Control, remove it with the minus button, then add it back with plus and switch it on. COS Control Settings, Session pet, <strong>Reset and add again</strong> does the same.</li>
+          <li><strong>Dictation only copies, though Accessibility shows COS Control on</strong>: macOS kept an old entry. In System Settings, Privacy &amp; Security, Accessibility, select COS Control, remove it with the minus button, then add it back with plus and switch it on. COS Control Settings, Pet and appearance, <strong>Reset and add again</strong> does the same.</li>
           <li><strong>COS Control missing from Screen &amp; System Audio Recording</strong>: macOS lists it only after COS asks. Start one Mac recording with All Mac audio and choose Allow, or click plus under System Audio Recording Only and choose COS Control.</li>
           <li><strong>"Cannot reach server"</strong> &mdash; confirm both devices are on Tailscale (or the same WiFi) and the server is still running (the terminal window, or the COS Control menu bar item).</li>
           <li><strong>"Claude not found"</strong> &mdash; Claude Desktop alone is not Claude Code. Follow the <a href="https://code.claude.com/docs/en/setup">official Claude Code installation guide</a> and sign in, or install <a href="https://developers.openai.com/codex/app/">Codex for Mac</a>. Return to COS Control and choose Check again.</li>
@@ -1152,8 +1152,8 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
     if (state.voice === 'openai') li.push('Set <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and add your <b>OPENAI_API_KEY</b> for deliberate cloud voice fallback.');
-    else if (state.transcriptionTier === 'max') li.push('For optional voice, use COS Control Guided Setup and choose Max, or use the manual terminal alternative above. Max uses Large-v3 preview and commit, Large-v3 polish, with Turbo retained as the safe fallback.');
-    else li.push('For optional voice, use COS Control Guided Setup and choose Balanced, or use the manual terminal alternative above. Balanced uses Small.en preview, Turbo commit and Large-v3 polish.');
+    else if (state.transcriptionTier === 'max') li.push('For optional voice, use COS Control Guided setup and choose Max, or use the manual terminal alternative above. Max uses Large-v3 preview and commit, Large-v3 polish, with Turbo retained as the safe fallback.');
+    else li.push('For optional voice, use COS Control Guided setup and choose Balanced, or use the manual terminal alternative above. Balanced uses Small.en preview, Turbo commit and Large-v3 polish.');
     if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
     if (ctx.length) li.push('Connect <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
     // Per-mode Memory setup. The previous single line described the bridge tier only
@@ -1167,10 +1167,10 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
       li.push('Browse it from the Mac with <b>Review Memories</b> and <b>Review Threads</b> in COS Control (0.5.18+), or from the glasses under Quick Actions.');
     } else if (state.memoryMode === 'files-existing') {
       li.push('Put your existing notes where COS looks, without moving them: <code>ln -s /path/to/your/notes ~/.cos-glasses/memory</code>. Symlinks are followed at any depth on server <b>6.22.1</b> or newer &mdash; on 6.22.0 only a top-level link is read.');
-      li.push('Or point <b>COS Data</b> in COS Control straight at the folder that contains your <code>memory/</code> or <code>threads/</code> subfolder. Nothing is copied, moved, or rewritten; browsing is read-only.');
+      li.push('Or point <b>Notes folder</b> in COS Control straight at the folder that contains your <code>memory/</code> or <code>threads/</code> subfolder. Nothing is copied, moved, or rewritten; browsing is read-only.');
       li.push('Accepted names are <code>memory/</code> or <code>memories/</code> and <code>threads/</code> or <code>thread/</code>. Any nesting inside them is fine.');
     } else if (state.memoryMode === 'bridge') {
-      li.push('In <b>COS Control</b>, choose <b>COS Data</b> and select your COS workspace or its <code>operations/scripts</code> folder. Control verifies <code>cos_api_bridge.py</code>, an executable <code>venv/bin/python3</code>, bridge protocol 1, and the authenticated server route before saving.');
+      li.push('In <b>COS Control</b>, choose <b>Notes folder</b> and select your COS workspace or its <code>operations/scripts</code> folder. Control verifies <code>cos_api_bridge.py</code>, an executable <code>venv/bin/python3</code>, bridge protocol 1, and the authenticated server route before saving.');
       li.push('Memory needs an existing local <code>cos_memory</code> Qdrant collection; Threads use the workspace thread cache and manual store. Validation never creates or changes stored data, and an existing empty store is healthy.');
       li.push('The bridge takes precedence over plain folders whenever it resolves, so a workspace install browses the vector store rather than markdown.');
     }
