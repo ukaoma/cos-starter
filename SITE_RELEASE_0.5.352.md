@@ -28,11 +28,8 @@ button and row text). Every new label used here was found in that source. Re-che
    checkout run:
    `git diff 9d9d8b3 <release-sha> -- Sources/SettingsHubCatalog.swift Sources/Views.swift Sources/MacDictation*.swift Sources/MeetingAsk.swift`
    Any label change there needs the matching site edit (search this file's ledger for the old label).
-2. **Decide the 2dbadec question.** `claude/control-352` 2dbadec (Work suggestions card re-checks when the server
-   comes up; a failed update download offers Unstuck) is NOT in 9d9d8b3. If it ships in 0.5.352, add these two items
-   to the `nextStable` 0.5.352 section, and the same sentences to both release notes:
-   - "The setup guide's Work suggestions row checks again when the server comes up, says which key is in use, and offers Add a key only when no key is saved."
-   - "If an update download fails or times out, the update banner and What's New offer Unstuck beside Try again."
+2. **Version.** The release branch's Info.plist still says 0.5.351 / 405 at 9d9d8b3; the lead bumps it at release
+   time. The site is drafted for 0.5.352 / build 406, so nothing changes here unless the build number does.
 3. **Match the app's bundled notes.** The appcast 0.5.352 summary and section must equal `Resources/WhatsNew.json`
    in cos-control-macos at the release commit, word for word (it is still 0.5.351 at 9d9d8b3). Copy one into the other.
 4. **List the default-on changes for Miles before promotion:** Settings opens the hub for everyone
@@ -104,7 +101,7 @@ button and row text). Every new label used here was found in that source. Re-che
    classic Settings (Views.swift:3164 and :3170; it was "Transcription" at 82b12c8). The site keeps
    `<strong>Transcription</strong>: Balanced or Max` (control/docs:1087) per the keep list. Say the word and it
    becomes "Quality tier".
-2. **2dbadec:** does it ship in 0.5.352? (Release step 2.)
+2. **2dbadec: resolved, not in 0.5.352** (lead, 2026-10-28). See "Held for 0.5.353" below.
 3. **"Restart Safely"** in the /docs panel mock (docs:1075 and its aria-label) is not a label anywhere in the final
    source. Pre-existing, not on any edit list, left alone.
 4. **Dictation menu routing:** control/docs:612 says the Dictation menu's Settings… "opens Activity, Dictation,
@@ -112,6 +109,14 @@ button and row text). Every new label used here was found in that source. Re-che
    sentence is unchanged.
 5. **npm latest is 6.94.1** while every page and the appcast say server 6.93.0. That drift check already fails on
    origin/main; serverTarget stays 6.93.0 as asked.
+
+## Held for 0.5.353 (not in this release)
+
+`claude/control-352` 2dbadec (the Work suggestions re-check and Unstuck on a failed update download) is not in
+0.5.352: its review fixes were never committed, so it is held for 0.5.353 (lead, 2026-10-28). No page, release note or
+appcast text on this branch mentions it. Drafted lines for the 0.5.353 notes, unverified against that build:
+- "The setup guide's Work suggestions row checks again when the server comes up, says which key is in use, and offers Add a key only when no key is saved."
+- "If an update download fails or times out, the update banner and What's New offer Unstuck beside Try again."
 
 ## Edit counts
 
