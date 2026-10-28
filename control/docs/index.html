@@ -530,7 +530,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <ul>
       <li><strong>Your devices</strong> and <strong>Your AI</strong>: the same choices as first run.</li>
       <li><strong>On this Mac</strong>: Ollama, <strong>Voice (local transcription)</strong> and <strong>Dictation engine</strong>.</li>
-      <li><strong>Settings for your AI</strong>: Show your AI sessions, Continue agent threads, Jev (TypeSafe) and Permissions.</li>
+      <li><strong>Settings for your AI</strong>: Show AI sessions, Continue sessions, Jev (TypeSafe) and Permissions.</li>
       <li><strong>Glasses</strong>: pairing, as above.</li>
     </ul>
     <h4>Voice</h4>
@@ -551,7 +551,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="from-terminal">
     <h3>Already running COS in Terminal?</h3>
-    <p>Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe. When it finds a server it recognizes, the panel offers <strong>Adopt server</strong> for a stopped one. For a running one, <strong>Manage in place</strong> keeps it and <strong>Replace server</strong> replaces it. When it cannot identify the process on the COS ports, it says <strong>Ownership conflict detected</strong> and will not stop or replace it. You can always go back to the plain <code>npx</code> command later.</p>
+    <p>Stop the foreground server with Control-C before installing the managed service. COS Control refuses to take over a process it does not own, so your jobs and recordings stay safe. When it finds a server it recognizes, the panel offers <strong>Adopt server</strong>, which replaces a stopped one with the latest COS server. For a running one, <strong>Manage in place</strong> keeps it and <strong>Replace server</strong> replaces it. When it cannot identify the process on the COS ports, it says <strong>Ownership conflict detected</strong> and will not stop or replace it. You can always go back to the plain <code>npx</code> command later.</p>
   </div>
 </section>
 
@@ -677,7 +677,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <ul>
       <li><strong>Session pet</strong> switches the pet on or off. It is on by default.</li>
       <li>Pet size (Small, Medium, Large or Custom), <strong>Character size</strong> (default 300%), <strong>Character speed</strong> (default 100%, which matches the pack) and <strong>Motion</strong> (Full, Calm or None). macOS Reduce Motion freezes animated strips.</li>
-      <li><strong>Jump to session needs Accessibility</strong>, with <strong>Grant</strong> and <strong>Reset and add again</strong>.</li>
+      <li><strong>Jump to session needs Accessibility</strong>, with <strong>Allow</strong> and <strong>Reset and add again</strong>.</li>
       <li>Dictation start and stop sounds follow the pet unless you choose others. See <a href="#dictation-sounds">Sounds</a>.</li>
     </ul>
   </div>
@@ -847,7 +847,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <div class="sub" id="ai-polish">
     <h3>AI polish, the swap and Undo polish</h3>
     <p><strong>AI polish</strong> in Settings, Dictation, is Off by default, or Claude Haiku or Claude Sonnet. COS types what it heard right away, then swaps in Claude&rsquo;s version if you haven&rsquo;t moved on. Since 0.5.345, one line under the picker says which polish your COS server runs for the model you chose: the newest polish (on Sonnet, with the meaning check and your style rules), the newest prompt on another model, Previous polish you picked, the earlier polish, or, with Off, what was heard without um and uh. COS reads it again when the server is updated or rolled back. The line needs server 6.92.0; an older server shows none.</p>
-    <p>When you are still holding <kbd>&#8984;</kbd> or <kbd>&#8963;</kbd> as Claude&rsquo;s polish arrives, COS waits up to 1.2 seconds for you to let go, then for 600 milliseconds with no key down, and checks the text box again before it swaps the polished text in. With Shift or Option down, the swap is skipped at once. <strong>Wait for &#8984; or &#8963; to be released before swapping in polish</strong> is on by default.</p>
+    <p>When you are still holding <kbd>&#8984;</kbd> or <kbd>&#8963;</kbd> as Claude&rsquo;s polish arrives, COS waits up to 1.2 seconds for you to let go, then for 600 milliseconds with no key down, and checks the text box again before it swaps the polished text in. With Shift or Option down, the swap is skipped at once. <strong>Wait for held keys</strong>, in Settings, Dictation, is on by default.</p>
     <p><strong>Undo polish</strong>, on the pill after a swap, on the dictation card and in Activity, Dictation, puts back exactly what COS typed, where the polished text is. If that text has moved, COS says so and changes nothing. A Fix a word replace on that dictation ends Undo polish for it. Apply polished in Activity, Dictation puts Claude&rsquo;s version back again. <strong>Show original</strong> on the card shows what COS typed; it does not change the text in the app.</p>
   </div>
 
@@ -953,7 +953,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>Choose <strong>Stop and save</strong>. The panel shows Saving, then Saved, usually within about five seconds. Audio stays on this Mac until the saved meeting is verified, then the meeting opens in Meetings. Saved Mac recordings appear in Meetings with server 6.73.14 or newer.</li>
       <li>A Live now row that has been quiet for two minutes shows <strong>No audio for</strong> the time. A glasses meeting there offers <strong>End and save</strong>, confirmed first. A stopped Mac capture still uploading shows <strong>Finish saving</strong>.</li>
       <li>If COS misses a beat right after Stop, Control tries again quietly for about a minute and a quarter. After 20 seconds it offers Keep audio for later and Retry saving retained audio. If delivery then pauses on an error, the panel says Not saved yet and the audio is kept. <strong>Retry saving retained audio</strong> does not restart recording; <strong>Keep audio for later</strong> leaves it on the Mac.</li>
-      <li>A capture that never saved appears under <strong>Unsaved captures</strong> with <strong>Recover</strong>, <strong>Recover all</strong> and <strong>Save</strong>. Reopening COS Control never resumes a capture.</li>
+      <li>A recording that never saved appears under <strong>Unsaved recordings</strong> with <strong>Recover</strong>, <strong>Recover all</strong> and <strong>Save</strong>. Reopening COS Control never resumes a capture.</li>
       <li>A retained Mac recording shows Recover with its title and chunk count. Before offering it, Control asks the server whether it already saved that recording, and hides the row if it did. When Recover is grayed out, a line under it says why.</li>
     </ul>
     <h4>Limits</h4>
@@ -1068,7 +1068,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p><strong>Exclude cache reads</strong> removes only cache reads from token charts, rankings, the mix and shares; input, output and cache writes remain. The top All recorded tokens total stays inclusive. Estimated API value still includes all priced categories. Unpriced periods are omitted from the API-value plot; partial values show that unknown cost remains. Neither cache counts nor API-equivalent value measure subscription savings. Plan balances, reset times, environment filters and distinct session counts are unavailable from this ledger.</p>
     <p>Usage keeps counts and file checkpoints in a private local ledger, not prompts or replies, and uploads nothing. History remains after source files are removed, but records deleted before collection cannot be recovered. Cursor, browser-only chats, other Macs and calls without token records are not included. Prices use the October 25, 2026 standard API snapshot across all dates, not your subscription invoice; unknown prices and partial history are labelled.</p>
   </div>
-  <div class="note"><p><strong>Sessions is off until you turn it on.</strong> In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>, or use <strong>Show your AI sessions</strong> in the setup guide. It is off by default because it reads another product's private state folder and serves session names, workspaces and times (not conversation content) over your local network. Leave it off on an untrusted network.</p></div>
+  <div class="note"><p><strong>Sessions is off until you turn it on.</strong> In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>, or use <strong>Show AI sessions</strong> in the setup guide. It is off by default because it reads another product's private state folder and serves session names, workspaces and times (not conversation content) over your local network. Leave it off on an untrusted network.</p></div>
 
   <div class="sub" id="sessions-list">
     <h3>The list</h3>
@@ -1119,7 +1119,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>Tier, preview and playback cleanup</h3>
     <p>These are in Settings, Transcription and voice, except Fast preview, which is in Settings, Meetings, Advanced.</p>
     <ul>
-      <li><strong>Transcription</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>. Balanced is recommended: Small.en for live text, Large-v3-Turbo to commit, Large-v3 to polish. Max keeps Large-v3 resident and may use much more memory. The status card names the model behind each stage.</li>
+      <li><strong>Quality tier</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>. Balanced is recommended: Small.en for live text, Large-v3-Turbo to commit, Large-v3 to polish. Max keeps Large-v3 resident and may use much more memory. The status card names the model behind each stage.</li>
       <li><strong>Fast preview</strong> shows fast provisional meeting text, then replaces it with the speaker-attributed transcript. Turn it off for an immediate rollback.</li>
       <li><strong>Playback cleanup</strong> is off by default. It cleans retained audio only when you press Play; the original recording is never changed.</li>
       <li><strong>GPU when idle</strong> is for powerful Macs: it uses the GPU for post-meeting HQ while the Mac is idle.</li>
@@ -1156,7 +1156,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Safe restarts</h3>
-      <p><strong>Restart</strong>, <strong>Stop</strong> and <strong>Start</strong> sit under the status card. Restart and Update Server are locked while a job or recording is active, and the card says why. <strong>Background jobs</strong> (on by default) keeps replies running when the phone closes; it changes only once active work is done.</p>
+      <p><strong>Restart</strong>, <strong>Stop</strong> and <strong>Start</strong> sit under the status card. Restart and Update Server are off while a job or recording is active, and the card says why. <strong>Background jobs</strong> (on by default) keeps replies running when the phone closes; it changes only once active work is done.</p>
     </div>
   </div>
 
@@ -1270,7 +1270,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>A saved Mac recording is not in Meetings</h3>
-      <p>Saved Mac recordings appear in Meetings with server 6.73.14 or newer; update the server. If the meeting says <strong>Saved meeting not found yet</strong>, wait for finalizing and choose <strong>Refresh</strong>. Audio that did not save stays on the Mac under <strong>Unsaved captures</strong>, with <strong>Recover</strong>.</p>
+      <p>Saved Mac recordings appear in Meetings with server 6.73.14 or newer; update the server. If the meeting says <strong>Saved meeting not found yet</strong>, wait for finalizing and choose <strong>Refresh</strong>. Audio that did not save stays on the Mac under <strong>Unsaved recordings</strong>, with <strong>Recover</strong>.</p>
     </div>
     <div class="card">
       <h3>Sessions is empty</h3>
@@ -1278,7 +1278,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     </div>
     <div class="card">
       <h3>Jump to session does not bring the window forward</h3>
-      <p>Jumping needs Accessibility. Choose <strong>Grant</strong> under Settings, Pet and appearance; if it is already on, use <strong>Reset and add again</strong>.</p>
+      <p>Jumping needs Accessibility. Choose <strong>Allow</strong> under Settings, Pet and appearance; if it is already on, use <strong>Reset and add again</strong>.</p>
     </div>
     <div class="card">
       <h3>Restart or Update Server is greyed out</h3>

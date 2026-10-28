@@ -3,10 +3,10 @@
 Local branch `claude/site-0.5.352`, based on origin/main 7879f48. Not pushed. The live appcast `channels.stable`
 (version, build, url, sha256, publishedAt, notes, whatsNew) is byte-for-byte unchanged.
 
-**Source of truth for labels:** cos-control-macos `claude/control-settings-release` at 9d9d8b3 (2026-10-28 09:31),
-`Sources/SettingsHubCatalog.swift` (labels, old labels, category of every row) and `Sources/Views.swift` (the visible
-button and row text). Every new label used here was found in that source. Re-check at release if the branch moved
-(step 1 below).
+**Source of truth for labels:** cos-control-macos `claude/control-settings-release` at **bed3d66**, the commit the
+release builds from (lead, 2026-10-28). Labels and categories come from `Sources/SettingsHubCatalog.swift`, visible
+button and row text from `Sources/Views.swift` and the other Sources, all read through `git show` (no worktree
+touched). The first draft was built against 9d9d8b3; "Final strings check (bed3d66)" below records the re-check.
 
 **What changed, in short:**
 - Setting labels renamed to the 0.5.352 names, and "under Tools" / "Settings, Advanced" replaced with the new
@@ -24,11 +24,10 @@ button and row text). Every new label used here was found in that source. Re-che
 
 ## Release steps (in order)
 
-1. **Re-check labels against the final build.** If the release commit is newer than 9d9d8b3, from the Control
-   checkout run:
-   `git diff 9d9d8b3 <release-sha> -- Sources/SettingsHubCatalog.swift Sources/Views.swift Sources/MacDictation*.swift Sources/MeetingAsk.swift`
-   Any label change there needs the matching site edit (search this file's ledger for the old label).
-2. **Version.** The release branch's Info.plist still says 0.5.351 / 405 at 9d9d8b3; the lead bumps it at release
+1. **Labels: done against bed3d66.** Only if the release ends up building from a commit other than bed3d66, run in
+   cos-control-macos `git diff bed3d66 <release-sha> -- Sources` and repeat the final strings check for any changed
+   user-facing literal.
+2. **Version.** The release branch's Info.plist still says 0.5.351 / 405 at bed3d66; the lead bumps it at release
    time. The site is drafted for 0.5.352 / build 406, so nothing changes here unless the build number does.
 3. **Lead: match the app's bundled notes.** `Resources/WhatsNew.json` in cos-control-macos is the lead's at
    version-bump time. Paste the "WhatsNew.json draft" section below; it is word for word the appcast `nextStable` text.
@@ -61,14 +60,14 @@ button and row text). Every new label used here was found in that source. Re-che
 
 | Check | Result |
 |---|---|
-| `scripts/check-version-drift.py` | Fails, as expected before release. Two failures are pre-existing on origin/main: npm latest is 6.94.1 while the docs and appcast say server 6.93.0. The rest are "pages say 0.5.352, appcast says 0.5.351" and the `__SHA256__` placeholder. |
-| Same check after a simulated release (scratch copy, fake ZIP and sidecars, `promote_appcast.py`, `--artifact-dir`) | Only the two pre-existing npm 6.94.1 failures remain. Every Control version, download, byline, SHA and sidecar claim agrees. |
-| `scripts/test_check_version_drift.py` | 45 of 46 pass. `test_live_guide_matches_the_live_appcast` fails only because the guide says 0.5.352 and the live appcast 0.5.351; it passes in the promoted copy. |
+| `scripts/check-version-drift.py` (rerun after the bed3d66 fixes) | Fails, as expected before release. Two failures are pre-existing on origin/main: npm latest is 6.94.1 while the docs and appcast say server 6.93.0. The rest are "pages say 0.5.352, appcast says 0.5.351" and the `__SHA256__` placeholder. |
+| Same check after a simulated release (scratch copy, fake ZIP and sidecars, `promote_appcast.py`, `--artifact-dir`), rerun after the bed3d66 fixes | Only the two pre-existing npm 6.94.1 failures remain. Every Control version, download, byline, SHA and sidecar claim agrees, and no placeholder is left in the appcast or /control. |
+| `scripts/test_check_version_drift.py` | 45 of 46 pass. `test_live_guide_matches_the_live_appcast` fails only because the guide says 0.5.352 and the live appcast 0.5.351; all 46 pass in the promoted copy. |
 | node tests (7 files, as CI) | 47 of 47 pass (same as origin/main). |
 | `scripts/verify-docs-lesson-mutations.cjs` | All mutants caught. |
 | Kokoro contract, registry secrets | Pass. |
 | HTML balance, duplicate ids, in-page anchors (5 edited pages) | 0 errors, 0 duplicates, 0 missing anchors; /control links to `/control/docs/#release-352`, which exists. The balance check was mutation-tested (removing one `</ul>` is caught). |
-| Em dashes and arrows in added lines | 0. Two pre-existing ones on lines I touched were fixed (docs `Activity &rarr; Meetings`, docs `401 &mdash; copy`). |
+| Em dashes and arrows in added page lines | 0. Two pre-existing ones on lines I touched were fixed (docs `Activity &rarr; Meetings`, docs `401 &mdash; copy`). |
 | Render | Headless Chrome at 1280 px: the What's new block and chips render as intended. At narrow widths headless Chrome lays out at about 500 px for origin/main too, so phone width is unverified. |
 
 ## Deliberately skipped, and why
@@ -77,11 +76,13 @@ button and row text). Every new label used here was found in that source. Re-che
   entries (lines 1190, 1194, 1195), and every existing appcast section. This covers the copy-pass rows that point
   inside notes (docs 2120 to 2147, control/docs 1272 to 1325: "Set in .env", "Spell words the way the text box has
   them", "Paste right away, then polish in place", "New Today home", and the dictation labels inside notes).
-- **Welcome and setup guide wording:** control/docs:512 ("Show your AI sessions, Continue agent threads") and the
-  setup-guide mention at control/docs:1037 ("Show your AI sessions in the setup guide"). wizard:680 ("Open Activity,
-  Settings, Setup guide, then Local voice") is also left; in the hub the Voice setup row sits in Transcription and voice.
-- **Labels the lead said to keep:** Update Server, Repair Whisper, Create Folders, Transcription, Answer with your own
-  key, Allow pairing on this Wi-Fi. Also "Remove saved keys" (control/docs:1151): that row (KL-03) keeps its name;
+- **Setup guide path in /wizard:** wizard:680 ("Open Activity, Settings, Setup guide, then Local voice") is left; in
+  the hub the Voice setup row sits in Transcription and voice. (The Welcome rows themselves now read Show AI sessions
+  and Continue sessions in bed3d66, so control/docs:512 and :1037 were updated.)
+- **Labels the lead said to keep:** Update Server, Repair Whisper, Create Folders, Answer with your own key, Allow
+  pairing on this Wi-Fi. "Transcription" stays where it names the Transcription card (control/docs:1116, /control:698),
+  the chapter, the category "Transcription and voice", the engine, and the panel status row "Transcription tier"
+  (both panel mocks; bed3d66 Views.swift:1587 still reads "Transcription tier"); only the tier picker is "Quality tier". Also "Remove saved keys" (control/docs:1151): that row (KL-03) keeps its name;
   only the Jev key's "Remove saved key" became "Remove Jev key", and the site never names that one outside notes.
 - **Server, glasses and phone features:** "Cursor CLI" and "agent CLIs" on /docs (983, 990, 1804, 1833, 1881, 1943,
   1947), wizard:610 and llms.txt:42 describe the server and companion; docs:1663 "Idle Metal HQ" is the server
@@ -90,8 +91,47 @@ button and row text). Every new label used here was found in that source. Re-che
 - **Since-facts:** control/docs:938 and :948 ("Update COS Control to 0.5.351 before the server", "Keep Control at
   0.5.351 or newer") are minimum versions, not the current version.
 - **Generic tool names:** control/docs:1130 "the Claude, Codex and Cursor CLIs" lists what Run checks tests.
+- **Generic "Default":** removed as a Control literal (the decision-provider picker), but the four page hits
+  (docs:1804, wizard:645, :719, :1152) are glasses and wizard words, not Control labels.
+- **Tier pages that do not name the picker:** /control:941 ("Choose Balanced or Max") and docs:1144 ("Balanced or
+  Max decides which Whisper model...") name the choices, not the picker, so they stay as written.
 - **/control/docs release-notes format:** kept as expanded `section.note` blocks, the existing format. Collapsing them
   like /docs is a separate design change.
+
+## Final strings check (bed3d66)
+
+Method, all read-only through git in cos-control-macos:
+1. Every Swift string literal in `Sources` at 82b12c8 (shipped 0.5.351) and at bed3d66 (final 0.5.352), comments
+   excluded: 7,367 and 8,581 literals. 160 literals exist only at 82b12c8 (removed or reworded), 1,374 only at bed3d66.
+2. Each removed literal, split at interpolations, searched in the current copy of /control, /control/docs, /docs,
+   /wizard, llms.txt, the homepage, /challenge and the /docs Control exhibit script, outside historical release notes.
+3. Every label inside `<strong>`, `<b>` or a mock row that my edits introduced (77 distinct) looked up in the bed3d66
+   literals. All UI labels were found; the 19 misses are headings, version strings, the interpolated `Turbo · On`,
+   note titles and the pre-existing "Restart Safely".
+4. The catalog's 50 former labels (`SettingsHubCatalog.formerLabels`) searched in current copy, and the catalog's
+   labels, groups and Advanced flags diffed 9d9d8b3 to bed3d66: no category moved; the only flag change is Clear stuck
+   uploads leaving Advanced, which the site does not locate.
+5. Confirmed in bed3d66: the pet-drag commits (f34bcb4, fb0e74c) and the hub (72d304d) are in, 2dbadec is not;
+   `Use new Settings`, the hub rollback confirmation, the ⌘F search hint and "On this page" exist, so the drafted
+   notes and the WhatsNew.json draft stay accurate unchanged.
+
+Mismatches found and fixed (10 replacements, two round-one edits amended):
+
+| Page | Was | Now (bed3d66 string) |
+|---|---|---|
+| control/docs:512 (Welcome rows) | Show your AI sessions, Continue agent threads | Show AI sessions, Continue sessions |
+| control/docs:1037 | or use Show your AI sessions in the setup guide | Show AI sessions |
+| control/docs:1087 | `<strong>Transcription</strong>`: Balanced or Max | `<strong>Quality tier</strong>` |
+| control/docs (Unsaved, two places) | Unsaved captures; "A capture that never saved" | Unsaved recordings; "A recording that never saved" |
+| control/docs (pet Accessibility, two places) | Grant | Allow (Views.swift:1334, same view in the hub) |
+| control/docs (AI polish) | Wait for &#8984; or &#8963; to be released before swapping in polish | Wait for held keys, in Settings, Dictation |
+| control/docs (server card) | Restart and Update Server are locked while... | are off while... (build: "Restart is off until they finish.") |
+| control/docs:533 (Adopt, amended) | offers Adopt server for a stopped one | offers Adopt server, which replaces a stopped one with the latest COS server (build: "COS Control can replace this stopped older server with the latest COS server.") |
+| /control:950 (Work folder, added) | Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available. | Changing it restarts the server when no work is running. If it is saved but not yet in use, the panel says so. (build help text and the "Saved. Restart the server when no work is running to use it." line) |
+| docs:1145 (Control exhibit) | Fast meeting preview | Fast preview |
+
+After the fixes the removed-literal sweep finds only the generic "Default" words above and docs:2053, the server's
+`Adaptive replay` health field. Both are intended.
 
 ## WhatsNew.json draft
 
@@ -141,9 +181,9 @@ The same, as JSON to paste (only the 0.5.352 section is shown; the older section
 
 ## Left for the lead
 
-1. **"Transcription": resolved, stays** (lead, 2026-10-28). UT-03 was kept under the test-churn rule; the site
-   says "Transcription" everywhere and never "Quality tier". At 9d9d8b3 the source still read "Quality tier"
-   (Views.swift:3164 and :3170); the final strings-changed list should confirm it is back to "Transcription".
+1. **Tier picker: resolved, "Quality tier"** (lead, 2026-10-28, final build bed3d66). control/docs:1087 now reads
+   `<strong>Quality tier</strong>: Balanced or Max`, in the list headed "These are in Settings, Transcription and
+   voice". "Transcription" stays for the card, chapter, category, engine and the "Transcription tier" status row.
 2. **2dbadec: resolved, not in 0.5.352** (lead, 2026-10-28). See "Held for 0.5.353" below.
 3. **"Restart Safely"** in the /docs panel mock (docs:1075 and its aria-label) is not a label anywhere in the final
    source. Pre-existing, not on any edit list, left alone.
@@ -167,18 +207,18 @@ appcast text on this branch mentions it. Drafted lines for the 0.5.353 notes, un
 |---|---|---|---|
 | assets/docs-control.js | 1 | 0 | 0 |
 | challenge/index.html | 1 | 0 | 0 |
-| control/docs/index.html | 52 | 5 | 5 |
-| control/index.html | 21 | 12 | 0 |
-| docs/index.html | 21 | 8 | 1 |
+| control/docs/index.html | 60 | 5 | 5 |
+| control/index.html | 22 | 12 | 0 |
+| docs/index.html | 22 | 8 | 1 |
 | llms.txt | 2 | 1 | 0 |
 | wizard/index.html | 18 | 1 | 0 |
 | control/appcast.json | 0 | 1 (new top-level `nextStable`; `channels.stable` untouched) | 0 |
 | release-drafts/control-352/promote_appcast.py | | new file | |
-| **Total** | **116** | **28** | **6** |
+| **Total** | **126** | **28** | **6** |
 
 ## Every edit (path:line on origin/main 7879f48, old, new)
 
-Line numbers are the ORIGINAL line on origin/main, so they match the QA table. Replacements quote the exact text matched (each was asserted to occur the stated number of times before anything was written). Inserts go immediately before the line given.
+159 rows: 153 replacements and 6 inserts, both rounds (9d9d8b3 draft plus the bed3d66 fixes). Line numbers are the ORIGINAL line on origin/main, so they match the QA table. Replacements quote the exact text matched; each was asserted to occur the stated number of times before anything was written. Inserts go immediately before the line given.
 
 ### control/docs/index.html
 
@@ -192,7 +232,8 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | control/docs/index.html:452 | `<span class="chip">Control <b>0.5.351</b> · build 405</span>` | `<span class="chip">Control <b>0.5.352</b> · build 406</span>` |
 | control/docs/index.html:457 | (insert) | What's new block in the hero (four lines), linking to the notes. Text: `  <div class="whatsnew" aria-labelledby="wn-h"> ⏎     <h2 id="wn-h">What&rsquo;s new</h2> ⏎     <ul class="wn-list"> ⏎       <li><a href="#release-352"><b>0.5.352</b><span>Settings in categories with search and an On this page list, shorter labels, and pet dragging …` |
 | control/docs/index.html:474 | `health, Doctor and tools.</span></a>` | `health, checks and repair.</span></a>` |
-| control/docs/index.html:533 | `the panel offers <strong>Adopt Safely</strong>: <strong>Manage in place</strong> keeps your server, and <strong>Install managed server</strong> replaces it.` | `the panel offers <strong>Adopt server</strong> for a stopped one. For a running one, <strong>Manage in place</strong> keeps it and <strong>Replace server</strong> replaces it.` |
+| control/docs/index.html:512 | `<li><strong>Settings for your AI</strong>: Show your AI sessions, Continue agent threads, Jev (TypeSafe) and Permissions.</li>` | `<li><strong>Settings for your AI</strong>: Show AI sessions, Continue sessions, Jev (TypeSafe) and Permissions.</li>` |
+| control/docs/index.html:533 | `the panel offers <strong>Adopt Safely</strong>: <strong>Manage in place</strong> keeps your server, and <strong>Install managed server</strong> replaces it.` | `the panel offers <strong>Adopt server</strong>, which replaces a stopped one with the latest COS server. For a running one, <strong>Manage in place</strong> keeps it and <strong>Replace server</strong> replaces it.` |
 | control/docs/index.html:548 | `or <strong>Allow insertion into other apps…</strong> under dictation.` | `or <strong>Allow typing in apps…</strong> under dictation.` |
 | control/docs/index.html:554 | `The switch is <strong>Launch COS Control at login</strong> in Settings.` | `The switch is <strong>Open at login</strong> in Settings, General.` |
 | control/docs/index.html:568 | `In COS Control: <strong>Settings, Session pet, Reset and add again</strong>` | `In COS Control: <strong>Settings, Pet and appearance, Reset and add again</strong>` |
@@ -202,6 +243,7 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | control/docs/index.html:614 | `<li><strong>Open Activity with</strong> in Settings sets` | `<li><strong>Activity shortcut</strong> in Settings, General, sets` |
 | control/docs/index.html:637 | (insert) | pet drag bullet in the session pet list. Text: `      <li><strong>Move the pet</strong> by dragging the figure or the line under it. Since 0.5.352 this works on macOS 27.2, and a pet dropped partly off a screen moves back inside it.</li> ⏎ ` |
 | control/docs/index.html:642 | `Under Settings, Session pet you can choose` | `Under Settings, Pet and appearance you can choose` |
+| control/docs/index.html:646 | `<strong>Jump to session needs Accessibility</strong>, with <strong>Grant</strong> and` | `<strong>Jump to session needs Accessibility</strong>, with <strong>Allow</strong> and` |
 | control/docs/index.html:699 | `Choose the 24-hour clock under Settings, Advanced, <strong>Clock</strong>.` | `Choose 24-hour under Settings, General, <strong>Time format</strong>.` |
 | control/docs/index.html:706 | `Memories reads the folder set under <strong>COS Data</strong>` | `Memories reads the folder set under <strong>Notes folder</strong>` |
 | control/docs/index.html:711 | `choose <strong>COS Data</strong> in the panel to connect your library` | `choose <strong>Notes folder</strong> in Settings, Work and agents, to connect your library` |
@@ -213,21 +255,26 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | control/docs/index.html:803 | `<strong>If the microphone fails, try another one</strong> in Set` | `<strong>Microphone fallback</strong> in Set` |
 | control/docs/index.html:809 | `<strong>Remove filler sounds (um, uh) before typing</strong> in Settings, Dictation, is on by default.` | `<strong>Remove um and uh</strong> in Settings, Dictation, is on by default.` |
 | control/docs/index.html:810 | `<strong>Capitalize the start of a sentence</strong> in Settings, Dictation, is on by default.` | `<strong>Capitalize sentences</strong> in Settings, Dictation, is on by default.` |
+| control/docs/index.html:816 | `<strong>Wait for &#8984; or &#8963; to be released before swapping in polish</strong> is on by default.` | `<strong>Wait for held keys</strong>, in Settings, Dictation, is on by default.` |
 | control/docs/index.html:847 | `<li><strong>Learn my style from edits</strong> is the switch. Off keeps your rules and stops applying them, on this Mac and on G2.</li>` | `<li><strong>Learn my style</strong> is the switch. Off keeps your rules and stops applying them, on this Mac and on the glasses.</li>` |
 | control/docs/index.html:900 | `<p>In Settings, <strong>Suggest recording when a meeting starts</strong> (on by default) has a switch per app, the Never list with Remove, and <strong>Show the recording notice again</strong>.` | `<p>In Settings, Meetings, <strong>Suggest recording</strong> (on by default) has a switch per app, the Never list with Remove, and <strong>Show recording notice again</strong>.` |
 | control/docs/index.html:910 | `<li><strong>Show live meeting transcript</strong> in Settings (on by default) turns the live view off.</li>` | `<li><strong>Live transcript</strong> in Settings, Meetings (on by default) turns the live view off.</li>` |
+| control/docs/index.html:922 | `<li>A capture that never saved appears under <strong>Unsaved captures</strong>` | `<li>A recording that never saved appears under <strong>Unsaved recordings</strong>` |
 | control/docs/index.html:1001 | `<strong>Send plans without review</strong> in Settings, Work is off by default.` | `<strong>Send plans without review</strong> in Settings, Work and agents, is off by default.` |
 | control/docs/index.html:1005 | `<h4>When earlier work is still open</h4>` | `<h4>When work is open</h4>` |
 | control/docs/index.html:1006 | `In Settings, Work, <strong>When earlier work is still open</strong> is` | `In Settings, Work and agents, <strong>When work is open</strong> is` |
 | control/docs/index.html:1018 | `<li><strong>Open new sessions in the app</strong> (on):` | `<li><strong>Open new sessions</strong> (on):` |
 | control/docs/index.html:1037 | `In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>, or use` | `In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>, or use` |
+| control/docs/index.html:1037 | `or use <strong>Show your AI sessions</strong> in the setup guide.` | `or use <strong>Show AI sessions</strong> in the setup guide.` |
 | control/docs/index.html:1052 | `This needs <strong>Continue agent threads</strong> in Settings, which is on by default.` | `This needs <strong>Continue sessions</strong> in Settings, Work and agents, which is on by default.` |
 | control/docs/index.html:1085 | `<h3>Tier, preview and replay (under Tools)</h3> ⏎     <ul>` | `<h3>Tier, preview and playback cleanup</h3> ⏎     <p>These are in Settings, Transcription and voice, except Fast preview, which is in Settings, Meetings, Advanced.</p> ⏎     <ul>` |
+| control/docs/index.html:1087 | `<li><strong>Transcription</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>.` | `<li><strong>Quality tier</strong>: <strong>Balanced</strong> or <strong>Max</strong>, then <strong>Apply</strong>.` |
 | control/docs/index.html:1088 | `<li><strong>Meeting Turbo preview</strong> shows fast provisional meeting text` | `<li><strong>Fast preview</strong> shows fast provisional meeting text` |
 | control/docs/index.html:1089 | `<li><strong>Adaptive audio cleanup</strong> is off by default. It cleans retained audio only when you press Play; the raw recording is never changed.</li>` | `<li><strong>Playback cleanup</strong> is off by default. It cleans retained audio only when you press Play; the original recording is never changed.</li>` |
 | control/docs/index.html:1090 | `<li><strong>Idle Metal HQ</strong> is for powerful Macs: it uses Metal for post-meeting HQ while the Mac is idle.</li>` | `<li><strong>GPU when idle</strong> is for powerful Macs: it uses the GPU for post-meeting HQ while the Mac is idle.</li>` |
 | control/docs/index.html:1097 | `<strong>Refresh connected models</strong> rereads what your AI offers.` | `<strong>Refresh models</strong> rereads what your AI offers.` |
 | control/docs/index.html:1120 | `meeting sync, the agent CLIs it found, and your Work folder and Meetings library.</p>` | `meeting sync, the AI apps it found, and your work folder and meetings folder.</p>` |
+| control/docs/index.html:1124 | `Restart and Update Server are locked while a job or recording is active, and the card says why.` | `Restart and Update Server are off while a job or recording is active, and the card says why.` |
 | control/docs/index.html:1129 | `<h3>Doctor and tools</h3>` | `<h3>Checks and tools</h3>` |
 | control/docs/index.html:1130 | `<p><strong>Run Doctor</strong> (under Tools) checks COS Control,` | `<p><strong>Run checks</strong> (Settings, System and updates) checks COS Control,` |
 | control/docs/index.html:1130 | `and shows the results under <strong>DOCTOR</strong>.</p>` | `and shows the results under <strong>CHECKS</strong>.</p>` |
@@ -241,8 +288,9 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | control/docs/index.html:1193 | `In COS Control you can do the same from <strong>Settings, Session pet, Reset and add again</strong>.` | `In COS Control you can do the same from <strong>Settings, Pet and appearance, Reset and add again</strong>.` |
 | control/docs/index.html:1213 | `use <strong>Run Doctor</strong> for the failing check, then <strong>Repair Managed Runtime</strong>.` | `use <strong>Run checks</strong> for the failing check, then <strong>Repair server</strong>.` |
 | control/docs/index.html:1218 | `Push to talk and Start / stop are off until you choose a key.` | `Push to talk and Start and stop are off until you choose a key.` |
+| control/docs/index.html:1238 | `Audio that did not save stays on the Mac under <strong>Unsaved captures</strong>, with` | `Audio that did not save stays on the Mac under <strong>Unsaved recordings</strong>, with` |
 | control/docs/index.html:1242 | `In Settings, under Tools, switch on <strong>Show Claude sessions</strong> and choose <strong>Apply</strong>. To write into a session, <strong>Continue agent threads</strong> must also be on.` | `In Settings, Work and agents, switch on <strong>Show AI sessions</strong> and choose <strong>Apply</strong>. To write into a session, <strong>Continue sessions</strong> must also be on.` |
-| control/docs/index.html:1246 | `Choose <strong>Grant</strong> under Settings, Session pet;` | `Choose <strong>Grant</strong> under Settings, Pet and appearance;` |
+| control/docs/index.html:1246 | `Choose <strong>Grant</strong> under Settings, Session pet;` | `Choose <strong>Allow</strong> under Settings, Pet and appearance;` |
 | control/docs/index.html:1258 | `copy the token with <strong>Copy Pairing Token</strong>):` | `copy the token with <strong>Copy pairing token</strong>):` |
 | control/docs/index.html:1274 | `Choose <strong>Copy Report</strong> under Tools and email it` | `Choose <strong>Copy report</strong> in Settings, System and updates, and email it` |
 | control/docs/index.html:1304 | (insert) | release note 0.5.352 at the top of Release notes, body identical to /docs. Text: `    <section class="note" id="release-352"><h3>Control 0.5.352 / server 6.93.0</h3><p><strong>Settings in categories.</strong> Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses and iPhone; Meetings; Dictation; Transc…` |
@@ -266,6 +314,7 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | control/index.html:940 | `<p>Meeting Turbo preview renders provisional text` | `<p>Fast preview renders provisional text` |
 | control/index.html:943 | `An optional, default-off Adaptive replay switch cleans retained audio` | `An optional, default-off Playback cleanup switch cleans retained audio` |
 | control/index.html:950 | `<h3>Work Folder</h3><p>Under Tools, <strong>Work Folder</strong> is your COS project root` | `<h3>Work folder</h3><p>In Settings, Work and agents, <strong>Work folder</strong> is your COS project root` |
+| control/index.html:950 | `Managed servers reload safely; older adopted servers show the selection as pending until a safe restart is available.` | `Changing it restarts the server when no work is running. If it is saved but not yet in use, the panel says so.` |
 | control/index.html:953 | `<strong>COS Data</strong> still points at a full Python workspace` | `<strong>Notes folder</strong> still points at a full Python workspace` |
 | control/index.html:956 | `About shows an Ollama row naming the model and Doctor confirms it.` | `About shows an Ollama row naming the model and Run checks confirms it.` |
 | control/index.html:966 | `Memory and Threads ready through the authenticated COS Data bridge, scheduled recovery, local transcription, meeting sync, and agent CLIs.` | `Memory and threads ready through the authenticated notes folder bridge, scheduled recovery, local transcription, meeting sync, and AI apps.` |
@@ -303,6 +352,7 @@ Line numbers are the ORIGINAL line on origin/main, so they match the QA table. R
 | docs/index.html:1073 | `<span>Agent CLIs</span><b>Claude &#183; Codex &#183; Cursor</b>` | `<span>AI apps</span><b>Claude &#183; Codex &#183; Cursor</b>` |
 | docs/index.html:1075 | `<span>Run Doctor</span><span>Restart Safely</span>` | `<span>Run checks</span><span>Restart Safely</span>` |
 | docs/index.html:1091 | `<li><strong>Run Doctor</strong> is one coordinated check.` | `<li><strong>Run checks</strong> is one coordinated check.` |
+| docs/index.html:1145 | `<li><strong>Fast meeting preview</strong> shows Turbo text` | `<li><strong>Fast preview</strong> shows Turbo text` |
 | docs/index.html:1146 | `<li><strong>Adaptive replay</strong> is a default-off canary.` | `<li><strong>Playback cleanup</strong> is off by default.` |
 | docs/index.html:1147 | `<li><strong>Meetings Library</strong> points Control at the folder` | `<li><strong>Meetings folder</strong> points Control at the folder` |
 | docs/index.html:1147 | `Activity &rarr; Meetings adds a day calendar` | `Activity, Meetings adds a day calendar` |
