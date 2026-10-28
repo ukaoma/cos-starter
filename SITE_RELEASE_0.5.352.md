@@ -30,11 +30,9 @@ button and row text). Every new label used here was found in that source. Re-che
    Any label change there needs the matching site edit (search this file's ledger for the old label).
 2. **Version.** The release branch's Info.plist still says 0.5.351 / 405 at 9d9d8b3; the lead bumps it at release
    time. The site is drafted for 0.5.352 / build 406, so nothing changes here unless the build number does.
-3. **Match the app's bundled notes.** The appcast 0.5.352 summary and section must equal `Resources/WhatsNew.json`
-   in cos-control-macos at the release commit, word for word (it is still 0.5.351 at 9d9d8b3). Copy one into the other.
-4. **List the default-on changes for Miles before promotion:** Settings opens the hub for everyone
-   (`cos.settings.classic` defaults off; every opener lands in the hub); the app drives the pet drag on every macOS
-   version, not only 27.2; Roll back confirms in the hub.
+3. **Lead: match the app's bundled notes.** `Resources/WhatsNew.json` in cos-control-macos is the lead's at
+   version-bump time. Paste the "WhatsNew.json draft" section below; it is word for word the appcast `nextStable` text.
+4. **Lead: the default-on list for Miles before promotion** (the lead has it from QA).
 5. **After notarization and the GitHub release exist** (`control-v0.5.352` with `COS-Control-macOS-arm64-0.5.352.zip`,
    its `.sha256`, and the `latest` alias plus sidecar), run from the worktree root:
    ```
@@ -95,12 +93,57 @@ button and row text). Every new label used here was found in that source. Re-che
 - **/control/docs release-notes format:** kept as expanded `section.note` blocks, the existing format. Collapsing them
   like /docs is a separate design change.
 
+## WhatsNew.json draft
+
+For `Resources/WhatsNew.json` in cos-control-macos (lead, at version-bump time). Generated from the appcast
+`nextStable` entry on this branch, so the two match word for word. Set `version` to 0.5.352, replace `summary`, and put
+the 0.5.352 section on top of the existing `sections` (keep 0.5.351 and everything below it, as the 0.5.351 file does).
+If a fact changes after QA, change it here and in `control/appcast.json` `nextStable` together.
+
+Summary (494 characters; the app caps it at 1200):
+
+> Settings is now sorted into ten categories, with search and an On this page list. Many settings have shorter, clearer names, and search still finds them by their old names. Use classic Settings, in General, Advanced, brings back the old page. Roll back server asks first, and the session pet can be dragged again on macOS 27.2. Plus everything in 0.5.351: quick save for Mac recordings, stalled-capture restart, a Recover that checks the server, and speaker ID on by default for Mac recordings.
+
+Items of the 0.5.352 section (7):
+
+1. Settings opens in Activity with ten categories on the left: General, AI and accounts, Glasses and iPhone, Meetings, Dictation, Transcription and voice, Work and agents, Privacy and permissions, Pet and appearance, and System and updates.
+2. Each category is a set of cards. The settings you rarely need sit under Advanced in each card. On this page lists the cards in the category and jumps to the one you pick.
+3. Many settings have clearer, shorter names, for example Run checks for Run Doctor and Notes folder for COS Data. Search settings (Command-F) finds a setting by its new or its old name and says where it is. Your saved preferences do not change.
+4. Command-comma, the Dock menu, the pet, the welcome window and links from other views open the new Settings at the right place.
+5. To go back, turn on Use classic Settings in General, Advanced. The old one-page Settings returns, and each opener goes where it did before. Use new Settings, at the top of that page, switches back.
+6. Roll back server, in System and updates, Advanced, now asks before it changes the server.
+7. macOS 27.2 stopped the session pet from being dragged. COS Control now moves the pet itself, on every macOS version, and a pet dropped partly off a screen moves back inside it.
+
+The same, as JSON to paste (only the 0.5.352 section is shown; the older sections stay as they are):
+
+```json
+{
+  "version": "0.5.352",
+  "whatsNew": {
+    "summary": "Settings is now sorted into ten categories, with search and an On this page list. Many settings have shorter, clearer names, and search still finds them by their old names. Use classic Settings, in General, Advanced, brings back the old page. Roll back server asks first, and the session pet can be dragged again on macOS 27.2. Plus everything in 0.5.351: quick save for Mac recordings, stalled-capture restart, a Recover that checks the server, and speaker ID on by default for Mac recordings.",
+    "sections": [
+      {
+        "title": "0.5.352",
+        "items": [
+          "Settings opens in Activity with ten categories on the left: General, AI and accounts, Glasses and iPhone, Meetings, Dictation, Transcription and voice, Work and agents, Privacy and permissions, Pet and appearance, and System and updates.",
+          "Each category is a set of cards. The settings you rarely need sit under Advanced in each card. On this page lists the cards in the category and jumps to the one you pick.",
+          "Many settings have clearer, shorter names, for example Run checks for Run Doctor and Notes folder for COS Data. Search settings (Command-F) finds a setting by its new or its old name and says where it is. Your saved preferences do not change.",
+          "Command-comma, the Dock menu, the pet, the welcome window and links from other views open the new Settings at the right place.",
+          "To go back, turn on Use classic Settings in General, Advanced. The old one-page Settings returns, and each opener goes where it did before. Use new Settings, at the top of that page, switches back.",
+          "Roll back server, in System and updates, Advanced, now asks before it changes the server.",
+          "macOS 27.2 stopped the session pet from being dragged. COS Control now moves the pet itself, on every macOS version, and a pet dropped partly off a screen moves back inside it."
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## Left for the lead
 
-1. **"Transcription" vs "Quality tier".** The final build labels the tier picker "Quality tier" in both the hub and
-   classic Settings (Views.swift:3164 and :3170; it was "Transcription" at 82b12c8). The site keeps
-   `<strong>Transcription</strong>: Balanced or Max` (control/docs:1087) per the keep list. Say the word and it
-   becomes "Quality tier".
+1. **"Transcription": resolved, stays** (lead, 2026-10-28). UT-03 was kept under the test-churn rule; the site
+   says "Transcription" everywhere and never "Quality tier". At 9d9d8b3 the source still read "Quality tier"
+   (Views.swift:3164 and :3170); the final strings-changed list should confirm it is back to "Transcription".
 2. **2dbadec: resolved, not in 0.5.352** (lead, 2026-10-28). See "Held for 0.5.353" below.
 3. **"Restart Safely"** in the /docs panel mock (docs:1075 and its aria-label) is not a label anywhere in the final
    source. Pre-existing, not on any edit list, left alone.
