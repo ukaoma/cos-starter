@@ -98,7 +98,7 @@ COMPANION_PAIR_RE = re.compile(
 )
 SIDELOAD_RE = re.compile(
     # 6.9.538 (2026-09-24): the companion build is the Even Hub build, installed rather than sideloaded.
-    r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the (?:newest|submitted) companion build; "
+    r"(?:Sideload|Install) <strong>(\d+\.\d+\.\d+)</strong> for the (?:(?:newest|submitted) companion build|canonical companion alias); "
     r"(?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)"
 )
 FAQ_PAIR_RE = re.compile(
@@ -106,6 +106,12 @@ FAQ_PAIR_RE = re.compile(
     r"\((?:Even Hub (?:still )?lists |the last confirmed Even Hub listing is )(\d+\.\d+\.\d+)\) "
     r"and server (\d+\.\d+\.\d+); COS Control (\d+\.\d+\.\d+) is recommended"
 )
+# The Hub alias, public store pin and newest versioned pack are independent lanes.
+NEWEST_HUB_PACK_RE = re.compile(r"The newest versioned Hub pack is <strong>(\d+\.\d+\.\d+)</strong>")
+HUB_PACK_MENTION_RE = re.compile(r"The newest versioned Hub pack is (?:<strong>)?(\d+\.\d+\.\d+)")
+BADGE_HUB_PACK_RE = re.compile(r"NEW / UPDATED badges \(.*?; Hub packs to (\d+\.\d+\.\d+)\)")
+BETA_STATUS_RE = re.compile(r"its beta submission is <strong>([^<]+)</strong>, separate from the public listing")
+BETA_MENTION_RE = re.compile(r"its beta submission is (?:<strong>)?([A-Za-z ]+?)(?:</strong>)?[.,]")
 BADGE_GROUNDING_RE = re.compile(
     r"NEW / UPDATED badges \(grounded vs glasses (\d+\.\d+\.\d+) / Control "
     r"(\d+\.\d+\.\d+) / server (\d+\.\d+\.\d+)"
@@ -333,6 +339,18 @@ def evaluate(
             sideload_app, sideload_hub = sideload
             _require("docs Updating sideload app", sideload_app, docs_app, fail)
             _require("docs Updating Even Hub pin", sideload_hub, docs_hub, fail)
+
+        newest = _one(NEWEST_HUB_PACK_RE, docs, "docs newest versioned Hub pack", fail)
+        if newest:
+            if _version_key(newest) < _version_key(docs_app):
+                fail.append(f"docs newest versioned Hub pack {newest} precedes alias {docs_app}")
+            for version in HUB_PACK_MENTION_RE.findall(docs):
+                _require("docs newest versioned Hub pack mention", version, newest, fail)
+            _require("docs badge newest Hub pack", _one(BADGE_HUB_PACK_RE, docs, "docs badge newest Hub pack", fail), newest, fail)
+        beta = _one(BETA_STATUS_RE, docs, "docs separate beta status", fail)
+        if beta:
+            for status in BETA_MENTION_RE.findall(docs):
+                _require("docs beta status mention", status, beta, fail)
 
         rollback = _one_groups(ROLLBACK_PAIR_RE, docs, "docs rollback pair", fail)
         if rollback:

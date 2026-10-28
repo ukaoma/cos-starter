@@ -94,10 +94,11 @@ and since 6.40.0 hidden thinking follows the effort you ask for.</p>
 <p>glasses 6.8.437 plus server 6.40.2 is the current companion pair; Even Hub still lists 6.8.353.</p>
 <p>Current supported versions are COS Control <strong>0.5.86</strong>, server <strong>6.40.2</strong>, and COS Glasses <strong>6.8.353</strong> from Even Hub.</p>
 <p>Sideload <strong>6.8.437</strong> for the newest companion build; Even Hub still lists 6.8.353.</p>
+<p>The newest versioned Hub pack is <strong>6.8.438</strong>; its beta submission is <strong>In Review</strong>, separate from the public listing.</p>
 <p>The package-level rollback is COS Glasses <strong>6.8.353</strong> with the same server 6.40.2.</p>
 <p>Install COS Glasses <strong>6.8.353</strong> from Even Hub.</p>
 <p>The current supported pair is COS Glasses 6.8.437 (Even Hub still lists 6.8.353) and server 6.40.2; COS Control 0.5.86 is recommended</p>
-// NEW / UPDATED badges (grounded vs glasses 6.8.437 / Control 0.5.86 / server 6.40.2, 2026-08-27)
+// NEW / UPDATED badges (grounded vs glasses 6.8.437 / Control 0.5.86 / server 6.40.2, 2026-08-27; Hub packs to 6.8.438)
 """
 
 CONTROL = f"""
@@ -149,6 +150,31 @@ def run(**kwargs):
 
 
 class VersionDriftTests(unittest.TestCase):
+    def test_distinct_alias_public_pin_and_newest_pack(self):
+        # Store channel promotion does not move the canonical alias.
+        current = DOCS.replace("6.8.437", "6.10.654").replace("build 437", "build 654")
+        current = current.replace("6.8.353", "6.10.663").replace("6.8.438", "6.10.665")
+        current = current.replace("newest companion build", "canonical companion alias")
+        current = current.replace("rollback is COS Glasses <strong>6.10.663</strong>", "rollback is COS Glasses <strong>6.10.653</strong>")
+        self.assertEqual(run(docs=current)[0], [])
+        mutations = [
+            ("Sideload <strong>6.10.654</strong>", "Sideload <strong>6.10.665</strong>"),
+            ("canonical companion alias; Even Hub still lists 6.10.663", "canonical companion alias; Even Hub still lists 6.10.653"),
+            ("Hub packs to 6.10.665", "Hub packs to 6.10.654"),
+        ]
+        for old, new in mutations:
+            with self.subTest(mutation=new):
+                self.assertEqual(current.count(old), 1)
+                self.assertTrue(run(docs=current.replace(old, new))[0])
+
+    def test_newest_pack_and_beta_claims_cannot_disagree(self):
+        for extra in [
+            "The newest versioned Hub pack is 6.8.999; its beta submission is In Review.",
+            "The newest versioned Hub pack is 6.8.438; its beta submission is Published.",
+        ]:
+            with self.subTest(extra=extra):
+                self.assertTrue(run(docs=DOCS + extra)[0])
+
     def test_hub_theme_checks_each_repeated_hud(self):
         old = '<span class="hi">Chief of Staff</span> <span class="dim">6.8.437</span>'
         current = '<span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.8.437</span>'
