@@ -7,9 +7,9 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.352/COS-Control-macOS-arm64-0.5.352.zip",
       "sha256": "450e52f54486481c719b1e53915ef9a41dfaa44b8daf2397f0650b357b34a298",
       "minMacOS": "14.0",
-      "serverTarget": "6.94.1",
+      "serverTarget": "6.94.2",
       "publishedAt": "2026-10-28T18:38:25Z",
-      "notes": "Settings in ten categories with search and an On this page list, shorter labels, Use classic Settings, and pet dragging that works on macOS 27.2. Pairs with COS server 6.93.0.",
+      "notes": "Settings in ten categories with search and an On this page list, shorter labels, Use classic Settings, and pet dragging that works on macOS 27.2. Pairs with COS server 6.94.2.",
       "whatsNew": {
         "summary": "Settings is now sorted into ten categories, with search and an On this page list. Many settings have shorter, clearer names, and search still finds them by their old names. Use classic Settings, in General, Advanced, brings back the old page. Roll back server asks first, and the session pet can be dragged again on macOS 27.2. Plus everything in 0.5.351: quick save for Mac recordings, stalled-capture restart, a Recover that checks the server, and speaker ID on by default for Mac recordings.",
         "sections": [
