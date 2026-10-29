@@ -1,5 +1,5 @@
-/* Miles Windu Version 15 on the web: the COS Control pack's own strips, re-cut into
-   cropped WebP rows by scripts/build-windu-cast-atlases.py.
+/* The approved illustrated COS Control pack, converted to lossless cropped WebP
+   rows by scripts/build-windu-illustrated-atlases.mjs.
 
    Running states rotate shuffled opponent casts the way the app does
    (PetEncounterSequence and PetEncounterRotation.layers in Models.swift): a shuffled
@@ -16,9 +16,8 @@
 (function(){
   'use strict';
 
-  var ROOT = '/control/assets/session-command/windu-v15/';
-  var VERSION = '15.1';
-  var LOOKAHEAD = 14;
+  var ROOT = '/control/assets/session-command/windu-illustrated-v1/';
+  var VERSION = 'illustrated-1';
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var paused = reduced;
   var players = [];
@@ -61,6 +60,7 @@
     this.current = this.pick(); this.incoming = this.pick();
   }
   Sequence.prototype.pick = function(){
+    if (this.count === 1) return 0;
     if (!this.bag.length){
       var bag = [], i, j, t;
       for (i = 0; i < this.count; i++) bag.push(i);
@@ -117,6 +117,7 @@
       var sc = entry.scales[scale];
       self.st = {pose:pose, entry:entry, sc:sc, scale:scale, frame:0,
                  seq: sc.variants ? new Sequence(sc.variants.length,entry.frames,entry.handoff) : null};
+      if (reduced && self.st.seq){ self.st.seq.current = 0; self.st.seq.incoming = 1; }
       self.last = 0;
       self.prefetch();
     }).catch(function(err){ if (window.console) console.warn('pet-cast:',err.message); });
@@ -154,7 +155,10 @@
 
   Player.prototype.prefetch = function(){
     if (!this.st) return;
-    var self = this, keep = {}, plan = this.plan(reduced ? 0 : LOOKAHEAD), gen = this.generation;
+    // One second of runway at the pack's actual frame rate, capped before a second
+    // wrap. The old 14-frame window lasted only 280 ms with illustrated combat.
+    var ahead = Math.min(this.st.entry.frames - 1,Math.ceil(1 / this.st.entry.interval));
+    var self = this, keep = {}, plan = this.plan(reduced ? 0 : ahead), gen = this.generation;
     plan.forEach(function(parts){ parts.forEach(function(p){ keep[p[0]] = true; }); });
     for (var rel in this.rows) if (!keep[rel]){ release(this.rows[rel]); delete this.rows[rel]; }
     Object.keys(keep).forEach(function(rel){

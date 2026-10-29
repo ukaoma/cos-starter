@@ -5,7 +5,7 @@ const vm=require('node:vm');
 const path=require('node:path');
 const root=path.join(__dirname,'../control/assets/session-command');
 const source=fs.readFileSync(path.join(root,'pet-cast.js'),'utf8');
-const manifest=JSON.parse(fs.readFileSync(path.join(root,'windu-v15/manifest.json'),'utf8'));
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'windu-illustrated-v1/manifest.json'),'utf8'));
 const page=fs.readFileSync(path.join(__dirname,'../control/index.html'),'utf8');
 
 function load(){
@@ -27,10 +27,11 @@ function webpSize(file){
 
 const CASTS={working:4,duel:3,trio:3,swarm:3};
 
-test('the manifest carries every state the page plays, from the shipped Version 15 map',()=>{
-  assert.equal(manifest.pack,'Miles Windu Version 15');
+test('the manifest carries every state the page plays, from the approved illustrated map',()=>{
+  assert.equal(manifest.pack,'Miles Windu Illustrated');
+  assert.equal(manifest.statesSha256,'2ba8634a87ccbc0ec37bb10a383e4ffd76aba30122a31df120516f70513c39d1');
   const poses=[...page.matchAll(/data-pet-pose="([a-z]+)"/g)].map(m=>m[1]);
-  assert.deepEqual([...poses].sort(),['duel','idle','swarm','trio','working']);
+  assert.deepEqual([...poses].sort(),['duel','idle','patrol','swarm','trio','waiting','working']);
   const deck=fs.readFileSync(path.join(root,'session-deck.js'),'utf8');
   for(const pose of [...poses,...[...deck.matchAll(/pose:'([a-z]+)'/g)].map(m=>m[1])]) assert.ok(manifest.poses[pose],pose);
   for(const [pose,n] of Object.entries(CASTS)){
@@ -45,7 +46,9 @@ test('every row file exists and is exactly its frames by its crop box',()=>{
     assert.equal(spec.rows.length,Math.ceil(count/spec.cols));
     spec.rows.forEach((rel,r)=>{
       const n=Math.min(spec.cols,count-r*spec.cols);
-      assert.deepEqual(webpSize(path.join(root,'windu-v15',rel)),[n*box[2],box[3]],rel);
+      assert.deepEqual(webpSize(path.join(root,'windu-illustrated-v1',rel)),[n*box[2],box[3]],rel);
+      assert.ok(n*box[2] <= 8192,rel+' exceeds browser row width');
+      assert.ok(n*box[2]*box[3] <= 2500000,rel+' exceeds decoded row budget');
       rows++;
     });
   };
@@ -64,8 +67,46 @@ test('every row file exists and is exactly its frames by its crop box',()=>{
       }
     }
   }
-  const onDisk=['1x','2x'].flatMap(d=>fs.readdirSync(path.join(root,'windu-v15',d)));
+  const onDisk=['1x','2x'].flatMap(d=>fs.readdirSync(path.join(root,'windu-illustrated-v1',d)));
   assert.equal(rows,onDisk.length,'no stray row files');
+});
+
+test('approved timing, handoffs and ambient animation survive web conversion',()=>{
+  const expected={working:[184,.02,145],duel:[148,.02,109],trio:[172,.02,121],swarm:[256,.02,217],
+    idle:[82,.04],waiting:[76,.04],patrol:[8,.14]};
+  for(const [pose,[frames,interval,handoff]] of Object.entries(expected)){
+    const e=manifest.poses[pose];
+    assert.equal(e.frames,frames,pose+' frames');assert.equal(e.interval,interval,pose+' interval');
+    assert.equal(e.handoff,handoff,pose+' handoff');
+  }
+  assert.match(source,/windu-illustrated-v1\//);
+  assert.doesNotMatch(page,/Version 15|>46F|>37F|>43F/);
+});
+
+test('every frame of every cast addresses a real cell, including both sides of the handoff',()=>{
+  const {Player}=load()._internals,p=new Player({dataset:{}},{});
+  for(const e of Object.values(manifest.poses)) for(const sc of Object.values(e.scales)){
+    p.st={entry:e,sc,seq:sc.variants?{}:null};
+    const n=sc.variants?.length || 1;
+    for(let cast=0;cast<n;cast++) for(let frame=0;frame<e.frames;frame++){
+      for(const [rel,box,col] of p.need(frame,cast,(cast+1)%n)){
+        assert.ok(rel,'missing atlas');
+        const [width,height]=webpSize(path.join(root,'windu-illustrated-v1',rel));
+        assert.ok(col>=0 && (col+1)*box[2]<=width,'frame lies outside its row');
+        assert.equal(height,box[3]);
+      }
+    }
+  }
+});
+
+test('playback keeps the 50 fps clock on a 60 Hz display, and pause holds its frame',()=>{
+  const api=load(),{Player,Sequence}=api._internals,p=new Player({dataset:{}},{}),e=manifest.poses.swarm;
+  p.st={entry:e,seq:new Sequence(3,e.frames,e.handoff)};p.visible=true;p.drawn=true;
+  p.need=()=>[];p.ready=()=>true;p.draw=()=>true;p.prefetch=()=>{};
+  for(let i=0;i<=300;i++) p.tick(1000+i*1000/60);
+  assert.ok(Math.abs(p.st.seq.frame-250)<=1,'50 frames per second over five seconds');
+  const held=p.st.seq.frame;api.setPaused(true);p.tick(7000);assert.equal(p.st.seq.frame,held);
+  api.setPaused(false);p.tick(8000);assert.equal(p.st.seq.frame,held,'resumes without jumping');
 });
 
 test('casts shuffle with no immediate repeat and every cast plays',()=>{

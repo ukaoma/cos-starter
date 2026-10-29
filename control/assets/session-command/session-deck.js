@@ -37,7 +37,7 @@
     }
   };
 
-  /* The pet is Miles Windu Version 15 from the COS Control pack, played by pet-cast.js:
+  /* The pet is illustrated Miles Windu from the COS Control pack, played by pet-cast.js:
      Running is the four-plus swarm with its shuffled opponent casts, Done and Waiting
      are the app's own done and waiting poses (PetSpritePose.resolve). */
   function createPetController(canvas){

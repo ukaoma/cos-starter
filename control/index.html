@@ -391,6 +391,9 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-facts dd{margin-top:4px;font:500 .74rem var(--mono);color:var(--gold);white-space:nowrap}
 .pet-feature .pet-ledger{width:100%;margin:auto 0 0}
 .pet-dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.pet-ambient{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pet-ambient .pet-stage{aspect-ratio:auto;height:240px}
+.pet-ambient .pet-stage canvas{aspect-ratio:auto;min-height:0}
 .pet-card{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line2);border-radius:18px;background:linear-gradient(155deg,rgba(255,246,232,.055),rgba(8,5,3,.3));overflow:hidden;transition:transform .22s,border-color .22s,background .22s}
 .pet-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.34);background:linear-gradient(155deg,rgba(201,169,110,.095),rgba(8,5,3,.32))}
 .pet-card figcaption{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:84px;padding:14px 15px;border-top:1px solid var(--line2)}
@@ -440,8 +443,8 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 #install{scroll-margin-top:115px}
 </style>
 <script src="../assets/anime.umd.min.js"></script>
-<script src="assets/session-command/pet-cast.js?v=1" defer></script>
-<script src="assets/session-command/session-deck.js?v=4" defer></script>
+<script src="assets/session-command/pet-cast.js?v=illustrated-1" defer></script>
+<script src="assets/session-command/session-deck.js?v=illustrated-1" defer></script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
@@ -829,45 +832,58 @@ If the new app does not open, quit it, move it to my Desktop, put the backup bac
           <div>
             <h3>Your session state, at a glance.</h3>
             <p>The bundled Cloud Puff is the simple default for new users. Existing pet choices stay yours. The centered ledger beneath any pet changes to Running, Done, or Waiting, so you can read the state without reopening every agent. Open the RUNNING list and each live row carries a paperplane: a card names the session, you type, Return sends into the real thread. For more animation, choose Miles Windu or another character in Characters. You can also use a gallery pet or bring your own sprites.</p>
-            <p>Miles Windu Version 15, below, is re-rendered from 2x art, and every running state shuffles its opponents: four casts with one session, three each with two, three, and four or more.</p>
+            <p>The illustrated Miles Windu pack below uses sharper 2x drawings and new in-between poses. Combat plays at 50 frames per second, with matched saber contacts, blaster deflections, and continuous entrances. Every running state shuffles its opponents: four casts with one session, three each with two, three, and four or more.</p>
             <p>In the Mac app, Windu&rsquo;s one-session run bursts use matching cadence and a shorter raised-saber pause. A cast that fails to load can retry on a later refresh. Exact stock packs update; custom artwork and timing stay yours.</p>
           </div>
           <button class="pet-pause" type="button" aria-pressed="false">Pause animations</button>
         </div>
 
         <figure class="pet-feature reveal">
-          <div class="pet-stage"><canvas data-pet-pose="swarm" role="img" aria-label="Miles Windu Version 15 fighting four or more opponents. The opponent cast changes every loop."></canvas></div>
+          <div class="pet-stage"><canvas data-pet-pose="swarm" role="img" aria-label="Illustrated Miles Windu fighting four or more opponents at 50 frames per second. The opponent cast changes every loop."></canvas></div>
           <figcaption class="pet-feature-copy">
             <span class="pet-state">4+ sessions<small>Shown with four or more running</small></span>
             <p>Every loop ends with the next squad walking in while the last one falls. Three opponent casts, shuffled so the same fight never plays twice in a row.</p>
             <dl class="pet-facts">
-              <div><dt>Frames</dt><dd>64</dd></div>
+              <div><dt>Frames / second</dt><dd>256 / 50 fps</dd></div>
               <div><dt>Now playing</dt><dd data-cast-label>Cast 1 of 3</dd></div>
             </dl>
             <div class="pet-ledger">Running 4+</div>
           </figcaption>
         </figure>
 
-        <div class="pet-dock" aria-label="Miles Windu Version 15 session animation states">
+        <div class="pet-dock" aria-label="Illustrated Miles Windu session animation states">
           <figure class="pet-card reveal">
             <div class="pet-stage"><canvas data-pet-pose="idle" role="img" aria-label="Miles Windu idle animation"></canvas></div>
-            <figcaption><span class="pet-state">Idle<small>Shown with no sessions running</small></span><span class="pet-count">8F</span></figcaption>
+            <figcaption><span class="pet-state">Idle<small>Shown with no sessions running</small></span><span class="pet-count">82F · 25 fps</span></figcaption>
             <div class="pet-ledger">Ready</div>
           </figure>
           <figure class="pet-card reveal">
             <div class="pet-stage"><canvas data-pet-pose="working" role="img" aria-label="Miles Windu one-session animation, rotating four opponent casts"></canvas></div>
-            <figcaption><span class="pet-state">1 session<small>Shown with one session running</small></span><span class="pet-count">46F · 4 casts</span></figcaption>
+            <figcaption><span class="pet-state">1 session<small>Shown with one session running</small></span><span class="pet-count">184F · 4 casts</span></figcaption>
             <div class="pet-ledger">Running 1</div>
           </figure>
           <figure class="pet-card reveal">
             <div class="pet-stage"><canvas data-pet-pose="duel" role="img" aria-label="Miles Windu two-session animation, rotating three opponent casts"></canvas></div>
-            <figcaption><span class="pet-state">2 sessions<small>Shown with two sessions running</small></span><span class="pet-count">37F · 3 casts</span></figcaption>
+            <figcaption><span class="pet-state">2 sessions<small>Shown with two sessions running</small></span><span class="pet-count">148F · 3 casts</span></figcaption>
             <div class="pet-ledger">Running 2</div>
           </figure>
           <figure class="pet-card reveal">
             <div class="pet-stage"><canvas data-pet-pose="trio" role="img" aria-label="Miles Windu three-session animation, rotating three opponent casts"></canvas></div>
-            <figcaption><span class="pet-state">3 sessions<small>Shown with three sessions running</small></span><span class="pet-count">43F · 3 casts</span></figcaption>
+            <figcaption><span class="pet-state">3 sessions<small>Shown with three sessions running</small></span><span class="pet-count">172F · 3 casts</span></figcaption>
             <div class="pet-ledger">Running 3</div>
+          </figure>
+        </div>
+
+        <div class="pet-dock pet-ambient" aria-label="Illustrated Miles Windu ambient animations">
+          <figure class="pet-card reveal">
+            <div class="pet-stage"><canvas data-pet-pose="waiting" role="img" aria-label="Miles Windu meditating with a pulsing purple power aura"></canvas></div>
+            <figcaption><span class="pet-state">Meditation<small>Shown while waiting for you</small></span><span class="pet-count">76F · 25 fps</span></figcaption>
+            <div class="pet-ledger">Waiting</div>
+          </figure>
+          <figure class="pet-card reveal">
+            <div class="pet-stage"><canvas data-pet-pose="patrol" role="img" aria-label="Miles Windu relaxed forward walking animation"></canvas></div>
+            <figcaption><span class="pet-state">Relaxed walk<small>The illustrated patrol gait</small></span><span class="pet-count">8F · 7.1 fps</span></figcaption>
+            <div class="pet-ledger">Patrol</div>
           </figure>
         </div>
 
@@ -1464,7 +1480,7 @@ If the new app does not open, quit it, move it to my Desktop, put the backup bac
 })();
 </script>
 <script>
-/* Miles Windu Version 15, from the COS Control pack. pet-cast.js (deferred, so it is
+/* Illustrated Miles Windu, from the COS Control pack. pet-cast.js (deferred, so it is
    ready by DOMContentLoaded) streams each state's cropped rows, rotates the shuffled
    opponent casts the way the app does, and holds frame zero under Reduced Motion. */
 document.addEventListener('DOMContentLoaded',function(){
