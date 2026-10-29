@@ -2,17 +2,28 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.352",
-      "build": 406,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.352/COS-Control-macOS-arm64-0.5.352.zip",
-      "sha256": "450e52f54486481c719b1e53915ef9a41dfaa44b8daf2397f0650b357b34a298",
+      "version": "0.5.353",
+      "build": 407,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.353/COS-Control-macOS-arm64-0.5.353.zip",
+      "sha256": "5be9cf5d5c7a03540608d7739fd87126928fd4d571e32fc2e89219fd785f44ee",
       "minMacOS": "14.0",
       "serverTarget": "6.94.2",
-      "publishedAt": "2026-10-28T18:38:25Z",
-      "notes": "Settings in ten categories with search and an On this page list, shorter labels, Use classic Settings, and pet dragging that works on macOS 27.2. Pairs with COS server 6.93.0.",
+      "publishedAt": "2026-10-29T13:11:46Z",
+      "notes": "Usage by week, by records and by token category, with a comparison to the period before and Copy CSV or Copy JSON, plus loading outlines that stop pages jumping. Pairs with COS server 6.93.0.",
       "whatsNew": {
-        "summary": "Settings is now sorted into ten categories, with search and an On this page list. Many settings have shorter, clearer names, and search still finds them by their old names. Use classic Settings, in General, Advanced, brings back the old page. Roll back server asks first, and the session pet can be dragged again on macOS 27.2. Plus everything in 0.5.351: quick save for Mac recordings, stalled-capture restart, a Recover that checks the server, and speaker ID on by default for Mac recordings.",
+        "summary": "Usage can now show weeks, count records, split a period into token categories, compare it with the period before, sort its tables and copy what you see as CSV or JSON. Views that are loading take the size of what will appear, so pages no longer jump when they fill in, and a question you ask COS in a meeting holds its answer's room while it works. Plus everything in 0.5.352: Settings in ten categories with search, and pet dragging on macOS 27.2.",
         "sections": [
+          {
+            "title": "0.5.353",
+            "items": [
+              "Usage can show weeks as well as days and months, count records instead of tokens, and split each period into input, output, cache reads and cache writes.",
+              "Each period shows its daily average and its peak day, and compares with the period before it over the same dates. A month in progress is compared with the same dates of the previous month, and a partial today is labeled.",
+              "Click the peak day, a bar or a table row to inspect or filter it. The inspection stays when you switch between days, weeks and months. The Models and Daily tables sort by any column.",
+              "Copy CSV and Copy JSON copy exactly what the slice bar above them describes, including custom dates.",
+              "While a view loads, its outline takes the size of the rows and cards that will replace it, so the page no longer jumps when it fills in. Sessions and Tasks keep their numbers row in place, with dashes, during the first load.",
+              "A question you ask COS in a meeting shows a short Working line and an answer-sized block while it runs, so the card does not grow when the answer arrives."
+            ]
+          },
           {
             "title": "0.5.352",
             "items": [
@@ -609,32 +620,6 @@
           }
         ]
       }
-    }
-  },
-  "nextStable": {
-    "version": "0.5.353",
-    "build": 407,
-    "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.353/COS-Control-macOS-arm64-0.5.353.zip",
-    "sha256": "__SHA256__",
-    "minMacOS": "14.0",
-    "serverTarget": "6.94.2",
-    "publishedAt": "__PUBLISHED_AT__",
-    "notes": "Usage by week, by records and by token category, with a comparison to the period before and Copy CSV or Copy JSON, plus loading outlines that stop pages jumping. Pairs with COS server 6.93.0.",
-    "whatsNew": {
-      "summary": "Usage can now show weeks, count records, split a period into token categories, compare it with the period before, sort its tables and copy what you see as CSV or JSON. Views that are loading take the size of what will appear, so pages no longer jump when they fill in, and a question you ask COS in a meeting holds its answer's room while it works. Plus everything in 0.5.352: Settings in ten categories with search, and pet dragging on macOS 27.2.",
-      "sections": [
-        {
-          "title": "0.5.353",
-          "items": [
-            "Usage can show weeks as well as days and months, count records instead of tokens, and split each period into input, output, cache reads and cache writes.",
-            "Each period shows its daily average and its peak day, and compares with the period before it over the same dates. A month in progress is compared with the same dates of the previous month, and a partial today is labeled.",
-            "Click the peak day, a bar or a table row to inspect or filter it. The inspection stays when you switch between days, weeks and months. The Models and Daily tables sort by any column.",
-            "Copy CSV and Copy JSON copy exactly what the slice bar above them describes, including custom dates.",
-            "While a view loads, its outline takes the size of the rows and cards that will replace it, so the page no longer jumps when it fills in. Sessions and Tasks keep their numbers row in place, with dashes, during the first load.",
-            "A question you ask COS in a meeting shows a short Working line and an answer-sized block while it runs, so the card does not grow when the answer arrives."
-          ]
-        }
-      ]
     }
   },
   "killSwitch": {
