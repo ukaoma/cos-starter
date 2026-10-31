@@ -9,20 +9,21 @@
       "minMacOS": "14.0",
       "serverTarget": "6.94.2",
       "publishedAt": "2026-10-31T16:18:56Z",
-      "notes": "Usage opens with API value, tokens, value a day and the month so far, with a calendar of every day, a Columns menu and partial weeks marked. You can choose to count Cursor tokens. Pairs with COS server 6.93.0.",
+      "notes": "Usage opens with API value, tokens, value a day and the month so far, with a day-by-day calendar for longer periods, a Columns menu and partial weeks marked. You can choose to count Cursor tokens. Pairs with COS server 6.93.0.",
       "whatsNew": {
-        "summary": "Usage now opens with the answers: API value, new and all tokens, value a day and the month so far, with changes from the period before. A chart sits beside a panel that follows the bar you pick, a calendar shows every day with each weekday's average, and one table covers every tool and model, with share bars and a Columns menu. Partial weeks are lighter, so the last bar no longer looks like a drop. You can also choose to count Cursor tokens. Pairs with COS server 6.93.0.",
+        "summary": "Usage now opens with the answers: API value, new and all tokens, value a day and the month so far, and how API value and new tokens changed from the period before. A chart sits beside a panel that follows the bar you pick, a calendar shows longer periods day by day with each weekday's average, and one table covers every tool and model, with share bars and a Columns menu. Partial weeks are lighter, so a last partial week no longer looks like a drop. You can also choose to count Cursor tokens. Pairs with COS server 6.93.0.",
         "sections": [
           {
             "title": "0.5.358",
             "items": [
-              "Usage opens with five figures: API value, new tokens, all tokens, API value a day, and this month so far with an estimate for the month. Each period figure shows its change from the period before when your history reaches that far.",
-              "A calendar shows every day in the period, and each weekday row ends in that weekday's average. Click a day to look at it. A hollow square means no logs, or no records when a tool or model is selected, and that is not the same as zero.",
-              "Hover a bar to see what is in it, by tool, model or token type. Weeks and months that are only partly over are lighter and stay out of the new average line, so the last bar no longer looks like a drop.",
+              "Usage opens with up to five figures: API value, new tokens, all tokens, API value a day, and this month so far with an estimate for the month. API value and new tokens show their change from the period before when your history reaches that far.",
+              "For a period of about three weeks or more, a calendar shows every day, and each weekday row ends in that weekday's average. Click a day to look at it. An empty square means no logs, or no records when a tool or model is selected, and that is not the same as zero.",
+              "Hover a bar to see what is in it, by tool, model or token type. Weeks and months that are only partly over are lighter and stay out of the new average line, so a last partial week or month no longer looks like a drop.",
               "The panel beside the chart compares where the tokens went with where the value went. It lists models and a headline only for a bar you pick, because the figures and the table cover the whole period.",
               "The table has share bars and a Columns menu. Records and Last used show by default, and Cache reads and Per 1M new are one click away. Your choice is remembered.",
-              "Refreshing while tracking is paused no longer reads new logs, and the tracking and Cursor switches moved to the gear menu at the top. A + on a figure means some records have no verified price, and the footer names those models. A day with no price is left out of averages and never counts as $0.",
-              "Cache reads have their own grey instead of sharing Claude Code's gold, and the chart's words now show a small arrow to say they are menus."
+              "Refreshing while tracking is paused no longer reads new logs, and the tracking switch moved to the gear menu at the top, next to Count Cursor tokens when Cursor is on this Mac. A + on a figure means some records have no verified price, and the footer names those models. A day with no price is left out of averages and never counts as $0.",
+              "Cache reads have their own grey instead of sharing Claude Code's gold, and the chart's words now show a small arrow to say they are menus.",
+              "The chart no longer counts records; Records is now a table column. Busiest day replaces the peak day figure, New tokens replaces Exclude cache reads, clicking a bar replaces Inspect period, and Within provider is gone."
             ]
           },
           {
@@ -30,7 +31,7 @@
             "items": [
               "Usage has a new layout: filters, then a stacked chart beside a panel that shows the whole period or the bar you pick, then one table grouped by tool.",
               "Pick what the chart shows from one line: All tokens, New tokens or API value, by tool, model or token type, per day, week or month.",
-              "Count Cursor tokens is a new choice, off until you turn it on. It reads the Cursor command line sign-in from this Mac's Keychain and asks Cursor for your usage. Only counts, dates, model names and each request's reported cost are stored.",
+              "Count Cursor tokens is a new choice, off until you turn it on. It reads the Cursor command line sign-in from this Mac's Keychain and asks Cursor for your usage. Only counts, dates, model names, each request's reported cost and a hash of each event id are stored.",
               "Comparisons with an earlier period appear only when your history covers that whole period."
             ]
           },
