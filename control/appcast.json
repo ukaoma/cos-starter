@@ -2,17 +2,33 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.361",
-      "build": 415,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.361/COS-Control-macOS-arm64-0.5.361.zip",
-      "sha256": "862a41e25de84fa31044baf0c2daf6f04959d820f873f7f59da9c94e97851a0d",
+      "version": "0.5.363",
+      "build": 417,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.363/COS-Control-macOS-arm64-0.5.363.zip",
+      "sha256": "4a3d32608f0c073fa515e31f849ea791220b5e30865e3fa3796b421d6d9e9231",
       "minMacOS": "14.0",
-      "serverTarget": "6.94.2",
-      "publishedAt": "2026-11-01T12:03:27Z",
-      "notes": "With Today home on (Settings, General, Activity home), ⌘K goes to any pane or tab and lists your sessions. Sessions has a third view, COS cost. Usage reads compressed Codex logs in the background, so Codex numbers rise. Update Server won't move backward. Pairs with COS server 6.94.2.",
+      "serverTarget": "6.94.3",
+      "publishedAt": "SET_publishedAt_AT_PUBLISH_UTC_ISO_8601",
+      "notes": "With Today home on (Settings, General, Activity home), ⌘K finds sessions by meaning once you say yes for Jev or SubQ. Each search then sends your words and short session excerpts to that provider. It also goes to the Memories views, Work layouts and Settings groups. An older server keeps word search; Update Server adds meaning search. Pairs with COS server 6.94.3.",
       "whatsNew": {
-        "summary": "With Today home on, ⌘K is the COS command center: start or stop a recording, open what's waiting, get saved answers, Ask COS, troubleshoot. It also goes to any pane or tab (type usage, messages or work), lists your sessions, and finds what was said inside them on this Mac. Sessions has a third view, COS cost. Usage reads compressed Codex logs. Update Server won't move backward. Plus everything in 0.5.358: Usage opens with the answers, a calendar for longer periods, and hover details.",
+        "summary": "With Today home on, ⌘K finds a session by what it was about once you say yes for your decision model (Jev or SubQ): each search then sends your words, plus the titles and first prompts of recent sessions, to it. It also goes to the Memories views, Work layouts and Settings groups, and offers Continue in this session. Plus everything in 0.5.361: ⌘K goes to any pane or tab, lists your sessions and finds words inside them on this Mac.",
         "sections": [
+          {
+            "title": "0.5.363",
+            "items": [
+              "With Today home on, type a few words about a topic in ⌘K and it lists the sessions that fit best, strongest first. Each row shows its tool, project, age, how strong the match is, and the line it was judged on. Open one and keep working there.",
+              "Meaning matches sit above word matches, so the best sessions are first. A word now matches at the start of a word, in titles and in text, so \"miss\" no longer finds \"permissions\" and \"model\" still finds ControllerModel. Two sessions with one title each say when they last moved. \"Recent\" is no longer drawn next to an age.",
+              "Finding by meaning is off until you say yes. When Jev or SubQ is your decision model and its key is saved, ⌘K asks for that model on every search of three words or more until you answer: Turn on, or Never. After a yes, each search sends the words you type in ⌘K, plus the title and first 150 characters of the first prompt from up to 508 recent sessions, to that model, through the COS server. Emails, links, home-folder paths and key-shaped text are removed first. Names and other details are not. SubQ keeps what it is sent. Settings, Decision models shows and changes your choice for the model that decides search.",
+              "Without that yes, typing in ⌘K searches the start of your newest sessions on this Mac and sends nothing off it. Finding by meaning needs a newer COS server. An older server keeps word search; Update Server adds it.",
+              "The Work search picker in Settings, Decision models is now Work and ⌘K search, because it also picks the model for this, and the Decision models blurb says so.",
+              "When one match is clearly the best and Jev decides (not yet for SubQ), ⌘K offers Continue in this session. It opens that session with your words ready in its reply box. Nothing is sent until you press Send, and Return in the box does not send them.",
+              "⌘K also goes to the Memories views (Recent learning, Applied this week, All memories, To review, Knowledge), Work's three layouts (Your move, Board, Focus), and any group in Settings, such as Decision models or Microphone. Type a tab name exactly and Return opens it. A Settings group name, such as \"performance\", still searches your sessions too.",
+              "A session that has not moved in six hours reads Idle in ⌘K, not Running. It stays in the list.",
+              "COS cost has a Finding sessions row, counted by the day.",
+              "When rows arrive in ⌘K the list scrolls to keep your highlighted row in view.",
+              "Speakers: a voice's closest match below 0.65 no longer has a one-click \"Yes, this is ...\" button. It is a menu, so confirming a weak guess takes a deliberate second step."
+            ]
+          },
           {
             "title": "0.5.361",
             "items": [
