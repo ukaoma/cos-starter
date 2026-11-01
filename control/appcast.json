@@ -8,7 +8,7 @@
       "sha256": "862a41e25de84fa31044baf0c2daf6f04959d820f873f7f59da9c94e97851a0d",
       "minMacOS": "14.0",
       "serverTarget": "6.94.2",
-      "publishedAt": "SET_publishedAt_AT_PUBLISH_UTC_ISO_8601",
+      "publishedAt": "2026-11-01T12:03:27Z",
       "notes": "With Today home on (Settings, General, Activity home), ⌘K goes to any pane or tab and lists your sessions. Sessions has a third view, COS cost. Usage reads compressed Codex logs in the background, so Codex numbers rise. Update Server won't move backward. Pairs with COS server 6.94.2.",
       "whatsNew": {
         "summary": "With Today home on, ⌘K is the COS command center: start or stop a recording, open what's waiting, get saved answers, Ask COS, troubleshoot. It also goes to any pane or tab (type usage, messages or work), lists your sessions, and finds what was said inside them on this Mac. Sessions has a third view, COS cost. Usage reads compressed Codex logs. Update Server won't move backward. Plus everything in 0.5.358: Usage opens with the answers, a calendar for longer periods, and hover details.",
