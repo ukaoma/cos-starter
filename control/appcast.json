@@ -2,17 +2,45 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.358",
-      "build": 412,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.358/COS-Control-macOS-arm64-0.5.358.zip",
-      "sha256": "51efce1f8ff7022bc2410f0c8008b6f4a3c88b3251d477d0fc3ebb9800998a74",
+      "version": "0.5.361",
+      "build": 415,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.361/COS-Control-macOS-arm64-0.5.361.zip",
+      "sha256": "862a41e25de84fa31044baf0c2daf6f04959d820f873f7f59da9c94e97851a0d",
       "minMacOS": "14.0",
       "serverTarget": "6.94.2",
-      "publishedAt": "2026-10-31T16:18:56Z",
-      "notes": "Usage opens with API value, tokens, value a day and the month so far, with a day-by-day calendar for longer periods, a Columns menu and partial weeks marked. You can choose to count Cursor tokens. Pairs with COS server 6.93.0.",
+      "publishedAt": "SET_publishedAt_AT_PUBLISH_UTC_ISO_8601",
+      "notes": "With Today home on (Settings, General, Activity home), ⌘K goes to any pane or tab and lists your sessions. Sessions has a third view, COS cost. Usage reads compressed Codex logs in the background, so Codex numbers rise. Update Server won't move backward. Pairs with COS server 6.94.2.",
       "whatsNew": {
-        "summary": "Usage now opens with the answers: API value, new and all tokens, value a day and the month so far, and how API value and new tokens changed from the period before. A chart sits beside a panel that follows the bar you pick, a calendar shows longer periods day by day with each weekday's average, and one table covers every tool and model, with share bars and a Columns menu. Partial weeks are lighter, so a last partial week no longer looks like a drop. You can also choose to count Cursor tokens. Pairs with COS server 6.93.0.",
+        "summary": "With Today home on, ⌘K is the COS command center: start or stop a recording, open what's waiting, get saved answers, Ask COS, troubleshoot. It also goes to any pane or tab (type usage, messages or work), lists your sessions, and finds what was said inside them on this Mac. Sessions has a third view, COS cost. Usage reads compressed Codex logs. Update Server won't move backward. Plus everything in 0.5.358: Usage opens with the answers, a calendar for longer periods, and hover details.",
         "sections": [
+          {
+            "title": "0.5.361",
+            "items": [
+              "With Today home on in Settings, ⌘K goes to any pane or tab. Type usage, cos cost, messages, archive, voices or work, and press Return.",
+              "Type sessions or recent to list your sessions, newest first, and add today, yesterday or this week to narrow the list. Type running to see what runs and what waits. Session lists and search need Show AI sessions on, in Settings, Work and agents.",
+              "Typing in ⌘K searches the start of your newest sessions on this Mac only, and sends nothing off it. It shows the line that matched. Search all sessions opens Sessions with your words filled in, and Sessions' search asks the COS server and can use your OpenAI key.",
+              "Return on words that are not a command never starts anything on the first press. It moves to Ask COS, and a second press runs it. With Work runs from Today off, the first press files the words as a task.",
+              "The session list refreshes when you open ⌘K.",
+              "After hours, Today and ⌘K agree: when everything left can wait, both say how many things can wait until tomorrow.",
+              "A long session title is cut in the panel's footer, and \"Return again opens it\" stays whole."
+            ]
+          },
+          {
+            "title": "0.5.360",
+            "items": [
+              "With Today home on in Settings, ⌘K is the COS command center: start or stop a recording, open what's waiting, get saved answers, Ask COS, troubleshoot.",
+              "With Today home on, what's recording now sits at the top of Today and first in ⌘K.",
+              "Sessions has a third view, COS cost: what COS itself used over 30 days, by job, measured where it can be. A row with only character counts says Estimated and stays out of the measured total.",
+              "Work shows the runs themselves, with the wider figure in words.",
+              "Once COS has measured calls, add what you pay a month to see COS's share. It stays on this Mac.",
+              "Usage now reads compressed Codex logs, so Codex numbers go up. You didn't use more: older logs are finally counted.",
+              "Update Server won't move backward.",
+              "The Miles Windu pet no longer leaves a droid fragment behind after a strike.",
+              "A paused Usage page now says it is paused, offers Resume tracking and drops the month estimate. Count Cursor tokens tells a Keychain that didn't answer from one that said no, and offers the install command when Cursor's command line is missing.",
+              "With Today home on, Return in ⌘K goes to the command or session your words point at before it starts anything, and a row you ran is cleared so the next ⌘K doesn't offer it again. A question that mentions recording no longer starts one when you press Return.",
+              "COS cost puts a + on any figure that leaves out calls with no verified price, says when it couldn't read its record of calls, and keeps trying while the usage history is busy."
+            ]
+          },
           {
             "title": "0.5.358",
             "items": [
