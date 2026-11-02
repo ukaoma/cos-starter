@@ -8,7 +8,7 @@
       "sha256": "4a3d32608f0c073fa515e31f849ea791220b5e30865e3fa3796b421d6d9e9231",
       "minMacOS": "14.0",
       "serverTarget": "6.94.3",
-      "publishedAt": "SET_publishedAt_AT_PUBLISH_UTC_ISO_8601",
+      "publishedAt": "2026-11-02T00:17:21Z",
       "notes": "With Today home on (Settings, General, Activity home), ⌘K finds sessions by meaning once you say yes for Jev or SubQ. Each search then sends your words and short session excerpts to that provider. It also goes to the Memories views, Work layouts and Settings groups. An older server keeps word search; Update Server adds meaning search. Pairs with COS server 6.94.3.",
       "whatsNew": {
         "summary": "With Today home on, ⌘K finds a session by what it was about once you say yes for your decision model (Jev or SubQ): each search then sends your words, plus the titles and first prompts of recent sessions, to it. It also goes to the Memories views, Work layouts and Settings groups, and offers Continue in this session. Plus everything in 0.5.361: ⌘K goes to any pane or tab, lists your sessions and finds words inside them on this Mac.",
