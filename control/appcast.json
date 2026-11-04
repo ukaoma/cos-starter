@@ -2,17 +2,69 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.363",
-      "build": 417,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.363/COS-Control-macOS-arm64-0.5.363.zip",
-      "sha256": "4a3d32608f0c073fa515e31f849ea791220b5e30865e3fa3796b421d6d9e9231",
+      "version": "0.5.368",
+      "build": 422,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.368/COS-Control-macOS-arm64-0.5.368.zip",
+      "sha256": "018b4d98d669f73387b98c5199aa9ae179c3bf1d1398042033209b28189eef02",
       "minMacOS": "14.0",
-      "serverTarget": "6.98.0",
-      "publishedAt": "2026-11-02T00:17:21Z",
-      "notes": "With Today home on (Settings, General, Activity home), ⌘K finds sessions by meaning once you say yes for Jev or SubQ. Each search then sends your words and short session excerpts to that provider. It also goes to the Memories views, Work layouts and Settings groups. An older server keeps word search; Update Server adds meaning search. Pairs with COS server 6.98.0.",
+      "serverTarget": "6.98.1",
+      "publishedAt": "2026-11-04T23:19:44Z",
+      "notes": "Windu gains a full follow-through, plasma impacts and independently falling droid pieces, plus the approved Session 3 polish. Custom pets and timing are preserved. Includes safer Settings and local spreadsheet reading. Cue mode and Grounded cues retain their defaults. Phone sign-in and live rename stay hidden without newer server support. Pairs with the already-published COS server 6.98.1.",
       "whatsNew": {
-        "summary": "With Today home on, ⌘K finds a session by what it was about once you say yes for your decision model (Jev or SubQ): each search then sends your words, plus the titles and first prompts of recent sessions, to it. It also goes to the Memories views, Work layouts and Settings groups, and offers Continue in this session. Plus everything in 0.5.361: ⌘K goes to any pane or tab, lists your sessions and finds words inside them on this Mac.",
+        "summary": "The Miles Windu pet's strike now cuts through the droid; each half flies off its own way. Plus everything in 0.5.367: in Settings, Glasses and iPhone, scan the QR with your iPhone camera and Safari opens COS already signed in, or show a short sign-in code to type. It needs the newer COS server. Also in 0.5.363: with Today home on, ⌘K finds a session by meaning once you say yes for your decision model, and each search sends your words, plus the titles and first prompts of recent sessions, to it.",
         "sections": [
+          {
+            "title": "0.5.368",
+            "items": [
+              "The Miles Windu pet's strike now cuts through the droid; each half flies off its own way.",
+              "When Windu takes on three droids, that fight uses the newer approved art too.",
+              "Only the stock Windu pet changes. If you changed its art or timing, yours stays as it is, and the earlier Windu art stays in the app.",
+              "On an older COS server, the phone sign-in row is hidden."
+            ]
+          },
+          {
+            "title": "0.5.367",
+            "items": [
+              "Settings, Glasses and iPhone has a new row, Open COS on your phone. Scan its QR with your iPhone camera and Safari opens COS already signed in. The QR works once, for 2 minutes, and only on your tailnet.",
+              "Show a sign-in code gives you a short code to type on the sign-in page instead. It works once, for 5 minutes.",
+              "COS makes the QR only while the row is on screen, and a new one about every 90 seconds. It needs the newer COS server: on an older one the row says to update it, and without Tailscale on this Mac it says to turn it on.",
+              "The row sits first under Devices, and the glasses pairing QR now says it is for the COS Glasses app, not the iPhone Camera."
+            ]
+          },
+          {
+            "title": "0.5.366",
+            "items": [
+              "Rename a live Mac recording or glasses meeting from the live meeting view: click the title or Rename, type a name, press Return to save or Escape to cancel. Your title shows at once, in the switcher too. It needs the newer COS server and shows nothing on an older one.",
+              "When it saves the meeting, COS keeps your names, companies and topic and may sharpen the wording, so the saved title can differ a little from what you typed. A Mac recording saves under your title.",
+              "Clearing the field and saving goes back to the automatic title. If another device renamed it first, its name is kept and the live view says so. Rename is off while the recording is being saved.",
+              "Settings: Return never confirms a delete or a stop. Stop, Roll back, Repair, and Quit during a Mac recording ask first, and Escape closes the dialog.",
+              "Settings that restart the server apply only when changed and wait for running work. Cues per meeting takes a typed number, and limit menus always show your saved value.",
+              "The microphone list updates itself. Options hide until their switch is on, and search still finds them. Domains is now Task folders, HQ model is Saved meetings, and Pet and appearance is Pet."
+            ]
+          },
+          {
+            "title": "0.5.365",
+            "items": [
+              "Settings, Live cues has a new Web today line: every web search and page read COS made today, split into cues, the meeting assistant and fact checks, with pages that could not be read and lookups held back. It needs the newer COS server and shows nothing on an older one.",
+              "The general cues counter is now called Background topic checks today, because it counts only those background checks, not the meeting assistant's searches.",
+              "Fixed \"COS Control could not save the limit\" appearing after a limit had saved. A newer step no longer cancels a save in progress, and stepping back to the old value while a save is out is no longer lost.",
+              "A spreadsheet (.xlsx) dropped on a meeting is now read on your Mac, up to 12 sheets and 200 rows each, so the meeting assistant can use it. It works with any COS server. Spreadsheets dropped before this update need to be dropped again.",
+              "A workbook over 10 MB, or too heavy to read, now says so instead of reading as unsupported."
+            ]
+          },
+          {
+            "title": "0.5.364",
+            "items": [
+              "Settings, Meetings has a Cue mode menu. Focused, the default, gives the cues you have today. General gives public context from the web instead of focused cues on Mac meetings, once Public topics is on. All gives both on Mac meetings. G2 meetings keep focused cues in every mode.",
+              "General cues need Public topics on, in Ask settings in the phone app. Until it is on, Mac meetings keep focused cues. Every few minutes COS checks whether the room is on a public topic, such as a company, a place, an event or the news. If it is, COS picks one short topic, sends only that to web search, never the transcript, and shows one line with its source.",
+              "A lookup is skipped while the talk is clearly personal: family members, a doctor or hospital, taxes owed or loans, a lawsuit or custody, daycare or a child's school, a death. A topic is refused when it names someone in the meeting, has a number, names your own company or brands, or touches health, money, family, legal or school matters. Meetings marked personal get none.",
+              "Limits for general cues sit with the other cue limits: how often COS looks, lookups and cues per meeting, and topic and web searches per day. When general cues are not running, one line says why.",
+              "Grounded cues, off until you turn them on, let a cue draw on your COS memories and the files attached to the meeting as well as past meetings, and cite up to two of them. When they are on, short passages from those go to your decision model (Jev or SubQ) so it can judge which fit.",
+              "Cue sources open with a click. A past meeting, memory or file opens as it does in Ask, and a web source opens in your browser. Insight cues show the site they came from.",
+              "Copy full context now includes the meeting's cues.",
+              "These need a newer COS server. With an older server the new controls stay hidden and cues work as before."
+            ]
+          },
           {
             "title": "0.5.363",
             "items": [
