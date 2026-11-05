@@ -2,17 +2,41 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.368",
-      "build": 422,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.368/COS-Control-macOS-arm64-0.5.368.zip",
-      "sha256": "018b4d98d669f73387b98c5199aa9ae179c3bf1d1398042033209b28189eef02",
+      "version": "0.5.371",
+      "build": 425,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.371/COS-Control-macOS-arm64-0.5.371.zip",
+      "sha256": "c32563133acf33e121fa4af16155f157330ecdd6a9d834e6bbfb3abc5237296a",
       "minMacOS": "14.0",
-      "serverTarget": "6.98.1",
-      "publishedAt": "2026-11-04T23:19:44Z",
-      "notes": "Windu gains a full follow-through, plasma impacts and independently falling droid pieces, plus the approved Session 3 polish. Custom pets and timing are preserved. Includes safer Settings and local spreadsheet reading. Cue mode and Grounded cues retain their defaults. Phone sign-in and live rename stay hidden without newer server support. Pairs with the already-published COS server 6.98.1.",
+      "serverTarget": "6.99.12",
+      "publishedAt": "2026-11-05T17:10:40Z",
+      "notes": "Drop it: a pinned COS chat in Messages with Ask, Drop and up to five attachments. It is off until you turn it on in Settings, and needs COS server 6.99.12 or newer; on 6.99.12 Drop takes words only, while Ask sends files. Consolidate meetings in Suggested merges starts an AI cleanup only when clicked and now continues across saved passes. The stock Windu Session 1 strike has new recovery art; custom packs are untouched. Pairs with the already-published COS server 6.99.12.",
       "whatsNew": {
-        "summary": "The Miles Windu pet's strike now cuts through the droid; each half flies off its own way. Plus everything in 0.5.367: in Settings, Glasses and iPhone, scan the QR with your iPhone camera and Safari opens COS already signed in, or show a short sign-in code to type. It needs the newer COS server. Also in 0.5.363: with Today home on, ⌘K finds a session by meaning once you say yes for your decision model, and each search sends your words, plus the titles and first prompts of recent sessions, to it.",
+        "summary": "Drop it: with a newer COS server and Drop it turned on in Settings, a pinned COS chat sits at the top of Messages. Type a thought, an ask or a reminder, and COS files it and texts back, with Undo and Move in the chat. It is off until you turn it on. Meeting consolidation now continues automatically across saved passes, and Stop cleanup sits beside its status. Plus everything in 0.5.369: Suggested merges has Consolidate meetings, a tracked AI cleanup of matching recordings that keeps the originals.",
         "sections": [
+          {
+            "title": "0.5.371",
+            "items": [
+              "Drop it: a pinned COS chat at the top of Messages. Type a thought, an ask or a reminder, and COS files it where it belongs and texts back what it did.",
+              "Ask or Drop: Ask gets an answer from COS, which also lands in Messages with its number. Drop files it. Return asks, Option-Return drops.",
+              "Attach photos, video, PDFs and documents to a message, up to five: drag them onto the box, paste a screenshot, or choose them with Add. Ask sends them with your words.",
+              "Each reply has Undo and Move for 24 hours. When COS is not sure where something goes, it asks one question instead of guessing. History lists everything you dropped, with where it went.",
+              "The Messages tab shows a number when COS is waiting on your answer, and a dot when the chat has something you have not read.",
+              "It is off until you turn it on in Settings, Work and agents, Work chat, and it needs a newer COS server. While it is off, Messages and ⌘K's File to Work are exactly as before.",
+              "Meeting consolidation continues automatically across saved passes, past the former 15-minute limit, and reports completion only after checking the saved inventory and audit.",
+              "Stop cleanup is available beside the running status. Originals and uncertain matches remain preserved.",
+              "Requires a compatible COS server with resumable cleanup support. Older servers refuse before starting.",
+              "The Miles Windu pet's Session 1 strike has new right-facing recovery art. Custom packs and every other character stay as they are.",
+              "A drop never sends anything to anyone."
+            ]
+          },
+          {
+            "title": "0.5.369",
+            "items": [
+              "Consolidate meetings reviews the backlog and applies supported, verified merges. It uses Claude Opus by default, with Codex Frontier available as an explicit choice.",
+              "The cleanup also checks long and overrun recordings, trims derived transcript copies at supported conversation boundaries, and merges matching segments into existing meetings. Full originals are retained, and uncertain boundaries stay available for review.",
+              "A durable receipt prevents duplicate cleanup runs across app restarts. Check status and read the cleanup report in Suggested merges. Individual advise-mode answers still only save feedback."
+            ]
+          },
           {
             "title": "0.5.368",
             "items": [
