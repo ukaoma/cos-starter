@@ -2,17 +2,29 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.371",
-      "build": 425,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.371/COS-Control-macOS-arm64-0.5.371.zip",
-      "sha256": "c32563133acf33e121fa4af16155f157330ecdd6a9d834e6bbfb3abc5237296a",
+      "version": "0.5.373",
+      "build": 427,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.373/COS-Control-macOS-arm64-0.5.373.zip",
+      "sha256": "1494fc9f22fcab57f10965f6e4260ab5e1c42cb3c7cecb1136405a9ad0610855",
       "minMacOS": "14.0",
       "serverTarget": "6.99.12",
-      "publishedAt": "2026-11-05T17:10:40Z",
-      "notes": "Drop it: a pinned COS chat in Messages with Ask, Drop and up to five attachments. It is off until you turn it on in Settings, and needs COS server 6.99.12 or newer; on 6.99.12 Drop takes words only, while Ask sends files. Consolidate meetings in Suggested merges starts an AI cleanup only when clicked and now continues across saved passes. The stock Windu Session 1 strike has new recovery art; custom packs are untouched. Pairs with the already-published COS server 6.99.12.",
+      "publishedAt": "2026-11-06T00:24:43Z",
+      "notes": "With Drop it on, reminders and follow-ups on your drops show as Mac notifications, with a local backup so reminders fire on time, and Settings gains COS reaching out to decide what may interrupt. Updates now ask COS Control to quit before swapping, from the update after this one. Notifications need COS server 6.99.11 or newer. Pairs with the already-published COS server 6.99.12.",
       "whatsNew": {
-        "summary": "Drop it: with a newer COS server and Drop it turned on in Settings, a pinned COS chat sits at the top of Messages. Type a thought, an ask or a reminder, and COS files it and texts back, with Undo and Move in the chat. It is off until you turn it on. Meeting consolidation now continues automatically across saved passes, and Stop cleanup sits beside its status. Plus everything in 0.5.369: Suggested merges has Consolidate meetings, a tracked AI cleanup of matching recordings that keeps the originals.",
+        "summary": "Drop it now reaches out: with Drop it on, reminders and follow-ups on your drops show as Mac notifications, and Settings, Work and agents gains COS reaching out to decide what may interrupt. Updates close COS Control cleanly. Plus everything in 0.5.371: Drop it, a pinned COS chat in Messages with Ask, Drop and attachments, off until you turn it on.",
         "sections": [
+          {
+            "title": "0.5.373",
+            "items": [
+              "With Drop it on, reminders and follow-ups on your drops show as Mac notifications. Clicking one opens the COS chat. Everything else lands in the chat without a notification.",
+              "Every pending reminder is also scheduled on your Mac, so it fires on time even when the server is busy. Done, Snooze, Tomorrow and the reminder time choices work from the chat.",
+              "Settings, Work and agents, COS reaching out: how often COS may interrupt, quiet hours, what it pings about, follow-ups, a weekly check-in and reminder defaults. Each change shows what the server saved.",
+              "When a drop’s Work card finishes, two notifications can show: the Work notice and the follow-up.",
+              "Dragging a file onto the Drop it box shows where it will land, after the files already attached.",
+              "Updates now ask COS Control to quit before they swap, instead of closing it by force. This takes effect from the update after this one.",
+              "Notifications and COS reaching out need COS server 6.99.11 or newer. While Drop it is off, nothing changes."
+            ]
+          },
           {
             "title": "0.5.371",
             "items": [
