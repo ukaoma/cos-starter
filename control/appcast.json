@@ -7,12 +7,21 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.376/COS-Control-macOS-arm64-0.5.376.zip",
       "sha256": "a4baca5b1fe9d7bf9562383301debdfcb1b19d3caaab00a433993f011e631ab8",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.20",
+      "serverTarget": "6.99.25",
       "publishedAt": "2026-11-07T03:48:04Z",
-      "notes": "Prepare for a call with notes and files, then explicitly add the saved prep to a selected live meeting. Plan for Work prepares assignments for review before sending. Includes the persistent COS thread and clearer Messages rows. Pair with COS server 6.99.20, which fixes Prep discovery for this Control build.",
+      "notes": "Pair Control 0.5.376 with server 6.99.25 for mobile prep and recording controls. Add notes and files before a call, then explicitly add the saved prep to a selected live meeting. Includes browser Today actions, reviewed Work plans and Memories. The Control download is unchanged.",
       "whatsNew": {
-        "summary": "Prep me opens a draft for notes and files. Continue the prep conversation, then choose Add prep to this meeting to carry its saved context into a live recording and saved review. Plan for Work prepares proposals for review. Includes the COS thread and clearer Messages rows. Paired server: 6.99.20.",
+        "summary": "Matched server: 6.99.25. Mobile prep and recording controls fit narrow screens. Explicitly add saved prep notes and ready files to a selected live meeting for live Ask and saved review. Includes browser Today actions, reviewed Work plans, Memories and a per-browser pet picker. Control remains 0.5.376.",
         "sections": [
+          {
+            "title": "Server 6.99.25",
+            "items": [
+              "Mobile recording controls have larger touch targets and prep suggestions fit narrow screens. Carryover still requires explicitly adding saved prep to the selected live recording.",
+              "Browser Today opens actionable panels. Work chat prepares plans for review and sends through the Mac; a receipt confirms dispatch. Memories now has a native browser pane.",
+              "The optional pet picker applies to this browser. Opening its OpenPets gallery fetches artwork from openpets.dev through your server.",
+              "Known limits: Work chat history stays in the browser, and Control 0.5.376 may call a web plan From glasses. Transcription-cleanup and live-cue choices stay unchanged."
+            ]
+          },
           {
             "title": "0.5.376",
             "items": [
