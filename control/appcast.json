@@ -2,17 +2,42 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.373",
-      "build": 427,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.373/COS-Control-macOS-arm64-0.5.373.zip",
-      "sha256": "1494fc9f22fcab57f10965f6e4260ab5e1c42cb3c7cecb1136405a9ad0610855",
+      "version": "0.5.376",
+      "build": 430,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.376/COS-Control-macOS-arm64-0.5.376.zip",
+      "sha256": "a4baca5b1fe9d7bf9562383301debdfcb1b19d3caaab00a433993f011e631ab8",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.12",
-      "publishedAt": "2026-11-06T00:24:43Z",
-      "notes": "With Drop it on, reminders and follow-ups on your drops show as Mac notifications, with a local backup so reminders fire on time, and Settings gains COS reaching out to decide what may interrupt. Updates now ask COS Control to quit before swapping, from the update after this one. Notifications need COS server 6.99.11 or newer. Pairs with the already-published COS server 6.99.12.",
+      "serverTarget": "6.99.20",
+      "publishedAt": "2026-11-07T03:48:04Z",
+      "notes": "Prepare for a call with notes and files, then explicitly add the saved prep to a selected live meeting. Plan for Work prepares assignments for review before sending. Includes the persistent COS thread and clearer Messages rows. Pair with COS server 6.99.20, which fixes Prep discovery for this Control build.",
       "whatsNew": {
-        "summary": "Drop it now reaches out: with Drop it on, reminders and follow-ups on your drops show as Mac notifications, and Settings, Work and agents gains COS reaching out to decide what may interrupt. Updates close COS Control cleanly. Plus everything in 0.5.371: Drop it, a pinned COS chat in Messages with Ask, Drop and attachments, off until you turn it on.",
+        "summary": "Prep me opens a draft for notes and files. Continue the prep conversation, then choose Add prep to this meeting to carry its saved context into a live recording and saved review. Plan for Work prepares proposals for review. Includes the COS thread and clearer Messages rows. Paired server: 6.99.20.",
         "sections": [
+          {
+            "title": "0.5.376",
+            "items": [
+              "Prep me opens a draft for notes and files. Click Prep to start the brief; follow-ups stay in the same prep conversation. Your ordinary COS chat draft stays separate.",
+              "Choose a saved prep and use Add prep to this meeting for a specific live recording. Its saved notes and files become available to live Meeting Ask and saved review. This is an explicit action, not automatic calendar matching.",
+              "Interrupted sends keep their request identity for status lookup and retry. File conflicts preserve unsent edits, and a missing receipt does not silently start another request.",
+              "Pairs with COS server 6.99.20. That server fixes Prep discovery for this Control build; 6.99.19 does not. Prep works even when Drop it is off."
+            ]
+          },
+          {
+            "title": "0.5.375",
+            "items": [
+              "Ask COS: Plan for Work lets you choose an existing Work card, prepare a proposal, and explicitly add it to the card for review.",
+              "Preparing or importing a proposal does not send assignments. Use the existing Work Send controls after reviewing it.",
+              "Changed tasks, attachments, references, servers or unavailable targets stop import so you can refresh the proposal. Planning uses the task and cached session evidence, not the full COS conversation or local file contents."
+            ]
+          },
+          {
+            "title": "0.5.374",
+            "items": [
+              "With Drop it enabled and a compatible server, Ask continues the COS conversation. New thread starts fresh; saved threads remain searchable. Older context carries forward as a short summary at the thread size limit.",
+              "Messages shows clearer question titles, two-line answer previews, model names and attachment types. The wider search and simpler pinned COS row make the list easier to scan.",
+              "The leading COS-WORK status prefix is hidden in chat and Messages previews. Work still reads the full status."
+            ]
+          },
           {
             "title": "0.5.373",
             "items": [
