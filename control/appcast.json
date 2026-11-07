@@ -8,7 +8,7 @@
       "sha256": "d33215a214a831190e0f09b2d534e0240a75ce9f5da31cd576f4ff87ea146b62",
       "minMacOS": "14.0",
       "serverTarget": "6.99.29",
-      "publishedAt": "PENDING_ARTIFACT_PUBLICATION_TIME",
+      "publishedAt": "2026-11-07T21:11:57Z",
       "notes": "Pair Control 0.5.377 with server 6.99.29 for fresh pet session counts, phone replies above the keyboard, session image previews and queued-message recovery in Sessions. Prep notes and files still need explicit Add prep to this meeting for the selected recording. Staged Work file transfer stays inactive pending matching server support; web turns do not authorize publish or install.",
       "whatsNew": {
         "summary": "Control 0.5.377 with server 6.99.29: phone session layout and navigation, images in session panels, pet count deduplication and recovery for refused parked messages. Physical Duo Safari acceptance is unverified. Prep carryover still requires an explicit add.",
