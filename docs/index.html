@@ -48,7 +48,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.10.654 (build 654, Hub pin 6.11.677) · server @gotcos/glasses-server 6.99.29 · COS Control 0.5.377.
+   Covers COS Glasses 6.10.654 (build 654, Hub pin 6.11.677) · server @gotcos/glasses-server 6.99.32 · COS Control 0.5.377.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -781,7 +781,7 @@ footer .links a:hover{color:var(--gold)}
     <p class="lead">COS Glasses turns your Even Realities G2 into a heads-up chief of staff, powered by the AI agents already on your Mac. Ten minutes here and the glasses feel like muscle memory.</p>
     <div class="badges">
       <span class="chip">App <b>6.10.654</b> · build 654</span>
-      <span class="chip">Server <b>6.99.29</b></span>
+      <span class="chip">Server <b>6.99.32</b></span>
       <span class="chip">Control <b>0.5.377</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
@@ -789,7 +789,7 @@ footer .links a:hover{color:var(--gold)}
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
-      <li><a href="#release-377"><b>Mac app 0.5.377 / server 6.99.29</b><span>Phone keyboard and session navigation, reply image previews, fresh pet counts and refused-message recovery. Prep carryover stays explicit.</span></a></li>
+      <li><a href="#release-server-69932"><b>Mac app 0.5.377 / server 6.99.32</b><span>Duo keyboard and browser-bar layout, Other fields in view, clear connection status and bounded reads. Prep carryover stays explicit.</span></a></li>
       <li><a href="#release-server-69912"><b>Server 6.99.12</b><span>COS Control in your phone&rsquo;s browser, with Ask, files, Reply and session questions. The server side of Drop it, off until you turn it on. Dictation no longer stops while a meeting records.</span></a></li>
       <li><a href="#release-373"><b>Mac app 0.5.373</b><span>Drop it reaches out: reminder and follow-up notifications on the Mac, and COS reaching out in Settings. Updates close Control cleanly.</span></a></li>
       <li><a href="#release-371"><b>Mac app 0.5.371</b><span>Drop it: a pinned COS chat in Messages with Ask, Drop and attachments, off until you turn it on. Meeting cleanup resumes across passes; Windu gets new recovery art.</span></a></li>
@@ -1051,7 +1051,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.377, glasses 6.10.654, server 6.99.29.</strong> COS Control 0.5.377 is the public Mac download. COS Glasses 6.10.654 is the current companion pack: it is the canonical alias in the Hub repo, unchanged since October 24, 2026. The newest versioned Hub pack is 6.11.678; its beta submission is In Review. Even Hub lists 6.11.677. Server identity is 6.99.29, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.377, glasses 6.10.654, server 6.99.32.</strong> COS Control 0.5.377 is the public Mac download. COS Glasses 6.10.654 is the current companion pack: it is the canonical alias in the Hub repo, unchanged since October 24, 2026. The newest versioned Hub pack is 6.11.678; its beta submission is In Review. Even Hub lists 6.11.677. Server identity is 6.99.32, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -1067,11 +1067,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <p id="session-pet">Desktop session tabs and pet controls are covered on the <a href="/control/#session-command">COS Control page</a>. For the glasses footer, see <a href="#sessions">Sessions on the lens</a>.</p>
   <div class="ccx" data-control-exhibit>
     <div class="ccx-stage">
-      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.99.29, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Fast preview on, Playback cleanup off with the original kept, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three AI apps detected. Buttons for Open COS, Open Cursor, Run checks, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
+      <div class="ccp" role="img" aria-label="The COS Control menu bar panel: server managed on 6.99.32, ownership verified by direct process id, recovery scheduled, local Whisper ready, background jobs allowed, Fast preview on, Playback cleanup off with the original kept, transcription tier Max with Large-v3-Turbo for dictation preview and Large-v3 for canonical live meetings and save-time polish, meeting sync idle, and all three AI apps detected. Buttons for Open COS, Open Cursor, Run checks, and Restart Safely. As each chapter is read, the panel shows that feature: an update notice, the morning brief card, message origin labels, the task board, transcription tiers, sessions, and the desktop ledger." data-cc-panel>
         <div class="ccp-in">
           <div class="ccp-notice" data-cc-notice hidden></div>
           <div class="ccp-top"><span>COS Control</span><i>Running</i></div>
-          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.99.29</b></div>
+          <div class="ccp-row" data-cc-row="server"><span>Server</span><b>Managed &#183; 6.99.32</b></div>
           <div class="ccp-row" data-cc-row="ownership"><span>Ownership</span><b>Verified direct PID</b></div>
           <div class="ccp-row" data-cc-row="recovery"><span>Recovery</span><b>Scheduled</b></div>
           <div class="ccp-row" data-cc-row="whisper"><span>Local Whisper</span><b>Ready</b></div>
@@ -1706,7 +1706,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div>
       <h3>Retries do not duplicate meetings</h3>
       <p style="font-size:.95rem">Saving is idempotent: repeating the same save request returns the original receipt and filename instead of creating another meeting. Closed-session markers also prevent delayed uploads from recreating a meeting after it has been saved.</p>
-      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.654 plus server 6.99.29 is the current companion pair; Even Hub lists 6.11.677. The public store build also works with this server. Cue tuning and Open COS on the web are available with server 6.99.12 or newer.</p>
+      <p style="font-size:.95rem"><strong>Compatibility:</strong> glasses 6.10.654 plus server 6.99.32 is the current companion pair; Even Hub lists 6.11.677. The public store build also works with this server. Cue tuning and Open COS on the web are available with server 6.99.12 or newer.</p>
       <ul class="tight">
         <li>Server 6.42.0 and newer withhold display content unless the glasses app presents a display-stream ticket. 6.8.441 and 6.9.442 do; older glasses builds get lifecycle events only on the display, while meeting capture and sync keep working.</li>
         <li>The default Tiny configuration uses Mac Whisper while the Mac answers and the built-in phone model when it does not. Tiny or Base adds rolling provisional text without changing canonical capture, speaker attribution, save, HQ polish, recovery, or sync.</li>
@@ -2084,11 +2084,11 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.377</strong>, server <strong>6.99.29</strong>, and COS Glasses <strong>6.11.677</strong> from Even Hub&rsquo;s public channel. The newest versioned Hub pack is <strong>6.11.678</strong>; its beta submission is <strong>In Review</strong>, separate from the public listing. Install <strong>6.10.654</strong> for the canonical companion alias; Even Hub lists 6.11.677. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.377</strong>, server <strong>6.99.32</strong>, and COS Glasses <strong>6.11.677</strong> from Even Hub&rsquo;s public channel. The newest versioned Hub pack is <strong>6.11.678</strong>; its beta submission is <strong>In Review</strong>, separate from the public listing. Install <strong>6.10.654</strong> for the canonical companion alias; Even Hub lists 6.11.677. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
-        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.10.653</strong> with the same server 6.99.29: the Hub release for 6.10.654 names it, its complete versioned EHPK is in the Hub repository. The current public Even Hub listing is 6.11.677. Server 6.67.0 is retained separately for runtime rollback; with it, Meeting Ask on the phone, the lens and the Mac shows an update message and recording keeps working. The complete versioned 6.10.629 EHPK is also preserved in the Hub repository, and on Even App 2.2.9, 607 is the newest build that installs. Builds 580 and earlier cannot read the protected v2 Sessions queue or pending speaker edits. Resolve pending work before an older downgrade; do not clear app storage to downgrade. Choose Sonnet before downgrading: the older picker does not understand the Luna preference. Let Saved turns drain before going below 6.9.563. That older store build lacks Work, the prompt overlay, later reader fixes and the current footer controls.</li>
+        <li><strong>Package rollback:</strong> the package-level rollback is COS Glasses <strong>6.10.653</strong> with the same server 6.99.32: the Hub release for 6.10.654 names it, its complete versioned EHPK is in the Hub repository. The current public Even Hub listing is 6.11.677. Server 6.67.0 is retained separately for runtime rollback; with it, Meeting Ask on the phone, the lens and the Mac shows an update message and recording keeps working. The complete versioned 6.10.629 EHPK is also preserved in the Hub repository, and on Even App 2.2.9, 607 is the newest build that installs. Builds 580 and earlier cannot read the protected v2 Sessions queue or pending speaker edits. Resolve pending work before an older downgrade; do not clear app storage to downgrade. Choose Sonnet before downgrading: the older picker does not understand the Luna preference. Let Saved turns drain before going below 6.9.563. That older store build lacks Work, the prompt overlay, later reader fixes and the current footer controls.</li>
         <li><strong>Speaker naming after a server downgrade:</strong> server 6.45.5 ignores the new chunk confirmations and does not interpret the newer Undo records. Use server 6.46.0 or newer to review naming history or undo a naming. On an older server, do not re-enrol from a correction that was already undone.</li>
         <li><strong>Never 6.8.334:</strong> that build carries the WKWebView loader defect. Check <code>npm view @gotcos/glasses-server@VERSION version</code> before pinning any server build.</li>
       </ul>
@@ -2105,7 +2105,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.654. The current supported pair is COS Glasses 6.10.654 (Even Hub lists 6.11.677) and server 6.99.29; COS Control 0.5.377 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.10.654. The current supported pair is COS Glasses 6.10.654 (Even Hub lists 6.11.677) and server 6.99.32; COS Control 0.5.377 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2143,6 +2143,14 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Server</h3>
+      <details class="release-detail rn" id="release-server-69932"><summary><span class="rn-t">Server 6.99.32 / Control 0.5.377</span><span class="rn-g">Duo keyboard and browser-bar layout, Other fields in view, and clear Mac connection status.</span></summary><div class="rn-b">
+        <p><strong>The public server update from 6.99.29.</strong> Includes the private 6.99.30 layout work and the 6.99.32 follow-ups. It uses the existing signed and notarized Control 0.5.377 download (build 431); no new Mac or glasses artifact is promoted. Server 6.99.31 is separate phone-approval work and is not included.</p>
+        <p><strong>The session panel fits the visible space.</strong> Today&rsquo;s session sheet keeps the reply box, attachment button and Send above the keyboard, a hardware keyboard&rsquo;s strip or a browser&rsquo;s bottom bar, at folded and unfolded widths. Its backdrop and colour extend to the physical bottom, while the controls stay inside the visible area. The header folds when the keyboard takes more room and stays visible with a smaller strip. Rotating the screen or returning to the page refits the conversation. Attachment chips scroll in a capped tray instead of pushing the reply box away.</p>
+        <p><strong>Questions and typing on a phone.</strong> Opening Other brings its field into view again after the keyboard rises, including on a wide screen. Question picks and Other text survive a reload in the same tab. Folded layouts show a compact waiting-question row until opened, and touch controls have larger targets. In session and question reply boxes, Return makes a new line on touch devices; Command-Return or Control-Return sends. A desktop keyboard with a fine pointer keeps Return to send. A key press during text composition never sends.</p>
+        <p><strong>Connection status follows the Mac.</strong> A failed connection or timed-out read marks the Mac as not answering in the rail, an open session panel and waiting question controls. A hung question read gives up after 15 seconds and the question check continues. The next HTTP response restores connected status; an HTTP error response still proves the Mac answered. A timed-out write does not by itself mark the Mac down. Unreachable requests explain that the Mac should be awake and on Tailscale.</p>
+        <p><strong>Session state and recovery.</strong> The session panel uses the Mac&rsquo;s clock for its own state changes, so a phone clock mismatch does not cover a newer Working state with Idle. Desktop pet counts still exclude delegated Codex children; browser rows refresh and deduplicate. Counts can differ briefly while they refresh. Today now shows a refused or expired parked message as Not sent with its reason; Sessions retains its recovery controls. Weather sits under Today&rsquo;s date, even with no next meeting.</p>
+        <p><strong>Acceptance and limits.</strong> Layout and behavior have automated emulation coverage; physical Duo acceptance in Safari or Comet remains unverified. Control Web messages remain requests, not verified approval to publish or install. No phone-key enrollment, web approval authority or Philippine calendar feature is included. Prep carryover still requires <strong>Add prep to this meeting</strong>. The staged Work file bridge remains inactive pending matching server support. Transcription-cleanup and live-cue settings stay unchanged.</p>
+      </div></details>
       <details class="release-detail rn" id="release-377"><summary><span class="rn-t">Control 0.5.377 / server 6.99.29</span><span class="rn-g">Phone session replies, keyboard layout, image previews, fresh pet counts and queued-message recovery.</span></summary><div class="rn-b">
         <p><strong>Phone session panels.</strong> Today&rsquo;s session sheet keeps its reply box, attachment button and Send above the on-screen keyboard, including wide layouts such as an unfolded Duo. With the keyboard closed, the sheet and its backdrop extend to the bottom edge. <strong>Back to sessions</strong> and the browser&rsquo;s Back return from a pet-opened session to its list. These layout fixes have emulation coverage; physical Duo Safari acceptance is still unverified.</p>
         <p><strong>Questions, files and images.</strong> While you are away from the Mac and recently active on Control Web, session questions can wait for a web answer for up to ten minutes; returning to the desk returns them to the Mac prompt. Question cards show progress and keep Review and submit visible. The pet leads with waiting questions and counts approvals separately. Session reply boxes accept photos and files; failed or stalled uploads explain how to retry. The Sessions reader and Today&rsquo;s session panel show thumbnails of images Claude or Codex produced, with a full-size view. Only files inside that session&rsquo;s workspace can be shown; unavailable images say so.</p>
@@ -2635,7 +2643,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.10.654 / Control 0.5.377 / server 6.99.29, 2026-11-07; Hub packs to 6.11.678)
+  // NEW / UPDATED badges (grounded vs glasses 6.10.654 / Control 0.5.377 / server 6.99.32, 2026-11-07; Hub packs to 6.11.678)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });

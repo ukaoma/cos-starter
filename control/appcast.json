@@ -7,12 +7,22 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.377/COS-Control-macOS-arm64-0.5.377.zip",
       "sha256": "d33215a214a831190e0f09b2d534e0240a75ce9f5da31cd576f4ff87ea146b62",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.29",
+      "serverTarget": "6.99.32",
       "publishedAt": "2026-11-07T21:11:57Z",
-      "notes": "Pair Control 0.5.377 with server 6.99.29 for fresh pet session counts, phone replies above the keyboard, session image previews and queued-message recovery in Sessions. Prep notes and files still need explicit Add prep to this meeting for the selected recording. Staged Work file transfer stays inactive pending matching server support; web turns do not authorize publish or install.",
+      "notes": "Pair Control 0.5.377 (build 431, unchanged download) with server 6.99.32 for phone session panels that fit above keyboards and browser bars, Other fields revealed after the keyboard opens, and clear Mac connection status with bounded reads. Desktop pet counts still exclude delegated Codex children. Prep carryover requires Add prep to this meeting. Physical Duo acceptance is unverified; web turns do not authorize publish or install.",
       "whatsNew": {
-        "summary": "Control 0.5.377 with server 6.99.29: phone session layout and navigation, images in session panels, pet count deduplication and recovery for refused parked messages. Physical Duo Safari acceptance is unverified. Prep carryover still requires an explicit add.",
+        "summary": "Control 0.5.377 with server 6.99.32: Duo keyboard, header and composer layout; Other fields in view; Mac connection status and read timeouts. The Control download is unchanged. Physical Duo acceptance is unverified. No phone-key enrollment or web approval authority.",
         "sections": [
+          {
+            "title": "Server 6.99.32 / Control 0.5.377",
+            "items": [
+              "Today session panels follow the visible viewport above keyboards, hardware-keyboard strips and browser bottom bars at folded and unfolded widths. The header folds for the larger keyboard. The backdrop extends to the bottom while reply controls stay in view; attachment chips scroll in a capped tray.",
+              "Opening Other reveals its field again after the keyboard rises. Question picks and Other text survive a reload in this tab. In session and question reply boxes, Return adds a newline on touch; Command-Return or Control-Return sends. A desktop keyboard with a fine pointer keeps Return to send. Text composition never sends.",
+              "A failed connection or timed-out read marks the Mac as not answering in the rail, session panel and waiting question controls. A hung question read gives up after 15 seconds and polling continues. Any HTTP response restores connected status; a timed-out write alone does not mark the Mac down.",
+              "Session state changes use the Mac clock. Desktop pet counts still exclude delegated Codex children and browser rows refresh and deduplicate; counts can briefly differ while refreshing. Today shows Not sent with a refused or expired message reason; recover in Sessions. Weather sits under Today’s date even with no next meeting.",
+              "The existing Control 0.5.377 build 431 download is unchanged. This includes private 6.99.30 layout work, not the separate 6.99.31 phone-approval work. Physical Duo Safari and Comet acceptance remains unverified; automated emulation is the layout evidence. No phone-key enrollment, web approval authority or Philippine calendar feature. Prep carryover remains explicit, the staged Work bridge remains inactive, and transcription-cleanup and live-cue settings stay unchanged."
+            ]
+          },
           {
             "title": "0.5.377 / server 6.99.29",
             "items": [
