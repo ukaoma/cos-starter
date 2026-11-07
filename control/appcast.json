@@ -2,17 +2,28 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.376",
-      "build": 430,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.376/COS-Control-macOS-arm64-0.5.376.zip",
-      "sha256": "a4baca5b1fe9d7bf9562383301debdfcb1b19d3caaab00a433993f011e631ab8",
+      "version": "0.5.377",
+      "build": 431,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.377/COS-Control-macOS-arm64-0.5.377.zip",
+      "sha256": "d33215a214a831190e0f09b2d534e0240a75ce9f5da31cd576f4ff87ea146b62",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.25",
-      "publishedAt": "2026-11-07T03:48:04Z",
-      "notes": "Pair Control 0.5.376 with server 6.99.25 for mobile prep and recording controls. Add notes and files before a call, then explicitly add the saved prep to a selected live meeting. Includes browser Today actions, reviewed Work plans and Memories. The Control download is unchanged.",
+      "serverTarget": "6.99.29",
+      "publishedAt": "PENDING_ARTIFACT_PUBLICATION_TIME",
+      "notes": "Pair Control 0.5.377 with server 6.99.29 for fresh pet session counts, phone replies above the keyboard, session image previews and queued-message recovery in Sessions. Prep notes and files still need explicit Add prep to this meeting for the selected recording. Staged Work file transfer stays inactive pending matching server support; web turns do not authorize publish or install.",
       "whatsNew": {
-        "summary": "Matched server: 6.99.25. Mobile prep and recording controls fit narrow screens. Explicitly add saved prep notes and ready files to a selected live meeting for live Ask and saved review. Includes browser Today actions, reviewed Work plans, Memories and a per-browser pet picker. Control remains 0.5.376.",
+        "summary": "Control 0.5.377 with server 6.99.29: phone session layout and navigation, images in session panels, pet count deduplication and recovery for refused parked messages. Physical Duo Safari acceptance is unverified. Prep carryover still requires an explicit add.",
         "sections": [
+          {
+            "title": "0.5.377 / server 6.99.29",
+            "items": [
+              "Today session replies stay above the phone keyboard, including wide layouts. The closed-keyboard sheet reaches the bottom edge. Back to sessions and browser Back return to the pet list. These layouts were checked in emulation; physical Duo Safari acceptance remains unverified.",
+              "Session panels show images Claude or Codex produced inside their workspace. Desktop pet discovery excludes delegated Codex children; browser pet rows refresh and deduplicate. Session badges and controls share one state.",
+              "Refused or expired parked messages keep their reason and recovery in Sessions. If a message parked from Today is refused, open Sessions to recover; Today does not yet offer that recovery. Background video compression alone no longer refuses a parked attachment.",
+              "Control includes a staged Work transfer helper with verified copies and retry checks. It remains inactive until matching server ownership, retention and importer-capability checks are available. This release does not enable browser Work attachments end to end or pre-planner file access.",
+              "Prep notes and ready files reach live Ask and saved review only after Add prep to this meeting for the selected live recording. Later edits require another explicit add. Interrupted binding can retry its saved revision with an applied receipt.",
+              "Control Web messages remain requests, not verified approval to publish or install. No phone-key enrollment is enabled. Transcription-cleanup and live-cue settings stay unchanged; no glasses package is promoted."
+            ]
+          },
           {
             "title": "Server 6.99.25",
             "items": [

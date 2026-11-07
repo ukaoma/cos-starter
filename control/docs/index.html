@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.376 (build 430) · server @gotcos/glasses-server 6.99.25.
-  Every claim is grounded in the 0.5.317 to 0.5.376 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.377 (build 431) · server @gotcos/glasses-server 6.99.29.
+  Every claim is grounded in the 0.5.317 to 0.5.377 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.376",
+    "softwareVersion": "0.5.377",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -431,7 +431,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.376</span>
+    <span class="sb-ver">Control 0.5.377</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -460,15 +460,15 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.376</b> · build 430</span>
-    <span class="chip">Server <b>6.99.25</b></span>
+    <span class="chip">Control <b>0.5.377</b> · build 431</span>
+    <span class="chip">Server <b>6.99.29</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
   <div class="whatsnew" aria-labelledby="wn-h">
     <h2 id="wn-h">What&rsquo;s new</h2>
     <ul class="wn-list">
-      <li><a href="#release-376"><b>0.5.376</b><span>Prepare with notes and files, continue the prep conversation, and explicitly add it to a live meeting. Ask can propose Work assignments for review.</span></a></li>
+      <li><a href="#release-377"><b>0.5.377 / server 6.99.29</b><span>Fresh pet session counts, phone replies above the keyboard, session images and queued-message recovery. Prep carryover remains an explicit action.</span></a></li>
       <li><a href="#release-373"><b>0.5.373</b><span>Drop it reaches out: reminder and follow-up notifications on the Mac, and COS reaching out in Settings. Updates close Control cleanly.</span></a></li>
       <li><a href="#release-371"><b>0.5.371</b><span>Drop it: a pinned COS chat in Messages with Ask, Drop and attachments, off until you turn it on. Meeting cleanup resumes across passes; Windu gets new recovery art.</span></a></li>
       <li><a href="#release-368"><b>0.5.368</b><span>Windu cuts through with plasma impacts and natural fallout; Session 3 gains smoother robe transitions. Safer Settings and local spreadsheet reading are included.</span></a></li>
@@ -753,7 +753,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>Prepare before the call</h3>
     <p><strong>Prep me</strong> opens a draft on Mac and COS Control Web. Add notes and up to 10 files, then press <strong>Prep</strong>. With no notes, Prep uses the default brief. Keep replying to steer the preparation; your ordinary Ask draft stays separate.</p>
     <p>When the call starts, choose <strong>Add prep to this meeting</strong> and check the title, date and context preview. This adds a frozen copy of your prep notes and ready files to that specific live recording, where Live Ask and saved review can use them. COS does not attach prep automatically by matching titles or times. Later draft edits need another explicit add. Files without readable text remain in the draft but add no text to the prompt.</p>
-    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>6.99.25</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
+    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>6.99.29</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
   </div>
 
   <div class="sub" id="view-memories">
@@ -1362,6 +1362,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-377"><h3>Control 0.5.377 / server 6.99.29</h3><p><strong>Phone replies and session review.</strong> Today&rsquo;s session reply stays above the keyboard at narrow and wide widths; with the keyboard closed the sheet reaches the bottom edge. Back to sessions and browser Back return to the pet&rsquo;s session list. Sessions and Today show full-size previews for images a Claude or Codex session made inside its workspace. Layout coverage is emulated; physical Duo Safari acceptance remains unverified.</p><p><strong>Counts and recovery.</strong> The desktop pet excludes delegated Codex children from fresh writer-lock discoveries, and the browser pet refreshes and deduplicates its rows. Session state is shared across the badge and controls. A refused or expired parked message keeps its reason in Sessions. From Today, open Sessions for the reason and recovery; the Today sheet does not yet offer it. A video&rsquo;s background compression no longer alone refuses its parked message.</p><p><strong>Work files.</strong> Control includes a staged transfer helper with verified copies and retry checks. It remains inactive until a matching server provides ownership, retention and importer-capability checks. This release does not enable browser Work attachments end to end or pre-planner file access. Work chat history remains browser-local.</p><p><strong>Prep and authority.</strong> Notes and files reach a live recording only after explicitly choosing its saved prep and <strong>Add prep to this meeting</strong>; later edits require another explicit add. Interrupted binding uses the saved revision and applied receipt. Control Web turns remain requests, not verified publish or install approval; phone-key enrollment is not in this release. Transcription-cleanup and live-cue settings stay unchanged. See <a href="/docs/#release-377">the full matched release and limits</a>.</p></section>
     <section class="note" id="release-server-69925"><h3>Mobile improvements: server 6.99.25</h3><p>The current pair keeps Control 0.5.376 and updates the server. On a phone, open COS Control Web, choose Prep me, add notes and files, and press Prep. Once the recording is live, select the saved prep and explicitly <strong>Add to this meeting</strong>. Its frozen notes and ready files feed live Ask and saved review. Later edits need another explicit add. Recording controls and prep suggestions fit narrow screens with larger touch targets.</p><p>Browser Today has actionable panels, Work chat prepares plans for review and dispatch through the Mac, and Memories has a native browser view. Work chat history stays in this browser; Control may label a web plan &ldquo;From glasses&rdquo;. An optional per-browser pet picker can fetch OpenPets artwork through the server; it does not change your Mac pet. See <a href="/docs/#release-server-69925">the complete changes and limits</a>. Transcription-cleanup and live-cue settings stay unchanged.</p></section>
     <section class="note" id="release-376"><h3>Control 0.5.376 / server 6.99.20</h3><p><strong>Prep with context.</strong> Prep me opens a draft with notes and files, and follow-ups stay in its conversation. Use <strong>Add prep to this meeting</strong> to carry a frozen snapshot into a specific live recording; its notes and ready files feed Live Ask and saved review. Later edits need another explicit add. See <a href="#meeting-prep">Prepare before the call</a>.</p><p><strong>Includes 0.5.374 and 0.5.375.</strong> Cleaner Messages, a continuing bounded COS thread when Drop it is enabled, and <strong>Plan for Work</strong> proposals for existing tasks. Adding a proposal does not dispatch it; Work Send remains the execution step. Drop it remains off by default.</p><p><strong>The matched server includes 6.99.13 through 6.99.20.</strong> Mac session questions appear promptly even with a web tab open. Live web meetings have a scrolling transcript, recording bar and file attachments. Where iPhone microphone recording is enabled, live transcription uses dictionary-prompted server Whisper; with Second opinion off, saved Parakeet can recover short anchored dictionary terms from those live words. This does not add iPhone system-audio capture or change G2 or Mac saved transcription. Server 6.99.20 fixes native Prep capability discovery. The glasses package, Second opinion, transcription-cleanup and live-cue settings are unchanged.</p></section>
     <section class="note" id="release-373"><h3>Control 0.5.373</h3><p><strong>COS reaching out, while Drop it is on.</strong> With Drop it on and COS server 6.99.11 or newer, reminders and follow-ups on your drops show as Mac notifications, and clicking one opens the COS chat. Every pending reminder is also scheduled on the Mac, so it fires on time even when the server is busy. Done, Snooze, Tomorrow and the reminder time choices work from the chat. Everything else lands in the chat without a notification. When a drop&rsquo;s Work card finishes, two notifications can show: the Work notice and the follow-up. While Drop it is off, nothing changes.</p><p><strong>Settings, COS reaching out.</strong> A new card in Settings, Work and agents sets how often COS may interrupt, quiet hours and weekends, what it pings about, follow-ups on your drops, a weekly check-in and reminder defaults. Each change shows what the server saved. The card shows while Drop it is on.</p><p><strong>Updates close Control cleanly.</strong> An update now asks COS Control to quit before it swaps, instead of closing it by force after 20 seconds. This takes effect from the update after 0.5.373. Dragging a file onto the Drop it box also shows where it will land, after the files already attached.</p></section>
