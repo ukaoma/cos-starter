@@ -65,6 +65,13 @@ footer{text-align:center;border-top:1px solid var(--line-2);padding:44px var(--g
 footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}
 footer a{color:var(--muted)}
 footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}
+.flows{width:100%;border-collapse:collapse;margin:6px 0 18px;font-size:.93rem}
+.flows th,.flows td{text-align:left;vertical-align:top;padding:11px 12px 11px 0;border-bottom:1px solid var(--line-2);color:var(--muted)}
+.flows th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ghost);font-weight:400}
+.flows td:first-child{color:var(--fg);font-weight:600;width:30%}
+.flows .set{display:block;font-family:var(--mono);font-size:.68rem;font-weight:400;color:var(--ghost);margin-top:3px}
+.flows .soon{display:block;font-family:var(--mono);font-size:.68rem;font-weight:400;color:var(--gold);margin-top:3px}
+@media (max-width:640px){.flows thead{display:none}.flows tr,.flows td{display:block;width:auto}.flows td:first-child{width:auto;padding-bottom:2px}.flows td{border-bottom:0;padding:4px 0}.flows tr{border-bottom:1px solid var(--line-2);padding:10px 0}}
 </style>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
@@ -104,7 +111,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: August 3, 2026</p>
+  <p class="updated">Last updated: November 7, 2026</p>
 
   <div class="tldr">
     <p><strong>The short version:</strong> COS is local-first by architecture. The software runs on your own machine, through your own AI accounts, and we operate no backend that stores your working data. What we do collect is small and listed plainly below: standard website analytics, an email address if you subscribe to updates, and your basic Google profile if you sign in to a COS service with Google.</p>
@@ -129,6 +136,32 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     <li><strong>No telemetry.</strong> The software contains no analytics, crash reporting, or usage tracking that reports to us.</li>
   </ul>
   <p>Third-party services you connect through your own accounts (Anthropic, OpenAI, Even Realities' Even Hub platform) are governed by their own policies: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/privacy" target="_blank" rel="noopener">OpenAI</a>. Your API keys live in local configuration files on your machine; we have no access to them.</p>
+
+  <h2 id="flows">Where each feature sends data</h2>
+  <p>Every COS Control setting is listed here with what leaves your Mac when it is on. "Your AI provider" means whichever of Claude Code, Codex, Cursor or your own key answers for you.</p>
+  <table class="flows">
+    <thead><tr><th>Feature</th><th>What leaves your Mac, and where it goes</th></tr></thead>
+    <tbody>
+      <tr><td>Your AI apps<span class="set">Settings: Your AI apps, Work chat, Meeting assistant, AI polish, Morning brief</span></td><td>Your question and the context COS adds to it (recent messages, files you attach, meeting notes when you ask about a meeting) go to Anthropic, OpenAI or Cursor through your own signed-in plan. Their policies apply. COS keeps no copy anywhere but your Mac.</td></tr>
+      <tr><td>Sessions<span class="set">Settings: Sessions</span></td><td>COS reads the session files Claude Code, Codex and Cursor already keep on your Mac, so it can show them in Activity. Nothing extra leaves your Mac.</td></tr>
+      <tr><td>Your own key<span class="set">Settings: Your own key</span></td><td>If you save an API key, your question and its context go to that provider (Anthropic or OpenAI), billed to you, under the daily cap you set.</td></tr>
+      <tr><td>Local model<span class="set">Settings: Local model</span></td><td>Runs in Ollama on your Mac. Nothing leaves it.</td></tr>
+      <tr><td>Decision models<span class="set">Settings: Decision models</span></td><td>Only when a key is set. Short text from Work cards, messages and meeting titles goes to TypeSafe (Jev) or SubQ to rank suggestions, route work and check whether a task is done. Each has a daily token cap.</td></tr>
+      <tr><td>Search by meaning<span class="set">Settings: Search</span></td><td>Message text goes to OpenAI's embeddings service on your own OpenAI key to build a search index. The index stays on your Mac.</td></tr>
+      <tr><td>Recording, dictation and voice<span class="set">Settings: Recording, Dictation, Microphone, Voice setup, Models, Performance</span></td><td>Audio is transcribed on your Mac. If local transcription is not available and you have saved an OpenAI key, audio goes to OpenAI's transcription service under a daily cap. Audio is not kept unless you save a recording.</td></tr>
+      <tr><td>Live cues<span class="set">Settings: Live cues</span></td><td>During a meeting, recent transcript lines go to your AI provider so it can decide whether a short cue is worth showing. Cues have a per-meeting limit.</td></tr>
+      <tr><td>Fireflies import<span class="set">Settings: Fireflies import</span></td><td>COS calls Fireflies with your own Fireflies key and saves the meetings it fetches to your Mac.</td></tr>
+      <tr><td>Glasses, phone and video<span class="set">Settings: Devices, Video uploads</span></td><td>Your phone, glasses and Mac talk over your own Tailscale network or local Wi-Fi. Videos go from your phone to your Mac and nowhere else. The glasses app itself is delivered through Even Realities' Even Hub.</td></tr>
+      <tr><td>Reminders and reaching out<span class="set">Settings: COS reaching out, Background</span></td><td>Scheduling, reminders and notifications run on your Mac. When COS writes a message for you, that text is produced by your AI provider, as above.</td></tr>
+      <tr><td>Calendar<span class="soon">Coming, off by default</span></td><td>Read on your Mac from macOS Calendar. No OAuth, and no COS server keeps a copy. Event titles and attendees go to your AI provider when you ask, prep or join a meeting, and to your texts only if you turn on Text COS. You choose which calendars count. The local snapshot is a file only your user account can read, but any app running as you, including agent sessions, can read it.</td></tr>
+      <tr><td>Text COS (iMessage)<span class="soon">Coming, off by default</span></td><td>Texts in your paired COS chat are read on your Mac by COS Control, which needs Full Disk Access to do it. That grant lets Control read every file you can; COS reads only the paired chat. Replies go out through Apple's Messages. Your text and a short context block (next event titles, counts) go to your AI provider. Nothing goes to a COS server.</td></tr>
+      <tr><td>Everything else<span class="set">Settings: App, Activity home, Setup guide, Shortcuts, Sounds and audio, Text, History, Folders and notes, Task folders, Paused threads, Permissions, Session pet, Characters, Server, App updates, Troubleshooting, Library and sync</span></td><td>Stays on your Mac. Update checks ask gotcos.com, GitHub and npm whether a new version exists and send no usage data. A support report is built on your Mac, and you decide whether to send it.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="agent-permissions">How COS runs Claude Code</h2>
+  <p>By default COS starts Claude Code with its permission prompts skipped, because a session running in the background cannot stop to ask you. A Claude session that COS starts can therefore use any tool your own Claude Code can use, with your permissions.</p>
+  <p>To restrict it, add <code>COS_CLAUDE_TRUST_MODE=allowlist</code> to <code>~/.cos-glasses/.env</code> and restart the COS server from Settings. Claude then gets only the tools each request declares and is refused anything else without a prompt. Spelling matters: any other value keeps the default.</p>
 
   <h2>Google user data</h2>
   <p>Some COS services offer <strong>Sign in with Google</strong>. If you choose it, we receive your basic Google profile: your name, email address, and profile picture. We use that information only to create and secure your session and to identify you inside the service. We do not sell it, share it for advertising, or use it to train AI models.</p>
