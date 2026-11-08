@@ -7,14 +7,14 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.377/COS-Control-macOS-arm64-0.5.377.zip",
       "sha256": "d33215a214a831190e0f09b2d534e0240a75ce9f5da31cd576f4ff87ea146b62",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.32",
+      "serverTarget": "6.99.33",
       "publishedAt": "2026-11-07T21:11:57Z",
-      "notes": "Pair Control 0.5.377 (build 431, unchanged download) with server 6.99.32 for phone session panels that fit above keyboards and browser bars, Other fields revealed after the keyboard opens, and clear Mac connection status with bounded reads. Desktop pet counts still exclude delegated Codex children. Prep carryover requires Add prep to this meeting. Physical Duo acceptance is unverified; web turns do not authorize publish or install.",
+      "notes": "Pair Control 0.5.377 (build 431, unchanged download) with server 6.99.33 for phone session panels that fit above keyboards and browser bars, Other fields revealed as the keyboard opens, including gradual animation, and clear Mac connection status with bounded reads. Desktop pet counts still exclude delegated Codex children. Prep carryover requires Add prep to this meeting. Physical Duo acceptance is unverified; web turns do not authorize publish or install.",
       "whatsNew": {
-        "summary": "Control 0.5.377 with server 6.99.32: Duo keyboard, header and composer layout; Other fields in view; Mac connection status and read timeouts. The Control download is unchanged. Physical Duo acceptance is unverified. No phone-key enrollment or web approval authority.",
+        "summary": "Control 0.5.377 with server 6.99.33: Duo keyboard, header and composer layout; Other fields in view during gradual keyboard animation; Mac connection status and read timeouts. The Control download is unchanged. Physical Duo acceptance is unverified. No phone-key enrollment or web approval authority.",
         "sections": [
           {
-            "title": "Server 6.99.32 / Control 0.5.377",
+            "title": "Server 6.99.33 / Control 0.5.377",
             "items": [
               "Today session panels follow the visible viewport above keyboards, hardware-keyboard strips and browser bottom bars at folded and unfolded widths. The header folds for the larger keyboard. The backdrop extends to the bottom while reply controls stay in view; attachment chips scroll in a capped tray.",
               "Opening Other reveals its field again after the keyboard rises. Question picks and Other text survive a reload in this tab. In session and question reply boxes, Return adds a newline on touch; Command-Return or Control-Return sends. A desktop keyboard with a fine pointer keeps Return to send. Text composition never sends.",
