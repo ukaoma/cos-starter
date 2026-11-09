@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-09 - Matched Control 0.5.380/build 434 and server 7.0.7
+
+### Changed
+- Current downloads, appcast, JSON-LD, checksums, setup wizard and documentation
+  use Control 0.5.380/build 434 paired with public server 7.0.7.
+- Document Mac file and image cards with Quick Look, browser file-link previews,
+  the shared opt-in Sonnet Today summary and 1–100 daily cap (default 100),
+  calendar selection, mobile keyboard layout, live state and review decisions.
+- Preserve explicit prep-to-recording transfer, Work review before dispatch,
+  Cursor prompt/tool-image exclusions and unverified physical Duo acceptance.
+- Preserve historical introduction/minimum versions and the glasses companion,
+  public Hub pin, newest versioned pack, publisher notice and disabled flags.
+
 ## 2026-10-20 - Miles Windu Version 15 on /control, 2x art and shuffled casts
 
 ### Changed

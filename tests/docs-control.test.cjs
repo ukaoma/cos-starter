@@ -49,7 +49,7 @@ test('cards, notices, footers and ledgers render their scene text and escape mar
 
 test('the resting panel never duplicates the drift-checked version claim',()=>{
   const plain=html.replace(/&#183;|&middot;/g,'·');
-  assert.equal((plain.match(/Managed · 6\.\d+\.\d+/g)||[]).length,1,'exactly one Managed mock in markup');
+  assert.equal((plain.match(/Managed · \d+\.\d+\.\d+/g)||[]).length,1,'exactly one Managed mock in markup');
   assert.equal((source.match(/Managed ·/g)||[]).length,0,'scenes never restate the server version');
   assert.ok(html.includes('data-control-exhibit') && html.includes('data-cc-panel') && html.includes('data-cc-caption'));
 });

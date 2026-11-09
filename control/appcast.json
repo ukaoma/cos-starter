@@ -2,17 +2,27 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.377",
-      "build": 431,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.377/COS-Control-macOS-arm64-0.5.377.zip",
-      "sha256": "d33215a214a831190e0f09b2d534e0240a75ce9f5da31cd576f4ff87ea146b62",
+      "version": "0.5.380",
+      "build": 434,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.380/COS-Control-macOS-arm64-0.5.380.zip",
+      "sha256": "6cad5b6fb765592c6f37342ae48439664646418c836e8c5eab451c0deb3a6d52",
       "minMacOS": "14.0",
-      "serverTarget": "6.99.33",
-      "publishedAt": "2026-11-07T21:11:57Z",
-      "notes": "Pair Control 0.5.377 (build 431, unchanged download) with server 6.99.33 for phone session panels that fit above keyboards and browser bars, Other fields revealed as the keyboard opens, including gradual animation, and clear Mac connection status with bounded reads. Desktop pet counts still exclude delegated Codex children. Prep carryover requires Add prep to this meeting. Physical Duo acceptance is unverified; web turns do not authorize publish or install.",
+      "serverTarget": "7.0.7",
+      "publishedAt": "2026-11-09T05:03:32Z",
+      "notes": "Pair Control 0.5.380 (build 434) with server 7.0.7: session file and image cards with Quick Look, browser previews, an opt-in Sonnet Today summary with Summaries per day (1–100, default 100), calendar selection and mobile keyboard improvements. Text-only busy Claude replies may land at the next tool step; Codex, Cursor and files wait for the turn to end. Prep requires Add prep to this meeting; later edits require re-add. Physical Duo acceptance is unverified. Work proposals do not dispatch assignments. No phone approval authority or speaker-profile change.",
       "whatsNew": {
-        "summary": "Control 0.5.377 with server 6.99.33: Duo keyboard, header and composer layout; Other fields in view during gradual keyboard animation; Mac connection status and read timeouts. The Control download is unchanged. Physical Duo acceptance is unverified. No phone-key enrollment or web approval authority.",
+        "summary": "Control 0.5.380 with server 7.0.7: session files and image cards with Quick Look, browser file previews, a shared opt-in Today summary and explicit calendar selection. Physical Duo acceptance remains unverified.",
         "sections": [
+          {
+            "title": "0.5.380 / server 7.0.7",
+            "items": [
+              "Sessions on Mac shows file and image cards beside their turns. Click for Quick Look; cached copies are removed when closed or you leave. Control Web adds cards for local file links, readable document viewers and previews that fit the visible phone area. Cursor prompt/tool images are excluded.",
+              "Today home and the separate Sonnet summary stay opt-in. Summaries per day allows 1 to 100, default 100. Recording, daily caps and failure pauses still apply. Refresh keeps incomplete reads visible; reconnect can request a summary immediately within its spacing limit.",
+              "Choose calendars explicitly. No usable access or selection keeps the previous source; Turn off removes the snapshot and returns to it. Declined events stay out of prep suggestions and the upcoming count.",
+              "Live web session updates have polling fallback. Phone composers fit the keyboard and remove obsolete bottom space; Back to sessions returns to the list. Only text-only supported busy Claude messages may land at the next tool step; Codex, Cursor and files wait for the turn to end.",
+              "Memories counts only items needing a decision, with low-confidence suggestions in Learning. Work plans remain proposals until Work Send. Prep needs Add prep to this meeting for the selected live recording and later edits require re-add. Physical Duo acceptance remains unverified; no phone approval authority, speaker-profile or cleanup setting changes."
+            ]
+          },
           {
             "title": "Server 6.99.33 / Control 0.5.377",
             "items": [
@@ -839,6 +849,6 @@
     "id": "control-update-timeout-20261027",
     "minBuild": 109,
     "title": "If an update says Download timed out",
-    "body": "COS Control 0.5.318 and earlier give an update about two minutes to download, and the update is now about 1.3 GB. If Install says Download timed out, or Downloading does not finish, go to gotcos.com/control/#unstuck. Download COS Control there, unzip it and move it into Applications, replacing the old copy. Or press Unstuck to have your AI app do it for you, after it checks nothing is recording. COS Control 0.5.319 and earlier can also stall on Installing: Force Quit COS Control (Option-Command-Escape) within a minute, and the update installs and reopens. Your meetings and the glasses server are not affected. From 0.5.320 on, updates download and install by themselves."
+    "body": "COS Control 0.5.318 and earlier give an update about two minutes to download, and the update is now about 1.5 GB. If Install says Download timed out, or Downloading does not finish, go to gotcos.com/control/#unstuck. Download COS Control there, unzip it and move it into Applications, replacing the old copy. Or press Unstuck to have your AI app do it for you, after it checks nothing is recording. COS Control 0.5.319 and earlier can also stall on Installing: Force Quit COS Control (Option-Command-Escape) within a minute, and the update installs and reopens. Your meetings and the glasses server are not affected. From 0.5.320 on, updates download and install by themselves."
   }
 }
