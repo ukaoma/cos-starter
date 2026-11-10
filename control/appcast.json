@@ -5,10 +5,10 @@
       "version": "0.5.389",
       "build": 443,
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.389/COS-Control-macOS-arm64-0.5.389.zip",
-      "sha256": "__SHA256__",
+      "sha256": "efc9a2dcb53bdd82f8b797dbc6eb33a811c9c9af146c1ec220f6ac20171e835f",
       "minMacOS": "14.0",
       "serverTarget": "7.0.18",
-      "publishedAt": "__PUBLISHED_AT__",
+      "publishedAt": "2026-11-10T23:36:48Z",
       "notes": "Pairs with server 7.0.18. Control 0.5.389 (build 443): a question a Claude session ends its turn with shows as waiting and can be answered from COS Control, a first run that can install Claude Code for you and says when setup needs a signed-in AI, Today and a Basic Settings view for new Macs (existing Macs keep theirs), Settings search that finds every setting, Sign out every browser, crash and disk fixes, and a price for every model in Usage from gotcos.com/control/prices.json. Server 7.0.18: the same question on the glasses and Control Web (COS_TURN_END_ASKS, on by default), Control Web zoom fixes on the phone, sign-ins that renew while in use up to 30 days, and a waiting question's first 80 characters. The question-hold switches and phone approvals stay off.",
       "whatsNew": {
         "summary": "A session that ends its turn with a question now shows as waiting, and you can answer it from COS Control. Server 7.0.18 shows that question on your glasses and in Control Web, and keeps Control Web signed in while you use it, up to 30 days. Plus everything since 0.5.380.",
