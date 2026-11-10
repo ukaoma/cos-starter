@@ -2,17 +2,94 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.380",
-      "build": 434,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.380/COS-Control-macOS-arm64-0.5.380.zip",
-      "sha256": "6cad5b6fb765592c6f37342ae48439664646418c836e8c5eab451c0deb3a6d52",
+      "version": "0.5.389",
+      "build": 443,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.389/COS-Control-macOS-arm64-0.5.389.zip",
+      "sha256": "__SHA256__",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.7",
-      "publishedAt": "2026-11-09T05:03:32Z",
-      "notes": "Pair Control 0.5.380 (build 434) with server 7.0.7: session file and image cards with Quick Look, browser previews, an opt-in Sonnet Today summary with Summaries per day (1–100, default 100), calendar selection and mobile keyboard improvements. Text-only busy Claude replies may land at the next tool step; Codex, Cursor and files wait for the turn to end. Prep requires Add prep to this meeting; later edits require re-add. Physical Duo acceptance is unverified. Work proposals do not dispatch assignments. No phone approval authority or speaker-profile change.",
+      "serverTarget": "7.0.18",
+      "publishedAt": "__PUBLISHED_AT__",
+      "notes": "Pairs with server 7.0.18. Control 0.5.389 (build 443): a question a Claude session ends its turn with shows as waiting and can be answered from COS Control, a first run that can install Claude Code for you and says when setup needs a signed-in AI, Today and a Basic Settings view for new Macs (existing Macs keep theirs), Settings search that finds every setting, Sign out every browser, crash and disk fixes, and a price for every model in Usage from gotcos.com/control/prices.json. Server 7.0.18: the same question on the glasses and Control Web (COS_TURN_END_ASKS, on by default), Control Web zoom fixes on the phone, sign-ins that renew while in use up to 30 days, and a waiting question's first 80 characters. The question-hold switches and phone approvals stay off.",
       "whatsNew": {
-        "summary": "Control 0.5.380 with server 7.0.7: session files and image cards with Quick Look, browser file previews, a shared opt-in Today summary and explicit calendar selection. Physical Duo acceptance remains unverified.",
+        "summary": "A session that ends its turn with a question now shows as waiting, and you can answer it from COS Control. Server 7.0.18 shows that question on your glasses and in Control Web, and keeps Control Web signed in while you use it, up to 30 days. Plus everything since 0.5.380.",
         "sections": [
+          {
+            "title": "Server 7.0.18",
+            "items": [
+              "A question a Claude session ends its turn with shows as waiting on your glasses, Control Web and COS Control once your Mac has been idle, and you can answer it there. Your answer reaches the session as a message from COS. COS_TURN_END_ASKS=0 turns it off.",
+              "Control Web stops zooming in and out on the phone: double-tap zoom is off, and on iPhone and iPad the page stays at its normal scale. In the Home Screen app pinch zoom no longer works; in a Safari tab it still does.",
+              "Control Web: a sign-in renews while you use it, up to 30 days. Sign out every browser ends every sign-in at once, including pages already open and sign-in links and codes made before it.",
+              "A session waiting on a question shows the first 80 characters of it on every device. COS_WAITING_QUESTION_WORDS=0 turns that off.",
+              "On the first start after this update, every unread item in the COS inbox is marked read; from then on the Messages badge counts only what is new.",
+              "With the model-written Today summary on, it is rewritten less often and stops jumping while you read it."
+            ]
+          },
+          {
+            "title": "0.5.389",
+            "items": [
+              "A Claude session that ends its turn with a question and reply buttons now shows as waiting on you in Today and in the session view, with its choices. It needs a COS server with turn-end asks (7.0.18), and shows after your Mac has been idle; at the Mac, answer in the Claude app as before.",
+              "In the session view, a choice or your own reply goes to the session through its Continue. In Today, a tap opens the session with the reply ready to send, and nothing is sent until you send it.",
+              "Your reply reaches the session as a message from COS, not as if you typed it at the Mac, and the session may ask you to confirm."
+            ]
+          },
+          {
+            "title": "0.5.388",
+            "items": [
+              "Answer a held session question from COS Control, on a COS server with a question hold switch turned on (both are off by default): Today and the session view show its choices. Pick, then Send answer. The first answer counts, here or at your Mac. With the switches off, nothing changes yet.",
+              "Today holds still: the summary, the Ask box and the Updated line stay on screen while COS reads your sessions, and the headline no longer jumps when a shorter summary arrives.",
+              "Setup tells the truth about signing in: Skip for now shows only when another AI is signed in, setup says it needs one signed-in AI, and if it stops it says which AI to sign in to.",
+              "Settings no longer offers Install server or Repair where they cannot work: a Mac that is not set up yet points to Get started with COS, and an older or separately run server points to System and updates."
+            ]
+          },
+          {
+            "title": "0.5.387",
+            "items": [
+              "First run: Connect your AI can install Claude Code for you. Install opens Terminal and runs Claude's official installer, shown on screen, then the row moves on to sign in.",
+              "New installs start on Today, with the Ask box and Command-K, and open Settings in a Basic view. Existing Macs keep what they have.",
+              "Settings: one Show all settings switch on every page, search that finds every setting and says why one is hidden, recovery controls like Clear stuck uploads in Basic, and a notice at the top when the COS server is not answering.",
+              "Glasses, phone and web: a Phone and web section first, with Open COS on your phone, Phone approvals and a new Sign out every browser.",
+              "Permissions shows Microphone, System Audio Recording and Calendars with their real status. Dictation with no shortcut says so and puts the recorder right there.",
+              "Fixed a crash when two session rows shared one id, and a meeting calendar crash on a repeated day.",
+              "Usage no longer writes tens of megabytes to disk on every refresh, and an open Work chat no longer rewrites its history every 15 seconds.",
+              "A session waiting on a question at its own prompt now says where to answer it: Answer in Claude, or in your terminal app.",
+              "Usage prices every model it can: new models from a small price list, an estimate marked est. when there is no list price yet, and Local, no API cost for models on your Mac."
+            ]
+          },
+          {
+            "title": "0.5.386",
+            "items": [
+              "Work chat: Plan works again on every task while a Claude session runs in Terminal. Control used to send that session's short id to the server, which refused the whole session list.",
+              "A task with no session to continue: Plan proposes one new session and stops at Ready to send. It starts when you press Send. Claude (Opus) by default, Codex when Claude's usage is low, and never a provider that is out of usage.",
+              "If the plan comes back without one, the round offers Start a new Claude session with this request. One click starts it with your request, the task and its files, and it joins the task.",
+              "A plan that failed before it ran gets Plan again, which reruns that same round in place. No second copy of your request.",
+              "When the session list cannot be read, Work chat says why in plain words and shows the server's reason.",
+              "Agent workspace on a task with no session starts on Start a new session. A suggestion from another task is still offered, never preselected."
+            ]
+          },
+          {
+            "title": "0.5.385",
+            "items": [
+              "With Today home on. Today, Next up: every meeting has Prep, not just the first. It opens a small panel under that meeting: add context (goals, people, what you want out of it) and files, then Start prep.",
+              "Start prep opens the COS chat with that meeting's prep, keeps your context as its notes and its files with it, and starts it. With an older COS server it asks COS to prep you for that meeting, with your context and files.",
+              "The first meeting keeps Prep me and Open meeting, and adds Add context. Holds and blocks (Blocked, Busy, Hold, Focus, Travel, Personal, OOO, Lunch and the like) get no Prep.",
+              "One panel opens at a time, Escape closes it, and what you typed stays while Today refreshes. Prep shows only when the server answers and the COS chat can ask."
+            ]
+          },
+          {
+            "title": "0.5.384",
+            "items": [
+              "With Today home on. Today, Next up: the meeting on now or next, then up to four more with their times. All-day events are left out. \"+N more today\" opens Meetings when there are more.",
+              "When the calendar was last read a while ago, Next up says \"Calendar as of\" and the time. With an older COS server, Next up shows the one event it did before.",
+              "Ask about this: under the Today summary, type a question or tell a session what to do. It opens the COS chat and asks there, with the summary and the sessions it read, so COS can answer or pass the instruction on.",
+              "The box shows only when a summary is on screen, the server answers, and the COS chat can ask (Work runs from Today on in Settings)."
+            ]
+          },
+          {
+            "title": "0.5.383",
+            "items": [
+              "Phone approvals are off by default, and with them off nothing changes. When your COS server turns them on, Settings, Glasses, phone and web shows Phone approvals."
+            ]
+          },
           {
             "title": "0.5.380 / server 7.0.7",
             "items": [

@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.380 (build 434) · server @gotcos/glasses-server 7.0.7.
-  Every claim is grounded in the 0.5.317 to 0.5.380 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.389 (build 443) · server @gotcos/glasses-server 7.0.18.
+  Every claim is grounded in the 0.5.317 to 0.5.389 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.380",
+    "softwareVersion": "0.5.389",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -431,7 +431,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.380</span>
+    <span class="sb-ver">Control 0.5.389</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -460,14 +460,15 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.380</b> · build 434</span>
-    <span class="chip">Server <b>7.0.7</b></span>
+    <span class="chip">Control <b>0.5.389</b> · build 443</span>
+    <span class="chip">Server <b>7.0.18</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
   <div class="whatsnew" aria-labelledby="wn-h">
     <h2 id="wn-h">What&rsquo;s new</h2>
     <ul class="wn-list">
+      <li><a href="#release-389"><b>0.5.389 / server 7.0.18</b><span>An honest first run that can install Claude Code for you, Today and a Basic Settings view for new Macs, crash and disk fixes, and a price for every model in Usage.</span></a></li>
       <li><a href="#release-380"><b>0.5.380 / server 7.0.7</b><span>Mac file and image cards with Quick Look, shared Today summary, calendar selection and web previews.</span></a></li>
       <li><a href="#release-server-69933"><b>0.5.377 / server 6.99.33</b><span>Duo keyboard and browser-bar layout, Other fields in view, and clear Mac connection status. The Mac download is unchanged.</span></a></li>
       <li><a href="#release-373"><b>0.5.373</b><span>Drop it reaches out: reminder and follow-up notifications on the Mac, and COS reaching out in Settings. Updates close Control cleanly.</span></a></li>
@@ -512,7 +513,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   <div class="sec-head">
     <h2><span class="num">1.</span> Install and first run</h2>
     <p class="ch-sub">Download, connect one AI, and COS sets up the rest.</p>
-    <p class="lead">You need no Homebrew, npm or Terminal for core setup. COS Control brings its own runtime, downloads the COS server and starts it for you.</p>
+    <p class="lead">You need no Homebrew or npm for core setup. COS Control brings its own runtime, downloads the COS server and starts it for you. If you need Claude Code, COS can install it for you.</p>
   </div>
   <ol class="steps">
     <li><h3>Download and move to Applications</h3><p><a href="/control/#install">Download COS Control</a>, unzip it and drag COS Control into your Applications folder. Updating by hand? Quit the old Control first, then choose Replace. Keep any rollback copy outside Applications. To check the file before you open it, compare its SHA-256 with the value under <a href="/control/#run">Verify this download</a>.</p></li>
@@ -520,7 +521,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <li><h3>Welcome to COS</h3><p>The welcome window opens by itself the first time. Choose <strong>Just my Mac</strong> or <strong>My Mac and glasses</strong>, then <strong>Get started</strong>. The window walks through Welcome, Connect your AI, Choose access, Connect glasses (only if you chose glasses) and Make yourself at home. Closing it never cancels the install.</p></li>
     <li><h3>Connect your AI</h3><p>COS works with the AI you already use, and its subscription and usage limits still apply. The list shows <strong>Claude</strong> (Claude Code), <strong>ChatGPT</strong> (Codex), <strong>Cursor</strong> (Cursor Agent) and <strong>Ollama</strong> (optional), each with a status such as Not installed, Installed, not signed in, or Signed in. The list updates by itself.</p>
       <ul>
-        <li><strong>Not installed:</strong> COS shows the install command, which needs no administrator password, with <strong>Copy</strong>. Claude Desktop alone is not Claude Code.</li>
+        <li><strong>Not installed:</strong> for Claude Code, choose <strong>Install Claude Code</strong>. COS opens Terminal and runs Claude&rsquo;s official installer, shown on screen with <strong>Copy</strong>. It installs into your home folder and needs no administrator password. When Claude Code appears, the row moves on to sign in. If macOS does not let COS type into Terminal, the command is on the clipboard: paste it into the Terminal window that opened and press Return. Codex and Cursor show their install command with <strong>Copy</strong>. Claude Desktop alone is not Claude Code.</li>
         <li><strong>Not signed in:</strong> choose <strong>Sign in</strong>, or <strong>Skip for now</strong>. COS types the command into Terminal; if macOS has not allowed that under Privacy &amp; Security, Automation, the command is on the clipboard instead.</li>
         <li>After 15 minutes COS stops waiting for a sign-in. Choose <strong>Check again</strong> when you are done.</li>
       </ul>
@@ -528,7 +529,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <li><h3>Let COS get ready</h3><p>COS checks your Mac, downloads its components, checks the download, starts the server and checks your AI connection. You can close the window while it works and reopen <strong>Setup guide</strong> from the COS menu later. If a step fails, choose <strong>Try again</strong>. An internet connection is needed for setup.</p></li>
     <li><h3>Choose access</h3><p>Each permission switches on one feature, and macOS asks before anything changes. Skip any of them: COS starts without them, and <strong>Permissions</strong> in the menu bar panel brings the list back. See <a href="#permissions">Permissions</a>.</p></li>
     <li><h3>Connect glasses (optional)</h3><p>COS checks <strong>Tailscale on this Mac</strong> and <strong>Tailscale on your iPhone</strong>, then shows a pairing code to scan with COS Glasses. Pairing needs server 6.67 or newer. <strong>Allow pairing on this Wi-Fi (home only)</strong> is an opt-in alternative to Tailscale. Choose <strong>Set up later</strong> or <strong>Use just my Mac</strong> to skip. The <a href="/docs/">COS Glasses guide</a> covers the phone side.</p></li>
-    <li><h3>Make yourself at home</h3><p>The last step introduces Work, Sessions and Meetings, and the session pet, with Keep, Calm or Hide. Choose <strong>Finish setup</strong>.</p></li>
+    <li><h3>Make yourself at home</h3><p>The last step introduces Work, Sessions and Meetings, and the session pet, with Keep, Calm or Hide. Choose <strong>Finish setup</strong>. On a Mac new to COS Control, Activity then opens on <strong>Today</strong>, with the Ask box and <kbd>&#8984;K</kbd>, and Settings opens in a <strong>Basic</strong> view. A Mac that had COS Control before keeps its home and sees every setting.</p></li>
   </ol>
 
   <div class="sub" id="setup-guide">
@@ -634,7 +635,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="settings">
     <h3>Settings</h3>
-    <p>Since 0.5.352, Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses and iPhone; Meetings; Dictation; Transcription and voice; Work and agents; Privacy and permissions; Pet and appearance; System and updates.</p>
+    <p>Settings opens in Activity with ten categories on the left: General; AI and accounts; Glasses, phone and web; Meetings; Dictation; Transcription and voice; Work and agents; Privacy and permissions; Pet and appearance; System and updates. The categories arrived in 0.5.352. Since 0.5.389, Glasses and iPhone is named Glasses, phone and web, with a Phone and web section first.</p><p>A new install opens Settings in a <strong>Basic</strong> view: the settings most people change, with one <strong>Show all settings</strong> switch on every page. A Mac that had COS Control before opens on All settings. Your choice is kept once you flip the switch. Search finds every setting, including ones Basic leaves out, and says why a row is hidden: the server is not running, dictation is off, or it is in All settings. When the COS server is not answering, Settings says so at the top with Start, Install or Repair.</p>
     <ul>
       <li>Each category is a set of cards. Settings you rarely need sit under <strong>Advanced</strong> in each card.</li>
       <li><strong>On this page</strong> lists the cards in the category you are in. Click one to jump to it.</li>
@@ -712,7 +713,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>Finding your way</h3>
     <ul>
       <li><kbd>⌘1</kbd> to <kbd>⌘8</kbd> open the eight views in order.</li>
-      <li><kbd>⌘K</kbd> exists only while Today home is on (Settings, General, Activity home), which is off by default. It opens a panel over any view. Type a pane or tab (usage, cos cost, messages, archive, voices, work) and press Return. Type sessions, recent or running to list sessions; that needs Show AI sessions on (Settings, Work and agents). It also goes to the Memories views, Work&rsquo;s layouts and the groups in Settings.</li>
+      <li><kbd>⌘K</kbd> exists only while Today home is on (Settings, General, Activity home). Since 0.5.389 Today home is on for new installs; a Mac that had COS Control before keeps its choice. It opens a panel over any view. Type a pane or tab (usage, cos cost, messages, archive, voices, work) and press Return. Type sessions, recent or running to list sessions; that needs Show AI sessions on (Settings, Work and agents). It also goes to the Memories views, Work&rsquo;s layouts and the groups in Settings.</li>
       <li><strong>Home</strong> (<kbd>⇧⌘H</kbd>) goes to the Activity home. <strong>Back</strong> (Command and the Left Arrow key, or Escape) goes back one step.</li>
       <li>The breadcrumb shows where you are, for example COS Control, Meetings, then the meeting.</li>
       <li><strong>Recency</strong> sorts Meetings, Sessions, Memories and Threads by Newest, Oldest or Best match. <strong>Domain</strong> narrows Meetings and Work.</li>
@@ -723,7 +724,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   <div class="sub" id="today-summary">
     <h3>Today summary</h3>
-    <p>Turn on Today home under Settings, General, Activity home. The separate <strong>Write the Today summary with a model</strong> switch stays off until you enable it. It uses Sonnet and shows the same server-written summary as Control Web. <strong>Summaries per day</strong> allows 1 to 100, default 100, and shows how many were used today. A server environment setting can lock the switch.</p>
+    <p>New installs start with Today home on. On a Mac that had COS Control before, turn it on under Settings, General, Activity home. The separate <strong>Write the Today summary with a model</strong> switch stays off until you enable it. It uses Sonnet and shows the same server-written summary as Control Web. <strong>Summaries per day</strong> allows 1 to 100, default 100, and shows how many were used today. A server environment setting can lock the switch.</p>
     <p><strong>Refresh</strong> rereads Today&rsquo;s sources before asking for a summary and shows its countdown when throttled. An unread source is not reported as zero. A failed ask keeps the last summary; without one, Today uses its local headline. Recording, the daily cap and the failure pause still hold. After a recovered connection, one summary can start immediately within the reconnect spacing limit.</p>
   </div>
 
@@ -760,7 +761,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <h3>Prepare before the call</h3>
     <p><strong>Prep me</strong> opens a draft on Mac and COS Control Web. Add notes and up to 10 files, then press <strong>Prep</strong>. With no notes, Prep uses the default brief. Keep replying to steer the preparation; your ordinary Ask draft stays separate.</p>
     <p>When the call starts, choose <strong>Add prep to this meeting</strong> and check the title, date and context preview. This adds a frozen copy of your prep notes and ready files to that specific live recording, where Live Ask and saved review can use them. COS does not attach prep automatically by matching titles or times. Later draft edits need another explicit add. Files without readable text remain in the draft but add no text to the prompt.</p>
-    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>7.0.7</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
+    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>7.0.18</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
   </div>
 
   <div class="sub" id="view-memories">
@@ -1201,7 +1202,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li><strong>Guided setup</strong>, in Transcription and voice, Advanced, asks you to choose a transcription setup, Balanced (recommended) or Max, then runs it.</li>
       <li><strong>Repair server</strong> and <strong>Repair Whisper</strong> fix the server or local Whisper.</li>
       <li><strong>Work folder</strong>, in Work and agents, is your COS project root, where Claude, Codex and Cursor search and edit. <strong>Meetings folder</strong>, in Meetings, is the folder you already use for meetings, containing <code>YYYY-MM/*.md</code>. <strong>Notes folder</strong>, in Work and agents, connects Memory and Threads; <strong>Create Folders</strong> makes them.</li>
-      <li><strong>Copy pairing token</strong>, in Glasses and iPhone, Advanced, copies the token the glasses use. <strong>Copy report</strong> copies a support report. <strong>Open logs</strong> opens <code>~/Library/Logs/COS&nbsp;Glasses</code>. <strong>Health page</strong>, in System and updates, Advanced, opens the server's health page.</li>
+      <li><strong>Copy pairing token</strong>, on the Devices card in Glasses, phone and web (under Devices, Advanced if you chose Just my Mac), copies the token the glasses use. <strong>Copy report</strong> copies a support report. <strong>Open logs</strong> opens <code>~/Library/Logs/COS&nbsp;Glasses</code>. <strong>Health page</strong>, in System and updates, Advanced, opens the server's health page.</li>
       <li><strong>Local model</strong> picks an Ollama model when a local Ollama daemon is running, or Automatic for the newest pull.</li>
       <li><strong>Open at login</strong>, <strong>Menu bar only</strong> and <strong>Activity shortcut</strong> are in General.</li>
     </ul>
@@ -1219,6 +1220,23 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       <li>A session that ran on a key is never continued, forked or opened in its app from Control, so it never resumes on your plan.</li>
       <li>Going back to an older server? Remove saved keys first. Control will not install a server older than 6.80.0 while keys are saved, and <strong>Remove saved keys</strong> stays in Settings even after a rollback.</li>
     </ul>
+  </div>
+
+  <div class="sub" id="control-web-access">
+    <h3>What a signed-in browser can do on your Mac</h3>
+    <p>When you sign in to COS Control Web on a phone or another computer, that browser can do most of what COS Control does on your Mac. It can:</p>
+    <ul>
+      <li>Answer a question an agent session asks you, and allow or deny a tool an agent wants to run on your Mac, when COS is holding that question for you.</li>
+      <li>Send a message into a running Claude or Codex session, fork it, or stop it. A message to a session that runs with its permissions bypassed acts with no approval step.</li>
+      <li>Ask COS questions and start Work, and stop a question COS is answering, including one another device asked.</li>
+      <li>Get a sign-in code for another phone or browser.</li>
+      <li>Answer a question a session ended its turn with. The answer reaches the session as a message from COS, not typed in the session.</li>
+    </ul>
+    <p>Messages you type in Control Web are recorded as coming from the web. COS does not treat them as proof that you were at the Mac.</p>
+    <p><strong>How long a browser stays signed in.</strong> Each sign-in lasts 7 days. Using COS in that browser during the last 2 days renews it for another 7, up to 30 days from when you first signed in. A browser you do not use in those last 2 days is signed out when its 7 days end. The 30 days only sets how long one sign-in can last before you sign in again. It does not protect a copied sign-in: anyone holding a copy can use it until then.</p>
+    <p><strong>Sign out every browser</strong> is what ends access at once. In Control Web, open Settings, choose Sign out every browser and tap again to confirm. In COS Control it is in Settings, Glasses, phone and web, under Phone and web. Every phone and browser signed in to Control Web is signed out; your glasses and the phone app stay paired. A page that is already open stops getting live updates too. Sign-in links and codes made before it stop working too. Changing your pairing token also signs every browser out, but it unpairs your glasses too.</p>
+    <p><strong>If you lose a phone that was signed in,</strong> sign every browser out.</p>
+    <p>A sign-in link that is old or already used does not count toward the lock after eight wrong tries; wrong codes and wrong tokens still do. A browser that is still signed in and opens an old link goes straight to the app with a note.</p>
   </div>
 </section>
 
@@ -1370,8 +1388,9 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-389"><h3>Control 0.5.389 / server 7.0.18</h3><p><strong>The current matched release.</strong> Control 0.5.389 build 443 pairs with public server 7.0.18. COS Glasses 6.11.681, public on Even Hub, works with it.</p><p><strong>An honest first run.</strong> Connect your AI can install Claude Code for you. <strong>Install Claude Code</strong> opens Terminal and runs Claude&rsquo;s official installer, shown on screen with Copy, and the row moves on to sign in when Claude Code appears. If macOS does not let COS type into Terminal, the command is on the clipboard and the step says what to do. The Welcome and Get started lines no longer claim you never need Terminal or Homebrew. Permissions shows Microphone, System Audio Recording and Calendars with their real status, read without asking. Dictation that is on with no shortcut says so and puts the recorder right there.</p><p><strong>New Macs start on Today, with a Basic Settings view.</strong> A new install opens Activity on Today, with the Ask box and &#8984;K, and opens Settings on the settings most people change, with one <strong>Show all settings</strong> switch on every page. A Mac that had COS Control before keeps its home and sees every setting. Search finds every setting and says why one is hidden. When the COS server is not answering, Settings says so at the top with Start, Install or Repair.</p><p><strong>Glasses, phone and web.</strong> The Glasses and iPhone page is now Glasses, phone and web, with Phone and web first: Open COS on your phone, Phone approvals and a new <strong>Sign out every browser</strong>. Today&rsquo;s evening fold is now Fold evenings and weekends. Jev and SubQ keys, live cue limits and the transcription model pickers moved under Advanced. The menu bar panel has an All settings row at the top.</p><p><strong>A question at a session&rsquo;s own prompt.</strong> Today&rsquo;s Needs you reads Answer in Claude, or in your terminal app, and opens it there. Open session sits beside it and now opens Control&rsquo;s own Sessions view.</p><p><strong>Usage prices every model it can.</strong> Control checks a small price list at gotcos.com/control/prices.json with its update check, at most every 6 hours, and sends nothing about you. A model with no list price yet is estimated from its nearest sibling and marked est. A model that runs on your Mac reads Local, no API cost, and Codex&rsquo;s reviewer reads No public price.</p><p><strong>Fixes.</strong> A crash when two session rows shared one id, and a meeting calendar crash on a repeated day. Usage no longer writes tens of megabytes on every refresh; its first pass after the update builds one index, which grows the history file by about 30 MB on a large history. An open Work chat no longer rewrites its history every 15 seconds. Work no longer promises a newer server for Undo, Waiting on and Dropped cards, because no server has them yet.</p><p><strong>Setup needs one signed-in AI, and says so.</strong> On Connect your AI, Skip for now appears only when another installed AI is signed in (an API key counts). While none is, the step says setup needs one signed-in AI and stops at its last step without one. If setup stops because no AI answered a test request, it says so in plain words first, with the technical text below. Before setup, Settings says COS is not set up on this Mac yet instead of saying the server is not answering. Finish setup no longer comes back for an existing Mac over the three new permission rows.</p><p><strong>Steadier Today.</strong> Today&rsquo;s summary keeps its height while you read it and stays through a session read that is pending or failed.</p><p><strong>Answer a held question here.</strong> With a server question-hold switch on (both are off by default), Today and the session view show a held question with its choices. Pick, then Send answer. The first answer counts, here or at your Mac.</p><p><strong>A question at the end of a turn.</strong> When a Claude session ends its turn with the app&rsquo;s next-step question and reply buttons, the session view says &ldquo;This session finished its turn with a question for you.&rdquo;, with up to two choices and an Other reply box, and sends your answer through that session&rsquo;s own Continue. Today&rsquo;s Needs you shows the same choices; a tap there opens the session with the reply ready to send and sends nothing by itself. Your answer reaches the session as &ldquo;Answer sent from COS Control on the Mac through COS, not typed in this session&rdquo;, so the session may ask you to confirm. It shows only after your Mac has been idle for a while; at the Mac, the Claude app&rsquo;s own box is the answer. It needs a COS server with turn-end asks, on by default from 7.0.18.</p><p><strong>Also new since 0.5.380.</strong> With Today home on, Next up shows five meetings and +N more today, Ask about this sits under the summary, and every Next up row has Prep with Add context; calendar holds get no Prep. Work chat plans on every task again while a Claude session runs in Terminal, and a task with no session gets one proposed new session that starts only when you press Send.</p><p><strong>Control Web with server 7.0.18.</strong> A browser sign-in renews while you use it, up to 30 days, and Sign out every browser ends access at once. See <a href="#control-web-access">what a signed-in browser can do on your Mac</a>. <a href="/docs/#release-server-7018">Read the full server changes and defaults</a>.</p></section>
     <section class="note" id="release-380"><h3>Control 0.5.380 / server 7.0.7</h3>
-      <p><strong>The current matched release.</strong> Control 0.5.380 build 434 pairs with public server 7.0.7. The glasses companion, Hub public listing and newest versioned pack are unchanged.</p>
+      <p><strong>Matched release.</strong> Control 0.5.380 build 434 paired with public server 7.0.7. The glasses companion, Hub public listing and newest versioned pack are unchanged.</p>
       <p><strong>Desktop Today uses the shared summary.</strong> Turn on Today home under Settings, General, Activity home. The Mac can show the same server-written activity summary as Control Web. Refresh rereads Today&rsquo;s sources and keeps incomplete, failed or cached results visible. Work&rsquo;s Your move rows are understood and supplied subagent evidence is retained. Today home stays opt-in; the separate Sonnet-written summary stays off until enabled. Summaries per day allows 1 to 100, default 100, and recording pauses it. Reconnect can request a summary immediately within its spacing limit; the switch, cap and failure pause still apply. See <a href="/docs/#today-shared-summary">Today summary controls</a>.</p>
       <p><strong>Calendars are chosen explicitly.</strong> Connect asks for access and lets you select calendars. No usable access or selection leaves the previous CalendarFetch source available. Turn off removes the selected snapshot and returns to that source. Declined events stay out of prep suggestions and the upcoming count. Separately installed COS workspace bridges may need their own update for matching classification. See <a href="/docs/#calendar-selection">calendar selection and fallback</a>.</p>
       <p><strong>Files and images on Mac and web.</strong> Sessions and Today&rsquo;s session panel place Claude and Codex prompt images and tool-returned images beside their original conversation step. Open a thumbnail and close it without losing the session, reading position or draft. Settings, Privacy controls previews and preserves an off choice. The Mac Sessions pane now shows the same file and image cards, with Quick Look on click. Local links also become file cards. Cursor prompt/tool images and a lens image viewer are not included.</p>
