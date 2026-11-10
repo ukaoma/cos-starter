@@ -1,0 +1,446 @@
+{
+ "schema": 1,
+ "version": "2026-11-09.1",
+ "published": "2026-11-09",
+ "models": [
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-fable-5-2",
+    "claude-mythos-5-2"
+   ],
+   "status": "priced",
+   "input": 8,
+   "output": 40,
+   "cacheRead": 0.2,
+   "cacheWrite": 10,
+   "cacheWriteLong": 16,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-opus-5-5"
+   ],
+   "status": "priced",
+   "input": 4,
+   "output": 20,
+   "cacheRead": 0.2,
+   "cacheWrite": 5,
+   "cacheWriteLong": 8,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-sonnet-5-5"
+   ],
+   "status": "priced",
+   "input": 2,
+   "output": 10,
+   "cacheRead": 0.1,
+   "cacheWrite": 2.5,
+   "cacheWriteLong": 4,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-haiku-5-5"
+   ],
+   "status": "priced",
+   "input": 0.1,
+   "output": 0.5,
+   "cacheRead": 0.01,
+   "cacheWrite": 0.125,
+   "cacheWriteLong": 0.2,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09",
+   "tiers": [
+    {
+     "promptOver": 100000,
+     "input": 0.5,
+     "output": 2.5,
+     "cacheRead": 0.05,
+     "cacheWrite": 0.625,
+     "cacheWriteLong": 1
+    }
+   ]
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-fable-5-1",
+    "claude-mythos-5-1"
+   ],
+   "status": "priced",
+   "input": 10,
+   "output": 50,
+   "cacheRead": 0.25,
+   "cacheWrite": 12.5,
+   "cacheWriteLong": 20,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-fable-5",
+    "claude-mythos-5"
+   ],
+   "status": "priced",
+   "input": 10,
+   "output": 50,
+   "cacheRead": 1,
+   "cacheWrite": 12.5,
+   "cacheWriteLong": 20,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-opus-5",
+    "claude-opus-4-8",
+    "claude-opus-4-7",
+    "claude-opus-4-6",
+    "claude-opus-4-5"
+   ],
+   "status": "priced",
+   "input": 5,
+   "output": 25,
+   "cacheRead": 0.5,
+   "cacheWrite": 6.25,
+   "cacheWriteLong": 10,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-opus-4-1",
+    "claude-opus-4"
+   ],
+   "status": "priced",
+   "input": 15,
+   "output": 75,
+   "cacheRead": 1.5,
+   "cacheWrite": 18.75,
+   "cacheWriteLong": 30,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-sonnet-5"
+   ],
+   "status": "priced",
+   "input": 2,
+   "output": 10,
+   "cacheRead": 0.2,
+   "cacheWrite": 2.5,
+   "cacheWriteLong": 4,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-sonnet-4-6",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4"
+   ],
+   "status": "priced",
+   "input": 3,
+   "output": 15,
+   "cacheRead": 0.3,
+   "cacheWrite": 3.75,
+   "cacheWriteLong": 6,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "Anthropic",
+   "ids": [
+    "claude-haiku-4-5"
+   ],
+   "status": "priced",
+   "input": 1,
+   "output": 5,
+   "cacheRead": 0.1,
+   "cacheWrite": 1.25,
+   "cacheWriteLong": 2,
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6-astra"
+   ],
+   "status": "priced",
+   "input": 10,
+   "output": 50,
+   "cacheRead": 1,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 12.5,
+   "cacheWriteLong": 25
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6.1-sol"
+   ],
+   "status": "priced",
+   "input": 2,
+   "output": 10,
+   "cacheRead": 0.1,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 2.5,
+   "cacheWriteLong": 5
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6.1-terra"
+   ],
+   "status": "priced",
+   "input": 1,
+   "output": 5,
+   "cacheRead": 0.05,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 1.25,
+   "cacheWriteLong": 2.5
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6-luna"
+   ],
+   "status": "priced",
+   "input": 0.1,
+   "output": 0.5,
+   "cacheRead": 0.01,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 0.125,
+   "cacheWriteLong": 0.25
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6-sol"
+   ],
+   "status": "priced",
+   "input": 2,
+   "output": 10,
+   "cacheRead": 0.2,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 2.5
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.6-sol"
+   ],
+   "status": "priced",
+   "input": 4,
+   "output": 20,
+   "cacheRead": 0.4,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 5,
+   "through": "2026-11-30",
+   "note": "Promotional price. The page says it is available until November 30, 2026."
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.6-terra"
+   ],
+   "status": "priced",
+   "input": 2,
+   "output": 12,
+   "cacheRead": 0.2,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 2.5
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.6-luna"
+   ],
+   "status": "priced",
+   "input": 0.2,
+   "output": 1.2,
+   "cacheRead": 0.02,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "cacheWrite": 0.25
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.5"
+   ],
+   "status": "priced",
+   "input": 5,
+   "output": 30,
+   "cacheRead": 0.5,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "note": "Listed for prompts under 272K tokens."
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.4"
+   ],
+   "status": "priced",
+   "input": 2.5,
+   "output": 15,
+   "cacheRead": 0.25,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "note": "Listed for prompts under 272K tokens."
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.4-mini"
+   ],
+   "status": "priced",
+   "input": 0.75,
+   "output": 4.5,
+   "cacheRead": 0.075,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.4-nano"
+   ],
+   "status": "priced",
+   "input": 0.2,
+   "output": 1.25,
+   "cacheRead": 0.02,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.3-codex"
+   ],
+   "status": "priced",
+   "input": 1.75,
+   "output": 14,
+   "cacheRead": 0.175,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.2"
+   ],
+   "status": "priced",
+   "input": 1.75,
+   "output": 14,
+   "cacheRead": 0.175,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5.1",
+    "gpt-5"
+   ],
+   "status": "priced",
+   "input": 1.25,
+   "output": 10,
+   "cacheRead": 0.125,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5-mini"
+   ],
+   "status": "priced",
+   "input": 0.25,
+   "output": 2,
+   "cacheRead": 0.025,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-5-nano"
+   ],
+   "status": "priced",
+   "input": 0.05,
+   "output": 0.4,
+   "cacheRead": 0.005,
+   "maxPricedPrompt": 272000,
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "codex-auto-review"
+   ],
+   "status": "noPublicPrice",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-09",
+   "note": "Codex's approval reviewer. OpenAI's API price list has no row for it, and the Auto-review docs name no price (https://learn.chatgpt.com/docs/sandboxing/auto-review.md, read 2026-11-09). Third-party trackers list a price, but they are not OpenAI."
+  }
+ ]
+}
