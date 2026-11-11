@@ -7,15 +7,19 @@
       "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.389/COS-Control-macOS-arm64-0.5.389.zip",
       "sha256": "efc9a2dcb53bdd82f8b797dbc6eb33a811c9c9af146c1ec220f6ac20171e835f",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.18",
+      "serverTarget": "7.0.27",
       "publishedAt": "2026-11-10T23:36:48Z",
-      "notes": "Pairs with server 7.0.18. Control 0.5.389 (build 443): a question a Claude session ends its turn with shows as waiting and can be answered from COS Control, a first run that can install Claude Code for you and says when setup needs a signed-in AI, Today and a Basic Settings view for new Macs (existing Macs keep theirs), Settings search that finds every setting, Sign out every browser, crash and disk fixes, and a price for every model in Usage from gotcos.com/control/prices.json. Server 7.0.18: the same question on the glasses and Control Web (COS_TURN_END_ASKS, on by default), Control Web zoom fixes on the phone, sign-ins that renew while in use up to 30 days, and a waiting question's first 80 characters. The question-hold switches and phone approvals stay off.",
+      "notes": "Pairs with server 7.0.27. Control 0.5.389 (build 443): a question a Claude session ends its turn with shows as waiting and can be answered from COS Control, a first run that can install Claude Code for you and says when setup needs a signed-in AI, Today and a Basic Settings view for new Macs (existing Macs keep theirs), Settings search that finds every setting, Sign out every browser, crash and disk fixes, and a price for every model in Usage from gotcos.com/control/prices.json. Server 7.0.27: a one-screen Sessions in Control Web with a new list in groups, folders, pins and rename, the COS mark at once on open, queued follow-ups no longer stuck, the same question on the glasses and Control Web (COS_TURN_END_ASKS, on by default), Control Web zoom fixes on the phone, sign-ins that renew while in use up to 30 days, and a waiting question's first 80 characters. The question-hold switches and phone approvals stay off.",
       "whatsNew": {
-        "summary": "A session that ends its turn with a question now shows as waiting, and you can answer it from COS Control. Server 7.0.18 shows that question on your glasses and in Control Web, and keeps Control Web signed in while you use it, up to 30 days. Plus everything since 0.5.380.",
+        "summary": "A session that ends its turn with a question now shows as waiting, and you can answer it from COS Control. Server 7.0.27 shows that question on your glasses and in Control Web, and keeps Control Web signed in while you use it, up to 30 days. Plus everything since 0.5.380.",
         "sections": [
           {
-            "title": "Server 7.0.18",
+            "title": "Server 7.0.27",
             "items": [
+              "Sessions in Control Web is one screen: the list and the conversation scroll by themselves, a session opens at its newest turn, and Send stays in view however many files you attach.",
+              "A new Sessions list: Needs you, Working now, Pinned, your folders, then by day, reaching 30 days. Rows move only when the list is at rest. Move to folder, Pin and Rename from a row's menu.",
+              "A note queued to a busy session goes the first moment the session is really idle, and says why it waits.",
+              "Control Web shows the COS mark at once when you open it, and before the app on a reopen.",
               "A question a Claude session ends its turn with shows as waiting on your glasses, Control Web and COS Control once your Mac has been idle, and you can answer it there. Your answer reaches the session as a message from COS. COS_TURN_END_ASKS=0 turns it off.",
               "Control Web stops zooming in and out on the phone: double-tap zoom is off, and on iPhone and iPad the page stays at its normal scale. In the Home Screen app pinch zoom no longer works; in a Safari tab it still does.",
               "Control Web: a sign-in renews while you use it, up to 30 days. Sign out every browser ends every sign-in at once, including pages already open and sign-in links and codes made before it.",
