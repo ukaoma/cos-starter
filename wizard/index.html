@@ -413,11 +413,12 @@
     <ul class="checklist">
       <li class="req"><strong>COS Control on an Apple silicon Mac</strong> with macOS 14 or later and an internet connection.</li>
       <li class="opt"><strong>Even G2 glasses and an iPhone</strong> are optional. Add them after your Mac is ready.</li>
+      <li class="opt"><strong>Tailscale on your Mac and iPhone</strong>, signed in to the same account, if you add glasses. It lets your phone reach your Mac from anywhere. <a href="https://tailscale.com/download">Download Tailscale</a>.</li>
       <li class="opt"><strong>Keep your Mac awake</strong> when you want to reach its server from your glasses.</li>
       <li class="req"><strong>One signed-in AI provider:</strong> the Codex Mac app, Claude Code, or Cursor Agent. New to AI coding apps? <a href="https://developers.openai.com/codex/app/">Install Codex for Mac</a> and sign in, then return to COS and choose <b>Check again</b>. Claude Desktop alone does not supply Claude Code.</li>
     </ul>
     <details id="optional-voice"><summary>Optional voice and media setup</summary><ul class="checklist">
-      <li class="opt"><strong>whisper.cpp and about 6 GB free for voice prompts</strong> &mdash; run <code>brew install whisper-cpp</code> once. The setup command verifies disk space before downloading anything. This is <strong>required for local voice</strong>; text chat works without it.</li>
+      <li class="opt"><strong>Local voice prompts</strong>: in COS Control, open Settings, search for <b>Voice setup</b> and choose <b>Set up and test voice</b>. COS downloads its own voice tools and models, checks disk space first and tests them on this Mac, with no Homebrew or Terminal. Running the server from the terminal instead? Run <code>brew install whisper-cpp</code> once and keep about 6 GB free. Text chat works without either.</li>
       <li class="opt"><strong>Local spoken replies on Apple silicon</strong> &mdash; optional: run <code>brew install python@3.12 ffmpeg espeak-ng</code>. Python 3.11 or 3.12 is supported. The normal server start provisions Kokoro asynchronously; chat and transcription work while it prepares.</li>
       <li class="opt"><strong>ffmpeg for photos</strong> &mdash; the command above also covers phone photos, answer-image galleries, and manual 288&times;144 G2 image viewing. Text and transcription still work without it.</li>
     </ul></details>
@@ -447,7 +448,7 @@
       <details><summary>Developer alternative: run the server in Terminal</summary>
       <p style="font-size:0.88rem;color:var(--text-muted);margin:0.9rem 0 0.4rem;"><strong>Or the terminal.</strong> The same server, running in the foreground. Keep the window open while you use the glasses.</p>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced<span class="copy-hint">click to copy</span></div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The terminal prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll need those under <b>Set up by hand</b> in COS Glasses if you pair without COS Control. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The terminal prints your <b style="color:var(--text-label);font-weight:600;">server URL</b> (Tailscale and Wi-Fi addresses, labeled) and your <b style="color:var(--text-label);font-weight:600;">API token</b> &mdash; you'll need those after <b>Connect a Mac</b> in COS Glasses if you pair without COS Control. The token is saved to <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">~/.cos-glasses/.env</code>. <strong>For transcription</strong>, install <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">whisper-cpp</code> first and have about 6 GB free; setup verifies space, then provisions Small.en preview, Turbo commit, and Large-v3 HQ models. <strong>For optional local spoken replies on Apple silicon</strong>, run <code style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-green)">brew install python@3.12 ffmpeg espeak-ng</code>; the server validates and self-repairs its pinned Kokoro environment.</p>
       </details>
       <div class="res-label">2 &middot; Start a task and open Sessions</div>
       <ul class="enable">
@@ -462,7 +463,7 @@
       </ul>
       <details id="glasses-setup"><summary>Add your glasses (optional)</summary>
       <div class="res-label">Connect the app on your iPhone</div>
-      <p>You need the Even Realities app 2.2.10 or newer on your iPhone, with your G2 glasses already paired in it, and Tailscale on your Mac and iPhone, signed in to the same account (at home you can instead turn on <b>Allow pairing on this Wi-Fi (home only)</b> on the same card in COS Control).</p>
+      <p>You need the Even Realities app 2.2.10 or newer on your iPhone, with your G2 glasses already paired in it, and Tailscale on your Mac and iPhone, signed in to the same account. At home without Tailscale, <b>Allow pairing on this Wi-Fi (home only)</b> on the same card in COS Control opens pairing over your Wi-Fi for 10 minutes.</p>
       <ul class="enable">
         <li>In the Even Realities app, open <b>Even Hub</b>, install <b>COS Glasses</b>, and open it.</li>
         <li>In COS Control on your Mac, open Settings and search for <b>Connect glasses</b>. It shows a QR, an 8-character code and your Mac&rsquo;s address.</li>
@@ -471,12 +472,12 @@
       </ul>
       <p>Running the server from the terminal instead?</p>
       <ul class="enable">
-        <li>In COS Glasses, tap <b>Set up by hand</b> and enter your Mac&rsquo;s address and the API token (or tap <b>"I have a COS username"</b> to fill in the address; you still paste the token). The address is your Mac&rsquo;s Tailscale address (100.x.x.x), or its Wi-Fi address on trusted home Wi-Fi; the terminal prints both. The token is what the terminal printed, or what <b>Copy pairing token</b> put on the clipboard (in COS Control, open Settings and search for pairing token).</li>
+        <li>In COS Glasses, tap <b>Connect a Mac</b> and enter your Mac&rsquo;s address and the API token (or tap <b>"I have a COS username"</b> to fill in the address; you still paste the token). The address is your Mac&rsquo;s Tailscale address (100.x.x.x), or its Wi-Fi address on trusted home Wi-Fi; the terminal prints both. The token is what the terminal printed, or what <b>Copy pairing token</b> put on the clipboard (in COS Control, open Settings and search for pairing token).</li>
         <li>Tap <b>Connect</b>.</li>
       </ul>
       <div class="res-label">Try the glasses</div>
       <ul class="enable">
-        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, or Guided setup said <code>whisper-cpp</code> is missing, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first) or run Guided setup again in COS Control before your first voice prompt.</li>
+        <li>If the terminal showed <b>LOCAL VOICE NOT READY</b>, run <code>brew install whisper-cpp</code>, then rerun the server command (Ctrl-C first). With COS Control, open Settings, search for <b>Voice setup</b> and choose <b>Set up and test voice</b> before your first voice prompt.</li>
         <li><b>Learn tap-and-hold:</b> tap and release, then quickly press again and keep holding for the shortcut window above the HUD. The default COS order is <b>Home</b>, <b>Ask COS</b>, <b>Start Meeting</b>, <b>Model</b>, <b>Messages</b>, <b>Sessions</b>, then <b>Tasks</b>. Scroll and tap to select. While recording, <b>Home</b>, <b>Resume Meeting</b> and <b>Stop Meeting</b> lead; Tasks stays in Quick Actions instead. <a href="/docs/#hold-menu">Practice the hold gesture.</a></li>
         <li><b>Ask.</b> On the glasses, tap and hold, choose <b>Ask COS</b>, and say <b>"brief me"</b>. The answer lands on the lens.</li>
         <li><b>Meeting.</b> Tap and hold, choose <b>Start Meeting</b>, talk for a minute, then <b>Stop</b>. Takeaways and action items appear.</li>
@@ -683,7 +684,7 @@
         <ul class="checklist">
           <li class="req"><strong>Even G2 smart glasses</strong> paired with the Even Realities app, version 2.2.10 or newer</li>
           <li class="req"><strong>Claude Code, Codex CLI or Cursor Agent</strong> on your Mac. One is enough. The <a href="https://developers.openai.com/codex/app/">Codex Mac app</a> is a direct-download starting point. Sign in, return to COS and choose Check again. Claude Desktop alone is not Claude Code.</li>
-          <li class="opt"><strong>Local voice sets up inside COS Control.</strong> Open Activity, Settings, Setup guide, then Local voice. COS downloads and verifies its own Whisper tools and models without Homebrew. An existing transcription tier is preserved. Separate optional media features may need additional dependencies.</li>
+          <li class="opt"><strong>Local voice sets up inside COS Control.</strong> Open Settings, search for Voice setup and choose Set up and test voice. COS downloads and verifies its own Whisper tools and models without Homebrew. An existing transcription tier is preserved. Separate optional media features may need additional dependencies.</li>
           <li class="opt"><strong>Node.js 20.11+</strong> is needed only for the manual terminal installation below. Control includes its own runtime.</li>
           <li class="opt"><strong>COS Control</strong> (recommended) &mdash; the Mac menu bar app that installs and runs the server for you, launches at login, and updates and rolls back safely. macOS 14 or later, Apple Silicon. <a href="/control/">Download</a></li>
           <li class="opt"><strong>ffmpeg</strong> for phone and answer images &mdash; <code>brew install ffmpeg</code></li>
@@ -720,7 +721,7 @@
         <ul class="enable">
           <li>In COS Control, open Settings and search for <strong>Connect glasses</strong>.</li>
           <li>In COS Glasses, tap <strong>Scan code on your Mac</strong>, type the 8 characters and the Mac address beside them under <strong>Or type the code</strong>, then tap <strong>Pair</strong>. Or tap <strong>Scan</strong> and hold your phone so the code fills the screen. Click <strong>Allow</strong> on the Mac, then tap <strong>Connect</strong>.</li>
-          <li>Server running in a terminal? Tap <strong>Set up by hand</strong>, enter your Mac's Tailscale IP and the API token the terminal printed, then tap <strong>Connect</strong>. Leave the server running.</li>
+          <li>Server running in a terminal? Tap <strong>Connect a Mac</strong>, enter your Mac's Tailscale IP and the API token the terminal printed, then tap <strong>Connect</strong>. Leave the server running.</li>
         </ul>
         <div class="note"><strong>Have a COS username?</strong> Tap "I have a COS username" and your Mac&rsquo;s address fills in. You still paste the API token.</div>
         <div class="note"><strong>Switch models anytime:</strong> open Settings, choose Default chat model, tap the toolbar model button, or say "switch to GPT Frontier."</div>
