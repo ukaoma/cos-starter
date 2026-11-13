@@ -634,7 +634,7 @@
     </div>
 
     <div class="res-label">1 · Start COS on your Mac</div>
-    <p style="font-size:0.88rem;margin:0 0 0.5rem;">Open <a href="/control/#install">COS Control</a>, connect your AI and choose <b>Get started</b>. For optional local voice afterward, run <b>Guided setup</b> and choose <b id="r-control-tier">Balanced</b>.</p>
+    <p style="font-size:0.88rem;margin:0 0 0.5rem;">Open <a href="/control/#install">COS Control</a>, connect your AI and choose <b>Get started</b>. For optional local voice afterward, open Settings, search for <b>Voice setup</b>, set <b>Quality tier</b> to <b id="r-control-tier">Balanced</b> and choose <b>Set up and test voice</b>.</p>
     <details><summary>Manual terminal alternative (requires Node.js)</summary>
     <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span><span id="r-server-command">npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</span><span class="copy-hint">click to copy</span></div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">The glasses app installs from the Even Hub on your iPhone. See Add your glasses above.</p></details>
@@ -1160,8 +1160,8 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     li.push('Set <b>Default chat model</b> to <b>' + MODEL_LABEL[model] + '</b>' + (model.indexOf('codex-') === 0 ? ' (sign in with <code>codex login</code> on your Mac).' : '.'));
     li.push('Run <code>brew install ffmpeg</code> if you want phone photos, answer-image galleries, or manual lens images.');
     if (state.voice === 'openai') li.push('Set <code>COS_OPENAI_WHISPER_FALLBACK=1</code> and add your <b>OPENAI_API_KEY</b> for deliberate cloud voice fallback.');
-    else if (state.transcriptionTier === 'max') li.push('For optional voice, use COS Control Guided setup and choose Max, or use the manual terminal alternative above. Max uses Large-v3 preview and commit, Large-v3 polish, with Turbo retained as the safe fallback.');
-    else li.push('For optional voice, use COS Control Guided setup and choose Balanced, or use the manual terminal alternative above. Balanced uses Small.en preview, Turbo commit and Large-v3 polish.');
+    else if (state.transcriptionTier === 'max') li.push('For optional voice, in COS Control open Settings, search for Voice setup, set Quality tier to Max and choose Set up and test voice, or use the manual terminal alternative above. Max uses Large-v3 preview and commit, Large-v3 polish, with Turbo retained as the safe fallback.');
+    else li.push('For optional voice, in COS Control open Settings, search for Voice setup, set Quality tier to Balanced and choose Set up and test voice, or use the manual terminal alternative above. Balanced uses Small.en preview, Turbo commit and Large-v3 polish.');
     if (!vocabulary.length) li.push('Add the names, companies, acronyms, and specialist terms you say often; an empty vocabulary is safe but less accurate.');
     if (ctx.length) li.push('Connect <b>' + ctx.map(function (c) { return CTX_LABEL[c]; }).join('</b>, <b>') + '</b> in the COS folder your server runs from (guide: <a href="https://gotcos.com/cos-starter.md">the Starter Kit</a>, Phase 3).');
     // Per-mode Memory setup. The previous single line described the bridge tier only
