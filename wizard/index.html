@@ -440,11 +440,12 @@
       <div class="res-label">1 &middot; Open COS Control on your Mac</div>
       <p style="font-size:0.88rem;margin:0 0 0.5rem;"><strong>The easy way: COS Control.</strong> A menu bar app that installs the server, keeps it running, launches at login, and updates and rolls back safely. Most people should start here.</p>
       <ul class="enable">
-        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.389/COS-Control-macOS-arm64-0.5.389.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
+        <li><a href="https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.397/COS-Control-macOS-arm64-0.5.397.zip" style="color:var(--accent-green)">Download COS Control</a> (macOS 14 or later, Apple Silicon), unzip it, and move it into your <b>Applications</b> folder. The <a href="/control/">Control page</a> has the checksum and the details.</li>
         <li>Open COS Control from Applications. The current download is Developer ID signed and notarized by Apple, so it opens without an unidentified-developer warning. When updating manually, quit the old Control first and choose Replace in Applications. Keep rollback copies outside Applications and open only the installed COS Control.app.</li>
         <li>Sign in to a supported AI provider if prompted, then choose <b>Get started</b>. COS prepares and starts the server. When it is ready, choose <b>Open Sessions</b>. Add local voice separately before testing voice prompts or meetings.</li>
 
       </ul>
+      <p>Want an optional phone ping when a Claude, Codex or Cursor session reply is ready? After updating, choose <b>Install hooks</b> or <b>Reinstall hooks</b> in Sessions. Phone pings and the session notification category stay off by default; each phone must opt in. <a href="/docs/#release-server-7049">Setup, privacy choices and limits</a>.</p>
       <details><summary>Developer alternative: run the server in Terminal</summary>
       <p style="font-size:0.88rem;color:var(--text-muted);margin:0.9rem 0 0.4rem;"><strong>Or the terminal.</strong> The same server, running in the foreground. Keep the window open while you use the glasses.</p>
       <div class="cmd" onclick="copyCmd(this)"><span class="prompt">$ </span>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced<span class="copy-hint">click to copy</span></div>

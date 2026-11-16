@@ -2,17 +2,46 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.389",
-      "build": 443,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.389/COS-Control-macOS-arm64-0.5.389.zip",
-      "sha256": "efc9a2dcb53bdd82f8b797dbc6eb33a811c9c9af146c1ec220f6ac20171e835f",
+      "version": "0.5.397",
+      "build": 451,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.397/COS-Control-macOS-arm64-0.5.397.zip",
+      "sha256": "b0a2d1dd90e67e08e1e887eff46c3d70678a5b0146d8088f1a2f4fc276cd8e79",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.27",
-      "publishedAt": "2026-11-10T23:36:48Z",
-      "notes": "Pairs with server 7.0.27. Control 0.5.389 (build 443): a question a Claude session ends its turn with shows as waiting and can be answered from COS Control, a first run that can install Claude Code for you and says when setup needs a signed-in AI, Today and a Basic Settings view for new Macs (existing Macs keep theirs), Settings search that finds every setting, Sign out every browser, crash and disk fixes, and a price for every model in Usage from gotcos.com/control/prices.json. Server 7.0.27: a one-screen Sessions in Control Web with a new list in groups, folders, pins and rename, the COS mark at once on open, queued follow-ups no longer stuck, the same question on the glasses and Control Web (COS_TURN_END_ASKS, on by default), Control Web zoom fixes on the phone, sign-ins that renew while in use up to 30 days, and a waiting question's first 80 characters. The question-hold switches and phone approvals stay off.",
+      "serverTarget": "7.0.49",
+      "publishedAt": "2026-11-16T00:38:46Z",
+      "notes": "Pairs with server 7.0.49. One shared COS chat on Mac and web, older history, whole retained answers, explicit retry and Jump to latest; plan pacing in Usage; and phone sign-in links that prefer trusted HTTPS when ready. Optional session reply pings open Sessions and require updated supported hooks, enabled notification settings, separate server gates and each phone opting in. Phone approval authority is not enabled. Includes message-reader replies, Back by route and the scrolling Meetings calendar added since public Control 0.5.389.",
       "whatsNew": {
-        "summary": "A session that ends its turn with a question now shows as waiting, and you can answer it from COS Control. Server 7.0.27 shows that question on your glasses and in Control Web, and keeps Control Web signed in while you use it, up to 30 days. Plus everything since 0.5.380.",
+        "summary": "One COS chat across Mac and web, plan pacing in Usage, and phone sign-in links that prefer trusted HTTPS when ready. Server 7.0.49 also keeps your place after Jump to latest and adds optional session reply-ready pings that open Sessions.",
         "sections": [
+          {
+            "title": "Shared COS chat",
+            "items": [
+              "With Drop it on, Mac and Control Web show the same saved COS thread, older history, day markers and whole retained answers. Chats sent here stay apart from numbered Messages.",
+              "Scroll back to read, then choose Jump to latest. After jumping, scrolling back pauses following again. Failed or interrupted turns can be retried explicitly."
+            ]
+          },
+          {
+            "title": "Plan pacing",
+            "items": [
+              "Usage adds a closed row for the tool closest to its plan limit. Open it for the reported percentage, reset time and a labelled pace estimate. Missing readings show no number.",
+              "Opening Usage and Refresh read only when old enough. Cursor plan usage requires a separate opt-in, may ask for Keychain access and is never read by the background timer. Token history and API-value estimates stay separate."
+            ]
+          },
+          {
+            "title": "Your phone",
+            "items": [
+              "Phone sign-in QRs and copied links prefer trusted HTTPS with the matching valid certificate and listening HTTPS server. Address updates preserve the code expiry; older servers keep HTTP fallback.",
+              "Optional phone pings need both server push gates and each phone opting in. Tests do not enable real notifications. Words are off by default, with an explicit first-line option. Ordinary pings use the existing quiet hours and interruption limits; reminders you explicitly schedule can arrive at their chosen time. The Mac must be awake and online.",
+              "Session reply pings cover Claude, Codex and Cursor turns. After updating, choose Install hooks or Reinstall hooks in Sessions and enable the session notification category, which is off by default. A reply being ready does not mean the whole task succeeded. Session pings open Sessions; message pings open their COS message, while mixed updates stay in Messages. Phone approval authority is not enabled, and this Control build cannot turn it on."
+            ]
+          },
+          {
+            "title": "Also since Control 0.5.389",
+            "items": [
+              "Reply from a numbered message reader with model and effort choices. Back retraces your route. Meetings and Work’s meeting picker scroll past their calendar in a small window.",
+              "The glasses connection card gives a code to type. Phone sign-in and the Tailscale download keep their own QRs. COS Glasses remains 6.11.681."
+            ]
+          },
           {
             "title": "Server 7.0.27",
             "items": [
