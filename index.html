@@ -1085,6 +1085,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .ah-mark{position:relative;justify-self:center;width:274px;height:300px}
 .ah-still{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(40,10,0,.45));transition:opacity .7s ease}
 .amber-hero.gl-on .ah-still{opacity:0}
+.amber-hero.gl-wait .ah-still{opacity:0;transition:none}
 .amber-hero p.ah-colh{margin:0 0 12px;font-size:13px;font-weight:600;line-height:1.2;color:#fde6cc}
 .ah-col ul{list-style:none;margin:0;padding:0}
 .ah-in li{display:flex;align-items:center;gap:11px;height:34px;font-size:14.5px;font-weight:500;line-height:1.2;color:#fff0dc;opacity:.9;transition:opacity .3s ease}
@@ -1410,6 +1411,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
         <defs><radialGradient id="ahAmb" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#d98a52"/><stop offset=".28" stop-color="#8a3018"/><stop offset=".7" stop-color="#4f180d"/><stop offset="1" stop-color="#2a0c06"/></radialGradient></defs>
         <g fill="url(#ahAmb)"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></g>
       </svg></div>
+      <script>(function(){try{var h=document.currentScript.closest('.amber-hero');if(window.WebGLRenderingContext&&!matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.add('gl-wait');setTimeout(function(){if(!h.classList.contains('gl-on'))h.classList.remove('gl-wait');},3000);}}catch(e){}})();</script>
       <div class="ah-col ah-out">
       <div class="one" id="oneA">
         <p class="one-h">Meets you <b id="oneWhere">on your Mac</b></p>
@@ -2671,7 +2673,7 @@ function doCopyKit(){
   var W = 1280, H = 800, CX = 640, CY = 572, PXU = 39.47;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var gl = canvas.getContext('webgl', { alpha: false, antialias: false });
-  if (!gl) return;
+  if (!gl) { hero.classList.remove('gl-wait'); return; }                // no WebGL: the still shows
 
   var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
   var FS = [
@@ -2755,7 +2757,7 @@ function doCopyKit(){
   try {
     prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
-  } catch (e) { console.warn('mark: still fallback kept', e); hero.dataset.glerr = String(e).slice(0, 300); return; }
+  } catch (e) { console.warn('mark: still fallback kept', e); hero.dataset.glerr = String(e).slice(0, 300); hero.classList.remove('gl-wait'); return; }
   gl.useProgram(prog);
   var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
@@ -2836,14 +2838,14 @@ function doCopyKit(){
   var pulse = NODE.map(function () { return 0; });
   var ease = function (x) { return 1 - Math.pow(1 - x, 3); };
   var inOut = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
-  var OUT = 600, INTRO = 2400, REST = OUT + INTRO + 1000;
-  function phase(t) {                                                  // scatter, then reassemble: the bones break first and fuse last
+  var OUT = 350, INTRO = 2400, REST = OUT + INTRO + 1000;
+  function phase(t) {                                                  // the page opens on loose atoms (held for OUT), then they merge: the bones fuse last
     if (reduce || t >= OUT + INTRO) return [1, 1];
-    if (t < OUT) { var x = t / OUT; return [1 - x * x, Math.max(0, 1 - x * 2.2)]; }
+    if (t < OUT) return [0, 0];
     var y = (t - OUT) / INTRO; return [ease(y), ease(Math.min(Math.max((y - 0.55) / 0.45, 0), 1))];
   }
   var nArr = new Float32Array(21), rArr = new Float32Array(7), dArr = new Float32Array(16), first = true, running = false, forced = false;
-  var clock = REST, last = null, started = false, ratio = 0;
+  var clock = reduce ? REST : 0, last = null, started = false, ratio = 0;   // first frame: loose atoms, or the finished mark under reduced motion
 
   // full = false steps the state only (fast-forwards a ?sim frame without drawing every step).
   function draw(t, full) {
@@ -2904,6 +2906,7 @@ function doCopyKit(){
 
   function loop(now) { if (!running) { last = null; return; } if (last !== null) clock += Math.min(now - last, 50); last = now; draw(clock, true); requestAnimationFrame(loop); }
   function update() {
+    if (forced) return;                                                // a ?sim frame is held: the live clock never starts over it
     var vis = ratio >= 0.1 && !document.hidden && !reduce;
     if (!started && vis && ratio >= 0.5) { started = true; clock = 0; }
     var want = vis && started;
@@ -2928,7 +2931,7 @@ function doCopyKit(){
     hero.dataset.bench = ms[Math.floor(ms.length / 2)].toFixed(2) + ' ms median, ' + ms[ms.length - 1].toFixed(2) + ' ms max, ' + canvas.width + 'x' + canvas.height;
   }
   else {
-    draw(REST, true);                                                  // still frame first; reduced motion stays on it
+    draw(clock, true);                                                 // first frame: loose atoms, never the finished mark; reduced motion draws the finished mark and stays on it
     new IntersectionObserver(function (es) { ratio = es[0].intersectionRatio; update(); }, { threshold: [0, 0.1, 0.5] }).observe(hero.querySelector('.ah-mark'));
     document.addEventListener('visibilitychange', update);
   }
