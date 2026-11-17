@@ -1607,6 +1607,13 @@ html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inh
 .rl .rr::after{display:none}
 .rr-rule line{stroke:rgba(242,154,69,.3);stroke-width:1}
 @media (prefers-reduced-motion:reduce){.mv .hb-li>:not(.ro){transition:none}}
+/* The centaur in its own framed plate, like the Wire-the-house engraving, so the whole figure reads (Miles 16:55). */
+#faq .fq-left .fq-plate{position:relative;margin-top:30px;aspect-ratio:4 / 5;max-width:420px;border-radius:14px;overflow:hidden;border:1px solid var(--line-on-cream);background:#ebdfc8}
+#faq .fq-left .fq-plate .pixmap-c{position:absolute;inset:0;right:auto;top:auto;width:100%;height:100%;margin:0;display:block;opacity:.78;
+  -webkit-mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%));
+          mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%))}
+#faq .fq-left .fq-plate .pixmap-c .pi{background-position:0 0,center 30%}
+@media (max-width:1079px){#faq .fq-left .fq-plate{aspect-ratio:16 / 10;max-width:560px}#faq .fq-left .fq-plate .pixmap-c{display:block}}
 </style>
 
 </head>
@@ -2255,7 +2262,7 @@ html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inh
         <li><a href="/embodied-intelligence/">Embodied intelligence</a></li>
         <li><a href="/philosophy/cos-philosophy-diagram.html">Read the philosophy</a></li>
       </ul>
-      <div class="pixmap-c" aria-hidden="true"><div class="pi"></div></div>
+      <div class="fq-plate" aria-hidden="true"><div class="pixmap-c"><div class="pi"></div></div></div>
     </div>
     <div class="fq-right">
       <h3 class="fq-h">Frequently asked questions</h3>
