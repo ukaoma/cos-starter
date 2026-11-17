@@ -1171,6 +1171,26 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .ah-stage{margin-top:14px}
   .ah-mark{width:164px;height:180px;margin-bottom:28px}
 }
+@media (min-width:900px) and (max-width:1099px) and (orientation:landscape){
+  .amber-hero{padding-top:112px}
+  .ah-sub{margin-top:12px}
+  .ah-cta{margin-top:16px}
+  .ah-stage{grid-template-columns:minmax(0,1fr) 210px minmax(0,1fr);column-gap:12px;align-items:center;max-width:none;margin-top:24px}
+  .ah-in{grid-column:1;grid-row:1}
+  .ah-in::before{left:-48px;right:-12px;top:-70px;bottom:-70px;background:linear-gradient(90deg,rgba(40,15,7,.88),rgba(40,15,7,.78) calc(100% - 112px),rgba(40,15,7,0));mask-image:linear-gradient(180deg,transparent,#000 70px,#000 calc(100% - 70px),transparent)}
+  .ah-in ul:first-of-type{columns:auto}
+  .ah-in li{height:28px;font-size:14.5px;opacity:1}
+  .amber-hero p.ah-colh{font-size:14px;margin-bottom:8px}
+  .amber-hero p.ah-colh.ah-rep{margin-top:14px}
+  .ah-in .ah-rep-list li{height:auto;min-height:46px}
+  .ah-o2{font-size:14px;max-width:200px}
+  .ah-mark{grid-column:2;grid-row:1;width:210px;height:230px;margin:0}
+  .ah-out{position:relative;grid-column:3;grid-row:1;min-width:0;margin-top:0;padding-left:28px}
+  .ah-out::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:0;right:-48px;top:-70px;bottom:-70px;background:linear-gradient(270deg,rgba(40,15,7,.88),rgba(40,15,7,.78) calc(100% - 100px),rgba(40,15,7,0));mask-image:linear-gradient(180deg,transparent,#000 70px,#000 calc(100% - 70px),transparent)}
+  .amber-hero p.one-h{min-height:39px}
+  .amber-hero .one{width:100%}
+  .amber-hero p.one-sub{font-size:14px;min-height:81px}
+}
 @media (max-width:440px){
   .amber-hero{padding-top:112px}
   .amber-hero h1{font-size:2.15rem}
@@ -2616,14 +2636,14 @@ function doCopyKit(){
   var srcs=[].slice.call(hero.querySelectorAll('.ah-in .src')), stage=hero.querySelector('.one-stage');
   // Node centres at rest, in node radii from the mark's centre (logo-mark.svg, node radius 100).
   var NODE=[[348,100],[100,240],[100,520],[593,240],[348,380],[593,520],[348,660]].map(function(p){return [(p[0]-346.5)/100,(380-p[1])/100];});
-  var NS='http://www.w3.org/2000/svg', AH=window.AH={}, mq=window.matchMedia('(max-width:1099px)');
+  var NS='http://www.w3.org/2000/svg', AH=window.AH={}, mq=window.matchMedia('(max-width:1099px)'), compact=window.matchMedia('(min-width:900px) and (max-width:1099px) and (orientation:landscape)');
   function f(n){return n.toFixed(1);}
   function rel(el,hb){var r=el.getBoundingClientRect();return{l:r.left-hb.left,t:r.top-hb.top,r:r.right-hb.left,b:r.bottom-hb.top,w:r.width,h:r.height};}
   function mid(el,hb){var r=rel(el,hb);return (r.t+r.b)/2;}
   function path(d){var p=document.createElementNS(NS,'path');p.setAttribute('d',d);lines.appendChild(p);return p;}
   function layout(){
     var hb=hero.getBoundingClientRect(), W=hb.width, H=hb.height; if(W<1||H<1) return;
-    var m=rel(markBox,hb), cx=(m.l+m.r)/2, cy=(m.t+m.b)/2, narrow=mq.matches;
+    var m=rel(markBox,hb), cx=(m.l+m.r)/2, cy=(m.t+m.b)/2, narrow=mq.matches&&!compact.matches;
     // Approved artboard: radius 880 on a 1280 frame. Narrow layouts keep the bright core off the lists.
     var R=narrow?Math.min(560,Math.max(420,W*.9)):Math.min(880,Math.max(700,W*.69));
     var F=narrow?200:260;   // eased falloff that reaches the ground 16px before the hero's edge
