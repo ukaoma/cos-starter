@@ -36,19 +36,19 @@
 
     :root {
       color-scheme: dark;
-      --bg-deep: #170f09;
-      --bg-card: rgba(32, 21, 13, 0.80);
+      --bg-deep: #34140a;
+      --bg-card: rgba(64, 25, 12, 0.80);
       --bg-surface: rgba(255, 246, 232, 0.03);
-      --border-subtle: rgba(201, 169, 110, 0.16);
+      --border-subtle: rgba(242,154,69, 0.16);
       --border-form: rgba(255, 246, 232, 0.09);
-      --text-primary: #f0e8da;
-      --text-muted: rgba(236, 230, 218, 0.5);
-      --text-label: rgba(236, 230, 218, 0.62);
-      --accent-rose: #c4736e;
-      --accent-gold: #c9a96e;
-      --accent-warm: #d4a07a;
+      --text-primary: #fbeedd;
+      --text-muted: rgba(251,238,221, 0.5);
+      --text-label: rgba(251,238,221, 0.62);
+      --accent-rose: #e07a3a;
+      --accent-gold: #f29a45;
+      --accent-warm: #f6b46e;
       --accent-green: #7fa98a;
-      --on-accent: #1a1206;
+      --on-accent: #2a1206;
       --font-body: 'DM Sans', -apple-system, sans-serif;
       --font-display: 'Fraunces', Georgia, serif;
       --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
@@ -57,13 +57,13 @@
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
-    ::selection { background: rgba(201, 169, 110, 0.28); color: #f4efe4; }
+    ::selection { background: rgba(242,154,69, 0.28); color: #f4efe4; }
     :focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
     .actions a:focus-visible { outline-offset: 2px; }
     .atmos { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
     .atmos .aur { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; mix-blend-mode: screen; animation: drift 30s ease-in-out infinite alternate; }
-    .atmos .a1 { width: 58vw; height: 58vw; top: -22vw; right: -16vw; background: radial-gradient(circle, rgba(201,169,110,.26), transparent 62%); }
-    .atmos .a2 { width: 50vw; height: 50vw; bottom: -20vw; left: -18vw; background: radial-gradient(circle, rgba(196,115,110,.2), transparent 60%); animation-duration: 36s; }
+    .atmos .a1 { width: 58vw; height: 58vw; top: -22vw; right: -16vw; background: radial-gradient(circle, rgba(242,154,69,.26), transparent 62%); }
+    .atmos .a2 { width: 50vw; height: 50vw; bottom: -20vw; left: -18vw; background: radial-gradient(circle, rgba(224,122,58,.2), transparent 60%); animation-duration: 36s; }
     @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(2vw,-3vh,0) scale(1.08); } }
 
     body::before {
@@ -85,7 +85,7 @@
     .step { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.9rem; margin-bottom: 1.4rem; backdrop-filter: blur(20px); position: relative; }
     .step[data-step]::before {
       content: attr(data-step); position: absolute; top: -11px; left: 20px;
-      background: var(--accent-rose); color: #2b1512; font-size: 0.65rem; font-weight: 700;
+      background: var(--accent-rose); color: #4a1c0c; font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
     }
     .step h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
@@ -111,7 +111,7 @@
       display: block; width: 100%; font-family: inherit; color: inherit;
     }
     .opt-grid .opt:hover { border-color: var(--border-form); }
-    .opt.selected { border-color: var(--accent-gold); background: rgba(201, 169, 110, 0.07); }
+    .opt.selected { border-color: var(--accent-gold); background: rgba(242,154,69, 0.07); }
     .opt .opt-k { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
     #usecases .opt .check, #context .opt .check { border-radius: 5px; }
     .opt.selected .opt-k { color: var(--accent-gold); }
@@ -132,16 +132,16 @@
       width: 100%; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form);
       border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s, background 0.2s;
     }
-    .field input::placeholder { color: rgba(236,230,218,0.34); }
+    .field input::placeholder { color: rgba(251,238,221,0.34); }
     .field input:focus { background: rgba(255,255,255,0.07); border-color: var(--accent-gold); }
-    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #2a1c10 inset; -webkit-text-fill-color: var(--text-primary); caret-color: var(--text-primary); transition: background-color 9999s; }
+    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px #40190c inset; -webkit-text-fill-color: var(--text-primary); caret-color: var(--text-primary); transition: background-color 9999s; }
 
     /* ── Notes ── */
-    .note { background: rgba(201, 169, 110, 0.06); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 11px 15px; margin: 1rem 0 0; font-size: 0.8rem; color: var(--text-label); line-height: 1.5; }
+    .note { background: rgba(242,154,69, 0.06); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 11px 15px; margin: 1rem 0 0; font-size: 0.8rem; color: var(--text-label); line-height: 1.5; }
     .note strong { color: var(--accent-gold); font-weight: 500; }
 
     /* ── Result card ── */
-    .result { background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(14,19,30,0.85)); border: 1px solid rgba(201,169,110,0.28); border-radius: 14px; padding: 2rem 1.9rem; margin-top: 2.4rem; position: relative; }
+    .result { background: linear-gradient(180deg, rgba(242,154,69,0.05), rgba(52,20,10,0.85)); border: 1px solid rgba(242,154,69,0.28); border-radius: 14px; padding: 2rem 1.9rem; margin-top: 2.4rem; position: relative; }
     .result h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.3rem; }
     .result h2 em { font-family: var(--font-display); font-style: italic; color: var(--accent-gold); font-weight: 400; }
     .result .config-line { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.3rem; min-height: 1.2em; }
@@ -172,17 +172,17 @@
     /* ── CTAs (system gold pills) ── */
     .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
     .actions a { padding: 0.75rem 1.5rem; border-radius: 999px; font-size: 0.88rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: transform 0.2s, box-shadow 0.25s, border-color 0.2s, color 0.2s; }
-    .actions a.primary { background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); box-shadow: 0 12px 34px -14px rgba(201,169,110,.6); }
-    .actions a.primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(201,169,110,.7); }
+    .actions a.primary { background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); box-shadow: 0 12px 34px -14px rgba(242,154,69,.6); }
+    .actions a.primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(242,154,69,.7); }
     .actions a.secondary { border-color: var(--border-form); color: var(--text-primary); }
     .actions a.secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
-    .save-build { margin-top: 1.6rem; padding: 1rem 1.1rem; background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.22); border-radius: 10px; }
+    .save-build { margin-top: 1.6rem; padding: 1rem 1.1rem; background: rgba(242,154,69,0.06); border: 1px solid rgba(242,154,69,0.22); border-radius: 10px; }
     .save-build label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.55rem; }
     .save-build label b { color: var(--text-primary); font-weight: 600; }
     .sb-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .sb-row input { flex: 1; min-width: 200px; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
-    .sb-row input::placeholder { color: rgba(236,230,218,0.34); }
+    .sb-row input::placeholder { color: rgba(251,238,221,0.34); }
     .sb-row input:focus { border-color: var(--accent-gold); }
     .sb-row button { padding: 0.6rem 1.1rem; background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: transform 0.2s; }
     .sb-row button:hover { transform: translateY(-1px); }
@@ -191,8 +191,8 @@
     .sb-msg.show { display: block; }
     .sb-msg.ok { color: var(--accent-gold); }
     .sb-msg.err { color: var(--accent-rose); }
-    .sb-fine { font-size: 0.68rem; font-family: var(--font-mono); color: rgba(236,230,218,0.4); margin-top: 0.55rem; }
-    .hosted a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); }
+    .sb-fine { font-size: 0.68rem; font-family: var(--font-mono); color: rgba(251,238,221,0.4); margin-top: 0.55rem; }
+    .hosted a { color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid rgba(242,154,69,0.3); }
 
     a { color: var(--accent-gold); }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-subtle) 18%, var(--border-subtle) 82%, transparent); margin: 2.5rem 0; }
@@ -244,11 +244,11 @@
     /* HUD frame — floats a baked green slide; NO second border, NO tint (mix-blend normal) */
     .hud-frame { position: relative; width: 100%; max-width: 560px; aspect-ratio: 2 / 1; border-radius: 16px; overflow: hidden;
       background: radial-gradient(120% 130% at 50% 0%, rgba(20,24,32,.55), rgba(7,9,15,.93));
-      box-shadow: 0 40px 90px -42px rgba(0,0,0,.85), inset 0 0 0 1px rgba(201,169,110,.10); }
+      box-shadow: 0 40px 90px -42px rgba(0,0,0,.85), inset 0 0 0 1px rgba(242,154,69,.10); }
     .hud-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
     .hud-frame.is-pending { display: none; }
     .hud-frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; transform: translateY(-115%);
-      background: linear-gradient(180deg, transparent 0%, rgba(236,230,218,.12) 48%, transparent 54%); }
+      background: linear-gradient(180deg, transparent 0%, rgba(251,238,221,.12) 48%, transparent 54%); }
     .mkt-reveal.in .hud-frame::after { animation: hud-sweep 0.9s ease-out 0.15s 1; }
     @keyframes hud-sweep { from { transform: translateY(-115%); } to { transform: translateY(115%); } }
 
@@ -366,6 +366,25 @@
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
 <link rel="stylesheet" href="/assets/docs-hud.css?v=587-1">
+<style id="amber">
+/* ── Amber, phase 1 (2026-11-16). Tokens and hand-written golds were moved in this page's own CSS; this layer paints
+   buttons and chrome the way the homepage does. Copy, scripts and structure are unchanged. ── */
+.btn{border-radius:10px}
+.btn.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
+.btn.primary:hover{background:#ffe4c4;box-shadow:none}
+section.light .btn.primary,.lightband .btn.primary,.paper .btn.primary{background:#8f3d14;color:#fff3e4}
+section.light .btn.primary:hover,.lightband .btn.primary:hover,.paper .btn.primary:hover{background:#7a3210}
+p a.btn,.lead a.btn{text-decoration:none}
+
+/* /wizard keeps its minimal setup chrome. No aurora; solid buttons. */
+.atmos{display:none}
+/* Muted text at .50 measured 4.24 to 4.39:1 on the resin cards. */
+:root{--text-muted:rgba(251,238,221,.58)}
+.actions a{border-radius:10px}
+.actions a.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
+.actions a.primary:hover{background:#ffe4c4;box-shadow:none}
+.sb-row button{background:#fff0dc;color:#2a1206;border-radius:10px;box-shadow:none}
+</style>
 </head>
 <body>
 <div class="atmos" aria-hidden="true"><div class="aur a1"></div><div class="aur a2"></div></div>
