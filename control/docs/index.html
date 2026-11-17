@@ -69,9 +69,9 @@
 <style>
 :root{
   color-scheme:dark;
-  --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
-  --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
-  --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+  --ink:#34140a; --ink-2:#40190c; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
+  --fg:#fbeedd; --muted:rgba(251,238,221,.60); --faint:rgba(251,238,221,.62); --ghost:rgba(251,238,221,.34); --line:rgba(242,154,69,.18); --line-2:rgba(255,246,232,.08);
+  --gold:#f29a45; --rose:#e07a3a; --warm:#f6b46e; --green:#7fa98a;
   --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
   --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
   --maxw:1140px; --gut:clamp(16px,5vw,72px);
@@ -82,12 +82,12 @@ html{font-size:16px;-webkit-font-smoothing:antialiased}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 html,body{overflow-x:clip}
 body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6}
-::selection{background:rgba(201,169,110,.32);color:#fff}
+::selection{background:rgba(242,154,69,.32);color:#fff}
 a{color:var(--gold);text-decoration:none}
 p a,li a,td a,.lead a{text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .btn:focus-visible,.nav .cta:focus-visible{outline-offset:2px}
-.skip{position:absolute;left:12px;top:-60px;z-index:40;background:var(--gold);color:#1a1206;padding:10px 16px;border-radius:9px;font-weight:600}
+.skip{position:absolute;left:12px;top:-60px;z-index:40;background:var(--gold);color:#2a1206;padding:10px 16px;border-radius:9px;font-weight:600}
 .skip:focus{top:12px}
 .it{font-style:italic}
 .goldt{color:var(--gold)}
@@ -100,7 +100,7 @@ section.chapter,header.hero{padding-block:clamp(48px,7vw,96px);position:relative
 section.light{background:var(--cream);box-shadow:0 0 0 100vmax var(--cream);clip-path:inset(-1px -100vmax)}
 section.light h2,section.light h3,section.light h4,section.light p strong,section.light li strong,section.light summary,section.light td strong{color:var(--ink-on-cream)}
 section.light .lead,section.light p,section.light li,section.light td{color:var(--muted-on-cream)}
-section.light a,section.light code{color:#7a5c2c}
+section.light a,section.light code{color:#8f3d14}
 section.light .ch .num{opacity:.45}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.05;letter-spacing:-.015em;text-wrap:balance;margin-bottom:14px}
@@ -129,7 +129,7 @@ section.light kbd{border-color:rgba(46,31,16,.24);background:rgba(46,31,16,.05);
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 34px -14px rgba(201,169,110,.55)}
+.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#2a1206;box-shadow:0 14px 34px -14px rgba(242,154,69,.55)}
 .btn.ghost{border-color:var(--line-2);color:var(--fg)}
 .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
 
@@ -141,7 +141,7 @@ section.light kbd{border-color:rgba(46,31,16,.24);background:rgba(46,31,16,.05);
 .xlink span{display:block;font-size:.86rem;color:var(--muted);line-height:1.45;margin-top:3px}
 
 /* ── command blocks ──────────────────────────────────── */
-.cmd{display:flex;align-items:center;gap:12px;background:#0d0906;border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:12px 0;font-family:var(--mono);font-size:.82rem;color:var(--fg);max-width:100%}
+.cmd{display:flex;align-items:center;gap:12px;background:#220d06;border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:12px 0;font-family:var(--mono);font-size:.82rem;color:var(--fg);max-width:100%}
 .cmd .p{color:var(--gold);user-select:none}
 .cmd code{color:var(--fg);flex:1;min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;overflow-wrap:normal}
 
@@ -167,7 +167,7 @@ section.light .card li{color:var(--muted-on-cream)}
 .steps>li:first-child{border-top:0}
 .steps>li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:22px;font-family:var(--mono);font-size:.8rem;color:var(--gold)}
 section.light .steps>li{border-top-color:var(--line-on-cream)}
-section.light .steps>li::before{color:#7a5c2c}
+section.light .steps>li::before{color:#8f3d14}
 .steps p{font-size:.96rem}
 .steps ul{margin:8px 0 0 1.1rem}
 .steps ul li{margin:5px 0;font-size:.94rem;line-height:1.5}
@@ -180,10 +180,10 @@ section.light .steps>li::before{color:#7a5c2c}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{padding:0 2px 18px;max-width:70ch}
 section.light .faq details{border-color:var(--line-on-cream)}
-section.light .faq summary::after{color:#7a5c2c}
+section.light .faq summary::after{color:#8f3d14}
 .note{border-left:2px solid var(--gold);padding:4px 0 4px 18px;margin-top:22px;max-width:860px}
 .note p,.note li{font-size:.94rem}
-section.light .note{border-left-color:#7a5c2c}
+section.light .note{border-left-color:#8f3d14}
 .views-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;margin:18px 0 0;list-style:none;max-width:860px}
 .views-list a{display:block;border:1px solid var(--line-2);border-radius:11px;padding:10px 13px;color:var(--fg);font-weight:500;font-size:.92rem}
 .views-list a:hover{border-color:var(--gold);color:var(--gold)}
@@ -210,7 +210,7 @@ section.light .note{border-left-color:#7a5c2c}
 @media(min-width:640px){.chapgrid{grid-template-columns:1fr 1fr}}
 @media(min-width:1100px){.chapgrid{grid-template-columns:repeat(3,1fr)}}
 .chapcard{display:block;border:1px solid var(--line-2);border-radius:14px;padding:15px 17px;background:linear-gradient(158deg,var(--panel),transparent);transition:transform .18s ease,border-color .18s ease}
-.chapcard:hover{transform:translateY(-2px);border-color:rgba(201,169,110,.45)}
+.chapcard:hover{transform:translateY(-2px);border-color:rgba(242,154,69,.45)}
 .chap-t{display:block;font-weight:600;font-size:.98rem;color:var(--fg);margin-bottom:3px}
 .chap-t .n{font-family:var(--mono);font-weight:400;font-size:.8rem;color:var(--gold);margin-right:8px}
 .chap-d{display:block;font-size:.85rem;color:var(--muted);line-height:1.45}
@@ -279,7 +279,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 
   /* ── Nav — full-width dark strip + contained light card (marktpos pattern) ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
-  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(242,154,69,.07);background:rgba(38,14,6,.74);backdrop-filter:blur(10px)}
   .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
   .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nt-links{display:flex;gap:20px;flex-shrink:0}
@@ -291,10 +291,10 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
   .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
   .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
-  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(42,16,7,.55)}
   .nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;flex:0 0 auto;border-radius:999px;line-height:1;white-space:nowrap;transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease}
   .nav .links .nav-actions .nav-login{flex-basis:var(--login-w,auto);color:var(--cream);font-weight:500;padding:8px 14px}
-  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#1a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
+  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#2a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
   .nav .links .nav-actions[data-mode="login"] .nav-login{flex-basis:var(--nav-actions-inner,100%)}
   .nav .links .nav-actions[data-mode="login"] .cta{flex-basis:0;opacity:0;padding:0;pointer-events:none}
   .nav .links .nav-actions[data-mode="download"] .cta{flex-basis:var(--nav-actions-inner,100%)}
@@ -305,11 +305,11 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
   .nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
   .nd[data-open] .nd-btn svg{transform:rotate(180deg)}
-  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(42,16,7,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
   .nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
   @media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
   .nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
-  .nd-menu a:hover{background:rgba(201,169,110,.18)}
+  .nd-menu a:hover{background:rgba(242,154,69,.18)}
   .nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
   /* burger + mobile panel */
   .nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
@@ -333,6 +333,64 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
+<style id="amber">
+/* ── Amber, phase 1 (2026-11-16). Tokens and hand-written golds were moved in this page's own CSS; this layer paints
+   buttons and chrome the way the homepage does. Copy, scripts and structure are unchanged. ── */
+.btn{border-radius:10px}
+.btn.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
+.btn.primary:hover{background:#ffe4c4;box-shadow:none}
+section.light .btn.primary,.lightband .btn.primary,.paper .btn.primary{background:#8f3d14;color:#fff3e4}
+section.light .btn.primary:hover,.lightband .btn.primary:hover,.paper .btn.primary:hover{background:#7a3210}
+p a.btn,.lead a.btn{text-decoration:none}
+
+/* Nav: the homepage's resin card. Translucent over the dark top, solid resin once that is passed (script below);
+   cream lockup and links. The logo line-draw and the inset Log in / Download control are the page's own, repainted. */
+.nav .nav-main{background:rgba(255,232,206,.07);border:1px solid rgba(255,226,196,.17);border-radius:14px;box-shadow:none;
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);transition:background-color .3s ease}
+.nav.solid .nav-main{background:rgba(52,20,10,.94)}
+.nav .brand{color:#fff2e2}
+.nav .links > a,.nd-btn{color:rgba(255,238,220,.8)}
+.nav .links > a:hover,.nd-btn:hover,.nd[data-open] .nd-btn{color:#fff2e2;background:rgba(255,236,214,.08)}
+.nav .links .nav-actions{background:rgba(34,11,2,.42);border-radius:13px;box-shadow:inset 0 1px 3px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,226,196,.09)}
+.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{border-radius:10px;
+  transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease,background-color .3s ease,color .3s ease}
+.nav .links .nav-actions .nav-login{color:#fff2e2;font-weight:600}
+.nav .links .nav-actions .cta{background:#fff0dc;color:#2a1206}
+.nav .links .nav-actions[data-mode="login"] .nav-login{background:#fff0dc;color:#2a1206}
+.nav-burger{border-color:rgba(255,226,196,.24)}
+.nav-burger span{background:#fff2e2}
+/* The open X never closed (on origin too): the grid burger stretched its three rows over the button and its margins
+   do not collapse, so the lines sat far apart while the open state moved them 4px. Pack the rows (6.4px apart) and
+   move them that distance. */
+.nav-burger{align-content:center}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.4px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.4px) rotate(-45deg)}
+@media (min-width:1001px){
+  .nd-menu{background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 70px -28px rgba(0,0,0,.6);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+}
+/* The burger from 1000px down, as on the homepage (at 951, the Duo open, the links wrapped to two lines). */
+@media (max-width:1000px){
+  .nav-top{display:none}
+  .nav-main{margin-top:10px}
+  .nav-burger{display:grid;width:44px;height:44px}
+  .nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;border-radius:16px;
+    background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .2s,transform .25s,visibility .25s}
+  .nav .links.open{opacity:1;visibility:visible;transform:none}
+  .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+  .nd[data-open] .nd-menu{display:block}
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+  .nav .links .nav-actions{margin:12px 0 0;width:100%}
+  .nav .links > a,.nd-btn,.nd-menu a,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{min-height:44px}
+  .nav .links > a,.nd-btn{display:flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta,.nav .nav-main{transition:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#content">Skip to the guide</a>
@@ -1505,7 +1563,7 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
       if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
       var eL=parseFloat(el.style.getPropertyValue('--login-w'))||0, eC=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
       if((eL||eC)&&(Math.abs(login.getBoundingClientRect().width-eL)>1||Math.abs(cta.getBoundingClientRect().width-eC)>1)){ el._pillStale=true; return; }
-      var narrow=window.matchMedia('(max-width:900px)').matches;
+      var narrow=window.matchMedia('(max-width:1000px)').matches;
       var w0=el.style.getPropertyValue('--nav-actions-w');
       var l0=el.style.getPropertyValue('--login-w');
       var p0=el.style.getPropertyValue('--pill-w');
@@ -1765,6 +1823,13 @@ footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offs
   },{rootMargin:'-20% 0px -55% 0px'});
   targets.forEach(function(t){ io.observe(t); });
 })();
+</script>
+<script>
+// Amber nav (2026-11-16): the resin card is translucent over the page's dark top and solid once that is passed,
+// so its cream links never sit on a cream section.
+(function(){var nav=document.querySelector('.nav'),top=document.querySelector('.docs-hero,.hero,header.hero,main > section:first-of-type');if(!nav)return;
+  var solid=function(){nav.classList.toggle('solid',!top||top.getBoundingClientRect().bottom<112);};
+  solid();window.addEventListener('scroll',solid,{passive:true});window.addEventListener('resize',solid);})();
 </script>
 </body>
 </html>
