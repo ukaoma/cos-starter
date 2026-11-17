@@ -670,17 +670,13 @@ section.light .dek{color:#8f3d14}
 
 
 <style>
-/* ── Espresso kept: tells removed, everything else as live ── */
 
-/* 1. The heading formula. Live ends most headings in an italic gold phrase.
-      Here each page's h1 keeps it and no section heading does. The mock bar switches the ending. */
 html[data-head="one"] :is(h1,h2) .hx,
 html[data-head="weight"] :is(h1,h2) .hx,
 html[data-head="weight"] #control .sec-head h2>.it.g{font-style:normal!important;background:none!important;
   -webkit-background-clip:border-box!important;background-clip:border-box!important;
   -webkit-text-fill-color:currentColor!important;color:inherit!important}
 html[data-head="weight"] :is(h1,h2) .hx,html[data-head="weight"] #control .sec-head h2>.it.g{font-weight:600!important}
-/* One word of real emphasis keeps its italic, in the heading's own color. */
 html:not([data-head="live"]) :is(h1,h2) .hx-em{font-style:italic;background:none!important;
   -webkit-background-clip:border-box!important;background-clip:border-box!important;
   -webkit-text-fill-color:currentColor!important;color:inherit!important}
@@ -688,11 +684,8 @@ html:not([data-head="live"]) :is(h1,h2) .hx-em{font-style:italic;background:none
 </style>
 
 <style>
-/* 3. Eyebrow labels above the four graph cards (Miles, 2026-07-16: the structure is the tell). */
 .cg-pill .cg-pl{display:none}
 
-/* 4. Bullets wired to their files (Miles picked 2026-11-12). Cream section.
-      Each need runs a wire to the file that holds it; a pulse travels the wire. */
 .wire-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
 .wire-list .wl-path{display:flex;justify-content:flex-end;font-family:var(--mono);font-size:.74rem;color:#8f3d14;padding-right:2px}
 .wire-list li{display:grid;grid-template-columns:minmax(0,1fr) clamp(28px,5vw,64px) 214px;align-items:center;gap:10px}
@@ -722,8 +715,6 @@ html:not([data-head="live"]) :is(h1,h2) .hx-em{font-style:italic;background:none
   html.js .reveal:not(.in) .wl-wire{transform:scaleY(0)}
 }
 
-/* 5. Source join chart (Miles picked 2026-11-12). Dark section, under the floating cards.
-      One row per record, one column per source, a wire across the sources that saw it. */
 .jc{margin:28px 0 0;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px);
   background:radial-gradient(120% 130% at 18% 0%,rgba(242,154,69,.07),transparent 58%),linear-gradient(160deg,var(--panel-2),rgba(38,14,6,.5));
   display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(18px,3vw,36px);align-items:start}
@@ -772,12 +763,9 @@ html:not([data-head="live"]) :is(h1,h2) .hx-em{font-style:italic;background:none
   .jc-head>span:first-child{display:none}
   .jc-row.sel{margin-inline:-8px;padding-inline:8px}
 }
-/* 6. Show the artifact (Miles picked 2026-11-12). Template sections show the real thing they describe.
-      The mock bar's Sections row flips back to the live cards. */
-html[data-sec="cards"] .sec-art{display:none!important}
-html[data-sec="art"] .sec-cards{display:none!important}
 
-/* 6a. Benefits: three real outputs, each in its own shape, beside the claim it backs. */
+
+
 .art-rows{margin-top:46px;display:grid;gap:0;border-top:1px solid var(--line-on-cream)}
 .art-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(22px,4vw,56px);align-items:center;padding:34px 0;border-bottom:1px solid var(--line-on-cream)}
 .art-say h3{font-family:var(--display);font-weight:500;font-size:clamp(1.45rem,2.2vw,1.9rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink-on-cream);margin:0 0 12px}
@@ -806,7 +794,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
 @media (max-width:760px){.art-row{grid-template-columns:1fr;gap:18px;padding:28px 0}}
 @media (max-width:440px){.art-doc dl div{grid-template-columns:72px minmax(0,1fr)}.art-doc dl code{grid-column:2}}
 
-/* 6b. Tiers: the same directory at four points in time. New lines are gold, earlier lines dim. */
 .grow{margin:40px 0 0}
 .grow-panel{border-radius:16px;background:var(--ink);border:1px solid rgba(242,154,69,.34);box-shadow:0 30px 60px -34px rgba(42,16,7,.75);overflow:hidden}
 .grow-axis{display:grid;grid-template-columns:repeat(4,1fr);position:relative;padding:14px 0 0}
@@ -839,7 +826,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
   #tiers .grow-m span{font-size:.82rem;color:#f6b46e}
   #tiers .grow-m p{font-size:.9rem;line-height:1.5;color:var(--muted);margin:6px 0 0}
 }
-/* 6c. 14 domains: the framework's own reference scorecard, 0 to 1 per domain. */
 #assess .score{margin-top:40px}
 #assess .score-grid{columns:2;column-gap:48px}
 #assess .sc{break-inside:avoid;padding:14px 0 15px;border-top:1px solid var(--line-on-cream)}
@@ -867,7 +853,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
 }
 @media (max-width:760px){#assess .score-grid{columns:1}}
 
-/* 6d. Integrations: the page's own setup times, drawn to scale, shortest first. */
 .intc{margin-top:40px;border:1px solid var(--line);border-radius:18px;padding:8px clamp(14px,2.4vw,24px) 10px;background:linear-gradient(158deg,var(--panel),transparent)}
 .intc-axis,.intc-row{display:grid;grid-template-columns:44px minmax(150px,230px) minmax(0,1fr) minmax(120px,30%) 58px;column-gap:14px;align-items:center}
 .intc-axis{padding:8px 0 6px;font-size:.72rem;color:var(--faint)}
@@ -896,7 +881,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
   .intc-row .t{grid-column:3;grid-row:1}
 }
 
-/* 6e. Teams: the one number in the section, drawn. Left-aligned beside the copy. */
 #teams .util{margin:0}
 #teams .util-track{position:relative;height:16px;border-radius:8px;background:rgba(255,246,232,.07)}
 #teams .util-band{position:absolute;top:0;bottom:0;left:calc(var(--a)*1%);width:calc((var(--b) - var(--a))*1%);background:linear-gradient(90deg,var(--warm),var(--gold));border-radius:3px;box-shadow:0 0 14px rgba(242,154,69,.45)}
@@ -925,7 +909,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
   #teams .util-band{transition:opacity .6s ease 1.2s}
 }
 
-/* 6f. Philosophy: what "accumulates" looks like, in the product's own memory lines. */
 #philosophy .acc{margin:0 0 30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.92));box-shadow:0 32px 74px -28px rgba(0,0,0,.92);overflow:hidden}
 #philosophy .acc ol{list-style:none;margin:0;padding:4px 18px}
 #philosophy .acc li{display:grid;grid-template-columns:104px 84px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:.9rem;color:var(--fg)}
@@ -942,7 +925,6 @@ html[data-sec="art"] .sec-cards{display:none!important}
 }
 @media (max-width:520px){#philosophy .acc li{grid-template-columns:84px minmax(0,1fr) auto}#philosophy .acc li .from{grid-column:1 / -1}}
 
-/* 6g. Start: what each setup step writes, on the same wire as the bullets above. */
 #start .wl-steps{margin-top:6px;gap:0}
 #start .wl-steps li{grid-template-columns:minmax(0,1.25fr) minmax(40px,.45fr) 262px;padding:18px 0;border-top:1px solid var(--line-on-cream)}
 #start .wl-steps .wl-need{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:10px;align-items:baseline}
@@ -953,15 +935,11 @@ html[data-sec="art"] .sec-cards{display:none!important}
 #start .wl-steps .wl-file code,#start .wl-steps .wl-file small{white-space:normal!important;overflow-wrap:anywhere}
 @media (max-width:560px){#start .wl-steps li{grid-template-columns:1fr;padding:16px 0}}
 
-/* 9. The four cards under the join chart. Each describes something the chart above already shows.
-      Three options, mock-only, switched by data-pil = cards (today) | keys | rows | list. Every word stays. */
-.jk,.pil-rows{display:none}
-/* keys: the cards become four numbered notes, and the same numbers sit on the chart where each one is true */
+.jk{display:none}
 html[data-pil="keys"] .jk{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;border:1px solid var(--gold);
   color:var(--gold);font:500 .62rem/1 var(--mono);font-style:normal;flex:none;margin-left:8px;vertical-align:middle;
   transition:background .25s ease,color .25s ease,box-shadow .25s ease}
 html[data-pil="keys"] .jc-head>span:first-child{display:flex;justify-content:flex-end;align-items:center}
-/* room for the review flag and its number on one line */
 @media (min-width:761px){html[data-pil="keys"] .jc-head,html[data-pil="keys"] .jc-row{grid-template-columns:minmax(150px,262px) minmax(0,1fr)}}
 html[data-pil="keys"] .jc-name .jk{margin-left:0}
 html[data-pil="keys"] .cg-pillars{gap:0 clamp(18px,2.4vw,34px);margin-top:24px}
@@ -978,72 +956,59 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(22
 html[data-pil="keys"] #graph[data-key="3"] .jc-name span{color:var(--gold)}
 html[data-pil="keys"] #graph[data-key="4"] .jc-edge{color:var(--fg)}
 html[data-pil="keys"] #graph[data-key="4"] .jc-rec{border-color:var(--gold)}
-/* rows: each card becomes a row with its own small example beside the words */
-html[data-pil="rows"] .cg-pillars{display:none}
-html[data-pil="rows"] div.pil-rows{display:grid;margin-top:26px;border-top:1px solid var(--line)}
-html[data-pil="rows"] p.pil-rows{display:block}
-.pil-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,56px);align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
-.pil-row b{display:block;font-family:var(--body);font-weight:600;font-size:1rem;color:var(--fg);margin:0 0 6px}
-.pil-row p{font-size:.86rem;line-height:1.55;margin:0}
-.pil-a{font-size:.8rem;color:var(--muted);min-width:0}
-.pil-src{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
-.pil-src span{display:inline-flex;align-items:center;gap:6px;font-size:.78rem}
-.pil-src svg{width:15px;height:15px;color:var(--gold);fill:currentColor}
-.pil-src svg.ln{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.pil-row p.pil-door{margin-top:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--faint)}
-.pil-door code{color:var(--gold);font:inherit}
-.pil-rev{border:1px dashed var(--rose);border-radius:12px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
-.pil-rev b{display:inline;margin:0;font-weight:500;font-size:.9rem}
-.pil-rev .pil-q{flex:1 1 180px;min-width:0}
-.pil-rev code{font-family:var(--mono);font-size:.66rem;color:var(--rose)}
-.pil-rev .pil-btn{font-size:.72rem;border:1px solid var(--line);border-radius:7px;padding:4px 9px;color:var(--fg)}
-.pil-code{margin:0;font-family:var(--mono);font-size:.72rem;line-height:1.75;color:var(--muted);border-left:2px solid var(--gold);padding:2px 0 2px 14px;white-space:pre-wrap}
-.pil-code i{font-style:normal;color:var(--gold)}
-.pil-find{display:grid;gap:7px}
-.pil-find .pil-ask{color:var(--fg);font-size:.86rem}
-.pil-find div{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.78rem}
-.pil-find code{font-family:var(--mono);font-size:.64rem;color:var(--gold);min-width:44px}
-.pil-find u{text-decoration:none;display:inline-block;width:18px;height:1px;background:var(--gold);opacity:.7}
-p.pil-cap{margin:12px 0 0;font-size:.78rem;color:var(--faint)}
-@media (max-width:760px){.pil-row{grid-template-columns:1fr;gap:14px;padding:22px 0}}
-/* list: the same four, no boxes, two by two */
-html[data-pil="list"] .cg-pillars{grid-template-columns:1fr 1fr;gap:0 clamp(24px,5vw,70px);margin-top:26px;border-top:1px solid var(--line)}
-html[data-pil="list"] .cg-pill{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:18px 0}
-html[data-pil="list"] .cg-pill b{margin-top:0}
-@media (max-width:760px){html[data-pil="list"] .cg-pillars{grid-template-columns:1fr}}
 
-/* 10. Search on the join chart. Note 4 says "vector search to find it fast, a knowledge graph to explain how it
-       connects"; the chart only showed the second half. Three options, mock-only, data-srch = none | corner | record | ask.
-       The query is by meaning, not by name: nobody typed "Dana". Made-up example, same cast as the chart. */
-.jc-q,.jc-found,.jc-ask{display:none}
-.jc-q code,.jc-found code,.jc-ask code{font-family:var(--mono);font-size:.64rem;color:var(--gold);flex:none}
-html[data-srch="corner"] .jc-head>span:first-child{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
-html[data-srch="corner"] .jc-q{display:inline-flex;align-items:center;gap:8px;min-width:0;font-size:.82rem;color:var(--muted);
-  border-bottom:1px solid var(--line);padding:0 2px 5px;transition:color .25s ease,border-color .25s ease}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.jc-found{display:none}
+.jc-found code{font-family:var(--mono);font-size:.64rem;color:var(--gold);flex:none}
+
+
 html[data-srch="record"] .jc-found{display:flex;align-items:center;gap:8px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line-2);
   font-size:.82rem;color:var(--muted);transition:color .25s ease}
-html[data-srch="ask"] .jc-ask{display:grid;gap:7px;grid-column:1 / -1;padding-bottom:16px;border-bottom:1px solid var(--line-2)}
-.jc-ask .jc-askq{color:var(--fg);font-size:.98rem;display:flex;align-items:center}
-.jc-ask div{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;color:var(--muted);transition:color .25s ease}
-.jc-ask code{min-width:50px}
-.jc-ask u{text-decoration:none;display:inline-block;width:20px;height:1px;background:var(--gold);opacity:.7}
-html[data-pil="keys"] #graph[data-key="4"] .jc-q{color:var(--fg);border-bottom-color:var(--gold)}
-html[data-pil="keys"] #graph[data-key="4"] .jc-found,html[data-pil="keys"] #graph[data-key="4"] .jc-ask div{color:var(--fg)}
-html[data-pil="keys"] .jc-q .jk,html[data-pil="keys"] .jc-found .jk{margin-left:2px}
+
+
+
+
+
+
+html[data-pil="keys"] #graph[data-key="4"] .jc-found{color:var(--fg)}
+html[data-pil="keys"] .jc-found .jk{margin-left:2px}
 </style>
 <style id="amber">
-/* ── Amber (2026-11-16, local review build). Material and color only; every section, script and
-   animation is kept. Tokens moved in :root; hand-written golds were mapped by build_amber.py.
-   This layer removes decoration that stood in for material, adds the two pieces of glass,
-   and holds the new hero and the band under it. ── */
 
-/* 1. No aurora, grain or vignette. One flat ground. */
 .atmos,.vignette{display:none!important}
 
-/* 2. Gradient text goes flat. */
 .g{background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;color:inherit}
 
-/* 3. Buttons: solid, radius 10px. Light on dark, burnt amber on cream. */
 .btn{border-radius:10px}
 p a.btn,.lead a.btn{text-decoration:none}
 .btn.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
@@ -1058,12 +1023,10 @@ section.light .btn.ghost:hover,.lightband .btn.ghost:hover{border-color:#8f3d14;
 .cos-form .cf-submit{background:#fff0dc;color:#2a1206;border-radius:10px}
 .cos-form .cf-submit:hover{box-shadow:none;transform:none;background:#ffe4c4}
 
-/* 4. Solid avatars and badges. */
 .hb-ava,.pc-ava{background:#f29a45;color:#2a1206}
 .cg-h .cg-badge{background:#f29a45;border-color:transparent}
 .cg-h .cg-badge svg{stroke:#2a1206}
 
-/* 5. One depth system: flat panels with a hairline border. No drop shadows, no glows. */
 .tier,.does,.int,.gc,.cg-pill,.intc,.badges .chip{background:var(--panel)}
 .cg-stage,.jc,.teams,.inline-cta{background:var(--panel)}
 .cg-card,.chat-mock .pc-card,.kit-gate .ku-card,#philosophy .acc,.kg-tipbox{background:var(--ink-2);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
@@ -1077,44 +1040,32 @@ section.light .btn.ghost:hover,.lightband .btn.ghost:hover{border-color:#8f3d14;
 .intc-row.zero .intc-bar i{background:var(--green)}
 .grow-axis::before{background:rgba(242,154,69,.55)}
 
-/* 5b. Small labels on the resin cards hold 4.5:1 (the ghost tone measured 2.9 to 3.1 there).
-       Cards behind the brief and the faded back cards keep their dimming on purpose. */
 .cg-h .cg-m,.cg-r .cg-k,.pc-s,.hb-s,.hb-time{color:var(--faint)}
 #tiers .grow-tree{color:rgba(251,238,221,.52)}
 
-/* 5c. Phones with reduced motion: the base's reduced-motion rule re-applied translate(-50%,-50%) to the
-       stacked graph cards after its phone rule removed it, pulling each card half off the stage. */
 @media (max-width:860px){.cg-stage .cg-card,.js .cg-stage .cg-card,.cg-stage.go .cg-card{transform:none}}
 
-/* 6. Glass, only on things you can see inside: the morning brief and the join chart's record. */
 .hd-brief,.jc-rec{background:linear-gradient(180deg,rgba(255,170,90,.17),rgba(255,170,90,.05));border:1px solid rgba(255,182,112,.3);
   box-shadow:inset 0 1px 0 rgba(255,232,204,.16);backdrop-filter:none;-webkit-backdrop-filter:none}
 
-/* Miles 19:41: the brief was too see-through; the connector lines and dots ran through it.
-   Same amber gradient, border and inset highlight, over an opaque resin base. */
 .hd-brief{background:linear-gradient(180deg,rgba(255,170,90,.17),rgba(255,170,90,.05)),var(--ink)}
 
-/* 7. "Needs review" keeps a hue of its own once rose and gold both turn amber: cream, dashed. */
 .jc-cols i.rv{border-color:var(--fg)}
 .jc-ln.rv{border-top-color:var(--fg)}
 .jc-flag{color:var(--fg);border-color:rgba(251,238,221,.7)}
 html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(255,236,214,.07)}
 
-/* 8. Mono caps only on data readouts. The old hero's small print is set in DM Sans, sentence case. */
 .badge-note{font-family:var(--body);font-size:.86rem;letter-spacing:0;text-transform:none;color:var(--faint);line-height:1.5}
 .badge-note b{color:var(--fg);font-weight:500}
 .hero-meta{font-family:var(--body);font-size:.95rem;letter-spacing:0;color:var(--faint)}
 .hero-meta b{font-family:var(--body);font-style:normal;font-weight:600;font-size:1.02rem;color:var(--gold)}
 
-/* 9. Hero: what COS takes in, the glass mark in its scene, and the one entry point (parts frozen 20:2x, 09-scene b422d73135b8).
-      The canvas draws the whole scene, opaque; this CSS gradient is only the no-WebGL fallback. Layers: the scene,
-      strands (trimmed at the glass), travelers, then text and the entry point. */
 .amber-hero{position:relative;z-index:2;overflow:hidden;isolation:isolate;color:#fff2e2;
   --ah-cx:50%;--ah-cy:66%;--ah-r:880px;--ah-fade:260px;
   background:linear-gradient(180deg,rgba(52,20,10,0) calc(100% - var(--ah-fade)),rgba(52,20,10,.45) calc(100% - var(--ah-fade)*.55),
     rgba(52,20,10,.85) calc(100% - var(--ah-fade)*.2),var(--ink) calc(100% - 16px),var(--ink) 100%),
     radial-gradient(circle var(--ah-r) at var(--ah-cx) var(--ah-cy),#c96a26 0%,#a3481a 28%,#6f2c10 55%,var(--ink) 100%);
-  padding:164px var(--gut) 40px}   /* at least 56px of air under the nav card */
+  padding:164px var(--gut) 40px}   
 .ah-lines{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .ah-lines path{fill:none;stroke:rgba(255,226,196,.30);stroke-width:1.1}
 #amberGL{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
@@ -1130,25 +1081,22 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .ah-ln{display:inline-flex;align-items:center;min-height:44px;color:#fff2e2;font-weight:500;font-size:15px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,240,224,.5)}
 .ah-ln:hover{color:#fff2e2;text-decoration-color:#fff2e2}
 .amber-hero :focus-visible{outline-color:#fff0dc}
-/* The mark sits in a fixed middle column so it stays under the headline; the two lists take the sides. */
 .ah-stage{display:grid;grid-template-columns:minmax(0,1fr) 274px minmax(0,1fr);align-items:center;margin-top:6px}
 .ah-mark{position:relative;justify-self:center;width:274px;height:300px}
 .ah-still{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(40,10,0,.45));transition:opacity .7s ease}
 .amber-hero.gl-on .ah-still{opacity:0}
-.amber-hero p.ah-colh{margin:0 0 12px;font-size:13px;font-weight:600;line-height:1.2;color:#fde6cc}   /* #f3d2ae measured 4.07:1 near the core */
+.amber-hero p.ah-colh{margin:0 0 12px;font-size:13px;font-weight:600;line-height:1.2;color:#fde6cc}   
 .ah-col ul{list-style:none;margin:0;padding:0}
 .ah-in li{display:flex;align-items:center;gap:11px;height:34px;font-size:14.5px;font-weight:500;line-height:1.2;color:#fff0dc;opacity:.9;transition:opacity .3s ease}
 .ah-in li.hot{opacity:1}
 .ah-ic{width:17px;height:17px;flex:none;fill:#fff0dc;color:#fff0dc}
 .ah-mono{display:inline-grid;place-items:center;width:17px;height:17px;flex:none;border:1.2px solid #fff0dc;border-radius:50%;font-size:10px;font-weight:600;line-height:1}
-/* Replaces: jobs COS now does itself, the old tool struck through. */
 .amber-hero p.ah-colh.ah-rep{margin-top:20px}
 .ah-in .ah-rep-list li{display:grid;grid-template-columns:19px minmax(0,1fr);column-gap:9px;row-gap:3px;align-items:center;align-content:center;height:auto;min-height:46px}
 .ah-sk{width:19px;height:19px;fill:none}
-.ah-in .ah-rep-list .ah-nm{justify-self:start}   /* content width, so the strands start after the longest name */
-.ah-o2{grid-column:2;font-size:13px;font-weight:400;line-height:1.3;color:#fde6cc}   /* measured 3.91:1 at #f3d2ae .9; this holds 4.5 */
+.ah-in .ah-rep-list .ah-nm{justify-self:start}   
+.ah-o2{grid-column:2;font-size:13px;font-weight:400;line-height:1.3;color:#fde6cc}   
 .ah-o2 s{text-decoration-thickness:1.4px}
-/* Meets you on: one entry point. One surface at a time, a rail of five, a travelling line, one sentence (parts/05 .one). */
 .amber-hero .one{width:330px;max-width:100%;color:#fff0dc}
 .amber-hero p.one-h{margin:0;font-size:15px;font-weight:600;line-height:1.3;color:#fde6cc}
 .amber-hero .one-h b{font-weight:600;color:#fff0dc}
@@ -1165,7 +1113,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .amber-hero .sf-team .sfb b{font-weight:600}
 .amber-hero .sf-team .sfb span{color:#f6dcc0}
 .amber-hero .sf{color:#fff0dc}
-.amber-hero .sf p{margin:5px 0 0;font-size:12.5px;line-height:1.2;color:#fde6cc}   /* #f3d2ae measured 4.03:1 at 1100 */
+.amber-hero .sf p{margin:5px 0 0;font-size:12.5px;line-height:1.2;color:#fde6cc}   
 .amber-hero .sfb{display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;height:30px;padding:0 11px;border-radius:9px;background:rgba(30,9,3,.6);
   border:1px solid rgba(255,226,196,.16);font-size:13px;font-weight:500;line-height:1;white-space:nowrap;transition:border-color .45s ease,color .45s ease}
 .amber-hero .sf.lit .sfb{border-color:rgba(255,196,130,.8)}
@@ -1188,7 +1136,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .amber-hero .sf-term .sfb{font:400 12.5px/1 var(--mono);border-radius:7px}
 .amber-hero .sf-term .pr{color:#f6b46e}
 .amber-hero .sf-term .dim{color:#f3d2ae;margin-left:4px}
-/* The mark leans toward a fine pointer and a drag turns it; text and links keep their own cursor. */
 @media (hover:hover) and (pointer:fine){.amber-hero{cursor:grab}.amber-hero.dragging{cursor:grabbing}.ah-head,.ah-col,.amber-hero .ah-proof{cursor:auto}}
 .amber-hero p.ah-proof{margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.45;color:#f3d2ae}
 .ah-proof b{font-weight:600;color:#fff0dc;font-variant-numeric:tabular-nums}
@@ -1200,7 +1147,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .ah-flow .mono{font:600 10.5px var(--body);text-anchor:middle;fill:#fff0dc}
 .ah-out{padding-left:108px}
 @media (max-width:1279px){.ah-out{padding-left:44px}}
-/* Below 1100px: headline, CTAs, the mark, then the lists; the surfaces become a plain list in the same forms. */
 @media (max-width:1099px){
   .amber-hero{padding:164px var(--gut) 44px}
   .ah-stage{grid-template-columns:minmax(0,1fr);max-width:560px;margin:26px auto 0;align-items:start}
@@ -1210,15 +1156,12 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .ah-in li{break-inside:avoid}
   .ah-out{grid-row:3;margin-top:26px;padding-left:0}
   .amber-hero .one{width:auto}
-  /* touch targets at least 44px wherever the stack is used (the Duo, folded and open) */
   .amber-hero .one-rail{gap:4px}
   .amber-hero .one-rail button{width:44px;height:44px}
   .amber-hero p.ah-proof{margin-top:26px}
 }
-@media (max-width:1000px){.amber-hero{padding-top:132px}}   /* no top strip here: the card ends at 68px */
+@media (max-width:1000px){.amber-hero{padding-top:132px}}   
 @media (pointer:coarse){.amber-hero .one-rail button{width:44px;height:44px}}
-/* Duo open (951 x 539) and other short, wide screens: the stack, tightened so headline, subhead, both buttons and the
-   top of the mark fit the first screen. The side-by-side composition needs about 880px of height. */
 @media (max-width:1099px) and (min-width:700px) and (max-height:620px){
   .amber-hero{padding-top:128px}
   .ah-sub{margin-top:12px}
@@ -1226,7 +1169,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .ah-stage{margin-top:14px}
   .ah-mark{width:164px;height:180px;margin-bottom:28px}
 }
-/* Duo folded (382 x 557) and other narrow phones: a smaller headline so it, the subhead and both buttons fit the first screen. */
 @media (max-width:440px){
   .amber-hero{padding-top:112px}
   .amber-hero h1{font-size:2.15rem}
@@ -1238,23 +1180,17 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 .ah-sim .ah-still{display:none}
 .ah-sim #amberGL,.ah-sim .one-stage .sf,.ah-sim .one-rail .bar{transition:none}
 
-/* 10. Right under the hero: what the old hero showed, kept and moved. */
 .amber-band{padding-block:clamp(28px,4vw,52px) clamp(56px,8vw,100px)}
 .amber-band h2{font-size:clamp(1.75rem,3vw,2.45rem);line-height:1.12;letter-spacing:-.012em;color:var(--fg);max-width:22ch}
 .amber-band .ab-lead{margin-top:18px;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.55;color:var(--muted);max-width:44ch}
 .amber-band .hero-marks{margin-top:26px}
-/* The brief is glass now, so nothing with text may sit behind it: the two record cards move clear of it.
-   Measured before: "Investor Update" ran over "Q3 pricing needs your call" and 7:02 over "Q3 launch". */
 .amber-band .hero-demo{min-height:600px}
 .amber-band .hd-b1{left:78%;top:9%}
 .amber-band .hd-b2{left:22%;top:91%}
 .amber-band .hd-brief{top:50%}
 @media (max-width:1079px){.amber-band .hero-demo{min-height:620px}}
-/* Narrow phones (Duo folded, 382): the two cards stay inside the column (at 78% and 22% they ran 19px past the edge). */
 @media (max-width:520px){.amber-band .hd-b1{left:calc(100% - 115px)}.amber-band .hd-b2{left:115px}}
 
-/* 11. Nav: the resin card from the approved mock (cream lockup, cream links). The site's own logo line-draw and its
-       inset Log in / Download control (.nav-actions with data-mode) are kept; only their paint changes. */
 .nav .nav-main{background:rgba(255,232,206,.07);border:1px solid rgba(255,226,196,.17);border-radius:14px;box-shadow:none;
   -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);transition:background-color .3s ease}
 .nav.solid .nav-main{background:rgba(52,20,10,.94)}
@@ -1266,19 +1202,15 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease,background-color .3s ease,color .3s ease}
 .nav .links .nav-actions .nav-login{color:#fff2e2;font-weight:600}
 .nav .links .nav-actions .cta{background:#fff0dc;color:#2a1206}
-/* The cream fill sits on whichever one the pointer or focus is on; the other stays in the well. */
 .nav .links .nav-actions[data-mode="login"] .nav-login{background:#fff0dc;color:#2a1206}
 .nav-burger{border-color:rgba(255,226,196,.24)}
 .nav-burger span{background:#fff2e2}
-/* Dropdown panels in the same resin, fully opaque so page text never shows through. */
 @media (min-width:1001px){
   .nd-menu{background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 70px -28px rgba(0,0,0,.6);backdrop-filter:none;-webkit-backdrop-filter:none}
   .nd-menu a{color:#fff2e2}
   .nd-menu a small{color:rgba(255,238,220,.62)}
   .nd-menu a:hover{background:rgba(255,236,214,.08)}
 }
-/* The burger from 1000px down (the base switched at 900): at 951 (Duo open) the five links and the inset control
-   wrapped to two lines and the card nearly met the headline. Same rules as the base's phone nav, moved up. */
 @media (max-width:1000px){
   .nav-top{display:none}
   .nav-main{margin-top:10px}
@@ -1294,7 +1226,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .nav-burger{width:44px;height:44px}
   .nav .links > a,.nd-btn,.nd-menu a,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{min-height:44px}
   .nav .links > a,.nd-btn{display:flex;align-items:center}
-  .nav .links{background:var(--ink);border-color:rgba(255,226,196,.17)}   /* opaque: at .97 the hero headline ghosted through */
+  .nav .links{background:var(--ink);border-color:rgba(255,226,196,.17)}   
   .nd-menu a{color:#fff2e2}
   .nd-menu a small{color:rgba(255,238,220,.62)}
   .nd-menu a:hover{background:rgba(255,236,214,.08)}
@@ -1438,7 +1370,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   </div>
 </nav>
 
-<!-- ── HERO (amber): what COS takes in, the mark, where it meets you ── -->
+<!-- ── HERO ── -->
 <header class="amber-hero">
   <svg class="ah-lines" id="linesA" aria-hidden="true" focusable="false" preserveAspectRatio="none"><g></g></svg>
   <canvas id="amberGL" aria-hidden="true"></canvas>
@@ -1500,7 +1432,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   </div>
 </header>
 
-<!-- ── BRIEF BAND: the old hero's demo and words, kept ── -->
+<!-- ── BRIEF ── -->
 <section class="wrap amber-band" id="brief" aria-labelledby="brief-h">
   <div class="hero-grid">
     <div class="ab-copy">
@@ -1581,11 +1513,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 <!-- ── 02 WHAT CHANGES ── -->
 <section class="wrap reveal light" id="benefits">
   <div class="sec-head">    <h2>COS briefs you every morning and before every call.</h2>
-  </div>
-  <div class="bene-grid sec-cards">
-    <div class="bene"><div class="bh">Walk in already knowing.</div><p>A morning brief built from your calendar, threads, and people. Prep for every meeting without opening six tabs.</p><div class="bt">Daily brief &middot; /prep</div></div>
-    <div class="bene"><div class="bh">Ask like it works there.</div><p>Instant answers from everything your company knows: clients, decisions, docs, calls.</p><div class="bt">Instant recall &middot; your graph</div></div>
-    <div class="bene"><div class="bh">Add capacity without hiring.</div><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p><div class="bt">Skills &middot; scheduled work</div></div>
   </div>
 
   <div class="art-rows sec-art">
@@ -1730,11 +1657,8 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
     </div>
   </div>
   <figure class="jc" aria-label="Example: where each record was seen, one row per record, one column per source">
-    <div class="jc-ask"><span class="jc-askq">Who should I ask about Q3 launch?<i class="jk" data-k="4">4</i></span>
-      <div><code>find</code>Dana Mercer, Head of Growth</div>
-      <div><code>explain</code>Q3 launch<u></u>Dana Mercer<u></u>Northwind Co.</div></div>
     <div class="jc-grid">
-      <div class="jc-head" aria-hidden="true"><span><span class="jc-q"><code>find</code>who runs growth?<i class="jk" data-k="4">4</i></span><i class="jk" data-k="1">1</i></span><div class="jc-cols"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span></div></div>
+      <div class="jc-head" aria-hidden="true"><span><i class="jk" data-k="1">1</i></span><div class="jc-cols"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span></div></div>
       <div class="jc-row sel" style="--r:0"><p class="jc-name"><b>Dana Mercer</b><span>person</span><i class="jk" data-k="3">3</i></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail, Slack and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:1"><p class="jc-name"><b>Northwind Co.</b><span>organization</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail, Slack and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:2"><p class="jc-name"><b>Q3 launch</b><span>concept</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Slack, Fireflies and Drive"><span class="jc-ln" style="--a:1;--b:6"></span><i class="on" style="--c:1"></i><i style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i class="on" style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:3"><p class="jc-name"><b>Investor Update</b><span>content</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:4"><p class="jc-name"><b>Priya Raman</b><span>person</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Granola"><span class="jc-ln" style="--a:2;--b:4"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:5"><p class="jc-name"><b>Q3 Pitch Deck.pdf</b><span>artifact</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:6"><p class="jc-name"><b>Jordan Pierce</b><span>person</span><em class="jc-flag" style="font-style:normal">review</em><i class="jk" data-k="2">2</i></p><div class="jc-cols" role="img" aria-label="Low-confidence matches in Fireflies and Drive, held for review"><span class="jc-ln rv" style="--a:5;--b:6"></span><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i class="rv" style="--c:5"></i><i class="rv" style="--c:6"></i></div></div>
     </div>
     <div class="jc-rec" aria-label="The joined record for Dana Mercer">
@@ -1759,10 +1683,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
     <div class="cg-pill" data-k="4"><i class="jk" data-k="4">4</i><div class="cg-pl">One graph, yours</div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. It runs on your keys and your server.</p></div>
   </div>
 
-    <div class="pil-rows" aria-label="Examples"><div class="pil-row"><div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connect through MCP or local ingestion. You choose what to copy, index, and keep.</p></div><div class="pil-a"><div class="pil-src"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span><span>your CRM</span></div><p class="pil-door">through <code>MCP</code> or <code>local ingestion</code> &middot; you choose: copy, index, keep</p></div></div><div class="pil-row"><div><b>Organized with review</b><p>Connected sources can be organized into people, decisions, and next steps. Low-confidence items stay visible for review.</p></div><div class="pil-a"><div class="pil-rev"><span class="pil-q"><b>Jordan Pierce</b> in Fireflies and Drive. Same person?</span><code>match 0.58</code><span class="pil-btn">Same person</span><span class="pil-btn">Different</span></div></div></div><div class="pil-row"><div><b>A schema you define</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div><div class="pil-a"><pre class="pil-code"><i>domains:</i>  sales, product, hiring
-<i>entities:</i> deal, client, persona, competitor
-<i>link:</i>     person works at organization</pre></div></div><div class="pil-row"><div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. It runs on your keys and your server.</p></div><div class="pil-a"><div class="pil-find"><span class="pil-ask">What is open with Dana?</span><div><code>find</code>Q3 launch, in Slack #growth</div><div><code>explain</code>Dana Mercer<u></u>Northwind Co.<u></u>Q3 launch</div></div></div></div></div>
-  <p class="pil-rows pil-cap">Examples. The names are not real.</p>
 <p class="cg-note"><span class="g">COS keeps what it learns in files you control.</span></p>
 </section>
 
@@ -1847,12 +1767,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   </div>
   <div class="kit-does">
     <p class="does-title" style="margin:0 0 18px">What it does for you</p>
-    <div class="does-grid sec-cards">
-      <div class="does"><span class="n">01</span><b>Interviews you</b><p>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</p></div>
-      <div class="does"><span class="n">02</span><b>Builds your structure</b><p>Profiles your people and scaffolds your directory: operations, intelligence, weekly work.</p></div>
-      <div class="does"><span class="n">03</span><b>Installs your skills</b><p>/start, /learn, /prep. A daily briefing, correction memory, and meeting prep.</p></div>
-      <div class="does"><span class="n">04</span><b>Wires a connection</b><p>Slack, meetings, or any MCP. Optional, then the before/after that makes it click.</p></div>
-    </div>
   
     <ul class="wire-list wl-steps sec-art" aria-label="What each setup step writes">
       <li style="--i:0"><span class="wl-need"><em class="wl-n">01</em><b>Interviews you</b><span>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
@@ -1897,12 +1811,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   <div class="sec-head">    <h2>Useful in five minutes, <span class="it g hx">deeper the longer you use it.</span></h2>
       <p class="dek">The four tiers</p>
   </div>
-  <div class="tiers sec-cards">
-    <div class="tier"><div class="tl">Tier 1 · 5 minutes</div><h3>Foundation</h3><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p><div class="bar-fill"><i style="width:25%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 2 · 30 minutes</div><h3>Operational</h3><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p><div class="bar-fill"><i style="width:50%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 3 · 2 weeks</div><h3>Compounding</h3><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p><div class="bar-fill"><i style="width:75%"></i></div></div>
-    <div class="tier"><div class="tl">Tier 4 · 1+ month</div><h3>Agentic</h3><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p><div class="bar-fill"><i style="width:100%"></i></div></div>
-  </div>
 
   <figure class="grow sec-art" aria-label="The my-cos directory at each of the four tiers, from five minutes to a month and on">
     <div class="grow-panel">
@@ -1940,22 +1848,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   <div class="sec-head">    <h2>Score yourself across <span class="it g hx">14 domains.</span></h2>
     <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:#8f3d14">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
   </div>
-  <div class="domains sec-cards">
-    <div class="dm"><b>Meeting Intelligence</b><span>Capture, classify, extract, search by meaning</span></div>
-    <div class="dm"><b>Task Orchestration</b><span>Extract from conversations, dedup, stage, track</span></div>
-    <div class="dm"><b>Email &amp; Comms Triage</b><span>Prioritize inbox, draft responses, follow-ups</span></div>
-    <div class="dm"><b>Calendar Awareness</b><span>Meeting prep, conflict detection, time blocking</span></div>
-    <div class="dm"><b>People Intelligence</b><span>Profiles, comms styles, relationship health</span></div>
-    <div class="dm"><b>Cross-Source Synthesis</b><span>Connect signals across meetings, email, tasks, Slack</span></div>
-    <div class="dm"><b>Strategic Alignment</b><span>Goal tracking, resource allocation, priority scoring</span></div>
-    <div class="dm"><b>Proactive Alerting</b><span>Early warnings, signal detection, anomaly flagging</span></div>
-    <div class="dm"><b>Institutional Memory</b><span>Session persistence, correction compounding</span></div>
-    <div class="dm"><b>Delegation &amp; Follow-up</b><span>Track who owes what, escalation cadence</span></div>
-    <div class="dm"><b>Content &amp; Research</b><span>Market intel, competitor tracking, documents</span></div>
-    <div class="dm"><b>Reporting &amp; Dashboards</b><span>Status updates, briefings, visual dashboards</span></div>
-    <div class="dm"><b>Knowledge Management</b><span>File organization, templates, SOPs</span></div>
-    <div class="dm"><b>Ambient I/O</b><span>Multi-surface delivery: terminal, mobile, voice</span></div>
-  </div>
 
   <figure class="score sec-art" aria-label="Example scorecard across the 14 domains">
     <p class="score-key"><span><i class="k-obs"></i>What this example COS does today</span><span><i class="k-can"></i>What current AI could do</span><span><i class="k-gap"></i>The gap, which is the next step</span></p>
@@ -1977,16 +1869,6 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 <section class="wrap reveal" id="integrations">
   <div class="sec-head">    <h2>Wired to the tools you <span class="it g hx">already live in.</span></h2>
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
-  </div>
-  <div class="ints sec-cards">
-    <div class="int"><span class="bm"><svg><use href="#b-slack"/></svg></span><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
-    <div class="int"><span class="bm"><svg><use href="#b-gmail"/></svg><svg><use href="#b-googlecalendar"/></svg></span><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="t">15 min</span></div>
-    <div class="int"><span class="bm"><span class="bm-ch">G</span><span class="bm-ch">F</span></span><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="t">10 min</span></div>
-    <div class="int"><span class="bm"><svg><use href="#b-notion"/></svg></span><b>Notion &amp; Docs</b><span class="what">Pages, wikis, project docs</span><span class="t">10 min</span></div>
-    <div class="int"><span class="bm"><svg><use href="#b-hubspot"/></svg></span><b>HubSpot &amp; CRM</b><span class="what">Deals, contacts, page analytics</span><span class="t">20 min</span></div>
-    <div class="int"><span class="bm"><svg><use href="#b-anthropic"/></svg><svg><use href="#b-openai"/></svg></span><b>Claude Code / Codex / Cursor</b><span class="what">The engine. Your existing plan</span><span class="t">0 min</span></div>
-    <div class="int"><span class="bm"><span class="bm-ch">Q</span></span><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="t">30 min</span></div>
-    <div class="int"><span class="bm"><span class="bm-ch">&#8734;</span></span><b>Anything with an MCP</b><span class="what">Thousands of servers. Bring your own</span><span class="t">varies</span></div>
   </div>
 
   <div class="intc sec-art" role="list" aria-label="Integrations by setup time, shortest first">
@@ -2152,7 +2034,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="fq"><summary>Which one is COS?</summary><p>A centaur by architecture. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms. It exists to 10x the person running it.</p></details>
     <details class="fq"><summary>What happens when the AI platforms raise prices?</summary><p>AI vendors sell tokens, with no guarantee of outcomes. COS is portable across Claude Code, Codex, and Cursor today, and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control, so a pricing or model change does not force a rebuild. You can swap the engine and keep the system.</p></details>
     <details class="fq"><summary>What is a context graph?</summary><p>The context you choose to ingest from meetings, email, Slack, calls, docs, and people, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control.</p></details>
-    <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model knows your job. What was missing was the context. Give a model yours and it can work like a chief of staff.</p></details>
+    <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was. A model with your context stops being a chatbot and starts being a chief of staff.</p></details>
     <details class="fq"><summary>Do I need to be technical?</summary><p>Start with <a href="/control/#install">COS Control for Mac</a>: download, open, connect your AI and choose Get started. The app installs its server without Homebrew, Node or npx. Open Settings inside Activity for the full controls and resumable setup guide. Local voice can also download its verified Whisper tools through the app. Follow the <a href="/wizard/">setup guide</a>, then add the optional starter kit when you want more context. Want it done with you instead? Book a working session and we will stand it up together.</p></details>
     <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free. Chat runs on the Claude or Codex plan you already pay for. Local voice on the glasses has no per-minute fee. There is no COS subscription, and your files stay yours.</p></details>
   </div>
@@ -3032,7 +2914,6 @@ function doCopyKit(){
   function replay(to) { resetFlow(); for (var t = 0; t < to; t += 16) draw(t, false); draw(to, true); clock = to; }
 
   fit(); bind();
-  // Review aid: ?sim=7800 steps the clock to that moment and holds the settled frame, with no fade and no still underneath.
   var sim = +new URLSearchParams(location.search).get('sim');
   if (sim > 0) { forced = true; hero.classList.add('ah-sim'); replay(sim); }
   var bench = +new URLSearchParams(location.search).get('bench');
@@ -3056,7 +2937,7 @@ function doCopyKit(){
 })();
 </script>
 <script>
-// One entry point (parts/08-close.html, "one entry point" block): one surface at a time; a bead landing moves it on,
+// One entry point: one surface at a time; a bead landing moves it on,
 // and the reader can pick from the rail by tap, click or hover. The bar follows the real button positions, so larger
 // touch targets still line up. Without WebGL it still turns over on a timer.
 (function(){
