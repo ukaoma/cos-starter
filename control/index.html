@@ -143,6 +143,7 @@ h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 e
 .model-switch{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:22px;position:relative;z-index:2}.model-switch button{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.58rem;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:7px;padding:7px 9px;cursor:pointer}.model-switch button:hover,.model-switch button[aria-pressed="true"]{color:var(--fg);border-color:var(--gold);background:rgba(242,154,69,.09)}.mi{width:13px;height:13px;flex:none}.engine-glyph{width:26px;height:26px;display:block;margin:0 auto 5px;color:var(--gold)}
 .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:16px 10px 2px}.rig-caption strong{color:var(--fg)}
 .paper{background:var(--paper);color:var(--paper-ink)}
+.paper a:not(.btn){color:#8f3d14}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* Signature amber burns between dark and cream sections. One continuous ramp owns
    each bridge so a second gradient can never begin with a visible horizontal edge. */
@@ -192,7 +193,7 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .build{background:var(--ink2)}.build-head{max-width:750px}.build h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.build .lead{color:var(--muted);margin-top:18px}.steps{display:grid;gap:1px;margin-top:42px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px;background:rgba(255,246,232,.025);border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.step .n{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1}.step h3{font-size:1.02rem;margin-bottom:5px}.step p{color:var(--muted);font-size:.9rem;max-width:72ch}
 .faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#8f3d14}.faq details[open] summary::after{content:"−"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
 .sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#8f3d14;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#7a3210}
-.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(242,154,69,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
+.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(242,154,69,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{font:inherit;color:inherit}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .byline{max-width:none}.closing .actions{justify-content:center}
   footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(251,238,221,.5))}
   footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(251,238,221,.5));margin-right:2px}
   footer .foot-app a{color:var(--gold,#f29a45);opacity:.9;transition:opacity .2s}
@@ -359,7 +360,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .session-command::before{content:"";position:absolute;inset:0 -12% auto;height:760px;pointer-events:none;background:radial-gradient(circle at 28% 45%,rgba(242,154,69,.13),transparent 34%),radial-gradient(circle at 75% 45%,rgba(135,168,189,.11),transparent 32%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 76%,transparent 100%)}
 .sc-head{position:relative;display:grid;grid-template-columns:minmax(0,.72fr) minmax(280px,.28fr);gap:clamp(28px,6vw,84px);align-items:end;padding-top:clamp(30px,5vw,70px);border-top:1px solid var(--line2)}
 .sc-head h2{font-size:clamp(2.55rem,5.2vw,4.85rem);line-height:.95;max-width:12ch}
-.sc-head h2 em{color:var(--gold);font-weight:400}
+.sc-head h2 em{font:inherit;color:inherit}
 .sc-head .lead{color:var(--muted);font-size:1.04rem;max-width:35ch;margin:0}
 .sc-proof{position:relative;display:flex;gap:clamp(24px,5vw,64px);align-items:flex-start;margin-top:clamp(44px,7vw,82px)}
 .sc-deck{flex:1.08 1 0;min-width:0;margin:0}.sc-story{flex:.92 1 0;min-width:0}
@@ -604,7 +605,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 
 
 .cx-notes{max-width:720px;margin:30px auto 0;text-align:center}
-.cx-notes .byline{margin:0 0 8px;font-size:13px;line-height:1.5;color:#f6dcc0}
+.cx-notes .byline{margin:0 0 8px;font-size:13px;line-height:1.5;color:#f6dcc0;text-wrap:balance}
 .cx-notes .byline a{color:#fff2e2;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,240,224,.55)}
 
 
