@@ -13,7 +13,7 @@
       top:'4 agents · live', title:'Running 4', context:'All systems', caption:'Live workload',
       pet:{pose:'swarm'},
       rows:[
-        {provider:'codex',label:'Codex',task:'Release checks',detail:'mu-chief-staff · building',meta:'16s',start:16},
+        {provider:'codex',label:'Codex',task:'Release checks',detail:'northwind-app · building',meta:'16s',start:16},
         {provider:'claude',label:'Claude',task:'Control motion',detail:'cos-control · refining',meta:'21s',start:21},
         {provider:'cursor',label:'Cursor',task:'Agent routing',detail:'cos-glasses · wiring',meta:'21s',start:21},
         {provider:'claude',label:'Claude',task:'Docs launch',detail:'gotcos-site · verifying',meta:'22s',start:22}
