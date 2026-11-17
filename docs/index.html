@@ -30,6 +30,7 @@
 <script>document.documentElement.className+=' js';</script>
 <script>(function(){var m='tap';try{m=localStorage.getItem('cos-docs-dictation')==='hold'?'hold':'tap'}catch(e){}document.documentElement.setAttribute('data-dictation',m);})();</script>
 <style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* Glasses dictation setting chosen on the page: tap (the default) or hold. Every
    gesture-dependent line carries both readings; the attribute on <html> picks one. */
 html[data-dictation="tap"] .dt-hold{display:none!important}

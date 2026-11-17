@@ -35,6 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
 <style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
   :root{
@@ -1140,7 +1141,9 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 @media (hover:hover) and (pointer:fine){.amber-hero{cursor:grab}.amber-hero.dragging{cursor:grabbing}.ah-head,.ah-col,.amber-hero .ah-proof{cursor:auto}}
 .amber-hero p.ah-proof{margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.45;color:#f3d2ae}
 .ah-proof b{font-weight:600;color:#fff0dc;font-variant-numeric:tabular-nums}
-.ah-proof span{opacity:.5;margin:0 8px}
+.ah-proof i{font-style:normal;white-space:nowrap}
+.ah-proof i+i::before{content:"\00B7";opacity:.5;margin:0 8px 0 4px}
+@media (max-width:560px){.amber-hero p.ah-proof{display:flex;flex-wrap:wrap;justify-content:center;column-gap:14px}.ah-proof i+i::before{content:none}}
 .ah-flow .od{fill:#ffd9a8}
 .ah-flow .halo{fill:rgba(60,20,4,.5);stroke:rgba(255,214,170,.45);stroke-width:1}
 .ah-flow use{fill:#fff0dc}
@@ -1456,7 +1459,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
       </div>
       </div>
     </div>
-    <p class="ah-proof"><b>500+</b> people run it on their glasses <span>·</span> <b>2,000+</b> npm downloads a week <span>·</span> open source</p>
+    <p class="ah-proof"><i><b>500+</b> glasses users</i> <i><b>7,700+</b> npm downloads in one week</i> <i>open source</i></p>
   </div>
 </header>
 
