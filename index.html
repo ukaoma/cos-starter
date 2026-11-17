@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-head="weight" data-sec="art" data-pil="keys" data-srch="record" lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RE3VYJHF7"></script>
@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="COS · Open-Source AI Chief of Staff">
 <meta name="twitter:description" content="Build an open-source AI chief of staff that remembers your people, meetings, decisions, and priorities. Your model can change. Your context stays yours.">
 <meta name="twitter:image" content="https://www.gotcos.com/assets/banner.png?v=2">
-<meta name="theme-color" content="#170f09">
+<meta name="theme-color" content="#34140a">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,9 +39,9 @@
 
   :root{
     color-scheme:dark;
-    --ink:#170f09; --ink-2:#20150d; --panel:rgba(255,246,232,.028); --panel-2:rgba(255,246,232,.045);
-    --fg:#f0e8da; --muted:rgba(240,232,218,.60); --faint:rgba(240,232,218,.62); --ghost:rgba(240,232,218,.34); --line:rgba(201,169,110,.18); --line-2:rgba(255,246,232,.08);
-    --gold:#c9a96e; --rose:#c4736e; --warm:#d4a07a; --green:#7fa98a;
+    --ink:#34140a; --ink-2:#40190c; --panel:rgba(255,236,214,.035); --panel-2:rgba(255,236,214,.055);
+    --fg:#fbeedd; --muted:rgba(251,238,221,.70); --faint:rgba(251,238,221,.64); --ghost:rgba(251,238,221,.38); --line:rgba(242,154,69,.24); --line-2:rgba(255,236,214,.10);
+    --gold:#f29a45; --rose:#e07a3a; --warm:#f6b46e; --green:#7fa98a;
     --cream:#f3ede1; --cream-2:#eae2d1; --ink-on-cream:#241708; --muted-on-cream:rgba(46,31,16,.66); --faint-on-cream:rgba(46,31,16,.72); --line-on-cream:rgba(46,31,16,.14);
     --display:'Fraunces',Georgia,serif; --body:'DM Sans',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
     --maxw:1140px; --gut:clamp(22px,5vw,72px);
@@ -50,7 +50,7 @@
   html{font-size:16px;-webkit-font-smoothing:antialiased}
   @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden}
-  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
+  ::selection{background:rgba(242,154,69,.28);color:#f4efe4}
   .g::selection{-webkit-text-fill-color:#f4efe4}
   :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   .btn:focus-visible,.nav .cta:focus-visible{outline-offset:2px}
@@ -58,8 +58,8 @@
   /* ── Atmosphere: aurora mesh + grain + vignette ── */
   .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
-  .atmos .a1{width:60vw;height:60vw;top:-18vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
-  .atmos .a2{width:52vw;height:52vw;top:34vh;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.26),transparent 60%);animation-duration:32s}
+  .atmos .a1{width:60vw;height:60vw;top:-18vw;right:-12vw;background:radial-gradient(circle,rgba(242,154,69,.30),transparent 62%)}
+  .atmos .a2{width:52vw;height:52vw;top:34vh;left:-16vw;background:radial-gradient(circle,rgba(224,122,58,.26),transparent 60%);animation-duration:32s}
   .atmos .a3{width:46vw;height:46vw;bottom:-16vw;right:6vw;background:radial-gradient(circle,rgba(127,169,138,.16),transparent 60%);animation-duration:38s}
   @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
   .atmos::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
@@ -78,7 +78,7 @@
   h2{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
   .lead{color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65;max-width:60ch}
 .dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
-section.light .dek{color:#7a5c2c}
+section.light .dek{color:#8f3d14}
   p{color:var(--muted)} p strong{color:var(--fg);font-weight:600}
   a{color:var(--gold);text-decoration:none}
   .lead a,p a,.fq p a{text-decoration:underline;text-underline-offset:3px}
@@ -96,7 +96,7 @@ section.light .dek{color:#7a5c2c}
 
   /* ── Nav — full-width dark strip + contained light card (marktpos pattern) ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
-  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+  .nav-top{pointer-events:auto;border-bottom:1px solid rgba(242,154,69,.07);background:rgba(38,14,6,.74);backdrop-filter:blur(10px)}
   .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
   .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nt-links{display:flex;gap:20px;flex-shrink:0}
@@ -108,10 +108,10 @@ section.light .dek{color:#7a5c2c}
   .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
   .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
   .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
-  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+  .nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(42,16,7,.55)}
   .nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;flex:0 0 auto;border-radius:999px;line-height:1;white-space:nowrap;transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease}
   .nav .links .nav-actions .nav-login{flex-basis:var(--login-w,auto);color:var(--cream);font-weight:500;padding:8px 14px}
-  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#1a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
+  .nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#2a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
   .nav .links .nav-actions[data-mode="login"] .nav-login{flex-basis:var(--nav-actions-inner,100%)}
   .nav .links .nav-actions[data-mode="login"] .cta{flex-basis:0;opacity:0;padding:0;pointer-events:none}
   .nav .links .nav-actions[data-mode="download"] .cta{flex-basis:var(--nav-actions-inner,100%)}
@@ -122,11 +122,11 @@ section.light .dek{color:#7a5c2c}
   .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
   .nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
   .nd[data-open] .nd-btn svg{transform:rotate(180deg)}
-  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+  .nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(42,16,7,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
   .nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
   @media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
   .nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
-  .nd-menu a:hover{background:rgba(201,169,110,.18)}
+  .nd-menu a:hover{background:rgba(242,154,69,.18)}
   .nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
   /* burger + mobile panel */
   .nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
@@ -161,8 +161,8 @@ section.light .dek{color:#7a5c2c}
   .hero-marks .mk-cursor{background:#e3dffb;color:#6957e8}
   .hero-marks .mk-local{background:rgba(255,246,232,.09);color:var(--muted)}
   .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.95rem;padding:14px 26px;border-radius:999px;transition:transform .2s,box-shadow .25s,border-color .2s,background .2s;border:1px solid transparent}
-  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 40px -14px rgba(201,169,110,.6)}
-  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.7)}
+  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#2a1206;box-shadow:0 14px 40px -14px rgba(242,154,69,.6)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(242,154,69,.7)}
   .btn.ghost{border-color:var(--line-2);color:var(--fg)}
   .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
   .btn.gold-line{position:relative;color:var(--gold);background:transparent}
@@ -197,9 +197,9 @@ section.light .dek{color:#7a5c2c}
   .term .bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
   .term .bar .d1{background:#e0635b}.term .bar .d2{background:#e3b04b}.term .bar .d3{background:#5bb869}
   .term .bar span{margin-left:8px;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
-  .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(201,169,110,.3) transparent}
+  .term pre{font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--muted);padding:20px 22px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(242,154,69,.3) transparent}
   .term pre::-webkit-scrollbar{height:6px}
-  .term pre::-webkit-scrollbar-thumb{background:rgba(201,169,110,.3);border-radius:3px}
+  .term pre::-webkit-scrollbar-thumb{background:rgba(242,154,69,.3);border-radius:3px}
   .term pre::-webkit-scrollbar-track{background:transparent}
   .term pre b{color:var(--gold);font-weight:500}.term pre .cm{color:var(--faint)}
 
@@ -208,7 +208,7 @@ section.light .dek{color:#7a5c2c}
   @media(max-width:900px){.tiers{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.tiers{grid-template-columns:1fr}}
   .tier{position:relative;border:1px solid var(--line);border-radius:16px;padding:26px 22px 24px;background:linear-gradient(160deg,var(--panel),transparent);transition:transform .35s,border-color .35s}
-  .tier:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.4)}
+  .tier:hover{transform:translateY(-5px);border-color:rgba(242,154,69,.4)}
   .tier .tl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
   .tier h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.45rem;margin:8px 0 12px;color:var(--fg)}
   .tier p{font-size:.86rem;line-height:1.55}
@@ -232,7 +232,7 @@ section.light .dek{color:#7a5c2c}
   .int .bm{display:inline-flex;gap:8px;align-items:center;flex-shrink:0}
   .int .bm svg{width:19px;height:19px;fill:var(--fg);opacity:.85}
   .int:hover .bm svg{fill:var(--gold);opacity:1}
-  .int .bm-ch{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1px solid var(--line);font-family:var(--mono);font-size:.6rem;color:var(--gold);background:rgba(201,169,110,.08)}
+  .int .bm-ch{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;border:1px solid var(--line);font-family:var(--mono);font-size:.6rem;color:var(--gold);background:rgba(242,154,69,.08)}
 
   /* ── Glasses ── */
   .glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
@@ -243,7 +243,7 @@ section.light .dek{color:#7a5c2c}
   .gc p{font-size:.85rem;line-height:1.55}
 
   /* ── Teams CTA ── */
-  .teams{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(38px,6vw,72px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(201,169,110,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);overflow:hidden}
+  .teams{position:relative;border:1px solid var(--line);border-radius:22px;padding:clamp(38px,6vw,72px);text-align:center;background:radial-gradient(120% 140% at 50% 0%,rgba(242,154,69,.10),transparent 60%),linear-gradient(160deg,var(--panel-2),transparent);overflow:hidden}
   .teams h2,.teams h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--fg);max-width:20ch;margin:14px auto 16px;text-wrap:balance}
   .teams p{max-width:54ch;margin:0 auto 30px}
 
@@ -263,7 +263,7 @@ section.light .dek{color:#7a5c2c}
   footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
 
   /* inline CTA bands (woven mid-page) */
-  .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(201,169,110,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
+  .inline-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;padding:24px 28px;background:radial-gradient(120% 170% at 0% 0%,rgba(242,154,69,.08),transparent 60%),linear-gradient(158deg,var(--panel),transparent)}
   .inline-cta .ic-text b{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.25rem;color:var(--fg);display:block;line-height:1.15}
   .inline-cta .ic-text span{font-size:.9rem;color:var(--muted);display:block;margin-top:5px;max-width:54ch}
   .inline-cta .ic-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
@@ -274,10 +274,10 @@ section.light .dek{color:#7a5c2c}
   .kit-hint{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
   .kit-gate{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .4s ease,margin .4s ease;margin-top:0}
   .kit-gate.expanded{max-height:680px;opacity:1;margin-top:24px}
-  .kit-gate .ku-card{max-width:560px;background:linear-gradient(160deg,rgba(16,19,27,.96),rgba(11,14,20,.9));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 30px 72px -34px rgba(0,0,0,.5);text-align:left}
-  .kit-gate .ku-lead{color:rgba(240,232,218,.72);font-size:.92rem;line-height:1.55;margin:0 0 16px}
+  .kit-gate .ku-card{max-width:560px;background:linear-gradient(160deg,rgba(64,25,12,.96),rgba(52,20,10,.9));border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 30px 72px -34px rgba(0,0,0,.5);text-align:left}
+  .kit-gate .ku-lead{color:rgba(251,238,221,.72);font-size:.92rem;line-height:1.55;margin:0 0 16px}
   .kit-gate .ku-lead strong{color:var(--fg)}
-  .kit-gate .ku-fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:rgba(240,232,218,.42);margin:14px 0 0;text-align:center}
+  .kit-gate .ku-fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:rgba(251,238,221,.42);margin:14px 0 0;text-align:center}
   .kit-does{margin-top:52px}
   .does-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:820px){.does-grid{grid-template-columns:1fr 1fr}}
@@ -303,31 +303,31 @@ section.light .dek{color:#7a5c2c}
   .cos-form input,.cos-form select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--line-2);border-radius:10px;color:var(--fg);font-family:var(--body);font-size:.95rem;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,background .2s}
   .cos-form input::placeholder{color:var(--faint)}
   .cos-form input:focus,.cos-form select:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
-  .cos-form select{padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
-  .cos-form select option{background:#13151a;color:var(--fg)}
-  .cos-form .cf-submit{width:100%;padding:14px;margin-top:6px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;border:none;border-radius:999px;font-family:var(--body);font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .25s}
-  .cos-form .cf-submit:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(201,169,110,.6)}
+  .cos-form select{padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f29a45' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+  .cos-form select option{background:#2a0f07;color:var(--fg)}
+  .cos-form .cf-submit{width:100%;padding:14px;margin-top:6px;background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#2a1206;border:none;border-radius:999px;font-family:var(--body);font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .25s}
+  .cos-form .cf-submit:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(242,154,69,.6)}
   .cos-form .cf-submit:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
   .cos-form .cf-msg{margin-top:16px;font-size:.9rem;line-height:1.5;text-align:center;display:none}
   .cos-form .cf-msg.show{display:block}
   .cos-form .cf-msg.ok{color:var(--gold)}
   .cos-form .cf-msg.err{color:var(--rose)}
   /* ═══ Context Graph swarm (cg-) ═══ */
-  .cg-stage{position:relative;margin-top:48px;height:660px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(130% 120% at 50% 32%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,var(--panel-2),rgba(7,9,15,.5))}
+  .cg-stage{position:relative;margin-top:48px;height:660px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(130% 120% at 50% 32%,rgba(242,154,69,.09),transparent 60%),linear-gradient(160deg,var(--panel-2),rgba(38,14,6,.5))}
   .cg-web{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .cg-webline{stroke:rgba(236,230,218,.06);stroke-width:1}
-  .cg-webline.warm{stroke:rgba(201,169,110,.16)}
+  .cg-webline.warm{stroke:rgba(242,154,69,.16)}
   .cg-node{position:absolute;display:flex;align-items:center;gap:9px;transform:translate(-50%,-50%)}
   .cg-node .cg-ic{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(155deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);box-shadow:0 10px 24px -14px rgba(0,0,0,.8)}
   .cg-node .cg-ic svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
   .cg-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;color:var(--muted);white-space:nowrap}
   .cg-node.ghost .cg-ic{width:29px;height:29px;background:rgba(255,255,255,.02)}
   .cg-node.ghost .cg-ic svg{stroke:var(--ghost);width:14px;height:14px}
-  .cg-card{position:absolute;width:230px;transform:translate(-50%,-50%);background:linear-gradient(158deg,rgba(16,19,27,.97),rgba(11,14,20,.92));border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 32px 74px -28px rgba(0,0,0,.92)}
+  .cg-card{position:absolute;width:230px;transform:translate(-50%,-50%);background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.92));border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:0 32px 74px -28px rgba(0,0,0,.92)}
   .cg-card.back{filter:blur(.5px)}
   .cg-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .cg-h .cg-badge{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(150deg,rgba(201,169,110,.42),rgba(196,115,110,.22));border:1px solid var(--line);flex-shrink:0}
-  .cg-h .cg-badge svg{width:14px;height:14px;stroke:#1a1206;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cg-h .cg-badge{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(150deg,rgba(242,154,69,.42),rgba(224,122,58,.22));border:1px solid var(--line);flex-shrink:0}
+  .cg-h .cg-badge svg{width:14px;height:14px;stroke:#2a1206;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .cg-h .cg-t{font-family:var(--body);font-weight:600;font-size:.83rem;color:var(--fg);line-height:1.15}
   .cg-h .cg-m{font-family:var(--mono);font-size:.56rem;color:var(--ghost);letter-spacing:.04em;margin-top:2px}
   .cg-r{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:4px 0;border-top:1px solid var(--line-2)}
@@ -351,7 +351,7 @@ section.light .dek{color:#7a5c2c}
   /* hover pulse: scale composes with the animated transform */
   @media(hover:hover) and (pointer:fine){
     .cg-stage.go .cg-card{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),scale .25s ease,box-shadow .25s ease}
-    .cg-stage.go .cg-card:hover{scale:1.03;box-shadow:0 40px 92px -28px rgba(0,0,0,.95),0 0 0 1px rgba(201,169,110,.4)}
+    .cg-stage.go .cg-card:hover{scale:1.03;box-shadow:0 40px 92px -28px rgba(0,0,0,.95),0 0 0 1px rgba(242,154,69,.4)}
   }
   .cg-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
   @media(max-width:820px){.cg-pillars{grid-template-columns:1fr 1fr}}
@@ -363,14 +363,14 @@ section.light .dek{color:#7a5c2c}
   .cg-note{margin-top:26px;font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);color:var(--fg);text-wrap:balance}
   .cg-note .g{font-style:italic}
   /* ═══ Knowledge graph frame (kg-) ═══ */
-  .kgframe{margin-top:46px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0a0e18;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+  .kgframe{margin-top:46px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#220d06;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
   .kg-bar{display:flex;align-items:center;gap:16px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015)}
   .kg-brand{font-family:var(--display);font-style:italic;font-size:.92rem;color:var(--fg)}
   .kg-brand b{font-style:normal;font-weight:600;color:var(--gold)}
   .kg-search{flex:1;max-width:300px;font-family:var(--body);font-size:.78rem;color:var(--muted);border:1px solid var(--line-2);border-radius:8px;padding:7px 12px;background:rgba(0,0,0,.3)}
   .kg-count{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.04em}
   .kg-count b{color:var(--fg);font-weight:500}
-  .kg-stage{position:relative;height:420px;overflow:hidden;background:radial-gradient(120% 120% at 50% 45%,rgba(40,60,110,.18),transparent 65%)}
+  .kg-stage{position:relative;height:420px;overflow:hidden;background:none}
   .kg-stage .kbub{position:absolute;border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 12px rgba(255,255,255,.12),0 6px 18px -6px rgba(0,0,0,.6)}
   .kg-stage .kbub.lab::after{content:attr(data-l);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--body);font-size:.66rem;font-weight:600;color:rgba(255,255,255,.92);white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.7)}
   .kg-stage .kbub.big::after{font-size:.82rem}
@@ -379,17 +379,17 @@ section.light .dek{color:#7a5c2c}
   .kg-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
   .kg-edges{position:absolute;inset:0;width:100%;height:100%}
   .kg-edges line{stroke:rgba(236,230,218,.07);stroke-width:.14;vector-effect:non-scaling-stroke;stroke-width:1px}
-  .kg-edges line.w{stroke:rgba(201,169,110,.26);stroke-width:1.2px}
+  .kg-edges line.w{stroke:rgba(242,154,69,.26);stroke-width:1.2px}
   .kbub.ring{outline:1px dashed rgba(236,230,218,.38);outline-offset:5px}
   .kbub.f1{filter:blur(1.8px);opacity:.32}
   .kbub.f2{filter:blur(.6px);opacity:.58}
-  .kbub.you{box-shadow:0 0 0 6px rgba(201,169,110,.14),0 0 40px rgba(201,169,110,.4),inset 0 0 14px rgba(255,255,255,.28)}
+  .kbub.you{box-shadow:0 0 0 6px rgba(242,154,69,.14),0 0 40px rgba(242,154,69,.4),inset 0 0 14px rgba(255,255,255,.28)}
   .kbub.lab{pointer-events:auto}
   .kg-stage .kbub.src{display:grid;place-items:center;pointer-events:auto}
   .kg-stage .kbub.src svg{width:52%;height:52%;fill:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
   .kg-stage .kbub.src.wide svg{width:72%;height:72%}
   .kg-stage{pointer-events:auto}
-  .kg-tipbox{position:absolute;z-index:5;pointer-events:none;background:linear-gradient(158deg,rgba(22,17,11,.97),rgba(12,10,7,.94));border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;box-shadow:0 18px 44px -18px rgba(0,0,0,.9);opacity:0;transition:opacity .15s}
+  .kg-tipbox{position:absolute;z-index:5;pointer-events:none;background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.94));border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;box-shadow:0 18px 44px -18px rgba(0,0,0,.9);opacity:0;transition:opacity .15s}
   .kg-tipbox.on{opacity:1}
   .kg-tipbox b{color:var(--gold);font-weight:500}
   @media(hover:none){.kg-tipbox{display:none}}
@@ -438,16 +438,16 @@ section.light .dek{color:#7a5c2c}
   #start .start-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.92fr);gap:clamp(28px,5vw,60px);align-items:start}
   @media(max-width:820px){#start .start-top{grid-template-columns:1fr}.chat-mock{margin-top:6px}}
   .chat-mock .pc-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:412px;margin-left:auto;
-    background:linear-gradient(160deg,rgba(16,19,27,.94),rgba(11,14,20,.88));backdrop-filter:blur(4px);box-shadow:0 30px 72px -34px rgba(0,0,0,.86)}
+    background:linear-gradient(160deg,rgba(64,25,12,.94),rgba(52,20,10,.88));backdrop-filter:blur(4px);box-shadow:0 30px 72px -34px rgba(0,0,0,.86)}
   .pc-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.015)}
-  .pc-ava{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;color:#1a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
+  .pc-ava{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:grid;place-items:center;color:#2a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
   .pc-t{font-family:var(--body);font-weight:600;font-size:.82rem;color:var(--fg);line-height:1.1}
   .pc-s{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-top:2px}
   .pc-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(127,169,138,.16)}
   .pc-body{padding:15px 16px;display:flex;flex-direction:column;gap:9px}
   .pc-msg{max-width:88%;font-size:.82rem;line-height:1.45;padding:9px 13px;border-radius:13px}
   .pc-msg.a{align-self:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--line-2);color:var(--fg);border-bottom-left-radius:4px}
-  .pc-msg.u{align-self:flex-end;background:rgba(201,169,110,.15);border:1px solid var(--line);color:var(--fg);border-bottom-right-radius:4px}
+  .pc-msg.u{align-self:flex-end;background:rgba(242,154,69,.15);border:1px solid var(--line);color:var(--fg);border-bottom-right-radius:4px}
   .pc-chip{align-self:flex-start;display:flex;flex-wrap:wrap;gap:8px 12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.02em;color:var(--muted);background:rgba(127,169,138,.07);border:1px solid var(--line-2);border-radius:11px;padding:9px 13px}
   .pc-chip b{color:var(--green);font-weight:500}
   .js .chat-mock .pc-msg,.js .chat-mock .pc-chip{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
@@ -461,7 +461,7 @@ section.light .dek{color:#7a5c2c}
   @media(min-width:980px){.g2-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .g2-stage{width:100%;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;max-width:520px;margin-inline:auto;pointer-events:none}
   .g2-img{display:block;width:min(440px,88%);height:auto;margin-top:-10px;filter:drop-shadow(0 30px 54px rgba(0,0,0,.6))}
-  .glhud{position:relative;z-index:1;width:min(430px,100%);border-radius:14px;background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.6),rgba(7,9,15,.95));box-shadow:0 34px 80px -38px rgba(0,0,0,.9),inset 0 0 0 1px rgba(201,169,110,.10);padding:13px 15px 11px;display:flex;flex-direction:column;gap:7px;font-family:var(--mono);color:#46e878;text-shadow:0 0 9px rgba(70,232,120,.4),0 0 2px rgba(70,232,120,.85);text-align:left}
+  .glhud{position:relative;z-index:1;width:min(430px,100%);border-radius:14px;background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.6),rgba(38,14,6,.95));box-shadow:0 34px 80px -38px rgba(0,0,0,.9),inset 0 0 0 1px rgba(242,154,69,.10);padding:13px 15px 11px;display:flex;flex-direction:column;gap:7px;font-family:var(--mono);color:#46e878;text-shadow:0 0 9px rgba(70,232,120,.4),0 0 2px rgba(70,232,120,.85);text-align:left}
   .glhud .gt-head{font-size:.72rem;color:#7df0a3;display:flex;align-items:center;gap:7px;white-space:nowrap}
   .glhud .gt-meter{display:inline-flex;align-items:flex-end;gap:2.5px;height:12px}
   .glhud .gt-meter i{width:7px;height:4px;background:rgba(70,232,120,.22);border-radius:1px}
@@ -485,8 +485,8 @@ section.light .dek{color:#7a5c2c}
 
   /* §09 COS Glasses — HUD slide visuals (green confined to the baked PNGs) */
   .gc .hud-frame{position:relative;width:100%;aspect-ratio:2/1;border-radius:12px;overflow:hidden;margin:-2px 0 16px;
-    background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.5),rgba(7,9,15,.92));
-    box-shadow:inset 0 0 0 1px rgba(201,169,110,.10),0 24px 50px -30px rgba(0,0,0,.8)}
+    background:radial-gradient(120% 130% at 50% 0%,rgba(20,24,32,.5),rgba(38,14,6,.92));
+    box-shadow:inset 0 0 0 1px rgba(242,154,69,.10),0 24px 50px -30px rgba(0,0,0,.8)}
   .gc .hud-frame img{display:block;width:100%;height:100%;object-fit:contain}
   .gc .hud-frame::after{content:'';position:absolute;inset:0;pointer-events:none;transform:translateY(-115%);
     background:linear-gradient(180deg,transparent 0,rgba(236,230,218,.12) 48%,transparent 54%)}
@@ -529,7 +529,7 @@ section.light .dek{color:#7a5c2c}
   .ctl-body{padding:clamp(18px,3vw,30px) clamp(16px,3vw,30px) clamp(20px,3vw,30px);background:var(--cream)}
   .ctl-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .ctl-head .ctl-lockup{font-size:1.35rem}.ctl-head .ctl-lockup img{width:20px}
-  .ctl-gotcos{font-family:var(--display);font-style:italic;font-size:.9rem;color:#a0783c}
+  .ctl-gotcos{font-family:var(--display);font-style:italic;font-size:.9rem;color:#a8481a}
   .ctl-h{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3vw,2.2rem);line-height:1.05;letter-spacing:-.01em;color:var(--ink-on-cream);margin:18px 0 0}
   .ctl-sub{font-family:var(--display);font-style:italic;font-size:.98rem;color:rgba(46,31,16,.6);margin:6px 0 0}
   .ctl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
@@ -544,7 +544,7 @@ section.light .dek{color:#7a5c2c}
   .ctl-n{margin-left:auto;font-family:var(--display);font-weight:500;font-size:1.6rem;line-height:1;color:var(--ink-on-cream);font-variant-numeric:tabular-nums}
   .ctl-tile p{margin:10px 0 0;font-size:.84rem;line-height:1.48;color:rgba(46,31,16,.72)}
   .ctl-tile i{display:block;margin-top:auto;padding-top:16px;font-family:var(--mono);font-style:normal;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(46,31,16,.58)}
-  @media(hover:hover) and (pointer:fine){.ctl-tile:hover{border-color:rgba(138,106,52,.55)}}
+  @media(hover:hover) and (pointer:fine){.ctl-tile:hover{border-color:rgba(143,61,20,.55)}}
   /* The tiles stagger in when the WINDOW enters the viewport (it carries its own .reveal), not when the section
      does: the window sits ~600px below the section top, so a section-keyed stagger was over before it was seen. */
   .js .ctl-tile{opacity:0}
@@ -561,33 +561,33 @@ section.light .dek{color:#7a5c2c}
   .wrap.lightband{position:relative;z-index:2;padding-block:10px 64px}
   section.light h2,section.light .pull,section.light p strong{color:var(--ink-on-cream)}
   section.light .lead,section.light p,section.light .ck li{color:var(--muted-on-cream)}
-      section.light a{color:#7a5c2c}
-  section.light code{color:#7a5c2c}
+      section.light a{color:#8f3d14}
+  section.light code{color:#8f3d14}
   section.light .tier,section.light .does{background:rgba(255,255,255,.58);border-color:var(--line-on-cream)}
-  section.light .tier:hover{border-color:rgba(138,106,52,.55)}
+  section.light .tier:hover{border-color:rgba(143,61,20,.55)}
   section.light .tier h3,section.light .does b,section.light .dm b{color:var(--ink-on-cream)}
   section.light .tier p,section.light .does p,section.light .dm span{color:var(--muted-on-cream)}
   section.light .tier .tl,section.light .kit-hint{color:var(--faint-on-cream)}
   section.light .tier .bar-fill{background:rgba(46,31,16,.12)}
   section.light .dm{border-top-color:var(--line-on-cream)}
-  section.light .does .n{color:#7a5c2c}
+  section.light .does .n{color:#8f3d14}
   section.light .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
-  section.light .btn.ghost:hover{border-color:#7a5c2c;color:#7a5c2c}
+  section.light .btn.ghost:hover{border-color:#8f3d14;color:#8f3d14}
   section.light .kit-does > .does-title{color:var(--ink-on-cream)}
   .lightband .inline-cta{background:rgba(255,255,255,.6);border-color:var(--line-on-cream)}
   .lightband .ic-text b{color:var(--ink-on-cream)}
   .lightband .ic-text span{color:var(--muted-on-cream)}
   .lightband .btn.ghost{border-color:rgba(46,31,16,.24);color:var(--ink-on-cream)}
-  section.light ::selection{background:rgba(138,106,52,.25);color:#241708}
-  section.light :focus-visible,.wrap.lightband :focus-visible{outline-color:#7a5c2c}
-  section.light .term{background:#1c1610;border-color:rgba(46,31,16,.28);box-shadow:0 34px 70px -34px rgba(46,31,16,.5)}
+  section.light ::selection{background:rgba(143,61,20,.25);color:#241708}
+  section.light :focus-visible,.wrap.lightband :focus-visible{outline-color:#8f3d14}
+  section.light .term{background:#34140a;border-color:rgba(46,31,16,.28);box-shadow:0 34px 70px -34px rgba(46,31,16,.5)}
   section.light .term .bar{background:rgba(255,255,255,.03);border-bottom-color:rgba(255,246,232,.08)}
-  section.light .term pre{color:rgba(240,232,218,.62)}
+  section.light .term pre{color:rgba(251,238,221,.62)}
 
   /* amber-burn transitions between grounds */
   .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
-  .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-  .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+  .burn.down{background:linear-gradient(180deg,var(--ink) 0%,#4a1b0c 28%,#7a3010 48%,#b2541c 64%,#e08a3c 78%,#f2c08c 90%,var(--cream) 100%)}
+  .burn.up{background:linear-gradient(0deg,var(--ink) 0%,#4a1b0c 28%,#7a3010 48%,#b2541c 64%,#e08a3c 78%,#f2c08c 90%,var(--cream) 100%)}
 
   /* proof strip (hero) — real numbers */
   .hero-meta{border-top:1px solid var(--line);padding-top:26px;gap:16px 44px}
@@ -599,7 +599,7 @@ section.light .dek{color:#7a5c2c}
   .bene{border:1px solid var(--line-on-cream);border-radius:18px;padding:30px 26px 28px;background:rgba(255,255,255,.58)}
   .bene .bh{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink-on-cream);text-wrap:balance}
   .bene p{margin-top:12px;font-size:.94rem;line-height:1.6;color:var(--muted-on-cream)}
-  .bene .bt{margin-top:20px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#7a5c2c}
+  .bene .bt{margin-top:20px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8f3d14}
   .bene-quote{margin-top:44px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.3;color:var(--ink-on-cream);text-wrap:balance;max-width:26ch}
   .bene-quote small{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint-on-cream)}
 
@@ -611,7 +611,7 @@ section.light .dek{color:#7a5c2c}
   .fq:last-child{border-bottom:1px solid var(--line-on-cream)}
   .fq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px;font-family:var(--display);font-weight:500;font-size:clamp(1.1rem,1.9vw,1.4rem);color:var(--ink-on-cream);min-height:44px}
   .fq summary::-webkit-details-marker{display:none}
-  .fq summary::after{content:'+';font-family:var(--body);font-weight:300;font-size:1.5rem;color:#7a5c2c;flex-shrink:0;transition:transform .25s ease}
+  .fq summary::after{content:'+';font-family:var(--body);font-weight:300;font-size:1.5rem;color:#8f3d14;flex-shrink:0;transition:transform .25s ease}
   .fq[open] summary::after{content:'\2212'}
   .fq p{padding:0 2px 24px;max-width:64ch;color:var(--muted-on-cream);font-size:.97rem;line-height:1.65}
 
@@ -622,17 +622,17 @@ section.light .dek{color:#7a5c2c}
   .hero-demo{position:relative;min-height:500px;pointer-events:none}
   @media(max-width:1079px){.hero-demo{min-height:470px;max-width:560px;margin:10px auto 0;width:100%}}
   .hd-web{position:absolute;inset:0;width:100%;height:100%}
-  .hd-web line{stroke:rgba(240,232,218,.08);stroke-width:1px;vector-effect:non-scaling-stroke}
-  .hd-web line.w{stroke:rgba(201,169,110,.24)}
+  .hd-web line{stroke:rgba(251,238,221,.08);stroke-width:1px;vector-effect:non-scaling-stroke}
+  .hd-web line.w{stroke:rgba(242,154,69,.24)}
   .hd-dot{position:absolute;width:8px;height:8px;border-radius:50%;opacity:.38;transform:translate(-50%,-50%)}
   .hero-demo .cg-card{position:absolute;transform:translate(-50%,-50%);opacity:.94}
   .hd-b1{left:76%;top:12%}
   .hd-b2{left:20%;top:82%}
   .hd-brief{position:absolute;left:47%;top:47%;transform:translate(-50%,-50%);width:min(410px,94%);
-    background:linear-gradient(158deg,rgba(21,16,10,.97),rgba(13,10,7,.95));border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.95));border:1px solid var(--line);border-radius:18px;
     padding:18px 20px 16px;box-shadow:0 48px 120px -42px rgba(0,0,0,.95),inset 0 0 0 1px rgba(255,246,232,.02)}
   .hb-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line-2)}
-  .hb-ava{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;color:#1a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
+  .hb-ava{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;color:#2a1206;font-family:var(--mono);font-weight:600;font-size:.74rem;background:linear-gradient(150deg,var(--warm),var(--gold) 60%,var(--rose))}
   .hb-t{font-family:var(--body);font-weight:600;font-size:.84rem;color:var(--fg)}
   .hb-s{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:2px}
   .hb-time{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:var(--faint)}
@@ -641,13 +641,13 @@ section.light .dek{color:#7a5c2c}
   .hb-list{list-style:none;margin:6px 0 2px;padding:0;display:flex;flex-direction:column;gap:9px}
   .hb-li{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid var(--line-2);border-radius:11px;padding:9px 12px;background:rgba(255,246,232,.02)}
   .hb-li .tx{position:relative;font-size:.82rem;color:var(--fg);line-height:1.35}
-  .hb-li .tx::after{content:'';position:absolute;left:0;top:56%;height:1.5px;width:0;background:rgba(240,232,218,.7);transition:width .5s ease .15s}
+  .hb-li .tx::after{content:'';position:absolute;left:0;top:56%;height:1.5px;width:0;background:rgba(251,238,221,.7);transition:width .5s ease .15s}
   .hb-chip{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:4px 9px;white-space:nowrap}
   .hb-chip svg{width:11px;height:11px;fill:var(--muted)}
   .hb-li.you .tx{color:var(--fg);font-weight:500}
-  .hb-li.you{border-color:rgba(201,169,110,.32);background:rgba(201,169,110,.05)}
-  .hb-li.you .hb-chip{color:#e8c98a;border-color:rgba(201,169,110,.4)}
-  .hb-li.you .hb-chip svg{fill:#e8c98a}
+  .hb-li.you{border-color:rgba(242,154,69,.32);background:rgba(242,154,69,.05)}
+  .hb-li.you .hb-chip{color:#f6b46e;border-color:rgba(242,154,69,.4)}
+  .hb-li.you .hb-chip svg{fill:#f6b46e}
   .hb-li.done.on .tx{color:var(--muted)}
   .hb-li.done.on .tx::after{width:100%}
   .js .hb-li{opacity:0;transform:translateY(7px);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
@@ -667,6 +667,641 @@ section.light .dek{color:#7a5c2c}
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
 <link rel="stylesheet" href="assets/docs-hud.css?v=587-1">
+
+
+<style>
+/* ── Espresso kept: tells removed, everything else as live ── */
+
+/* 1. The heading formula. Live ends most headings in an italic gold phrase.
+      Here each page's h1 keeps it and no section heading does. The mock bar switches the ending. */
+html[data-head="one"] :is(h1,h2) .hx,
+html[data-head="weight"] :is(h1,h2) .hx,
+html[data-head="weight"] #control .sec-head h2>.it.g{font-style:normal!important;background:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;color:inherit!important}
+html[data-head="weight"] :is(h1,h2) .hx,html[data-head="weight"] #control .sec-head h2>.it.g{font-weight:600!important}
+/* One word of real emphasis keeps its italic, in the heading's own color. */
+html:not([data-head="live"]) :is(h1,h2) .hx-em{font-style:italic;background:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;color:inherit!important}
+
+</style>
+
+<style>
+/* 3. Eyebrow labels above the four graph cards (Miles, 2026-07-16: the structure is the tell). */
+.cg-pill .cg-pl{display:none}
+
+/* 4. Bullets wired to their files (Miles picked 2026-11-12). Cream section.
+      Each need runs a wire to the file that holds it; a pulse travels the wire. */
+.wire-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.wire-list .wl-path{display:flex;justify-content:flex-end;font-family:var(--mono);font-size:.74rem;color:#8f3d14;padding-right:2px}
+.wire-list li{display:grid;grid-template-columns:minmax(0,1fr) clamp(28px,5vw,64px) 214px;align-items:center;gap:10px}
+.wl-need{color:var(--muted-on-cream);font-size:1rem;line-height:1.45}
+.wl-wire{position:relative;height:1px;background:#c0662c;transform-origin:left center}
+.wl-wire::before{content:'';position:absolute;left:-3px;top:-3px;width:7px;height:7px;border-radius:50%;background:#c0662c}
+.wl-wire::after{content:'';position:absolute;top:-1px;left:0;width:14px;height:3px;border-radius:2px;background:#ffe2bd;box-shadow:0 0 8px 2px rgba(255,190,120,.9);opacity:0}
+.wl-file{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:10px;background:var(--ink);border:1px solid rgba(242,154,69,.34);box-shadow:0 14px 30px -18px rgba(42,16,7,.7)}
+.wire-list .wl-file code{font-family:var(--mono)!important;font-size:.78rem!important;color:#fbeedd!important;background:none!important;padding:0!important;white-space:nowrap}
+.wire-list .wl-file small{font-family:var(--mono);font-size:.66rem;color:#f6b46e!important;white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+  html.js .reveal:not(.in) .wl-wire{transform:scaleX(0)}
+  html.js .reveal:not(.in) .wl-file{opacity:0;transform:translateX(-8px)}
+  .wl-wire{transition:transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.35s + var(--i)*.16s)}
+  .wl-file{transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.85s + var(--i)*.16s)}
+  .reveal.in .wl-wire::after{animation:wl-pulse 4.8s linear infinite;animation-delay:calc(1.8s + var(--i)*.55s)}
+}
+@keyframes wl-pulse{0%{left:0;opacity:0}4%{opacity:1}22%{left:calc(100% - 14px);opacity:1}26%,100%{left:calc(100% - 14px);opacity:0}}
+@media (max-width:560px){
+  .wire-list{gap:16px}
+  .wire-list .wl-path{justify-content:flex-start;padding-left:22px}
+  .wire-list li{grid-template-columns:1fr;gap:0}
+  .wl-wire{width:1px;height:16px;margin:6px 0 6px 10px;transform-origin:center top;background:#c0662c}
+  .wl-wire::after{display:none}
+  .wl-file{justify-self:start;max-width:100%}
+  .wire-list .wl-file code,.wire-list .wl-file small{white-space:normal!important;overflow-wrap:anywhere}
+  html.js .reveal:not(.in) .wl-wire{transform:scaleY(0)}
+}
+
+/* 5. Source join chart (Miles picked 2026-11-12). Dark section, under the floating cards.
+      One row per record, one column per source, a wire across the sources that saw it. */
+.jc{margin:28px 0 0;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,30px);
+  background:radial-gradient(120% 130% at 18% 0%,rgba(242,154,69,.07),transparent 58%),linear-gradient(160deg,var(--panel-2),rgba(38,14,6,.5));
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(18px,3vw,36px);align-items:start}
+.jc-grid{display:grid;gap:0}
+.jc-head,.jc-row{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);align-items:center;column-gap:16px}
+.jc-cols{display:grid;grid-template-columns:repeat(6,1fr);position:relative;align-items:center}
+.jc-head{padding-bottom:10px;border-bottom:1px solid var(--line-2)}
+.jc-head .jc-cols span{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.72rem;color:var(--muted);text-align:center}
+.jc-head svg{width:16px;height:16px;color:var(--gold);fill:currentColor}
+.jc-head svg.ln{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.jc-row{padding:11px 0;border-bottom:1px solid var(--line-2)}
+.jc-row:last-child{border-bottom:0}
+.jc-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;min-width:0}
+.jc-name b{font-weight:500;color:var(--fg);font-size:.95rem}
+.jc-name span{font-size:.74rem;color:var(--faint)}
+.jc-cols i{justify-self:center;width:11px;height:11px;border-radius:50%;border:1px solid var(--ghost);position:relative;z-index:1;background:var(--ink)}
+.jc-cols i.on{border-color:var(--gold);background:var(--gold);box-shadow:0 0 10px 1px rgba(242,154,69,.55)}
+.jc-cols i.rv{border:1px dashed var(--rose);background:var(--ink)}
+.jc-ln{position:absolute;top:50%;height:1px;background:var(--gold);opacity:.7;transform-origin:left center;
+  left:calc((var(--a) - .5) / 6 * 100%);width:calc((var(--b) - var(--a)) / 6 * 100%)}
+.jc-ln.rv{background:none;border-top:1px dashed var(--rose);opacity:.9}
+.jc-row.sel{background:linear-gradient(90deg,rgba(242,154,69,.10),transparent 70%);margin-inline:-10px;padding-inline:10px;border-radius:10px;border-bottom-color:transparent}
+.jc-flag{font-size:.7rem;color:var(--rose);border:1px dashed var(--rose);border-radius:999px;padding:1px 8px}
+.jc-rec{border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.92));box-shadow:0 32px 74px -28px rgba(0,0,0,.92)}
+.jc-rec h3{font-family:var(--body);font-size:1rem;font-weight:500;color:var(--fg);margin:0}
+.jc-rec .jc-role{font-size:.8rem;color:var(--muted);margin:2px 0 12px}
+.jc-rec dl{margin:0;display:grid;gap:0}
+.jc-rec dl div{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:8px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line-2);font-size:.82rem}
+.jc-rec dt{color:var(--faint)}
+.jc-rec dd{margin:0;color:var(--fg);overflow-wrap:anywhere}
+.jc-rec code{font-family:var(--mono);font-size:.68rem;color:var(--gold)}
+.jc-rec .jc-edge{margin:10px 0 0;padding-top:9px;border-top:1px solid var(--line-2);font-size:.78rem;color:var(--muted)}
+.jc-cap{grid-column:1 / -1;margin:0;font-size:.82rem;line-height:1.5;color:var(--faint)}
+@media (prefers-reduced-motion:no-preference){
+  html.js #graph:not(.in) .jc-cols i.on{background:var(--ink);border-color:var(--ghost);box-shadow:none}
+  html.js #graph:not(.in) .jc-ln{transform:scaleX(0)}
+  html.js #graph:not(.in) .jc-rec{opacity:0;transform:translateY(10px)}
+  .jc-cols i{transition:background .45s ease,border-color .45s ease,box-shadow .45s ease;transition-delay:calc(.5s + var(--r)*.14s + var(--c)*.05s)}
+  .jc-ln{transition:transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.75s + var(--r)*.14s)}
+  .jc-rec{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:1.5s}
+}
+@media (max-width:900px){.jc{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .jc-head,.jc-row{grid-template-columns:1fr;row-gap:8px}
+  .jc-head .jc-cols span{font-size:.62rem}
+  .jc-head>span:first-child{display:none}
+  .jc-row.sel{margin-inline:-8px;padding-inline:8px}
+}
+/* 6. Show the artifact (Miles picked 2026-11-12). Template sections show the real thing they describe.
+      The mock bar's Sections row flips back to the live cards. */
+html[data-sec="cards"] .sec-art{display:none!important}
+html[data-sec="art"] .sec-cards{display:none!important}
+
+/* 6a. Benefits: three real outputs, each in its own shape, beside the claim it backs. */
+.art-rows{margin-top:46px;display:grid;gap:0;border-top:1px solid var(--line-on-cream)}
+.art-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(22px,4vw,56px);align-items:center;padding:34px 0;border-bottom:1px solid var(--line-on-cream)}
+.art-say h3{font-family:var(--display);font-weight:500;font-size:clamp(1.45rem,2.2vw,1.9rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink-on-cream);margin:0 0 12px}
+.art-say p{color:var(--muted-on-cream);font-size:1rem;line-height:1.6;max-width:38ch;margin:0}
+.art{margin:0;border-radius:16px;background:var(--ink);border:1px solid rgba(242,154,69,.34);box-shadow:0 30px 60px -34px rgba(42,16,7,.75);color:var(--fg);overflow:hidden}
+.art figcaption{display:flex;align-items:baseline;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line-2);font-size:.86rem;color:var(--fg)}
+#benefits .art figcaption code,#benefits .art dl code,#benefits .art-ask .src code{font-family:var(--mono);font-size:.72rem;color:#f6b46e;background:none;padding:0}
+.art figcaption span{color:var(--muted)}
+.art-doc dl{margin:0;padding:6px 18px 12px}
+.art-doc dl div{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line-2);font-size:.9rem}
+.art-doc dl div:last-child{border-bottom:0}
+.art-doc dt{color:var(--faint)}
+.art-doc dd{margin:0;color:var(--fg)}
+.art-doc .need dd{color:#f6b46e}
+.art-ask{padding:18px}
+#benefits .art-ask p{margin:0}
+#benefits .art-ask .q{justify-self:end;max-width:86%;margin-left:auto;width:fit-content;padding:10px 14px;border-radius:14px 14px 4px 14px;background:rgba(255,246,232,.09);color:var(--fg);font-size:.92rem;line-height:1.45}
+#benefits .art-ask .a{margin-top:12px;max-width:92%;padding:12px 14px;border-radius:14px 14px 14px 4px;border:1px solid var(--line);color:var(--fg);font-size:.92rem;line-height:1.55}
+#benefits .art-ask .src{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.78rem;color:var(--muted)}
+.art-log ol{list-style:none;margin:0;padding:6px 18px 12px}
+.art-log li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line-2);font-size:.9rem;color:var(--fg)}
+.art-log li:last-child{border-bottom:0}
+.art-log li::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(127,169,138,.6)}
+.art-log li em{font-style:normal;font-size:.76rem;color:var(--muted)}
+#benefits .art-note,#tiers .art-note{margin-top:14px;font-size:.82rem;color:var(--muted-on-cream)}
+@media (max-width:760px){.art-row{grid-template-columns:1fr;gap:18px;padding:28px 0}}
+@media (max-width:440px){.art-doc dl div{grid-template-columns:72px minmax(0,1fr)}.art-doc dl code{grid-column:2}}
+
+/* 6b. Tiers: the same directory at four points in time. New lines are gold, earlier lines dim. */
+.grow{margin:40px 0 0}
+.grow-panel{border-radius:16px;background:var(--ink);border:1px solid rgba(242,154,69,.34);box-shadow:0 30px 60px -34px rgba(42,16,7,.75);overflow:hidden}
+.grow-axis{display:grid;grid-template-columns:repeat(4,1fr);position:relative;padding:14px 0 0}
+.grow-axis::before{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,rgba(242,154,69,.25),var(--gold))}
+.grow-axis span{position:relative;padding:0 18px 12px;font-size:.86rem;color:var(--fg)}
+.grow-axis span::after{content:'';position:absolute;left:18px;bottom:-3px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.grow-cols{display:grid;grid-template-columns:repeat(4,1fr)}
+.grow-col{padding:18px 18px 20px;border-left:1px solid var(--line-2);min-width:0}
+.grow-col:first-child{border-left:0}
+#tiers .grow-tree{margin:0;font-family:var(--mono);font-size:.74rem;line-height:1.75;color:rgba(251,238,221,.42);white-space:pre-wrap;overflow-wrap:anywhere;background:none;padding:0}
+#tiers .grow-tree b{font-weight:400;color:#f6b46e}
+#tiers .grow-tree i{font-style:normal;color:var(--green)}
+.grow-text{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px}
+.grow-text div{padding:0 18px 0 18px;min-width:0}
+.grow-text div:first-child{padding-left:18px}
+#tiers .grow-text h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.35rem;color:var(--ink-on-cream);margin:0 0 8px}
+#tiers .grow-text p{font-size:.92rem;line-height:1.55;color:var(--muted-on-cream);margin:0}
+.grow-m{display:none}
+@media (prefers-reduced-motion:no-preference){
+  html.js #tiers:not(.in) .grow-tree b,html.js #tiers:not(.in) .grow-tree i{opacity:0}
+  #tiers .grow-tree b,#tiers .grow-tree i{transition:opacity .5s ease;transition-delay:calc(.5s + var(--i)*.45s)}
+}
+@media (max-width:860px){
+  .grow-axis,.grow-text{display:none}
+  .grow-cols{grid-template-columns:1fr}
+  .grow-col{border-left:0;border-top:1px solid var(--line-2)}
+  .grow-col:first-child{border-top:0}
+  .grow-m{display:block;margin-bottom:10px}
+  #tiers .grow-m strong{display:block;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.25rem;color:var(--fg)}
+  #tiers .grow-m span{font-size:.82rem;color:#f6b46e}
+  #tiers .grow-m p{font-size:.9rem;line-height:1.5;color:var(--muted);margin:6px 0 0}
+}
+/* 6c. 14 domains: the framework's own reference scorecard, 0 to 1 per domain. */
+#assess .score{margin-top:40px}
+#assess .score-grid{columns:2;column-gap:48px}
+#assess .sc{break-inside:avoid;padding:14px 0 15px;border-top:1px solid var(--line-on-cream)}
+#assess .sc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+#assess .sc b{font-family:var(--body);font-weight:600;font-size:.95rem;color:var(--ink-on-cream)}
+#assess .sc .sc-num{font-family:var(--mono);font-size:.72rem;color:var(--muted-on-cream);white-space:nowrap}
+#assess .sc .sc-what{display:block;font-size:.82rem;line-height:1.45;color:var(--muted-on-cream);margin:3px 0 9px}
+#assess .sc-track{position:relative;height:8px;border-radius:4px;background:rgba(46,31,16,.10)}
+#assess .sc-gap{position:absolute;top:0;bottom:0;left:calc(var(--o)*100%);width:calc((var(--t) - var(--o))*100%);background:repeating-linear-gradient(135deg,rgba(192,102,44,.55) 0 3px,rgba(192,102,44,.18) 3px 6px)}
+#assess .sc-obs{position:absolute;top:0;bottom:0;left:0;width:calc(var(--o)*100%);border-radius:4px 0 0 4px;background:var(--ink);transform-origin:left center}
+#assess .sc-can{position:absolute;top:-4px;bottom:-4px;left:calc(var(--t)*100%);width:2px;background:#c0662c}
+#assess .sc.big b::after{content:'start here';margin-left:10px;font-family:var(--body);font-weight:500;font-size:.72rem;color:#9a4a2e;border:1px solid rgba(154,74,46,.45);border-radius:999px;padding:1px 8px;white-space:nowrap}
+#assess .sc.big .sc-gap{background:repeating-linear-gradient(135deg,rgba(154,74,46,.75) 0 3px,rgba(154,74,46,.25) 3px 6px)}
+#assess .score-key{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 16px;font-size:.84rem;color:var(--muted-on-cream)}
+#assess .score-key i{display:inline-block;vertical-align:middle;margin-right:7px}
+#assess .score-key .k-obs{width:22px;height:8px;border-radius:4px;background:var(--ink)}
+#assess .score-key .k-gap{width:22px;height:8px;background:repeating-linear-gradient(135deg,rgba(192,102,44,.55) 0 3px,rgba(192,102,44,.18) 3px 6px)}
+#assess .score-key .k-can{width:2px;height:14px;background:#c0662c}
+#assess .art-note{margin-top:16px;font-size:.82rem;color:var(--muted-on-cream)}
+@media (prefers-reduced-motion:no-preference){
+  html.js #assess:not(.in) .sc-obs{transform:scaleX(0)}
+  html.js #assess:not(.in) .sc-gap,html.js #assess:not(.in) .sc-can{opacity:0}
+  #assess .sc-obs{transition:transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.3s + var(--i)*.04s)}
+  #assess .sc-gap,#assess .sc-can{transition:opacity .4s ease;transition-delay:calc(.9s + var(--i)*.04s)}
+}
+@media (max-width:760px){#assess .score-grid{columns:1}}
+
+/* 6d. Integrations: the page's own setup times, drawn to scale, shortest first. */
+.intc{margin-top:40px;border:1px solid var(--line);border-radius:18px;padding:8px clamp(14px,2.4vw,24px) 10px;background:linear-gradient(158deg,var(--panel),transparent)}
+.intc-axis,.intc-row{display:grid;grid-template-columns:44px minmax(150px,230px) minmax(0,1fr) minmax(120px,30%) 58px;column-gap:14px;align-items:center}
+.intc-axis{padding:8px 0 6px;font-size:.72rem;color:var(--faint)}
+.intc-axis .ax{grid-column:4;display:flex;justify-content:space-between}
+.intc-row{padding:13px 0;border-top:1px solid var(--line-2)}
+.intc-row .bm{display:inline-flex;gap:6px;align-items:center;flex-shrink:0}
+.intc-row .bm svg{width:19px;height:19px;fill:var(--gold);opacity:1;flex:none}
+.intc-row b{font-weight:600;color:var(--fg)}
+.intc-row .what{color:var(--muted);font-size:.85rem}
+.intc-row .t{font-family:var(--mono);font-size:.7rem;color:var(--gold);white-space:nowrap;text-align:right}
+.intc-bar{position:relative;height:8px;border-radius:4px;background:rgba(255,246,232,.06)}
+.intc-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--m) / 30 * 100%);min-width:8px;border-radius:4px;background:linear-gradient(90deg,var(--warm),var(--gold));transform-origin:left center}
+.intc-row.zero .intc-bar i{width:8px;background:var(--green);box-shadow:0 0 8px rgba(127,169,138,.6)}
+.intc-row.varies .intc-bar{background:none;border-top:1px dashed var(--ghost);height:0;border-radius:0}
+.intc-row.varies .intc-bar i{display:none}
+#integrations .art-note{margin-top:14px;font-size:.82rem;color:var(--faint)}
+@media (prefers-reduced-motion:no-preference){
+  html.js #integrations:not(.in) .intc-bar i{transform:scaleX(0)}
+  .intc-bar i{transition:transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.35s + var(--i)*.07s)}
+}
+@media (max-width:760px){
+  .intc-axis{display:none}
+  .intc-row{grid-template-columns:44px minmax(0,1fr) 58px;row-gap:6px}
+  .intc-row .what{grid-column:2 / -1}
+  .intc-row .intc-bar{grid-column:2}
+  .intc-row .t{grid-column:3;grid-row:1}
+}
+
+/* 6e. Teams: the one number in the section, drawn. Left-aligned beside the copy. */
+#teams .util{margin:0}
+#teams .util-track{position:relative;height:16px;border-radius:8px;background:rgba(255,246,232,.07)}
+#teams .util-band{position:absolute;top:0;bottom:0;left:calc(var(--a)*1%);width:calc((var(--b) - var(--a))*1%);background:linear-gradient(90deg,var(--warm),var(--gold));border-radius:3px;box-shadow:0 0 14px rgba(242,154,69,.45)}
+#teams .util-base{position:absolute;top:-7px;bottom:-7px;left:calc(var(--p)*1%);width:2px;background:var(--fg)}
+#teams .util-arrow{position:absolute;top:50%;height:1px;left:calc(var(--p)*1% + 2px);width:calc((var(--a) - var(--p))*1% - 2px);border-top:1px dashed var(--muted);transform-origin:left center}
+#teams .util-ticks{display:flex;justify-content:space-between;margin-top:9px;font-family:var(--mono);font-size:.68rem;color:var(--faint)}
+#teams .util-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:18px 0 0;max-width:none;font-size:.95rem;color:var(--fg)}
+#teams .util-key b{font-family:var(--display);font-weight:500;font-size:1.5rem;margin-right:8px}
+#teams .util-key span{display:inline-flex;align-items:baseline}
+#teams .util figcaption{margin-top:12px;font-size:.82rem;line-height:1.5;color:var(--faint)}
+@media (min-width:900px){
+  html[data-sec="art"] #teams .teams{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:clamp(28px,5vw,64px);text-align:left;align-items:start}
+  html[data-sec="art"] #teams .teams>*{grid-column:1}
+  html[data-sec="art"] #teams .teams>h2{margin-left:0;margin-right:0}
+  html[data-sec="art"] #teams .teams>p{margin-left:0;margin-right:0}
+  html[data-sec="art"] #teams .teams>.hero-cta{justify-content:flex-start!important}
+  html[data-sec="art"] #teams .teams>.util{grid-column:2;grid-row:1 / span 4;align-self:center}
+  html[data-sec="art"] #teams .teams>.teams-toggle{text-align:left}
+  html[data-sec="art"] #teams .teams>.teams-form-wrapper{grid-column:1 / -1}
+}
+@media (max-width:899px){#teams .util{margin:0 auto 30px;max-width:54ch;text-align:left}}
+@media (prefers-reduced-motion:no-preference){
+  html.js #teams:not(.in) .util-band{opacity:0}
+  html.js #teams:not(.in) .util-arrow{transform:scaleX(0)}
+  #teams .util-arrow{transition:transform .8s cubic-bezier(.2,.7,.2,1) .5s}
+  #teams .util-band{transition:opacity .6s ease 1.2s}
+}
+
+/* 6f. Philosophy: what "accumulates" looks like, in the product's own memory lines. */
+#philosophy .acc{margin:0 0 30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(158deg,rgba(64,25,12,.97),rgba(52,20,10,.92));box-shadow:0 32px 74px -28px rgba(0,0,0,.92);overflow:hidden}
+#philosophy .acc ol{list-style:none;margin:0;padding:4px 18px}
+#philosophy .acc li{display:grid;grid-template-columns:104px 84px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:.9rem;color:var(--fg)}
+#philosophy .acc li .from{color:var(--faint);font-size:.82rem}
+#philosophy .acc li code{font-family:var(--mono);font-size:.72rem;color:var(--gold);background:none;padding:0}
+#philosophy .acc li time{font-family:var(--mono);font-size:.7rem;color:var(--faint);white-space:nowrap}
+#philosophy .acc .acc-sum{margin:0;padding:14px 18px;font-size:.9rem;color:var(--muted);max-width:none}
+#philosophy .acc .acc-sum b{font-family:var(--display);font-weight:500;font-size:1.5rem;color:var(--fg);margin-right:6px}
+#philosophy .acc .acc-sum span{margin-right:18px}
+#philosophy .acc figcaption{padding:0 18px 14px;font-size:.8rem;color:var(--faint)}
+@media (prefers-reduced-motion:no-preference){
+  html.js #philosophy:not(.in) .acc li{opacity:0;transform:translateY(6px)}
+  #philosophy .acc li{transition:opacity .5s ease,transform .5s ease;transition-delay:calc(.5s + var(--i)*.25s)}
+}
+@media (max-width:520px){#philosophy .acc li{grid-template-columns:84px minmax(0,1fr) auto}#philosophy .acc li .from{grid-column:1 / -1}}
+
+/* 6g. Start: what each setup step writes, on the same wire as the bullets above. */
+#start .wl-steps{margin-top:6px;gap:0}
+#start .wl-steps li{grid-template-columns:minmax(0,1.25fr) minmax(40px,.45fr) 262px;padding:18px 0;border-top:1px solid var(--line-on-cream)}
+#start .wl-steps .wl-need{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:10px;align-items:baseline}
+#start .wl-steps .wl-n{font-family:var(--display);font-style:italic;font-size:1.5rem;line-height:1;color:#8f3d14;grid-row:1 / span 2}
+#start .wl-steps .wl-need b{font-weight:600;font-size:1rem;color:var(--ink-on-cream)}
+#start .wl-steps .wl-need span{font-size:.9rem;line-height:1.5;color:var(--muted-on-cream)}
+#start .wl-steps .wl-file.opt{border-style:dashed}
+#start .wl-steps .wl-file code,#start .wl-steps .wl-file small{white-space:normal!important;overflow-wrap:anywhere}
+@media (max-width:560px){#start .wl-steps li{grid-template-columns:1fr;padding:16px 0}}
+
+/* 9. The four cards under the join chart. Each describes something the chart above already shows.
+      Three options, mock-only, switched by data-pil = cards (today) | keys | rows | list. Every word stays. */
+.jk,.pil-rows{display:none}
+/* keys: the cards become four numbered notes, and the same numbers sit on the chart where each one is true */
+html[data-pil="keys"] .jk{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;border:1px solid var(--gold);
+  color:var(--gold);font:500 .62rem/1 var(--mono);font-style:normal;flex:none;margin-left:8px;vertical-align:middle;
+  transition:background .25s ease,color .25s ease,box-shadow .25s ease}
+html[data-pil="keys"] .jc-head>span:first-child{display:flex;justify-content:flex-end;align-items:center}
+/* room for the review flag and its number on one line */
+@media (min-width:761px){html[data-pil="keys"] .jc-head,html[data-pil="keys"] .jc-row{grid-template-columns:minmax(150px,262px) minmax(0,1fr)}}
+html[data-pil="keys"] .jc-name .jk{margin-left:0}
+html[data-pil="keys"] .cg-pillars{gap:0 clamp(18px,2.4vw,34px);margin-top:24px}
+html[data-pil="keys"] .cg-pill{border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:16px 0 6px;outline:0;
+  transition:border-color .25s ease}
+html[data-pil="keys"] .cg-pill .jk{margin:0 0 12px}
+html[data-pil="keys"] .cg-pill b{margin-top:0}
+html[data-pil="keys"] .cg-pill:hover,html[data-pil="keys"] .cg-pill:focus-visible{border-top-color:var(--gold)}
+html[data-pil="keys"] #graph[data-key="1"] .jk[data-k="1"],html[data-pil="keys"] #graph[data-key="2"] .jk[data-k="2"],
+html[data-pil="keys"] #graph[data-key="3"] .jk[data-k="3"],html[data-pil="keys"] #graph[data-key="4"] .jk[data-k="4"]{background:var(--gold);color:var(--ink);box-shadow:0 0 0 4px rgba(242,154,69,.2)}
+html[data-pil="keys"] .jc-head .jc-cols span,html[data-pil="keys"] .jc-name span,html[data-pil="keys"] .jc-edge,html[data-pil="keys"] .jc-row{transition:color .25s ease,background .25s ease}
+html[data-pil="keys"] #graph[data-key="1"] .jc-head .jc-cols span{color:var(--fg)}
+html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(224,122,58,.12);margin-inline:-10px;padding-inline:10px;border-radius:10px}
+html[data-pil="keys"] #graph[data-key="3"] .jc-name span{color:var(--gold)}
+html[data-pil="keys"] #graph[data-key="4"] .jc-edge{color:var(--fg)}
+html[data-pil="keys"] #graph[data-key="4"] .jc-rec{border-color:var(--gold)}
+/* rows: each card becomes a row with its own small example beside the words */
+html[data-pil="rows"] .cg-pillars{display:none}
+html[data-pil="rows"] div.pil-rows{display:grid;margin-top:26px;border-top:1px solid var(--line)}
+html[data-pil="rows"] p.pil-rows{display:block}
+.pil-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,56px);align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.pil-row b{display:block;font-family:var(--body);font-weight:600;font-size:1rem;color:var(--fg);margin:0 0 6px}
+.pil-row p{font-size:.86rem;line-height:1.55;margin:0}
+.pil-a{font-size:.8rem;color:var(--muted);min-width:0}
+.pil-src{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.pil-src span{display:inline-flex;align-items:center;gap:6px;font-size:.78rem}
+.pil-src svg{width:15px;height:15px;color:var(--gold);fill:currentColor}
+.pil-src svg.ln{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pil-row p.pil-door{margin-top:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--faint)}
+.pil-door code{color:var(--gold);font:inherit}
+.pil-rev{border:1px dashed var(--rose);border-radius:12px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.pil-rev b{display:inline;margin:0;font-weight:500;font-size:.9rem}
+.pil-rev .pil-q{flex:1 1 180px;min-width:0}
+.pil-rev code{font-family:var(--mono);font-size:.66rem;color:var(--rose)}
+.pil-rev .pil-btn{font-size:.72rem;border:1px solid var(--line);border-radius:7px;padding:4px 9px;color:var(--fg)}
+.pil-code{margin:0;font-family:var(--mono);font-size:.72rem;line-height:1.75;color:var(--muted);border-left:2px solid var(--gold);padding:2px 0 2px 14px;white-space:pre-wrap}
+.pil-code i{font-style:normal;color:var(--gold)}
+.pil-find{display:grid;gap:7px}
+.pil-find .pil-ask{color:var(--fg);font-size:.86rem}
+.pil-find div{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.78rem}
+.pil-find code{font-family:var(--mono);font-size:.64rem;color:var(--gold);min-width:44px}
+.pil-find u{text-decoration:none;display:inline-block;width:18px;height:1px;background:var(--gold);opacity:.7}
+p.pil-cap{margin:12px 0 0;font-size:.78rem;color:var(--faint)}
+@media (max-width:760px){.pil-row{grid-template-columns:1fr;gap:14px;padding:22px 0}}
+/* list: the same four, no boxes, two by two */
+html[data-pil="list"] .cg-pillars{grid-template-columns:1fr 1fr;gap:0 clamp(24px,5vw,70px);margin-top:26px;border-top:1px solid var(--line)}
+html[data-pil="list"] .cg-pill{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:18px 0}
+html[data-pil="list"] .cg-pill b{margin-top:0}
+@media (max-width:760px){html[data-pil="list"] .cg-pillars{grid-template-columns:1fr}}
+
+/* 10. Search on the join chart. Note 4 says "vector search to find it fast, a knowledge graph to explain how it
+       connects"; the chart only showed the second half. Three options, mock-only, data-srch = none | corner | record | ask.
+       The query is by meaning, not by name: nobody typed "Dana". Made-up example, same cast as the chart. */
+.jc-q,.jc-found,.jc-ask{display:none}
+.jc-q code,.jc-found code,.jc-ask code{font-family:var(--mono);font-size:.64rem;color:var(--gold);flex:none}
+html[data-srch="corner"] .jc-head>span:first-child{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+html[data-srch="corner"] .jc-q{display:inline-flex;align-items:center;gap:8px;min-width:0;font-size:.82rem;color:var(--muted);
+  border-bottom:1px solid var(--line);padding:0 2px 5px;transition:color .25s ease,border-color .25s ease}
+html[data-srch="record"] .jc-found{display:flex;align-items:center;gap:8px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line-2);
+  font-size:.82rem;color:var(--muted);transition:color .25s ease}
+html[data-srch="ask"] .jc-ask{display:grid;gap:7px;grid-column:1 / -1;padding-bottom:16px;border-bottom:1px solid var(--line-2)}
+.jc-ask .jc-askq{color:var(--fg);font-size:.98rem;display:flex;align-items:center}
+.jc-ask div{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;color:var(--muted);transition:color .25s ease}
+.jc-ask code{min-width:50px}
+.jc-ask u{text-decoration:none;display:inline-block;width:20px;height:1px;background:var(--gold);opacity:.7}
+html[data-pil="keys"] #graph[data-key="4"] .jc-q{color:var(--fg);border-bottom-color:var(--gold)}
+html[data-pil="keys"] #graph[data-key="4"] .jc-found,html[data-pil="keys"] #graph[data-key="4"] .jc-ask div{color:var(--fg)}
+html[data-pil="keys"] .jc-q .jk,html[data-pil="keys"] .jc-found .jk{margin-left:2px}
+</style>
+<style id="amber">
+/* ── Amber (2026-11-16, local review build). Material and color only; every section, script and
+   animation is kept. Tokens moved in :root; hand-written golds were mapped by build_amber.py.
+   This layer removes decoration that stood in for material, adds the two pieces of glass,
+   and holds the new hero and the band under it. ── */
+
+/* 1. No aurora, grain or vignette. One flat ground. */
+.atmos,.vignette{display:none!important}
+
+/* 2. Gradient text goes flat. */
+.g{background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;color:inherit}
+
+/* 3. Buttons: solid, radius 10px. Light on dark, burnt amber on cream. */
+.btn{border-radius:10px}
+p a.btn,.lead a.btn{text-decoration:none}
+.btn.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
+.btn.primary:hover{background:#ffe4c4;box-shadow:none;transform:translateY(-1px)}
+.btn.ghost{border-color:rgba(255,236,214,.26)}
+.btn.gold-line{border-color:rgba(242,154,69,.6)}
+.btn.gold-line::before{display:none}
+section.light .btn.primary,.lightband .btn.primary{background:#8f3d14;color:#fff3e4}
+section.light .btn.primary:hover,.lightband .btn.primary:hover{background:#7a3210}
+section.light .btn.ghost:hover,.lightband .btn.ghost:hover{border-color:#8f3d14;color:#8f3d14}
+#copyKit.copied{box-shadow:none}
+.cos-form .cf-submit{background:#fff0dc;color:#2a1206;border-radius:10px}
+.cos-form .cf-submit:hover{box-shadow:none;transform:none;background:#ffe4c4}
+
+/* 4. Solid avatars and badges. */
+.hb-ava,.pc-ava{background:#f29a45;color:#2a1206}
+.cg-h .cg-badge{background:#f29a45;border-color:transparent}
+.cg-h .cg-badge svg{stroke:#2a1206}
+
+/* 5. One depth system: flat panels with a hairline border. No drop shadows, no glows. */
+.tier,.does,.int,.gc,.cg-pill,.intc,.badges .chip{background:var(--panel)}
+.cg-stage,.jc,.teams,.inline-cta{background:var(--panel)}
+.cg-card,.chat-mock .pc-card,.kit-gate .ku-card,#philosophy .acc,.kg-tipbox{background:var(--ink-2);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.cg-node .cg-ic{background:var(--ink-2);box-shadow:none}
+.cg-node.ghost .cg-ic{background:var(--panel)}
+.kgframe{background:#220d06;box-shadow:none}
+.art,.grow-panel,.wl-file,section.light .term,.ctl-win{box-shadow:none}
+@media(hover:hover) and (pointer:fine){.cg-stage.go .cg-card:hover{box-shadow:none;border-color:rgba(242,154,69,.5)}}
+.jc-cols i.on,#teams .util-band,.art-log li::before,.intc-row.zero .intc-bar i,.wl-wire::after{box-shadow:none}
+.tier .bar-fill i,.intc-bar i,#teams .util-band{background:var(--gold)}
+.intc-row.zero .intc-bar i{background:var(--green)}
+.grow-axis::before{background:rgba(242,154,69,.55)}
+
+/* 5b. Small labels on the resin cards hold 4.5:1 (the ghost tone measured 2.9 to 3.1 there).
+       Cards behind the brief and the faded back cards keep their dimming on purpose. */
+.cg-h .cg-m,.cg-r .cg-k,.pc-s,.hb-s,.hb-time{color:var(--faint)}
+#tiers .grow-tree{color:rgba(251,238,221,.52)}
+
+/* 5c. Phones with reduced motion: the base's reduced-motion rule re-applied translate(-50%,-50%) to the
+       stacked graph cards after its phone rule removed it, pulling each card half off the stage. */
+@media (max-width:860px){.cg-stage .cg-card,.js .cg-stage .cg-card,.cg-stage.go .cg-card{transform:none}}
+
+/* 6. Glass, only on things you can see inside: the morning brief and the join chart's record. */
+.hd-brief,.jc-rec{background:linear-gradient(180deg,rgba(255,170,90,.17),rgba(255,170,90,.05));border:1px solid rgba(255,182,112,.3);
+  box-shadow:inset 0 1px 0 rgba(255,232,204,.16);backdrop-filter:none;-webkit-backdrop-filter:none}
+
+/* Miles 19:41: the brief was too see-through; the connector lines and dots ran through it.
+   Same amber gradient, border and inset highlight, over an opaque resin base. */
+.hd-brief{background:linear-gradient(180deg,rgba(255,170,90,.17),rgba(255,170,90,.05)),var(--ink)}
+
+/* 7. "Needs review" keeps a hue of its own once rose and gold both turn amber: cream, dashed. */
+.jc-cols i.rv{border-color:var(--fg)}
+.jc-ln.rv{border-top-color:var(--fg)}
+.jc-flag{color:var(--fg);border-color:rgba(251,238,221,.7)}
+html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(255,236,214,.07)}
+
+/* 8. Mono caps only on data readouts. The old hero's small print is set in DM Sans, sentence case. */
+.badge-note{font-family:var(--body);font-size:.86rem;letter-spacing:0;text-transform:none;color:var(--faint);line-height:1.5}
+.badge-note b{color:var(--fg);font-weight:500}
+.hero-meta{font-family:var(--body);font-size:.95rem;letter-spacing:0;color:var(--faint)}
+.hero-meta b{font-family:var(--body);font-style:normal;font-weight:600;font-size:1.02rem;color:var(--gold)}
+
+/* 9. Hero: what COS takes in, the glass mark in its scene, and the one entry point (parts frozen 20:2x, 09-scene b422d73135b8).
+      The canvas draws the whole scene, opaque; this CSS gradient is only the no-WebGL fallback. Layers: the scene,
+      strands (trimmed at the glass), travelers, then text and the entry point. */
+.amber-hero{position:relative;z-index:2;overflow:hidden;isolation:isolate;color:#fff2e2;
+  --ah-cx:50%;--ah-cy:66%;--ah-r:880px;--ah-fade:260px;
+  background:linear-gradient(180deg,rgba(52,20,10,0) calc(100% - var(--ah-fade)),rgba(52,20,10,.45) calc(100% - var(--ah-fade)*.55),
+    rgba(52,20,10,.85) calc(100% - var(--ah-fade)*.2),var(--ink) calc(100% - 16px),var(--ink) 100%),
+    radial-gradient(circle var(--ah-r) at var(--ah-cx) var(--ah-cy),#c96a26 0%,#a3481a 28%,#6f2c10 55%,var(--ink) 100%);
+  padding:164px var(--gut) 40px}   /* at least 56px of air under the nav card */
+.ah-lines{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.ah-lines path{fill:none;stroke:rgba(255,226,196,.30);stroke-width:1.1}
+#amberGL{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
+.amber-hero.gl-on #amberGL{opacity:1}
+.ah-flow{position:absolute;left:0;top:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible;color:#fff0dc}
+.ah-inner{position:relative;z-index:3;max-width:1180px;margin:0 auto}
+.ah-head{max-width:780px;margin:0 auto;text-align:center}
+.amber-hero h1{font-family:var(--display);font-weight:400;font-optical-sizing:auto;font-variation-settings:"opsz" 144;
+  font-size:clamp(2.45rem,4.6vw,3.65rem);line-height:1.05;letter-spacing:-.015em;color:#fff2e2;text-wrap:balance;max-width:760px;margin:0 auto}
+.ah-sub{margin:18px auto 0;max-width:560px;font-size:clamp(1.02rem,1.35vw,1.125rem);line-height:1.5;color:#fbe9d3}
+.ah-cta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;margin-top:22px}
+.amber-hero .btn.primary{padding:0 18px;height:44px;font-weight:600;font-size:15px}
+.ah-ln{display:inline-flex;align-items:center;min-height:44px;color:#fff2e2;font-weight:500;font-size:15px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,240,224,.5)}
+.ah-ln:hover{color:#fff2e2;text-decoration-color:#fff2e2}
+.amber-hero :focus-visible{outline-color:#fff0dc}
+/* The mark sits in a fixed middle column so it stays under the headline; the two lists take the sides. */
+.ah-stage{display:grid;grid-template-columns:minmax(0,1fr) 274px minmax(0,1fr);align-items:center;margin-top:6px}
+.ah-mark{position:relative;justify-self:center;width:274px;height:300px}
+.ah-still{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(40,10,0,.45));transition:opacity .7s ease}
+.amber-hero.gl-on .ah-still{opacity:0}
+.amber-hero p.ah-colh{margin:0 0 12px;font-size:13px;font-weight:600;line-height:1.2;color:#fde6cc}   /* #f3d2ae measured 4.07:1 near the core */
+.ah-col ul{list-style:none;margin:0;padding:0}
+.ah-in li{display:flex;align-items:center;gap:11px;height:34px;font-size:14.5px;font-weight:500;line-height:1.2;color:#fff0dc;opacity:.9;transition:opacity .3s ease}
+.ah-in li.hot{opacity:1}
+.ah-ic{width:17px;height:17px;flex:none;fill:#fff0dc;color:#fff0dc}
+.ah-mono{display:inline-grid;place-items:center;width:17px;height:17px;flex:none;border:1.2px solid #fff0dc;border-radius:50%;font-size:10px;font-weight:600;line-height:1}
+/* Replaces: jobs COS now does itself, the old tool struck through. */
+.amber-hero p.ah-colh.ah-rep{margin-top:20px}
+.ah-in .ah-rep-list li{display:grid;grid-template-columns:19px minmax(0,1fr);column-gap:9px;row-gap:3px;align-items:center;align-content:center;height:auto;min-height:46px}
+.ah-sk{width:19px;height:19px;fill:none}
+.ah-in .ah-rep-list .ah-nm{justify-self:start}   /* content width, so the strands start after the longest name */
+.ah-o2{grid-column:2;font-size:13px;font-weight:400;line-height:1.3;color:#fde6cc}   /* measured 3.91:1 at #f3d2ae .9; this holds 4.5 */
+.ah-o2 s{text-decoration-thickness:1.4px}
+/* Meets you on: one entry point. One surface at a time, a rail of five, a travelling line, one sentence (parts/05 .one). */
+.amber-hero .one{width:330px;max-width:100%;color:#fff0dc}
+.amber-hero p.one-h{margin:0;font-size:15px;font-weight:600;line-height:1.3;color:#fde6cc}
+.amber-hero .one-h b{font-weight:600;color:#fff0dc}
+.amber-hero .one-stage{position:relative;height:50px;margin-top:12px}
+.amber-hero .one-stage .sf{position:absolute;left:0;top:0;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.amber-hero .one-stage .sf.on{opacity:1;transform:none}
+.amber-hero .one-rail{position:relative;display:flex;gap:6px;margin-top:8px;padding-bottom:7px}
+.amber-hero .one-rail button{all:unset;box-sizing:border-box;cursor:pointer;width:34px;height:30px;display:grid;place-items:center;border-radius:6px;color:rgba(255,240,220,.62);transition:color .25s ease}
+.amber-hero .one-rail button.on,.amber-hero .one-rail button:hover{color:#fff0dc}
+.amber-hero .one-rail button:focus-visible{outline:2px solid #f6b46e;outline-offset:1px}
+.amber-hero .one-rail svg{width:18px;height:18px}
+.amber-hero .one-rail .bar{position:absolute;left:0;bottom:0;width:34px;height:2px;border-radius:1px;background:#f6b46e;transition:transform .35s cubic-bezier(.3,.8,.3,1),width .35s ease}
+.amber-hero p.one-sub{margin:10px 0 0;font-size:13px;line-height:1.45;color:#fde6cc;max-width:310px;min-height:57px}
+.amber-hero .sf-team .sfb b{font-weight:600}
+.amber-hero .sf-team .sfb span{color:#f6dcc0}
+.amber-hero .sf{color:#fff0dc}
+.amber-hero .sf p{margin:5px 0 0;font-size:12.5px;line-height:1.2;color:#fde6cc}   /* #f3d2ae measured 4.03:1 at 1100 */
+.amber-hero .sfb{display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;height:30px;padding:0 11px;border-radius:9px;background:rgba(30,9,3,.6);
+  border:1px solid rgba(255,226,196,.16);font-size:13px;font-weight:500;line-height:1;white-space:nowrap;transition:border-color .45s ease,color .45s ease}
+.amber-hero .sf.lit .sfb{border-color:rgba(255,196,130,.8)}
+.amber-hero .sf-mac .m{width:11px;height:12px;flex:none}
+.amber-hero .sf-mac b{font-weight:600}
+.amber-hero .sf-mac span{color:#f6dcc0}
+.amber-hero .sf-mac i{font:400 12px/1 var(--mono);font-style:normal;color:#f3d2ae;margin-left:6px}
+.amber-hero .sf-web .dots{display:flex;gap:4px}
+.amber-hero .sf-web .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,226,196,.35)}
+.amber-hero .sf-web .tab{padding:5px 8px;border-radius:6px;background:rgba(255,226,196,.13);font-weight:600}
+.amber-hero .sf-web span:last-child{color:#f6dcc0}
+.amber-hero .sf-phone .sfb{height:46px;border-radius:13px;gap:10px}
+.amber-hero .sf-phone .app{width:26px;height:26px;border-radius:7px;background:#fff0dc;color:#4a160c;display:grid;place-items:center;flex:none}
+.amber-hero .sf-phone .app svg{width:13px;height:14px}
+.amber-hero .sf-phone b{display:block;font-weight:600;font-size:12.5px}
+.amber-hero .sf-phone b i{font-style:normal;font-weight:400;color:#f3d2ae;margin-left:7px}
+.amber-hero .sf-phone div span{display:block;margin-top:5px;color:#f6dcc0}
+.amber-hero .sf-lens .sfb{height:34px;padding:0 20px;border-radius:17px 17px 24px 24px;background:rgba(9,6,4,.86);border:2px solid #15100c;color:#58e488;text-shadow:0 0 8px rgba(70,232,120,.28)}
+.amber-hero .sf-lens.lit .sfb{border-color:#15100c;color:#7dffa6}
+.amber-hero .sf-term .sfb{font:400 12.5px/1 var(--mono);border-radius:7px}
+.amber-hero .sf-term .pr{color:#f6b46e}
+.amber-hero .sf-term .dim{color:#f3d2ae;margin-left:4px}
+/* The mark leans toward a fine pointer and a drag turns it; text and links keep their own cursor. */
+@media (hover:hover) and (pointer:fine){.amber-hero{cursor:grab}.amber-hero.dragging{cursor:grabbing}.ah-head,.ah-col,.amber-hero .ah-proof{cursor:auto}}
+.amber-hero p.ah-proof{margin:10px auto 0;max-width:640px;text-align:center;font-size:13.5px;line-height:1.45;color:#f3d2ae}
+.ah-proof b{font-weight:600;color:#fff0dc;font-variant-numeric:tabular-nums}
+.ah-proof span{opacity:.5;margin:0 8px}
+.ah-flow .od{fill:#ffd9a8}
+.ah-flow .halo{fill:rgba(60,20,4,.5);stroke:rgba(255,214,170,.45);stroke-width:1}
+.ah-flow use{fill:#fff0dc}
+.ah-flow .tr.sk use{fill:none}
+.ah-flow .mono{font:600 10.5px var(--body);text-anchor:middle;fill:#fff0dc}
+.ah-out{padding-left:108px}
+@media (max-width:1279px){.ah-out{padding-left:44px}}
+/* Below 1100px: headline, CTAs, the mark, then the lists; the surfaces become a plain list in the same forms. */
+@media (max-width:1099px){
+  .amber-hero{padding:164px var(--gut) 44px}
+  .ah-stage{grid-template-columns:minmax(0,1fr);max-width:560px;margin:26px auto 0;align-items:start}
+  .ah-mark{grid-row:1;width:200px;height:219px;margin:0 auto 34px}
+  .ah-in{grid-row:2}
+  .ah-in ul:first-of-type{columns:2;column-gap:18px}
+  .ah-in li{break-inside:avoid}
+  .ah-out{grid-row:3;margin-top:26px;padding-left:0}
+  .amber-hero .one{width:auto}
+  /* touch targets at least 44px wherever the stack is used (the Duo, folded and open) */
+  .amber-hero .one-rail{gap:4px}
+  .amber-hero .one-rail button{width:44px;height:44px}
+  .amber-hero p.ah-proof{margin-top:26px}
+}
+@media (max-width:1000px){.amber-hero{padding-top:132px}}   /* no top strip here: the card ends at 68px */
+@media (pointer:coarse){.amber-hero .one-rail button{width:44px;height:44px}}
+/* Duo open (951 x 539) and other short, wide screens: the stack, tightened so headline, subhead, both buttons and the
+   top of the mark fit the first screen. The side-by-side composition needs about 880px of height. */
+@media (max-width:1099px) and (min-width:700px) and (max-height:620px){
+  .amber-hero{padding-top:128px}
+  .ah-sub{margin-top:12px}
+  .ah-cta{margin-top:16px}
+  .ah-stage{margin-top:14px}
+  .ah-mark{width:164px;height:180px;margin-bottom:28px}
+}
+/* Duo folded (382 x 557) and other narrow phones: a smaller headline so it, the subhead and both buttons fit the first screen. */
+@media (max-width:440px){
+  .amber-hero{padding-top:112px}
+  .amber-hero h1{font-size:2.15rem}
+  .ah-sub{margin-top:14px;font-size:1rem}
+  .ah-cta{margin-top:18px;gap:8px 18px}
+  .ah-stage{margin-top:18px}
+}
+@media (prefers-reduced-motion:reduce){#amberGL,.ah-still,.ah-in li,.amber-hero .sfb,.amber-hero .one-stage .sf,.amber-hero .one-rail .bar{transition:none}}
+.ah-sim .ah-still{display:none}
+.ah-sim #amberGL,.ah-sim .one-stage .sf,.ah-sim .one-rail .bar{transition:none}
+
+/* 10. Right under the hero: what the old hero showed, kept and moved. */
+.amber-band{padding-block:clamp(28px,4vw,52px) clamp(56px,8vw,100px)}
+.amber-band h2{font-size:clamp(1.75rem,3vw,2.45rem);line-height:1.12;letter-spacing:-.012em;color:var(--fg);max-width:22ch}
+.amber-band .ab-lead{margin-top:18px;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.55;color:var(--muted);max-width:44ch}
+.amber-band .hero-marks{margin-top:26px}
+/* The brief is glass now, so nothing with text may sit behind it: the two record cards move clear of it.
+   Measured before: "Investor Update" ran over "Q3 pricing needs your call" and 7:02 over "Q3 launch". */
+.amber-band .hero-demo{min-height:600px}
+.amber-band .hd-b1{left:78%;top:9%}
+.amber-band .hd-b2{left:22%;top:91%}
+.amber-band .hd-brief{top:50%}
+@media (max-width:1079px){.amber-band .hero-demo{min-height:620px}}
+/* Narrow phones (Duo folded, 382): the two cards stay inside the column (at 78% and 22% they ran 19px past the edge). */
+@media (max-width:520px){.amber-band .hd-b1{left:calc(100% - 115px)}.amber-band .hd-b2{left:115px}}
+
+/* 11. Nav: the resin card from the approved mock (cream lockup, cream links). The site's own logo line-draw and its
+       inset Log in / Download control (.nav-actions with data-mode) are kept; only their paint changes. */
+.nav .nav-main{background:rgba(255,232,206,.07);border:1px solid rgba(255,226,196,.17);border-radius:14px;box-shadow:none;
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);transition:background-color .3s ease}
+.nav.solid .nav-main{background:rgba(52,20,10,.94)}
+.nav .brand{color:#fff2e2}
+.nav .links > a,.nd-btn{color:rgba(255,238,220,.8)}
+.nav .links > a:hover,.nd-btn:hover,.nd[data-open] .nd-btn{color:#fff2e2;background:rgba(255,236,214,.08)}
+.nav .links .nav-actions{background:rgba(34,11,2,.42);border-radius:13px;box-shadow:inset 0 1px 3px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,226,196,.09)}
+.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{border-radius:10px;
+  transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease,background-color .3s ease,color .3s ease}
+.nav .links .nav-actions .nav-login{color:#fff2e2;font-weight:600}
+.nav .links .nav-actions .cta{background:#fff0dc;color:#2a1206}
+/* The cream fill sits on whichever one the pointer or focus is on; the other stays in the well. */
+.nav .links .nav-actions[data-mode="login"] .nav-login{background:#fff0dc;color:#2a1206}
+.nav-burger{border-color:rgba(255,226,196,.24)}
+.nav-burger span{background:#fff2e2}
+/* Dropdown panels in the same resin, fully opaque so page text never shows through. */
+@media (min-width:1001px){
+  .nd-menu{background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 70px -28px rgba(0,0,0,.6);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+}
+/* The burger from 1000px down (the base switched at 900): at 951 (Duo open) the five links and the inset control
+   wrapped to two lines and the card nearly met the headline. Same rules as the base's phone nav, moved up. */
+@media (max-width:1000px){
+  .nav-top{display:none}
+  .nav-main{margin-top:10px}
+  .nav-burger{display:grid}
+  .nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;border-radius:16px;
+    box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .25s,visibility .25s}
+  .nav .links.open{opacity:1;visibility:visible;transform:none}
+  .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+  .nd[data-open] .nd-menu{display:block}
+  .nav .links .nav-actions{margin:12px 0 0;width:100%}
+}
+@media (max-width:1000px){
+  .nav-burger{width:44px;height:44px}
+  .nav .links > a,.nd-btn,.nd-menu a,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{min-height:44px}
+  .nav .links > a,.nd-btn{display:flex;align-items:center}
+  .nav .links{background:var(--ink);border-color:rgba(255,226,196,.17)}   /* opaque: at .97 the hero headline ghosted through */
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+}
+@media (prefers-reduced-motion:reduce){.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta,.nav .nav-main{transition:none}}
+</style>
+
 </head>
 <body>
 
@@ -703,15 +1338,21 @@ section.light .dek{color:#7a5c2c}
   <symbol id="b-zapier" viewBox="0 0 24 24"><path d="M4.157 0A4.151 4.151 0 0 0 0 4.161v15.678A4.151 4.151 0 0 0 4.157 24h15.682A4.152 4.152 0 0 0 24 19.839V4.161A4.152 4.152 0 0 0 19.839 0H4.157Zm10.61 8.761h.03a.577.577 0 0 1 .23.038.585.585 0 0 1 .201.124.63.63 0 0 1 .162.431.612.612 0 0 1-.162.435.58.58 0 0 1-.201.128.58.58 0 0 1-.23.042.529.529 0 0 1-.235-.042.585.585 0 0 1-.332-.328.559.559 0 0 1-.038-.235.613.613 0 0 1 .17-.431.59.59 0 0 1 .405-.162Zm2.853 1.572c.03.004.061.004.095.004.325-.011.646.064.937.219.238.144.431.355.552.609.128.279.189.582.185.888v.193a2 2 0 0 1 0 .219h-2.498c.003.227.075.45.204.642a.78.78 0 0 0 .646.265.714.714 0 0 0 .484-.136.642.642 0 0 0 .23-.318l.915.257a1.398 1.398 0 0 1-.28.537c-.14.159-.321.284-.521.355a2.234 2.234 0 0 1-.836.136 1.923 1.923 0 0 1-1.001-.245 1.618 1.618 0 0 1-.665-.703 2.221 2.221 0 0 1-.227-1.036 1.95 1.95 0 0 1 .48-1.398 1.9 1.9 0 0 1 1.3-.488Zm-9.607.023c.162.004.325.026.48.079.207.065.4.174.563.314.26.302.393.692.366 1.088v2.276H8.53l-.109-.711h-.065c-.064.163-.155.31-.272.439a1.122 1.122 0 0 1-.374.264 1.023 1.023 0 0 1-.453.083 1.334 1.334 0 0 1-.866-.264.965.965 0 0 1-.329-.801.993.993 0 0 1 .076-.431 1.02 1.02 0 0 1 .242-.363 1.478 1.478 0 0 1 1.043-.303h.952v-.181a.696.696 0 0 0-.136-.454.553.553 0 0 0-.438-.154.695.695 0 0 0-.378.086.48.48 0 0 0-.193.254l-.99-.144a1.26 1.26 0 0 1 .257-.563c.14-.174.321-.302.533-.378.261-.091.54-.136.82-.129.053-.003.106-.007.163-.007Zm4.384.007c.174 0 .347.038.506.114.182.083.34.211.458.374.257.423.377.911.351 1.406a2.53 2.53 0 0 1-.355 1.448 1.148 1.148 0 0 1-1.009.517c-.204 0-.401-.045-.582-.136a1.052 1.052 0 0 1-.48-.457 1.298 1.298 0 0 1-.114-.234h-.045l.004 1.784h-1.059v-4.713h.904l.117.805h.057c.068-.208.177-.401.328-.56a1.129 1.129 0 0 1 .843-.344h.076v-.004Zm7.559.084h.903l.113.805h.053a1.37 1.37 0 0 1 .235-.484.813.813 0 0 1 .313-.242.82.82 0 0 1 .39-.076h.234v1.051h-.401a.662.662 0 0 0-.313.008.623.623 0 0 0-.272.155.663.663 0 0 0-.174.26.683.683 0 0 0-.027.314v1.875h-1.054v-3.666Zm-17.515.003h3.262v.896L3.73 13.104l.034.113h1.973l.042.9H2.4v-.9l1.931-1.754-.045-.117H2.441v-.896Zm11.815 0h1.055v3.659h-1.055V10.45Zm3.443.684.019.016a.69.69 0 0 0-.351.045.756.756 0 0 0-.287.204c-.11.155-.174.336-.189.522h1.545c-.034-.526-.257-.787-.74-.787h.003Zm-5.718.163c-.026 0-.057 0-.083.004a.78.78 0 0 0-.31.053.746.746 0 0 0-.257.189 1.016 1.016 0 0 0-.204.695v.064c-.015.257.057.507.204.711a.634.634 0 0 0 .253.196.638.638 0 0 0 .314.061.644.644 0 0 0 .578-.265c.14-.223.204-.48.189-.74a1.216 1.216 0 0 0-.181-.711.677.677 0 0 0-.503-.257Zm-4.509 1.266a.464.464 0 0 0-.268.102.373.373 0 0 0-.114.276c0 .053.008.106.027.155a.375.375 0 0 0 .087.132.576.576 0 0 0 .397.11v.004a.863.863 0 0 0 .563-.182.573.573 0 0 0 .211-.457v-.14h-.903Z"/></symbol>
   <symbol id="b-clickup" viewBox="0 0 24 24"><path d="M2 18.439l3.69-2.828c1.961 2.56 4.044 3.739 6.363 3.739 2.307 0 4.33-1.166 6.203-3.704L22 18.405C19.298 22.065 15.941 24 12.053 24 8.178 24 4.788 22.078 2 18.439zM12.04 6.15l-6.568 5.66-3.036-3.52L12.055 0l9.543 8.296-3.05 3.509z"/></symbol>
   <symbol id="b-asana" viewBox="0 0 24 24"><path d="M18.78 12.653c-2.882 0-5.22 2.336-5.22 5.22s2.338 5.22 5.22 5.22 5.22-2.34 5.22-5.22-2.336-5.22-5.22-5.22zm-13.56 0c-2.88 0-5.22 2.337-5.22 5.22s2.338 5.22 5.22 5.22 5.22-2.338 5.22-5.22-2.336-5.22-5.22-5.22zm12-6.525c0 2.883-2.337 5.22-5.22 5.22-2.882 0-5.22-2.337-5.22-5.22 0-2.88 2.338-5.22 5.22-5.22 2.883 0 5.22 2.34 5.22 5.22z"/></symbol>
+  <symbol id="am-mark" viewBox="0 0 693 760"><g fill="currentColor"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></g></symbol>
+  <symbol id="am-wave" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></g></symbol>
+  <symbol id="am-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></g></symbol>
+  <symbol id="am-mac" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/></g></symbol>
+  <symbol id="am-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.3 3.9 5.1 3.9 8.5s-1.3 6.2-3.9 8.5c-2.6-2.3-3.9-5.1-3.9-8.5S9.4 5.8 12 3.5z"/></g></symbol>
+  <symbol id="am-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.2h2"/></g></symbol>
+  <symbol id="am-glasses" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="14" r="3.6"/><circle cx="17.5" cy="14" r="3.6"/><path d="M10.1 14h3.8M2.9 14 5 7.5M21.1 14 19 7.5"/></g></symbol>
+  <symbol id="am-team" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="7" r="2.6"/><circle cx="18.5" cy="7" r="2.6"/><circle cx="12" cy="18" r="2.6"/><path d="M8.1 7h7.8M6.8 9.2l3.9 6.6M17.2 9.2l-3.9 6.6"/></g></symbol>
 </svg>
 
-<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div></div>
-<div class="vignette"></div>
 
 <nav class="nav" aria-label="Main">
   <div class="nav-top">
     <div class="nt-in">
-      <span class="nt-tag">Open-source AI chief of staff &middot; 400+ COS Glasses users</span>
+      <span class="nt-tag">Open-source AI chief of staff &middot; 500+ COS Glasses users</span>
       <div class="nt-links">
         <a href="/control/docs/">Mac Docs</a>
         <a href="/docs/">Glasses Docs</a>
@@ -797,16 +1438,74 @@ section.light .dek{color:#7a5c2c}
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<header class="hero wrap">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <h1>The best chief of staff <span class="l2 g">doesn't wait to be asked.</span></h1>
-      <p class="sub">Build an AI chief of staff on the model you already run. It preps your day, briefs you before every call, and answers like it works here. <b>Because it does.</b></p>
-      <div class="hero-cta">
+<!-- ── HERO (amber): what COS takes in, the mark, where it meets you ── -->
+<header class="amber-hero">
+  <svg class="ah-lines" id="linesA" aria-hidden="true" focusable="false" preserveAspectRatio="none"><g></g></svg>
+  <canvas id="amberGL" aria-hidden="true"></canvas>
+  <svg class="ah-flow" id="flowA" aria-hidden="true" focusable="false" preserveAspectRatio="none"><g id="travA"></g></svg>
+  <div class="ah-inner">
+    <div class="ah-head">
+      <h1>The best chief of staff doesn't wait to be asked.</h1>
+      <p class="ah-sub">Intelligence that lives where you already work. COS takes in what you take in and meets you there, before you ask.</p>
+      <div class="ah-cta">
         <a href="/control/#install" class="btn primary">Download for Mac</a>
-        <a href="/blueprint/" class="btn gold-line">Build my Blueprint</a>
+        <a href="/blueprint/" class="ah-ln">Build my Blueprint</a>
       </div>
+    </div>
+    <div class="ah-stage">
+      <div class="ah-col ah-in">
+        <p class="ah-colh" id="ah-in-h">Takes in</p>
+        <ul aria-labelledby="ah-in-h">
+          <li class="src" data-icon="b-gmail" data-node="1"><svg class="ah-ic" aria-hidden="true"><use href="#b-gmail"/></svg><span class="ah-nm">Gmail</span></li>
+          <li class="src" data-icon="b-googlecalendar" data-node="1"><svg class="ah-ic" aria-hidden="true"><use href="#b-googlecalendar"/></svg><span class="ah-nm">Calendar</span></li>
+          <li class="src" data-icon="b-slack" data-node="1"><svg class="ah-ic" aria-hidden="true"><use href="#b-slack"/></svg><span class="ah-nm">Slack</span></li>
+          <li class="src" data-icon="b-googledrive" data-node="1"><svg class="ah-ic" aria-hidden="true"><use href="#b-googledrive"/></svg><span class="ah-nm">Drive</span></li>
+          <li class="src" data-icon="b-notion" data-node="1"><svg class="ah-ic" aria-hidden="true"><use href="#b-notion"/></svg><span class="ah-nm">Notion</span></li>
+          <li class="src" data-icon="b-hubspot" data-node="2"><svg class="ah-ic" aria-hidden="true"><use href="#b-hubspot"/></svg><span class="ah-nm">HubSpot</span></li>
+          <li class="src" data-mono="∞" data-node="2"><span class="ah-mono" aria-hidden="true">∞</span><span class="ah-nm">Anything with an MCP</span></li>
+        </ul>
+        <p class="ah-colh ah-rep" id="ah-rep-h">Replaces</p>
+        <ul class="ah-rep-list" aria-labelledby="ah-rep-h">
+          <li class="src" data-icon="am-wave" data-sk="1" data-node="2"><svg class="ah-ic ah-sk" aria-hidden="true"><use href="#am-wave"/></svg><span class="ah-nm">Meeting notes</span><span class="ah-o2">in place of <s>Granola</s>, <s>Fireflies</s> and the like</span></li>
+          <li class="src" data-icon="am-mic" data-sk="1" data-node="2"><svg class="ah-ic ah-sk" aria-hidden="true"><use href="#am-mic"/></svg><span class="ah-nm">Dictation</span><span class="ah-o2">in place of <s>Wispr Flow</s> and the like</span></li>
+        </ul>
+      </div>
+      <div class="ah-mark" aria-hidden="true"><svg class="ah-still" viewBox="0 0 693 760" aria-hidden="true">
+        <defs><radialGradient id="ahAmb" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#d98a52"/><stop offset=".28" stop-color="#8a3018"/><stop offset=".7" stop-color="#4f180d"/><stop offset="1" stop-color="#2a0c06"/></radialGradient></defs>
+        <g fill="url(#ahAmb)"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></g>
+      </svg></div>
+      <div class="ah-col ah-out">
+      <div class="one" id="oneA">
+        <p class="one-h">Meets you <b id="oneWhere">on your Mac</b></p>
+        <div class="one-stage">
+          <div class="sf sf-mac on" data-where="on your Mac" data-sub="The morning brief, waiting in the menu bar."><div class="sfb"><svg class="m"><use href="#am-mark"/></svg><b>COS</b><span>Morning brief ready</span><i>7:02</i></div></div>
+          <div class="sf sf-web" data-where="in any browser" data-sub="Your Mac's COS, open from any browser."><div class="sfb"><span class="dots"><i></i><i></i><i></i></span><span class="tab">COS Control</span><span>Today</span></div></div>
+          <div class="sf sf-phone" data-where="on your phone" data-sub="A reply that is waiting for you, on the lock screen."><div class="sfb"><span class="app"><svg><use href="#am-mark"/></svg></span><div><b>COS<i>now</i></b><span>Claude has a reply for you</span></div></div></div>
+          <div class="sf sf-lens" data-where="on your glasses" data-sub="One line on the lens, when it matters."><div class="sfb">Northwind call in 2 min</div></div>
+          <div class="sf sf-team" data-where="inside Claude, Codex and Cursor" data-sub="One shared context, on the desktop or in the terminal. They pass findings to each other. No copy and paste."><div class="sfb"><b>Codex</b><span>handed its findings to</span><b>Claude</b></div></div>
+        </div>
+        <div class="one-rail" role="group" aria-label="Where COS meets you">
+          <button type="button" aria-label="Mac"><svg><use href="#am-mac"/></svg></button>
+          <button type="button" aria-label="Web"><svg><use href="#am-web"/></svg></button>
+          <button type="button" aria-label="Phone"><svg><use href="#am-phone"/></svg></button>
+          <button type="button" aria-label="Glasses"><svg><use href="#am-glasses"/></svg></button>
+          <button type="button" aria-label="Claude, Codex and Cursor"><svg><use href="#am-team"/></svg></button>
+          <i class="bar"></i>
+        </div>
+        <p class="one-sub" id="oneSub">The morning brief, waiting in the menu bar.</p>
+      </div>
+      </div>
+    </div>
+    <p class="ah-proof"><b>500+</b> people run it on their glasses <span>·</span> <b>2,000+</b> npm installs a week <span>·</span> open source</p>
+  </div>
+</header>
+
+<!-- ── BRIEF BAND: the old hero's demo and words, kept ── -->
+<section class="wrap amber-band" id="brief" aria-labelledby="brief-h">
+  <div class="hero-grid">
+    <div class="ab-copy">
+      <h2 id="brief-h">It preps your day, briefs you before every call, and answers like it works here.</h2>
+      <p class="ab-lead">Build an AI chief of staff on the model you already run.</p>
       <div class="hero-marks" aria-label="Claude, Codex, Cursor, or a local model">
         <span class="mk mk-claude" title="Claude"><svg aria-hidden="true"><use href="#m-claude"/></svg></span>
         <span class="mk mk-codex" title="Codex"><svg aria-hidden="true"><use href="#m-codex"/></svg></span>
@@ -851,11 +1550,10 @@ section.light .dek{color:#7a5c2c}
     </div>
   </div>
   <div class="hero-meta">
-    <div><b>400+</b> COS Glasses users</div>
     <div><b>In production</b> at agencies and growth companies</div>
     <div><b>5 min</b> to a useful foundation</div>
   </div>
-</header>
+</section>
 
 <div class="burn down" aria-hidden="true"></div>
 
@@ -863,16 +1561,17 @@ section.light .dek{color:#7a5c2c}
 <section class="wrap reveal light" id="problem">
   <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
   <div class="split">
-    <div class="sec-head">      <h2>If AI is electricity, most people still haven't <span class="it g">wired the house.</span></h2>
+    <div class="sec-head">      <h2>If AI is electricity, most people still haven't <span class="it g hx">wired the house.</span></h2>
     </div>
     <div>
-      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is not a system. It is a match struck in the dark.</span></p>
-      <p>The executives getting real leverage from AI are not writing better prompts. They are wiring the house, giving the model the context a world-class chief of staff would have on day 90:</p>
-      <ul class="ck">
-        <li>Who reports to you, and how each person operates</li>
-        <li>What you are working on this quarter, and why it matters</li>
-        <li>Which meetings need prep, and which are noise</li>
-        <li>The patterns that keep showing up that you keep missing</li>
+      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is a match struck in the dark.</span></p>
+      <p>The executives getting real leverage from AI have wired the house. They gave the model the context a world-class chief of staff would have on day 90:</p>
+      <ul class="wire-list" aria-label="What a chief of staff knows, and the file that holds each one">
+        <li class="wl-path" aria-hidden="true">my-cos/</li>
+        <li style="--i:0"><span class="wl-need">Who reports to you, and how each person operates</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>context/people.md</code><small># your team profiles</small></span></li>
+        <li style="--i:1"><span class="wl-need">What you are working on this quarter, and why it matters</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
+        <li style="--i:2"><span class="wl-need">Which meetings need prep, and which are noise</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>.claude/commands/prep.md</code><small># /prep: meeting preparation</small></span></li>
+        <li style="--i:3"><span class="wl-need">The patterns that keep showing up that you keep missing</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>corrections.md</code><small># patterns (auto-populated)</small></span></li>
       </ul>
       <p style="margin-top:22px"><strong>COS gives you the wiring.</strong></p>
     </div>
@@ -881,13 +1580,48 @@ section.light .dek{color:#7a5c2c}
 
 <!-- ── 02 WHAT CHANGES ── -->
 <section class="wrap reveal light" id="benefits">
-  <div class="sec-head">    <h2>You stop briefing the AI. <span class="it g">It starts briefing you.</span></h2>
+  <div class="sec-head">    <h2>COS briefs you every morning and before every call.</h2>
   </div>
-  <div class="bene-grid">
-    <div class="bene"><div class="bh">Walk in already knowing.</div><p>A morning brief built from your calendar, your threads, and your people. Prep for every meeting without opening six tabs.</p><div class="bt">Daily brief &middot; /prep</div></div>
-    <div class="bene"><div class="bh">Ask like it works there.</div><p>Instant answers from everything your company knows: clients, decisions, docs, calls. Not generic advice. Your context.</p><div class="bt">Instant recall &middot; your graph</div></div>
-    <div class="bene"><div class="bh">Add capacity, not headcount.</div><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p><div class="bt">Skills &middot; scheduled work</div></div>
+  <div class="bene-grid sec-cards">
+    <div class="bene"><div class="bh">Walk in already knowing.</div><p>A morning brief built from your calendar, threads, and people. Prep for every meeting without opening six tabs.</p><div class="bt">Daily brief &middot; /prep</div></div>
+    <div class="bene"><div class="bh">Ask like it works there.</div><p>Instant answers from everything your company knows: clients, decisions, docs, calls.</p><div class="bt">Instant recall &middot; your graph</div></div>
+    <div class="bene"><div class="bh">Add capacity without hiring.</div><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p><div class="bt">Skills &middot; scheduled work</div></div>
   </div>
+
+  <div class="art-rows sec-art">
+    <div class="art-row">
+      <div class="art-say"><h3>Walk in already knowing.</h3><p>A morning brief built from your calendar, threads, and people. Prep for every meeting without opening six tabs.</p></div>
+      <figure class="art art-doc" aria-label="Example of a prep brief for one meeting">
+        <figcaption><code>/prep</code><span>Pipeline call, 9:30</span></figcaption>
+        <dl>
+          <div><dt>With</dt><dd>Dana Mercer, Head of Growth, Northwind</dd><code>people.md</code></div>
+          <div><dt>Last met</dt><dd>2 days ago</dd><code>calendar</code></div>
+          <div><dt>Since then</dt><dd>Investor Update: 3 action items, with Priya Raman</dd><code>granola</code></div>
+          <div class="need"><dt>Needs you</dt><dd>Q3 pricing needs your call</dd><code>graph decision</code></div>
+        </dl>
+      </figure>
+    </div>
+    <div class="art-row">
+      <div class="art-say"><h3>Ask like it works there.</h3><p>Instant answers from everything your company knows: clients, decisions, docs, calls.</p></div>
+      <figure class="art art-ask" aria-label="Example of a question and its answer">
+        <p class="q">What did we decide about the Lakeside migration timeline?</p>
+        <p class="a">Three calls reference it. The June 4 review moved cutover to Q4, pending the parity list Priya owns. Nothing since has changed that date.</p>
+        <p class="src"><span><code>decision</code> Cutover moves to Q4, Jun 4</span><span><code>context</code> Priya owns the parity list, Jun 4</span></p>
+      </figure>
+    </div>
+    <div class="art-row">
+      <div class="art-say"><h3>Add capacity without hiring.</h3><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p></div>
+      <figure class="art art-log" aria-label="Example of work handled before the morning brief">
+        <figcaption><span>Handled before your 7:02 brief</span></figcaption>
+        <ol>
+          <li><span>Recap sent to the Northwind thread</span><em>gmail, done</em></li>
+          <li><span>#growth triaged, replies drafted</span><em>slack, handled</em></li>
+          <li><span>Investor Update: 3 action items logged</span><em>granola, logged</em></li>
+        </ol>
+      </figure>
+    </div>
+  </div>
+  <p class="art-note sec-art">Example output. The names are not real.</p>
   <p class="bene-quote">&ldquo;Add revenue without adding headcount.&rdquo;<small>The brief one agency gave us for their COS. It stuck.</small></p>
 </section>
 
@@ -895,8 +1629,8 @@ section.light .dek{color:#7a5c2c}
 
 <!-- ── 03 THE CONTEXT GRAPH ── -->
 <section class="wrap reveal" id="graph">
-  <div class="sec-head">    <h2>One context graph. <span class="it g">Every source you already use.</span></h2>
-    <p class="lead">Not another app to move into. COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected context graph. Structured, searchable, and yours.</p>
+  <div class="sec-head">    <h2>One context graph. <span class="it g hx">Every source you already use.</span></h2>
+    <p class="lead">COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected, searchable context graph that stays yours.</p>
   </div>
 
   <div class="cg-stage" id="cgStage" aria-hidden="true">
@@ -995,22 +1729,48 @@ section.light .dek{color:#7a5c2c}
       <div class="cg-r"><span class="cg-k">Re</span><span class="cg-v gold">Q3 launch</span></div>
     </div>
   </div>
+  <figure class="jc" aria-label="Example: where each record was seen, one row per record, one column per source">
+    <div class="jc-ask"><span class="jc-askq">Who should I ask about Q3 launch?<i class="jk" data-k="4">4</i></span>
+      <div><code>find</code>Dana Mercer, Head of Growth</div>
+      <div><code>explain</code>Q3 launch<u></u>Dana Mercer<u></u>Northwind Co.</div></div>
+    <div class="jc-grid">
+      <div class="jc-head" aria-hidden="true"><span><span class="jc-q"><code>find</code>who runs growth?<i class="jk" data-k="4">4</i></span><i class="jk" data-k="1">1</i></span><div class="jc-cols"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span></div></div>
+      <div class="jc-row sel" style="--r:0"><p class="jc-name"><b>Dana Mercer</b><span>person</span><i class="jk" data-k="3">3</i></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail, Slack and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:1"><p class="jc-name"><b>Northwind Co.</b><span>organization</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail, Slack and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:2"><p class="jc-name"><b>Q3 launch</b><span>concept</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Slack, Fireflies and Drive"><span class="jc-ln" style="--a:1;--b:6"></span><i class="on" style="--c:1"></i><i style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i class="on" style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:3"><p class="jc-name"><b>Investor Update</b><span>content</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:4"><p class="jc-name"><b>Priya Raman</b><span>person</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Granola"><span class="jc-ln" style="--a:2;--b:4"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:5"><p class="jc-name"><b>Q3 Pitch Deck.pdf</b><span>artifact</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:6"><p class="jc-name"><b>Jordan Pierce</b><span>person</span><em class="jc-flag" style="font-style:normal">review</em><i class="jk" data-k="2">2</i></p><div class="jc-cols" role="img" aria-label="Low-confidence matches in Fireflies and Drive, held for review"><span class="jc-ln rv" style="--a:5;--b:6"></span><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i class="rv" style="--c:5"></i><i class="rv" style="--c:6"></i></div></div>
+    </div>
+    <div class="jc-rec" aria-label="The joined record for Dana Mercer">
+      <p class="jc-found"><code>find</code>who runs growth?<i class="jk" data-k="4">4</i></p>
+      <h3>Dana Mercer</h3>
+      <p class="jc-role">Head of Growth</p>
+      <dl>
+        <div><dt>Last met</dt><dd>2 days ago</dd><code>calendar</code></div>
+        <div><dt>Email</dt><dd>dana@northwind.com</dd><code>gmail</code></div>
+        <div><dt>Open</dt><dd>Q3 launch</dd><code>slack #growth</code></div>
+        <div><dt>Meeting</dt><dd>Investor Update</dd><code>granola</code></div>
+      </dl>
+      <p class="jc-edge">Company: Northwind, by graph edge<i class="jk" data-k="4">4</i></p>
+    </div>
+    <figcaption class="jc-cap">Four sources each knew one thing about Dana. Joined, they are one record. A match COS is not sure of waits for your review. Example records; the names are not real.</figcaption>
+  </figure>
 
   <div class="cg-pillars">
-    <div class="cg-pill"><div class="cg-pl">Any source</div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connect through MCP or local ingestion. You choose what to copy, index, and keep.</p></div>
-    <div class="cg-pill"><div class="cg-pl">Structured for you</div><b>Organized with review</b><p>Connected sources can be organized into people, decisions, and next steps. Low-confidence items stay visible for review.</p></div>
-    <div class="cg-pill"><div class="cg-pl">Model your world</div><b>Your schema, not a template</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div>
-    <div class="cg-pill"><div class="cg-pl">One graph, yours</div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. Your keys, your server.</p></div>
+    <div class="cg-pill" data-k="1"><i class="jk" data-k="1">1</i><div class="cg-pl">Any source</div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connect through MCP or local ingestion. You choose what to copy, index, and keep.</p></div>
+    <div class="cg-pill" data-k="2"><i class="jk" data-k="2">2</i><div class="cg-pl">Structured for you</div><b>Organized with review</b><p>Connected sources can be organized into people, decisions, and next steps. Low-confidence items stay visible for review.</p></div>
+    <div class="cg-pill" data-k="3"><i class="jk" data-k="3">3</i><div class="cg-pl">Model your world</div><b>A schema you define</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div>
+    <div class="cg-pill" data-k="4"><i class="jk" data-k="4">4</i><div class="cg-pl">One graph, yours</div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. It runs on your keys and your server.</p></div>
   </div>
 
-  <p class="cg-note">Most AI apps keep what they learn inside the app. <span class="g">COS gives you the files.</span></p>
+    <div class="pil-rows" aria-label="Examples"><div class="pil-row"><div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connect through MCP or local ingestion. You choose what to copy, index, and keep.</p></div><div class="pil-a"><div class="pil-src"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span><span>your CRM</span></div><p class="pil-door">through <code>MCP</code> or <code>local ingestion</code> &middot; you choose: copy, index, keep</p></div></div><div class="pil-row"><div><b>Organized with review</b><p>Connected sources can be organized into people, decisions, and next steps. Low-confidence items stay visible for review.</p></div><div class="pil-a"><div class="pil-rev"><span class="pil-q"><b>Jordan Pierce</b> in Fireflies and Drive. Same person?</span><code>match 0.58</code><span class="pil-btn">Same person</span><span class="pil-btn">Different</span></div></div></div><div class="pil-row"><div><b>A schema you define</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div><div class="pil-a"><pre class="pil-code"><i>domains:</i>  sales, product, hiring
+<i>entities:</i> deal, client, persona, competitor
+<i>link:</i>     person works at organization</pre></div></div><div class="pil-row"><div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. It runs on your keys and your server.</p></div><div class="pil-a"><div class="pil-find"><span class="pil-ask">What is open with Dana?</span><div><code>find</code>Q3 launch, in Slack #growth</div><div><code>explain</code>Dana Mercer<u></u>Northwind Co.<u></u>Q3 launch</div></div></div></div></div>
+  <p class="pil-rows pil-cap">Examples. The names are not real.</p>
+<p class="cg-note"><span class="g">COS keeps what it learns in files you control.</span></p>
 </section>
 
 <div class="wrap"><div class="rule"></div></div>
 
 <!-- ── 04 YOUR KNOWLEDGE GRAPH ── -->
 <section class="wrap reveal" id="realgraph">
-  <div class="sec-head">    <h2>Everything it knows about your work. <span class="it g">Out in the open.</span></h2>
+  <div class="sec-head">    <h2>Everything it knows about your work. <span class="it g hx">Out in the open.</span></h2>
     <p class="lead">The context you choose to ingest becomes a living knowledge graph: people, companies, meetings, and decisions, extracted and connected. Search it, watch it compound, and keep the working corpus in files and indexes you control. Cloud models and source systems still follow their providers' terms.</p>
   </div>
 
@@ -1046,7 +1806,7 @@ section.light .dek{color:#7a5c2c}
 <section class="wrap reveal light" id="start">
   <div class="start-top">
     <div class="start-copy">
-      <div class="sec-head">        <h2>Start on your Mac. <span class="it g">Make it yours.</span></h2>
+      <div class="sec-head">        <h2>Start on your Mac. <span class="it g hx">Make it yours.</span></h2>
         <p class="lead"><a href="/control/#install">Download COS Control</a>, move it to Applications, open it, and choose <strong>Get started</strong>. COS prepares its server inside the app. Sign in to one supported AI provider when prompted, then open Sessions. Add your work context with the optional starter kit below. On your phone, <a href="/docs/#meeting-prep">prepare with notes and files, then explicitly carry that prep into a live meeting</a> using COS Control Web.</p>
         <p><a class="btn primary" href="/control/#install">Get the Mac app</a></p>
         <p class="lead">For the starter kit, open <a href="https://claude.ai/claude-code">Claude Code</a>, <a href="https://developers.openai.com/codex/">Codex</a>, or <a href="https://cursor.com/">Cursor</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the foundation, then deepens as you use it.</p>
@@ -1087,13 +1847,20 @@ section.light .dek{color:#7a5c2c}
   </div>
   <div class="kit-does">
     <p class="does-title" style="margin:0 0 18px">What it does for you</p>
-    <div class="does-grid">
+    <div class="does-grid sec-cards">
       <div class="does"><span class="n">01</span><b>Interviews you</b><p>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</p></div>
       <div class="does"><span class="n">02</span><b>Builds your structure</b><p>Profiles your people and scaffolds your directory: operations, intelligence, weekly work.</p></div>
       <div class="does"><span class="n">03</span><b>Installs your skills</b><p>/start, /learn, /prep. A daily briefing, correction memory, and meeting prep.</p></div>
       <div class="does"><span class="n">04</span><b>Wires a connection</b><p>Slack, meetings, or any MCP. Optional, then the before/after that makes it click.</p></div>
     </div>
-  </div>
+  
+    <ul class="wire-list wl-steps sec-art" aria-label="What each setup step writes">
+      <li style="--i:0"><span class="wl-need"><em class="wl-n">01</em><b>Interviews you</b><span>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
+      <li style="--i:1"><span class="wl-need"><em class="wl-n">02</em><b>Builds your structure</b><span>Profiles your people and scaffolds your directory: operations, intelligence, weekly work.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>context/people.md</code><code>operations/&lt;domain&gt;/</code><small># tasks.md, intelligence/, wk&lt;NN&gt;_&lt;year&gt;/</small></span></li>
+      <li style="--i:2"><span class="wl-need"><em class="wl-n">03</em><b>Installs your skills</b><span>/start, /learn, /prep. A daily briefing, correction memory, and meeting prep.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>.claude/commands/start.md</code><code>.claude/commands/learn.md</code><code>.claude/commands/prep.md</code></span></li>
+      <li style="--i:3"><span class="wl-need"><em class="wl-n">04</em><b>Wires a connection</b><span>Slack, meetings, or any MCP. Optional, then the before/after that makes it click.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file opt"><code>one MCP connection</code><small># optional</small></span></li>
+    </ul>
+</div>
 </section>
 
 <div class="wrap reveal lightband">
@@ -1105,7 +1872,7 @@ section.light .dek{color:#7a5c2c}
 
 <!-- ── 06 WHAT YOU GET ── -->
 <section class="wrap reveal light" id="get">
-  <div class="sec-head">    <h2>A directory that <span class="it g">is</span> the system.</h2>
+  <div class="sec-head">    <h2>A directory that <span class="it g hx-em">is</span> the system.</h2>
       <p class="dek">What you get</p>
   </div>
   <div class="term">
@@ -1122,29 +1889,58 @@ section.light .dek{color:#7a5c2c}
 │   └── &lt;domain&gt;/             <span class="cm"># tasks.md · intelligence/ · wk&lt;NN&gt;_&lt;year&gt;/</span>
 └── corrections.md            <span class="cm"># patterns (auto-populated)</span></pre>
   </div>
-  <p style="margin-top:24px">Every Claude Code session in this directory starts with your full context loaded. No re-explaining. Just: <strong>here is what matters today.</strong></p>
+  <p style="margin-top:24px">Every Claude Code session in this directory starts with your full context loaded, so it can open with <strong>what matters today.</strong></p>
 </section>
 
 <!-- ── 07 TIERS ── -->
 <section class="wrap reveal light" id="tiers">
-  <div class="sec-head">    <h2>Not a setup. A system that <span class="it g">deepens.</span></h2>
+  <div class="sec-head">    <h2>Useful in five minutes, <span class="it g hx">deeper the longer you use it.</span></h2>
       <p class="dek">The four tiers</p>
   </div>
-  <div class="tiers">
+  <div class="tiers sec-cards">
     <div class="tier"><div class="tl">Tier 1 · 5 minutes</div><h3>Foundation</h3><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p><div class="bar-fill"><i style="width:25%"></i></div></div>
     <div class="tier"><div class="tl">Tier 2 · 30 minutes</div><h3>Operational</h3><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p><div class="bar-fill"><i style="width:50%"></i></div></div>
     <div class="tier"><div class="tl">Tier 3 · 2 weeks</div><h3>Compounding</h3><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p><div class="bar-fill"><i style="width:75%"></i></div></div>
     <div class="tier"><div class="tl">Tier 4 · 1+ month</div><h3>Agentic</h3><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p><div class="bar-fill"><i style="width:100%"></i></div></div>
   </div>
+
+  <figure class="grow sec-art" aria-label="The my-cos directory at each of the four tiers, from five minutes to a month and on">
+    <div class="grow-panel">
+      <div class="grow-axis" aria-hidden="true"><span>5 minutes</span><span>30 minutes</span><span>2 weeks</span><span>1+ month</span></div>
+      <div class="grow-cols"><div class="grow-col" style="--i:0"><div class="grow-m"><span>5 minutes</span><strong>Tier 1: Foundation</strong><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p></div><pre class="grow-tree">my-cos/
+<b>+ CLAUDE.md</b></pre></div><div class="grow-col" style="--i:1"><div class="grow-m"><span>30 minutes</span><strong>Tier 2: Operational</strong><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p></div><pre class="grow-tree">my-cos/
+  CLAUDE.md
+<b>+ context/people.md</b>
+<b>+ .claude/commands/start.md</b>
+<i>~ one integration connected</i></pre></div><div class="grow-col" style="--i:2"><div class="grow-m"><span>2 weeks</span><strong>Tier 3: Compounding</strong><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p></div><pre class="grow-tree">my-cos/
+  CLAUDE.md
+  context/people.md
+  .claude/commands/start.md
+<b>+ .claude/commands/learn.md</b>
+<b>+ corrections.md</b>
+<b>+ operations/&lt;domain&gt;/tasks.md</b>
+<i>~ meeting notes added</i></pre></div><div class="grow-col" style="--i:3"><div class="grow-m"><span>1+ month</span><strong>Tier 4: Agentic</strong><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p></div><pre class="grow-tree">my-cos/
+  CLAUDE.md
+  context/people.md
+  .claude/commands/start.md
+  .claude/commands/learn.md
+  corrections.md
+  operations/&lt;domain&gt;/tasks.md
+<i>~ scheduled tasks running</i>
+<i>~ search across every meeting</i></pre></div></div>
+    </div>
+    <div class="grow-text"><div><h3>Tier 1: Foundation</h3><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p></div><div><h3>Tier 2: Operational</h3><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p></div><div><h3>Tier 3: Compounding</h3><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p></div><div><h3>Tier 4: Agentic</h3><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p></div></div>
+  </figure>
+  <p class="art-note sec-art">Gold lines are new at that tier. Green lines are things now running. A typical path, not a rule.</p>
   <p style="margin-top:26px">Most people never get past Tier 1 with AI tools. <strong>COS pulls you forward.</strong></p>
 </section>
 
 <!-- ── 08 COVERAGE ── -->
 <section class="wrap reveal light" id="assess">
-  <div class="sec-head">    <h2>Score yourself across <span class="it g">14 domains.</span></h2>
-    <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:var(--gold)">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
+  <div class="sec-head">    <h2>Score yourself across <span class="it g hx">14 domains.</span></h2>
+    <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:#8f3d14">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
   </div>
-  <div class="domains">
+  <div class="domains sec-cards">
     <div class="dm"><b>Meeting Intelligence</b><span>Capture, classify, extract, search by meaning</span></div>
     <div class="dm"><b>Task Orchestration</b><span>Extract from conversations, dedup, stage, track</span></div>
     <div class="dm"><b>Email &amp; Comms Triage</b><span>Prioritize inbox, draft responses, follow-ups</span></div>
@@ -1160,6 +1956,12 @@ section.light .dek{color:#7a5c2c}
     <div class="dm"><b>Knowledge Management</b><span>File organization, templates, SOPs</span></div>
     <div class="dm"><b>Ambient I/O</b><span>Multi-surface delivery: terminal, mobile, voice</span></div>
   </div>
+
+  <figure class="score sec-art" aria-label="Example scorecard across the 14 domains">
+    <p class="score-key"><span><i class="k-obs"></i>What this example COS does today</span><span><i class="k-can"></i>What current AI could do</span><span><i class="k-gap"></i>The gap, which is the next step</span></p>
+    <div class="score-grid"><div class="sc" style="--o:0.55;--t:0.90;--i:0"><div class="sc-top"><b>Meeting Intelligence</b><span class="sc-num">0.55 of 0.90</span></div><span class="sc-what">Capture, classify, extract, search by meaning</span><div class="sc-track" role="img" aria-label="Does 0.55 today. Current AI could do 0.90."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.45;--t:0.85;--i:1"><div class="sc-top"><b>Task Orchestration</b><span class="sc-num">0.45 of 0.85</span></div><span class="sc-what">Extract from conversations, dedup, stage, track</span><div class="sc-track" role="img" aria-label="Does 0.45 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.80;--i:2"><div class="sc-top"><b>Email &amp; Comms Triage</b><span class="sc-num">0.30 of 0.80</span></div><span class="sc-what">Prioritize inbox, draft responses, follow-ups</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.35;--t:0.75;--i:3"><div class="sc-top"><b>Calendar Awareness</b><span class="sc-num">0.35 of 0.75</span></div><span class="sc-what">Meeting prep, conflict detection, time blocking</span><div class="sc-track" role="img" aria-label="Does 0.35 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.50;--t:0.80;--i:4"><div class="sc-top"><b>People Intelligence</b><span class="sc-num">0.50 of 0.80</span></div><span class="sc-what">Profiles, comms styles, relationship health</span><div class="sc-track" role="img" aria-label="Does 0.50 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.15;--t:0.85;--i:5"><div class="sc-top"><b>Cross-Source Synthesis</b><span class="sc-num">0.15 of 0.85</span></div><span class="sc-what">Connect signals across meetings, email, tasks, Slack</span><div class="sc-track" role="img" aria-label="Does 0.15 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.20;--t:0.75;--i:6"><div class="sc-top"><b>Strategic Alignment</b><span class="sc-num">0.20 of 0.75</span></div><span class="sc-what">Goal tracking, resource allocation, priority scoring</span><div class="sc-track" role="img" aria-label="Does 0.20 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.10;--t:0.80;--i:7"><div class="sc-top"><b>Proactive Alerting</b><span class="sc-num">0.10 of 0.80</span></div><span class="sc-what">Early warnings, signal detection, anomaly flagging</span><div class="sc-track" role="img" aria-label="Does 0.10 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.45;--t:0.85;--i:8"><div class="sc-top"><b>Institutional Memory</b><span class="sc-num">0.45 of 0.85</span></div><span class="sc-what">Session persistence, correction compounding</span><div class="sc-track" role="img" aria-label="Does 0.45 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.10;--t:0.75;--i:9"><div class="sc-top"><b>Delegation &amp; Follow-up</b><span class="sc-num">0.10 of 0.75</span></div><span class="sc-what">Track who owes what, escalation cadence</span><div class="sc-track" role="img" aria-label="Does 0.10 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.70;--i:10"><div class="sc-top"><b>Content &amp; Research</b><span class="sc-num">0.30 of 0.70</span></div><span class="sc-what">Market intel, competitor tracking, documents</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.70."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.75;--i:11"><div class="sc-top"><b>Reporting &amp; Dashboards</b><span class="sc-num">0.30 of 0.75</span></div><span class="sc-what">Status updates, briefings, visual dashboards</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.25;--t:0.70;--i:12"><div class="sc-top"><b>Knowledge Management</b><span class="sc-num">0.25 of 0.70</span></div><span class="sc-what">File organization, templates, SOPs</span><div class="sc-track" role="img" aria-label="Does 0.25 today. Current AI could do 0.70."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.15;--t:0.60;--i:13"><div class="sc-top"><b>Ambient I/O</b><span class="sc-num">0.15 of 0.60</span></div><span class="sc-what">Multi-surface delivery: terminal, mobile, voice</span><div class="sc-track" role="img" aria-label="Does 0.15 today. Current AI could do 0.60."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div></div>
+    <figcaption class="art-note">An example scorecard for a COS two weeks in, scored 0 to 1. The example scores are made up. The marks for what current AI could do come from the open-source framework and are the same for everyone.</figcaption>
+  </figure>
 </section>
 
 <div class="wrap reveal lightband">
@@ -1173,10 +1975,10 @@ section.light .dek{color:#7a5c2c}
 
 <!-- ── 09 INTEGRATIONS ── -->
 <section class="wrap reveal" id="integrations">
-  <div class="sec-head">    <h2>Wired to the tools you <span class="it g">already live in.</span></h2>
+  <div class="sec-head">    <h2>Wired to the tools you <span class="it g hx">already live in.</span></h2>
     <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
   </div>
-  <div class="ints">
+  <div class="ints sec-cards">
     <div class="int"><span class="bm"><svg><use href="#b-slack"/></svg></span><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="t">10 min</span></div>
     <div class="int"><span class="bm"><svg><use href="#b-gmail"/></svg><svg><use href="#b-googlecalendar"/></svg></span><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="t">15 min</span></div>
     <div class="int"><span class="bm"><span class="bm-ch">G</span><span class="bm-ch">F</span></span><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="t">10 min</span></div>
@@ -1186,11 +1988,17 @@ section.light .dek{color:#7a5c2c}
     <div class="int"><span class="bm"><span class="bm-ch">Q</span></span><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="t">30 min</span></div>
     <div class="int"><span class="bm"><span class="bm-ch">&#8734;</span></span><b>Anything with an MCP</b><span class="what">Thousands of servers. Bring your own</span><span class="t">varies</span></div>
   </div>
+
+  <div class="intc sec-art" role="list" aria-label="Integrations by setup time, shortest first">
+    <div class="intc-axis" aria-hidden="true"><span class="ax"><span>0</span><span>10</span><span>20</span><span>30 min</span></span></div>
+    <div class="intc-row zero" role="listitem" style="--m:0;--i:0"><span class="bm"><svg><use href="#b-anthropic"/></svg><svg><use href="#b-openai"/></svg></span><b>Claude Code / Codex / Cursor</b><span class="what">The engine. Your existing plan</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">0 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:1"><span class="bm"><svg><use href="#b-slack"/></svg></span><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:2"><span class="bm"><span class="bm-ch">G</span><span class="bm-ch">F</span></span><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:3"><span class="bm"><svg><use href="#b-notion"/></svg></span><b>Notion &amp; Docs</b><span class="what">Pages, wikis, project docs</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:15;--i:4"><span class="bm"><svg><use href="#b-gmail"/></svg><svg><use href="#b-googlecalendar"/></svg></span><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">15 min</span></div><div class="intc-row" role="listitem" style="--m:20;--i:5"><span class="bm"><svg><use href="#b-hubspot"/></svg></span><b>HubSpot &amp; CRM</b><span class="what">Deals, contacts, page analytics</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">20 min</span></div><div class="intc-row" role="listitem" style="--m:30;--i:6"><span class="bm"><span class="bm-ch">Q</span></span><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">30 min</span></div><div class="intc-row varies" role="listitem" style="--m:0;--i:7"><span class="bm"><span class="bm-ch">&#8734;</span></span><b>Anything with an MCP</b><span class="what">Thousands of servers. Bring your own</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">varies</span></div>
+  </div>
+  <p class="art-note sec-art">Setup time for each, drawn to scale, shortest first.</p>
 </section>
 
 <div class="wrap reveal">
   <div class="inline-cta">
-    <div class="ic-text"><b>Rolling this out to a team?</b><span>We'll help you get the whole team using it, not just the power users.</span></div>
+    <div class="ic-text"><b>Rolling this out to a team?</b><span>We'll help you get the whole team using it.</span></div>
     <div class="ic-actions"><a class="btn primary" href="#teams" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="event.preventDefault();document.getElementById('teams').scrollIntoView();setTimeout(function(){var w=document.getElementById('teams-form-wrapper');if(w&&!w.classList.contains('expanded'))toggleTeamsForm();},600);">Tell us about your team</a><a class="btn ghost" href="/connect/">Book a working session</a></div>
   </div>
 </div>
@@ -1199,7 +2007,7 @@ section.light .dek{color:#7a5c2c}
 <section class="wrap reveal" id="glasses">
   <div class="g2-top">
     <div class="g2-copy">
-      <div class="sec-head">        <h2>The same COS. <span class="it g">Now on your glasses.</span></h2>
+      <div class="sec-head">        <h2>The same COS. <span class="it g hx">Now on your glasses.</span></h2>
         <p class="lead">Every green screen on this page lives here: the Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
       </div>
       <div class="hero-cta" style="margin-top:30px">
@@ -1231,7 +2039,7 @@ the rollout notes.</div></div><div class="lens-footer">Hold: continue · 1m 06s 
 → in 44m: Design review
 
 Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list">Opus  v6.11.681  3/3  #412  2m</div></div><h3>MIT, self-hosted</h3><p>Your keys, your server, your context. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
+&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list">Opus  v6.11.681  3/3  #412  2m</div></div><h3>MIT, self-hosted</h3><p>MIT licensed and self-hosted, on your own server with your own keys. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
   </div>
   <p class="kg-cap">Illustrative 587 HUDs with fictional content and source-generated COS signals. Green frame and timing are illustrative. <button type="button" class="btn ghost" data-cos-motion aria-pressed="false">Pause HUD animation</button></p>
   <p><a href="/docs/#phone-review">Review meetings and voices on your phone</a> · <a href="/docs/#offline-field">Know what is saved offline</a></p>
@@ -1294,10 +2102,17 @@ Tap=Latest  ↓ Menu  ↑ Messages
 <!-- ── 11 TEAMS ── -->
 <section class="wrap reveal" id="teams">
   <div class="teams">
-    <h2>Buying AI is easy. <span class="g">Getting a team to use it is the real work.</span></h2>
+    <h2>The hard part of AI is getting a team to use it.</h2>
       <p class="dek">For teams</p>
     <p>COS gets each person to a useful answer from real work. Shared company context keeps the team aligned while personal setups stay personal. Start with one workflow, prove the value, then expand.</p>
     <p><strong>Production proof:</strong> COS runs in production at agencies and growth companies. One agency deployment uses role-based context, shared knowledge, scheduled indexing, and integrations with its operating stack, with a formal target of moving utilization from a 51% baseline to 70-80%.</p>
+
+    <figure class="util sec-art" aria-label="One agency deployment's utilization target: from a 51 percent baseline to between 70 and 80 percent">
+      <div class="util-track"><span class="util-arrow" style="--p:51;--a:70"></span><span class="util-band" style="--a:70;--b:80"></span><span class="util-base" style="--p:51"></span></div>
+      <div class="util-ticks" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
+      <p class="util-key"><span><b>51%</b>baseline</span><span><b>70 to 80%</b>target</span></p>
+      <figcaption>Utilization at one agency deployment. This is its formal target, not a measured result.</figcaption>
+    </figure>
     <div class="hero-cta" style="justify-content:center">
       <a href="/blueprint/" class="btn primary">Build my Blueprint</a>
       <a href="/connect/" class="btn ghost">Book a working session</a>
@@ -1326,7 +2141,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
 <!-- ── 12 FAQ · THE CENTAUR TEST ── -->
 <section class="wrap reveal light" id="faq">
   <div class="pixmap-c" aria-hidden="true"><div class="pi"></div></div>
-  <div class="sec-head">    <h2>Keep the human as <span class="it g">the head.</span></h2>
+  <div class="sec-head">    <h2>Keep the human as <span class="it g hx">the head.</span></h2>
       <p class="dek">Frequently asked questions</p>
     <p class="lead">COS is built on the centaur idea: you keep the direction and judgment. The machine handles the repetition, retrieval, and grunt compute.</p>
     <p class="lead">Go deeper: <a href="/context-engineering-vs-prompt-engineering/">context engineering vs prompt engineering</a> explains why the prompt was never the problem, and <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI chief of staff vs human chief of staff</a> draws the line between what gets automated and what stays yours.</p>
@@ -1334,10 +2149,10 @@ Tap=Latest  ↓ Menu  ↑ Messages
   <div class="faq">
     <details class="fq"><summary>What is a centaur?</summary><p>The human is the head and the machine is the body. You bring the domain expertise, the taste, and the judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified, and the main benefactor is you. That is the bar any AI deployment should clear.</p></details>
     <details class="fq"><summary>What is a reverse centaur?</summary><p>The flip. The machine is the head and the human is demoted to peripherals: the hands and the eyes, plus the legal liability for whatever the algorithm decided. Warehouse pace-setting and rideshare routing are the classic examples. Throughput first, quality and people second. We think that is the wrong way to deploy AI.</p></details>
-    <details class="fq"><summary>Which one is COS?</summary><p>A centaur by architecture, not by promise. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms. It exists to 10x the person running it, never the other way around.</p></details>
-    <details class="fq"><summary>What happens when the AI platforms raise prices?</summary><p>AI vendors sell tokens, not guaranteed outcomes. COS is portable across Claude Code, Codex, and Cursor today, and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control, so a pricing or model change does not force a rebuild. Swap the engine. Keep the system.</p></details>
+    <details class="fq"><summary>Which one is COS?</summary><p>A centaur by architecture. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms. It exists to 10x the person running it.</p></details>
+    <details class="fq"><summary>What happens when the AI platforms raise prices?</summary><p>AI vendors sell tokens, with no guarantee of outcomes. COS is portable across Claude Code, Codex, and Cursor today, and designed for additional model adapters. The context you choose to ingest can live in files and indexes you control, so a pricing or model change does not force a rebuild. You can swap the engine and keep the system.</p></details>
     <details class="fq"><summary>What is a context graph?</summary><p>The context you choose to ingest from meetings, email, Slack, calls, docs, and people, extracted into one connected, searchable graph. Its working corpus can live in files and indexes you control.</p></details>
-    <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model actually knows your job. The prompt was never the problem; the missing context was. A model with your context stops being a chatbot and starts being a chief of staff.</p></details>
+    <details class="fq"><summary>Why does context beat prompts?</summary><p>Same model, same prompt, completely different answer once the model knows your job. What was missing was the context. Give a model yours and it can work like a chief of staff.</p></details>
     <details class="fq"><summary>Do I need to be technical?</summary><p>Start with <a href="/control/#install">COS Control for Mac</a>: download, open, connect your AI and choose Get started. The app installs its server without Homebrew, Node or npx. Open Settings inside Activity for the full controls and resumable setup guide. Local voice can also download its verified Whisper tools through the app. Follow the <a href="/wizard/">setup guide</a>, then add the optional starter kit when you want more context. Want it done with you instead? Book a working session and we will stand it up together.</p></details>
     <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free. Chat runs on the Claude or Codex plan you already pay for. Local voice on the glasses has no per-minute fee. There is no COS subscription, and your files stay yours.</p></details>
   </div>
@@ -1352,6 +2167,16 @@ Tap=Latest  ↓ Menu  ↑ Messages
       <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
     </div>
     <div>
+
+      <figure class="acc sec-art" aria-label="Three example memories and the size of one running graph">
+        <ol>
+          <li style="--i:0"><span class="from">a correction</span><code>correction</code><span>Never quote list price on a renewal</span><time>May 22</time></li>
+          <li style="--i:1"><span class="from">a meeting</span><code>decision</code><span>Cutover moves to Q4</span><time>Jun 4</time></li>
+          <li style="--i:2"><span class="from">a person</span><code>context</code><span>Priya owns the parity list</span><time>Jun 4</time></li>
+        </ol>
+        <p class="acc-sum"><b>5,872</b><span>entities</span><b>11,238</b><span>edges, in one running COS</span></p>
+        <figcaption>Those counts are real. The three lines are example memories, and the names are not real.</figcaption>
+      </figure>
       <p>The <a href="https://milesukaoma.com/cos">interactive philosophy map</a> traces the four tiers:</p>
       <ul class="ck" style="margin-top:18px">
         <li><strong>Foundation</strong>: identity is the starting point</li>
@@ -1440,7 +2265,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
       if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
       var eL=parseFloat(el.style.getPropertyValue('--login-w'))||0, eC=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
       if((eL||eC)&&(Math.abs(login.getBoundingClientRect().width-eL)>1||Math.abs(cta.getBoundingClientRect().width-eC)>1)){ el._pillStale=true; return; }
-      var narrow=window.matchMedia('(max-width:900px)').matches;
+      var narrow=window.matchMedia('(max-width:1000px)').matches;
       var w0=el.style.getPropertyValue('--nav-actions-w');
       var l0=el.style.getPropertyValue('--login-w');
       var p0=el.style.getPropertyValue('--pill-w');
@@ -1874,5 +2699,389 @@ function doCopyKit(){
 <script src="assets/docs-signal-data.js?v=587-1"></script>
 <script src="assets/docs-signals.js?v=587-1"></script>
 <script src="assets/docs-hud.js?v=681-1"></script>
+
+<script>
+(function(){
+  var root=document.documentElement, g=document.getElementById('graph'); if(!g) return;
+  var pills=[].slice.call(g.querySelectorAll('.cg-pill[data-k]')); if(!pills.length) return;
+  function keys(){ return root.getAttribute('data-pil')==='keys'; }
+  function set(k){ if(k&&keys()) g.setAttribute('data-key',k); else g.removeAttribute('data-key'); }
+  pills.forEach(function(p){ var k=p.getAttribute('data-k');
+    p.addEventListener('mouseenter',function(){ set(k); }); p.addEventListener('mouseleave',function(){ set(null); });
+    p.addEventListener('focus',function(){ set(k); }); p.addEventListener('blur',function(){ set(null); }); });
+  function sync(){ pills.forEach(function(p){ if(keys()) p.setAttribute('tabindex','0'); else p.removeAttribute('tabindex'); }); if(!keys()) set(null); }
+  if('MutationObserver' in window) new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-pil']});
+  sync();
+})();
+</script>
+
+<script>
+// Amber hero layout: places the gradient on the mark, draws the strands from the real positions of the
+// list rows into the nodes and out to the surfaces, and shares that geometry with the mark (window.AH).
+// Runs without WebGL, so the strands and the gradient are right even when the still mark is shown.
+(function(){
+  var hero=document.querySelector('.amber-hero'); if(!hero) return;
+  var flow=document.getElementById('flowA'), lsvg=document.getElementById('linesA'), lines=lsvg&&lsvg.querySelector('g');
+  var markBox=hero.querySelector('.ah-mark'); if(!flow||!lines||!markBox) return;
+  var srcs=[].slice.call(hero.querySelectorAll('.ah-in .src')), stage=hero.querySelector('.one-stage');
+  // Node centres at rest, in node radii from the mark's centre (logo-mark.svg, node radius 100).
+  var NODE=[[348,100],[100,240],[100,520],[593,240],[348,380],[593,520],[348,660]].map(function(p){return [(p[0]-346.5)/100,(380-p[1])/100];});
+  var NS='http://www.w3.org/2000/svg', AH=window.AH={}, mq=window.matchMedia('(max-width:1099px)');
+  function f(n){return n.toFixed(1);}
+  function rel(el,hb){var r=el.getBoundingClientRect();return{l:r.left-hb.left,t:r.top-hb.top,r:r.right-hb.left,b:r.bottom-hb.top,w:r.width,h:r.height};}
+  function mid(el,hb){var r=rel(el,hb);return (r.t+r.b)/2;}
+  function path(d){var p=document.createElementNS(NS,'path');p.setAttribute('d',d);lines.appendChild(p);return p;}
+  function layout(){
+    var hb=hero.getBoundingClientRect(), W=hb.width, H=hb.height; if(W<1||H<1) return;
+    var m=rel(markBox,hb), cx=(m.l+m.r)/2, cy=(m.t+m.b)/2, narrow=mq.matches;
+    // Approved artboard: radius 880 on a 1280 frame. Narrow layouts keep the bright core off the lists.
+    var R=narrow?Math.min(560,Math.max(420,W*.9)):Math.min(880,Math.max(700,W*.69));
+    var F=narrow?200:260;   // eased falloff that reaches the ground 16px before the hero's edge
+    hero.style.setProperty('--ah-cx',f(cx)+'px'); hero.style.setProperty('--ah-cy',f(cy)+'px');
+    hero.style.setProperty('--ah-r',f(R)+'px'); hero.style.setProperty('--ah-fade',F+'px');
+    flow.setAttribute('viewBox','0 0 '+f(W)+' '+f(H)); lsvg.setAttribute('viewBox','0 0 '+f(W)+' '+f(H));
+    while(lines.firstChild) lines.removeChild(lines.firstChild);
+    AH.W=W;AH.H=H;AH.cx=cx;AH.cy=cy;AH.R=R;AH.fade=F;AH.narrow=narrow;
+    AH.mark={cx:cx,cy:cy,w:m.w,h:m.h,l:m.l,r:m.r,t:m.t,b:m.b};
+    AH.inPaths=[];AH.outPaths=[];
+    if(!narrow){
+      // The strands sit above the opaque canvas and end at node centres; the scene module trims each one at the glass.
+      var pxu=m.h/7.6, node=function(i){return [cx+NODE[i][0]*pxu, cy-NODE[i][1]*pxu];};
+      // In: a curve from each source into node 1 or 2 (artboard: 290 to 543, controls at 0.435 and 0.553 of the run).
+      var x0=0; srcs.forEach(function(li){x0=Math.max(x0,rel(li.querySelector('.ah-nm'),hb).r);}); x0+=14;
+      srcs.forEach(function(li){var y=mid(li.querySelector('.ah-ic,.ah-mono'),hb), n=node(+li.dataset.node), s=n[0]-x0;
+        AH.inPaths.push(path('M'+f(x0)+' '+f(y)+' C '+f(x0+s*.435)+' '+f(y)+', '+f(x0+s*.553)+' '+f(n[1])+', '+f(n[0])+' '+f(n[1])));});
+      // Out: one curve from node 3 to the one entry point (artboard: 737,517 to 896,528).
+      if(stage){var b=rel(stage,hb), n=node(3), tx=b.l-4, ty=(b.t+b.b)/2, s=tx-n[0];
+        AH.outPaths.push(path('M'+f(n[0])+' '+f(n[1])+' C '+f(n[0]+s*.40)+' '+f(n[1]-(ty-n[1])*.45)+', '+f(tx-s*.35)+' '+f(ty)+', '+f(tx)+' '+f(ty)));}
+      AH.collect={x:cx,y:m.b+24};
+    } else {
+      // Stacked: no strands; the sources sit under the mark, so what they send rises into it from just below.
+      AH.collect={x:cx,y:m.b+24};
+    }
+    try{hero.dispatchEvent(new Event('ah:layout'));}catch(e){}
+  }
+  var raf=0; function soon(){cancelAnimationFrame(raf);raf=requestAnimationFrame(layout);}
+  layout();
+  if('ResizeObserver' in window) new ResizeObserver(soon).observe(hero); else window.addEventListener('resize',soon);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(soon);
+  window.addEventListener('load',soon);
+  // The resin nav card is translucent over the hero and turns solid once the page under it is not the hero,
+  // so its cream links never sit on a cream section.
+  var nav=document.querySelector('.nav');
+  if(nav){var solid=function(){nav.classList.toggle('solid',hero.getBoundingClientRect().bottom<112);};
+    solid();window.addEventListener('scroll',solid,{passive:true});window.addEventListener('resize',solid);}
+})();
+</script>
+<script>
+/* The hero scene (parts/09-scene.html b422d73135b8), moved from the fixed 1280x800 artboard to the hero's real size.
+   One fragment shader draws the whole hero, opaque: the air, the velvet dune, the honey-amber glass mark that bends
+   them, grain and vignette. Sky and vignette follow the real hero (uniforms uSky, uFr, uFh); the last stretch fades
+   to the page's --ink (uInk, uFade) so the hero runs into the page with no seam. The CSS gradient stays as the
+   no-WebGL fallback. Geometry comes from window.AH, which hero_layout.js recomputes on resize. */
+(function () {
+  var hero = document.querySelector('.amber-hero'), canvas = document.getElementById('amberGL'), AH = window.AH;
+  if (!hero || !canvas || !AH || !AH.W) return;
+  var W = 1280, H = 800, CX = 640, CY = 572, PXU = 39.47;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = canvas.getContext('webgl', { alpha: false, antialias: false });
+  if (!gl) return;
+
+  var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+  var FS = [
+    'precision highp float;',
+    'uniform vec2 uC;uniform float uPx;uniform mat3 uRT;uniform float uT;',
+    'uniform vec2 uFr;uniform vec2 uFh;uniform vec2 uSky;uniform vec3 uInk;uniform vec2 uFade;',
+    'uniform vec3 uN[7];uniform float uR[7];uniform float uNeck;uniform vec4 uD[4];',
+    'const float K=.55;',
+    'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+    'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x),f.y);}',
+    'float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}',
+    'float cap(vec3 p,vec3 a,vec3 b,float r){vec3 pa=p-a,ba=b-a;float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*h)-r;}',
+    'float pr(vec3 p,vec3 a,float ra,vec3 b,float rb){float d=min(length(p-a)-ra,length(p-b)-rb);if(uNeck>.01)d=smin(d,cap(p,a,b,uNeck),K);return d;}',
+    'float map(vec3 p){',
+    '  float d=length(p-uN[0])-uR[0];',
+    '  d=min(d,pr(p,uN[1],uR[1],uN[2],uR[2]));',
+    '  d=min(d,pr(p,uN[3],uR[3],uN[4],uR[4]));',
+    '  d=min(d,pr(p,uN[5],uR[5],uN[6],uR[6]));',
+    '  for(int i=0;i<4;i++){if(uD[i].w>.001)d=smin(d,length(p-uD[i].xyz)-uD[i].w,.6);}',
+    '  return d;}',
+    'vec3 nrm(vec3 p){vec2 e=vec2(.012,-.012);return normalize(e.xyy*map(p+e.xyy)+e.yyx*map(p+e.yyx)+e.yxy*map(p+e.yxy)+e.xxx*map(p+e.xxx));}',
+    // the air: burnt orange, darker at the top for the type, with light held behind the mark and haze on the horizon
+    'vec3 sky(vec2 q){',
+    '  float h=clamp((q.y-uSky.x)/uSky.y,0.,1.);',
+    '  vec3 c=mix(vec3(.16,.030,.007),vec3(.30,.075,.018),smoothstep(0.,.5,h));',
+    '  c=mix(c,vec3(.20,.045,.011),smoothstep(.5,1.,h));',
+    '  vec2 g=(q-vec2(.3,-1.6))*vec2(.115,.150);c+=vec3(1.,.52,.20)*exp(-dot(g,g))*.42;',
+    '  c+=vec3(1.,.66,.36)*exp(-pow((q.y+3.4)*.55,2.))*exp(-pow(q.x*.10,2.))*.20;',
+    '  return c;}',
+    // the dune: a big soft form with a velvet nap, bright where it turns away, furry at its edge
+    'const vec2 DC=vec2(.3,-17.0);const float DR=14.;',
+    'vec4 dune(vec2 q){',
+    '  vec2 d=q-DC;float r=length(d);',
+    '  float fz=(vn(q*46.)-.5)*.11+(vn(q*13.)-.5)*.07;',
+    '  float cov=smoothstep(DR+.06+fz,DR-.08+fz,r);if(cov<=0.)return vec4(0.);',
+    '  float z=sqrt(max(DR*DR-r*r,0.));vec3 n=normalize(vec3(d,z*.5));',
+    '  float dif=clamp(dot(n,normalize(vec3(-.5,.75,.45))),0.,1.);',
+    '  float rim=pow(1.-clamp(n.z,0.,1.),2.4);',
+    '  float nap=vn(q*vec2(64.,24.))*.5+vn(q*vec2(150.,140.))*.5;',
+    '  vec3 c=vec3(.40,.085,.016)*(.28+.9*dif)*(.78+.44*nap);',
+    '  c+=vec3(1.,.52,.18)*rim*(.45+.55*nap)*.95;',
+    '  vec2 s=(q-vec2(.5,-3.55))*vec2(.26,1.2);c*=1.-.62*exp(-dot(s,s));',          // the mark rests here: contact shadow
+    '  vec2 k=(q-vec2(2.6,-4.0))*vec2(.34,1.5);c+=vec3(1.,.55,.13)*.40*exp(-dot(k,k));', // and the light it throws beside it
+    '  c*=mix(.45,1.,smoothstep(-6.5,-3.3,q.y));',
+    '  return vec4(c,cov);}',
+    'vec3 scene(vec2 q){vec4 d=dune(q);return mix(sky(q),d.rgb,d.a);}',
+    'void main(){',
+    '  vec2 q=(gl_FragCoord.xy-uC)/uPx;',
+    '  vec3 col=scene(q);',
+    '  if(dot(q,q)<52.){',
+    '    vec3 ro=uRT*vec3(q,6.5),rd=uRT*vec3(0.,0.,-1.);',
+    '    float t=0.,dmin=1e3,tmin=0.;bool hit=false;',
+    '    for(int i=0;i<60;i++){float d=map(ro+rd*t);if(d<dmin){dmin=d;tmin=t;}if(d<.0015){hit=true;break;}t+=d;if(t>13.)break;}',
+    '    float a=hit?1.:1.-smoothstep(0.,1.3/uPx,dmin);',
+    '    if(a>.003){',
+    '      vec3 p=ro+rd*(hit?t:tmin);vec3 n=nrm(p);vec3 nv=n*uRT;float ndv=clamp(nv.z,0.,1.);',
+    '      vec3 rin=refract(rd,n,1./1.46);vec3 pi=p-n*.04;float L=0.;',                  // the ray bends as it enters
+    '      for(int i=0;i<30;i++){float d=-map(pi);if(d<.004)break;float st=max(d,.035);pi+=rin*st;L+=st;}',
+    '      vec3 n2=-nrm(pi);vec3 rout=refract(rin,n2,1.46);if(dot(rout,rout)<.01)rout=reflect(rin,n2);',
+    '      vec3 pv=pi*uRT,rv=rout*uRT;',
+    '      vec2 qs=pv.xy+rv.xy/max(-rv.z,.22)*5.5;',                                    // where the bent ray lands on the scene behind
+    '      vec3 T=exp(-vec3(.10,.60,2.7)*L);',                                          // thin glass is honey, thick glass is deep amber
+    '      vec3 g=scene(qs)*T*1.75;',
+    '      vec3 pm=(p+pi)*.5;float dc=1e3;for(int i=0;i<7;i++)dc=min(dc,length(pm-uN[i]));',
+    '      g=mix(g,vec3(.40,.105,.012),smoothstep(.62,.20,dc)*.50);',                   // a darker heart in each node, seen through the glass
+    '      g+=vec3(.95,.42,.07)*(1.-exp(-L*.5))*.12;',
+    '      float F=.04+.96*pow(1.-ndv,5.);vec3 r=reflect(vec3(0.,0.,-1.),nv);',
+    '      float win=smoothstep(.10,.62,r.y)*smoothstep(1.,.62,r.y)*smoothstep(.70,.10,abs(r.x+.30));win*=win;',
+    '      g=mix(g,sky(vec2(r.x*10.,r.y*10.+3.))*1.3+vec3(1.,.90,.74)*win*1.8,F*.85);', // the surface mirrors the room at grazing angles
+    '      g+=vec3(1.,.95,.86)*win*.62;',
+    '      col=mix(col,g,a);}}',
+    '  vec2 v=(q-uFr)/uFh;col*=1.-.22*dot(v,v);',                // the frame darkens gently toward its corners
+    '  col=col/(1.+.26*col);col=pow(col,vec3(1./2.2));',
+    '  col+=(hash(gl_FragCoord.xy+fract(uT)*61.)-.5)*.050;',                            // film grain
+    '  col=mix(col,uInk,1.-smoothstep(uFade.x,uFade.y,gl_FragCoord.y));',
+    '  gl_FragColor=vec4(col,1.);}'
+  ].join('\n');
+
+  function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
+  var prog;
+  try {
+    prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+  } catch (e) { console.warn('mark: still fallback kept', e); hero.dataset.glerr = String(e).slice(0, 300); return; }
+  gl.useProgram(prog);
+  var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  var la = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
+  var U = {}; ['uC', 'uPx', 'uRT', 'uT', 'uN', 'uR', 'uNeck', 'uD', 'uFr', 'uFh', 'uSky', 'uInk', 'uFade'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+
+  // Size from the real layout. The whole hero is drawn every frame, so the buffer is capped: about 2.2 million pixels
+  // on desktop, about 0.9 million on coarse pointers or under 700px wide.
+  var pr = 1, small = matchMedia('(pointer: coarse)').matches;
+  var INK = (getComputedStyle(document.documentElement).getPropertyValue('--ink') || '#34140a').trim();
+  var ink = /^#[0-9a-f]{6}$/i.test(INK) ? [1, 3, 5].map(function (i) { return parseInt(INK.substr(i, 2), 16) / 255; }) : [52 / 255, 20 / 255, 10 / 255];
+  function fit() {
+    W = AH.W; H = AH.H; CX = AH.mark.cx; CY = AH.mark.cy; PXU = AH.mark.h / 7.6;   // the logo is 7.6 node radii tall
+    var cap = (small || W < 700) ? 0.9e6 : 2.2e6;
+    pr = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(cap / Math.max(1, W * H)));
+    canvas.width = Math.max(1, Math.round(W * pr)); canvas.height = Math.max(1, Math.round(H * pr));
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    // The artboard's sky ran from q.y = -6 to +14 over a frame 20.27 units tall; keep that mapping over the real frame.
+    var top = CY / PXU, span = H / PXU, k = span / 20.27;
+    gl.uniform2f(U.uSky, top - span - 0.22 * k, 20 * k);
+    gl.uniform2f(U.uFr, (W / 2 - CX) / PXU, (CY - H / 2) / PXU); gl.uniform2f(U.uFh, W / 2 / PXU, H / 2 / PXU);
+    gl.uniform3f(U.uInk, ink[0], ink[1], ink[2]);
+    gl.uniform2f(U.uFade, 16 * pr, 150 * pr);                         // eases to --ink over the last 150px, exact 16px above the edge, so the dune still shows
+  }
+
+  // Real logo geometry (logo-mark.svg, node radius 100) in units, with small depth so it turns like a molecule.
+  var DEPTH = [0.5, -0.45, 0.3, 0.45, -0.5, -0.3, 0.55];
+  var NODE = [[348, 100], [100, 240], [100, 520], [593, 240], [348, 380], [593, 520], [348, 660]].map(function (p, i) { return [(p[0] - 346.5) / 100, (380 - p[1]) / 100, DEPTH[i]]; });
+  var START = NODE.map(function (p, i) { var d = Math.hypot(p[0], p[1]) || 1; return [p[0] + p[0] / d * 2.1, p[1] + p[1] / d * 2.1, i % 2 ? 1.7 : -1.7]; });
+  var NECK = 0.34;
+
+  var R = [1, 0, 0, 0, 1, 0, 0, 0, 1];
+  function setRot(ry, rx) { var cy = Math.cos(ry), sy = Math.sin(ry), cx = Math.cos(rx), sx = Math.sin(rx); R = [cy, sy * sx, sy * cx, 0, cx, -sx, -sy, cy * sx, cy * cx]; }
+  function toView(l) { return [R[0] * l[0] + R[1] * l[1] + R[2] * l[2], R[3] * l[0] + R[4] * l[1] + R[5] * l[2], R[6] * l[0] + R[7] * l[1] + R[8] * l[2]]; }
+  function toLocal(v) { return [R[0] * v[0] + R[3] * v[1] + R[6] * v[2], R[1] * v[0] + R[4] * v[1] + R[7] * v[2], R[2] * v[0] + R[5] * v[1] + R[8] * v[2]]; }
+  function pxToView(x, y) { return [(x - CX) / PXU, (CY - y) / PXU, 0.7]; }
+  function viewToPx(v) { return [CX + v[0] * PXU, CY - v[1] * PXU]; }
+
+  // ---- Flow: source icons ride their strand and are absorbed; answers bud off and land on the real surfaces ----
+  var SVGNS = 'http://www.w3.org/2000/svg', trav = document.getElementById('travA');
+  var srcEls = [].slice.call(hero.querySelectorAll('.ah-in .src')), stage = hero.querySelector('.one-stage');
+  var SRC = [], DST = [];
+  function bind() {
+    var trim = PXU * 1.115;                                            // the artboard trimmed 44px at 39.47 px per unit: stop at the glass
+    SRC = srcEls.map(function (el, i) { var p = (AH.inPaths || [])[i] || null, len = p ? p.getTotalLength() : 0; if (p) p.style.strokeDasharray = Math.max(0, len - trim) + ' 9999'; return { el: el, path: p, len: len, icon: el.dataset.icon, mono: el.dataset.mono, sk: !!el.dataset.sk, node: +el.dataset.node }; });
+    var op = (AH.outPaths || [])[0] || null;
+    if (op) op.style.strokeDasharray = '0 ' + trim + ' 9999';
+    DST = stage ? [{ el: stage, path: op, len: op ? op.getTotalLength() : 0, node: 3 }] : [];
+  }
+  function landed() { var el = window.__oneNext ? window.__oneNext() : null; if (el) light(el); }   // the one entry point moves on and lights
+  var LINE = 1500, DROP = 1300, OUTD = 1700, HAND = 0.8;               // HAND: where the 2D icon hands over to the droplet
+  var ins = [], outs = [], nextIn = 0, nextOut = 0, si = 0, di = 0;
+
+  function makeTraveler(src) {
+    var g = document.createElementNS(SVGNS, 'g'); g.setAttribute('class', src.sk ? 'tr sk' : 'tr');
+    var halo = document.createElementNS(SVGNS, 'circle'); halo.setAttribute('r', '13'); halo.setAttribute('class', 'halo'); g.appendChild(halo);
+    if (src.icon) { var u = document.createElementNS(SVGNS, 'use'); u.setAttribute('href', '#' + src.icon); u.setAttribute('x', '-7.5'); u.setAttribute('y', '-7.5'); u.setAttribute('width', '15'); u.setAttribute('height', '15'); g.appendChild(u); }
+    else { var tx = document.createElementNS(SVGNS, 'text'); tx.setAttribute('class', 'mono'); tx.setAttribute('y', '3.8'); tx.textContent = src.mono; g.appendChild(tx); }
+    trav.appendChild(g); return g;
+  }
+  function place(el, x, y, sc, op) { el.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + sc.toFixed(3) + ')'); el.setAttribute('opacity', Math.max(0, op).toFixed(3)); }
+  function light(el) { el.classList.add('lit'); setTimeout(function () { el.classList.remove('lit'); }, 2400); }
+
+  // Pointer: the molecule leans toward the cursor, and a drag turns it. Mouse and pen only, so touch scrolling is never taken.
+  var tiltX = 0, tiltY = 0, aimX = 0, aimY = 0, spin = 0, spinV = 0, dragging = false, lastPX = 0;
+  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    hero.addEventListener('pointermove', function (ev) {
+      var r = hero.getBoundingClientRect();
+      aimY = ((ev.clientX - r.left) / r.width - 0.5) * 0.9; aimX = ((ev.clientY - r.top) / r.height - 0.5) * 0.45;
+      if (dragging) { spinV = (ev.clientX - lastPX) * 0.012; spin += spinV; lastPX = ev.clientX; }
+    });
+    hero.addEventListener('pointerdown', function (ev) { if (ev.target.closest('a,button,.ah-head,.ah-col,.ah-proof')) return; dragging = true; lastPX = ev.clientX; hero.classList.add('dragging'); });
+    var drop = function () { dragging = false; hero.classList.remove('dragging'); };
+    window.addEventListener('pointerup', drop);
+    hero.addEventListener('pointerleave', function () { aimX = aimY = 0; drop(); });
+  }
+
+  var pulse = NODE.map(function () { return 0; });
+  var ease = function (x) { return 1 - Math.pow(1 - x, 3); };
+  var inOut = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var OUT = 600, INTRO = 2400, REST = OUT + INTRO + 1000;
+  function phase(t) {                                                  // scatter, then reassemble: the bones break first and fuse last
+    if (reduce || t >= OUT + INTRO) return [1, 1];
+    if (t < OUT) { var x = t / OUT; return [1 - x * x, Math.max(0, 1 - x * 2.2)]; }
+    var y = (t - OUT) / INTRO; return [ease(y), ease(Math.min(Math.max((y - 0.55) / 0.45, 0), 1))];
+  }
+  var nArr = new Float32Array(21), rArr = new Float32Array(7), dArr = new Float32Array(16), first = true, running = false, forced = false;
+  var clock = REST, last = null, started = false, ratio = 0;
+
+  // full = false steps the state only (fast-forwards a ?sim frame without drawing every step).
+  function draw(t, full) {
+    var ph = phase(t), e = ph[0], ne = ph[1], ts = t * 0.001, i;
+    tiltX += (aimX - tiltX) * 0.07; tiltY += (aimY - tiltY) * 0.07;
+    if (!dragging) { spin += spinV; spinV *= 0.94; spin *= 0.986; }    // a flick coasts, then it settles back to the logo
+    setRot(Math.sin(ts * 0.35) * 0.30 + (1 - e) * 0.9 + tiltY + spin, 0.05 + Math.sin(ts * 0.23) * 0.07 + tiltX);
+    var cur = NODE.map(function (p, k) { return [START[k][0] + (p[0] - START[k][0]) * e, START[k][1] + (p[1] - START[k][1]) * e, START[k][2] + (p[2] - START[k][2]) * e]; });
+    for (i = 0; i < 7; i++) { pulse[i] *= 0.94; nArr.set(cur[i], i * 3); rArr[i] = (0.72 + 0.28 * e) * (1 + pulse[i]); }
+    var dn = 0; dArr.fill(0);
+    function addDrop(l, rad) { if (dn < 4 && rad > 0.01) { dArr.set([l[0], l[1], l[2], rad], dn * 4); dn++; } }
+
+    var live = (running || forced) && !reduce && t > OUT + INTRO + 300;
+    if (live && t > nextIn && SRC.length) {
+      var src = SRC[si % SRC.length]; si++;
+      ins.push({ src: src, t0: t, el: makeTraveler(src) });
+      src.el.classList.add('hot'); (function (el) { setTimeout(function () { el.classList.remove('hot'); }, 900); })(src.el);
+      nextIn = t + 900 + (si % 3) * 200;
+    }
+    for (i = ins.length - 1; i >= 0; i--) {
+      var it = ins[i], lineT = it.src.path ? LINE : 0, age = t - it.t0;
+      if (age < lineT) { var u1 = age / LINE, p2 = it.src.path.getPointAtLength(it.src.len * HAND * inOut(Math.max(u1, 0))); place(it.el, p2.x, p2.y, 0.85 + 0.15 * u1, Math.min(u1 / 0.12, 1)); continue; }
+      var u2 = (age - lineT) / DROP;
+      if (u2 >= 1) { pulse[it.src.node] = 0.16; it.el.remove(); ins.splice(i, 1); continue; }
+      var a0;
+      if (it.src.path) { var hp = it.src.path.getPointAtLength(it.src.len * HAND); a0 = pxToView(hp.x, hp.y); }
+      else a0 = pxToView(AH.collect.x, AH.collect.y);                  // stacked layout: no strands, the icon rises from under the mark
+      var a1 = toView(cur[it.src.node]), q = inOut(u2);
+      var v = [a0[0] + (a1[0] - a0[0]) * q, a0[1] + (a1[1] - a0[1]) * q, a0[2] + (a1[2] - a0[2]) * q];
+      addDrop(toLocal(v), 0.46 * Math.min(u2 / 0.2, 1) * (u2 > 0.8 ? (1 - u2) / 0.2 : 1));   // a droplet forms round the icon and sinks into the node
+      var px = viewToPx(v), op = u2 > 0.5 ? 1 - (u2 - 0.5) / 0.4 : 1;
+      if (!lineT) op *= Math.min(u2 / 0.15, 1);
+      place(it.el, px[0], px[1], 1 - 0.4 * u2, op);
+      it.el.firstChild.setAttribute('opacity', Math.max(0, 1 - u2 * 3).toFixed(2));
+    }
+    if (live && t > nextOut && DST.length) {
+      var d = DST[di % DST.length]; di++;
+      if (d.path) { var dot = document.createElementNS(SVGNS, 'circle'); dot.setAttribute('r', '4.5'); dot.setAttribute('class', 'od'); dot.setAttribute('opacity', '0'); trav.appendChild(dot); outs.push({ d: d, t0: t, el: dot }); }
+      else landed();                                                    // stacked layout: no strand, the surface turns over as the node pulses
+      pulse[d.node] = 0.13; nextOut = t + 3400;
+    }
+    for (i = outs.length - 1; i >= 0; i--) {
+      var ot = outs[i], u = (t - ot.t0) / OUTD;
+      if (u >= 1) { ot.el.remove(); outs.splice(i, 1); landed(); continue; }
+      var f = inOut(u), pp = ot.d.path.getPointAtLength(ot.d.len * f);
+      if (f < 0.3) addDrop(toLocal(pxToView(pp.x, pp.y)), 0.40 * Math.min(f / 0.08, 1) * (1 - f / 0.3 * 0.55));   // it buds off the node as resin
+      ot.el.setAttribute('cx', pp.x.toFixed(1)); ot.el.setAttribute('cy', pp.y.toFixed(1));
+      ot.el.setAttribute('opacity', (f < 0.24 ? 0 : Math.min((f - 0.24) / 0.08, 1)).toFixed(2));                  // then travels on as a bead of light
+    }
+    if (!full) return;
+    gl.uniform2f(U.uC, CX * pr, (H - CY) * pr); gl.uniform1f(U.uPx, PXU * pr);
+    gl.uniformMatrix3fv(U.uRT, false, new Float32Array(R));
+    gl.uniform1f(U.uT, Math.floor(t / 80) * 0.137);
+    gl.uniform3fv(U.uN, nArr); gl.uniform1fv(U.uR, rArr); gl.uniform1f(U.uNeck, NECK * ne); gl.uniform4fv(U.uD, dArr);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (first) { first = false; hero.classList.add('gl-on'); }
+  }
+
+  function loop(now) { if (!running) { last = null; return; } if (last !== null) clock += Math.min(now - last, 50); last = now; draw(clock, true); requestAnimationFrame(loop); }
+  function update() {
+    var vis = ratio >= 0.1 && !document.hidden && !reduce;
+    if (!started && vis && ratio >= 0.5) { started = true; clock = 0; }
+    var want = vis && started;
+    if (want && !running) { running = true; last = null; requestAnimationFrame(loop); }
+    if (!want) running = false;                                        // off screen, hidden tab or reduced motion: no frames
+  }
+  function resetFlow() {
+    ins.forEach(function (it) { it.el.remove(); }); ins.length = 0;
+    outs.forEach(function (it) { it.el.remove(); }); outs.length = 0;
+    pulse.fill(0); si = 0; di = 0; nextIn = 0; nextOut = 0;
+  }
+  function replay(to) { resetFlow(); for (var t = 0; t < to; t += 16) draw(t, false); draw(to, true); clock = to; }
+
+  fit(); bind();
+  // Review aid: ?sim=7800 steps the clock to that moment and holds the settled frame, with no fade and no still underneath.
+  var sim = +new URLSearchParams(location.search).get('sim');
+  if (sim > 0) { forced = true; hero.classList.add('ah-sim'); replay(sim); }
+  var bench = +new URLSearchParams(location.search).get('bench');
+  if (bench > 0) {                                                     // review aid: median ms per full draw, GPU included (a 1-pixel readPixels waits for the frame)
+    var ms = [], px1 = new Uint8Array(4);
+    for (var b = 0; b < bench; b++) { var t0 = performance.now(); draw(REST + b * 16, true); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px1); ms.push(performance.now() - t0); }
+    ms.sort(function (x, y) { return x - y; });
+    hero.dataset.bench = ms[Math.floor(ms.length / 2)].toFixed(2) + ' ms median, ' + ms[ms.length - 1].toFixed(2) + ' ms max, ' + canvas.width + 'x' + canvas.height;
+  }
+  else {
+    draw(REST, true);                                                  // still frame first; reduced motion stays on it
+    new IntersectionObserver(function (es) { ratio = es[0].intersectionRatio; update(); }, { threshold: [0, 0.1, 0.5] }).observe(hero.querySelector('.ah-mark'));
+    document.addEventListener('visibilitychange', update);
+  }
+  hero.addEventListener('ah:layout', function () {
+    fit(); bind();
+    if (forced) { replay(clock); return; }
+    resetFlow();
+    if (!running) draw(clock, true);
+  });
+})();
+</script>
+<script>
+// One entry point (parts/08-close.html, "one entry point" block): one surface at a time; a bead landing moves it on,
+// and the reader can pick from the rail by tap, click or hover. The bar follows the real button positions, so larger
+// touch targets still line up. Without WebGL it still turns over on a timer.
+(function(){
+  var one=document.getElementById('oneA'); if(!one) return;
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sfs=[].slice.call(one.querySelectorAll('.sf')),btns=[].slice.call(one.querySelectorAll('.one-rail button')),bar=one.querySelector('.bar');
+  var where=document.getElementById('oneWhere'),sub=document.getElementById('oneSub'),cur=0,hold=0,driven=false;
+  if(!sfs.length||sfs.length!==btns.length) return;
+  function place(){var b=btns[cur];bar.style.width=b.offsetWidth+'px';bar.style.transform='translateX('+b.offsetLeft+'px)';}
+  function show(i){
+    cur=(i+sfs.length)%sfs.length;
+    sfs.forEach(function(x,k){x.classList.toggle('on',k===cur);x.setAttribute('aria-hidden',k===cur?'false':'true');});
+    btns.forEach(function(x,k){x.classList.toggle('on',k===cur);x.setAttribute('aria-pressed',k===cur?'true':'false');});
+    where.textContent=sfs[cur].dataset.where;sub.textContent=sfs[cur].dataset.sub;place();
+  }
+  btns.forEach(function(b,k){
+    b.addEventListener('click',function(){hold=Date.now()+9000;show(k);});
+    b.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'){hold=Date.now()+5000;show(k);}});
+  });
+  window.__oneNext=function(){driven=true;if(Date.now()>=hold)show(cur+1);return sfs[cur];};
+  var want=+new URLSearchParams(location.search).get('one');show(want>0?want:0);if(want>0)hold=Date.now()+1e9;
+  if('ResizeObserver' in window) new ResizeObserver(place).observe(one); else window.addEventListener('resize',place);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
+  setTimeout(function(){if(!driven&&!rm)setInterval(function(){if(Date.now()>=hold)show(cur+1);},3400);},9000);   // no WebGL: still turns over
+})();
+</script>
 </body>
 </html>
