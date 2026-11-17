@@ -91,6 +91,8 @@ p a,li a,td a,.lead a{text-decoration:underline;text-underline-offset:3px}
 .skip:focus{top:12px}
 .it{font-style:italic}
 .goldt{color:var(--gold)}
+:is(h1,h2,h3) :is(.it,.goldt){font-style:normal;color:inherit}
+header.hero .lead{margin-top:18px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);position:relative}
 
 /* ── page ────────────────────────────────────────────── */
@@ -397,7 +399,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 <nav class="nav" aria-label="Main">
   <div class="nav-top">
     <div class="nt-in">
-      <span class="nt-tag">Open-source AI chief of staff &middot; 400+ COS Glasses users</span>
+      <span class="nt-tag">Open-source AI chief of staff &middot; 500+ COS Glasses users</span>
       <div class="nt-links">
         <a href="/control/docs/" aria-current="page">Mac Docs</a>
         <a href="/docs/">Glasses Docs</a>

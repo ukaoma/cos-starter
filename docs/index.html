@@ -75,6 +75,7 @@ img{max-width:100%;height:auto}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);position:relative}
 .it{font-style:italic}
 .goldt{color:var(--gold)}
+:is(h1,h2,h3) :is(.it,.goldt){font-style:normal;color:inherit}
 
 /* ── top bar ─────────────────────────────────────────── */
 .topbar{border-bottom:1px solid var(--line-2);background:rgba(38,14,6,.74)}
@@ -689,6 +690,10 @@ section.light .hud-cap{color:rgba(46,31,16,.66)}
 /* Mono caps only on data, code and the lens: the chapter list and strip read in the body face. */
 .sb-nav a,.toc-in a{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.84rem}
 .tb-doc{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:600}
+/* Phones and the folded Duo: the bar stays one line. The logo already goes home, so the gotcos.com link drops first. */
+@media(max-width:640px){.tb-links{gap:14px}.tb-links a{white-space:nowrap}}
+@media(max-width:480px){.tb-links a[href="/"]{display:none}}
+@media(max-width:400px){.tb-sep,.tb-doc{display:none}}
 </style>
 </head>
 <body>
