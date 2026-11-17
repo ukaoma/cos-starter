@@ -2692,10 +2692,10 @@ function doCopyKit(){
     // the air: burnt orange, darker at the top for the type, with light held behind the mark and haze on the horizon
     'vec3 sky(vec2 q){',
     '  float h=clamp((q.y-uSky.x)/uSky.y,0.,1.);',
-    '  vec3 c=mix(vec3(.16,.030,.007),vec3(.30,.075,.018),smoothstep(0.,.5,h));',
+    '  vec3 c=mix(vec3(.16,.030,.007),vec3(.262,.064,.0155),smoothstep(0.,.5,h));',
     '  c=mix(c,vec3(.20,.045,.011),smoothstep(.5,1.,h));',
-    '  vec2 g=(q-vec2(.3,-1.6))*vec2(.115,.150);c+=vec3(1.,.52,.20)*exp(-dot(g,g))*.42;',
-    '  c+=vec3(1.,.66,.36)*exp(-pow((q.y+3.4)*.55,2.))*exp(-pow(q.x*.10,2.))*.20;',
+    '  vec2 g=(q-vec2(.3,-1.6))*vec2(.185,.190);c+=vec3(1.,.52,.20)*exp(-dot(g,g))*.42;',
+    '  c+=vec3(1.,.66,.36)*exp(-pow((q.y+3.4)*.55,2.))*exp(-pow(q.x*.17,2.))*.20;',
     '  return c;}',
     // the dune: a big soft form with a velvet nap, bright where it turns away, furry at its edge
     'const vec2 DC=vec2(.3,-17.0);const float DR=14.;',
