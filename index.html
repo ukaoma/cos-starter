@@ -1265,6 +1265,349 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 }
 @media (prefers-reduced-motion:reduce){.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta,.nav .nav-main{transition:none}}
 </style>
+<style id="chapters">
+/* ══ Below the hero: six chapters (direction C, 2026-11-17). Each chapter keeps its own ground and borrows the
+   hero's devices: one object, hairline wires, one view at a time on an icon rail, strike-throughs. ══ */
+
+/* anchors that now live inside a chapter land below the fixed nav */
+#benefits,#integrations,#realgraph,#philosophy,#get,#tiers,#assess{scroll-margin-top:120px}
+#control{scroll-margin-top:240px}
+@media (max-width:1000px){section[id]{scroll-margin-top:36px}}
+
+/* The chapter rail: a copy of the hero's .one-rail look and behaviour, outside the hero's namespace */
+.crail{position:relative;display:inline-flex;gap:6px;padding-bottom:7px;vertical-align:middle}
+.crail button{all:unset;box-sizing:border-box;cursor:pointer;width:34px;height:30px;display:grid;place-items:center;border-radius:6px;color:rgba(255,240,220,.62);transition:color .25s ease}
+.crail button.on,.crail button:hover{color:#fff0dc}
+.crail button:focus-visible{outline:2px solid #f6b46e;outline-offset:1px}
+.crail svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.crail .bar{position:absolute;left:0;bottom:0;width:34px;height:2px;border-radius:1px;background:#f6b46e;transition:transform .35s cubic-bezier(.3,.8,.3,1),width .35s ease}
+@media (max-width:1099px),(pointer:coarse){.crail{gap:4px}.crail button{width:44px;height:44px}.crail .bar{width:44px}}
+
+/* The step: the same underline, on text stops that build up (time and tiers) */
+.cstep{position:relative;display:flex;justify-content:center;gap:2px;width:fit-content;max-width:100%;margin-inline:auto;border-bottom:1px solid var(--line-2)}
+.cstep button{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 14px;display:inline-flex;align-items:center;gap:8px;
+  font:500 .92rem/1.1 var(--body);color:var(--muted);white-space:nowrap;transition:color .25s ease}
+.cstep button::before{content:'';width:7px;height:7px;border-radius:50%;border:1px solid currentColor;flex:none;transition:background .25s ease,border-color .25s ease}
+.cstep button.on,.cstep button:hover{color:var(--fg)}
+.cstep button.past::before,.cstep button.on::before{background:#f6b46e;border-color:#f6b46e}
+.cstep button:focus-visible{outline:2px solid #f6b46e;outline-offset:-2px;border-radius:6px}
+.cstep button.on{box-shadow:inset 0 -2px 0 #f6b46e}
+.cstep .bar{display:none;position:absolute;left:0;bottom:-1px;height:2px;border-radius:1px;background:#f6b46e;transition:transform .35s cubic-bezier(.3,.8,.3,1),width .35s ease}
+.js .cstep .bar{display:block}
+.js .cstep button.on{box-shadow:none}
+section.light .cstep{border-bottom-color:var(--line-on-cream)}
+section.light .cstep button{color:var(--muted-on-cream)}
+section.light .cstep button.on,section.light .cstep button:hover{color:var(--ink-on-cream)}
+section.light .cstep button.past::before,section.light .cstep button.on::before{background:#8f3d14;border-color:#8f3d14}
+section.light .cstep button.on{box-shadow:inset 0 -2px 0 #8f3d14}
+.js section.light .cstep button.on{box-shadow:none}
+section.light .cstep .bar{background:#8f3d14}
+section.light .cstep button:focus-visible{outline-color:#8f3d14}
+@media (max-width:520px){.cstep button{padding:0 9px;font-size:.84rem;gap:6px}}
+@media (max-width:400px){.cstep button{padding:0 7px;font-size:.8rem}.cstep button::before{display:none}}
+
+/* ── 1 · It preps your day: the brief card holds four moments ── */
+.amber-band .hd-brief{pointer-events:auto;padding-bottom:10px}
+.bs-stage{display:grid}
+.bs-stage>.bs{grid-area:1 / 1;min-width:0;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease,visibility 0s linear .35s}
+.bs-stage>.bs.on{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease,transform .35s ease}
+.bs-foot{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:12px;padding-top:8px;border-top:1px solid var(--line-2)}
+.bs-sub{font-size:.8rem;line-height:1.45;color:var(--muted);min-height:4.35em}
+.bs-doc{margin:8px 0 0}
+.bs-doc div{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:8px;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--line-2);font-size:.8rem;line-height:1.4}
+.bs-doc div:last-child{border-bottom:0}
+.bs-doc dt{color:var(--faint)}
+.bs-doc dd{margin:0;color:var(--fg)}
+.bs-doc code{font-family:var(--mono);font-size:.62rem;color:#f6b46e}
+.bs-doc .need dd{color:#f6b46e}
+.hd-brief p.bs-q{margin:14px 0 0 auto;width:fit-content;max-width:88%;padding:9px 12px;border-radius:12px 12px 4px 12px;background:rgba(255,236,214,.08);font-size:.82rem;line-height:1.4;color:var(--fg)}
+.hd-brief p.bs-a{margin:10px 0 0;max-width:94%;padding:10px 12px;border:1px solid rgba(242,154,69,.32);border-radius:12px 12px 12px 4px;background:rgba(242,154,69,.05);font-size:.82rem;line-height:1.45;color:var(--fg)}
+.hd-brief p.bs-src{display:flex;flex-direction:column;gap:4px;margin:10px 2px 0;font-size:.74rem;line-height:1.35;color:var(--muted)}
+.bs-src code{font-family:var(--mono);font-size:.62rem;color:#f6b46e;margin-right:8px}
+/* While you're away: each row arrives, then strikes through as COS handles it */
+.bs-away .hb-li.done.on .tx{text-decoration-color:transparent;transition:text-decoration-color .45s ease}
+.bs-away .hb-li.done.on.hit .tx{text-decoration-color:rgba(251,238,221,.7)}
+.bs-away .hb-li .hb-chip{transition:color .3s ease,border-color .3s ease}
+.bs-away .hb-li.hit .hb-chip{color:var(--fg);border-color:rgba(251,238,221,.3)}
+.amber-band .hd-b1{top:6%}
+.amber-band .hd-b2{top:94%}
+.amber-band .hero-demo{min-height:740px}
+@media (max-width:520px){.amber-band .hero-demo{min-height:760px}.amber-band .hd-brief{width:min(410px,100%)}}
+@media (prefers-reduced-motion:reduce){.bs-stage>.bs,.bs-stage>.bs.on,.crail .bar,.cstep .bar,.bs-away .hb-li .tx{transition:none}}
+
+/* wider measure for the chapters that spread out at 1440 */
+.ch-wide{max-width:1320px}
+/* cream body text: #514436 on #f3ede1 is 8.1:1 */
+:root{--body-on-cream:#514436}
+section.light p,section.light .lead{color:var(--body-on-cream)}
+.amber-band p.ab-cta{margin-top:26px}
+
+/* ── 2 · Wire the house ── */
+#problem .wh-spread{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);align-items:start}
+#problem h2{max-width:14ch}
+#problem p.wh-lead{margin-top:28px;max-width:38ch;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.6}
+.wh-side{display:flex;flex-direction:column;gap:22px;padding-top:10px}
+.wh-quote{margin:0;padding-left:20px;border-left:2px solid #c0662c}
+#problem .wh-quote p{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(1.45rem,2.3vw,1.95rem);line-height:1.22;color:var(--ink-on-cream);text-wrap:balance}
+.wh-plate{position:relative;aspect-ratio:5 / 4;border-radius:14px;overflow:hidden;border:1px solid var(--line-on-cream);background:#ebdfc8}
+#problem .wh-plate .pixmap{left:0;bottom:0;width:100%;height:100%;opacity:.78;display:block;
+  -webkit-mask-image:radial-gradient(85% 90% at 50% 55%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%));
+          mask-image:radial-gradient(85% 90% at 50% 55%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%))}
+#problem p.wh-intro{margin-top:clamp(48px,6vw,80px);max-width:64ch;font-size:1.05rem;line-height:1.65}
+.wire-x{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.4vw,34px)}
+.wire-x li{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.wx-q{width:100%;min-height:4.6em;padding-top:14px;border-top:1px solid var(--line-on-cream);font-size:1rem;line-height:1.45;color:var(--ink-on-cream)}
+.wx-w{display:block;width:9px;height:48px;margin-left:8px;overflow:visible}
+.wx-w line{stroke:#c0662c;stroke-width:1.2}
+.wx-w circle{fill:#c0662c}
+.wx-file{position:relative;display:flex;flex-direction:column;gap:2px;max-width:100%;padding:9px 12px;border-radius:10px;border:1px solid rgba(143,61,20,.45);background:var(--ink)}
+#problem .wx-file code{position:relative;font-family:var(--mono);font-size:.76rem;color:#fbeedd;background:none;padding:0;overflow-wrap:anywhere;transition:color .35s ease}
+#problem .wx-file small{position:relative;font-family:var(--mono);font-size:.64rem;color:#f6b46e;transition:color .35s ease}
+.wh-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin-top:clamp(40px,5vw,60px);padding-top:26px;border-top:1px solid var(--line-on-cream)}
+#problem p.wh-end{margin:0;font-family:var(--display);font-size:clamp(1.35rem,2.2vw,1.75rem);color:var(--ink-on-cream)}
+.wh-act{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px}
+.wh-ln{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:1079px){#problem .wh-spread{grid-template-columns:1fr}.wh-side{flex-direction:row;align-items:center}.wh-quote{flex:1}.wh-plate{flex:0 0 42%}}
+@media (max-width:900px){.wire-x{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:30px}}
+@media (max-width:560px){.wh-side{flex-direction:column;align-items:stretch}.wh-plate{flex:none;aspect-ratio:16 / 10}.wire-x{grid-template-columns:1fr;row-gap:20px}.wx-q{min-height:0}.wx-w{height:26px}}
+
+.ch-sub{max-width:48ch}
+.ch-sub h3{font-family:var(--display);font-weight:400;font-size:clamp(1.75rem,3.2vw,2.5rem);line-height:1.1;letter-spacing:-.012em;color:var(--fg);text-wrap:balance}
+.ch-sub .lead{margin-top:16px}
+.gr-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,3.6vw,56px);align-items:start;margin-top:clamp(30px,4vw,48px)}
+.feed-h{font-size:.88rem;color:var(--muted)}
+.feed-h a{color:var(--gold)}
+.feed-list{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(16px,2.4vw,30px)}
+.feed-list li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:8px;align-items:center;padding:10px 0;border-top:1px solid var(--line-2);min-width:0}
+.fd-ic{grid-row:1 / span 2;display:flex;align-items:center;gap:3px;color:var(--fg)}
+.fd-ic svg{width:14px;height:14px;fill:currentColor;flex:none}
+.fd-ic.fd-ln svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fd-ic.fd-ch{font:600 .82rem/1 var(--mono)}
+.feed-list b{font-weight:500;font-size:.88rem;line-height:1.3;color:var(--fg)}
+.feed-list em{font-style:normal;font-family:var(--mono);font-size:.68rem;color:var(--gold)}
+@media (max-width:440px){.feed-list{grid-template-columns:1fr}}
+#graph .jc{grid-template-columns:minmax(0,1fr);margin-top:46px;overflow:visible}
+#graph .jc-head .jc-cols span{position:relative}
+.jc-head svg.jc-wire{fill:none;color:inherit;position:absolute;left:50%;bottom:calc(100% + 4px);width:7px;height:calc(clamp(18px,3vw,30px) + 46px);margin-left:-3.5px;overflow:visible;pointer-events:none}
+.jc-wire line{stroke:#f29a45;stroke-width:1.1;stroke-opacity:.8}
+.jc-wire circle{fill:#f29a45}
+.jc-cols svg.jc-sv{position:absolute;left:0;top:50%;width:100%;height:2px;margin-top:-1px;overflow:visible;pointer-events:none}
+.jc-sv line{stroke:#f29a45;stroke-width:1;stroke-opacity:.75;vector-effect:non-scaling-stroke}
+.jc-sv line.rv{stroke:#e07a3a;stroke-dasharray:3 3}
+.js .jc-cols .jc-ln{display:none}
+.jc-cols i{transition:background-color .3s ease,border-color .3s ease}
+.jc.pre .jc-cols i.on:not(.lit){background:var(--ink);border-color:var(--ghost)}
+.rec-h{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2vw,1.65rem);line-height:1.2;color:var(--fg)}
+.gr-right p.rec-lead{margin-top:10px;font-size:.95rem;line-height:1.55;color:var(--muted)}
+.gr-right .rec-obj{margin:22px 0 0}
+.gr-right .cstep{margin-inline:0}
+.rec{margin:16px 0 0;border:1px solid rgba(255,182,112,.3);border-radius:16px;padding:18px 20px 14px;
+  background:linear-gradient(180deg,rgba(255,170,90,.13),rgba(255,170,90,.03)),var(--ink);box-shadow:inset 0 1px 0 rgba(255,232,204,.12)}
+.rec-top{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line-2)}
+.rec-badge{width:30px;height:30px;border-radius:9px;background:#f29a45;display:grid;place-items:center;flex:none}
+.rec-badge svg{width:16px;height:16px;fill:none;stroke:#2a1206;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rec-top b{display:block;font-weight:600;color:var(--fg)}
+.rec-top small{display:block;font-size:.78rem;color:var(--faint)}
+.rec-n{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--faint);white-space:nowrap}
+.rec-n b{display:inline;color:var(--gold);font-weight:500}
+.rec-rows{margin:0}
+.rr{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 0;font-size:.9rem;line-height:1.4}
+.rr::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line-2)}
+.rr.new::after{opacity:0}
+.rr-rule{position:absolute;left:0;bottom:0;width:100%;height:2px;overflow:visible;pointer-events:none}
+.rr-rule line{stroke:#f29a45;stroke-width:1;vector-effect:non-scaling-stroke}
+.rr dt{color:var(--faint)}
+.rr dd{margin:0;color:var(--fg);min-width:0}
+.rr code{font-family:var(--mono);font-size:.68rem;color:var(--gold);text-align:right}
+.rr .rx{position:relative;text-decoration:none;transition:color .4s ease}
+.rec[data-s="0"] .rr:is([data-s="1"],[data-s="2"]),.rec[data-s="1"] .rr[data-s="2"]{display:none}
+.rec[data-s="0"] .rfix,.rec[data-s="0"] .r1,.rec:not([data-s="0"]) .r0{display:none}
+.rec:not([data-s="0"]) .rx{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--faint)}
+.js .rec:not([data-s="0"]) .rx{text-decoration:none}
+.rx-strk{position:absolute;left:-2px;top:50%;width:calc(100% + 4px);height:2px;margin-top:-1px;overflow:visible;pointer-events:none}
+.rx-strk line{stroke:rgba(251,238,221,.75);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.rec[data-s="0"] .rx-strk{display:none}
+.rfix{display:inline-block;margin-left:.4em;color:var(--fg)}
+.rec-cap{margin-top:12px;font-size:.84rem;line-height:1.5;color:var(--muted);min-height:3em}
+.rec-cap .rc{display:none}
+.rec[data-s="0"] .rc[data-s="0"],.rec[data-s="1"] .rc[data-s="1"],.rec[data-s="2"] .rc[data-s="2"]{display:inline}
+@media (max-width:1079px){.gr-grid{grid-template-columns:1fr}.gr-right{max-width:640px}}
+@media (max-width:560px){.rr{grid-template-columns:84px minmax(0,1fr);row-gap:2px}.rr code{grid-column:2;text-align:left}}
+.ch-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 40px;margin-top:clamp(56px,7vw,88px);padding-top:clamp(26px,3.5vw,38px);border-top:1px solid var(--line)}
+.ch-close .creed{max-width:26ch;font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.2}
+.cc-cta{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ── 3 · Start on your Mac: the timeline across the top, then the words and the tree side by side ── */
+#start .st-top h2{max-width:none}
+#start p.st-stand{margin-top:14px;max-width:40ch;font-family:var(--display);font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.3;color:var(--ink-on-cream)}
+.tree-ch{margin:clamp(40px,5vw,64px) 0 0;scroll-margin-top:120px}
+.cstep.tx-axis{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;width:100%;max-width:none;margin:0;border:0}
+.tx-svg{position:absolute;left:7px;width:75%;bottom:21px;height:3px;overflow:visible;pointer-events:none}
+.tx-svg line{stroke-width:2;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.tx-svg .tx-base{stroke:rgba(143,61,20,.22)}
+.tx-svg .tx-run{stroke:#c0662c}
+.cstep.tx-axis button{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:44px;padding:0 8px 44px 0;white-space:normal;text-align:left;
+  font:500 clamp(.9rem,1.4vw,1.08rem)/1.2 var(--body);color:var(--body-on-cream)}
+.cstep.tx-axis button small{font-size:.78rem;font-weight:400;color:rgba(46,31,16,.7)}
+.cstep.tx-axis button::before{content:'';position:absolute;left:0;bottom:15px;width:15px;height:15px;border-radius:50%;box-sizing:border-box;background:var(--cream);border:2px solid rgba(143,61,20,.4);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease}
+section.light .cstep.tx-axis button.past::before,section.light .cstep.tx-axis button.on::before{background:#c0662c;border-color:#c0662c}
+section.light .cstep.tx-axis button.on::before{box-shadow:0 0 0 6px rgba(192,102,44,.16)}
+section.light .cstep.tx-axis button.on{color:var(--ink-on-cream);box-shadow:none}
+.cstep.tx-axis button:hover{color:var(--ink-on-cream)}
+.st-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4.5vw,72px);align-items:start;margin-top:clamp(24px,3vw,36px)}
+.tier-cap{display:grid;margin:0}
+.tier-cap .tc{grid-area:1 / 1;visibility:hidden}
+.tree-ch[data-s="1"] .tc[data-s="1"],.tree-ch[data-s="2"] .tc[data-s="2"],.tree-ch[data-s="3"] .tc[data-s="3"],.tree-ch[data-s="4"] .tc[data-s="4"]{visibility:visible}
+#start .tier-cap .tc{font-size:1.02rem;line-height:1.6;color:var(--body-on-cream)}
+.tier-cap b{display:block;margin-bottom:8px;font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.08;color:var(--ink-on-cream)}
+#start p.st-body{margin-top:22px;font-size:.98rem;line-height:1.65}
+#start p.st-cta{margin:20px 0 4px}
+#start .kit-cta{margin-top:20px}
+.st-links{list-style:none;padding:0;margin:30px 0 0;border-top:1px solid var(--line-on-cream)}
+.st-links a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line-on-cream);font-weight:500;text-decoration:none}
+.st-links a:hover{text-decoration:underline;text-underline-offset:3px}
+.tree{margin:0;border-radius:16px;background:var(--ink);border:1px solid rgba(242,154,69,.34);overflow:hidden;color:var(--fg);box-shadow:0 30px 60px -34px rgba(42,16,7,.75)}
+.tree-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,246,232,.08);background:rgba(255,255,255,.02)}
+.tree-bar .ctl-lights{position:static;transform:none}
+.tree-name{margin-left:4px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.tmark{margin-left:auto;width:26px;height:28px;overflow:visible}
+.tmark circle,.tmark .bond{transform-box:fill-box;transform-origin:center}
+.tree-ch[data-s="1"] .tmark .bond,.tree-ch[data-s="2"] .tmark .bond:not([data-s="2"]),.tree-ch[data-s="3"] .tmark .bond[data-s="4"]{opacity:0}
+.tree-body{padding:18px clamp(16px,3vw,26px) 20px;font-family:var(--mono);font-size:.8rem;line-height:1.7}
+.tree .tr-root{margin:0;color:rgba(251,238,221,.55)}
+.tree ul.tr{list-style:none;margin:0 0 0 6px;padding:2px 0 2px 18px;border-left:1px solid rgba(242,154,69,.32)}
+.tree .tl{position:relative;padding:2px 0}
+.tree .tl::before{content:'';position:absolute;left:-18px;top:calc(.85em + 2px);width:12px;height:1px;background:rgba(242,154,69,.32)}
+.js .tree .tl::before{display:none}
+.tl-br{position:absolute;left:-18px;top:calc(.85em + 1.5px);width:12px;height:2px;overflow:visible;pointer-events:none}
+.tl-br line{stroke:rgba(242,154,69,.5);stroke-width:1}
+.tree .tl>code{font:inherit;color:rgba(251,238,221,.62);background:none;padding:0;transition:color .5s ease}
+.tree .tl .cm{margin-left:14px;color:rgba(251,238,221,.4)}
+.tree .tl.run>code{color:var(--green)}
+.tree-ch[data-s="1"] .tl[data-s="1"]>code,.tree-ch[data-s="2"] .tl[data-s="2"]:not(.run)>code,.tree-ch[data-s="3"] .tl[data-s="3"]:not(.run)>code{color:#f6b46e}
+.tree-ch[data-s="4"] .tl.run[data-s="4"]>code{color:#a8d8b2}
+.tree-ch[data-s="1"] :is(.tl,.tn):is([data-s="2"],[data-s="3"],[data-s="4"]),
+.tree-ch[data-s="2"] :is(.tl,.tn):is([data-s="3"],[data-s="4"]),
+.tree-ch[data-s="3"] :is(.tl,.tn)[data-s="4"]{display:none}
+.tree .tn{margin:5px 0 9px;padding:7px 12px;max-width:54ch;border-left:2px solid #f6b46e;border-radius:0 8px 8px 0;background:rgba(242,154,69,.08);font-family:var(--body);font-size:.86rem;line-height:1.45;color:var(--fg)}
+.tree .tn em{font-style:normal;font-family:var(--mono);font-size:.72rem;color:#f6b46e;margin-right:9px}
+.tree-cap{padding:12px clamp(16px,3vw,26px) 15px;border-top:1px solid rgba(255,246,232,.08);font-size:.8rem;line-height:1.5;color:rgba(251,238,221,.6)}
+@media (max-width:1079px){
+  .st-grid{display:flex;flex-direction:column;align-items:stretch}
+  .st-left{display:contents}
+  .st-left>*{order:3}
+  .st-left>.tier-cap{order:1}
+  .st-grid>.tree{order:2;margin-top:18px}
+}
+@media (max-width:600px){.tree .tl .cm{display:block;margin-left:0;line-height:1.4;padding-bottom:3px}.cstep.tx-axis button small{display:none}.cstep.tx-axis button{padding-bottom:40px}}
+.cstep.tx-axis button::before{display:block}
+@media (max-width:480px){.cstep.tx-axis button{white-space:nowrap;font-size:.8rem}}
+@media (max-width:560px){.wx-w{margin-top:6px}}
+
+/* ── 4 · Where it meets you: the words stay put on the left, the object changes on the right ── */
+.dv-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,4.5vw,76px);align-items:start}
+.dv-left{position:sticky;top:112px}
+#glasses .dv-left h2{max-width:12ch}
+.dv-pick{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:28px}
+#glasses p.dv-where{margin:0;font-size:15px;font-weight:600;line-height:1.3;color:#fde6cc}
+.dv-where b{font-weight:600;color:#fff0dc}
+.dv-copy{margin-top:20px}
+.dv-copy:not(.on),.dview:not(.on){display:none}
+#glasses p.dv-t{font-weight:600;font-size:1.1rem;line-height:1.35;color:var(--fg)}
+html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inherit!important;background:none!important;-webkit-text-fill-color:currentColor!important;color:inherit!important}
+#glasses p.dv-lead{margin-top:10px;max-width:46ch;font-size:1rem;line-height:1.6}
+.dv-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+#glasses p.dv-more{margin-top:8px}
+.dv-more a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.dv-right{position:relative;min-width:0}
+.dview{position:relative}
+.dv-outline{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:3}
+.dv-outline rect{fill:none;stroke:#f6b46e;stroke-width:1.5}
+.dview .kg-cap{margin-top:12px}
+.dv-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(22px,3vw,40px);margin:24px 0 0}
+.dv-facts div{padding:16px 0;border-top:1px solid var(--line-2)}
+.dv-facts dt{font-weight:600;font-size:.98rem;color:var(--fg)}
+.dv-facts dd{margin:6px 0 0;font-size:.9rem;line-height:1.55;color:var(--muted)}
+.dv-facts dd a{text-decoration:underline;text-underline-offset:3px}
+.dv-right .ctl-rail{flex-wrap:wrap}
+.dv-right .ctl-tab{flex:1 1 auto;gap:5px;padding:9px 6px 10px;font-size:.76rem}
+.ctl-rail .ctl-tab{cursor:pointer;transition:color .2s ease,border-color .2s ease}
+.ctl-rail .ctl-tab.on{color:var(--ink-on-cream);border-bottom-color:#8f3d14}
+.ctl-rail .ctl-tab:hover{color:var(--ink-on-cream)}
+.ctl-rail .ctl-tab:focus-visible{outline:2px solid #8f3d14;outline-offset:-3px;border-radius:6px}
+.ctl-grid.ctl-one{display:block;margin-top:20px}
+.js .ctl-one .ctl-tile,.ctl-one .ctl-tile{display:none;opacity:1;animation:none;min-height:0;padding:22px 24px 18px}
+.ctl-one .ctl-tile.on{display:flex}
+.ctl-one .ctl-tt b{font-size:1.2rem}
+.ctl-one .ctl-n{font-size:2.2rem}
+.ctl-one .ctl-tile p{font-size:.98rem;max-width:56ch}
+.dview .g2-stage{max-width:560px}
+.ph{width:min(296px,82vw);margin:0 auto;padding:9px;border-radius:46px;background:#140705;border:1px solid rgba(255,236,214,.16);box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.ph-scr{border-radius:38px;background:var(--cream);color:var(--ink-on-cream);padding:12px 14px 16px;min-height:520px;display:flex;flex-direction:column;gap:12px;overflow:hidden;text-align:left}
+.ph-st{display:flex;justify-content:space-between;align-items:center;padding:2px 12px 0;font:600 .72rem/1 var(--body)}
+.ph-isl{width:82px;height:24px;border-radius:12px;background:#140705}
+.ph-app{display:flex;align-items:center;gap:6px;padding:6px 4px 10px;border-bottom:1px solid rgba(46,31,16,.1)}
+.ph-app img{width:14px;height:auto}
+.ph-app b{font-family:var(--display);font-weight:600;font-size:1rem}
+.ph-app span{margin-left:auto;font-size:.76rem;color:rgba(46,31,16,.6)}
+.ph-card{border:1px solid rgba(46,31,16,.14);border-radius:14px;padding:12px;background:#fffaf2}
+.ph p{margin:0}
+.ph .ph-k{font-size:.74rem;font-weight:600;color:#a8481a}
+.ph .ph-u{margin:8px 0 0 auto;width:fit-content;max-width:90%;padding:7px 10px;border-radius:12px 12px 4px 12px;background:#efe6d6;font-size:.8rem;line-height:1.35;color:var(--ink-on-cream)}
+.ph .ph-r{margin-top:8px;font-size:.8rem;line-height:1.45;color:var(--ink-on-cream)}
+.ph .ph-li{margin:6px 0 10px;font-size:.82rem;color:rgba(46,31,16,.72)}
+.ph-btn{display:inline-block;padding:8px 12px;border-radius:9px;background:#8f3d14;color:#fff3e4;font-size:.78rem;font-weight:600}
+.ph-in{margin-top:auto;border:1px solid rgba(46,31,16,.16);border-radius:12px;padding:10px 12px;font-size:.8rem;color:rgba(46,31,16,.5);background:#fff}
+@media (max-width:1079px){.dv-grid{grid-template-columns:1fr}.dv-left{position:static}.dv-right{margin-top:4px}}
+@media (max-width:900px){.ctl-rail .ctl-tab{min-height:44px}}
+@media (max-width:700px){.dv-facts{grid-template-columns:1fr}}
+
+/* ── 5 · For teams: tidy only ── */
+#teams .teams h2{font-style:normal;font-weight:400}
+#teams .teams>.hero-cta{justify-content:center}
+.util-svg{position:absolute;left:0;top:50%;width:100%;height:2px;margin-top:-1px;overflow:visible;pointer-events:none}
+.util-svg line{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+.js #teams .util-arrow{display:none}
+
+/* ── 6 · Questions: words and ways deeper on the left, the answers on the right ── */
+.fq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,84px);align-items:start}
+.fq-left{position:sticky;top:112px}
+#faq p.fq-lead{margin-top:20px;max-width:40ch;font-size:1.05rem;line-height:1.65}
+.deeper{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--line-on-cream)}
+.deeper a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line-on-cream);font-weight:500;text-decoration:none}
+.deeper a:hover{text-decoration:underline;text-underline-offset:3px}
+#faq .fq-left .pixmap-c{position:relative;right:auto;top:auto;display:block;width:100%;height:220px;margin-top:30px;opacity:.32}
+.fq-h{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#faq .faq{margin-top:0;max-width:none}
+.fq summary .fq-pm{flex:none;width:16px;height:16px;overflow:visible}
+.fq-pm line{stroke:#8f3d14;stroke-width:1.6;stroke-linecap:round}
+.fq-pm .v{transform-box:fill-box;transform-origin:center;transition:transform .35s cubic-bezier(.3,.8,.3,1)}
+.fq[open] .fq-pm .v{transform:rotate(90deg)}
+.js .fq summary::after{content:none}
+@media (max-width:1079px){.fq-grid{grid-template-columns:1fr}.fq-left{position:static}#faq .fq-left .pixmap-c{display:none}}
+@media (prefers-reduced-motion:reduce){.fq-pm .v{transition:none}}
+
+/* ── motion hooks (the script adds .mv, .mvx and .rl; without JS none of this applies) ── */
+.mv .hb-li{position:relative;border-color:transparent}
+.js .mv .hb-li{opacity:1;transform:none;transition:none}
+.mv .hb-li>:not(.ro){opacity:0;transition:opacity .32s ease}
+.mv .hb-li.on>:not(.ro){opacity:1}
+.mv .hb-li .tx{text-decoration:none!important}
+.hb-li .ro{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.hb-li .ro rect{fill:none;stroke:rgba(255,236,214,.13);stroke-width:1}
+.hb-li.you .ro rect{stroke:rgba(242,154,69,.4)}
+.hb-li .strk{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;visibility:hidden}
+.hb-li.hit .strk{visibility:visible}
+.strk line{stroke:rgba(251,238,221,.72);stroke-width:1.5}
+.mv .hb-li.done.hit .tx{color:var(--muted)}
+.wx-ink{position:absolute;inset:0;border-radius:inherit;background:var(--ink)}
+.mvx .wx-file{background:transparent}
+#problem .mvx li:not(.inked) .wx-file code{color:var(--ink-on-cream)}
+#problem .mvx li:not(.inked) .wx-file small{color:#8f3d14}
+.rl .rr::after{display:none}
+.rr-rule line{stroke:rgba(242,154,69,.3);stroke-width:1}
+@media (prefers-reduced-motion:reduce){.mv .hb-li>:not(.ro){transition:none}}
+</style>
 
 </head>
 <body>
@@ -1465,7 +1808,12 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   </div>
 </header>
 
-<!-- ── BRIEF ── -->
+<!-- ══ CHAPTER 1 · IT PREPS YOUR DAY (was #brief and #benefits) ══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ch-sun" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.4"/><path d="M10 2.4v2M10 15.6v2M2.4 10h2M15.6 10h2M4.6 4.6l1.4 1.4M14 14l1.4 1.4M4.6 15.4 6 14M14 6l1.4-1.4"/></symbol>
+  <symbol id="ch-moon" viewBox="0 0 20 20"><path d="M15.6 12.4A6.2 6.2 0 0 1 7.6 4.4a6.2 6.2 0 1 0 8 8z"/></symbol>
+  <radialGradient id="chAmb" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#e59a5e"/><stop offset=".3" stop-color="#a8461f"/><stop offset=".72" stop-color="#5e1d0e"/><stop offset="1" stop-color="#2f0e07"/></radialGradient>
+</svg>
 <section class="wrap amber-band" id="brief" aria-labelledby="brief-h">
   <div class="hero-grid">
     <div class="ab-copy">
@@ -1478,40 +1826,79 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
         <span class="mk mk-local" title="Local model"><svg aria-hidden="true"><use href="#b-local"/></svg></span>
       </div>
       <p class="badge-note">Mac app: Apple silicon, macOS 14+. No Homebrew or Node installation for core setup. Optional <a href="https://www.evenrealities.com/" target="_blank" rel="noopener noreferrer"><b>Even G2</b></a> integration</p>
+      <p class="ab-cta"><a class="btn ghost" href="/blueprint/">Build my Blueprint</a></p>
     </div>
-    <div class="hero-demo" aria-hidden="true">
-      <svg class="hd-web" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <div class="hero-demo">
+      <svg class="hd-web" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <line class="w" x1="76" y1="12" x2="47" y2="47"/>
         <line class="w" x1="20" y1="82" x2="47" y2="47"/>
         <line x1="76" y1="12" x2="92" y2="34"/><line x1="20" y1="82" x2="8" y2="62"/>
         <line x1="47" y1="47" x2="92" y2="62"/><line x1="47" y1="47" x2="10" y2="24"/>
         <line x1="76" y1="12" x2="52" y2="4"/><line x1="20" y1="82" x2="46" y2="94"/>
       </svg>
-      <i class="hd-dot" style="left:92%;top:34%;background:#5b8def"></i>
-      <i class="hd-dot" style="left:8%;top:62%;background:#e08a3c"></i>
-      <i class="hd-dot" style="left:92%;top:62%;background:#5fae7d"></i>
-      <i class="hd-dot" style="left:10%;top:24%;background:#a86fd0"></i>
-      <i class="hd-dot" style="left:52%;top:4%;background:#9aa3ad"></i>
-      <i class="hd-dot" style="left:46%;top:94%;background:#5b8def"></i>
-      <div class="cg-card hd-b1">
+      <i class="hd-dot" aria-hidden="true" style="left:92%;top:34%;background:#5b8def"></i>
+      <i class="hd-dot" aria-hidden="true" style="left:8%;top:62%;background:#e08a3c"></i>
+      <i class="hd-dot" aria-hidden="true" style="left:92%;top:62%;background:#5fae7d"></i>
+      <i class="hd-dot" aria-hidden="true" style="left:10%;top:24%;background:#a86fd0"></i>
+      <i class="hd-dot" aria-hidden="true" style="left:52%;top:4%;background:#9aa3ad"></i>
+      <i class="hd-dot" aria-hidden="true" style="left:46%;top:94%;background:#5b8def"></i>
+      <div class="cg-card hd-b1" aria-hidden="true">
         <div class="cg-h"><div class="cg-badge"><svg><use href="#i-person"/></svg></div><div><div class="cg-t">Dana Mercer</div><div class="cg-m">Head of Growth</div></div></div>
         <div class="cg-r"><span class="cg-k">Last met</span><span class="cg-v">2 days ago</span></div>
         <div class="cg-r"><span class="cg-k">Open</span><span class="cg-v gold">Q3 launch</span></div>
       </div>
-      <div class="cg-card hd-b2">
+      <div class="cg-card hd-b2" aria-hidden="true">
         <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mic"/></svg></div><div><div class="cg-t">Investor Update</div><div class="cg-m">Granola · 45 min</div></div></div>
         <div class="cg-r"><span class="cg-k">Summary</span><span class="cg-v gold">3 action items</span></div>
       </div>
-      <div class="hd-brief">
-        <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">COS · Morning Brief</div><div class="hb-s">built from your graph</div></div><span class="hb-time">7:02</span></div>
-        <p class="hb-greet">Morning, Dana. Two things need you. <em>I handled the rest.</em></p>
-        <ul class="hb-list">
-          <li class="hb-li done"><span class="tx">Recap sent to the Northwind thread</span><span class="hb-chip"><svg><use href="#b-gmail"/></svg>Done</span></li>
-          <li class="hb-li done"><span class="tx">#growth triaged, replies drafted</span><span class="hb-chip"><svg><use href="#b-slack"/></svg>Handled</span></li>
-          <li class="hb-li you"><span class="tx">Pipeline call at 9:30</span><span class="hb-chip"><svg><use href="#b-googlecalendar"/></svg>Brief ready</span></li>
-          <li class="hb-li you"><span class="tx">Q3 pricing needs your call</span><span class="hb-chip">Decision · Yours</span></li>
-        </ul>
-      </div>
+      <figure class="hd-brief" id="benefits" aria-label="Example output from COS, one moment at a time. The names are not real.">
+        <div class="bs-stage">
+          <div class="bs on" data-sub="Every morning, built from your calendar, threads and people.">
+            <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">COS · Morning Brief</div><div class="hb-s">built from your graph</div></div><span class="hb-time">7:02</span></div>
+            <p class="hb-greet">Morning, Dana. Two things need you. <em>I handled the rest.</em></p>
+            <ul class="hb-list">
+              <li class="hb-li done"><span class="tx">Recap sent to the Northwind thread</span><span class="hb-chip"><svg><use href="#b-gmail"/></svg>Done</span></li>
+              <li class="hb-li done"><span class="tx">#growth triaged, replies drafted</span><span class="hb-chip"><svg><use href="#b-slack"/></svg>Handled</span></li>
+              <li class="hb-li you"><span class="tx">Pipeline call at 9:30</span><span class="hb-chip"><svg><use href="#b-googlecalendar"/></svg>Brief ready</span></li>
+              <li class="hb-li you"><span class="tx">Q3 pricing needs your call</span><span class="hb-chip">Decision · Yours</span></li>
+            </ul>
+          </div>
+          <div class="bs" data-sub="Before every call. Walk in already knowing, without opening six tabs.">
+            <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">/prep · Pipeline call</div><div class="hb-s">starts at 9:30</div></div><span class="hb-time">9:22</span></div>
+            <dl class="bs-doc">
+              <div><dt>With</dt><dd>Dana Mercer, Head of Growth, Northwind</dd><code>people.md</code></div>
+              <div><dt>Last met</dt><dd>2 days ago</dd><code>calendar</code></div>
+              <div><dt>Since then</dt><dd>Investor Update: 3 action items, with Priya Raman</dd><code>granola</code></div>
+              <div class="need"><dt>Needs you</dt><dd>Q3 pricing needs your call</dd><code>decision</code></div>
+            </dl>
+          </div>
+          <div class="bs" data-sub="Ask like it works there. Answers from your clients, decisions, docs and calls.">
+            <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">COS · Ask</div><div class="hb-s">from three calls</div></div><span class="hb-time">11:40</span></div>
+            <p class="bs-q">What did we decide about the Lakeside migration timeline?</p>
+            <p class="bs-a">The June 4 review moved cutover to Q4, pending the parity list Priya owns. Nothing since has changed that date.</p>
+            <p class="bs-src"><span><code>decision</code>Cutover moves to Q4, Jun 4</span><span><code>context</code>Priya owns the parity list</span></p>
+          </div>
+          <div class="bs" data-sub="The follow-ups, recaps and tracking run without you. One agency's brief for its COS: add revenue without adding headcount.">
+            <div class="hb-head"><span class="hb-ava">C</span><div><div class="hb-t">While you were away</div><div class="hb-s">handled before 7:02</div></div><span class="hb-time">6:48</span></div>
+            <ul class="hb-list bs-away">
+              <li class="hb-li done"><span class="tx">Recap sent to the Northwind thread</span><span class="hb-chip"><svg><use href="#b-gmail"/></svg>Sent</span></li>
+              <li class="hb-li done"><span class="tx">#growth triaged, replies drafted</span><span class="hb-chip"><svg><use href="#b-slack"/></svg>Drafted</span></li>
+              <li class="hb-li done"><span class="tx">Investor Update: 3 action items logged</span><span class="hb-chip">Logged</span></li>
+              <li class="hb-li done"><span class="tx">Renewal reminder set for Lakeside</span><span class="hb-chip"><svg><use href="#b-googlecalendar"/></svg>Set</span></li>
+            </ul>
+          </div>
+        </div>
+        <figcaption class="bs-foot">
+          <span class="crail" role="group" aria-label="Show the brief at another moment">
+            <button type="button" class="on" aria-pressed="true" aria-label="Morning"><svg aria-hidden="true"><use href="#ch-sun"/></svg></button>
+            <button type="button" aria-pressed="false" aria-label="Before a call"><svg aria-hidden="true"><use href="#i-cal"/></svg></button>
+            <button type="button" aria-pressed="false" aria-label="Ask"><svg aria-hidden="true"><use href="#i-chat"/></svg></button>
+            <button type="button" aria-pressed="false" aria-label="While you're away"><svg aria-hidden="true"><use href="#ch-moon"/></svg></button>
+            <i class="bar" aria-hidden="true"></i>
+          </span>
+          <span class="bs-sub">Every morning, built from your calendar, threads and people.</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="hero-meta">
@@ -1522,417 +1909,259 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 
 <div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 01 PROBLEM ── -->
-<section class="wrap reveal light" id="problem">
-  <div class="pixmap" aria-hidden="true"><div class="pi"></div></div>
-  <div class="split">
-    <div class="sec-head">      <h2>If AI is electricity, most people still haven't <span class="it g hx">wired the house.</span></h2>
+<!-- ══ CHAPTER 2 · WIRE THE HOUSE (was #problem, #graph, #integrations, #realgraph, #philosophy) ══ -->
+<section class="wrap light ch-wide" id="problem">
+  <div class="wh-spread">
+    <div class="wh-main">
+      <h2>If AI is electricity, most people still haven't wired the house.</h2>
+      <p class="wh-lead">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday.</p>
     </div>
-    <div>
-      <p class="pull">Open a chat. Type a prompt. Get a generic answer. Close the tab. Repeat tomorrow with zero memory of yesterday. <span class="g">That is a match struck in the dark.</span></p>
-      <p>The executives getting real leverage from AI have wired the house. They gave the model the context a world-class chief of staff would have on day 90:</p>
-      <ul class="wire-list" aria-label="What a chief of staff knows, and the file that holds each one">
-        <li class="wl-path" aria-hidden="true">my-cos/</li>
-        <li style="--i:0"><span class="wl-need">Who reports to you, and how each person operates</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>context/people.md</code><small># your team profiles</small></span></li>
-        <li style="--i:1"><span class="wl-need">What you are working on this quarter, and why it matters</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
-        <li style="--i:2"><span class="wl-need">Which meetings need prep, and which are noise</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>.claude/commands/prep.md</code><small># /prep: meeting preparation</small></span></li>
-        <li style="--i:3"><span class="wl-need">The patterns that keep showing up that you keep missing</span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>corrections.md</code><small># patterns (auto-populated)</small></span></li>
-      </ul>
-      <p style="margin-top:22px"><strong>COS gives you the wiring.</strong></p>
+    <div class="wh-side">
+      <blockquote class="wh-quote"><p>That is a match struck in the dark.</p></blockquote>
+      <div class="wh-plate" aria-hidden="true"><div class="pixmap"><div class="pi"></div></div></div>
     </div>
   </div>
-</section>
-
-<!-- ── 02 WHAT CHANGES ── -->
-<section class="wrap reveal light" id="benefits">
-  <div class="sec-head">    <h2>COS briefs you every morning and before every call.</h2>
+  <p class="wh-intro">The executives getting real leverage from AI have wired the house. They gave the model the context a world-class chief of staff would have on day 90, and each answer lives in a file:</p>
+  <ol class="wire-x" aria-label="What a chief of staff knows, and the file that holds each one">
+    <li style="--i:0"><span class="wx-q">Who reports to you, and how each person operates</span><svg class="wx-w" aria-hidden="true"><circle cx="4.5" cy="0" r="3.5"/><line x1="4.5" y1="0" x2="4.5" y2="100%"/></svg><span class="wx-file"><code>context/people.md</code><small># your team profiles</small></span></li>
+    <li style="--i:1"><span class="wx-q">What you are working on this quarter, and why it matters</span><svg class="wx-w" aria-hidden="true"><circle cx="4.5" cy="0" r="3.5"/><line x1="4.5" y1="0" x2="4.5" y2="100%"/></svg><span class="wx-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
+    <li style="--i:2"><span class="wx-q">Which meetings need prep, and which are noise</span><svg class="wx-w" aria-hidden="true"><circle cx="4.5" cy="0" r="3.5"/><line x1="4.5" y1="0" x2="4.5" y2="100%"/></svg><span class="wx-file"><code>.claude/commands/prep.md</code><small># /prep: meeting preparation</small></span></li>
+    <li style="--i:3"><span class="wx-q">The patterns that keep showing up that you keep missing</span><svg class="wx-w" aria-hidden="true"><circle cx="4.5" cy="0" r="3.5"/><line x1="4.5" y1="0" x2="4.5" y2="100%"/></svg><span class="wx-file"><code>corrections.md</code><small># patterns, auto-populated</small></span></li>
+  </ol>
+  <div class="wh-cta">
+    <p class="wh-end">COS gives you the wiring.</p>
+    <div class="wh-act"><a class="btn primary" href="/harness/">See the harness</a><a class="wh-ln" href="/context-engineering-vs-prompt-engineering/">Context engineering vs prompt engineering</a></div>
   </div>
-
-  <div class="art-rows sec-art">
-    <div class="art-row">
-      <div class="art-say"><h3>Walk in already knowing.</h3><p>A morning brief built from your calendar, threads, and people. Prep for every meeting without opening six tabs.</p></div>
-      <figure class="art art-doc" aria-label="Example of a prep brief for one meeting">
-        <figcaption><code>/prep</code><span>Pipeline call, 9:30</span></figcaption>
-        <dl>
-          <div><dt>With</dt><dd>Dana Mercer, Head of Growth, Northwind</dd><code>people.md</code></div>
-          <div><dt>Last met</dt><dd>2 days ago</dd><code>calendar</code></div>
-          <div><dt>Since then</dt><dd>Investor Update: 3 action items, with Priya Raman</dd><code>granola</code></div>
-          <div class="need"><dt>Needs you</dt><dd>Q3 pricing needs your call</dd><code>graph decision</code></div>
-        </dl>
-      </figure>
-    </div>
-    <div class="art-row">
-      <div class="art-say"><h3>Ask like it works there.</h3><p>Instant answers from everything your company knows: clients, decisions, docs, calls.</p></div>
-      <figure class="art art-ask" aria-label="Example of a question and its answer">
-        <p class="q">What did we decide about the Lakeside migration timeline?</p>
-        <p class="a">Three calls reference it. The June 4 review moved cutover to Q4, pending the parity list Priya owns. Nothing since has changed that date.</p>
-        <p class="src"><span><code>decision</code> Cutover moves to Q4, Jun 4</span><span><code>context</code> Priya owns the parity list, Jun 4</span></p>
-      </figure>
-    </div>
-    <div class="art-row">
-      <div class="art-say"><h3>Add capacity without hiring.</h3><p>Skills and automations that run without you. The follow-ups, the recaps, the tracking. Hours back every week.</p></div>
-      <figure class="art art-log" aria-label="Example of work handled before the morning brief">
-        <figcaption><span>Handled before your 7:02 brief</span></figcaption>
-        <ol>
-          <li><span>Recap sent to the Northwind thread</span><em>gmail, done</em></li>
-          <li><span>#growth triaged, replies drafted</span><em>slack, handled</em></li>
-          <li><span>Investor Update: 3 action items logged</span><em>granola, logged</em></li>
-        </ol>
-      </figure>
-    </div>
-  </div>
-  <p class="art-note sec-art">Example output. The names are not real.</p>
-  <p class="bene-quote">&ldquo;Add revenue without adding headcount.&rdquo;<small>The brief one agency gave us for their COS. It stuck.</small></p>
 </section>
 
 <div class="burn up" aria-hidden="true"></div>
 
-<!-- ── 03 THE CONTEXT GRAPH ── -->
-<section class="wrap reveal" id="graph">
-  <div class="sec-head">    <h2>One context graph. <span class="it g hx">Every source you already use.</span></h2>
-    <p class="lead">COS turns the tools you already run, your meetings, email, Slack, calls, and calendar, into one connected, searchable context graph that stays yours.</p>
+<section class="wrap ch-wide" id="graph">
+  <div class="ch-sub">
+    <h3>Every source you already use, joined into one context graph.</h3>
+    <p class="lead">COS reads your meetings, email, Slack, calls and calendar, and keeps what it learns in files you control.</p>
   </div>
-
-  <div class="cg-stage" id="cgStage" aria-hidden="true">
-    <svg class="cg-web" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true">
-      <line class="cg-webline" x1="220" y1="172" x2="140" y2="264"/>
-      <line class="cg-webline warm" x1="220" y1="172" x2="500" y2="264"/>
-      <line class="cg-webline" x1="220" y1="172" x2="400" y2="106"/>
-      <line class="cg-webline" x1="400" y1="106" x2="500" y2="264"/>
-      <line class="cg-webline" x1="400" y1="106" x2="860" y2="132"/>
-      <line class="cg-webline" x1="860" y1="132" x2="700" y2="145"/>
-      <line class="cg-webline warm" x1="700" y1="145" x2="500" y2="264"/>
-      <line class="cg-webline" x1="700" y1="145" x2="780" y2="356"/>
-      <line class="cg-webline warm" x1="500" y1="264" x2="600" y2="383"/>
-      <line class="cg-webline warm" x1="500" y1="264" x2="300" y2="422"/>
-      <line class="cg-webline warm" x1="500" y1="264" x2="560" y2="488"/>
-      <line class="cg-webline" x1="600" y1="383" x2="780" y2="356"/>
-      <line class="cg-webline" x1="600" y1="383" x2="560" y2="488"/>
-      <line class="cg-webline" x1="780" y1="356" x2="920" y2="422"/>
-      <line class="cg-webline" x1="300" y1="422" x2="140" y2="264"/>
-      <line class="cg-webline" x1="300" y1="422" x2="80" y2="462"/>
-      <line class="cg-webline" x1="300" y1="422" x2="560" y2="488"/>
-      <line class="cg-webline" x1="300" y1="422" x2="360" y2="554"/>
-      <line class="cg-webline" x1="560" y1="488" x2="500" y2="607"/>
-      <line class="cg-webline" x1="560" y1="488" x2="660" y2="568"/>
-      <line class="cg-webline" x1="360" y1="554" x2="80" y2="462"/>
-      <line class="cg-webline" x1="360" y1="554" x2="500" y2="607"/>
-      <line class="cg-webline" x1="120" y1="330" x2="140" y2="264"/>
-      <line class="cg-webline" x1="120" y1="330" x2="300" y2="422"/>
-      <line class="cg-webline" x1="660" y1="568" x2="500" y2="607"/>
-      <line class="cg-webline" x1="660" y1="568" x2="780" y2="356"/>
-      <line class="cg-webline" x1="140" y1="264" x2="80" y2="462"/>
-      <line class="cg-webline" x1="860" y1="132" x2="920" y2="422"/>
-      <line class="cg-webline" x1="220" y1="172" x2="120" y2="330"/>
-    </svg>
-
-    <div class="cg-node ghost" style="left:6%;top:15%"><div class="cg-ic"><svg><use href="#i-cal"/></svg></div></div>
-    <div class="cg-node ghost" style="left:95%;top:46%"><div class="cg-ic"><svg><use href="#i-person"/></svg></div></div>
-    <div class="cg-node ghost" style="left:46%;top:7%"><div class="cg-ic"><svg><use href="#i-mail"/></svg></div></div>
-    <div class="cg-node ghost" style="left:24%;top:93%"><div class="cg-ic"><svg><use href="#i-task"/></svg></div></div>
-    <div class="cg-node ghost" style="left:90%;top:88%"><div class="cg-ic"><svg><use href="#i-doc"/></svg></div></div>
-    <div class="cg-node ghost" style="left:4%;top:54%"><div class="cg-ic"><svg><use href="#i-org"/></svg></div></div>
-    <div class="cg-node ghost" style="left:96%;top:24%"><div class="cg-ic"><svg><use href="#i-chat"/></svg></div></div>
-    <div class="cg-node ghost" style="left:68%;top:40%"><div class="cg-ic"><svg><use href="#i-spark"/></svg></div></div>
-
-    <div class="cg-card back" style="left:12%;top:50%;--d:.04s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-task"/></svg></div><div><div class="cg-t">Draft Q3 deck</div><div class="cg-m">Task · staged</div></div></div>
-      <div class="cg-r"><span class="cg-k">Due</span><span class="cg-v gold">Friday</span></div>
+  <div class="gr-grid">
+    <div class="gr-left">
+<div class="feed" id="integrations">
+    <p class="feed-h">Wired in through <a href="https://modelcontextprotocol.io/">MCP servers</a>, with setup time for each</p>
+    <ul class="feed-list" aria-label="Sources that wire into the graph, with setup time">
+      <li><span class="fd-ic" aria-hidden="true"><svg><use href="#b-anthropic"/></svg><svg><use href="#b-openai"/></svg></span><b>Claude, Codex or Cursor</b><em>the engine, on your plan</em></li>
+      <li><span class="fd-ic" aria-hidden="true"><svg><use href="#b-googlecalendar"/></svg><svg><use href="#b-gmail"/></svg><svg><use href="#b-googledrive"/></svg></span><b>Google Workspace</b><em>15 min</em></li>
+      <li><span class="fd-ic" aria-hidden="true"><svg><use href="#b-slack"/></svg></span><b>Slack</b><em>10 min</em></li>
+      <li><span class="fd-ic fd-ln" aria-hidden="true"><svg><use href="#i-mic"/></svg></span><b>Granola, Fireflies, Fathom</b><em>10 min</em></li>
+      <li><span class="fd-ic" aria-hidden="true"><svg><use href="#b-notion"/></svg></span><b>Notion and docs</b><em>10 min</em></li>
+      <li><span class="fd-ic" aria-hidden="true"><svg><use href="#b-hubspot"/></svg></span><b>HubSpot and CRM</b><em>20 min</em></li>
+      <li><span class="fd-ic fd-ch" aria-hidden="true">Q</span><b>Vector store</b><em>30 min</em></li>
+      <li><span class="fd-ic fd-ch" aria-hidden="true">&#8734;</span><b>Anything with an MCP</b><em>bring your own</em></li>
+    </ul>
+  </div>
+      <figure class="jc" aria-label="Example: where each record was seen, one row per record, one column per source">
+<div class="jc-grid">
+      <div class="jc-head" aria-hidden="true"><span></span><div class="jc-cols"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span></div></div>
+      <div class="jc-row sel" style="--r:0"><p class="jc-name"><b>Dana Mercer</b><span>person</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail, Slack and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:1"><p class="jc-name"><b>Northwind Co.</b><span>organization</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail, Slack and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:2"><p class="jc-name"><b>Q3 launch</b><span>concept</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Slack, Fireflies and Drive"><span class="jc-ln" style="--a:1;--b:6"></span><i class="on" style="--c:1"></i><i style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i class="on" style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:3"><p class="jc-name"><b>Investor Update</b><span>content</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:4"><p class="jc-name"><b>Priya Raman</b><span>person</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Granola"><span class="jc-ln" style="--a:2;--b:4"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:5"><p class="jc-name"><b>Q3 Pitch Deck.pdf</b><span>artifact</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:6"><p class="jc-name"><b>Jordan Pierce</b><span>person</span><em class="jc-flag" style="font-style:normal">review</em></p><div class="jc-cols" role="img" aria-label="Low-confidence matches in Fireflies and Drive, held for review"><span class="jc-ln rv" style="--a:5;--b:6"></span><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i class="rv" style="--c:5"></i><i class="rv" style="--c:6"></i></div></div>
     </div>
-    <div class="cg-card back" style="left:88%;top:34%;--d:.08s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mail"/></svg></div><div><div class="cg-t">Re: term sheet</div><div class="cg-m">Gmail · 2h</div></div></div>
-      <div class="cg-r"><span class="cg-k">Status</span><span class="cg-v">Needs reply</span></div>
+        <figcaption class="jc-cap">Four sources each knew one thing about Dana. Joined, they are her one record. A match COS is not sure of waits for your review. Example records; the names are not real.</figcaption>
+      </figure>
     </div>
-
-    <div class="cg-node" style="left:40%;top:16%;--d:.05s"><div class="cg-ic"><svg><use href="#i-chat"/></svg></div><span class="cg-lbl">Slack</span></div>
-    <div class="cg-node" style="left:13.5%;top:39%;--d:.1s"><div class="cg-ic"><svg><use href="#i-mail"/></svg></div><span class="cg-lbl">Gmail</span></div>
-    <div class="cg-node" style="left:86%;top:20%;--d:.12s"><div class="cg-ic"><svg><use href="#i-cal"/></svg></div></div>
-    <div class="cg-node" style="left:60%;top:58%;--d:.16s"><div class="cg-ic"><svg><use href="#i-spark"/></svg></div><span class="cg-lbl">Granola</span></div>
-    <div class="cg-node" style="left:36%;top:84%;--d:.2s"><div class="cg-ic"><svg><use href="#i-mic"/></svg></div><span class="cg-lbl">Fireflies</span></div>
-    <div class="cg-node" style="left:92%;top:64%;--d:.14s"><div class="cg-ic"><svg><use href="#i-play"/></svg></div></div>
-    <div class="cg-node" style="left:8%;top:70%;--d:.18s"><div class="cg-ic"><svg><use href="#i-folder"/></svg></div></div>
-    <div class="cg-node" style="left:50%;top:92%;--d:.22s"><div class="cg-ic"><svg><use href="#i-doc"/></svg></div></div>
-
-    <div class="cg-card" style="left:22%;top:26%;--d:.1s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-doc"/></svg></div><div><div class="cg-t">Q3 Pitch Deck.pdf</div><div class="cg-m">Drive · 2.4 MB</div></div></div>
-      <div class="cg-r"><span class="cg-k">Owner</span><span class="cg-v">Jordan Pierce</span></div>
-      <div class="cg-r"><span class="cg-k">Modified</span><span class="cg-v">Yesterday</span></div>
-      <div class="cg-r"><span class="cg-k">Linked</span><span class="cg-v gold">3 deals</span></div>
+    <div class="gr-right rec-step" id="realgraph">
+      <h4 class="rec-h">Dana's record keeps growing while you work.</h4>
+      <p class="rec-lead">Facts arrive from your sources. Your corrections stick, so you never make the same one twice.</p>
+<div class="rec-obj">
+      <div class="cstep" role="group" aria-label="Dana's record over time">
+        <button type="button" aria-pressed="false" data-s="0">Day 1</button>
+        <button type="button" aria-pressed="false" data-s="1">Week 2</button>
+        <button type="button" aria-pressed="true" data-s="2" class="on">Month 1</button>
+        <i class="bar" aria-hidden="true"></i>
+      </div>
+      <figure class="rec" data-s="2" aria-label="Dana Mercer's record at Month 1. Example record; the names are not real.">
+        <div class="rec-top">
+          <span class="rec-badge" aria-hidden="true"><svg><use href="#i-person"/></svg></span>
+          <span><b>Dana Mercer</b><small>Northwind</small></span>
+          <span class="rec-n" aria-hidden="true"><b>9</b> facts</span>
+        </div>
+        <dl class="rec-rows">
+          <div class="rr" data-s="0"><dt>Title</dt><dd><s class="rx">VP Marketing</s><span class="rfix"> Head of Growth</span></dd><code class="rsrc"><span class="r0">gmail signature</span><span class="r1">your correction, May 22</span></code></div>
+          <div class="rr" data-s="0"><dt>Company</dt><dd>Northwind</dd><code>calendar</code></div>
+          <div class="rr" data-s="0"><dt>Email</dt><dd>dana@northwind.com</dd><code>gmail</code></div>
+          <div class="rr" data-s="0"><dt>Last met</dt><dd>Pipeline call</dd><code>calendar</code></div>
+          <div class="rr" data-s="1"><dt>Correction</dt><dd>Never quote list price on a renewal</dd><code>you, May 22</code></div>
+          <div class="rr" data-s="1"><dt>Open</dt><dd>Q3 launch</dd><code>slack #growth</code></div>
+          <div class="rr" data-s="2"><dt>Decision</dt><dd>Cutover moves to Q4</dd><code>granola, Jun 4</code></div>
+          <div class="rr" data-s="2"><dt>Context</dt><dd>Priya owns the parity list</dd><code>granola, Jun 4</code></div>
+          <div class="rr" data-s="2"><dt>Prefers</dt><dd>One-page briefs, sent the night before</dd><code>learned from replies</code></div>
+        </dl>
+        <figcaption class="rec-cap"><span class="rc" data-s="0">Day 1. Four sources each knew one thing about Dana. Now they are one record.</span><span class="rc" data-s="1">Week 2. You fixed her title once and said never to quote list price on a renewal. Neither needs saying again.</span><span class="rc" data-s="2">Month 1. A decision and an owner from her calls land on the record without a prompt.</span></figcaption>
+      </figure>
     </div>
-    <div class="cg-card" style="left:70%;top:23%;--d:.16s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-mic"/></svg></div><div><div class="cg-t">Investor Update</div><div class="cg-m">Granola · 45 min</div></div></div>
-      <div class="cg-r"><span class="cg-k">Summary</span><span class="cg-v gold">3 action items</span></div>
-      <div class="cg-r"><span class="cg-k">With</span><span class="cg-v">Priya Raman</span></div>
-      <div class="cg-r"><span class="cg-k">Date</span><span class="cg-v">Apr 15</span></div>
-    </div>
-    <div class="cg-card" style="left:49%;top:41%;--d:.06s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-dollar"/></svg></div><div><div class="cg-t">Growth Plan</div><div class="cg-m">Subscription · Active</div></div></div>
-      <div class="cg-r"><span class="cg-k">Amount</span><span class="cg-v gold">$299/mo</span></div>
-      <div class="cg-r"><span class="cg-k">Account</span><span class="cg-v">Northwind Co.</span></div>
-      <div class="cg-r"><span class="cg-k">Renews</span><span class="cg-v">Apr 30</span></div>
-    </div>
-    <div class="cg-card" style="left:79%;top:55%;--d:.2s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-person"/></svg></div><div><div class="cg-t">Dana Mercer</div><div class="cg-m">Head of Growth</div></div></div>
-      <div class="cg-r"><span class="cg-k">Email</span><span class="cg-v">dana@northwind.com</span></div>
-      <div class="cg-r"><span class="cg-k">Last met</span><span class="cg-v">2 days ago</span></div>
-      <div class="cg-r"><span class="cg-k">Company</span><span class="cg-v">Northwind</span></div>
-    </div>
-    <div class="cg-card" style="left:29%;top:64%;--d:.14s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-org"/></svg></div><div><div class="cg-t">Northwind Co.</div><div class="cg-m">Series B · SaaS</div></div></div>
-      <div class="cg-r"><span class="cg-k">Team</span><span class="cg-v">150-200</span></div>
-      <div class="cg-r"><span class="cg-k">Domain</span><span class="cg-v">northwind.com</span></div>
-      <div class="cg-r"><span class="cg-k">HQ</span><span class="cg-v">Denver</span></div>
-    </div>
-    <div class="cg-card" style="left:55%;top:76%;--d:.24s">
-      <div class="cg-h"><div class="cg-badge"><svg><use href="#i-chat"/></svg></div><div><div class="cg-t">#growth</div><div class="cg-m">Slack · 3 new</div></div></div>
-      <div class="cg-r"><span class="cg-k">From</span><span class="cg-v">Dana Mercer</span></div>
-      <div class="cg-r"><span class="cg-k">Re</span><span class="cg-v gold">Q3 launch</span></div>
     </div>
   </div>
-  <figure class="jc" aria-label="Example: where each record was seen, one row per record, one column per source">
-    <div class="jc-grid">
-      <div class="jc-head" aria-hidden="true"><span><i class="jk" data-k="1">1</i></span><div class="jc-cols"><span><svg aria-hidden="true"><use href="#b-googlecalendar"/></svg>Calendar</span><span><svg aria-hidden="true"><use href="#b-gmail"/></svg>Gmail</span><span><svg aria-hidden="true"><use href="#b-slack"/></svg>Slack</span><span><svg aria-hidden="true" class='ln'><use href="#i-mic"/></svg>Granola</span><span><svg aria-hidden="true" class='ln'><use href="#i-wave"/></svg>Fireflies</span><span><svg aria-hidden="true"><use href="#b-googledrive"/></svg>Drive</span></div></div>
-      <div class="jc-row sel" style="--r:0"><p class="jc-name"><b>Dana Mercer</b><span>person</span><i class="jk" data-k="3">3</i></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail, Slack and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:1"><p class="jc-name"><b>Northwind Co.</b><span>organization</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail, Slack and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:2"><p class="jc-name"><b>Q3 launch</b><span>concept</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Slack, Fireflies and Drive"><span class="jc-ln" style="--a:1;--b:6"></span><i class="on" style="--c:1"></i><i style="--c:2"></i><i class="on" style="--c:3"></i><i style="--c:4"></i><i class="on" style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:3"><p class="jc-name"><b>Investor Update</b><span>content</span></p><div class="jc-cols" role="img" aria-label="Seen in Calendar, Gmail and Granola"><span class="jc-ln" style="--a:1;--b:4"></span><i class="on" style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:4"><p class="jc-name"><b>Priya Raman</b><span>person</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Granola"><span class="jc-ln" style="--a:2;--b:4"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i class="on" style="--c:4"></i><i style="--c:5"></i><i style="--c:6"></i></div></div><div class="jc-row" style="--r:5"><p class="jc-name"><b>Q3 Pitch Deck.pdf</b><span>artifact</span></p><div class="jc-cols" role="img" aria-label="Seen in Gmail and Drive"><span class="jc-ln" style="--a:2;--b:6"></span><i style="--c:1"></i><i class="on" style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i style="--c:5"></i><i class="on" style="--c:6"></i></div></div><div class="jc-row" style="--r:6"><p class="jc-name"><b>Jordan Pierce</b><span>person</span><em class="jc-flag" style="font-style:normal">review</em><i class="jk" data-k="2">2</i></p><div class="jc-cols" role="img" aria-label="Low-confidence matches in Fireflies and Drive, held for review"><span class="jc-ln rv" style="--a:5;--b:6"></span><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><i class="rv" style="--c:5"></i><i class="rv" style="--c:6"></i></div></div>
-    </div>
-    <div class="jc-rec" aria-label="The joined record for Dana Mercer">
-      <p class="jc-found"><code>find</code>who runs growth?<i class="jk" data-k="4">4</i></p>
-      <h3>Dana Mercer</h3>
-      <p class="jc-role">Head of Growth</p>
-      <dl>
-        <div><dt>Last met</dt><dd>2 days ago</dd><code>calendar</code></div>
-        <div><dt>Email</dt><dd>dana@northwind.com</dd><code>gmail</code></div>
-        <div><dt>Open</dt><dd>Q3 launch</dd><code>slack #growth</code></div>
-        <div><dt>Meeting</dt><dd>Investor Update</dd><code>granola</code></div>
-      </dl>
-      <p class="jc-edge">Company: Northwind, by graph edge<i class="jk" data-k="4">4</i></p>
-    </div>
-    <figcaption class="jc-cap">Four sources each knew one thing about Dana. Joined, they are one record. A match COS is not sure of waits for your review. Example records; the names are not real.</figcaption>
-  </figure>
-
-  <div class="cg-pillars">
-    <div class="cg-pill" data-k="1"><i class="jk" data-k="1">1</i><div class="cg-pl">Any source</div><b>Bring your own everything</b><p>Slack, Gmail, Granola, Fireflies, your CRM, your calendar. Connect through MCP or local ingestion. You choose what to copy, index, and keep.</p></div>
-    <div class="cg-pill" data-k="2"><i class="jk" data-k="2">2</i><div class="cg-pl">Structured for you</div><b>Organized with review</b><p>Connected sources can be organized into people, decisions, and next steps. Low-confidence items stay visible for review.</p></div>
-    <div class="cg-pill" data-k="3"><i class="jk" data-k="3">3</i><div class="cg-pl">Model your world</div><b>A schema you define</b><p>Domains, deals, clients, personas, competitors. Shape the graph around how you actually work.</p></div>
-    <div class="cg-pill" data-k="4"><i class="jk" data-k="4">4</i><div class="cg-pl">One graph, yours</div><b>Breadth and depth</b><p>Vector search to find it fast, a knowledge graph to explain how it connects. It runs on your keys and your server.</p></div>
-  </div>
-
-<p class="cg-note"><span class="g">COS keeps what it learns in files you control.</span></p>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<!-- ── 04 YOUR KNOWLEDGE GRAPH ── -->
-<section class="wrap reveal" id="realgraph">
-  <div class="sec-head">    <h2>Everything it knows about your work. <span class="it g hx">Out in the open.</span></h2>
-    <p class="lead">The context you choose to ingest becomes a living knowledge graph: people, companies, meetings, and decisions, extracted and connected. Search it, watch it compound, and keep the working corpus in files and indexes you control. Cloud models and source systems still follow their providers' terms.</p>
-  </div>
-
-  <div class="kgframe" aria-hidden="true">
-    <div class="kg-bar">
-      <span class="kg-brand"><b>MU</b> · Knowledge Graph</span>
-      <span class="kg-search">Search entities…</span>
-      <span class="kg-count"><b>5,872</b> entities · <b>11,238</b> edges</span>
-    </div>
-    <div class="kg-stage" id="kgStage"></div>
-    <div class="kg-legend">
-      <span><i style="background:#5b8def"></i>person</span>
-      <span><i style="background:#e08a3c"></i>organization</span>
-      <span><i style="background:#c9a96e"></i>concept</span>
-      <span><i style="background:#5fae7d"></i>content</span>
-      <span><i style="background:#9aa3ad"></i>artifact</span>
-      <span><i style="background:#a86fd0"></i>method</span>
-      <span><i style="background:linear-gradient(120deg,#EA4335,#4285F4 55%,#FF7A59)"></i>connected source</span>
-    </div>
-  </div>
-
-  <p class="kg-cap">Those counts are real, pulled from one running COS. The names in this demo are not.</p>
-
-  <div class="inline-cta" style="margin-top:26px">
-    <div class="ic-text"><b>Run it on your own work. Keep it portable.</b><span>Open-source and self-hostable: your keys and storage you control, local or your cloud. Fork the stack and carry the working corpus with you.</span></div>
-    <div class="ic-actions"><a class="btn primary" href="#start">Build your own</a><a class="btn ghost" href="https://milesukaoma.com/cos">See the philosophy</a></div>
+  <div class="ch-close" id="philosophy">
+    <p class="creed">Context compounds. Every correction makes the next answer sharper.</p>
+    <div class="cc-cta"><a class="btn primary" href="/philosophy/cos-philosophy-diagram.html">Read the philosophy</a><a class="btn ghost" href="/blueprint/">Build your own</a></div>
   </div>
 </section>
 
 <div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 05 QUICK START ── -->
-<section class="wrap reveal light" id="start">
-  <div class="start-top">
-    <div class="start-copy">
-      <div class="sec-head">        <h2>Start on your Mac. <span class="it g hx">Make it yours.</span></h2>
-        <p class="lead"><a href="/control/#install">Download COS Control</a>, move it to Applications, open it, and choose <strong>Get started</strong>. COS prepares its server inside the app. Sign in to one supported AI provider when prompted, then open Sessions. Add your work context with the optional starter kit below. On your phone, <a href="/docs/#meeting-prep">prepare with notes and files, then explicitly carry that prep into a live meeting</a> using COS Control Web.</p>
-        <p><a class="btn primary" href="/control/#install">Get the Mac app</a></p>
-        <p class="lead">For the starter kit, open <a href="https://claude.ai/claude-code">Claude Code</a>, <a href="https://developers.openai.com/codex/">Codex</a>, or <a href="https://cursor.com/">Cursor</a> in an empty folder, paste the starter kit, and answer a few questions. It builds the foundation, then deepens as you use it.</p>
-      </div>
-      <div class="kit-cta">
-        <button class="btn primary" id="copyKit" onclick="copyKit()">Copy the Starter Kit</button>
-        <a class="btn ghost" href="/cos-starter.md" target="_blank" rel="noopener" id="viewKit" onclick="return viewKit(event)">View the kit</a>
-        <span class="kit-hint">Then paste it into Claude Code, Codex, or Cursor and hit enter.</span>
-      </div>
-      <div class="kit-gate" id="kitGate" aria-hidden="true">
-        <div class="ku-card">
-          <p class="ku-lead"><strong>Your role and industry personalize the kit.</strong> Tell us both and we tune the skills, role packs, and playbooks to how you actually work. No spam, unsubscribe anytime.</p>
-          <form class="cos-form" id="kitGateForm" novalidate onsubmit="submitKitGate(event)">
-            <div class="cf-field"><label for="ku-em">Email <span class="req">*</span></label><input id="ku-em" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
-            <div class="cf-row">
-              <div class="cf-field"><label for="ku-role">Role</label><input id="ku-role" name="jobtitle" type="text" autocomplete="organization-title" placeholder="Head of Growth"></div>
-              <div class="cf-field"><label for="ku-ind">Industry</label><input id="ku-ind" name="industry" type="text" placeholder="SaaS"></div>
-            </div>
-            <button type="submit" class="cf-submit">Unlock the kit</button>
-            <div class="cf-msg" id="ku-msg" role="status" aria-live="polite"></div>
-          </form>
-          <p class="ku-fine">Free forever. Your email is how we tailor your kit and keep it current.</p>
-        </div>
+<!-- ══ CHAPTER 3 · START ON YOUR MAC (was #start, #get, #tiers, #assess) ══ -->
+<section class="wrap light ch-wide" id="start">
+  <div class="st-top">
+    <h2>Start on your Mac and make it yours.</h2>
+    <p class="st-stand">Useful in five minutes, and deeper the longer you use it.</p>
+  </div>
+  <div class="tree-ch" id="get" data-s="4">
+    <div class="cstep tx-axis" id="tiers" role="group" aria-label="The my-cos directory at each tier">
+      <svg class="tx-svg" aria-hidden="true"><line class="tx-base" x1="0" y1="1.5" x2="100%" y2="1.5"/><line class="tx-run" x1="0" y1="1.5" x2="100%" y2="1.5"/></svg>
+      <button type="button" aria-pressed="false" data-s="1"><span>5 minutes</span><small>Tier 1</small></button>
+      <button type="button" aria-pressed="false" data-s="2"><span>30 minutes</span><small>Tier 2</small></button>
+      <button type="button" aria-pressed="false" data-s="3"><span>2 weeks</span><small>Tier 3</small></button>
+      <button type="button" aria-pressed="true" data-s="4" class="on"><span>1 month</span><small>Tier 4</small></button>
+    </div>
+    <div class="st-grid">
+      <div class="st-left">
+        <p class="tier-cap"><span class="tc" data-s="1"><b>Foundation</b>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</span><span class="tc" data-s="2"><b>Operational</b>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</span><span class="tc" data-s="3"><b>Compounding</b>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</span><span class="tc" data-s="4"><b>Agentic</b>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</span></p>
+        <p class="st-body"><a href="/control/#install">Download COS Control</a>, move it to Applications, open it, and choose <strong>Get started</strong>. COS prepares its server inside the app. Sign in to one supported AI provider when prompted, then open Sessions. On your phone, <a href="/docs/#meeting-prep">prepare with notes and files, then explicitly carry that prep into a live meeting</a> using COS Control Web.</p>
+        <p class="st-cta"><a class="btn primary" href="/control/#install">Get the Mac app</a></p>
+        <p class="st-body">Add your work context with the optional starter kit: open <a href="https://claude.ai/claude-code">Claude Code</a>, <a href="https://developers.openai.com/codex/">Codex</a>, or <a href="https://cursor.com/">Cursor</a> in an empty folder, paste it, and answer a few questions. It builds the foundation, then deepens as you use it.</p>
+<div class="kit-cta">
+      <button class="btn primary" id="copyKit" onclick="copyKit()">Copy the Starter Kit</button>
+      <a class="btn ghost" href="/cos-starter.md" target="_blank" rel="noopener" id="viewKit" onclick="return viewKit(event)">View the kit</a>
+      <span class="kit-hint">Then paste it into Claude Code, Codex, or Cursor and hit enter.</span>
+    </div>
+<div class="kit-gate" id="kitGate" aria-hidden="true">
+      <div class="ku-card">
+        <p class="ku-lead"><strong>Your role and industry personalize the kit.</strong> Tell us both and we tune the skills, role packs, and playbooks to how you actually work. No spam, unsubscribe anytime.</p>
+        <form class="cos-form" id="kitGateForm" novalidate onsubmit="submitKitGate(event)">
+          <div class="cf-field"><label for="ku-em">Email <span class="req">*</span></label><input id="ku-em" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+          <div class="cf-row">
+            <div class="cf-field"><label for="ku-role">Role</label><input id="ku-role" name="jobtitle" type="text" autocomplete="organization-title" placeholder="Head of Growth"></div>
+            <div class="cf-field"><label for="ku-ind">Industry</label><input id="ku-ind" name="industry" type="text" placeholder="SaaS"></div>
+          </div>
+          <button type="submit" class="cf-submit">Unlock the kit</button>
+          <div class="cf-msg" id="ku-msg" role="status" aria-live="polite"></div>
+        </form>
+        <p class="ku-fine">Free forever. Your email is how we tailor your kit and keep it current.</p>
       </div>
     </div>
-    <div class="chat-mock" aria-hidden="true">
-      <div class="pc-card">
-        <div class="pc-head"><span class="pc-ava">C</span><div><div class="pc-t">COS</div><div class="pc-s">interactive setup</div></div><span class="pc-dot"></span></div>
-        <div class="pc-body">
-          <div class="pc-msg a" style="--d:.05s">Let's build your Chief of Staff. Who are you, and what do you own this quarter?</div>
-          <div class="pc-msg u" style="--d:.2s">Dana, Head of Growth at Northwind. Pipeline, the Q3 launch, the team.</div>
-          <div class="pc-msg a" style="--d:.34s">Got it. Building your system now.</div>
-          <div class="pc-chip" style="--d:.48s"><b>&#10003;</b> CLAUDE.md <b>&#10003;</b> people.md <b>&#10003;</b> growth &middot; personal</div>
-          <div class="pc-msg a" style="--d:.62s">Done in 5 minutes. Type a prompt you'd normally use. Same model. Watch what it knows about you now.</div>
-        </div>
+        <ul class="st-links">
+          <li id="assess">Run <code>/assess</code> in your COS to score yourself across 14 domains</li>
+          <li><a href="/connect/">Rather have it done with you? Book a working session</a></li>
+        </ul>
       </div>
+<figure class="tree" aria-label="The my-cos directory COS builds with you, at one month">
+      <div class="tree-bar"><span class="ctl-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="tree-name">my-cos</span>
+        <svg class="tmark" viewBox="0 0 693 760" aria-hidden="true"><g fill="url(#chAmb)"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path class="bond" data-s="2" d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><path class="bond" data-s="3" d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><path class="bond" data-s="4" d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></g></svg>
+      </div>
+      <div class="tree-body">
+        <p class="tr-root">my-cos/</p>
+        <ul class="tr">
+          <li class="tl" data-s="1"><code>CLAUDE.md</code><span class="cm"># your COS brain</span></li>
+          <li class="tn" data-s="1"><em>01</em>It interviews you, then writes this: the brain your AI loads every session.</li>
+          <li class="tl" data-s="2"><code>context/</code>
+            <ul class="tr">
+              <li class="tl" data-s="2"><code>people.md</code><span class="cm"># your team profiles</span></li>
+            </ul>
+          </li>
+          <li class="tl" data-s="2"><code>operations/&lt;domain&gt;/</code><span class="cm"># intelligence/, wk&lt;NN&gt;_&lt;year&gt;/</span>
+            <ul class="tr">
+              <li class="tl" data-s="3"><code>tasks.md</code><span class="cm"># what you track</span></li>
+            </ul>
+          </li>
+          <li class="tn" data-s="2"><em>02</em>It profiles your people and scaffolds your directory.</li>
+          <li class="tl" data-s="2"><code>.claude/commands/</code>
+            <ul class="tr">
+              <li class="tl" data-s="2"><code>start.md</code><span class="cm"># /start: daily briefing</span></li>
+              <li class="tl" data-s="2"><code>prep.md</code><span class="cm"># /prep: meeting preparation</span></li>
+              <li class="tl" data-s="3"><code>learn.md</code><span class="cm"># /learn: capture corrections</span></li>
+            </ul>
+          </li>
+          <li class="tn" data-s="2"><em>03</em>It installs your skills: a daily briefing, meeting prep, then correction memory.</li>
+          <li class="tl" data-s="3"><code>corrections.md</code><span class="cm"># patterns, auto-populated</span></li>
+          <li class="tl run" data-s="2"><code>~ one integration connected</code></li>
+          <li class="tn" data-s="2"><em>04</em>It wires a connection: Slack, meetings, or any MCP. Optional, and the moment it clicks.</li>
+          <li class="tl run" data-s="3"><code>~ meeting notes added</code></li>
+          <li class="tl run" data-s="4"><code>~ scheduled tasks running</code></li>
+          <li class="tl run" data-s="4"><code>~ search across every meeting</code></li>
+        </ul>
+      </div>
+      <figcaption class="tree-cap">Gold lines are new at that tier. Green lines are things now running. A typical path, not a rule. Every session in this directory starts with your full context loaded, so it can open with what matters today.</figcaption>
+    </figure>
     </div>
   </div>
-  <div class="kit-does">
-    <p class="does-title" style="margin:0 0 18px">What it does for you</p>
-  
-    <ul class="wire-list wl-steps sec-art" aria-label="What each setup step writes">
-      <li style="--i:0"><span class="wl-need"><em class="wl-n">01</em><b>Interviews you</b><span>A few quick questions, then it writes your CLAUDE.md, the brain your AI loads every session.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>CLAUDE.md</code><small># your COS brain</small></span></li>
-      <li style="--i:1"><span class="wl-need"><em class="wl-n">02</em><b>Builds your structure</b><span>Profiles your people and scaffolds your directory: operations, intelligence, weekly work.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>context/people.md</code><code>operations/&lt;domain&gt;/</code><small># tasks.md, intelligence/, wk&lt;NN&gt;_&lt;year&gt;/</small></span></li>
-      <li style="--i:2"><span class="wl-need"><em class="wl-n">03</em><b>Installs your skills</b><span>/start, /learn, /prep. A daily briefing, correction memory, and meeting prep.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file"><code>.claude/commands/start.md</code><code>.claude/commands/learn.md</code><code>.claude/commands/prep.md</code></span></li>
-      <li style="--i:3"><span class="wl-need"><em class="wl-n">04</em><b>Wires a connection</b><span>Slack, meetings, or any MCP. Optional, then the before/after that makes it click.</span></span><span class="wl-wire" aria-hidden="true"></span><span class="wl-file opt"><code>one MCP connection</code><small># optional</small></span></li>
-    </ul>
-</div>
 </section>
-
-<div class="wrap reveal lightband">
-  <div class="inline-cta">
-    <div class="ic-text"><b>Rather have it done with you?</b><span>Skip the DIY. We stand up your COS in a working session, then your team runs it.</span></div>
-    <div class="ic-actions"><a class="btn primary" href="/connect/">Book a working session</a></div>
-  </div>
-</div>
-
-<!-- ── 06 WHAT YOU GET ── -->
-<section class="wrap reveal light" id="get">
-  <div class="sec-head">    <h2>A directory that <span class="it g hx-em">is</span> the system.</h2>
-      <p class="dek">What you get</p>
-  </div>
-  <div class="term">
-    <div class="bar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>my-cos</span></div>
-    <pre><span class="cm">my-cos/</span>
-├── <b>CLAUDE.md</b>                 <span class="cm"># your COS brain (auto-generated)</span>
-├── context/
-│   └── people.md             <span class="cm"># your team profiles</span>
-├── .claude/commands/
-│   ├── start.md              <span class="cm"># /start: daily briefing</span>
-│   ├── learn.md              <span class="cm"># /learn: capture corrections</span>
-│   └── prep.md               <span class="cm"># /prep: meeting preparation</span>
-├── operations/
-│   └── &lt;domain&gt;/             <span class="cm"># tasks.md · intelligence/ · wk&lt;NN&gt;_&lt;year&gt;/</span>
-└── corrections.md            <span class="cm"># patterns (auto-populated)</span></pre>
-  </div>
-  <p style="margin-top:24px">Every Claude Code session in this directory starts with your full context loaded, so it can open with <strong>what matters today.</strong></p>
-</section>
-
-<!-- ── 07 TIERS ── -->
-<section class="wrap reveal light" id="tiers">
-  <div class="sec-head">    <h2>Useful in five minutes, <span class="it g hx">deeper the longer you use it.</span></h2>
-      <p class="dek">The four tiers</p>
-  </div>
-
-  <figure class="grow sec-art" aria-label="The my-cos directory at each of the four tiers, from five minutes to a month and on">
-    <div class="grow-panel">
-      <div class="grow-axis" aria-hidden="true"><span>5 minutes</span><span>30 minutes</span><span>2 weeks</span><span>1+ month</span></div>
-      <div class="grow-cols"><div class="grow-col" style="--i:0"><div class="grow-m"><span>5 minutes</span><strong>Tier 1: Foundation</strong><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p></div><pre class="grow-tree">my-cos/
-<b>+ CLAUDE.md</b></pre></div><div class="grow-col" style="--i:1"><div class="grow-m"><span>30 minutes</span><strong>Tier 2: Operational</strong><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p></div><pre class="grow-tree">my-cos/
-  CLAUDE.md
-<b>+ context/people.md</b>
-<b>+ .claude/commands/start.md</b>
-<i>~ one integration connected</i></pre></div><div class="grow-col" style="--i:2"><div class="grow-m"><span>2 weeks</span><strong>Tier 3: Compounding</strong><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p></div><pre class="grow-tree">my-cos/
-  CLAUDE.md
-  context/people.md
-  .claude/commands/start.md
-<b>+ .claude/commands/learn.md</b>
-<b>+ corrections.md</b>
-<b>+ operations/&lt;domain&gt;/tasks.md</b>
-<i>~ meeting notes added</i></pre></div><div class="grow-col" style="--i:3"><div class="grow-m"><span>1+ month</span><strong>Tier 4: Agentic</strong><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p></div><pre class="grow-tree">my-cos/
-  CLAUDE.md
-  context/people.md
-  .claude/commands/start.md
-  .claude/commands/learn.md
-  corrections.md
-  operations/&lt;domain&gt;/tasks.md
-<i>~ scheduled tasks running</i>
-<i>~ search across every meeting</i></pre></div></div>
-    </div>
-    <div class="grow-text"><div><h3>Tier 1: Foundation</h3><p>Run the setup. Get your CLAUDE.md with role, team, and priorities. Consistent, role-aware responses.</p></div><div><h3>Tier 2: Operational</h3><p>Add people profiles. Configure your first skill. Connect one integration. A morning routine that surfaces what matters.</p></div><div><h3>Tier 3: Compounding</h3><p>Use /learn to capture corrections. Track tasks. Add meeting notes. The system starts connecting dots you did not ask about.</p></div><div><h3>Tier 4: Agentic</h3><p>Scheduled tasks run automatically. Semantic search across every meeting. A system that works while you sleep.</p></div></div>
-  </figure>
-  <p class="art-note sec-art">Gold lines are new at that tier. Green lines are things now running. A typical path, not a rule.</p>
-  <p style="margin-top:26px">Most people never get past Tier 1 with AI tools. <strong>COS pulls you forward.</strong></p>
-</section>
-
-<!-- ── 08 COVERAGE ── -->
-<section class="wrap reveal light" id="assess">
-  <div class="sec-head">    <h2>Score yourself across <span class="it g hx">14 domains.</span></h2>
-    <p class="lead">Not sure where to focus? Run <code style="font-family:var(--mono);font-size:.85em;color:#8f3d14">/assess</code> to grade your COS, end to end. Your lowest scores are your highest-leverage next steps.</p>
-  </div>
-
-  <figure class="score sec-art" aria-label="Example scorecard across the 14 domains">
-    <p class="score-key"><span><i class="k-obs"></i>What this example COS does today</span><span><i class="k-can"></i>What current AI could do</span><span><i class="k-gap"></i>The gap, which is the next step</span></p>
-    <div class="score-grid"><div class="sc" style="--o:0.55;--t:0.90;--i:0"><div class="sc-top"><b>Meeting Intelligence</b><span class="sc-num">0.55 of 0.90</span></div><span class="sc-what">Capture, classify, extract, search by meaning</span><div class="sc-track" role="img" aria-label="Does 0.55 today. Current AI could do 0.90."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.45;--t:0.85;--i:1"><div class="sc-top"><b>Task Orchestration</b><span class="sc-num">0.45 of 0.85</span></div><span class="sc-what">Extract from conversations, dedup, stage, track</span><div class="sc-track" role="img" aria-label="Does 0.45 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.80;--i:2"><div class="sc-top"><b>Email &amp; Comms Triage</b><span class="sc-num">0.30 of 0.80</span></div><span class="sc-what">Prioritize inbox, draft responses, follow-ups</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.35;--t:0.75;--i:3"><div class="sc-top"><b>Calendar Awareness</b><span class="sc-num">0.35 of 0.75</span></div><span class="sc-what">Meeting prep, conflict detection, time blocking</span><div class="sc-track" role="img" aria-label="Does 0.35 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.50;--t:0.80;--i:4"><div class="sc-top"><b>People Intelligence</b><span class="sc-num">0.50 of 0.80</span></div><span class="sc-what">Profiles, comms styles, relationship health</span><div class="sc-track" role="img" aria-label="Does 0.50 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.15;--t:0.85;--i:5"><div class="sc-top"><b>Cross-Source Synthesis</b><span class="sc-num">0.15 of 0.85</span></div><span class="sc-what">Connect signals across meetings, email, tasks, Slack</span><div class="sc-track" role="img" aria-label="Does 0.15 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.20;--t:0.75;--i:6"><div class="sc-top"><b>Strategic Alignment</b><span class="sc-num">0.20 of 0.75</span></div><span class="sc-what">Goal tracking, resource allocation, priority scoring</span><div class="sc-track" role="img" aria-label="Does 0.20 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.10;--t:0.80;--i:7"><div class="sc-top"><b>Proactive Alerting</b><span class="sc-num">0.10 of 0.80</span></div><span class="sc-what">Early warnings, signal detection, anomaly flagging</span><div class="sc-track" role="img" aria-label="Does 0.10 today. Current AI could do 0.80."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.45;--t:0.85;--i:8"><div class="sc-top"><b>Institutional Memory</b><span class="sc-num">0.45 of 0.85</span></div><span class="sc-what">Session persistence, correction compounding</span><div class="sc-track" role="img" aria-label="Does 0.45 today. Current AI could do 0.85."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc big" style="--o:0.10;--t:0.75;--i:9"><div class="sc-top"><b>Delegation &amp; Follow-up</b><span class="sc-num">0.10 of 0.75</span></div><span class="sc-what">Track who owes what, escalation cadence</span><div class="sc-track" role="img" aria-label="Does 0.10 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.70;--i:10"><div class="sc-top"><b>Content &amp; Research</b><span class="sc-num">0.30 of 0.70</span></div><span class="sc-what">Market intel, competitor tracking, documents</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.70."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.30;--t:0.75;--i:11"><div class="sc-top"><b>Reporting &amp; Dashboards</b><span class="sc-num">0.30 of 0.75</span></div><span class="sc-what">Status updates, briefings, visual dashboards</span><div class="sc-track" role="img" aria-label="Does 0.30 today. Current AI could do 0.75."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.25;--t:0.70;--i:12"><div class="sc-top"><b>Knowledge Management</b><span class="sc-num">0.25 of 0.70</span></div><span class="sc-what">File organization, templates, SOPs</span><div class="sc-track" role="img" aria-label="Does 0.25 today. Current AI could do 0.70."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div><div class="sc" style="--o:0.15;--t:0.60;--i:13"><div class="sc-top"><b>Ambient I/O</b><span class="sc-num">0.15 of 0.60</span></div><span class="sc-what">Multi-surface delivery: terminal, mobile, voice</span><div class="sc-track" role="img" aria-label="Does 0.15 today. Current AI could do 0.60."><span class="sc-obs"></span><span class="sc-gap"></span><span class="sc-can"></span></div></div></div>
-    <figcaption class="art-note">An example scorecard for a COS two weeks in, scored 0 to 1. The example scores are made up. The marks for what current AI could do come from the open-source framework and are the same for everyone.</figcaption>
-  </figure>
-</section>
-
-<div class="wrap reveal lightband">
-  <div class="inline-cta">
-    <div class="ic-text"><b>See exactly where you stand.</b><span>See your team's biggest gaps and what to fix first. 12 questions, about 3 minutes, right in your browser.</span></div>
-    <div class="ic-actions"><a class="btn primary" href="/blueprint/">Build my Blueprint</a></div>
-  </div>
-</div>
 
 <div class="burn up" aria-hidden="true"></div>
 
-<!-- ── 09 INTEGRATIONS ── -->
-<section class="wrap reveal" id="integrations">
-  <div class="sec-head">    <h2>Wired to the tools you <span class="it g hx">already live in.</span></h2>
-    <p class="lead">COS connects through <a href="https://modelcontextprotocol.io/">MCP servers</a>. Bring your own.</p>
-  </div>
-
-  <div class="intc sec-art" role="list" aria-label="Integrations by setup time, shortest first">
-    <div class="intc-axis" aria-hidden="true"><span class="ax"><span>0</span><span>10</span><span>20</span><span>30 min</span></span></div>
-    <div class="intc-row zero" role="listitem" style="--m:0;--i:0"><span class="bm"><svg><use href="#b-anthropic"/></svg><svg><use href="#b-openai"/></svg></span><b>Claude Code / Codex / Cursor</b><span class="what">The engine. Your existing plan</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">0 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:1"><span class="bm"><svg><use href="#b-slack"/></svg></span><b>Slack</b><span class="what">Channel monitoring, message context</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:2"><span class="bm"><span class="bm-ch">G</span><span class="bm-ch">F</span></span><b>Meeting Tools</b><span class="what">Granola, Fireflies, Fathom sync</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:10;--i:3"><span class="bm"><svg><use href="#b-notion"/></svg></span><b>Notion &amp; Docs</b><span class="what">Pages, wikis, project docs</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">10 min</span></div><div class="intc-row" role="listitem" style="--m:15;--i:4"><span class="bm"><svg><use href="#b-gmail"/></svg><svg><use href="#b-googlecalendar"/></svg></span><b>Google Workspace</b><span class="what">Email, calendar, docs access</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">15 min</span></div><div class="intc-row" role="listitem" style="--m:20;--i:5"><span class="bm"><svg><use href="#b-hubspot"/></svg></span><b>HubSpot &amp; CRM</b><span class="what">Deals, contacts, page analytics</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">20 min</span></div><div class="intc-row" role="listitem" style="--m:30;--i:6"><span class="bm"><span class="bm-ch">Q</span></span><b>Vector Store</b><span class="what">Semantic search across all content</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">30 min</span></div><div class="intc-row varies" role="listitem" style="--m:0;--i:7"><span class="bm"><span class="bm-ch">&#8734;</span></span><b>Anything with an MCP</b><span class="what">Thousands of servers. Bring your own</span><span class="intc-bar" aria-hidden="true"><i></i></span><span class="t">varies</span></div>
-  </div>
-  <p class="art-note sec-art">Setup time for each, drawn to scale, shortest first.</p>
-</section>
-
-<div class="wrap reveal">
-  <div class="inline-cta">
-    <div class="ic-text"><b>Rolling this out to a team?</b><span>We'll help you get the whole team using it.</span></div>
-    <div class="ic-actions"><a class="btn primary" href="#teams" aria-expanded="false" aria-controls="teams-form-wrapper" onclick="event.preventDefault();document.getElementById('teams').scrollIntoView();setTimeout(function(){var w=document.getElementById('teams-form-wrapper');if(w&&!w.classList.contains('expanded'))toggleTeamsForm();},600);">Tell us about your team</a><a class="btn ghost" href="/connect/">Book a working session</a></div>
-  </div>
-</div>
-
-<!-- ── 10 GLASSES ── -->
-<section class="wrap reveal" id="glasses">
-  <div class="g2-top">
-    <div class="g2-copy">
-      <div class="sec-head">        <h2>The same COS. <span class="it g hx">Now on your glasses.</span></h2>
-        <p class="lead">Every green screen on this page lives here: the Even G2 smart glasses. A chief of staff on the lens. The same context you've built, now it follows you off the screen.</p>
+<!-- ══ CHAPTER 4 · WHERE IT MEETS YOU (was #glasses and #control) ══ -->
+<section class="wrap ch-wide" id="glasses">
+  <div class="dv-grid">
+    <div class="dv-left">
+      <h2>It meets you at the desk and away from it.</h2>
+      <div class="dv-pick">
+        <p class="dv-where">Meets you <b>on your Mac</b></p>
+        <span class="crail" role="group" aria-label="Where COS meets you">
+          <button type="button" class="on" aria-pressed="true" aria-label="Mac" data-where="on your Mac"><svg aria-hidden="true"><use href="#am-mac"/></svg></button>
+          <button type="button" aria-pressed="false" aria-label="Glasses" data-where="on your glasses"><svg aria-hidden="true"><use href="#am-glasses"/></svg></button>
+          <button type="button" aria-pressed="false" aria-label="Phone" data-where="on your phone"><svg aria-hidden="true"><use href="#am-phone"/></svg></button>
+          <i class="bar" aria-hidden="true"></i>
+        </span>
       </div>
-      <div class="hero-cta" style="margin-top:30px">
-        <a href="wizard/" class="btn primary">Get Started</a>
-        <a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" class="btn ghost">Get it on the Even Hub</a>
-        <a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a>
+      <div class="dv-copy on">
+        <p class="dv-t">One window. <span class="it g">Eight views into the work your COS already holds.</span></p>
+        <p class="dv-lead">Start with your Mac. Connect glasses whenever you are ready. A menu bar app runs the same open-source server, keeps it running, and opens an Activity window with every message, voice, call, memory, thread, agent session, and task your COS holds.</p>
+        <div class="dv-cta"><a href="/control/#install" class="btn primary">Download for Mac</a><a href="/control/" class="btn ghost">Meet the Mac companion</a></div>
+        <p class="dv-more"><a href="/docs/#mac-control">Read the Control chapter in the docs</a></p>
       </div>
-      <p style="margin-top:20px;color:var(--muted)"><strong>COS Glasses 6.11.681 is on Even Hub and in the Glasses Hub.</strong> In 6.11.681, setup and help send you to a named row in COS Control&rsquo;s Settings instead of Terminal, and the lens Meetings page says what went wrong when your Mac answers with an error. Open COS on the web copies a sign-in link you paste into your phone&rsquo;s browser, with server 6.99.12 or newer. In 6.10.654, phone lists and meeting answers build up in place while they load. 6.10.653 keeps the live transcript on the lens the whole meeting, puts Work on the lens, and retries until a stuck Tailscale link is back. <a href="/docs/#release-681">Read what is new</a>.</p>
-      <p style="margin-top:20px;color:var(--muted);font-size:.92rem">New to the lens? <a href="/docs/" style="text-decoration:underline;text-underline-offset:3px">Read the complete guide</a>.</p>
+      <div class="dv-copy">
+        <p class="dv-t">The same COS on the lens of your glasses.</p>
+        <p class="dv-lead">Every green screen on this page lives here: the Even G2 smart glasses. A chief of staff on the lens, with the context you built following you off the screen. COS Glasses 6.11.681 is on Even Hub and in the Glasses Hub; <a href="/docs/#release-681">read what is new</a>.</p>
+        <div class="dv-cta"><a href="wizard/" class="btn primary">Get Started</a><a href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE" class="btn ghost">Get it on the Even Hub</a><a href="https://www.npmjs.com/package/@gotcos/glasses-server" class="btn ghost">View on npm</a></div>
+        <p class="dv-more"><a href="/docs/">Read the lens guide</a></p>
+      </div>
+      <div class="dv-copy">
+        <p class="dv-t">Your Mac's COS, open on your phone.</p>
+        <p class="dv-lead">COS Control Web opens the same sessions, meetings and prep from your phone's browser, signed in with a link from your Mac.</p>
+        <p class="dv-more"><a href="/docs/#phone-review">Review meetings and voices on your phone</a></p>
+        <p class="dv-more"><a href="/docs/#offline-field">Know what is saved offline</a></p>
+      </div>
     </div>
+    <div class="dv-right">
+<div class="dview on" id="control">
+    <!-- data-view on the rail and tiles is read by scripts/check-version-drift.py (check 11): keep the keys and their order equal to the /control tab rail -->
+    <div class="ctl-win" aria-label="The COS Control Activity window, showing one view at a time: Messages, Speakers, Meetings, Memories, Threads, Sessions, Work, and Dictation.">
+      <div class="ctl-bar"><span class="ctl-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="ctl-title">COS Activity</span></div>
+      <div class="ctl-tool" aria-hidden="true">
+        <span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="15" height="16" loading="lazy"><b>COS</b></span>
+        <span class="ctl-tb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 10 4l6.5 5.5M5 8.5V16h10V8.5"/></svg>Home</span>
+        <span class="ctl-tb dim"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg>Back</span>
+        <span class="ctl-crumb">COS Control</span>
+        <span class="ctl-conn"><i></i>Server connected</span>
+      </div>
+      <div class="ctl-rail" role="group" aria-label="Activity views"><span class="ctl-tab on" data-view="messages" role="button" tabindex="0" aria-pressed="true"><svg aria-hidden="true"><use href="#i-chat"/></svg>Messages</span><span class="ctl-tab" data-view="speakers" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-wave"/></svg>Speakers</span><span class="ctl-tab" data-view="meetings" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-cal"/></svg>Meetings</span><span class="ctl-tab" data-view="memories" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-spark"/></svg>Memories</span><span class="ctl-tab" data-view="threads" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-thread"/></svg>Threads</span><span class="ctl-tab" data-view="sessions" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-term"/></svg>Sessions</span><span class="ctl-tab" data-view="tasks" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-task"/></svg>Work</span><span class="ctl-tab" data-view="dictation" role="button" tabindex="0" aria-pressed="false"><svg aria-hidden="true"><use href="#i-mic"/></svg>Dictation</span></div>
+      <div class="ctl-body">
+        <div class="ctl-head"><span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="20" height="22" loading="lazy"><b>COS</b></span><span class="ctl-gotcos">gotcos</span></div>
+        <p class="ctl-h">Activity</p>
+        <p class="ctl-sub">Eight views into the work your COS already holds.</p>
+        <div class="ctl-grid ctl-one">
+        <div class="ctl-tile on" data-view="messages"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-chat"/></svg><b>Messages</b><span class="ctl-n">30</span></div><p>Glasses messages and one shared COS chat on Mac and web, with older history and Jump to latest.</p><i>Recent</i></div>
+        <div class="ctl-tile" data-view="speakers"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-wave"/></svg><b>Speakers</b><span class="ctl-n">38</span></div><p>See enrolled voices, match quality, appearances, and meetings to review.</p><i>Enrolled</i></div>
+        <div class="ctl-tile" data-view="meetings"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Meetings</b><span class="ctl-n">48</span></div><p>Watch and ask about a live meeting, then browse saved calls with transcript, summary, and copy.</p><i>This month</i></div>
+        <div class="ctl-tile" data-view="memories"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-spark"/></svg><b>Memories</b><span class="ctl-n">4</span></div><p>Browse the durable context your COS can recall.</p><i>To review</i></div>
+        <div class="ctl-tile" data-view="threads"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-thread"/></svg><b>Threads</b><span class="ctl-n">64</span></div><p>Follow work that develops across meetings and time.</p><i>Tracked</i></div>
+        <div class="ctl-tile" data-view="sessions"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-term"/></svg><b>Sessions</b><span class="ctl-n">63</span></div><p>Agent sessions, file previews, local token history and plan pacing. <a href="/docs/#release-server-7049">Optional phone pings when a reply is ready</a>.</p><i>Sessions &amp; usage</i></div>
+        <div class="ctl-tile" data-view="tasks"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-task"/></svg><b>Work</b><span class="ctl-n">17</span></div><p>Manage your tasks and turn meeting decisions into prepared work.</p><i>Open</i></div>
+        <div class="ctl-tile" data-view="dictation"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-mic"/></svg><b>Dictation</b><span class="ctl-n">50</span></div><p>Your dictations, the corrections COS learned from your edits, and the dictionary.</p><i>Recent</i></div>
+        </div>
+      </div>
+    </div>
+    <p class="kg-cap">A mockup of the Activity window, not a screenshot. Pick a view on its rail, as you would in the app.</p>
+    <dl class="dv-facts">
+      <div><dt>Runs the server</dt><dd>Starts COS at login and keeps it running, one server, one owner. An update stages a full new version, runs a real query on every installed provider, and switches once one proves. No terminal after setup.</dd></div>
+      <div><dt>Reads the lens</dt><dd>Every question you asked on the glasses, with the photo you were looking at. Every voice it learned, every call it saved, and what was decided across them.</dd></div>
+    </dl>
+  </div>
+<div class="dview" data-dv="glasses">
     <div class="g2-stage" aria-hidden="true">
       <div class="lens-hud home-lens" data-hud="meeting"><div class="lens-nav">■■□□ REC 12:08  ★1  82%</div><div class="lens-body"><div class="lens-text"><span class="lens-bright">[Maya] We can ship the pilot Friday.</span>
 [Sam] The data import needs one day.
@@ -1940,95 +2169,57 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 ~ I will check the final rollout notes</div></div><div class="lens-footer">◆ 2 nudges  ↑ history  Tap: actions</div></div>
       <img class="g2-img" src="assets/g2-frame.png" alt="" width="1000" height="975" loading="lazy">
     </div>
+    <p class="kg-cap">An illustrative lens with fictional content.</p>
+    <dl class="dv-facts">
+      <div><dt>Talk and listen</dt><dd>On-lens chat through Claude, Codex, Cursor, or a local model. Review voice dictation before Send, then follow the run on the lens. Read the <a href="/docs/#hud-states">current HUD guide</a>.</dd></div>
+      <div><dt>Keep your session with you</dt><dd>Read Claude, Codex or Cursor activity from the lens. Continue in the same thread, inspect its queue, and keep older context above the latest reply.</dd></div>
+      <div><dt>MIT, self-hosted</dt><dd>On your own server with your own keys. An OpenAI-compatible endpoint drops it into Even's agent slot.</dd></div>
+      <div><dt>What is new</dt><dd>COS Glasses 6.11.681 is on Even Hub and in the Glasses Hub. Setup and help now send you to a named row in COS Control's Settings instead of Terminal. <a href="/docs/#release-681">Read what is new</a>, or <a href="/docs/">read the complete guide</a>.</dd></div>
+    </dl>
   </div>
-  <div class="glass-grid">
-    <div class="gc"><div class="lens-hud" data-hud="live" aria-label="Illustrative Messages activity in 587"><div class="lens-nav">◈ Msg [O] Thinking 66s 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-run"><canvas width="24" height="24" data-cos-signal="working" aria-hidden="true"></canvas><span>RUNNING  1 step · 1s ago</span></span>
-The pilot is on track. Dana owns the import. Sam is checking
-the rollout notes.</div></div><div class="lens-footer">1m 06s · double-tap to cancel · Scroll up: history + Ask</div></div><h3>Talk &amp; listen</h3><p>On-lens chat through Claude, Codex, Cursor, or a local model. Review voice dictation before Send, then follow the run on the lens. Read the <a href="docs/#hud-states">current HUD guide</a>.</p></div>
-    <div class="gc"><div class="lens-hud" data-hud="sessionLive" aria-label="Illustrative native session in 587"><div class="lens-nav">↔ Sess [CL] FRIDAY PILOT 9:16a 9/4/26 82%</div><div class="lens-body"><div class="lens-text"><span class="lens-run"><canvas width="24" height="24" data-cos-signal="working" aria-hidden="true"></canvas><span>RUNNING  1 step · 1s ago</span></span>
-The pilot is on track. Dana owns the import. Sam is checking
-the rollout notes.</div></div><div class="lens-footer">Hold: continue · 1m 06s · Scroll up: history + Ask</div></div><h3>Keep your session with you</h3><p>Read Claude, Codex or Cursor activity from the lens. Continue in the same thread, inspect its queue, and keep older context above the latest reply.</p></div>
-    <div class="gc"><div class="lens-hud" data-hud="home" aria-label="Illustrative Home in 587"><div class="lens-nav">COS [O] 9:16a 9/4/26 3msg 2m 82%</div><div class="lens-body lens-body-list"><div class="lens-text"><span class="lens-bright">Chief of Staff</span><span class="lens-dim"> v6.11.681</span>
-
-72° Clear • Austin
-→ in 44m: Design review
-
-Tap=Latest  ↓ Menu  ↑ Messages
-&quot;reference message 104&quot; • &quot;review meetings&quot;</div></div><div class="lens-footer lens-footer-list">Opus  v6.11.681  3/3  #412  2m</div></div><h3>MIT, self-hosted</h3><p>MIT licensed and self-hosted, on your own server with your own keys. An OpenAI-compatible endpoint drops it into Even's agent slot.</p></div>
-  </div>
-  <p class="kg-cap">Illustrative 587 HUDs with fictional content and source-generated COS signals. Green frame and timing are illustrative. <button type="button" class="btn ghost" data-cos-motion aria-pressed="false">Pause HUD animation</button></p>
-  <p><a href="/docs/#phone-review">Review meetings and voices on your phone</a> · <a href="/docs/#offline-field">Know what is saved offline</a></p>
-</section>
-
-<!-- ── 10b CONTROL ── -->
-<section class="wrap reveal" id="control">
-  <div class="ctl-top">
-    <div>
-      <div class="sec-head">        <h2>One window. <span class="it g">Eight views into the work your COS already holds.</span></h2>
-        <p class="dek">COS Control for Mac</p>
-        <p class="lead">Start with your Mac. Connect glasses whenever you are ready. A menu bar app that runs the same open-source server, keeps it running, and opens an Activity window with every message, voice, call, memory, thread, agent session, and task your COS holds.</p>
-      </div>
-      <div class="hero-cta" style="margin-top:30px">
-        <a href="/control/" class="btn primary">Download for Mac</a>
-        <a href="/control/#views" class="btn ghost">See every view</a>
-      </div>
-      <p style="margin-top:20px;color:var(--muted);font-size:.92rem">Setting it up? <a href="/docs/#mac-control" style="text-decoration:underline;text-underline-offset:3px">Read the Control chapter in the docs</a>.</p>
-    </div>
-    <ul class="ctl-facts">
-      <li><b>Runs the server</b><span>Starts COS at login and keeps it running, one server, one owner. An update stages a full new version, runs a real query on every installed provider, and switches once one proves. No terminal after setup.</span></li>
-      <li><b>Reads the lens</b><span>Every question you asked on the glasses, with the photo you were looking at. Every voice it learned, every call it saved, and what was decided across them.</span></li>
-      <li><b>Writes back</b><span>Type into a Claude, Codex, or Cursor session from its pane and the reply lands in the real thread. On the phone, the session panel fits above the keyboard and browser bars, and says when the Mac is not answering. <a href="/docs/#release-server-69933">Read the browser update</a>.</span></li>
-      <li><b>Prepares with you</b><span>Add notes and files before a call, refine the brief in a conversation, then choose Add prep to this meeting to carry that context into live Ask and saved review. <a href="/docs/#meeting-prep">See meeting prep</a>.</span></li>
-    </ul>
-  </div>
-
-  <!-- data-view on the rail and tiles is read by scripts/check-version-drift.py (check 11): keep the keys and their order equal to the /control tab rail -->
-  <div class="ctl-win reveal" role="img" aria-label="The COS Control Activity window. Eight tiles: Messages, Speakers, Meetings, Memories, Threads, Sessions, Work, and Dictation, each with a count of what it holds.">
-    <div class="ctl-bar"><span class="ctl-lights"><i></i><i></i><i></i></span><span class="ctl-title">COS Activity</span></div>
-    <div class="ctl-tool">
-      <span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="15" height="16" loading="lazy"><b>COS</b></span>
-      <span class="ctl-tb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 10 4l6.5 5.5M5 8.5V16h10V8.5"/></svg>Home</span>
-      <span class="ctl-tb dim"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg>Back</span>
-      <span class="ctl-crumb">COS Control</span>
-      <span class="ctl-conn"><i></i>Server connected</span>
-    </div>
-    <div class="ctl-rail"><span class="ctl-tab" data-view="messages"><svg aria-hidden="true"><use href="#i-chat"/></svg>Messages</span><span class="ctl-tab" data-view="speakers"><svg aria-hidden="true"><use href="#i-wave"/></svg>Speakers</span><span class="ctl-tab" data-view="meetings"><svg aria-hidden="true"><use href="#i-cal"/></svg>Meetings</span><span class="ctl-tab" data-view="memories"><svg aria-hidden="true"><use href="#i-spark"/></svg>Memories</span><span class="ctl-tab" data-view="threads"><svg aria-hidden="true"><use href="#i-thread"/></svg>Threads</span><span class="ctl-tab" data-view="sessions"><svg aria-hidden="true"><use href="#i-term"/></svg>Sessions</span><span class="ctl-tab" data-view="tasks"><svg aria-hidden="true"><use href="#i-task"/></svg>Work</span><span class="ctl-tab" data-view="dictation"><svg aria-hidden="true"><use href="#i-mic"/></svg>Dictation</span></div>
-    <div class="ctl-body">
-      <div class="ctl-head"><span class="ctl-lockup"><img src="assets/logo-mark.svg" alt="" width="20" height="22" loading="lazy"><b>COS</b></span><span class="ctl-gotcos">gotcos</span></div>
-      <p class="ctl-h">Activity</p>
-      <p class="ctl-sub">Eight views into the work your COS already holds.</p>
-      <div class="ctl-grid">
-      <div class="ctl-tile" data-view="messages" style="--d:0.06s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-chat"/></svg><b>Messages</b><span class="ctl-n">30</span></div><p>Glasses messages and one shared COS chat on Mac and web, with older history and Jump to latest.</p><i>Recent</i></div>
-      <div class="ctl-tile" data-view="speakers" style="--d:0.13s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-wave"/></svg><b>Speakers</b><span class="ctl-n">38</span></div><p>See enrolled voices, match quality, appearances, and meetings to review.</p><i>Enrolled</i></div>
-      <div class="ctl-tile" data-view="meetings" style="--d:0.20s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Meetings</b><span class="ctl-n">48</span></div><p>Watch and ask about a live meeting, then browse saved calls with transcript, summary, and copy.</p><i>This month</i></div>
-      <div class="ctl-tile" data-view="memories" style="--d:0.27s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-spark"/></svg><b>Memories</b><span class="ctl-n">4</span></div><p>Browse the durable context your COS can recall.</p><i>To review</i></div>
-      <div class="ctl-tile" data-view="threads" style="--d:0.34s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-thread"/></svg><b>Threads</b><span class="ctl-n">64</span></div><p>Follow work that develops across meetings and time.</p><i>Tracked</i></div>
-      <div class="ctl-tile" data-view="sessions" style="--d:0.41s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-term"/></svg><b>Sessions</b><span class="ctl-n">63</span></div><p>Agent sessions, file previews, local token history and plan pacing. <a href="/docs/#release-server-7049">Optional phone pings when a reply is ready</a>.</p><i>Sessions &amp; usage</i></div>
-      <div class="ctl-tile" data-view="tasks" style="--d:0.48s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-task"/></svg><b>Work</b><span class="ctl-n">17</span></div><p>Manage your tasks and turn meeting decisions into prepared work.</p><i>Open</i></div>
-      <div class="ctl-tile" data-view="dictation" style="--d:0.55s"><div class="ctl-tt"><svg aria-hidden="true"><use href="#i-mic"/></svg><b>Dictation</b><span class="ctl-n">50</span></div><p>Your dictations, the corrections COS learned from your edits, and the dictionary.</p><i>Recent</i></div>
+<div class="dview" data-dv="phone">
+    <div class="ph" aria-hidden="true">
+      <div class="ph-scr">
+        <div class="ph-st"><span>9:24</span><span class="ph-isl"></span><span>82%</span></div>
+        <div class="ph-app"><img src="assets/logo-mark.svg" alt="" width="14" height="15"><b>COS</b><span>Sessions</span></div>
+        <div class="ph-card">
+          <p class="ph-k">Claude · Northwind prep</p>
+          <p class="ph-u">What should I raise with Dana at 9:30?</p>
+          <p class="ph-r">Q3 pricing needs your call. She owns the launch date, and Priya owns the parity list. Lead with the cutover moving to Q4.</p>
+        </div>
+        <div class="ph-card ph-prep">
+          <p class="ph-k">Prep for Pipeline call, 9:30</p>
+          <p class="ph-li">2 notes, 1 file</p>
+          <span class="ph-btn">Add prep to this meeting</span>
+        </div>
+        <div class="ph-in">Ask about this meeting</div>
       </div>
     </div>
+    <p class="kg-cap">An illustrative phone screen with fictional content.</p>
+    <dl class="dv-facts">
+      <div><dt>Writes back</dt><dd>Type into a Claude, Codex, or Cursor session from its pane and the reply lands in the real thread. On the phone, the session panel fits above the keyboard and browser bars, and says when the Mac is not answering. <a href="/docs/#release-server-69933">Read the browser update</a>.</dd></div>
+      <div><dt>Prepares with you</dt><dd>Add notes and files before a call, refine the brief in a conversation, then choose Add prep to this meeting to carry that context into live Ask and saved review. <a href="/docs/#meeting-prep">See meeting prep</a>.</dd></div>
+    </dl>
   </div>
-  <p class="kg-cap">A mockup of the Activity window, not a screenshot. In the app, opening a tile moves the rail to that view.</p>
+    </div>
+  </div>
 </section>
 
 <div class="wrap"><div class="rule"></div></div>
 
-<!-- ── 11 TEAMS ── -->
-<section class="wrap reveal" id="teams">
+<!-- ══ CHAPTER 5 · FOR TEAMS ══ -->
+<section class="wrap" id="teams">
   <div class="teams">
     <h2>The hard part of AI is getting a team to use it.</h2>
-      <p class="dek">For teams</p>
     <p>COS gets each person to a useful answer from real work. Shared company context keeps the team aligned while personal setups stay personal. Start with one workflow, prove the value, then expand.</p>
-    <p><strong>Production proof:</strong> COS runs in production at agencies and growth companies. One agency deployment uses role-based context, shared knowledge, scheduled indexing, and integrations with its operating stack, with a formal target of moving utilization from a 51% baseline to 70-80%.</p>
-
     <figure class="util sec-art" aria-label="One agency deployment's utilization target: from a 51 percent baseline to between 70 and 80 percent">
       <div class="util-track"><span class="util-arrow" style="--p:51;--a:70"></span><span class="util-band" style="--a:70;--b:80"></span><span class="util-base" style="--p:51"></span></div>
       <div class="util-ticks" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
       <p class="util-key"><span><b>51%</b>baseline</span><span><b>70 to 80%</b>target</span></p>
       <figcaption>Utilization at one agency deployment. This is its formal target, not a measured result.</figcaption>
     </figure>
-    <div class="hero-cta" style="justify-content:center">
+    <p><strong>Production proof:</strong> COS runs in production at agencies and growth companies. One agency deployment uses role-based context, shared knowledge, scheduled indexing, and integrations with its operating stack.</p>
+    <div class="hero-cta">
       <a href="/blueprint/" class="btn primary">Build my Blueprint</a>
       <a href="/connect/" class="btn ghost">Book a working session</a>
     </div>
@@ -2053,15 +2244,22 @@ Tap=Latest  ↓ Menu  ↑ Messages
 
 <div class="burn down" aria-hidden="true"></div>
 
-<!-- ── 12 FAQ · THE CENTAUR TEST ── -->
-<section class="wrap reveal light" id="faq">
-  <div class="pixmap-c" aria-hidden="true"><div class="pi"></div></div>
-  <div class="sec-head">    <h2>Keep the human as <span class="it g hx">the head.</span></h2>
-      <p class="dek">Frequently asked questions</p>
-    <p class="lead">COS is built on the centaur idea: you keep the direction and judgment. The machine handles the repetition, retrieval, and grunt compute.</p>
-    <p class="lead">Go deeper: <a href="/context-engineering-vs-prompt-engineering/">context engineering vs prompt engineering</a> explains why the prompt was never the problem, and <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI chief of staff vs human chief of staff</a> draws the line between what gets automated and what stays yours.</p>
-  </div>
-  <div class="faq">
+<!-- ══ CHAPTER 6 · QUESTIONS ══ -->
+<section class="wrap light ch-wide" id="faq">
+  <div class="fq-grid">
+    <div class="fq-left">
+      <h2>Keep the human as the head.</h2>
+      <p class="fq-lead">COS is built on the centaur idea: you keep the direction and judgment. The machine handles the repetition, retrieval, and grunt compute.</p>
+      <ul class="deeper" aria-label="Go deeper">
+        <li><a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI chief of staff vs a human chief of staff</a></li>
+        <li><a href="/embodied-intelligence/">Embodied intelligence</a></li>
+        <li><a href="/philosophy/cos-philosophy-diagram.html">Read the philosophy</a></li>
+      </ul>
+      <div class="pixmap-c" aria-hidden="true"><div class="pi"></div></div>
+    </div>
+    <div class="fq-right">
+      <h3 class="fq-h">Frequently asked questions</h3>
+<div class="faq">
     <details class="fq"><summary>What is a centaur?</summary><p>The human is the head and the machine is the body. You bring the domain expertise, the taste, and the judgment; the machine brings the grunt compute. The person using the system is the one who gets amplified, and the main benefactor is you. That is the bar any AI deployment should clear.</p></details>
     <details class="fq"><summary>What is a reverse centaur?</summary><p>The flip. The machine is the head and the human is demoted to peripherals: the hands and the eyes, plus the legal liability for whatever the algorithm decided. Warehouse pace-setting and rideshare routing are the classic examples. Throughput first, quality and people second. We think that is the wrong way to deploy AI.</p></details>
     <details class="fq"><summary>Which one is COS?</summary><p>A centaur by architecture, not by promise. COS keeps its working context in storage you control, local or your cloud, and answers to you. It preps, drafts, tracks, and connects; you decide. Cloud models and source systems still follow their providers' terms. It exists to 10x the person running it, never the other way around.</p></details>
@@ -2071,40 +2269,11 @@ Tap=Latest  ↓ Menu  ↑ Messages
     <details class="fq"><summary>Do I need to be technical?</summary><p>Start with <a href="/control/#install">COS Control for Mac</a>: download, open, connect your AI and choose Get started. The app installs its server without Homebrew, Node or npx. Open Settings inside Activity for the full controls and resumable setup guide. Local voice can also download its verified Whisper tools through the app. Follow the <a href="/wizard/">setup guide</a>, then add the optional starter kit when you want more context. Want it done with you instead? Book a working session and we will stand it up together.</p></details>
     <details class="fq"><summary>What does it cost to run?</summary><p>The kit is free. Chat runs on the Claude or Codex plan you already pay for. Local voice on the glasses has no per-minute fee. There is no COS subscription, and your files stay yours.</p></details>
   </div>
-</section>
-
-<div class="burn up" aria-hidden="true"></div>
-
-<!-- ── 13 PHILOSOPHY ── -->
-<section class="wrap reveal" id="philosophy">
-  <div class="split">
-    <div class="sec-head">      <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0">The philosophy</h2>
-      <p class="creed">Context <span class="it">compounds.</span> Every correction, every meeting, every person you profile accumulates into a system that knows your work better than any prompt could describe.</p>
-    </div>
-    <div>
-
-      <figure class="acc sec-art" aria-label="Three example memories and the size of one running graph">
-        <ol>
-          <li style="--i:0"><span class="from">a correction</span><code>correction</code><span>Never quote list price on a renewal</span><time>May 22</time></li>
-          <li style="--i:1"><span class="from">a meeting</span><code>decision</code><span>Cutover moves to Q4</span><time>Jun 4</time></li>
-          <li style="--i:2"><span class="from">a person</span><code>context</code><span>Priya owns the parity list</span><time>Jun 4</time></li>
-        </ol>
-        <p class="acc-sum"><b>5,872</b><span>entities</span><b>11,238</b><span>edges, in one running COS</span></p>
-        <figcaption>Those counts are real. The three lines are example memories, and the names are not real.</figcaption>
-      </figure>
-      <p>The <a href="https://milesukaoma.com/cos">interactive philosophy map</a> traces the four tiers:</p>
-      <ul class="ck" style="margin-top:18px">
-        <li><strong>Foundation</strong>: identity is the starting point</li>
-        <li><strong>Operational</strong>: routines create rhythm</li>
-        <li><strong>Compounding</strong>: corrections accumulate into intelligence</li>
-        <li><strong>Agentic</strong>: the system acts without being asked</li>
-      </ul>
-      <div class="hero-cta" style="margin-top:30px">
-        <a href="#start" class="btn ghost">Start building</a>
-      </div>
     </div>
   </div>
 </section>
+
+<div class="burn up" aria-hidden="true"></div>
 
 <footer>
   <div class="q">The prompt was never the problem.</div>
@@ -2143,27 +2312,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -4% 0px'});
     els.forEach(function(el){io.observe(el);});
     document.addEventListener('focusin',function(e){var s=e.target.closest('.reveal');if(s&&!s.classList.contains('in')){s.classList.add('in');io.unobserve(s);}});
-    var cgs=document.getElementById('cgStage');
-    if(cgs){var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cgs.classList.add('go');sio.disconnect();}});},{threshold:.28});sio.observe(cgs);}
-  } else { els.forEach(function(el){el.classList.add('in');}); var cgs2=document.getElementById('cgStage'); if(cgs2)cgs2.classList.add('go'); }
-})();
-
-// Hero morning-brief timeline — namespaced to .hero-demo/.hb-*; loops, reduced-motion static
-(function(){
-  var demo=document.querySelector('.hero-demo'); if(!demo) return;
-  var items=demo.querySelectorAll('.hb-li');
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function setAll(){demo.classList.add('in');items.forEach(function(li){li.classList.add('on');});}
-  if(reduce||!('IntersectionObserver' in window)){setAll();return;}
-  var t=[];
-  function play(){
-    t.forEach(clearTimeout);t=[];
-    items.forEach(function(li){li.classList.remove('on');});
-    items.forEach(function(li,i){t.push(setTimeout(function(){li.classList.add('on');},1000+i*950));});
-    t.push(setTimeout(play,1000+items.length*950+7000));
-  }
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){demo.classList.add('in');play();io.disconnect();}});},{threshold:.25});
-  io.observe(demo);
+  } else { els.forEach(function(el){el.classList.add('in');}); }
 })();
 
 // Nav: dropdown groups + mobile burger — namespaced to .nav
@@ -2327,92 +2476,6 @@ Tap=Latest  ↓ Menu  ↑ Messages
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAll(); links.classList.remove('open'); if(burger)burger.setAttribute('aria-expanded','false'); } });
 })();
 
-// Glasses HUD timer — namespaced to .glhud; static under reduced motion
-(function(){
-  var t=document.querySelector('.glhud .gt-time'); if(!t) return;
-  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var s=767;
-  setInterval(function(){s++;t.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');},1000);
-})();
-
-// Knowledge-graph teaser: hub-and-spoke with edges, depth, and hover cards (no physics loop)
-(function(){
-  var T={person:'#5b8def',org:'#e08a3c',concept:'#c9a96e',content:'#5fae7d',artifact:'#9aa3ad',method:'#a86fd0'};
-  // outer-ring anchors (dotted ring, like the real viz)
-  var A=[[50,6,36,'person','Priya Raman'],[80,13,34,'person','Marcus Hale'],[95,42,36,'person','Dana Mercer'],
-         [87,80,33,'person','Sam Okafor'],[57,93,35,'person','Jordan Pierce'],[25,89,33,'person','Elena Ruiz'],
-         [6,61,34,'person','Alex Chen'],[11,20,33,'person','Maya Patel']];
-  var B=[
-    [50,47,62,'concept','You','big you'],[34,32,38,'org','Acme'],[64,30,32,'person','Priya'],[24,58,28,'person',''],
-    [44,68,34,'org','Pipeline'],[71,60,29,'person','Dana'],[38,46,26,'person','Jordan'],
-    [63,74,27,'concept','Q3 Plan'],[81,43,26,'org','Northwind'],
-    [50,83,23,'artifact','Deck'],[14,68,17,'person',''],[75,19,18,'artifact',''],
-    [42,16,16,'content',''],[59,52,20,'method','Skill'],
-    [17,52,14,'person',''],[83,79,14,'content',''],[36,87,14,'person',''],
-    [54,62,18,'person',''],[46,30,18,'person','']
-  ];
-  // connected sources — real platform marks so the graph reads as YOUR tools (Simple Icons paths)
-  var S=[
-    [57,20,26,'#4A154B','b-slack','Slack'],[19,41,26,'#EA4335','b-gmail','Gmail'],
-    [27,24,28,'#00A1E0','b-salesforce','Salesforce'],[30,77,26,'#4285F4','b-googledrive','Google Drive'],
-    [87,67,27,'#FF7A59','b-hubspot','HubSpot'],[89,29,34,'#FF4F00','b-zapier','Zapier','wide'],
-    [77,50,24,'#7B68EE','b-clickup','ClickUp'],[69,85,24,'#F06A6A','b-asana','Asana'],
-    [23,46,25,'#f0ebe2','b-notion','Notion','','#17110b']
-  ];
-  // depth filler (f1 far / f2 mid)
-  var F=[[8,36,9,'person','f1'],[15,10,8,'org','f1'],[30,8,10,'content','f1'],[68,7,8,'person','f1'],[91,18,9,'artifact','f1'],
-         [97,58,8,'person','f1'],[93,90,9,'org','f1'],[73,95,8,'person','f1'],[40,95,9,'method','f1'],[10,84,8,'content','f1'],
-         [3,44,9,'person','f1'],[21,68,8,'concept','f1'],[62,42,9,'person','f1'],[47,55,8,'artifact','f1'],[55,37,8,'org','f1'],
-         [28,14,12,'person','f2'],[47,9,11,'org','f2'],[70,12,12,'person','f2'],[88,24,11,'content','f2'],[92,51,12,'person','f2'],
-         [91,72,11,'org','f2'],[78,89,12,'person','f2'],[62,88,11,'artifact','f2'],[45,90,12,'person','f2'],[18,80,11,'method','f2'],
-         [8,70,12,'org','f2'],[7,50,11,'person','f2'],[9,29,12,'content','f2'],[20,33,11,'person','f2'],[33,60,12,'person','f2'],
-         [58,64,11,'org','f2'],[68,48,12,'person','f2'],[52,38,11,'content','f2'],[41,24,11,'person','f2'],[85,35,12,'concept','f2']];
-  var st=document.getElementById('kgStage');
-  if(!st) return;
-  // edges first (under bubbles)
-  var NS='http://www.w3.org/2000/svg';
-  var svg=document.createElementNS(NS,'svg');
-  svg.setAttribute('class','kg-edges');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');
-  function line(x1,y1,x2,y2,w){var l=document.createElementNS(NS,'line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);if(w)l.setAttribute('class','w');svg.appendChild(l);}
-  A.forEach(function(a){line(50,47,a[0],a[1],true);});                    // hub -> ring
-  for(var k=0;k<A.length;k++){var n=A[(k+1)%A.length];line(A[k][0],A[k][1],n[0],n[1],false);}  // ring segments
-  [[34,32],[44,68],[81,43],[63,74],[59,52],[64,30],[50,83]].forEach(function(p){line(50,47,p[0],p[1],true);}); // hub -> cluster
-  [[34,32,64,30],[34,32,38,46],[38,46,44,68],[44,68,63,74],[63,74,50,83],[81,43,71,60],[71,60,63,74],[64,30,81,43],
-   [24,58,44,68],[19,41,34,32],[87,67,81,43],[30,77,44,68],[59,52,71,60],[59,52,38,46]].forEach(function(p){line(p[0],p[1],p[2],p[3],false);});
-  st.appendChild(svg);
-  // bubbles
-  var frag=document.createDocumentFragment();
-  function bub(b,extra){
-    var d=document.createElement('div');
-    d.className='kbub'+(b[4]?' lab':'')+(b[5]?' '+b[5]:'')+(extra||'');
-    var c=T[b[3]];
-    d.style.cssText='left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[2]+'px;background:radial-gradient(circle at 38% 32%,'+c+', '+c+'cc 70%, '+c+'88);';
-    if(b[4]){d.setAttribute('data-l',b[4]);d.setAttribute('data-t',b[3]);d.setAttribute('data-c',Math.round(b[2]*3.4));}
-    return d;
-  }
-  F.forEach(function(b){frag.appendChild(bub([b[0],b[1],b[2],b[3],'',b[4]]));});
-  B.forEach(function(b){frag.appendChild(bub(b));});
-  S.forEach(function(s){
-    var d=document.createElement('div');
-    d.className='kbub src'+(s[6]?' '+s[6]:'');
-    d.style.cssText='left:'+s[0]+'%;top:'+s[1]+'%;width:'+s[2]+'px;height:'+s[2]+'px;background:radial-gradient(circle at 38% 32%,'+s[3]+','+s[3]+'e6 70%,'+s[3]+'b3);';
-    d.setAttribute('data-l',s[5]);d.setAttribute('data-t','source');d.setAttribute('data-c',Math.round(s[2]*3.4));
-    d.innerHTML='<svg'+(s[7]?' style="fill:'+s[7]+'"':'')+' aria-hidden="true"><use href="#'+s[4]+'"/></svg>';
-    frag.appendChild(d);
-  });
-  A.forEach(function(a){frag.appendChild(bub([a[0],a[1],a[2],a[3],a[4],'ring lab']));});
-  st.appendChild(frag);
-  // hover card
-  var tip=document.createElement('div');tip.className='kg-tipbox';st.appendChild(tip);
-  st.addEventListener('mouseover',function(e){
-    var b=e.target.closest('.kbub.lab,.kbub.src');if(!b){tip.classList.remove('on');return;}
-    tip.innerHTML='<b>'+b.getAttribute('data-l')+'</b> &middot; '+b.getAttribute('data-t')+' &middot; '+b.getAttribute('data-c')+' conn';
-    var x=parseFloat(b.style.left),y=parseFloat(b.style.top);
-    tip.style.left=Math.min(x+4,72)+'%';tip.style.top=Math.max(y-9,3)+'%';
-    tip.classList.add('on');
-  });
-  st.addEventListener('mouseleave',function(){tip.classList.remove('on');});
-})();
 // Teams HubSpot form: lazy-load on expand (ungated; full form)
 function toggleTeamsForm(){
   var w=document.getElementById('teams-form-wrapper');w.classList.toggle('expanded');
@@ -2614,21 +2677,6 @@ function doCopyKit(){
 <script src="assets/docs-signal-data.js?v=587-1"></script>
 <script src="assets/docs-signals.js?v=587-1"></script>
 <script src="assets/docs-hud.js?v=681-1"></script>
-
-<script>
-(function(){
-  var root=document.documentElement, g=document.getElementById('graph'); if(!g) return;
-  var pills=[].slice.call(g.querySelectorAll('.cg-pill[data-k]')); if(!pills.length) return;
-  function keys(){ return root.getAttribute('data-pil')==='keys'; }
-  function set(k){ if(k&&keys()) g.setAttribute('data-key',k); else g.removeAttribute('data-key'); }
-  pills.forEach(function(p){ var k=p.getAttribute('data-k');
-    p.addEventListener('mouseenter',function(){ set(k); }); p.addEventListener('mouseleave',function(){ set(null); });
-    p.addEventListener('focus',function(){ set(k); }); p.addEventListener('blur',function(){ set(null); }); });
-  function sync(){ pills.forEach(function(p){ if(keys()) p.setAttribute('tabindex','0'); else p.removeAttribute('tabindex'); }); if(!keys()) set(null); }
-  if('MutationObserver' in window) new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-pil']});
-  sync();
-})();
-</script>
 
 <script>
 // Amber hero layout: places the gradient on the mark, draws the strands from the real positions of the
@@ -2996,6 +3044,371 @@ function doCopyKit(){
   if('ResizeObserver' in window) new ResizeObserver(place).observe(one); else window.addEventListener('resize',place);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(place);
   setTimeout(function(){if(!driven&&!rm)setInterval(function(){if(Date.now()>=hold)show(cur+1);},3400);},9000);   // no WebGL: still turns over
+})();
+</script>
+<script>
+// Chapters below the hero. Rails and steps show one thing at a time; each chapter has one authored motion
+// moment in the logo's grammar (a line draws with anime's createDrawable, then the ink fills after it).
+// Motion plays once when its object is well in view, or when the reader moves a rail or a step forward.
+// Without JS the last state shows; under reduced motion the same final state shows and nothing moves.
+(function(){
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io='IntersectionObserver' in window, AN=window.anime;
+  var MOVE=!rm&&io&&!!(AN&&AN.createTimeline&&AN.animate&&AN.svg&&AN.svg.createDrawable&&AN.stagger);
+  var NS='http://www.w3.org/2000/svg';
+  window.__chMotion=MOVE?'on':'off';
+  function S(tag,at,parent){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);if(parent)parent.appendChild(e);return e;}
+  function hLine(cls,parent){var s=S('svg',{'class':cls,'aria-hidden':'true'},parent);S('line',{x1:'0',y1:'1',x2:'100%',y2:'1'},s);return s;}
+  function drawable(els,a,b){return MOVE&&els.length?AN.svg.createDrawable(els,a||0,b||0):[];}
+  function settle(els){els.forEach(function(e){e.removeAttribute('stroke-dasharray');e.removeAttribute('stroke-dashoffset');e.removeAttribute('pathLength');});}
+  function arr(x){return [].slice.call(x||[]);}
+  function bar(el,b){var x=el.querySelector('.bar');if(!x||!b)return;x.style.width=b.offsetWidth+'px';x.style.transform='translateX('+b.offsetLeft+'px)';}
+  // A rail of buttons that shows one thing at a time: the hero's rail look and keys, plus arrow keys.
+  function rail(el,btns,onPick,start,hover){
+    var cur=-1;
+    function pick(i,why){
+      i=(i+btns.length)%btns.length;var was=cur;cur=i;
+      btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('past',k<i);b.setAttribute('aria-pressed',k===i?'true':'false');});
+      bar(el,btns[i]);onPick(i,why,was);
+    }
+    btns.forEach(function(b,k){
+      b.addEventListener('click',function(){pick(k,'user');});
+      if(b.tagName!=='BUTTON')b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(k,'user');}});
+      if(hover)b.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'&&cur!==k)pick(k,'user');});
+    });
+    el.addEventListener('keydown',function(e){
+      var k=btns.indexOf(document.activeElement);if(k<0)return;
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;
+      e.preventDefault();var n=(k+d+btns.length)%btns.length;btns[n].focus();pick(n,'user');
+    });
+    function re(){if(cur>=0)bar(el,btns[cur]);}
+    if('ResizeObserver' in window)new ResizeObserver(re).observe(el);else window.addEventListener('resize',re);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(re);
+    pick(start,'init');
+    return {pick:pick,cur:function(){return cur;}};
+  }
+  // Once, when the element is well in view.
+  function whenSeen(el,fn,th){
+    if(!io){fn();return;}
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){o.disconnect();fn();}});},{threshold:th||.35});
+    o.observe(el);
+  }
+  function finish(tl){if(tl&&tl.complete)try{tl.complete();}catch(e){}}
+
+  // ── 1 · The brief: each row's outline draws, then its words ink in; a handled row is struck through by a drawn line ──
+  (function(){
+    var fig=document.getElementById('benefits');if(!fig)return;
+    var demo=fig.closest('.hero-demo'),views=arr(fig.querySelectorAll('.bs')),sub=fig.querySelector('.bs-sub');
+    var el=fig.querySelector('.crail'),btns=arr(el.querySelectorAll('button'));
+    fig.classList.add('mv');
+    var rows=arr(fig.querySelectorAll('.hb-li'));
+    rows.forEach(function(li){
+      var o=S('svg',{'class':'ro','aria-hidden':'true'},li);S('rect',{x:'0',y:'0',width:'100%',height:'100%',rx:'11'},o);
+      if(li.classList.contains('done')){var tx=li.querySelector('.tx');S('svg',{'class':'strk','aria-hidden':'true'},tx);}
+    });
+    // the strike follows the real text lines, so a row that wraps on a phone is struck on each line
+    function strike(tx){
+      var s=tx.querySelector('.strk');if(!s)return;
+      var b=tx.getBoundingClientRect();if(!b.width)return;
+      var r=document.createRange();r.selectNodeContents(tx.firstChild);
+      var rects=arr(r.getClientRects()).filter(function(q){return q.width>1;});
+      var lines=arr(s.querySelectorAll('line'));
+      while(lines.length>rects.length)lines.pop().remove();
+      rects.forEach(function(q,k){
+        var l=lines[k]||S('line',{},s);
+        var y=((q.top+q.bottom)/2-b.top+1).toFixed(1);
+        l.setAttribute('x1',(q.left-b.left).toFixed(1));l.setAttribute('x2',(q.right-b.left).toFixed(1));l.setAttribute('y1',y);l.setAttribute('y2',y);
+      });
+    }
+    function strikeAll(){fig.querySelectorAll('.hb-li.done .tx').forEach(strike);}
+    var t=[],tl=null,auto=null,touched=false,seen=false,visible=false;
+    function play(v,animate){
+      t.forEach(clearTimeout);t=[];finish(tl);tl=null;
+      var lis=arr(v.querySelectorAll('.hb-li')),away=!!v.querySelector('.bs-away');
+      rows.forEach(function(li){if(!v.contains(li))li.classList.remove('on','hit');});
+      strikeAll();
+      if(!animate){lis.forEach(function(li){li.classList.add('on','hit');});return;}
+      lis.forEach(function(li){li.classList.remove('on','hit');});
+      var outl=lis.map(function(li){return li.querySelector('.ro rect');}),sk=[];
+      lis.forEach(function(li){arr(li.querySelectorAll('.strk line')).forEach(function(l){sk.push(l);});});
+      var po=drawable(outl),ps=drawable(sk);
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      lis.forEach(function(li,i){
+        var at=120+i*(away?620:300);
+        tl.add(po[i],{draw:'0 1',duration:520},at);
+        tl.call(function(){li.classList.add('on');},at+260);
+        var mine=arr(li.querySelectorAll('.strk line')).map(function(l){return ps[sk.indexOf(l)];});
+        if(li.classList.contains('done')&&mine.length){
+          var st=at+(away?620:440);
+          tl.call(function(){li.classList.add('hit');},st);
+          tl.add(mine,{draw:'0 1',duration:380,delay:AN.stagger(160)},st);
+        }
+      });
+      tl.call(function(){settle(outl);settle(sk);},120+lis.length*(away?620:300)+1300);
+    }
+    function show(i,why){
+      views.forEach(function(v,k){v.classList.toggle('on',k===i);v.setAttribute('aria-hidden',k===i?'false':'true');});
+      sub.textContent=views[i].getAttribute('data-sub');
+      if(why==='user'){touched=true;clearTimeout(auto);}
+      if(why==='init'&&MOVE&&!seen){var lis=arr(views[i].querySelectorAll('.hb-li'));lis.forEach(function(li){li.classList.remove('on','hit');});drawable(lis.map(function(li){return li.querySelector('.ro rect');}));return;}
+      play(views[i],MOVE);
+      if(why!=='init')schedule();
+    }
+    var r=rail(el,btns,show,0,true);
+    var want=+new URLSearchParams(location.search).get('bs');if(want>0){touched=true;r.pick(want,'init');}   // review aid, like the hero's ?one=
+    function schedule(){
+      clearTimeout(auto);if(!MOVE||touched||!visible)return;
+      auto=setTimeout(function(){if(!touched&&visible)r.pick(r.cur()+1,'auto');},7000);
+    }
+    if('ResizeObserver' in window)new ResizeObserver(strikeAll).observe(fig);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(strikeAll);
+    if(!MOVE){demo.classList.add('in');seen=true;play(views[r.cur()],false);return;}
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      visible=e.isIntersecting;
+      if(visible&&!seen&&e.intersectionRatio>=.35){seen=true;demo.classList.add('in');play(views[r.cur()],true);}
+      if(visible&&seen)schedule();else clearTimeout(auto);
+    });},{threshold:[0,.35]}).observe(demo);
+  })();
+
+  // A step that builds up: last state by default; when motion is allowed it starts at the first state and
+  // plays forward once when seen. onSet(i, why, was) runs on every change.
+  function step(box,target,first,onSet){
+    var el=box.querySelector('.cstep');if(!el)return null;
+    var btns=arr(el.querySelectorAll('button')),touched=false,t=[];
+    function set(i,why,was){
+      target.setAttribute('data-s',btns[i].getAttribute('data-s'));
+      if(why==='user'){touched=true;t.forEach(clearTimeout);}
+      onSet(i,why,was);
+    }
+    var last=btns.length-1,r=rail(el,btns,set,last,false);
+    if(!MOVE)return r;
+    r.pick(first,'init');
+    whenSeen(box,function(){
+      onSet(first,'seen',-1);
+      for(var k=first+1;k<=last;k++)(function(k){t.push(setTimeout(function(){if(!touched)r.pick(k,'auto');},900+(k-first)*2100));})(k);
+    });
+    return r;
+  }
+
+  // ── 2 · Wire the house ──
+  // (a) each question's hairline draws down to its file, and the file inks in when its wire arrives
+  (function(){
+    var list=document.querySelector('#problem .wire-x');if(!list)return;
+    var items=arr(list.children);
+    items.forEach(function(li){var f=li.querySelector('.wx-file');var ink=document.createElement('i');ink.className='wx-ink';f.insertBefore(ink,f.firstChild);});
+    if(!MOVE)return;
+    list.classList.add('mvx');
+    var lines=items.map(function(li){return li.querySelector('.wx-w line');}),dots=items.map(function(li){return li.querySelector('.wx-w circle');});
+    var p=drawable(lines),inks=items.map(function(li){return li.querySelector('.wx-ink');});
+    AN.utils.set(dots,{scale:0});AN.utils.set(inks,{opacity:0});
+    whenSeen(list,function(){
+      var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      items.forEach(function(li,i){
+        var at=i*260;
+        tl.add(dots[i],{scale:[0,1],duration:260,ease:'outBack'},at);
+        tl.add(p[i],{draw:'0 1',duration:520},at+120);
+        tl.add(inks[i],{opacity:[0,1],duration:380,ease:'outQuad'},at+560);
+        tl.call(function(){li.classList.add('inked');},at+560);
+      });
+      tl.call(function(){settle(lines);},items.length*260+1200);
+    },.4);
+  })();
+
+  // (b) the source wires draw into the chart's columns, then each row's line draws and its dots fill as it reaches them
+  (function(){
+    var jc=document.querySelector('#graph .jc');if(!jc)return;
+    var heads=arr(jc.querySelectorAll('.jc-head .jc-cols span'));
+    var wires=heads.map(function(h){var s=S('svg',{'class':'jc-wire','aria-hidden':'true'},h);S('circle',{cx:'3.5',cy:'0',r:'2.5'},s);return S('line',{x1:'3.5',y1:'0',x2:'3.5',y2:'100%'},s);});
+    var rows=arr(jc.querySelectorAll('.jc-row')).map(function(row){
+      var cols=row.querySelector('.jc-cols'),ln=cols.querySelector('.jc-ln');
+      var a=+getComputedStyle(ln).getPropertyValue('--a'),b=+getComputedStyle(ln).getPropertyValue('--b'),rv=ln.classList.contains('rv');
+      var s=S('svg',{'class':'jc-sv','aria-hidden':'true'},cols);
+      var l=S('line',{x1:((a-.5)/6*100)+'%',y1:'1',x2:((b-.5)/6*100)+'%',y2:'1'},s);if(rv)l.setAttribute('class','rv');
+      var dots=arr(cols.querySelectorAll('i')).filter(function(d){return d.classList.contains('on')||d.classList.contains('rv');})
+        .map(function(d){var c=+getComputedStyle(d).getPropertyValue('--c');return {el:d,f:b>a?(c-a)/(b-a):0};});
+      return {line:l,rv:rv,dots:dots};
+    });
+    if(!MOVE)return;
+    jc.classList.add('pre');
+    var pw=drawable(wires),solid=rows.filter(function(r){return !r.rv;}),pl=drawable(solid.map(function(r){return r.line;}));
+    var rvs=rows.filter(function(r){return r.rv;}).map(function(r){return r.line;});
+    AN.utils.set(rvs,{opacity:0});
+    whenSeen(jc,function(){
+      var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      tl.add(pw,{draw:'0 1',duration:480,delay:AN.stagger(90)},0);
+      var t0=760;
+      rows.forEach(function(r,k){
+        var at=t0+k*170,dur=520;
+        if(r.rv)tl.add(r.line,{opacity:[0,1],duration:400},at);
+        else tl.add(pl[solid.indexOf(r)],{draw:'0 1',duration:dur},at);
+        r.dots.forEach(function(d){tl.call(function(){d.el.classList.add('lit');},at+Math.round(d.f*dur*.92));});
+      });
+      tl.call(function(){jc.classList.remove('pre');settle(wires);settle(solid.map(function(r){return r.line;}));},t0+rows.length*170+900);
+    },.3);
+  })();
+
+  // (c) Dana's record: Day 1, Week 2, Month 1. New facts write in (their rule draws, then the words ink);
+  // the corrected title is struck by a drawn line, then the right value inks in.
+  (function(){
+    var box=document.getElementById('realgraph');if(!box)return;
+    var rec=box.querySelector('.rec'),n=rec.querySelector('.rec-n b'),names=['Day 1','Week 2','Month 1'];
+    arr(rec.querySelectorAll('.rr')).forEach(function(rr){hLine('rr-rule',rr);});
+    rec.classList.add('rl');
+    var rx=rec.querySelector('.rx');hLine('rx-strk',rx);
+    var tl=null;
+    function write(i,was){
+      finish(tl);tl=null;
+      var fresh=arr(rec.querySelectorAll('.rr')).filter(function(rr){var d=+rr.getAttribute('data-s');return d>was&&d<=i;});
+      var rules=fresh.map(function(rr){return rr.querySelector('.rr-rule line');}),inks=[];
+      fresh.forEach(function(rr){arr(rr.querySelectorAll('dt,dd,code')).forEach(function(x){inks.push(x);});});
+      var pr=drawable(rules);AN.utils.set(inks,{opacity:0});
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      fresh.forEach(function(rr,k){
+        var at=k*240;
+        tl.add(pr[k],{draw:'0 1',duration:460},at);
+        tl.add(arr(rr.querySelectorAll('dt,dd,code')),{opacity:[0,1],duration:340,ease:'outQuad',delay:AN.stagger(70)},at+200);
+      });
+      var end=fresh.length*240+700;
+      if(was===0&&i>=1){
+        var sl=rx.querySelector('.rx-strk line'),ps=drawable([sl]),fix=rec.querySelector('.rfix');
+        AN.utils.set(fix,{opacity:0});
+        tl.add(ps,{draw:'0 1',duration:420},end-300);
+        tl.add(fix,{opacity:[0,1],duration:380,ease:'outQuad'},end+120);
+        tl.call(function(){settle([sl]);},end+700);
+        end+=600;
+      }
+      tl.call(function(){settle(rules);inks.forEach(function(x){x.style.opacity='';});},end+400);
+    }
+    step(box.querySelector('.rec-obj'),rec,0,function(i,why,was){
+      n.textContent=rec.querySelectorAll('.rr:not([data-s="'+(i+1)+'"]):not([data-s="'+(i+2)+'"])').length;
+      rec.setAttribute('aria-label',"Dana Mercer's record at "+names[i]+'. Example record; the names are not real.');
+      if(!MOVE)return;
+      if(why==='init'){AN.utils.set(arr(rec.querySelectorAll('.rr dt,.rr dd,.rr code')),{opacity:0});drawable(arr(rec.querySelectorAll('.rr-rule line')));return;}
+      if(why==='seen'){write(0,-1);return;}
+      if(was<i)write(i,was);else{finish(tl);}
+    });
+  })();
+
+  // ── 3 · The timeline draws between stops, new tree lines draw their branch then ink in, and the glass mark fuses a bond per stop ──
+  (function(){
+    var box=document.getElementById('get');if(!box)return;
+    var fig=box.querySelector('.tree'),names=['five minutes','thirty minutes','two weeks','one month'];
+    var run=box.querySelector('.tx-run'),btns=arr(box.querySelectorAll('.tx-axis button'));
+    arr(box.querySelectorAll('.tree .tl')).forEach(function(tl){var s=S('svg',{'class':'tl-br','aria-hidden':'true'});tl.insertBefore(s,tl.firstChild);S('line',{x1:'0',y1:'1',x2:'100%',y2:'1'},s);});
+    var mark=box.querySelector('.tmark'),atoms=arr(mark.querySelectorAll('circle')),bonds=arr(mark.querySelectorAll('.bond'));
+    var prun=AN&&AN.svg&&AN.svg.createDrawable?AN.svg.createDrawable(run,0,1):null;
+    function axis(i,ms){var f=(i/3).toFixed(4);if(!prun)return;if(!MOVE||!ms){prun[0].setAttribute('draw','0 '+f);return;}AN.animate(prun,{draw:'0 '+f,duration:ms,ease:'inOutQuad'});}
+    var tl=null;
+    function grow(i){
+      finish(tl);tl=null;
+      var s=String(i+1),fresh=arr(box.querySelectorAll('.tree .tl[data-s="'+s+'"],.tree .tn[data-s="'+s+'"]'));
+      var br=[],ink=[];
+      fresh.forEach(function(x){var l=x.classList.contains('tl')?x.querySelector(':scope>.tl-br line'):null;if(l)br.push(l);arr(x.querySelectorAll(':scope>code,:scope>.cm')).forEach(function(c){ink.push(c);});if(x.classList.contains('tn'))ink.push(x);});
+      var pb=drawable(br);AN.utils.set(ink,{opacity:0});
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      var k=0;
+      fresh.forEach(function(x,j){
+        var at=380+j*150,l=x.classList.contains('tl')?x.querySelector(':scope>.tl-br line'):null;
+        if(l)tl.add(pb[br.indexOf(l)],{draw:'0 1',duration:260},at);
+        var mine=x.classList.contains('tn')?[x]:arr(x.querySelectorAll(':scope>code,:scope>.cm'));
+        tl.add(mine,{opacity:[0,1],duration:300,ease:'outQuad'},at+(l?200:60));
+      });
+      var b=bonds.filter(function(x){return x.getAttribute('data-s')===s;});
+      if(b.length)tl.add(b,{opacity:[0,1],scale:[.35,1],duration:620,ease:'outBack(1.6)'},120);
+      tl.call(function(){settle(br);ink.forEach(function(c){c.style.opacity='';});b.forEach(function(x){x.style.opacity='';x.style.transform='';});},380+fresh.length*150+900);
+    }
+    step(box,box,0,function(i,why,was){
+      fig.setAttribute('aria-label','The my-cos directory COS builds with you, at '+names[i]);
+      if(!MOVE||why==='init'){
+        axis(i,0);finish(tl);
+        if(MOVE&&why==='init'){   // before it is seen: tier 1 waits to be written, the atoms wait apart
+          var t1=arr(box.querySelectorAll('.tree .tl[data-s="1"],.tree .tn[data-s="1"]'));
+          AN.utils.set(arr(box.querySelectorAll('.tree .tl[data-s="1"]>code,.tree .tl[data-s="1"]>.cm,.tree .tn[data-s="1"]')),{opacity:0});
+          drawable(t1.map(function(x){return x.querySelector(':scope>.tl-br line');}).filter(Boolean));
+          AN.utils.set(atoms,{x:function(e,k){return [-60,-150,-150,150,0,150,0][k];},y:function(e,k){return [-150,-60,60,-60,0,60,150][k];}});
+        }
+        return;
+      }
+      if(why==='seen'){
+        AN.animate(atoms,{x:0,y:0,duration:900,ease:'outCubic'});
+        grow(0);return;
+      }
+      btns[i].classList.remove('on','past');
+      setTimeout(function(){btns[i].classList.add('on');},was<i?520:0);
+      axis(i,was<i?560:300);
+      if(was<i)grow(i);else finish(tl);
+    });
+  })();
+
+  // ── 4 · Where it meets you: picking a surface draws its outline, then the object inks in (about 600 ms) ──
+  (function(){
+    var sec=document.getElementById('glasses');if(!sec)return;
+    var views=arr(sec.querySelectorAll('.dview')),copies=arr(sec.querySelectorAll('.dv-copy'));
+    var el=sec.querySelector('.dv-pick .crail'),btns=arr(el.querySelectorAll('button')),where=sec.querySelector('.dv-where b');
+    var objs=views.map(function(v){return v.querySelector('.ctl-win,.g2-stage,.ph');});
+    var tl=null;
+    function inkIn(i){
+      if(!MOVE)return;
+      finish(tl);
+      var v=views[i],o=objs[i];if(!o)return;
+      var vb=v.getBoundingClientRect(),ob=o.getBoundingClientRect();
+      if(o.classList.contains('g2-stage')){var lens=o.querySelector('.lens-hud');if(lens)ob=lens.getBoundingClientRect();}
+      var rad=parseFloat(getComputedStyle(o.classList.contains('g2-stage')?o.querySelector('.lens-hud')||o:o).borderTopLeftRadius)||12;
+      var svg=S('svg',{'class':'dv-outline','aria-hidden':'true',width:String(Math.ceil(ob.width)+2),height:String(Math.ceil(ob.height)+2)},v);
+      svg.style.left=(ob.left-vb.left-1)+'px';svg.style.top=(ob.top-vb.top-1)+'px';
+      var rect=S('rect',{x:'1',y:'1',width:String(ob.width),height:String(ob.height),rx:String(rad)},svg);
+      var p=drawable([rect]);
+      AN.utils.set(o,{opacity:0});
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      tl.add(p,{draw:'0 1',duration:380},0);
+      tl.add(o,{opacity:[0,1],duration:340,ease:'outQuad'},240);
+      tl.add(svg,{opacity:[1,0],duration:200},420);
+      tl.call(function(){svg.remove();o.style.opacity='';},640);
+    }
+    function show(i,why){
+      views.forEach(function(v,k){v.classList.toggle('on',k===i);});
+      copies.forEach(function(c,k){c.classList.toggle('on',k===i);});
+      where.textContent=btns[i].getAttribute('data-where');
+      if(why==='user'||why==='hash')inkIn(i);
+    }
+    var r=rail(el,btns,show,0,false);
+    function fromHash(){var h=location.hash;if(h==='#glasses')r.pick(1,'hash');else if(h==='#control')r.pick(0,'hash');}
+    fromHash();window.addEventListener('hashchange',fromHash);
+    var want=+new URLSearchParams(location.search).get('dv');if(want>0)r.pick(want,'init');   // review aid
+    if(MOVE&&!location.hash&&!want){AN.utils.set(objs[0],{opacity:0});whenSeen(views[0],function(){inkIn(r.cur());},.3);}
+    var win=sec.querySelector('.ctl-win');if(!win)return;
+    var tabs=arr(win.querySelectorAll('.ctl-tab')),tiles=arr(win.querySelectorAll('.ctl-tile'));
+    if(tabs.length!==tiles.length)return;
+    rail(win.querySelector('.ctl-rail'),tabs,function(i){tiles.forEach(function(x,k){x.classList.toggle('on',k===i);});},0,false);
+  })();
+
+  // ── 5 · Teams: the track draws from the baseline to the target, then the target band inks in ──
+  (function(){
+    var u=document.querySelector('#teams .util-track');if(!u)return;
+    var a=u.querySelector('.util-arrow'),cs=getComputedStyle(a),p=+cs.getPropertyValue('--p'),t=+cs.getPropertyValue('--a');
+    var s=S('svg',{'class':'util-svg','aria-hidden':'true'},u);var l=S('line',{x1:(p+.3)+'%',y1:'1',x2:t+'%',y2:'1'},s);
+    if(!MOVE)return;
+    var band=u.querySelector('.util-band'),pl=drawable([l]);
+    AN.utils.set(band,{opacity:0,scaleX:0});band.style.transformOrigin='left center';
+    whenSeen(u,function(){
+      var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      tl.add(pl,{draw:'0 1',duration:700},150);
+      tl.add(band,{opacity:[0,1],scaleX:[0,1],duration:520,ease:'outCubic'},780);
+      tl.call(function(){settle([l]);},1500);
+    },.6);
+  })();
+
+  // ── 6 · Questions: each plus is two drawn lines; opening a question turns the upright into place ──
+  (function(){
+    var qs=arr(document.querySelectorAll('#faq .fq summary'));if(!qs.length)return;
+    var all=[];
+    qs.forEach(function(sm){var s=S('svg',{'class':'fq-pm',viewBox:'0 0 16 16','aria-hidden':'true'},sm);all.push(S('line',{'class':'h',x1:'1',y1:'8',x2:'15',y2:'8'},s),S('line',{'class':'v',x1:'8',y1:'1',x2:'8',y2:'15'},s));});
+    if(!MOVE)return;
+    var p=drawable(all);
+    whenSeen(document.querySelector('#faq .faq'),function(){
+      AN.animate(p,{draw:'0 1',duration:320,ease:'inOutQuad',delay:AN.stagger(70),onComplete:function(){settle(all);}});
+    },.3);
+  })();
 })();
 </script>
 </body>
