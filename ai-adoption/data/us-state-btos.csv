@@ -1,10 +1,57 @@
-geography,share_of_businesses_using_ai_pct,window,source,source_url,trust_tier
-District of Columbia,34.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-Utah,31.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-Colorado,28.8,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-Delaware,28.4,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-Florida,27.4,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-Arizona,27.4,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-United States (national avg),23.7,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-West Virginia,13.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
-United States (national),3.8,2023-Q4,US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+geography,state_code,share_of_businesses_using_ai_pct,latest_release_202622_pct,window,source,source_url,trust_tier
+District of Columbia,DC,34.6,37.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Utah,UT,31.5,29.4,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Colorado,CO,28.8,31.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Delaware,DE,28.4,29.7,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Arizona,AZ,27.4,26.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Florida,FL,27.4,27.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Nevada,NV,27.1,29.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Georgia,GA,26.3,28.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Washington,WA,26.3,24.0,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Minnesota,MN,26.2,27.7,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Virginia,VA,26.1,28.1,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Texas,TX,26.0,26.9,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+North Carolina,NC,25.5,26.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+California,CA,25.0,24.7,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Oregon,OR,24.3,26.9,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Wyoming,WY,24.2,40.1,2026-08-27 to 2026-11-05 (avg of 5 non-suppressed releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+South Carolina,SC,24.0,22.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Maryland,MD,23.6,21.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Kentucky,KY,23.2,22.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Massachusetts,MA,23.2,20.4,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Kansas,KS,23.1,28.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Tennessee,TN,23.1,26.1,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Hawaii,HI,22.4,14.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Illinois,IL,22.3,23.1,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Nebraska,NE,22.3,16.3,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Ohio,OH,22.2,27.3,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Montana,MT,22.1,25.1,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Michigan,MI,21.8,20.7,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Missouri,MO,21.8,23.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Vermont,VT,21.3,19.3,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Idaho,ID,21.0,16.0,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Pennsylvania,PA,20.9,18.9,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+South Dakota,SD,20.8,22.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Arkansas,AR,20.7,20.9,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Maine,ME,20.7,24.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Wisconsin,WI,20.4,24.0,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Connecticut,CT,20.3,24.1,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Iowa,IA,20.3,23.3,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+North Dakota,ND,20.3,22.5,2026-08-27 to 2026-11-05 (avg of 5 non-suppressed releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Indiana,IN,20.2,24.0,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+New Hampshire,NH,20.0,12.8,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+New Mexico,NM,19.7,17.8,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Alabama,AL,19.6,20.6,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Oklahoma,OK,19.5,20.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+New Jersey,NJ,19.2,21.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Louisiana,LA,19.1,21.5,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Rhode Island,RI,18.1,20.6,2026-08-27 to 2026-11-05 (avg of 4 non-suppressed releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+New York,NY,17.8,17.8,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Alaska,AK,17.2,,2026-08-27 to 2026-11-05 (avg of 4 non-suppressed releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Mississippi,MS,15.6,13.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+Puerto Rico,PR,14.1,13.9,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+West Virginia,WV,13.6,14.0,2026-08-27 to 2026-11-05 (avg of 5 non-suppressed releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+United States (national avg),US,23.7,24.2,2026-08-27 to 2026-11-05 (avg of 6 releases),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+"United States (national, Nov 5 2026 release)",US,24.2,24.2,2026-11-05 release (collected 2026-10-19 to 2026-11-01),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+"United States (national, Sep 2025 original question)",US,10.0,,2025-10-09 release (original goods/services question),US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
+"United States (national, late 2023 original question)",US,3.8,,2023-Q4,US Census Bureau BTOS,https://www.census.gov/hfp/btos/,T1
