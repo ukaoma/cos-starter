@@ -1182,7 +1182,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .ah-cta{margin-top:16px}
   .ah-stage{grid-template-columns:minmax(0,1fr) 210px minmax(0,1fr);column-gap:12px;align-items:center;max-width:none;margin-top:24px}
   .ah-in{grid-column:1;grid-row:1}
-  .ah-in::before{left:-48px;right:-12px;top:-70px;bottom:-70px;background:linear-gradient(90deg,rgba(40,15,7,.88),rgba(40,15,7,.78) calc(100% - 112px),rgba(40,15,7,0));mask-image:linear-gradient(180deg,transparent,#000 70px,#000 calc(100% - 70px),transparent)}
+  .ah-in::before{left:-96px;right:-72px;top:-140px;bottom:-140px;background:linear-gradient(90deg,rgba(40,15,7,.26) 0%,rgba(40,15,7,.10) 46%,rgba(40,15,7,0) 100%);mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent)}
   .ah-in ul:first-of-type{columns:auto}
   .ah-in li{height:28px;font-size:14.5px;opacity:1}
   .amber-hero p.ah-colh{font-size:14px;margin-bottom:8px}
@@ -1191,7 +1191,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
   .ah-o2{font-size:14px;max-width:200px}
   .ah-mark{grid-column:2;grid-row:1;width:210px;height:230px;margin:0}
   .ah-out{position:relative;grid-column:3;grid-row:1;min-width:0;margin-top:0;padding-left:28px}
-  .ah-out::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:0;right:-48px;top:-70px;bottom:-70px;background:linear-gradient(270deg,rgba(40,15,7,.88),rgba(40,15,7,.78) calc(100% - 100px),rgba(40,15,7,0));mask-image:linear-gradient(180deg,transparent,#000 70px,#000 calc(100% - 70px),transparent)}
+  .ah-out::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:-56px;right:-96px;top:-140px;bottom:-140px;background:linear-gradient(270deg,rgba(40,15,7,.26) 0%,rgba(40,15,7,.10) 46%,rgba(40,15,7,0) 100%);mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent)}
   .amber-hero p.one-h{min-height:39px}
   .amber-hero .one{width:100%}
   .amber-hero p.one-sub{font-size:14px;min-height:81px}
@@ -1614,12 +1614,10 @@ html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inh
           mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%))}
 #faq .fq-left .fq-plate .pixmap-c .pi{background-position:0 0,center 30%}
 @media (max-width:1079px){#faq .fq-left .fq-plate{aspect-ratio:16 / 10;max-width:560px}#faq .fq-left .fq-plate .pixmap-c{display:block}}
-/* Open Duo and other short landscape screens (900 to 1099 wide): no boxed contrast panels behind the side columns.
-   On WebKit they read as dark boxes; Miles prefers the desktop look, lists straight on the lit scene (2026-11-17 21:0x).
-   Contrast comes from a soft, edgeless halo on the text instead of a panel. */
+/* Open Duo landscape: the side washes stay, but they are a long low feather, not a near-black box.
+   Miles, 2026-11-17 22:43: no hard bars; spread the falloff so the edge disappears. */
 @media (min-width:900px) and (max-width:1099px) and (orientation:landscape){
-  .ah-in::before,.ah-out::before{content:none;display:none}
-  .ah-in li,.ah-in .ah-colh,.ah-in .ah-o2,.ah-out,.ah-out p,.ah-out .one-sub,.ah-out .one-h{text-shadow:0 0 14px rgba(40,15,7,.9),0 0 4px rgba(40,15,7,.75),0 1px 1px rgba(40,15,7,.6)}
+  .ah-in li,.ah-in .ah-colh,.ah-in .ah-o2,.ah-out,.ah-out p,.ah-out .one-sub,.ah-out .one-h{text-shadow:0 0 22px rgba(40,15,7,.5),0 1px 1px rgba(40,15,7,.35)}
 }
 </style>
 
