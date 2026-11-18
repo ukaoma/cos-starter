@@ -1272,6 +1272,7 @@ html[data-pil="keys"] #graph[data-key="2"] .jc-row:last-child{background:rgba(25
 /* anchors that now live inside a chapter land below the fixed nav */
 #benefits,#integrations,#realgraph,#philosophy,#get,#tiers,#assess{scroll-margin-top:120px}
 #control{scroll-margin-top:240px}
+@media (max-width:1079px){#control{scroll-margin-top:104px}}
 @media (max-width:1000px){section[id]{scroll-margin-top:36px}}
 
 /* The chapter rail: a copy of the hero's .one-rail look and behaviour, outside the hero's namespace */
@@ -1613,7 +1614,7 @@ html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inh
   -webkit-mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%));
           mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%))}
 #faq .fq-left .fq-plate .pixmap-c .pi{background-position:0 0,center 30%}
-@media (max-width:1079px){#faq .fq-left .fq-plate{aspect-ratio:16 / 10;max-width:560px}#faq .fq-left .fq-plate .pixmap-c{display:block}}
+@media (max-width:1079px){#faq .fq-left .fq-plate{aspect-ratio:4 / 5;max-width:min(100%,400px)}#faq .fq-left .fq-plate .pixmap-c{display:block}}
 /* Open Duo landscape: the side washes stay, but they are a long low feather, not a near-black box.
    Miles, 2026-11-17 22:43: no hard bars; spread the falloff so the edge disappears. */
 @media (min-width:900px) and (max-width:1099px) and (orientation:landscape){
@@ -3421,6 +3422,33 @@ function doCopyKit(){
       AN.animate(p,{draw:'0 1',duration:320,ease:'inOutQuad',delay:AN.stagger(70),onComplete:function(){settle(all);}});
     },.3);
   })();
+})();
+</script>
+<script>
+// Anchor settle (F1 live check 2026-11-18: /#philosophy missed at 449x655 and 951x669, /#control landed above the Mac).
+// The browser jumps to a /#id before fonts, images and the chapters' resting states finish laying out, so the target
+// moves after the jump. For 2.5 s after load, put it back under the nav whenever it has drifted, without smooth
+// scrolling, and stop for good the moment the reader scrolls, taps or types.
+(function(){
+  var h=location.hash;if(!h||h.length<2)return;
+  var t;try{t=document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return;}
+  if(!t)return;
+  var stop=false,until=0,de=document.documentElement;
+  function halt(){stop=true;}
+  ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,halt,{passive:true,once:true});});
+  function land(){
+    var m=parseFloat(getComputedStyle(t).scrollMarginTop)||0,top=t.getBoundingClientRect().top;
+    if(Math.abs(top-m)<=24)return;
+    var sb=de.style.scrollBehavior;de.style.scrollBehavior='auto';
+    window.scrollTo(0,Math.max(0,window.pageYOffset+top-m));
+    de.style.scrollBehavior=sb;
+  }
+  function tick(){if(stop||Date.now()>until)return;land();setTimeout(tick,200);}
+  function go(){until=Date.now()+2500;requestAnimationFrame(function(){requestAnimationFrame(tick);});}
+  window.addEventListener('load',function(){
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go,go);else go();
+  });
+  window.addEventListener('hashchange',function(){stop=true;});
 })();
 </script>
 </body>
