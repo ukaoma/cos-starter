@@ -93,12 +93,13 @@ h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size
 .ln{display:inline-flex;align-items:center;min-height:44px;font-size:.95rem;color:var(--fg);text-decoration:underline;text-decoration-color:rgba(246,180,110,.6);text-underline-offset:4px}
 .ln:hover{text-decoration-color:var(--warm)}
 .meta{margin-top:18px;font-size:.88rem;color:var(--faint)}
-.meta i{font-style:normal;white-space:nowrap}
+.meta i{font-style:normal;white-space:nowrap;display:inline-block}
 .meta i+i::before{content:"\00B7";margin:0 8px;opacity:.6}
 .proof{margin-top:28px;padding-top:16px;border-top:1px solid var(--line-2);font-size:.86rem;color:var(--faint);max-width:44ch}
 .proof b{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
-.proof i{font-style:normal;white-space:nowrap}
+.proof i{font-style:normal;white-space:nowrap;display:inline-block}
 .proof i+i::before{content:"\00B7";margin:0 8px;opacity:.6}
+/* F1 live 2026-11-18: the items sit back to back with no space between them, so the whole proof line was one unbreakable run and scrolled 158 px sideways at 382. As inline blocks they wrap between items; each item stays whole. */
 html:not(.js) .needs-js{display:none!important}
 .nojs{margin-top:22px;font-size:.95rem;color:var(--muted);max-width:42ch}
 .nojs a{color:var(--fg)}
