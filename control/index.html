@@ -1003,7 +1003,8 @@ button.aw-b{cursor:pointer;font-family:inherit;min-height:32px}
 .vo-ins{opacity:1}
 @media (max-width:900px){.vo-notes{grid-template-columns:1fr}.vo-act{max-width:340px}.vo-tx{min-height:0}}
 @media (max-width:860px){.vo-flow{grid-template-columns:1fr;justify-items:stretch}.vo-cap{width:150px;justify-self:center}}
-@media (max-width:480px){.vo-pet{flex-wrap:wrap}.vo-pill{min-width:0}.vo-rail button{padding:0 12px}}
+@media (max-width:480px){.vo-pet{flex-wrap:wrap}.vo-pill{min-width:0}.vo-key{flex-basis:100%;text-align:center}.vo-rail button{padding:0 12px}}
+/* F1 live 2026-11-18: at 382 the pill label (LISTENING 0:03, TRANSCRIBING, INSERTED) changes its width, so Hold fn wrapped and unwrapped and the page moved 34 px. Under 480 it always sits on its own line. */
 @media (prefers-reduced-motion:reduce){.vo-rail button,.vo-bar,.vo-tl,.vo-act,.vo-chip,.vo-sw,.vo-meter,.vo-dot,.vo-key kbd,.vo-heard span,.vo-out span,.vo-words span,.vo-ans span{transition:none}}
 /* Dictation round six: four target windows in a stack, a dictionary moment, the Dictionary panel */
 .vo-flow{grid-template-columns:minmax(0,.9fr) 128px minmax(0,1.5fr)}
