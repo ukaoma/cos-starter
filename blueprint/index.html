@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COS Blueprint · Your personalized AI chief-of-staff build plan</title>
 <meta name="theme-color" content="#07090f">
-<meta name="robots" content="noindex,follow"><!-- pre-launch: remove to index once checkout + fulfillment are live -->
+<link rel="canonical" href="https://www.gotcos.com/blueprint/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="COS Blueprint">
 <meta property="og:description" content="Your role, your build plan. 12 questions map exactly how an AI chief of staff plugs into how you actually work. Executive, attorney, chief of staff, clinician, engineer, and more.">
@@ -16,150 +16,270 @@
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="COS Blueprint">
-<meta name="twitter:description" content="Your role, your build plan. Not a generic AI. 12 questions, 3 minutes.">
+<meta name="twitter:description" content="Your AI chief of staff, planned for your week. 12 questions, about 2 minutes.">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){var d=document.documentElement;d.className+=' js';try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.className+=' mv';setTimeout(function(){if(!window.__bpReady)d.classList.remove('mv');},3000);}}catch(e){}})();</script>
 <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    color-scheme:dark;
-    --ink:#07090f;--ink-2:#0b0e16;--panel:rgba(255,255,255,.025);--panel-2:rgba(255,255,255,.045);
-    --fg:#ece6da;--muted:rgba(236,230,218,.56);--faint:rgba(236,230,218,.50);--ghost:rgba(236,230,218,.34);--line:rgba(201,169,110,.16);--line-2:rgba(255,255,255,.08);
-    --gold:#c9a96e;--rose:#c4736e;--warm:#d4a07a;--green:#7fa98a;
-    --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
-    --maxw:880px;--gut:clamp(22px,5vw,56px);
-  }
-  html{font-size:16px;-webkit-font-smoothing:antialiased}
-  body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-  body>.wrap{flex:1 0 auto;width:100%}
-  body::before{content:'';position:fixed;top:0;left:0;right:0;height:64px;z-index:40;pointer-events:none;background:linear-gradient(180deg,rgba(7,9,15,.8),transparent)}
-  ::selection{background:rgba(201,169,110,.28);color:#f4efe4}
-  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-  .btn:focus-visible{outline-offset:2px}
-  .atmos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .atmos .aur{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 28s ease-in-out infinite alternate}
-  .atmos .a1{width:60vw;height:60vw;top:-20vw;right:-12vw;background:radial-gradient(circle,rgba(201,169,110,.30),transparent 62%)}
-  .atmos .a2{width:52vw;height:52vw;bottom:-18vw;left:-16vw;background:radial-gradient(circle,rgba(196,115,110,.24),transparent 60%);animation-duration:34s}
-  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2vw,-3vh,0) scale(1.08)}}
-  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px var(--gut);background:linear-gradient(180deg,rgba(7,9,15,.85),transparent);backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
-  .nav .brand{font-family:var(--display);font-style:italic;font-size:1.1rem}.nav .brand b{font-style:normal;font-weight:600}
-  .nav a{color:var(--muted);font-size:.82rem;text-decoration:none;padding:8px 10px;margin:-8px -10px;transition:color .2s}
-  .nav a:hover{color:var(--fg)}
-  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(76px,10vh,104px) var(--gut) 80px}
-  h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.025em;max-width:17ch}
-  h1 .g{font-style:italic;font-weight:500;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .dek{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.06rem;margin-top:18px;max-width:40ch}
-  .lead{color:var(--muted);font-size:clamp(1.02rem,1.6vw,1.2rem);line-height:1.6;max-width:54ch;margin-top:20px}
-  .meta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--faint)}
-  .meta b{color:var(--gold);font-weight:500}
-  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.98rem;padding:15px 30px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .25s,border-color .2s,background .2s;text-decoration:none}
-  .btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));color:#1a1206;box-shadow:0 14px 40px -14px rgba(201,169,110,.6)}
-  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -12px rgba(201,169,110,.72)}
-  .btn.ghost{border-color:var(--line-2);color:var(--fg);background:transparent}
-  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
-  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-  .hero-cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .trustline{margin-top:26px;font-family:var(--mono);font-size:.72rem;color:var(--faint);display:flex;align-items:center;gap:10px}
-  .trustline::before{content:'';width:20px;height:1px;background:var(--line-2)}
+/* COS Blueprint, a conversion landing page (2026-11-17, round two). The lead is the conversion: a landing hero
+   with a sample Blueprint, twelve questions that give away no result, a gate, then the reveal. */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  color-scheme:dark;
+  --ink:#34140a;--ink-2:#40190c;
+  --fg:#fbeedd;--muted:rgba(251,238,221,.74);--faint:rgba(251,238,221,.66);--line:rgba(255,226,196,.17);--line-2:rgba(255,236,214,.10);
+  --gold:#f29a45;--warm:#f6b46e;
+  --cream:#f3ede1;--paper:#f6f0e4;--ink-c:#241708;--body-c:#514436;--faint-c:#665441;--rule-c:rgba(46,31,16,.16);--rust:#8f3d14;--track:#c0662c;
+  --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
+  --maxw:1180px;--gut:clamp(16px,4.5vw,64px);
+}
+html{font-size:16px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:var(--body);color:var(--fg);line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;
+  background:radial-gradient(1100px 620px at 72% -8%,rgba(246,180,110,.13),transparent 62%),var(--ink)}
+[hidden]{display:none!important}
+::selection{background:rgba(242,154,69,.3);color:#fff4e6}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
+a{color:inherit}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-  /* hero stage: role-morph animation */
-  .stage{margin-top:44px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(120% 130% at 50% 0%,rgba(201,169,110,.10),transparent 62%),linear-gradient(160deg,var(--panel-2),transparent);padding:26px 22px 22px;position:relative;overflow:hidden}
-  .stage .cap{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;margin-bottom:6px}
-  .stage .cap .role{color:var(--gold);transition:opacity .5s}
-  .orbit{position:relative;width:100%;height:220px}
-  .orbit svg{width:100%;height:100%;overflow:visible}
-  .orbit .core{font-family:var(--display);font-style:italic;fill:var(--gold)}
-  .nlabel{font-family:var(--mono);font-size:11px;fill:var(--muted);transform-box:fill-box;transform-origin:center;will-change:opacity,transform}
-  .flow{stroke:var(--line);stroke-width:1;fill:none;will-change:stroke-dashoffset,opacity}
-  .node{fill:rgba(201,169,110,.5);transform-box:fill-box;transform-origin:center;will-change:transform,opacity}
-  .stage .tease{margin-top:8px;font-size:.9rem;color:var(--muted);text-align:center;min-height:46px}
-  .stage .tease b{color:var(--fg);font-weight:600}
-  @media(max-width:640px){.stage .tease{min-height:69px}}
-  @media(max-width:430px){.stage .tease{min-height:92px}}
+/* ── the resin nav, minimal: the mark (it paints in) and two quiet links ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;pointer-events:none}
+.nav-main{pointer-events:auto;width:min(var(--maxw),calc(100% - 24px));margin:10px auto 0;padding:6px 8px 6px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:rgba(52,20,10,.82);border:1px solid rgba(255,226,196,.17);border-radius:14px;-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1)}
+.nav .brand a{display:flex;align-items:center;min-height:44px;color:#fff2e2;font-size:1.15rem;text-decoration:none}
+.nav-r{display:flex;align-items:center;gap:2px}
+.nav-r a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:9px;font-size:.86rem;color:rgba(255,238,220,.82);text-decoration:none;transition:color .2s,background-color .2s}
+.nav-r a:hover{color:#fff2e2;background:rgba(255,236,214,.08)}
 
-  #quiz{display:none}
-  .progress{height:2px;background:var(--line-2);border-radius:2px;overflow:hidden;margin-bottom:8px}
-  .progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--warm),var(--gold));transition:width .4s cubic-bezier(.2,.7,.2,1)}
-  .qmeta{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:22px;display:flex;justify-content:space-between}
-  .qmeta .cl{color:var(--gold)}
-  .qtext{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.18;letter-spacing:-.01em;max-width:26ch;margin-bottom:30px}
-  .opts{display:flex;flex-direction:column;gap:12px;min-height:288px}
-  .opt{text-align:left;width:100%;font-family:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px 20px;font-size:1rem;line-height:1.45;cursor:pointer;transition:border-color .18s,background .18s,transform .12s}
-  .opt:hover{border-color:rgba(201,169,110,.4);background:var(--panel-2)}
-  .opt:active{transform:scale(.99)}
-  .opt.sel{border-color:var(--gold);background:rgba(201,169,110,.09)}
-  .qnav{margin-top:28px;display:flex;justify-content:space-between;align-items:center}
-  .qnav .back{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.78rem;cursor:pointer;letter-spacing:.04em}
-  .qnav .back:hover{color:var(--fg)}
+/* ── layout ── */
+main.bp{position:relative;z-index:1;flex:1 0 auto;width:100%;max-width:var(--maxw);margin:0 auto;padding:clamp(84px,11vh,112px) var(--gut) clamp(56px,8vw,96px)}
 
-  #results{display:none}
-  .gauge-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:10px}
-  .gauge{position:relative;width:230px;height:230px}
-  .gauge svg{transform:rotate(-90deg)}
-  .gauge .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .gauge .num b{font-family:var(--display);font-style:italic;font-weight:500;font-size:3.6rem;line-height:1;background:linear-gradient(120deg,var(--warm),var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold)}
-  .gauge .num span{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-top:6px}
-  .band{font-family:var(--display);font-style:italic;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--fg);margin-top:14px}
-  .band-sub{color:var(--muted);max-width:48ch;margin:10px auto 0}
-  .bars{margin-top:40px;display:flex;flex-direction:column;gap:14px}
-  .bar{border-top:1px solid var(--line-2);padding-top:14px}
-  .bar .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-  .bar .top b{font-weight:600;font-size:.98rem}
-  .bar .top .v{font-family:var(--mono);font-size:.8rem;color:var(--gold)}
-  .bar .track{height:5px;background:var(--line-2);border-radius:4px;overflow:hidden}
-  .bar .track i{display:block;height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:4px;transition:width 1s cubic-bezier(.2,.7,.2,1)}
-  .bar .rd{font-size:.84rem;color:var(--muted);margin-top:7px}
+/* the stage progression: the homepage's timeline, four stops on one line that draws as you go */
+.axis{position:relative;margin:0 0 clamp(26px,4vw,48px)}
+.axis ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none}
+.ax-svg{position:absolute;left:7px;top:6px;width:75%;height:3px;overflow:visible;pointer-events:none}
+.ax-svg line{stroke-width:2;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.ax-base{stroke:rgba(255,226,196,.2)}
+.ax-run{stroke:var(--warm)}
+html:not(.js) .ax-run{display:none}
+.axis li{position:relative;padding:26px 8px 0 0;font-size:clamp(.84rem,1.3vw,1rem);font-weight:500;line-height:1.2;color:var(--faint)}
+.axis li::before{content:'';position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;background:var(--ink);border:2px solid rgba(255,226,196,.36);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease}
+.axis li small{display:block;margin-top:3px;font-size:.78rem;font-weight:400;color:var(--faint)}
+.axis li.past::before,.axis li.on::before{background:var(--warm);border-color:var(--warm)}
+.axis li.on::before{box-shadow:0 0 0 6px rgba(246,180,110,.16)}
+.axis li.on,.axis li.past{color:var(--fg)}
+.axis .sm{display:none}
+@media (max-width:600px){.axis li small{display:none}.axis .lg{display:none}.axis .sm{display:inline}}
 
-  /* PREPAID GATE: the locked full Blueprint */
-  .blueprint{margin-top:48px;position:relative;border:1px solid rgba(201,169,110,.28);border-radius:20px;overflow:hidden}
-  .bp-head{padding:26px clamp(22px,4vw,34px) 14px}
-  .bp-head h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3vw,2.1rem)}
-  .bp-head p{color:var(--muted);max-width:52ch;margin-top:8px;font-size:.94rem}
-  .bp-list{position:relative;padding:6px clamp(22px,4vw,34px) 30px}
-  .bp-row{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line-2)}
-  .bp-row .ic{flex:0 0 auto;width:26px;height:26px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--mono);font-size:.7rem}
-  .bp-row b{font-weight:600;font-size:.96rem}
-  .bp-row p{color:var(--muted);font-size:.86rem;margin-top:3px}
-  .bp-locked .bp-list{opacity:.9;pointer-events:none;user-select:none}
-  .bp-locked .bp-row p{filter:blur(4px);opacity:.7}
-  .bp-veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(178deg,rgba(11,14,22,.34),rgba(11,14,22,.74) 44%,rgba(11,14,22,.92))}
-  .bp-veil .lk{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-  .bp-veil h4{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.4rem,3vw,2rem);max-width:20ch}
-  .bp-veil p{color:var(--muted);max-width:40ch;margin:10px auto 20px;font-size:.92rem}
-  .bp-price{font-family:var(--display);font-size:1.1rem;color:var(--fg);margin-bottom:18px}
-  .bp-price s{color:var(--ghost);margin-right:8px}
-  .bp-price b{color:var(--gold);font-style:italic;font-weight:500}
-  .bp-guar{margin-top:14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--faint)}
-  .bp-form{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;margin:6px auto 0}
-  .bp-form input{width:100%;font-family:var(--body);font-size:.95rem;color:var(--fg);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
-  .bp-form input::placeholder{color:var(--ghost)}
-  .bp-form input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
-  .bp-form .btn{width:100%;justify-content:center;margin-top:2px}
-  .trust{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media(max-width:640px){.trust{grid-template-columns:1fr}}
-  .trust .t{border:1px solid var(--line-2);border-radius:13px;padding:18px;background:var(--panel)}
-  .trust .t b{display:block;color:var(--gold);font-size:.92rem;margin-bottom:5px}
-  .trust .t span{font-size:.82rem;color:var(--muted);line-height:1.45}
-  .share{margin-top:24px;font-family:var(--mono);font-size:.74rem;color:var(--faint);text-align:center}
-  .share button{color:var(--gold);cursor:pointer;background:none;border:none;font:inherit;padding:0}
-  .share button:hover{text-decoration:underline;text-underline-offset:3px}
-    footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
-  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
-  footer .foot-app a{color:var(--gold,#c9a96e);opacity:.9;transition:opacity .2s}
-  footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
-footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64px;border-top:1px solid var(--line-2);margin-top:60px}
-  footer .q{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:14px}
-  footer .links{font-size:.8rem;color:var(--faint)}footer .links a{color:var(--muted)}
-  footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a{color:var(--muted)}
-  @media(prefers-reduced-motion:reduce){.atmos .aur{animation:none}*{transition:none!important}}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,80px);align-items:start}
+.grid[data-stage="results"]{grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+@media (min-width:880px) and (min-height:700px){
+  .grid[data-stage="intro"] .sheet,.grid[data-stage="quiz"] .sheet{position:sticky;top:84px}
+  .grid[data-stage="results"] .ask{position:sticky;top:96px}
+}
+@media (max-width:879px){.grid,.grid[data-stage="results"]{grid-template-columns:minmax(0,1fr)}}
+
+/* ── left: what we ask ── */
+h1{font-family:var(--display);font-optical-sizing:auto;font-weight:400;font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.05;letter-spacing:-.02em;max-width:15ch;color:var(--fg)}
+.stand{margin-top:18px;font-size:clamp(1.02rem,1.5vw,1.16rem);line-height:1.55;color:var(--muted);max-width:42ch}
+.cta-row{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:10px;border:0;cursor:pointer;font:600 1rem/1 var(--body);text-decoration:none;
+  background:#fff0dc;color:#2a1206;transition:background-color .2s ease,transform .2s ease}
+.btn:hover{background:#ffe4c4}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.55;cursor:default}
+.ln{display:inline-flex;align-items:center;min-height:44px;font-size:.95rem;color:var(--fg);text-decoration:underline;text-decoration-color:rgba(246,180,110,.6);text-underline-offset:4px}
+.ln:hover{text-decoration-color:var(--warm)}
+.meta{margin-top:18px;font-size:.88rem;color:var(--faint)}
+.meta i{font-style:normal;white-space:nowrap}
+.meta i+i::before{content:"\00B7";margin:0 8px;opacity:.6}
+.proof{margin-top:28px;padding-top:16px;border-top:1px solid var(--line-2);font-size:.86rem;color:var(--faint);max-width:44ch}
+.proof b{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.proof i{font-style:normal;white-space:nowrap}
+.proof i+i::before{content:"\00B7";margin:0 8px;opacity:.6}
+html:not(.js) .needs-js{display:none!important}
+.nojs{margin-top:22px;font-size:.95rem;color:var(--muted);max-width:42ch}
+.nojs a{color:var(--fg)}
+
+/* the question */
+.qtext{font-family:var(--display);font-weight:400;font-size:clamp(1.45rem,2.6vw,2.05rem);line-height:1.18;letter-spacing:-.01em;max-width:24ch;color:var(--fg);outline:0}
+.opts{margin-top:24px;display:grid;gap:10px;min-height:288px;align-content:start}
+.opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:360px){.opts.two{grid-template-columns:1fr}}
+.opt{all:unset;box-sizing:border-box;display:flex;align-items:center;min-height:52px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,236,214,.035);
+  font:400 1rem/1.4 var(--body);color:var(--fg);cursor:pointer;transition:border-color .18s ease,background-color .18s ease}
+.opts.two .opt{min-height:48px;font-size:.95rem}
+.opt:hover{border-color:rgba(246,180,110,.55);background:rgba(255,236,214,.06)}
+.opt:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+.opt.sel{border-color:var(--warm);background:rgba(246,180,110,.13)}
+.tick{margin-top:14px;font-size:.88rem;color:var(--muted);min-height:1.4em}
+@media (min-width:880px){.tick{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}}
+.qnav{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.back{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;min-height:44px;padding:0 14px 0 0;font-size:.92rem;color:var(--muted);cursor:pointer}
+.back:hover{color:var(--fg)}
+.back:focus-visible{outline:2px solid var(--warm);outline-offset:2px;border-radius:6px}
+.qcount{font-size:.86rem;color:var(--faint);font-variant-numeric:tabular-nums}
+
+/* the score */
+.dial{position:relative;width:184px;height:184px}
+.dial svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}
+.dial .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.dial .num b{font-family:var(--display);font-weight:400;font-size:3.3rem;line-height:1;color:var(--fg);font-variant-numeric:tabular-nums}
+.dial .num span{margin-top:6px;font-size:.78rem;color:var(--faint)}
+.band{margin-top:20px;font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.12;color:var(--fg)}
+.band-sub{margin-top:10px;font-size:1rem;line-height:1.55;color:var(--muted);max-width:38ch}
+.lever{margin-top:12px;font-size:.88rem;color:var(--faint);max-width:38ch}
+.share{margin-top:14px;font-size:.9rem;color:var(--faint)}
+.share button{all:unset;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;color:var(--fg);text-decoration:underline;text-decoration-color:rgba(246,180,110,.6);text-underline-offset:4px}
+.share button:focus-visible{outline:2px solid var(--warm);outline-offset:2px;border-radius:4px}
+.deeper{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-2);list-style:none;display:grid;gap:2px}
+@media (max-width:879px){.dial{width:160px;height:160px}.dial .num b{font-size:2.9rem}}
+
+/* ── right: the Blueprint document ── */
+.doc{position:relative;background:var(--paper);color:var(--ink-c);border-radius:6px;padding:clamp(20px,3.4vw,40px) clamp(18px,3.2vw,40px) clamp(18px,2.6vw,30px);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7),0 12px 30px -18px rgba(20,6,2,.6);font-size:.94rem;line-height:1.5}
+.doc-head{display:flex;align-items:center;gap:12px}
+.doc-mark{width:30px;height:auto;flex:none;overflow:visible}
+.doc-t{font-family:var(--display);font-weight:400;font-size:1.3rem;line-height:1;color:var(--ink-c)}
+.doc-date{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--faint-c);white-space:nowrap}
+.rule{display:block;width:100%;height:3px;margin:16px 0 14px;overflow:visible}
+.rule line,.sig line,.dd-r line{stroke:var(--rule-c);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.doc-for{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:baseline;gap:4px 14px}
+.doc-for .lbl{font-size:.84rem;color:var(--faint-c)}
+.doc-for b{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.15;color:var(--ink-c);overflow-wrap:anywhere}
+.doc-for .sig{grid-column:2;width:100%;height:3px;overflow:visible}
+.doc-for .sig line{stroke:var(--track);stroke-width:2}
+.doc-sec{margin-top:24px}
+.doc h3{font-family:var(--display);font-weight:400;font-size:1.12rem;line-height:1.2;color:var(--ink-c);margin-bottom:8px}
+.leaks{list-style:none}
+.lk{display:grid;grid-template-columns:minmax(0,1fr) minmax(70px,38%) 2.6em;align-items:center;gap:4px 14px;padding:7px 0;border-bottom:1px solid var(--rule-c)}
+.lk:last-child{border-bottom:0}
+.lk-n{font-size:.9rem;color:var(--body-c)}
+.lk.set .lk-n{color:var(--ink-c)}
+.lk-t{display:block;width:100%;height:8px;overflow:visible}
+.lk-t line{stroke-width:6;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.lk-base{stroke:rgba(143,61,20,.14)}
+.lk-fill{stroke:var(--track)}
+.lk-v{font-family:var(--mono);font-size:.78rem;text-align:right;color:var(--ink-c);font-variant-numeric:tabular-nums}
+.lk-r{grid-column:1 / -1;grid-row:2;font-size:.84rem;line-height:1.45;color:var(--body-c);display:none}
+.lk-n{grid-column:1;grid-row:1;transition:color .3s ease}
+.lk-t,.lk-dec{grid-column:2;grid-row:1}
+.lk-v,.lk-ok{grid-column:3;grid-row:1;justify-self:end}
+.lk-ok,.lk-dec{display:none}
+.lk-ok{width:16px;height:16px;overflow:visible}
+.lk-ok path{fill:none;stroke:var(--rust);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.doc[data-mode="results"] .lk-r{display:block}
+.setup{display:grid;gap:0}
+.setup div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:4px 14px;padding:7px 0;border-bottom:1px solid var(--rule-c);align-items:baseline}
+.setup div:last-child{border-bottom:0}
+.setup dt{font-size:.86rem;color:var(--faint-c)}
+.setup dd{font-size:.9rem;color:var(--ink-c);min-height:1.35em}
+.setup .dd-r{grid-column:2;display:block;width:100%;height:2px;overflow:visible;margin-top:-2px}
+.setup .dd-r line{stroke:var(--track);stroke-width:1.5}
+.doc-note{margin-top:16px;font-size:.82rem;color:var(--faint-c)}
+.doc-foot{margin-top:22px;padding-top:12px;border-top:1px solid var(--rule-c);display:flex;justify-content:space-between;gap:12px;font-size:.78rem;color:var(--faint-c)}
+.doc[data-mode="intro"] .doc-for .sig,.doc[data-mode="intro"] .dd-r{opacity:.55}
+@media (max-width:420px){.setup div{grid-template-columns:7em minmax(0,1fr)}.lk{grid-template-columns:minmax(0,1fr) 34% 2.4em;gap:4px 10px}}
+
+/* the plan: titles show, details unlock with the email */
+.blueprint{position:relative;margin-top:26px;padding-top:4px}
+.doc:not([data-mode="results"]) .blueprint{display:none}
+.steps,.adds{list-style:none}
+.st{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--rule-c)}
+.st:last-child{border-bottom:0}
+.st-n{width:30px;height:30px;overflow:visible}
+.st-n circle{fill:none;stroke:var(--rust);stroke-width:1.5}
+.st-n text{font:500 12px var(--mono);fill:var(--rust);text-anchor:middle}
+.st-t{display:block;font-weight:600;font-size:.98rem;line-height:1.35;color:var(--ink-c)}
+.st-d{margin-top:4px;font-size:.9rem;line-height:1.5;color:var(--body-c)}
+.st-d a{color:var(--rust);text-underline-offset:3px}
+.st-d .go{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.adds-h{margin-top:22px}
+.prompt{margin:8px 0;padding:12px 14px;background:#fffaf2;border:1px solid var(--rule-c);border-radius:6px;white-space:pre-wrap;font:400 .8rem/1.55 var(--mono);color:var(--ink-c)}
+.copy{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;margin-right:10px;font-weight:600;font-size:.88rem;color:var(--rust);text-decoration:underline;text-underline-offset:3px}
+.copy:focus-visible,.doc a:focus-visible{outline:2px solid var(--rust);outline-offset:2px;border-radius:4px}
+.bp-done{margin:10px 0 4px;padding:12px 14px;border-radius:6px;background:rgba(127,169,138,.16);border:1px solid rgba(70,120,84,.35);font-size:.9rem;color:var(--ink-c)}
+
+/* ── stages ── */
+main[data-stage="intro"] .axis{display:none}
+main[data-stage]:not([data-stage="intro"]) #what{display:none}
+
+/* the sheet by stage. intro: a sample, cut off. live: role and ticks, no numbers. gate: ticks and a locked score.
+   results: the real Blueprint. No result is in the page before the email. */
+.doc[data-mode="intro"]{max-height:600px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent);mask-image:linear-gradient(180deg,#000 66%,transparent)}
+.doc[data-mode="intro"] .doc-setup{filter:blur(3px)}
+.doc[data-mode="live"] .lk-t,.doc[data-mode="live"] .lk-v,.doc[data-mode="gate"] .lk-t,.doc[data-mode="gate"] .lk-v{display:none}
+.doc[data-mode="live"] .lk-ok,.doc[data-mode="gate"] .lk-ok{display:block}
+.doc[data-mode="live"] .lk:not(.set) .lk-ok{visibility:hidden}
+.doc[data-mode="live"] .lk-n{color:var(--faint-c)}
+.doc[data-mode="live"] .lk.set .lk-n,.doc[data-mode="gate"] .lk-n{color:var(--ink-c)}
+.doc[data-mode="gate"] .lk-dec{display:block;height:6px;border-radius:3px;width:var(--w);background:var(--track);opacity:.45;filter:blur(3px)}
+.doc-score{display:none}
+.doc[data-mode="gate"] .doc-score{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:6px 14px;margin-top:18px;padding:12px 14px;border:1px dashed rgba(143,61,20,.35);border-radius:6px}
+.doc-score .lbl{font-size:.86rem;color:var(--faint-c)}
+.lockbar{width:64px;height:28px;border-radius:6px;background:linear-gradient(90deg,#c0662c,#e2a068);filter:blur(5px);opacity:.5}
+.lockt{font-size:.84rem;color:var(--body-c);text-align:right}
+.doc-shape{display:none}
+.doc[data-mode="live"] .doc-shape,.doc[data-mode="gate"] .doc-shape{display:block}
+.shape{list-style:none}
+.shape li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule-c)}
+.shape li:last-child{border-bottom:0}
+.ph{display:block;width:100%;height:24px;overflow:visible}
+.ph line{stroke:rgba(46,31,16,.1);stroke-width:8;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.shape-n{margin-top:10px;font-size:.84rem;color:var(--faint-c)}
+
+/* ── the gate ── */
+.gate-h{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.08;letter-spacing:-.015em;color:var(--fg);outline:0}
+.gate-sub{margin-top:12px;font-size:1.04rem;line-height:1.55;color:var(--muted);max-width:38ch}
+.bp-form{display:grid;gap:10px;width:100%;max-width:380px;margin-top:22px}
+.bp-form input{width:100%;min-height:50px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,226,196,.28);background:rgba(255,236,214,.06);font:400 1rem var(--body);color:var(--fg)}
+.bp-form input::placeholder{color:rgba(251,238,221,.62)}
+.bp-form input:focus{outline:2px solid var(--warm);outline-offset:1px;border-color:var(--warm)}
+.bp-form .btn{width:100%}
+.bp-err{margin-top:10px;font-size:.9rem;color:#ffb48a}
+.bp-guar{margin-top:14px;font-size:.88rem;color:var(--faint);max-width:38ch}
+.band{outline:0}
+
+/* ── below the fold: what's in your Blueprint, as clippings of the real document ── */
+.what{margin-top:clamp(64px,9vw,120px);padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line-2)}
+.what h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.12;color:var(--fg)}
+.what-grid{margin-top:clamp(24px,3vw,36px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px clamp(24px,4vw,48px);align-items:start}
+.clip-a{grid-row:1 / span 2}
+@media (max-width:879px){.what-grid{grid-template-columns:minmax(0,1fr)}.clip-a{grid-row:auto}}
+.clip .paper{background:var(--paper);color:var(--ink-c);border-radius:6px;padding:18px clamp(16px,2.4vw,24px);font-size:.92rem;line-height:1.5;box-shadow:0 30px 60px -36px rgba(0,0,0,.7);
+  -webkit-mask-image:linear-gradient(180deg,#000 72%,rgba(0,0,0,.35));mask-image:linear-gradient(180deg,#000 72%,rgba(0,0,0,.35))}
+.clip figcaption{margin-top:12px;font-size:.98rem;line-height:1.5;color:var(--muted)}
+.cl-score{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--rule-c)}
+.cl-score b{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1;color:var(--ink-c);font-variant-numeric:tabular-nums}
+.cl-score span{font-family:var(--display);font-size:1.15rem;color:var(--ink-c)}
+.clip .st{grid-template-columns:30px minmax(0,1fr);align-items:center;padding:9px 0}
+.clip .prompt{margin:0}
+.what .cta-row{margin-top:clamp(28px,4vw,44px)}
+
+/* motion pre-states: only when JS and motion are on; the guard in <head> lifts them if the script never runs */
+.mv .pre .ink{opacity:0}
+.mv .pre .dl{opacity:0}
+.mv .doc.pre .doc-mark .mp{fill-opacity:0}
+
+body>footer{position:relative;z-index:1;text-align:center;padding:52px var(--gut) 60px;border-top:1px solid var(--line-2);overflow:hidden}
+footer .q{font-family:var(--display);font-size:1.12rem;color:var(--warm);margin-bottom:18px}
+footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--faint)}
+footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint);margin-right:2px}
+footer .foot-app a{color:var(--warm);text-underline-offset:3px}
+footer .foot-nav{display:flex;gap:0 16px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+footer .foot-nav a,footer .links a{color:var(--muted);display:inline-flex;align-items:center;min-height:44px}
+footer .foot-nav a[aria-current=page]{color:var(--warm)}
+footer .links{font-size:.82rem;color:var(--faint);display:flex;gap:4px 12px;justify-content:center;flex-wrap:wrap}
+.foot-mark{text-align:center;opacity:.05;margin-top:26px;user-select:none;pointer-events:none}
+.foot-mark svg{width:clamp(110px,16vw,200px);height:auto;fill:var(--fg)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 </head>
 <body>
-<div class="atmos"><div class="aur a1"></div><div class="aur a2"></div></div>
-<nav class="nav"><a class="brand" href="https://www.gotcos.com" aria-label="COS" style="color:inherit;text-decoration:none"><svg viewBox="1004 821 1944 517" fill="currentColor" aria-hidden="true" style="height:1.22em;width:auto;vertical-align:-19%"><circle cx="1240.6" cy="889.0" r="68"/><circle cx="1072.0" cy="984.2" r="68"/><circle cx="1072.0" cy="1174.6" r="68"/><path d="M 1023.9 1032.3 C 1057.2 1065.6 1057.2 1093.2 1023.9 1126.5 A 68 68 0 1 0 1120.1 1126.5 C 1086.8 1093.2 1086.8 1065.6 1120.1 1032.3 A 68 68 0 1 0 1023.9 1032.3 Z"/><circle cx="1407.2" cy="984.2" r="68"/><circle cx="1240.6" cy="1079.4" r="68"/><path d="M 1341.6 966.3 C 1329.0 1012.5 1304.7 1026.4 1258.5 1013.8 A 68 68 0 1 0 1306.2 1097.3 C 1318.8 1051.1 1343.2 1037.2 1389.3 1049.8 A 68 68 0 1 0 1341.6 966.3 Z"/><circle cx="1407.2" cy="1174.6" r="68"/><circle cx="1240.6" cy="1269.8" r="68"/><path d="M 1341.6 1156.7 C 1329.0 1202.9 1304.7 1216.8 1258.5 1204.2 A 68 68 0 1 0 1306.2 1287.7 C 1318.8 1241.5 1343.2 1227.6 1389.3 1240.2 A 68 68 0 1 0 1341.6 1156.7 Z"/><g transform="translate(1690,1330) scale(1,-1)"><path d="M1057 473 c-10 0 -28 -3 -39 -6 -29 -8 -55 -24 -71 -44 -16 -19 -23
+<nav class="nav" aria-label="Main"><div class="nav-main"><div class="brand"><a href="/" aria-label="COS home"><svg viewBox="1004 821 1944 517" fill="currentColor" aria-hidden="true" style="height:1.22em;width:auto;vertical-align:-19%"><circle cx="1240.6" cy="889.0" r="68"/><circle cx="1072.0" cy="984.2" r="68"/><circle cx="1072.0" cy="1174.6" r="68"/><path d="M 1023.9 1032.3 C 1057.2 1065.6 1057.2 1093.2 1023.9 1126.5 A 68 68 0 1 0 1120.1 1126.5 C 1086.8 1093.2 1086.8 1065.6 1120.1 1032.3 A 68 68 0 1 0 1023.9 1032.3 Z"/><circle cx="1407.2" cy="984.2" r="68"/><circle cx="1240.6" cy="1079.4" r="68"/><path d="M 1341.6 966.3 C 1329.0 1012.5 1304.7 1026.4 1258.5 1013.8 A 68 68 0 1 0 1306.2 1097.3 C 1318.8 1051.1 1343.2 1037.2 1389.3 1049.8 A 68 68 0 1 0 1341.6 966.3 Z"/><circle cx="1407.2" cy="1174.6" r="68"/><circle cx="1240.6" cy="1269.8" r="68"/><path d="M 1341.6 1156.7 C 1329.0 1202.9 1304.7 1216.8 1258.5 1204.2 A 68 68 0 1 0 1306.2 1287.7 C 1318.8 1241.5 1343.2 1227.6 1389.3 1240.2 A 68 68 0 1 0 1341.6 1156.7 Z"/><g transform="translate(1690,1330) scale(1,-1)"><path d="M1057 473 c-10 0 -28 -3 -39 -6 -29 -8 -55 -24 -71 -44 -16 -19 -23
 -41 -24 -71 -1 -48 14 -82 48 -110 25 -20 53 -34 102 -51 25 -8 33 -12 46 -18
 23 -11 40 -26 47 -40 10 -20 10 -43 2 -61 -5 -10 -17 -22 -28 -27 -12 -6 -22
 -7 -39 -7 -16 0 -26 1 -41 8 -39 16 -72 49 -107 109 -4 7 -8 14 -9 14 -3 2 -5
@@ -182,101 +302,178 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
 2 51 0 66 -9 71 -44 128 -102 162 -38 23 -87 34 -137 30z m16 -10 c38 -8 68
 -49 87 -118 13 -51 22 -128 19 -176 -2 -41 -10 -73 -21 -93 -16 -27 -36 -40
 -63 -40 -21 0 -38 8 -55 26 -32 33 -54 96 -63 184 -1 10 -2 25 -3 32 -1 18 -1
-56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a><a href="https://www.gotcos.com">gotcos.com</a></nav>
+56 0 71 4 45 16 78 35 96 14 14 28 20 48 20 5 0 13 -1 16 -2z"/></g></svg></a></div><div class="nav-r"><a href="/control/">Mac app</a><a href="/">gotcos.com</a></div></div></nav>
 
-<div class="wrap">
-  <!-- INTRO -->
-  <section id="intro">
-    <h1>Not a generic AI. <span class="g" id="roleH">your</span> chief of staff.</h1>
-    <p class="dek">One engine. It re-shapes around how <em>you</em> actually work.</p>
-    <p class="lead">Twelve questions map your role, your context, and your workflows into a personalized COS build plan: exactly which skills to install, self-host or managed, and what it gives you back. Answer for how you work today. The gaps are the plan.</p>
-    <div class="meta"><div><b>12</b> questions</div><div><b>~3</b> minutes</div><div><b>No</b> black box</div></div>
+<main class="bp" id="top" data-stage="intro">
+  <div class="axis" id="axis">
+    <svg class="ax-svg" aria-hidden="true" focusable="false"><line class="ax-base" x1="0" y1="1.5" x2="100%" y2="1.5"/><line class="ax-run" id="axRun" x1="0" y1="1.5" x2="0%" y2="1.5"/></svg>
+    <ol aria-label="Blueprint progress">
+    <li><span class="lg">Your role</span><span class="sm">Role</span><small>1 question</small></li>
+    <li><span class="lg">Your week</span><span class="sm">Week</span><small>7 questions</small></li>
+    <li><span class="lg">Your setup</span><span class="sm">Setup</span><small>4 questions</small></li>
+    <li><span class="lg">Your Blueprint</span><span class="sm">Plan</span><small>Score and plan</small></li>
+    </ol>
+  </div>
 
-    <!-- role-morph stage -->
-    <div class="stage" id="stage" aria-hidden="true">
-      <div class="cap"><span>One core, every role</span><span class="role" id="stageRole">Executive</span></div>
-      <div class="orbit">
-        <svg viewBox="0 0 520 220" id="orbitSvg" preserveAspectRatio="xMidYMid meet">
-          <g id="flows"></g>
-          <g id="nodes"></g>
-          <circle cx="260" cy="110" r="30" fill="rgba(201,169,110,.12)" stroke="rgba(201,169,110,.5)"/>
-          <text x="260" y="115" text-anchor="middle" class="core" font-size="17">COS</text>
-        </svg>
-      </div>
-      <p class="tease">The same core reads <b id="teaseWord">your board and your leadership team</b>. It re-plans for whoever you are.</p>
-    </div>
+  <div class="grid" id="grid" data-stage="intro">
+    <div class="ask" id="ask">
+      <!-- STAGE 1 · THE LANDING HERO -->
+      <section id="intro" aria-labelledby="intro-h">
+        <h1 id="intro-h">Your AI chief of staff, planned for your week in two minutes.</h1>
+        <p class="stand">Answer twelve quick questions. Your Blueprint shows where your week leaks and your first three steps, starting with the Mac app and the AI you already use.</p>
+        <div class="cta-row needs-js"><button class="btn" type="button" onclick="start()">Build my Blueprint</button></div>
+        <p class="meta"><i>12 questions</i><i>about 2 minutes</i><i>free</i></p>
+        <noscript><p class="nojs">The builder needs JavaScript. You can still start: <a href="/control/#install">get the Mac app</a>, or <a href="/connect/">book a working session</a>.</p></noscript>
+        <p class="proof"><i><b>500+</b> glasses users</i><i>Works with Claude Code, Codex and Cursor</i><i>Open source</i></p>
+      </section>
 
-    <div class="hero-cta"><button class="btn primary" onclick="start()">Build my Blueprint</button></div>
-    <p class="trustline">Free readiness score on screen. The full build plan unlocks at the end. Your data is yours.</p>
-  </section>
+      <!-- STAGE 2 · QUESTIONS (no result is shown here) -->
+      <section id="quiz" hidden aria-labelledby="qtext">
+        <h2 class="qtext" id="qtext" tabindex="-1"></h2>
+        <div class="opts" id="opts" role="group" aria-labelledby="qtext"></div>
+        <p class="tick" id="tick" aria-live="polite"></p>
+        <div class="qnav"><button class="back" type="button" id="backbtn" onclick="back()">Back</button><span class="qcount" id="qcount" aria-live="polite">Question 1 of 12</span></div>
+      </section>
 
-  <!-- QUIZ -->
-  <section id="quiz">
-    <div class="progress"><i id="pbar"></i></div>
-    <div class="qmeta" aria-live="polite"><span id="qcount">Question 1 of 12</span><span class="cl" id="qcluster"></span></div>
-    <div class="qtext" id="qtext" tabindex="-1"></div>
-    <div class="opts" id="opts" role="group" aria-labelledby="qtext"></div>
-    <div class="qnav"><button class="back" id="backbtn" onclick="back()">&larr; back</button><span></span></div>
-  </section>
-
-  <!-- RESULTS -->
-  <section id="results">
-    <div class="gauge-wrap">
-      <div class="gauge">
-        <svg width="230" height="230" viewBox="0 0 230 230">
-          <circle cx="115" cy="115" r="100" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="14"/>
-          <circle id="arc" cx="115" cy="115" r="100" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" stroke-dasharray="628" stroke-dashoffset="628"/>
-          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4a07a"/><stop offset="0.55" stop-color="#c9a96e"/><stop offset="1" stop-color="#c4736e"/></linearGradient></defs>
-        </svg>
-        <div class="num"><b id="scoreNum">0</b><span>Leverage available</span></div>
-      </div>
-      <div class="band" id="bandName"></div>
-      <p class="band-sub" id="bandSub"></p>
-    </div>
-    <div style="margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:center" id="leverLine"></div>
-
-    <div class="bars" id="bars"></div>
-
-    <!-- PREPAID GATE -->
-    <div class="blueprint bp-locked" id="blueprint">
-      <div class="bp-head">
-        <h3>Your full COS Blueprint, for <span class="g" id="bpRole">your role</span></h3>
-        <p>The free score shows the gaps. The Blueprint is the build: the exact skills, the deployment call, and the plan to stand it up.</p>
-      </div>
-      <div id="bpDone" style="display:none;margin:6px clamp(22px,4vw,34px) 0;padding:13px 16px;border:1px solid rgba(127,169,138,.42);border-radius:12px;background:rgba(127,169,138,.09);font-size:.9rem;color:var(--fg)"></div>
-      <div class="bp-list" id="bpList" aria-hidden="true">
-        <div class="bp-row"><div class="ic">01</div><div><b>Your skill stack, ranked</b><p>The exact COS skills to install first, ordered by payback for your role.</p></div></div>
-        <div class="bp-row"><div class="ic">02</div><div><b>Self-host vs managed call</b><p>Based on your data sensitivity and technical capacity, the right deployment path.</p></div></div>
-        <div class="bp-row"><div class="ic">03</div><div><b>Integration map</b><p>Which of your systems to wire in first so context stops living in 60 tabs.</p></div></div>
-        <div class="bp-row"><div class="ic">04</div><div><b>Time-back ROI</b><p>Hours a week the plan reclaims, mapped to the work you named.</p></div></div>
-        <div class="bp-row"><div class="ic">05</div><div><b>Stand-it-up steps</b><p>The step-by-step to a working COS, plus where a done-for-you build makes sense.</p></div></div>
-      </div>
-      <div class="bp-veil" id="bpVeil">
-        <h4 id="veilHead">Turn your score into a plan</h4>
-        <p id="veilSub">Your personalized build plan and starter kit, emailed to you. The full plan appears on screen the moment you submit.</p>
+      <!-- STAGE 3 · THE GATE: the lead comes before any result -->
+      <section id="gate" hidden aria-labelledby="veilHead">
+        <h2 class="gate-h" id="veilHead" tabindex="-1">Your Blueprint is ready.</h2>
+        <p class="gate-sub" id="veilSub">Enter your email to open it: your score, where your week leaks, and your first three steps.</p>
         <form class="bp-form" id="bpForm" onsubmit="reveal(event)" novalidate>
           <input id="g-email" type="email" autocomplete="email" placeholder="you@company.com" aria-label="Work email" required>
           <input id="g-first" type="text" autocomplete="given-name" placeholder="First name (optional)" aria-label="First name">
-          <button class="btn primary" id="unlockBtn" type="submit">Email me my Blueprint + kit</button>
+          <button class="btn" id="unlockBtn" type="submit">Show my Blueprint</button>
         </form>
-        <p id="bp-err" role="alert" style="display:none;color:var(--rose);font-size:.84rem;margin-top:10px"></p>
-        <div class="bp-guar">On screen now, in your inbox in a minute. No spam. Powered by COS, open-source forever.</div>
-      </div>
+        <p class="bp-err" id="bp-err" role="alert" style="display:none"></p>
+        <p class="bp-guar">It opens on this page as soon as you send, and the starter kit unlocks too. No spam.</p>
+      </section>
+
+      <!-- STAGE 4 · THE REVEAL -->
+      <section id="results" hidden aria-labelledby="bandName">
+        <div class="dial">
+          <svg viewBox="0 0 230 230" aria-hidden="true" focusable="false">
+            <circle cx="115" cy="115" r="100" fill="none" stroke="rgba(255,226,196,.14)" stroke-width="12"/>
+            <circle id="arc" cx="115" cy="115" r="100" fill="none" stroke="#f6b46e" stroke-width="12" stroke-linecap="round" stroke-dasharray="628" stroke-dashoffset="628"/>
+          </svg>
+          <div class="num"><b id="scoreNum">0</b><span>Leverage available</span></div>
+        </div>
+        <h2 class="band" id="bandName" tabindex="-1"></h2>
+        <p class="band-sub" id="bandSub"></p>
+        <p class="lever" id="leverLine"></p>
+        <div class="cta-row"><a class="btn" id="rPrimary" href="/control/#install">Download for Mac</a><a class="ln" href="/connect/">Book a working session</a></div>
+        <p class="share">Keep your score: <button type="button" id="shareBtn" onclick="copyLink()">copy a shareable link</button></p>
+        <ul class="deeper">
+          <li><a class="ln" href="/control/">See the Mac app</a></li>
+          <li><a class="ln" href="/harness/">Why the harness is the part you own</a></li>
+        </ul>
+      </section>
     </div>
 
-    <div class="trust">
-      <div class="t"><b>No black box</b><span>See exactly how every point was scored. Your knowledge lives in plain files you can read.</span></div>
-      <div class="t"><b>You own it, you don't rent it</b><span>MIT-licensed, self-hosted or managed. Your keys, your context, model-agnostic.</span></div>
-      <div class="t"><b>Built for your role</b><span>Executive, attorney, chief of staff, clinician, engineer. The engine adapts, the plan is yours.</span></div>
-    </div>
+    <!-- THE BLUEPRINT: a sample on the landing, the shape while you answer, the real thing after the email -->
+    <div class="sheet">
+      <article class="doc pre" id="bpDoc" data-mode="intro" aria-label="COS Blueprint">
+        <header class="doc-head">
+          <svg class="doc-mark" viewBox="0 0 693 760" aria-hidden="true" focusable="false"><defs><radialGradient id="bpAmb" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#e59a5e"/><stop offset=".3" stop-color="#a8461f"/><stop offset=".72" stop-color="#5e1d0e"/><stop offset="1" stop-color="#2f0e07"/></radialGradient></defs><g fill="url(#bpAmb)"><circle class="mp" cx="348" cy="100" r="100"/><circle class="mp" cx="100" cy="240" r="100"/><circle class="mp" cx="100" cy="520" r="100"/><path class="mp" d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle class="mp" cx="593" cy="240" r="100"/><circle class="mp" cx="348" cy="380" r="100"/><path class="mp" d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle class="mp" cx="593" cy="520" r="100"/><circle class="mp" cx="348" cy="660" r="100"/><path class="mp" d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></g></svg>
+          <p class="doc-t">COS Blueprint</p>
+          <p class="doc-date ink" id="docDate">Sample</p>
+        </header>
+        <svg class="rule dl" aria-hidden="true" focusable="false"><line x1="0" y1="1.5" x2="100%" y2="1.5"/></svg>
+        <div class="doc-for">
+          <span class="lbl">Prepared for</span><b class="ink" id="docRole">Chief of Staff</b>
+          <svg class="sig dl" id="docSig" aria-hidden="true" focusable="false"><line x1="0" y1="1.5" x2="100%" y2="1.5"/></svg>
+        </div>
+        <p class="doc-note ink" id="docNote">A sample: the answers of Dana Mercer, a made-up chief of staff at Northwind.</p>
 
-    <p class="share">Want to keep your score? <button type="button" id="shareBtn" onclick="copyLink()">Copy a shareable link</button></p>
+        <div class="doc-score" aria-hidden="true"><span class="lbl">Your score</span><span class="lockbar"></span><span class="lockt">Opens with your email</span></div>
+
+        <section class="doc-sec" aria-labelledby="lk-h">
+          <h3 class="ink" id="lk-h">Where your week leaks</h3>
+          <ol class="leaks" id="bars">
+            <li class="lk set" data-c="Context load"><span class="lk-n">Context load</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="100%" y2="4"/></svg><span class="lk-dec" style="--w:82%"></span><span class="lk-v ink">100</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Tool sprawl"><span class="lk-n">Tool sprawl</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="67%" y2="4"/></svg><span class="lk-dec" style="--w:58%"></span><span class="lk-v ink">67</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Repetitive work"><span class="lk-n">Repetitive work</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="67%" y2="4"/></svg><span class="lk-dec" style="--w:70%"></span><span class="lk-v ink">67</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Prep &amp; handoff"><span class="lk-n">Prep &amp; handoff</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="100%" y2="4"/></svg><span class="lk-dec" style="--w:44%"></span><span class="lk-v ink">100</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Follow-through"><span class="lk-n">Follow-through</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="33%" y2="4"/></svg><span class="lk-dec" style="--w:64%"></span><span class="lk-v ink">33</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Recall"><span class="lk-n">Recall</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="67%" y2="4"/></svg><span class="lk-dec" style="--w:36%"></span><span class="lk-v ink">67</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+            <li class="lk set" data-c="Foresight"><span class="lk-n">Foresight</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="33%" y2="4"/></svg><span class="lk-dec" style="--w:52%"></span><span class="lk-v ink">33</span><svg class="lk-ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg><p class="lk-r"></p></li>
+          </ol>
+        </section>
+
+        <section class="doc-sec doc-setup" aria-labelledby="su-h">
+          <h3 class="ink" id="su-h">How you would start</h3>
+          <dl class="setup" id="docSetup">
+            <div><dt>Your data</dt><dd class="ink">Confidential, not regulated</dd><svg class="dd-r dl" aria-hidden="true" focusable="false"><line x1="0" y1="1" x2="100%" y2="1"/></svg></div>
+            <div><dt>AI today</dt><dd class="ink">On my own, nothing set up</dd><svg class="dd-r dl" aria-hidden="true" focusable="false"><line x1="0" y1="1" x2="100%" y2="1"/></svg></div>
+            <div><dt>Setting it up</dt><dd class="ink">With a guide</dd><svg class="dd-r dl" aria-hidden="true" focusable="false"><line x1="0" y1="1" x2="100%" y2="1"/></svg></div>
+            <div><dt>Runs for</dt><dd class="ink">Me and an assistant or two</dd><svg class="dd-r dl" aria-hidden="true" focusable="false"><line x1="0" y1="1" x2="100%" y2="1"/></svg></div>
+          </dl>
+        </section>
+
+        <!-- the shape of the plan, while you answer and at the gate: no titles, no numbers -->
+        <section class="doc-sec doc-shape" aria-labelledby="sh-h">
+          <h3 id="sh-h">Your plan</h3>
+          <ol class="shape" aria-hidden="true">
+            <li><svg class="st-n" viewBox="0 0 30 30" focusable="false"><circle cx="15" cy="15" r="13"/><text x="15" y="19.5">1</text></svg><svg class="ph" focusable="false"><line x1="4" y1="5" x2="78%" y2="5"/><line x1="4" y1="19" x2="52%" y2="19"/></svg></li>
+            <li><svg class="st-n" viewBox="0 0 30 30" focusable="false"><circle cx="15" cy="15" r="13"/><text x="15" y="19.5">2</text></svg><svg class="ph" focusable="false"><line x1="4" y1="5" x2="66%" y2="5"/><line x1="4" y1="19" x2="58%" y2="19"/></svg></li>
+            <li><svg class="st-n" viewBox="0 0 30 30" focusable="false"><circle cx="15" cy="15" r="13"/><text x="15" y="19.5">3</text></svg><svg class="ph" focusable="false"><line x1="4" y1="5" x2="72%" y2="5"/><line x1="4" y1="19" x2="44%" y2="19"/></svg></li>
+          </ol>
+          <p class="shape-n" id="shapeN">Three steps and the extras that fit you, picked from your answers.</p>
+        </section>
+
+        <!-- THE PLAN: written into the page only after the email -->
+        <div class="blueprint bp-locked" id="blueprint">
+          <h3 id="plan-h">Your plan</h3>
+          <div class="bp-done" id="bpDone" hidden></div>
+          <div id="bpList" aria-hidden="true">
+            <ol class="steps" id="bpSteps"></ol>
+            <h3 class="adds-h">Add when ready</h3>
+            <ul class="adds steps" id="bpAdds"></ul>
+          </div>
+        </div>
+
+        <footer class="doc-foot"><span>gotcos.com/blueprint</span><span id="docFoot">Sample</span></footer>
+      </article>
+    </div>
+  </div>
+
+  <!-- BELOW THE FOLD, landing only: the three parts of the artifact -->
+  <section class="what pre" id="what" aria-labelledby="what-h">
+    <h2 id="what-h">What's in your Blueprint</h2>
+    <div class="what-grid">
+      <figure class="clip clip-a">
+        <div class="paper">
+          <div class="cl-score"><b class="ink">67</b><span class="ink">Ready to compound</span></div>
+          <ol class="leaks">
+            <li class="lk set"><span class="lk-n">Prep &amp; handoff</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="100%" y2="4"/></svg><span class="lk-v ink">100</span></li>
+            <li class="lk set"><span class="lk-n">Context load</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="100%" y2="4"/></svg><span class="lk-v ink">100</span></li>
+            <li class="lk set"><span class="lk-n">Recall</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="67%" y2="4"/></svg><span class="lk-v ink">67</span></li>
+            <li class="lk set"><span class="lk-n">Foresight</span><svg class="lk-t" aria-hidden="true" focusable="false"><line class="lk-base" x1="0" y1="4" x2="100%" y2="4"/><line class="lk-fill dl" x1="0" y1="4" x2="33%" y2="4"/></svg><span class="lk-v ink">33</span></li>
+          </ol>
+        </div>
+        <figcaption>Your score, and where your week leaks, worst first.</figcaption>
+      </figure>
+      <figure class="clip clip-b">
+        <div class="paper">
+          <ol class="steps">
+            <li class="st"><svg class="st-n" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle class="dl" cx="15" cy="15" r="13"/><text x="15" y="19.5">1</text></svg><b class="st-t ink">Download COS Control for Mac</b></li>
+            <li class="st"><svg class="st-n" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle class="dl" cx="15" cy="15" r="13"/><text x="15" y="19.5">2</text></svg><b class="st-t ink">Connect the AI you already use</b></li>
+            <li class="st"><svg class="st-n" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle class="dl" cx="15" cy="15" r="13"/><text x="15" y="19.5">3</text></svg><b class="st-t ink">Send your first task</b></li>
+          </ol>
+        </div>
+        <figcaption>Your first three steps, starting on your Mac.</figcaption>
+      </figure>
+      <figure class="clip clip-c">
+        <div class="paper"><pre class="prompt ink">Ask what my principal cares about most this week, then turn my answer into a one-page briefing outline.</pre></div>
+        <figcaption>A first task written for your role.</figcaption>
+      </figure>
+    </div>
+    <div class="cta-row"><button class="btn needs-js" type="button" onclick="start()">Build my Blueprint</button><a class="ln" href="/control/">See the Mac app first</a></div>
   </section>
-</div>
+</main>
 
 <footer>
   <div class="q">The best chief of staff doesn't wait to be asked.</div>
-    <div class="foot-app">
+  <div class="foot-app">
     <span class="fa-label">The app</span>
     <a href="https://app.gotcos.com/" rel="noopener">Open the app</a> &middot;
     <a href="https://app.gotcos.com/" rel="noopener">Log in</a> &middot;
@@ -285,66 +482,85 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
   </div>
   <nav class="foot-nav" aria-label="Pages">
     <a href="/challenge/">Glasses Challenge</a>
-    <a href="/blueprint/">COS Blueprint</a>
-    <a href="/">Home</a><a href="/harness/">AI Harness</a><a href="/ai-adoption/">AI Adoption</a>
+    <a href="/blueprint/" aria-current="page">COS Blueprint</a>
+    <a href="/">Home</a>
+    <a href="/harness/">AI Harness</a>
+    <a href="/ai-adoption/">AI Adoption</a>
     <a href="/context-engineering-vs-prompt-engineering/">Context Engineering</a>
-    <a href="/embodied-intelligence/">Embodied Intelligence</a><a href="/control/docs/">Mac Docs</a> <a href="/docs/">Glasses Docs</a>
+    <a href="/embodied-intelligence/">Embodied Intelligence</a>
+    <a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI Chief of Staff</a>
+    <a href="/control/docs/">Mac Docs</a> <a href="/docs/">Glasses Docs</a>
   </nav>
-  <div class="links"><a href="https://www.gotcos.com">gotcos.com</a> &middot; <a href="https://milesukaoma.com/cos">The philosophy</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+  <div class="links">
+    <a href="https://milesukaoma.com/cos">The philosophy</a> ·
+    <a href="https://github.com/ukaoma/cos-starter">GitHub</a> ·
+    <a href="/privacy/">Privacy</a> ·
+    <a href="/terms/">Terms</a>
+  </div>
+  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 693 760" xmlns="http://www.w3.org/2000/svg"><circle cx="348" cy="100" r="100"/><circle cx="100" cy="240" r="100"/><circle cx="100" cy="520" r="100"/><path d="M 29.3 310.7 C 78.3 359.7 78.3 400.3 29.3 449.3 A 100 100 0 1 0 170.7 449.3 C 121.7 400.3 121.7 359.7 170.7 310.7 A 100 100 0 1 0 29.3 310.7 Z"/><circle cx="593" cy="240" r="100"/><circle cx="348" cy="380" r="100"/><path d="M 496.5 213.7 C 478.0 281.6 442.2 302.0 374.3 283.5 A 100 100 0 1 0 444.5 406.3 C 463.0 338.4 498.8 318.0 566.7 336.5 A 100 100 0 1 0 496.5 213.7 Z"/><circle cx="593" cy="520" r="100"/><circle cx="348" cy="660" r="100"/><path d="M 496.5 493.7 C 478.0 561.6 442.2 582.0 374.3 563.5 A 100 100 0 1 0 444.5 686.3 C 463.0 618.4 498.8 598.0 566.7 616.5 A 100 100 0 1 0 496.5 493.7 Z"/></svg></div>
 </footer>
-
 <script src="/assets/anime.umd.min.js"></script>
 <script>
 (function(){
+  window.__bpReady=true;
   var BOOK="https://meetings.hubspot.com/ukaoma";
   var CHECKOUT="#"; // set when live payment is wired
 
   // Role definitions drive the "not generic" engine: same dimensions, role-specific language.
+  // label is DATA: it goes into the HubSpot pageName. Change who/task freely; never change a label.
   var ROLES={
-    exec:{label:"Executive",things:"reports, the board, and cross-functional threads",redo:"status reviews, briefings, and follow-ups",unit:"leaders"},
-    marketer:{label:"Marketer",things:"campaigns, brands, and channels",redo:"campaign briefs, reporting, and creative reviews",unit:"campaigns"},
-    engineer:{label:"Engineer / Eng lead",things:"services, repos, incidents, and reviews",redo:"stand-ups, PR reviews, and incident write-ups",unit:"services"},
-    pm:{label:"Product / Program",things:"features, stakeholders, and sprints",redo:"specs, status, and stakeholder updates",unit:"workstreams"},
-    people:{label:"People / HR lead",things:"employees, open cases, and review cycles",redo:"1:1s, case notes, and review prep",unit:"people"},
-    legal:{label:"Attorney / Legal",things:"matters, clients, filings, and deadlines",redo:"case summaries, filings, and client updates",unit:"matters"},
-    cos:{label:"Chief of Staff",things:"the principal's priorities, stakeholders, and commitments",redo:"briefings, follow-ups, and meeting prep",unit:"priorities"},
-    clinician:{label:"Clinician",things:"patients, charts, labs, and referrals",redo:"chart prep, visit notes, and referral follow-ups",unit:"patients"},
-    other:{label:"Something else",things:"the many threads you carry",redo:"the things you re-do every day",unit:"threads"}
+    exec:{label:"Executive",things:"reports, the board, and cross-functional threads",redo:"status reviews, briefings, and follow-ups",unit:"leaders",who:"an executive",task:"Help me plan tomorrow. Ask what matters most, then turn my answer into three clear priorities."},
+    marketer:{label:"Marketer",things:"campaigns, brands, and channels",redo:"campaign briefs, reporting, and creative reviews",unit:"campaigns",who:"a marketer",task:"Ask me about the campaign I am running now, then draft a one-page brief I can send to the team."},
+    engineer:{label:"Engineer / Eng lead",things:"services, repos, incidents, and reviews",redo:"stand-ups, PR reviews, and incident write-ups",unit:"services",who:"an engineer",task:"Look through this repo and tell me the three things you would fix first, with the files involved."},
+    pm:{label:"Product / Program",things:"features, stakeholders, and sprints",redo:"specs, status, and stakeholder updates",unit:"workstreams",who:"a product or program lead",task:"Ask me what shipped this week and what slipped, then write a five-line status update for stakeholders."},
+    people:{label:"People / HR lead",things:"employees, open cases, and review cycles",redo:"1:1s, case notes, and review prep",unit:"people",who:"a people lead",task:"Ask me about my next three 1:1s, then give me one good opening question for each."},
+    legal:{label:"Attorney / Legal",things:"matters, clients, filings, and deadlines",redo:"case summaries, filings, and client updates",unit:"matters",who:"an attorney",task:"Ask me which matter is most urgent, then list its deadlines and what I owe each party. No client names needed."},
+    cos:{label:"Chief of Staff",things:"the principal's priorities, stakeholders, and commitments",redo:"briefings, follow-ups, and meeting prep",unit:"priorities",who:"a chief of staff",task:"Ask what my principal cares about most this week, then turn my answer into a one-page briefing outline."},
+    clinician:{label:"Clinician",things:"patients, charts, labs, and referrals",redo:"chart prep, visit notes, and referral follow-ups",unit:"patients",who:"a clinician",task:"Help me plan tomorrow's clinic day. Ask what matters most, then turn my answer into three clear priorities. No patient details."},
+    other:{label:"Something else",things:"the many threads you carry",redo:"the things you re-do every day",unit:"threads",who:"you",task:"Help me plan tomorrow. Ask what matters most, then turn my answer into three clear priorities."}
   };
   var ROLE_KEYS=["exec","marketer","engineer","pm","people","legal","cos","clinician","other"];
 
-  // Q0 role selector, then 8 scored leverage questions (role-tokenized), then 3 profile routers.
+  // Q0 role selector, then 7 scored leverage questions (role-tokenized), then 4 profile routers.
+  // The ORDER of questions and of options is DATA: answers are submitted as indices (a=...). Copy may change; order may not.
   var Q=[
     {role:true,c:"You",t:"First, which of these is closest to your work?",o:ROLE_KEYS.map(function(k){return [ROLES[k].label,k]})},
-    {c:"Context load",t:"How many parallel {things} are you holding in your head right now?",o:[["More than I can track. Things slip because I'm the system.",3],["A lot. I keep it together but it's constant load.",2],["A manageable set, but no single place holds it all.",1],["All captured and current in one place I trust.",0]]},
-    {c:"Tool sprawl",t:"Your context lives across how many tools, and who connects the dots?",o:[["Scattered everywhere. Nobody connects them. We miss things.",3],["Many tools. I stitch them together mentally.",2],["A few systems; we reconcile when it matters.",1],["One layer surfaces the connections across all of them.",0]]},
-    {c:"Repetitive work",t:"How much of {redo} do you do by hand, every week?",o:[["Almost all of it. It's the job before the job.",3],["Most of it. It eats the hours I'd rather spend elsewhere.",2],["Some is templated; a lot is still manual.",1],["Largely handled. I approve, I don't author.",0]]},
-    {c:"Prep & handoff",t:"Walking into meetings or handoffs, how prepared are you?",o:[["We wing it. Prep happens in the first ten minutes.",3],["I prep the big ones by hand; the rest I show up cold.",2],["Prepared, but assembling the context is its own job.",1],["Every one comes with context auto-assembled for me.",0]]},
-    {c:"Follow-through",t:"When something is owed to you, how do you know it's on track?",o:[["I have to remember to chase it, or it stalls.",3],["I catch it at the next check-in, whenever that is.",2],["Status exists; I connect the dots myself.",1],["I get flagged proactively when something slips.",0]]},
-    {c:"Recall",t:"“What did we decide about that, weeks ago?” How fast can you answer?",o:[["Usually can't. It's an archaeology dig.",3],["Someone might remember; no system of record.",2],["It's findable if you know where to look.",1],["Surfaced in seconds. Nothing gets lost.",0]]},
-    {c:"Foresight",t:"How often do problems reach you early, before they're on fire?",o:[["Almost never. I find out when it's already a crisis.",3],["Sometimes, if someone escalates.",2],["We catch some, but it's reactive.",1],["I get early-warning signals across the board.",0]]},
-    {prof:"sensitivity",c:"Your data",t:"How sensitive is the context you'd want a COS to hold?",o:[["Highly regulated: PHI, privilege, or financial data.","reg"],["Confidential business data, not formally regulated.","conf"],["Mostly internal, some sensitive.","mixed"],["Low sensitivity.","low"]]},
-    {prof:"ai",c:"Your starting point",t:"Where are you with AI today?",o:[["Barely started. Curious but skeptical.","none"],["I use ChatGPT/Claude solo; nothing systematized.","solo"],["Tried tools; adoption never stuck.","stalled"],["Running AI workflows and want to go deeper.","power"]]},
-    {prof:"tech",c:"Your setup",t:"Could you self-host, or would you want it run for you?",o:[["I have the machine and can self-host.","self"],["I'm technical enough with a guide.","guided"],["I'd rather you host and run it.","managed"],["Not sure yet.","unsure"]]},
-    {prof:"team",c:"Your reach",t:"Who else would a COS run for?",o:[["Just me.","solo"],["Me and an assistant or two.","duo"],["A team of leaders.","team"],["A whole department or firm.","org"]]}
+    {c:"Context load",t:"How many parallel {things} are you holding in your head right now?",o:[["More than I can track. Things slip because I'm the system.",3],["A lot. I keep it together, but it's constant load.",2],["A manageable set, but no single place holds it all.",1],["All captured and current in one place I trust.",0]]},
+    {c:"Tool sprawl",t:"Your context lives across how many tools, and who connects the dots?",o:[["Scattered everywhere. Nobody connects them, and we miss things.",3],["Many tools. I stitch them together in my head.",2],["A few systems. We reconcile when it matters.",1],["One layer surfaces the connections across all of them.",0]]},
+    {c:"Repetitive work",t:"How much of {redo} do you do by hand, every week?",o:[["Almost all of it. It's the job before the job.",3],["Most of it. It eats hours I'd rather spend elsewhere.",2],["Some is templated. A lot is still manual.",1],["Largely handled. I approve, I don't author.",0]]},
+    {c:"Prep & handoff",t:"Walking into meetings or handoffs, how prepared are you?",o:[["We wing it. Prep happens in the first ten minutes.",3],["I prep the big ones by hand and show up cold to the rest.",2],["Prepared, but assembling the context is its own job.",1],["Every one comes with context already assembled.",0]]},
+    {c:"Follow-through",t:"When something is owed to you, how do you know it's on track?",o:[["I have to remember to chase it, or it stalls.",3],["I catch it at the next check-in, whenever that is.",2],["Status exists. I connect the dots myself.",1],["I get flagged when something slips.",0]]},
+    {c:"Recall",t:"“What did we decide about that, weeks ago?” How fast can you answer?",o:[["Usually I can't. It's an archaeology dig.",3],["Someone might remember. There's no record.",2],["It's findable if you know where to look.",1],["In seconds. Nothing gets lost.",0]]},
+    {c:"Foresight",t:"How often do problems reach you early, before they're on fire?",o:[["Almost never. I find out when it's a crisis.",3],["Sometimes, if someone escalates.",2],["We catch some, but it's reactive.",1],["Early warnings reach me across the board.",0]]},
+    {prof:"sensitivity",c:"Your data",t:"How sensitive is the context you'd want COS to hold?",o:[["Highly regulated: PHI, privilege, or financial data.","reg"],["Confidential business data, not formally regulated.","conf"],["Mostly internal, some sensitive.","mixed"],["Low sensitivity.","low"]]},
+    {prof:"ai",c:"Your starting point",t:"Where are you with AI today?",o:[["Barely started. Curious but skeptical.","none"],["I use ChatGPT or Claude on my own. Nothing set up.","solo"],["I tried tools. Adoption never stuck.","stalled"],["I run AI workflows and want to go deeper.","power"]]},
+    {prof:"tech",c:"Your setup",t:"How would you like to set it up?",o:[["I have a Mac and can set it up myself.","self"],["I'm technical enough with a guide.","guided"],["I'd rather you host and run it.","managed"],["Not sure yet.","unsure"]]},
+    {prof:"team",c:"Your reach",t:"Who else would COS work for?",o:[["Just me.","solo"],["Me and an assistant or two.","duo"],["A team of leaders.","team"],["A whole department or firm.","org"]]}
   ];
   var SCORED=[1,2,3,4,5,6,7]; // the 7 leverage questions that feed the score (profile Qs 8-11 route the Blueprint, not the gauge)
   var CLUSTERS=["Context load","Tool sprawl","Repetitive work","Prep & handoff","Follow-through","Recall","Foresight"];
+  // what the Blueprint writes for each profile answer (display only)
+  var SHORT={
+    sensitivity:["Regulated: PHI, privilege or financial","Confidential, not regulated","Mostly internal","Low sensitivity"],
+    ai:["Barely started","On my own, nothing set up","Tried tools, they did not stick","Running AI workflows"],
+    tech:["On my own","With a guide","With someone, together","Not sure yet"],
+    team:["Just me","Me and an assistant or two","A team of leaders","A department or firm"]
+  };
   var BARREAD={
     "Context load":"Too much context is living in your head.",
-    "Tool sprawl":"Your context is scattered and un-connected.",
+    "Tool sprawl":"Your context is scattered and not connected.",
     "Repetitive work":"Manual re-work is eating your week.",
     "Prep & handoff":"Prep is reactive and expensive.",
     "Follow-through":"Follow-through depends on you chasing.",
     "Recall":"Decisions leak out after every meeting.",
-    "Foresight":"You're finding out about problems late."
+    "Foresight":"You find out about problems late."
   };
   var BARMID={
     "Context load":"Some context still lives only in your head.",
     "Tool sprawl":"Your context is partly connected, partly manual.",
-    "Repetitive work":"Some is templated; a lot is still by hand.",
+    "Repetitive work":"Some is templated. A lot is still by hand.",
     "Prep & handoff":"Prep works, but assembling it is its own job.",
-    "Follow-through":"Status exists; you connect the dots yourself.",
+    "Follow-through":"Status exists. You connect the dots yourself.",
     "Recall":"Findable, if you know where to look.",
     "Foresight":"You catch some, but it's still reactive."
   };
@@ -352,31 +568,106 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
     "Context load":"Context is captured, not carried in your head.",
     "Tool sprawl":"One layer already connects your tools.",
     "Repetitive work":"The repeat work is largely handled for you.",
-    "Prep & handoff":"You walk in with context auto-assembled.",
+    "Prep & handoff":"You walk in with the context assembled.",
     "Follow-through":"You get flagged before things slip.",
     "Recall":"Decisions stay findable. Nothing gets lost.",
-    "Foresight":"Early-warning signals reach you across the board."
+    "Foresight":"Early warnings reach you across the board."
   };
+  // the example shown before anyone answers (also the no-JS state, written in the HTML)
+  var EX={role:"cos",lev:[0,1,1,0,2,1,2],prof:[1,1,1,1]};
 
-  var ans=new Array(Q.length).fill(null), cur=0, busy=false, role="exec", heroTimer=null;
-  var PRM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ans=new Array(Q.length).fill(null), cur=0, busy=false, role="exec", stage="intro";
   var $=function(id){return document.getElementById(id)};
+  var arr=function(x){return [].slice.call(x)};
+  var AN=window.anime;
+  var PRM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MOVE=!!(AN&&AN.animate&&AN.createTimeline&&AN.utils&&AN.svg&&AN.svg.createDrawable)&&!PRM;
+  if(!MOVE)document.documentElement.classList.remove('mv');
   function track(ev,params){try{if(window.gtag)window.gtag('event',ev,params||{});}catch(e){}}
   function R(){return ROLES[role]||ROLES.exec}
   function fill(t){return t.replace('{things}',R().things).replace('{redo}',R().redo)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];})}
+  function lev(i){var a=ans[i];return (a!=null&&Q[i].o[a])?Q[i].o[a][1]:0;}
+  function prof(i){var a=ans[i];return Q[i].o[(a!=null&&Q[i].o[a])?a:0][1];}
 
-  window.start=function(){if(heroTimer){clearInterval(heroTimer);heroTimer=null;}track('blueprint_start');$('intro').style.display='none';$('quiz').style.display='block';cur=0;render(true);window.scrollTo(0,0)};
-  window.back=function(){if(busy)return;if(cur>0){cur--;render(true)}else{$('quiz').style.display='none';$('intro').style.display='block'}};
+  var doc=$('bpDoc'), grid=$('grid');
+  var rows={};arr(doc.querySelectorAll('.lk')).forEach(function(li){rows[li.getAttribute('data-c')]=li;});
+  var setupRows=arr(doc.querySelectorAll('#docSetup>div'));
+  var PROFS=["sensitivity","ai","tech","team"];
+
+  /* ── motion: the nav logo's grammar. A line draws, then the ink fills. Once per moment; reduced motion and no-JS show the end ── */
+  var pending=[];
+  function drawable(el){return AN.svg.createDrawable(el)[0];}
+  function land(){pending.forEach(function(p){try{AN.utils.set(p.d,{draw:'0 1'});}catch(e){}});pending=[];
+    arr(document.querySelectorAll('.ink,.st-t,.st-d')).forEach(function(e){if(e.style.opacity==='0')e.style.opacity='';});}
+  function moment(lines,inks,at){
+    lines=lines.filter(Boolean);inks=inks.filter(Boolean);at=at||0;
+    if(!MOVE){lines.forEach(function(l){l.style.opacity='';});inks.forEach(function(e){e.style.opacity='';});return;}
+    var ds=lines.map(function(l){l.style.opacity='';var d=drawable(l);AN.utils.set(d,{draw:'0 0'});pending.push({d:d});return d;});
+    inks.forEach(function(e){e.style.opacity='0';});
+    ds.forEach(function(d,k){AN.animate(d,{draw:'0 1',duration:440,delay:at+k*70,ease:'inOutQuad'});});
+    inks.forEach(function(e,k){AN.animate(e,{opacity:[0,1],duration:320,delay:at+260+k*70,ease:'outQuad'});});
+  }
+  setInterval(function(){if(document.hidden)land();},1500);   // a background tab never strands half-drawn lines
+
+  // the stage progression: four stops, the run line draws to where you are
+  var axRun=$('axRun'),axLis=arr(document.querySelectorAll('#axis li')),axD=null;
+  if(AN&&AN.svg&&AN.svg.createDrawable){try{axRun.setAttribute('x2','100%');axD=AN.svg.createDrawable(axRun,0,0)[0];}catch(e){axD=null;}}
+  function axisPos(){if(stage==='intro')return -1;if(stage==='results'||stage==='gate')return 3;return cur===0?0:(cur<=7?1+(cur-1)/7:2+(cur-8)/4);}
+  function paintAxis(anim){
+    var p=axisPos(),f=Math.max(p,0)/3;
+    axLis.forEach(function(li,i){li.classList.toggle('past',p>i&&Math.floor(p)!==i);li.classList.toggle('on',Math.floor(p)===i);if(Math.floor(p)===i)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
+    if(axD){if(MOVE&&anim)AN.animate(axD,{draw:'0 '+f.toFixed(4),duration:520,ease:'inOutQuad'});else AN.utils.set(axD,{draw:'0 '+f.toFixed(4)});}
+    else axRun.setAttribute('x2',(f*100).toFixed(2)+'%');
+  }
+
+  /* ── writing the Blueprint. While you answer it records THAT you answered, never a number. ── */
+  function setLeak(li,v){var pct=Math.round(v/3*100),fl=li.querySelector('.lk-fill');
+    fl.setAttribute('x2',pct+'%');fl.style.strokeOpacity=pct?'':'0';li.querySelector('.lk-v').textContent=pct;li.classList.add('set');return pct;}
+  function clearLeak(li){var fl=li.querySelector('.lk-fill');fl.setAttribute('x2','0%');fl.style.strokeOpacity='0';li.querySelector('.lk-v').textContent='';li.querySelector('.lk-r').textContent='';li.classList.remove('set');}
+  function setSetup(k,idx){var dd=setupRows[k].querySelector('dd');dd.textContent=idx==null?'':SHORT[PROFS[k]][idx];setupRows[k].querySelector('.dd-r').style.visibility=idx==null?'hidden':'';return dd;}
+  function today(){try{return new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}catch(e){return '';}}
+  function tick(msg){$('tick').textContent='Added to your Blueprint: '+msg;}
+  var SETUP_SAY=['your data','where you are with AI','how you would set it up','who it works for'];
+
+  function writeRow(q,anim){
+    if(q===0){$('docRole').textContent=R().label;if(anim){moment([$('docSig')],[$('docRole')]);tick('prepared for '+R().label+'.');}return;}
+    if(q<=7){var li=rows[Q[q].c];li.classList.add('set');if(anim){moment([li.querySelector('.lk-ok path')],[]);tick(Q[q].c+'.');}return;}
+    if(anim)tick(SETUP_SAY[q-8]+'.');
+  }
+  function blankSheet(){
+    land();doc.classList.remove('pre');
+    $('docRole').textContent='You';$('docDate').textContent=today();$('docNote').hidden=true;
+    CLUSTERS.forEach(function(c){clearLeak(rows[c]);});
+    for(var k=0;k<4;k++)setSetup(k,null);
+    $('shapeN').textContent='Three steps and the extras that fit you, picked from your answers.';
+    $('docFoot').textContent='Built from your answers';
+  }
+  function paintExample(){
+    land();$('docNote').hidden=false;$('docDate').textContent='Sample';$('docRole').textContent=ROLES[EX.role].label;$('docFoot').textContent='Sample';
+    CLUSTERS.forEach(function(c,i){setLeak(rows[c],[3,2,1,0][EX.lev[i]]);});
+    for(var k=0;k<4;k++)setSetup(k,EX.prof[k]);
+  }
+  function paintFromAnswers(){for(var q=0;q<Q.length;q++){if(ans[q]!=null)writeRow(q,false);}}
+
+  var main=$('top');
+  function setStage(s){
+    stage=s;main.setAttribute('data-stage',s);grid.setAttribute('data-stage',s);doc.setAttribute('data-mode',s==='quiz'?'live':s);
+    $('intro').hidden=s!=='intro';$('quiz').hidden=s!=='quiz';$('gate').hidden=s!=='gate';$('results').hidden=s!=='results';
+    paintAxis(s!=='intro');
+  }
+  function toAsk(){var a=$('axis');if(!a)return;var y=a.getBoundingClientRect().top+window.pageYOffset-76;if(window.pageYOffset>y+8||window.pageYOffset<y-400)window.scrollTo({top:Math.max(0,y),behavior:PRM?'auto':'smooth'});}
+
+  window.start=function(){track('blueprint_start');cur=0;blankSheet();setStage('quiz');render(true);toAsk();};
+  window.back=function(){if(busy)return;if(cur>0){cur--;render(true);paintAxis(true);}else{setStage('intro');paintExample();window.scrollTo(0,0);}};
 
   function render(focusQ){
     var q=Q[cur];
-    $('pbar').style.width=((cur)/Q.length*100)+'%';
     $('qcount').textContent='Question '+(cur+1)+' of '+Q.length;
-    $('qcluster').textContent=q.c;
     $('qtext').textContent=fill(q.t);
-    var h='';q.o.forEach(function(o,i){h+='<button class="opt'+(ans[cur]===i?' sel':'')+'" onclick="pick('+i+')">'+o[0]+'</button>'});
-    $('opts').innerHTML=h;
-    $('backbtn').style.visibility=cur===0?'hidden':'visible';
+    var h='';q.o.forEach(function(o,i){h+='<button type="button" class="opt'+(ans[cur]===i?' sel':'')+'" onclick="pick('+i+')">'+o[0]+'</button>'});
+    $('opts').innerHTML=h;$('opts').classList.toggle('two',!!q.role);
+    $('backbtn').textContent=cur===0?'Back to the start':'Back';
     if(focusQ)$('qtext').focus({preventScroll:true});
   }
   window.pick=function(i){
@@ -384,43 +675,108 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
     track('blueprint_answer',{q:cur+1});
     if(Q[cur].role){role=Q[cur].o[i][1];}
     var btns=$('opts').children;if(btns[i])btns[i].classList.add('sel');
+    writeRow(cur,true);
     setTimeout(function(){
       busy=false;
-      if(cur<Q.length-1){cur++;render(true);window.scrollTo({top:0,behavior:PRM?'auto':'smooth'})}
-      else{$('pbar').style.width='100%';$('quiz').style.display='none';$('results').style.display='block';window.scrollTo(0,0);compute()}
+      if(cur<Q.length-1){cur++;render(true);paintAxis(true);if(window.innerWidth<880)toAsk();}
+      else{scoreAnswers();enterGate(true);toAsk();}
     },170);
   };
 
-  function compute(){
+  /* ── the plan: built from the answers, written into the page only after the email ── */
+  var AI={
+    none:{t:"Connect an AI app",d:"Setup lists Claude Code, Codex, Cursor and the optional Ollama, each with its status. No AI app yet? COS can install Claude Code for you. The app's own subscription and limits still apply."},
+    solo:{t:"Connect the AI you already use",d:"Claude Code if you use Claude, Codex if you use ChatGPT, or Cursor. Sign in once during setup. Its own subscription and limits still apply."},
+    stalled:{t:"Connect one AI app, and stop there",d:"Adoption stalls when there is too much to set up. Sign in to Claude Code, Codex or Cursor and leave everything else for next week."},
+    power:{t:"Connect every AI app you run",d:"Claude Code, Codex and Cursor share one context through COS, on the desktop or in the terminal. Sessions keeps every build in view, and they pass findings to each other. No copy and paste."}
+  };
+  function li(n,t,d,i,mark){return '<li class="st" style="--i:'+i+'"><svg class="st-n" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><circle cx="15" cy="15" r="13"/><text x="15" y="19.5">'+mark+'</text></svg><div><b class="st-t">'+t+'</b><div class="st-d">'+d+'</div></div></li>';}
+  function go(href,txt){return ' <a class="go" href="'+href+'">'+txt+'</a>';}
+  function buildPlan(){
+    var r=R(),ai=prof(9),tech=prof(10),team=prof(11),sens=prof(8),s='',a='',n=0,m=0;
+    var A=AI[ai]||AI.solo;
+    s+=li(1,"Download COS Control for Mac","macOS 14 or later on Apple silicon. Move it to Applications, open it and choose Get started. COS sets up its own server inside the app: no Terminal, Homebrew or npm. Not on a Mac? The open-source server also runs from npm."+go('/control/#install','Get the Mac app'),n++,'1');
+    s+=li(2,A.t,A.d+go('/control/docs/#install','How setup works'),n++,'2');
+    s+=li(3,"Send your first task, as "+r.who,'<pre class="prompt" id="taskText">'+esc(r.task)+'</pre><button type="button" class="copy" id="copyTask" onclick="copyTask()">Copy the task</button>Then find it in Sessions, follow the reply while you work on something else, and go back when it needs you.',n++,'3');
+    var cand=[
+      {s:lev(1)+lev(2),t:"Give it your context with the starter kit",d:"Paste it into Claude Code, Codex or Cursor in an empty folder and answer a few questions. It writes your role, team and priorities into the file your AI loads every session."+go('/kit/','Open the starter kit')},
+      {s:lev(4)+lev(6),t:"Record meetings in place of a note taker",d:"Record on your glasses, or on this Mac as a pilot that captures what the Mac plays, never your microphone. Transcribed on this Mac. Ask about a meeting live or after it ends."+go('/control/docs/#recording','How recording works')},
+      {s:lev(3)*2,t:"Turn on dictation",d:"Hold a key, talk, and the text lands where you were typing. Transcribed on this Mac with Whisper or Parakeet, free, and it learns your corrections."+go('/control/docs/#dictation','How dictation works')},
+      {s:lev(5)*2,t:"Open Control Web on your phone",d:"The same sessions and Today summary in your phone's browser. Answer a session that is waiting on you without walking back to the desk."+go('/control/docs/#control-web-access','What the phone can do')},
+      {s:lev(7)*2,t:"Start each day with a brief",d:"The starter kit adds /start, a daily briefing that opens with what matters today, so problems reach you before they are on fire."+go('/#start','See how it deepens')}
+    ];
+    var pickd=cand.map(function(c,k){c.k=k;return c;}).sort(function(x,y){return y.s-x.s||x.k-y.k;}).filter(function(c,k){return k<3&&c.s>=3;});
+    if(!pickd.length)pickd=[cand[0]];
+    pickd.forEach(function(c){a+=li(0,c.t,c.d,n++,String.fromCharCode(65+m++));});
+    if(lev(4)>=2||lev(7)>=2)a+=li(0,"Glasses, if you want it away from the desk","Optional. Every turn your glasses take shows up on your Mac, with the photo you were looking at."+go('/docs/','The glasses guide'),n++,String.fromCharCode(65+m++));
+    if(team==='team'||team==='org')a+=li(0,"Bring it to your team","The hard part of AI is getting a team to use it. Start with your own COS, then book a working session to plan it for the people around you."+go('/connect/','Book a working session'),n++,String.fromCharCode(65+m++));
+    else if(tech==='managed')a+=li(0,"Set it up together","COS runs on your own Mac, not on our servers. Book a working session and we set it up there with you."+go('/connect/','Book a working session'),n++,String.fromCharCode(65+m++));
+    else if(tech==='unsure')a+=li(0,"Set it up together","Rather not do it alone? Book a working session and set it up on your own Mac, with help."+go('/connect/','Book a working session'),n++,String.fromCharCode(65+m++));
+    if(sens==='reg'||sens==='conf')a+=li(0,"A note on your data","COS keeps its files, transcripts and dictation on your Mac. Answers come from the AI app you connect, under that provider's terms, so check it against your rules first. Setup also lists Ollama, an optional local model."+go('/control/docs/#install','What setup connects'),n++,String.fromCharCode(65+m++));
+    return {s:s,a:a,n:m};
+  }
+  window.copyTask=function(){var t=$('taskText');if(!t)return;var b=$('copyTask'),done=function(){if(!b)return;b.textContent='Copied';setTimeout(function(){b.textContent='Copy the task';},2000);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.textContent).then(done,done);}else{done();}};
+
+  // Scoring happens when the last answer lands (blueprint_complete fires here, exactly as before).
+  // Nothing it computes is put on the page until the email is sent.
+  var RES=null;
+  function scoreAnswers(){
     var raw=0,max=0,cl={};CLUSTERS.forEach(function(c){cl[c]={s:0,m:0}});
     SCORED.forEach(function(idx){var q=Q[idx],v=q.o[ans[idx]!=null?ans[idx]:0][1];raw+=v;max+=3;if(cl[q.c]){cl[q.c].s+=v;cl[q.c].m+=3;}});
     var score=Math.round(raw/max*100);
-    $('bpRole').textContent=R().label.toLowerCase();
-    // gauge count-up
-    var arc=$('arc'),t0=null;
-    if(PRM){$('scoreNum').textContent=score;arc.style.strokeDashoffset=628-(628*score/100);}
-    else{var tick=function(ts){if(!t0)t0=ts;var t=Math.min((ts-t0)/1100,1),p=1-Math.pow(1-t,3);$('scoreNum').textContent=Math.round(score*p);arc.style.strokeDashoffset=628-(628*score/100*p);if(t<1)requestAnimationFrame(tick)};requestAnimationFrame(tick);}
-    var band,sub;
-    if(score>=75){band="Prime for Leverage";sub="You're running almost entirely on manual effort. The payback from a COS built for your role is fast and large.";}
-    else if(score>=50){band="Ready to Compound";sub="Pockets work, but the dots aren't connected. A COS turns scattered effort into a system built around you.";}
-    else if(score>=25){band="Tuning, Not Transforming";sub="More organized than most. The gap: your tools should work for you, not the other way around.";}
-    else{band="Already Operating";sub="You run real workflows. What's left is depth, multi-role architecture, and the parts that don't come out of the box.";}
-    $('bandName').textContent=band;$('bandSub').textContent=sub;
-    $('leverLine').textContent=score+"% of your load is manual work a COS could carry.";
-    $('veilHead').textContent="Turn your score into "+R().label.toLowerCase()+"'s plan";
+    // band is DATA (sent to GA as blueprint_complete.band); show is what the page prints
+    var band,sub,show;
+    if(score>=75){band="Prime for Leverage";show="Prime for leverage";sub="Most of your week runs on manual effort. COS pays back fast here.";}
+    else if(score>=50){band="Ready to Compound";show="Ready to compound";sub="Some of it works, but the dots are not connected. COS connects them around you.";}
+    else if(score>=25){band="Tuning, Not Transforming";show="Tuning, not transforming";sub="More organized than most. COS takes the busywork that is left.";}
+    else{band="Already Operating";show="Already operating";sub="You already run real workflows. COS adds one shared context across your AI apps, and the parts no single app ships with.";}
     track('blueprint_complete',{score:score,band:band});
+    var list=CLUSTERS.map(function(c){return {c:c,v:cl[c].m?Math.round(cl[c].s/cl[c].m*100):0}}).sort(function(a,b){return b.v-a.v});
+    RES={score:score,show:show,sub:sub,list:list,plan:buildPlan()};
+  }
 
-    var arr=CLUSTERS.map(function(c){return {c:c,v:cl[c].m?Math.round(cl[c].s/cl[c].m*100):0}}).sort(function(a,b){return b.v-a.v});
-    var bh='';arr.forEach(function(b){var rd=b.v>=67?BARREAD[b.c]:(b.v>=33?BARMID[b.c]:BARGOOD[b.c]);bh+='<div class="bar"><div class="top"><b>'+b.c+'</b><span class="v">'+b.v+'</span></div><div class="track"><i style="width:0" data-w="'+b.v+'%"></i></div><div class="rd">'+rd+'</div></div>'});
-    $('bars').innerHTML=bh;
-    setTimeout(function(){document.querySelectorAll('#bars .track i').forEach(function(i){i.style.width=i.getAttribute('data-w')})},120);
+  // The gate: the sheet shows that every answer is mapped and that a plan exists. The score stays locked.
+  function enterGate(anim){
+    setStage('gate');
+    $('docRole').textContent=R().label;$('docDate').textContent=today();$('docNote').hidden=true;$('docFoot').textContent='Ready';
+    CLUSTERS.forEach(function(c){rows[c].classList.add('set');});
+    $('veilSub').textContent='Enter your email to open it: your score, where your week leaks, and your first three steps as '+R().who+'.';
+    var n=RES.plan.n;$('shapeN').textContent='Three steps and '+n+' recommended '+(n===1?'extra':'extras')+', picked from your answers.';
+    if(anim){moment(arr(doc.querySelectorAll('.shape .st-n circle')),[$('veilHead'),$('shapeN')]);$('veilHead').focus({preventScroll:true});}
+  }
+
+  // The reveal: the dial draws, the leak bars draw worst first, the plan is written in.
+  function showResults(anim,msg){
+    var r=RES,score=r.score;
+    setStage('results');
+    $('bandName').textContent=r.show;$('bandSub').textContent=r.sub;
+    $('leverLine').textContent=score+" of 100. The higher the score, the more of your week COS can take on.";
+    $('docRole').textContent=R().label;$('docDate').textContent=today();$('docNote').hidden=true;$('docFoot').textContent='Score '+score+' of 100';
+    var arc=$('arc'),t0=null;
+    if(PRM||!anim){$('scoreNum').textContent=score;arc.style.strokeDashoffset=628-(628*score/100);}
+    else{var tk=function(ts){if(!t0)t0=ts;var t=Math.min((ts-t0)/1100,1),p=1-Math.pow(1-t,3);$('scoreNum').textContent=Math.round(score*p);arc.style.strokeDashoffset=628-(628*score/100*p);if(t<1)requestAnimationFrame(tk)};requestAnimationFrame(tk);}
+    var ol=$('bars');
+    r.list.forEach(function(b){var row=rows[b.c],fl=row.querySelector('.lk-fill');row.classList.add('set');row.querySelector('.lk-v').textContent=b.v;fl.setAttribute('x2',b.v+'%');fl.style.strokeOpacity=b.v?'':'0';
+      row.querySelector('.lk-r').textContent=b.v>=67?BARREAD[b.c]:(b.v>=33?BARMID[b.c]:BARGOOD[b.c]);ol.appendChild(row);});
+    for(var k=0;k<4;k++)setSetup(k,ans[8+k]!=null?ans[8+k]:0);
+    $('bpSteps').innerHTML=r.plan.s;$('bpAdds').innerHTML=r.plan.a;
+    var bp=$('blueprint');if(bp)bp.classList.remove('bp-locked');
+    var list=$('bpList');if(list)list.setAttribute('aria-hidden','false');
+    var done=$('bpDone');if(done){done.hidden=!msg;if(msg)done.innerHTML=msg;}
+    if(anim){
+      var leakRows=r.list.map(function(b){return rows[b.c];});
+      moment(leakRows.map(function(x){return x.querySelector('.lk-fill');}),leakRows.map(function(x){return x.querySelector('.lk-v');}),400);
+      moment(arr(doc.querySelectorAll('#bpList .st-n circle')),arr(doc.querySelectorAll('#bpList .st-t')),800);
+    }
+    $('bandName').focus({preventScroll:true});
   }
 
   window.reveal=function(ev){
     if(ev&&ev.preventDefault)ev.preventDefault();
     // Interim gate: capture the lead in the gotcos HubSpot form (portal 2474026, form c5439911), the same
     // form /readiness and /kit already post to. Also sets cos_kit_access so the starter kit unlocks.
-    // When paid checkout is live, re-enable the CHECKOUT/unlock() path below and swap the veil button back.
+    // When paid checkout is live, re-enable the CHECKOUT/unlock() path below and swap the gate button back.
     var em=($('g-email').value||'').trim(), fn=($('g-first').value||'').trim();
     var err=$('bp-err'), btn=$('unlockBtn');
     if(btn.disabled)return;
@@ -433,13 +789,11 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
     var proceed=function(sent){
       track(sent?'blueprint_lead':'blueprint_lead_failed',{score:score});
       try{localStorage.setItem('cos_kit_access','1');}catch(e){}
-      var bp=$('blueprint');if(bp)bp.classList.remove('bp-locked');
-      var veil=$('bpVeil');if(veil)veil.style.display='none';
-      var list=$('bpList');if(list)list.setAttribute('aria-hidden','false');
       var safe=em.replace(/[<&>]/g,'');
-      var done=$('bpDone');if(done){done.style.display='block';done.innerHTML=sent
-        ? '&#10003; You\'re in, <b>'+safe+'</b>. Your plan is below and the starter kit is unlocked. We\'ll email your copy shortly.'
-        : 'Your plan is below and the starter kit is unlocked. If your emailed copy does not arrive, reach out and we will send it.';}
+      showResults(true,sent
+        ? 'You\'re in, <b>'+safe+'</b>. Your plan is below, and the starter kit is unlocked.'
+        : 'Your plan is below, and the starter kit is unlocked.');
+      toAsk();
     };
     btn.disabled=true;btn.textContent='Sending…';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3',{
@@ -447,179 +801,63 @@ footer{position:relative;z-index:2;text-align:center;padding:40px var(--gut) 64p
       body:JSON.stringify({fields:fields,context:{pageUri:location.href,pageName:'gotcos.com · Blueprint · '+R().label+' · score '+score+' · a='+ans.join('')}})
     }).then(function(resp){proceed(resp&&resp.ok);}).catch(function(){proceed(false);});
   };
-  // PAID GATE (disabled for now): restore when Stripe checkout is live, then point the veil button back to unlock().
+  // PAID GATE (disabled for now): restore when Stripe checkout is live, then point the gate button back to unlock().
   window.unlock=function(){ if(CHECKOUT&&CHECKOUT!=="#"){location.href=CHECKOUT;return;} };
   window.copyLink=function(){
     var url=location.origin+location.pathname+'#r='+role+'.'+ans.map(function(a){return a==null?0:a}).join('');
-    var confirm=function(){var b=$('shareBtn');if(!b)return;if(b._t)clearTimeout(b._t);var orig=b.getAttribute('data-label')||b.textContent;b.setAttribute('data-label',orig);b.textContent='Copied ✓';b._t=setTimeout(function(){b.textContent=orig;},2000);};
+    var confirm=function(){var b=$('shareBtn');if(!b)return;if(b._t)clearTimeout(b._t);var orig=b.getAttribute('data-label')||b.textContent;b.setAttribute('data-label',orig);b.textContent='Copied';b._t=setTimeout(function(){b.textContent=orig;},2000);};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(confirm,confirm);}
     else{try{var ta=document.createElement('textarea');ta.value=url;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}confirm();}
   };
 
-  /* ---- role-morph hero animation (teases what's behind the gate) ---- */
-  var NODES=[
-    {x:70,y:40},{x:60,y:150},{x:255,y:24},{x:450,y:40},{x:460,y:170}
-  ];
-  var WORDS={
-    exec:["board","reports","OKRs","P&L","pipeline"],
-    marketer:["campaigns","brands","channels","spend","funnel"],
-    engineer:["services","incidents","PRs","repos","on-call"],
-    pm:["features","stakeholders","sprints","roadmap","specs"],
-    people:["people","cases","reviews","hiring","1:1s"],
-    legal:["matters","clients","filings","deadlines","discovery"],
-    cos:["priorities","stakeholders","commitments","the principal","follow-ups"],
-    clinician:["patients","charts","labs","referrals","meds"],
-    other:["threads","context","people","tasks","signals"]
-  };
-  function buildOrbit(){
-    var ns=$('nodes'),fs=$('flows');if(!ns)return;var nh='',fh='',sh='';
-    NODES.forEach(function(n,i){
-      fh+='<path class="flow" id="flow'+i+'" d="M'+n.x+' '+n.y+' Q '+((n.x+260)/2)+' '+((n.y+110)/2+(i%2?26:-26))+' 260 110"/>';
-      nh+='<circle class="node" cx="'+n.x+'" cy="'+n.y+'" r="4"/><text class="nlabel" x="'+n.x+'" y="'+(n.y-9)+'" text-anchor="middle" id="nl'+i+'"></text>';
-      sh+='<circle class="sig" id="sig'+i+'" r="2.6" cx="'+n.x+'" cy="'+n.y+'" style="fill:#e8cf92;opacity:0"/>';
-    });
-    fs.innerHTML=fh;ns.innerHTML=nh;
-    var svg=$('orbitSvg');
-    if(svg&&!$('corePulse')){
-      var NS='http://www.w3.org/2000/svg';
-      var pulse=document.createElementNS(NS,'circle');
-      pulse.setAttribute('id','corePulse');pulse.setAttribute('cx','260');pulse.setAttribute('cy','110');pulse.setAttribute('r','30');
-      pulse.setAttribute('fill','none');pulse.setAttribute('stroke','rgba(201,169,110,.55)');pulse.setAttribute('stroke-width','1');
-      pulse.style.opacity='0';pulse.style.transformBox='fill-box';pulse.style.transformOrigin='center';
-      svg.insertBefore(pulse,svg.firstChild);          // behind everything, emanates from the core
-      var sg=document.createElementNS(NS,'g');
-      sg.setAttribute('id','signals');sg.innerHTML=sh;
-      svg.appendChild(sg);                             // signal dots ride on top
-    }
+  /* ── the landing moments: the sample Blueprint writes itself, then the three clippings, each once in view ── */
+  function playIntro(){
+    if(!doc.classList.contains('pre'))return;
+    if(!MOVE){doc.classList.remove('pre');return;}
+    var parts=arr(doc.querySelectorAll('.doc-mark .mp'));
+    var lines=[doc.querySelector('.rule'),$('docSig')].concat(arr(doc.querySelectorAll('.lk-fill'))).concat(arr(doc.querySelectorAll('.dd-r')));
+    var inks=arr(doc.querySelectorAll('.ink'));
+    lines.forEach(function(l){var d=drawable(l);AN.utils.set(d,{draw:'0 0'});pending.push({d:d});});
+    inks.forEach(function(e){e.style.opacity='0';});
+    var md=parts.map(function(p){p.style.fillOpacity='0';p.style.stroke='#8f3d14';p.style.strokeWidth='22';var d=drawable(p);AN.utils.set(d,{draw:'0 0'});return d;});
+    doc.classList.remove('pre');
+    var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+    var sec=[[0],[1,2,3],[4,5,6],[7,8,9]];
+    sec.forEach(function(g,i){var at=i*120;g.forEach(function(k){if(md[k])tl.add(md[k],{draw:'0 1',duration:380},at);});
+      var els=g.map(function(k){return parts[k];}).filter(Boolean);tl.add(els,{fillOpacity:[0,1],duration:240,ease:'outQuad'},at+260);tl.add(els,{strokeOpacity:[1,0],duration:220,ease:'outQuad'},at+330);});
+    moment(lines,inks,520);
+    setTimeout(function(){parts.forEach(function(p){p.style.fillOpacity='';p.style.strokeOpacity='0';});land();},3600);
   }
-  function paintRole(k){
-    var w=WORDS[k]||WORDS.other;
-    for(var i=0;i<5;i++){var el=$('nl'+i);if(el)el.textContent=w[i]||'';}
-    if($('stageRole'))$('stageRole').textContent=ROLES[k].label;
-    if($('teaseWord'))$('teaseWord').textContent=ROLES[k].things;
-    if($('roleH'))$('roleH').textContent="your";
-  }
-  function initHero(){
-    buildOrbit();paintRole('exec');
-    var rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)').matches:false;
-    var AN=window.anime;
-    var cyc=["exec","legal","cos","clinician","engineer","marketer"],ci=0;
-    var labelList=function(){return document.querySelectorAll('#nodes .nlabel')};
-    var showLabels=function(){[].forEach.call(labelList(),function(l){l.style.opacity='1';});};
-    var nodeEls=[].slice.call(document.querySelectorAll('#nodes .node'));
-    var flows=[].slice.call(document.querySelectorAll('.flow'));
-    var sigs=[].slice.call(document.querySelectorAll('#signals .sig'));
-    var pulse=$('corePulse');
-
-    // reduced-motion OR anime unavailable: legible static, optional CSS-only role cycle
-    if(rm||!AN||!AN.animate){
-      showLabels();
-      if(rm)return; // fully static
-      heroTimer=setInterval(function(){
-        ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
-        [].forEach.call(labelList(),function(l){l.style.transition='opacity .45s';l.style.opacity='0';});
-        if(sr){sr.style.transition='opacity .45s';sr.style.opacity='0';}
-        setTimeout(function(){paintRole(k);showLabels();if(sr)sr.style.opacity='1';},460);
-      },2600);
-      return;
-    }
-
-    nodeEls.forEach(function(n){n.style.transformBox='fill-box';n.style.transformOrigin='center';});
-    var started=false, intro=false;
-
-    // land the finished graph regardless of engine/visibility state
-    function landStatic(){
-      try{AN.utils.set(nodeEls,{scale:1,opacity:.75});}catch(e){nodeEls.forEach(function(n){n.style.opacity='.75';});}
-      showLabels();
-      flows.forEach(function(f){f.style.strokeDasharray='none';f.style.strokeDashoffset='0';});
-    }
-
-    // one signal dot flows from its source node into the COS core, loops with a staggered cadence
-    function runSignal(dot,path,i){
-      if(!dot||!path)return;
-      var len=600; try{len=path.getTotalLength()||600;}catch(e){}
-      var st={t:0};
-      (function loop(){
-        if(document.hidden){setTimeout(loop,600);return;}
-        st.t=0;
-        try{AN.animate(st,{t:1,duration:1450+i*90,ease:'inOutSine',
-          onUpdate:function(){
-            var p; try{p=path.getPointAtLength(st.t*len);}catch(e){return;}
-            dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);
-            var f=Math.min(1,Math.min(st.t,1-st.t)*6);
-            dot.style.opacity=(0.92*f).toFixed(3);
-          },
-          onComplete:function(){dot.style.opacity='0';setTimeout(loop,520+i*150);}
-        });}catch(e){}
-      })();
-    }
-
-    function startMorph(){
-      heroTimer=setInterval(function(){
-        ci=(ci+1)%cyc.length;var k=cyc[ci],sr=$('stageRole');
-        try{
-          AN.animate('#nodes .nlabel',{opacity:[1,0],translateY:[0,-7],duration:320,delay:AN.stagger(38),ease:'inQuad'});
-          if(sr)AN.animate('#stageRole',{opacity:0,translateY:-4,duration:320,ease:'inQuad'});
-        }catch(e){}
-        setTimeout(function(){
-          paintRole(k);
-          try{
-            AN.animate('#nodes .nlabel',{opacity:[0,1],translateY:[7,0],duration:470,delay:AN.stagger(50),ease:'outCubic'});
-            if(sr)AN.animate('#stageRole',{opacity:[0,1],translateY:[4,0],duration:450,ease:'outCubic'});
-          }catch(e){}
-        },480);
-      },2600);
-    }
-
-    function startLoops(){
-      if(started)return;started=true;
-      landStatic();
-      // anchored node breathing (transform-box:fill-box keeps each dot on its graph point)
-      try{AN.animate('#nodes .node',{scale:[1,1.16],opacity:[.5,.92],delay:AN.stagger(150),duration:1700,loop:true,alternate:true,ease:'inOutSine'});}catch(e){}
-      // the core continuously "reads" — a receive-pulse ring emanating from COS
-      try{if(pulse)AN.animate(pulse,{scale:[1,2.15],opacity:[.5,0],duration:1900,loop:true,ease:'outSine'});}catch(e){}
-      // signal particles flowing from every source into the core
-      sigs.forEach(function(dot,i){setTimeout(function(){runSignal(dot,flows[i],i);},180+i*240);});
-      startMorph();
-    }
-
-    // scroll-triggered assembly: nodes pop, edges draw, labels fade in — then the loops kick on
-    function playIntro(){
-      if(intro)return;intro=true;
-      try{AN.utils.set(nodeEls,{scale:0,opacity:0});}catch(e){}
-      [].forEach.call(labelList(),function(l){l.style.opacity='0';});
-      var draw=[]; try{flows.forEach(function(f){var d=AN.svg.createDrawable(f)[0];AN.utils.set(d,{draw:'0 0'});draw.push(d);});}catch(e){}
-      var pop; try{pop=AN.createSpring?AN.createSpring({mass:1,stiffness:170,damping:14}):'outBack';}catch(e){pop='outBack';}
-      var tl=null; try{tl=AN.createTimeline();}catch(e){}
-      if(tl){
-        tl.add(nodeEls,{scale:[0,1],opacity:{to:.75,duration:320},ease:pop,delay:AN.stagger(80)},40);
-        draw.forEach(function(d,i){tl.add(d,{draw:'0 1',duration:520,ease:'inOutQuad'},240+i*80);});
-        tl.add(labelList(),{opacity:[0,1],translateY:[6,0],duration:420,ease:'outQuad',delay:AN.stagger(50)},780);
-      }
-      setTimeout(startLoops,1250);
-    }
-
-    // fire the assembly when the stage scrolls into view
-    var stageEl=$('stage');
-    if('IntersectionObserver' in window && stageEl){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){playIntro();io.disconnect();}});},{threshold:.3});
-      io.observe(stageEl);
-    } else { playIntro(); }
-    // safety: if IO never fires (hidden/background tab) or the engine stalls, land + run anyway
-    setTimeout(function(){ if(!intro)playIntro(); if(!started){landStatic();startLoops();} },1500);
+  var what=$('what');
+  function playWhat(){
+    if(!what||!what.classList.contains('pre'))return;
+    var lines=arr(what.querySelectorAll('.dl')),inks=arr(what.querySelectorAll('.ink'));
+    if(MOVE){lines.forEach(function(l){var d=drawable(l);AN.utils.set(d,{draw:'0 0'});});inks.forEach(function(e){e.style.opacity='0';});}
+    what.classList.remove('pre');
+    moment(lines,inks,0);
   }
 
-  // restore from shared link
+  // Restore from a shared link. Someone who already gave an email on this browser (cos_kit_access, set by
+  // this page, /kit, /wizard, /docs or the homepage) sees the result. Anyone else gets the gate first.
+  var restored=false;
   if(location.hash.indexOf('#r=')===0){try{
     var raw=location.hash.slice(3),parts=raw.split('.');
     if(parts.length===2&&parts[1].length){
       role=ROLES[parts[0]]?parts[0]:'exec';
       ans=parts[1].split('').map(function(d){var n=parseInt(d,10);return (isFinite(n)&&n>=0&&n<=3)?n:0;});
-      if(heroTimer){clearInterval(heroTimer);heroTimer=null;}
-      $('intro').style.display='none';$('results').style.display='block';compute();
+      blankSheet();paintFromAnswers();scoreAnswers();
+      var known=false;try{known=localStorage.getItem('cos_kit_access')==='1';}catch(e){}
+      if(known)showResults(true,null);else enterGate(false);
+      restored=true;
     }
-  }catch(e){$('results').style.display='none';$('intro').style.display='block';}}
-  if(document.readyState!=='loading')initHero();else document.addEventListener('DOMContentLoaded',initHero);
+  }catch(e){setStage('intro');}}
+  if(!restored){
+    paintAxis(false);
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);if(e.target===doc)playIntro();else playWhat();}});},{threshold:.25});
+      io.observe(doc);if(what)io.observe(what);
+    }else{playIntro();playWhat();}
+  }else{if(what)what.classList.remove('pre');}
 })();
 </script>
 <script>
