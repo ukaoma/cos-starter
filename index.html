@@ -1614,6 +1614,13 @@ html[data-head] #glasses .dv-t>.it.g{font-style:normal!important;font-weight:inh
           mask-image:radial-gradient(85% 90% at 50% 50%,#000 calc(var(--dev,1)*40%),transparent calc(var(--dev,1)*100%))}
 #faq .fq-left .fq-plate .pixmap-c .pi{background-position:0 0,center 30%}
 @media (max-width:1079px){#faq .fq-left .fq-plate{aspect-ratio:16 / 10;max-width:560px}#faq .fq-left .fq-plate .pixmap-c{display:block}}
+/* Open Duo and other short landscape screens (900 to 1099 wide): no boxed contrast panels behind the side columns.
+   On WebKit they read as dark boxes; Miles prefers the desktop look, lists straight on the lit scene (2026-11-17 21:0x).
+   Contrast comes from a soft, edgeless halo on the text instead of a panel. */
+@media (min-width:900px) and (max-width:1099px) and (orientation:landscape){
+  .ah-in::before,.ah-out::before{content:none;display:none}
+  .ah-in li,.ah-in .ah-colh,.ah-in .ah-o2,.ah-out,.ah-out p,.ah-out .one-sub,.ah-out .one-h{text-shadow:0 0 14px rgba(40,15,7,.9),0 0 4px rgba(40,15,7,.75),0 1px 1px rgba(40,15,7,.6)}
+}
 </style>
 
 </head>
