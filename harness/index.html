@@ -41,7 +41,7 @@
       "headline": "What Is an AI Harness? The Model Is Rented. The Harness Is Yours.",
       "description": "A practical guide to AI harnesses, shared AI memory as a database you own, tool use, model portability over MCP, and user-owned context.",
       "datePublished": "2026-07-10",
-      "dateModified": "2026-09-20",
+      "dateModified": "2026-11-17",
       "author": {"@type": "Person", "name": "Miles Ukaoma", "url": "https://milesukaoma.com"},
       "publisher": {"@type": "Organization", "name": "GotCOS", "url": "https://www.gotcos.com"},
       "mainEntityOfPage": "https://www.gotcos.com/harness/",
@@ -60,7 +60,7 @@
         {"@type": "Question", "name": "What is an AI harness?", "acceptedAnswer": {"@type": "Answer", "text": "An AI harness is the operating system around a model. It holds your memory, your tools, the rules it follows, and the permissions and state that let it keep working. That structure is what turns a single answer into a system that does useful work again and again."}},
         {"@type": "Question", "name": "Is an AI harness the same as an AI agent?", "acceptedAnswer": {"@type": "Answer", "text": "No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts."}},
         {"@type": "Question", "name": "Is MCP an AI harness?", "acceptedAnswer": {"@type": "Answer", "text": "No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system."}},
-        {"@type": "Question", "name": "Can one harness use Claude, GPT, and Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "A harness can support multiple models. COS supports Claude Code and Codex today; GPT, Gemini, and local models require additional adapters."}},
+        {"@type": "Question", "name": "Can one harness use Claude, GPT, and Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "A harness can support multiple models. COS runs on Claude Code, Codex, and Cursor today; GPT, Gemini, and local models require additional adapters."}},
         {"@type": "Question", "name": "Does a local AI harness keep all data private?", "acceptedAnswer": {"@type": "Answer", "text": "A local-first harness can keep the durable corpus and outputs on devices you control. However, any context sent to a hosted model for inference is processed under that provider's terms and data controls. Local storage and local inference are separate choices."}},
         {"@type": "Question", "name": "What is an AI memory layer?", "acceptedAnswer": {"@type": "Answer", "text": "The AI memory layer is the record of who you are, who you work with, what you decided, and what you corrected, kept separate from any single model or app. A model reads from it before it answers and writes back to it after. When the layer lives outside the assistant, as files and indexes you own, it becomes shared memory that any model can use."}},
         {"@type": "Question", "name": "Can ChatGPT, Claude, Cursor, and the next assistant all query the same memory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, when the memory lives as a resource instead of inside one app's chat history. COS exposes your memory over MCP, so any MCP-capable host reads the same record. One connector, one memory, no re-explaining. The harness still decides what is exposed, what is retrieved, and what needs approval."}},
@@ -76,23 +76,23 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   color-scheme:dark;
-  --ink:#170f09;--ink2:#21160f;--paper:#f3ede1;--paper2:#e9dfcd;--fg:#f0e8da;
-  --muted:rgba(240,232,218,.64);--ghost:rgba(240,232,218,.38);--line:rgba(201,169,110,.20);--line2:rgba(255,246,232,.08);
-  --gold:#c9a96e;--warm:#d4a07a;--rose:#c4736e;--green:#7fa98a;--blue:#87a8bd;
+  --ink:#34140a;--ink2:#40190c;--paper:#f3ede1;--paper2:#e9dfcd;--fg:#fbeedd;
+  --muted:rgba(251,238,221,.64);--ghost:rgba(251,238,221,.38);--line:rgba(242,154,69,.20);--line2:rgba(255,246,232,.08);
+  --gold:#f29a45;--warm:#f6b46e;--rose:#e07a3a;--green:#7fa98a;--blue:#87a8bd;
   --paper-ink:#281b11;--paper-muted:rgba(40,27,17,.68);--paper-line:rgba(40,27,17,.15);
   --display:'Fraunces',Georgia,serif;--body:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono','SF Mono',monospace;
   --max:1140px;--maxw:1140px;--gut:clamp(22px,5vw,72px);
-  --faint:rgba(240,232,218,.62);--cream:#f3ede1;--ink-on-cream:#241708;--faint-on-cream:rgba(46,31,16,.72)
+  --faint:rgba(251,238,221,.62);--cream:#f3ede1;--ink-on-cream:#241708;--faint-on-cream:rgba(46,31,16,.72)
 }
 html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--body);background:var(--ink);color:var(--fg);line-height:1.66;overflow-x:hidden}
-::selection{background:rgba(201,169,110,.30);color:#fff}
+::selection{background:rgba(242,154,69,.30);color:#fff}
 a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
 /* ── Nav. Full-width dark strip + contained light card (shared with homepage) ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none}
-.nav-top{pointer-events:auto;border-bottom:1px solid rgba(201,169,110,.07);background:rgba(12,8,5,.74);backdrop-filter:blur(10px)}
+.nav-top{pointer-events:auto;border-bottom:1px solid rgba(242,154,69,.07);background:rgba(38,14,6,.74);backdrop-filter:blur(10px)}
 .nt-in{max-width:var(--maxw);margin:0 auto;padding:7px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--body);font-size:.68rem;letter-spacing:.02em}
 .nt-tag{color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nt-links{display:flex;gap:20px;flex-shrink:0}
@@ -104,10 +104,10 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .nav .links{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--faint-on-cream)}
 .nav .links > a{color:var(--faint-on-cream);padding:9px 12px;border-radius:9px;transition:color .2s,background .2s}
 .nav .links > a:hover{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
-.nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(23,15,9,.55)}
+.nav .links .nav-actions{position:relative;display:flex;align-items:center;flex-shrink:0;box-sizing:border-box;width:var(--nav-actions-w,max-content);margin-left:8px;padding:3px;background:var(--ink);border-radius:999px;box-shadow:0 12px 26px -12px rgba(42,16,7,.55)}
 .nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;flex:0 0 auto;border-radius:999px;line-height:1;white-space:nowrap;transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease}
 .nav .links .nav-actions .nav-login{flex-basis:var(--login-w,auto);color:var(--cream);font-weight:500;padding:8px 14px}
-.nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#1a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
+.nav .links .nav-actions .cta{flex-basis:var(--pill-w,auto);font-family:var(--body);font-weight:600;color:#2a1206;background:linear-gradient(120deg,var(--warm),var(--gold) 55%,var(--rose));padding:9px 16px;margin:0;box-shadow:none}
 .nav .links .nav-actions[data-mode="login"] .nav-login{flex-basis:var(--nav-actions-inner,100%)}
 .nav .links .nav-actions[data-mode="login"] .cta{flex-basis:0;opacity:0;padding:0;pointer-events:none}
 .nav .links .nav-actions[data-mode="download"] .cta{flex-basis:var(--nav-actions-inner,100%)}
@@ -117,11 +117,11 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 .nd-btn:hover,.nd[data-open] .nd-btn{color:var(--ink-on-cream);background:rgba(46,31,16,.06)}
 .nd-btn svg{width:9px;height:6px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .nd[data-open] .nd-btn svg{transform:rotate(180deg)}
-.nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(23,15,9,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
+.nd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:230px;padding:8px;border-radius:14px;background:rgba(250,246,238,.98);backdrop-filter:blur(12px);border:1px solid rgba(46,31,16,.1);box-shadow:0 30px 70px -28px rgba(42,16,7,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .2s ease,visibility .2s}
 .nd[data-open] .nd-menu{opacity:1;visibility:visible;transform:none}
 @media(hover:hover) and (pointer:fine){.nd:hover .nd-menu,.nd:focus-within .nd-menu{opacity:1;visibility:visible;transform:none}}
 .nd-menu a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;color:var(--ink-on-cream);font-size:.85rem;transition:background .15s}
-.nd-menu a:hover{background:rgba(201,169,110,.18)}
+.nd-menu a:hover{background:rgba(242,154,69,.18)}
 .nd-menu a small{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint-on-cream)}
 .nav-burger{display:none;background:none;border:1px solid rgba(46,31,16,.16);border-radius:9px;width:40px;height:40px;cursor:pointer;padding:0;place-items:center}
 .nav-burger span{display:block;width:16px;height:1.6px;background:var(--ink-on-cream);margin:2.4px auto;border-radius:2px;transition:transform .25s,opacity .2s}
@@ -140,39 +140,39 @@ a{color:var(--gold);text-decoration:none}p a,li a{text-decoration:underline;text
 }
 @media(prefers-reduced-motion:reduce){.nd-menu,.nav .links,.nav-burger span,.nd-btn svg,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{transition:none}}
 .hero{position:relative;isolation:isolate;padding:clamp(132px,17vh,182px) 0 clamp(70px,9vw,116px);overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(196,115,110,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(201,169,110,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(201,169,110,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+.hero::before{content:"";position:absolute;inset:-30%;z-index:-2;background:radial-gradient(circle at 75% 22%,rgba(135,168,189,.13),transparent 23%),radial-gradient(circle at 20% 42%,rgba(224,122,58,.15),transparent 26%),radial-gradient(circle at 63% 75%,rgba(242,154,69,.13),transparent 26%);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 80%);mask-image:linear-gradient(to bottom,#000 55%,transparent 80%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(242,154,69,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(242,154,69,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:clamp(38px,6vw,76px);align-items:center}
 
 h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.018em;text-wrap:balance}
 h1{font-size:clamp(3rem,6vw,5.35rem);line-height:.98;max-width:10.5ch}.hero h1 em{display:block;color:var(--gold);font-weight:400}
 .hero-lead{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--muted);max-width:58ch;margin-top:26px}.hero-lead strong{color:var(--fg)}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#1d1309;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:999px;font-weight:500;border:1px solid var(--line);transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:linear-gradient(120deg,var(--warm),var(--gold) 60%,var(--rose));border:0;color:#2a1206;box-shadow:0 18px 38px -22px var(--gold)}.btn.ghost{color:var(--fg)}.btn.ghost:hover{border-color:var(--gold)}
 .byline{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--ghost);margin-top:22px}
 .proofbar{padding:0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);background:rgba(255,246,232,.025)}
 .proofgrid{display:grid;grid-template-columns:repeat(3,1fr)}
 .proofitem{padding:24px clamp(18px,3vw,34px);border-right:1px solid var(--line2)}.proofitem:last-child{border-right:0}
 .proofitem b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:500;color:var(--gold);line-height:1.1}.proofitem span{display:block;margin-top:6px;color:var(--muted);font-size:.82rem}
 .rig{position:relative;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,246,232,.055),rgba(255,246,232,.015));padding:18px;box-shadow:0 36px 90px rgba(0,0,0,.35);overflow:hidden}
-.rig::before,.rig::after{content:"";position:absolute;inset:6px;border:1px solid rgba(201,169,110,.12);border-radius:21px;pointer-events:none}.rig::after{inset:12px;border-color:rgba(135,168,189,.1);border-radius:16px}
+.rig::before,.rig::after{content:"";position:absolute;inset:6px;border:1px solid rgba(242,154,69,.12);border-radius:21px;pointer-events:none}.rig::after{inset:12px;border-color:rgba(135,168,189,.1);border-radius:16px}
 .rig-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:5px 7px 16px;font-family:var(--mono);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ghost)}
 .rig-top b{color:var(--gold);font-weight:500}.lamp{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);margin-right:7px}
 .rig-body{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:stretch}
-.rail{display:grid;gap:9px}.module{border:1px solid var(--line2);border-color:color-mix(in srgb,var(--line2),var(--gold) calc(var(--flare,0)*55%));border-radius:12px;padding:12px;background:rgba(7,5,4,.35);box-shadow:0 0 0 calc(var(--flare,0)*1.5px) rgba(201,169,110,.4),0 0 calc(var(--flare,0)*24px) rgba(201,169,110,calc(var(--flare,0)*.13))}.module small{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);display:block}.module b{display:block;font-size:.83rem;margin-top:4px;font-weight:600}.module span{font-size:.7rem;color:var(--muted)}
-.engine{min-height:286px;padding:24px 26px;border:1px solid rgba(201,169,110,.32);border-radius:18px;background:radial-gradient(circle at 50% 35%,rgba(201,169,110,calc(.16 + var(--surge,0)*.22)),transparent calc(42% + var(--surge,0)*10%)),#100b07;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
-.engine::before{content:"";position:absolute;inset:12px;border:1px dashed rgba(201,169,110,.24);border-radius:12px}.socket{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
+.rail{display:grid;gap:9px}.module{border:1px solid var(--line2);border-color:color-mix(in srgb,var(--line2),var(--gold) calc(var(--flare,0)*55%));border-radius:12px;padding:12px;background:rgba(30,10,4,.35);box-shadow:0 0 0 calc(var(--flare,0)*1.5px) rgba(242,154,69,.4),0 0 calc(var(--flare,0)*24px) rgba(242,154,69,calc(var(--flare,0)*.13))}.module small{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost);display:block}.module b{display:block;font-size:.83rem;margin-top:4px;font-weight:600}.module span{font-size:.7rem;color:var(--muted)}
+.engine{min-height:286px;padding:24px 26px;border:1px solid rgba(242,154,69,.32);border-radius:18px;background:radial-gradient(circle at 50% 35%,rgba(242,154,69,calc(.16 + var(--surge,0)*.22)),transparent calc(42% + var(--surge,0)*10%)),#220d06;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.engine::before{content:"";position:absolute;inset:12px;border:1px dashed rgba(242,154,69,.24);border-radius:12px}.socket{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
 .engine-name{font-family:var(--display);font-size:2.05rem;line-height:1.05;color:var(--fg);margin:13px 0 7px;transition:opacity .18s,transform .18s}.engine-name.swap{opacity:0;transform:translateY(7px)}
 .engine-role{font-size:.72rem;color:var(--gold);font-family:var(--mono);max-width:100%;line-height:1.35;min-height:2.7em;display:flex;align-items:center;justify-content:center;text-align:center}
-.model-switch{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:22px;position:relative;z-index:2}.model-switch button{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.58rem;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:7px;padding:7px 9px;cursor:pointer}.model-switch button:hover,.model-switch button[aria-pressed="true"]{color:var(--fg);border-color:var(--gold);background:rgba(201,169,110,.09)}.mi{width:13px;height:13px;flex:none}.engine-glyph{width:26px;height:26px;display:block;margin:0 auto 5px;color:var(--gold)}
+.model-switch{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:22px;position:relative;z-index:2}.model-switch button{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.58rem;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:7px;padding:7px 9px;cursor:pointer}.model-switch button:hover,.model-switch button[aria-pressed="true"]{color:var(--fg);border-color:var(--gold);background:rgba(242,154,69,.09)}.mi{width:13px;height:13px;flex:none}.engine-glyph{width:26px;height:26px;display:block;margin:0 auto 5px;color:var(--gold)}
 .rig-caption{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:.78rem;padding:16px 10px 2px}.rig-caption strong{color:var(--fg)}
 .paper{background:var(--paper);color:var(--paper-ink)}
 section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{display:grid;grid-template-columns:minmax(230px,.38fr) minmax(0,.62fr);gap:clamp(36px,7vw,94px)}
 /* signature amber "burn" transitions between dark and cream sections (shared with homepage) */
 .burn{position:relative;z-index:2;height:clamp(90px,13vw,170px);pointer-events:none;margin-block:-1px}
-.burn.down{background:linear-gradient(180deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.up{background:linear-gradient(0deg,var(--ink) 0%,#241609 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.up.to-ink2{background:linear-gradient(0deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
-.burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#251710 38%,#4a2a10 64%,#8a5424 80%,#c99459 90%,#e6d2ab 96%,var(--cream) 100%)}
+.burn.down{background:linear-gradient(180deg,var(--ink) 0%,#4a1b0c 38%,#7a3010 64%,#b2541c 80%,#e08a3c 90%,#f2c08c 96%,var(--cream) 100%)}
+.burn.up{background:linear-gradient(0deg,var(--ink) 0%,#4a1b0c 38%,#7a3010 64%,#b2541c 80%,#e08a3c 90%,#f2c08c 96%,var(--cream) 100%)}
+.burn.up.to-ink2{background:linear-gradient(0deg,var(--ink2) 0%,#521f0d 38%,#7a3010 64%,#b2541c 80%,#e08a3c 90%,#f2c08c 96%,var(--cream) 100%)}
+.burn.down.from-ink2{background:linear-gradient(180deg,var(--ink2) 0%,#521f0d 38%,#7a3010 64%,#b2541c 80%,#e08a3c 90%,#f2c08c 96%,var(--cream) 100%)}
 .sticky{position:sticky;top:120px;align-self:start}.paper h2{font-size:clamp(2.25rem,4vw,3.6rem);line-height:1.02}.paper .intro{color:var(--paper-muted);font-size:1.05rem;margin-top:18px;max-width:36ch}
 /* §definition engine pixel-map: a swappable frontier engine on its cradle (EB1911 six-cyl engraving, PD). Rides INSIDE the sticky column so it endures the whole section scroll */
 #definition .sticky .pixmap-e{position:relative;margin-top:36px;width:100%;max-width:460px;aspect-ratio:755/512;opacity:.5;pointer-events:none;background:#e7d9bd;-webkit-mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%));mask-image:radial-gradient(68% 66% at 48% 50%,#000 calc(var(--dev,1)*12%),rgba(0,0,0,.5) calc(var(--dev,1)*52%),transparent calc(var(--dev,1)*80%))}
@@ -180,27 +180,27 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 #definition .pixmap-e .pi.era-c{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-cradle.jpg");opacity:1}
 #definition .pixmap-e .pi.era-j{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-jet.jpg")}
 #definition .pixmap-e .pi.era-e{background-image:radial-gradient(circle,#2b2117 1.05px,transparent 1.5px),url("../assets/engine-electric.jpg")}
-#definition .sticky .era-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#795c2d;min-height:1.2em}
+#definition .sticky .era-tag{margin-top:12px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8f3d14;min-height:1.2em}
 #definition .sticky .era-cap{margin-top:10px;font-size:.82rem;line-height:1.55;color:var(--paper-muted);max-width:460px}
 @media(max-width:960px){#definition .sticky .pixmap-e,#definition .sticky .era-tag,#definition .sticky .era-cap{display:none}}
 .prose{max-width:760px}.prose h3{font-size:1.3rem;line-height:1.3;margin:36px 0 10px}.prose h3:first-child{margin-top:0}.prose p{color:var(--paper-muted);margin:0 0 18px}.prose strong{color:var(--paper-ink)}
-.definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
-.compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
+.definition{border:1px solid var(--paper-line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.47);margin-bottom:32px}.definition .label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#8f3d14}.definition p{font-family:var(--display);font-size:1.45rem;line-height:1.35;color:var(--paper-ink);margin:10px 0 0}
+.compare{overflow-x:auto;margin:26px 0 8px}table{width:100%;border-collapse:collapse;font-size:.9rem}th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#8f3d14;padding:0 14px 10px}td{border-top:1px solid var(--paper-line);padding:15px 14px;color:var(--paper-muted);vertical-align:top}td:first-child{font-weight:600;color:var(--paper-ink);white-space:nowrap}
 .dark-section{position:relative;background:var(--ink)}.dark-section h2{font-size:clamp(2.35rem,4.4vw,3.85rem);line-height:1.01}.dark-section .lead{color:var(--muted);font-size:1.08rem;max-width:62ch;margin-top:18px}
 .dek{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.02rem;color:var(--gold);margin:2px 0 18px}
-.paper .dek,.faq .dek{color:#795c2d}
+.paper .dek,.faq .dek{color:#8f3d14}
 .anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:42px}.part{border:1px solid var(--line);border-radius:17px;padding:22px;background:linear-gradient(150deg,rgba(255,246,232,.045),transparent)}.part .num{font-family:var(--display);font-style:italic;font-weight:500;font-size:.85rem;letter-spacing:0;color:var(--gold)}.part h3{font-size:1rem;margin:13px 0 7px}.part p{font-size:.87rem;color:var(--muted)}
 /* ═══ Harness assembly stage (hb-): eight layers ring a swappable core ═══ */
-.hstage{position:relative;margin-top:48px;height:clamp(560px,64vw,660px);border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 120% at 50% 50%,rgba(201,169,110,.09),transparent 60%),linear-gradient(160deg,rgba(255,246,232,.03),rgba(7,5,4,.42))}
+.hstage{position:relative;margin-top:48px;height:clamp(560px,64vw,660px);border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 120% at 50% 50%,rgba(242,154,69,.09),transparent 60%),linear-gradient(160deg,rgba(255,246,232,.03),rgba(30,10,4,.42))}
 .hstage-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hstage-links line{stroke:rgba(201,169,110,.32);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1}
+.hstage-links line{stroke:rgba(242,154,69,.32);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1}
 .hcore-pos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(148px,17vw,188px);z-index:2}
-.hcore{aspect-ratio:1;border-radius:20px;border:1px solid rgba(201,169,110,.34);background:radial-gradient(circle at 50% 34%,rgba(201,169,110,.18),transparent 62%),#100b07;box-shadow:0 26px 62px -26px rgba(0,0,0,.82),inset 0 0 0 1px rgba(201,169,110,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;padding:16px}
+.hcore{aspect-ratio:1;border-radius:20px;border:1px solid rgba(242,154,69,.34);background:radial-gradient(circle at 50% 34%,rgba(242,154,69,.18),transparent 62%),#220d06;box-shadow:0 26px 62px -26px rgba(0,0,0,.82),inset 0 0 0 1px rgba(242,154,69,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;padding:16px}
 .hcore-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
 .hcore-name{font-family:var(--display);font-size:clamp(1.35rem,2.3vw,1.85rem);color:var(--fg);line-height:1;will-change:opacity,transform}
 .hcore-sub{font-family:var(--mono);font-size:.55rem;letter-spacing:.02em;color:var(--gold);max-width:16ch;line-height:1.4}
 .hlayer-pos{position:absolute;top:calc(var(--y)*1%);left:calc(var(--x)*1%);transform:translate(-50%,-50%);width:clamp(138px,15vw,166px);z-index:3}
-.hlayer{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:linear-gradient(150deg,rgba(255,246,232,.05),rgba(7,5,4,.3));box-shadow:0 16px 40px -26px rgba(0,0,0,.85);will-change:opacity,transform}
+.hlayer{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:linear-gradient(150deg,rgba(255,246,232,.05),rgba(30,10,4,.3));box-shadow:0 16px 40px -26px rgba(0,0,0,.85);will-change:opacity,transform}
 .hl-k{display:block;font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 .hlayer b{display:block;font-size:.9rem;color:var(--fg);margin:7px 0 4px;line-height:1.2}
 .hl-d{display:block;font-size:.73rem;color:var(--muted);line-height:1.42}
@@ -212,13 +212,13 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 @media(min-width:861px) and (max-width:1000px){.hlayer-pos{width:clamp(150px,17.5vw,170px)}}
 @media(prefers-reduced-motion:reduce){.hb-js .hcore,.hb-js .hlayer{opacity:1;transform:none}.hb-js .hstage-links line{stroke-dashoffset:0}}
 @media(max-width:860px){.hstage{height:auto;padding:20px;display:flex;flex-direction:column;gap:12px}.hstage-links{display:none}.hcore-pos,.hlayer-pos{position:static;transform:none;width:auto}.hcore{aspect-ratio:auto;padding:22px}.hb-js .hcore,.hb-js .hlayer{opacity:1;transform:none}}
-.memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,74px);align-items:start}.filetree{background:#0d0906;border:1px solid var(--line);border-radius:18px;padding:22px;font-family:var(--mono);font-size:.75rem;line-height:1.85;color:var(--muted);box-shadow:0 28px 70px rgba(0,0,0,.25)}.filetree .bar{display:flex;gap:7px;margin-bottom:17px}.filetree .bar i{width:8px;height:8px;border-radius:50%;background:var(--rose)}.filetree .bar i:nth-child(2){background:var(--gold)}.filetree .bar i:nth-child(3){background:var(--green)}.filetree b{color:var(--fg);font-weight:500}.filetree .note{color:var(--gold)}
+.memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,74px);align-items:start}.filetree{background:#220d06;border:1px solid var(--line);border-radius:18px;padding:22px;font-family:var(--mono);font-size:.75rem;line-height:1.85;color:var(--muted);box-shadow:0 28px 70px rgba(0,0,0,.25)}.filetree .bar{display:flex;gap:7px;margin-bottom:17px}.filetree .bar i{width:8px;height:8px;border-radius:50%;background:var(--rose)}.filetree .bar i:nth-child(2){background:var(--gold)}.filetree .bar i:nth-child(3){background:var(--green)}.filetree b{color:var(--fg);font-weight:500}.filetree .note{color:var(--gold)}
 .memory-copy h2{font-size:clamp(2.3rem,4.2vw,3.75rem);line-height:1.03}.memory-copy>p{color:var(--muted);font-size:1.05rem;margin-top:20px}.truth{margin-top:25px;border-left:2px solid var(--gold);padding:4px 0 4px 18px}.truth b{display:block;margin-bottom:4px}.truth p{font-size:.88rem;color:var(--muted)}
-.fieldnotes{background:var(--paper);color:var(--paper-ink)}.field-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,7vw,94px);align-items:start}.fieldnotes h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.fieldnotes .lead{color:var(--paper-muted);margin-top:18px}.timeline{border-left:1px solid var(--paper-line);padding-left:28px}.moment{position:relative;padding:0 0 31px}.moment:last-child{padding-bottom:0}.moment::before{content:"";position:absolute;left:-34px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid #866633}.moment small{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#795c2d}.moment h3{font-size:1.08rem;margin:6px 0}.moment p{color:var(--paper-muted);font-size:.92rem}
+.fieldnotes{background:var(--paper);color:var(--paper-ink)}.field-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,7vw,94px);align-items:start}.fieldnotes h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.fieldnotes .lead{color:var(--paper-muted);margin-top:18px}.timeline{border-left:1px solid var(--paper-line);padding-left:28px}.moment{position:relative;padding:0 0 31px}.moment:last-child{padding-bottom:0}.moment::before{content:"";position:absolute;left:-34px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid #a8481a}.moment small{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#8f3d14}.moment h3{font-size:1.08rem;margin:6px 0}.moment p{color:var(--paper-muted);font-size:.92rem}
 .build{background:var(--ink2)}.build-head{max-width:750px}.build h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}.build .lead{color:var(--muted);margin-top:18px}.steps{display:grid;gap:1px;margin-top:42px;border:1px solid var(--line);border-radius:18px;overflow:hidden}.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px;background:rgba(255,246,232,.025);border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.step .n{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1}.step h3{font-size:1.02rem;margin-bottom:5px}.step p{color:var(--muted);font-size:.9rem;max-width:72ch}
-.faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#795c2d}.faq details[open] summary::after{content:"−"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
-.sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#795c2d;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#654919}
-.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(201,169,110,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}
+.faq{background:var(--paper);color:var(--paper-ink)}.faq h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02;margin-bottom:32px}.faq details{border-top:1px solid var(--paper-line)}.faq details:last-of-type{border-bottom:1px solid var(--paper-line)}.faq summary{cursor:pointer;list-style:none;padding:20px 2px;display:flex;justify-content:space-between;gap:20px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-family:var(--mono);color:#8f3d14}.faq details[open] summary::after{content:"−"}.faq details p{color:var(--paper-muted);padding:0 2px 20px;max-width:78ch}
+.sources{margin-top:42px}.sources h3{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:#8f3d14;margin-bottom:14px}.sources ol{padding-left:19px;color:var(--paper-muted);font-size:.84rem}.sources li{margin:7px 0}.sources a{color:#7a3210}
+.closing{text-align:center;padding:clamp(72px,10vw,134px) var(--gut);background:radial-gradient(circle at 50% 0%,rgba(242,154,69,.11),transparent 48%)}.closing h2{font-size:clamp(2.5rem,5vw,4.4rem);line-height:1.02;max-width:15ch;margin:auto}.closing h2 em{color:var(--gold);font-weight:400}
 #shared-memory h2{font-size:clamp(2.35rem,4.4vw,3.8rem);line-height:1.02}
 #shared-memory h2 em{color:var(--gold);font-weight:400;font-style:italic}
 #shared-memory h3{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.2;margin:38px 0 4px;max-width:44ch}
@@ -227,9 +227,9 @@ section{padding:clamp(68px,9vw,122px) 0;scroll-margin-top:108px}.section-grid{di
 .memory-traits{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px;max-width:68ch}
 .memory-traits li{padding:2px 0 2px 18px;border-left:2px solid var(--gold);color:var(--muted);font-size:1rem;line-height:1.6}
 .memory-traits li b{color:var(--fg);font-weight:600}.closing p{color:var(--muted);max-width:55ch;margin:20px auto 0}.closing .actions{justify-content:center}
-  footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(236,230,218,.5))}
-  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(236,230,218,.5));margin-right:2px}
-  footer .foot-app a{color:var(--gold,#c9a96e);opacity:.9;transition:opacity .2s}
+  footer .foot-app{display:flex;gap:6px 10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-family:var(--mono,'JetBrains Mono',monospace);font-size:.7rem;letter-spacing:.04em;color:var(--faint,rgba(251,238,221,.5))}
+  footer .foot-app .fa-label{text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--faint,rgba(251,238,221,.5));margin-right:2px}
+  footer .foot-app a{color:var(--gold,#f29a45);opacity:.9;transition:opacity .2s}
   footer .foot-app a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
 footer{text-align:center;border-top:1px solid var(--line2);padding:48px var(--gut) 64px;color:var(--ghost);font-size:.82rem}footer .quote{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--gold);margin-bottom:13px}footer a{color:var(--muted)}
 footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap;margin-bottom:15px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em}footer .foot-nav a[aria-current=page]{color:var(--gold)}
@@ -244,13 +244,438 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
+<style id="amber">
+/* ── Amber, phase 1 (2026-11-16). Tokens and hand-written golds were moved in this page's own CSS; this layer paints
+   buttons and chrome the way the homepage does. Copy, scripts and structure are unchanged. ── */
+.btn{border-radius:10px}
+.btn.primary{background:#fff0dc;color:#2a1206;box-shadow:none}
+.btn.primary:hover{background:#ffe4c4;box-shadow:none}
+section.light .btn.primary,.lightband .btn.primary,.paper .btn.primary{background:#8f3d14;color:#fff3e4}
+section.light .btn.primary:hover,.lightband .btn.primary:hover,.paper .btn.primary:hover{background:#7a3210}
+p a.btn,.lead a.btn{text-decoration:none}
+
+/* Nav: the homepage's resin card. Translucent over the dark top, solid resin once that is passed (script below);
+   cream lockup and links. The logo line-draw and the inset Log in / Download control are the page's own, repainted. */
+.nav .nav-main{background:rgba(255,232,206,.07);border:1px solid rgba(255,226,196,.17);border-radius:14px;box-shadow:none;
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);transition:background-color .3s ease}
+.nav.solid .nav-main{background:rgba(52,20,10,.94)}
+.nav .brand{color:#fff2e2}
+.nav .links > a,.nd-btn{color:rgba(255,238,220,.8)}
+.nav .links > a:hover,.nd-btn:hover,.nd[data-open] .nd-btn{color:#fff2e2;background:rgba(255,236,214,.08)}
+.nav .links .nav-actions{background:rgba(34,11,2,.42);border-radius:13px;box-shadow:inset 0 1px 3px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,226,196,.09)}
+.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{border-radius:10px;
+  transition:flex-basis .6s cubic-bezier(.25,.8,.25,1),padding .6s cubic-bezier(.25,.8,.25,1),opacity .6s ease,background-color .3s ease,color .3s ease}
+.nav .links .nav-actions .nav-login{color:#fff2e2;font-weight:600}
+.nav .links .nav-actions .cta{background:#fff0dc;color:#2a1206}
+.nav .links .nav-actions[data-mode="login"] .nav-login{background:#fff0dc;color:#2a1206}
+.nav-burger{border-color:rgba(255,226,196,.24)}
+.nav-burger span{background:#fff2e2}
+/* The open X never closed (on origin too): the grid burger stretched its three rows over the button and its margins
+   do not collapse, so the lines sat far apart while the open state moved them 4px. Pack the rows (6.4px apart) and
+   move them that distance. */
+.nav-burger{align-content:center}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.4px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.4px) rotate(-45deg)}
+@media (min-width:1001px){
+  .nd-menu{background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 70px -28px rgba(0,0,0,.6);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+  .nd-menu{max-height:calc(100vh - 124px);max-height:calc(100dvh - 124px);overflow-y:auto;overscroll-behavior:contain}
+}
+/* The burger from 1000px down, as on the homepage (at 951, the Duo open, the links wrapped to two lines). */
+@media (max-width:1000px){
+  .nav-top{display:none}
+  .nav-main{margin-top:10px}
+  .nav-burger{display:grid;width:44px;height:44px}
+  .nav .links{position:fixed;left:14px;right:14px;top:78px;flex-direction:column;align-items:stretch;gap:2px;padding:14px 16px 20px;border-radius:16px;
+    background:var(--ink);border-color:rgba(255,226,196,.17);box-shadow:0 30px 60px -24px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .2s,transform .25s,visibility .25s}
+  .nav .links.open{opacity:1;visibility:visible;transform:none}
+  .nav .links{max-height:calc(100vh - 104px);max-height:calc(100dvh - 104px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .nd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:transparent;min-width:0;padding:0 0 4px 14px;display:none}
+  .nd[data-open] .nd-menu{display:block}
+  .nd-menu a{color:#fff2e2}
+  .nd-menu a small{color:rgba(255,238,220,.62)}
+  .nd-menu a:hover{background:rgba(255,236,214,.08)}
+  .nav .links .nav-actions{margin:12px 0 0;width:100%}
+  .nav .links > a,.nd-btn,.nd-menu a,.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta{min-height:44px}
+  .nav .links > a,.nd-btn{display:flex;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){.nav .links .nav-actions .nav-login,.nav .links .nav-actions .cta,.nav .nav-main{transition:none}}
+
+.paper .btn.ghost:hover{border-color:#8f3d14;color:#8f3d14}
+/* #cos is cream without the .paper class, so its subtitle fell through to the accent (light on light, also on origin). */
+.fieldnotes .dek{color:#8f3d14}
+</style>
+<style id="chapters">
+/* ══ /harness level-up (2026-11-17): five chapters to the homepage and /control standard. Each chapter keeps its own
+   ground and layout, has one line-then-ink anime.js moment, and ends one step deeper into the site. ══ */
+:root{--body-on-cream:#514436;--line-on-cream:rgba(46,31,16,.14);--line-2:rgba(255,236,214,.10);--muted-on-cream:rgba(46,31,16,.7)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.ch-wide{max-width:1320px}
+main>section{padding-block:clamp(64px,8vw,112px)}
+main>section[id]{scroll-margin-top:96px}
+#build,#shared-memory{scroll-margin-top:120px}
+@media (max-width:1000px){main>section[id]{scroll-margin-top:64px}}
+.paper p,.paper li,.paper dd{color:var(--body-on-cream)}
+.paper .btn.ghost{border-color:rgba(40,27,17,.28);color:var(--paper-ink)}
+.paper .btn.ghost:hover{border-color:#8f3d14;color:#8f3d14}
+.btn{min-height:44px}
+.ch-ln{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.paper .ch-ln,.paper p a{color:#8f3d14}
+main h2,main h3{font-style:normal;text-wrap:balance}
+
+/* ── Hero: four tells out (italic tail, pill chips, glowing grid, fade-up); its own engine swap stays ── */
+.hero::after{content:none}
+.hero h1{max-width:12ch;color:var(--fg)}
+.crail{position:relative;display:inline-flex;gap:6px;padding-bottom:7px;vertical-align:middle}
+.crail button{all:unset;box-sizing:border-box;cursor:pointer;width:34px;height:30px;display:grid;place-items:center;border-radius:6px;color:rgba(255,240,220,.62);transition:color .25s ease}
+.crail button.on,.crail button:hover{color:#fff0dc}
+.crail button:focus-visible{outline:2px solid #f6b46e;outline-offset:1px}
+.crail svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.crail .bar{position:absolute;left:0;bottom:0;width:34px;height:2px;border-radius:1px;background:#f6b46e;transition:transform .35s cubic-bezier(.3,.8,.3,1),width .35s ease}
+@media (max-width:1099px),(pointer:coarse){.crail{gap:4px}.crail button{width:44px;height:44px}.crail .bar{width:44px}}
+.rig .model-switch.crail{display:flex;flex-wrap:nowrap;width:max-content;max-width:100%;margin:18px auto 0;justify-content:center}
+.rig .crail button,.rig .crail button:hover,.rig .crail button[aria-pressed="true"]{border:0;background:none;padding:0}
+.rig .crail svg{fill:currentColor;stroke:none}
+html:not(.js) .rig .crail .bar{display:none}
+@media (max-width:430px){.rig{padding:12px}.rig .crail{gap:0}}
+
+/* The step: the homepage's underline on text stops */
+.cstep{position:relative;display:flex;gap:2px;width:fit-content;max-width:100%;border-bottom:1px solid var(--line-2)}
+.cstep button{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 14px;display:inline-flex;align-items:center;gap:8px;
+  font:500 .92rem/1.1 var(--body);color:var(--muted);white-space:nowrap;transition:color .25s ease}
+.cstep button:first-of-type{padding-left:2px}
+.cstep button::before{content:'';width:7px;height:7px;border-radius:50%;border:1px solid currentColor;flex:none;transition:background .25s ease,border-color .25s ease}
+.cstep button.on,.cstep button:hover{color:var(--fg)}
+.cstep button.on::before{background:#f6b46e;border-color:#f6b46e}
+.cstep button:focus-visible{outline:2px solid #f6b46e;outline-offset:-2px;border-radius:6px}
+.cstep .bar{position:absolute;left:0;bottom:-1px;height:2px;border-radius:1px;background:#f6b46e;transition:transform .35s cubic-bezier(.3,.8,.3,1),width .35s ease}
+html:not(.js) .cstep{display:none}
+.paper .cstep{border-bottom-color:var(--line-on-cream)}
+.paper .cstep button{color:var(--muted-on-cream)}
+.paper .cstep button.on,.paper .cstep button:hover{color:var(--paper-ink)}
+.paper .cstep button.on::before{background:#8f3d14;border-color:#8f3d14}
+.paper .cstep .bar{background:#8f3d14}
+.paper .cstep button:focus-visible{outline-color:#8f3d14}
+@media (max-width:400px){.cstep button{padding:0 9px;font-size:.86rem}.cstep button::before{display:none}}
+
+/* chapter ends */
+.ch-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:clamp(44px,5vw,64px);padding-top:26px;border-top:1px solid var(--line-on-cream)}
+.ch-end p{margin:0;max-width:52ch;font-size:1rem;line-height:1.6}
+.ch-act{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px}
+.ch-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 40px;margin-top:clamp(56px,7vw,88px);padding-top:clamp(26px,3.5vw,38px);border-top:1px solid var(--line)}
+.ch-close .creed{margin:0;max-width:26ch;font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.2;color:var(--fg)}
+.paper .ch-close{border-top-color:var(--line-on-cream)}
+.paper .ch-close .creed{color:var(--paper-ink)}
+.cc-cta{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ── 1 · What is an AI harness: the plate left in its own frame, the words right, the ledger below ── */
+.df-spread{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(30px,5vw,84px);align-items:start}
+.df-fig{margin:0}
+.df-plate{position:relative;aspect-ratio:755 / 512;border-radius:14px;overflow:hidden;border:1px solid var(--line-on-cream);background:#ebdfc8}
+#definition .df-plate .pixmap-e{position:absolute;inset:0;opacity:.82;
+  -webkit-mask-image:radial-gradient(85% 90% at 50% 52%,#000 calc(var(--dev,1)*42%),transparent calc(var(--dev,1)*100%));
+          mask-image:radial-gradient(85% 90% at 50% 52%,#000 calc(var(--dev,1)*42%),transparent calc(var(--dev,1)*100%))}
+#definition .df-plate .pixmap-e .pi{opacity:0;transition:opacity .6s ease}
+#definition .df-plate .pixmap-e .pi.on{opacity:1}
+.df-era{margin-top:14px}
+.df-cap{margin-top:12px;font-size:.9rem;line-height:1.55;color:var(--body-on-cream);max-width:52ch}
+.df-cap .ec{display:block;margin-bottom:4px;font-weight:600;color:var(--ink-on-cream)}
+.df-cap .ec:not(.on){display:none}
+#definition h2{font-size:clamp(2.3rem,4.2vw,3.6rem);line-height:1.02;color:var(--paper-ink)}
+#definition p.df-def{margin-top:22px;max-width:34ch;font-family:var(--display);font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.35;color:var(--ink-on-cream)}
+.df-text>p:not(.df-def){margin-top:18px;max-width:62ch;font-size:1.02rem;line-height:1.66}
+.df-text strong{color:var(--paper-ink)}
+.ledger{margin-top:clamp(52px,6.5vw,88px)}
+.ledger h3{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.15;color:var(--paper-ink)}
+.lg-t{margin-top:20px;width:100%;border-collapse:collapse;font-size:.95rem}
+.lg-t th,.lg-t td{font-family:var(--body);text-transform:none;letter-spacing:0;text-align:left;vertical-align:top}
+.lg-t thead th{padding:0 18px 12px 0;font-size:.85rem;font-weight:600;color:var(--body-on-cream)}
+.lg-t tbody th,.lg-t td{position:relative;padding:16px 18px 16px 0;border-top:1px solid var(--line-on-cream)}
+.lg-t tbody th{font-weight:600;font-size:1rem;color:var(--paper-ink);white-space:nowrap}
+.lg-t td{color:var(--body-on-cream);line-height:1.5}
+.lg-t td.lg-keep{color:#8f3d14;font-weight:600;transition:color .45s ease}
+.lg-x{position:relative;display:inline-block;text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--muted-on-cream)}
+.lg-rule,.lg-strk,.lg-krule{position:absolute;overflow:visible;pointer-events:none}
+.lg-rule{left:0;top:-1px;width:100%;height:2px}
+.lg-rule line{stroke:rgba(46,31,16,.22);stroke-width:1}
+.lg-strk{left:-3px;top:50%;width:calc(100% + 6px);height:2px;margin-top:-1px}
+.lg-strk line{stroke:#5a4a3a;stroke-width:1.5}
+.lg-keep>span{position:relative;display:inline-block}
+.lg-krule{left:0;bottom:-5px;width:100%;height:2px}
+.lg-krule line{stroke:#c0662c;stroke-width:2}
+.js .lg-t.rl tbody th,.js .lg-t.rl td{border-top-color:transparent}
+.js .lg-x{text-decoration:none}
+.lg-t.pre .lg-x:not(.gone){color:var(--paper-ink)}
+.lg-t.pre td.lg-keep{color:var(--body-on-cream)}
+p.lg-note{margin-top:18px;max-width:72ch;font-size:1rem;line-height:1.65}
+@media (max-width:1079px){.df-spread{grid-template-columns:1fr}.df-fig{order:2;max-width:620px}}
+@media (max-width:640px){
+  .lg-t thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .lg-t,.lg-t tbody,.lg-t tr,.lg-t tbody th,.lg-t td{display:block}
+  .lg-t tbody th{padding:16px 0 4px}
+  .lg-t td{padding:4px 0;border-top:0}
+  .lg-t td::before{content:attr(data-h);display:block;font-size:.8rem;font-weight:600;color:var(--muted-on-cream)}
+  .lg-t td:last-child{padding-bottom:16px}
+  .lg-t td .lg-rule{display:none}
+}
+
+/* ── 2 · The eight layers: the list beside the real starter-kit tree (sticky) ── */
+.ly-head h2{font-size:clamp(2.3rem,4.2vw,3.6rem);line-height:1.03;max-width:18ch;color:var(--fg)}
+.ly-stand{margin-top:16px;max-width:58ch;font-size:clamp(1.02rem,1.4vw,1.15rem);line-height:1.6;color:var(--muted)}
+.ly-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(32px,4vw,52px)}
+.ly-list{list-style:none;margin:0;padding:0}
+.ly-list>li{position:relative;padding:14px 0 16px 20px;border-top:1px solid var(--line-2);cursor:pointer}
+.ly-list>li:last-child{border-bottom:1px solid var(--line-2)}
+.ly-mk{position:absolute;left:0;top:16px;width:2px;height:calc(100% - 32px);overflow:visible;pointer-events:none}
+.ly-mk line{stroke:#f6b46e;stroke-width:2;stroke-linecap:round}
+.ly-list>li:not(.on) .ly-mk{visibility:hidden}
+.ly{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:baseline;gap:12px;min-height:44px;padding-right:8px;border-radius:6px}
+.ly:focus-visible{outline:2px solid #f6b46e;outline-offset:2px}
+.ly-n{flex:none;width:2em;font-family:var(--display);font-size:1.3rem;color:var(--gold)}
+.ly-t{font-weight:600;font-size:1.1rem;color:var(--fg)}
+.ly-list>li.on .ly-t{color:#fff0dc}
+.ly-body{padding-left:calc(2.6rem + 12px)}
+.ly-body p{font-size:.95rem;line-height:1.55;color:var(--muted)}
+.ly-body p+p{margin-top:6px}
+.ly-at code{font-family:var(--mono);font-size:.8rem;color:#f6b46e;overflow-wrap:anywhere}
+.ly-do b{color:var(--fg);font-weight:600}
+.ly-tree{position:sticky;top:104px;margin:0;border-radius:16px;background:#220d06;border:1px solid rgba(242,154,69,.34);overflow:hidden;color:var(--fg);box-shadow:0 30px 60px -34px rgba(0,0,0,.75)}
+.tree-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,246,232,.08);background:rgba(255,255,255,.02)}
+.ctl-lights{display:flex;gap:7px}
+.ctl-lights i{width:11px;height:11px;border-radius:50%;background:#e0635b}
+.ctl-lights i:nth-child(2){background:#e3b04b}.ctl-lights i:nth-child(3){background:#5bb869}
+.tree-name{margin-left:4px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.tree-body{padding:18px clamp(16px,3vw,26px) 20px;font-family:var(--mono);font-size:.8rem;line-height:1.7}
+.ly-tree .tr-root{margin:0;color:rgba(251,238,221,.7)}
+.ly-tree .tr-out{margin-top:16px;font-family:var(--body);font-size:.8rem}
+.ly-tree ul.tr{list-style:none;margin:0 0 0 6px;padding:2px 0 2px 18px;border-left:1px solid rgba(242,154,69,.32)}
+.ly-tree .tl{position:relative;padding:2px 0}
+.ly-tree .tl::before{content:'';position:absolute;left:-18px;top:calc(.85em + 2px);width:12px;height:1px;background:rgba(242,154,69,.32)}
+.js .ly-tree .tl::before{display:none}
+.tl-br{position:absolute;left:-18px;top:calc(.85em + 1.5px);width:12px;height:2px;overflow:visible;pointer-events:none}
+.tl-br line{stroke:rgba(242,154,69,.5);stroke-width:1}
+.ly-tree .tl>code{font:inherit;color:rgba(251,238,221,.86);background:none;padding:0;transition:color .4s ease}
+.ly-tree .tl .cm{margin-left:12px;color:rgba(251,238,221,.62)}
+.ly-tree.lit .tl>code{color:rgba(251,238,221,.62)}
+.ly-tree .tl.hit>code{color:#f6b46e}
+.ly-tree .tl.hit>.tl-br line{stroke:#f6b46e}
+.ly-tree .tree-cap{padding:12px clamp(16px,3vw,26px) 15px;border-top:1px solid rgba(255,246,232,.08);font-size:.82rem;line-height:1.5;color:rgba(251,238,221,.7)}
+@media (max-width:1079px){.ly-grid{grid-template-columns:1fr}.ly-tree{position:static;max-width:640px}}
+@media (max-width:600px){.ly-tree .tl .cm{display:block;margin-left:0;line-height:1.4;padding-bottom:3px}.ly-body{padding-left:0}}
+
+/* ── 3 · Memory outlives the model: a horizontal progression, then the essay beside the database ── */
+.ow-head h2{font-size:clamp(2.3rem,4.2vw,3.6rem);line-height:1.03;max-width:16ch;color:var(--paper-ink)}
+#ownership p.ow-stand{margin-top:14px;max-width:40ch;font-family:var(--display);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.3;color:var(--ink-on-cream)}
+.ow-run{--sgap:clamp(14px,2.4vw,32px);margin-top:clamp(34px,4.5vw,56px)}
+.ow-stops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--sgap)}
+.ow-stop{position:relative;min-width:0;padding-top:44px}
+.ow-dot{position:absolute;left:0;top:0;width:26px;height:26px;overflow:visible}
+.ow-dot .rg{fill:var(--paper);stroke:#c0662c;stroke-width:1.6}
+.ow-dot .fl{fill:#c0662c;transform-box:fill-box;transform-origin:center}
+.ow-seg{position:absolute;left:26px;top:12px;width:calc(100% + var(--sgap) - 26px);height:2px;overflow:visible;pointer-events:none}
+.ow-seg line{stroke:#c0662c;stroke-width:2;stroke-linecap:round}
+.ow-seg .sv{display:none}
+html:not(.js) .ow-stop:not(:last-child)::after{content:'';position:absolute;left:26px;top:12px;width:calc(100% + var(--sgap) - 26px);height:2px;background:#c0662c}
+#ownership p.ow-when{position:absolute;left:38px;top:3px;margin:0;font-weight:600;font-size:.95rem;color:var(--paper-ink)}
+.ow-card{border:1px solid rgba(46,31,16,.16);border-radius:14px;background:#fffdf8;padding:16px 18px;box-shadow:0 24px 48px -34px rgba(46,31,16,.5)}
+.ow-s{display:flex;align-items:center;gap:10px;margin:0;font-size:.95rem;min-width:0}
+.ow-s b{font-weight:600;color:var(--paper-ink);min-width:0}
+.pv{flex:none;font-size:.74rem;font-weight:600;padding:3px 9px;border-radius:7px;background:#ead2b0;color:#3a2210;white-space:nowrap}
+.pv.o{background:none;border:1px solid rgba(46,31,16,.3);color:var(--paper-ink)}
+#ownership p.ow-q{margin:10px 0 0;font-size:.95rem;line-height:1.5}
+.ow-mem{position:relative;margin:14px 0 0;padding-top:12px;display:flex;flex-direction:column;gap:2px}
+.ow-mem::before{content:'';position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-on-cream)}
+.js .ow-mem::before{display:none}
+.ow-rule{position:absolute;left:0;top:-1px;width:100%;height:2px;overflow:visible;pointer-events:none}
+.ow-rule line{stroke:#c0662c;stroke-width:1}
+.ow-mem code{font-family:var(--mono);font-size:.74rem;color:#8f3d14}
+#ownership .ow-mem span{font-size:.92rem;font-weight:600;color:var(--paper-ink)}
+.ow-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(30px,5vw,80px);align-items:start;margin-top:clamp(52px,6.5vw,88px)}
+.ow-essay p{font-size:1.04rem;line-height:1.7;max-width:62ch}
+.ow-essay p+p{margin-top:18px}
+.ow-db h3{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.15;color:var(--paper-ink)}
+.ow-db>p{margin-top:12px;font-size:.98rem;line-height:1.6}
+.ow-traits{margin:18px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.ow-traits div{padding:14px 0;border-top:1px solid var(--line-on-cream)}
+.ow-traits dt{font-weight:600;color:var(--paper-ink)}
+.ow-traits dd{margin:4px 0 0;font-size:.92rem;line-height:1.55}
+.ow-truth{margin-top:22px;padding:4px 0 4px 18px;border-left:2px solid #c0662c}
+.ow-truth b{display:block;color:var(--paper-ink)}
+.ow-truth p{margin-top:4px;font-size:.92rem;line-height:1.55}
+@media (max-width:1079px){.ow-grid{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .ow-stops{grid-template-columns:1fr;row-gap:22px}
+  .ow-stop{padding:0 0 0 42px}
+  #ownership p.ow-when{position:static;margin:2px 0 10px}
+  .ow-seg{left:12px;top:26px;width:2px;height:calc(100% - 4px)}
+  .ow-seg .sh{display:none}.ow-seg .sv{display:inline}
+  html:not(.js) .ow-stop:not(:last-child)::after{left:12px;top:26px;width:2px;height:calc(100% - 4px)}
+}
+@media (max-width:560px){.ow-traits{grid-template-columns:1fr}}
+
+/* ── 4 · Under real load: the real Activity window (copied from /control) beside the loop's step ── */
+.cs-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,3.6vw,56px);align-items:start}
+.cs-side{grid-column:2;grid-row:1;position:sticky;top:104px}
+.cs-obj{grid-column:1;grid-row:1;position:relative;min-width:0}
+.cs-side h2{font-size:clamp(2.1rem,3.4vw,3rem);line-height:1.05;color:var(--fg)}
+.cs-lead{margin-top:16px;font-size:1rem;line-height:1.62;color:var(--muted)}
+.cs-step{margin-top:26px}
+.cs-m{margin-top:18px}
+.js .cs-m:not(.on){display:none}
+.cs-t{font-weight:600;font-size:1.06rem;line-height:1.38;color:var(--fg)}
+.cs-m p:not(.cs-t){margin-top:8px;font-size:.98rem;line-height:1.6;color:var(--muted)}
+.cs-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:26px}
+.cs-cta .ch-ln{color:var(--gold)}
+.aw-cap{margin-top:12px;font-size:.84rem;color:var(--muted)}
+@media (max-width:1099px){.cs-grid{grid-template-columns:1fr}.cs-side{grid-column:1;grid-row:1;position:static}.cs-obj{grid-column:1;grid-row:2;margin-top:8px}}
+.aw{--aw-bg:#f4efe6;--aw-side:#ece5d8;--aw-card:#fffdf8;--aw-ink:#241708;--aw-mute:#6b5a48;--aw-line:rgba(46,31,16,.13);--aw-gold:#8a5a1c;--aw-hot:#9a4a12;
+  position:relative;border-radius:16px;overflow:hidden;background:var(--aw-bg);color:var(--aw-ink);
+  border:1px solid rgba(46,31,16,.22);box-shadow:0 50px 100px -50px rgba(0,0,0,.7);font-size:14px;line-height:1.4;text-align:left}
+.aw p{margin:0}
+.aw-title{position:relative;display:flex;align-items:center;justify-content:center;height:34px;background:#f7f3ec;border-bottom:1px solid var(--aw-line);font-weight:600;font-size:13px;color:#3a2a1c}
+.aw-lights{position:absolute;left:14px;top:50%;transform:translateY(-50%);display:flex;gap:7px}
+.aw-lights i{width:12px;height:12px;border-radius:50%;background:#ec6a5e}.aw-lights i:nth-child(2){background:#f4bf4f}.aw-lights i:nth-child(3){background:#61c554}
+.aw-cols{display:grid;grid-template-columns:200px minmax(0,1fr);height:clamp(580px,48vw,680px)}
+.aw-side{display:flex;flex-direction:column;min-height:0;background:var(--aw-side);border-right:1px solid var(--aw-line);padding:16px 10px 12px}
+.aw-logo{display:flex;align-items:center;gap:8px;margin:2px 8px 14px;font-family:var(--display);font-size:20px;color:var(--aw-ink)}
+.aw-logo img{width:16px;height:auto}.aw-logo b{font-weight:600}
+.aw .vtabs{display:flex;flex-direction:column;gap:2px}
+.aw .vtab{display:grid;grid-template-columns:20px minmax(0,1fr);gap:9px;align-items:start;padding:8px 9px;border:1px solid transparent;border-radius:10px;color:var(--aw-ink);transition:background-color .3s ease,border-color .3s ease}
+.aw .vtab svg{width:17px;height:17px;margin-top:1px;color:#5b4a3a}
+.aw .vtab.sel{background:var(--aw-card);border-color:var(--aw-line);box-shadow:0 1px 2px rgba(46,31,16,.06)}
+.vs-t{display:flex;flex-direction:column;min-width:0}
+.vs-t b{font-weight:600;font-size:14px}.vs-t b em{font-style:normal;color:var(--aw-hot);margin-left:4px}
+.vs-t small{font-size:12.5px;color:var(--aw-mute);line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.vs-t small.hot{color:var(--aw-hot)}
+.aw-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:10px 10px 2px;font-size:13px;color:var(--aw-mute)}
+.aw-ok{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:#2f6b3f}
+.aw-ok i{width:7px;height:7px;border-radius:50%;background:#3f8a52}
+.aw-main{position:relative;min-width:0;min-height:0;overflow:hidden}
+.aw-main::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;pointer-events:none;background:linear-gradient(rgba(244,239,230,0),var(--aw-bg))}
+.aw-top{display:flex;align-items:center;gap:8px;height:50px;padding:0 16px;border-bottom:1px solid var(--aw-line);background:#f8f4ee;font-size:13px}
+.aw[data-v="today"] .aw-top{display:none}
+.aw-cos{display:flex;align-items:center;gap:5px;font-family:var(--display);font-size:16px;margin-right:4px}.aw-cos img{width:13px;height:auto}
+.aw-b,.aw .b{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid rgba(46,31,16,.2);border-radius:8px;background:var(--aw-card);font-size:13px;font-weight:500;color:var(--aw-ink);white-space:nowrap}
+.aw-b svg{width:13px;height:13px}
+.aw .b.pri{background:#b88a4e;border-color:#a8793d;color:#2a1608}
+.aw-crumb{display:flex;align-items:center;gap:4px;margin-left:6px;color:var(--aw-ink);font-weight:500}.aw-crumb b{font-weight:500;color:var(--aw-mute)}
+.aw-chev{width:12px;height:12px;color:var(--aw-mute)}
+.aw-set{margin-left:auto}
+.aw .ln{color:var(--aw-gold);font-weight:500;white-space:nowrap}
+.aw kbd{font-family:var(--mono);font-size:11px;padding:1px 5px;border:1px solid var(--aw-line);border-radius:5px;margin-left:8px;color:var(--aw-mute)}
+.aw time{font-family:var(--mono);font-size:12px;color:var(--aw-mute)}
+.aw-pane{position:relative;padding:22px 24px 40px}
+.aw-pane[data-open="false"]{display:none}
+.aw-row{position:relative}
+.aw-ink{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.aw-ink line{stroke:#c0662c;stroke-opacity:.45;stroke-width:1}
+.cs-obj .vw-outline{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:3}
+.vw-outline rect{fill:none;stroke:#f6b46e;stroke-width:1.5}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#d24b3a;flex:none}
+.t-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.aw .t-h{font-family:var(--display);font-size:40px;line-height:1;color:var(--aw-ink)}
+.t-h small{font-family:var(--body);font-size:14px;color:var(--aw-mute);margin-left:12px}
+.t-ask{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 260px;max-width:420px;padding:10px 12px;border:1px solid rgba(46,31,16,.22);border-radius:10px;background:var(--aw-card);color:var(--aw-mute)}
+.t-ask svg{width:15px;height:15px;color:var(--aw-ink)}.t-ask kbd{margin-left:auto}
+.t-rec{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 14px;border:1.5px solid rgba(210,75,58,.5);border-radius:12px;background:var(--aw-card)}
+.t-rec>span:first-of-type{display:flex;flex-direction:column}.t-rec small{color:var(--aw-mute)}
+.t-rec-r{margin-left:auto;display:flex;align-items:center;gap:12px;color:var(--aw-mute);font-size:13px}
+.aw .t-brief{margin:18px 0 0;font-family:var(--display);font-size:21px;line-height:1.3;color:var(--aw-ink);max-width:46ch}
+.t-cols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;margin-top:18px;align-items:start}
+.t-needs,.t-next{background:var(--aw-card);border:1px solid var(--aw-line);border-radius:14px}
+.t-card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--aw-line);font-size:16px}
+.t-card-h em{font-style:normal;color:var(--aw-hot);margin-left:4px}
+.t-need{padding:12px 16px;border-bottom:1px solid var(--aw-line);display:flex;flex-direction:column;gap:5px}
+.aw .t-need p{display:flex;justify-content:space-between;gap:10px}
+.t-need small{color:var(--aw-mute);font-size:13px}
+.t-acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.aw .t-more{padding:11px 16px;color:var(--aw-gold);font-weight:500;font-size:13px}
+.t-side{display:flex;flex-direction:column;gap:12px}
+.t-run{background:#2a1d14;color:#f6ead8;border-radius:14px;padding-bottom:6px}
+.t-run .t-card-h{border-bottom-color:rgba(255,236,214,.12)}.t-run .t-card-h em{color:#e3b27a}.t-run .ln{color:#e3b27a}
+.t-srow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(255,236,214,.08)}
+.t-s{display:flex;flex-direction:column;min-width:0}.t-s b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}.t-s small{color:rgba(246,234,216,.72)}
+.t-s i.g{width:8px;height:8px;border-radius:50%;background:#5fbf7a;flex:none}
+.aw .pv{font-size:11.5px;padding:3px 9px;background:#f1d7b5;color:#3a2210}
+.aw .pv.o{background:none;border:1px solid rgba(255,236,214,.4);color:#f6ead8}
+.aw .t-fin{padding:8px 16px 2px;font-size:12.5px;color:rgba(246,234,216,.72)}
+.t-next{padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.t-nh{font-size:16px}.aw .t-next p{display:flex;flex-direction:column}.t-next small{color:var(--aw-mute)}
+.p-head{display:flex;align-items:center;gap:12px;padding-bottom:12px}
+.p-head>svg{width:22px;height:22px;color:#5b4a3a;flex:none}
+.p-head>span:first-of-type{display:flex;flex-direction:column;margin-right:auto;min-width:0}
+.p-head>span b{font-family:var(--display);font-weight:500;font-size:25px;line-height:1.1}
+.p-head>span small{color:var(--aw-mute);font-size:13.5px}
+.aw .p-stats{display:flex;gap:28px;margin:0 0 12px}
+.p-stats span{display:flex;flex-direction:column}.p-stats b{font-family:var(--display);font-weight:500;font-size:22px}
+.p-stats i{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--aw-mute)}
+.aw .seg{display:inline-flex;gap:2px;margin:0 0 12px;padding:3px;border:1px solid var(--aw-line);border-radius:9px;background:rgba(255,253,248,.6)}
+.seg span{padding:5px 11px;border-radius:7px;font-size:13px;color:var(--aw-mute)}
+.seg span.on{background:var(--aw-card);color:var(--aw-ink);font-weight:600;box-shadow:0 1px 2px rgba(46,31,16,.08)}
+.l-row{display:flex;align-items:center;gap:12px;margin-top:8px;padding:12px 14px;border:1px solid var(--aw-line);border-radius:11px;background:var(--aw-card)}
+.l-row>span:not(.kind):not(.tag):not(.pv):not(.ln){display:flex;flex-direction:column;min-width:0;margin-right:auto}
+.l-row b{font-weight:600}.l-row small{color:var(--aw-mute);font-size:13px}
+.kind{flex:none;width:110px;font-size:12px;color:var(--aw-mute)}
+.aw .l-row .pv{background:#ead2b0;color:#3a2210}.aw .l-row .pv.o{background:none;border:1px solid rgba(46,31,16,.25);color:var(--aw-ink)}
+.aw .grp{margin:14px 0 0;font-size:12.5px;font-weight:600;color:var(--aw-mute)}
+.m-turn{margin-top:10px;padding:14px 16px;border:1px solid var(--aw-line);border-radius:12px;background:var(--aw-card)}
+.aw .m-meta{display:flex;align-items:center;gap:10px;font-size:13px}.m-meta span{color:var(--aw-mute)}
+.aw .m-q{margin:8px 0 0;font-weight:600}.aw .m-a{margin:6px 0 0;color:#3d2c1d}
+.m-chip{display:inline-block;margin-top:10px;padding:4px 9px;border:1px solid var(--aw-line);border-radius:7px;font-size:12px;color:var(--aw-mute)}
+@media (max-width:1240px) and (min-width:1100px){.aw-cols{grid-template-columns:172px minmax(0,1fr)}.t-cols{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .aw{font-size:13px;border-radius:12px}
+  .aw-cols{display:block;height:auto}
+  .aw-side{display:none}
+  .aw-main{max-height:600px}
+  .aw-top{height:auto;flex-wrap:wrap;padding:8px 12px}.aw-top .aw-b:not(.aw-set),.aw-cos{display:none}
+  .aw-pane{padding:16px 14px 40px}
+  .aw .t-h{font-size:30px}.t-h small{display:block;margin:6px 0 0}
+  .t-rec{flex-wrap:wrap}.t-rec-r{margin-left:0}
+  .aw .t-brief{font-size:18px}
+  .t-cols{grid-template-columns:1fr}
+  .l-row{flex-wrap:wrap}.kind{width:auto}
+  .p-head>span b{font-size:21px}
+}
+
+/* ── 5 · Questions: words and ways deeper on the left, the answers on the right ── */
+.fq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,84px);align-items:start}
+.fq-left{position:sticky;top:104px}
+#faq h2{font-size:clamp(2.2rem,3.8vw,3.3rem);line-height:1.04;color:var(--paper-ink);margin:0}
+#faq p.fq-lead{margin-top:18px;max-width:40ch;font-size:1.04rem;line-height:1.65}
+.deeper{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--line-on-cream)}
+.deeper a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid var(--line-on-cream);font-weight:500;text-decoration:none;color:#8f3d14}
+.deeper a:hover{text-decoration:underline;text-underline-offset:3px}
+.fq-src{margin-top:28px}
+.fq-src h3{font-family:var(--body);font-weight:600;font-size:.95rem;line-height:1.4;color:var(--paper-ink)}
+.fq-src ol{margin-top:8px;padding-left:19px}
+#faq .fq-src li{margin:6px 0;font-size:.86rem;line-height:1.5}
+.fq-src a{color:#7a3210}
+.fq{border-top:1px solid var(--line-on-cream)}
+.fq:last-child{border-bottom:1px solid var(--line-on-cream)}
+.fq summary{cursor:pointer;list-style:none;min-height:44px;padding:18px 2px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:600;color:var(--paper-ink)}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:"+";font-family:var(--mono);color:#8f3d14}
+.fq[open] summary::after{content:"\2212"}
+.js .fq summary::after{content:none}
+.fq summary .fq-pm{flex:none;width:16px;height:16px;overflow:visible}
+.fq-pm line{stroke:#8f3d14;stroke-width:1.6;stroke-linecap:round}
+.fq-pm .v{transform-box:fill-box;transform-origin:center;transition:transform .35s cubic-bezier(.3,.8,.3,1)}
+.fq[open] .fq-pm .v{transform:rotate(90deg)}
+#faq .fq p{padding:0 2px 20px;max-width:72ch;font-size:.98rem;line-height:1.65}
+@media (max-width:1079px){.fq-grid{grid-template-columns:1fr}.fq-left{position:static}}
+@media (prefers-reduced-motion:reduce){.crail .bar,.cstep .bar,.fq-pm .v,.lg-t td.lg-keep,.ly-tree .tl>code,#definition .df-plate .pixmap-e .pi,.aw .vtab{transition:none}}
+</style>
 </head>
 <body>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute" focusable="false"><symbol id="eng-claude" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"/></symbol><symbol id="eng-openai" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"/></symbol><symbol id="eng-gemini" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/></symbol><symbol id="eng-cursor" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M22.106 5.68L12.5.135a.998.998 0 00-.998 0L1.893 5.68a.84.84 0 00-.419.726v11.186c0 .3.16.577.42.727l9.607 5.547a.999.999 0 00.998 0l9.608-5.547a.84.84 0 00.42-.727V6.407a.84.84 0 00-.42-.726zm-.603 1.176L12.228 22.92c-.063.108-.228.064-.228-.061V12.34a.59.59 0 00-.295-.51l-9.11-5.26c-.107-.062-.063-.228.062-.228h18.55c.264 0 .428.286.296.514z"/></symbol><symbol id="eng-grok" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.27 15.29l7.978-5.897c.391-.29.95-.177 1.137.272.98 2.369.542 5.215-1.41 7.169-1.951 1.954-4.667 2.382-7.149 1.406l-2.711 1.257c3.889 2.661 8.611 2.003 11.562-.953 2.341-2.344 3.066-5.539 2.388-8.42l.006.007c-.983-4.232.242-5.924 2.75-9.383.06-.082.12-.164.179-.248l-3.301 3.305v-.01L9.267 15.292M7.623 16.723c-2.792-2.67-2.31-6.801.071-9.184 1.761-1.763 4.647-2.483 7.166-1.425l2.705-1.25a7.808 7.808 0 00-1.829-1A8.975 8.975 0 005.984 5.83c-2.533 2.536-3.33 6.436-1.962 9.764 1.022 2.487-.653 4.246-2.34 6.022-.599.63-1.199 1.259-1.682 1.925l7.62-6.815"/></symbol><symbol id="eng-codex" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7l5 5-5 5"/><path d="M13.5 17h5"/></g></symbol><symbol id="eng-local" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 3v2M12 3v2M15 3v2M9 19v2M12 19v2M15 19v2M3 9h2M3 12h2M3 15h2M19 9h2M19 12h2M19 15h2"/></g></symbol></svg>
 <nav class="nav" aria-label="Main">
   <div class="nav-top">
     <div class="nt-in">
-      <span class="nt-tag">Open-source AI chief of staff &middot; 400+ COS Glasses users</span>
+      <span class="nt-tag">Open-source AI chief of staff &middot; 500+ COS Glasses users</span>
       <div class="nt-links">
         <a href="/control/docs/">Mac Docs</a>
         <a href="/docs/">Glasses Docs</a>
@@ -338,18 +763,17 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <header class="hero">
   <div class="hero-grid wrap">
-    <div class="reveal">
-      <h1>The model is rented. <em>The harness is yours.</em></h1>
-      <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, your tools, your rules, and a place to keep working. The system around the model is what turns rented intelligence into an AI that knows how you operate. Not one clever prompt. The operating layer underneath it. One memory, held outside every assistant, that any model can query.</p>
+    <div class="hero-copy">
+      <h1>The model is rented. The harness is yours.</h1>
+      <p class="hero-lead">A frontier model can reason. A <strong>harness</strong> gives it your memory, your tools, your rules, and a place to keep working. That system around the model is what turns rented intelligence into an AI that knows how you operate: one memory, held outside every assistant, that any model can query.</p>
       <div class="actions">
         <a class="btn primary" href="#definition">Understand the harness</a>
         <a class="btn ghost" href="#build">Build your own</a>
       </div>
-      <p class="byline">Miles Ukaoma · GotCOS field guide · August 2026 · updated September 2026</p>
+      <p class="byline">Miles Ukaoma · GotCOS field guide · August 2026 · updated November 2026</p>
     </div>
 
-    <div class="rig reveal" aria-label="Interactive diagram showing a replaceable AI model inside a user-owned harness">
-      <div class="rig-top"><b>Your harness</b><span><i class="lamp"></i>context online</span></div>
+    <div class="rig" aria-label="Interactive diagram showing a replaceable AI model inside a user-owned harness">
       <div class="rig-body">
         <div class="rail">
           <div class="module"><small>Memory</small><b>People &amp; decisions</b><span>Owned corpus</span></div>
@@ -361,21 +785,22 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
           <svg class="engine-glyph" aria-hidden="true"><use href="#eng-claude" id="engineGlyphUse"></use></svg>
           <div class="engine-name" id="engineName" aria-live="polite">Claude</div>
           <span class="engine-role" id="engineRole">frontier reasoning model</span>
-          <div class="model-switch" aria-label="Choose a model to place inside the harness">
-            <button type="button" data-model="Claude" data-role="frontier reasoning model" data-icon="claude" aria-pressed="true"><svg class="mi" aria-hidden="true"><use href="#eng-claude"></use></svg>Claude</button>
-            <button type="button" data-model="Codex" data-role="agentic coding harness" data-icon="codex" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-codex"></use></svg>Codex</button>
-            <button type="button" data-model="Cursor" data-role="AI-native code editor" data-icon="cursor" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-cursor"></use></svg>Cursor</button>
-            <button type="button" data-model="Grok" data-role="frontier reasoning model" data-icon="grok" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-grok"></use></svg>Grok</button>
-            <button type="button" data-model="GPT" data-role="frontier reasoning model" data-icon="openai" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-openai"></use></svg>GPT</button>
-            <button type="button" data-model="Gemini" data-role="frontier reasoning model" data-icon="gemini" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-gemini"></use></svg>Gemini</button>
-            <button type="button" data-model="Local" data-role="private specialist model" data-icon="local" aria-pressed="false"><svg class="mi" aria-hidden="true"><use href="#eng-local"></use></svg>Local</button>
-          </div>
         </div>
         <div class="rail">
           <div class="module"><small>Tools</small><b>Email, files, CRM</b><span>Connected via MCP</span></div>
           <div class="module"><small>Permissions</small><b>What it may do</b><span>Human control</span></div>
           <div class="module"><small>Outputs</small><b>Work that remains</b><span>Files, logs, history</span></div>
         </div>
+      </div>
+      <div class="model-switch crail" role="group" aria-label="Choose a model to place inside the harness">
+        <button type="button" class="on" data-model="Claude" data-role="frontier reasoning model" data-icon="claude" aria-pressed="true" aria-label="Claude"><svg aria-hidden="true"><use href="#eng-claude"></use></svg></button>
+        <button type="button" data-model="Codex" data-role="agentic coding harness" data-icon="codex" aria-pressed="false" aria-label="Codex"><svg aria-hidden="true"><use href="#eng-codex"></use></svg></button>
+        <button type="button" data-model="Cursor" data-role="AI-native code editor" data-icon="cursor" aria-pressed="false" aria-label="Cursor"><svg aria-hidden="true"><use href="#eng-cursor"></use></svg></button>
+        <button type="button" data-model="Grok" data-role="frontier reasoning model" data-icon="grok" aria-pressed="false" aria-label="Grok"><svg aria-hidden="true"><use href="#eng-grok"></use></svg></button>
+        <button type="button" data-model="GPT" data-role="frontier reasoning model" data-icon="openai" aria-pressed="false" aria-label="GPT"><svg aria-hidden="true"><use href="#eng-openai"></use></svg></button>
+        <button type="button" data-model="Gemini" data-role="frontier reasoning model" data-icon="gemini" aria-pressed="false" aria-label="Gemini"><svg aria-hidden="true"><use href="#eng-gemini"></use></svg></button>
+        <button type="button" data-model="Local" data-role="private specialist model" data-icon="local" aria-pressed="false" aria-label="Local"><svg aria-hidden="true"><use href="#eng-local"></use></svg></button>
+        <i class="bar" aria-hidden="true"></i>
       </div>
       <p class="rig-caption">Swap the intelligence. <strong>Keep the operating system.</strong></p>
     </div>
@@ -386,228 +811,338 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <main>
   <div class="burn down" aria-hidden="true"></div>
-  <section class="paper" id="definition">
-    <div class="section-grid wrap">
-      <div class="sticky reveal">
-        <h2>What is an AI harness?</h2>
-        <p class="intro">The useful unit of AI is no longer just the model. It is the model plus the system that helps it understand, act, remember, and recover.</p>
-        <div class="pixmap-e" aria-hidden="true">
-          <div class="pi era-c"></div>
-          <div class="pi era-j"></div>
-          <div class="pi era-e"></div>
+
+  <!-- ══ 1 · WHAT IS AN AI HARNESS (was #definition; the engine plate in its own frame, the ledger below) ══ -->
+  <section class="paper ch1" id="definition">
+    <div class="wrap ch-wide">
+      <div class="df-spread">
+        <figure class="df-fig">
+          <div class="df-plate" aria-hidden="true">
+            <div class="pixmap-e"><div class="pi era-c on"></div><div class="pi era-j"></div><div class="pi era-e"></div></div>
+          </div>
+          <div class="cstep df-era" role="group" aria-label="Engines for different jobs">
+            <button type="button" class="on" aria-pressed="true">Combustion</button>
+            <button type="button" aria-pressed="false">Turbojet</button>
+            <button type="button" aria-pressed="false">Electric</button>
+            <i class="bar" aria-hidden="true"></i>
+          </div>
+          <figcaption class="df-cap"><span class="ec on">Combustion: torque for the daily drive.</span><span class="ec">Turbojet: built for speed.</span><span class="ec">Electric: quiet efficiency.</span>Engines match jobs, and models split the same way. One harness holds your context across all of them, so switching engines never means explaining your world twice.</figcaption>
+        </figure>
+        <div class="df-text">
+          <h2>What is an AI harness?</h2>
+          <p class="df-def">An AI harness is the operating system around a model: the instructions, context, memory, tools, permissions, workflow logic, and persistence that let it do useful work again and again.</p>
+          <p>Ask a bare model a question and it produces an answer. Put that model inside a harness and it can inspect the right files, retrieve what happened last week, choose an approved tool, finish a multi-step task, record the result, and leave enough state for the next session to continue.</p>
+          <p>Anthropic describes a harness as the <a href="https://www.anthropic.com/research/trustworthy-agents">instructions and guardrails</a> a model operates under. OpenAI's account of the Codex harness adds the agent loop, thread lifecycle, tool execution, extensions, configuration, authentication, and persistence. The boundary varies by product. The idea does not: <strong>the model is only one component of the working system.</strong></p>
         </div>
-        <div class="era-tag" aria-hidden="true"><span id="eraTag">combustion &middot; your daily driver</span></div>
-        <p class="era-cap">Engines match jobs: torque, speed, efficiency. Models split the same way. One harness holds your context across all of them, so switching engines never means explaining your world twice.</p>
       </div>
-      <article class="prose reveal">
-        <div class="definition">
-          <span class="label">Definition</span>
-          <p>An AI harness is the operating system around a model: the instructions, context, memory, tools, permissions, workflow logic, and persistence that let it perform useful work repeatedly.</p>
-        </div>
-        <p>Ask a bare model a question and it produces an answer. Put that model inside a harness and it can inspect the right files, retrieve what happened last week, choose an approved tool, complete a multi-step task, record the result, and leave enough state for the next session to continue.</p>
-        <p>Anthropic describes a harness as the <a href="https://www.anthropic.com/research/trustworthy-agents">instructions and guardrails</a> a model operates under. OpenAI's description of the Codex harness adds the agent loop, thread lifecycle, tool execution, extensions, configuration, authentication, and persistence. The exact boundary varies by product. The central idea does not: <strong>the model is only one component of the working system.</strong></p>
+
+      <div class="ledger">
         <h3>AI model vs. AI agent vs. AI harness</h3>
-        <div class="compare">
-          <table>
-            <thead><tr><th>Layer</th><th>What it does</th><th>What survives a model swap</th></tr></thead>
-            <tbody>
-              <tr><td>Model</td><td>Reasons, generates, interprets, and decides what to do next.</td><td>Usually nothing. It is the replaceable engine.</td></tr>
-              <tr><td>Agent</td><td>The working system you experience: a model acting with tools inside an environment.</td><td>Only what its harness preserves.</td></tr>
-              <tr><td>Harness</td><td>Provides context, memory, tools, permissions, orchestration, and continuity.</td><td>Your operating rules, corpus, workflows, and outputs.</td></tr>
-              <tr><td>MCP</td><td>Standardizes connections to tools, resources, and prompts.</td><td>Portable connections, when the next host supports them.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>MCP is important, but it is not the whole harness. It is closer to a universal port. The harness still decides which connections are available, what context is retrieved, what requires approval, what gets recorded, and how work continues after the current context window ends.</p>
-        <p>See it in practice: <a href="https://milesukaoma.com/plan">the architecture of a real harness</a>, a chief of staff running on these exact parts. Then <a href="#build">assemble your own</a> from a single folder.</p>
-      </article>
+        <table class="lg-t">
+          <thead><tr><th scope="col">Layer</th><th scope="col">What it does</th><th scope="col">What survives a model swap</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><span class="lg-x">Model</span></th><td data-h="What it does">Reasons, generates, interprets, and decides what to do next.</td><td data-h="What survives a model swap">Usually nothing. It is the replaceable engine.</td></tr>
+            <tr><th scope="row">Agent</th><td data-h="What it does">The working system you experience: a model acting with tools inside an environment.</td><td data-h="What survives a model swap">Only what its harness preserves.</td></tr>
+            <tr><th scope="row">Harness</th><td data-h="What it does">Provides context, memory, tools, permissions, orchestration, and continuity.</td><td data-h="What survives a model swap" class="lg-keep"><span>Your operating rules, corpus, workflows, and outputs.</span></td></tr>
+            <tr><th scope="row">MCP</th><td data-h="What it does">Standardizes connections to tools, resources, and prompts.</td><td data-h="What survives a model swap">Portable connections, when the next host supports them.</td></tr>
+          </tbody>
+        </table>
+        <p class="lg-note">Swap the model and the top row leaves. The harness row is what you keep. MCP matters, but it is closer to a universal port than a harness: the harness still decides which connections exist, what context is retrieved, what needs approval, what gets recorded, and how work continues after the context window ends.</p>
+      </div>
+
+      <div class="ch-end">
+        <p>See the parts running in one place: <a href="https://milesukaoma.com/plan">the architecture of a real harness</a>.</p>
+        <a class="btn primary" href="/context-engineering-vs-prompt-engineering/">Context engineering vs prompt engineering</a>
+      </div>
     </div>
   </section>
 
   <div class="burn up" aria-hidden="true"></div>
-  <section class="dark-section" id="anatomy">
-    <div class="wrap reveal">
-      <h2>The eight layers you actually own.</h2>
-      <p class="dek">Anatomy of a useful harness</p>
-      <p class="lead">A better model raises the ceiling. A better harness raises the floor. These eight layers do the raising, and they keep working when you swap the model underneath them.</p>
 
-      <div class="hstage" id="hstage">
-        <svg class="hstage-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="50" y1="50" x2="50" y2="14" pathLength="1"></line>
-          <line x1="50" y1="50" x2="80" y2="20" pathLength="1"></line>
-          <line x1="50" y1="50" x2="88" y2="50" pathLength="1"></line>
-          <line x1="50" y1="50" x2="80" y2="80" pathLength="1"></line>
-          <line x1="50" y1="50" x2="50" y2="86" pathLength="1"></line>
-          <line x1="50" y1="50" x2="20" y2="80" pathLength="1"></line>
-          <line x1="50" y1="50" x2="12" y2="50" pathLength="1"></line>
-          <line x1="50" y1="50" x2="20" y2="20" pathLength="1"></line>
-        </svg>
-
-        <div class="hcore-pos">
-          <div class="hcore">
-            <span class="hcore-tag">Replaceable core</span>
-            <span class="hcore-name" id="hcoreName">Claude</span>
-            <span class="hcore-sub">the intelligence you rent</span>
+  <!-- ══ 2 · THE EIGHT LAYERS (was #anatomy, #ownership's file tree and #build; the list beside the real starter-kit tree) ══ -->
+  <section class="dark-section ch2" id="anatomy">
+    <div class="wrap ch-wide">
+      <div class="ly-head">
+        <h2>The eight layers you own live in one folder.</h2>
+        <p class="ly-stand">A better model raises the ceiling. A better harness raises the floor. These layers keep working when you swap the model underneath them, and each one is a file you can open.</p>
+      </div>
+      <div class="ly-grid">
+        <ol class="ly-list" aria-label="The eight layers of a harness">
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">01</span><span class="ly-t">Identity</span></button>
+            <div class="ly-body"><p class="ly-d">Rules you set. Who you are and how the AI should work, before it starts.</p><p class="ly-at">Lives in <code>AGENTS.md</code>, imported by <code>CLAUDE.md</code></p><p class="ly-do"><b>Start here.</b> Write the operating map: who you are, what you own, your people, your priorities. Keep it short and link to deeper sources.</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">02</span><span class="ly-t">Memory</span></button>
+            <div class="ly-body"><p class="ly-d">Context that stays. People, decisions, and history, kept outside the chat window.</p><p class="ly-at">Lives in <code>context/people.md</code>, <code>corrections.md</code>, <code>intelligence/</code></p><p class="ly-do"><b>Choose a durable shape.</b> Readable files for people and decisions, lists for tasks, search for retrieval. Version what matters.</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">03</span><span class="ly-t">Tools</span></button>
+            <div class="ly-body"><p class="ly-d">Hands on the world. Files, search, calendar, email, and CRM, wired in through MCP.</p><p class="ly-at">Lives in <code>.mcp.json</code>, mirrored for Codex</p><p class="ly-do"><b>Connect one real source.</b> Calendar, email, meetings, or tasks. One live connection beats ten empty ones.</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">04</span><span class="ly-t">Policy</span></button>
+            <div class="ly-body"><p class="ly-d">Permission to act. What it may send or change, and where you sign off first.</p><p class="ly-at">Lives in the Rules in <code>AGENTS.md</code>, fed by <code>corrections.md</code></p><p class="ly-do"><b>Make every correction compound.</b> Fix the source, the rule, or the retrieval path, not just the answer. When a correction repeats, /learn promotes it to a rule.</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">05</span><span class="ly-t">Orchestration</span></button>
+            <div class="ly-body"><p class="ly-d">How work moves. Planning, retries, and handoffs that hold a long task together.</p><p class="ly-at">Lives in <code>.claude/commands/</code>, mirrored for Codex</p><p class="ly-do"><b>Turn recurring work into skills.</b> Daily brief, meeting prep, reflection: named workflows with inputs, checks, and an expected output.</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">06</span><span class="ly-t">Persistence</span></button>
+            <div class="ly-body"><p class="ly-d">What remains. The files and logs that let tomorrow start where today stopped.</p><p class="ly-at">Lives in <code>tasks.md</code> and this week's <code>wk&lt;NN&gt;_&lt;year&gt;/</code> folder</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">07</span><span class="ly-t">I/O</span></button>
+            <div class="ly-body"><p class="ly-d">Ears and a voice. Dictation in and speech out, running on hardware you control.</p><p class="ly-at">Lives on your Mac in COS Control, outside the folder</p></div></li>
+          <li><button type="button" class="ly" aria-pressed="false"><span class="ly-n">08</span><span class="ly-t">Cadence</span></button>
+            <div class="ly-body"><p class="ly-d">Runs without you. Work on a clock, or in parallel, while you are away.</p><p class="ly-at">The morning brief runs on a schedule you set in COS Control</p></div></li>
+        </ol>
+        <figure class="ly-tree" aria-label="The my-cos folder the open-source starter kit builds">
+          <div class="tree-bar"><span class="ctl-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="tree-name">my-cos</span></div>
+          <div class="tree-body">
+            <p class="tr-root">my-cos/</p>
+            <ul class="tr">
+              <li class="tl" data-l="1 4"><code>AGENTS.md</code><span class="cm"># the brain both engines load</span></li>
+              <li class="tl" data-l="1"><code>CLAUDE.md</code><span class="cm"># one line: @AGENTS.md</span></li>
+              <li class="tl" data-l="3"><code>.mcp.json</code><span class="cm"># tool connections</span></li>
+              <li class="tl" data-l="2"><code>context/</code>
+                <ul class="tr"><li class="tl" data-l="2"><code>people.md</code><span class="cm"># who you work with</span></li></ul>
+              </li>
+              <li class="tl" data-l="2 4"><code>corrections.md</code><span class="cm"># fixes, promoted to rules</span></li>
+              <li class="tl" data-l="5"><code>.claude/commands/</code>
+                <ul class="tr">
+                  <li class="tl" data-l="5"><code>start.md</code><span class="cm"># /start: daily briefing</span></li>
+                  <li class="tl" data-l="5"><code>prep.md</code><span class="cm"># /prep: meeting prep</span></li>
+                  <li class="tl" data-l="5"><code>learn.md</code><span class="cm"># /learn: capture corrections</span></li>
+                </ul>
+              </li>
+              <li class="tl" data-l="2 6"><code>operations/&lt;domain&gt;/</code>
+                <ul class="tr">
+                  <li class="tl" data-l="6"><code>tasks.md</code><span class="cm"># rolling open tasks</span></li>
+                  <li class="tl" data-l="2"><code>intelligence/</code><span class="cm"># permanent reference</span></li>
+                  <li class="tl" data-l="6"><code>wk&lt;NN&gt;_&lt;year&gt;/</code><span class="cm"># this week's work</span></li>
+                </ul>
+              </li>
+              <li class="tl" data-l="6"><code>.cos/manifest.json</code><span class="cm"># engines: claude-code, codex</span></li>
+            </ul>
+            <p class="tr-root tr-out">On your Mac, outside the folder</p>
+            <ul class="tr">
+              <li class="tl" data-l="7"><code>COS Control</code><span class="cm"># dictation and voice, on this Mac</span></li>
+              <li class="tl" data-l="8"><code>morning brief</code><span class="cm"># on the schedule you set</span></li>
+            </ul>
           </div>
-        </div>
-
-        <div class="hlayer-pos" style="--x:50;--y:14">
-          <div class="hlayer"><span class="hl-k">01 &middot; Identity</span><b>Rules you set</b><span class="hl-d">Who you are and how the AI should work, before it starts.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:80;--y:20">
-          <div class="hlayer"><span class="hl-k">02 &middot; Memory</span><b>Context that stays</b><span class="hl-d">People, decisions, and history, kept outside the chat window.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:88;--y:50">
-          <div class="hlayer"><span class="hl-k">03 &middot; Tools</span><b>Hands on the world</b><span class="hl-d">Files, search, calendar, email, and CRM, wired in through MCP.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:80;--y:80">
-          <div class="hlayer"><span class="hl-k">04 &middot; Policy</span><b>Permission to act</b><span class="hl-d">What it may send or change, and where you sign off first.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:50;--y:86">
-          <div class="hlayer"><span class="hl-k">05 &middot; Orchestration</span><b>How work moves</b><span class="hl-d">Planning, retries, and handoffs that hold a long task together.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:20;--y:80">
-          <div class="hlayer"><span class="hl-k">06 &middot; Persistence</span><b>What remains</b><span class="hl-d">The files and logs that let tomorrow start where today stopped.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:12;--y:50">
-          <div class="hlayer"><span class="hl-k">07 &middot; I/O</span><b>Ears and a voice</b><span class="hl-d">Dictation in and speech out, running on hardware you control.</span></div>
-        </div>
-        <div class="hlayer-pos" style="--x:20;--y:20">
-          <div class="hlayer"><span class="hl-k">08 &middot; Cadence</span><b>Runs without you</b><span class="hl-d">Work on a clock or in parallel, running while you are away.</span></div>
-        </div>
+          <figcaption class="tree-cap">The folder the open-source starter kit builds with you. Claude Code reads CLAUDE.md, which imports AGENTS.md; Codex reads AGENTS.md directly. One brain, more than one engine.</figcaption>
+        </figure>
       </div>
-    </div>
-  </section>
-
-  <section id="ownership">
-    <div class="memory-layout wrap">
-      <div class="filetree reveal" aria-label="Example of a locally stored personal AI corpus">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <b>my-cos/</b><br>
-        ├── <b>AGENTS.md</b> <span class="note"># operating map</span><br>
-        ├── context/<br>
-        │&nbsp;&nbsp; ├── people.md<br>
-        │&nbsp;&nbsp; ├── goals.md<br>
-        │&nbsp;&nbsp; └── decisions.md<br>
-        ├── operations/<br>
-        │&nbsp;&nbsp; ├── tasks.md<br>
-        │&nbsp;&nbsp; ├── meetings/<br>
-        │&nbsp;&nbsp; └── weekly-work/<br>
-        ├── skills/<br>
-        │&nbsp;&nbsp; ├── prep.md<br>
-        │&nbsp;&nbsp; └── reflect.md<br>
-        └── corrections.md <span class="note"># what compounds</span>
+      <div class="ch-close" id="build">
+        <p class="creed">Start with a folder, not a platform migration.</p>
+        <div class="cc-cta"><a class="btn primary" href="/blueprint/">Build my Blueprint</a><a class="btn ghost" href="https://github.com/ukaoma/cos-starter">Open the starter on GitHub</a></div>
       </div>
-      <div class="memory-copy reveal">
-        <h2>Your personal AI memory should outlive the model.</h2>
-      <p class="dek">The ownership thesis</p>
-        <p>There was a model last cycle that felt magical. It was the first one that made me tell it: explain this to me simpler, I feel dumb. Then it got pulled from all of us. That is the whole lesson. If a frontier provider can throttle your access to the intelligence at any point, you were never building a moat. You were renting theirs.</p>
-        <p>The price tag says the same thing. A frontier plan sells you a hundred dollars of compute for one. It gets you hooked. Then the subsidy comes off. Plenty of teams have burned a full year of AI budget in the first six months, the moment the meter started counting for real.</p>
-        <p>A local-first harness changes what you own. Your corpus lives as ordinary files, indexes, and logs on hardware you control, and the harness hands the right slice of it to whichever model fits the job. Lose a point or two of raw intelligence and it still wins, because nobody can turn your stack off.</p>
-        <div class="truth"><b>Local storage is not the same as local inference.</b><p>Your durable corpus can remain on your machine while selected context is sent to a hosted model for a task. Provider terms and data controls still apply to anything transmitted. A serious harness makes that boundary visible instead of hiding it.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="shared-memory">
-    <div class="wrap reveal">
-      <h2>One AI memory. <em>Every model.</em></h2>
-      <p class="dek">Shared memory is a database, not a chat history.</p>
-      <p class="lead">Every assistant wants to be the place you remember things. That is the trap. A new one ships every two weeks, and each one starts at zero. Re-explaining your world to software is a tax. I stopped paying it.</p>
-
-      <h3>The models are converging. Your memory is what separates them.</h3>
-      <p class="lead">Frontier models are landing in the same place. Same intelligence, same tool use, same tricks, a new leader every cycle and the gap closing right behind it. When every engine can do the job, the engine stops being the decision. What decides is what the engine knows about you, and how fast you can move that knowledge to the next one. Your people. Your decisions. Your corrections. The thing you said last Tuesday that changes the answer this Tuesday.</p>
-      <p class="lead">I can swap the top models under COS and get the same operator back. Same priorities, same instincts, same mistakes it already learned not to repeat. That is not the model being smart. That is the memory being mine, and the swap taking minutes instead of months.</p>
-
-      <h3>Treat AI memory as a database you own.</h3>
-      <p class="lead">A chat history is a receipt. A memory is a record. The difference is structure: people, decisions, tasks, meetings, and corrections stored as files and indexes on hardware you control, versioned, searchable, and written back to after every session. Agent memory should not belong to the agent. It should belong to you.</p>
-      <ul class="memory-traits">
-        <li><b>Owned.</b> Ordinary files and indexes you can read, back up, and move. Not a memory feature locked inside one vendor's app.</li>
-        <li><b>Structured.</b> Identity and decisions in readable files. Tasks and events in structured stores. Retrieval through search indexes.</li>
-        <li><b>Compounding.</b> Every correction lands in the record, so the next model inherits it on day one instead of relearning it on day ninety.</li>
-        <li><b>Queryable.</b> Any model that can reach the record can work from it. Persistent memory stops being a feature and becomes infrastructure.</li>
-      </ul>
-
-      <h3>Portable AI memory, one connection, any model.</h3>
-      <p class="lead">This is the part that changes the economics. Expose the memory over MCP and the same record answers Claude, Codex, Cursor, ChatGPT, and whatever ships next month. One connector. No migration. No onboarding conversation. The engine changes. The relationship does not.</p>
-      <p class="lead">The harness still runs the door. It decides what is retrievable, what needs approval, and what gets written back. Portability without policy is a leak. Portability with policy is a moat.</p>
-      <p class="lead">The model is the engine you rent by the month. The memory is the asset you keep. Build it once, keep it outside every assistant, and make every model earn the right to query it. <a href="#faq">How that works over MCP</a>.</p>
     </div>
   </section>
 
   <div class="burn down" aria-hidden="true"></div>
-  <section class="fieldnotes" id="cos">
-    <div class="field-grid wrap">
-      <div class="reveal">
-        <h2>COS is the conduit, not the intelligence monopoly.</h2>
-      <p class="dek">A harness under real operating load</p>
-        <p class="lead">COS began as an AI chief of staff built while running marketing and digital transformation across a multi-brand software portfolio, alongside two operating businesses and a family. The job was never “chat better.” The job was to preserve context across the places real work happens.</p>
-        <p class="lead">A harness can run Claude, GPT, Gemini, or a local model, wherever the integrations exist. COS supports Claude Code and Codex today, with more adapters as design intent. The point is not loyalty to one engine. It is that your operating layer makes whatever engine you pick specific to you.</p>
-        <p class="lead">The frontier will always keep a tip of the spear. But open models are a generation behind now, not five. GLM 5.2 landed on par with Opus 4.7 the very next cycle. Compute is sliding to the edge too, which is why a Mac Studio can take ninety days to show up at your door. Own the harness and you get to move with all of it. And the crowd is earlier than the headlines suggest: see <a href="/ai-adoption/">the AI Adoption Index</a> for who actually uses these engines, with every number cited.</p>
-      </div>
-      <div class="timeline reveal">
-        <div class="moment"><small>Before the meeting</small><h3>Retrieve the people, history, and unfinished work.</h3><p>The model does not need every document. The harness finds the small set that changes the answer.</p></div>
-        <div class="moment"><small>During the work</small><h3>Use tools inside explicit boundaries.</h3><p>Search meetings, read tasks, inspect files, draft a response, run an analysis. Anything that becomes externally visible waits for your approval first.</p></div>
-        <div class="moment"><small>After the decision</small><h3>Write the durable artifact.</h3><p>The decision, correction, output, and next step return to the corpus instead of disappearing into a transcript.</p></div>
-        <div class="moment"><small>Next model, next surface</small><h3>Continue without rebuilding the relationship.</h3><p>The same operating memory shows up in a terminal, a desktop app, a phone, or a pair of smart glasses. The harness holds the continuity. The surface is just where you meet it. Some days you read it. Some days you just talk.</p></div>
-      </div>
-    </div>
-  </section>
 
-  <div class="burn up to-ink2" aria-hidden="true"></div>
-  <section class="build" id="build">
-    <div class="wrap reveal">
-      <div class="build-head">
-        <h2>Start with a folder, not a platform migration.</h2>
-      <p class="dek">Build the asset</p>
-        <p class="lead">A personal harness can begin small. The first useful version needs an identity, a memory structure, one repeatable skill, one trusted connection, and a habit of recording corrections.</p>
+  <!-- ══ 3 · MEMORY OUTLIVES THE MODEL (was #ownership and #shared-memory; one correction carried across engines) ══ -->
+  <section class="paper ch3" id="ownership">
+    <div class="wrap ch-wide">
+      <div class="ow-head">
+        <h2>Your memory should outlive the model.</h2>
+        <p class="ow-stand">Correct one engine once, and the next one already knows.</p>
       </div>
-      <div class="steps">
-        <div class="step"><div class="n">01</div><div><h3>Write the operating map.</h3><p>Define who you are, what you own, the people around you, your priorities, and the rules an AI should follow. Keep the top-level map short; link to deeper sources of truth.</p></div></div>
-        <div class="step"><div class="n">02</div><div><h3>Choose a durable memory shape.</h3><p>Use readable files for identity and decisions, structured stores for tasks and events, and search indexes for retrieval. Version what matters.</p></div></div>
-        <div class="step"><div class="n">03</div><div><h3>Turn recurring work into skills.</h3><p>Meeting prep, daily briefing, research, reflection, and follow-up should become named workflows with inputs, checks, and expected outputs.</p></div></div>
-        <div class="step"><div class="n">04</div><div><h3>Connect one real source.</h3><p>Calendar, email, meetings, or tasks. A narrow live connection creates more value than ten empty integrations. Add permissions before autonomy.</p></div></div>
-        <div class="step"><div class="n">05</div><div><h3>Make every correction compound.</h3><p>When the system gets something wrong, fix the source, the rule, or the retrieval path. Not just the answer in front of you. That is how the harness becomes yours.</p></div></div>
-      </div>
-      <div class="actions"><a class="btn primary" href="/#start">Build a COS in five minutes</a><a class="btn ghost" href="https://github.com/ukaoma/cos-starter">Explore the open-source starter</a></div>
-    </div>
-  </section>
-
-  <div class="burn down from-ink2" aria-hidden="true"></div>
-  <section class="faq" id="faq">
-    <div class="wrap reveal">
-      <h2>AI harness questions, without the jargon.</h2>
-      <details><summary>What is an AI harness?</summary><p>An AI harness is the operating system around a model. It holds your memory, your tools, the rules it follows, and the permissions and state that let it keep working. That structure is what turns a single answer into a system that does useful work again and again.</p></details>
-      <details><summary>Is an AI harness the same as an AI agent?</summary><p>No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts and determines what survives between runs.</p></details>
-      <details><summary>Is MCP an AI harness?</summary><p>No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system.</p></details>
-      <details><summary>Can one harness use Claude, GPT, and Gemini?</summary><p>A harness can support multiple models. COS runs on Claude Code and Codex today; GPT, Gemini, and local models require additional adapters. Running the harness and querying its memory are separate questions, and the second one is already open to every model.</p></details>
-      <details><summary>What is an AI memory layer?</summary><p>The AI memory layer is the record of who you are, who you work with, what you decided, and what you corrected, kept separate from any single model or app. A model reads from it before it answers and writes back to it after. When the layer lives outside the assistant, as files and indexes you own, it becomes shared memory that any model can use.</p></details>
-      <details><summary>Can ChatGPT, Claude, Cursor, and the next assistant all query the same memory?</summary><p>Yes, when the memory lives as a resource instead of inside one app's chat history. COS exposes your memory over MCP, so any MCP-capable host reads the same record: Claude, Cursor, Codex, ChatGPT, or whatever ships next. One connector, one memory, no re-explaining. The harness still decides what is exposed, what is retrieved for a given question, and what needs your approval.</p></details>
-      <details><summary>Is Claude memory or ChatGPT memory portable?</summary><p>Not on their own. Built-in memory features live inside that vendor's app and follow that vendor's rules. You cannot hand them to a different model. A harness inverts this: the memory sits outside every assistant, and each model connects to it. Switching engines keeps the record intact.</p></details>
-      <details><summary>What is a memory MCP server?</summary><p>A memory MCP server exposes stored memory as resources and tools over the Model Context Protocol, so any MCP client can read from it and write to it. It is the plumbing that makes one shared AI memory reachable from several assistants. It is not the whole harness: retrieval, policy, approvals, and persistence still need an owner.</p></details>
-      <details><summary>Does a local AI harness keep all data private?</summary><p>Not automatically. A local-first harness can keep the durable corpus and outputs on devices you control. Any context sent to a hosted model for inference is still processed under that provider's terms and data controls. Local storage and local inference are separate choices.</p></details>
-      <details><summary>Why does a harness matter for personal AI memory?</summary><p>The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a new model, interface, or device.</p></details>
-
-      <div class="sources">
-        <h3>Primary sources and further reading</h3>
-        <ol>
-          <li><a href="https://openai.com/index/harness-engineering/">OpenAI: Harness engineering, leveraging Codex in an agent-first world</a></li>
-          <li><a href="https://openai.com/index/unlocking-the-codex-harness/">OpenAI: Unlocking the Codex harness, how we built the App Server</a></li>
-          <li><a href="https://www.anthropic.com/research/trustworthy-agents">Anthropic: Trustworthy agents in practice</a></li>
-          <li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Anthropic: Effective harnesses for long-running agents</a></li>
-          <li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Model Context Protocol: Architecture overview</a></li>
+      <div class="ow-run">
+        <ol class="ow-stops" aria-label="One correction, carried across three engines. Example sessions; the names are not real.">
+          <li class="ow-stop">
+            <svg class="ow-dot" viewBox="0 0 26 26" aria-hidden="true"><circle class="rg" cx="13" cy="13" r="11"/><circle class="fl" cx="13" cy="13" r="6"/></svg>
+            <p class="ow-when">May 22</p>
+            <div class="ow-card"><p class="ow-s"><span class="pv">Claude</span><b>Northwind renewal draft</b></p><p class="ow-q">You fix one line: never quote list price on a renewal. /learn writes it down.</p><p class="ow-mem"><code>corrections.md</code><span>Never quote list price on a renewal</span></p></div>
+          </li>
+          <li class="ow-stop">
+            <svg class="ow-dot" viewBox="0 0 26 26" aria-hidden="true"><circle class="rg" cx="13" cy="13" r="11"/><circle class="fl" cx="13" cy="13" r="6"/></svg>
+            <p class="ow-when">June 3</p>
+            <div class="ow-card"><p class="ow-s"><span class="pv o">Codex</span><b>Northwind renewal follow-up</b></p><p class="ow-q">Drafted with no list price. You did not have to say it again.</p><p class="ow-mem"><code>corrections.md</code><span>Never quote list price on a renewal</span></p></div>
+          </li>
+          <li class="ow-stop">
+            <svg class="ow-dot" viewBox="0 0 26 26" aria-hidden="true"><circle class="rg" cx="13" cy="13" r="11"/><circle class="fl" cx="13" cy="13" r="6"/></svg>
+            <p class="ow-when">Next month</p>
+            <div class="ow-card"><p class="ow-s"><span class="pv o">Cursor</span><b>Renewal page review</b></p><p class="ow-q">Flags a list price on the renewal page. Same rule, a different engine.</p><p class="ow-mem"><code>corrections.md</code><span>Never quote list price on a renewal</span></p></div>
+          </li>
         </ol>
       </div>
+      <div class="ow-grid">
+        <div class="ow-essay">
+          <p>There was a model last cycle that felt magical. It was the first one that made me tell it: explain this to me simpler, I feel dumb. Then it got pulled from all of us. That is the whole lesson. If a frontier provider can throttle your access to the intelligence at any point, you were never building a moat. You were renting theirs.</p>
+          <p>The price tag says the same thing. Frontier plans are priced to get you hooked, and the subsidy does not last. Teams find that out when the meter starts counting for real.</p>
+          <p>Meanwhile the models are converging: the same intelligence, the same tool use, a new leader every cycle and the gap closing right behind it. When every engine can do the job, the engine stops being the decision. What decides is what the engine knows about you, and how fast you can move that knowledge to the next one. I can swap the top models under COS and get the same operator back, with the same priorities and the mistakes it already learned not to repeat.</p>
+          <p>The frontier will keep the tip of the spear. Open models keep closing in, and compute is moving to the edge. Own the harness and you get to move with all of it.</p>
+        </div>
+        <div class="ow-db" id="shared-memory">
+          <h3>Treat AI memory as a database you own.</h3>
+          <p>A chat history is a receipt. A memory is a record: people, decisions, tasks, meetings, and corrections, stored as files and indexes on hardware you control.</p>
+          <dl class="ow-traits">
+            <div><dt>Owned</dt><dd>Ordinary files you can read, back up, and move, not a memory feature locked inside one vendor's app.</dd></div>
+            <div><dt>Structured</dt><dd>Identity and decisions in readable files, tasks in lists, retrieval through search.</dd></div>
+            <div><dt>Compounding</dt><dd>Every correction lands in the record, so the next model inherits it on day one.</dd></div>
+            <div><dt>Queryable</dt><dd>Exposed over MCP, the same record answers Claude, Codex, Cursor, ChatGPT, and whatever ships next.</dd></div>
+          </dl>
+          <p class="ow-door">The harness still runs the door: what is retrievable, what needs approval, what gets written back. Portability without policy is a leak. Portability with policy is a moat.</p>
+          <div class="ow-truth"><b>Local storage is not the same as local inference.</b><p>Your corpus can stay on your machine while selected context goes to a hosted model for a task. Provider terms still apply to anything sent. A serious harness makes that boundary visible instead of hiding it.</p></div>
+        </div>
+      </div>
+      <div class="ch-end">
+        <p>Who actually uses these engines, with every number cited.</p>
+        <div class="ch-act"><a class="btn primary" href="/ai-adoption/">Read the AI Adoption Index</a><a class="ch-ln" href="/control/docs/#sessions">Sessions in the Mac guide</a></div>
+      </div>
     </div>
   </section>
 
-  <section class="closing">
-    <div class="reveal">
-      <h2>Do not just rent intelligence. <em>Build the system that remembers.</em></h2>
-      <p>COS gives frontier models a persistent operating layer built around your work. You keep the files, the context, and the methods underneath it.</p>
-      <div class="actions"><a class="btn primary" href="/#start">Start with COS</a><a class="btn ghost" href="/blueprint/">Assess your current system</a></div>
+  <div class="burn up" aria-hidden="true"></div>
+
+  <!-- ══ 4 · UNDER REAL LOAD (was #cos; the real Activity window beside the loop it runs) ══ -->
+  <section class="dark-section ch4" id="cos">
+    <div class="wrap ch-wide">
+      <div class="cs-grid">
+        <div class="cs-side">
+          <h2>A harness under real operating load.</h2>
+          <p class="cs-lead">COS began as an AI chief of staff built while running marketing and digital transformation across a multi-brand software portfolio, alongside two operating businesses and a family. The job was never to chat better. It was to keep context across the places real work happens. It runs on Claude Code, Codex, and Cursor today.</p>
+          <div class="cstep cs-step" role="group" aria-label="One loop through the harness">
+            <button type="button" class="on" aria-pressed="true">Before</button>
+            <button type="button" aria-pressed="false">During</button>
+            <button type="button" aria-pressed="false">After</button>
+            <button type="button" aria-pressed="false">Next</button>
+            <i class="bar" aria-hidden="true"></i>
+          </div>
+          <div class="cs-m on"><p class="cs-t">Before the meeting, retrieve the people, history, and unfinished work.</p><p>The model does not need every document. The harness finds the small set that changes the answer, and Today opens with it.</p></div>
+          <div class="cs-m"><p class="cs-t">During the work, use tools inside explicit boundaries.</p><p>Search meetings, read tasks, inspect files, draft, run an analysis. Anything that becomes visible outside waits for your approval first.</p></div>
+          <div class="cs-m"><p class="cs-t">After the decision, write the durable artifact.</p><p>The decision, the correction, the output, and the next step go back to the record instead of disappearing into a transcript.</p></div>
+          <div class="cs-m"><p class="cs-t">Next model, next surface, same relationship.</p><p>The same memory shows up in a terminal, a desktop app, a phone, or a pair of smart glasses. Some days you read it. Some days you just talk.</p></div>
+          <div class="cs-cta"><a class="btn primary" href="/control/">Meet the Mac companion</a><a class="ch-ln" href="/embodied-intelligence/">Embodied intelligence</a></div>
+        </div>
+        <div class="cs-obj">
+          <div class="aw" data-v="today" aria-label="A recreation of the COS Activity window. The step beside it picks the pane: Today, Sessions, Memories, Messages.">
+            <div class="aw-title" aria-hidden="true"><span class="aw-lights"><i></i><i></i><i></i></span><span>COS Activity</span></div>
+            <div class="aw-cols">
+              <div class="aw-side" aria-hidden="true">
+                <p class="aw-logo"><img src="../assets/logo-mark.svg" alt="" width="16" height="17"><b>COS</b> Control</p>
+            <div class="vtabs">
+              <span class="vtab sel" data-v="today"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 10 4l6.5 5.5M5 8.5V16h10V8.5"/></svg><span class="vs-t"><b>Today</b><small class="hot">1 recording, 3 need you</small></span></span>
+              <span class="vtab" data-v="messages"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.2A1.7 1.7 0 0 1 4.7 3.5h10.6A1.7 1.7 0 0 1 17 5.2v6.1a1.7 1.7 0 0 1-1.7 1.7H7.6L4 16.2v-3.2h-.3A.7.7 0 0 1 3 12.3z"/></svg><span class="vs-t"><b>Messages <em>9</em></b><small>Morning brief reached the glasses at 7:00 AM</small></span></span>
+              <span class="vtab" data-v="speakers"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8v4M7 5.5v9M10 3v14M13 6.5v7M16 9v2"/></svg><span class="vs-t"><b>Speakers</b><small class="hot">2 voices to name</small></span></span>
+              <span class="vtab" data-v="meetings"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="14" height="12" rx="2"/><path d="M3 8.5h14M7 3v3M13 3v3"/></svg><span class="vs-t"><b>Meetings</b><small>Next at 3:30 PM</small></span></span>
+              <span class="vtab" data-v="memories"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.4q1.3 5.3 6.6 6.6Q11.3 11.3 10 16.6 8.7 11.3 3.4 10 8.7 8.7 10 3.4Z"/></svg><span class="vs-t"><b>Memories</b><small class="hot">Next 4 of 12</small></span></span>
+              <span class="vtab" data-v="threads"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v4.2a2 2 0 0 0 2 2h6a2 2 0 0 1 2 2v4.8"/><circle cx="5" cy="3.5" r="1.4"/><circle cx="15" cy="16.5" r="1.4"/></svg><span class="vs-t"><b>Threads</b><small>6 active, newest Lakeside parity</small></span></span>
+              <span class="vtab" data-v="sessions"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4" width="14.4" height="12" rx="2"/><path d="M6 8.6l2.4 2.2L6 13M10.6 13h3.6"/></svg><span class="vs-t"><b>Sessions</b><small>2 working</small></span></span>
+              <span class="vtab" data-v="tasks"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="3.2" width="13.6" height="13.6" rx="2.4"/><path d="M6.6 10.2l2.5 2.5 5-5.4"/></svg><span class="vs-t"><b>Work</b><small class="hot">1 needs you</small></span></span>
+              <span class="vtab" data-v="dictation"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="2.8" width="5" height="9" rx="2.5"/><path d="M4.8 9.6a5.2 5.2 0 0 0 10.4 0M10 14.8v2.6M7.2 17.4h5.6"/></svg><span class="vs-t"><b>Dictation</b><small>Last at 2:06 PM</small></span></span>
+            </div>
+                <div class="aw-foot"><span>Settings</span><span class="aw-ok"><i></i>Server connected</span></div>
+              </div>
+              <div class="aw-main">
+            <div class="aw-top"><span class="aw-cos" aria-hidden="true"><img src="../assets/logo-mark.svg" alt="" width="16" height="17"><b>COS</b></span><span class="aw-b"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5 10 4l6.5 5.5M5 8.5V16h10V8.5"/></svg>Home</span><span class="aw-b"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5 6.5 10l5.5 5.5"/></svg>Back</span><span class="aw-crumb">COS Control <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="aw-chev"><path d="M8 5l5 5-5 5"/></svg> <b data-crumb>Today</b></span><span class="aw-b aw-set" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="2.6"/><path d="M10 2.8v2M10 15.2v2M2.8 10h2M15.2 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></svg>Settings</span></div>
+            <!-- Today -->
+            <div class="aw-pane" data-v="today" data-open="true">
+              <div class="t-head aw-row"><p class="t-h">Today <small>Tuesday, June 9, 3:45 PM</small></p><span class="t-ask"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.4q1.3 5.3 6.6 6.6Q11.3 11.3 10 16.6 8.7 11.3 3.4 10 8.7 8.7 10 3.4Z"/></svg>Ask COS, start a recording, open a session<kbd>&#8984;K</kbd></span></div>
+              <div class="t-rec aw-row"><i class="dot"></i><span><b>Recording from 1:00 PM</b><small>Recording on your glasses, 2 h 44 min</small></span><span class="t-rec-r">Stop it on the glasses<span class="b">Live view</span></span></div>
+              <p class="t-brief aw-row">Three things need you, and the Q3 launch review starts at 3:30 PM. Two agents are working.</p>
+              <div class="t-cols">
+                <div class="t-needs">
+                  <div class="t-card-h aw-row"><b>Needs you <em>3</em></b><span class="b">Next <kbd>&#8984;]</kbd></span></div>
+                  <div class="t-need aw-row"><p><b>Name a voice from Lakeside parity walkthrough (G2)</b><time>1 d</time></p><small>Sounds like Priya Raman, similarity 0.71.</small><span class="t-acts"><span class="b">Yes, Priya Raman</span><span class="b">Someone else</span><span class="ln">Listen</span></span><small>6 samples held</small></div>
+                  <div class="t-need aw-row"><p><b>Name a voice from Pipeline review (G2)</b><time>1 d</time></p><small>Sounds like Jordan Pierce, similarity 0.58.</small><span class="t-acts"><span class="b">Yes, Jordan Pierce</span><span class="b">Someone else</span><span class="ln">Listen</span></span><small>4 samples held</small></div>
+                  <div class="t-need aw-row"><p><b>Review Northwind renewal follow-up</b><time>2 h</time></p><small>The Work card is waiting on your review before it moves on.</small><span class="t-acts"><span class="b">Review</span><span class="ln">Open in Work</span></span><small>In Work</small></div>
+                  <p class="t-more aw-row">Show 1 more: review 4 memories</p>
+                </div>
+                <div class="t-side">
+                  <div class="t-run">
+                    <p class="t-card-h aw-row"><b>Running <em>2</em></b><span class="ln">All sessions</span></p>
+                    <div class="t-srow aw-row"><span class="pv">Claude</span><span class="t-s"><b><i class="g"></i>Parity build, Lakeside</b><small>in Claude, working 32 s</small></span><span class="ln">Open</span></div>
+                    <div class="t-srow aw-row"><span class="pv">Claude</span><span class="t-s"><b><i class="g"></i>Q3 launch checklist</b><small>in Claude, working 36 s</small></span><span class="ln">Open</span></div>
+                    <p class="t-fin aw-row">Finished in the last hour</p>
+                    <div class="t-srow aw-row"><span class="pv o">Codex</span><span class="t-s"><b>Migration script review</b><small>finished just now</small></span><span class="ln">Open</span></div>
+                    <div class="t-srow aw-row"><span class="pv o">Claude Code</span><span class="t-s"><b>Session search rework</b><small>finished 4 min ago</small></span><span class="ln">Open</span></div>
+                  </div>
+                  <div class="t-next aw-row">
+                    <b class="t-nh">Next up</b>
+                    <p><b>3:30 PM Q3 launch review</b><small>Starts at 3:30 PM</small></p>
+                    <span class="t-acts"><span class="b pri">Prep me</span><span class="ln">Open meeting</span><span class="ln">Add context</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sessions -->
+            <div class="aw-pane" data-v="sessions" data-open="false">
+              <div class="p-head aw-row"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4" width="14.4" height="12" rx="2"/><path d="M6 8.6l2.4 2.2L6 13M10.6 13h3.6"/></svg><span><b>Sessions</b><small>Claude &middot; Codex &middot; Cursor &middot; updated in last 7 days</small></span><span class="b">Refresh</span></div>
+              <p class="p-stats aw-row"><span><b>9</b><i>ON DISK</i></span><span><b>1</b><i>WAITING</i></span><span><b>2</b><i>PINNED</i></span></p>
+              <p class="grp aw-row">Needs you</p>
+              <div class="l-row aw-row"><span class="pv">Cursor</span><span><b>Agent routing</b><small>Waiting on a permission</small></span><span class="ln">Open</span></div>
+              <p class="grp aw-row">Working now</p>
+              <div class="l-row aw-row"><span class="pv">Claude</span><span><b>Parity build, Lakeside</b><small>Working &middot; 2 min</small></span><span class="ln">Open</span></div>
+              <div class="l-row aw-row"><span class="pv">Claude</span><span><b>Q3 launch checklist</b><small>Working &middot; 36 s</small></span><span class="ln">Open</span></div>
+              <p class="grp aw-row">Pinned</p>
+              <div class="l-row aw-row"><span class="pv o">Codex</span><span><b>Migration script review</b><small>Idle &middot; 1 h</small></span><span class="ln">Open</span></div>
+            </div>
+
+            <!-- Memories -->
+            <div class="aw-pane" data-v="memories" data-open="false">
+              <div class="p-head aw-row"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.4q1.3 5.3 6.6 6.6Q11.3 11.3 10 16.6 8.7 11.3 3.4 10 8.7 8.7 10 3.4Z"/></svg><span><b>Recent learning</b><small>What COS captured, proposed, checked and used, newest first.</small></span><span class="b">Refresh</span></div>
+              <p class="seg aw-row"><span class="on">Recent learning</span><span>All memories</span><span>To review</span><span>Knowledge</span></p>
+              <div class="l-row aw-row"><span class="kind">Captured</span><span><b>Cutover moves to Q4</b><small>From Q3 launch review &middot; Jun 4</small></span></div>
+              <div class="l-row aw-row"><span class="kind">Proposed</span><span><b>Never quote list price on a renewal</b><small>From your correction &middot; May 22</small></span></div>
+              <div class="l-row aw-row"><span class="kind">Used in an answer</span><span><b>Priya owns the parity list</b><small>Recalled for Msg 312 &middot; today</small></span></div>
+            </div>
+
+            <!-- Messages -->
+            <div class="aw-pane" data-v="messages" data-open="false">
+              <div class="p-head aw-row"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.2A1.7 1.7 0 0 1 4.7 3.5h10.6A1.7 1.7 0 0 1 17 5.2v6.1a1.7 1.7 0 0 1-1.7 1.7H7.6L4 16.2v-3.2h-.3A.7.7 0 0 1 3 12.3z"/></svg><span><b>Recent messages</b><small>Newest first &middot; 9 turn(s)</small></span><span class="b">Copy handoff</span></div>
+              <p class="seg aw-row"><span class="on">Recent</span><span>Archive</span></p>
+              <div class="m-turn aw-row"><p class="m-meta"><b>Msg 312</b><time>2:14 PM</time><span>Sonnet</span></p><p class="m-q">What did we decide about the Lakeside migration timeline?</p><p class="m-a">The June 4 review moved cutover to Q4, pending the parity list Priya owns. Nothing since has changed that date.</p><span class="m-chip">whiteboard-0604.jpg</span></div>
+              <div class="m-turn aw-row"><p class="m-meta"><b>Msg 311</b><time>7:00 AM</time><span>Routine</span></p><p class="m-q">Morning brief</p><p class="m-a">Two things need you today: Q3 pricing and the Northwind recap. The parity walkthrough is at 11:30.</p></div>
+            </div>
+
+              </div>
+            </div>
+          </div>
+          <p class="aw-cap">A recreation of the COS Activity window with invented names, not a screenshot.</p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="burn down" aria-hidden="true"></div>
+
+  <!-- ══ 5 · QUESTIONS (was #faq, the sources and the closing) ══ -->
+  <section class="paper ch5" id="faq">
+    <div class="wrap ch-wide">
+      <div class="fq-grid">
+        <div class="fq-left">
+          <h2>AI harness questions, without the jargon.</h2>
+          <p class="fq-lead">Short answers to what people ask most, with the primary sources underneath.</p>
+          <ul class="deeper" aria-label="Go deeper">
+            <li><a href="/ai-chief-of-staff-vs-human-chief-of-staff/">AI chief of staff vs a human chief of staff</a></li>
+            <li><a href="/embodied-intelligence/">Embodied intelligence</a></li>
+            <li><a href="/ai-adoption/">The AI Adoption Index</a></li>
+          </ul>
+          <div class="fq-src">
+            <h3>Primary sources and further reading</h3>
+            <ol>
+              <li><a href="https://openai.com/index/harness-engineering/">OpenAI: Harness engineering, leveraging Codex in an agent-first world</a></li>
+              <li><a href="https://openai.com/index/unlocking-the-codex-harness/">OpenAI: Unlocking the Codex harness, how we built the App Server</a></li>
+              <li><a href="https://www.anthropic.com/research/trustworthy-agents">Anthropic: Trustworthy agents in practice</a></li>
+              <li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Anthropic: Effective harnesses for long-running agents</a></li>
+              <li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Model Context Protocol: Architecture overview</a></li>
+            </ol>
+          </div>
+        </div>
+        <div class="fq-right">
+          <details class="fq"><summary>What is an AI harness?</summary><p>An AI harness is the operating system around a model. It holds your memory, your tools, the rules it follows, and the permissions and state that let it keep working. That structure is what turns a single answer into a system that does useful work again and again.</p></details>
+          <details class="fq"><summary>Is an AI harness the same as an AI agent?</summary><p>No. The agent is the working system produced by a model operating inside a harness with tools and an environment. The harness is the structure that coordinates those parts and determines what survives between runs.</p></details>
+          <details class="fq"><summary>Is MCP an AI harness?</summary><p>No. Model Context Protocol standardizes how AI applications connect to tools, resources, and prompts. MCP can be an important connection layer inside a harness, but it does not define the complete memory, policy, workflow, or persistence system.</p></details>
+          <details class="fq"><summary>Can one harness use Claude, GPT, and Gemini?</summary><p>A harness can support multiple models. COS runs on Claude Code, Codex, and Cursor today; GPT, Gemini, and local models require additional adapters. Running the harness and querying its memory are separate questions, and the second one is already open to every model.</p></details>
+          <details class="fq"><summary>What is an AI memory layer?</summary><p>The AI memory layer is the record of who you are, who you work with, what you decided, and what you corrected, kept separate from any single model or app. A model reads from it before it answers and writes back to it after. When the layer lives outside the assistant, as files and indexes you own, it becomes shared memory that any model can use.</p></details>
+          <details class="fq"><summary>Can ChatGPT, Claude, Cursor, and the next assistant all query the same memory?</summary><p>Yes, when the memory lives as a resource instead of inside one app's chat history. COS exposes your memory over MCP, so any MCP-capable host reads the same record: Claude, Cursor, Codex, ChatGPT, or whatever ships next. One connector, one memory, no re-explaining. The harness still decides what is exposed, what is retrieved for a given question, and what needs your approval.</p></details>
+          <details class="fq"><summary>Is Claude memory or ChatGPT memory portable?</summary><p>Not on their own. Built-in memory features live inside that vendor's app and follow that vendor's rules. You cannot hand them to a different model. A harness inverts this: the memory sits outside every assistant, and each model connects to it. Switching engines keeps the record intact.</p></details>
+          <details class="fq"><summary>What is a memory MCP server?</summary><p>A memory MCP server exposes stored memory as resources and tools over the Model Context Protocol, so any MCP client can read from it and write to it. It is the plumbing that makes one shared AI memory reachable from several assistants. It is not the whole harness: retrieval, policy, approvals, and persistence still need an owner.</p></details>
+          <details class="fq"><summary>Does a local AI harness keep all data private?</summary><p>Not automatically. A local-first harness can keep the durable corpus and outputs on devices you control. Any context sent to a hosted model for inference is still processed under that provider's terms and data controls. Local storage and local inference are separate choices.</p></details>
+          <details class="fq"><summary>Why does a harness matter for personal AI memory?</summary><p>The harness decides what gets remembered, how it is organized, when it is retrieved, and how corrections compound. That turns scattered chats into durable working memory that can survive a new model, interface, or device.</p></details>
+        </div>
+      </div>
+      <div class="ch-close">
+        <p class="creed">Do not just rent intelligence. Build the system that remembers.</p>
+        <div class="cc-cta"><a class="btn primary" href="/blueprint/">Build my Blueprint</a><a class="btn ghost" href="/#start">Start on your Mac</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="burn up" aria-hidden="true"></div>
 </main>
 
 <footer>
@@ -635,18 +1170,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 
 <script>
 (function(){
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target);}
-      });
-    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
-    reveals.forEach(function(el){io.observe(el);});
-  } else {
-    reveals.forEach(function(el){el.classList.add('in');});
-  }
-
   // ── Engine swap: auto-cycle the frontier model inside the fixed harness (anime.js v4) ──
   var name = document.getElementById('engineName');
   var role = document.getElementById('engineRole');
@@ -662,9 +1185,19 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     name.textContent = b.dataset.model;
     role.textContent = b.dataset.role;
     if (glyphUse && b.dataset.icon) glyphUse.setAttribute('href', '#eng-' + b.dataset.icon);
-    buttons.forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-    b.setAttribute('aria-pressed','true');
+    buttons.forEach(function(o){ o.setAttribute('aria-pressed','false'); o.classList.remove('on'); });
+    b.setAttribute('aria-pressed','true'); b.classList.add('on');
+    moveBar(b);
   }
+  // the rail's underline sits under the seated engine (the homepage's .one-rail grammar)
+  function moveBar(b){
+    var x = b && b.parentNode.querySelector('.bar'); if (!x) return;
+    x.style.width = b.offsetWidth + 'px'; x.style.transform = 'translateX(' + b.offsetLeft + 'px)';
+  }
+  function barNow(){ var on = buttons.filter(function(o){ return o.getAttribute('aria-pressed') === 'true'; })[0]; moveBar(on); }
+  barNow();
+  window.addEventListener('resize', barNow);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(barNow);
 
   if (!animeOK) {
     // No anime.js available: keep the original CSS-transition click swap, no auto-cycle.
@@ -730,10 +1263,12 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     });
 
     // pause on hover/focus so a reader can absorb it
-    engine.addEventListener('mouseenter', function(){ hovered = true; stop(); });
-    engine.addEventListener('mouseleave', function(){ hovered = false; start(); });
-    engine.addEventListener('focusin', function(){ hovered = true; stop(); });
-    engine.addEventListener('focusout', function(){ hovered = false; start(); });
+    // (the whole rig, so focusing the model rail below the engine also holds the cycle)
+    var rigEl = engine.closest('.rig') || engine;
+    rigEl.addEventListener('mouseenter', function(){ hovered = true; stop(); });
+    rigEl.addEventListener('mouseleave', function(){ hovered = false; start(); });
+    rigEl.addEventListener('focusin', function(){ hovered = true; stop(); });
+    rigEl.addEventListener('focusout', function(){ hovered = false; start(); });
     // pause when the tab is hidden
     document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else start(); });
 
@@ -748,32 +1283,6 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
     if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) stop(); else start(); });
   }
 
-  // ── Engine-evolution plate: combustion -> turbojet -> electric. The engine advances; the harness stays. ──
-  var plate = document.querySelector('#definition .pixmap-e');
-  if (plate && animeOK && !rm.matches) {
-    var eraNames = ['combustion · your daily driver','turbojet · built for speed','electric · quiet efficiency'];
-    var eraLayers = [plate.querySelector('.era-c'), plate.querySelector('.era-j'), plate.querySelector('.era-e')];
-    var eraTag = document.getElementById('eraTag');
-    if (eraLayers[0] && eraLayers[1] && eraLayers[2]) {
-      var E_DWELL = 3600, E_FADE = 950;
-      var etl = AN.createTimeline({ loop: true, autoplay: false, defaults: { ease: 'inOutSine', duration: E_FADE } });
-      for (var ei = 0; ei < 3; ei++) {
-        (function(ei){
-          var nx = (ei + 1) % 3;
-          var at = (ei + 1) * E_DWELL - E_FADE;
-          etl.add(eraLayers[nx], { opacity: [0, 1], onBegin: function(){ if (eraTag) eraTag.textContent = eraNames[nx]; } }, at);
-          etl.add(eraLayers[ei], { opacity: [1, 0] }, at);
-        })(ei);
-      }
-      var pInView = false;
-      var pSync = function(){ if (pInView && !document.hidden) etl.play(); else etl.pause(); };
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function(es){ es.forEach(function(e){ pInView = e.isIntersecting; pSync(); }); }, { threshold: .25 }).observe(plate);
-      } else { pInView = true; pSync(); }
-      document.addEventListener('visibilitychange', pSync);
-      if (rm.addEventListener) rm.addEventListener('change', function(e){ if (e.matches) etl.pause(); });
-    }
-  }
 })();
 
 // Nav: dropdown groups + mobile burger. namespaced to .nav (shared with homepage)
@@ -790,7 +1299,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
       if(el.getBoundingClientRect().width<20){ el._pillStale=true; return; }
       var eL=parseFloat(el.style.getPropertyValue('--login-w'))||0, eC=parseFloat(el.style.getPropertyValue('--pill-w'))||0;
       if((eL||eC)&&(Math.abs(login.getBoundingClientRect().width-eL)>1||Math.abs(cta.getBoundingClientRect().width-eC)>1)){ el._pillStale=true; return; }
-      var narrow=window.matchMedia('(max-width:900px)').matches;
+      var narrow=window.matchMedia('(max-width:1000px)').matches;
       var w0=el.style.getPropertyValue('--nav-actions-w');
       var l0=el.style.getPropertyValue('--login-w');
       var p0=el.style.getPropertyValue('--pill-w');
@@ -1013,67 +1522,222 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 })();
 </script>
 <script>
-// Harness assembly stage (hb-): eight layers ring a swappable core. Scroll-triggered, anime.js v4.
+// Chapters below the hero (level-up, 2026-11-17). One authored moment per chapter in the nav logo's grammar: a line
+// draws (anime createDrawable), then the ink fills after it. Each plays once when well in view, or on a reader's
+// choice. Without JS the final state shows; under reduced motion the same final state shows and nothing moves.
+// Only stroke dashes, opacity, colour and transforms change, so nothing shifts layout while it plays.
 (function(){
-  var stage = document.getElementById('hstage');
-  if (!stage) return;
-  var AN = window.anime;
-  var rm = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
-  var core = stage.querySelector('.hcore');
-  var layers = [].slice.call(stage.querySelectorAll('.hlayer'));
-  var lines = [].slice.call(stage.querySelectorAll('.hstage-links line'));
-  var nameEl = document.getElementById('hcoreName');
-
-  // No anime, or reduced motion: leave everything at rest. Without .hb-js the CSS pre-states never apply.
-  if (!AN || !AN.createTimeline || rm.matches) return;
-
-  // Arm the hidden pre-animation states (gated so no-JS + reader modes render at rest).
-  stage.classList.add('hb-js');
-
-  var built = false;
-  function assemble(){
-    if (built) return; built = true;
-    var tl = AN.createTimeline({ defaults:{ ease:'outQuad' } });
-    // the swappable core seats first
-    tl.add(core, { opacity:[0,1], scale:[.82,1], translateY:[10,0], duration:560, ease:'outBack(1.4)' }, 0);
-    // then the eight layers assemble around it, one by one (timeline offsets; stagger({start}) is a no-op in this bundle)
-    layers.forEach(function(el, i){
-      var at = 240 + i * 128;
-      tl.add(el, { opacity:[0,1], translateY:[16,0], scale:[.94,1], duration:440, ease:'outBack(1.5)' }, at);
-      if (lines[i]) tl.add(lines[i], { strokeDashoffset:[1,0], duration:380, ease:'outQuad' }, at + 70);
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io='IntersectionObserver' in window, AN=window.anime;
+  var MOVE=!rm&&io&&!!(AN&&AN.createTimeline&&AN.animate&&AN.utils&&AN.svg&&AN.svg.createDrawable&&AN.stagger);
+  var NS='http://www.w3.org/2000/svg';
+  window.__chMotion=MOVE?'on':'off';
+  function S(tag,at,parent){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);if(parent)parent.appendChild(e);return e;}
+  function hLine(cls,parent){var s=S('svg',{'class':cls,'aria-hidden':'true'},parent);return S('line',{x1:'0',y1:'1',x2:'100%',y2:'1'},s);}
+  function drawable(els,a,b){return MOVE&&els.length?AN.svg.createDrawable(els,a||0,b||0):[];}
+  function settle(els){els.forEach(function(e){if(!e)return;e.removeAttribute('stroke-dasharray');e.removeAttribute('stroke-dashoffset');e.removeAttribute('pathLength');});}
+  function arr(x){return [].slice.call(x||[]);}
+  function finish(tl){if(tl&&tl.complete)try{tl.complete();}catch(e){}}
+  function bar(el,b){var x=el.querySelector(':scope>.bar');if(!x||!b)return;x.style.width=b.offsetWidth+'px';x.style.transform='translateX('+b.offsetLeft+'px)';}
+  function whenSeen(el,fn,th){
+    if(!io){fn();return;}
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){o.disconnect();fn();}});},{threshold:th||.35});
+    o.observe(el);
+  }
+  // A rail of buttons that shows one thing at a time (the homepage's rail, with up and down keys too).
+  function rail(el,btns,onPick,start){
+    var cur=-1;
+    function pick(i,why){
+      i=(i+btns.length)%btns.length;var was=cur;cur=i;
+      btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-pressed',k===i?'true':'false');});
+      bar(el,btns[i]);onPick(i,why,was);
+    }
+    btns.forEach(function(b,k){b.addEventListener('click',function(){pick(k,'user');});});
+    el.addEventListener('keydown',function(e){
+      var k=btns.indexOf(document.activeElement);if(k<0)return;
+      var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(!d)return;
+      e.preventDefault();var n=(k+d+btns.length)%btns.length;btns[n].focus();pick(n,'user');
     });
+    function re(){if(cur>=0)bar(el,btns[cur]);}
+    if('ResizeObserver' in window)new ResizeObserver(re).observe(el);else window.addEventListener('resize',re);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(re);
+    pick(start,'init');
+    return {pick:pick,cur:function(){return cur;}};
   }
 
-  // Core name cycle reinforces the swappable core. Pauses off-screen / when the tab is hidden.
-  var names = ['Claude','GPT','Gemini','Local'], ni = 0, cyc = null, vis = false;
-  function tick(){
-    AN.animate(nameEl, { opacity:[1,0], translateY:[0,-6], duration:200, ease:'inQuad', onComplete:function(){
-      ni = (ni + 1) % names.length;
-      nameEl.textContent = names[ni];
-      AN.animate(nameEl, { opacity:[0,1], translateY:[6,0], duration:300, ease:'outQuad' });
-    }});
-  }
-  function startCyc(){ if (cyc || !vis || document.hidden) return; cyc = setInterval(tick, 2800); }
-  function stopCyc(){ if (cyc){ clearInterval(cyc); cyc = null; } }
+  // ── 1 · What is an AI harness ──
+  (function(){
+    var sec=document.getElementById('definition');if(!sec)return;
+    // (a) the plate: one engine at a time, the reader's choice (it no longer loops)
+    var st=sec.querySelector('.df-era');
+    if(st){
+      var pis=arr(sec.querySelectorAll('.pixmap-e .pi')),ecs=arr(sec.querySelectorAll('.df-cap .ec'));
+      rail(st,arr(st.querySelectorAll('button')),function(i){
+        pis.forEach(function(p,k){p.classList.toggle('on',k===i);});
+        ecs.forEach(function(c,k){c.classList.toggle('on',k===i);});
+      },0);
+    }
+    // (b) the ledger: each row's rule draws; a drawn line strikes the Model row; the harness's keep-cell inks in
+    var t=sec.querySelector('.lg-t');if(!t)return;
+    var rows=arr(t.querySelectorAll('tbody tr'));
+    var rules=rows.map(function(r){return arr(r.children).map(function(c){return hLine('lg-rule',c);});});
+    t.classList.add('rl');
+    var x=t.querySelector('.lg-x'),xl=x?hLine('lg-strk',x):null;
+    var keep=t.querySelector('.lg-keep>span'),kl=keep?hLine('lg-krule',keep):null;
+    if(!MOVE)return;
+    var flat=[];rules.forEach(function(r){r.forEach(function(l){flat.push(l);});});
+    var pr=drawable(flat),px=drawable(xl?[xl]:[]),pk=drawable(kl?[kl]:[]);
+    t.classList.add('pre');
+    whenSeen(t,function(){
+      var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      rows.forEach(function(r,i){tl.add(rules[i].map(function(l){return pr[flat.indexOf(l)];}),{draw:'0 1',duration:460},i*160);});
+      var at=rows.length*160+360;
+      if(px.length){tl.add(px,{draw:'0 1',duration:420},at);tl.call(function(){x.classList.add('gone');},at+260);}
+      if(pk.length)tl.add(pk,{draw:'0 1',duration:460},at+520);
+      tl.call(function(){t.classList.remove('pre');},at+640);
+      tl.call(function(){settle(flat);settle([xl,kl]);},at+1500);
+    },.35);
+  })();
 
-  // 08 · Cadence runs on a clock, so its spoke keeps time: a quiet redraw pulse
-  // rides the eighth line every few seconds, on the same gates as the name cycle.
-  var cadLine = lines.length === 8 ? lines[7] : null;
-  var cad = null;
-  function cadTick(){ if (built && cadLine) AN.animate(cadLine, { strokeDashoffset:[1,0], duration:900, ease:'outQuad' }); }
-  function startCad(){ if (cad || !vis || document.hidden || !cadLine) return; cad = setInterval(cadTick, 5600); }
-  function stopCad(){ if (cad){ clearInterval(cad); cad = null; } }
+  // ── 2 · The eight layers: picking one draws its marker, then its branches draw in the tree and its files ink in ──
+  (function(){
+    var sec=document.getElementById('anatomy');if(!sec)return;
+    var list=sec.querySelector('.ly-list'),lis=arr(list.children),btns=lis.map(function(li){return li.querySelector('.ly');});
+    var tree=sec.querySelector('.ly-tree'),tls=arr(tree.querySelectorAll('.tl'));
+    tls.forEach(function(tl){var s=S('svg',{'class':'tl-br','aria-hidden':'true'});tl.insertBefore(s,tl.firstChild);S('line',{x1:'0',y1:'1',x2:'100%',y2:'1'},s);});
+    var mks=lis.map(function(li){var s=S('svg',{'class':'ly-mk','aria-hidden':'true'},li);return S('line',{x1:'1',y1:'0',x2:'1',y2:'100%'},s);});
+    lis.forEach(function(li,k){li.addEventListener('click',function(e){if(e.target.closest('a,button'))return;btns[k].click();});});
+    var tl=null,touched=false,auto=null,visible=false,seen=false;
+    function light(i,animate){
+      finish(tl);tl=null;
+      var n=' '+(i+1)+' ',hit=tls.filter(function(x){return (' '+x.getAttribute('data-l')+' ').indexOf(n)>=0;});
+      tree.classList.add('lit');
+      tls.forEach(function(x){x.classList.toggle('hit',hit.indexOf(x)>=0);});
+      if(!animate||!MOVE)return;
+      var brs=hit.map(function(x){return x.querySelector(':scope>.tl-br line');}),pb=drawable(brs),pm=drawable([mks[i]]);
+      hit.forEach(function(x){x.classList.remove('hit');});
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      tl.add(pm,{draw:'0 1',duration:380},0);
+      hit.forEach(function(x,j){var at=220+j*120;tl.add(pb[j],{draw:'0 1',duration:300},at);tl.call(function(){x.classList.add('hit');},at+200);});
+      tl.call(function(){settle(brs);settle([mks[i]]);},220+hit.length*120+700);
+    }
+    function schedule(r){
+      clearTimeout(auto);if(touched||!visible||!MOVE)return;
+      var c=r.cur();if(c>=btns.length-1)return;
+      auto=setTimeout(function(){if(!touched&&visible)r.pick(c+1,'auto');},2400);
+    }
+    var r;
+    r=rail(list,btns,function(i,why){
+      lis.forEach(function(li,k){li.classList.toggle('on',k===i);});
+      if(why==='init')return;
+      if(why==='user'){touched=true;clearTimeout(auto);}
+      light(i,true);
+      if(why==='auto')schedule(r);
+    },0);
+    if(!MOVE){light(0,false);return;}
+    drawable(mks);
+    new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;if(visible&&seen)schedule(r);else if(!visible)clearTimeout(auto);});},{threshold:0}).observe(sec.querySelector('.ly-grid'));
+    whenSeen(lis[0],function(){seen=true;if(!touched){light(r.cur(),true);schedule(r);}},.6);
+  })();
 
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ vis = e.isIntersecting; if (vis){ assemble(); startCyc(); startCad(); } else { stopCyc(); stopCad(); } });
-    }, { threshold:0.3 });
-    io.observe(stage);
-  } else {
-    stage.classList.remove('hb-js'); // no observer: show at rest
-  }
-  document.addEventListener('visibilitychange', function(){ if (document.hidden){ stopCyc(); stopCad(); } else if (vis){ startCyc(); startCad(); } });
+  // ── 3 · One correction across three engines: the axis draws stop to stop; at each stop the memory's rule draws and inks in ──
+  (function(){
+    var run=document.querySelector('#ownership .ow-run');if(!run)return;
+    var stops=arr(run.querySelectorAll('.ow-stop'));
+    var segs=stops.map(function(s,i){if(i===stops.length-1)return null;var v=S('svg',{'class':'ow-seg','aria-hidden':'true'},s);
+      return [S('line',{'class':'sh',x1:'0',y1:'1',x2:'100%',y2:'1'},v),S('line',{'class':'sv',x1:'1',y1:'0',x2:'1',y2:'100%'},v)];});
+    var rings=stops.map(function(s){return s.querySelector('.ow-dot .rg');}),fills=stops.map(function(s){return s.querySelector('.ow-dot .fl');});
+    var mems=stops.map(function(s){return s.querySelector('.ow-mem');}),mrules=mems.map(function(m){return hLine('ow-rule',m);});
+    var minks=mems.map(function(m){return arr(m.querySelectorAll('code,span'));});
+    if(!MOVE)return;
+    var segLines=[];segs.forEach(function(p){if(p){segLines.push(p[0],p[1]);}});
+    var ps=drawable(segLines),pr=drawable(rings),pm=drawable(mrules);
+    AN.utils.set(fills,{opacity:0,scale:.3});
+    minks.forEach(function(m){AN.utils.set(m,{opacity:0});});
+    whenSeen(run,function(){
+      var tl=AN.createTimeline({defaults:{ease:'inOutQuad'}}),at=0;
+      stops.forEach(function(s,i){
+        tl.add(pr[i],{draw:'0 1',duration:380},at);
+        tl.add(fills[i],{opacity:[0,1],scale:[.3,1],duration:320,ease:'outBack(1.6)'},at+300);
+        tl.add(pm[i],{draw:'0 1',duration:420},at+380);
+        tl.add(minks[i],{opacity:[0,1],duration:320,ease:'outQuad',delay:AN.stagger(90)},at+640);
+        if(segs[i]){var j=segLines.indexOf(segs[i][0]);tl.add([ps[j],ps[j+1]],{draw:'0 1',duration:620},at+900);}
+        at+=1300;
+      });
+      tl.call(function(){settle(segLines);settle(rings);settle(mrules);
+        fills.forEach(function(f){f.style.opacity='';f.style.transform='';});
+        minks.forEach(function(m){m.forEach(function(x){x.style.opacity='';});});},at+400);
+    },.35);
+  })();
+
+  // ── 4 · Under real load: a moment picks the window's pane; the window's outline draws, then the pane inks in ──
+  (function(){
+    var sec=document.getElementById('cos');if(!sec)return;
+    var win=sec.querySelector('.aw');if(!win)return;
+    var side=arr(win.querySelectorAll('.vtab')),panes=arr(win.querySelectorAll('.aw-pane')),crumb=win.querySelector('[data-crumb]');
+    var copies=arr(sec.querySelectorAll('.cs-m')),st=sec.querySelector('.cs-step');if(!st)return;
+    var map=['today','sessions','memories','messages'],names={today:'Today',sessions:'Sessions',memories:'Memories',messages:'Messages'};
+    var tl=null;
+    function paneOf(k){return panes.filter(function(p){return p.getAttribute('data-v')===k;})[0];}
+    function inkIn(p){
+      if(!MOVE||!p)return;
+      finish(tl);
+      var pb=p.getBoundingClientRect(),rows=arr(p.querySelectorAll('.aw-row')).filter(function(r){var b=r.getBoundingClientRect();return b.height>0&&b.top<pb.top+700;});
+      var svg=S('svg',{'class':'aw-ink','aria-hidden':'true'},p),ls=rows.map(function(r){
+        var b=r.getBoundingClientRect(),y=(b.bottom-pb.top).toFixed(1);
+        return S('line',{x1:(b.left-pb.left).toFixed(1),y1:y,x2:(b.right-pb.left).toFixed(1),y2:y},svg);
+      });
+      var pl=drawable(ls);AN.utils.set(rows,{opacity:0});
+      tl=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      tl.add(pl,{draw:'0 1',duration:260,delay:AN.stagger(30)},0);
+      tl.add(rows,{opacity:[0,1],duration:240,ease:'outQuad',delay:AN.stagger(30)},180);
+      tl.add(svg,{opacity:[1,0],duration:200},260+rows.length*30);
+      tl.call(function(){svg.remove();rows.forEach(function(r){r.style.opacity='';});},480+rows.length*30);
+    }
+    function show(i,why){
+      var k=map[i];
+      copies.forEach(function(c,j){c.classList.toggle('on',j===i);});
+      side.forEach(function(s){s.classList.toggle('sel',s.getAttribute('data-v')===k);});
+      panes.forEach(function(p){p.setAttribute('data-open',String(p.getAttribute('data-v')===k));});
+      win.setAttribute('data-v',k);
+      if(crumb)crumb.textContent=names[k];
+      if(why==='user')inkIn(paneOf(k));
+    }
+    rail(st,arr(st.querySelectorAll('button')),show,0);
+    if(!MOVE)return;
+    var first=paneOf('today'),rows=arr(first.querySelectorAll('.aw-row'));AN.utils.set(rows,{opacity:0});
+    whenSeen(win,function(){
+      var w=win.offsetWidth,h=win.offsetHeight;
+      var o=S('svg',{'class':'vw-outline','aria-hidden':'true',width:String(w+2),height:String(h+2)},win.parentNode);
+      o.style.left=(win.offsetLeft-1)+'px';o.style.top=(win.offsetTop-1)+'px';
+      var rect=S('rect',{x:'1',y:'1',width:String(w),height:String(h),rx:'16'},o),p=drawable([rect]);
+      var t=AN.createTimeline({defaults:{ease:'inOutQuad'}});
+      t.add(p,{draw:'0 1',duration:560},0);
+      t.call(function(){AN.utils.set(rows,{opacity:1});rows.forEach(function(r){r.style.opacity='';});if(win.getAttribute('data-v')==='today')inkIn(first);},400);
+      t.add(o,{opacity:[1,0],duration:240},800);
+      t.call(function(){o.remove();},1060);
+    },.25);
+  })();
+
+  // ── 5 · Questions: each plus is two drawn lines; opening a question turns the upright into place ──
+  (function(){
+    var qs=arr(document.querySelectorAll('#faq .fq summary'));if(!qs.length)return;
+    var all=[];
+    qs.forEach(function(sm){var s=S('svg',{'class':'fq-pm',viewBox:'0 0 16 16','aria-hidden':'true'},sm);all.push(S('line',{'class':'h',x1:'1',y1:'8',x2:'15',y2:'8'},s),S('line',{'class':'v',x1:'8',y1:'1',x2:'8',y2:'15'},s));});
+    if(!MOVE)return;
+    var p=drawable(all);
+    whenSeen(document.querySelector('#faq .fq-right'),function(){
+      AN.animate(p,{draw:'0 1',duration:320,ease:'inOutQuad',delay:AN.stagger(70),onComplete:function(){settle(all);}});
+    },.3);
+  })();
 })();
+</script>
+<script>
+// Amber nav (2026-11-16): the resin card is translucent over the page's dark top and solid once that is passed,
+// so its cream links never sit on a cream section.
+(function(){var nav=document.querySelector('.nav'),top=document.querySelector('.hero');if(!nav)return;
+  var solid=function(){nav.classList.toggle('solid',!top||top.getBoundingClientRect().bottom<112);};
+  solid();window.addEventListener('scroll',solid,{passive:true});window.addEventListener('resize',solid);})();
 </script>
 </body>
 </html>
