@@ -689,7 +689,8 @@ p a.btn,.lead a.btn{text-decoration:none}
       </section>
       <details id="email-handoff">
         <summary>Email this setup to my Mac</summary>
-        <form id="sbForm" novalidate onsubmit="submitSaveBuild(event)">
+        <p id="local-handoff"><a id="handoff-mail">Open in my mail app</a> · <a id="handoff-link">Link to this setup</a></p>
+        <form id="sbForm" hidden novalidate onsubmit="submitSaveBuild(event)">
           <label for="sb-em">Email address</label>
           <div class="sb-row">
             <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email" required maxlength="254">
@@ -1273,6 +1274,9 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     return true;
   }
   function showChecklist(list) {
+    $('#handoff-link').href = list.resumeUrl;
+    $('#handoff-mail').href = 'mailto:?subject=' + encodeURIComponent('My COS setup checklist')
+      + '&body=' + encodeURIComponent('Open my personalized setup on a Mac:\n' + list.resumeUrl);
     var steps = $('#checklist-steps'), tasks = $('#checklist-tasks');
     steps.replaceChildren(); tasks.replaceChildren();
     list.steps.forEach(function (step) {
@@ -1286,6 +1290,16 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
       p.append(label, document.createElement('br'), document.createTextNode(task.prompt)); tasks.append(p);
     });
   }
+
+  $('#email-handoff').addEventListener('toggle', async function () {
+    if (!this.open || !$('#sbForm').hidden) return;
+    try {
+      var result = await fetch('https://app.gotcos.com/api/wizard/checklist', {signal:AbortSignal.timeout(4000)});
+      if (!result.ok || !(await result.json()).available) return;
+      $('#sbForm').hidden = false;
+      $('#local-handoff').hidden = true;
+    } catch (_) { /* The local handoff is ready even when offline. */ }
+  });
 
   window.submitSaveBuild = async function (e) {
     e.preventDefault();
@@ -1325,6 +1339,7 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
       deliveredFor = fingerprint;
       window.gtag?.('event','wizard_checklist_email_accepted');
     } catch (err) {
+      $('#local-handoff').hidden = false;
       msg.className = 'sb-msg err show';
       msg.textContent = err.message === 'limit' ? 'Try emailing your setup again in an hour.'
         : acceptedLead === fingerprint ? 'Email delivery could not be confirmed. Try again.'
