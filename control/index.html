@@ -275,6 +275,53 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 .pet-pack ol{padding-left:1.4em;margin:18px 0;max-width:78ch;color:var(--muted)}
 .pet-pack p{max-width:78ch;color:var(--muted)}
 .pet-pack pre{max-width:100%;overflow-x:auto;padding:18px 0;font:.75rem/1.7 var(--mono)}
+.pet-pack h4{margin:1.4em 0 .45em}
+.pet-pack .pet-pack-guide{margin-top:20px}
+.pet-builder{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr);gap:clamp(18px,3vw,40px);align-items:start;margin:18px 0 24px;padding:clamp(16px,2.5vw,30px);border:1px solid var(--line);border-radius:16px;background:#32170d}
+.pet-builder form,.pet-builder-preview,.pet-builder label,.pet-builder [data-prompt-fields]{display:grid;gap:8px;min-width:0;align-content:start}
+.pet-builder label,.pet-builder legend{font-weight:600;font-size:.89rem}
+.pet-builder input,.pet-builder select,.pet-builder textarea{width:100%;min-width:0;font:inherit;color:inherit;background:#29150e;border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+.pet-builder select{color-scheme:dark}
+.pet-builder textarea{resize:vertical;font:.8rem/1.5 var(--mono);margin-top:10px}
+.pet-builder button{font:inherit;cursor:pointer}
+.pet-builder .btn{min-height:40px;padding:8px 14px;font-size:.88rem;line-height:1.35}
+.pet-builder .btn.ghost{background:transparent}
+.pet-builder button:disabled{opacity:.55;cursor:default}
+.pet-builder small{color:var(--muted);font-size:.82rem;line-height:1.55}
+.pet-builder p{margin:0}
+.pet-builder [role=status]{font-size:.85rem}
+.pet-builder [role=status]:empty{display:none}
+.pet-builder[hidden],.pet-builder [hidden]{display:none}
+.pet-builder-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pet-builder-times,.pet-builder-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pet-builder-settings{margin-bottom:8px}
+.pet-providers{margin:8px 0 0;padding:0;border:0;min-width:0}
+.pet-providers legend{padding:0;margin-bottom:6px}
+.pet-provider-options{display:flex;gap:8px;flex-wrap:wrap}
+.pet-provider-options label{position:relative;cursor:pointer;justify-items:center;gap:5px;min-width:54px;color:var(--muted);font-size:.72rem}
+.pet-provider-options input{position:absolute;opacity:0;width:1px;height:1px;padding:0}
+.pet-provider-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--icon-bg);color:var(--icon-ink);outline:2px solid transparent;outline-offset:2px}
+.pet-provider-icon:before{content:"";width:23px;height:23px;background:currentColor;mask:var(--icon) center/contain no-repeat;-webkit-mask:var(--icon) center/contain no-repeat}
+.pet-provider-claude{--icon-bg:#f7e5d6;--icon-ink:#bd542d;--icon:url('assets/session-command/mark-claude.svg')}
+.pet-provider-chatgpt{--icon-bg:#d9f3eb;--icon-ink:#058b76;--icon:url('assets/session-command/mark-codex.svg')}
+.pet-provider-cursor{--icon-bg:#e7e1ff;--icon-ink:#6652dc;--icon:url('assets/session-command/mark-cursor.svg')}
+.pet-provider-other{--icon-bg:#4b3329;--icon-ink:#f1dfcf}
+.pet-provider-other .pet-provider-icon:before{content:"›_";display:grid;place-items:center;width:22px;height:16px;background:none;mask:none;-webkit-mask:none;border:1.5px solid;border-radius:4px;font:600 13px/1 var(--mono)}
+.pet-provider-options input:checked + span{outline-color:var(--gold)}
+.pet-provider-options input:checked ~ span:last-child{color:var(--fg)}
+.pet-provider-options input:focus-visible + span{outline:3px dashed var(--fg)}
+.pet-prompt-box{border:1px solid var(--line);border-radius:10px;background:#29150e;padding:10px 12px;position:relative}
+.pet-prompt-box summary{font-size:.88rem;min-height:40px;padding:10px 104px 8px 0;line-height:1.4}
+.pet-prompt-box [data-copy-prompt]{position:absolute;right:10px;top:10px}
+.pet-builder [data-prompt-fields]{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px}
+.pet-builder input::file-selector-button{font:inherit;color:var(--fg);background:#4b3023;border:0;border-radius:5px;padding:5px 9px;margin-right:8px;cursor:pointer}
+.pet-builder-preview{padding:16px;border:1px solid var(--line);border-radius:12px;background:#412316}
+.pet-builder-stage{position:relative;display:grid;place-items:center;min-height:190px;background:repeating-conic-gradient(#ffffff09 0% 25%,transparent 0% 50%) 0 0/18px 18px,#2c1911;border-radius:8px}
+.pet-builder-stage canvas,.pet-builder-stage:before{width:min(100%,192px);aspect-ratio:1;height:auto}
+.pet-builder-stage:has(canvas[hidden]):before{content:"";background:url('assets/pet-builder-example.png') left top/300% 200% no-repeat}
+.pet-builder form[data-download-gate]{border-top:1px solid var(--line);padding-top:12px;margin-top:6px}
+@media(max-width:720px){.pet-builder{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:390px){.pet-builder-settings{grid-template-columns:1fr}}
 
 .hero h1{font-size:clamp(2.7rem,5vw,4.6rem);max-width:14ch;line-height:1.04}
 #install{scroll-margin-top:115px}
@@ -282,6 +329,7 @@ footer .foot-nav{display:flex;gap:8px 16px;justify-content:center;flex-wrap:wrap
 <script src="../assets/anime.umd.min.js"></script>
 <script src="assets/session-command/pet-cast.js?v=illustrated-1" defer></script>
 <script src="assets/session-command/session-deck.js?v=illustrated-1" defer></script>
+<script src="assets/pet-builder.js?v=provider-picker-2" defer></script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2474026.js"></script>
 <!-- End of HubSpot Embed Code -->
@@ -1594,25 +1642,113 @@ button.aw-b{cursor:pointer;font-family:inherit;min-height:32px}
         </div>
 
         <details class="pet-pack" id="custom-pet-pack">
-          <summary>Build a custom animated pet pack</summary>
+          <summary>Create a custom animated pet</summary>
+          <p class="pet-pack-guide">Make a sprite sheet in your AI app or bring your own footage. Preview the loop here, then enter your email to download your pet pack.</p>
+          <div class="pet-builder" id="pet-builder" hidden>
+            <form aria-label="Add an animation to your pet">
+              <div class="pet-builder-settings">
+                <label>Session state
+                  <select id="pet-builder-state" name="state">
+                    <option value="idle">Idle</option>
+                    <option value="working">1 session running</option>
+                    <option value="duel">2 sessions running</option>
+                    <option value="trio">3 sessions running</option>
+                    <option value="swarm">4+ sessions running</option>
+                    <option value="waiting">Waiting</option>
+                    <option value="done">Done</option>
+                    <option value="error">Error</option>
+                    <option value="attention">Attention</option>
+                    <option value="patrol">Patrol</option>
+                  </select>
+                </label>
+                <label>Artwork source
+                  <select id="pet-builder-source" name="source">
+                    <option value="sheet">AI sprite sheet</option>
+                    <option value="media">Video or images</option>
+                  </select>
+                </label>
+              </div>
+              <div data-prompt-fields>
+                <label for="pet-builder-character">Pet description (optional)</label>
+                <input id="pet-builder-character" name="character" maxlength="400" placeholder="A round ivory desk robot">
+                <fieldset class="pet-providers">
+                  <legend>Your AI app</legend>
+                  <div class="pet-provider-options">
+                      <label class="pet-provider-claude"><input type="radio" name="provider" value="claude"><span class="pet-provider-icon" aria-hidden="true"></span><span>Claude</span></label>
+                      <label class="pet-provider-chatgpt"><input type="radio" name="provider" value="chatgpt" checked><span class="pet-provider-icon" aria-hidden="true"></span><span>ChatGPT</span></label>
+                      <label class="pet-provider-cursor"><input type="radio" name="provider" value="cursor"><span class="pet-provider-icon" aria-hidden="true"></span><span>Cursor</span></label>
+                      <label class="pet-provider-other"><input type="radio" name="provider" value="other"><span class="pet-provider-icon" aria-hidden="true"></span><span>Other</span></label>
+                  </div>
+                </fieldset>
+                <small data-provider-help></small>
+                <div class="pet-prompt-box">
+                  <details>
+                    <summary data-prompt-title>Idle sprite prompt</summary>
+                    <textarea id="pet-builder-prompt" aria-label="Full sprite prompt" rows="6" readonly spellcheck="false"></textarea>
+                  </details>
+                  <button type="button" class="btn ghost" data-copy-prompt>Copy prompt</button>
+                </div>
+                <small role="status" data-prompt-status hidden></small>
+              </div>
+              <label for="pet-builder-media" data-media-label>Generated sprite sheet</label>
+              <input id="pet-builder-media" name="media" type="file" accept=".png,image/png" required aria-describedby="pet-builder-media-help">
+              <small id="pet-builder-media-help">Use a transparent PNG with three columns and two rows.</small>
+              <div class="pet-builder-times" hidden>
+                <label>Start (seconds)<input name="start" type="number" min="0" step="0.01" value="0" required></label>
+                <label>Length (seconds)<input name="clipLength" type="number" min="0.1" max="6" step="0.01" value="2" required></label>
+              </div>
+              <div data-background-fields hidden>
+                <label for="pet-builder-background">Background</label>
+                <select id="pet-builder-background" name="background">
+                  <option value="keep">Keep source background</option>
+                  <option value="green">Remove green screen</option>
+                </select>
+              </div>
+              <div class="pet-builder-row"><button class="btn ghost" type="submit">Build animation</button></div>
+              <p role="status" id="pet-builder-status"></p>
+            </form>
+            <div class="pet-builder-preview">
+              <strong>Animation preview</strong>
+              <div class="pet-builder-stage"><canvas width="192" height="192" role="img" aria-label="Pet animation preview" hidden></canvas></div>
+              <label for="pet-builder-preview-state" hidden>Preview a state</label>
+              <select id="pet-builder-preview-state" hidden></select>
+              <div class="pet-builder-row" data-preview-actions hidden>
+                <button class="btn ghost" type="button" data-play>Play</button>
+                <button class="btn ghost" type="button" data-step>Next frame</button>
+                <button class="btn ghost" type="button" data-remove>Remove state</button>
+              </div>
+              <small data-preview-info>Sample pet · Ivory desk robot</small>
+              <div class="pet-builder-row" data-example-row><button class="btn ghost" type="button" data-example>Try the generated robot</button></div>
+              <form aria-label="Unlock your pet pack" data-download-gate hidden>
+                <label for="pet-pack-email">Email address</label>
+                <input id="pet-pack-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="pet-pack-email-help">
+                <small id="pet-pack-email-help">We record your email to unlock the download. Your sprite files stay in this browser. <a href="/privacy/">Privacy policy</a></small>
+                <div class="pet-builder-row"><button class="btn primary" type="submit">Unlock &amp; download</button></div>
+              </form>
+              <div class="pet-builder-row"><button class="btn primary" type="button" data-download hidden disabled>Download pet pack</button></div>
+              <p role="status" data-export-status></p>
+            </div>
+          </div>
+          <p><strong>Install your animation.</strong> Unzip the download. In COS Control, open <strong>Settings</strong>, then <strong>Pet and appearance</strong>. Enable the session pet and switch on <strong>Show all settings</strong> if needed. Under <strong>Session pet</strong>, expand <strong>Advanced</strong>. Click <strong>Choose</strong> beside the matching state, such as <strong>Idle</strong> for <code>idle.png</code>. Set the frame count shown in the pack’s <code>INSTALL.txt</code>. Repeat for each PNG.</p>
+          <p><strong>Use the individual state rows.</strong> The folder installer labeled <strong>Install sprite pack</strong> in Control 0.5.397 can remove other local Control data.</p>
+          <h4>How we made Miles Windu</h4>
           <ol>
-        <li>Draw each animation as one horizontal PNG strip. Every frame in a strip must have the same width and height.</li>
-        <li>Add <code>session-pet-states.json</code> to the same folder. Name each file explicitly and declare its frame count.</li>
-        <li>Use <code>interval</code> for seconds per frame. Use <code>renderScale</code> only when one pose needs visual normalization.</li>
-        <li>In Control, open Session pet, Character, <strong>Install sprite pack</strong> and choose the folder.</li>
-      </ol>
-          <pre aria-label="Minimal custom sprite pack state map"><code>{
+            <li><strong>Use one character reference.</strong> We generated and refined drawings against the same full-body reference. Keep the face, outfit, camera angle and proportions consistent. For video, use a fixed camera and frame the whole character with room around it.</li>
+            <li><strong>Plan a motion you can read at desktop size.</strong> We drew the main poses first, then added in-between poses and held important moments. Start with a breath, a blink or an ear twitch. For a running state, try an action with a clear start, follow-through and recovery.</li>
+            <li><strong>Align the whole sequence.</strong> Use the same canvas and feet or contact line across frames. Keep enough transparent space for the widest pose. Use transparent PNGs for clean edges, or record against a green screen for the builder to remove.</li>
+            <li><strong>Review the exported loop.</strong> We stepped through Windu’s frames to check silhouette, contact and the cut from last frame to first. Preview on light and dark backgrounds and at the size you’ll use in Control. If it jumps, check the baseline, the scale and the last-to-first pose.</li>
+          </ol>
+          <p>For a second state, paste its prompt into the same conversation and attach the same reference. If the preview shows clipped poses or uneven scale, ask your image tool to correct those frames while keeping the character and grid layout.</p>
+          <h4>Assemble a pack by hand</h4>
+          <p>Lay each state’s frames left to right in one transparent PNG strip with equal-size cells and no gutters between cells. For eight 192 × 192 frames, export a 1536 × 192 image. Put the strips and a <code>manifest.json</code> like this in the same folder.</p>
+          <pre aria-label="Example import manifest"><code>{
   "poses": {
-    "idle":    { "file": "idle.png",    "frames": 8,  "interval": 0.20 },
-    "working": { "file": "one.png",     "frames": 12, "interval": 0.12 },
-    "duel":    { "file": "two.png",     "frames": 16, "interval": 0.14 },
-    "trio":    { "file": "three.png",   "frames": 16, "interval": 0.16 },
-    "swarm":   { "file": "fourplus.png","frames": 24, "interval": 0.18 }
+    "idle":    { "file": "idle.png",    "frames": 8 },
+    "working": { "file": "working.png", "frames": 16 }
   }
 }</code></pre>
-          <h4>Complete state vocabulary</h4>
-      <p>A full pack may also define <code>waiting</code>, <code>done</code>, <code>error</code>, <code>attention</code>, and <code>patrol</code>. A strip can contain 1–32 frames. Per-pose <code>renderScale</code> is clamped from 0.5 to 3.0. Missing states fall back safely instead of turning a one-cell image into sliced confetti.</p>
-      <p style="margin-top:14px">Character size and animation speed remain user settings. The pack's interval establishes authored timing at 100%; macOS Reduced Motion freezes animated strips.</p>
+          <p>Use <code>idle</code> for an empty session list and <code>working</code>, <code>duel</code>, <code>trio</code> and <code>swarm</code> for one, two, three and four or more active sessions. You can also add <code>waiting</code>, <code>done</code>, <code>error</code>, <code>attention</code> and <code>patrol</code>. One frame makes a still pose. Control can reuse your idle art when you leave other states empty.</p>
+          <p>Existing character settings can affect playback timing. Adjust playback with <strong>Character speed</strong>. macOS Reduce Motion freezes the animation.</p>
         </details>
 
         <details class="pet-showcase">
@@ -1691,7 +1827,7 @@ button.aw-b{cursor:pointer;font-family:inherit;min-height:32px}
           <div class="pet-option"><b>Message a session from the pet</b><span>Hover a live row and press the paperplane. The card names the session, so you always know where the message goes; Return sends it over the same routes the glasses use. A running Claude session takes it straight into its own window. Supported busy sessions can queue the message until they are ready. A queued message is still waiting to be sent; recorded hold reasons remain visible in Sessions. The card says which happened, then closes itself. What is queued shows under the field with its place in line and its text; tap a row to read the whole message, Edit to change it while it still waits, × and it will not be sent.</span></div>
           <div class="pet-option"><b>Four optional advanced Jedi</b><span>Start with Cloud Puff, then choose Miles Windu, Nia Solari, Elara Vale, or Rowan Vale for authored idle, walking, and workload-specific stories. All four include several opponent casts for their running states.</span></div>
           <div class="pet-option"><b>300 variety pets</b><span>Choose from the OpenPets gallery. They stay still, but the live ledger, routing, and session controls remain fully available.</span></div>
-          <div class="pet-option"><b>Bring your own sprites</b><span>Upload a single PNG, or install a custom state pack with separate strips and timing for idle, one, two, three, and four-plus sessions. The live Running, Done, and Waiting ledger stays underneath, keeping completion status glanceable with any art.</span><a href="#custom-pet-pack">Build a custom pet pack</a></div>
+          <div class="pet-option"><b>Bring your own character</b><span>Generate a sprite sheet with a prompt for your AI app or build from your own video and images.</span><a href="#custom-pet-pack">Create a custom animated pet</a></div>
         </div>
         </details>
       </div>
