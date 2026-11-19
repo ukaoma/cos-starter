@@ -178,16 +178,22 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
     .actions a.secondary { border-color: var(--border-form); color: var(--text-primary); }
     .actions a.secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
-    .save-build { margin-top: 1.6rem; padding: 1rem 1.1rem; background: rgba(242,154,69,0.06); border: 1px solid rgba(242,154,69,0.22); border-radius: 10px; }
+    .save-build { margin: 1.4rem 0; padding: 1rem 1.1rem; background: rgba(242,154,69,0.06); border: 1px solid rgba(242,154,69,0.22); border-radius: 10px; }
     .save-build label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.55rem; }
     .save-build label b { color: var(--text-primary); font-weight: 600; }
     .sb-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .sb-row input { flex: 1; min-width: 200px; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+    .sb-row input { flex: 1 1 12rem; min-width: 0; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
     .sb-row input::placeholder { color: rgba(251,238,221,0.34); }
     .sb-row input:focus { border-color: var(--accent-gold); }
     .sb-row button { padding: 0.6rem 1.1rem; background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: transform 0.2s; }
     .sb-row button:hover { transform: translateY(-1px); }
     .sb-row button:disabled { opacity: 0.6; cursor: default; transform: none; }
+    #setup-checklist { margin-top:1.25rem; border-top:1px solid var(--border-subtle); padding-top:1.25rem; line-height:1.5; overflow-wrap:anywhere; }
+    #setup-checklist ol { padding-left:1.4rem; }
+    #setup-checklist li { margin:.65rem 0; padding-left:.25rem; }
+    #setup-checklist li span { display:block; }
+    #setup-checklist h3 { margin:1.25rem 0 .35rem; }
+    #checklist-tasks p { margin:.65rem 0; padding-left:.85rem; border-left:2px solid var(--accent-gold); }
     .sb-msg { font-size: 0.78rem; margin-top: 0.5rem; display: none; }
     .sb-msg.show { display: block; }
     .sb-msg.ok { color: var(--accent-gold); }
@@ -228,7 +234,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
     @media (max-width: 600px) {
       .page { padding: 2rem 1rem 4rem; }
-      .step, .result { padding: 1.5rem; }
+      .step { padding: 1.5rem; }
+      #tune .ds-body { padding-inline:.6rem; }
+      .result { padding:1.1rem .8rem; }
+      #saveBuild { padding:.85rem; }
+      #saveBuild .sb-row > * { width:100%; }
+      body > a[aria-label="Back to gotcos.com"] { position:absolute !important; }
       .opt-grid, .opt-grid.three, .summary, .field-row { grid-template-columns: 1fr; }
     }
 
@@ -422,7 +433,7 @@ p a.btn,.lead a.btn{text-decoration:none}
   <div class="setup-seam" style="padding-top:3.2rem">
     <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Start with the Mac app.</h1>
     <p style="color:var(--text-muted);line-height:1.6">Download COS Control, move it to Applications, open it and choose Get started. Core server setup needs no Homebrew, Node, npm or npx installation. If you need Claude Code, COS can install it for you.</p>
-    <div class="actions" style="justify-content:center;margin:1.2rem 0;"><a class="primary" href="/control/#install">Download for Mac</a><a class="secondary" href="#path-quick">Follow the setup steps</a></div>
+    <div class="actions" style="justify-content:center;margin:1.2rem 0;"><a class="primary" href="/control/#install">Download for Mac</a><a class="secondary" href="#path-quick">Follow the setup steps</a><a class="secondary" href="#tune" onclick="document.getElementById('tune').open=true">Build my setup checklist</a></div>
     <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.5rem auto 0;">Start on your Mac: install the app, connect your AI, then open Sessions. You do not need glasses or local voice to begin.</p>
   </div>
 
@@ -522,13 +533,13 @@ p a.btn,.lead a.btn{text-decoration:none}
 
   <!-- MAKE IT YOURS: optional personalization (the old Build-it configurator) -->
   <details class="detailed-setup" id="tune">
-    <summary>Make it yours: model, context, voice (optional)</summary>
+    <summary>Personalize your setup checklist</summary>
     <div class="ds-body">
-      <p class="sub" style="margin:0.8rem 0 0.4rem;">Nothing here blocks setup &mdash; the glasses run great on the defaults. Tune when you're ready; every pick renders a personalized checklist at the bottom.</p>
+      <p class="sub" style="margin:0.8rem 0 0.4rem;">Choose what you want COS to help with. At the end, you can email yourself the settings and a first task to try on your Mac.</p>
 
   <!-- Step 1: Use cases (the driver) -->
   <div class="step" data-step="Step 1">
-    <h2>How will you use them?</h2>
+    <h2>What would you like COS to help with?</h2>
     <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
     <div class="opt-grid" id="usecases">
       <button type="button" class="opt" data-uc="meetings"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Capture</span><h3>Meetings &amp; calls</h3><p>Live transcription, speaker labels, action items.</p></button>
@@ -644,7 +655,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 
   <!-- Result -->
   <div class="result" id="result">
-    <h2>Your COS Glasses, <em id="r-for">ready to set up</em></h2>
+    <h2>Your COS setup, <em id="r-for">ready to set up</em></h2>
     <p class="config-line" id="r-config">Make your picks above and your personalized setup appears here.</p>
 
     <div class="summary">
@@ -652,6 +663,26 @@ p a.btn,.lead a.btn{text-decoration:none}
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
       <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
       <div class="row"><span class="k">Memory and threads</span><span class="v" id="r-memory">New folders</span></div>
+    </div>
+
+    <div class="save-build" id="saveBuild">
+      <form id="sbForm" novalidate onsubmit="submitSaveBuild(event)">
+        <label for="sb-em"><b>Take your setup to your Mac.</b> Get a checklist with your settings, the Mac download and a first task to try.</label>
+        <div class="sb-row">
+          <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email" required maxlength="254">
+          <button type="submit" id="sb-btn">Email my setup checklist</button>
+        </div>
+        <div class="sb-msg" id="sb-msg" role="status" aria-live="polite"></div>
+        <p class="sb-fine">We use your email to deliver the checklist. <a href="/privacy/">Privacy policy</a></p>
+      </form>
+      <section id="setup-checklist" aria-labelledby="checklist-title" hidden>
+        <h2 id="checklist-title" tabindex="-1">Your Mac setup checklist</h2>
+        <ol id="checklist-steps"></ol>
+        <a href="/control/?utm_source=wizard_checklist&amp;utm_medium=web&amp;utm_campaign=mac_setup#install">Download COS Control for Mac</a>
+        <h3>Try your first session</h3>
+        <p>Start a task in your AI app, then open Sessions in Control to follow it.</p>
+        <div id="checklist-tasks"></div>
+      </section>
     </div>
 
     <div class="res-label">1 · Start COS on your Mac</div>
@@ -673,18 +704,6 @@ p a.btn,.lead a.btn{text-decoration:none}
       <li>Set <b>Default chat model</b> to your pick in the app's Settings.</li>
       <li>Wire context sources via MCP in the COS folder your server runs from.</li>
     </ul>
-
-    <div class="save-build" id="saveBuild">
-      <form id="sbForm" novalidate onsubmit="submitSaveBuild(event)">
-        <label for="sb-em"><b>Keep this build.</b> New skills, role packs, and updates land in your inbox as COS grows.</label>
-        <div class="sb-row">
-          <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email">
-          <button type="submit" id="sb-btn">Keep me posted</button>
-        </div>
-        <div class="sb-msg" id="sb-msg" role="status" aria-live="polite"></div>
-        <p class="sb-fine">No spam, unsubscribe anytime.</p>
-      </form>
-    </div>
 
     <div class="actions">
       <a class="secondary" href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE">Install on the Even Hub</a>
@@ -1208,32 +1227,76 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }
 
-  // Keep-this-build capture: posts to the gotcos HubSpot form (portal 2474026) with the wizard picks in context
-  window.submitSaveBuild = function (e) {
+  var acceptedLead = '';
+  var deliveredFor = '';
+  function showChecklist(list) {
+    var steps = $('#checklist-steps'), tasks = $('#checklist-tasks');
+    steps.replaceChildren(); tasks.replaceChildren();
+    list.steps.forEach(function (step) {
+      var li = document.createElement('li'), title = document.createElement('b'), body = document.createElement('span');
+      title.textContent = step.title; body.textContent = step.body;
+      li.append(title, body); steps.append(li);
+    });
+    list.tasks.forEach(function (task) {
+      var p = document.createElement('p'), label = document.createElement('b');
+      label.textContent = task.label;
+      p.append(label, document.createElement('br'), document.createTextNode(task.prompt)); tasks.append(p);
+    });
+    $('#setup-checklist').hidden = false;
+  }
+
+  window.submitSaveBuild = async function (e) {
     e.preventDefault();
-    var em = ($('#sb-em').value || '').trim(), msg = $('#sb-msg'), btn = $('#sb-btn');
+    var address = $('#sb-em'), em = address.value.trim(), msg = $('#sb-msg'), btn = $('#sb-btn');
     if (btn.disabled) return;
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { msg.className = 'sb-msg err show'; msg.textContent = 'Enter a valid email address.'; $('#sb-em').focus(); return; }
-    var fields = [{ name: 'email', value: em }];
-    var name = ($('#f-name').value || '').trim(), role = ($('#f-role').value || '').trim(), co = ($('#f-company').value || '').trim();
-    if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
-    if (role) fields.push({ name: 'jobtitle', value: role });
-    if (co) fields.push({ name: 'company', value: co });
-    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; memory=' + state.memoryMode + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
-    var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
-    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: 'gotcos.com · Wizard build (' + cfg + ')' } })
-    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }).catch(function () { return { ok: r.ok, d: null }; }); }).then(function (res) {
-      if (res.ok) {
-        try { localStorage.setItem('cos_kit_access', '1'); } catch (err) {}
-        msg.className = 'sb-msg ok show'; msg.textContent = 'You are on the list. New skills land in your inbox.';
-        $('#sb-em').disabled = true; btn.style.display = 'none';
-      } else {
-        var m = (res.d && (res.d.message || (res.d.errors && res.d.errors[0] && res.d.errors[0].message))) || 'That did not send. Try again.';
-        msg.className = 'sb-msg err show'; msg.textContent = m; btn.disabled = false; btn.textContent = orig;
+    if (!address.validity.valid || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) {
+      msg.className = 'sb-msg err show'; msg.textContent = 'Enter a valid email address.'; address.focus(); return;
+    }
+    var picks = {email:em, model:state.model || recModel(), voice:state.voice, tier:state.transcriptionTier,
+      memoryMode:state.memoryMode, context:Array.from(state.context), useCases:Array.from(state.useCases)};
+    var fields = [{name:'email',value:em}];
+    var name = $('#f-name').value.trim(), role = $('#f-role').value.trim(), co = $('#f-company').value.trim();
+    if (name) { var parts = name.split(/\s+/); fields.push({name:'firstname',value:parts[0]}); if (parts.length > 1) fields.push({name:'lastname',value:parts.slice(1).join(' ')}); }
+    if (role) fields.push({name:'jobtitle',value:role});
+    if (co) fields.push({name:'company',value:co});
+    var uri = new URL('https://www.gotcos.com/wizard/'), current = new URL(location.href);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_id'].forEach(function (k) {
+      if (current.searchParams.has(k)) uri.searchParams.set(k,current.searchParams.get(k).slice(0,150));
+    });
+    var config = [picks.model,picks.voice,picks.tier,picks.context.join(','),picks.memoryMode,picks.useCases.join(',')].join(' / ');
+    var fingerprint = JSON.stringify([fields,config]);
+    if (deliveredFor === fingerprint) { $('#checklist-title').focus(); return; }
+    deliveredFor = '';
+    $('#setup-checklist').hidden = true;
+    btn.disabled = true; address.readOnly = true;
+    btn.textContent = 'Preparing checklist…'; msg.className = 'sb-msg'; msg.textContent = '';
+    try {
+      if (acceptedLead !== fingerprint) {
+        var capture = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
+          method:'POST', headers:{'Content-Type':'application/json'}, signal:AbortSignal.timeout(12000),
+          body:JSON.stringify({fields:fields,context:{pageUri:uri.href,pageName:'gotcos.com · Wizard checklist (' + config + ')'}})
+        });
+        if (!capture.ok) throw new Error('capture');
+        acceptedLead = fingerprint;
+        try { localStorage.setItem('cos_kit_access','1'); } catch (err) {}
+        window.gtag?.('event','wizard_checklist_lead');
       }
-    }).catch(function () { msg.className = 'sb-msg err show'; msg.textContent = 'Network error. Try again.'; btn.disabled = false; btn.textContent = orig; });
+      var response = await fetch('https://app.gotcos.com/api/wizard/checklist', {
+        method:'POST', headers:{'Content-Type':'application/json'}, signal:AbortSignal.timeout(20000), body:JSON.stringify(picks)
+      });
+      var result = await response.json();
+      if (result.checklist) showChecklist(result.checklist);
+      if (!response.ok || !result.mailed) throw new Error(result.reason || 'delivery');
+      msg.className = 'sb-msg ok show'; msg.textContent = 'Your checklist is ready below. We also sent a copy to ' + em + '.';
+      deliveredFor = fingerprint;
+      window.gtag?.('event','wizard_checklist_email_accepted');
+      $('#checklist-title').focus();
+    } catch (err) {
+      msg.className = 'sb-msg err show';
+      msg.textContent = err.message === 'limit' ? 'Too many requests. Your checklist is below. Try emailing it again in an hour.'
+        : acceptedLead === fingerprint ? 'Email delivery could not be confirmed. Try again.'
+        : 'Your email could not be submitted. Check your connection and try again.';
+    } finally { address.readOnly = false; btn.disabled = false; btn.textContent = 'Email my setup checklist'; }
   };
 
   window.copyCmd = function (el) {
