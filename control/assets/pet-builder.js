@@ -536,7 +536,7 @@
         'Open Settings, then Pet and appearance. Enable the session pet.',
         'Turn on Show all settings if needed. Under Session pet, expand Advanced.',
         'Use Choose beside each state listed below, select its PNG, then set its frame count.',
-        'Use these individual rows. The Install sprite pack folder action in Control 0.5.397 can remove other local Control data.',
+        'Use these individual rows. The Install sprite pack folder action in Control 0.5.397 and 0.5.405 can remove other local Control data.',
         '',
         ...Object.entries(poses).map(([pose, { file, frames }]) =>
           `${controlRow[pose]} row: ${file} (${frames} ${frames === 1 ? 'frame' : 'frames'})`),
