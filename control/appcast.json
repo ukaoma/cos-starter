@@ -2,33 +2,72 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.397",
-      "build": 451,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.397/COS-Control-macOS-arm64-0.5.397.zip",
-      "sha256": "b0a2d1dd90e67e08e1e887eff46c3d70678a5b0146d8088f1a2f4fc276cd8e79",
+      "version": "0.5.405",
+      "build": 459,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.405/COS-Control-macOS-arm64-0.5.405.zip",
+      "sha256": "6277e842bbf99293895aaadab05f1093f3c3edc29710fa9f9a5964e85574ffe6",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.49",
-      "publishedAt": "2026-11-16T00:38:46Z",
-      "notes": "Pairs with server 7.0.49. One shared COS chat on Mac and web, older history, whole retained answers, explicit retry and Jump to latest; plan pacing in Usage; and phone sign-in links that prefer trusted HTTPS when ready. Optional session reply pings open Sessions and require updated supported hooks, enabled notification settings, separate server gates and each phone opting in. Phone approval authority is not enabled. Includes message-reader replies, Back by route and the scrolling Meetings calendar added since public Control 0.5.389.",
+      "serverTarget": "7.0.62",
+      "publishedAt": "2026-11-19T18:39:18Z",
+      "notes": "Pair COS Control with server 7.0.62 for phone enrollment and key changes. Open a source file from a session reply on your phone, then close the viewer to return to the same reply.",
       "whatsNew": {
-        "summary": "One COS chat across Mac and web, plan pacing in Usage, and phone sign-in links that prefer trusted HTTPS when ready. Server 7.0.49 also keeps your place after Jump to latest and adds optional session reply-ready pings that open Sessions.",
+        "summary": "Pair COS Control with server 7.0.62 for phone enrollment and key changes. Open a source file from a session reply on your phone, then close the viewer to return to the same reply.",
         "sections": [
           {
-            "title": "Shared COS chat",
+            "title": "Phone approvals",
+            "items": [
+              "This Mac build includes the signer pins needed to enroll a phone or replace the Mac approval key with server 7.0.62. Existing enrollment carries forward with the update.",
+              "Phone approvals are off by default. Turning them on requires Touch ID on the Mac. A newly registered Mac approval key has a 24-hour waiting period."
+            ]
+          },
+          {
+            "title": "Sessions and Messages in Control Web",
+            "items": [
+              "Tap an available file in Sources to open the shared viewer. The same session file permissions apply.",
+              "All messages opens the full list. Mark all read confirms the result and preserves items waiting for your reply.",
+              "Today and Sessions show the latest known session state. Working sessions on Today have an animated COS mark that respects Reduce Motion.",
+              "Experimental file result cards are off by default in each browser. Turn them on to see a file an assistant created or edited."
+            ]
+          },
+          {
+            "title": "Amber look",
+            "items": [
+              "Amber is the default look. Switch back to Espresso in Settings, General, App, Look. The choice applies when you leave Settings and is never sent or counted.",
+              "The session pet keeps its own colours in both looks, and the dictation pill and card on it use the pet's colours. Four parts it shares with other views still follow the look."
+            ]
+          },
+          {
+            "title": "Your sessions",
+            "items": [
+              "Typing in a long COS chat is faster: a keystroke redraws only the message box.",
+              "Open result opens the session that replied, with the way back to the chat. An older card that does not name its session opens the Sessions list.",
+              "A live meeting link in a COS answer opens that meeting in Meetings, never a browser, after COS checks the meeting is still live.",
+              "The COS mark on the Activity rail moves while a session works, and rests when the window is hidden, the screen locks or Reduce Motion is on."
+            ]
+          },
+          {
+            "title": "Usage",
+            "items": [
+              "Usage reads again when its window comes back into view, at most once a minute, and once just after a pause or limit ends. It does not poll on a timer.",
+              "Claude CLI and Claude Desktop are their own rows. An ended pause reads \"Pause over\", and a kept reading names its day."
+            ]
+          },
+          {
+            "title": "0.5.397: Shared COS chat",
             "items": [
               "With Drop it on, Mac and Control Web show the same saved COS thread, older history, day markers and whole retained answers. Chats sent here stay apart from numbered Messages.",
               "Scroll back to read, then choose Jump to latest. After jumping, scrolling back pauses following again. Failed or interrupted turns can be retried explicitly."
             ]
           },
           {
-            "title": "Plan pacing",
+            "title": "0.5.397: Plan pacing",
             "items": [
               "Usage adds a closed row for the tool closest to its plan limit. Open it for the reported percentage, reset time and a labelled pace estimate. Missing readings show no number.",
               "Opening Usage and Refresh read only when old enough. Cursor plan usage requires a separate opt-in, may ask for Keychain access and is never read by the background timer. Token history and API-value estimates stay separate."
             ]
           },
           {
-            "title": "Your phone",
+            "title": "0.5.397: Your phone",
             "items": [
               "Phone sign-in QRs and copied links prefer trusted HTTPS with the matching valid certificate and listening HTTPS server. Address updates preserve the code expiry; older servers keep HTTP fallback.",
               "Optional phone pings need both server push gates and each phone opting in. Tests do not enable real notifications. Words are off by default, with an explicit first-line option. Ordinary pings use the existing quiet hours and interruption limits; reminders you explicitly schedule can arrive at their chosen time. The Mac must be awake and online.",
@@ -36,7 +75,7 @@
             ]
           },
           {
-            "title": "Also since Control 0.5.389",
+            "title": "0.5.397: Also since Control 0.5.389",
             "items": [
               "Reply from a numbered message reader with model and effort choices. Back retraces your route. Meetings and Work’s meeting picker scroll past their calendar in a small window.",
               "The glasses connection card gives a code to type. Phone sign-in and the Tailscale download keep their own QRs. COS Glasses remains 6.11.681."
