@@ -33,7 +33,8 @@
             "title": "Amber look",
             "items": [
               "Amber is the default look. Switch back to Espresso in Settings, General, App, Look. The choice applies when you leave Settings and is never sent or counted.",
-              "The session pet keeps its own colours in both looks, and the dictation pill and card on it use the pet's colours. Four parts it shares with other views still follow the look."
+              "The session pet keeps its own colours in both looks, and the dictation pill and card on it use the pet's colours. Four parts it shares with other views still follow the look.",
+              "For a custom session pet, use Choose on each individual state. In this build, Install sprite pack can remove other local Control data."
             ]
           },
           {
