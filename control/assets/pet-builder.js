@@ -535,8 +535,8 @@
         '',
         'Open Settings, then Pet and appearance. Enable the session pet.',
         'Turn on Show all settings if needed. Under Session pet, expand Advanced.',
-        'Use Choose beside each state listed below, select its PNG, then set its frame count.',
-        'Use these individual rows. The Install sprite pack folder action in Control 0.5.397 and 0.5.405 can remove other local Control data.',
+        'Control 0.5.406: choose Install sprite pack, then select the folder containing manifest.json. This replaces the pet’s full set of custom states.',
+        'On earlier versions, including 0.5.397 and 0.5.405, use Choose beside each state listed below. Select its PNG and set its frame count. The older folder installer can remove other local Control data.',
         '',
         ...Object.entries(poses).map(([pose, { file, frames }]) =>
           `${controlRow[pose]} row: ${file} (${frames} ${frames === 1 ? 'frame' : 'frames'})`),
@@ -552,7 +552,7 @@
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 30000);
       window.gtag?.('event', 'control_pet_pack_download');
-      exportStatus.textContent = 'Your pack is ready. Unzip it and follow INSTALL.txt to add each animation in Control.';
+      exportStatus.textContent = 'Your pack is ready. Unzip it and follow INSTALL.txt to install it in Control.';
     } catch (error) {
       exportStatus.textContent = error.message || 'The pack couldn’t be downloaded.';
     } finally {

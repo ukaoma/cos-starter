@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.405 (build 459) · server @gotcos/glasses-server 7.0.62.
-  Every claim is grounded in the 0.5.317 to 0.5.405 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.406 (build 460) · server @gotcos/glasses-server 7.0.62.
+  Every claim is grounded in the 0.5.317 to 0.5.406 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.405",
+    "softwareVersion": "0.5.406",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -492,7 +492,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.405</span>
+    <span class="sb-ver">Control 0.5.406</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -521,7 +521,7 @@ p a.btn,.lead a.btn{text-decoration:none}
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.405</b> · build 459</span>
+    <span class="chip">Control <b>0.5.406</b> · build 460</span>
     <span class="chip">Server <b>7.0.62</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -529,7 +529,7 @@ p a.btn,.lead a.btn{text-decoration:none}
   <div class="whatsnew" aria-labelledby="wn-h">
     <h2 id="wn-h">What&rsquo;s new</h2>
     <ul class="wn-list">
-      <li><a href="#release-405"><b>0.5.405 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
+      <li><a href="#release-406"><b>0.5.406 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
       <li><a href="#release-397"><b>0.5.397 / server 7.0.49</b><span>Shared COS chat, plan pacing, trusted HTTPS phone links and optional phone pings.</span></a></li>
       <li><a href="#release-389"><b>0.5.389 / server 7.0.27</b><span>An honest first run that can install Claude Code for you, Today and a Basic Settings view for new Macs, crash and disk fixes, and a price for every model in Usage.</span></a></li>
       <li><a href="#release-380"><b>0.5.380 / server 7.0.7</b><span>Mac file and image cards with Quick Look, shared Today summary, calendar selection and web previews.</span></a></li>
@@ -744,7 +744,7 @@ p a.btn,.lead a.btn{text-decoration:none}
     <h4>Characters and pet settings</h4>
     <p>Windu&rsquo;s one-session running bursts now have matching cadence, with a shorter raised-saber pause. A failed cast load becomes eligible to retry on a later refresh after a five-second wait, rather than keeping the failed request latched. Healthy artwork is retained. This recovery fix does not establish why the reported running app repeated a lineup; that behavior was not reproduced. Exact stock packs update; custom artwork, timing and scale stay yours.</p>
     <p>Since 0.5.341, Nia, Elara and Rowan each have distinct Session 2 and 3 choreography and a 360 attack with four or more working sessions. Three opponent casts shuffle without immediate repeats. Sharper Retina artwork, saber contact, blaster deflections and recovery transitions carry through each encounter. Unmodified stock Jedi packs update automatically; custom artwork, timing, scale and Miles Windu are preserved.</p>
-    <p><strong>Cloud Puff</strong> is the default. Under Settings, Pet and appearance you can choose one of four animated Jedi (<strong>Jedi Miles Windu</strong>, <strong>Jedi Nia Solari</strong>, <strong>Jedi Elara Vale</strong>, <strong>Jedi Rowan Vale</strong>), a community pet from openpets.dev, or your own art using <strong>Choose</strong> beside an animation state. <strong>Use Cloud Puff</strong> goes back. Use the <a href="/control/#custom-pet-pack">custom pet builder</a> to copy a sprite prompt into your preferred image tool or bring your own video or image frames. Preview the motion, then enter your email to download the pack. Unzip it and follow <code>INSTALL.txt</code> to choose each PNG in the matching state row and set its frame count. Use the individual state rows on Control 0.5.397 and 0.5.405. The folder installer can remove other local Control data.</p>
+    <p><strong>Cloud Puff</strong> is the default. Under Settings, Pet and appearance you can choose one of four animated Jedi (<strong>Jedi Miles Windu</strong>, <strong>Jedi Nia Solari</strong>, <strong>Jedi Elara Vale</strong>, <strong>Jedi Rowan Vale</strong>), a community pet from openpets.dev, or your own art using <strong>Choose</strong> beside an animation state. <strong>Use Cloud Puff</strong> goes back. Use the <a href="/control/#custom-pet-pack">custom pet builder</a> to copy a sprite prompt into your preferred image tool or bring your own video or image frames. Preview the motion, then enter your email to download the pack. Unzip the download. In Control 0.5.406, expand <strong>Advanced</strong> under <strong>Session pet</strong>, choose <strong>Install sprite pack</strong> and select the folder containing <code>manifest.json</code>. On earlier versions, including 0.5.397 and 0.5.405, use <strong>Choose</strong> beside each state and set its frame count. The older folder installer can remove other local Control data.</p>
     <ul>
       <li><strong>Session pet</strong> switches the pet on or off. It is on by default.</li>
       <li>Pet size (Small, Medium, Large or Custom), <strong>Character size</strong> (default 300%), <strong>Character speed</strong> (default 100%, which matches the pack) and <strong>Motion</strong> (Full, Calm or None). macOS Reduce Motion freezes animated strips.</li>
@@ -1298,7 +1298,7 @@ p a.btn,.lead a.btn{text-decoration:none}
     </ul>
     <p>Messages you type in Control Web are recorded as coming from the web. COS does not treat them as proof that you were at the Mac.</p>
     <p><strong>Open COS on your phone.</strong> In Settings, Glasses, phone and web, open the phone sign-in card. Its QR and copied link prefer the trusted HTTPS address when the server has the matching valid certificate and listening HTTPS service. Refresh after a server update to replace an open QR; old responses cannot replace a newer code. An address update keeps the code&rsquo;s original expiry. HTTP remains the fallback on older servers or without trusted HTTPS. Glasses pairing uses its separate typed code.</p>
-    <p><strong>Optional phone pings.</strong> The server&rsquo;s <code>COS_WEB_PUSH</code> and separate <code>COS_WEB_PUSH_PRODUCTION</code> switches are both off by default, and trusted ts.net HTTPS has its own opt-in. Each phone also opts in through Control Web Settings, <strong>Phone pings</strong>, and grants its notification permission. iPhone setup requires trusted HTTPS and the Home Screen app. A test subscription does not enable real pings. <strong>Show the words</strong> is off by default: notifications show only COS and the kind until you choose to include their first line, up to 100 characters. Session reply pings cover Claude, Codex and Cursor turns after the updated supported hooks are installed using <strong>Install hooks</strong> or <strong>Reinstall hooks</strong> in Sessions. Enable the session notification category too; it is off by default. A reply being ready does not mean the whole task succeeded. The Mac must be awake and online. Ordinary pings use the existing quiet hours and interruption limits; reminders you explicitly schedule can arrive at their chosen time. You can stop pings or remove the device here. Phone approvals have a separate opt-in and require enrollment with Touch ID. <a href="#release-405">Read about enrollment and certificate privacy</a>.</p>
+    <p><strong>Optional phone pings.</strong> The server&rsquo;s <code>COS_WEB_PUSH</code> and separate <code>COS_WEB_PUSH_PRODUCTION</code> switches are both off by default, and trusted ts.net HTTPS has its own opt-in. Each phone also opts in through Control Web Settings, <strong>Phone pings</strong>, and grants its notification permission. iPhone setup requires trusted HTTPS and the Home Screen app. A test subscription does not enable real pings. <strong>Show the words</strong> is off by default: notifications show only COS and the kind until you choose to include their first line, up to 100 characters. Session reply pings cover Claude, Codex and Cursor turns after the updated supported hooks are installed using <strong>Install hooks</strong> or <strong>Reinstall hooks</strong> in Sessions. Enable the session notification category too; it is off by default. A reply being ready does not mean the whole task succeeded. The Mac must be awake and online. Ordinary pings use the existing quiet hours and interruption limits; reminders you explicitly schedule can arrive at their chosen time. You can stop pings or remove the device here. Phone approvals have a separate opt-in and require enrollment with Touch ID. <a href="#release-406">Read about enrollment and certificate privacy</a>.</p>
     <p><strong>How long a browser stays signed in.</strong> Each sign-in lasts 7 days. Using COS in that browser during the last 2 days renews it for another 7, up to 30 days from when you first signed in. A browser you do not use in those last 2 days is signed out when its 7 days end. The 30 days only sets how long one sign-in can last before you sign in again. It does not protect a copied sign-in: anyone holding a copy can use it until then.</p>
     <p><strong>Sign out every browser</strong> is what ends access at once. In Control Web, open Settings, choose Sign out every browser and tap again to confirm. In COS Control it is in Settings, Glasses, phone and web, under Phone and web. Every phone and browser signed in to Control Web is signed out; your glasses and the phone app stay paired. A page that is already open stops getting live updates too. Sign-in links and codes made before it stop working too. Changing your pairing token also signs every browser out, but it unpairs your glasses too.</p>
     <p><strong>If you lose a phone that was signed in,</strong> sign every browser out.</p>
@@ -1454,12 +1454,13 @@ p a.btn,.lead a.btn{text-decoration:none}
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
-    <section class="note" id="release-405"><h3>Control 0.5.405 / server 7.0.62</h3>
+    <section class="note" id="release-406"><h3>Control 0.5.406 / server 7.0.62</h3>
+        <p><strong>Install a custom pet pack.</strong> Control 0.5.406 builds the new pack in its own folder and switches to it after all its states load. A failed install keeps your current pack active. On earlier versions, including 0.5.397 and 0.5.405, use <strong>Choose</strong> beside each state and set its frame count. The older folder installer can remove other local Control data.</p>
         <p><strong>Read the source behind a reply.</strong> In Control Web Sessions, expand <strong>Sources</strong> and tap an available file. It opens in the same document viewer as other session files. Close the viewer to return to the reply. Previews respect the Mac&rsquo;s file visibility settings and permitted folders. A confirmed read or search can also appear in a newly completed pinned COS chat reply when the provider records it.</p>
         <p><strong>See a file your session created.</strong> Under Control Web Settings, This browser, Experiments, turn on <strong>Show result cards</strong> to display confirmed file writes. It starts off in each browser and uses the tool result already recorded for that turn, with no extra model call.</p>
         <p><strong>Read Messages and return to the list.</strong> In the pinned COS conversation, <strong>All messages</strong> opens the full list. <strong>Mark all read</strong> saves your read state on the Mac and reports the result. Questions waiting for your reply keep their own count.</p>
         <p><strong>Follow running sessions.</strong> Today and Sessions show the latest known activity and when a session needs your reply. The working mark animates on Today and holds still with Reduce Motion. In Sessions you can resize the reply dock with its handle on a phone or desktop.</p>
-        <p><strong>Use the matched Mac app for phone approvals.</strong> Control 0.5.405 (build 459) recognizes server 7.0.62 for enrollment and Mac approval-key management. Phone approvals start off. To enable them, choose your phone in Mac Settings, review the certificate disclosure and confirm with Touch ID. The first certificate puts the Mac&rsquo;s Tailscale name into public certificate logs permanently. A new Mac approval key must be at least 24 hours old. Start passkey enrollment on the phone, then compare its fingerprint and confirm with Touch ID on the Mac.</p>
+        <p><strong>Use the matched Mac app for phone approvals.</strong> Control 0.5.406 (build 460) recognizes server 7.0.62 for enrollment and Mac approval-key management. Phone approvals start off. To enable them, choose your phone in Mac Settings, review the certificate disclosure and confirm with Touch ID. The first certificate puts the Mac&rsquo;s Tailscale name into public certificate logs permanently. A new Mac approval key must be at least 24 hours old. Start passkey enrollment on the phone, then compare its fingerprint and confirm with Touch ID on the Mac.</p>
         <p><strong>On the Mac.</strong> Amber is the default look. You can choose Espresso in Settings. Usage refreshes when reopened and shows separate Claude CLI and Desktop readings when available. Open result takes you back to the session that answered, and a link to a live meeting in COS chat opens Meetings.</p>
         <p><a href="/docs/#release-server-7062">Matched server release notes</a>.</p>
     </section>

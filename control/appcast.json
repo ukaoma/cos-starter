@@ -2,17 +2,24 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.405",
-      "build": 459,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.405/COS-Control-macOS-arm64-0.5.405.zip",
-      "sha256": "6277e842bbf99293895aaadab05f1093f3c3edc29710fa9f9a5964e85574ffe6",
+      "version": "0.5.406",
+      "build": 460,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.406/COS-Control-macOS-arm64-0.5.406.zip",
+      "sha256": "2b6d526a69990e5c636ceb9948b63897f18a077f53c218671a1e24fd8d7fe9c6",
       "minMacOS": "14.0",
       "serverTarget": "7.0.62",
-      "publishedAt": "2026-11-19T18:39:18Z",
-      "notes": "Pair COS Control with server 7.0.62 for phone enrollment and key changes. Open a source file from a session reply on your phone, then close the viewer to return to the same reply.",
+      "publishedAt": "2026-11-19T20:59:43Z",
+      "notes": "Install a complete custom pet pack in its own folder. Pair this Mac app with server 7.0.62 to enroll a phone and open source files in session replies.",
       "whatsNew": {
-        "summary": "Pair COS Control with server 7.0.62 for phone enrollment and key changes. Open a source file from a session reply on your phone, then close the viewer to return to the same reply.",
+        "summary": "Install a complete custom pet pack in its own folder. Pair this Mac app with server 7.0.62 to enroll a phone and open source files in session replies.",
         "sections": [
+          {
+            "title": "Custom session pets",
+            "items": [
+              "Choose Install sprite pack in Settings, Pet and appearance, under Session pet, Advanced. Control activates the new pack after all its states load. If installation fails, the current pack stays active.",
+              "On earlier Mac versions, including 0.5.397 and 0.5.405, use Choose beside each state. The older folder installer can remove other local Control data."
+            ]
+          },
           {
             "title": "Phone approvals",
             "items": [
@@ -33,8 +40,7 @@
             "title": "Amber look",
             "items": [
               "Amber is the default look. Switch back to Espresso in Settings, General, App, Look. The choice applies when you leave Settings and is never sent or counted.",
-              "The session pet keeps its own colours in both looks, and the dictation pill and card on it use the pet's colours. Four parts it shares with other views still follow the look.",
-              "For a custom session pet, use Choose on each individual state. In this build, Install sprite pack can remove other local Control data."
+              "The session pet keeps its own colours in both looks, and the dictation pill and card on it use the pet's colours. Four parts it shares with other views still follow the look."
             ]
           },
           {

@@ -49,7 +49,7 @@ html[data-dictation="hold"] .dt-tap{display:none!important}
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!--
   gotcos.com/docs · canonical COS Glasses user guide.
-   Covers COS Glasses 6.11.681 (build 681, Hub pin 6.11.681) · server @gotcos/glasses-server 7.0.62 · COS Control 0.5.405.
+   Covers COS Glasses 6.11.681 (build 681, Hub pin 6.11.681) · server @gotcos/glasses-server 7.0.62 · COS Control 0.5.406.
   Every behavioral claim is grounded in cos-glasses-app / cos-glasses-server source.
   On each release: re-check against cos-glasses-app CHANGELOG.md and Settings labels.
 -->
@@ -809,14 +809,14 @@ section.light .hud-cap{color:rgba(46,31,16,.66)}
     <div class="badges">
       <span class="chip">App <b>6.11.681</b> · build 681</span>
       <span class="chip">Server <b>7.0.62</b></span>
-      <span class="chip">Control <b>0.5.405</b></span>
+      <span class="chip">Control <b>0.5.406</b></span>
       <span class="chip">Even G2</span>
       <span class="chip">Even app 2.2.10+</span>
     </div>
     <div class="whatsnew" aria-labelledby="wn-h">
       <h2 id="wn-h">What&rsquo;s new</h2>
       <ul class="wn-list">
-      <li><a href="#release-server-7062"><b>Mac app 0.5.405 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
+      <li><a href="#release-server-7062"><b>Mac app 0.5.406 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
       <li><a href="#release-server-7049"><b>Mac app 0.5.397 / server 7.0.49</b><span>Shared COS chat, plan pacing, trusted HTTPS phone links and optional phone pings.</span></a></li>
       <li><a href="#release-server-7027"><b>Mac app 0.5.389 / server 7.0.27</b><span>A one-screen Sessions with a new list in groups, 30 days, folders, pins and rename; the COS mark first on open; queued follow-ups no longer stuck.</span></a></li>
       <li><a href="#release-server-7018"><b>Mac app 0.5.389 / server 7.0.18</b><span>An honest first run, Today and a Basic Settings view for new Macs, Control Web sign-ins that last while you use them, and Sign out every browser.</span></a></li>
@@ -1083,7 +1083,7 @@ Tap=Latest  ↓ Menu  ↑ Messages
   </div>
   <div class="note release" id="release-package">
     <p><strong>Local and hosted COS are separate.</strong> This guide describes the self-hosted server and COS Control. The authenticated app.gotcos.com service has its own tenant storage, source permissions and releases; local memory settings and deletion receipts do not govern hosted copies.</p>
-    <p><strong>Latest release package: Control 0.5.405, glasses 6.11.681, server 7.0.62.</strong> COS Control 0.5.405 is the public Mac download. COS Glasses 6.11.681 is the current companion pack: since November 10, 2026 it has been the canonical alias in the Hub repo, and Even Hub lists 6.11.681. Server identity is 7.0.62, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
+    <p><strong>Latest release package: Control 0.5.406, glasses 6.11.681, server 7.0.62.</strong> COS Control 0.5.406 is the public Mac download. COS Glasses 6.11.681 is the current companion pack: since November 10, 2026 it has been the canonical alias in the Hub repo, and Even Hub lists 6.11.681. Server identity is 7.0.62, which <code>npx --yes @gotcos/glasses-server@latest</code> installs and COS Control&rsquo;s Update Server brings in.</p>
     <p>Every change by version is in <a href="#releases">Release notes</a>.</p>
   </div>
   <div class="btns"><a class="btn primary" href="/wizard/">Open the setup wizard</a></div>
@@ -2136,7 +2136,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     <div class="card">
       <h3>Updating</h3>
       <p>For a Control app update, use the in-app Update action. For a manual download, quit the old Control, replace <code>/Applications/COS Control.app</code>, then open that installed copy. Keep rollback copies outside Applications so macOS does not register one as your login app. Updating Control does not restart the server.</p>
-      <p>Current supported versions are COS Control <strong>0.5.405</strong>, server <strong>7.0.62</strong>, and COS Glasses <strong>6.11.681</strong> from Even Hub&rsquo;s public channel. The newest versioned Hub pack is <strong>6.11.685</strong>; its beta submission is <strong>In review</strong>, separate from the public listing. Install <strong>6.11.681</strong> for the canonical companion alias; Even Hub lists 6.11.681. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
+      <p>Current supported versions are COS Control <strong>0.5.406</strong>, server <strong>7.0.62</strong>, and COS Glasses <strong>6.11.681</strong> from Even Hub&rsquo;s public channel. The newest versioned Hub pack is <strong>6.11.685</strong>; its beta submission is <strong>In review</strong>, separate from the public listing. Install <strong>6.11.681</strong> for the canonical companion alias; Even Hub lists 6.11.681. Earlier builds are retained as versioned sideloads from the Hub repo.</p>
       <ul>
         <li><strong>Update the server:</strong> rerun <code>npx --yes @gotcos/glasses-server@latest --setup-transcription --transcription-tier balanced</code>, then compare <code>/api/health</code> with <code>npm view @gotcos/glasses-server dist-tags.latest</code>. The <a href="https://raw.githubusercontent.com/ukaoma/cos-starter/main/skills/cos-glasses.md"><code>/cos-glasses</code> skill</a> handles server health and updates.</li>
         <li><strong>Feature rollback:</strong> select <strong>Mac only</strong> under Settings, Voice, Transcription, or turn off Final polish.</li>
@@ -2157,7 +2157,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   <div class="faq">
     <details>
       <summary>Which hardware and app versions do I need?</summary>
-      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.11.681. The current supported pair is COS Glasses 6.11.681 (Even Hub lists 6.11.681) and server 7.0.62; COS Control 0.5.405 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
+      <p>Even Realities G2 glasses with the Even Realities app 2.2.10 or newer for build 6.11.681. The current supported pair is COS Glasses 6.11.681 (Even Hub lists 6.11.681) and server 7.0.62; COS Control 0.5.406 is recommended on Apple silicon. Control bundles its runtime for core Mac setup. Manual terminal installations on macOS, Windows or Linux need Node.js 20.11 or newer. Phone-local Moonshine Tiny and Base are English-only; Tiny ships inside the app and Base downloads on demand. Mac Whisper remains required for canonical speaker-attributed meetings. Optional Kokoro spoken replies require Python 3.11 or 3.12, ffmpeg, and espeak-ng.</p>
     </details>
     <details>
       <summary>Do I need Claude Code, Codex, and Cursor?</summary>
@@ -2195,12 +2195,13 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
   </div>
   <div class="rn-wrap">
     <h3 class="rn-group">Server</h3>
-      <details class="release-detail rn" id="release-server-7062"><summary><span class="rn-t">Server 7.0.62 / Control 0.5.405</span><span class="rn-g">Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></summary><div class="rn-b">
+      <details class="release-detail rn" id="release-server-7062"><summary><span class="rn-t">Server 7.0.62 / Control 0.5.406</span><span class="rn-g">Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></summary><div class="rn-b">
+        <p><strong>Install a custom pet pack.</strong> Control 0.5.406 builds the new pack in its own folder and switches to it after all its states load. A failed install keeps your current pack active. On earlier versions, including 0.5.397 and 0.5.405, use <strong>Choose</strong> beside each state and set its frame count. The older folder installer can remove other local Control data.</p>
         <p><strong>Read the source behind a reply.</strong> In Control Web Sessions, expand <strong>Sources</strong> and tap an available file. It opens in the same document viewer as other session files. Close the viewer to return to the reply. Previews respect the Mac&rsquo;s file visibility settings and permitted folders. A confirmed read or search can also appear in a newly completed pinned COS chat reply when the provider records it.</p>
         <p><strong>See a file your session created.</strong> Under Control Web Settings, This browser, Experiments, turn on <strong>Show result cards</strong> to display confirmed file writes. It starts off in each browser and uses the tool result already recorded for that turn, with no extra model call.</p>
         <p><strong>Read Messages and return to the list.</strong> In the pinned COS conversation, <strong>All messages</strong> opens the full list. <strong>Mark all read</strong> saves your read state on the Mac and reports the result. Questions waiting for your reply keep their own count.</p>
         <p><strong>Follow running sessions.</strong> Today and Sessions show the latest known activity and when a session needs your reply. The working mark animates on Today and holds still with Reduce Motion. In Sessions you can resize the reply dock with its handle on a phone or desktop.</p>
-        <p><strong>Use the matched Mac app for phone approvals.</strong> Control 0.5.405 (build 459) recognizes server 7.0.62 for enrollment and Mac approval-key management. Phone approvals start off. To enable them, choose your phone in Mac Settings, review the certificate disclosure and confirm with Touch ID. The first certificate puts the Mac&rsquo;s Tailscale name into public certificate logs permanently. A new Mac approval key must be at least 24 hours old. Start passkey enrollment on the phone, then compare its fingerprint and confirm with Touch ID on the Mac.</p>
+        <p><strong>Use the matched Mac app for phone approvals.</strong> Control 0.5.406 (build 460) recognizes server 7.0.62 for enrollment and Mac approval-key management. Phone approvals start off. To enable them, choose your phone in Mac Settings, review the certificate disclosure and confirm with Touch ID. The first certificate puts the Mac&rsquo;s Tailscale name into public certificate logs permanently. A new Mac approval key must be at least 24 hours old. Start passkey enrollment on the phone, then compare its fingerprint and confirm with Touch ID on the Mac.</p>
         <p><strong>On the Mac.</strong> Amber is the default look. You can choose Espresso in Settings. Usage refreshes when reopened and shows separate Claude CLI and Desktop readings when available. Open result takes you back to the session that answered, and a link to a live meeting in COS chat opens Meetings.</p>
       </div></details>
       <details class="release-detail rn" id="release-server-7049"><summary><span class="rn-t">Server 7.0.49 / Control 0.5.397</span><span class="rn-g">Shared COS chat, plan pacing, trusted HTTPS phone links and optional phone pings.</span></summary><div class="rn-b">
@@ -2753,7 +2754,7 @@ Dana owns the navigation review. Sam will confirm the final setup copy before th
     });
   });
 
-  // NEW / UPDATED badges (grounded vs glasses 6.11.681 / Control 0.5.405 / server 7.0.62, 2026-11-19; Hub packs to 6.11.685)
+  // NEW / UPDATED badges (grounded vs glasses 6.11.681 / Control 0.5.406 / server 7.0.62, 2026-11-19; Hub packs to 6.11.685)
   var BADGES = { 'ring-path':'NEW', sessions:'UPD', setup:'UPD', 'mac-control':'UPD', photos:'UPD', lens:'UPD', meetings:'NEW', dictation:'UPD', models:'UPD', settings:'UPD', privacy:'UPD', fixes:'UPD', faq:'UPD' };
   function badgeEl(kind, cls){ var s=document.createElement('span'); s.className=cls; s.textContent=kind; return s; }
   sideLinks.forEach(function(a){ var id=a.getAttribute('href').slice(1); if (BADGES[id]) a.appendChild(badgeEl(BADGES[id],'sb-badge')); });
