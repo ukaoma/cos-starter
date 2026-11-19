@@ -12,20 +12,20 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set up COS on your Mac · Setup Wizard</title>
-  <meta name="description" content="Start with COS Control for Mac. Download, connect your AI, and start your first session without installing Homebrew, Node or npx. Add glasses and voice later.">
+  <title>Set up COS on your G2 glasses</title>
+  <meta name="description" content="Start on your iPhone and see your words on your G2 glasses. Connect a Mac when you want AI sessions, meetings and memory.">
   <meta name="theme-color" content="#170f09">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Set up COS on your Mac · Setup Wizard">
-<meta property="og:description" content="Download COS Control, connect your AI and open Sessions. The Mac app installs its server for you. Glasses, voice and personalization are optional next steps.">
+<meta property="og:title" content="Set up COS on your G2 glasses">
+<meta property="og:description" content="Start on your iPhone and transcribe your first sentence on G2. Add COS Control on Mac for sessions, meetings and memory.">
 <meta property="og:url" content="https://www.gotcos.com/wizard/">
 <meta property="og:image" content="https://www.gotcos.com/assets/banner.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="COS. Open-source AI chief of staff.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Set up COS on your Mac · Setup Wizard">
-<meta name="twitter:description" content="Download COS Control, connect your AI and open Sessions. The Mac app installs its server for you. Glasses, voice and personalization are optional next steps.">
+<meta name="twitter:title" content="Set up COS on your G2 glasses">
+<meta name="twitter:description" content="Start on your iPhone and transcribe your first sentence on G2. Add COS Control on Mac for sessions, meetings and memory.">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,16 +178,22 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
     .actions a.secondary { border-color: var(--border-form); color: var(--text-primary); }
     .actions a.secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .hosted { margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted); }
-    .save-build { margin-top: 1.6rem; padding: 1rem 1.1rem; background: rgba(242,154,69,0.06); border: 1px solid rgba(242,154,69,0.22); border-radius: 10px; }
+    .save-build { margin: 1.4rem 0; padding: 1rem 1.1rem; background: rgba(242,154,69,0.06); border: 1px solid rgba(242,154,69,0.22); border-radius: 10px; }
     .save-build label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.55rem; }
     .save-build label b { color: var(--text-primary); font-weight: 600; }
     .sb-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .sb-row input { flex: 1; min-width: 200px; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+    .sb-row input { flex: 1 1 12rem; min-width: 0; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-form); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
     .sb-row input::placeholder { color: rgba(251,238,221,0.34); }
     .sb-row input:focus { border-color: var(--accent-gold); }
     .sb-row button { padding: 0.6rem 1.1rem; background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold) 60%, var(--accent-rose)); color: var(--on-accent); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: transform 0.2s; }
     .sb-row button:hover { transform: translateY(-1px); }
     .sb-row button:disabled { opacity: 0.6; cursor: default; transform: none; }
+    #setup-checklist { margin-top:1.25rem; border-top:1px solid var(--border-subtle); padding-top:1.25rem; line-height:1.5; overflow-wrap:anywhere; }
+    #setup-checklist ol { padding-left:1.4rem; }
+    #setup-checklist li { margin:.65rem 0; padding-left:.25rem; }
+    #setup-checklist li span { display:block; }
+    #setup-checklist h3 { margin:1.25rem 0 .35rem; }
+    #checklist-tasks p { margin:.65rem 0; padding-left:.85rem; border-left:2px solid var(--accent-gold); }
     .sb-msg { font-size: 0.78rem; margin-top: 0.5rem; display: none; }
     .sb-msg.show { display: block; }
     .sb-msg.ok { color: var(--accent-gold); }
@@ -228,7 +234,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
     @media (max-width: 600px) {
       .page { padding: 2rem 1rem 4rem; }
-      .step, .result { padding: 1.5rem; }
+      .step { padding: 1.5rem; }
+      #tune .ds-body { padding-inline:.6rem; }
+      .result { padding:1.1rem .8rem; }
+      #saveBuild { padding:.85rem; }
+      #saveBuild .sb-row > * { width:100%; }
+      body > a[aria-label="Back to gotcos.com"] { position:absolute !important; }
       .opt-grid, .opt-grid.three, .summary, .field-row { grid-template-columns: 1fr; }
     }
 
@@ -293,6 +304,11 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
     /* SET IT UP conversion seam */
     .setup-seam { text-align: center; margin: 0 0 .4rem; }
+    .setup-seam h1 { font: 400 clamp(1.9rem,5vw,2.7rem)/1.1 var(--font-display); }
+    .g2-start { margin:1.25rem auto; padding-left:1.5rem; max-width:32rem; text-align:left; }
+    .g2-start li { margin:.65rem 0; padding-left:.25rem; line-height:1.5; }
+    #email-handoff { margin-top:1rem; }
+    #email-handoff form { margin-top:.75rem; }
     .setup-seam .mkt-eyebrow { justify-content: center; }
 
     /* reveal-on-scroll — default VISIBLE for no-JS / no-IO */
@@ -420,16 +436,21 @@ p a.btn,.lead a.btn{text-decoration:none}
 <nav class="setup-nav" aria-label="Setup navigation"><a href="/control/">Mac companion</a><a href="/wizard/" aria-current="page">Setup guide</a><a href="/docs/">Docs</a></nav>
 
   <div class="setup-seam" style="padding-top:3.2rem">
-    <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-0.02em;line-height:1.1;">Start with the Mac app.</h1>
-    <p style="color:var(--text-muted);line-height:1.6">Download COS Control, move it to Applications, open it and choose Get started. Core server setup needs no Homebrew, Node, npm or npx installation. If you need Claude Code, COS can install it for you.</p>
-    <div class="actions" style="justify-content:center;margin:1.2rem 0;"><a class="primary" href="/control/#install">Download for Mac</a><a class="secondary" href="#path-quick">Follow the setup steps</a></div>
-    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;max-width:520px;margin:0.5rem auto 0;">Start on your Mac: install the app, connect your AI, then open Sessions. You do not need glasses or local voice to begin.</p>
+    <h1>See your words on your G2 glasses</h1>
+    <ol class="g2-start">
+      <li>Pair your glasses in the Even Realities app on your iPhone. Open <b>Even Hub</b> and install <b>COS Glasses</b>.</li>
+      <li>Open COS Glasses, tap <b>Start here</b> and choose the <b>Tiny</b> transcription model. Let it finish downloading on your phone.</li>
+      <li>From the glasses home screen, tap and say a sentence. Read your words on the lens.</li>
+    </ol>
+    <div class="actions" style="justify-content:center;margin:1.2rem 0"><a class="primary" href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE">Open COS Glasses in Even Hub</a></div>
+    <p>Already have COS Glasses? Open it on your iPhone and tap <b>Start here</b>.</p>
   </div>
 
-  <div class="note" style="margin:1.8rem 0 1.8rem;"><strong>Not ready to set up a Mac?</strong> On your iPhone, open the Even Realities app (2.2.10 or newer), go to <b>Even Hub</b>, install <b>COS Glasses</b> and open it, then tap <b>Start here</b>. It runs on your phone, no account needed. Connect a Mac later for Sessions, meetings and memory.</div>
-
+  <details class="detailed-setup" id="mac-setup">
+    <summary>Connect a Mac for AI sessions, meetings and memory</summary>
+    <div class="ds-body">
   <div class="step">
-    <h2>Check these before you start</h2>
+    <h2>What you need on the Mac</h2>
     <ul class="checklist">
       <li class="req"><strong>COS Control on an Apple silicon Mac</strong> with macOS 14 or later and an internet connection.</li>
       <li class="opt"><strong>Even G2 glasses and an iPhone</strong> are optional. Add them after your Mac is ready.</li>
@@ -520,15 +541,18 @@ p a.btn,.lead a.btn{text-decoration:none}
     </div>
   </div>
 
+    </div>
+  </details>
+
   <!-- MAKE IT YOURS: optional personalization (the old Build-it configurator) -->
   <details class="detailed-setup" id="tune">
-    <summary>Make it yours: model, context, voice (optional)</summary>
+    <summary>Personalize your Mac setup</summary>
     <div class="ds-body">
-      <p class="sub" style="margin:0.8rem 0 0.4rem;">Nothing here blocks setup &mdash; the glasses run great on the defaults. Tune when you're ready; every pick renders a personalized checklist at the bottom.</p>
+      <p class="sub" style="margin:0.8rem 0 0.4rem;">Choose what you want COS to help with. Use the defaults or choose your own settings. <a href="#setup-checklist">See my checklist</a>.</p>
 
   <!-- Step 1: Use cases (the driver) -->
   <div class="step" data-step="Step 1">
-    <h2>How will you use them?</h2>
+    <h2>What would you like COS to help with?</h2>
     <p class="sub">Pick all that apply. Everything below tunes to your answer.</p>
     <div class="opt-grid" id="usecases">
       <button type="button" class="opt" data-uc="meetings"><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span><span class="opt-k">Capture</span><h3>Meetings &amp; calls</h3><p>Live transcription, speaker labels, action items.</p></button>
@@ -644,7 +668,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 
   <!-- Result -->
   <div class="result" id="result">
-    <h2>Your COS Glasses, <em id="r-for">ready to set up</em></h2>
+    <h2>Your COS setup, <em id="r-for">ready to set up</em></h2>
     <p class="config-line" id="r-config">Make your picks above and your personalized setup appears here.</p>
 
     <div class="summary">
@@ -652,6 +676,30 @@ p a.btn,.lead a.btn{text-decoration:none}
       <div class="row"><span class="k">Voice</span><span class="v" id="r-voice">Local whisper <small>(free)</small></span></div>
       <div class="row"><span class="k">Context wired</span><span class="v" id="r-context">·</span></div>
       <div class="row"><span class="k">Memory and threads</span><span class="v" id="r-memory">New folders</span></div>
+    </div>
+
+    <div class="save-build" id="saveBuild">
+      <section id="setup-checklist" aria-labelledby="checklist-title">
+        <h2 id="checklist-title" tabindex="-1">Your Mac setup checklist</h2>
+        <ol id="checklist-steps"></ol>
+        <a href="/control/?utm_source=wizard_checklist&amp;utm_medium=web&amp;utm_campaign=mac_setup#install">Download COS Control for Mac</a>
+        <h3>Try your first session</h3>
+        <p>Start a task in your AI app, then open Sessions in Control to follow it.</p>
+        <div id="checklist-tasks"></div>
+      </section>
+      <details id="email-handoff">
+        <summary>Email this setup to my Mac</summary>
+        <p id="local-handoff"><a id="handoff-mail">Open in my mail app</a> · <a id="handoff-link">Link to this setup</a></p>
+        <form id="sbForm" hidden novalidate onsubmit="submitSaveBuild(event)">
+          <label for="sb-em">Email address</label>
+          <div class="sb-row">
+            <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email" required maxlength="254">
+            <button type="submit" id="sb-btn">Send my setup link</button>
+          </div>
+          <div class="sb-msg" id="sb-msg" role="status" aria-live="polite"></div>
+          <p class="sb-fine">The email includes a link that opens these choices on your Mac. <a href="/privacy/">Privacy policy</a></p>
+        </form>
+      </details>
     </div>
 
     <div class="res-label">1 · Start COS on your Mac</div>
@@ -673,18 +721,6 @@ p a.btn,.lead a.btn{text-decoration:none}
       <li>Set <b>Default chat model</b> to your pick in the app's Settings.</li>
       <li>Wire context sources via MCP in the COS folder your server runs from.</li>
     </ul>
-
-    <div class="save-build" id="saveBuild">
-      <form id="sbForm" novalidate onsubmit="submitSaveBuild(event)">
-        <label for="sb-em"><b>Keep this build.</b> New skills, role packs, and updates land in your inbox as COS grows.</label>
-        <div class="sb-row">
-          <input id="sb-em" type="email" placeholder="you@company.com" autocomplete="email">
-          <button type="submit" id="sb-btn">Keep me posted</button>
-        </div>
-        <div class="sb-msg" id="sb-msg" role="status" aria-live="polite"></div>
-        <p class="sb-fine">No spam, unsubscribe anytime.</p>
-      </form>
-    </div>
 
     <div class="actions">
       <a class="secondary" href="https://hub.evenrealities.com/landing?package_id=com.gotcos.glasses.apr3sdk&amp;scene_id=1002&amp;token=U5eh86Pir9tKbyoIoOarzWkMLDgRwOaadtiXA_32rSE">Install on the Even Hub</a>
@@ -992,6 +1028,7 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
 })();
 </script>
 
+<script src="./checklist.js"></script>
 <script>
 (function () {
   var state = {
@@ -1143,6 +1180,8 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     var model = state.model || recModel();
     var ucs = Array.from(state.useCases);
 
+    showChecklist(window.makeWizardChecklist(currentChoices()));
+
     // headline + config line
     $('#r-for').textContent = ucs.length ? 'tuned for ' + ucs.map(function (u) { return UC_LABEL[u]; }).join(', ') : 'ready to set up';
     $('#r-config').textContent = ucs.length
@@ -1208,32 +1247,104 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
     $('#r-enable').innerHTML = li.map(function (x) { return '<li>' + x + '</li>'; }).join('');
   }
 
-  // Keep-this-build capture: posts to the gotcos HubSpot form (portal 2474026) with the wizard picks in context
-  window.submitSaveBuild = function (e) {
+  var acceptedLead = '';
+  var deliveredFor = '';
+  function currentChoices() {
+    return {model:state.model || recModel(), voice:state.voice, tier:state.transcriptionTier,
+      memoryMode:state.memoryMode, context:Array.from(state.context), useCases:Array.from(state.useCases)};
+  }
+
+  function restoreSetup() {
+    if (!location.hash.startsWith('#setup=') || location.hash.length > 600) return false;
+    var params = new URLSearchParams(location.hash.slice(7));
+    var picks = {model:params.get('model'), memoryMode:params.get('memory'), voice:params.get('voice'),
+      tier:params.get('tier'), useCases:params.getAll('use'), context:params.getAll('source')};
+    try { window.makeWizardChecklist(picks); } catch (_) { return false; }
+    state.model = picks.model; state.memoryMode = picks.memoryMode; state.voice = picks.voice;
+    state.transcriptionTier = picks.tier; state.ctxTouched = true; state.memoryTouched = true;
+    state.useCases.clear(); state.context.clear();
+    picks.useCases.forEach(key => state.useCases.add(key));
+    picks.context.forEach(key => state.context.add(key));
+    [['usecases','uc',picks.useCases],['models','model',[picks.model]],['voice','voice',[picks.voice]],
+      ['transcription-tier','tier',[picks.tier]],['memory','memory',[picks.memoryMode]]].forEach(function ([id,attr,values]) {
+      $all('#' + id + ' .opt').forEach(btn => btn.classList.toggle('selected',values.includes(btn.dataset[attr])));
+      syncPressed('#' + id);
+    });
+    $('#tune').open = true;
+    return true;
+  }
+  function showChecklist(list) {
+    $('#handoff-link').href = list.resumeUrl;
+    $('#handoff-mail').href = 'mailto:?subject=' + encodeURIComponent('My COS setup checklist')
+      + '&body=' + encodeURIComponent('Open my personalized setup on a Mac:\n' + list.resumeUrl);
+    var steps = $('#checklist-steps'), tasks = $('#checklist-tasks');
+    steps.replaceChildren(); tasks.replaceChildren();
+    list.steps.forEach(function (step) {
+      var li = document.createElement('li'), title = document.createElement('b'), body = document.createElement('span');
+      title.textContent = step.title; body.textContent = step.body;
+      li.append(title, body); steps.append(li);
+    });
+    list.tasks.forEach(function (task) {
+      var p = document.createElement('p'), label = document.createElement('b');
+      label.textContent = task.label;
+      p.append(label, document.createElement('br'), document.createTextNode(task.prompt)); tasks.append(p);
+    });
+  }
+
+  $('#email-handoff').addEventListener('toggle', async function () {
+    if (!this.open || !$('#sbForm').hidden) return;
+    try {
+      var result = await fetch('https://app.gotcos.com/api/wizard/checklist', {signal:AbortSignal.timeout(4000)});
+      if (!result.ok || !(await result.json()).available) return;
+      $('#sbForm').hidden = false;
+      $('#local-handoff').hidden = true;
+    } catch (_) { /* The local handoff is ready even when offline. */ }
+  });
+
+  window.submitSaveBuild = async function (e) {
     e.preventDefault();
-    var em = ($('#sb-em').value || '').trim(), msg = $('#sb-msg'), btn = $('#sb-btn');
+    var address = $('#sb-em'), em = address.value.trim(), msg = $('#sb-msg'), btn = $('#sb-btn');
     if (btn.disabled) return;
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { msg.className = 'sb-msg err show'; msg.textContent = 'Enter a valid email address.'; $('#sb-em').focus(); return; }
-    var fields = [{ name: 'email', value: em }];
-    var name = ($('#f-name').value || '').trim(), role = ($('#f-role').value || '').trim(), co = ($('#f-company').value || '').trim();
-    if (name) { var parts = name.split(/\s+/); fields.push({ name: 'firstname', value: parts[0] }); if (parts.length > 1) fields.push({ name: 'lastname', value: parts.slice(1).join(' ') }); }
-    if (role) fields.push({ name: 'jobtitle', value: role });
-    if (co) fields.push({ name: 'company', value: co });
-    var cfg = 'model=' + (state.model || recModel()) + '; voice=' + state.voice + '; transcriptionTier=' + state.transcriptionTier + '; ctx=' + (Array.from(state.context).join(',') || 'none') + '; memory=' + state.memoryMode + '; uc=' + (Array.from(state.useCases).join(',') || 'none');
-    var orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'sb-msg';
-    fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: 'gotcos.com · Wizard build (' + cfg + ')' } })
-    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }).catch(function () { return { ok: r.ok, d: null }; }); }).then(function (res) {
-      if (res.ok) {
-        try { localStorage.setItem('cos_kit_access', '1'); } catch (err) {}
-        msg.className = 'sb-msg ok show'; msg.textContent = 'You are on the list. New skills land in your inbox.';
-        $('#sb-em').disabled = true; btn.style.display = 'none';
-      } else {
-        var m = (res.d && (res.d.message || (res.d.errors && res.d.errors[0] && res.d.errors[0].message))) || 'That did not send. Try again.';
-        msg.className = 'sb-msg err show'; msg.textContent = m; btn.disabled = false; btn.textContent = orig;
+    if (!address.validity.valid || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) {
+      msg.className = 'sb-msg err show'; msg.textContent = 'Enter a valid email address.'; address.focus(); return;
+    }
+    var picks = Object.assign({email:em}, currentChoices());
+    var fields = [{name:'email',value:em}];
+    var uri = new URL('https://www.gotcos.com/wizard/'), current = new URL(location.href);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_id'].forEach(function (k) {
+      if (current.searchParams.has(k)) uri.searchParams.set(k,current.searchParams.get(k).slice(0,150));
+    });
+    var config = [picks.model,picks.voice,picks.tier,picks.context.join(','),picks.memoryMode,picks.useCases.join(',')].join(' / ');
+    var fingerprint = JSON.stringify([fields,config]);
+    if (deliveredFor === fingerprint) { msg.textContent = 'A copy has already been sent to ' + em + '.'; return; }
+    deliveredFor = '';
+    btn.disabled = true; address.readOnly = true;
+    btn.textContent = 'Sending…'; msg.className = 'sb-msg'; msg.textContent = '';
+    try {
+      if (acceptedLead !== fingerprint) {
+        var capture = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/2474026/c5439911-36e3-4063-ae21-0e0ab792f7a3', {
+          method:'POST', headers:{'Content-Type':'application/json'}, signal:AbortSignal.timeout(12000),
+          body:JSON.stringify({fields:fields,context:{pageUri:uri.href,pageName:'gotcos.com · Wizard checklist (' + config + ')'}})
+        });
+        if (!capture.ok) throw new Error('capture');
+        acceptedLead = fingerprint;
+        window.gtag?.('event','wizard_checklist_lead');
       }
-    }).catch(function () { msg.className = 'sb-msg err show'; msg.textContent = 'Network error. Try again.'; btn.disabled = false; btn.textContent = orig; });
+      var response = await fetch('https://app.gotcos.com/api/wizard/checklist', {
+        method:'POST', headers:{'Content-Type':'application/json'}, signal:AbortSignal.timeout(20000), body:JSON.stringify(picks)
+      });
+      var result = await response.json();
+      if (!response.ok || !result.mailed) throw new Error(result.reason || 'delivery');
+      msg.className = 'sb-msg ok show'; msg.textContent = 'Your setup link was sent to ' + em + '.';
+      deliveredFor = fingerprint;
+      window.gtag?.('event','wizard_checklist_email_accepted');
+    } catch (err) {
+      $('#local-handoff').hidden = false;
+      msg.className = 'sb-msg err show';
+      msg.textContent = err.message === 'limit' ? 'Try emailing your setup again in an hour.'
+        : acceptedLead === fingerprint ? 'Email delivery could not be confirmed. Try again.'
+        : 'Your email could not be submitted. Check your connection and try again.';
+    } finally { address.readOnly = false; btn.disabled = false; btn.textContent = 'Send my setup link'; }
   };
 
   window.copyCmd = function (el) {
@@ -1264,8 +1375,16 @@ Speak your message.</div></div><div class="lens-footer">Opus  Tap to finish</div
   // memoryMode defaults to files-new, which means the Step 4 source must show as on.
   // Rendering first would print a Blueprint that disagreed with the checkboxes until
   // the user clicked something.
+  var resumed = restoreSetup();
   syncMemoryPair('mode');
   render();
+  if (resumed) $('#checklist-title').focus();
+  window.addEventListener('hashchange', function () {
+    if (!restoreSetup()) return;
+    syncMemoryPair('mode');
+    render();
+    $('#checklist-title').focus();
+  });
 })();
 </script>
 <script src="/assets/anime.umd.min.js"></script>
