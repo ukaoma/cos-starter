@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.410",
-      "build": 464,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.410/COS-Control-macOS-arm64-0.5.410.zip",
-      "sha256": "786a7eeb16b8afd7fb2ecf7a9160559bbb2eee126b7fbc1a0c77ab418f4c7f41",
+      "version": "0.5.411",
+      "build": 465,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.411/COS-Control-macOS-arm64-0.5.411.zip",
+      "sha256": "5edbd5f36bee40abf5319777880395e8cc740a02d8975dfb322bbfccbc1b2e00",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.66",
-      "publishedAt": "2026-11-21T15:20:37Z",
-      "notes": "Jump straight to the latest pinned COS message on your phone, resize the reply area, and return to the originating chat after sending with a passkey. Plus everything in 0.5.406.",
+      "serverTarget": "7.0.68",
+      "publishedAt": "2026-11-21T19:47:33Z",
+      "notes": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
       "whatsNew": {
-        "summary": "Jump straight to the latest pinned COS message on your phone, resize the reply area, and return to the originating chat after sending with a passkey. Plus everything in 0.5.406.",
+        "summary": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
         "sections": [
+          {
+            "title": "Compare plans in Sessions",
+            "items": [
+              "Open Sessions → Usage → Compare plans to see each provider’s reported plan use, reset and forecast. Select a provider for the chart.",
+              "Codex shows one estimated limit time across the list and detail. Cursor shows its pace per day. Stale and unavailable readings are labeled.",
+              "The plan-use line starts on in Sessions. You can hide it per browser.",
+              "Control supports phone enrollment and approval key changes with server 7.0.68."
+            ]
+          },
           {
             "title": "Messages on your phone",
             "items": [

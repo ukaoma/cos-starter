@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.410 (build 464) · server @gotcos/glasses-server 7.0.66.
-  Every claim is grounded in the 0.5.317 to 0.5.410 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.411 (build 465) · server @gotcos/glasses-server 7.0.68.
+  Every claim is grounded in the 0.5.317 to 0.5.411 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.410",
+    "softwareVersion": "0.5.411",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -492,7 +492,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.410</span>
+    <span class="sb-ver">Control 0.5.411</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -521,14 +521,15 @@ p a.btn,.lead a.btn{text-decoration:none}
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.410</b> · build 464</span>
-    <span class="chip">Server <b>7.0.66</b></span>
+    <span class="chip">Control <b>0.5.411</b> · build 465</span>
+    <span class="chip">Server <b>7.0.68</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
   </div>
   <div class="whatsnew" aria-labelledby="wn-h">
     <h2 id="wn-h">What&rsquo;s new</h2>
     <ul class="wn-list">
+      <li><a href="#release-411"><b>0.5.411 / server 7.0.68</b><span>Compare reported plan use, reset times and forecasts across providers in Sessions.</span></a></li>
       <li><a href="#release-410"><b>0.5.410 / server 7.0.66</b><span>Jump to the newest COS message from the phone header, resize the reply area, and return to your conversation after sending with a passkey.</span></a></li>
       <li><a href="#release-406"><b>0.5.406 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
       <li><a href="#release-397"><b>0.5.397 / server 7.0.49</b><span>Shared COS chat, plan pacing, trusted HTTPS phone links and optional phone pings.</span></a></li>
@@ -825,7 +826,7 @@ p a.btn,.lead a.btn{text-decoration:none}
     <h3>Prepare before the call</h3>
     <p><strong>Prep me</strong> opens a draft on Mac and COS Control Web. Add notes and up to 10 files, then press <strong>Prep</strong>. With no notes, Prep uses the default brief. Keep replying to steer the preparation; your ordinary Ask draft stays separate.</p>
     <p>When the call starts, choose <strong>Add prep to this meeting</strong> and check the title, date and context preview. This adds a frozen copy of your prep notes and ready files to that specific live recording, where Live Ask and saved review can use them. COS does not attach prep automatically by matching titles or times. Later draft edits need another explicit add. Files without readable text remain in the draft but add no text to the prompt.</p>
-    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>7.0.66</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
+    <p>Native Prep needs <strong>Control 0.5.376 and server 6.99.20 or newer</strong>; the current matched server is <strong>7.0.68</strong>. Without the required server capability, COS keeps the existing Ask path.</p>
   </div>
 
   <div class="sub" id="view-memories">
@@ -1455,6 +1456,12 @@ p a.btn,.lead a.btn{text-decoration:none}
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-411"><h3>Control 0.5.411 / server 7.0.68</h3>
+        <p>Open <strong>Sessions → Usage → Compare plans</strong>. Each row shows a provider’s latest reading. Tap a row to see the reset time and forecast. On a folded Duo, tap Compare plans to return. On the open Duo, the list and forecast appear together.</p>
+        <p>Solid bars show reported use. The hatched part of the bar shows expected additional use at the current pace. The chart shows when a plan may run out or how much room may remain at reset. Stale or unavailable readings are labeled. The Codex limit time matches across views, and Cursor shows its average usage per day.</p>
+        <p>The plan-use line appears by default in Sessions on phones, the Duo and desktop. Tap it to open the comparison. You can hide it with <strong>Show plan use in Sessions</strong>. Control 0.5.411 includes the phone enrollment and approval-key support for server 7.0.68.</p>
+        <p><a href="/docs/#release-server-7068">Matched server release notes</a>.</p>
+    </section>
     <section class="note" id="release-410"><h3>Control 0.5.410 / server 7.0.66</h3>
         <p><strong>Reach the latest message.</strong> On a phone, tap <strong>Latest</strong> beside <strong>Messages</strong> in the pinned COS conversation. On a folded Duo, the side rail remains in reach while reading. Tap the pencil above Back to reopen a collapsed reply box.</p>
         <p><strong>Make room to read.</strong> Drag or tap the handle above the reply box in Messages, Today’s session sheet, Work chat or Meeting Ask. The pinned COS thread and individual Messages remember the height on that device.</p>
