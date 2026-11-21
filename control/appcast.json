@@ -16,18 +16,19 @@
           {
             "title": "Messages on your phone",
             "items": [
-              "Tap Latest in the Messages header to reach the newest COS reply.",
-              "On the folded Duo, tap the pencil above Back to reopen a collapsed reply box.",
-              "Use the handle above the reply box to give more room to the conversation."
+              "Tap Latest in the pinned COS Messages header to reach the newest reply, even with the reply box collapsed.",
+              "On the folded Duo, long threads keep the side rail visible. Tap the pencil above Back to reopen the reply box.",
+              "Resize the reply area in Messages, Today’s session sheet, Work chat and Meeting Ask for live and saved meetings. The pinned COS thread and individual Messages remember their height on this device."
             ]
           },
           {
             "title": "Phone approvals and Sessions",
             "items": [
-              "After COS confirms a verified message was sent or queued, it returns to the original chat.",
-              "Pair this Mac release with server 7.0.66 for phone enrollment and approval-key management.",
-              "Try interactive checklists with experimental result cards enabled.",
-              "The setup Permissions badge refreshes when you return from System Settings."
+              "With phone approvals enabled and a phone enrolled, COS returns to the originating chat after confirming a verified message was sent or queued. If delivery is uncertain, check that chat before retrying.",
+              "Pair this app with server 7.0.66 for phone enrollment and approval-key changes. The app also recognizes the pins for servers 7.0.63 through 7.0.65.",
+              "In an available HTML design preview in Sessions, use Add to reply to draft feedback or Return to chat to close the review.",
+              "For interactive checklists in supported Sessions replies, turn on the experimental Show result cards setting, which starts off in each browser. Checkmarks are saved and Share progress puts them in the composer.",
+              "The Mac setup guide rechecks the Permissions badge when you open it or return from System Settings."
             ]
           },
           {
