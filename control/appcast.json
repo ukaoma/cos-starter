@@ -8,7 +8,7 @@
       "sha256": "5edbd5f36bee40abf5319777880395e8cc740a02d8975dfb322bbfccbc1b2e00",
       "minMacOS": "14.0",
       "serverTarget": "7.0.68",
-      "publishedAt": "2026-11-21T19:47:33Z",
+      "publishedAt": "2026-11-21T20:18:51Z",
       "notes": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
       "whatsNew": {
         "summary": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
