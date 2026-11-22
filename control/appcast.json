@@ -2,17 +2,31 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.414",
-      "build": 468,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.414/COS-Control-macOS-arm64-0.5.414.zip",
-      "sha256": "b41c821ed14f85caac67c47073785a7639c594e3afe1c2f501fc7507108e2d1d",
+      "version": "0.5.416",
+      "build": 470,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.416/COS-Control-macOS-arm64-0.5.416.zip",
+      "sha256": "091b7085289ac9dcf54f0da74f90b72079bbd52fec90ecf78864450805e2abfc",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.70",
-      "publishedAt": "2026-11-22T06:48:52Z",
-      "notes": "Sessions shows when each assistant replied on your Mac. Pairs with server 7.0.70.",
+      "serverTarget": "7.0.71",
+      "publishedAt": "2026-11-22T20:52:04Z",
+      "notes": "Attach files from your Mac in Sessions and COS Messages, and queue files for a busy agent. Pairs with server 7.0.71.",
       "whatsNew": {
-        "summary": "Sessions shows when each assistant replied on your Mac. Pairs with server 7.0.70.",
+        "summary": "Attach files from your Mac in Sessions and COS Messages, and queue files for a busy agent. Pairs with server 7.0.71.",
         "sections": [
+          {
+            "title": "0.5.416",
+            "items": [
+              "Use the paperclip in Sessions to send photos and documents with a message, queue them for a busy agent, or include them when forking a session.",
+              "In COS Messages and replies, choose Attach files to browse your Mac."
+            ]
+          },
+          {
+            "title": "0.5.415",
+            "items": [
+              "Your messages sit on the right in a tinted bubble. Agent replies stay on the left with room for longer answers.",
+              "Control recognizes the phone approval pages shipped with server 7.0.71."
+            ]
+          },
           {
             "title": "0.5.414",
             "items": [
