@@ -37,8 +37,8 @@
 <script>document.documentElement.className+=' js';</script>
 <!--
   gotcos.com/control/docs · COS Control user guide for Mac.
-  Covers COS Control 0.5.413 (build 467) · server @gotcos/glasses-server 7.0.70.
-  Every claim is grounded in the 0.5.317 to 0.5.413 app source, its CHANGELOG and What's New,
+  Covers COS Control 0.5.414 (build 468) · server @gotcos/glasses-server 7.0.70.
+  Every claim is grounded in the 0.5.317 to 0.5.414 app source, its CHANGELOG and What's New,
   or copy already published on /control, /docs and /wizard.
   Recent release notes mirror the shipped facts documented in /docs.
 -->
@@ -61,7 +61,7 @@
     "name": "COS Control",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 14 or later, Apple Silicon",
-    "softwareVersion": "0.5.413",
+    "softwareVersion": "0.5.414",
     "url": "https://www.gotcos.com/control/"
   }
 }
@@ -492,7 +492,7 @@ p a.btn,.lead a.btn{text-decoration:none}
 <aside class="docs-side" aria-label="Guide contents">
   <div class="sb-head">
     <span class="sb-title">Mac user guide</span>
-    <span class="sb-ver">Control 0.5.413</span>
+    <span class="sb-ver">Control 0.5.414</span>
   </div>
   <nav class="sb-nav" aria-label="Chapters">
     <a href="#top">Start</a>
@@ -521,7 +521,7 @@ p a.btn,.lead a.btn{text-decoration:none}
   <h1>COS Control, <span class="it goldt">from first run to fixes.</span></h1>
   <p class="lead">COS Control is the Mac companion for COS. It runs the COS server for you, puts your Claude, Codex and Cursor sessions in one place, dictates into any app, records Mac meetings and tracks Work. This guide covers every view and setting in the current release, and what to do when something looks stuck.</p>
   <div class="badges">
-    <span class="chip">Control <b>0.5.413</b> · build 467</span>
+    <span class="chip">Control <b>0.5.414</b> · build 468</span>
     <span class="chip">Server <b>7.0.70</b></span>
     <span class="chip">macOS 14+</span>
     <span class="chip">Apple silicon</span>
@@ -529,7 +529,8 @@ p a.btn,.lead a.btn{text-decoration:none}
   <div class="whatsnew" aria-labelledby="wn-h">
     <h2 id="wn-h">What&rsquo;s new</h2>
     <ul class="wn-list">
-      <li><a href="#release-413"><b>0.5.413 / server 7.0.70</b><span>See the latest job milestone or decision first in Today, followed by agent updates in bullets.</span></a></li>
+      <li><a href="#release-414"><b>0.5.414 / server 7.0.70</b><span>See when each assistant replied in Sessions on your Mac.</span></a></li>
+    <li><a href="#release-413"><b>0.5.413 / server 7.0.70</b><span>See the latest job milestone or decision first in Today, followed by agent updates in bullets.</span></a></li>
       <li><a href="#release-411"><b>0.5.411 / server 7.0.68</b><span>Compare reported plan use, reset times and forecasts across providers in Sessions.</span></a></li>
       <li><a href="#release-410"><b>0.5.410 / server 7.0.66</b><span>Jump to the newest COS message from the phone header, resize the reply area, and return to your conversation after sending with a passkey.</span></a></li>
       <li><a href="#release-406"><b>0.5.406 / server 7.0.62</b><span>Open file sources in session replies, keep your place in Messages and enroll a phone for approvals.</span></a></li>
@@ -1457,6 +1458,10 @@ p a.btn,.lead a.btn{text-decoration:none}
     <p class="ch-sub">Recent COS Control releases, newest first.</p>
     <p class="lead">Each release also opens in What's New inside the app. The full history is in the COS Control changelog.</p>
   </div>
+    <section class="note" id="release-414"><h3>Control 0.5.414 / server 7.0.70</h3>
+    <p><strong>Reply timestamps.</strong> Sessions shows the local time beside an assistant reply. Older replies include the date, so you can catch up across days.</p>
+    <p><strong>Cursor history.</strong> When a transcript omits a time, Control checks the local Cursor database for a unique matching reply. If it cannot verify the time, it shows “Time unavailable”.</p>
+    </section>
     <section class="note" id="release-413"><h3>Control 0.5.413 / server 7.0.70</h3>
     <p><strong>Queue with passkey.</strong> While a session is working, type a message, open its actions, and choose <strong>Queue with passkey</strong>. Confirm the message on your enrolled phone. It joins the session’s queue and you return to that conversation.</p>
     <p><strong>COS chat on an open Duo.</strong> In Messages, open COS and tap <strong>Full screen</strong> to hide both the navigation rail and Recent messages. <strong>Jump to latest</strong> stays in the header. <strong>Exit full screen</strong> restores the list and keeps your draft.</p>

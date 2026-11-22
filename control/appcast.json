@@ -2,17 +2,24 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.413",
-      "build": 467,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.413/COS-Control-macOS-arm64-0.5.413.zip",
-      "sha256": "f9082bb3f0eb31b1135d874669cd1e9e85ca81b6120406f400e22195f42f2c39",
+      "version": "0.5.414",
+      "build": 468,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.414/COS-Control-macOS-arm64-0.5.414.zip",
+      "sha256": "b41c821ed14f85caac67c47073785a7639c594e3afe1c2f501fc7507108e2d1d",
       "minMacOS": "14.0",
       "serverTarget": "7.0.70",
-      "publishedAt": "2026-11-22T04:06:56Z",
-      "notes": "Today leads with the latest job milestone or decision and shows supporting updates as bullets on Mac. Pairs with server 7.0.70.",
+      "publishedAt": "2026-11-22T06:48:52Z",
+      "notes": "Sessions shows when each assistant replied on your Mac. Pairs with server 7.0.70.",
       "whatsNew": {
-        "summary": "Today leads with the latest job milestone or decision and shows supporting updates as bullets on Mac. Pairs with server 7.0.70.",
+        "summary": "Sessions shows when each assistant replied on your Mac. Pairs with server 7.0.70.",
         "sections": [
+          {
+            "title": "0.5.414",
+            "items": [
+              "Sessions shows the local time beside each assistant reply, with the date on older replies.",
+              "For Cursor transcripts that omit times, Control looks up the matching reply in the local Cursor database. If the time cannot be verified, the reply says “Time unavailable”."
+            ]
+          },
           {
             "title": "0.5.413",
             "items": [
