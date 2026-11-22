@@ -2,17 +2,34 @@
   "schemaVersion": 1,
   "channels": {
     "stable": {
-      "version": "0.5.411",
-      "build": 465,
-      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.411/COS-Control-macOS-arm64-0.5.411.zip",
-      "sha256": "5edbd5f36bee40abf5319777880395e8cc740a02d8975dfb322bbfccbc1b2e00",
+      "version": "0.5.413",
+      "build": 467,
+      "url": "https://github.com/ukaoma/cos-starter/releases/download/control-v0.5.413/COS-Control-macOS-arm64-0.5.413.zip",
+      "sha256": "f9082bb3f0eb31b1135d874669cd1e9e85ca81b6120406f400e22195f42f2c39",
       "minMacOS": "14.0",
-      "serverTarget": "7.0.68",
-      "publishedAt": "2026-11-21T20:18:51Z",
-      "notes": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
+      "serverTarget": "7.0.70",
+      "publishedAt": "2026-11-22T04:06:56Z",
+      "notes": "Today leads with the latest job milestone or decision and shows supporting updates as bullets on Mac. Pairs with server 7.0.70.",
       "whatsNew": {
-        "summary": "Compare provider plan usage and forecasts in Sessions with server 7.0.68. Control supports phone enrollment and approval key changes with this release. Plus everything in 0.5.410.",
+        "summary": "Today leads with the latest job milestone or decision and shows supporting updates as bullets on Mac. Pairs with server 7.0.70.",
         "sections": [
+          {
+            "title": "0.5.413",
+            "items": [
+              "Today puts the latest reported milestone or a decision first. The count of what needs your attention follows the job updates.",
+              "On Mac, the lead is followed by a bullet for each supporting update. While the brief loads, available details from working or waiting sessions can appear below the local headline.",
+              "Control recognizes the phone approval pages shipped with server 7.0.70."
+            ]
+          },
+          {
+            "title": "0.5.412",
+            "items": [
+              "In a working session, open the message actions and choose Queue with passkey. Confirm the words on your phone and return to the same session to see your message in line.",
+              "In the COS thread on an open Duo, Full screen hides the recent messages and navigation lists. Use Jump to latest in the header and Exit full screen to bring the lists back.",
+              "On Control Web, Today leads with one sentence and puts each update on its own line. Counts and deadlines are emphasized.",
+              "Control recognizes the phone approval pages shipped with server 7.0.69."
+            ]
+          },
           {
             "title": "Compare plans in Sessions",
             "items": [
