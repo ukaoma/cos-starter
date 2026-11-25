@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "version": "2026-11-09.1",
- "published": "2026-11-09",
+ "version": "2026-11-24.1",
+ "published": "2026-11-24",
  "models": [
   {
    "provider": "Anthropic",
@@ -176,6 +176,56 @@
    "cacheWriteLong": 2,
    "source": "https://platform.claude.com/docs/en/about-claude/pricing",
    "read": "2026-11-09"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6.2-astra"
+   ],
+   "status": "priced",
+   "input": 8.0,
+   "output": 40.0,
+   "cacheRead": 0.4,
+   "cacheWrite": 10.0,
+   "cacheWriteLong": 20.0,
+   "tiers": [
+    {
+     "promptOver": 272000,
+     "input": 16.0,
+     "output": 60.0,
+     "cacheRead": 0.8,
+     "cacheWrite": 20.0,
+     "cacheWriteLong": 40.0
+    }
+   ],
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-24"
+  },
+  {
+   "provider": "OpenAI",
+   "ids": [
+    "gpt-6.2-sol"
+   ],
+   "status": "priced",
+   "input": 2.0,
+   "output": 10.0,
+   "cacheRead": 0.1,
+   "cacheWrite": 2.5,
+   "cacheWriteLong": 5.0,
+   "tiers": [
+    {
+     "promptOver": 272000,
+     "input": 4.0,
+     "output": 15.0,
+     "cacheRead": 0.2,
+     "cacheWrite": 5.0,
+     "cacheWriteLong": 10.0
+    }
+   ],
+   "pricesCacheWrites": false,
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "read": "2026-11-24"
   },
   {
    "provider": "OpenAI",
